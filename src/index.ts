@@ -16,6 +16,7 @@ import { Tabs } from './js/tabs';
 import { Forms } from './js/forms';
 import { Modal, ModalManager } from './js/modal';
 import { Icon, EcommerceIcons } from './js/icons';
+import { Tooltip, EcommerceTooltips } from './js/tooltip';
 
 // Initialize modules
 let navigation: Navigation | null = null;
@@ -36,6 +37,8 @@ export const amp = {
     modalManager: ModalManager,
     icon: Icon,
     ecommerceIcons: EcommerceIcons,
+    tooltip: Tooltip,
+    ecommerceTooltips: EcommerceTooltips,
   },
 
   /**
@@ -56,6 +59,9 @@ export const amp = {
 
     // Initialize icons
     Icon.init();
+
+    // Initialize tooltips from data attributes
+    Tooltip.initFromData();
 
     // Initialize modules based on options (all enabled by default)
     const defaults = {
@@ -225,6 +231,27 @@ export const amp = {
   createRating(rating: number, maxRating?: number, options?: any): HTMLElement {
     return EcommerceIcons.rating(rating, maxRating, options);
   },
+
+  /**
+   * Utility: Create tooltip
+   */
+  createTooltip(element: HTMLElement | string, options?: any): Tooltip {
+    return new Tooltip(element, options);
+  },
+
+  /**
+   * Utility: Create product info tooltip
+   */
+  createProductTooltip(element: HTMLElement, productData: any): Tooltip {
+    return EcommerceTooltips.productInfo(element, productData);
+  },
+
+  /**
+   * Utility: Create shipping info tooltip
+   */
+  createShippingTooltip(element: HTMLElement, shippingData: any): Tooltip {
+    return EcommerceTooltips.shippingInfo(element, shippingData);
+  },
 };
 
 // Auto-initialize on DOM ready
@@ -237,7 +264,7 @@ if (typeof window !== 'undefined') {
 }
 
 // Export modules for direct access
-export { Navigation, SmoothScroll, Tabs, Forms, Modal, ModalManager, Icon, EcommerceIcons };
+export { Navigation, SmoothScroll, Tabs, Forms, Modal, ModalManager, Icon, EcommerceIcons, Tooltip, EcommerceTooltips };
 
 // Export for module usage
 export default amp;
