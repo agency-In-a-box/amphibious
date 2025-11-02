@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icons - Amphibious 2.0</title>
+    <link rel="stylesheet" href="../dist/amphibious.css">
+    <style>
+        .demo-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .demo-item {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .icon-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .icon-example {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="text-align: center; margin: 2rem 0;">
+            <h1>Icon System Demo</h1>
+            <p>Lucide Icons integration with Amphibious 2.0</p>
+        </header>
+
+        <!-- Basic Icons -->
+        <section class="demo-section">
+            <h2>Basic Icons</h2>
+            <p>Simple icons using data-lucide attribute</p>
+            <div class="icon-showcase">
+                <div class="icon-example">
+                    <i data-lucide="heart"></i>
+                    <span>Heart</span>
+                </div>
+                <div class="icon-example">
+                    <i data-lucide="star"></i>
+                    <span>Star</span>
+                </div>
+                <div class="icon-example">
+                    <i data-lucide="search"></i>
+                    <span>Search</span>
+                </div>
+                <div class="icon-example">
+                    <i data-lucide="shopping-cart"></i>
+                    <span>Shopping Cart</span>
+                </div>
+                <div class="icon-example">
+                    <i data-lucide="user"></i>
+                    <span>User</span>
+                </div>
+                <div class="icon-example">
+                    <i data-lucide="filter"></i>
+                    <span>Filter</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Sizes -->
+        <section class="demo-section">
+            <h2>Icon Sizes</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Extra Small (16px)</h4>
+                    <i data-lucide="star" class="icon--xs"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Small (20px)</h4>
+                    <i data-lucide="star" class="icon--sm"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Medium (24px)</h4>
+                    <i data-lucide="star" class="icon--md"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Large (32px)</h4>
+                    <i data-lucide="star" class="icon--lg"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Extra Large (48px)</h4>
+                    <i data-lucide="star" class="icon--xl"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Colors -->
+        <section class="demo-section">
+            <h2>Icon Colors</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Default</h4>
+                    <i data-lucide="heart" class="icon--lg"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Primary</h4>
+                    <i data-lucide="heart" class="icon--lg icon--primary"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Success</h4>
+                    <i data-lucide="heart" class="icon--lg icon--success"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Warning</h4>
+                    <i data-lucide="heart" class="icon--lg icon--warning"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Danger</h4>
+                    <i data-lucide="heart" class="icon--lg icon--danger"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Muted</h4>
+                    <i data-lucide="heart" class="icon--lg icon--muted"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filled Icons -->
+        <section class="demo-section">
+            <h2>Filled Icons</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Default Heart</h4>
+                    <i data-lucide="heart" class="icon--lg"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Filled Heart</h4>
+                    <i data-lucide="heart" class="icon--lg icon--filled icon--danger"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Default Star</h4>
+                    <i data-lucide="star" class="icon--lg"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Filled Star</h4>
+                    <i data-lucide="star" class="icon--lg icon--filled icon--warning"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Animations -->
+        <section class="demo-section">
+            <h2>Icon Animations</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Spin</h4>
+                    <i data-lucide="loader-2" class="icon--lg icon--spin"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Pulse</h4>
+                    <i data-lucide="heart" class="icon--lg icon--pulse icon--danger"></i>
+                </div>
+                <div class="demo-item">
+                    <h4>Bounce</h4>
+                    <i data-lucide="arrow-up" class="icon--lg icon--bounce icon--success"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Buttons -->
+        <section class="demo-section">
+            <h2>Icon Buttons</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Default Button</h4>
+                    <button class="icon-button" onclick="alert('Default clicked!')">
+                        <i data-lucide="heart"></i>
+                    </button>
+                </div>
+                <div class="demo-item">
+                    <h4>Primary Button</h4>
+                    <button class="icon-button icon-button--primary">
+                        <i data-lucide="star"></i>
+                    </button>
+                </div>
+                <div class="demo-item">
+                    <h4>Success Button</h4>
+                    <button class="icon-button icon-button--success">
+                        <i data-lucide="check"></i>
+                    </button>
+                </div>
+                <div class="demo-item">
+                    <h4>Danger Button</h4>
+                    <button class="icon-button icon-button--danger">
+                        <i data-lucide="trash-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon with Text -->
+        <section class="demo-section">
+            <h2>Icon with Text</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Horizontal</h4>
+                    <div class="icon-text">
+                        <i data-lucide="truck"></i>
+                        <span>Free Shipping</span>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <h4>Reverse</h4>
+                    <div class="icon-text icon-text--reverse">
+                        <i data-lucide="download"></i>
+                        <span>Download</span>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <h4>Vertical</h4>
+                    <div class="icon-text icon-text--vertical">
+                        <i data-lucide="shield-check"></i>
+                        <span>Secure</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Badges -->
+        <section class="demo-section">
+            <h2>Icon with Badges</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Shopping Cart (3 items)</h4>
+                    <div class="icon-badge">
+                        <i data-lucide="shopping-cart" class="icon--lg"></i>
+                        <span class="icon-badge__count">3</span>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <h4>Notifications (99+)</h4>
+                    <div class="icon-badge">
+                        <i data-lucide="bell" class="icon--lg"></i>
+                        <span class="icon-badge__count">99+</span>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <h4>Messages (New)</h4>
+                    <div class="icon-badge">
+                        <i data-lucide="message-circle" class="icon--lg"></i>
+                        <span class="icon-badge__count"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-commerce Rating -->
+        <section class="demo-section">
+            <h2>Rating System</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>5 Star Rating</h4>
+                    <div class="rating">
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <h4>3.5 Star Rating</h4>
+                    <div class="rating">
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                        <i data-lucide="star" class="icon--muted"></i>
+                        <i data-lucide="star" class="icon--muted"></i>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <h4>1 Star Rating</h4>
+                    <div class="rating">
+                        <i data-lucide="star" class="icon--filled icon--warning"></i>
+                        <i data-lucide="star" class="icon--muted"></i>
+                        <i data-lucide="star" class="icon--muted"></i>
+                        <i data-lucide="star" class="icon--muted"></i>
+                        <i data-lucide="star" class="icon--muted"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-commerce Status Icons -->
+        <section class="demo-section">
+            <h2>Status Icons</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="status-icon status-icon--success">
+                        <i data-lucide="check-circle"></i>
+                        <span>In Stock</span>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <div class="status-icon status-icon--warning">
+                        <i data-lucide="alert-triangle"></i>
+                        <span>Low Stock</span>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <div class="status-icon status-icon--danger">
+                        <i data-lucide="x-circle"></i>
+                        <span>Out of Stock</span>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <div class="status-icon status-icon--info">
+                        <i data-lucide="info"></i>
+                        <span>Pre-order</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript Examples -->
+        <section class="demo-section">
+            <h2>JavaScript API Examples</h2>
+            <p>These examples are created dynamically using the Amphibious Icon API:</p>
+            <div id="js-examples" class="demo-grid">
+                <!-- Examples will be inserted here by JavaScript -->
+            </div>
+            <div style="margin-top: 1rem;">
+                <button onclick="createDynamicIcon()" class="btn btn--primary">
+                    Add Random Icon
+                </button>
+                <button onclick="createShoppingCart()" class="btn btn--secondary">
+                    Create Shopping Cart
+                </button>
+                <button onclick="createRating()" class="btn btn--success">
+                    Create Rating
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="../dist/amphibious.js"></script>
+    <script type="module">
+        // Wait for Amphibious to load
+        window.addEventListener('load', () => {
+            // Create some initial examples using the JavaScript API
+            const container = document.getElementById('js-examples');
+
+            // Example 1: Simple icon
+            const example1 = document.createElement('div');
+            example1.className = 'demo-item';
+            example1.innerHTML = '<h4>JS Created Icon</h4>';
+            const icon1 = amp.createIcon('heart', { class: 'icon--lg icon--danger' });
+            if (icon1) example1.appendChild(icon1);
+            container.appendChild(example1);
+
+            // Example 2: Icon button
+            const example2 = document.createElement('div');
+            example2.className = 'demo-item';
+            example2.innerHTML = '<h4>JS Icon Button</h4>';
+            const iconBtn = amp.createIconButton('star', {
+                variant: 'primary',
+                onClick: () => alert('JavaScript icon button clicked!')
+            });
+            example2.appendChild(iconBtn);
+            container.appendChild(example2);
+
+            // Example 3: Shopping cart with count
+            const example3 = document.createElement('div');
+            example3.className = 'demo-item';
+            example3.innerHTML = '<h4>JS Shopping Cart</h4>';
+            const cart = amp.createCart(5);
+            example3.appendChild(cart);
+            container.appendChild(example3);
+
+            // Example 4: Rating
+            const example4 = document.createElement('div');
+            example4.className = 'demo-item';
+            example4.innerHTML = '<h4>JS Rating</h4>';
+            const rating = amp.createRating(4, 5);
+            example4.appendChild(rating);
+            container.appendChild(example4);
+        });
+
+        // Global functions for button examples
+        window.createDynamicIcon = function() {
+            const icons = ['heart', 'star', 'thumbs-up', 'smile', 'gift', 'sun', 'moon'];
+            const colors = ['primary', 'success', 'warning', 'danger', 'info'];
+
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+            const container = document.getElementById('js-examples');
+            const example = document.createElement('div');
+            example.className = 'demo-item';
+            example.innerHTML = `<h4>Random: ${randomIcon}</h4>`;
+
+            const icon = amp.createIcon(randomIcon, {
+                class: `icon--lg icon--${randomColor}`,
+                'aria-label': `Random ${randomIcon} icon`
+            });
+            if (icon) example.appendChild(icon);
+
+            container.appendChild(example);
+        };
+
+        window.createShoppingCart = function() {
+            const count = Math.floor(Math.random() * 10) + 1;
+            const container = document.getElementById('js-examples');
+            const example = document.createElement('div');
+            example.className = 'demo-item';
+            example.innerHTML = `<h4>Cart (${count} items)</h4>`;
+
+            const cart = amp.createCart(count);
+            example.appendChild(cart);
+            container.appendChild(example);
+        };
+
+        window.createRating = function() {
+            const rating = Math.floor(Math.random() * 5) + 1;
+            const container = document.getElementById('js-examples');
+            const example = document.createElement('div');
+            example.className = 'demo-item';
+            example.innerHTML = `<h4>${rating} Star Rating</h4>`;
+
+            const stars = amp.createRating(rating, 5);
+            example.appendChild(stars);
+            container.appendChild(example);
+        };
+    </script>
+</body>
+</html>

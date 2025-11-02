@@ -1,0 +1,637 @@
+/* ==========================================================================
+   Navigation Component - Amphibious 2.0
+   Horizontal/vertical navigation, dropdowns, breadcrumbs, and mobile menu
+   Based on original A.mphibio.us navigation with modern enhancements
+   ========================================================================== */
+
+/* Navigation Variables (extend in variables.css if needed)
+   ========================================================================== */
+
+:root {
+  --nav-bg: transparent;
+  --nav-border: rgba(0, 0, 0, 0.1);
+  --nav-text: #ffffff;
+  --nav-text-hover: #d1d2d3;
+  --nav-text-active: #ffffff;
+  --nav-dropdown-bg: rgba(255, 255, 255, 0.95);
+  --nav-dropdown-text: #0080c6;
+  --nav-dropdown-hover-bg: #0080c6;
+  --nav-dropdown-hover-text: #ffffff;
+  --nav-dropdown-shadow: 0 1px 9px rgba(0, 0, 0, 0.25);
+  --nav-mobile-bg: #ffffff;
+  --nav-mobile-overlay: rgba(0, 0, 0, 0.5);
+  --nav-transition: all 0.3s ease-out;
+  --nav-z-index: 5000;
+  --nav-dropdown-z-index: 5005;
+}
+
+/* Base Navigation Styles
+   ========================================================================== */
+
+/* Self-clearing navigation (legacy support + modern) */
+nav ul:after,
+nav dl:after,
+menu ul:after,
+menu dl:after,
+.nav:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Modern clearfix alternative */
+.nav::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Reset navigation lists */
+nav ul,
+.nav ul,
+ul.nav {
+  list-style: none outside;
+  margin: 0;
+  padding: 0;
+}
+
+/* Horizontal Navigation
+   ========================================================================== */
+
+.horizontal,
+.nav-horizontal {
+  margin: 0;
+}
+
+.horizontal > li,
+.nav-horizontal > li {
+  display: block;
+  float: left;
+  margin-bottom: 0;
+  margin-left: 0;
+  position: relative;
+}
+
+.horizontal > li > a,
+.nav-horizontal > li > a {
+  display: inline-block;
+  color: var(--nav-text);
+  float: none;
+  padding: 0.5em 0.865em;
+  font-size: 1em;
+  text-decoration: none;
+  transition: var(--nav-transition);
+}
+
+.horizontal > li > a:hover,
+.horizontal > li > a:focus,
+.nav-horizontal > li > a:hover,
+.nav-horizontal > li > a:focus {
+  color: var(--nav-text-hover);
+}
+
+.horizontal > li > a:active,
+.horizontal > li > a.active,
+.horizontal > li.active > a,
+.nav-horizontal > li > a:active,
+.nav-horizontal > li > a.active,
+.nav-horizontal > li.active > a {
+  font-weight: 600;
+  color: var(--nav-text-active);
+}
+
+/* Vertical Navigation
+   ========================================================================== */
+
+.vertical,
+.nav-vertical {
+  margin: 0;
+}
+
+.vertical > li,
+.vertical > li > ul > li,
+.vertical > li > ul > li > ul > li,
+.nav-vertical > li {
+  float: none;
+  position: relative;
+  display: block;
+}
+
+.vertical > li > a,
+.nav-vertical > li > a {
+  display: block;
+  color: var(--nav-text);
+  padding: 0.5em 0.865em;
+  font-size: 1em;
+  text-decoration: none;
+  transition: var(--nav-transition);
+}
+
+.vertical > li > a:hover,
+.vertical > li > a:focus,
+.nav-vertical > li > a:hover,
+.nav-vertical > li > a:focus {
+  color: var(--nav-text-hover);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Dropdown Menus (Submenus)
+   ========================================================================== */
+
+.horizontal > li > ul,
+.vertical > li > ul,
+.nav-horizontal > li > ul,
+.nav-vertical > li > ul {
+  position: absolute;
+  z-index: var(--nav-z-index);
+  width: auto;
+  min-width: 200px;
+  margin-left: 0;
+  margin-top: 0;
+  background: var(--nav-dropdown-bg);
+  box-shadow: var(--nav-dropdown-shadow);
+  transition: var(--nav-transition);
+  display: none;
+  list-style: none;
+  padding: 0;
+}
+
+/* Vertical navigation dropdowns appear to the side */
+.vertical > li > ul,
+.nav-vertical > li > ul {
+  top: 0;
+  left: 100%;
+}
+
+/* Show dropdowns on hover */
+.horizontal > li:hover > ul,
+.vertical > li:hover > ul,
+.nav-horizontal > li:hover > ul,
+.nav-vertical > li:hover > ul {
+  display: block;
+}
+
+/* Dropdown link styles */
+.horizontal > li > ul > li > a,
+.vertical > li > ul > li > a,
+.horizontal > li > ul > li > ul > li > a,
+.vertical > li > ul > li > ul > li > a,
+.nav-horizontal > li > ul > li > a,
+.nav-vertical > li > ul > li > a {
+  display: block;
+  background: var(--nav-dropdown-bg);
+  color: var(--nav-dropdown-text);
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: .625em 3em .625em 1.125em;
+  transition: var(--nav-transition);
+}
+
+.horizontal > li > ul > li > a:hover,
+.vertical > li > ul > li > a:hover,
+.horizontal > li > ul > li > ul > li > a:hover,
+.vertical > li > ul > li > ul > li > a:hover,
+.nav-horizontal > li > ul > li > a:hover,
+.nav-vertical > li > ul > li > a:hover {
+  background: var(--nav-dropdown-hover-bg);
+  color: var(--nav-dropdown-hover-text);
+}
+
+/* Third level dropdowns */
+.horizontal > li > ul > li {
+  position: relative;
+}
+
+.horizontal > li > ul > li > ul,
+.vertical > li > ul > li > ul,
+.nav-horizontal > li > ul > li > ul,
+.nav-vertical > li > ul > li > ul {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: var(--nav-dropdown-z-index);
+  margin: 0;
+  width: inherit;
+  min-width: 200px;
+  box-shadow: var(--nav-dropdown-shadow);
+  transition: var(--nav-transition);
+  display: none;
+  list-style: none;
+  background: var(--nav-dropdown-bg);
+}
+
+.horizontal > li > ul > li:hover > ul,
+.vertical > li > ul > li:hover > ul,
+.nav-horizontal > li > ul > li:hover > ul,
+.nav-vertical > li > ul > li:hover > ul {
+  display: block;
+}
+
+/* Dropdown arrows (optional enhancement) */
+.nav-dropdown-arrow > li > ul:before {
+  border: solid;
+  border-color: #cfcfcf transparent;
+  border-width: 0 6px 6px 6px;
+  top: -6px;
+  content: "";
+  display: block;
+  left: 12%;
+  position: absolute;
+  z-index: calc(var(--nav-z-index) + 1);
+}
+
+.vertical.nav-dropdown-arrow > li > ul:before,
+.nav-vertical.nav-dropdown-arrow > li > ul:before {
+  top: 1.125em;
+  left: -6px;
+  border-color: transparent #cfcfcf;
+  border-width: 6px 6px 6px 0;
+}
+
+/* Breadcrumb Navigation
+   ========================================================================== */
+
+.breadcrumb {
+  color: #ccc;
+  margin: 0;
+  font-size: 0.865em;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb li {
+  display: inline-block;
+  margin: 0;
+}
+
+.breadcrumb a,
+.breadcrumb a:visited {
+  margin: 0 .425em;
+  text-decoration: none;
+  color: #999;
+  white-space: nowrap;
+  float: left;
+  transition: var(--nav-transition);
+}
+
+.breadcrumb li:first-child a {
+  margin-left: 0;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+  color: #333;
+}
+
+.breadcrumb a:active,
+.breadcrumb .active a,
+.breadcrumb li.active a {
+  color: #333;
+  font-weight: 600;
+}
+
+.breadcrumb li:after {
+  display: inline-block;
+  content: ">";
+  margin: 0 0.425em;
+  color: #ccc;
+}
+
+.breadcrumb li:last-child:after {
+  content: "";
+  content: none;
+}
+
+/* Alternative breadcrumb separator styles */
+.breadcrumb-slash li:after {
+  content: "/";
+}
+
+.breadcrumb-arrow li:after {
+  content: "→";
+}
+
+.breadcrumb-dot li:after {
+  content: "•";
+}
+
+/* Filter Navigation (Button Groups)
+   ========================================================================== */
+
+.filter-nav,
+.nav-filter {
+  margin-top: 0.5em;
+  display: inline-block;
+}
+
+.filter-nav > dt {
+  border: 1px solid #4d4d4d;
+  padding: 0.5em 0.865em;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  float: left;
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+.filter-nav > dd {
+  margin-left: -1px;
+  float: left;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.filter-nav > dd > a {
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  color: #000;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.75);
+  margin: 0;
+  padding: 0.5em 0.865em;
+  text-decoration: none;
+  background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
+  transition: var(--nav-transition);
+}
+
+.filter-nav > dd:last-child > a {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.filter-nav > dd > a:hover,
+.filter-nav > dd > a:focus {
+  background: linear-gradient(to bottom, #f5f5f5 0%, #e5e5e5 100%);
+  color: #333;
+}
+
+.filter-nav > dd > a:active,
+.filter-nav > dd > a.active {
+  background: #0080c6;
+  color: #fff;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile Navigation Toggle
+   ========================================================================== */
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--nav-border);
+  padding: 0.5em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: var(--nav-transition);
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Hamburger icon */
+.nav-toggle-icon {
+  display: block;
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.nav-toggle-icon,
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  background-color: var(--nav-text);
+  height: 2px;
+  border-radius: 2px;
+  transition: var(--nav-transition);
+}
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.nav-toggle-icon::before {
+  top: -8px;
+}
+
+.nav-toggle-icon::after {
+  top: 8px;
+}
+
+/* Animated hamburger to X */
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Navigation States
+   ========================================================================== */
+
+/* Sticky navigation */
+.nav-sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--nav-z-index);
+  background: var(--nav-bg, #fff);
+  backdrop-filter: blur(10px);
+}
+
+/* Fixed navigation */
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--nav-z-index);
+  background: var(--nav-bg, #fff);
+}
+
+/* Transparent navigation (for hero sections) */
+.nav-transparent {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-transparent .horizontal > li > a,
+.nav-transparent .vertical > li > a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-transparent .horizontal > li > a:hover,
+.nav-transparent .vertical > li > a:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Navigation
+   ========================================================================== */
+
+@media only screen and (max-width: 800px) {
+  /* Make horizontal navigation vertical on small screens */
+  .horizontal > li {
+    float: none;
+    display: block;
+  }
+
+  /* Make dropdowns relative positioned on mobile */
+  .horizontal > li > ul,
+  .vertical > li > ul,
+  .horizontal > li > ul > li > ul,
+  .vertical > li > ul > li > ul {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+    display: none;
+  }
+
+  /* Show toggle button */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Hide navigation by default on mobile */
+  .nav-mobile-hide {
+    display: none;
+  }
+
+  /* Show navigation when toggled */
+  .nav-mobile-hide.is-open {
+    display: block;
+  }
+
+  /* Adjust dropdown link padding for mobile */
+  .horizontal > li > ul > li > a,
+  .vertical > li > ul > li > a {
+    padding-left: 2em;
+  }
+
+  .horizontal > li > ul > li > ul > li > a,
+  .vertical > li > ul > li > ul > li > ul > li > a {
+    padding-left: 3em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* Even smaller adjustments for mobile portrait */
+  .horizontal > li > a,
+  .vertical > li > a {
+    padding: 0.75em 1em;
+    border-bottom: 1px solid var(--nav-border);
+  }
+
+  .breadcrumb {
+    font-size: 0.75em;
+  }
+
+  .breadcrumb a {
+    margin: 0 0.25em;
+  }
+}
+
+/* Accessibility Improvements
+   ========================================================================== */
+
+/* Focus visible styles */
+.horizontal > li > a:focus-visible,
+.vertical > li > a:focus-visible,
+.breadcrumb a:focus-visible,
+.filter-nav > dd > a:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-primary, #0080c6);
+  outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.nav .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip navigation link */
+.skip-nav {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary, #0080c6);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: calc(var(--nav-z-index) + 100);
+  transition: top 0.3s;
+}
+
+.skip-nav:focus {
+  top: 6px;
+}
+
+/* Print Styles
+   ========================================================================== */
+
+@media print {
+  .nav-toggle,
+  .horizontal > li > ul,
+  .vertical > li > ul,
+  .filter-nav {
+    display: none !important;
+  }
+
+  .horizontal > li,
+  .vertical > li {
+    float: none;
+    display: block;
+  }
+
+  .horizontal > li > a,
+  .vertical > li > a,
+  .breadcrumb a {
+    color: #000;
+    background: none;
+  }
+
+  .breadcrumb li:after {
+    content: " > ";
+    color: #000;
+  }
+}
+
+/* Reduced Motion Support
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .horizontal > li > a,
+  .vertical > li > a,
+  .horizontal > li > ul,
+  .vertical > li > ul,
+  .nav-toggle-icon,
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    transition: none;
+  }
+}

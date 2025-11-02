@@ -1,0 +1,418 @@
+/* ==========================================================================
+   Print Styles - Amphibious 2.0
+   Optimized for printing web pages with proper formatting
+   Based on HTML5 Boilerplate and original A.mphibio.us
+   ========================================================================== */
+
+/* High Resolution Device Support
+   ========================================================================== */
+
+@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* Print Media Styles
+   ========================================================================== */
+
+@media print {
+  /* Global Print Resets
+     ========================================================================== */
+
+  * {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Page Setup
+     ========================================================================== */
+
+  @page {
+    margin: 0.5cm;
+    size: auto; /* Auto page size */
+  }
+
+  @page :first {
+    margin-top: 1cm; /* Larger top margin on first page */
+  }
+
+  /* Typography Optimization
+     ========================================================================== */
+
+  body {
+    font-family: Georgia, "Times New Roman", serif; /* Serif fonts are more readable in print */
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 24pt;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    font-size: 18pt;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-size: 14pt;
+    page-break-after: avoid;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: 12pt;
+    page-break-after: avoid;
+  }
+
+  /* Prevent orphans and widows */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Links
+     ========================================================================== */
+
+  a,
+  a:visited {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  /* Show URLs after links (except for internal links) */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+  }
+
+  /* Don't show URLs for internal links */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  /* Show abbreviation definitions */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* Images and Media
+     ========================================================================== */
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+    display: block;
+  }
+
+  /* Ensure images don't break across pages */
+  figure {
+    page-break-inside: avoid;
+  }
+
+  /* Hide video and audio elements */
+  video,
+  audio,
+  iframe,
+  embed,
+  object {
+    display: none !important;
+  }
+
+  /* Tables
+     ========================================================================== */
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  thead {
+    display: table-header-group; /* Repeat header on each page */
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  td,
+  th {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+  }
+
+  /* Lists
+     ========================================================================== */
+
+  ul,
+  ol {
+    page-break-inside: avoid;
+  }
+
+  li {
+    page-break-inside: avoid;
+  }
+
+  /* Code Blocks
+     ========================================================================== */
+
+  pre,
+  code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 11pt;
+  }
+
+  pre {
+    border: 1px solid #999;
+    padding: 0.5em;
+    page-break-inside: avoid;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Blockquotes
+     ========================================================================== */
+
+  blockquote {
+    border-left: 3px solid #999;
+    padding-left: 1em;
+    margin: 1em 0;
+    page-break-inside: avoid;
+    font-style: italic;
+  }
+
+  /* Forms (usually hidden in print)
+     ========================================================================== */
+
+  form,
+  input,
+  textarea,
+  select,
+  button {
+    display: none !important;
+  }
+
+  /* Grid System Adjustments
+     ========================================================================== */
+
+  .container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .row {
+    page-break-inside: avoid;
+  }
+
+  .col {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Keep columns side-by-side if marked for print */
+  .print-col-half {
+    width: 48% !important;
+    float: left !important;
+    margin-right: 2% !important;
+  }
+
+  .print-col-third {
+    width: 31% !important;
+    float: left !important;
+    margin-right: 2% !important;
+  }
+
+  /* Utility Classes for Print
+     ========================================================================== */
+
+  /* Hide elements in print */
+  .no-print,
+  .hide-print,
+  .hide-on-print,
+  nav,
+  .navigation,
+  .nav,
+  .sidebar,
+  .ads,
+  .advertisement,
+  .social-media,
+  .share-buttons,
+  .comments,
+  .footer-links,
+  .back-to-top {
+    display: none !important;
+  }
+
+  /* Show elements only in print */
+  .print-only,
+  .show-print,
+  .show-on-print {
+    display: block !important;
+  }
+
+  /* Force page breaks */
+  .page-break,
+  .page-break-before,
+  .print-page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after,
+  .print-page-break-after {
+    page-break-after: always;
+  }
+
+  /* Avoid page breaks */
+  .avoid-break,
+  .keep-together,
+  .no-break {
+    page-break-inside: avoid;
+  }
+
+  /* Print-specific margins */
+  .print-margin-top {
+    margin-top: 1cm !important;
+  }
+
+  .print-margin-bottom {
+    margin-bottom: 1cm !important;
+  }
+
+  /* Header/Footer for print
+     ========================================================================== */
+
+  .print-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1cm;
+    text-align: center;
+    font-size: 10pt;
+  }
+
+  .print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1cm;
+    text-align: center;
+    font-size: 10pt;
+  }
+
+  /* Page numbers (if supported by browser) */
+  .page-number:after {
+    content: counter(page);
+  }
+
+  /* Accessibility in Print
+     ========================================================================== */
+
+  /* Ensure screen reader text is hidden */
+  .sr-only,
+  .screen-reader-only,
+  .assistive-text {
+    display: none !important;
+  }
+
+  /* Background Images and Colors
+     ========================================================================== */
+
+  /* Override to show specific backgrounds if needed */
+  .print-bg {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ensure critical icons/logos print */
+  .print-logo,
+  .print-icon {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Modern CSS Features
+     ========================================================================== */
+
+  /* Disable animations */
+  *,
+  *:before,
+  *:after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+
+  /* Grid and Flexbox adjustments */
+  .flex,
+  .flex-row,
+  .flex-column {
+    display: block !important;
+  }
+
+  .grid {
+    display: block !important;
+  }
+
+  /* Custom Properties (CSS Variables) for print */
+  :root {
+    --print-font-size: 12pt;
+    --print-line-height: 1.5;
+    --print-margin: 0.5cm;
+  }
+}
+
+/* Landscape Orientation
+   ========================================================================== */
+
+@media print and (orientation: landscape) {
+  @page {
+    size: landscape;
+  }
+
+  .landscape-only {
+    display: block !important;
+  }
+
+  .portrait-only {
+    display: none !important;
+  }
+}
+
+/* Portrait Orientation
+   ========================================================================== */
+
+@media print and (orientation: portrait) {
+  @page {
+    size: portrait;
+  }
+
+  .portrait-only {
+    display: block !important;
+  }
+
+  .landscape-only {
+    display: none !important;
+  }
+}

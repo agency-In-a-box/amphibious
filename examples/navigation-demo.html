@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Components - A.mphibio.us Framework</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../src/css/components/navigation.css">
+    <link rel="stylesheet" href="../src/css/components/breadcrumbs.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 0;
+        }
+        .demo-section {
+            padding: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .demo-section h2 {
+            margin-bottom: 2rem;
+            color: #1f2937;
+            text-align: center;
+        }
+        .demo-section h3 {
+            margin: 2rem 0 1rem 0;
+            color: #374151;
+        }
+        .demo-content {
+            padding: 0 2rem;
+        }
+        
+        /* Demo hero section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Example content */
+        .example-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .example-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        .example-card h4 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content link -->
+    <a href="#main-content" class="nav__skip">Skip to content</a>
+
+    <!-- Primary Navigation -->
+    <nav class="nav nav--sticky" role="navigation" aria-label="Main navigation">
+        <div class="nav__container">
+            <!-- Brand/Logo -->
+            <a href="#" class="nav__brand">
+                A.mphibio.us
+            </a>
+
+            <!-- Desktop Menu -->
+            <ul class="nav__menu">
+                <li class="nav__item">
+                    <a href="#" class="nav__link nav__link--active" aria-current="page">Home</a>
+                </li>
+                <li class="nav__item nav__item--dropdown">
+                    <a href="#" class="nav__link">Products</a>
+                    <ul class="nav__dropdown">
+                        <li class="nav__dropdown-item">
+                            <a href="#" class="nav__dropdown-link">Web Design</a>
+                        </li>
+                        <li class="nav__dropdown-item">
+                            <a href="#" class="nav__dropdown-link">Mobile Apps</a>
+                        </li>
+                        <div class="nav__dropdown-divider"></div>
+                        <li class="nav__dropdown-item">
+                            <a href="#" class="nav__dropdown-link">Consulting</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav__item nav__item--mega">
+                    <a href="#" class="nav__link">Solutions</a>
+                    <div class="nav__mega-menu">
+                        <div class="nav__mega-grid">
+                            <ul class="nav__mega-section">
+                                <li class="nav__mega-title">For Business</li>
+                                <li><a href="#" class="nav__mega-link">Enterprise</a></li>
+                                <li><a href="#" class="nav__mega-link">Small Business</a></li>
+                                <li><a href="#" class="nav__mega-link">Startups</a></li>
+                            </ul>
+                            <ul class="nav__mega-section">
+                                <li class="nav__mega-title">For Developers</li>
+                                <li><a href="#" class="nav__mega-link">API Documentation</a></li>
+                                <li><a href="#" class="nav__mega-link">SDKs</a></li>
+                                <li><a href="#" class="nav__mega-link">Open Source</a></li>
+                            </ul>
+                            <ul class="nav__mega-section">
+                                <li class="nav__mega-title">Resources</li>
+                                <li><a href="#" class="nav__mega-link">Documentation</a></li>
+                                <li><a href="#" class="nav__mega-link">Tutorials</a></li>
+                                <li><a href="#" class="nav__mega-link">Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link nav__link--icon">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                        About
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Mobile Toggle -->
+            <button class="nav__toggle" aria-label="Toggle navigation">
+                <span class="nav__toggle-icon"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="nav__overlay"></div>
+
+        <!-- Mobile Menu -->
+        <div class="nav__mobile" id="mobile-menu">
+            <div class="nav__mobile-header">
+                <span class="nav__brand">A.mphibio.us</span>
+                <button class="nav__mobile-close" aria-label="Close navigation">
+                    <svg fill="currentColor" width="24" height="24" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+            <ul class="nav__mobile-menu">
+                <li class="nav__mobile-item">
+                    <a href="#" class="nav__mobile-link nav__mobile-link--active">Home</a>
+                </li>
+                <li class="nav__mobile-item">
+                    <a href="#" class="nav__mobile-link">Products</a>
+                    <ul class="nav__mobile-dropdown">
+                        <li class="nav__mobile-item">
+                            <a href="#" class="nav__mobile-link">Web Design</a>
+                        </li>
+                        <li class="nav__mobile-item">
+                            <a href="#" class="nav__mobile-link">Mobile Apps</a>
+                        </li>
+                        <li class="nav__mobile-item">
+                            <a href="#" class="nav__mobile-link">Consulting</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav__mobile-item">
+                    <a href="#" class="nav__mobile-link">Solutions</a>
+                </li>
+                <li class="nav__mobile-item">
+                    <a href="#" class="nav__mobile-link">About</a>
+                </li>
+                <li class="nav__mobile-item">
+                    <a href="#" class="nav__mobile-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Navigation Components</h1>
+        <p>Modern, accessible navigation components built for the A.mphibio.us framework. Features responsive design, keyboard navigation, and comprehensive accessibility support.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Breadcrumbs Example -->
+        <div class="demo-section">
+            <div class="demo-content">
+                <h2>Breadcrumbs</h2>
+                
+                <h3>Basic Breadcrumbs</h3>
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb__item">
+                            <a href="#" class="breadcrumb__link breadcrumb__home">
+                                <svg class="breadcrumb__icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                                </svg>
+                                Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb__item">
+                            <a href="#" class="breadcrumb__link">Products</a>
+                        </li>
+                        <li class="breadcrumb__item">
+                            <a href="#" class="breadcrumb__link">Web Development</a>
+                        </li>
+                        <li class="breadcrumb__item">
+                            <span class="breadcrumb__current" aria-current="page">Frameworks</span>
+                        </li>
+                    </ol>
+                </nav>
+
+                <h3>Breadcrumb Variants</h3>
+                <div class="example-grid">
+                    <div class="example-card">
+                        <h4>Compact Breadcrumbs</h4>
+                        <nav aria-label="Breadcrumb">
+                            <ol class="breadcrumb breadcrumb--compact">
+                                <li class="breadcrumb__item">
+                                    <a href="#" class="breadcrumb__link">Home</a>
+                                </li>
+                                <li class="breadcrumb__item">
+                                    <a href="#" class="breadcrumb__link">Category</a>
+                                </li>
+                                <li class="breadcrumb__item">
+                                    <span class="breadcrumb__current" aria-current="page">Current Page</span>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4>Boxed Breadcrumbs</h4>
+                        <nav aria-label="Breadcrumb">
+                            <ol class="breadcrumb breadcrumb--boxed">
+                                <li class="breadcrumb__item">
+                                    <a href="#" class="breadcrumb__link">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb__item">
+                                    <a href="#" class="breadcrumb__link">Users</a>
+                                </li>
+                                <li class="breadcrumb__item">
+                                    <span class="breadcrumb__current" aria-current="page">Profile</span>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4>Arrow Separator</h4>
+                        <nav aria-label="Breadcrumb">
+                            <ol class="breadcrumb breadcrumb--arrow">
+                                <li class="breadcrumb__item">
+                                    <a href="#" class="breadcrumb__link">Docs</a>
+                                </li>
+                                <li class="breadcrumb__item">
+                                    <a href="#" class="breadcrumb__link">Components</a>
+                                </li>
+                                <li class="breadcrumb__item">
+                                    <span class="breadcrumb__current" aria-current="page">Navigation</span>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Navigation Info -->
+        <div class="demo-section">
+            <div class="demo-content">
+                <h2>Navigation Features</h2>
+                <div class="example-grid">
+                    <div class="example-card">
+                        <h4>🚀 Modern CSS</h4>
+                        <p>Built with CSS custom properties, flexbox, and modern layout techniques for maximum flexibility and performance.</p>
+                    </div>
+                    <div class="example-card">
+                        <h4>📱 Mobile First</h4>
+                        <p>Responsive design with touch-friendly interfaces, hamburger menus, and optimized mobile experiences.</p>
+                    </div>
+                    <div class="example-card">
+                        <h4>♿ Fully Accessible</h4>
+                        <p>WCAG 2.1 compliant with proper ARIA attributes, keyboard navigation, and screen reader support.</p>
+                    </div>
+                    <div class="example-card">
+                        <h4>⚡ Performance Focused</h4>
+                        <p>Optimized animations, efficient event handling, and minimal JavaScript for fast loading and smooth interactions.</p>
+                    </div>
+                </div>
+
+                <h3>Try the Navigation</h3>
+                <p><strong>Desktop:</strong> Hover over "Products" and "Solutions" to see dropdown and mega menu examples.</p>
+                <p><strong>Mobile:</strong> Click the hamburger menu icon to open the mobile navigation panel.</p>
+                <p><strong>Keyboard:</strong> Use Tab to navigate, Enter/Space to activate, Arrow keys in dropdowns, and Escape to close.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../src/js/navigation.js"></script>
+    <script>
+        // Demo: Add some interactive behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example of programmatic navigation control
+            const nav = document.querySelector('.nav')._navigation;
+            
+            // Add click handlers for demo
+            document.querySelectorAll('.nav__link, .nav__dropdown-link, .nav__mega-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        console.log('Navigation clicked:', this.textContent.trim());
+                    }
+                });
+            });
+
+            // Demo mobile dropdown toggle
+            document.querySelectorAll('.nav__mobile-item').forEach(item => {
+                const link = item.querySelector('.nav__mobile-link');
+                const dropdown = item.querySelector('.nav__mobile-dropdown');
+                
+                if (dropdown) {
+                    link.addEventListener('click', function(e) {
+                        if (this.getAttribute('href') === '#') {
+                            e.preventDefault();
+                            dropdown.classList.toggle('is-open');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs, Pagination & Steps - A.mphibio.us Framework</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../src/css/components/tabs.css">
+    <link rel="stylesheet" href="../src/css/components/pagination.css">
+    <link rel="stylesheet" href="../src/css/components/steps.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .demo-section {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        .demo-section h1 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        .demo-section h2 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        .demo-section h3 {
+            color: #374151;
+            margin: 2rem 0 1rem 0;
+        }
+        .demo-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .demo-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            background: #f9fafb;
+        }
+        .demo-card h4 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+        
+        /* Sample content styles */
+        .sample-content {
+            padding: 2rem;
+            text-align: center;
+            background: #f3f4f6;
+            border-radius: 0.375rem;
+            margin: 1rem 0;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .data-table th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+        
+        .form-step {
+            display: none;
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            margin: 1rem 0;
+        }
+        .form-step.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+        }
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            background: white;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-section">
+        <h1>Navigation Components Demo</h1>
+        <p>Interactive examples of tabs, pagination, and step navigation components.</p>
+    </div>
+
+    <!-- Tabs Examples -->
+    <div class="demo-section">
+        <h2>Tabs Component</h2>
+        
+        <h3>Default Underlined Tabs</h3>
+        <div class="tabs tabs--underlined">
+            <ul class="tabs__list" role="tablist">
+                <li class="tabs__item">
+                    <button class="tabs__button" role="tab" aria-selected="true">
+                        Overview
+                    </button>
+                </li>
+                <li class="tabs__item">
+                    <button class="tabs__button" role="tab" aria-selected="false">
+                        Features
+                    </button>
+                </li>
+                <li class="tabs__item">
+                    <button class="tabs__button" role="tab" aria-selected="false">
+                        Pricing
+                    </button>
+                </li>
+                <li class="tabs__item">
+                    <button class="tabs__button tabs__button--icon" role="tab" aria-selected="false">
+                        <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                        </svg>
+                        Support
+                    </button>
+                </li>
+            </ul>
+            <div class="tabs__panels">
+                <div class="tabs__panel" role="tabpanel" aria-hidden="false">
+                    <div class="sample-content">
+                        <h4>Overview</h4>
+                        <p>This is the overview tab content. It provides a general introduction to the product or service.</p>
+                    </div>
+                </div>
+                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                    <div class="sample-content">
+                        <h4>Features</h4>
+                        <p>Here are the key features and capabilities that make this solution unique.</p>
+                        <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+                            <li>Modern CSS architecture</li>
+                            <li>Full accessibility support</li>
+                            <li>Mobile-first responsive design</li>
+                            <li>Customizable themes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                    <div class="sample-content">
+                        <h4>Pricing</h4>
+                        <p>Simple, transparent pricing for all your needs.</p>
+                        <div style="display: flex; gap: 1rem; justify-content: center;">
+                            <div style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.375rem;">
+                                <h5>Free</h5>
+                                <p>$0/month</p>
+                            </div>
+                            <div style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.375rem;">
+                                <h5>Pro</h5>
+                                <p>$29/month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                    <div class="sample-content">
+                        <h4>Support</h4>
+                        <p>Get help when you need it through multiple channels.</p>
+                        <p>📧 Email • 💬 Live Chat • 📞 Phone Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Tab Variants</h3>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h4>Boxed Tabs</h4>
+                <div class="tabs tabs--boxed">
+                    <ul class="tabs__list" role="tablist">
+                        <li class="tabs__item">
+                            <button class="tabs__button" role="tab" aria-selected="true">Tab 1</button>
+                        </li>
+                        <li class="tabs__item">
+                            <button class="tabs__button" role="tab" aria-selected="false">Tab 2</button>
+                        </li>
+                        <li class="tabs__item">
+                            <button class="tabs__button" role="tab" aria-selected="false">Tab 3</button>
+                        </li>
+                    </ul>
+                    <div class="tabs__panels">
+                        <div class="tabs__panel" role="tabpanel" aria-hidden="false">
+                            <p>Boxed tab content 1</p>
+                        </div>
+                        <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                            <p>Boxed tab content 2</p>
+                        </div>
+                        <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                            <p>Boxed tab content 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-card">
+                <h4>Pills Tabs</h4>
+                <div class="tabs tabs--pills">
+                    <ul class="tabs__list" role="tablist">
+                        <li class="tabs__item">
+                            <button class="tabs__button" role="tab" aria-selected="true">
+                                All
+                                <span class="tabs__badge">12</span>
+                            </button>
+                        </li>
+                        <li class="tabs__item">
+                            <button class="tabs__button" role="tab" aria-selected="false">
+                                Active
+                                <span class="tabs__badge">8</span>
+                            </button>
+                        </li>
+                        <li class="tabs__item">
+                            <button class="tabs__button" role="tab" aria-selected="false">
+                                Inactive
+                                <span class="tabs__badge">4</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tabs__panels">
+                        <div class="tabs__panel" role="tabpanel" aria-hidden="false">
+                            <p>All items (12 total)</p>
+                        </div>
+                        <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                            <p>Active items (8 active)</p>
+                        </div>
+                        <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                            <p>Inactive items (4 inactive)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Vertical Tabs</h3>
+        <div class="tabs tabs--vertical tabs--underlined">
+            <ul class="tabs__list" role="tablist">
+                <li class="tabs__item">
+                    <button class="tabs__button" role="tab" aria-selected="true">General</button>
+                </li>
+                <li class="tabs__item">
+                    <button class="tabs__button" role="tab" aria-selected="false">Security</button>
+                </li>
+                <li class="tabs__item">
+                    <button class="tabs__button" role="tab" aria-selected="false">Billing</button>
+                </li>
+                <li class="tabs__item">
+                    <button class="tabs__button" role="tab" aria-selected="false">Notifications</button>
+                </li>
+            </ul>
+            <div class="tabs__panels">
+                <div class="tabs__panel" role="tabpanel" aria-hidden="false">
+                    <h4>General Settings</h4>
+                    <p>Configure your basic account settings and preferences.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                    <h4>Security Settings</h4>
+                    <p>Manage your password, two-factor authentication, and security preferences.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                    <h4>Billing Settings</h4>
+                    <p>View your subscription, payment methods, and billing history.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                    <h4>Notification Settings</h4>
+                    <p>Control what notifications you receive and how they're delivered.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination Examples -->
+    <div class="demo-section">
+        <h2>Pagination Component</h2>
+        
+        <h3>Standard Pagination</h3>
+        <nav aria-label="Pagination Navigation" class="pagination">
+            <a href="#" class="pagination__link pagination__link--prev">
+                <span class="pagination__nav">
+                    <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                    <span class="pagination__nav-text">Previous</span>
+                </span>
+            </a>
+            <a href="#" class="pagination__link" data-page="1">1</a>
+            <a href="#" class="pagination__link" data-page="2">2</a>
+            <span class="pagination__current">3</span>
+            <a href="#" class="pagination__link" data-page="4">4</a>
+            <a href="#" class="pagination__link" data-page="5">5</a>
+            <span class="pagination__ellipsis">...</span>
+            <a href="#" class="pagination__link" data-page="10">10</a>
+            <a href="#" class="pagination__link pagination__link--next">
+                <span class="pagination__nav">
+                    <span class="pagination__nav-text">Next</span>
+                    <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </a>
+        </nav>
+
+        <h3>Pagination with Controls</h3>
+        <div class="pagination-container">
+            <div class="pagination-container__left">
+                <div class="pagination__info">
+                    Showing <span class="pagination__info-highlight">1-20</span> of <span class="pagination__info-highlight">200</span> results
+                </div>
+            </div>
+            <div class="pagination-container__center">
+                <nav aria-label="Data pagination" class="pagination">
+                    <a href="#" class="pagination__link pagination__link--prev pagination__link--disabled">
+                        <span class="pagination__nav">
+                            <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                            <span class="pagination__nav-text">Prev</span>
+                        </span>
+                    </a>
+                    <span class="pagination__current">1</span>
+                    <a href="#" class="pagination__link" data-page="2">2</a>
+                    <a href="#" class="pagination__link" data-page="3">3</a>
+                    <span class="pagination__ellipsis">...</span>
+                    <a href="#" class="pagination__link" data-page="10">10</a>
+                    <a href="#" class="pagination__link pagination__link--next">
+                        <span class="pagination__nav">
+                            <span class="pagination__nav-text">Next</span>
+                            <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                </nav>
+            </div>
+            <div class="pagination-container__right">
+                <div class="pagination__page-size">
+                    <label for="page-size">Show:</label>
+                    <select id="page-size" class="pagination__page-size-select">
+                        <option value="10">10</option>
+                        <option value="20" selected>20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <h3>Pagination Variants</h3>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h4>Compact Pagination</h4>
+                <nav aria-label="Compact pagination" class="pagination pagination--compact">
+                    <a href="#" class="pagination__link pagination__link--prev">‹</a>
+                    <a href="#" class="pagination__link">1</a>
+                    <span class="pagination__current">2</span>
+                    <a href="#" class="pagination__link">3</a>
+                    <a href="#" class="pagination__link pagination__link--next">›</a>
+                </nav>
+            </div>
+            
+            <div class="demo-card">
+                <h4>Pills Pagination</h4>
+                <nav aria-label="Pills pagination" class="pagination pagination--pills">
+                    <a href="#" class="pagination__link pagination__link--prev">Prev</a>
+                    <a href="#" class="pagination__link">1</a>
+                    <span class="pagination__current">2</span>
+                    <a href="#" class="pagination__link">3</a>
+                    <a href="#" class="pagination__link pagination__link--next">Next</a>
+                </nav>
+            </div>
+            
+            <div class="demo-card">
+                <h4>Simple Pagination</h4>
+                <nav aria-label="Simple pagination" class="pagination pagination--simple">
+                    <a href="#" class="pagination__link pagination__link--prev">
+                        <span class="pagination__nav">← Previous</span>
+                    </a>
+                    <a href="#" class="pagination__link pagination__link--next">
+                        <span class="pagination__nav">Next →</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Steps Examples -->
+    <div class="demo-section">
+        <h2>Step Navigation Component</h2>
+        
+        <h3>Multi-Step Form Example</h3>
+        <div class="steps-demo">
+            <ol class="steps steps--interactive" id="form-steps">
+                <li class="steps__item steps__item--complete">
+                    <div class="steps__circle">
+                        <span class="steps__number">1</span>
+                    </div>
+                    <div class="steps__content">
+                        <div class="steps__title">Account Info</div>
+                        <div class="steps__description">Basic account details</div>
+                    </div>
+                </li>
+                <li class="steps__item steps__item--active">
+                    <div class="steps__circle">
+                        <span class="steps__number">2</span>
+                    </div>
+                    <div class="steps__content">
+                        <div class="steps__title">Personal Info</div>
+                        <div class="steps__description">Contact information</div>
+                    </div>
+                </li>
+                <li class="steps__item">
+                    <div class="steps__circle">
+                        <span class="steps__number">3</span>
+                    </div>
+                    <div class="steps__content">
+                        <div class="steps__title">Preferences</div>
+                        <div class="steps__description">Account preferences</div>
+                    </div>
+                </li>
+                <li class="steps__item">
+                    <div class="steps__circle">
+                        <span class="steps__number">4</span>
+                    </div>
+                    <div class="steps__content">
+                        <div class="steps__title">Review</div>
+                        <div class="steps__description">Confirm details</div>
+                    </div>
+                </li>
+            </ol>
+
+            <!-- Form Steps -->
+            <div id="step-1" class="form-step">
+                <h4>Step 1: Account Information</h4>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+            </div>
+
+            <div id="step-2" class="form-step active">
+                <h4>Step 2: Personal Information</h4>
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+            </div>
+
+            <div id="step-3" class="form-step">
+                <h4>Step 3: Preferences</h4>
+                <div class="form-group">
+                    <label for="language">Preferred Language</label>
+                    <select id="language" name="language">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timezone">Timezone</label>
+                    <select id="timezone" name="timezone">
+                        <option value="UTC">UTC</option>
+                        <option value="EST">Eastern Time</option>
+                        <option value="PST">Pacific Time</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="step-4" class="form-step">
+                <h4>Step 4: Review & Submit</h4>
+                <p>Please review your information before submitting.</p>
+                <div style="background: #f3f4f6; padding: 1rem; border-radius: 0.375rem;">
+                    <p><strong>Username:</strong> <span id="review-username">-</span></p>
+                    <p><strong>Email:</strong> <span id="review-email">-</span></p>
+                    <p><strong>Name:</strong> <span id="review-name">-</span></p>
+                    <p><strong>Phone:</strong> <span id="review-phone">-</span></p>
+                    <p><strong>Language:</strong> <span id="review-language">-</span></p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="prev-step" class="btn">Previous</button>
+                <button type="button" id="next-step" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+
+        <h3>Step Variants</h3>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h4>Vertical Steps</h4>
+                <ol class="steps steps--vertical">
+                    <li class="steps__item steps__item--complete">
+                        <div class="steps__circle">
+                            <span class="steps__number">1</span>
+                        </div>
+                        <div class="steps__content">
+                            <div class="steps__title">Order Placed</div>
+                            <div class="steps__description">Your order has been confirmed</div>
+                        </div>
+                    </li>
+                    <li class="steps__item steps__item--active steps__item--loading">
+                        <div class="steps__circle">
+                            <span class="steps__number">2</span>
+                        </div>
+                        <div class="steps__content">
+                            <div class="steps__title">Processing</div>
+                            <div class="steps__description">We're preparing your order</div>
+                        </div>
+                    </li>
+                    <li class="steps__item">
+                        <div class="steps__circle">
+                            <span class="steps__number">3</span>
+                        </div>
+                        <div class="steps__content">
+                            <div class="steps__title">Shipped</div>
+                            <div class="steps__description">Your order is on its way</div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="demo-card">
+                <h4>Minimal Steps</h4>
+                <ol class="steps steps--minimal">
+                    <li class="steps__item steps__item--complete">
+                        <div class="steps__circle">
+                            <span class="steps__number">1</span>
+                        </div>
+                    </li>
+                    <li class="steps__item steps__item--active">
+                        <div class="steps__circle">
+                            <span class="steps__number">2</span>
+                        </div>
+                    </li>
+                    <li class="steps__item">
+                        <div class="steps__circle">
+                            <span class="steps__number">3</span>
+                        </div>
+                    </li>
+                    <li class="steps__item">
+                        <div class="steps__circle">
+                            <span class="steps__number">4</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="demo-card">
+                <h4>Dots Steps</h4>
+                <ol class="steps steps--dots">
+                    <li class="steps__item steps__item--complete">
+                        <div class="steps__circle"></div>
+                    </li>
+                    <li class="steps__item steps__item--complete">
+                        <div class="steps__circle"></div>
+                    </li>
+                    <li class="steps__item steps__item--active">
+                        <div class="steps__circle"></div>
+                    </li>
+                    <li class="steps__item">
+                        <div class="steps__circle"></div>
+                    </li>
+                    <li class="steps__item">
+                        <div class="steps__circle"></div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Multi-step form demo
+            let currentStep = 1;
+            const totalSteps = 4;
+            const stepsElement = document.getElementById('form-steps');
+            const prevBtn = document.getElementById('prev-step');
+            const nextBtn = document.getElementById('next-step');
+            
+            // Initialize Steps component
+            const stepsComponent = new Steps(stepsElement, {
+                currentStep: 1,
+                allowClick: true,
+                onStepChange: function(stepIndex) {
+                    showStep(stepIndex + 1);
+                }
+            });
+
+            function showStep(step) {
+                currentStep = step;
+                
+                // Hide all steps
+                document.querySelectorAll('.form-step').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                // Show current step
+                const currentStepEl = document.getElementById(`step-${step}`);
+                if (currentStepEl) {
+                    currentStepEl.classList.add('active');
+                }
+                
+                // Update navigation buttons
+                prevBtn.disabled = step === 1;
+                nextBtn.textContent = step === totalSteps ? 'Submit' : 'Next';
+                
+                // Update review step
+                if (step === 4) {
+                    updateReview();
+                }
+            }
+
+            function updateReview() {
+                document.getElementById('review-username').textContent = 
+                    document.getElementById('username').value || '-';
+                document.getElementById('review-email').textContent = 
+                    document.getElementById('email').value || '-';
+                document.getElementById('review-name').textContent = 
+                    `${document.getElementById('firstname').value || ''} ${document.getElementById('lastname').value || ''}`.trim() || '-';
+                document.getElementById('review-phone').textContent = 
+                    document.getElementById('phone').value || '-';
+                document.getElementById('review-language').textContent = 
+                    document.getElementById('language').selectedOptions[0]?.textContent || '-';
+            }
+
+            // Navigation handlers
+            prevBtn.addEventListener('click', function() {
+                if (currentStep > 1) {
+                    stepsComponent.goToStep(currentStep - 2);
+                }
+            });
+
+            nextBtn.addEventListener('click', function() {
+                if (currentStep < totalSteps) {
+                    // Mark current step as complete
+                    stepsComponent.completeStep(currentStep - 1);
+                    stepsComponent.goToStep(currentStep);
+                } else {
+                    // Submit form
+                    alert('Form submitted successfully!');
+                }
+            });
+
+            // Initialize display
+            showStep(2); // Start at step 2 for demo
+        });
+    </script>
+</body>
+</html>

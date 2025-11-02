@@ -1,0 +1,396 @@
+/* ==========================================================================
+   Typography - Amphibious 2.0
+   ========================================================================== */
+
+/* Base Typography
+   ========================================================================== */
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+}
+
+/* Headings
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 0.3em;
+  color: var(--color-heading, inherit);
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  font-weight: inherit;
+}
+
+h1 {
+  font-size: var(--font-size-h1, 3em);
+  font-weight: 300;
+  margin: 0 0 0.67em 0;
+}
+
+h1 small {
+  font-size: 0.625em;
+  margin: 0 0 0.67em 0;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: var(--font-size-h2, 2em);
+}
+
+h3 {
+  font-size: var(--font-size-h3, 1.6em);
+}
+
+h4 {
+  font-size: var(--font-size-h4, 1.3em);
+}
+
+h5,
+.intro {
+  /* Often used for call-out text */
+  font-size: var(--font-size-h5, 1.2em);
+}
+
+h6 {
+  font-size: var(--font-size-h6, 1em);
+  font-weight: bold;
+}
+
+/* Text Utilities
+   ========================================================================== */
+
+.large {
+  font-size: 2em;
+}
+
+.lead {
+  font-size: 1.5em;
+  line-height: 1.6;
+  color: var(--color-muted, #777);
+}
+
+.subheader {
+  color: var(--color-muted, #777);
+}
+
+/* Paragraphs
+   ========================================================================== */
+
+p {
+  margin: 0 0 1.4em 0;
+}
+
+p img,
+img {
+  margin: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+p.lead {
+  font-size: 1.5em;
+  line-height: 1.6;
+  color: var(--color-muted, #777);
+}
+
+/* Code & Pre
+   ========================================================================== */
+
+pre {
+  margin: 1em 0;
+  padding: 1em;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: var(--color-code-bg, #fafafa);
+  border-radius: var(--border-radius, 4px);
+}
+
+code,
+kbd,
+samp {
+  font-family: var(
+    --font-family-mono,
+    "Lucida Console",
+    "Andale Mono",
+    "Nimbus Mono L",
+    "Liberation Mono",
+    FreeMono,
+    "Osaka Monospaced",
+    Courier,
+    "New Courier",
+    monospace
+  );
+}
+
+code {
+  display: inline-block;
+  padding: 0.1em 0.3em;
+  background: var(--color-code-bg, #fafafa);
+  border-radius: var(--border-radius-sm, 3px);
+}
+
+pre code {
+  display: block;
+  padding: 0;
+  background: transparent;
+}
+
+kbd {
+  position: relative;
+  top: -0.1em;
+  font-size: 0.8em;
+  padding: 0.3em 0.4em 0.2em;
+  border: 1px solid var(--color-border-kbd, #1b378c);
+  background-color: var(--color-bg-kbd, #fff);
+  font-style: normal;
+  border-radius: var(--border-radius-sm, 3px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Blockquotes
+   ========================================================================== */
+
+blockquote,
+blockquote p {
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+blockquote {
+  margin: 0 0 1.6em;
+  padding: 0.6em 1.6em 0 1.3em;
+  border-left: 4px solid var(--color-border-quote, #ddd);
+}
+
+blockquote .author {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+blockquote cite {
+  display: block;
+  font-size: 0.865em;
+  color: var(--color-muted, #555);
+}
+
+blockquote cite:before {
+  content: "\2014 \0020";
+}
+
+blockquote cite a,
+blockquote cite a:visited {
+  color: var(--color-muted, #555);
+}
+
+/* Links
+   ========================================================================== */
+
+a,
+a:visited {
+  color: var(--color-link, #1b378c);
+  text-decoration: none;
+  outline: 0;
+  transition: all 0.3s ease-out;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active,
+a:hover,
+a:focus {
+  outline: 0;
+  color: var(--color-link-hover, #191919);
+}
+
+p a,
+p a:visited {
+  line-height: inherit;
+}
+
+/* Lists
+   ========================================================================== */
+
+dl,
+ol,
+ul {
+  margin: 1em 0;
+}
+
+dd {
+  margin: 0 0 0 2.6em;
+}
+
+menu,
+ol,
+ul {
+  padding: 0;
+}
+
+/* Navigation lists */
+nav ul,
+nav ol,
+ul.inline,
+ol.inline {
+  margin-left: 0;
+  list-style: none;
+  list-style-image: none;
+}
+
+ul.inline,
+ol.inline,
+ul.inline li,
+ol.inline li,
+.inline ul,
+.inline ul li,
+.inline ol,
+.inline ol li {
+  display: inline-block;
+  margin-left: 0;
+}
+
+ul,
+ol {
+  margin-left: 1.6em;
+  margin-bottom: 1.625em;
+}
+
+ul {
+  list-style: disc outside;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ol,
+ul.square,
+ul.circle,
+ul.disc {
+  margin-left: 2em;
+}
+
+ul.square {
+  list-style: square outside;
+}
+
+ul.circle {
+  list-style: circle outside;
+}
+
+ul.disc {
+  list-style: disc outside;
+}
+
+/* List style variations */
+ol.alpha {
+  list-style: lower-alpha;
+}
+
+ol.upper-alpha {
+  list-style: upper-alpha;
+}
+
+ol.roman {
+  list-style: lower-roman;
+}
+
+ol.upper-roman {
+  list-style: upper-roman;
+}
+
+ol.latin {
+  list-style: lower-latin;
+}
+
+ol.upper-latin {
+  list-style: upper-latin;
+}
+
+/* Nested lists */
+ul ul {
+  list-style: circle outside;
+}
+
+ul ul ul {
+  list-style: square outside;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 0.2em 0 0.3em 2em;
+}
+
+ul ul li,
+ul ol li,
+ol ol li,
+ol ul li {
+  margin-bottom: 0.5em;
+}
+
+li {
+  margin-bottom: 1em;
+}
+
+ol ol,
+ol ol ol ol {
+  list-style: lower-alpha;
+}
+
+ol ol ol {
+  list-style: lower-roman;
+}
+
+/* Definition lists */
+dl dt {
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+dl dd {
+  margin: 0 0 1em 1.2em;
+  color: var(--color-text-secondary, #666);
+}
+
+/* Horizontal Rules
+   ========================================================================== */
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border, #dedede);
+  margin: 2em 0;
+}
+
+/* Text Selection
+   ========================================================================== */
+
+::selection {
+  background: var(--color-selection-bg, #b3d4fc);
+  color: var(--color-selection-text, #000);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--color-selection-bg, #b3d4fc);
+  color: var(--color-selection-text, #000);
+  text-shadow: none;
+}
