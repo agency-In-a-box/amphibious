@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltips - Amphibious 2.0</title>
+    <link rel="stylesheet" href="../dist/amphibious.css">
+    <style>
+        .demo-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .demo-item {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+        .product-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            width: 100%;
+            height: 120px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: #999;
+        }
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            color: #10b981;
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+        .button-row {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .help-text {
+            color: #6b7280;
+            cursor: help;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: #f0f0f0;
+            margin: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="text-align: center; margin: 2rem 0;">
+            <h1>Tooltip System Demo</h1>
+            <p>Accessible, customizable tooltips for modern web applications</p>
+        </header>
+
+        <!-- Basic Tooltips -->
+        <section class="demo-section">
+            <h2>Basic Tooltips</h2>
+            <p>Simple tooltips using data attributes</p>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <button class="btn btn--primary" data-tooltip="This is a basic tooltip">
+                        Hover me
+                    </button>
+                </div>
+                <div class="demo-item">
+                    <span class="help-text" data-tooltip="Click me for more options" data-tooltip-trigger="click">
+                        Click for info
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <input type="text" placeholder="Focus me" data-tooltip="Enter your email address" data-tooltip-trigger="focus">
+                </div>
+                <div class="demo-item">
+                    <a href="#" data-tooltip="This link goes to the homepage">
+                        Link with tooltip
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tooltip Positions -->
+        <section class="demo-section">
+            <h2>Tooltip Positions</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Top tooltip" data-tooltip-position="top">Top</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Top-start tooltip" data-tooltip-position="top-start">Top Start</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Top-end tooltip" data-tooltip-position="top-end">Top End</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Bottom tooltip" data-tooltip-position="bottom">Bottom</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Bottom-start tooltip" data-tooltip-position="bottom-start">Bottom Start</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Bottom-end tooltip" data-tooltip-position="bottom-end">Bottom End</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Left tooltip" data-tooltip-position="left">Left</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Right tooltip" data-tooltip-position="right">Right</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tooltip Variants -->
+        <section class="demo-section">
+            <h2>Tooltip Variants</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Default tooltip">Default</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Primary tooltip" data-tooltip-variant="primary">Primary</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Success tooltip" data-tooltip-variant="success">Success</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Warning tooltip" data-tooltip-variant="warning">Warning</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Danger tooltip" data-tooltip-variant="danger">Danger</button>
+                </div>
+                <div class="demo-item">
+                    <button class="btn" data-tooltip="Info tooltip" data-tooltip-variant="info">Info</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-commerce Product Cards -->
+        <section class="demo-section">
+            <h2>E-commerce Examples</h2>
+            <div class="demo-grid">
+                <div class="product-card">
+                    <div class="product-image">Product Image</div>
+                    <div class="product-name">Premium Headphones</div>
+                    <div class="product-price">$199.99</div>
+                    <div class="button-row">
+                        <button id="wishlist-btn" class="icon-button">
+                            <i data-lucide="heart"></i>
+                        </button>
+                        <button id="compare-btn" class="icon-button">
+                            <i data-lucide="git-compare"></i>
+                        </button>
+                        <button id="quick-view-btn" class="icon-button">
+                            <i data-lucide="eye"></i>
+                        </button>
+                        <button id="cart-btn" class="btn btn--primary">Add to Cart</button>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <span id="stock-indicator" class="status-indicator">
+                            <i data-lucide="package"></i>
+                            <span>In Stock</span>
+                        </span>
+                        <span id="shipping-info" class="help-text">Shipping Info</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">Product Image</div>
+                    <div class="product-name">Wireless Mouse</div>
+                    <div class="product-price">$49.99</div>
+                    <div class="button-row">
+                        <button class="icon-button" data-tooltip="Add to wishlist">
+                            <i data-lucide="heart"></i>
+                        </button>
+                        <button class="icon-button" data-tooltip="Compare products">
+                            <i data-lucide="git-compare"></i>
+                        </button>
+                        <button class="icon-button" data-tooltip="Quick view">
+                            <i data-lucide="eye"></i>
+                        </button>
+                        <button class="btn btn--primary" data-tooltip="Add item to shopping cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <span class="status-indicator" data-tooltip="Only 3 items left!" data-tooltip-variant="warning">
+                            <i data-lucide="alert-triangle"></i>
+                            <span>Low Stock</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Tooltips -->
+        <section class="demo-section">
+            <h2>Interactive & Rich Content Tooltips</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <button id="interactive-tooltip-btn" class="btn btn--info">
+                        Interactive Tooltip
+                    </button>
+                </div>
+                <div class="demo-item">
+                    <button id="rich-content-btn" class="btn btn--success">
+                        Rich Content
+                    </button>
+                </div>
+                <div class="demo-item">
+                    <button id="form-help-btn" class="btn btn--warning">
+                        Form Help
+                    </button>
+                </div>
+                <div class="demo-item">
+                    <button id="api-tooltip-btn" class="btn btn--danger">
+                        Created via API
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript Examples -->
+        <section class="demo-section">
+            <h2>JavaScript API Examples</h2>
+            <div style="margin: 2rem 0;">
+                <button onclick="createDynamicTooltip()" class="btn btn--primary">
+                    Create Dynamic Tooltip
+                </button>
+                <button onclick="createProductTooltip()" class="btn btn--secondary">
+                    Create Product Tooltip
+                </button>
+                <button onclick="createShippingTooltip()" class="btn btn--success">
+                    Create Shipping Tooltip
+                </button>
+                <button onclick="updateTooltipContent()" class="btn btn--warning">
+                    Update Content
+                </button>
+            </div>
+            <div id="dynamic-examples" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <!-- Dynamic examples will be added here -->
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="../dist/amphibious.js"></script>
+    <script type="module">
+        let dynamicTooltip = null;
+
+        window.addEventListener('load', () => {
+            // E-commerce tooltips using JavaScript API
+            amp.createProductTooltip(document.getElementById('quick-view-btn'), {
+                name: 'Premium Headphones',
+                price: '$199.99',
+                description: 'High-quality wireless headphones with noise cancellation and 30-hour battery life.'
+            });
+
+            amp.createShippingTooltip(document.getElementById('shipping-info'), {
+                method: 'Free Shipping',
+                cost: '$0.00',
+                time: '2-3 business days'
+            });
+
+            // Stock status tooltip
+            const stockTooltip = amp.createTooltip(document.getElementById('stock-indicator'), {
+                content: '15 items available for immediate shipping',
+                variant: 'success',
+                position: 'top'
+            });
+
+            // Interactive tooltip
+            const interactiveTooltip = amp.createTooltip(document.getElementById('interactive-tooltip-btn'), {
+                html: `
+                    <div style="padding: 0.5rem;">
+                        <h4 style="margin: 0 0 0.5rem 0;">Interactive Tooltip</h4>
+                        <p style="margin: 0 0 0.5rem 0;">You can interact with this tooltip!</p>
+                        <button onclick="alert('Clicked!')" style="padding: 0.25rem 0.5rem; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                            Click me
+                        </button>
+                    </div>
+                `,
+                allowHTML: true,
+                interactive: true,
+                position: 'bottom',
+                size: 'lg'
+            });
+
+            // Rich content tooltip
+            const richTooltip = amp.createTooltip(document.getElementById('rich-content-btn'), {
+                html: `
+                    <div class="tooltip--rich">
+                        <div class="tooltip__title">Product Features</div>
+                        <div class="tooltip__content">
+                            <ul style="margin: 0; padding-left: 1rem;">
+                                <li>Wireless connectivity</li>
+                                <li>30-hour battery life</li>
+                                <li>Noise cancellation</li>
+                                <li>Quick charge support</li>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                allowHTML: true,
+                position: 'right',
+                size: 'lg'
+            });
+
+            // Form help tooltip
+            const formHelpTooltip = amp.createTooltip(document.getElementById('form-help-btn'), {
+                html: `
+                    <div style="max-width: 250px;">
+                        <strong>Password Requirements:</strong><br>
+                        • At least 8 characters<br>
+                        • One uppercase letter<br>
+                        • One number<br>
+                        • One special character
+                    </div>
+                `,
+                allowHTML: true,
+                position: 'left',
+                variant: 'info'
+            });
+
+            // API created tooltip
+            const apiTooltip = amp.createTooltip(document.getElementById('api-tooltip-btn'), {
+                content: 'This tooltip was created using the Amphibious JavaScript API',
+                variant: 'danger',
+                position: 'top',
+                delay: 0,
+                hideDelay: 200
+            });
+        });
+
+        // Global functions for dynamic examples
+        window.createDynamicTooltip = function() {
+            const container = document.getElementById('dynamic-examples');
+            const button = document.createElement('button');
+            button.className = 'btn btn--info';
+            button.textContent = `Dynamic #${container.children.length + 1}`;
+
+            const tooltip = amp.createTooltip(button, {
+                content: `This is dynamic tooltip #${container.children.length + 1}`,
+                position: 'top',
+                variant: 'primary'
+            });
+
+            container.appendChild(button);
+        };
+
+        window.createProductTooltip = function() {
+            const container = document.getElementById('dynamic-examples');
+            const button = document.createElement('button');
+            button.className = 'btn btn--secondary';
+            button.textContent = 'Product Info';
+
+            amp.createProductTooltip(button, {
+                name: 'Wireless Earbuds',
+                price: '$129.99',
+                description: 'True wireless earbuds with premium sound quality and all-day comfort.'
+            });
+
+            container.appendChild(button);
+        };
+
+        window.createShippingTooltip = function() {
+            const container = document.getElementById('dynamic-examples');
+            const button = document.createElement('button');
+            button.className = 'btn btn--success';
+            button.textContent = 'Shipping Info';
+
+            amp.createShippingTooltip(button, {
+                method: 'Express Delivery',
+                cost: '$9.99',
+                time: 'Next day delivery'
+            });
+
+            container.appendChild(button);
+        };
+
+        window.updateTooltipContent = function() {
+            if (!dynamicTooltip) {
+                const container = document.getElementById('dynamic-examples');
+                const button = document.createElement('button');
+                button.className = 'btn btn--warning';
+                button.textContent = 'Updatable';
+
+                dynamicTooltip = amp.createTooltip(button, {
+                    content: 'Original content',
+                    position: 'top',
+                    variant: 'warning'
+                });
+
+                container.appendChild(button);
+            } else {
+                const messages = [
+                    'Content updated!',
+                    'Changed again!',
+                    'Another update!',
+                    'Back to original'
+                ];
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                dynamicTooltip.updateContent(randomMessage);
+            }
+        };
+    </script>
+</body>
+</html>
