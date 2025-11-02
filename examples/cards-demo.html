@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards Component Examples - A.mphibio.us Framework</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../src/css/components/cards.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9fafb;
+        }
+        .demo-section {
+            margin: 3rem 0;
+        }
+        .demo-section h2 {
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+        .demo-section h3 {
+            margin: 2rem 0 1rem 0;
+            color: #374151;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cards Component Examples</h1>
+    <p>Modern, flexible card components for the A.mphibio.us framework.</p>
+
+    <div class="demo-section">
+        <h2>Basic Cards</h2>
+        
+        <h3>Simple Card</h3>
+        <div class="card">
+            <div class="card__header">
+                <h3 class="card__title">Card Title</h3>
+                <p class="card__subtitle">Card subtitle or description</p>
+            </div>
+            <div class="card__body">
+                <p class="card__text">This is the main content area of the card. You can put any content here including text, images, and other elements.</p>
+            </div>
+            <div class="card__footer">
+                <button class="button">Action</button>
+                <button class="button">Cancel</button>
+            </div>
+        </div>
+
+        <h3>Card with Image</h3>
+        <div class="card">
+            <img src="https://picsum.photos/400/200" alt="Sample image" class="card__media">
+            <div class="card__body">
+                <h3 class="card__title">Beautiful Landscape</h3>
+                <p class="card__text">A stunning view from our recent photography collection.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Card Variants</h2>
+        
+        <h3>Shadow Variants</h3>
+        <div class="card-grid card-grid--4">
+            <div class="card card--shadow-none">
+                <div class="card__body">
+                    <h4 class="card__title">No Shadow</h4>
+                    <p class="card__text">Card without shadow</p>
+                </div>
+            </div>
+            <div class="card card--shadow-sm">
+                <div class="card__body">
+                    <h4 class="card__title">Small Shadow</h4>
+                    <p class="card__text">Card with small shadow</p>
+                </div>
+            </div>
+            <div class="card card--shadow-lg">
+                <div class="card__body">
+                    <h4 class="card__title">Large Shadow</h4>
+                    <p class="card__text">Card with large shadow</p>
+                </div>
+            </div>
+            <div class="card card--shadow-xl">
+                <div class="card__body">
+                    <h4 class="card__title">Extra Large</h4>
+                    <p class="card__text">Card with extra large shadow</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>Interactive Cards</h3>
+        <div class="card-grid card-grid--3">
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h4 class="card__title">Hoverable Card</h4>
+                    <p class="card__text">This card has subtle hover effects</p>
+                </div>
+            </div>
+            <div class="card card--interactive">
+                <div class="card__body">
+                    <h4 class="card__title">Interactive Card</h4>
+                    <p class="card__text">This card has stronger interactive effects</p>
+                </div>
+            </div>
+            <div class="card card--outlined">
+                <div class="card__body">
+                    <h4 class="card__title">Outlined Card</h4>
+                    <p class="card__text">This card uses borders instead of shadows</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Specialized Cards</h2>
+        
+        <h3>Product Card</h3>
+        <div class="card-grid card-grid--3">
+            <div class="card card--product">
+                <img src="https://picsum.photos/300/200" alt="Product" class="card__media">
+                <div class="card__body">
+                    <h4 class="card__title">Awesome Product</h4>
+                    <div class="card__price">$99.99</div>
+                    <div class="card__actions">
+                        <button class="button">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card card--product">
+                <img src="https://picsum.photos/300/200?random=2" alt="Product" class="card__media">
+                <div class="card__body">
+                    <h4 class="card__title">Sale Item</h4>
+                    <div class="card__price card__price--sale">$49.99</div>
+                    <div class="card__actions">
+                        <button class="button">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Profile Card</h3>
+        <div class="card-grid card-grid--3">
+            <div class="card card--profile">
+                <div class="card__body">
+                    <img src="https://picsum.photos/80/80" alt="Profile" class="card__avatar">
+                    <h4 class="card__title">John Doe</h4>
+                    <p class="card__subtitle">Senior Developer</p>
+                    <p class="card__text">Passionate about creating amazing user experiences with modern web technologies.</p>
+                    <div class="card__actions">
+                        <button class="button">Connect</button>
+                        <button class="button">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Statistics Cards</h3>
+        <div class="card-grid card-grid--4">
+            <div class="card card--stat">
+                <span class="card__number">1,234</span>
+                <span class="card__label">Total Users</span>
+            </div>
+            <div class="card card--stat">
+                <span class="card__number">89%</span>
+                <span class="card__label">Success Rate</span>
+            </div>
+            <div class="card card--stat">
+                <span class="card__number">$45.2K</span>
+                <span class="card__label">Revenue</span>
+            </div>
+            <div class="card card--stat">
+                <span class="card__number">24/7</span>
+                <span class="card__label">Support</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Horizontal Card Layout</h2>
+        <div class="card card--horizontal">
+            <img src="https://picsum.photos/200/150" alt="Horizontal card image" class="card__media">
+            <div class="card__content">
+                <div class="card__header">
+                    <h3 class="card__title">Horizontal Card</h3>
+                    <p class="card__subtitle">Perfect for list layouts</p>
+                </div>
+                <div class="card__body">
+                    <p class="card__text">This horizontal card layout is perfect for news articles, blog posts, or any content that works better in a landscape orientation.</p>
+                </div>
+                <div class="card__footer">
+                    <button class="button">Read More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Loading State</h2>
+        <div class="card-grid card-grid--3">
+            <div class="card card--loading">
+                <div class="card__body">
+                    <h4 class="card__title">Loading Card</h4>
+                    <p class="card__text">This card shows a loading shimmer effect</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click handlers to interactive cards for demonstration
+        document.querySelectorAll('.card--interactive').forEach(card => {
+            card.addEventListener('click', function() {
+                alert('Interactive card clicked!');
+            });
+        });
+
+        // Simulate loading completion
+        setTimeout(() => {
+            document.querySelectorAll('.card--loading').forEach(card => {
+                card.classList.remove('card--loading');
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

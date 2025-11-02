@@ -1,0 +1,44 @@
+/* ==========================================================================
+   12. Progress Bars
+   ========================================================================== */
+
+.slider dt,
+.slider dd {
+  font-weight: normal;
+  margin: 0 1em 0.6em 0;
+  padding: 0;
+}
+
+.slider dt[class^="icon-"],
+.slider dt[class*=" icon-"] {
+  position: relative;
+  top: 6px;
+}
+
+.slider dd {
+  margin-bottom: 1.2em;
+}
+
+.progress_bar,
+.progress_bar > .progress {
+  display: block;
+  height: 1.2em;
+}
+
+.progress_bar {
+  width: 100%;
+  background: rgba(15, 57, 85, 0.1);
+  border-radius: 6px;
+  box-shadow: inset rgba(0, 0, 0, 0.4) 0 0 4px;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+.progress_bar > .progress {
+  background: #4eb7f0;
+  background-image: linear-gradient(to bottom, #4eb7f0, #2c91a6);
+}
+
+.progress_bar > .progress {
+  width: 10%;
+}

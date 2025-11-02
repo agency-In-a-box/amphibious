@@ -1,0 +1,99 @@
+/**
+ * CSS Variables
+ * Modern CSS custom properties for theming
+ */
+
+:root {
+  /* Colors */
+  --color-primary: #0066cc;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+
+  /* Grays */
+  --color-gray-100: #f8f9fa;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #dee2e6;
+  --color-gray-400: #ced4da;
+  --color-gray-500: #adb5bd;
+  --color-gray-600: #6c757d;
+  --color-gray-700: #495057;
+  --color-gray-800: #343a40;
+  --color-gray-900: #212529;
+
+  /* Text colors */
+  --color-text: #333;
+  --color-text-secondary: #666;
+  --color-heading: inherit;
+  --color-muted: #777;
+  --color-link: #1b378c;
+  --color-link-hover: #191919;
+  --color-background: #fff;
+
+  /* Component colors */
+  --color-code-bg: #fafafa;
+  --color-border: #dedede;
+  --color-border-quote: #ddd;
+  --color-border-kbd: #1b378c;
+  --color-bg-kbd: #fff;
+  --color-selection-bg: #b3d4fc;
+  --color-selection-text: #000;
+
+  /* Typography */
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  --font-family-mono: "Lucida Console", "Andale Mono", "Nimbus Mono L", "Liberation Mono", FreeMono,
+    "Osaka Monospaced", Courier, "New Courier", monospace;
+
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.25rem;
+
+  /* Heading sizes */
+  --font-size-h1: 3em;
+  --font-size-h2: 2em;
+  --font-size-h3: 1.6em;
+  --font-size-h4: 1.3em;
+  --font-size-h5: 1.2em;
+  --font-size-h6: 1em;
+
+  --line-height-base: 1.5;
+  --line-height-sm: 1.25;
+  --line-height-lg: 2;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 3rem;
+
+  /* Grid */
+  --container-width: 960px;
+  --container-width-fluid: 96%;
+  --grid-gutter: 20px;
+
+  /* Breakpoints (for reference, use in media queries) */
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+
+  /* Borders */
+  --border-radius: 0.25rem;
+  --border-radius-sm: 0.125rem;
+  --border-radius-lg: 0.5rem;
+  --border-width: 1px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-speed: 0.3s;
+  --transition-timing: ease-in-out;
+}

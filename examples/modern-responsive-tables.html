@@ -1,0 +1,379 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Modern Responsive Tables - A.mphibio.us Framework</title>
+    <meta name="description" content="Modern responsive table examples with CSS custom properties and enhanced accessibility">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Framework Styles -->
+    <link rel="stylesheet" href="../../css/a.mphibio.us.min.css">
+    
+    <style>
+        /* Modern Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .demo-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+        
+        .demo-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .demo-section p {
+            color: #5a6c7d;
+            margin-bottom: 1.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: #34495e;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            color: #bdc3c7;
+        }
+        
+        .resize-hint {
+            background: #3498db;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+            font-weight: 500;
+        }
+        
+        .code-snippet {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: #5a6c7d;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Modern Responsive Tables</h1>
+            <p>Mobile-first design with CSS custom properties and enhanced accessibility</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="resize-hint">
+            📱 ↔️ 💻 Resize your browser window to see the responsive magic in action!
+        </div>
+        
+        <section class="demo-section">
+            <h2>Default Responsive Table</h2>
+            <p>The foundation of our responsive table system. On mobile devices, the table transforms into a card-based layout with data labels automatically generated from the <code>data-th</code> attributes.</p>
+            
+            <table class="rwd-table" role="table" aria-label="Movie database example">
+                <thead>
+                    <tr>
+                        <th scope="col">Movie Title</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Box Office</th>
+                        <th scope="col">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-th="Movie Title">Star Wars: A New Hope</td>
+                        <td data-th="Genre">Adventure, Sci-Fi</td>
+                        <td data-th="Year">1977</td>
+                        <td data-th="Box Office">$775,398,007</td>
+                        <td data-th="Rating">⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Movie Title">The Godfather</td>
+                        <td data-th="Genre">Crime, Drama</td>
+                        <td data-th="Year">1972</td>
+                        <td data-th="Box Office">$287,000,000</td>
+                        <td data-th="Rating">⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Movie Title">Pulp Fiction</td>
+                        <td data-th="Genre">Crime, Drama</td>
+                        <td data-th="Year">1994</td>
+                        <td data-th="Box Office">$214,179,088</td>
+                        <td data-th="Rating">⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Movie Title">The Shawshank Redemption</td>
+                        <td data-th="Genre">Drama</td>
+                        <td data-th="Year">1994</td>
+                        <td data-th="Box Office">$28,341,469</td>
+                        <td data-th="Rating">⭐⭐⭐⭐⭐</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="demo-section">
+            <h2>Table with Striped Rows & Hover Effects</h2>
+            <p>Enhanced visual feedback with alternating row colors and smooth hover transitions.</p>
+            
+            <table class="rwd-table table-striped table-hover" role="table" aria-label="Technology companies data">
+                <thead>
+                    <tr>
+                        <th scope="col">Company</th>
+                        <th scope="col">Founded</th>
+                        <th scope="col">Headquarters</th>
+                        <th scope="col">Market Cap</th>
+                        <th scope="col">Industry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-th="Company">Apple Inc.</td>
+                        <td data-th="Founded">1976</td>
+                        <td data-th="Headquarters">Cupertino, CA</td>
+                        <td data-th="Market Cap">$3.5T</td>
+                        <td data-th="Industry">Technology</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Company">Microsoft</td>
+                        <td data-th="Founded">1975</td>
+                        <td data-th="Headquarters">Redmond, WA</td>
+                        <td data-th="Market Cap">$3.2T</td>
+                        <td data-th="Industry">Software</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Company">Google (Alphabet)</td>
+                        <td data-th="Founded">1998</td>
+                        <td data-th="Headquarters">Mountain View, CA</td>
+                        <td data-th="Market Cap">$2.1T</td>
+                        <td data-th="Industry">Internet Services</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Company">Amazon</td>
+                        <td data-th="Founded">1994</td>
+                        <td data-th="Headquarters">Seattle, WA</td>
+                        <td data-th="Market Cap">$1.8T</td>
+                        <td data-th="Industry">E-commerce</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="demo-section">
+            <h2>Light Theme Table</h2>
+            <p>A clean, minimal light theme perfect for content-heavy applications and dashboards.</p>
+            
+            <table class="rwd-table table-light table-hover" role="table" aria-label="Project status dashboard">
+                <thead>
+                    <tr>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Progress</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Team Lead</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-th="Project Name">A.mphibio.us v3.0</td>
+                        <td data-th="Status">🟢 Active</td>
+                        <td data-th="Progress">75%</td>
+                        <td data-th="Due Date">Dec 2025</td>
+                        <td data-th="Team Lead">Clive Moore</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Project Name">Mobile App Redesign</td>
+                        <td data-th="Status">🟡 In Review</td>
+                        <td data-th="Progress">90%</td>
+                        <td data-th="Due Date">Nov 2025</td>
+                        <td data-th="Team Lead">Design Team</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Project Name">API Documentation</td>
+                        <td data-th="Status">🔴 Delayed</td>
+                        <td data-th="Progress">45%</td>
+                        <td data-th="Due Date">Oct 2025</td>
+                        <td data-th="Team Lead">Dev Team</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="demo-section">
+            <h2>Compact Table</h2>
+            <p>Space-efficient design for data-dense applications and smaller screens.</p>
+            
+            <table class="rwd-table table-compact table-striped" role="table" aria-label="Cryptocurrency prices">
+                <thead>
+                    <tr>
+                        <th scope="col">Symbol</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">24h Change</th>
+                        <th scope="col">Market Cap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-th="Symbol">BTC</td>
+                        <td data-th="Name">Bitcoin</td>
+                        <td data-th="Price">$43,250</td>
+                        <td data-th="24h Change">+2.5%</td>
+                        <td data-th="Market Cap">$850B</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Symbol">ETH</td>
+                        <td data-th="Name">Ethereum</td>
+                        <td data-th="Price">$2,680</td>
+                        <td data-th="24h Change">+4.1%</td>
+                        <td data-th="Market Cap">$320B</td>
+                    </tr>
+                    <tr>
+                        <td data-th="Symbol">ADA</td>
+                        <td data-th="Name">Cardano</td>
+                        <td data-th="Price">$0.58</td>
+                        <td data-th="24h Change">-1.2%</td>
+                        <td data-th="Market Cap">$20B</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="demo-section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🎨 CSS Custom Properties</h3>
+                    <p>Easily customizable with CSS variables for colors, spacing, and breakpoints. Theme your tables to match your brand.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📱 Mobile-First Design</h3>
+                    <p>Starts with mobile layout and progressively enhances for larger screens. Ensures optimal experience on all devices.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>♿ Enhanced Accessibility</h3>
+                    <p>Proper ARIA labels, focus management, and screen reader friendly. Meets WCAG 2.1 AA standards.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎭 Multiple Themes</h3>
+                    <p>Dark, light, and custom theme variants. Automatic dark mode detection with prefers-color-scheme.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🖨️ Print Optimized</h3>
+                    <p>Special print styles ensure tables render beautifully on paper with proper borders and spacing.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Performance Focused</h3>
+                    <p>Minimal CSS footprint with efficient selectors. Respects user's motion preferences for animations.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="demo-section">
+            <h2>Implementation</h2>
+            <p>To use the responsive table system, simply add the appropriate classes and data attributes:</p>
+            
+            <div class="code-snippet">
+&lt;table class="rwd-table table-striped table-hover"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Column 1&lt;/th&gt;
+      &lt;th scope="col"&gt;Column 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td data-th="Column 1"&gt;Data 1&lt;/td&gt;
+      &lt;td data-th="Column 2"&gt;Data 2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+            </div>
+            
+            <h3>Available Classes</h3>
+            <ul>
+                <li><code>.rwd-table</code> - Base responsive table</li>
+                <li><code>.table-striped</code> - Alternating row colors</li>
+                <li><code>.table-hover</code> - Hover effects</li>
+                <li><code>.table-light</code> - Light theme variant</li>
+                <li><code>.table-compact</code> - Reduced padding</li>
+                <li><code>.table-spacious</code> - Increased padding</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer style="background: #2c3e50; color: white; padding: 2rem 0; margin-top: 4rem; text-align: center;">
+        <div class="container">
+            <p>Modern Responsive Tables for A.mphibio.us Framework • Updated with contemporary CSS practices</p>
+            <p>Original concept by <a href="https://codepen.io/geoffyuen/pen/DZxEKy" style="color: #3498db;">Geoff Yuen</a> • Modernized by Clive Moore</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="../../js/js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/js/modernizr-2.6.2.min.js"></script>
+</body>
+</html>

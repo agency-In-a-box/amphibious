@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Components - Amphibious 2.0</title>
+  <link rel="stylesheet" href="../dist/amphibious.css">
+  <style>
+    /* Demo styles */
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+    .demo-section {
+      margin-bottom: 3em;
+      background: white;
+      border-bottom: 1px solid #ddd;
+    }
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2em;
+    }
+    .demo-title {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      color: #333;
+      border-bottom: 2px solid #0080c6;
+      padding-bottom: 0.5em;
+    }
+    .demo-dark {
+      background: #2c3e50;
+      color: white;
+    }
+    .demo-hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 400px;
+      position: relative;
+    }
+    .demo-sidebar {
+      width: 250px;
+      background: #f8f9fa;
+      padding: 1em;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+    }
+    .demo-code {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 1em;
+      margin-top: 1em;
+      overflow-x: auto;
+    }
+    .demo-code pre {
+      margin: 0;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip Navigation Link -->
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+  <!-- Horizontal Navigation Example -->
+  <div class="demo-section">
+    <nav>
+      <ul class="horizontal">
+        <li><a href="#" class="active">Home</a></li>
+        <li>
+          <a href="#">Products</a>
+          <ul>
+            <li><a href="#">Category 1</a></li>
+            <li><a href="#">Category 2</a></li>
+            <li>
+              <a href="#">Category 3</a>
+              <ul>
+                <li><a href="#">Subcategory A</a></li>
+                <li><a href="#">Subcategory B</a></li>
+                <li><a href="#">Subcategory C</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Category 4</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Services</a>
+          <ul>
+            <li><a href="#">Consulting</a></li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main-content" class="demo-container">
+    <h1>Navigation Components Demo</h1>
+    <p>This page demonstrates various navigation patterns available in Amphibious 2.0</p>
+
+    <!-- Breadcrumb Navigation -->
+    <section>
+      <h2 class="demo-title">Breadcrumb Navigation</h2>
+
+      <nav aria-label="Breadcrumb">
+        <ul class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Category</a></li>
+          <li class="active"><a href="#">Current Page</a></li>
+        </ul>
+      </nav>
+
+      <div class="demo-code">
+        <pre><code>&lt;ul class="breadcrumb"&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Current Page&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+
+      <!-- Alternative Breadcrumb Styles -->
+      <h3>Alternative Separators</h3>
+
+      <nav aria-label="Breadcrumb with slash">
+        <ul class="breadcrumb breadcrumb-slash">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li class="active"><a href="#">Current</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Breadcrumb with arrow">
+        <ul class="breadcrumb breadcrumb-arrow">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li class="active"><a href="#">Current</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Breadcrumb with dot">
+        <ul class="breadcrumb breadcrumb-dot">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li class="active"><a href="#">Current</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- Vertical Navigation -->
+    <section>
+      <h2 class="demo-title">Vertical Navigation</h2>
+
+      <div class="demo-sidebar">
+        <nav>
+          <ul class="vertical">
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li>
+              <a href="#">Users</a>
+              <ul>
+                <li><a href="#">All Users</a></li>
+                <li><a href="#">Add New</a></li>
+                <li><a href="#">Roles</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Settings</a>
+              <ul>
+                <li><a href="#">General</a></li>
+                <li><a href="#">Security</a></li>
+                <li>
+                  <a href="#">Advanced</a>
+                  <ul>
+                    <li><a href="#">Database</a></li>
+                    <li><a href="#">Cache</a></li>
+                    <li><a href="#">Logs</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="demo-code">
+        <pre><code>&lt;ul class="vertical"&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Users&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;All Users&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Add New&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Filter Navigation -->
+    <section>
+      <h2 class="demo-title">Filter Navigation (Button Groups)</h2>
+
+      <dl class="filter-nav">
+        <dt>Filter:</dt>
+        <dd><a href="#" class="active">All</a></dd>
+        <dd><a href="#">Active</a></dd>
+        <dd><a href="#">Pending</a></dd>
+        <dd><a href="#">Completed</a></dd>
+        <dd><a href="#">Archived</a></dd>
+      </dl>
+
+      <div style="clear: both; margin-bottom: 1em;"></div>
+
+      <div class="demo-code">
+        <pre><code>&lt;dl class="filter-nav"&gt;
+  &lt;dt&gt;Filter:&lt;/dt&gt;
+  &lt;dd&gt;&lt;a href="#" class="active"&gt;All&lt;/a&gt;&lt;/dd&gt;
+  &lt;dd&gt;&lt;a href="#"&gt;Active&lt;/a&gt;&lt;/dd&gt;
+  &lt;dd&gt;&lt;a href="#"&gt;Pending&lt;/a&gt;&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Mobile Navigation Toggle -->
+    <section>
+      <h2 class="demo-title">Mobile Navigation Toggle</h2>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-demo">
+        <span class="nav-toggle-icon"></span>
+        <span class="sr-only">Toggle Navigation</span>
+      </button>
+
+      <button class="nav-toggle" aria-expanded="true" aria-controls="mobile-nav-demo" style="margin-left: 1em;">
+        <span class="nav-toggle-icon"></span>
+        <span class="sr-only">Close Navigation</span>
+      </button>
+
+      <div class="demo-code">
+        <pre><code>&lt;button class="nav-toggle" aria-expanded="false"&gt;
+  &lt;span class="nav-toggle-icon"&gt;&lt;/span&gt;
+  &lt;span class="sr-only"&gt;Toggle Navigation&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Navigation States -->
+    <section>
+      <h2 class="demo-title">Navigation States</h2>
+
+      <h3>Sticky Navigation</h3>
+      <p>Add <code>.nav-sticky</code> class to make navigation stick to top when scrolling</p>
+
+      <h3>Fixed Navigation</h3>
+      <p>Add <code>.nav-fixed</code> class for fixed positioning at top of viewport</p>
+
+      <h3>Transparent Navigation</h3>
+      <p>Add <code>.nav-transparent</code> class for transparent navigation (useful over hero images)</p>
+
+      <div class="demo-code">
+        <pre><code>&lt;nav class="nav-sticky"&gt;...&lt;/nav&gt;
+&lt;nav class="nav-fixed"&gt;...&lt;/nav&gt;
+&lt;nav class="nav-transparent"&gt;...&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Responsive Behavior -->
+    <section>
+      <h2 class="demo-title">Responsive Behavior</h2>
+
+      <p>Navigation automatically adapts to different screen sizes:</p>
+
+      <ul>
+        <li><strong>Desktop (>800px):</strong> Full horizontal navigation with dropdowns</li>
+        <li><strong>Tablet/Mobile (≤800px):</strong> Navigation collapses, toggle button appears</li>
+        <li><strong>Mobile Portrait (≤480px):</strong> Optimized padding and font sizes</li>
+      </ul>
+
+      <p>To hide navigation on mobile and show toggle button:</p>
+
+      <div class="demo-code">
+        <pre><code>&lt;button class="nav-toggle"&gt;...&lt;/button&gt;
+&lt;nav class="nav-mobile-hide"&gt;
+  &lt;ul class="horizontal"&gt;...&lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Accessibility Features -->
+    <section>
+      <h2 class="demo-title">Accessibility Features</h2>
+
+      <ul>
+        <li>Skip navigation link for keyboard users</li>
+        <li>ARIA labels and expanded states</li>
+        <li>Focus visible indicators</li>
+        <li>Screen reader only text support</li>
+        <li>Reduced motion support</li>
+        <li>High contrast mode compatible</li>
+      </ul>
+
+      <div class="demo-code">
+        <pre><code>&lt;!-- Skip navigation --&gt;
+&lt;a href="#main-content" class="skip-nav"&gt;Skip to main content&lt;/a&gt;
+
+&lt;!-- ARIA navigation --&gt;
+&lt;nav aria-label="Main navigation"&gt;...&lt;/nav&gt;
+
+&lt;!-- Screen reader text --&gt;
+&lt;span class="sr-only"&gt;Current page&lt;/span&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Simple toggle demo for hamburger menu
+    document.querySelectorAll('.nav-toggle').forEach(button => {
+      button.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+      });
+    });
+  </script>
+</body>
+</html>

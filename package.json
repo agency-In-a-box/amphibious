@@ -1,0 +1,57 @@
+{
+  "name": "@agency-in-a-box/amphibious",
+  "version": "2.0.0",
+  "description": "Modern responsive CSS framework and component library - the evolution of A.mphibio.us",
+  "type": "module",
+  "main": "./dist/amphibious.js",
+  "module": "./dist/amphibious.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/amphibious.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./css": "./dist/amphibious.css",
+    "./theme": "./dist/theme.css"
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "preview": "vite preview",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": ["css", "framework", "responsive", "grid", "components", "boilerplate", "html5"],
+  "author": {
+    "name": "Clive Moore",
+    "url": "https://clivemoore.ca"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/your-org/AIAB.git",
+    "directory": "amphibious"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "sass": "^1.80.7",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.1"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  },
+  "dependencies": {
+    "lucide": "^0.552.0"
+  }
+}
