@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Component - Amphibious 2.0 Documentation</title>
+  <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Navigation component - horizontal/vertical navigation, dropdowns, breadcrumbs, and mobile menus">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Documentation Header */
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .docs-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .docs-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Content Sections */
+    .section {
+      background: white;
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section h3 {
+      color: #34495e;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section h4 {
+      color: #7f8c8d;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .code-block code {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+    }
+
+    /* Inline code */
+    code {
+      background: #f1f5f9;
+      color: #e11d48;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875em;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* Demo Sections */
+    .demo-section {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .demo-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+    }
+
+    /* Feature List */
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #667eea;
+    }
+
+    .feature-card h4 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    /* Navigation */
+    .nav-breadcrumb {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 0;
+      margin-bottom: 1rem;
+    }
+
+    .nav-breadcrumb a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .nav-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Demo Navigation Containers */
+    .demo-nav-container {
+      background: #667eea;
+      color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      --nav-text: white;
+      --nav-text-hover: #d1d2d3;
+      --nav-text-active: white;
+    }
+
+    .demo-nav-container .horizontal > li > a,
+    .demo-nav-container .vertical > li > a {
+      color: white;
+    }
+
+    .demo-nav-vertical {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      max-width: 300px;
+      --nav-text: #2c3e50;
+      --nav-text-hover: #667eea;
+    }
+
+    .demo-nav-vertical .vertical > li > a {
+      color: #2c3e50;
+    }
+
+    /* Demo responsive container */
+    .demo-responsive {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    /* Breadcrumb demo container */
+    .demo-breadcrumb-container {
+      background: white;
+      padding: 1rem;
+      border: 1px solid #dee2e6;
+      border-radius: 0.5rem;
+    }
+
+    /* Modern Nav Demo */
+    .demo-modern-nav {
+      border: 1px solid #dee2e6;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .docs-header h1 {
+        font-size: 2rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      .demo-nav-vertical {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="docs-header">
+    <div class="container">
+      <nav class="nav-breadcrumb">
+        <a href="/index.html">Home</a> ›
+        <a href="/docs/index.html">Documentation</a> ›
+        <a href="/docs/components/">Components</a> ›
+        <span>Navigation</span>
+      </nav>
+      <h1>Navigation Component</h1>
+      <p>Horizontal/vertical navigation, dropdowns, breadcrumbs, and responsive mobile menus</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Overview -->
+    <section class="section">
+      <h2>Overview</h2>
+      <p>The Navigation component provides comprehensive navigation solutions for websites and applications. It includes horizontal and vertical navigation, multi-level dropdowns, breadcrumbs, filter navigation, and responsive mobile menus. The component maintains the original A.mphibio.us design patterns while adding modern accessibility features and responsive behavior.</p>
+
+      <div class="feature-list">
+        <div class="feature-card">
+          <h4>🧭 Multiple Layouts</h4>
+          <p>Horizontal, vertical, and modern navigation layouts with full dropdown support.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Responsive Design</h4>
+          <p>Automatic mobile adaptation with hamburger menus and touch-friendly interactions.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🏗️ Dropdown Menus</h4>
+          <p>Multi-level dropdowns with hover and click interactions for complex navigation structures.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🍞 Breadcrumb Navigation</h4>
+          <p>Multiple breadcrumb styles with customizable separators for hierarchy display.</p>
+        </div>
+        <div class="feature-card">
+          <h4>♿ Full Accessibility</h4>
+          <p>Keyboard navigation, focus management, ARIA attributes, and screen reader support.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎨 Flexible Styling</h4>
+          <p>CSS variables for easy theming, transparent navigation, and sticky positioning.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horizontal Navigation -->
+    <section class="section">
+      <h2>Horizontal Navigation</h2>
+
+      <h3>Basic Horizontal Menu</h3>
+      <div class="demo-section">
+        <div class="demo-title">Simple Horizontal Navigation</div>
+        <div class="demo-nav-container">
+          <nav>
+            <ul class="horizontal">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contact" class="active">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;nav&gt;
+  &lt;ul class="horizontal"&gt;
+    &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#contact" class="active"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+
+      <h3>Horizontal Menu with Dropdowns</h3>
+      <div class="demo-section">
+        <div class="demo-title">Horizontal Navigation with Dropdown Menus (Hover to see dropdowns)</div>
+        <div class="demo-nav-container">
+          <nav>
+            <ul class="horizontal">
+              <li><a href="#home">Home</a></li>
+              <li>
+                <a href="#services">Services</a>
+                <ul>
+                  <li><a href="#web-design">Web Design</a></li>
+                  <li><a href="#development">Development</a></li>
+                  <li><a href="#seo">SEO Services</a></li>
+                  <li>
+                    <a href="#marketing">Marketing</a>
+                    <ul>
+                      <li><a href="#social-media">Social Media</a></li>
+                      <li><a href="#email-marketing">Email Marketing</a></li>
+                      <li><a href="#content-marketing">Content Marketing</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#portfolio">Portfolio</a>
+                <ul>
+                  <li><a href="#websites">Websites</a></li>
+                  <li><a href="#applications">Applications</a></li>
+                  <li><a href="#branding">Branding</a></li>
+                </ul>
+              </li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;nav&gt;
+  &lt;ul class="horizontal"&gt;
+    &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#services"&gt;Services&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#web-design"&gt;Web Design&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#development"&gt;Development&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#seo"&gt;SEO Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href="#marketing"&gt;Marketing&lt;/a&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#social-media"&gt;Social Media&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#email-marketing"&gt;Email Marketing&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#content-marketing"&gt;Content Marketing&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#portfolio"&gt;Portfolio&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#websites"&gt;Websites&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#applications"&gt;Applications&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#branding"&gt;Branding&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Vertical Navigation -->
+    <section class="section">
+      <h2>Vertical Navigation</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Vertical Sidebar Navigation (Hover to see dropdowns)</div>
+        <div class="demo-nav-vertical">
+          <nav>
+            <ul class="vertical">
+              <li><a href="#dashboard">Dashboard</a></li>
+              <li>
+                <a href="#products">Products</a>
+                <ul>
+                  <li><a href="#add-product">Add Product</a></li>
+                  <li><a href="#manage-products">Manage Products</a></li>
+                  <li><a href="#categories">Categories</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#orders">Orders</a>
+                <ul>
+                  <li><a href="#pending-orders">Pending Orders</a></li>
+                  <li><a href="#completed-orders">Completed Orders</a></li>
+                  <li><a href="#refunds">Refunds</a></li>
+                </ul>
+              </li>
+              <li><a href="#customers">Customers</a></li>
+              <li><a href="#analytics">Analytics</a></li>
+              <li><a href="#settings" class="active">Settings</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;nav&gt;
+  &lt;ul class="vertical"&gt;
+    &lt;li&gt;&lt;a href="#dashboard"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#products"&gt;Products&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#add-product"&gt;Add Product&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#manage-products"&gt;Manage Products&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#categories"&gt;Categories&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#orders"&gt;Orders&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#pending-orders"&gt;Pending Orders&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#completed-orders"&gt;Completed Orders&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#refunds"&gt;Refunds&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href="#customers"&gt;Customers&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#analytics"&gt;Analytics&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#settings" class="active"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Modern Navigation -->
+    <section class="section">
+      <h2>Modern Navigation Component</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Modern Amphibious Navigation with Search and Actions</div>
+        <div class="demo-modern-nav">
+          <nav class="amp-nav">
+            <div class="container">
+              <div class="amp-nav__wrapper">
+                <div class="amp-nav__brand">
+                  <a href="/" class="amp-nav__logo">
+                    <span class="amp-nav__icon">🐸</span>
+                    <span>Amphibious</span>
+                  </a>
+                </div>
+
+                <ul class="amp-nav__menu">
+                  <li class="amp-nav__item">
+                    <a href="#docs" class="amp-nav__link amp-nav__link--active">Documentation</a>
+                  </li>
+                  <li class="amp-nav__item">
+                    <a href="#components" class="amp-nav__link">Components</a>
+                    <div class="amp-nav__dropdown">
+                      <a href="#cards" class="amp-nav__dropdown-link">Cards</a>
+                      <a href="#buttons" class="amp-nav__dropdown-link">Buttons</a>
+                      <a href="#forms" class="amp-nav__dropdown-link">Forms</a>
+                      <a href="#navigation" class="amp-nav__dropdown-link">Navigation</a>
+                    </div>
+                  </li>
+                  <li class="amp-nav__item">
+                    <a href="#examples" class="amp-nav__link">Examples</a>
+                  </li>
+                  <li class="amp-nav__item">
+                    <a href="#about" class="amp-nav__link">About</a>
+                  </li>
+                </ul>
+
+                <div class="amp-nav__actions">
+                  <button class="amp-nav__search" aria-label="Search">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                  </button>
+                  <button class="amp-nav__theme" aria-label="Toggle theme">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                    </svg>
+                  </button>
+                  <a href="#github" class="amp-nav__github">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span class="amp-nav__stars">2.1k</span>
+                  </a>
+                </div>
+
+                <button class="amp-nav__toggle" aria-label="Toggle menu">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;nav class="amp-nav"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="amp-nav__wrapper"&gt;
+      &lt;div class="amp-nav__brand"&gt;
+        &lt;a href="/" class="amp-nav__logo"&gt;
+          &lt;span class="amp-nav__icon"&gt;🐸&lt;/span&gt;
+          &lt;span&gt;Amphibious&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;ul class="amp-nav__menu"&gt;
+        &lt;li class="amp-nav__item"&gt;
+          &lt;a href="#docs" class="amp-nav__link amp-nav__link--active"&gt;Documentation&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="amp-nav__item"&gt;
+          &lt;a href="#components" class="amp-nav__link"&gt;Components&lt;/a&gt;
+          &lt;div class="amp-nav__dropdown"&gt;
+            &lt;a href="#cards" class="amp-nav__dropdown-link"&gt;Cards&lt;/a&gt;
+            &lt;a href="#buttons" class="amp-nav__dropdown-link"&gt;Buttons&lt;/a&gt;
+            &lt;a href="#forms" class="amp-nav__dropdown-link"&gt;Forms&lt;/a&gt;
+            &lt;a href="#navigation" class="amp-nav__dropdown-link"&gt;Navigation&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class="amp-nav__item"&gt;
+          &lt;a href="#examples" class="amp-nav__link"&gt;Examples&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="amp-nav__item"&gt;
+          &lt;a href="#about" class="amp-nav__link"&gt;About&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;div class="amp-nav__actions"&gt;
+        &lt;button class="amp-nav__search"&gt;🔍&lt;/button&gt;
+        &lt;button class="amp-nav__theme"&gt;🌙&lt;/button&gt;
+        &lt;a href="#github" class="amp-nav__github"&gt;
+          &lt;span&gt;GitHub&lt;/span&gt;
+          &lt;span class="amp-nav__stars"&gt;2.1k&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;button class="amp-nav__toggle"&gt;
+        &lt;span&gt;&lt;/span&gt;
+        &lt;span&gt;&lt;/span&gt;
+        &lt;span&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Breadcrumbs -->
+    <section class="section">
+      <h2>Breadcrumb Navigation</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Different Breadcrumb Styles</div>
+
+        <div class="demo-breadcrumb-container">
+          <h4>Default Breadcrumb (Arrow separator)</h4>
+          <ul class="breadcrumb">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#docs">Documentation</a></li>
+            <li><a href="#components">Components</a></li>
+            <li class="active"><a href="#navigation">Navigation</a></li>
+          </ul>
+        </div>
+
+        <div class="demo-breadcrumb-container">
+          <h4>Slash Separator</h4>
+          <ul class="breadcrumb breadcrumb-slash">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#electronics">Electronics</a></li>
+            <li class="active"><a href="#smartphones">Smartphones</a></li>
+          </ul>
+        </div>
+
+        <div class="demo-breadcrumb-container">
+          <h4>Arrow Separator</h4>
+          <ul class="breadcrumb breadcrumb-arrow">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#2024">2024</a></li>
+            <li class="active"><a href="#march">March</a></li>
+          </ul>
+        </div>
+
+        <div class="demo-breadcrumb-container">
+          <h4>Dot Separator</h4>
+          <ul class="breadcrumb breadcrumb-dot">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li class="active"><a href="#web-design">Web Design</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Default Breadcrumb --&gt;
+&lt;ul class="breadcrumb"&gt;
+  &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#docs"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#components"&gt;Components&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#navigation"&gt;Navigation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Slash Separator --&gt;
+&lt;ul class="breadcrumb breadcrumb-slash"&gt;
+  &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#products"&gt;Products&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#electronics"&gt;Electronics&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Arrow Separator --&gt;
+&lt;ul class="breadcrumb breadcrumb-arrow"&gt;
+  &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#2024"&gt;2024&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Dot Separator --&gt;
+&lt;ul class="breadcrumb breadcrumb-dot"&gt;
+  &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#web-design"&gt;Web Design&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Filter Navigation -->
+    <section class="section">
+      <h2>Filter Navigation</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Button Group Filter Navigation</div>
+        <dl class="filter-nav">
+          <dt>Filter by:</dt>
+          <dd><a href="#all" class="active">All</a></dd>
+          <dd><a href="#websites">Websites</a></dd>
+          <dd><a href="#applications">Applications</a></dd>
+          <dd><a href="#branding">Branding</a></dd>
+          <dd><a href="#photography">Photography</a></dd>
+        </dl>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;dl class="filter-nav"&gt;
+  &lt;dt&gt;Filter by:&lt;/dt&gt;
+  &lt;dd&gt;&lt;a href="#all" class="active"&gt;All&lt;/a&gt;&lt;/dd&gt;
+  &lt;dd&gt;&lt;a href="#websites"&gt;Websites&lt;/a&gt;&lt;/dd&gt;
+  &lt;dd&gt;&lt;a href="#applications"&gt;Applications&lt;/a&gt;&lt;/dd&gt;
+  &lt;dd&gt;&lt;a href="#branding"&gt;Branding&lt;/a&gt;&lt;/dd&gt;
+  &lt;dd&gt;&lt;a href="#photography"&gt;Photography&lt;/a&gt;&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Mobile Navigation -->
+    <section class="section">
+      <h2>Mobile Navigation</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Responsive Mobile Navigation with Toggle</div>
+        <p>The navigation automatically adapts to mobile devices. Try resizing your browser window to see the mobile hamburger menu appear.</p>
+
+        <div class="demo-responsive">
+          <nav style="background: #667eea; color: white; padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong>Your Brand</strong>
+              </div>
+              <button class="nav-toggle" onclick="toggleMobileNav()" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="nav-toggle-icon"></span>
+              </button>
+            </div>
+            <div class="nav-mobile-hide" id="mobile-nav">
+              <ul class="horizontal" style="margin-top: 1rem;">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;nav&gt;
+  &lt;div&gt;
+    &lt;div&gt;Your Brand&lt;/div&gt;
+    &lt;button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"&gt;
+      &lt;span class="nav-toggle-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="nav-mobile-hide" id="mobile-nav"&gt;
+    &lt;ul class="horizontal"&gt;
+      &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Navigation States -->
+    <section class="section">
+      <h2>Navigation States</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Different Navigation States</div>
+
+        <h4>Sticky Navigation</h4>
+        <div style="background: #667eea; color: white; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+          <nav class="nav-sticky">
+            <ul class="horizontal">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <h4>Transparent Navigation</h4>
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 0.5rem;">
+          <nav class="nav-transparent">
+            <ul class="horizontal">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div style="text-align: center; margin-top: 2rem;">
+            <h3 style="margin: 0;">Hero Section Content</h3>
+            <p style="margin: 0.5rem 0 0 0;">Transparent navigation overlays hero sections beautifully</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Sticky Navigation --&gt;
+&lt;nav class="nav-sticky"&gt;
+  &lt;ul class="horizontal"&gt;
+    &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Fixed Navigation --&gt;
+&lt;nav class="nav-fixed"&gt;...&lt;/nav&gt;
+
+&lt;!-- Transparent Navigation --&gt;
+&lt;nav class="nav-transparent"&gt;...&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- CSS Classes -->
+    <section class="section">
+      <h2>CSS Classes Reference</h2>
+
+      <h3>Base Navigation Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.horizontal</code> / <code>.nav-horizontal</code></td>
+            <td>Horizontal navigation layout</td>
+          </tr>
+          <tr>
+            <td><code>.vertical</code> / <code>.nav-vertical</code></td>
+            <td>Vertical navigation layout</td>
+          </tr>
+          <tr>
+            <td><code>.nav</code></td>
+            <td>Generic navigation container</td>
+          </tr>
+          <tr>
+            <td><code>.active</code></td>
+            <td>Active/current navigation item</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Modern Navigation Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.amp-nav</code></td>
+            <td>Modern navigation container</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__wrapper</code></td>
+            <td>Navigation content wrapper</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__brand</code></td>
+            <td>Brand/logo container</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__logo</code></td>
+            <td>Logo link</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__menu</code></td>
+            <td>Main navigation menu</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__item</code></td>
+            <td>Navigation menu item</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__link</code></td>
+            <td>Navigation link</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__link--active</code></td>
+            <td>Active navigation link</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__dropdown</code></td>
+            <td>Dropdown menu container</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__dropdown-link</code></td>
+            <td>Dropdown menu link</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__actions</code></td>
+            <td>Action buttons container</td>
+          </tr>
+          <tr>
+            <td><code>.amp-nav__toggle</code></td>
+            <td>Mobile menu toggle</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Navigation State Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.nav-sticky</code></td>
+            <td>Sticky positioned navigation</td>
+          </tr>
+          <tr>
+            <td><code>.nav-fixed</code></td>
+            <td>Fixed positioned navigation</td>
+          </tr>
+          <tr>
+            <td><code>.nav-transparent</code></td>
+            <td>Transparent navigation</td>
+          </tr>
+          <tr>
+            <td><code>.nav-mobile-hide</code></td>
+            <td>Hidden on mobile by default</td>
+          </tr>
+          <tr>
+            <td><code>.is-open</code></td>
+            <td>Mobile menu open state</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Breadcrumb Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.breadcrumb</code></td>
+            <td>Base breadcrumb container</td>
+          </tr>
+          <tr>
+            <td><code>.breadcrumb-slash</code></td>
+            <td>Slash separator style</td>
+          </tr>
+          <tr>
+            <td><code>.breadcrumb-arrow</code></td>
+            <td>Arrow separator style</td>
+          </tr>
+          <tr>
+            <td><code>.breadcrumb-dot</code></td>
+            <td>Dot separator style</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Mobile Navigation Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.nav-toggle</code></td>
+            <td>Mobile menu toggle button</td>
+          </tr>
+          <tr>
+            <td><code>.nav-toggle-icon</code></td>
+            <td>Hamburger icon</td>
+          </tr>
+          <tr>
+            <td><code>.filter-nav</code></td>
+            <td>Filter button group navigation</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- JavaScript Integration -->
+    <section class="section">
+      <h2>JavaScript Integration</h2>
+
+      <div class="code-block">
+        <pre><code>// Mobile navigation toggle
+function toggleMobileNav() {
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav-mobile-hide');
+  const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+  toggle.setAttribute('aria-expanded', !isOpen);
+  nav.classList.toggle('is-open');
+}
+
+// Modern navigation with dropdown management
+class AmpNavigation {
+  constructor(element) {
+    this.nav = element;
+    this.toggle = this.nav.querySelector('.amp-nav__toggle');
+    this.menu = this.nav.querySelector('.amp-nav__menu');
+    this.dropdowns = this.nav.querySelectorAll('.amp-nav__dropdown');
+    this.searchButton = this.nav.querySelector('.amp-nav__search');
+
+    this.init();
+  }
+
+  init() {
+    // Mobile toggle
+    if (this.toggle) {
+      this.toggle.addEventListener('click', () => this.toggleMobile());
+    }
+
+    // Search functionality
+    if (this.searchButton) {
+      this.searchButton.addEventListener('click', () => this.toggleSearch());
+    }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!this.nav.contains(e.target) && this.menu.classList.contains('amp-nav__menu--open')) {
+        this.closeMobile();
+      }
+    });
+
+    // Keyboard navigation
+    this.nav.addEventListener('keydown', (e) => this.handleKeyboard(e));
+
+    // Sticky navigation on scroll
+    this.handleScroll();
+    window.addEventListener('scroll', () => this.handleScroll());
+  }
+
+  toggleMobile() {
+    const isOpen = this.menu.classList.contains('amp-nav__menu--open');
+
+    if (isOpen) {
+      this.closeMobile();
+    } else {
+      this.openMobile();
+    }
+  }
+
+  openMobile() {
+    this.menu.classList.add('amp-nav__menu--open');
+    this.toggle.classList.add('amp-nav__toggle--open');
+    document.body.style.overflow = 'hidden';
+
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'amp-nav__overlay amp-nav__overlay--visible';
+    overlay.addEventListener('click', () => this.closeMobile());
+    document.body.appendChild(overlay);
+  }
+
+  closeMobile() {
+    this.menu.classList.remove('amp-nav__menu--open');
+    this.toggle.classList.remove('amp-nav__toggle--open');
+    document.body.style.overflow = '';
+
+    // Remove overlay
+    const overlay = document.querySelector('.amp-nav__overlay');
+    if (overlay) overlay.remove();
+  }
+
+  toggleSearch() {
+    // Create search modal
+    const searchModal = document.createElement('div');
+    searchModal.className = 'amp-nav__search-modal amp-nav__search-modal--open';
+
+    searchModal.innerHTML = `
+      &lt;div class="amp-nav__search-content"&gt;
+        &lt;input type="search" class="amp-nav__search-input" placeholder="Search documentation..." autofocus&gt;
+        &lt;button class="amp-nav__search-close"&gt;×&lt;/button&gt;
+        &lt;div class="amp-nav__search-results"&gt;
+          &lt;div class="amp-nav__search-empty"&gt;Start typing to search...&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `;
+
+    document.body.appendChild(searchModal);
+
+    // Close on outside click or close button
+    const closeButton = searchModal.querySelector('.amp-nav__search-close');
+    closeButton.addEventListener('click', () => searchModal.remove());
+
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) searchModal.remove();
+    });
+
+    // Search functionality
+    const searchInput = searchModal.querySelector('.amp-nav__search-input');
+    searchInput.addEventListener('input', (e) => this.performSearch(e.target.value));
+  }
+
+  performSearch(query) {
+    // Implement your search logic here
+    console.log('Searching for:', query);
+  }
+
+  handleKeyboard(e) {
+    // Implement keyboard navigation for dropdowns
+    if (e.key === 'Escape') {
+      // Close any open dropdowns
+      this.dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('amp-nav__dropdown--open');
+      });
+    }
+  }
+
+  handleScroll() {
+    const scrollY = window.scrollY;
+
+    if (scrollY > 100) {
+      this.nav.classList.add('amp-nav--sticky');
+    } else {
+      this.nav.classList.remove('amp-nav--sticky');
+    }
+
+    // Hide/show navigation based on scroll direction
+    if (scrollY > this.lastScrollY && scrollY > 500) {
+      this.nav.classList.add('amp-nav--hidden');
+    } else {
+      this.nav.classList.remove('amp-nav--hidden');
+    }
+
+    this.lastScrollY = scrollY;
+  }
+}
+
+// Initialize navigation
+document.addEventListener('DOMContentLoaded', () => {
+  const navElement = document.querySelector('.amp-nav');
+  if (navElement) {
+    new AmpNavigation(navElement);
+  }
+
+  // Legacy navigation toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  if (navToggle) {
+    navToggle.addEventListener('click', toggleMobileNav);
+  }
+});</code></pre>
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="section">
+      <h2>Best Practices</h2>
+
+      <h3>Structure Guidelines</h3>
+      <ul>
+        <li><strong>Semantic markup:</strong> Use <code>&lt;nav&gt;</code> elements and proper list structures for screen readers</li>
+        <li><strong>Clear hierarchy:</strong> Structure navigation items logically with appropriate nesting levels</li>
+        <li><strong>Consistent labeling:</strong> Use descriptive link text and maintain consistent naming patterns</li>
+        <li><strong>Current page indication:</strong> Always mark the current page/section with active states</li>
+      </ul>
+
+      <h3>Responsive Design</h3>
+      <ul>
+        <li><strong>Mobile first:</strong> Design for mobile devices first, then enhance for larger screens</li>
+        <li><strong>Touch targets:</strong> Ensure navigation links are at least 44px for touch devices</li>
+        <li><strong>Hamburger menus:</strong> Use clear icons and labels for mobile menu toggles</li>
+        <li><strong>Progressive enhancement:</strong> Ensure navigation works without JavaScript</li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li><strong>Keyboard navigation:</strong> Support Tab, Enter, Escape, and arrow keys for navigation</li>
+        <li><strong>Focus management:</strong> Provide clear focus indicators and logical tab order</li>
+        <li><strong>ARIA attributes:</strong> Use aria-expanded, aria-current, and aria-label appropriately</li>
+        <li><strong>Skip links:</strong> Provide skip navigation links for screen reader users</li>
+      </ul>
+
+      <h3>Performance</h3>
+      <ul>
+        <li><strong>Minimal JavaScript:</strong> Use CSS for hover effects and basic interactions</li>
+        <li><strong>Lazy loading:</strong> Load dropdown content only when needed for large menus</li>
+        <li><strong>Optimize images:</strong> Use SVG icons and optimize any logo images</li>
+        <li><strong>CSS efficiency:</strong> Use CSS variables for easy theming and maintenance</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="section">
+      <p>
+        <a href="/examples/navigation-demo.html">View Live Examples</a> |
+        <a href="/docs/components/">All Components</a> |
+        <a href="/docs/index.html">Documentation Home</a>
+      </p>
+      <p>&copy; 2024 Amphibious 2.0. Comprehensive navigation components for modern web applications.</p>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Demo JavaScript -->
+  <script>
+    // Mobile navigation toggle function
+    function toggleMobileNav() {
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav-mobile-hide');
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+      toggle.setAttribute('aria-expanded', !isOpen);
+      nav.classList.toggle('is-open');
+    }
+
+    // Initialize demo interactions
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add click handlers for filter navigation demo
+      const filterLinks = document.querySelectorAll('.filter-nav a');
+      filterLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // Remove active class from all links
+          filterLinks.forEach(l => l.classList.remove('active'));
+
+          // Add active class to clicked link
+          link.classList.add('active');
+        });
+      });
+
+      // Simple dropdown toggle for modern nav demo
+      const dropdownTriggers = document.querySelectorAll('.amp-nav__item');
+      dropdownTriggers.forEach(item => {
+        const dropdown = item.querySelector('.amp-nav__dropdown');
+        if (dropdown) {
+          item.addEventListener('mouseenter', () => {
+            dropdown.classList.add('amp-nav__dropdown--open');
+          });
+
+          item.addEventListener('mouseleave', () => {
+            dropdown.classList.remove('amp-nav__dropdown--open');
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

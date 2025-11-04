@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip System - Amphibious 2.0 Showcase</title>
+    <link rel="stylesheet" href="/dist/amphibious.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f7fafc;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            margin: 0 0 1rem 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            margin: 0 0 1rem 0;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #718096;
+            margin-bottom: 2rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .demo-item {
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            background: #f8fafc;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-item h4 {
+            margin: 0 0 1rem 0;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .keyword { color: #ff7979; }
+        .string { color: #00cec9; }
+        .comment { color: #636e72; }
+
+        .interactive-demo {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .interactive-demo h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .mobile-demo {
+            background: #1a1a1a;
+            border-radius: 24px;
+            padding: 1rem;
+            max-width: 375px;
+            margin: 2rem auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .mobile-screen {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            min-height: 400px;
+        }
+
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-info {
+            text-align: left;
+        }
+
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        .product-price {
+            color: #10b981;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: space-between;
+        }
+
+        .tooltip-trigger {
+            cursor: help;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 2px;
+            color: #667eea;
+        }
+
+        .position-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 3rem;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .position-item {
+            padding: 1rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .position-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .help-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            font-size: 12px;
+            cursor: help;
+            margin-left: 0.5rem;
+        }
+
+        .form-section {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .header p {
+                padding: 0 1rem;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .position-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 1rem;
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .section {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        .alert-demo {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-success {
+            background: #f0fdf4;
+            color: #10b981;
+            border: 1px solid #10b981;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            color: #d97706;
+            border: 1px solid #d97706;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            color: #3b82f6;
+            border: 1px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>💬 Tooltip System Showcase</h1>
+            <p>Smart positioning tooltips with accessibility, mobile optimization, and e-commerce features</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Positions</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Variants</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Trigger Types</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">♿</span>
+                    <span class="stat-label">Accessible</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Interactive Demo -->
+        <div class="interactive-demo">
+            <h3>🎯 Try It Live!</h3>
+            <p>Hover, click, or focus on these elements to see tooltips in action</p>
+
+            <div class="button-group">
+                <button class="btn btn--primary"
+                        data-tooltip="This is a primary button tooltip"
+                        data-tooltip-position="top">
+                    Hover for Top
+                </button>
+
+                <button class="btn btn--secondary"
+                        data-tooltip="Click me to toggle this tooltip!"
+                        data-tooltip-trigger="click"
+                        data-tooltip-position="bottom">
+                    Click for Bottom
+                </button>
+
+                <input type="text"
+                       placeholder="Focus for help"
+                       data-tooltip="Enter your email address"
+                       data-tooltip-trigger="focus"
+                       data-tooltip-position="right"
+                       style="padding: 0.75rem; border-radius: 8px; border: 2px solid white;">
+
+                <div class="icon-badge"
+                     data-tooltip="You have 3 items in your cart"
+                     data-tooltip-variant="success">
+                    <i data-lucide="shopping-cart" class="icon--xl" style="color: white;"></i>
+                    <span class="icon-badge__count">3</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Position Demonstration -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="move"></i>
+                Smart Positioning
+            </h2>
+            <p class="section-subtitle">Tooltips automatically adjust position to stay within viewport</p>
+
+            <div class="position-grid">
+                <div class="position-item"
+                     data-tooltip="Top Start Position"
+                     data-tooltip-position="top-start">
+                    Top Start
+                </div>
+                <div class="position-item"
+                     data-tooltip="Top Center Position"
+                     data-tooltip-position="top">
+                    Top
+                </div>
+                <div class="position-item"
+                     data-tooltip="Top End Position"
+                     data-tooltip-position="top-end">
+                    Top End
+                </div>
+
+                <div class="position-item"
+                     data-tooltip="Left Position"
+                     data-tooltip-position="left">
+                    Left
+                </div>
+                <div class="position-item" style="background: #667eea; color: white;">
+                    Center (Hover Around)
+                </div>
+                <div class="position-item"
+                     data-tooltip="Right Position"
+                     data-tooltip-position="right">
+                    Right
+                </div>
+
+                <div class="position-item"
+                     data-tooltip="Bottom Start Position"
+                     data-tooltip-position="bottom-start">
+                    Bottom Start
+                </div>
+                <div class="position-item"
+                     data-tooltip="Bottom Center Position"
+                     data-tooltip-position="bottom">
+                    Bottom
+                </div>
+                <div class="position-item"
+                     data-tooltip="Bottom End Position"
+                     data-tooltip-position="bottom-end">
+                    Bottom End
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Experience -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="smartphone"></i>
+                Mobile-Optimized Experience
+            </h2>
+            <p class="section-subtitle">Touch-friendly tooltips that work perfectly on mobile devices</p>
+
+            <div class="mobile-demo">
+                <div class="mobile-screen">
+                    <div class="mobile-header">
+                        <h4 style="margin: 0;">Shopping App</h4>
+                        <div style="display: flex; gap: 1rem;">
+                            <i data-lucide="search"
+                               data-tooltip="Search products"
+                               data-tooltip-trigger="click"></i>
+                            <i data-lucide="shopping-cart"
+                               data-tooltip="View cart (3 items)"
+                               data-tooltip-trigger="click"></i>
+                            <i data-lucide="user"
+                               data-tooltip="Account settings"
+                               data-tooltip-trigger="click"></i>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i data-lucide="headphones" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">
+                                Premium Headphones
+                                <span class="help-icon"
+                                      data-tooltip="Wireless Bluetooth 5.0 headphones with 30-hour battery life and active noise cancellation"
+                                      data-tooltip-trigger="click">?</span>
+                            </div>
+                            <div class="product-price">$199.99</div>
+                            <div class="product-actions">
+                                <button class="btn btn--primary btn--sm"
+                                        data-tooltip="Add to shopping cart"
+                                        data-tooltip-position="top">
+                                    <i data-lucide="shopping-cart"></i>
+                                    Add to Cart
+                                </button>
+                                <button class="icon-button"
+                                        data-tooltip="Save for later"
+                                        data-tooltip-position="top"
+                                        data-tooltip-variant="danger">
+                                    <i data-lucide="heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert-demo alert-info">
+                        <i data-lucide="info"></i>
+                        <span>Tap the <span class="tooltip-trigger" data-tooltip="Click any ? icon for help" data-tooltip-trigger="click">help icons</span> for more information</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-commerce Examples -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="shopping-bag"></i>
+                E-commerce Use Cases
+            </h2>
+            <p class="section-subtitle">Real-world examples for online stores</p>
+
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Product Information</h4>
+                    <div id="product-tooltip-demo" style="cursor: help;">
+                        <i data-lucide="package" class="icon--xl icon--primary"></i>
+                        <p>Hover for details</p>
+                    </div>
+                </div>
+
+                <div class="demo-item">
+                    <h4>Shipping Info</h4>
+                    <div id="shipping-tooltip-demo" style="display: flex; align-items: center; gap: 0.5rem; cursor: help;">
+                        <i data-lucide="truck" class="icon--lg icon--success"></i>
+                        <span>Free Shipping</span>
+                    </div>
+                </div>
+
+                <div class="demo-item">
+                    <h4>Stock Status</h4>
+                    <div id="stock-tooltip-demo">
+                        <span class="status-indicator status-icon--warning" style="cursor: help;">
+                            <i data-lucide="alert-triangle"></i>
+                            Low Stock
+                        </span>
+                    </div>
+                </div>
+
+                <div class="demo-item">
+                    <h4>Size Guide</h4>
+                    <button class="btn btn--secondary" id="size-guide-btn">
+                        Size Chart
+                        <i data-lucide="help-circle" class="icon--sm"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Integration -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="help-circle"></i>
+                Form Help System
+            </h2>
+            <p class="section-subtitle">Contextual help for form fields</p>
+
+            <div class="form-section">
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">
+                            Email Address
+                            <span class="help-icon"
+                                  data-tooltip="We'll never share your email with third parties"
+                                  data-tooltip-trigger="click">?</span>
+                        </label>
+                        <input type="email"
+                               class="form-input"
+                               placeholder="john@example.com"
+                               data-tooltip="Enter a valid email address"
+                               data-tooltip-trigger="focus"
+                               data-tooltip-position="right">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            Password
+                            <span class="help-icon"
+                                  data-tooltip="Password must be at least 8 characters with 1 uppercase, 1 number, and 1 special character"
+                                  data-tooltip-trigger="click"
+                                  data-tooltip-variant="info">?</span>
+                        </label>
+                        <input type="password"
+                               class="form-input"
+                               placeholder="••••••••"
+                               data-tooltip="Create a strong password"
+                               data-tooltip-trigger="focus"
+                               data-tooltip-position="right">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            Credit Card
+                            <span class="help-icon"
+                                  data-tooltip="Your payment information is encrypted and secure"
+                                  data-tooltip-trigger="click"
+                                  data-tooltip-variant="success">
+                                <i data-lucide="shield-check" style="font-size: 10px;"></i>
+                            </span>
+                        </label>
+                        <input type="text"
+                               class="form-input"
+                               placeholder="1234 5678 9012 3456"
+                               data-tooltip="Enter your 16-digit card number"
+                               data-tooltip-trigger="focus"
+                               data-tooltip-position="right">
+                    </div>
+
+                    <button type="submit" class="btn btn--primary" style="width: 100%;">
+                        Complete Order
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Tooltip Variants -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="palette"></i>
+                Tooltip Variants
+            </h2>
+            <p class="section-subtitle">Different styles for different contexts</p>
+
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <button class="btn"
+                            data-tooltip="Default tooltip variant">
+                        Default
+                    </button>
+                </div>
+
+                <div class="demo-item">
+                    <button class="btn btn--primary"
+                            data-tooltip="Primary tooltip variant"
+                            data-tooltip-variant="primary">
+                        Primary
+                    </button>
+                </div>
+
+                <div class="demo-item">
+                    <button class="btn btn--success"
+                            data-tooltip="Success tooltip variant"
+                            data-tooltip-variant="success">
+                        Success
+                    </button>
+                </div>
+
+                <div class="demo-item">
+                    <button class="btn btn--warning"
+                            data-tooltip="Warning tooltip variant"
+                            data-tooltip-variant="warning">
+                        Warning
+                    </button>
+                </div>
+
+                <div class="demo-item">
+                    <button class="btn btn--danger"
+                            data-tooltip="Danger tooltip variant"
+                            data-tooltip-variant="danger">
+                        Danger
+                    </button>
+                </div>
+
+                <div class="demo-item">
+                    <button class="btn btn--info"
+                            data-tooltip="Info tooltip variant"
+                            data-tooltip-variant="info">
+                        Info
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Examples -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="code"></i>
+                Implementation Examples
+            </h2>
+
+            <h3>HTML Data Attributes</h3>
+            <div class="code-block">
+<span class="comment"><!-- Basic tooltip --></span>
+&lt;<span class="keyword">button</span> <span class="string">data-tooltip="Tooltip content"</span>&gt;Hover me&lt;/<span class="keyword">button</span>&gt;
+
+<span class="comment"><!-- With position and variant --></span>
+&lt;<span class="keyword">button</span>
+    <span class="string">data-tooltip="Success message"</span>
+    <span class="string">data-tooltip-position="top"</span>
+    <span class="string">data-tooltip-variant="success"</span>&gt;
+    Success Button
+&lt;/<span class="keyword">button</span>&gt;
+
+<span class="comment"><!-- Click trigger --></span>
+&lt;<span class="keyword">span</span>
+    <span class="string">data-tooltip="Click to toggle"</span>
+    <span class="string">data-tooltip-trigger="click"</span>&gt;
+    Click me
+&lt;/<span class="keyword">span</span>&gt;
+            </div>
+
+            <h3>JavaScript API</h3>
+            <div class="code-block">
+<span class="comment">// Create tooltip programmatically</span>
+<span class="keyword">const</span> tooltip = amp.<span class="string">createTooltip</span>(element, {
+    <span class="string">content</span>: <span class="string">'Tooltip content'</span>,
+    <span class="string">position</span>: <span class="string">'top'</span>,
+    <span class="string">variant</span>: <span class="string">'success'</span>,
+    <span class="string">trigger</span>: <span class="string">'hover'</span>
+});
+
+<span class="comment">// E-commerce tooltips</span>
+amp.<span class="string">createProductTooltip</span>(element, {
+    <span class="string">name</span>: <span class="string">'Premium Headphones'</span>,
+    <span class="string">price</span>: <span class="string">'$199.99'</span>,
+    <span class="string">description</span>: <span class="string">'Wireless with noise cancellation'</span>
+});
+
+<span class="comment">// Update content dynamically</span>
+tooltip.<span class="string">updateContent</span>(<span class="string">'New content'</span>);
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="star"></i>
+                Key Features
+            </h2>
+
+            <ul class="feature-list">
+                <li>
+                    <i data-lucide="check-circle" class="icon--success"></i>
+                    <strong>Smart Positioning:</strong> Automatically adjusts to stay within viewport
+                </li>
+                <li>
+                    <i data-lucide="check-circle" class="icon--success"></i>
+                    <strong>Mobile Optimized:</strong> Touch-friendly with proper sizing for mobile
+                </li>
+                <li>
+                    <i data-lucide="check-circle" class="icon--success"></i>
+                    <strong>Accessibility:</strong> Full ARIA support and keyboard navigation
+                </li>
+                <li>
+                    <i data-lucide="check-circle" class="icon--success"></i>
+                    <strong>Multiple Triggers:</strong> Hover, click, focus, or manual control
+                </li>
+                <li>
+                    <i data-lucide="check-circle" class="icon--success"></i>
+                    <strong>Rich Content:</strong> Support for HTML content and interactive elements
+                </li>
+                <li>
+                    <i data-lucide="check-circle" class="icon--success"></i>
+                    <strong>E-commerce Ready:</strong> Built-in utilities for product and shipping info
+                </li>
+                <li>
+                    <i data-lucide="check-circle" class="icon--success"></i>
+                    <strong>Performance:</strong> Lazy creation and efficient DOM management
+                </li>
+                <li>
+                    <i data-lucide="check-circle" class="icon--success"></i>
+                    <strong>Customizable:</strong> Delay, animations, and styling options
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <script type="module" src="../dist/amphibious.js"></script>
+    <script type="module">
+        // Initialize e-commerce tooltips
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('💬 Tooltip showcase initialized');
+
+            // Product info tooltip
+            const productElement = document.getElementById('product-tooltip-demo');
+            if (productElement) {
+                amp.createProductTooltip(productElement, {
+                    name: 'Wireless Earbuds Pro',
+                    price: '$149.99',
+                    description: 'Premium sound quality with active noise cancellation and 24-hour battery life'
+                });
+            }
+
+            // Shipping tooltip
+            const shippingElement = document.getElementById('shipping-tooltip-demo');
+            if (shippingElement) {
+                amp.createShippingTooltip(shippingElement, {
+                    method: 'Express Delivery',
+                    cost: 'FREE on orders over $50',
+                    time: '2-3 business days'
+                });
+            }
+
+            // Stock status tooltip
+            const stockElement = document.getElementById('stock-tooltip-demo');
+            if (stockElement) {
+                amp.createTooltip(stockElement, {
+                    content: 'Only 3 items left in stock - order soon!',
+                    variant: 'warning',
+                    position: 'top'
+                });
+            }
+
+            // Size guide tooltip
+            const sizeGuideBtn = document.getElementById('size-guide-btn');
+            if (sizeGuideBtn) {
+                amp.createTooltip(sizeGuideBtn, {
+                    html: `
+                        <div style="padding: 0.5rem;">
+                            <h4 style="margin: 0 0 0.5rem 0;">Size Chart</h4>
+                            <table style="font-size: 0.875rem;">
+                                <tr><td>S</td><td>34-36"</td></tr>
+                                <tr><td>M</td><td>38-40"</td></tr>
+                                <tr><td>L</td><td>42-44"</td></tr>
+                                <tr><td>XL</td><td>46-48"</td></tr>
+                            </table>
+                        </div>
+                    `,
+                    allowHTML: true,
+                    position: 'left',
+                    interactive: true,
+                    maxWidth: 200
+                });
+            }
+
+            // Test viewport edge detection
+            setTimeout(() => {
+                console.log('Tooltips ready for interaction');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

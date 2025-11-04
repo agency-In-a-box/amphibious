@@ -21,6 +21,7 @@
 @import "./components/icons.css";
 @import "./components/tooltip.css";
 @import "./components/navigation.css";
+@import "./components/footer.css";
 @import "./components/breadcrumbs.css";
 @import "./components/tabs.css";
 @import "./components/pagination.css";
@@ -28,6 +29,8 @@
 @import "./components/sidebar.css";
 @import "./components/input-groups.css";
 @import "./components/responsive-tables.css";
+@import "./components/carousel.css";
+@import "./components/pears.css";
 
 /* Utilities */
 @import "./helpers.css";

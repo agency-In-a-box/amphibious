@@ -3,63 +3,643 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amphibious 2.0 - Development</title>
+  <title>Amphibious 2.0 - Modern CSS Framework</title>
+  <meta name="description" content="Amphibious 2.0 - A modern, responsive CSS framework and component library built for e-commerce and modern web applications">
+  <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+    /* Homepage specific styles */
+    .demo-section {
+      margin: 4rem 0;
+      padding: 2rem 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .demo-section:last-child {
+      border-bottom: none;
+    }
+    .feature-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      height: 100%;
+      box-sizing: border-box;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .feature-card h4 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .demo-grid {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 4px;
+      margin: 0.25rem 0;
+    }
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+    /* Hero Stats using pea.rs pattern */
+    .hero .stats {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      justify-content: center;
+    }
+    .hero .stats li a,
+    .hero .stats li .stat-value {
+      color: white;
+      font-size: 2.5rem;
+    }
+    .hero .stats li span,
+    .hero .stats li .stat-label {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.875rem;
+    }
+    .hero .stats li {
+      border-right-color: rgba(255,255,255,0.2);
+    }
+    /* Navigation */
+    .site-nav {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .site-nav .container {
+      position: relative;
+    }
+
+    /* Horizontal Navigation */
+    .horizontal.branded {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .horizontal.branded > li {
+      position: relative;
+    }
+
+    .horizontal.branded > li > a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      display: block;
+      transition: background-color 0.2s, color 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .horizontal.branded > li:hover > a,
+    .horizontal.branded > li.active > a {
+      background-color: #667eea;
+      color: white;
+      border-bottom-color: #4c63d2;
+    }
+
+    .site-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #667eea !important;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .horizontal.branded > li.active > a.site-logo {
+      color: white !important;
+    }
+
+    /* Dropdown Menus */
+    .horizontal.branded ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 0 0 8px 8px;
+      min-width: 280px;
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s ease;
+      z-index: 1001;
+    }
+
+    .horizontal.branded > li:hover > ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .horizontal.branded ul li a {
+      display: block;
+      padding: 0.5rem 1.5rem;
+      color: #2c3e50;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background-color 0.15s;
+      border-left: 3px solid transparent;
+    }
+
+    .horizontal.branded ul li a:hover {
+      background-color: #f8f9fa;
+      border-left-color: #667eea;
+    }
+
+    .horizontal.branded ul li a sub {
+      font-size: 0.75rem;
+      color: #6c757d;
+      font-style: italic;
+    }
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+    .section-header p {
+      font-size: 1.125rem;
+      color: #6c757d;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    /* Recent Updates Section */
+    .updates-section {
+      background: #f8f9fa;
+      padding: 4rem 0;
+      margin-top: 3rem;
+    }
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-buttons a {
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+    .cta-buttons a:hover {
+      transform: translateY(-2px);
+    }
+    .btn-primary {
+      background: white;
+      color: #667eea;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header>
+  <!-- Site Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <ul class="horizontal branded">
+        <li class="active"><a href="#" class="site-logo" aria-current="page">🐸 Amphibious</a>
+          <ul>
+            <li><a href="#what_is_it">What is Amphibious 2.0</a></li>
+            <li><a href="#how_its_made">What is it made of?</a></li>
+            <li><a href="#gallery">Amphibious 2.0 Showcase</a></li>
+            <li><a href="#evolution">The Evolution of Amphibious</a></li>
+            <li><a href="#colophon">The Amphibious Colophon</a></li>
+          </ul>
+        </li>
+        <li><a href="docs/foundation.html">Foundation</a>
+          <ul>
+            <li><a href="docs/foundation.html#core">Core</a></li>
+            <li><a href="docs/foundation.html#grid">Semantic Grid</a></li>
+            <li><a href="docs/foundation.html#responsive_col">Responsive Columns</a></li>
+            <li><a href="docs/foundation.html#fluid_col">Fluid Columns</a></li>
+            <li><a href="docs/foundation.html#golden_section">Golden ratio grids</a></li>
+            <li><a href="docs/foundation.html#push_pull">Source Ordering</a></li>
+            <li><a href="docs/foundation.html#mediaQueries">Media Queries</a></li>
+          </ul>
+        </li>
+        <li><a href="docs/form.html">Form</a>
+          <ul>
+            <li><a href="docs/form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
+            <li><a href="docs/form.html#forms">Basic Forms</a></li>
+            <li><a href="docs/form.html#multi_forms">Multi Beside Forms</a></li>
+            <li><a href="docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
+            <li><a href="docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
+            <li><a href="docs/form.html#datepicker_fields">Date Picker Fields</a></li>
+            <li><a href="docs/form.html#tables">Tables <sub>not for layout</sub></a></li>
+          </ul>
+        </li>
+        <li><a href="docs/function.html">Function</a>
+          <ul>
+            <li><a href="docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
+            <li><a href="docs/function.html#horizcss">Horizontal Nav <sub>css</sub></a></li>
+            <li><a href="docs/function.html#vertnav">Vertical Nav <sub>with tertiary</sub></a></li>
+            <li><a href="docs/function.html#breadcrumbs">Breadcrumbs</a></li>
+            <li><a href="docs/function.html#tabmagic">Tabs</a></li>
+            <li><a href="docs/function.html#pagination">Pagination nav</a></li>
+          </ul>
+        </li>
+        <li><a href="docs/features.html">Features</a>
+          <ul>
+            <li><a href="docs/features.html#slides">Responsive Slide Shows</a></li>
+            <li><a href="docs/features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
+            <li><a href="docs/features.html#pears">Content Pea.rs</a></li>
+            <li><a href="docs/features.html#icons">Lucide Icons <sub>modern SVG icons</sub></a></li>
+          </ul>
+        </li>
+        <li><a href="examples/">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
       <h1>🐸 Amphibious 2.0</h1>
-      <p>The Elegant HTML5 Boilerplate for Responsive Web Development</p>
-    </header>
-    
-    <main>
-      <section>
-        <h2>Welcome to the Modern Era</h2>
-        <p>Amphibious has been rebuilt with modern tooling while preserving the elegant responsive patterns that made the original great.</p>
-      </section>
-      
-      <section>
-        <h3>Grid System Preview</h3>
+      <p>The modern evolution of the elegant responsive CSS framework. Built with TypeScript, powered by Vite, and designed for today's web with comprehensive components and e-commerce focus.</p>
+
+      <!-- Hero Stats using pea.rs pattern -->
+      <ul class="stats stats--large" aria-label="Framework statistics">
+        <li>
+          <strong class="stat-value">1,641+</strong>
+          <span class="stat-label">Lucide Icons</span>
+        </li>
+        <li>
+          <strong class="stat-value">16</strong>
+          <span class="stat-label">Column Grid</span>
+        </li>
+        <li>
+          <strong class="stat-value">25+</strong>
+          <span class="stat-label">Components</span>
+        </li>
+        <li>
+          <strong class="stat-value">2.0</strong>
+          <span class="stat-label">Latest Version</span>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Features Section -->
+    <section id="features" class="demo-section" aria-labelledby="features-title">
+      <header class="section-header">
+        <h2 id="features-title">Key Features</h2>
+        <p>Everything you need to build modern, responsive web applications</p>
+      </header>
+
+      <!-- Features as Stats Grid -->
+      <div class="stats-grid" role="list" aria-label="Framework features">
+        <article class="stat-card" role="listitem">
+          <span class="stat-card__icon" aria-hidden="true">🎨</span>
+          <h3 class="stat-card__number">Modern</h3>
+          <span class="stat-card__label">Components</span>
+          <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #6c757d;">Modals, tooltips, icons, cards, navigation, and more</p>
+        </article>
+        <article class="stat-card" role="listitem">
+          <span class="stat-card__icon" aria-hidden="true">⚡</span>
+          <h3 class="stat-card__number">Fast</h3>
+          <span class="stat-card__label">Performance</span>
+          <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #6c757d;">Tree-shakable, HW accelerated, 2-3KB components</p>
+        </article>
+        <article class="stat-card" role="listitem">
+          <span class="stat-card__icon" aria-hidden="true">♿</span>
+          <h3 class="stat-card__number">WCAG 2.1</h3>
+          <span class="stat-card__label">Accessible</span>
+          <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #6c757d;">Full ARIA support, keyboard nav, screen readers</p>
+        </article>
+        <article class="stat-card" role="listitem">
+          <span class="stat-card__icon" aria-hidden="true">🛒</span>
+          <h3 class="stat-card__number">E-commerce</h3>
+          <span class="stat-card__label">Ready</span>
+          <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #6c757d;">Product cards, carts, ratings, checkout flows</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Grid System Demo -->
+    <section id="grid" class="demo-section" aria-labelledby="grid-title">
+      <header class="section-header">
+        <h2 id="grid-title">16-Column Grid System</h2>
+        <p>Based on the proven 960 Grid System, providing flexible responsive design patterns</p>
+      </header>
+
+      <article>
+        <h3>Two 8-Column Layout</h3>
         <div class="row">
           <div class="col-8">
-            <div class="card">
-              <div class="card-body">
-                <h4>8 Columns</h4>
-                <p>Half of the 16-column grid</p>
-              </div>
-            </div>
+            <div class="demo-grid">8 Columns (50%)</div>
           </div>
           <div class="col-8">
-            <div class="card">
-              <div class="card-body">
-                <h4>8 Columns</h4>
-                <p>The other half</p>
-              </div>
-            </div>
+            <div class="demo-grid">8 Columns (50%)</div>
           </div>
         </div>
-      </section>
-      
-      <section>
-        <h3>Alert Components</h3>
-        <div class="alert alert-success">
-          ✓ Success! Amphibious is loading correctly.
+      </article>
+
+      <article>
+        <h3>Four 4-Column Layout</h3>
+        <div class="row">
+          <div class="col-4">
+            <div class="demo-grid">4 Cols</div>
+          </div>
+          <div class="col-4">
+            <div class="demo-grid">4 Cols</div>
+          </div>
+          <div class="col-4">
+            <div class="demo-grid">4 Cols</div>
+          </div>
+          <div class="col-4">
+            <div class="demo-grid">4 Cols</div>
+          </div>
         </div>
-        <div class="alert alert-info">
-          ℹ Check the browser console for initialization message.
+      </article>
+
+      <article>
+        <h3>Mixed Layout</h3>
+        <div class="row">
+          <div class="col-6">
+            <div class="demo-grid">6 Columns</div>
+          </div>
+          <div class="col-10">
+            <div class="demo-grid">10 Columns</div>
+          </div>
         </div>
-        <div class="alert alert-warning">
-          ⚠ Components are placeholders - migrate from A.mphibio.us.
+      </article>
+    </section>
+
+    <!-- Components Preview -->
+    <section id="components" class="demo-section" aria-labelledby="components-title">
+      <header class="section-header">
+        <h2 id="components-title">Component Library</h2>
+        <p>Rich set of UI components with semantic markup and accessibility built-in</p>
+      </header>
+
+      <article>
+        <h3>Icons & Tooltips</h3>
+        <div class="row">
+          <div class="col-16">
+            <nav style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;" aria-label="Icon examples">
+              <button class="icon-button" data-tooltip="Add to cart" aria-label="Add to cart">
+                <i data-lucide="shopping-cart"></i>
+              </button>
+              <button class="icon-button" data-tooltip="Add to wishlist" data-tooltip-variant="danger" aria-label="Add to wishlist">
+                <i data-lucide="heart"></i>
+              </button>
+              <button class="icon-button" data-tooltip="Search products" data-tooltip-position="bottom" aria-label="Search">
+                <i data-lucide="search"></i>
+              </button>
+              <button class="icon-button" data-tooltip="User account" data-tooltip-position="left" aria-label="Account">
+                <i data-lucide="user"></i>
+              </button>
+              <figure class="icon-badge" data-tooltip="Shopping cart with items" data-tooltip-position="top">
+                <i data-lucide="shopping-cart" class="icon--lg"></i>
+                <span class="icon-badge__count">3</span>
+              </figure>
+              <div class="rating" data-tooltip="4.5 out of 5 stars" aria-label="4.5 out of 5 stars">
+                <i data-lucide="star" class="icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--muted"></i>
+              </div>
+            </nav>
+          </div>
         </div>
-      </section>
-    </main>
-    
-    <footer>
-      <p>Built with ❤️ by Clive Moore | <a href="https://github.com/your-org/AIAB">GitHub</a></p>
-    </footer>
-  </div>
-  
-  <script type="module" src="/src/index.ts"></script>
+      </article>
+
+      <article>
+        <h3>Alerts</h3>
+        <aside class="alert alert-success" role="alert">
+          <i data-lucide="check-circle" class="icon--sm" aria-hidden="true"></i>
+          Success! Amphibious 2.0 is loading correctly with all components.
+        </aside>
+        <aside class="alert alert-info" role="alert">
+          <i data-lucide="info" class="icon--sm" aria-hidden="true"></i>
+          Check the browser console for the initialization message from the framework.
+        </aside>
+        <aside class="alert alert-warning" role="alert">
+          <i data-lucide="alert-triangle" class="icon--sm" aria-hidden="true"></i>
+          This is a development preview. Visit the examples folder for complete demonstrations.
+        </aside>
+      </article>
+    </section>
+
+    <!-- Pea.rs Patterns Section -->
+    <section id="patterns" class="demo-section" aria-labelledby="patterns-title">
+      <header class="section-header">
+        <h2 id="patterns-title">Pea.rs Patterns</h2>
+        <p>Common UI patterns with semantic HTML for consistent, accessible interfaces</p>
+      </header>
+
+      <article>
+        <h3>Stats Pattern</h3>
+        <ul class="stats stats--centered" aria-label="Performance metrics">
+          <li>
+            <strong class="stat-value">99.9%</strong>
+            <span class="stat-label">Uptime</span>
+          </li>
+          <li>
+            <strong class="stat-value">&lt; 100ms</strong>
+            <span class="stat-label">Response Time</span>
+          </li>
+          <li>
+            <strong class="stat-value">A+</strong>
+            <span class="stat-label">SSL Rating</span>
+          </li>
+          <li>
+            <strong class="stat-value">100/100</strong>
+            <span class="stat-label">PageSpeed</span>
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Slats Pattern</h3>
+        <ol class="slats" aria-label="Recent updates">
+          <li>
+            <article>
+              <h4><a href="examples/pears-patterns.html">🍐 Pea.rs Patterns Showcase</a></h4>
+              <p>Explore the complete collection of semantic UI patterns including stats, slats, and aside layouts.</p>
+              <time class="meta" datetime="2024-01-25">January 25, 2024</time>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4><a href="examples/e-commerce-cart.html">🛒 Shopping Cart with Semantic HTML</a></h4>
+              <p>Full-featured shopping cart implementation using proper semantic elements and ARIA attributes.</p>
+              <time class="meta" datetime="2024-01-24">January 24, 2024</time>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4><a href="examples/navigation-showcase.html">🧭 Navigation Components</a></h4>
+              <p>Comprehensive navigation patterns including mega menus, breadcrumbs, tabs, and mobile navigation.</p>
+              <time class="meta" datetime="2024-01-23">January 23, 2024</time>
+            </article>
+          </li>
+        </ol>
+      </article>
+    </section>
+  </main>
+
+  <!-- Recent Updates Section -->
+  <section class="updates-section" aria-labelledby="updates-title">
+    <div class="container">
+      <header class="section-header">
+        <h2 id="updates-title">Recent Updates</h2>
+        <p>What's new in Amphibious 2.0</p>
+      </header>
+
+      <!-- Updates as Slats with Images -->
+      <ul class="slats slats--with-image" aria-label="Recent framework updates">
+        <li>
+          <a href="examples/">
+            <figure>
+              <img src="https://placehold.co/80x80/667eea/ffffff?text=2.0" alt="Version 2.0" loading="lazy">
+            </figure>
+            <div class="content">
+              <h3>Version 2.0 Released</h3>
+              <p>Complete rebuild with TypeScript, Vite 6, and modern tooling. Includes 25+ components and comprehensive e-commerce support.</p>
+              <span class="meta">Full changelog available</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="docs/icons.html">
+            <figure>
+              <img src="https://placehold.co/80x80/764ba2/ffffff?text=Icons" alt="Lucide Icons" loading="lazy">
+            </figure>
+            <div class="content">
+              <h3>1,641+ Lucide Icons</h3>
+              <p>Complete icon library with tree-shakable imports, multiple sizes, and automatic ARIA labels for accessibility.</p>
+              <span class="meta">Browse icon gallery</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="examples/e-commerce-catalog.html">
+            <figure>
+              <img src="https://placehold.co/80x80/f59e0b/ffffff?text=Shop" alt="E-commerce" loading="lazy">
+            </figure>
+            <div class="content">
+              <h3>E-commerce Components</h3>
+              <p>Product cards, shopping carts, checkout flows, and rating systems designed for modern online stores.</p>
+              <span class="meta">View examples</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" aria-labelledby="cta-title">
+    <div class="container">
+      <h2 id="cta-title">Ready to Get Started?</h2>
+      <p>Join thousands of developers building with Amphibious</p>
+      <nav class="cta-buttons" aria-label="Call to action">
+        <a href="docs/getting-started.html" class="btn-primary">Get Started</a>
+        <a href="examples/" class="btn-secondary">View Examples</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #2c3e50; color: #adb5bd; padding: 3rem 0; margin-top: 0;">
+    <div class="container">
+      <div class="row">
+        <section class="col-8">
+          <h3 style="color: white; margin-top: 0;">Amphibious 2.0</h3>
+          <p>The modern evolution of A.mphibio.us. Built with TypeScript, powered by Vite, designed for today's web.</p>
+          <p style="font-size: 0.875rem; opacity: 0.8;">© 2024 Amphibious. MIT License.</p>
+        </section>
+        <nav class="col-4" aria-label="Documentation">
+          <h4 style="color: white;">Documentation</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="docs/getting-started.html" style="color: #adb5bd; text-decoration: none;">Getting Started</a></li>
+            <li><a href="docs/grid-system.html" style="color: #adb5bd; text-decoration: none;">Grid System</a></li>
+            <li><a href="docs/components.html" style="color: #adb5bd; text-decoration: none;">Components</a></li>
+            <li><a href="docs/api.html" style="color: #adb5bd; text-decoration: none;">API Reference</a></li>
+          </ul>
+        </nav>
+        <nav class="col-4" aria-label="Examples">
+          <h4 style="color: white;">Examples</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="examples/pears-patterns.html" style="color: #adb5bd; text-decoration: none;">Pea.rs Patterns</a></li>
+            <li><a href="examples/e-commerce-catalog.html" style="color: #adb5bd; text-decoration: none;">E-commerce</a></li>
+            <li><a href="examples/navigation-showcase.html" style="color: #adb5bd; text-decoration: none;">Navigation</a></li>
+            <li><a href="examples/showcase.html" style="color: #adb5bd; text-decoration: none;">Component Showcase</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Initialize -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('🐸 Amphibious 2.0 Homepage - Semantic HTML with Pea.rs Patterns');
+    });
+  </script>
 </body>
 </html>

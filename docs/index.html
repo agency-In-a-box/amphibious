@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Documentation - Amphibious 2.0</title>
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    /* Documentation specific styles */
+    body {
+      background: #f8f9fa;
+    }
+
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .component-card {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .component-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .component-card h3 {
+      color: #2c3e50;
+      margin: 0 0 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .component-card .icon {
+      width: 24px;
+      height: 24px;
+      color: #667eea;
+    }
+
+    .component-card p {
+      color: #6c757d;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.6;
+    }
+
+    .component-card .stats {
+      display: flex;
+      gap: 2rem;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid #e9ecef;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .component-card .stat {
+      flex: 1;
+      text-align: center;
+    }
+
+    .component-card .stat-value {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .component-card .stat-label {
+      display: block;
+      font-size: 0.75rem;
+      color: #6c757d;
+      text-transform: uppercase;
+    }
+
+    .component-card .links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .component-card .links a {
+      flex: 1;
+      padding: 0.5rem;
+      text-align: center;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .component-card .links a.primary {
+      background: #667eea;
+      color: white;
+    }
+
+    .component-card .links a.primary:hover {
+      background: #5a67d8;
+      text-decoration: none;
+    }
+
+    .component-card .links a.secondary {
+      background: #e9ecef;
+      color: #2c3e50;
+    }
+
+    .component-card .links a.secondary:hover {
+      background: #dee2e6;
+      text-decoration: none;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    .status-badge.complete {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .status-badge.beta {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .status-badge.new {
+      background: #cce5ff;
+      color: #004085;
+    }
+
+    .quick-links {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .quick-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .quick-links li a {
+      display: block;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .quick-links li a:hover {
+      background: #e9ecef;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="docs-header">
+    <div class="container">
+      <h1>Component Documentation</h1>
+      <p>Comprehensive documentation for all Amphibious 2.0 components with live examples and code samples</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Quick Links -->
+    <section class="quick-links">
+      <h2>Quick Start</h2>
+      <ul>
+        <li><a href="getting-started.html">🚀 Getting Started</a></li>
+        <li><a href="api-reference.html">📚 API Reference</a></li>
+        <li><a href="/examples/">💡 Live Examples</a></li>
+        <li><a href="https://github.com/yourusername/amphibious">📦 GitHub Repository</a></li>
+      </ul>
+    </section>
+
+    <!-- Component Grid -->
+    <section>
+      <h2>Components</h2>
+      <div class="component-grid">
+
+        <!-- Grid System -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+              <line x1="15" y1="3" x2="15" y2="21"></line>
+            </svg>
+            Grid System
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>16-column responsive grid system based on 960 Grid System principles with mobile-first breakpoints.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">16</span>
+              <span class="stat-label">Columns</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">3</span>
+              <span class="stat-label">Breakpoints</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/grid.html" class="primary">Documentation</a>
+            <a href="/examples/grid-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Typography -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="4 7 4 4 20 4 20 7"></polyline>
+              <line x1="9" y1="20" x2="15" y2="20"></line>
+              <line x1="12" y1="4" x2="12" y2="20"></line>
+            </svg>
+            Typography
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Beautiful typography with Avenir and Futura font stack, responsive sizing, and comprehensive text utilities.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">6</span>
+              <span class="stat-label">Heading Levels</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">15+</span>
+              <span class="stat-label">Utilities</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/typography.html" class="primary">Documentation</a>
+            <a href="/examples/typography-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Buttons -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="6" width="18" height="12" rx="2"></rect>
+              <path d="M8 12h8"></path>
+            </svg>
+            Buttons
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Comprehensive button system with multiple variants, sizes, states, and icon support.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">8</span>
+              <span class="stat-label">Variants</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">4</span>
+              <span class="stat-label">Sizes</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/buttons.html" class="primary">Documentation</a>
+            <a href="/examples/buttons-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Forms -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            Forms
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Accessible form components with validation, custom styling, and semantic markup.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">15+</span>
+              <span class="stat-label">Input Types</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Built-in</span>
+              <span class="stat-label">Validation</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/forms.html" class="primary">Documentation</a>
+            <a href="/examples/forms-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Navigation -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            Navigation
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Responsive navigation with mobile hamburger menu, dropdowns, and mega menu support.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">5</span>
+              <span class="stat-label">Variants</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Mobile</span>
+              <span class="stat-label">Optimized</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/navigation.html" class="primary">Documentation</a>
+            <a href="/examples/navigation-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Cards -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+            </svg>
+            Cards
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Flexible card components for displaying content with images, actions, and metadata.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">10+</span>
+              <span class="stat-label">Layouts</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Hover</span>
+              <span class="stat-label">Effects</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/cards.html" class="primary">Documentation</a>
+            <a href="/examples/cards-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Modals -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 7V3a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v4"></path>
+            </svg>
+            Modals
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Accessible modal dialogs with focus management, animations, and multiple sizes.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">5</span>
+              <span class="stat-label">Sizes</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">A11y</span>
+              <span class="stat-label">Compliant</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/modals.html" class="primary">Documentation</a>
+            <a href="/examples/modals-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Tooltips -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="8"></line>
+            </svg>
+            Tooltips & Popovers
+          </h3>
+          <span class="status-badge beta">Beta</span>
+          <p>Smart tooltips with automatic positioning, HTML content support, and mobile optimization.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">12</span>
+              <span class="stat-label">Positions</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Auto</span>
+              <span class="stat-label">Positioning</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/tooltips.html" class="primary">Documentation</a>
+            <a href="/examples/tooltips-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Icons -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            Icons
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>1,641+ Lucide icons with customizable size, color, and stroke width.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">1,641+</span>
+              <span class="stat-label">Icons</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Tree</span>
+              <span class="stat-label">Shakeable</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="icons.html" class="primary">Browse All Icons</a>
+            <a href="/examples/icons-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Carousel -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="10" rx="2" ry="2"></rect>
+              <circle cx="12" cy="12" r="1"></circle>
+              <circle cx="7" cy="12" r="1"></circle>
+              <circle cx="17" cy="12" r="1"></circle>
+            </svg>
+            Carousel
+          </h3>
+          <span class="status-badge new">New</span>
+          <p>Responsive carousels powered by Splide.js with multiple variants and accessibility.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">8</span>
+              <span class="stat-label">Variants</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Touch</span>
+              <span class="stat-label">Enabled</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="carousel.html" class="primary">Documentation</a>
+            <a href="/examples/carousel-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Tables -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="3" y1="15" x2="21" y2="15"></line>
+              <line x1="9" y1="9" x2="9" y2="21"></line>
+            </svg>
+            Tables
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Responsive tables with sorting, striped rows, and mobile-optimized layouts.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">5</span>
+              <span class="stat-label">Styles</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Mobile</span>
+              <span class="stat-label">Responsive</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/tables.html" class="primary">Documentation</a>
+            <a href="/examples/tables-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Alerts -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12" y2="16"></line>
+            </svg>
+            Alerts
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Contextual alert messages with icons, dismissible options, and multiple styles.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">6</span>
+              <span class="stat-label">Variants</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Dismissible</span>
+              <span class="stat-label">Support</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/alerts.html" class="primary">Documentation</a>
+            <a href="/examples/alerts-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Tabs -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h20v18H2z"></path>
+              <path d="M8 3v18"></path>
+              <path d="M16 3v18"></path>
+              <path d="M2 9h20"></path>
+            </svg>
+            Tabs
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Tabbed interfaces with keyboard navigation, ARIA support, and multiple styles.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">4</span>
+              <span class="stat-label">Styles</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Keyboard</span>
+              <span class="stat-label">Navigation</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/tabs.html" class="primary">Documentation</a>
+            <a href="/examples/tabs-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Breadcrumbs -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Breadcrumbs
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Semantic breadcrumb navigation with schema.org microdata and custom separators.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">Schema</span>
+              <span class="stat-label">Support</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">5</span>
+              <span class="stat-label">Styles</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/breadcrumbs.html" class="primary">Documentation</a>
+            <a href="/examples/breadcrumbs-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Pagination -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Pagination
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Flexible pagination with multiple styles, sizes, and alignment options.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">6</span>
+              <span class="stat-label">Styles</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">ARIA</span>
+              <span class="stat-label">Labels</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/pagination.html" class="primary">Documentation</a>
+            <a href="/examples/pagination-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Pea.rs Patterns -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="4" rx="1"></rect>
+              <rect x="3" y="10" width="18" height="4" rx="1"></rect>
+              <rect x="3" y="16" width="18" height="4" rx="1"></rect>
+            </svg>
+            Pea.rs Patterns
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Common UI patterns including stats, slats, and aside layouts from pea.rs.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">3</span>
+              <span class="stat-label">Patterns</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">15+</span>
+              <span class="stat-label">Variants</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/pears.html" class="primary">Documentation</a>
+            <a href="/examples/pears-patterns.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Steps/Progress -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            Steps & Progress
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Step indicators and progress bars for multi-step processes and forms.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">5</span>
+              <span class="stat-label">Styles</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Animated</span>
+              <span class="stat-label">Progress</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/steps.html" class="primary">Documentation</a>
+            <a href="/examples/steps-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+            </svg>
+            Sidebar
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Collapsible sidebar navigation with nested menus and mobile support.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">Collapsible</span>
+              <span class="stat-label">Menu</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Mobile</span>
+              <span class="stat-label">Ready</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/sidebar.html" class="primary">Documentation</a>
+            <a href="/examples/dashboard-template.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Footer -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="10" rx="2" ry="2"></rect>
+              <line x1="7" y1="15" x2="17" y2="15"></line>
+              <line x1="7" y1="18" x2="17" y2="18"></line>
+            </svg>
+            Footer
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Comprehensive footer component with newsletter, social links, and sitemap.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">5</span>
+              <span class="stat-label">Layouts</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Newsletter</span>
+              <span class="stat-label">Support</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/footer.html" class="primary">Documentation</a>
+            <a href="/examples/footer-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- JavaScript Components -->
+    <section>
+      <h2>JavaScript Components</h2>
+      <div class="component-grid">
+
+        <!-- Forms Validation -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Form Validation
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Real-time form validation with custom rules and error messages.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">15+</span>
+              <span class="stat-label">Rules</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Custom</span>
+              <span class="stat-label">Validators</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/validation.html" class="primary">Documentation</a>
+            <a href="/examples/validation-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- Smooth Scroll -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+            Smooth Scroll
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Smooth scrolling with easing, offset support, and scroll spy functionality.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">Easing</span>
+              <span class="stat-label">Functions</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Scroll</span>
+              <span class="stat-label">Spy</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/smooth-scroll.html" class="primary">Documentation</a>
+            <a href="/examples/smooth-scroll-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Utilities -->
+    <section>
+      <h2>Utilities & Helpers</h2>
+      <div class="component-grid">
+
+        <!-- Utility Classes -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            Utility Classes
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Comprehensive utility classes for spacing, colors, display, and more.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">100+</span>
+              <span class="stat-label">Classes</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Responsive</span>
+              <span class="stat-label">Variants</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/utilities.html" class="primary">Documentation</a>
+            <a href="/examples/utilities-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+        <!-- CSS Variables -->
+        <article class="component-card">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M18.36 18.36l4.24 4.24M1 12h6m6 0h6"></path>
+            </svg>
+            CSS Variables
+          </h3>
+          <span class="status-badge complete">Complete</span>
+          <p>Comprehensive theming system with CSS custom properties.</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">50+</span>
+              <span class="stat-label">Variables</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Theme</span>
+              <span class="stat-label">Ready</span>
+            </div>
+          </div>
+          <div class="links">
+            <a href="components/css-variables.html" class="primary">Documentation</a>
+            <a href="/examples/theming-showcase.html" class="secondary">Examples</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div style="padding: 3rem 0; text-align: center; border-top: 1px solid #e9ecef; margin-top: 4rem;">
+      <p>&copy; 2024 Amphibious 2.0. Built with semantic HTML and accessibility in mind.</p>
+      <p>
+        <a href="getting-started.html">Getting Started</a> |
+        <a href="api-reference.html">API Reference</a> |
+        <a href="https://github.com/yourusername/amphibious">GitHub</a> |
+        <a href="/examples/">Live Examples</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+</body>
+</html>

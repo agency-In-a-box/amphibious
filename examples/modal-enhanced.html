@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal System - Amphibious 2.0 Showcase</title>
+    <link rel="stylesheet" href="/dist/amphibious.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f7fafc;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            margin: 0 0 1rem 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            margin: 0 0 1rem 0;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #718096;
+            margin-bottom: 2rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .demo-card {
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .demo-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #2d3748;
+        }
+
+        .demo-card p {
+            color: #718096;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .keyword { color: #ff7979; }
+        .string { color: #00cec9; }
+        .comment { color: #636e72; }
+
+        .interactive-demo {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .interactive-demo h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        /* Product Modal Styles */
+        .product-modal-content {
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .product-modal-image {
+            flex: 1;
+            min-width: 200px;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .product-modal-info {
+            flex: 1;
+        }
+
+        .product-modal-price {
+            font-size: 2rem;
+            color: #10b981;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        .product-modal-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-options {
+            margin: 1.5rem 0;
+        }
+
+        .option-group {
+            margin-bottom: 1rem;
+        }
+
+        .option-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: #2d3748;
+        }
+
+        .option-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .option-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            border-color: #667eea;
+        }
+
+        .option-btn.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Checkout Steps */
+        .checkout-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #e2e8f0;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step.active .step-number {
+            background: #667eea;
+            color: white;
+        }
+
+        .step.completed .step-number {
+            background: #10b981;
+            color: white;
+        }
+
+        .step-title {
+            font-size: 0.875rem;
+            color: #718096;
+        }
+
+        .step.active .step-title {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #4a5568;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Animation Demo */
+        .animation-options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .animation-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .animation-btn:hover {
+            border-color: #667eea;
+        }
+
+        .animation-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Mobile Demo */
+        .mobile-demo {
+            background: #1a1a1a;
+            border-radius: 24px;
+            padding: 1rem;
+            max-width: 375px;
+            margin: 2rem auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .mobile-screen {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            min-height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .product-modal-content {
+                flex-direction: column;
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .checkout-steps {
+                font-size: 0.75rem;
+            }
+
+            .step-number {
+                width: 30px;
+                height: 30px;
+                font-size: 0.875rem;
+            }
+        }
+
+        .feature-badge {
+            display: inline-block;
+            background: #f0fdf4;
+            color: #10b981;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .performance-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .stat-description {
+            font-size: 0.875rem;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🎭 Modal System Showcase</h1>
+            <p>Accessible, responsive modals for dialogs, e-commerce flows, and mobile experiences</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Sizes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Variants</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Animations</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">♿</span>
+                    <span class="stat-label">WCAG 2.1</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Interactive Demo -->
+        <div class="interactive-demo">
+            <h3>🚀 Try Different Modal Types</h3>
+            <p>Click to experience various modal implementations</p>
+
+            <div class="button-group">
+                <button class="btn btn--primary" onclick="openProductModal()">
+                    <i data-lucide="eye"></i> Product Quick View
+                </button>
+                <button class="btn btn--success" onclick="openCheckoutModal()">
+                    <i data-lucide="credit-card"></i> Checkout Flow
+                </button>
+                <button class="btn btn--warning" onclick="openCartModal()">
+                    <i data-lucide="shopping-cart"></i> Shopping Cart
+                </button>
+                <button class="btn btn--danger" onclick="openConfirmModal()">
+                    <i data-lucide="alert-triangle"></i> Confirm Action
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal Sizes -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="maximize"></i>
+                Modal Sizes
+            </h2>
+            <p class="section-subtitle">Choose the right size for your content</p>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h4>Small (300px)</h4>
+                    <p>Perfect for alerts and confirmations</p>
+                    <button class="btn btn--sm" onclick="openSizeModal('sm')">
+                        Open Small
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Default (500px)</h4>
+                    <p>Standard dialogs and forms</p>
+                    <button class="btn" onclick="openSizeModal('default')">
+                        Open Default
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Large (800px)</h4>
+                    <p>Product views and galleries</p>
+                    <button class="btn" onclick="openSizeModal('lg')">
+                        Open Large
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Extra Large (1140px)</h4>
+                    <p>Complex forms and tables</p>
+                    <button class="btn btn--lg" onclick="openSizeModal('xl')">
+                        Open XL
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Full Screen</h4>
+                    <p>Immersive experiences</p>
+                    <button class="btn btn--primary" onclick="openSizeModal('full')">
+                        Open Full
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Variants -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="layers"></i>
+                Modal Variants
+            </h2>
+            <p class="section-subtitle">Different styles for different use cases</p>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h4>Alert Modal</h4>
+                    <p>Simple notifications</p>
+                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                        <button class="btn btn--success btn--sm" onclick="showAlert('success')">
+                            Success
+                        </button>
+                        <button class="btn btn--danger btn--sm" onclick="showAlert('error')">
+                            Error
+                        </button>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Image Modal</h4>
+                    <p>Lightbox for galleries</p>
+                    <button class="btn" onclick="openImageModal()">
+                        <i data-lucide="image"></i> View Gallery
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Drawer (Right)</h4>
+                    <p>Shopping cart sidebar</p>
+                    <button class="btn" onclick="openDrawer('right')">
+                        <i data-lucide="shopping-bag"></i> Open Cart
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Drawer (Left)</h4>
+                    <p>Navigation menu</p>
+                    <button class="btn" onclick="openDrawer('left')">
+                        <i data-lucide="menu"></i> Open Menu
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Bottom Sheet</h4>
+                    <p>Mobile-friendly actions</p>
+                    <button class="btn" onclick="openBottomSheet()">
+                        <i data-lucide="smartphone"></i> Mobile Sheet
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-commerce Flows -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="shopping-bag"></i>
+                E-commerce Modal Flows
+            </h2>
+            <p class="section-subtitle">Complete shopping experiences</p>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h4>Product Quick View</h4>
+                    <p>View products without leaving the page</p>
+                    <span class="feature-badge">Interactive</span>
+                    <span class="feature-badge">Gallery</span>
+                    <button class="btn btn--primary" onclick="openProductModal()">
+                        Launch Demo
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Multi-Step Checkout</h4>
+                    <p>Guided checkout process</p>
+                    <span class="feature-badge">3 Steps</span>
+                    <span class="feature-badge">Validation</span>
+                    <button class="btn btn--success" onclick="openCheckoutModal()">
+                        Start Checkout
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Shopping Cart</h4>
+                    <p>Review and edit cart items</p>
+                    <span class="feature-badge">Drawer</span>
+                    <span class="feature-badge">Live Updates</span>
+                    <button class="btn btn--warning" onclick="openCartModal()">
+                        View Cart
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h4>Size Guide</h4>
+                    <p>Interactive size charts</p>
+                    <span class="feature-badge">Tables</span>
+                    <span class="feature-badge">Help</span>
+                    <button class="btn" onclick="openSizeGuide()">
+                        Size Chart
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Experience -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="smartphone"></i>
+                Mobile-Optimized Experience
+            </h2>
+            <p class="section-subtitle">Perfect modals for touch devices</p>
+
+            <div class="mobile-demo">
+                <div class="mobile-screen">
+                    <h4 style="margin: 0 0 1rem 0;">Mobile Shopping App</h4>
+
+                    <button class="btn btn--primary btn--sm" style="width: 100%; margin-bottom: 0.5rem;"
+                            onclick="openMobileModal('bottom-sheet')">
+                        <i data-lucide="filter"></i> Filter Products
+                    </button>
+
+                    <button class="btn btn--secondary btn--sm" style="width: 100%; margin-bottom: 0.5rem;"
+                            onclick="openMobileModal('fullscreen')">
+                        <i data-lucide="search"></i> Search
+                    </button>
+
+                    <button class="btn btn--success btn--sm" style="width: 100%;"
+                            onclick="openMobileModal('drawer')">
+                        <i data-lucide="shopping-cart"></i> Cart (3)
+                    </button>
+
+                    <p style="text-align: center; color: #718096; margin-top: 2rem; font-size: 0.875rem;">
+                        Tap buttons to see mobile-optimized modals
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="zap"></i>
+                Performance & Features
+            </h2>
+
+            <div class="performance-stats">
+                <div class="stat-card">
+                    <div class="stat-value">&lt;100ms</div>
+                    <div class="stat-description">Open Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">60 FPS</div>
+                    <div class="stat-description">Animation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">0 CLS</div>
+                    <div class="stat-description">Layout Shift</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">A11y</div>
+                    <div class="stat-description">WCAG 2.1 AA</div>
+                </div>
+            </div>
+
+            <h3>Key Features</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <div>
+                    <h4>🎯 Focus Management</h4>
+                    <p>Automatic focus trapping and restoration</p>
+                </div>
+                <div>
+                    <h4>⌨️ Keyboard Support</h4>
+                    <p>Tab navigation and ESC to close</p>
+                </div>
+                <div>
+                    <h4>📱 Touch Gestures</h4>
+                    <p>Swipe to dismiss on mobile</p>
+                </div>
+                <div>
+                    <h4>🎨 Smooth Animations</h4>
+                    <p>Hardware-accelerated transitions</p>
+                </div>
+                <div>
+                    <h4>♿ Screen Readers</h4>
+                    <p>Full ARIA support and announcements</p>
+                </div>
+                <div>
+                    <h4>🔒 Scroll Lock</h4>
+                    <p>Prevents body scroll when open</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Examples -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="code"></i>
+                Implementation
+            </h2>
+
+            <h3>HTML Structure</h3>
+            <div class="code-block">
+&lt;<span class="keyword">div</span> <span class="string">id="myModal"</span> <span class="string">class="modal"</span> <span class="string">aria-hidden="true"</span>&gt;
+  &lt;<span class="keyword">div</span> <span class="string">class="modal__dialog"</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="string">class="modal__header"</span>&gt;
+      &lt;<span class="keyword">h3</span> <span class="string">class="modal__title"</span>&gt;Modal Title&lt;/<span class="keyword">h3</span>&gt;
+      &lt;<span class="keyword">button</span> <span class="string">class="modal__close"</span>&gt;&times;&lt;/<span class="keyword">button</span>&gt;
+    &lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="string">class="modal__body"</span>&gt;
+      <span class="comment"><!-- Content --></span>
+    &lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="string">class="modal__footer"</span>&gt;
+      &lt;<span class="keyword">button</span> <span class="string">data-modal-close</span>&gt;Cancel&lt;/<span class="keyword">button</span>&gt;
+      &lt;<span class="keyword">button</span> <span class="string">data-modal-confirm</span>&gt;Confirm&lt;/<span class="keyword">button</span>&gt;
+    &lt;/<span class="keyword">div</span>&gt;
+  &lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+            </div>
+
+            <h3>JavaScript API</h3>
+            <div class="code-block">
+<span class="comment">// Create modal instance</span>
+<span class="keyword">const</span> modal = amp.<span class="string">createModal</span>(<span class="string">'product'</span>, <span class="string">'#productModal'</span>, {
+  <span class="string">size</span>: <span class="string">'lg'</span>,
+  <span class="string">variant</span>: <span class="string">'default'</span>,
+  <span class="string">closeOnBackdrop</span>: <span class="keyword">true</span>,
+  <span class="string">closeOnEscape</span>: <span class="keyword">true</span>,
+  <span class="string">onOpen</span>: () => console.<span class="string">log</span>(<span class="string">'Modal opened'</span>),
+  <span class="string">onClose</span>: () => console.<span class="string">log</span>(<span class="string">'Modal closed'</span>)
+});
+
+<span class="comment">// Control modal</span>
+modal.<span class="string">open</span>();
+modal.<span class="string">close</span>();
+modal.<span class="string">toggle</span>();
+
+<span class="comment">// Alert & Confirm utilities</span>
+<span class="keyword">await</span> amp.<span class="string">alert</span>(<span class="string">'Success!'</span>, <span class="string">'success'</span>);
+<span class="keyword">const</span> confirmed = <span class="keyword">await</span> amp.<span class="string">confirm</span>(<span class="string">'Are you sure?'</span>);
+            </div>
+        </section>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal modal--lg" aria-hidden="true">
+        <div class="modal__dialog">
+            <div class="modal__header">
+                <h3 class="modal__title">Premium Wireless Headphones</h3>
+                <button class="modal__close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal__body">
+                <div class="product-modal-content">
+                    <div class="product-modal-image">
+                        <i data-lucide="headphones"></i>
+                    </div>
+                    <div class="product-modal-info">
+                        <div class="rating">
+                            <i data-lucide="star" class="icon--filled icon--warning"></i>
+                            <i data-lucide="star" class="icon--filled icon--warning"></i>
+                            <i data-lucide="star" class="icon--filled icon--warning"></i>
+                            <i data-lucide="star" class="icon--filled icon--warning"></i>
+                            <i data-lucide="star"></i>
+                            <span style="color: #718096; margin-left: 0.5rem;">(247 reviews)</span>
+                        </div>
+
+                        <div class="product-modal-price">$199.99</div>
+
+                        <div class="product-modal-description">
+                            Experience premium audio with our wireless headphones featuring active noise cancellation,
+                            30-hour battery life, and superior comfort for all-day wear.
+                        </div>
+
+                        <div class="product-options">
+                            <div class="option-group">
+                                <label class="option-label">Color:</label>
+                                <div class="option-buttons">
+                                    <button class="option-btn selected">Black</button>
+                                    <button class="option-btn">White</button>
+                                    <button class="option-btn">Blue</button>
+                                </div>
+                            </div>
+
+                            <div class="option-group">
+                                <label class="option-label">Quantity:</label>
+                                <div class="option-buttons">
+                                    <button class="option-btn">-</button>
+                                    <input type="number" value="1" min="1" style="width: 60px; text-align: center;">
+                                    <button class="option-btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--secondary" data-modal-close>Close</button>
+                <button class="btn btn--primary">
+                    <i data-lucide="shopping-cart"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal modal--xl" aria-hidden="true">
+        <div class="modal__dialog">
+            <div class="modal__header">
+                <h3 class="modal__title">Checkout</h3>
+                <button class="modal__close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal__body">
+                <div class="checkout-steps">
+                    <div class="step completed">
+                        <div class="step-number">✓</div>
+                        <div class="step-title">Cart</div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Shipping</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Payment</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Review</div>
+                    </div>
+                </div>
+
+                <h4>Shipping Information</h4>
+                <form>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Doe">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-input" placeholder="123 Main St">
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-input" placeholder="New York">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">ZIP Code</label>
+                            <input type="text" class="form-input" placeholder="10001">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--secondary" data-modal-close>Cancel</button>
+                <button class="btn btn--primary">Continue to Payment →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div id="cartModal" class="modal modal--drawer-right" aria-hidden="true">
+        <div class="modal__dialog">
+            <div class="modal__header">
+                <h3 class="modal__title">Shopping Cart (3 items)</h3>
+                <button class="modal__close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal__body">
+                <div style="padding: 1rem 0;">
+                    <div style="display: flex; gap: 1rem; padding: 1rem; border-bottom: 1px solid #e2e8f0;">
+                        <div style="width: 60px; height: 60px; background: #f0f0f0; border-radius: 8px;"></div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 600;">Wireless Headphones</div>
+                            <div style="color: #718096; font-size: 0.875rem;">Qty: 1</div>
+                        </div>
+                        <div style="font-weight: 600;">$199.99</div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; padding: 1rem; border-bottom: 1px solid #e2e8f0;">
+                        <div style="width: 60px; height: 60px; background: #f0f0f0; border-radius: 8px;"></div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 600;">Wireless Mouse</div>
+                            <div style="color: #718096; font-size: 0.875rem;">Qty: 1</div>
+                        </div>
+                        <div style="font-weight: 600;">$49.99</div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; padding: 1rem;">
+                        <div style="width: 60px; height: 60px; background: #f0f0f0; border-radius: 8px;"></div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 600;">USB-C Cable</div>
+                            <div style="color: #718096; font-size: 0.875rem;">Qty: 2</div>
+                        </div>
+                        <div style="font-weight: 600;">$19.99</div>
+                    </div>
+
+                    <div style="padding: 1rem; border-top: 2px solid #e2e8f0; margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 600;">
+                            <span>Total:</span>
+                            <span style="color: #10b981;">$269.97</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--secondary" data-modal-close>Continue Shopping</button>
+                <button class="btn btn--primary">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Size Modal Examples -->
+    <div id="sizeModalSm" class="modal modal--sm" aria-hidden="true">
+        <div class="modal__dialog">
+            <div class="modal__body" style="text-align: center; padding: 2rem;">
+                <h3>Small Modal</h3>
+                <p>300px width - Perfect for simple alerts</p>
+                <button class="btn btn--primary" data-modal-close>Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sizeModalDefault" class="modal" aria-hidden="true">
+        <div class="modal__dialog">
+            <div class="modal__header">
+                <h3 class="modal__title">Default Modal</h3>
+                <button class="modal__close">&times;</button>
+            </div>
+            <div class="modal__body">
+                <p>500px width - Standard size for most dialogs</p>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sizeModalLg" class="modal modal--lg" aria-hidden="true">
+        <div class="modal__dialog">
+            <div class="modal__header">
+                <h3 class="modal__title">Large Modal</h3>
+                <button class="modal__close">&times;</button>
+            </div>
+            <div class="modal__body">
+                <p>800px width - Great for product views and galleries</p>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../dist/amphibious.js"></script>
+    <script type="module">
+        console.log('🎭 Modal showcase initialized');
+
+        // Product Modal
+        window.openProductModal = function() {
+            const modal = amp.createModal('product', '#productModal');
+            modal.open();
+        };
+
+        // Checkout Modal
+        window.openCheckoutModal = function() {
+            const modal = amp.createModal('checkout', '#checkoutModal');
+            modal.open();
+        };
+
+        // Cart Modal
+        window.openCartModal = function() {
+            const modal = amp.createModal('cart', '#cartModal');
+            modal.open();
+        };
+
+        // Confirm Modal
+        window.openConfirmModal = async function() {
+            const confirmed = await amp.confirm(
+                'Are you sure you want to delete this item from your cart?',
+                'Yes, Delete',
+                'Cancel'
+            );
+
+            if (confirmed) {
+                await amp.alert('Item removed from cart', 'success');
+            }
+        };
+
+        // Size Modals
+        window.openSizeModal = function(size) {
+            let modalId = '#sizeModalDefault';
+            if (size === 'sm') modalId = '#sizeModalSm';
+            if (size === 'lg') modalId = '#sizeModalLg';
+            if (size === 'xl') {
+                amp.alert('Extra Large Modal - 1140px width', 'info');
+                return;
+            }
+            if (size === 'full') {
+                amp.alert('Full Screen Modal - Takes entire viewport', 'info');
+                return;
+            }
+
+            const modal = amp.createModal(size, modalId);
+            modal.open();
+        };
+
+        // Alert Examples
+        window.showAlert = function(type) {
+            const messages = {
+                success: 'Order placed successfully!',
+                error: 'Payment failed. Please try again.'
+            };
+            amp.alert(messages[type] || 'Alert message', type);
+        };
+
+        // Image Modal
+        window.openImageModal = function() {
+            amp.alert('Image gallery modal would display here', 'info');
+        };
+
+        // Drawer Examples
+        window.openDrawer = function(direction) {
+            if (direction === 'right') {
+                const modal = amp.createModal('cart', '#cartModal');
+                modal.open();
+            } else {
+                amp.alert(`${direction} drawer would open here`, 'info');
+            }
+        };
+
+        // Bottom Sheet
+        window.openBottomSheet = function() {
+            amp.alert('Bottom sheet modal - Perfect for mobile actions', 'info');
+        };
+
+        // Size Guide
+        window.openSizeGuide = function() {
+            amp.alert('Size guide modal would display here', 'info');
+        };
+
+        // Mobile Modals
+        window.openMobileModal = function(type) {
+            const messages = {
+                'bottom-sheet': 'Mobile bottom sheet for filters',
+                'fullscreen': 'Full screen search modal',
+                'drawer': 'Shopping cart drawer'
+            };
+            amp.alert(messages[type] || 'Mobile modal', 'info');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon System - Amphibious 2.0 Showcase</title>
+    <link rel="stylesheet" href="/dist/amphibious.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            margin: 0 0 1rem 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .search-section {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e1e5e9;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+        }
+
+        .section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .icon-card {
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .icon-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .icon-card.copied {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+
+        .icon-display {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+
+        .icon-name {
+            font-size: 0.875rem;
+            color: #718096;
+            margin-bottom: 0.25rem;
+        }
+
+        .icon-usage {
+            font-size: 0.75rem;
+            color: #a0aec0;
+            font-family: monospace;
+        }
+
+        .copy-feedback {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .icon-card.copied .copy-feedback {
+            opacity: 1;
+        }
+
+        .demo-section {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .demo-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e1e5e9;
+        }
+
+        .demo-item h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .keyword { color: #ff7979; }
+        .string { color: #00cec9; }
+        .comment { color: #636e72; }
+
+        .results-info {
+            text-align: center;
+            color: #718096;
+            margin: 1rem 0;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #a0aec0;
+        }
+
+        .category-preview {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.2s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .stats { gap: 1.5rem; }
+            .filters { justify-content: flex-start; }
+            .icon-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🎨 Icon System Showcase</h1>
+            <p>1,641+ Lucide icons with smart integration and e-commerce focus</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">1,641+</span>
+                    <span class="stat-label">Icons Available</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Sizes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Color Variants</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-box">
+                <i data-lucide="search" class="search-icon"></i>
+                <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search icons... (e.g., shopping, heart, user, search)"
+                    id="iconSearch"
+                >
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-category="all">All Icons</button>
+                <button class="filter-btn" data-category="e-commerce">E-commerce</button>
+                <button class="filter-btn" data-category="navigation">Navigation</button>
+                <button class="filter-btn" data-category="social">Social</button>
+                <button class="filter-btn" data-category="media">Media</button>
+                <button class="filter-btn" data-category="ui">UI Elements</button>
+                <button class="filter-btn" data-category="arrows">Arrows</button>
+                <button class="filter-btn" data-category="files">Files</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Usage Examples -->
+        <section class="demo-section">
+            <h2 class="section-title">
+                <i data-lucide="code"></i>
+                Quick Usage Examples
+            </h2>
+
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>HTML Data Attribute</h4>
+                    <div class="category-preview">
+                        <i data-lucide="shopping-cart" class="icon--lg"></i>
+                        <i data-lucide="heart" class="icon--lg icon--danger"></i>
+                        <i data-lucide="star" class="icon--lg icon--warning"></i>
+                    </div>
+                    <div class="code-block">
+<span class="comment"><!-- Simple icon --></span>
+&lt;<span class="keyword">i</span> <span class="string">data-lucide="shopping-cart"</span>&gt;&lt;/<span class="keyword">i</span>&gt;
+
+<span class="comment"><!-- With styling --></span>
+&lt;<span class="keyword">i</span> <span class="string">data-lucide="heart"</span> <span class="string">class="icon--lg icon--danger"</span>&gt;&lt;/<span class="keyword">i</span>&gt;
+                    </div>
+                </div>
+
+                <div class="demo-item">
+                    <h4>JavaScript API</h4>
+                    <div class="category-preview">
+                        <div id="js-icon-demo"></div>
+                    </div>
+                    <div class="code-block">
+<span class="comment">// Create icon with JavaScript</span>
+<span class="keyword">const</span> icon = amp.<span class="string">createIcon</span>(<span class="string">'shopping-cart'</span>, {
+  <span class="string">class</span>: <span class="string">'icon--lg icon--primary'</span>
+});
+
+<span class="comment">// E-commerce utilities</span>
+<span class="keyword">const</span> cart = amp.<span class="string">createCart</span>(<span class="string">5</span>);
+<span class="keyword">const</span> rating = amp.<span class="string">createRating</span>(<span class="string">4</span>, <span class="string">5</span>);
+                    </div>
+                </div>
+
+                <div class="demo-item">
+                    <h4>E-commerce Components</h4>
+                    <div class="category-preview">
+                        <div class="icon-badge">
+                            <i data-lucide="shopping-cart" class="icon--lg"></i>
+                            <span class="icon-badge__count">3</span>
+                        </div>
+                        <div class="rating">
+                            <i data-lucide="star" class="icon--filled icon--warning"></i>
+                            <i data-lucide="star" class="icon--filled icon--warning"></i>
+                            <i data-lucide="star" class="icon--filled icon--warning"></i>
+                            <i data-lucide="star" class="icon--filled icon--warning"></i>
+                            <i data-lucide="star" class="icon--muted"></i>
+                        </div>
+                    </div>
+                    <div class="code-block">
+<span class="comment"><!-- Shopping cart with badge --></span>
+&lt;<span class="keyword">div</span> <span class="string">class="icon-badge"</span>&gt;
+  &lt;<span class="keyword">i</span> <span class="string">data-lucide="shopping-cart"</span>&gt;&lt;/<span class="keyword">i</span>&gt;
+  &lt;<span class="keyword">span</span> <span class="string">class="icon-badge__count"</span>&gt;3&lt;/<span class="keyword">span</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+
+<span class="comment"><!-- Star rating --></span>
+&lt;<span class="keyword">div</span> <span class="string">class="rating"</span>&gt;...&lt;/<span class="keyword">div</span>&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Categories -->
+        <section class="section">
+            <div class="results-info" id="resultsInfo">
+                Click on any icon to copy its HTML code
+            </div>
+
+            <!-- E-commerce Icons -->
+            <div class="category-section" data-category="e-commerce">
+                <h2 class="section-title">
+                    <i data-lucide="shopping-bag"></i>
+                    E-commerce Icons
+                </h2>
+                <div class="icon-grid" id="ecommerceIcons">
+                    <!-- Icons will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Navigation Icons -->
+            <div class="category-section" data-category="navigation">
+                <h2 class="section-title">
+                    <i data-lucide="navigation"></i>
+                    Navigation Icons
+                </h2>
+                <div class="icon-grid" id="navigationIcons">
+                    <!-- Icons will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- UI Icons -->
+            <div class="category-section" data-category="ui">
+                <h2 class="section-title">
+                    <i data-lucide="layout"></i>
+                    UI Elements
+                </h2>
+                <div class="icon-grid" id="uiIcons">
+                    <!-- Icons will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Search Results -->
+            <div class="category-section" id="searchResults" style="display: none;">
+                <h2 class="section-title">
+                    <i data-lucide="search"></i>
+                    Search Results
+                </h2>
+                <div class="icon-grid" id="searchResultsGrid">
+                    <!-- Search results will be populated here -->
+                </div>
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i data-lucide="search-x" class="icon--xl icon--muted"></i>
+                <h3>No icons found</h3>
+                <p>Try a different search term or browse categories above</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script type="module" src="../dist/amphibious.js"></script>
+    <script>
+        // Icon database organized by category
+        const iconDatabase = {
+            'e-commerce': [
+                'shopping-cart', 'shopping-bag', 'credit-card', 'heart', 'star', 'truck', 'package',
+                'gift', 'tags', 'tag', 'dollar-sign', 'percent', 'receipt', 'wallet',
+                'shopping-cart-icon', 'bag-check', 'package-check', 'gift-card'
+            ],
+            'navigation': [
+                'menu', 'x', 'arrow-left', 'arrow-right', 'arrow-up', 'arrow-down',
+                'chevron-left', 'chevron-right', 'chevron-up', 'chevron-down',
+                'home', 'search', 'settings', 'user', 'users', 'more-horizontal'
+            ],
+            'social': [
+                'facebook', 'twitter', 'instagram', 'linkedin', 'youtube', 'github',
+                'mail', 'phone', 'message-circle', 'share', 'share-2', 'link'
+            ],
+            'media': [
+                'play', 'pause', 'stop', 'volume-2', 'volume-x', 'image', 'video',
+                'camera', 'mic', 'mic-off', 'headphones', 'music', 'film'
+            ],
+            'ui': [
+                'check', 'x', 'plus', 'minus', 'edit', 'trash-2', 'copy', 'download',
+                'upload', 'refresh-cw', 'loader', 'alert-circle', 'info', 'help-circle'
+            ],
+            'arrows': [
+                'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up-right',
+                'arrow-down-right', 'arrow-down-left', 'arrow-up-left', 'move',
+                'maximize', 'minimize', 'expand', 'shrink'
+            ],
+            'files': [
+                'file', 'file-text', 'folder', 'folder-open', 'archive', 'paperclip',
+                'clipboard', 'save', 'download', 'upload', 'hard-drive', 'database'
+            ]
+        };
+
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeIcons();
+            setupEventListeners();
+            renderIcons();
+
+            // Create demo JavaScript icons
+            createJSDemo();
+        });
+
+        function initializeIcons() {
+            console.log('🎨 Icons showcase initialized');
+        }
+
+        function setupEventListeners() {
+            // Search functionality
+            const searchInput = document.getElementById('iconSearch');
+            searchInput.addEventListener('input', handleSearch);
+
+            // Filter buttons
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.category;
+                    renderIcons();
+                });
+            });
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        function handleSearch(event) {
+            searchTerm = event.target.value.toLowerCase().trim();
+            renderIcons();
+        }
+
+        function renderIcons() {
+            const isSearching = searchTerm.length > 0;
+            const categories = document.querySelectorAll('.category-section');
+            const searchResults = document.getElementById('searchResults');
+            const noResults = document.getElementById('noResults');
+            const resultsInfo = document.getElementById('resultsInfo');
+
+            // Hide all categories initially
+            categories.forEach(cat => {
+                if (cat.id !== 'searchResults') {
+                    cat.style.display = 'none';
+                }
+            });
+            searchResults.style.display = 'none';
+            noResults.style.display = 'none';
+
+            if (isSearching) {
+                // Show search results
+                const results = searchIcons(searchTerm);
+                if (results.length > 0) {
+                    renderIconGrid('searchResultsGrid', results);
+                    searchResults.style.display = 'block';
+                    resultsInfo.textContent = `Found ${results.length} icons matching "${searchTerm}"`;
+                } else {
+                    noResults.style.display = 'block';
+                    resultsInfo.textContent = `No icons found for "${searchTerm}"`;
+                }
+            } else {
+                // Show category view
+                resultsInfo.textContent = 'Click on any icon to copy its HTML code';
+
+                if (currentFilter === 'all') {
+                    // Show all categories
+                    Object.keys(iconDatabase).forEach(category => {
+                        const categoryElement = document.querySelector(`[data-category="${category}"]`);
+                        if (categoryElement && categoryElement.id !== 'searchResults') {
+                            categoryElement.style.display = 'block';
+                            renderCategoryIcons(category);
+                        }
+                    });
+                } else {
+                    // Show specific category
+                    const categoryElement = document.querySelector(`[data-category="${currentFilter}"]`);
+                    if (categoryElement && categoryElement.id !== 'searchResults') {
+                        categoryElement.style.display = 'block';
+                        renderCategoryIcons(currentFilter);
+                    }
+                }
+            }
+        }
+
+        function searchIcons(term) {
+            const results = [];
+            Object.keys(iconDatabase).forEach(category => {
+                iconDatabase[category].forEach(icon => {
+                    if (icon.toLowerCase().includes(term)) {
+                        results.push({ name: icon, category });
+                    }
+                });
+            });
+            return results;
+        }
+
+        function renderCategoryIcons(category) {
+            const gridId = category + 'Icons';
+            const grid = document.getElementById(gridId);
+            if (grid) {
+                const icons = iconDatabase[category].map(name => ({ name, category }));
+                renderIconGrid(gridId, icons);
+            }
+        }
+
+        function renderIconGrid(gridId, icons) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+
+            grid.innerHTML = icons.map(icon => `
+                <div class="icon-card" onclick="copyIconCode('${icon.name}')" data-icon="${icon.name}">
+                    <div class="copy-feedback">Copied!</div>
+                    <div class="icon-display">
+                        <i data-lucide="${icon.name}"></i>
+                    </div>
+                    <div class="icon-name">${icon.name}</div>
+                    <div class="icon-usage">data-lucide="${icon.name}"</div>
+                </div>
+            `).join('');
+
+            // Initialize Lucide icons in the new grid
+            setTimeout(() => {
+                if (window.amp && window.amp.modules.icon) {
+                    window.amp.modules.icon.refresh();
+                }
+            }, 100);
+        }
+
+        function copyIconCode(iconName) {
+            const code = `<i data-lucide="${iconName}"></i>`;
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(code).then(() => {
+                // Show feedback
+                const card = document.querySelector(`[data-icon="${iconName}"]`);
+                if (card) {
+                    card.classList.add('copied');
+                    setTimeout(() => {
+                        card.classList.remove('copied');
+                    }, 2000);
+                }
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function createJSDemo() {
+            const demoContainer = document.getElementById('js-icon-demo');
+            if (!demoContainer) return;
+
+            // Create icons using JavaScript API
+            setTimeout(() => {
+                if (window.amp) {
+                    const icon1 = amp.createIcon('zap', { class: 'icon--lg icon--warning' });
+                    const icon2 = amp.createCart(2);
+                    const icon3 = amp.createRating(4, 5);
+
+                    if (icon1) demoContainer.appendChild(icon1);
+                    if (icon2) demoContainer.appendChild(icon2);
+                    if (icon3) demoContainer.appendChild(icon3);
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>

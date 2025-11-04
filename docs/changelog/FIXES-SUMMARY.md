@@ -1,0 +1,278 @@
+# Amphibious 2.0 - Grid Fix & Image Placeholder Guide
+
+## Quick Summary
+
+This document provides a roadmap to fix the two main issues in Amphibious 2.0:
+
+1. **Broken Grid System** - Float-based layout with incorrect widths and gutters
+2. **Broken Image Links** - Missing or incorrect image paths from legacy migration
+
+## 🚀 Quick Fix for Grid System
+
+### Option 1: Run the Automated Script (Fastest)
+
+```bash
+cd /Users/clivemoore/Documents/GitHub/AIAB/amphibious
+
+# Run the fix script
+bun run scripts/fix-grid.ts
+
+# Test the changes
+bun run dev
+```
+
+This will:
+- ✅ Replace the entire grid.css with a modern flexbox implementation
+- ✅ Maintain backward compatibility with old class names
+- ✅ Fix all width calculations and gutters
+- ✅ Provide proper responsive behavior
+- ✅ Add new utility classes for alignment and ordering
+
+### Option 2: Manual Implementation
+
+See [GRID-FIX-GUIDE.md](./GRID-FIX-GUIDE.md) for:
+- Detailed analysis of current issues
+- Three different solution approaches
+- Step-by-step migration instructions
+- Testing procedures
+
+## 🖼️ Fix Broken Image Links
+
+### For Claude Code CLI
+
+The file [CLAUDE-CODE-IMAGE-INSTRUCTIONS.md](./CLAUDE-CODE-IMAGE-INSTRUCTIONS.md) contains complete instructions for Claude Code to:
+
+1. **Scan** all HTML/MD files for broken image references
+2. **Categorize** images by type (product, avatar, hero, etc.)
+3. **Replace** with appropriate placeholder services
+4. **Verify** all replacements work correctly
+5. **Document** all changes made
+
+### Quick Manual Fix
+
+For immediate testing, you can manually update placeholder images in index.html:
+
+```bash
+# Find all via.placeholder.com references
+grep -r "via.placeholder.com" --include="*.html" .
+
+# Replace with placehold.co (more reliable)
+find . -name "*.html" -exec sed -i '' \
+  's|via.placeholder.com|placehold.co|g' {} \;
+```
+
+### Placeholder Service Recommendations
+
+**Use placehold.co** for most cases:
+```
+https://placehold.co/600x400/667eea/FFF?text=Product
+```
+
+**Use picsum.photos** for realistic images:
+```
+https://picsum.photos/800/600
+```
+
+## 📋 What Each Document Contains
+
+### [GRID-FIX-GUIDE.md](./GRID-FIX-GUIDE.md)
+- **Analysis** of current grid problems
+- **Three solutions**: Float fix, Flexbox (recommended), CSS Grid
+- **Implementation** steps
+- **Testing** checklist
+- **Migration** notes
+
+### [CLAUDE-CODE-IMAGE-INSTRUCTIONS.md](./CLAUDE-CODE-IMAGE-INSTRUCTIONS.md)
+- **Placeholder services** (placehold.co, picsum)
+- **Color palette** for brand consistency
+- **Size guidelines** for different contexts
+- **Automated script** approach
+- **Manual commands** for find/replace
+- **Workflow** for systematic replacement
+
+### [scripts/fix-grid.ts](./scripts/fix-grid.ts)
+- **Ready-to-run** TypeScript script
+- **Modern flexbox** implementation
+- **Backward compatible** with legacy classes
+- **Responsive** out of the box
+- **Well documented** CSS
+
+## 🎯 Recommended Workflow
+
+### 1. Fix the Grid First (Highest Priority)
+
+```bash
+# Navigate to project
+cd /Users/clivemoore/Documents/GitHub/AIAB/amphibious
+
+# Run the grid fix
+bun run scripts/fix-grid.ts
+
+# Start dev server
+bun run dev
+```
+
+**Test in browser:**
+- Two 8-column layout should be 50/50
+- Four 4-column layout should be equal widths
+- Responsive behavior (resize browser window)
+- No horizontal scrolling
+- Proper gutters between columns
+
+### 2. Fix Image Placeholders (Second Priority)
+
+**Option A: Use Claude Code CLI**
+```bash
+# Invoke Claude Code with the instructions
+claude code --file CLAUDE-CODE-IMAGE-INSTRUCTIONS.md
+
+# It will scan, analyze, and replace all broken images
+```
+
+**Option B: Manual Quick Fix**
+```bash
+# Replace via.placeholder with placehold.co
+find . -name "*.html" -exec sed -i '' \
+  's|https://placehold.co/|https://placehold.co/|g' {} \;
+
+# Test in browser
+bun run dev
+```
+
+### 3. Verify Everything Works
+
+```bash
+# Run linting
+bun run lint
+
+# Run type checking
+bun run typecheck
+
+# Build for production
+bun run build
+
+# Preview production build
+bun run preview
+```
+
+### 4. Document and Commit
+
+```bash
+git add .
+git commit -m "Fix: Modernize grid system to flexbox and update image placeholders
+
+- Replace float-based grid with modern flexbox implementation
+- Fix column width calculations and gutters
+- Add responsive behavior for mobile/tablet
+- Update broken image links with placehold.co placeholders
+- Maintain backward compatibility with legacy class names
+
+See GRID-FIX-GUIDE.md and CLAUDE-CODE-IMAGE-INSTRUCTIONS.md for details."
+```
+
+## 🔍 Visual Comparison
+
+### Before Grid Fix
+- Columns overflow container
+- Incorrect widths (don't add up to 100%)
+- Inconsistent gutters
+- Poor responsive behavior
+- Float-based layout issues
+
+### After Grid Fix
+- ✅ Columns fit perfectly in container
+- ✅ Widths based on percentage (6.25% per column)
+- ✅ Consistent 20px gutters (10px padding each side)
+- ✅ Smooth responsive stacking on mobile
+- ✅ Modern flexbox with fallbacks
+
+### Before Image Fix
+- ❌ Broken image icons
+- ❌ 404 errors in console
+- ❌ Inconsistent placeholder styles
+
+### After Image Fix
+- ✅ All images load
+- ✅ Brand-consistent colors
+- ✅ Appropriate sizes for context
+- ✅ Lazy loading enabled
+
+## 📚 Additional Resources
+
+### Updated Claude.md
+The main [Claude.md](./Claude.md) file has been updated with references to:
+- Grid fix guide
+- Image placeholder instructions
+- Known issues and solutions
+
+### For Claude Code CLI Users
+Pass these files to Claude Code:
+```bash
+claude code \
+  --file CLAUDE-CODE-IMAGE-INSTRUCTIONS.md \
+  --context Claude.md \
+  --task "Replace all broken image links with appropriate placeholders"
+```
+
+### For Manual Fixes
+1. Read [GRID-FIX-GUIDE.md](./GRID-FIX-GUIDE.md) for grid understanding
+2. Use [scripts/fix-grid.ts](./scripts/fix-grid.ts) as reference
+3. Follow patterns in [CLAUDE-CODE-IMAGE-INSTRUCTIONS.md](./CLAUDE-CODE-IMAGE-INSTRUCTIONS.md)
+
+## ⚠️ Important Notes
+
+### Grid System
+- The script creates a backup before modifying (grid.css.backup)
+- Old class names still work (.eight.col → .col-8)
+- Flexbox is recommended over float-based
+- Test responsive behavior thoroughly
+
+### Image Placeholders
+- These are TEMPORARY placeholders
+- Create a list of real assets needed
+- Prioritize visible images (hero, products)
+- Document placeholder locations for future replacement
+
+### Browser Support
+- Flexbox: All modern browsers + IE11
+- CSS Grid: All modern browsers (no IE11)
+- Placehold.co: All browsers with HTTPS
+- Picsum: All browsers
+
+## 🎉 Success Criteria
+
+### Grid System
+- [ ] All columns display correctly
+- [ ] Widths add up to 100%
+- [ ] Consistent 20px gutters
+- [ ] No horizontal scroll
+- [ ] Responsive stacking works
+- [ ] Tablet layout appropriate
+- [ ] Mobile layout single column
+
+### Image Placeholders
+- [ ] No broken image icons
+- [ ] All images load
+- [ ] Appropriate sizes
+- [ ] Brand colors used
+- [ ] Alt text preserved
+- [ ] Lazy loading added
+- [ ] No console errors
+
+## 🤝 Next Steps After Fixes
+
+1. **Test thoroughly** across browsers and devices
+2. **Document** what was changed
+3. **Create asset list** for real images needed
+4. **Update examples** with new patterns
+5. **Consider Storybook** integration for component testing
+6. **Add visual regression tests** to prevent future issues
+7. **Complete component migration** from original A.mphibio.us
+
+---
+
+**Need Help?**
+- See the detailed guides in the referenced .md files
+- Check [Claude.md](./Claude.md) for general project info
+- Run `bun run dev` and inspect in browser DevTools
+- Ask Claude Code CLI for assistance with specific tasks

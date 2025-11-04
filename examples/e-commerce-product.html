@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail - Premium Cotton T-Shirt - Amphibious 2.0</title>
+  <meta name="description" content="E-commerce product detail page demonstration with image gallery, reviews, and related products">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Product Detail Styles */
+    .product-detail {
+      background: white;
+      padding: 2rem 0;
+      margin-bottom: 3rem;
+    }
+
+    /* Image Gallery */
+    .product-gallery {
+      position: sticky;
+      top: 1rem;
+    }
+    .main-image {
+      background: #f8f9fa;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 100%;
+      margin-bottom: 1rem;
+    }
+    .main-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .image-zoom {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: white;
+      border: 1px solid #dee2e6;
+      padding: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .thumbnail-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .thumbnail {
+      background: #f8f9fa;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 100%;
+    }
+    .thumbnail.active {
+      border-color: #667eea;
+    }
+    .thumbnail img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Product Info */
+    .product-info {
+      padding-left: 2rem;
+    }
+    .product-breadcrumb {
+      font-size: 0.875rem;
+      color: #6c757d;
+      margin-bottom: 1rem;
+    }
+    .product-breadcrumb a {
+      color: #6c757d;
+      text-decoration: none;
+    }
+    .product-breadcrumb a:hover {
+      color: #667eea;
+    }
+    .product-title {
+      font-size: 2rem;
+      font-weight: 300;
+      margin: 0 0 0.5rem 0;
+    }
+    .product-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .stars {
+      display: flex;
+      gap: 0.125rem;
+    }
+    .product-sku {
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+    .product-pricing {
+      margin: 1.5rem 0;
+    }
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .price-current {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .price-original {
+      font-size: 1.5rem;
+      color: #6c757d;
+      text-decoration: line-through;
+    }
+    .price-save {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: #dc3545;
+      color: white;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .price-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+
+    /* Product Options */
+    .product-options {
+      margin: 2rem 0;
+    }
+    .option-group {
+      margin-bottom: 1.5rem;
+    }
+    .option-label {
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .size-chart-link {
+      font-size: 0.875rem;
+      color: #667eea;
+      font-weight: normal;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .size-options {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .size-option {
+      min-width: 50px;
+      padding: 0.75rem 1rem;
+      border: 2px solid #dee2e6;
+      background: white;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 4px;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .size-option:hover {
+      border-color: #667eea;
+    }
+    .size-option.selected {
+      border-color: #667eea;
+      background: #667eea;
+      color: white;
+    }
+    .size-option.out-of-stock {
+      opacity: 0.5;
+      cursor: not-allowed;
+      position: relative;
+    }
+    .size-option.out-of-stock::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #6c757d;
+      transform: rotate(-45deg);
+    }
+    .color-options {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .color-option {
+      width: 40px;
+      height: 40px;
+      border: 3px solid transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .color-option:hover {
+      transform: scale(1.1);
+    }
+    .color-option.selected {
+      border-color: #667eea;
+    }
+    .color-swatch {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px solid #dee2e6;
+    }
+
+    /* Quantity and Actions */
+    .product-actions {
+      margin: 2rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid #dee2e6;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .quantity-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      border: 2px solid #dee2e6;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .quantity-selector button {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: white;
+      cursor: pointer;
+      font-size: 1.25rem;
+      transition: background 0.2s;
+    }
+    .quantity-selector button:hover {
+      background: #f8f9fa;
+    }
+    .quantity-selector input {
+      width: 60px;
+      text-align: center;
+      border: none;
+      border-left: 1px solid #dee2e6;
+      border-right: 1px solid #dee2e6;
+      height: 40px;
+      font-size: 1rem;
+    }
+    .stock-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #28a745;
+    }
+    .stock-info.low-stock {
+      color: #ffc107;
+    }
+    .stock-info.out-of-stock {
+      color: #dc3545;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .btn-add-cart {
+      flex: 1;
+      padding: 1rem;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .btn-add-cart:hover {
+      background: #5a67d8;
+    }
+    .btn-buy-now {
+      flex: 1;
+      padding: 1rem;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-buy-now:hover {
+      background: #218838;
+    }
+    .secondary-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn-secondary {
+      flex: 1;
+      padding: 0.75rem;
+      background: white;
+      border: 2px solid #dee2e6;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: #667eea;
+      color: #667eea;
+    }
+
+    /* Product Features */
+    .product-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .feature-icon {
+      color: #667eea;
+    }
+
+    /* Product Tabs */
+    .product-tabs {
+      margin: 3rem 0;
+    }
+    .tab-nav {
+      display: flex;
+      border-bottom: 2px solid #dee2e6;
+      gap: 2rem;
+    }
+    .tab-button {
+      padding: 1rem 0;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #6c757d;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .tab-button:hover {
+      color: #2c3e50;
+    }
+    .tab-button.active {
+      color: #667eea;
+      border-bottom-color: #667eea;
+    }
+    .tab-content {
+      padding: 2rem 0;
+    }
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+    }
+
+    /* Reviews Section */
+    .reviews-summary {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      padding: 2rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    .rating-overview {
+      text-align: center;
+    }
+    .rating-number {
+      font-size: 3rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .rating-breakdown {
+      flex: 1;
+    }
+    .rating-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .rating-bar-fill {
+      flex: 1;
+      height: 8px;
+      background: #dee2e6;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .rating-bar-fill span {
+      display: block;
+      height: 100%;
+      background: #ffc107;
+    }
+    .review-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      background: #667eea;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    /* Related Products */
+    .related-products {
+      margin: 4rem 0;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .section-header h2 {
+      margin: 0;
+    }
+    .product-carousel {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    .carousel-item {
+      min-width: 250px;
+      flex-shrink: 0;
+    }
+    .mini-product-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .mini-product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .mini-product-image {
+      height: 200px;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mini-product-info {
+      padding: 1rem;
+    }
+    .mini-product-name {
+      font-weight: 500;
+      margin: 0 0 0.5rem 0;
+    }
+    .mini-product-price {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    /* Slats and Stats Patterns */
+    .slats--testimonials {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .slats--testimonials li {
+      margin: 0 0 1.5rem 0;
+      padding: 0 0 1.5rem 0;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .slats--testimonials li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .testimonial {
+      margin: 0;
+    }
+    .testimonial p {
+      font-style: italic;
+      color: #495057;
+      margin: 0 0 0.75rem 0;
+      line-height: 1.6;
+    }
+    .testimonial cite {
+      font-style: normal;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    .stats--vertical {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .stats--vertical li {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .stats--vertical li:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .stat-value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label {
+      display: block;
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .product-info {
+        padding-left: 0;
+        margin-top: 2rem;
+      }
+      .product-title {
+        font-size: 1.5rem;
+      }
+      .action-buttons {
+        flex-direction: column;
+      }
+      .reviews-summary {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Breadcrumb -->
+  <div class="container" style="padding: 1rem 0;">
+    <div class="product-breadcrumb">
+      <a href="#">Home</a> /
+      <a href="#">Clothing</a> /
+      <a href="#">T-Shirts</a> /
+      <span>Premium Cotton T-Shirt</span>
+    </div>
+  </div>
+
+  <!-- Product Detail -->
+  <main class="product-detail" role="main">
+    <div class="container">
+      <div class="row">
+        <!-- Image Gallery -->
+        <section class="col-7" aria-label="Product Images">
+          <figure class="product-gallery">
+            <div class="main-image">
+              <img src="https://placehold.co/600x600/667eea/ffffff?text=Main+Image" alt="Product" id="mainImage" loading="lazy">
+              <button class="image-zoom" data-tooltip="Click to zoom">
+                <i data-lucide="zoom-in"></i>
+              </button>
+            </div>
+            <div class="thumbnail-list">
+              <div class="thumbnail active" onclick="changeImage(1)">
+                <img src="https://placehold.co/150x150/667eea/ffffff?text=View+1" alt="View 1" loading="lazy">
+              </div>
+              <div class="thumbnail" onclick="changeImage(2)">
+                <img src="https://placehold.co/150x150/764ba2/ffffff?text=View+2" alt="View 2" loading="lazy">
+              </div>
+              <div class="thumbnail" onclick="changeImage(3)">
+                <img src="https://placehold.co/150x150/f59e0b/ffffff?text=View+3" alt="View 3" loading="lazy">
+              </div>
+              <div class="thumbnail" onclick="changeImage(4)">
+                <img src="https://placehold.co/150x150/10b981/ffffff?text=View+4" alt="View 4" loading="lazy">
+              </div>
+            </div>
+          </figure>
+        </section>
+
+        <!-- Product Info -->
+        <section class="col-9" aria-label="Product Information">
+          <div class="product-info">
+            <h1 class="product-title">Premium Cotton T-Shirt</h1>
+
+            <div class="product-meta">
+              <div class="product-rating">
+                <div class="stars">
+                  <i data-lucide="star" class="icon--filled icon--warning"></i>
+                  <i data-lucide="star" class="icon--filled icon--warning"></i>
+                  <i data-lucide="star" class="icon--filled icon--warning"></i>
+                  <i data-lucide="star" class="icon--filled icon--warning"></i>
+                  <i data-lucide="star-half" class="icon--warning"></i>
+                </div>
+                <span>4.5</span>
+                <a href="#reviews" style="color: #667eea;">(124 reviews)</a>
+              </div>
+              <span class="product-sku">SKU: TSH-001-BLK</span>
+            </div>
+
+            <div class="product-pricing">
+              <div class="price-main">
+                <span class="price-current">$39.99</span>
+                <span class="price-original">$49.99</span>
+                <span class="price-save">Save 20%</span>
+              </div>
+              <div class="price-info">
+                <i data-lucide="tag" class="icon--sm"></i>
+                <span>Limited time offer - Sale ends in 2 days</span>
+              </div>
+            </div>
+
+            <div class="product-options">
+              <div class="option-group">
+                <div class="option-label">
+                  Size:
+                  <a href="#" class="size-chart-link" data-tooltip="View size guide">
+                    <i data-lucide="ruler" class="icon--sm"></i> Size Chart
+                  </a>
+                </div>
+                <div class="size-options">
+                  <button class="size-option out-of-stock" data-tooltip="Out of stock">XS</button>
+                  <button class="size-option">S</button>
+                  <button class="size-option selected">M</button>
+                  <button class="size-option">L</button>
+                  <button class="size-option">XL</button>
+                  <button class="size-option">XXL</button>
+                </div>
+              </div>
+
+              <div class="option-group">
+                <div class="option-label">Color: <span style="font-weight: normal;">Black</span></div>
+                <div class="color-options">
+                  <div class="color-option selected" data-tooltip="Black">
+                    <div class="color-swatch" style="background: #000;"></div>
+                  </div>
+                  <div class="color-option" data-tooltip="White">
+                    <div class="color-swatch" style="background: #fff;"></div>
+                  </div>
+                  <div class="color-option" data-tooltip="Navy">
+                    <div class="color-swatch" style="background: #1e3a8a;"></div>
+                  </div>
+                  <div class="color-option" data-tooltip="Gray">
+                    <div class="color-swatch" style="background: #6b7280;"></div>
+                  </div>
+                  <div class="color-option" data-tooltip="Red">
+                    <div class="color-swatch" style="background: #dc2626;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <div class="quantity-row">
+                <div class="option-label" style="margin: 0;">Quantity:</div>
+                <div class="quantity-selector">
+                  <button onclick="decrementQty()">−</button>
+                  <input type="number" value="1" min="1" max="10" id="qtyInput">
+                  <button onclick="incrementQty()">+</button>
+                </div>
+                <div class="stock-info">
+                  <i data-lucide="check-circle"></i>
+                  <span>In Stock (15 available)</span>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button class="btn-add-cart" onclick="addToCart()">
+                  <i data-lucide="shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="btn-buy-now">
+                  Buy It Now
+                </button>
+              </div>
+
+              <div class="secondary-actions">
+                <button class="btn-secondary" data-tooltip="Add to wishlist">
+                  <i data-lucide="heart"></i>
+                  Save
+                </button>
+                <button class="btn-secondary" data-tooltip="Share product">
+                  <i data-lucide="share-2"></i>
+                  Share
+                </button>
+                <button class="btn-secondary" data-tooltip="Compare with similar">
+                  <i data-lucide="git-compare"></i>
+                  Compare
+                </button>
+              </div>
+            </div>
+
+            <div class="product-features">
+              <div class="feature-item">
+                <i data-lucide="truck" class="feature-icon"></i>
+                <span>Free Shipping over $50</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="rotate-ccw" class="feature-icon"></i>
+                <span>30-Day Returns</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="shield-check" class="feature-icon"></i>
+                <span>Secure Checkout</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="award" class="feature-icon"></i>
+                <span>Premium Quality</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Aside: Customer Testimonials and Trust Signals -->
+  <aside class="container" style="margin: 2rem auto;">
+    <div class="row">
+      <div class="col-8">
+        <h3>Customer Testimonials</h3>
+        <ul class="slats slats--testimonials">
+          <li>
+            <blockquote class="testimonial">
+              <p>"Best quality t-shirt I've ever owned! The fabric is incredibly soft and it's held up perfectly after months of wear."</p>
+              <footer>
+                <cite>— Sarah M., Verified Buyer</cite>
+                <div class="rating" style="margin-top: 0.5rem;">
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                </div>
+              </footer>
+            </blockquote>
+          </li>
+          <li>
+            <blockquote class="testimonial">
+              <p>"Perfect fit and the color hasn't faded at all. I've bought three more in different colors!"</p>
+              <footer>
+                <cite>— Mike T., Repeat Customer</cite>
+                <div class="rating" style="margin-top: 0.5rem;">
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                </div>
+              </footer>
+            </blockquote>
+          </li>
+        </ul>
+      </div>
+      <div class="col-8">
+        <h3>Why Shop With Us</h3>
+        <div class="aside-content" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+          <ul class="stats stats--vertical">
+            <li>
+              <strong class="stat-value">50,000+</strong>
+              <span class="stat-label">Happy Customers</span>
+            </li>
+            <li>
+              <strong class="stat-value">4.8/5</strong>
+              <span class="stat-label">Average Rating</span>
+            </li>
+            <li>
+              <strong class="stat-value">30-Day</strong>
+              <span class="stat-label">Return Policy</span>
+            </li>
+            <li>
+              <strong class="stat-value">100%</strong>
+              <span class="stat-label">Organic Cotton</span>
+            </li>
+          </ul>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6;">
+            <h4 style="font-size: 1rem; margin-bottom: 0.75rem;">Trust & Security</h4>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <img src="https://placehold.co/80x30/ffffff/6c757d?text=SSL" alt="SSL Secure" style="height: 30px;" loading="lazy">
+              <img src="https://placehold.co/80x30/ffffff/6c757d?text=PayPal" alt="PayPal" style="height: 30px;" loading="lazy">
+              <img src="https://placehold.co/80x30/ffffff/6c757d?text=Visa" alt="Visa" style="height: 30px;" loading="lazy">
+              <img src="https://placehold.co/80x30/ffffff/6c757d?text=MC" alt="Mastercard" style="height: 30px;" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Product Tabs -->
+  <section class="product-tabs">
+    <div class="container">
+      <div class="tab-nav">
+        <button class="tab-button active" onclick="switchTab('description')">Description</button>
+        <button class="tab-button" onclick="switchTab('details')">Details & Care</button>
+        <button class="tab-button" onclick="switchTab('reviews')" id="reviewsTab">Reviews (124)</button>
+        <button class="tab-button" onclick="switchTab('shipping')">Shipping & Returns</button>
+      </div>
+
+      <div class="tab-content">
+        <!-- Description Tab -->
+        <div class="tab-pane active" id="description">
+          <div class="row">
+            <div class="col-10">
+              <h3>Product Description</h3>
+              <p>Experience ultimate comfort with our Premium Cotton T-Shirt, crafted from 100% organic cotton for superior breathability and softness that lasts. This versatile essential features a classic fit that works perfectly on its own or layered under your favorite jacket.</p>
+
+              <h4>Key Features:</h4>
+              <ul>
+                <li><strong>Premium Material:</strong> 100% organic cotton, 180 GSM for the perfect weight</li>
+                <li><strong>Comfortable Fit:</strong> Classic cut with just the right amount of room</li>
+                <li><strong>Durable Construction:</strong> Reinforced shoulder seams and double-stitched hems</li>
+                <li><strong>Easy Care:</strong> Machine washable, retains shape wash after wash</li>
+                <li><strong>Versatile Style:</strong> Perfect for casual wear, layering, or dressing up</li>
+                <li><strong>Eco-Friendly:</strong> Made from sustainable, ethically sourced materials</li>
+              </ul>
+
+              <p>Whether you're heading to work, meeting friends, or just relaxing at home, this t-shirt delivers all-day comfort and effortless style. The premium cotton fabric is pre-shrunk and colorfast, ensuring your shirt looks great wear after wear.</p>
+            </div>
+            <aside class="col-6">
+              <div class="aside-highlight" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                <h4>Why Choose Our T-Shirt?</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-lucide="check" style="color: #28a745;"></i>
+                    <span>Lifetime warranty on stitching</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-lucide="check" style="color: #28a745;"></i>
+                    <span>Eco-friendly production</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-lucide="check" style="color: #28a745;"></i>
+                    <span>Fair trade certified</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-lucide="check" style="color: #28a745;"></i>
+                    <span>No harmful chemicals</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- Details Tab -->
+        <div class="tab-pane" id="details">
+          <div class="row">
+            <div class="col-8">
+              <h3>Product Details</h3>
+              <table style="width: 100%; margin: 1rem 0;">
+                <tr>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Material</strong></td>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">100% Organic Cotton</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Weight</strong></td>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">180 GSM</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Fit</strong></td>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">Classic/Regular</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Neckline</strong></td>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">Crew neck</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Sleeve Length</strong></td>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">Short sleeve</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Country of Origin</strong></td>
+                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">Made in USA</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-8">
+              <h3>Care Instructions</h3>
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <i data-lucide="thermometer" style="color: #667eea;"></i>
+                  <span>Machine wash cold with like colors</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <i data-lucide="droplets" style="color: #667eea;"></i>
+                  <span>Use non-chlorine bleach when needed</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <i data-lucide="wind" style="color: #667eea;"></i>
+                  <span>Tumble dry low or hang dry</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <i data-lucide="zap" style="color: #667eea;"></i>
+                  <span>Warm iron if needed</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <i data-lucide="ban" style="color: #667eea;"></i>
+                  <span>Do not dry clean</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews Tab -->
+        <div class="tab-pane" id="reviews">
+          <div class="reviews-summary">
+            <div class="rating-overview">
+              <div class="rating-number">4.5</div>
+              <div class="stars">
+                <i data-lucide="star" class="icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--filled icon--warning"></i>
+                <i data-lucide="star-half" class="icon--warning"></i>
+              </div>
+              <p>Based on 124 reviews</p>
+            </div>
+            <div class="rating-breakdown">
+              <div class="rating-bar">
+                <span>5 stars</span>
+                <div class="rating-bar-fill">
+                  <span style="width: 65%;"></span>
+                </div>
+                <span>65%</span>
+              </div>
+              <div class="rating-bar">
+                <span>4 stars</span>
+                <div class="rating-bar-fill">
+                  <span style="width: 20%;"></span>
+                </div>
+                <span>20%</span>
+              </div>
+              <div class="rating-bar">
+                <span>3 stars</span>
+                <div class="rating-bar-fill">
+                  <span style="width: 10%;"></span>
+                </div>
+                <span>10%</span>
+              </div>
+              <div class="rating-bar">
+                <span>2 stars</span>
+                <div class="rating-bar-fill">
+                  <span style="width: 3%;"></span>
+                </div>
+                <span>3%</span>
+              </div>
+              <div class="rating-bar">
+                <span>1 star</span>
+                <div class="rating-bar-fill">
+                  <span style="width: 2%;"></span>
+                </div>
+                <span>2%</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin: 2rem 0;">
+            <button class="btn-secondary" style="width: auto; padding: 0.75rem 1.5rem;">
+              <i data-lucide="edit"></i>
+              Write a Review
+            </button>
+          </div>
+
+          <!-- Review Items -->
+          <div class="review-item">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">JD</div>
+                <div>
+                  <strong>John Doe</strong>
+                  <div class="stars">
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                  </div>
+                </div>
+                <div class="verified-badge">
+                  <i data-lucide="check-circle" class="icon--xs"></i>
+                  Verified Purchase
+                </div>
+              </div>
+              <span style="color: #6c757d; font-size: 0.875rem;">2 days ago</span>
+            </div>
+            <h4 style="margin: 1rem 0 0.5rem 0;">Perfect fit and quality!</h4>
+            <p>This t-shirt exceeded my expectations. The fabric is incredibly soft and the fit is exactly as described. I've washed it several times already and it still looks brand new. Will definitely be ordering more colors!</p>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+              <button class="btn-secondary" style="width: auto; padding: 0.5rem 1rem; font-size: 0.875rem;">
+                <i data-lucide="thumbs-up" class="icon--xs"></i>
+                Helpful (23)
+              </button>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar" style="background: #f59e0b;">SM</div>
+                <div>
+                  <strong>Sarah Miller</strong>
+                  <div class="stars">
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                    <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                    <i data-lucide="star" class="icon--xs"></i>
+                  </div>
+                </div>
+                <div class="verified-badge">
+                  <i data-lucide="check-circle" class="icon--xs"></i>
+                  Verified Purchase
+                </div>
+              </div>
+              <span style="color: #6c757d; font-size: 0.875rem;">1 week ago</span>
+            </div>
+            <h4 style="margin: 1rem 0 0.5rem 0;">Great quality, runs slightly large</h4>
+            <p>Love the material and the eco-friendly aspect. The only reason I'm giving 4 stars instead of 5 is that it runs slightly larger than expected. I usually wear medium but probably should have gotten a small. Still keeping it though!</p>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+              <button class="btn-secondary" style="width: auto; padding: 0.5rem 1rem; font-size: 0.875rem;">
+                <i data-lucide="thumbs-up" class="icon--xs"></i>
+                Helpful (15)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shipping Tab -->
+        <div class="tab-pane" id="shipping">
+          <div class="row">
+            <div class="col-8">
+              <h3>Shipping Information</h3>
+              <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                <h4>Shipping Options</h4>
+                <table style="width: 100%; margin-top: 1rem;">
+                  <tr>
+                    <td style="padding: 0.75rem;"><strong>Standard Shipping</strong></td>
+                    <td style="padding: 0.75rem;">5-7 business days</td>
+                    <td style="padding: 0.75rem;">FREE over $50</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem;"><strong>Express Shipping</strong></td>
+                    <td style="padding: 0.75rem;">2-3 business days</td>
+                    <td style="padding: 0.75rem;">$12.99</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem;"><strong>Next Day Delivery</strong></td>
+                    <td style="padding: 0.75rem;">1 business day</td>
+                    <td style="padding: 0.75rem;">$24.99</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="col-8">
+              <h3>Return Policy</h3>
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                  <i data-lucide="calendar" style="color: #667eea; margin-top: 0.25rem;"></i>
+                  <div>
+                    <strong>30-Day Returns</strong>
+                    <p style="margin: 0.25rem 0 0 0; color: #6c757d;">Return within 30 days of delivery for a full refund</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                  <i data-lucide="package" style="color: #667eea; margin-top: 0.25rem;"></i>
+                  <div>
+                    <strong>Free Return Shipping</strong>
+                    <p style="margin: 0.25rem 0 0 0; color: #6c757d;">We provide a prepaid return label</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                  <i data-lucide="refresh-cw" style="color: #667eea; margin-top: 0.25rem;"></i>
+                  <div>
+                    <strong>Easy Exchanges</strong>
+                    <p style="margin: 0.25rem 0 0 0; color: #6c757d;">Exchange for a different size or color</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="related-products">
+    <div class="container">
+      <div class="section-header">
+        <h2>You May Also Like</h2>
+        <button class="btn-secondary" style="width: auto; padding: 0.75rem 1.5rem;">
+          View All
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="product-carousel">
+        <div class="carousel-item">
+          <div class="mini-product-card">
+            <div class="mini-product-image">
+              <img src="https://placehold.co/200x200/667eea/ffffff?text=Related+1" alt="Related Product" loading="lazy">
+            </div>
+            <div class="mini-product-info">
+              <h4 class="mini-product-name">Classic Polo Shirt</h4>
+              <div class="stars">
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs"></i>
+              </div>
+              <div class="mini-product-price">$45.99</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="mini-product-card">
+            <div class="mini-product-image">
+              <img src="https://placehold.co/200x200/764ba2/ffffff?text=Related+2" alt="Related Product" loading="lazy">
+            </div>
+            <div class="mini-product-info">
+              <h4 class="mini-product-name">V-Neck T-Shirt</h4>
+              <div class="stars">
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+              </div>
+              <div class="mini-product-price">$35.99</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="mini-product-card">
+            <div class="mini-product-image">
+              <img src="https://placehold.co/200x200/f59e0b/ffffff?text=Related+3" alt="Related Product" loading="lazy">
+            </div>
+            <div class="mini-product-info">
+              <h4 class="mini-product-name">Long Sleeve Henley</h4>
+              <div class="stars">
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs"></i>
+              </div>
+              <div class="mini-product-price">$49.99</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="mini-product-card">
+            <div class="mini-product-image">
+              <img src="https://placehold.co/200x200/10b981/ffffff?text=Related+4" alt="Related Product" loading="lazy">
+            </div>
+            <div class="mini-product-info">
+              <h4 class="mini-product-name">Tank Top</h4>
+              <div class="stars">
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+              </div>
+              <div class="mini-product-price">$24.99</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="mini-product-card">
+            <div class="mini-product-image">
+              <img src="https://placehold.co/200x200/ef4444/ffffff?text=Related+5" alt="Related Product" loading="lazy">
+            </div>
+            <div class="mini-product-info">
+              <h4 class="mini-product-name">Graphic Tee</h4>
+              <div class="stars">
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs icon--filled icon--warning"></i>
+                <i data-lucide="star" class="icon--xs"></i>
+              </div>
+              <div class="mini-product-price">$29.99</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Page Scripts -->
+  <script>
+    // Image gallery
+    function changeImage(num) {
+      const mainImage = document.getElementById('mainImage');
+      const thumbnails = document.querySelectorAll('.thumbnail');
+
+      // Update active thumbnail
+      thumbnails.forEach(thumb => thumb.classList.remove('active'));
+      thumbnails[num - 1].classList.add('active');
+
+      // Change main image (in real app, would use actual image URLs)
+      const colors = ['667eea', '764ba2', 'f59e0b', '10b981'];
+      mainImage.src = `https://placehold.co/600x600/${colors[num - 1]}/ffffff?text=View+${num}`;
+    }
+
+    // Tab switching
+    function switchTab(tabName) {
+      // Update buttons
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // Update content
+      document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.remove('active');
+      });
+      document.getElementById(tabName).classList.add('active');
+    }
+
+    // Quantity controls
+    function incrementQty() {
+      const input = document.getElementById('qtyInput');
+      if (parseInt(input.value) < parseInt(input.max)) {
+        input.value = parseInt(input.value) + 1;
+      }
+    }
+
+    function decrementQty() {
+      const input = document.getElementById('qtyInput');
+      if (parseInt(input.value) > parseInt(input.min)) {
+        input.value = parseInt(input.value) - 1;
+      }
+    }
+
+    // Add to cart
+    function addToCart() {
+      const button = event.target.closest('button');
+      const tooltip = amp.createTooltip(button, {
+        content: 'Added to cart!',
+        variant: 'success',
+        trigger: 'manual',
+        position: 'top'
+      });
+      tooltip.show();
+      setTimeout(() => tooltip.hide(), 2000);
+    }
+
+    // Size and color selection
+    document.addEventListener('DOMContentLoaded', () => {
+      // Size options
+      document.querySelectorAll('.size-option:not(.out-of-stock)').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.size-option').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+      });
+
+      // Color options
+      document.querySelectorAll('.color-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.color-option').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+      });
+
+      console.log('Product Detail Page Loaded');
+    });
+  </script>
+</body>
+</html>

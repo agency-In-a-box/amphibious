@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards Component - Amphibious 2.0 Documentation</title>
+  <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Cards component - flexible content containers with multiple variants and layouts">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Documentation Header */
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .docs-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .docs-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Content Sections */
+    .section {
+      background: white;
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section h3 {
+      color: #34495e;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section h4 {
+      color: #7f8c8d;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .code-block code {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+    }
+
+    /* Inline code */
+    code {
+      background: #f1f5f9;
+      color: #e11d48;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875em;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* Demo Sections */
+    .demo-section {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .demo-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+    }
+
+    /* Feature List */
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #667eea;
+    }
+
+    .feature-card h4 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    /* Navigation */
+    .nav-breadcrumb {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 0;
+      margin-bottom: 1rem;
+    }
+
+    .nav-breadcrumb a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .nav-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Demo Cards Grid */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .docs-header h1 {
+        font-size: 2rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="docs-header">
+    <div class="container">
+      <nav class="nav-breadcrumb">
+        <a href="/index.html">Home</a> ›
+        <a href="/docs/index.html">Documentation</a> ›
+        <a href="/docs/components/">Components</a> ›
+        <span>Cards</span>
+      </nav>
+      <h1>Cards Component</h1>
+      <p>Flexible content containers with multiple variants, layouts, and interactive states</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Overview -->
+    <section class="section">
+      <h2>Overview</h2>
+      <p>The Cards component provides flexible content containers that can display various types of information in an organized, visually appealing manner. Cards are perfect for product listings, user profiles, articles, statistics, and more.</p>
+
+      <div class="feature-list">
+        <div class="feature-card">
+          <h4>🎨 Multiple Variants</h4>
+          <p>Product cards, profile cards, stat cards, feature cards, and more specialized layouts.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Responsive Design</h4>
+          <p>Automatically adapts to different screen sizes with responsive grid systems.</p>
+        </div>
+        <div class="feature-card">
+          <h4>⚡ Interactive States</h4>
+          <p>Hover effects, active states, and focus management for enhanced user experience.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔧 Flexible Layout</h4>
+          <p>Horizontal and vertical layouts, custom spacing, and grid system integration.</p>
+        </div>
+        <div class="feature-card">
+          <h4>♿ Accessibility</h4>
+          <p>Focus indicators, screen reader support, and reduced motion preferences.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎭 Shadow Variants</h4>
+          <p>Multiple shadow depths from subtle to prominent for visual hierarchy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basic Usage -->
+    <section class="section">
+      <h2>Basic Usage</h2>
+
+      <h3>Simple Card</h3>
+      <div class="demo-section">
+        <div class="demo-title">Basic Card Example</div>
+        <div class="card" style="max-width: 400px;">
+          <div class="card-header">
+            <h3 class="card-title">Card Title</h3>
+            <p class="card-subtitle">Optional subtitle</p>
+          </div>
+          <div class="card-body">
+            <p class="card-text">This is the main content area of the card. You can put any content here including text, images, buttons, and more.</p>
+          </div>
+          <div class="card-footer center">
+            <button class="btn btn--primary">Action</button>
+            <button class="btn btn--secondary">Secondary</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Card Title&lt;/h3&gt;
+    &lt;p class="card-subtitle"&gt;Optional subtitle&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p class="card-text"&gt;Main content goes here...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer center"&gt;
+    &lt;button class="btn btn--primary"&gt;Action&lt;/button&gt;
+    &lt;button class="btn btn--secondary"&gt;Secondary&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>Card with Image</h3>
+      <div class="demo-section">
+        <div class="demo-title">Card with Media</div>
+        <div class="card" style="max-width: 400px;">
+          <div class="card-media aspect-video" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
+            Image Placeholder
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Card with Image</h3>
+            <p class="card-text">This card includes a media element at the top, perfect for featured images or videos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="card"&gt;
+  &lt;img src="image.jpg" alt="Description" class="card-media"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h3 class="card-title"&gt;Card with Image&lt;/h3&gt;
+    &lt;p class="card-text"&gt;Content with image...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Card Variants -->
+    <section class="section">
+      <h2>Card Variants</h2>
+
+      <h3>Specialized Card Types</h3>
+
+      <div class="demo-grid">
+        <!-- Product Card -->
+        <div class="card product">
+          <div class="card-media aspect-square" style="background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">
+            Product Image
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Premium Headphones</h3>
+            <div class="price">$199.99</div>
+            <div class="card-actions center">
+              <button class="btn btn--primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="card profile">
+          <div class="card-body">
+            <div class="avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+              JD
+            </div>
+            <h3 class="card-title">John Doe</h3>
+            <p class="card-subtitle">Senior Developer</p>
+            <div class="card-actions center">
+              <button class="btn btn--primary btn--sm">Follow</button>
+              <button class="btn btn--secondary btn--sm">Message</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat Card -->
+        <div class="card stat">
+          <span class="number">1,234</span>
+          <span class="label">Total Users</span>
+        </div>
+
+        <!-- Feature Card -->
+        <div class="card feature">
+          <div class="card-body">
+            <div class="icon" style="color: #667eea;">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3 class="card-title">Fast Performance</h3>
+            <p class="card-text">Lightning-fast loading times and smooth interactions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Product Card --&gt;
+&lt;div class="card product"&gt;
+  &lt;img src="product.jpg" alt="Product" class="card-media"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h3 class="card-title"&gt;Product Name&lt;/h3&gt;
+    &lt;div class="price"&gt;$199.99&lt;/div&gt;
+    &lt;div class="card-actions center"&gt;
+      &lt;button class="btn btn--primary"&gt;Add to Cart&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Profile Card --&gt;
+&lt;div class="card profile"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;img src="avatar.jpg" alt="John Doe" class="avatar"&gt;
+    &lt;h3 class="card-title"&gt;John Doe&lt;/h3&gt;
+    &lt;p class="card-subtitle"&gt;Senior Developer&lt;/p&gt;
+    &lt;div class="card-actions center"&gt;
+      &lt;button class="btn btn--primary"&gt;Follow&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Stat Card --&gt;
+&lt;div class="card stat"&gt;
+  &lt;span class="number"&gt;1,234&lt;/span&gt;
+  &lt;span class="label"&gt;Total Users&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Feature Card --&gt;
+&lt;div class="card feature"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;div class="icon"&gt;&lt;i data-lucide="zap"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;h3 class="card-title"&gt;Feature Title&lt;/h3&gt;
+    &lt;p class="card-text"&gt;Feature description...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Interactive States -->
+    <section class="section">
+      <h2>Interactive States</h2>
+
+      <h3>Hover and Click Effects</h3>
+      <div class="demo-section">
+        <div class="demo-title">Interactive Cards (hover over them)</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div class="card hoverable">
+            <div class="card-body">
+              <h4 class="card-title">Hoverable</h4>
+              <p class="card-text">Subtle hover effect</p>
+            </div>
+          </div>
+
+          <div class="card interactive">
+            <div class="card-body">
+              <h4 class="card-title">Interactive</h4>
+              <p class="card-text">Strong hover effect</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Subtle hover effect --&gt;
+&lt;div class="card hoverable"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h4 class="card-title"&gt;Hoverable Card&lt;/h4&gt;
+    &lt;p class="card-text"&gt;Slight elevation on hover&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Strong interactive effect --&gt;
+&lt;div class="card interactive"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h4 class="card-title"&gt;Interactive Card&lt;/h4&gt;
+    &lt;p class="card-text"&gt;Pronounced elevation on hover&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Shadow Variants -->
+    <section class="section">
+      <h2>Shadow Variants</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Different Shadow Depths</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+          <div class="card shadow-none">
+            <div class="card-body">
+              <h5>No Shadow</h5>
+            </div>
+          </div>
+
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5>Small</h5>
+            </div>
+          </div>
+
+          <div class="card shadow-md">
+            <div class="card-body">
+              <h5>Medium</h5>
+            </div>
+          </div>
+
+          <div class="card shadow-lg">
+            <div class="card-body">
+              <h5>Large</h5>
+            </div>
+          </div>
+
+          <div class="card shadow-xl">
+            <div class="card-body">
+              <h5>X-Large</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="card shadow-none"&gt;...&lt;/div&gt;
+&lt;div class="card shadow-sm"&gt;...&lt;/div&gt;
+&lt;div class="card shadow-md"&gt;...&lt;/div&gt;  &lt;!-- Default --&gt;
+&lt;div class="card shadow-lg"&gt;...&lt;/div&gt;
+&lt;div class="card shadow-xl"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Layout Options -->
+    <section class="section">
+      <h2>Layout Options</h2>
+
+      <h3>Horizontal Layout</h3>
+      <div class="demo-section">
+        <div class="demo-title">Horizontal Card Layout</div>
+        <div class="card horizontal" style="max-width: 600px;">
+          <div class="card-media" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+            Image
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <h3 class="card-title">Horizontal Card</h3>
+              <p class="card-text">This card uses a horizontal layout with the image on the left and content on the right. It automatically stacks vertically on mobile.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn--primary">Learn More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="card horizontal"&gt;
+  &lt;img src="image.jpg" alt="Description" class="card-media"&gt;
+  &lt;div class="card-content"&gt;
+    &lt;div class="card-body"&gt;
+      &lt;h3 class="card-title"&gt;Horizontal Card&lt;/h3&gt;
+      &lt;p class="card-text"&gt;Content goes here...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+      &lt;button class="btn btn--primary"&gt;Action&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>Card Grid System</h3>
+      <div class="demo-section">
+        <div class="demo-title">Responsive Card Grid</div>
+        <div class="card-grid cols-3">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Card 1</h4>
+              <p class="card-text">Grid item content</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Card 2</h4>
+              <p class="card-text">Grid item content</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Card 3</h4>
+              <p class="card-text">Grid item content</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="card-grid cols-3"&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Available grid classes --&gt;
+&lt;div class="card-grid"&gt;        &lt;!-- Auto-fit, min 300px --&gt;
+&lt;div class="card-grid cols-2"&gt;  &lt;!-- 2 columns --&gt;
+&lt;div class="card-grid cols-3"&gt;  &lt;!-- 3 columns --&gt;
+&lt;div class="card-grid cols-4"&gt;  &lt;!-- 4 columns --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- CSS Classes -->
+    <section class="section">
+      <h2>CSS Classes Reference</h2>
+
+      <h3>Base Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.card</code></td>
+            <td>Base card container</td>
+          </tr>
+          <tr>
+            <td><code>.card-header</code></td>
+            <td>Card header section</td>
+          </tr>
+          <tr>
+            <td><code>.card-body</code></td>
+            <td>Main content area</td>
+          </tr>
+          <tr>
+            <td><code>.card-footer</code></td>
+            <td>Footer section</td>
+          </tr>
+          <tr>
+            <td><code>.card-media</code></td>
+            <td>Image or media element</td>
+          </tr>
+          <tr>
+            <td><code>.card-title</code></td>
+            <td>Card title styling</td>
+          </tr>
+          <tr>
+            <td><code>.card-subtitle</code></td>
+            <td>Card subtitle styling</td>
+          </tr>
+          <tr>
+            <td><code>.card-text</code></td>
+            <td>Body text styling</td>
+          </tr>
+          <tr>
+            <td><code>.card-actions</code></td>
+            <td>Action buttons container</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Modifier Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.hoverable</code></td>
+            <td>Subtle hover effect</td>
+          </tr>
+          <tr>
+            <td><code>.interactive</code></td>
+            <td>Strong hover effect</td>
+          </tr>
+          <tr>
+            <td><code>.horizontal</code></td>
+            <td>Horizontal layout</td>
+          </tr>
+          <tr>
+            <td><code>.compact</code></td>
+            <td>Reduced padding</td>
+          </tr>
+          <tr>
+            <td><code>.spacious</code></td>
+            <td>Increased padding</td>
+          </tr>
+          <tr>
+            <td><code>.borderless</code></td>
+            <td>Remove border</td>
+          </tr>
+          <tr>
+            <td><code>.outlined</code></td>
+            <td>Border with no shadow</td>
+          </tr>
+          <tr>
+            <td><code>.loading</code></td>
+            <td>Loading shimmer effect</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Shadow Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.shadow-none</code></td>
+            <td>No shadow</td>
+          </tr>
+          <tr>
+            <td><code>.shadow-sm</code></td>
+            <td>Small shadow</td>
+          </tr>
+          <tr>
+            <td><code>.shadow-md</code></td>
+            <td>Medium shadow (default)</td>
+          </tr>
+          <tr>
+            <td><code>.shadow-lg</code></td>
+            <td>Large shadow</td>
+          </tr>
+          <tr>
+            <td><code>.shadow-xl</code></td>
+            <td>Extra large shadow</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Specialized Types</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.product</code></td>
+            <td>Product card styling</td>
+          </tr>
+          <tr>
+            <td><code>.profile</code></td>
+            <td>User profile card</td>
+          </tr>
+          <tr>
+            <td><code>.stat</code></td>
+            <td>Statistics display card</td>
+          </tr>
+          <tr>
+            <td><code>.feature</code></td>
+            <td>Feature highlight card</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="section">
+      <h2>Best Practices</h2>
+
+      <h3>Content Guidelines</h3>
+      <ul>
+        <li><strong>Keep titles concise:</strong> Card titles should be short and descriptive</li>
+        <li><strong>Use appropriate hierarchy:</strong> Use card-title for main headings, card-subtitle for secondary info</li>
+        <li><strong>Limit content:</strong> Cards work best with focused, scannable content</li>
+        <li><strong>Consistent imagery:</strong> Use consistent aspect ratios for card images</li>
+      </ul>
+
+      <h3>Layout Considerations</h3>
+      <ul>
+        <li><strong>Grid consistency:</strong> Use the card-grid system for uniform layouts</li>
+        <li><strong>Mobile first:</strong> Consider how cards stack on smaller screens</li>
+        <li><strong>Loading states:</strong> Use the loading class for async content</li>
+        <li><strong>Action placement:</strong> Place primary actions in the footer or prominently in the body</li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li><strong>Focus indicators:</strong> Interactive cards have focus styles built-in</li>
+        <li><strong>Semantic markup:</strong> Use proper heading hierarchy within cards</li>
+        <li><strong>Alt text:</strong> Always provide alt text for card images</li>
+        <li><strong>Keyboard navigation:</strong> Ensure all interactive elements are keyboard accessible</li>
+      </ul>
+    </section>
+
+    <!-- Examples -->
+    <section class="section">
+      <h2>Complete Examples</h2>
+
+      <h3>E-commerce Product Card</h3>
+      <div class="demo-section">
+        <div class="card product hoverable" style="max-width: 300px;">
+          <div class="card-media aspect-square" style="background: linear-gradient(45deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
+            Product Image
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Wireless Headphones</h3>
+            <div class="price">$149.99</div>
+            <p class="card-text">Premium sound quality with active noise cancellation.</p>
+            <div class="card-actions">
+              <button class="btn btn--primary" style="flex: 1;">Add to Cart</button>
+              <button class="btn btn--secondary" style="aspect-ratio: 1; padding: 0.5rem;">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Team Member Card</h3>
+      <div class="demo-section">
+        <div class="card profile" style="max-width: 280px;">
+          <div class="card-body">
+            <div class="avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem;">
+              SK
+            </div>
+            <h3 class="card-title">Sarah Kim</h3>
+            <p class="card-subtitle">Lead Designer</p>
+            <p class="card-text">Passionate about creating intuitive user experiences and beautiful interfaces.</p>
+            <div class="card-actions center">
+              <button class="btn btn--primary btn--sm">
+                <i data-lucide="mail"></i>
+                Contact
+              </button>
+              <button class="btn btn--secondary btn--sm">
+                <i data-lucide="linkedin"></i>
+                LinkedIn
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="section">
+      <p>
+        <a href="/examples/cards-demo.html">View Live Examples</a> |
+        <a href="/docs/components/">All Components</a> |
+        <a href="/docs/index.html">Documentation Home</a>
+      </p>
+      <p>&copy; 2024 Amphibious 2.0. Flexible content containers for modern web applications.</p>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+</body>
+</html>

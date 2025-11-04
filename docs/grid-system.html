@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid System - Amphibious 2.0 Documentation</title>
+  <meta name="description" content="Comprehensive guide to the Amphibious 16-column responsive grid system">
+  <style>
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+    .doc-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .doc-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .doc-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+    .doc-nav {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+    .doc-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+    }
+    .doc-nav a {
+      display: block;
+      padding: 1rem;
+      color: #2c3e50;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    .doc-nav a:hover {
+      border-bottom-color: #667eea;
+    }
+    .doc-section {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .doc-section h2 {
+      margin-top: 0;
+      color: #667eea;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+    .doc-section h3 {
+      color: #2c3e50;
+      margin-top: 2rem;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      border-left: 4px solid #667eea;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Grid Examples */
+    .grid-example {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 2px solid #e9ecef;
+    }
+    .grid-example .row {
+      margin-bottom: 1rem;
+    }
+    .grid-example .row:last-child {
+      margin-bottom: 0;
+    }
+    .grid-example [class*="col-"] {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 4px;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .grid-example-light [class*="col-"] {
+      background: #e9ecef;
+      color: #2c3e50;
+      border: 1px solid #dee2e6;
+    }
+
+    /* Interactive Demo */
+    .interactive-demo {
+      background: #f8f9fa;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .demo-controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .demo-controls button {
+      padding: 0.5rem 1rem;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+    .demo-controls button:hover {
+      background: #5a67d8;
+    }
+    .demo-controls button.active {
+      background: #764ba2;
+    }
+
+    /* Responsive Preview */
+    .responsive-preview {
+      background: white;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 2rem 0;
+      overflow-x: auto;
+    }
+    .device-frame {
+      border: 2px solid #2c3e50;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 0 auto;
+      transition: width 0.3s ease;
+    }
+    .device-frame.desktop { width: 100%; }
+    .device-frame.tablet { width: 768px; }
+    .device-frame.mobile { width: 375px; }
+    .device-label {
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6;
+    }
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #495057;
+    }
+
+    /* Alert Boxes */
+    .alert {
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+    .alert-info {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      color: #1565c0;
+    }
+    .alert-tip {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      color: #2e7d32;
+    }
+    .alert-warning {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+      color: #e65100;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background: #667eea;
+      color: white;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+    .badge.new { background: #4caf50; }
+    .badge.legacy { background: #ff9800; }
+  </style>
+</head>
+<body>
+  <!-- Documentation Header -->
+  <header class="doc-header">
+    <div class="container">
+      <h1>Grid System Documentation</h1>
+      <p>Master the flexible 16-column responsive grid system</p>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="doc-nav">
+    <div class="container">
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#basics">Basic Grid</a></li>
+        <li><a href="#responsive">Responsive</a></li>
+        <li><a href="#nesting">Nesting</a></li>
+        <li><a href="#utilities">Utilities</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="/">← Back to Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Introduction Section -->
+    <section id="introduction" class="doc-section">
+      <h2>Introduction to the Grid System</h2>
+
+      <p>Amphibious uses a powerful 16-column grid system based on the proven 960 Grid System principles. The grid provides maximum flexibility for layouts while maintaining simplicity and consistency.</p>
+
+      <div class="alert alert-info">
+        <strong>Key Features:</strong> 16 columns • Responsive breakpoints • Fluid and fixed options • Nestable • Golden ratio support
+      </div>
+
+      <h3>Core Concepts</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Container</strong></td>
+            <td>Wraps the grid system, 960px fixed or 96% fluid</td>
+            <td><code>&lt;div class="container"&gt;</code></td>
+          </tr>
+          <tr>
+            <td><strong>Row</strong></td>
+            <td>Horizontal group of columns</td>
+            <td><code>&lt;div class="row"&gt;</code></td>
+          </tr>
+          <tr>
+            <td><strong>Column</strong></td>
+            <td>Vertical divisions, 1-16 units wide</td>
+            <td><code>&lt;div class="col-8"&gt;</code></td>
+          </tr>
+          <tr>
+            <td><strong>Gutter</strong></td>
+            <td>Space between columns (20px default)</td>
+            <td>Automatic</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Basic Grid Section -->
+    <section id="basics" class="doc-section">
+      <h2>Basic Grid Structure</h2>
+
+      <h3>Simple Two-Column Layout</h3>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-8">8 Columns (50%)</div>
+          <div class="col-8">8 Columns (50%)</div>
+        </div>
+      </div>
+
+      <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-8"&gt;8 Columns (50%)&lt;/div&gt;
+    &lt;div class="col-8"&gt;8 Columns (50%)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+      <h3>Three-Column Layout</h3>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-5">5 Columns</div>
+          <div class="col-6">6 Columns</div>
+          <div class="col-5">5 Columns</div>
+        </div>
+      </div>
+
+      <h3>Four-Column Layout</h3>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-4">4 Columns</div>
+          <div class="col-4">4 Columns</div>
+          <div class="col-4">4 Columns</div>
+          <div class="col-4">4 Columns</div>
+        </div>
+      </div>
+
+      <h3>All Column Sizes</h3>
+      <div class="grid-example grid-example-light">
+        <div class="row">
+          <div class="col-1">1</div>
+          <div class="col-15">15 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-2">2</div>
+          <div class="col-14">14 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-3">3</div>
+          <div class="col-13">13 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-4">4</div>
+          <div class="col-12">12 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-5">5</div>
+          <div class="col-11">11 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-6">6</div>
+          <div class="col-10">10 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-7">7</div>
+          <div class="col-9">9 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-8">8</div>
+          <div class="col-8">8 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-16">16 Columns (Full Width)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsive Grid Section -->
+    <section id="responsive" class="doc-section">
+      <h2>Responsive Grid</h2>
+
+      <p>The grid system includes responsive classes that adapt to different screen sizes. Columns automatically stack on mobile devices and expand on larger screens.</p>
+
+      <h3>Responsive Breakpoints</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Breakpoint</th>
+            <th>Class Prefix</th>
+            <th>Screen Size</th>
+            <th>Container Width</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Desktop</strong></td>
+            <td><code>col-*</code></td>
+            <td>≥960px</td>
+            <td>960px fixed</td>
+          </tr>
+          <tr>
+            <td><strong>Tablet</strong></td>
+            <td><code>col-tablet-*</code></td>
+            <td>768px - 959px</td>
+            <td>96% fluid</td>
+          </tr>
+          <tr>
+            <td><strong>Mobile</strong></td>
+            <td><code>col-mobile-*</code></td>
+            <td>&lt;768px</td>
+            <td>100% fluid</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="alert alert-tip">
+        <strong>Mobile First:</strong> Start with mobile layout and enhance for larger screens using responsive classes.
+      </div>
+
+      <h3>Responsive Example</h3>
+      <div class="responsive-preview">
+        <div class="demo-controls">
+          <button onclick="setDevicePreview('desktop')" class="active">Desktop View</button>
+          <button onclick="setDevicePreview('tablet')">Tablet View</button>
+          <button onclick="setDevicePreview('mobile')">Mobile View</button>
+        </div>
+        <div id="deviceFrame" class="device-frame desktop">
+          <div class="device-label">Current View: Desktop (960px+)</div>
+          <div class="grid-example">
+            <div class="row">
+              <div class="col-4 col-tablet-8 col-mobile-16">
+                Sidebar
+              </div>
+              <div class="col-8 col-tablet-8 col-mobile-16">
+                Main Content
+              </div>
+              <div class="col-4 col-tablet-16 col-mobile-16">
+                Aside
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-4 col-tablet-8 col-mobile-16"&gt;Sidebar&lt;/div&gt;
+  &lt;div class="col-8 col-tablet-8 col-mobile-16"&gt;Main Content&lt;/div&gt;
+  &lt;div class="col-4 col-tablet-16 col-mobile-16"&gt;Aside&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <!-- Nesting Section -->
+    <section id="nesting" class="doc-section">
+      <h2>Nesting Grids</h2>
+
+      <p>Columns can be nested within other columns to create complex layouts. Use <code>.first</code> and <code>.last</code> classes to remove margins on nested columns.</p>
+
+      <h3>Basic Nesting</h3>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-10" style="background: #e9ecef; color: #2c3e50;">
+            <div style="padding: 1rem;">
+              <strong>10 Column Parent</strong>
+              <div class="row" style="margin-top: 1rem;">
+                <div class="col-6 first" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                  6 Nested
+                </div>
+                <div class="col-4 last" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                  4 Nested
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">6 Column Sidebar</div>
+        </div>
+      </div>
+
+      <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-10"&gt;
+    10 Column Parent
+    &lt;div class="row"&gt;
+      &lt;div class="col-6 first"&gt;6 Nested&lt;/div&gt;
+      &lt;div class="col-4 last"&gt;4 Nested&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-6"&gt;6 Column Sidebar&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+      <h3>Golden Ratio Layout <span class="badge new">Popular</span></h3>
+      <p>Create aesthetically pleasing layouts using the golden ratio (1.618:1). The 16-column grid makes this easy with 10:6 column splits.</p>
+
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-10">Main Content (Golden)</div>
+          <div class="col-6">Sidebar (Ratio)</div>
+        </div>
+      </div>
+
+      <div class="alert alert-tip">
+        <strong>Golden Ratio Combinations:</strong> 10:6, 6:4, and nested 6:4 within 10 columns all approximate the golden ratio.
+      </div>
+    </section>
+
+    <!-- Utilities Section -->
+    <section id="utilities" class="doc-section">
+      <h2>Grid Utilities</h2>
+
+      <h3>Offset Classes</h3>
+      <p>Push columns to the right using offset classes:</p>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-4 offset-4">4 Columns with 4 Offset</div>
+          <div class="col-4">4 Columns</div>
+        </div>
+        <div class="row">
+          <div class="col-8 offset-8">8 Columns Centered</div>
+        </div>
+      </div>
+
+      <h3>Push and Pull (Source Ordering)</h3>
+      <p>Change the visual order of columns for SEO optimization:</p>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-6 push-10">First in source, appears right</div>
+          <div class="col-10 pull-6">Second in source, appears left</div>
+        </div>
+      </div>
+
+      <pre><code>&lt;!-- SEO-friendly: Main content first in source --&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-10 push-6"&gt;Main Content (First in HTML)&lt;/div&gt;
+  &lt;div class="col-6 pull-10"&gt;Sidebar (Second in HTML)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+      <h3>Fluid Columns</h3>
+      <p>Use fluid percentage-based columns for flexible layouts:</p>
+      <div class="grid-example">
+        <div class="row">
+          <div class="one-third col">One Third</div>
+          <div class="one-third col">One Third</div>
+          <div class="one-third col">One Third</div>
+        </div>
+        <div class="row">
+          <div class="one-quarter col">1/4</div>
+          <div class="half col">Half (1/2)</div>
+          <div class="one-quarter col">1/4</div>
+        </div>
+        <div class="row">
+          <div class="three-quarters col">Three Quarters (3/4)</div>
+          <div class="one-quarter col">1/4</div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Width</th>
+            <th>Use Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.one-quarter</code></td>
+            <td>25%</td>
+            <td>Small sidebars, card layouts</td>
+          </tr>
+          <tr>
+            <td><code>.one-third</code></td>
+            <td>33.33%</td>
+            <td>Three-column layouts</td>
+          </tr>
+          <tr>
+            <td><code>.half</code></td>
+            <td>50%</td>
+            <td>Two-column splits</td>
+          </tr>
+          <tr>
+            <td><code>.two-thirds</code></td>
+            <td>66.66%</td>
+            <td>Main content with sidebar</td>
+          </tr>
+          <tr>
+            <td><code>.three-quarters</code></td>
+            <td>75%</td>
+            <td>Wide content areas</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="doc-section">
+      <h2>Real-World Examples</h2>
+
+      <h3>E-commerce Product Grid</h3>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-4">
+            <div style="background: white; color: #2c3e50; padding: 1rem; border-radius: 4px;">
+              <strong>Filters</strong>
+              <ul style="list-style: none; padding: 0; margin: 0.5rem 0;">
+                <li>✓ Category</li>
+                <li>✓ Price</li>
+                <li>✓ Brand</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-4">Product 1</div>
+              <div class="col-4">Product 2</div>
+              <div class="col-4">Product 3</div>
+              <div class="col-4">Product 4</div>
+              <div class="col-4">Product 5</div>
+              <div class="col-4">Product 6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Blog Layout with Sidebar</h3>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-16">Header Navigation</div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <div style="min-height: 150px;">Blog Post Content</div>
+          </div>
+          <div class="col-6">
+            <div>Recent Posts</div>
+            <div style="margin-top: 1rem;">Categories</div>
+            <div style="margin-top: 1rem;">Tags</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-16">Footer</div>
+        </div>
+      </div>
+
+      <h3>Dashboard Layout</h3>
+      <div class="grid-example">
+        <div class="row">
+          <div class="col-3">
+            <div style="min-height: 300px;">
+              <strong>Navigation</strong>
+              <ul style="list-style: none; padding: 0;">
+                <li>Dashboard</li>
+                <li>Analytics</li>
+                <li>Reports</li>
+                <li>Settings</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-13">
+            <div class="row">
+              <div class="col-4">Metric 1</div>
+              <div class="col-4">Metric 2</div>
+              <div class="col-5">Metric 3</div>
+            </div>
+            <div class="row" style="margin-top: 1rem;">
+              <div class="col-8">Chart Area</div>
+              <div class="col-5">Activity Feed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Playground -->
+    <section class="doc-section">
+      <h2>Interactive Grid Playground</h2>
+
+      <div class="interactive-demo">
+        <h3>Build Your Layout</h3>
+        <div class="demo-controls">
+          <button onclick="addGridColumn(4)">Add 4 Col</button>
+          <button onclick="addGridColumn(6)">Add 6 Col</button>
+          <button onclick="addGridColumn(8)">Add 8 Col</button>
+          <button onclick="addGridColumn(10)">Add 10 Col</button>
+          <button onclick="addGridColumn(16)">Add Full Width</button>
+          <button onclick="clearGrid()">Clear Grid</button>
+        </div>
+
+        <div id="gridPlayground" class="grid-example">
+          <div class="row" id="playgroundRow">
+            <div class="col-8">Sample Column 1</div>
+            <div class="col-8">Sample Column 2</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <strong>Generated Code:</strong>
+          <pre id="generatedCode"><code>&lt;div class="row"&gt;
+  &lt;div class="col-8"&gt;Sample Column 1&lt;/div&gt;
+  &lt;div class="col-8"&gt;Sample Column 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="doc-section">
+      <h2>Best Practices</h2>
+
+      <div class="alert alert-tip">
+        <h4>Do's:</h4>
+        <ul>
+          <li>✓ Always wrap columns in a <code>.row</code></li>
+          <li>✓ Ensure column widths add up to 16 or less</li>
+          <li>✓ Use responsive classes for mobile optimization</li>
+          <li>✓ Nest grids when needed for complex layouts</li>
+          <li>✓ Use semantic HTML within grid columns</li>
+        </ul>
+      </div>
+
+      <div class="alert alert-warning">
+        <h4>Don'ts:</h4>
+        <ul>
+          <li>✗ Don't exceed 16 columns in a row</li>
+          <li>✗ Don't forget <code>.first</code> and <code>.last</code> on nested columns</li>
+          <li>✗ Don't use the grid for micro-layouts (use flexbox instead)</li>
+          <li>✗ Don't mix fluid and fixed columns in the same row</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Migration Guide -->
+    <section class="doc-section">
+      <h2>Migration from Other Grids</h2>
+
+      <h3>From Bootstrap (12-column)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Bootstrap</th>
+            <th>Amphibious</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.col-md-6</code></td>
+            <td><code>.col-8</code></td>
+            <td>50% width</td>
+          </tr>
+          <tr>
+            <td><code>.col-md-4</code></td>
+            <td><code>.col-5</code></td>
+            <td>~33% width</td>
+          </tr>
+          <tr>
+            <td><code>.col-md-3</code></td>
+            <td><code>.col-4</code></td>
+            <td>25% width</td>
+          </tr>
+          <tr>
+            <td><code>.col-md-8</code></td>
+            <td><code>.col-11</code></td>
+            <td>~66% width</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>From CSS Grid</h3>
+      <p>While CSS Grid is more powerful for complex layouts, Amphibious grid provides:</p>
+      <ul>
+        <li>Better browser compatibility (IE11+)</li>
+        <li>Simpler syntax for common layouts</li>
+        <li>Built-in responsive breakpoints</li>
+        <li>Consistent gutters without configuration</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Documentation Scripts -->
+  <script>
+    // Responsive preview
+    function setDevicePreview(device) {
+      const frame = document.getElementById('deviceFrame');
+      const buttons = document.querySelectorAll('.demo-controls button');
+
+      // Update frame class
+      frame.className = 'device-frame ' + device;
+
+      // Update label
+      const labels = {
+        desktop: 'Desktop (960px+)',
+        tablet: 'Tablet (768px - 959px)',
+        mobile: 'Mobile (<768px)'
+      };
+      frame.querySelector('.device-label').textContent = 'Current View: ' + labels[device];
+
+      // Update active button
+      buttons.forEach(btn => {
+        if (btn.textContent.toLowerCase().includes(device)) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    // Interactive playground
+    let columnCount = 2;
+
+    function addGridColumn(size) {
+      const row = document.getElementById('playgroundRow');
+      columnCount++;
+
+      const newCol = document.createElement('div');
+      newCol.className = 'col-' + size;
+      newCol.textContent = `Column ${columnCount} (${size})`;
+      row.appendChild(newCol);
+
+      updateGeneratedCode();
+    }
+
+    function clearGrid() {
+      const row = document.getElementById('playgroundRow');
+      row.innerHTML = '';
+      columnCount = 0;
+      updateGeneratedCode();
+    }
+
+    function updateGeneratedCode() {
+      const row = document.getElementById('playgroundRow');
+      const columns = row.querySelectorAll('[class*="col-"]');
+
+      let code = '<div class="row">\n';
+      columns.forEach(col => {
+        const classes = col.className;
+        const content = col.textContent;
+        code += `  <div class="${classes}">${content}</div>\n`;
+      });
+      code += '</div>';
+
+      document.getElementById('generatedCode').innerHTML = `<code>${escapeHtml(code)}</code>`;
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('.doc-nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

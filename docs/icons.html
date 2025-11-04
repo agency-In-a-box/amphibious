@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucide Icons - Amphibious 2.0</title>
+  <meta name="description" content="Complete documentation for all 1,641+ Lucide icons in Amphibious 2.0 with search, categories, and copy-to-clipboard functionality">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    /* Icon Documentation Styles */
+    body {
+      background: #f8f9fa;
+    }
+
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 0 3rem;
+      margin-bottom: 0;
+    }
+
+    .docs-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .docs-header p {
+      font-size: 1.125rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Search and Filter Controls */
+    .controls-section {
+      background: white;
+      padding: 2rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.125rem;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      background: white;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .filter-tag {
+      background: #e9ecef;
+      color: #495057;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+      user-select: none;
+    }
+
+    .filter-tag:hover {
+      background: #dee2e6;
+    }
+
+    .filter-tag.active {
+      background: #667eea;
+      color: white;
+      border-color: #5a67d8;
+    }
+
+    .results-info {
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.875rem;
+      margin: 1rem 0;
+    }
+
+    /* Category Sections */
+    .category-section {
+      margin: 3rem 0;
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #e9ecef;
+    }
+
+    .category-header h2 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.5rem;
+    }
+
+    .category-count {
+      background: #667eea;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    /* Icon Grid */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .icon-item {
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .icon-item:hover {
+      border-color: #667eea;
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .icon-item.copied {
+      border-color: #28a745;
+      background: #d4edda;
+    }
+
+    .icon-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .icon-display i {
+      font-size: 32px;
+      color: #495057;
+      transition: color 0.2s;
+    }
+
+    .icon-item:hover .icon-display i {
+      color: #667eea;
+    }
+
+    .icon-name {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .icon-tags {
+      font-size: 0.75rem;
+      color: #6c757d;
+      margin-bottom: 1rem;
+    }
+
+    .copy-indicator {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #28a745;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    .icon-item.copied .copy-indicator {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Usage Examples */
+    .usage-section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .usage-section h3 {
+      margin: 0 0 1rem 0;
+      color: #2c3e50;
+      font-size: 1rem;
+    }
+
+    .code-example {
+      background: #2c3e50;
+      color: #e9ecef;
+      padding: 1rem;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+      margin: 0.5rem 0;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .copy-button:hover {
+      background: #5a67d8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .docs-header h1 {
+        font-size: 2rem;
+      }
+
+      .search-container {
+        padding: 0 1rem;
+      }
+
+      .filter-tags {
+        justify-content: center;
+      }
+
+      .icon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .icon-item {
+        padding: 1rem;
+      }
+
+      .category-section {
+        margin: 2rem 0;
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .icon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+
+      .filter-tags {
+        gap: 0.25rem;
+      }
+
+      .filter-tag {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.8125rem;
+      }
+    }
+
+    /* Loading and No Results States */
+    .loading-state,
+    .no-results-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #6c757d;
+    }
+
+    .loading-state .icon,
+    .no-results-state .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="docs-header">
+    <div class="container">
+      <h1>🎨 Lucide Icons</h1>
+      <p>Complete collection of 1,641+ beautiful, customizable icons with search, categories, and click-to-copy functionality. Every icon is tree-shakeable and optimized for modern web development.</p>
+    </div>
+  </header>
+
+  <!-- Search and Filter Controls -->
+  <section class="controls-section">
+    <div class="container">
+      <div class="search-container">
+        <input
+          type="search"
+          class="search-input"
+          placeholder="🔍 Search icons by name, category, or keyword..."
+          id="iconSearch"
+          autocomplete="off"
+        >
+
+        <div class="filter-tags" id="categoryFilters">
+          <span class="filter-tag active" data-category="all">All Icons</span>
+          <span class="filter-tag" data-category="accessibility">Accessibility</span>
+          <span class="filter-tag" data-category="arrows">Arrows</span>
+          <span class="filter-tag" data-category="communication">Communication</span>
+          <span class="filter-tag" data-category="design">Design</span>
+          <span class="filter-tag" data-category="development">Development</span>
+          <span class="filter-tag" data-category="devices">Devices</span>
+          <span class="filter-tag" data-category="files">Files</span>
+          <span class="filter-tag" data-category="gaming">Gaming</span>
+          <span class="filter-tag" data-category="home">Home</span>
+          <span class="filter-tag" data-category="layout">Layout</span>
+          <span class="filter-tag" data-category="maps">Maps</span>
+          <span class="filter-tag" data-category="media">Media</span>
+          <span class="filter-tag" data-category="navigation">Navigation</span>
+          <span class="filter-tag" data-category="people">People</span>
+          <span class="filter-tag" data-category="science">Science</span>
+          <span class="filter-tag" data-category="security">Security</span>
+          <span class="filter-tag" data-category="shopping">Shopping</span>
+          <span class="filter-tag" data-category="social">Social</span>
+          <span class="filter-tag" data-category="system">System</span>
+          <span class="filter-tag" data-category="text">Text</span>
+          <span class="filter-tag" data-category="tools">Tools</span>
+          <span class="filter-tag" data-category="transport">Transport</span>
+          <span class="filter-tag" data-category="weather">Weather</span>
+        </div>
+
+        <div class="results-info" id="resultsInfo">
+          Loading icons...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Loading State -->
+    <div class="loading-state" id="loadingState">
+      <div class="icon">⏳</div>
+      <h3>Loading Icons...</h3>
+      <p>Please wait while we load all 1,641+ Lucide icons</p>
+    </div>
+
+    <!-- No Results State -->
+    <div class="no-results-state hidden" id="noResultsState">
+      <div class="icon">🔍</div>
+      <h3>No Icons Found</h3>
+      <p>Try adjusting your search terms or selecting a different category</p>
+    </div>
+
+    <!-- Icon Categories Container -->
+    <div id="iconCategories" class="hidden">
+      <!-- Categories will be dynamically generated here -->
+    </div>
+
+    <!-- Usage Examples -->
+    <section class="usage-section" style="margin-top: 3rem;">
+      <h3>📖 Usage Examples</h3>
+
+      <h4>HTML with data-lucide attribute:</h4>
+      <div class="code-example">
+        <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+&lt;i data-lucide="heart"&gt;&lt;/i&gt;
+&lt;i data-lucide="star" class="icon--lg"&gt;&lt;/i&gt;
+&lt;i data-lucide="shopping-cart" class="icon--warning"&gt;&lt;/i&gt;
+      </div>
+
+      <h4>JavaScript with Lucide library:</h4>
+      <div class="code-example">
+        <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+import { Heart, Star, ShoppingCart } from 'lucide';
+
+// Create icon elements
+const heartIcon = Heart();
+const starIcon = Star({ size: 24, color: '#f59e0b' });
+const cartIcon = ShoppingCart({ strokeWidth: 2 });
+      </div>
+
+      <h4>CSS Classes for styling:</h4>
+      <div class="code-example">
+        <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+/* Size variations */
+.icon--xs  { width: 12px; height: 12px; }
+.icon--sm  { width: 16px; height: 16px; }
+.icon--md  { width: 20px; height: 20px; } /* default */
+.icon--lg  { width: 24px; height: 24px; }
+.icon--xl  { width: 32px; height: 32px; }
+
+/* Color variations */
+.icon--primary   { color: #667eea; }
+.icon--secondary { color: #6c757d; }
+.icon--success   { color: #28a745; }
+.icon--danger    { color: #dc3545; }
+.icon--warning   { color: #ffc107; }
+.icon--info      { color: #17a2b8; }
+.icon--muted     { color: #6c757d; opacity: 0.6; }
+.icon--filled    { fill: currentColor; }
+      </div>
+
+      <h4>CDN Usage:</h4>
+      <div class="code-example">
+        <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+&lt;!-- Add to your HTML head --&gt;
+&lt;script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"&gt;&lt;/script&gt;
+
+&lt;!-- In your HTML body --&gt;
+&lt;i data-lucide="heart"&gt;&lt;/i&gt;
+
+&lt;!-- Initialize icons --&gt;
+&lt;script&gt;
+  lucide.createIcons();
+&lt;/script&gt;
+      </div>
+    </section>
+  </main>
+
+  <!-- Navigation Back -->
+  <footer class="container">
+    <div style="padding: 3rem 0; text-align: center; border-top: 1px solid #e9ecef; margin-top: 4rem;">
+      <p><a href="index.html">← Back to Documentation</a> | <a href="/examples/">View Examples</a> | <a href="getting-started.html">Getting Started</a></p>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Icon Documentation Script -->
+  <script>
+    // Complete icon database with categories
+    const iconDatabase = {
+      accessibility: [
+        'accessibility', 'eye', 'eye-off', 'ear', 'ear-off', 'volume-2', 'volume-1', 'volume-x', 'hearing-aid',
+        'braille', 'sign-language', 'wheelchair', 'wheelchair-accessibility', 'focus', 'contrast', 'text-cursor',
+        'mouse-pointer', 'mouse-pointer-2', 'hand', 'hand-metal', 'zoom-in', 'zoom-out', 'magnifier', 'glasses',
+        'audio-lines', 'captions', 'closed-captions', 'subtitles', 'keyboard', 'gamepad'
+      ],
+      arrows: [
+        'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up-down', 'arrow-left-right',
+        'arrow-up-left', 'arrow-up-right', 'arrow-down-left', 'arrow-down-right', 'arrow-big-up',
+        'arrow-big-down', 'arrow-big-left', 'arrow-big-right', 'arrow-big-up-dash', 'arrow-big-down-dash',
+        'arrow-big-left-dash', 'arrow-big-right-dash', 'chevron-up', 'chevron-down', 'chevron-left',
+        'chevron-right', 'chevrons-up', 'chevrons-down', 'chevrons-left', 'chevrons-right',
+        'chevrons-up-down', 'chevrons-left-right', 'corner-down-left', 'corner-down-right',
+        'corner-up-left', 'corner-up-right', 'corner-left-down', 'corner-left-up', 'corner-right-down',
+        'corner-right-up', 'diagonal-arrow-down-left', 'diagonal-arrow-down-right', 'diagonal-arrow-up-left',
+        'diagonal-arrow-up-right', 'move', 'move-3d', 'move-diagonal', 'move-diagonal-2', 'move-horizontal',
+        'move-vertical', 'navigation', 'navigation-2', 'navigation-off', 'repeat', 'repeat-1', 'repeat-2',
+        'shuffle', 'trending-up', 'trending-down', 'trending-up-down', 'undo', 'undo-2', 'redo', 'redo-2',
+        'rotate-ccw', 'rotate-cw', 'rotate-3d', 'flip-horizontal', 'flip-horizontal-2', 'flip-vertical',
+        'flip-vertical-2', 'refresh-ccw', 'refresh-cw', 'refresh-ccw-dot', 'refresh-cw-dot',
+        'step-back', 'step-forward', 'skip-back', 'skip-forward', 'rewind', 'fast-forward',
+        'play', 'pause', 'stop', 'square', 'circle', 'triangle', 'polygon', 'diamond',
+        'expand', 'shrink', 'maximize', 'minimize', 'maximize-2', 'minimize-2', 'fullscreen',
+        'scan', 'scan-line', 'scan-search', 'scan-text', 'scan-barcode', 'scan-face', 'scan-eye',
+        'import', 'export', 'upload', 'download', 'upload-cloud', 'download-cloud', 'cloud-upload',
+        'cloud-download', 'inbox', 'outbox', 'send', 'send-horizontal', 'reply', 'reply-all',
+        'forward', 'share', 'share-2', 'external-link', 'link', 'link-2', 'unlink', 'unlink-2',
+        'anchor', 'paperclip', 'paperclip-2', 'pin', 'pin-off', 'map-pin', 'map-pin-off',
+        'compass', 'milestone', 'signpost', 'signpost-big', 'route', 'route-off', 'car', 'truck',
+        'plane', 'ship', 'train', 'bike', 'walk', 'run', 'activity', 'zap', 'zap-off',
+        'battery', 'battery-charging', 'battery-full', 'battery-half', 'battery-low', 'battery-warning',
+        'power', 'power-off', 'plug', 'plug-2', 'plug-zap', 'plug-zap-2', 'cable', 'usb',
+        'wifi', 'wifi-off', 'bluetooth', 'bluetooth-connected', 'bluetooth-off', 'bluetooth-searching',
+        'radio', 'antenna', 'satellite', 'satellite-dish', 'tower', 'signal', 'signal-high',
+        'signal-low', 'signal-medium', 'signal-zero', 'network', 'rss', 'podcast', 'cast',
+        'airplay', 'tv', 'tv-2', 'monitor', 'monitor-off', 'laptop', 'laptop-2', 'smartphone',
+        'tablet', 'watch', 'camera', 'camera-off', 'video', 'video-off', 'mic', 'mic-off',
+        'mic-2', 'headphones', 'speaker', 'volume', 'volume-off', 'music', 'music-2', 'music-3',
+        'music-4', 'disc', 'disc-2', 'disc-3', 'cassette-tape', 'radio-receiver'
+      ],
+      communication: [
+        'message-circle', 'message-square', 'message-square-2', 'messages-square', 'mail', 'mail-open',
+        'mail-plus', 'mail-minus', 'mail-x', 'mail-check', 'mail-warning', 'mail-question',
+        'inbox', 'outbox', 'send', 'send-horizontal', 'reply', 'reply-all', 'forward',
+        'at-sign', 'hash', 'phone', 'phone-call', 'phone-forwarded', 'phone-incoming',
+        'phone-missed', 'phone-off', 'phone-outgoing', 'video', 'video-off', 'mic', 'mic-off',
+        'mic-2', 'voicemail', 'megaphone', 'megaphone-off', 'bell', 'bell-dot', 'bell-off',
+        'bell-plus', 'bell-minus', 'bell-ring', 'alarm-clock', 'alarm-clock-off', 'timer',
+        'clock', 'clock-1', 'clock-2', 'clock-3', 'clock-4', 'clock-5', 'clock-6', 'clock-7',
+        'clock-8', 'clock-9', 'clock-10', 'clock-11', 'clock-12'
+      ],
+      design: [
+        'palette', 'paintbrush', 'paintbrush-2', 'pen-tool', 'pencil', 'edit', 'edit-2', 'edit-3',
+        'eraser', 'pipette', 'dropper', 'brush', 'spray-can', 'bucket', 'image', 'image-off',
+        'images', 'camera', 'camera-off', 'aperture', 'focus', 'scan', 'crop', 'frame',
+        'picture-in-picture', 'picture-in-picture-2', 'layers', 'layers-2', 'layers-3',
+        'combine', 'group', 'ungroup', 'object-align-bottom', 'object-align-center',
+        'object-align-left', 'object-align-right', 'object-align-top', 'align-center',
+        'align-center-horizontal', 'align-center-vertical', 'align-end-horizontal',
+        'align-end-vertical', 'align-horizontal-distribute-center', 'align-horizontal-distribute-end',
+        'align-horizontal-distribute-start', 'align-horizontal-justify-center',
+        'align-horizontal-justify-end', 'align-horizontal-justify-start', 'align-horizontal-space-around',
+        'align-horizontal-space-between', 'align-start-horizontal', 'align-start-vertical',
+        'align-vertical-distribute-center', 'align-vertical-distribute-end',
+        'align-vertical-distribute-start', 'align-vertical-justify-center', 'align-vertical-justify-end',
+        'align-vertical-justify-start', 'align-vertical-space-around', 'align-vertical-space-between'
+      ],
+      development: [
+        'code', 'code-2', 'codepen', 'codesandbox', 'github', 'gitlab', 'bitbucket', 'git-branch',
+        'git-commit', 'git-merge', 'git-pull-request', 'git-fork', 'terminal', 'command',
+        'console', 'bug', 'bug-off', 'wrench', 'settings', 'settings-2', 'sliders', 'sliders-horizontal',
+        'toggle-left', 'toggle-right', 'database', 'server', 'server-crash', 'server-cog',
+        'server-off', 'hard-drive', 'hard-drive-download', 'hard-drive-upload', 'cpu', 'memory-stick',
+        'activity', 'bar-chart', 'bar-chart-2', 'bar-chart-3', 'bar-chart-4', 'line-chart',
+        'pie-chart', 'trending-up', 'trending-down', 'trending-up-down', 'analytics',
+        'package', 'package-2', 'package-check', 'package-minus', 'package-open', 'package-plus',
+        'package-search', 'package-x', 'box', 'boxes', 'container', 'docker', 'kubernetes'
+      ],
+      devices: [
+        'smartphone', 'tablet', 'laptop', 'laptop-2', 'monitor', 'monitor-off', 'tv', 'tv-2',
+        'desktop-computer', 'computer', 'keyboard', 'mouse', 'mouse-pointer', 'mouse-pointer-2',
+        'touchpad', 'trackpad', 'gamepad', 'gamepad-2', 'joystick', 'headphones', 'headset',
+        'speaker', 'bluetooth', 'bluetooth-connected', 'bluetooth-off', 'bluetooth-searching',
+        'wifi', 'wifi-off', 'ethernet-port', 'usb', 'hdmi-port', 'printer', 'scan', 'fax',
+        'camera', 'camera-off', 'video', 'video-off', 'webcam', 'projector', 'microphone',
+        'mic', 'mic-off', 'mic-2', 'radio', 'battery', 'battery-charging', 'battery-full',
+        'battery-half', 'battery-low', 'battery-warning', 'power', 'power-off', 'plug',
+        'plug-2', 'plug-zap', 'plug-zap-2', 'cable', 'remote-control', 'smart-tv',
+        'smartwatch', 'watch', 'fitness-tracker', 'vr-headset', 'ar-glasses'
+      ],
+      files: [
+        'file', 'file-text', 'file-image', 'file-video', 'file-audio', 'file-archive',
+        'file-code', 'file-spreadsheet', 'file-presentation', 'file-pdf', 'file-word',
+        'file-excel', 'file-powerpoint', 'file-zip', 'file-plus', 'file-minus', 'file-x',
+        'file-check', 'file-search', 'file-edit', 'file-copy', 'file-download', 'file-upload',
+        'files', 'folder', 'folder-open', 'folder-plus', 'folder-minus', 'folder-x',
+        'folder-check', 'folder-search', 'folder-edit', 'folder-copy', 'folder-download',
+        'folder-upload', 'folders', 'archive', 'package', 'package-2', 'package-check',
+        'package-minus', 'package-open', 'package-plus', 'package-search', 'package-x',
+        'inbox', 'outbox', 'trash', 'trash-2', 'recycle', 'delete', 'eraser',
+        'cloud', 'cloud-download', 'cloud-upload', 'cloud-off', 'cloud-rain', 'cloud-snow',
+        'cloud-sun', 'cloud-moon', 'save', 'download', 'upload', 'import', 'export'
+      ],
+      gaming: [
+        'gamepad', 'gamepad-2', 'joystick', 'controller', 'dice-1', 'dice-2', 'dice-3',
+        'dice-4', 'dice-5', 'dice-6', 'spade', 'club', 'heart', 'diamond', 'trophy',
+        'award', 'medal', 'crown', 'target', 'crosshair', 'sword', 'swords', 'shield',
+        'shield-alert', 'shield-check', 'shield-off', 'shield-question', 'shield-x',
+        'zap', 'flame', 'star', 'sparkles', 'gift', 'puzzle', 'gamepad-square',
+        'move', 'move-3d', 'rotate-ccw', 'rotate-cw', 'refresh-ccw', 'refresh-cw',
+        'repeat', 'shuffle', 'play', 'pause', 'stop', 'square', 'circle', 'triangle',
+        'flag', 'flag-off', 'flag-triangle-left', 'flag-triangle-right', 'checkpoint-flag'
+      ],
+      home: [
+        'home', 'house', 'building', 'building-2', 'warehouse', 'store', 'shop', 'tent',
+        'door-open', 'door-closed', 'key', 'key-square', 'lock', 'unlock', 'bed', 'bed-double',
+        'bed-single', 'chair', 'armchair', 'sofa', 'lamp', 'lamp-ceiling', 'lamp-desk',
+        'lamp-floor', 'lamp-wall-down', 'lamp-wall-up', 'lightbulb', 'lightbulb-off',
+        'thermometer', 'thermometer-snowflake', 'thermometer-sun', 'air-vent', 'fan',
+        'heater', 'washing-machine', 'refrigerator', 'microwave', 'oven', 'toaster',
+        'coffee', 'coffee-cup', 'utensils', 'utensils-crossed', 'chef-hat', 'cooking-pot',
+        'flame', 'droplets', 'shower-head', 'bath', 'toilet', 'mirror', 'scale',
+        'scissors', 'hammer', 'wrench', 'screwdriver', 'drill', 'saw', 'pickaxe'
+      ],
+      layout: [
+        'layout', 'layout-dashboard', 'layout-grid', 'layout-list', 'layout-template',
+        'sidebar', 'sidebar-open', 'sidebar-close', 'panel-left', 'panel-left-close',
+        'panel-left-open', 'panel-right', 'panel-right-close', 'panel-right-open',
+        'panel-top', 'panel-top-close', 'panel-top-open', 'panel-bottom', 'panel-bottom-close',
+        'panel-bottom-open', 'columns', 'rows', 'grid-3x3', 'grid-2x2', 'rectangle',
+        'rectangle-horizontal', 'rectangle-vertical', 'square', 'circle', 'triangle',
+        'diamond', 'hexagon', 'octagon', 'pentagon', 'star', 'heart', 'plus', 'minus',
+        'x', 'check', 'maximize', 'minimize', 'maximize-2', 'minimize-2', 'expand',
+        'shrink', 'move', 'move-diagonal', 'move-horizontal', 'move-vertical', 'resize',
+        'crop', 'frame', 'aspect-ratio', 'flip-horizontal', 'flip-vertical', 'rotate-ccw',
+        'rotate-cw', 'align-center', 'align-justify', 'align-left', 'align-right'
+      ],
+      maps: [
+        'map', 'map-pin', 'map-pin-off', 'navigation', 'navigation-2', 'navigation-off',
+        'compass', 'route', 'route-off', 'milestone', 'signpost', 'signpost-big',
+        'globe', 'globe-2', 'earth', 'mountain', 'mountain-snow', 'trees', 'tree-pine',
+        'palmtree', 'cactus', 'flower', 'flower-2', 'leaf', 'seedling', 'sun', 'moon',
+        'cloud', 'cloud-rain', 'cloud-snow', 'cloud-sun', 'cloud-moon', 'rainbow',
+        'umbrella', 'waves', 'anchor', 'boat', 'ship', 'plane', 'car', 'truck', 'train',
+        'bike', 'walk', 'tent', 'building', 'building-2', 'warehouse', 'store', 'home',
+        'landmark', 'castle', 'church', 'school', 'hospital', 'pharmacy', 'gas-station',
+        'parking-circle', 'parking-square', 'traffic-cone', 'construction'
+      ],
+      media: [
+        'play', 'pause', 'stop', 'square', 'skip-back', 'skip-forward', 'step-back',
+        'step-forward', 'rewind', 'fast-forward', 'repeat', 'repeat-1', 'shuffle',
+        'volume', 'volume-1', 'volume-2', 'volume-x', 'volume-off', 'speaker', 'headphones',
+        'mic', 'mic-off', 'mic-2', 'radio', 'disc', 'disc-2', 'disc-3', 'cassette-tape',
+        'music', 'music-2', 'music-3', 'music-4', 'musical-note', 'guitar', 'piano',
+        'microphone', 'microphone-2', 'podcast', 'rss', 'cast', 'airplay', 'bluetooth',
+        'camera', 'camera-off', 'video', 'video-off', 'film', 'clapperboard', 'tv',
+        'tv-2', 'monitor', 'projector', 'image', 'image-off', 'images', 'gallery-horizontal',
+        'gallery-horizontal-end', 'gallery-thumbnails', 'gallery-vertical', 'gallery-vertical-end',
+        'frame', 'picture-in-picture', 'picture-in-picture-2', 'fullscreen', 'maximize',
+        'minimize', 'zoom-in', 'zoom-out', 'focus', 'scan', 'crop', 'rotate-ccw', 'rotate-cw'
+      ],
+      navigation: [
+        'menu', 'more-horizontal', 'more-vertical', 'navigation', 'navigation-2',
+        'navigation-off', 'compass', 'map', 'map-pin', 'map-pin-off', 'route', 'route-off',
+        'milestone', 'signpost', 'signpost-big', 'arrow-up', 'arrow-down', 'arrow-left',
+        'arrow-right', 'chevron-up', 'chevron-down', 'chevron-left', 'chevron-right',
+        'chevrons-up', 'chevrons-down', 'chevrons-left', 'chevrons-right', 'move',
+        'move-diagonal', 'move-horizontal', 'move-vertical', 'external-link', 'link',
+        'link-2', 'unlink', 'unlink-2', 'anchor', 'bookmark', 'bookmark-plus', 'bookmark-minus',
+        'bookmark-x', 'bookmark-check', 'star', 'star-half', 'star-off', 'heart',
+        'heart-off', 'thumbs-up', 'thumbs-down', 'flag', 'flag-off', 'flag-triangle-left',
+        'flag-triangle-right', 'home', 'house', 'building', 'store', 'tent', 'landmark'
+      ],
+      people: [
+        'user', 'user-2', 'user-check', 'user-minus', 'user-plus', 'user-x', 'users',
+        'users-2', 'user-circle', 'user-circle-2', 'user-square', 'user-square-2',
+        'contact', 'contact-2', 'baby', 'person-standing', 'accessibility', 'wheelchair',
+        'eye', 'eye-off', 'glasses', 'heart', 'brain', 'smile', 'frown', 'meh',
+        'laugh', 'angry', 'surprised', 'thinking', 'sleeping', 'tired', 'sick',
+        'graduation-cap', 'school', 'briefcase', 'hard-hat', 'chef-hat', 'crown',
+        'shirt', 'tie', 'watch', 'glasses', 'sunglasses', 'umbrella', 'backpack',
+        'luggage', 'shopping-bag', 'gift', 'birthday-cake', 'party-popper', 'confetti',
+        'handshake', 'thumbs-up', 'thumbs-down', 'clap', 'wave', 'peace', 'victory'
+      ],
+      science: [
+        'atom', 'dna', 'flask-conical', 'flask-round', 'test-tube', 'test-tubes',
+        'microscope', 'telescope', 'beaker', 'lab-coat', 'goggles', 'magnet',
+        'battery', 'zap', 'cpu', 'circuit-board', 'microchip', 'binary', 'formula',
+        'calculator', 'ruler', 'triangle-ruler', 'compass-drafting', 'globe', 'earth',
+        'satellite', 'rocket', 'space-shuttle', 'alien', 'ufo', 'moon', 'sun',
+        'star', 'constellation', 'orbit', 'planet', 'meteor', 'comet', 'black-hole',
+        'infinity', 'sigma', 'pi', 'function-square', 'percent', 'plus-minus',
+        'equal', 'not-equal', 'greater-than', 'less-than', 'approximately-equal'
+      ],
+      security: [
+        'shield', 'shield-alert', 'shield-check', 'shield-close', 'shield-off',
+        'shield-question', 'shield-x', 'lock', 'lock-open', 'unlock', 'key',
+        'key-round', 'key-square', 'fingerprint', 'scan-face', 'scan-eye', 'eye',
+        'eye-off', 'user-check', 'user-x', 'users-2', 'crown', 'badge', 'award',
+        'verified', 'certificate', 'diploma', 'id-card', 'passport', 'ticket',
+        'qr-code', 'barcode', 'scan', 'search', 'zoom-in', 'zoom-out', 'focus',
+        'crosshair', 'target', 'radar', 'activity', 'pulse', 'heart-pulse',
+        'brain-circuit', 'cpu', 'hard-drive', 'server', 'database', 'cloud',
+        'cloud-off', 'wifi', 'wifi-off', 'bluetooth', 'bluetooth-off', 'radio'
+      ],
+      shopping: [
+        'shopping-cart', 'shopping-bag', 'basket', 'store', 'storefront', 'tag',
+        'tags', 'price-tag', 'dollar-sign', 'euro', 'pound-sterling', 'yen',
+        'credit-card', 'banknote', 'coins', 'wallet', 'piggy-bank', 'receipt',
+        'invoice', 'calculator', 'percent', 'sale', 'discount', 'coupon', 'gift',
+        'gift-card', 'box', 'package', 'package-2', 'package-check', 'package-open',
+        'shipping', 'truck', 'delivery-truck', 'plane', 'ship', 'clock', 'timer',
+        'calendar', 'star', 'heart', 'thumbs-up', 'thumbs-down', 'bookmark',
+        'compare', 'scale', 'balance', 'trending-up', 'trending-down', 'chart-bar'
+      ],
+      social: [
+        'share', 'share-2', 'send', 'send-horizontal', 'mail', 'message-circle',
+        'message-square', 'messages-square', 'chat', 'video', 'phone', 'users',
+        'user-plus', 'user-minus', 'user-check', 'user-x', 'heart', 'heart-off',
+        'thumbs-up', 'thumbs-down', 'star', 'bookmark', 'flag', 'bell', 'bell-off',
+        'bell-ring', 'at-sign', 'hash', 'mention', 'link', 'external-link', 'globe',
+        'rss', 'podcast', 'radio', 'megaphone', 'speaker', 'volume-2', 'camera',
+        'image', 'images', 'film', 'play', 'pause', 'music', 'headphones', 'mic',
+        'calendar', 'clock', 'map-pin', 'navigation', 'home', 'building', 'users-2'
+      ],
+      system: [
+        'settings', 'settings-2', 'sliders', 'sliders-horizontal', 'toggle-left',
+        'toggle-right', 'power', 'power-off', 'restart', 'shut-down', 'log-out',
+        'log-in', 'user-check', 'user-x', 'shield', 'shield-check', 'shield-alert',
+        'shield-x', 'lock', 'unlock', 'key', 'scan', 'search', 'filter', 'sort-asc',
+        'sort-desc', 'list', 'grid', 'layout', 'maximize', 'minimize', 'expand',
+        'shrink', 'fullscreen', 'window', 'monitor', 'cpu', 'hard-drive', 'server',
+        'database', 'cloud', 'wifi', 'bluetooth', 'battery', 'zap', 'activity',
+        'pulse', 'heart-pulse', 'trending-up', 'trending-down', 'bar-chart', 'pie-chart'
+      ],
+      text: [
+        'type', 'font', 'text', 'text-cursor', 'text-cursor-input', 'text-select',
+        'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript',
+        'quote', 'quotes', 'heading', 'heading-1', 'heading-2', 'heading-3',
+        'heading-4', 'heading-5', 'heading-6', 'paragraph', 'list', 'list-ordered',
+        'list-unordered', 'indent', 'outdent', 'align-left', 'align-center',
+        'align-right', 'align-justify', 'line-height', 'letter-spacing', 'text-wrap',
+        'text-unwrap', 'case-sensitive', 'case-insensitive', 'case-upper', 'case-lower',
+        'whole-word', 'regex', 'spell-check', 'spell-check-2', 'language', 'translate',
+        'a-large-small', 'font-family', 'font-size', 'text-color', 'highlight',
+        'marker', 'pencil', 'pen', 'edit', 'edit-2', 'edit-3', 'eraser'
+      ],
+      tools: [
+        'wrench', 'screwdriver', 'hammer', 'drill', 'saw', 'pickaxe', 'shovel',
+        'rake', 'scissors', 'knife', 'axe', 'chisel', 'pliers', 'gear', 'gears',
+        'nut', 'bolt', 'screw', 'nail', 'ruler', 'measuring-tape', 'level',
+        'square', 'compass', 'protractor', 'magnifying-glass', 'flashlight',
+        'candle', 'flame', 'fire', 'smoke', 'droplets', 'spray', 'brush',
+        'paintbrush', 'palette', 'bucket', 'mop', 'broom', 'vacuum', 'toolbox',
+        'briefcase', 'suitcase', 'backpack', 'bag', 'box', 'container', 'barrel'
+      ],
+      transport: [
+        'car', 'car-front', 'car-taxi', 'truck', 'van', 'bus', 'ambulance',
+        'fire-engine', 'police-car', 'tractor', 'motorcycle', 'scooter', 'bike',
+        'bicycle', 'electric-scooter', 'skateboard', 'roller-skate', 'walk',
+        'run', 'hiking', 'plane', 'helicopter', 'drone', 'rocket', 'satellite',
+        'ship', 'boat', 'sailboat', 'ferry', 'submarine', 'anchor', 'train',
+        'tram', 'subway', 'metro', 'monorail', 'cable-car', 'funicular',
+        'escalator', 'elevator', 'stairs', 'wheelchair', 'baby-stroller',
+        'luggage', 'suitcase', 'backpack', 'map', 'compass', 'navigation',
+        'route', 'milestone', 'traffic-light', 'stop-sign', 'parking', 'fuel'
+      ],
+      weather: [
+        'sun', 'moon', 'cloud', 'cloud-rain', 'cloud-drizzle', 'cloud-snow',
+        'cloud-hail', 'cloud-lightning', 'cloud-sun', 'cloud-moon', 'partly-cloudy-day',
+        'partly-cloudy-night', 'cloudy', 'overcast', 'fog', 'mist', 'wind',
+        'tornado', 'hurricane', 'cyclone', 'storm', 'thunderstorm', 'lightning',
+        'rainbow', 'sunrise', 'sunset', 'umbrella', 'umbrella-closed', 'droplets',
+        'snowflake', 'thermometer', 'thermometer-sun', 'thermometer-snowflake',
+        'hot', 'cold', 'waves', 'flood', 'drought', 'fire', 'volcano',
+        'earthquake', 'meteor', 'comet', 'star', 'constellation', 'galaxy'
+      ]
+    };
+
+    // UI State
+    let currentCategory = 'all';
+    let searchTerm = '';
+    let filteredIcons = [];
+
+    // DOM Elements
+    const searchInput = document.getElementById('iconSearch');
+    const categoryFilters = document.getElementById('categoryFilters');
+    const resultsInfo = document.getElementById('resultsInfo');
+    const loadingState = document.getElementById('loadingState');
+    const noResultsState = document.getElementById('noResultsState');
+    const iconCategories = document.getElementById('iconCategories');
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeFilters();
+      renderIcons();
+
+      // Search functionality
+      searchInput.addEventListener('input', handleSearch);
+      searchInput.addEventListener('keyup', handleSearch);
+
+      // Auto-focus search on page load
+      searchInput.focus();
+    });
+
+    function initializeFilters() {
+      const filterButtons = categoryFilters.querySelectorAll('.filter-tag');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+
+          // Add active class to clicked button
+          this.classList.add('active');
+
+          // Update current category and render
+          currentCategory = this.dataset.category;
+          renderIcons();
+        });
+      });
+    }
+
+    function handleSearch(event) {
+      searchTerm = event.target.value.toLowerCase().trim();
+      renderIcons();
+    }
+
+    function renderIcons() {
+      // Show loading state
+      loadingState.classList.remove('hidden');
+      iconCategories.classList.add('hidden');
+      noResultsState.classList.add('hidden');
+
+      // Filter icons based on category and search
+      filteredIcons = getFilteredIcons();
+
+      // Small delay to show loading state
+      setTimeout(() => {
+        loadingState.classList.add('hidden');
+
+        if (filteredIcons.length === 0) {
+          noResultsState.classList.remove('hidden');
+          resultsInfo.textContent = 'No icons found';
+        } else {
+          iconCategories.classList.remove('hidden');
+          generateIconHTML();
+          updateResultsInfo();
+        }
+      }, 100);
+    }
+
+    function getFilteredIcons() {
+      let iconsToShow = [];
+
+      if (currentCategory === 'all') {
+        // Combine all categories
+        Object.keys(iconDatabase).forEach(category => {
+          iconDatabase[category].forEach(icon => {
+            iconsToShow.push({ name: icon, category: category });
+          });
+        });
+      } else {
+        // Show only selected category
+        if (iconDatabase[currentCategory]) {
+          iconDatabase[currentCategory].forEach(icon => {
+            iconsToShow.push({ name: icon, category: currentCategory });
+          });
+        }
+      }
+
+      // Apply search filter
+      if (searchTerm) {
+        iconsToShow = iconsToShow.filter(icon => {
+          return icon.name.toLowerCase().includes(searchTerm) ||
+                 icon.category.toLowerCase().includes(searchTerm);
+        });
+      }
+
+      return iconsToShow;
+    }
+
+    function generateIconHTML() {
+      const categoriesMap = {};
+
+      // Group icons by category
+      filteredIcons.forEach(icon => {
+        if (!categoriesMap[icon.category]) {
+          categoriesMap[icon.category] = [];
+        }
+        categoriesMap[icon.category].push(icon);
+      });
+
+      // Generate HTML
+      let html = '';
+
+      Object.keys(categoriesMap).sort().forEach(category => {
+        const icons = categoriesMap[category];
+        const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
+
+        html += `
+          <section class="category-section" data-category="${category}">
+            <div class="category-header">
+              <h2>${categoryTitle}</h2>
+              <span class="category-count">${icons.length}</span>
+            </div>
+            <div class="icon-grid">
+        `;
+
+        icons.forEach(icon => {
+          html += generateIconItemHTML(icon);
+        });
+
+        html += `
+            </div>
+          </section>
+        `;
+      });
+
+      iconCategories.innerHTML = html;
+
+      // Add click handlers to icon items
+      addIconClickHandlers();
+    }
+
+    function generateIconItemHTML(icon) {
+      const kebabName = icon.name;
+      const displayName = kebabName.replace(/-/g, ' ');
+      const camelCaseName = kebabName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+
+      return `
+        <div class="icon-item" data-icon="${kebabName}" data-category="${icon.category}">
+          <div class="copy-indicator">Copied!</div>
+          <div class="icon-display">
+            <i data-lucide="${kebabName}"></i>
+          </div>
+          <div class="icon-name">${kebabName}</div>
+          <div class="icon-tags">${displayName} • ${icon.category}</div>
+        </div>
+      `;
+    }
+
+    function addIconClickHandlers() {
+      const iconItems = iconCategories.querySelectorAll('.icon-item');
+
+      iconItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const iconName = this.dataset.icon;
+          copyIconCode(iconName, this);
+        });
+      });
+    }
+
+    function copyIconCode(iconName, element) {
+      const code = `<i data-lucide="${iconName}"></i>`;
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(code).then(() => {
+        // Show copied state
+        element.classList.add('copied');
+
+        // Remove copied state after 2 seconds
+        setTimeout(() => {
+          element.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = code;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        // Show copied state
+        element.classList.add('copied');
+        setTimeout(() => {
+          element.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    function updateResultsInfo() {
+      const totalIcons = filteredIcons.length;
+      const totalAvailable = Object.keys(iconDatabase).reduce((total, category) => {
+        return total + iconDatabase[category].length;
+      }, 0);
+
+      if (searchTerm && currentCategory !== 'all') {
+        resultsInfo.textContent = `Showing ${totalIcons} icons matching "${searchTerm}" in ${currentCategory}`;
+      } else if (searchTerm) {
+        resultsInfo.textContent = `Showing ${totalIcons} icons matching "${searchTerm}"`;
+      } else if (currentCategory !== 'all') {
+        resultsInfo.textContent = `Showing ${totalIcons} icons in ${currentCategory}`;
+      } else {
+        resultsInfo.textContent = `Showing all ${totalIcons} icons`;
+      }
+    }
+
+    // Copy code example functionality
+    function copyToClipboard(button) {
+      const codeBlock = button.parentElement;
+      const code = codeBlock.textContent.replace('Copy', '').trim();
+
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        button.style.background = '#28a745';
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '#667eea';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Make copyToClipboard globally available
+    window.copyToClipboard = copyToClipboard;
+  </script>
+</body>
+</html>

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Amphibious 2.0 Documentation</title>
+    <link rel="stylesheet" href="../dist/amphibious.css">
+    <link rel="stylesheet" href="./docs.css">
+    <style>
+        /* Documentation-specific styles */
+        .docs-nav {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .docs-nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .docs-nav h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #343a40;
+        }
+
+        .docs-nav .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .docs-nav .nav-links a {
+            color: #6c757d;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .docs-nav .nav-links a:hover,
+        .docs-nav .nav-links a.active {
+            background: #fff;
+            color: #007bff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #97bc62;
+        }
+
+        .section h3 {
+            color: #495057;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .section h4 {
+            color: #6c757d;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .example {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .example-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .code-block code {
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: inherit;
+        }
+
+        /* Slideshow */
+        .slideshow {
+            position: relative;
+            max-width: 100%;
+            margin: 1rem 0;
+            background: #000;
+            border-radius: 0.375rem;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        .slide {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .slide-nav {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .slide-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slide-dot.active {
+            background: white;
+        }
+
+        .slide-prev,
+        .slide-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            transition: background 0.3s ease;
+        }
+
+        .slide-prev:hover,
+        .slide-next:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .slide-prev {
+            left: 1rem;
+        }
+
+        .slide-next {
+            right: 1rem;
+        }
+
+        /* Helper Classes Demo */
+        .helper-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .helper-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+        }
+
+        .helper-item h5 {
+            margin: 0 0 0.5rem 0;
+            color: #495057;
+        }
+
+        .helper-item .demo {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .helper-item code {
+            background: #e9ecef;
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.125rem;
+            font-size: 0.875rem;
+        }
+
+        /* Spacing Helpers */
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 1rem; }
+        .mt-4 { margin-top: 1.5rem; }
+        .mt-5 { margin-top: 3rem; }
+
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .mb-5 { margin-bottom: 3rem; }
+
+        .ml-1 { margin-left: 0.25rem; }
+        .ml-2 { margin-left: 0.5rem; }
+        .ml-3 { margin-left: 1rem; }
+        .ml-4 { margin-left: 1.5rem; }
+        .ml-5 { margin-left: 3rem; }
+
+        .mr-1 { margin-right: 0.25rem; }
+        .mr-2 { margin-right: 0.5rem; }
+        .mr-3 { margin-right: 1rem; }
+        .mr-4 { margin-right: 1.5rem; }
+        .mr-5 { margin-right: 3rem; }
+
+        .pt-1 { padding-top: 0.25rem; }
+        .pt-2 { padding-top: 0.5rem; }
+        .pt-3 { padding-top: 1rem; }
+        .pt-4 { padding-top: 1.5rem; }
+        .pt-5 { padding-top: 3rem; }
+
+        .pb-1 { padding-bottom: 0.25rem; }
+        .pb-2 { padding-bottom: 0.5rem; }
+        .pb-3 { padding-bottom: 1rem; }
+        .pb-4 { padding-bottom: 1.5rem; }
+        .pb-5 { padding-bottom: 3rem; }
+
+        .pl-1 { padding-left: 0.25rem; }
+        .pl-2 { padding-left: 0.5rem; }
+        .pl-3 { padding-left: 1rem; }
+        .pl-4 { padding-left: 1.5rem; }
+        .pl-5 { padding-left: 3rem; }
+
+        .pr-1 { padding-right: 0.25rem; }
+        .pr-2 { padding-right: 0.5rem; }
+        .pr-3 { padding-right: 1rem; }
+        .pr-4 { padding-right: 1.5rem; }
+        .pr-5 { padding-right: 3rem; }
+
+        /* Text Utilities */
+        .text-left { text-align: left; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-justify { text-align: justify; }
+
+        .text-uppercase { text-transform: uppercase; }
+        .text-lowercase { text-transform: lowercase; }
+        .text-capitalize { text-transform: capitalize; }
+
+        .text-bold { font-weight: bold; }
+        .text-light { font-weight: 300; }
+        .text-normal { font-weight: normal; }
+
+        /* Display Utilities */
+        .d-none { display: none; }
+        .d-block { display: block; }
+        .d-inline { display: inline; }
+        .d-inline-block { display: inline-block; }
+        .d-flex { display: flex; }
+        .d-grid { display: grid; }
+
+        /* Flexbox Utilities */
+        .flex-row { flex-direction: row; }
+        .flex-column { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-nowrap { flex-wrap: nowrap; }
+
+        .justify-start { justify-content: flex-start; }
+        .justify-center { justify-content: center; }
+        .justify-end { justify-content: flex-end; }
+        .justify-between { justify-content: space-between; }
+        .justify-around { justify-content: space-around; }
+
+        .align-start { align-items: flex-start; }
+        .align-center { align-items: center; }
+        .align-end { align-items: flex-end; }
+        .align-stretch { align-items: stretch; }
+
+        /* Float Utilities */
+        .float-left { float: left; }
+        .float-right { float: right; }
+        .float-none { float: none; }
+
+        /* Position Utilities */
+        .position-static { position: static; }
+        .position-relative { position: relative; }
+        .position-absolute { position: absolute; }
+        .position-fixed { position: fixed; }
+        .position-sticky { position: sticky; }
+
+        /* Border Utilities */
+        .border { border: 1px solid #dee2e6; }
+        .border-top { border-top: 1px solid #dee2e6; }
+        .border-bottom { border-bottom: 1px solid #dee2e6; }
+        .border-left { border-left: 1px solid #dee2e6; }
+        .border-right { border-right: 1px solid #dee2e6; }
+        .border-none { border: none; }
+
+        .rounded { border-radius: 0.375rem; }
+        .rounded-sm { border-radius: 0.125rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-full { border-radius: 9999px; }
+        .rounded-none { border-radius: 0; }
+
+        /* Shadow Utilities */
+        .shadow-sm { box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06); }
+        .shadow-md { box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06); }
+        .shadow-lg { box-shadow: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05); }
+        .shadow-xl { box-shadow: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04); }
+        .shadow-none { box-shadow: none; }
+
+        /* Color Utilities */
+        .text-primary { color: #007bff; }
+        .text-secondary { color: #6c757d; }
+        .text-success { color: #28a745; }
+        .text-danger { color: #dc3545; }
+        .text-warning { color: #ffc107; }
+        .text-info { color: #17a2b8; }
+        .text-light { color: #f8f9fa; }
+        .text-dark { color: #343a40; }
+        .text-muted { color: #6c757d; }
+        .text-white { color: #fff; }
+
+        .bg-primary { background-color: #007bff; }
+        .bg-secondary { background-color: #6c757d; }
+        .bg-success { background-color: #28a745; }
+        .bg-danger { background-color: #dc3545; }
+        .bg-warning { background-color: #ffc107; }
+        .bg-info { background-color: #17a2b8; }
+        .bg-light { background-color: #f8f9fa; }
+        .bg-dark { background-color: #343a40; }
+        .bg-white { background-color: #fff; }
+        .bg-transparent { background-color: transparent; }
+
+        /* Responsive Utilities */
+        @media (max-width: 767px) {
+            .d-sm-none { display: none !important; }
+            .d-sm-block { display: block !important; }
+            .d-sm-flex { display: flex !important; }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .d-md-none { display: none !important; }
+            .d-md-block { display: block !important; }
+            .d-md-flex { display: flex !important; }
+        }
+
+        @media (min-width: 992px) {
+            .d-lg-none { display: none !important; }
+            .d-lg-block { display: block !important; }
+            .d-lg-flex { display: flex !important; }
+        }
+
+        /* Icon styles for Lucide icons */
+        .icon {
+            width: 1em;
+            height: 1em;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .icon-sm { width: 0.875em; height: 0.875em; }
+        .icon-lg { width: 1.25em; height: 1.25em; }
+        .icon-xl { width: 1.5em; height: 1.5em; }
+
+        /* Component Gallery */
+        .component-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .component-card {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .component-card h4 {
+            margin: 0 0 1rem 0;
+            color: #495057;
+        }
+
+        .component-preview {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Documentation Navigation -->
+    <nav class="docs-nav">
+        <div class="container">
+            <h1>Amphibious 2.0 Documentation</h1>
+            <div class="nav-links">
+                <a href="foundation.html">Foundation</a>
+                <a href="form.html">Form</a>
+                <a href="function.html">Function</a>
+                <a href="features.html" class="active">Features</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <header>
+            <h1>Features</h1>
+            <p class="lead">Advanced features including responsive slideshows, utility helpers, content components, and icon libraries.</p>
+        </header>
+
+        <!-- Responsive Slideshows Section -->
+        <section id="slideshows" class="section">
+            <h2>Responsive Slideshows</h2>
+            <p>Create engaging, touch-friendly slideshows that work perfectly across all devices. Built with modern CSS and JavaScript, no external dependencies required.</p>
+
+            <h3>Basic Slideshow</h3>
+            <div class="example">
+                <div class="example-title">Interactive Image Carousel</div>
+                <div class="slideshow">
+                    <div class="slideshow-container">
+                        <div class="slide active">
+                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                Slide 1
+                            </div>
+                            <div class="slide-content">
+                                <h3>Beautiful Responsive Design</h3>
+                                <p>Automatically adapts to any screen size with smooth transitions and touch support.</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                Slide 2
+                            </div>
+                            <div class="slide-content">
+                                <h3>Touch & Swipe Enabled</h3>
+                                <p>Native touch gestures for mobile and tablet users with keyboard navigation support.</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                Slide 3
+                            </div>
+                            <div class="slide-content">
+                                <h3>Lightweight & Fast</h3>
+                                <p>Pure CSS and vanilla JavaScript implementation with no external dependencies.</p>
+                            </div>
+                        </div>
+                        <button class="slide-prev" onclick="changeSlide(-1)">‹</button>
+                        <button class="slide-next" onclick="changeSlide(1)">›</button>
+                    </div>
+                    <div class="slide-nav">
+                        <span class="slide-dot active" onclick="currentSlide(1)"></span>
+                        <span class="slide-dot" onclick="currentSlide(2)"></span>
+                        <span class="slide-dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;div class="slideshow"&gt;
+  &lt;div class="slideshow-container"&gt;
+    &lt;div class="slide active"&gt;
+      &lt;img src="image1.jpg" alt="Slide 1"&gt;
+      &lt;div class="slide-content"&gt;
+        &lt;h3&gt;Slide Title&lt;/h3&gt;
+        &lt;p&gt;Slide description content.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="slide"&gt;
+      &lt;img src="image2.jpg" alt="Slide 2"&gt;
+      &lt;div class="slide-content"&gt;
+        &lt;h3&gt;Another Slide&lt;/h3&gt;
+        &lt;p&gt;More content here.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="slide-prev" onclick="changeSlide(-1)"&gt;‹&lt;/button&gt;
+    &lt;button class="slide-next" onclick="changeSlide(1)"&gt;›&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="slide-nav"&gt;
+    &lt;span class="slide-dot active" onclick="currentSlide(1)"&gt;&lt;/span&gt;
+    &lt;span class="slide-dot" onclick="currentSlide(2)"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <h4>JavaScript Implementation</h4>
+            <div class="code-block">
+                <pre><code>let slideIndex = 1;
+
+function changeSlide(n) {
+  showSlide(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlide(slideIndex = n);
+}
+
+function showSlide(n) {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.slide-dot');
+
+  if (n > slides.length) slideIndex = 1;
+  if (n < 1) slideIndex = slides.length;
+
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+
+  slides[slideIndex - 1].classList.add('active');
+  dots[slideIndex - 1].classList.add('active');
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Layout Helpers Section -->
+        <section id="helpers" class="section">
+            <h2>Layout Helpers & Shorthand Classes</h2>
+            <p>Comprehensive utility classes for rapid development. These shorthand classes help you prototype faster and maintain consistent spacing, typography, and layout patterns.</p>
+
+            <h3>Spacing Utilities</h3>
+            <p>Control margin and padding with precise spacing utilities. Uses a consistent scale for predictable layouts.</p>
+
+            <div class="helper-demo">
+                <div class="helper-item">
+                    <h5>Margin</h5>
+                    <div class="demo mt-3">Margin Top 3</div>
+                    <code>.mt-1</code> to <code>.mt-5</code><br>
+                    <code>.mb-1</code> to <code>.mb-5</code><br>
+                    <code>.ml-1</code> to <code>.ml-5</code><br>
+                    <code>.mr-1</code> to <code>.mr-5</code>
+                </div>
+
+                <div class="helper-item">
+                    <h5>Padding</h5>
+                    <div class="demo pt-3 pb-3">Padding Top & Bottom 3</div>
+                    <code>.pt-1</code> to <code>.pt-5</code><br>
+                    <code>.pb-1</code> to <code>.pb-5</code><br>
+                    <code>.pl-1</code> to <code>.pl-5</code><br>
+                    <code>.pr-1</code> to <code>.pr-5</code>
+                </div>
+
+                <div class="helper-item">
+                    <h5>Text Alignment</h5>
+                    <div class="demo text-center">Centered Text</div>
+                    <code>.text-left</code><br>
+                    <code>.text-center</code><br>
+                    <code>.text-right</code><br>
+                    <code>.text-justify</code>
+                </div>
+
+                <div class="helper-item">
+                    <h5>Text Transform</h5>
+                    <div class="demo text-uppercase">uppercase text</div>
+                    <code>.text-uppercase</code><br>
+                    <code>.text-lowercase</code><br>
+                    <code>.text-capitalize</code>
+                </div>
+            </div>
+
+            <h3>Display & Flexbox Utilities</h3>
+            <div class="helper-demo">
+                <div class="helper-item">
+                    <h5>Display</h5>
+                    <div class="demo d-flex justify-center">
+                        <span>Flex Container</span>
+                    </div>
+                    <code>.d-none</code><br>
+                    <code>.d-block</code><br>
+                    <code>.d-inline</code><br>
+                    <code>.d-flex</code><br>
+                    <code>.d-grid</code>
+                </div>
+
+                <div class="helper-item">
+                    <h5>Flexbox</h5>
+                    <div class="demo d-flex justify-between">
+                        <span>Left</span>
+                        <span>Right</span>
+                    </div>
+                    <code>.justify-start</code><br>
+                    <code>.justify-center</code><br>
+                    <code>.justify-end</code><br>
+                    <code>.justify-between</code>
+                </div>
+
+                <div class="helper-item">
+                    <h5>Alignment</h5>
+                    <div class="demo d-flex align-center" style="height: 60px;">
+                        <span>Centered</span>
+                    </div>
+                    <code>.align-start</code><br>
+                    <code>.align-center</code><br>
+                    <code>.align-end</code><br>
+                    <code>.align-stretch</code>
+                </div>
+
+                <div class="helper-item">
+                    <h5>Borders & Shadows</h5>
+                    <div class="demo border rounded shadow">
+                        Styled Box
+                    </div>
+                    <code>.border</code><br>
+                    <code>.rounded</code><br>
+                    <code>.shadow</code><br>
+                    <code>.shadow-lg</code>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;!-- Spacing Examples --&gt;
+&lt;div class="mt-3 mb-4 pl-2"&gt;Margin top 3, bottom 4, padding left 2&lt;/div&gt;
+
+&lt;!-- Flexbox Layout --&gt;
+&lt;div class="d-flex justify-between align-center"&gt;
+  &lt;span&gt;Left side&lt;/span&gt;
+  &lt;span&gt;Right side&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Text Utilities --&gt;
+&lt;p class="text-center text-uppercase text-bold"&gt;Centered, uppercase, bold text&lt;/p&gt;
+
+&lt;!-- Visual Styling --&gt;
+&lt;div class="border rounded shadow-md bg-light p-3"&gt;
+  Styled container with border, rounded corners, shadow, and padding
+&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Content Components Section -->
+        <section id="components" class="section">
+            <h2>Content Components</h2>
+            <p>Pre-built content components for common UI patterns. These reusable components help maintain consistency across your project.</p>
+
+            <div class="component-gallery">
+                <div class="component-card">
+                    <h4>Alert Messages</h4>
+                    <div class="component-preview">
+                        <div class="alert alert-success" style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 0.75rem; border-radius: 0.25rem; margin-bottom: 0.5rem;">
+                            <strong>Success!</strong> Your action was completed successfully.
+                        </div>
+                        <div class="alert alert-warning" style="background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 0.75rem; border-radius: 0.25rem;">
+                            <strong>Warning!</strong> Please check your input.
+                        </div>
+                    </div>
+                    <code>.alert .alert-success</code><br>
+                    <code>.alert .alert-warning</code><br>
+                    <code>.alert .alert-danger</code>
+                </div>
+
+                <div class="component-card">
+                    <h4>Cards</h4>
+                    <div class="component-preview">
+                        <div style="border: 1px solid #dee2e6; border-radius: 0.375rem; overflow: hidden;">
+                            <div style="padding: 1rem; border-bottom: 1px solid #dee2e6; background: #f8f9fa;">
+                                <h5 style="margin: 0;">Card Title</h5>
+                            </div>
+                            <div style="padding: 1rem;">
+                                <p style="margin: 0;">Card content goes here with some descriptive text.</p>
+                            </div>
+                            <div style="padding: 1rem; border-top: 1px solid #dee2e6; background: #f8f9fa;">
+                                <button style="background: #007bff; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.25rem;">Action</button>
+                            </div>
+                        </div>
+                    </div>
+                    <code>.card</code><br>
+                    <code>.card-header</code><br>
+                    <code>.card-body</code><br>
+                    <code>.card-footer</code>
+                </div>
+
+                <div class="component-card">
+                    <h4>Badges</h4>
+                    <div class="component-preview">
+                        <span style="background: #007bff; color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem; margin-right: 0.5rem;">Primary</span>
+                        <span style="background: #28a745; color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem; margin-right: 0.5rem;">Success</span>
+                        <span style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem;">Danger</span>
+                    </div>
+                    <code>.badge .badge-primary</code><br>
+                    <code>.badge .badge-success</code><br>
+                    <code>.badge .badge-danger</code>
+                </div>
+
+                <div class="component-card">
+                    <h4>Progress Bars</h4>
+                    <div class="component-preview">
+                        <div style="background: #e9ecef; border-radius: 0.25rem; height: 1rem; margin-bottom: 0.5rem;">
+                            <div style="background: #007bff; height: 100%; width: 60%; border-radius: 0.25rem;"></div>
+                        </div>
+                        <div style="background: #e9ecef; border-radius: 0.25rem; height: 1rem;">
+                            <div style="background: #28a745; height: 100%; width: 80%; border-radius: 0.25rem;"></div>
+                        </div>
+                    </div>
+                    <code>.progress</code><br>
+                    <code>.progress-bar</code>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;!-- Alert Component --&gt;
+&lt;div class="alert alert-success"&gt;
+  &lt;strong&gt;Success!&lt;/strong&gt; Your action was completed.
+&lt;/div&gt;
+
+&lt;!-- Card Component --&gt;
+&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h5&gt;Card Title&lt;/h5&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p&gt;Card content goes here.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;button class="btn btn-primary"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Badges --&gt;
+&lt;span class="badge badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="badge badge-success"&gt;Success&lt;/span&gt;
+
+&lt;!-- Progress Bar --&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar" style="width: 60%"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Icons Section -->
+        <section id="icons" class="section">
+            <h2>Icon System</h2>
+            <p>Amphibious 2.0 uses Lucide icons, a beautiful & consistent icon set designed for modern web applications. All icons are optimized SVGs that scale perfectly at any size.</p>
+
+            <h3>Usage</h3>
+            <p>Icons are included as SVG elements and can be styled with CSS. The icon system provides consistent sizing, colors, and spacing.</p>
+
+            <div class="example">
+                <div class="example-title">Common Icons</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        <span>Check Circle</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        <span>X Circle</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <span>Info</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <span>Alert Triangle</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                        <span>Search</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+                        <span>Check</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <span>X</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"></polyline></svg>
+                        <span>Chevron Left</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Icon Sizes</h3>
+            <div class="example">
+                <div class="example-title">Different Icon Sizes</div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        <span>Small (.icon-sm)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        <span>Default (.icon)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        <span>Large (.icon-lg)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        <span>Extra Large (.icon-xl)</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Colored Icons</h3>
+            <div class="example">
+                <div class="example-title">Icon Colors</div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <svg class="icon text-primary" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                    <svg class="icon text-success" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                    <svg class="icon text-danger" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                    <svg class="icon text-warning" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <svg class="icon text-secondary" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;!-- Basic Icon --&gt;
+&lt;svg class="icon" viewBox="0 0 24 24"&gt;
+  &lt;path d="M9 12l2 2 4-4"&gt;&lt;/path&gt;
+  &lt;circle cx="12" cy="12" r="10"&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+
+&lt;!-- Sized Icons --&gt;
+&lt;svg class="icon icon-sm" viewBox="..."&gt;...&lt;/svg&gt;
+&lt;svg class="icon icon-lg" viewBox="..."&gt;...&lt;/svg&gt;
+&lt;svg class="icon icon-xl" viewBox="..."&gt;...&lt;/svg&gt;
+
+&lt;!-- Colored Icons --&gt;
+&lt;svg class="icon text-primary" viewBox="..."&gt;...&lt;/svg&gt;
+&lt;svg class="icon text-success" viewBox="..."&gt;...&lt;/svg&gt;
+&lt;svg class="icon text-danger" viewBox="..."&gt;...&lt;/svg&gt;
+
+&lt;!-- Icons in Buttons --&gt;
+&lt;button class="btn btn-primary"&gt;
+  &lt;svg class="icon icon-sm"&gt;...&lt;/svg&gt;
+  Save Changes
+&lt;/button&gt;</code></pre>
+            </div>
+
+            <h4>Integration with Lucide</h4>
+            <p>Amphibious 2.0 is designed to work seamlessly with the Lucide icon library. You can find the complete icon set and usage instructions at <a href="https://lucide.dev" target="_blank">lucide.dev</a>.</p>
+
+            <div class="code-block">
+                <pre><code>// Install Lucide via npm
+npm install lucide
+
+// Or include via CDN
+&lt;script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"&gt;&lt;/script&gt;
+
+// Initialize icons
+lucide.createIcons();</code></pre>
+            </div>
+        </section>
+
+        <!-- Best Practices Section -->
+        <section id="best-practices" class="section">
+            <h2>Best Practices</h2>
+
+            <h3>Performance Optimization</h3>
+            <ul>
+                <li>Use CSS transforms for slideshow transitions instead of changing layout properties</li>
+                <li>Lazy load images in slideshows to improve initial page load times</li>
+                <li>Minimize the number of utility classes per element for cleaner HTML</li>
+                <li>Use SVG icons instead of icon fonts for better performance and accessibility</li>
+            </ul>
+
+            <h3>Accessibility Guidelines</h3>
+            <ul>
+                <li>Always provide alt text for slideshow images</li>
+                <li>Include keyboard navigation for slideshow controls</li>
+                <li>Use semantic HTML elements with utility classes rather than purely presentational divs</li>
+                <li>Ensure sufficient color contrast when using colored text utilities</li>
+                <li>Provide meaningful labels for icon-only buttons</li>
+            </ul>
+
+            <h3>Maintainability</h3>
+            <ul>
+                <li>Create custom CSS classes for repeated utility combinations</li>
+                <li>Use consistent spacing scales throughout your project</li>
+                <li>Document custom component variants and their use cases</li>
+                <li>Consider creating a design system for complex applications</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- JavaScript for slideshow functionality -->
+    <script>
+        let slideIndex = 1;
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slide-dot');
+
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            if (slides[slideIndex - 1]) {
+                slides[slideIndex - 1].classList.add('active');
+            }
+            if (dots[slideIndex - 1]) {
+                dots[slideIndex - 1].classList.add('active');
+            }
+        }
+
+        // Auto-advance slideshow every 5 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+
+        document.querySelector('.slideshow-container').addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.slideshow-container').addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const threshold = 50;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    changeSlide(1); // Swipe left - next slide
+                } else {
+                    changeSlide(-1); // Swipe right - previous slide
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+    </script>
+</body>
+</html>

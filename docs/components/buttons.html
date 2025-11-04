@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons - Amphibious 2.0 Documentation</title>
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    /* Documentation styles */
+    body {
+      background: #f8f9fa;
+    }
+
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar */
+    .docs-sidebar {
+      position: sticky;
+      top: 1rem;
+      height: fit-content;
+    }
+
+    .docs-nav {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .docs-nav h3 {
+      margin: 0 0 1rem 0;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      color: #6c757d;
+    }
+
+    .docs-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .docs-nav li {
+      margin: 0.25rem 0;
+    }
+
+    .docs-nav a {
+      display: block;
+      padding: 0.5rem;
+      color: #495057;
+      text-decoration: none;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .docs-nav a:hover,
+    .docs-nav a.active {
+      background: #f8f9fa;
+      color: #667eea;
+    }
+
+    /* Content */
+    .docs-content section {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .docs-content h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-content h3 {
+      color: #495057;
+      margin: 2rem 0 1rem 0;
+    }
+
+    /* Code examples */
+    .code-example {
+      border: 1px solid #e9ecef;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .code-example-header {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .code-example-title {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .code-example-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .code-example-action {
+      padding: 0.25rem 0.5rem;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .code-example-action:hover {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    .code-example-preview {
+      padding: 2rem;
+      background: white;
+    }
+
+    .code-example-code {
+      padding: 1.5rem;
+      background: #2c3e50;
+      color: #ecf0f1;
+      overflow-x: auto;
+      display: none;
+    }
+
+    .code-example-code.show {
+      display: block;
+    }
+
+    .code-example-code pre {
+      margin: 0;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 0.875rem;
+    }
+
+    /* Button preview grid */
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    /* Properties table */
+    .props-table {
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+
+    .props-table th,
+    .props-table td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .props-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #495057;
+    }
+
+    .props-table code {
+      background: #f8f9fa;
+      padding: 0.125rem 0.25rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      color: #e83e8c;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .docs-sidebar {
+        position: relative;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="docs-header">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/index.html">Home</a> ›
+        <a href="/docs/index.html">Documentation</a> ›
+        <span>Buttons</span>
+      </nav>
+      <h1>Button Component</h1>
+      <p>Comprehensive button system with multiple variants, sizes, states, and icon support</p>
+    </div>
+  </header>
+
+  <div class="container docs-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="docs-sidebar">
+      <nav class="docs-nav">
+        <h3>On This Page</h3>
+        <ul>
+          <li><a href="#overview" class="active">Overview</a></li>
+          <li><a href="#basic-usage">Basic Usage</a></li>
+          <li><a href="#variants">Variants</a></li>
+          <li><a href="#sizes">Sizes</a></li>
+          <li><a href="#states">States</a></li>
+          <li><a href="#icons">With Icons</a></li>
+          <li><a href="#groups">Button Groups</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+          <li><a href="#api">API Reference</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="docs-content">
+      <!-- Overview -->
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>The button component is one of the most fundamental elements in any user interface. Amphibious provides a comprehensive button system with multiple variants, sizes, states, and the ability to include icons.</p>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li>8 color variants (primary, secondary, success, danger, warning, info, light, dark)</li>
+          <li>4 sizes (small, medium, large, extra large)</li>
+          <li>Multiple states (hover, active, focus, disabled, loading)</li>
+          <li>Icon support with proper spacing</li>
+          <li>Button groups for related actions</li>
+          <li>Full keyboard and screen reader support</li>
+          <li>Consistent styling across all browsers</li>
+        </ul>
+      </section>
+
+      <!-- Basic Usage -->
+      <section id="basic-usage">
+        <h2>Basic Usage</h2>
+        <p>Add the <code>.button</code> or <code>.btn</code> class to any <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Basic Buttons</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button">Default Button</button>
+              <a href="#" class="button">Link Button</a>
+              <input type="submit" class="button" value="Input Button">
+              <button type="button" class="btn">Using .btn class</button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button"&gt;Default Button&lt;/button&gt;
+&lt;a href="#" class="button"&gt;Link Button&lt;/a&gt;
+&lt;input type="submit" class="button" value="Input Button"&gt;
+&lt;button type="button" class="btn"&gt;Using .btn class&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Variants -->
+      <section id="variants">
+        <h2>Variants</h2>
+        <p>Use modifier classes to change the button's appearance. Combine with <code>.button</code> or use the shorthand <code>.btn-{variant}</code>.</p>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Solid Variants</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--primary">Primary</button>
+              <button class="button button--secondary">Secondary</button>
+              <button class="button button--success">Success</button>
+              <button class="button button--danger">Danger</button>
+              <button class="button button--warning">Warning</button>
+              <button class="button button--info">Info</button>
+              <button class="button button--light">Light</button>
+              <button class="button button--dark">Dark</button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="button button--secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="button button--success"&gt;Success&lt;/button&gt;
+&lt;button class="button button--danger"&gt;Danger&lt;/button&gt;
+&lt;button class="button button--warning"&gt;Warning&lt;/button&gt;
+&lt;button class="button button--info"&gt;Info&lt;/button&gt;
+&lt;button class="button button--light"&gt;Light&lt;/button&gt;
+&lt;button class="button button--dark"&gt;Dark&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Outline Variants</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--outline-primary">Primary</button>
+              <button class="button button--outline-secondary">Secondary</button>
+              <button class="button button--outline-success">Success</button>
+              <button class="button button--outline-danger">Danger</button>
+              <button class="button button--outline-warning">Warning</button>
+              <button class="button button--outline-info">Info</button>
+              <button class="button button--outline-dark">Dark</button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--outline-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="button button--outline-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="button button--outline-success"&gt;Success&lt;/button&gt;
+&lt;button class="button button--outline-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="button button--outline-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="button button--outline-info"&gt;Info&lt;/button&gt;
+&lt;button class="button button--outline-dark"&gt;Dark&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Ghost Variants</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--ghost">Ghost Default</button>
+              <button class="button button--ghost-primary">Ghost Primary</button>
+              <button class="button button--ghost-danger">Ghost Danger</button>
+              <button class="button button--ghost-success">Ghost Success</button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--ghost"&gt;Ghost Default&lt;/button&gt;
+&lt;button class="button button--ghost-primary"&gt;Ghost Primary&lt;/button&gt;
+&lt;button class="button button--ghost-danger"&gt;Ghost Danger&lt;/button&gt;
+&lt;button class="button button--ghost-success"&gt;Ghost Success&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sizes -->
+      <section id="sizes">
+        <h2>Sizes</h2>
+        <p>Control button size with modifier classes. The default size is medium.</p>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Button Sizes</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--sm button--primary">Small</button>
+              <button class="button button--primary">Default</button>
+              <button class="button button--lg button--primary">Large</button>
+              <button class="button button--xl button--primary">Extra Large</button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--sm button--primary"&gt;Small&lt;/button&gt;
+&lt;button class="button button--primary"&gt;Default&lt;/button&gt;
+&lt;button class="button button--lg button--primary"&gt;Large&lt;/button&gt;
+&lt;button class="button button--xl button--primary"&gt;Extra Large&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Block Buttons</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <button class="button button--block button--primary">Block Level Button</button>
+            <button class="button button--block button--lg button--secondary" style="margin-top: 1rem;">Large Block Button</button>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--block button--primary"&gt;Block Level Button&lt;/button&gt;
+&lt;button class="button button--block button--lg button--secondary"&gt;Large Block Button&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- States -->
+      <section id="states">
+        <h2>States</h2>
+        <p>Buttons automatically handle hover, focus, and active states. Use additional attributes and classes for disabled and loading states.</p>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Disabled State</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--primary" disabled>Disabled Button</button>
+              <button class="button button--secondary" disabled>Disabled Secondary</button>
+              <a href="#" class="button button--success disabled" aria-disabled="true">Disabled Link</a>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--primary" disabled&gt;Disabled Button&lt;/button&gt;
+&lt;button class="button button--secondary" disabled&gt;Disabled Secondary&lt;/button&gt;
+&lt;a href="#" class="button button--success disabled" aria-disabled="true"&gt;Disabled Link&lt;/a&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Loading State</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--primary button--loading">
+                <span class="spinner"></span>
+                Loading...
+              </button>
+              <button class="button button--secondary button--loading">
+                <span class="spinner"></span>
+                Processing
+              </button>
+              <button class="button button--success" onclick="simulateLoading(this)">
+                Click to Load
+              </button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--primary button--loading"&gt;
+  &lt;span class="spinner"&gt;&lt;/span&gt;
+  Loading...
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- With Icons -->
+      <section id="icons">
+        <h2>Buttons with Icons</h2>
+        <p>Add icons to buttons for better visual communication. Icons can be placed before or after the text.</p>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Icon Buttons</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--primary">
+                <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+                Download
+              </button>
+              <button class="button button--success">
+                <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Save Changes
+              </button>
+              <button class="button button--danger">
+                Delete
+                <svg class="button-icon button-icon--right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--primary"&gt;
+  &lt;svg class="button-icon" width="16" height="16"&gt;...&lt;/svg&gt;
+  Download
+&lt;/button&gt;
+
+&lt;button class="button button--danger"&gt;
+  Delete
+  &lt;svg class="button-icon button-icon--right" width="16" height="16"&gt;...&lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Icon-Only Buttons</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--icon button--primary" aria-label="Settings">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M18.36 18.36l4.24 4.24M1 12h6m6 0h6"></path>
+                </svg>
+              </button>
+              <button class="button button--icon button--secondary" aria-label="Edit">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+              </button>
+              <button class="button button--icon button--danger" aria-label="Delete">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;button class="button button--icon button--primary" aria-label="Settings"&gt;
+  &lt;svg width="20" height="20"&gt;...&lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Button Groups -->
+      <section id="groups">
+        <h2>Button Groups</h2>
+        <p>Group related buttons together for toolbars and action sets.</p>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Basic Button Group</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-group">
+              <button class="button button--secondary">Left</button>
+              <button class="button button--secondary">Middle</button>
+              <button class="button button--secondary">Right</button>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;div class="button-group"&gt;
+  &lt;button class="button button--secondary"&gt;Left&lt;/button&gt;
+  &lt;button class="button button--secondary"&gt;Middle&lt;/button&gt;
+  &lt;button class="button button--secondary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Toolbar</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-toolbar">
+              <div class="button-group">
+                <button class="button button--sm">Bold</button>
+                <button class="button button--sm">Italic</button>
+                <button class="button button--sm">Underline</button>
+              </div>
+              <div class="button-group">
+                <button class="button button--sm">Left</button>
+                <button class="button button--sm">Center</button>
+                <button class="button button--sm">Right</button>
+              </div>
+              <div class="button-group">
+                <button class="button button--sm button--primary">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;div class="button-toolbar"&gt;
+  &lt;div class="button-group"&gt;
+    &lt;button class="button button--sm"&gt;Bold&lt;/button&gt;
+    &lt;button class="button button--sm"&gt;Italic&lt;/button&gt;
+    &lt;button class="button button--sm"&gt;Underline&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="button-group"&gt;
+    &lt;button class="button button--sm"&gt;Left&lt;/button&gt;
+    &lt;button class="button button--sm"&gt;Center&lt;/button&gt;
+    &lt;button class="button button--sm"&gt;Right&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accessibility -->
+      <section id="accessibility">
+        <h2>Accessibility</h2>
+        <p>Buttons are built with accessibility in mind and follow WCAG 2.1 AA guidelines.</p>
+
+        <h3>Best Practices</h3>
+        <ul>
+          <li>Use semantic <code>&lt;button&gt;</code> elements for actions</li>
+          <li>Use <code>&lt;a&gt;</code> elements for navigation</li>
+          <li>Always provide descriptive text or <code>aria-label</code> for icon-only buttons</li>
+          <li>Use <code>aria-disabled="true"</code> for disabled link buttons</li>
+          <li>Ensure sufficient color contrast (4.5:1 for normal text, 3:1 for large text)</li>
+          <li>Provide visual focus indicators</li>
+        </ul>
+
+        <div class="code-example">
+          <div class="code-example-header">
+            <span class="code-example-title">Accessible Examples</span>
+            <div class="code-example-actions">
+              <button class="code-example-action" onclick="toggleCode(this)">View Code</button>
+            </div>
+          </div>
+          <div class="code-example-preview">
+            <div class="button-grid">
+              <button class="button button--primary" aria-label="Save document">
+                Save
+              </button>
+              <button class="button button--icon button--secondary" aria-label="Open settings menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M18.36 18.36l4.24 4.24M1 12h6m6 0h6"></path>
+                </svg>
+              </button>
+              <button class="button button--danger" aria-describedby="delete-warning">
+                Delete Account
+              </button>
+              <span id="delete-warning" class="sr-only">This action cannot be undone</span>
+            </div>
+          </div>
+          <div class="code-example-code">
+            <pre><code>&lt;!-- Icon-only button with aria-label --&gt;
+&lt;button class="button button--icon" aria-label="Open settings menu"&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- Button with additional context --&gt;
+&lt;button class="button button--danger" aria-describedby="delete-warning"&gt;
+  Delete Account
+&lt;/button&gt;
+&lt;span id="delete-warning" class="sr-only"&gt;This action cannot be undone&lt;/span&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- API Reference -->
+      <section id="api">
+        <h2>API Reference</h2>
+
+        <h3>CSS Classes</h3>
+        <table class="props-table">
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.button</code>, <code>.btn</code></td>
+              <td>Base button class</td>
+            </tr>
+            <tr>
+              <td><code>.button--primary</code></td>
+              <td>Primary button variant</td>
+            </tr>
+            <tr>
+              <td><code>.button--secondary</code></td>
+              <td>Secondary button variant</td>
+            </tr>
+            <tr>
+              <td><code>.button--success</code></td>
+              <td>Success button variant (green)</td>
+            </tr>
+            <tr>
+              <td><code>.button--danger</code></td>
+              <td>Danger button variant (red)</td>
+            </tr>
+            <tr>
+              <td><code>.button--warning</code></td>
+              <td>Warning button variant (yellow)</td>
+            </tr>
+            <tr>
+              <td><code>.button--info</code></td>
+              <td>Info button variant (blue)</td>
+            </tr>
+            <tr>
+              <td><code>.button--light</code></td>
+              <td>Light button variant</td>
+            </tr>
+            <tr>
+              <td><code>.button--dark</code></td>
+              <td>Dark button variant</td>
+            </tr>
+            <tr>
+              <td><code>.button--outline-*</code></td>
+              <td>Outline variant of any color</td>
+            </tr>
+            <tr>
+              <td><code>.button--ghost</code></td>
+              <td>Ghost button with minimal styling</td>
+            </tr>
+            <tr>
+              <td><code>.button--sm</code></td>
+              <td>Small button size</td>
+            </tr>
+            <tr>
+              <td><code>.button--lg</code></td>
+              <td>Large button size</td>
+            </tr>
+            <tr>
+              <td><code>.button--xl</code></td>
+              <td>Extra large button size</td>
+            </tr>
+            <tr>
+              <td><code>.button--block</code></td>
+              <td>Full-width block button</td>
+            </tr>
+            <tr>
+              <td><code>.button--icon</code></td>
+              <td>Icon-only button (square)</td>
+            </tr>
+            <tr>
+              <td><code>.button--loading</code></td>
+              <td>Loading state with spinner</td>
+            </tr>
+            <tr>
+              <td><code>.disabled</code></td>
+              <td>Disabled state for link buttons</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>JavaScript API</h3>
+        <table class="props-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Description</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>amp.createButton()</code></td>
+              <td>Create a button programmatically</td>
+              <td><code>amp.createButton('Save', { variant: 'primary' })</code></td>
+            </tr>
+            <tr>
+              <td><code>amp.createIconButton()</code></td>
+              <td>Create an icon button</td>
+              <td><code>amp.createIconButton('settings', { size: 'sm' })</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>CSS Variables</h3>
+        <table class="props-table">
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--button-padding-x</code></td>
+              <td>1rem</td>
+              <td>Horizontal padding</td>
+            </tr>
+            <tr>
+              <td><code>--button-padding-y</code></td>
+              <td>0.5rem</td>
+              <td>Vertical padding</td>
+            </tr>
+            <tr>
+              <td><code>--button-font-size</code></td>
+              <td>1rem</td>
+              <td>Base font size</td>
+            </tr>
+            <tr>
+              <td><code>--button-border-radius</code></td>
+              <td>0.25rem</td>
+              <td>Border radius</td>
+            </tr>
+            <tr>
+              <td><code>--button-transition</code></td>
+              <td>all 0.2s ease</td>
+              <td>Transition effect</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <footer class="container">
+    <div style="padding: 3rem 0; text-align: center; border-top: 1px solid #e9ecef; margin-top: 4rem;">
+      <p>
+        <a href="/docs/index.html">← Back to Documentation</a> |
+        <a href="/examples/buttons-showcase.html">View Live Examples</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleCode(button) {
+      const codeExample = button.closest('.code-example');
+      const codeBlock = codeExample.querySelector('.code-example-code');
+      codeBlock.classList.toggle('show');
+      button.textContent = codeBlock.classList.contains('show') ? 'Hide Code' : 'View Code';
+    }
+
+    function simulateLoading(button) {
+      button.classList.add('button--loading');
+      button.innerHTML = '<span class="spinner"></span> Loading...';
+      button.disabled = true;
+
+      setTimeout(() => {
+        button.classList.remove('button--loading');
+        button.innerHTML = 'Success!';
+        button.classList.add('button--success');
+
+        setTimeout(() => {
+          button.innerHTML = 'Click to Load';
+          button.classList.remove('button--success');
+          button.disabled = false;
+        }, 2000);
+      }, 3000);
+    }
+
+    // Update active nav item on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.docs-nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+  <!-- Load Framework -->
+  <script type="module" src="../../src/index.js"></script>
+</body>
+</html>

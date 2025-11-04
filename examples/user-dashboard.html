@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Amphibious 2.0</title>
+  <meta name="description" content="Complete user account dashboard with analytics, settings, and profile management">
+  <style>
+    /* Dashboard Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Dashboard Header */
+    .dashboard-header {
+      background: white;
+      border-bottom: 1px solid #dee2e6;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+    .user-details h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: #2c3e50;
+    }
+    .user-details .user-role {
+      font-size: 0.875rem;
+      color: #6c757d;
+      margin: 0;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Dashboard Layout */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    /* Sidebar Navigation */
+    .dashboard-sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+    .sidebar-nav {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .nav-section {
+      margin-bottom: 2rem;
+    }
+    .nav-section:last-child {
+      margin-bottom: 0;
+    }
+    .nav-section h3 {
+      margin: 0 0 1rem 0;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6c757d;
+    }
+    .nav-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-section li {
+      margin-bottom: 0.25rem;
+    }
+    .nav-section a {
+      color: #495057;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .nav-section a:hover {
+      background: #f8f9fa;
+      color: #667eea;
+    }
+    .nav-section a.active {
+      background: #f0f4ff;
+      color: #667eea;
+      font-weight: 500;
+    }
+    .nav-badge {
+      margin-left: auto;
+      background: #dc3545;
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* Main Dashboard Content */
+    .dashboard-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .card-title {
+      margin: 0;
+      font-size: 1.25rem;
+      color: #2c3e50;
+    }
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .stat-icon.primary { background: #e3f2fd; color: #1976d2; }
+    .stat-icon.success { background: #e8f5e9; color: #388e3c; }
+    .stat-icon.warning { background: #fff3e0; color: #f57c00; }
+    .stat-icon.danger { background: #ffebee; color: #d32f2f; }
+    .stat-content h3 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .stat-content p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+    .stat-change {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .stat-change.positive { color: #28a745; }
+    .stat-change.negative { color: #dc3545; }
+
+    /* Activity Feed */
+    .activity-feed {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .activity-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    .activity-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+    .activity-content {
+      flex: 1;
+    }
+    .activity-content h4 {
+      margin: 0 0 0.25rem 0;
+      font-size: 0.875rem;
+      color: #2c3e50;
+    }
+    .activity-content p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+    .activity-time {
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+
+    /* Progress Bars */
+    .progress-item {
+      margin-bottom: 1.5rem;
+    }
+    .progress-item:last-child {
+      margin-bottom: 0;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .progress-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #495057;
+    }
+    .progress-value {
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+    .progress-bar {
+      height: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    /* Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .data-table th,
+    .data-table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .data-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #495057;
+      font-size: 0.875rem;
+    }
+    .data-table tbody tr:hover {
+      background: #f8f9fa;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .status-badge.active { background: #d4edda; color: #155724; }
+    .status-badge.pending { background: #fff3cd; color: #856404; }
+    .status-badge.cancelled { background: #f8d7da; color: #721c24; }
+
+    /* Form Styles */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #495057;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.15s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    .form-help {
+      font-size: 0.875rem;
+      color: #6c757d;
+      margin-top: 0.25rem;
+    }
+
+    /* Action Buttons */
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #5a67d8;
+    }
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+    .btn-outline {
+      background: transparent;
+      color: #667eea;
+      border: 1px solid #667eea;
+    }
+    .btn-outline:hover {
+      background: #667eea;
+      color: white;
+    }
+    .btn-sm {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
+      .dashboard-sidebar {
+        position: static;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Dashboard Header -->
+  <header class="dashboard-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="user-info">
+          <div class="user-avatar">JD</div>
+          <div class="user-details">
+            <h2>John Doe</h2>
+            <p class="user-role">Premium Member since 2022</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline btn-sm" data-tooltip="Notifications">
+            <i data-lucide="bell"></i>
+            <span class="nav-badge">3</span>
+          </button>
+          <button class="btn btn-outline btn-sm" data-tooltip="Settings">
+            <i data-lucide="settings"></i>
+          </button>
+          <button class="btn btn-secondary btn-sm">
+            <i data-lucide="log-out"></i>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Layout -->
+  <div class="container">
+    <div class="dashboard-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="dashboard-sidebar" aria-label="Dashboard navigation">
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <h3>Overview</h3>
+            <ul>
+              <li><a href="#dashboard" class="active">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+              </a></li>
+              <li><a href="#analytics">
+                <i data-lucide="trending-up"></i>
+                Analytics
+              </a></li>
+              <li><a href="#reports">
+                <i data-lucide="file-text"></i>
+                Reports
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="nav-section">
+            <h3>Account</h3>
+            <ul>
+              <li><a href="#profile">
+                <i data-lucide="user"></i>
+                Profile
+              </a></li>
+              <li><a href="#billing">
+                <i data-lucide="credit-card"></i>
+                Billing
+                <span class="nav-badge">2</span>
+              </a></li>
+              <li><a href="#security">
+                <i data-lucide="shield"></i>
+                Security
+              </a></li>
+              <li><a href="#preferences">
+                <i data-lucide="sliders"></i>
+                Preferences
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="nav-section">
+            <h3>Activity</h3>
+            <ul>
+              <li><a href="#orders">
+                <i data-lucide="package"></i>
+                Orders
+              </a></li>
+              <li><a href="#downloads">
+                <i data-lucide="download"></i>
+                Downloads
+              </a></li>
+              <li><a href="#support">
+                <i data-lucide="help-circle"></i>
+                Support
+                <span class="nav-badge">1</span>
+              </a></li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Dashboard Content -->
+      <main class="dashboard-main" role="main">
+        <!-- Stats Overview -->
+        <section aria-labelledby="stats-heading">
+          <h2 id="stats-heading" class="sr-only">Account Statistics</h2>
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-icon primary">
+                <i data-lucide="shopping-cart"></i>
+              </div>
+              <div class="stat-content">
+                <h3>24</h3>
+                <p>Total Orders</p>
+                <div class="stat-change positive">
+                  <i data-lucide="trending-up"></i>
+                  +12% from last month
+                </div>
+              </div>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon success">
+                <i data-lucide="dollar-sign"></i>
+              </div>
+              <div class="stat-content">
+                <h3>$2,847</h3>
+                <p>Total Spent</p>
+                <div class="stat-change positive">
+                  <i data-lucide="trending-up"></i>
+                  +8% from last month
+                </div>
+              </div>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon warning">
+                <i data-lucide="download"></i>
+              </div>
+              <div class="stat-content">
+                <h3>156</h3>
+                <p>Downloads</p>
+                <div class="stat-change negative">
+                  <i data-lucide="trending-down"></i>
+                  -3% from last month
+                </div>
+              </div>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon danger">
+                <i data-lucide="heart"></i>
+              </div>
+              <div class="stat-content">
+                <h3>42</h3>
+                <p>Wishlist Items</p>
+                <div class="stat-change positive">
+                  <i data-lucide="trending-up"></i>
+                  +5 new this week
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="dashboard-card" aria-labelledby="activity-heading">
+          <div class="card-header">
+            <h2 id="activity-heading" class="card-title">Recent Activity</h2>
+            <div class="card-actions">
+              <button class="btn btn-outline btn-sm">
+                <i data-lucide="filter"></i>
+                Filter
+              </button>
+              <button class="btn btn-primary btn-sm">
+                <i data-lucide="download"></i>
+                Export
+              </button>
+            </div>
+          </div>
+
+          <ul class="activity-feed">
+            <li class="activity-item">
+              <div class="activity-icon success">
+                <i data-lucide="check"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Order #12847 shipped</h4>
+                <p>Your Premium Cotton T-Shirt order is on its way</p>
+              </div>
+              <time class="activity-time" datetime="2024-01-15T10:30:00">2 hours ago</time>
+            </li>
+
+            <li class="activity-item">
+              <div class="activity-icon primary">
+                <i data-lucide="download"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Downloaded design assets</h4>
+                <p>Amphibious 2.0 Component Library.zip</p>
+              </div>
+              <time class="activity-time" datetime="2024-01-15T08:15:00">4 hours ago</time>
+            </li>
+
+            <li class="activity-item">
+              <div class="activity-icon warning">
+                <i data-lucide="credit-card"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Payment method updated</h4>
+                <p>Visa ending in 4242 added to your account</p>
+              </div>
+              <time class="activity-time" datetime="2024-01-14T16:45:00">Yesterday</time>
+            </li>
+
+            <li class="activity-item">
+              <div class="activity-icon success">
+                <i data-lucide="user-plus"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Profile updated</h4>
+                <p>Contact information and preferences saved</p>
+              </div>
+              <time class="activity-time" datetime="2024-01-14T14:20:00">Yesterday</time>
+            </li>
+
+            <li class="activity-item">
+              <div class="activity-icon primary">
+                <i data-lucide="shopping-bag"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Order #12846 completed</h4>
+                <p>Wireless Headphones - Premium Edition</p>
+              </div>
+              <time class="activity-time" datetime="2024-01-13T11:30:00">2 days ago</time>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Account Progress -->
+        <section class="dashboard-card" aria-labelledby="progress-heading">
+          <div class="card-header">
+            <h2 id="progress-heading" class="card-title">Account Progress</h2>
+            <button class="btn btn-outline btn-sm">View Details</button>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Profile Completion</span>
+              <span class="progress-value">85%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Loyalty Points</span>
+              <span class="progress-value">2,847 / 5,000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 57%"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Storage Used</span>
+              <span class="progress-value">1.2 GB / 5 GB</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 24%"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Security Score</span>
+              <span class="progress-value">Strong</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 92%"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent Orders -->
+        <section class="dashboard-card" aria-labelledby="orders-heading">
+          <div class="card-header">
+            <h2 id="orders-heading" class="card-title">Recent Orders</h2>
+            <a href="/orders" class="btn btn-outline btn-sm">View All Orders</a>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#12847</strong></td>
+                  <td>Jan 15, 2024</td>
+                  <td>2 items</td>
+                  <td>$79.98</td>
+                  <td><span class="status-badge active">Shipped</span></td>
+                  <td>
+                    <button class="btn btn-outline btn-sm">Track</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#12846</strong></td>
+                  <td>Jan 13, 2024</td>
+                  <td>1 item</td>
+                  <td>$199.99</td>
+                  <td><span class="status-badge active">Delivered</span></td>
+                  <td>
+                    <button class="btn btn-outline btn-sm">Review</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#12845</strong></td>
+                  <td>Jan 10, 2024</td>
+                  <td>3 items</td>
+                  <td>$156.50</td>
+                  <td><span class="status-badge pending">Processing</span></td>
+                  <td>
+                    <button class="btn btn-outline btn-sm">Cancel</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#12844</strong></td>
+                  <td>Jan 8, 2024</td>
+                  <td>1 item</td>
+                  <td>$45.00</td>
+                  <td><span class="status-badge cancelled">Cancelled</span></td>
+                  <td>
+                    <button class="btn btn-outline btn-sm">Reorder</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="dashboard-card" aria-labelledby="actions-heading">
+          <div class="card-header">
+            <h2 id="actions-heading" class="card-title">Quick Actions</h2>
+          </div>
+
+          <div class="form-grid">
+            <div>
+              <h3>Update Profile</h3>
+              <form>
+                <div class="form-group">
+                  <label for="displayName">Display Name</label>
+                  <input type="text" id="displayName" name="displayName" value="John Doe">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" value="john.doe@example.com">
+                  <div class="form-help">This email is used for account notifications</div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i data-lucide="save"></i>
+                  Save Changes
+                </button>
+              </form>
+            </div>
+
+            <div>
+              <h3>Notification Preferences</h3>
+              <form>
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" checked> Email notifications
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" checked> Order updates
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox"> Marketing emails
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" checked> Security alerts
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i data-lucide="bell"></i>
+                  Update Preferences
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Dashboard Scripts -->
+  <script>
+    // Dashboard functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animate progress bars
+      const progressBars = document.querySelectorAll('.progress-fill');
+      progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 500);
+      });
+
+      // Handle form submissions
+      document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+
+          submitBtn.innerHTML = '<i data-lucide="loader-2"></i> Saving...';
+          submitBtn.disabled = true;
+
+          // Simulate API call
+          setTimeout(() => {
+            submitBtn.innerHTML = '<i data-lucide="check"></i> Saved!';
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+            }, 1500);
+          }, 2000);
+        });
+      });
+
+      // Handle sidebar navigation
+      document.querySelectorAll('.sidebar-nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // Remove active class from all links
+          document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
+
+          // Add active class to clicked link
+          link.classList.add('active');
+
+          console.log('Navigated to:', link.textContent.trim());
+        });
+      });
+
+      // Simulate real-time updates
+      setInterval(() => {
+        const badges = document.querySelectorAll('.nav-badge');
+        badges.forEach(badge => {
+          if (Math.random() > 0.95) { // 5% chance every interval
+            const currentCount = parseInt(badge.textContent) || 0;
+            badge.textContent = currentCount + 1;
+          }
+        });
+      }, 5000);
+
+      console.log('User Dashboard Loaded');
+    });
+  </script>
+</body>
+</html>

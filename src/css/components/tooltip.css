@@ -28,7 +28,7 @@
   --tooltip-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Z-index */
-  --tooltip-z-index: 1060;
+  --tooltip-z-index: 1070;
 }
 
 /* Dark mode support */
@@ -78,7 +78,9 @@
 /* Tooltip animations */
 .tooltip {
   transition: opacity var(--tooltip-transition-duration) var(--tooltip-transition-easing),
-              transform var(--tooltip-transition-duration) var(--tooltip-transition-easing);
+              transform var(--tooltip-transition-duration) var(--tooltip-transition-easing),
+              left 0.1s ease-out,
+              top 0.1s ease-out;
 }
 
 /* Tooltip Arrow Base */
@@ -88,6 +90,7 @@
   width: 0;
   height: 0;
   border: var(--tooltip-arrow-size) solid transparent;
+  z-index: 1;
 }
 
 /* Tooltip Positioning - Top */

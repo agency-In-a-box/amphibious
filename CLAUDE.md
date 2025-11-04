@@ -10,14 +10,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 **Original source**: `/Users/clivemoore/Documents/GitHub/A.mphibio.us` (legacy Grunt-based version)
 
+## Current Status
+
+✅ **Core Framework**: Modern build system (Vite 6) with TypeScript and Biome
+✅ **Grid System**: 16-column responsive grid with modern flexbox implementation
+✅ **Image System**: All broken links replaced with brand-consistent placeholders
+✅ **Performance**: Lazy loading enabled, optimized build pipeline
+✅ **Components**: 25+ UI components with comprehensive examples
+⚠️ **Migration**: Legacy component migration from A.mphibio.us in progress
+
+**Quick Start**: `bun install && bun run dev` → http://localhost:2960
+
 ## Development Commands
 
 ### Primary Commands
 ```bash
 bun install              # Install dependencies
-bun run dev             # Start Vite dev server (port 3000)
+bun run dev             # Start Vite dev server (port 2960)
 bun run build           # Build for production
-bun run preview         # Preview production build (port 3001)
+bun run preview         # Preview production build (port 2961)
 bun run lint            # Lint with Biome
 bun run lint:fix        # Auto-fix linting issues
 bun run format          # Format code with Biome
@@ -25,13 +36,48 @@ bun run typecheck       # TypeScript type checking
 bun run clean           # Remove dist/ directory
 ```
 
+### Fix Commands
+```bash
+bun run fix:grid        # Fix broken grid system with modern flexbox
+bun run fix:images      # Replace broken image links with placeholders
+```
+
 ### Quick Development
 ```bash
 cd /Users/clivemoore/Documents/GitHub/AIAB/amphibious
 bun install
 bun run dev
-# Visit http://localhost:3000
+# Visit http://localhost:2960 or http://192.168.0.16:2960
 ```
+
+### Local Hostname Setup (Optional)
+```bash
+# Add custom hostname (requires password)
+echo "127.0.0.1 amphibious.local" | sudo tee -a /etc/hosts
+# Then access at http://amphibious.local:2960
+```
+
+## Automation Scripts
+
+Amphibious 2.0 includes automated scripts for common migration and maintenance tasks:
+
+### Available Scripts
+```bash
+bun run fix:grid        # Modernize grid system (float → flexbox)
+bun run fix:images      # Replace broken images with placeholders
+```
+
+### Script Features
+- ✅ **Automatic Backups**: All scripts create timestamped backups before modifications
+- ✅ **Comprehensive Logging**: Detailed audit trails for all changes
+- ✅ **Brand Consistency**: Uses official Amphibious color palette
+- ✅ **Performance Optimization**: Adds modern optimizations (lazy loading, etc.)
+- ✅ **Backward Compatibility**: Maintains existing class names and structure
+
+### Documentation
+- **[GRID-FIX-GUIDE.md](GRID-FIX-GUIDE.md)** - Grid system analysis and solutions
+- **[IMAGE-REPLACEMENT-SUMMARY.md](IMAGE-REPLACEMENT-SUMMARY.md)** - Complete image replacement results
+- **[CLAUDE-CODE-IMAGE-INSTRUCTIONS.md](CLAUDE-CODE-IMAGE-INSTRUCTIONS.md)** - Image workflow instructions
 
 ## Architecture Overview
 
@@ -69,6 +115,9 @@ amphibious/
 │   │   └── main.css            # Entry point (imports all)
 │   ├── js/                      # JavaScript plugins (to migrate)
 │   └── index.ts                # Main TypeScript entry
+├── scripts/                     # Automation scripts
+│   ├── fix-grid.ts              # Grid system modernization
+│   └── update-image-placeholders.ts # Image placeholder replacement
 ├── scss/                        # Sass theme system (optional)
 ├── examples/                    # Live usage examples
 ├── docs/                        # Component documentation
@@ -275,6 +324,34 @@ bun run build
 npm publish
 ```
 
+## Known Issues & Fixes
+
+### Grid System Issues
+The current grid system has several problems with float-based layouts, incorrect width calculations, and responsive behavior. See **[GRID-FIX-GUIDE.md](GRID-FIX-GUIDE.md)** for:
+- Detailed analysis of grid issues
+- Three solution options (float-based fix, flexbox, CSS grid)
+- Recommended modern flexbox implementation
+- Step-by-step migration guide
+- Testing checklist
+
+### ✅ Image Links (RESOLVED)
+**Status**: All broken image references have been systematically replaced with modern placeholders.
+
+**Quick Fix**: Use `bun run fix:images` to run the automated replacement script.
+
+**What was Fixed**:
+- ✅ 70 broken/outdated image references updated
+- ✅ Modern placeholder services (placehold.co, picsum.photos)
+- ✅ Brand-consistent colors across all placeholders
+- ✅ Performance optimization with lazy loading (171 images)
+- ✅ Complete backup and audit trail
+
+**Documentation**:
+- **[IMAGE-REPLACEMENT-SUMMARY.md](IMAGE-REPLACEMENT-SUMMARY.md)** - Complete results and analysis
+- **[CLAUDE-CODE-IMAGE-INSTRUCTIONS.md](CLAUDE-CODE-IMAGE-INSTRUCTIONS.md)** - Original workflow instructions
+- **`image-replacement-log.txt`** - Detailed change log
+- **`scripts/update-image-placeholders.ts`** - Reusable automation script
+
 ## Important Notes
 
 ### CSS Import Order Matters
@@ -301,6 +378,7 @@ Maintain class names from original A.mphibio.us where possible:
 
 ## Testing Checklist
 
+### Core System Tests
 Before committing changes:
 - [ ] `bun run lint` passes
 - [ ] `bun run typecheck` passes
@@ -309,6 +387,23 @@ Before committing changes:
 - [ ] Check responsive breakpoints
 - [ ] Verify in multiple browsers
 - [ ] Check print styles
+
+### Grid System Verification
+After running `bun run fix:grid`:
+- [ ] No horizontal scrollbar on any page
+- [ ] All column widths add up to exactly 100%
+- [ ] Consistent 20px gutters between columns
+- [ ] Responsive stacking works on mobile
+- [ ] No console errors related to layout
+
+### Image System Verification
+After running `bun run fix:images`:
+- [ ] No broken image icons visible
+- [ ] All placeholder images load correctly
+- [ ] Appropriate sizes for context (check various pages)
+- [ ] Brand colors used consistently
+- [ ] No 404 errors in browser network tab
+- [ ] Lazy loading working (check DevTools)
 
 ## Future Enhancements
 

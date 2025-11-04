@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference - Amphibious 2.0 Documentation</title>
+  <meta name="description" content="Complete API reference for Amphibious 2.0 - CSS classes, JavaScript methods, and component configuration">
+  <style>
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Documentation Header */
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .docs-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .docs-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Documentation Layout */
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar Navigation */
+    .docs-sidebar {
+      position: sticky;
+      top: 1rem;
+      height: fit-content;
+    }
+    .docs-nav {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .docs-nav h3 {
+      margin: 0 0 1rem 0;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6c757d;
+    }
+    .docs-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .docs-nav li {
+      margin-bottom: 0.25rem;
+    }
+    .docs-nav a {
+      color: #495057;
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+      font-size: 0.875rem;
+    }
+    .docs-nav a:hover {
+      background: #f8f9fa;
+      color: #667eea;
+    }
+    .docs-nav a.active {
+      background: #f0f4ff;
+      color: #667eea;
+      font-weight: 500;
+    }
+    .docs-nav ul ul {
+      margin-left: 1rem;
+      margin-top: 0.25rem;
+      padding-left: 1rem;
+      border-left: 2px solid #f0f0f0;
+    }
+
+    /* Main Content */
+    .docs-content {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .docs-content h2 {
+      margin: 2rem 0 1rem 0;
+      color: #2c3e50;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+    .docs-content h2:first-child {
+      margin-top: 0;
+    }
+    .docs-content h3 {
+      margin: 1.5rem 0 0.75rem 0;
+      color: #495057;
+    }
+    .docs-content h4 {
+      margin: 1rem 0 0.5rem 0;
+      color: #6c757d;
+    }
+
+    /* API Method/Class Signatures */
+    .api-signature {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+    }
+
+    /* Parameter Tables */
+    .params-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .params-table th {
+      background: #f8f9fa;
+      padding: 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      color: #495057;
+      border-bottom: 2px solid #dee2e6;
+    }
+    .params-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: top;
+    }
+    .params-table tr:last-child td {
+      border-bottom: none;
+    }
+    .params-table tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* Type Badges */
+    .type-badge {
+      display: inline-block;
+      padding: 0.125rem 0.375rem;
+      background: #e9ecef;
+      color: #495057;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 600;
+    }
+    .type-badge.string { background: #d4edda; color: #155724; }
+    .type-badge.number { background: #d1ecf1; color: #0c5460; }
+    .type-badge.boolean { background: #f8d7da; color: #721c24; }
+    .type-badge.object { background: #fff3cd; color: #856404; }
+    .type-badge.function { background: #e2e3e5; color: #383d41; }
+
+    /* Code Examples */
+    .code-block {
+      background: #2d3748;
+      color: #e2e8f0;
+      border-radius: 4px;
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .code-block pre {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 0.125rem 0.25rem;
+      border-radius: 3px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+      color: #e83e8c;
+    }
+
+    /* CSS Class Grid */
+    .css-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .css-class-card {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 1rem;
+    }
+    .css-class-card h4 {
+      margin: 0 0 0.5rem 0;
+      color: #667eea;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .css-class-card p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+
+    /* Return Value */
+    .return-value {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    .return-value strong {
+      color: #2e7d32;
+    }
+
+    /* Example Section */
+    .example-section {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    .example-section h4 {
+      margin: 0 0 0.75rem 0;
+      color: #e65100;
+    }
+
+    /* Version Badge */
+    .version-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background: #28a745;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    /* Search Box */
+    .search-box {
+      margin-bottom: 1.5rem;
+      position: sticky;
+      top: -1rem;
+      background: white;
+      padding: 1rem 0;
+      z-index: 10;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #dee2e6;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+      }
+      .docs-sidebar {
+        position: static;
+      }
+      .params-table {
+        font-size: 0.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Documentation Header -->
+  <header class="docs-header">
+    <div class="container">
+      <h1>📖 API Reference</h1>
+      <p>Complete reference for all CSS classes, JavaScript methods, and component APIs</p>
+    </div>
+  </header>
+
+  <!-- Documentation Content -->
+  <div class="container">
+    <div class="docs-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="docs-sidebar">
+        <nav class="docs-nav" aria-label="API documentation navigation">
+          <h3>CSS Framework</h3>
+          <ul>
+            <li><a href="#grid-system" class="active">Grid System</a></li>
+            <li><a href="#typography">Typography</a></li>
+            <li><a href="#colors">Colors</a></li>
+            <li><a href="#spacing">Spacing</a></li>
+            <li><a href="#utilities">Utilities</a></li>
+          </ul>
+
+          <h3>Components</h3>
+          <ul>
+            <li><a href="#navigation">Navigation</a></li>
+            <li><a href="#modals">Modals</a></li>
+            <li><a href="#tooltips">Tooltips</a></li>
+            <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#carousel">Carousel</a></li>
+            <li><a href="#cards">Cards</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#buttons">Buttons</a></li>
+          </ul>
+
+          <h3>Patterns</h3>
+          <ul>
+            <li><a href="#stats">Stats</a></li>
+            <li><a href="#slats">Slats</a></li>
+            <li><a href="#aside">Aside</a></li>
+          </ul>
+
+          <h3>JavaScript API</h3>
+          <ul>
+            <li><a href="#js-navigation">Navigation API</a></li>
+            <li><a href="#js-modals">Modal API</a></li>
+            <li><a href="#js-tooltips">Tooltip API</a></li>
+            <li><a href="#js-icons">Icons API</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Documentation Content -->
+      <main class="docs-content" role="main">
+        <!-- Search -->
+        <div class="search-box">
+          <input type="search" class="search-input" placeholder="Search API documentation..." id="apiSearch">
+        </div>
+
+        <!-- Grid System -->
+        <section aria-labelledby="grid-system">
+          <h2 id="grid-system">Grid System <span class="version-badge">v2.0.0</span></h2>
+
+          <p>Amphibious uses a 16-column responsive grid system based on flexbox.</p>
+
+          <h3>Container Classes</h3>
+          <div class="css-grid">
+            <div class="css-class-card">
+              <h4>.container</h4>
+              <p>Fixed-width container with responsive breakpoints (max-width: 960px)</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.container-fluid</h4>
+              <p>Full-width container that spans the entire viewport width</p>
+            </div>
+          </div>
+
+          <h3>Grid Classes</h3>
+          <div class="css-grid">
+            <div class="css-class-card">
+              <h4>.row</h4>
+              <p>Creates a horizontal group of columns with negative margins</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.col-{1-16}</h4>
+              <p>Column width for desktop screens (e.g., .col-8 = 50% width)</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.col-tablet-{1-16}</h4>
+              <p>Column width for tablet screens (≤768px)</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.col-mobile-{1-16}</h4>
+              <p>Column width for mobile screens (≤480px)</p>
+            </div>
+          </div>
+
+          <div class="example-section">
+            <h4>Example Usage</h4>
+            <div class="code-block">
+              <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-8 col-tablet-16 col-mobile-16"&gt;
+      Main content (50% on desktop, full width on tablet/mobile)
+    &lt;/div&gt;
+    &lt;div class="col-8 col-tablet-16 col-mobile-16"&gt;
+      Sidebar (50% on desktop, full width on tablet/mobile)
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Typography -->
+        <section aria-labelledby="typography">
+          <h2 id="typography">Typography</h2>
+
+          <h3>Heading Classes</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Font Size</th>
+                <th>Font Weight</th>
+                <th>Use Case</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.h1</code> or <code>h1</code></td>
+                <td>2.5rem (40px)</td>
+                <td>300</td>
+                <td>Page titles</td>
+              </tr>
+              <tr>
+                <td><code>.h2</code> or <code>h2</code></td>
+                <td>2rem (32px)</td>
+                <td>400</td>
+                <td>Section headings</td>
+              </tr>
+              <tr>
+                <td><code>.h3</code> or <code>h3</code></td>
+                <td>1.75rem (28px)</td>
+                <td>500</td>
+                <td>Subsection headings</td>
+              </tr>
+              <tr>
+                <td><code>.h4</code> or <code>h4</code></td>
+                <td>1.5rem (24px)</td>
+                <td>500</td>
+                <td>Component headings</td>
+              </tr>
+              <tr>
+                <td><code>.h5</code> or <code>h5</code></td>
+                <td>1.25rem (20px)</td>
+                <td>600</td>
+                <td>Small headings</td>
+              </tr>
+              <tr>
+                <td><code>.h6</code> or <code>h6</code></td>
+                <td>1rem (16px)</td>
+                <td>600</td>
+                <td>Labels</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Text Utilities</h3>
+          <div class="css-grid">
+            <div class="css-class-card">
+              <h4>.text-left</h4>
+              <p>Left-align text content</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.text-center</h4>
+              <p>Center-align text content</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.text-right</h4>
+              <p>Right-align text content</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.text-muted</h4>
+              <p>Muted text color (#6c757d)</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.text-primary</h4>
+              <p>Primary brand color text</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.text-success</h4>
+              <p>Success state text color</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- JavaScript Navigation API -->
+        <section aria-labelledby="js-navigation">
+          <h2 id="js-navigation">Navigation API</h2>
+
+          <h3>createNavigation()</h3>
+          <div class="api-signature">
+            amp.createNavigation(selector: string | HTMLElement, options?: NavigationOptions): AmphibiousNavigation
+          </div>
+
+          <p>Creates a new navigation component with advanced features like dropdowns, mobile menu, search, and theme toggle.</p>
+
+          <h4>Parameters</h4>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>selector</code></td>
+                <td><span class="type-badge string">string</span> | <span class="type-badge object">HTMLElement</span></td>
+                <td>Yes</td>
+                <td>CSS selector or DOM element to initialize navigation on</td>
+              </tr>
+              <tr>
+                <td><code>options</code></td>
+                <td><span class="type-badge object">NavigationOptions</span></td>
+                <td>No</td>
+                <td>Configuration options for the navigation component</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>NavigationOptions Interface</h4>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>sticky</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>true</code></td>
+                <td>Enable sticky navigation behavior on scroll</td>
+              </tr>
+              <tr>
+                <td><code>transparent</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>false</code></td>
+                <td>Start with transparent background</td>
+              </tr>
+              <tr>
+                <td><code>breakpoint</code></td>
+                <td><span class="type-badge number">number</span></td>
+                <td><code>768</code></td>
+                <td>Mobile menu breakpoint in pixels</td>
+              </tr>
+              <tr>
+                <td><code>currentPath</code></td>
+                <td><span class="type-badge string">string</span></td>
+                <td><code>window.location.pathname</code></td>
+                <td>Current page path for active state</td>
+              </tr>
+              <tr>
+                <td><code>searchEnabled</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>true</code></td>
+                <td>Show search button and modal</td>
+              </tr>
+              <tr>
+                <td><code>themeToggle</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>true</code></td>
+                <td>Show theme toggle button</td>
+              </tr>
+              <tr>
+                <td><code>githubUrl</code></td>
+                <td><span class="type-badge string">string</span></td>
+                <td><code>undefined</code></td>
+                <td>GitHub repository URL</td>
+              </tr>
+              <tr>
+                <td><code>githubStars</code></td>
+                <td><span class="type-badge string">string</span></td>
+                <td><code>undefined</code></td>
+                <td>GitHub stars count to display</td>
+              </tr>
+              <tr>
+                <td><code>onToggle</code></td>
+                <td><span class="type-badge function">function</span></td>
+                <td><code>undefined</code></td>
+                <td>Callback when mobile menu is toggled</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="return-value">
+            <strong>Returns:</strong> <span class="type-badge object">AmphibiousNavigation</span> - Navigation component instance
+          </div>
+
+          <div class="example-section">
+            <h4>Example Usage</h4>
+            <div class="code-block">
+              <pre><code>// Basic navigation
+const nav = amp.createNavigation('#navbar');
+
+// Advanced configuration
+const nav = amp.createNavigation('#navbar', {
+  sticky: true,
+  transparent: false,
+  searchEnabled: true,
+  themeToggle: true,
+  githubUrl: 'https://github.com/your-org/amphibious',
+  githubStars: '1.2k',
+  onToggle: (isOpen) => {
+    console.log('Mobile menu is', isOpen ? 'open' : 'closed');
+  }
+});</code></pre>
+            </div>
+          </div>
+
+          <h3>Navigation Methods</h3>
+
+          <h4>destroy()</h4>
+          <div class="api-signature">
+            navigation.destroy(): void
+          </div>
+          <p>Removes the navigation component and cleans up event listeners.</p>
+
+          <div class="example-section">
+            <h4>Example Usage</h4>
+            <div class="code-block">
+              <pre><code>const nav = amp.createNavigation('#navbar');
+// Later...
+nav.destroy();</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Modal API -->
+        <section aria-labelledby="js-modals">
+          <h2 id="js-modals">Modal API</h2>
+
+          <h3>createModal()</h3>
+          <div class="api-signature">
+            amp.createModal(id: string, selector: string | HTMLElement, options?: ModalOptions): AmphibiousModal
+          </div>
+
+          <p>Creates a new modal dialog with customizable options and event handling.</p>
+
+          <h4>Parameters</h4>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>id</code></td>
+                <td><span class="type-badge string">string</span></td>
+                <td>Yes</td>
+                <td>Unique identifier for the modal</td>
+              </tr>
+              <tr>
+                <td><code>selector</code></td>
+                <td><span class="type-badge string">string</span> | <span class="type-badge object">HTMLElement</span></td>
+                <td>Yes</td>
+                <td>CSS selector or DOM element for the modal content</td>
+              </tr>
+              <tr>
+                <td><code>options</code></td>
+                <td><span class="type-badge object">ModalOptions</span></td>
+                <td>No</td>
+                <td>Configuration options for the modal</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>ModalOptions Interface</h4>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>size</code></td>
+                <td><span class="type-badge string">'sm' | 'md' | 'lg' | 'xl'</span></td>
+                <td><code>'md'</code></td>
+                <td>Modal size variant</td>
+              </tr>
+              <tr>
+                <td><code>centered</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>false</code></td>
+                <td>Vertically center the modal</td>
+              </tr>
+              <tr>
+                <td><code>backdrop</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>true</code></td>
+                <td>Show backdrop overlay</td>
+              </tr>
+              <tr>
+                <td><code>keyboard</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>true</code></td>
+                <td>Close modal on Escape key</td>
+              </tr>
+              <tr>
+                <td><code>animation</code></td>
+                <td><span class="type-badge string">'fade' | 'slide' | 'zoom'</span></td>
+                <td><code>'fade'</code></td>
+                <td>Animation type for show/hide</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Modal Methods</h3>
+
+          <h4>open()</h4>
+          <div class="api-signature">
+            modal.open(): Promise&lt;void&gt;
+          </div>
+          <p>Opens the modal with animation.</p>
+
+          <h4>close()</h4>
+          <div class="api-signature">
+            modal.close(): Promise&lt;void&gt;
+          </div>
+          <p>Closes the modal with animation.</p>
+
+          <h4>toggle()</h4>
+          <div class="api-signature">
+            modal.toggle(): Promise&lt;void&gt;
+          </div>
+          <p>Toggles the modal open/closed state.</p>
+
+          <div class="example-section">
+            <h4>Example Usage</h4>
+            <div class="code-block">
+              <pre><code>// Create a modal
+const modal = amp.createModal('myModal', '#modalContent', {
+  size: 'lg',
+  centered: true,
+  animation: 'fade'
+});
+
+// Open the modal
+await modal.open();
+
+// Close after 3 seconds
+setTimeout(() => modal.close(), 3000);</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pea.rs Patterns -->
+        <section aria-labelledby="stats">
+          <h2 id="stats">Stats Pattern</h2>
+
+          <p>Display key metrics and statistics in a clean, scannable format.</p>
+
+          <h3>CSS Classes</h3>
+          <div class="css-grid">
+            <div class="css-class-card">
+              <h4>.stats</h4>
+              <p>Container for statistics list (use with &lt;ul&gt;)</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.stats--large</h4>
+              <p>Modifier for larger stat display</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.stats--vertical</h4>
+              <p>Modifier for vertical layout</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.stat-value</h4>
+              <p>The numerical value or main metric</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.stat-label</h4>
+              <p>Descriptive label for the statistic</p>
+            </div>
+          </div>
+
+          <div class="example-section">
+            <h4>Example Usage</h4>
+            <div class="code-block">
+              <pre><code>&lt;ul class="stats stats--large" aria-label="Website statistics"&gt;
+  &lt;li&gt;
+    &lt;strong class="stat-value"&gt;1.2M+&lt;/strong&gt;
+    &lt;span class="stat-label"&gt;Downloads&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong class="stat-value"&gt;99.9%&lt;/strong&gt;
+    &lt;span class="stat-label"&gt;Uptime&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong class="stat-value"&gt;&lt; 100ms&lt;/strong&gt;
+    &lt;span class="stat-label"&gt;Response Time&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="slats">
+          <h2 id="slats">Slats Pattern</h2>
+
+          <p>Display a list of items with consistent spacing and optional borders.</p>
+
+          <h3>CSS Classes</h3>
+          <div class="css-grid">
+            <div class="css-class-card">
+              <h4>.slats</h4>
+              <p>Container for slats list (use with &lt;ul&gt;)</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.slats--products</h4>
+              <p>Modifier for product listings</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.slats--testimonials</h4>
+              <p>Modifier for testimonial content</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.slat-item</h4>
+              <p>Individual slat content wrapper</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.slat-content</h4>
+              <p>Main content area of a slat</p>
+            </div>
+            <div class="css-class-card">
+              <h4>.slat-actions</h4>
+              <p>Action buttons area</p>
+            </div>
+          </div>
+
+          <div class="example-section">
+            <h4>Example Usage</h4>
+            <div class="code-block">
+              <pre><code>&lt;ul class="slats slats--products"&gt;
+  &lt;li&gt;
+    &lt;article class="slat-item"&gt;
+      &lt;figure class="slat-image"&gt;
+        &lt;img src="product.jpg" alt="Product name"&gt;
+      &lt;/figure&gt;
+      &lt;div class="slat-content"&gt;
+        &lt;h3&gt;Product Name&lt;/h3&gt;
+        &lt;p&gt;Product description with relevant details.&lt;/p&gt;
+        &lt;div class="slat-meta"&gt;
+          &lt;span class="price"&gt;$99.99&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="slat-actions"&gt;
+        &lt;button class="btn btn--primary"&gt;Add to Cart&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Search Results -->
+        <div id="searchResults" style="display: none;">
+          <h2>Search Results</h2>
+          <div id="searchResultsList"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Documentation Scripts -->
+  <script>
+    // Search functionality
+    const searchInput = document.getElementById('apiSearch');
+    const searchResults = document.getElementById('searchResults');
+    const searchResultsList = document.getElementById('searchResultsList');
+    const mainContent = document.querySelectorAll('section');
+
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase().trim();
+
+      if (query.length < 2) {
+        searchResults.style.display = 'none';
+        mainContent.forEach(section => section.style.display = 'block');
+        return;
+      }
+
+      // Simple search through all sections
+      const results = [];
+      mainContent.forEach(section => {
+        const text = section.textContent.toLowerCase();
+        const title = section.querySelector('h2').textContent;
+        const id = section.getAttribute('aria-labelledby');
+
+        if (text.includes(query)) {
+          results.push({ title, id, section });
+        }
+      });
+
+      if (results.length > 0) {
+        searchResults.style.display = 'block';
+        mainContent.forEach(section => section.style.display = 'none');
+
+        searchResultsList.innerHTML = results.map(result => `
+          <div style="padding: 1rem; border-bottom: 1px solid #dee2e6;">
+            <h3><a href="#${result.id}" onclick="showSection('${result.id}')">${result.title}</a></h3>
+            <p>Found matching content in this section.</p>
+          </div>
+        `).join('');
+      } else {
+        searchResultsList.innerHTML = '<p>No results found for "' + query + '"</p>';
+        searchResults.style.display = 'block';
+        mainContent.forEach(section => section.style.display = 'none');
+      }
+    });
+
+    function showSection(id) {
+      searchResults.style.display = 'none';
+      mainContent.forEach(section => {
+        section.style.display = section.getAttribute('aria-labelledby') === id ? 'block' : 'none';
+      });
+      searchInput.value = '';
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+          // Update active nav item
+          document.querySelectorAll('.docs-nav a').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Highlight current section in nav on scroll
+    const sections = document.querySelectorAll('section[aria-labelledby]');
+    const navLinks = document.querySelectorAll('.docs-nav a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('aria-labelledby');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    console.log('API Reference Documentation Loaded');
+  </script>
+</body>
+</html>

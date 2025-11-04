@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pea.rs Patterns - Amphibious 2.0</title>
+  <meta name="description" content="Common UI patterns inspired by pea.rs - Stats, Slats, and Aside layouts with semantic HTML">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 1rem 0;
+      font-size: 3rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .pattern-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .pattern-section:last-child {
+      border-bottom: none;
+    }
+
+    .pattern-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .pattern-header h2 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem 0;
+      color: #2c3e50;
+    }
+
+    .pattern-header p {
+      font-size: 1.125rem;
+      color: #6c757d;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .example-box {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .example-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 1.5rem 0;
+      color: #667eea;
+    }
+
+    .code-snippet {
+      background: #1f2937;
+      color: #e5e7eb;
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin-top: 1rem;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.875rem;
+    }
+
+    .variant-label {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <h1>🍐 Pea.rs Patterns</h1>
+      <p>Common UI patterns with semantic HTML markup for consistent, accessible interfaces</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Stats Pattern Section -->
+    <section class="pattern-section" aria-labelledby="stats-title">
+      <header class="pattern-header">
+        <h2 id="stats-title">Stats Pattern</h2>
+        <p>Horizontal statistics display for metrics, counts, and key performance indicators</p>
+      </header>
+
+      <!-- Basic Stats -->
+      <article class="example-box">
+        <h3 class="example-title">Basic Statistics</h3>
+        <ul class="stats" aria-label="Site statistics">
+          <li>
+            <a href="#" aria-label="1,234 total donuts">
+              1,234 <span>donuts</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="567 kayaks available">
+              567 <span>kayaks</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="23,456 kittens adopted">
+              23,456 <span>kittens</span>
+            </a>
+          </li>
+          <li>
+            <strong class="stat-value">89%</strong>
+            <span class="stat-label">satisfaction</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Centered Stats -->
+      <article class="example-box">
+        <h3 class="example-title">Centered Statistics</h3>
+        <span class="variant-label">Variant: Centered</span>
+        <ul class="stats stats--centered" aria-label="Performance metrics">
+          <li>
+            <strong class="stat-value">99.9%</strong>
+            <span class="stat-label">Uptime</span>
+          </li>
+          <li>
+            <strong class="stat-value">2.5M</strong>
+            <span class="stat-label">Users</span>
+          </li>
+          <li>
+            <strong class="stat-value">150ms</strong>
+            <span class="stat-label">Response Time</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Large Colored Stats -->
+      <article class="example-box">
+        <h3 class="example-title">Large Colored Statistics</h3>
+        <span class="variant-label">Variants: Large + Colored</span>
+        <ul class="stats stats--large stats--colored" aria-label="Sales metrics">
+          <li>
+            <a href="#">$45.2K <span>Revenue</span></a>
+          </li>
+          <li>
+            <a href="#">1,842 <span>Orders</span></a>
+          </li>
+          <li>
+            <a href="#">348 <span>Products</span></a>
+          </li>
+          <li>
+            <a href="#">92% <span>Growth</span></a>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Stats Grid Cards -->
+      <article class="example-box">
+        <h3 class="example-title">Statistics Grid Cards</h3>
+        <div class="stats-grid" role="list" aria-label="Dashboard statistics">
+          <div class="stat-card" role="listitem">
+            <span class="stat-card__icon" aria-hidden="true">📈</span>
+            <span class="stat-card__number">$124.5K</span>
+            <span class="stat-card__label">Total Revenue</span>
+            <div class="stat-card__change positive">
+              <i data-lucide="trending-up" class="icon--xs"></i>
+              +12.5% from last month
+            </div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <span class="stat-card__icon" aria-hidden="true">👥</span>
+            <span class="stat-card__number">8,492</span>
+            <span class="stat-card__label">Active Users</span>
+            <div class="stat-card__change positive">
+              <i data-lucide="trending-up" class="icon--xs"></i>
+              +8.2% from last month
+            </div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <span class="stat-card__icon" aria-hidden="true">🛒</span>
+            <span class="stat-card__number">2,847</span>
+            <span class="stat-card__label">Total Orders</span>
+            <div class="stat-card__change negative">
+              <i data-lucide="trending-down" class="icon--xs"></i>
+              -3.1% from last month
+            </div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <span class="stat-card__icon" aria-hidden="true">⭐</span>
+            <span class="stat-card__number">4.8</span>
+            <span class="stat-card__label">Avg Rating</span>
+            <div class="stat-card__change positive">
+              <i data-lucide="trending-up" class="icon--xs"></i>
+              +0.2 from last month
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- E-commerce Product Stats -->
+      <article class="example-box">
+        <h3 class="example-title">Product Statistics</h3>
+        <div class="product-stats" role="list" aria-label="Product metrics">
+          <div class="stat" role="listitem">
+            <span class="stat-value">1,234</span>
+            <span class="stat-label">Sold</span>
+          </div>
+          <div class="stat" role="listitem">
+            <span class="stat-value">4.8★</span>
+            <span class="stat-label">Rating</span>
+          </div>
+          <div class="stat" role="listitem">
+            <span class="stat-value">892</span>
+            <span class="stat-label">Reviews</span>
+          </div>
+          <div class="stat" role="listitem">
+            <span class="stat-value">24h</span>
+            <span class="stat-label">Delivery</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Slats Pattern Section -->
+    <section class="pattern-section" aria-labelledby="slats-title">
+      <header class="pattern-header">
+        <h2 id="slats-title">Slats Pattern</h2>
+        <p>Vertical list items perfect for articles, blog posts, products, or any content with metadata</p>
+      </header>
+
+      <!-- Basic Slats -->
+      <article class="example-box">
+        <h3 class="example-title">Basic Content Slats</h3>
+        <ol class="slats" aria-label="Recent articles">
+          <li>
+            <article>
+              <h4><a href="#">Getting Started with Amphibious 2.0</a></h4>
+              <p>Learn the fundamentals of our modern responsive framework. This comprehensive guide covers installation, basic setup, and your first responsive layout.</p>
+              <time class="meta" datetime="2024-01-15">January 15, 2024</time>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4><a href="#">Building Responsive Grid Layouts</a></h4>
+              <p>Master the 16-column grid system and create fluid, adaptive layouts that work beautifully across all devices.</p>
+              <time class="meta" datetime="2024-01-12">January 12, 2024</time>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4><a href="#">Component Architecture Best Practices</a></h4>
+              <p>Discover how to structure your components for maximum reusability and maintainability using modern CSS patterns.</p>
+              <time class="meta" datetime="2024-01-10">January 10, 2024</time>
+            </article>
+          </li>
+        </ol>
+      </article>
+
+      <!-- Slats with Images -->
+      <article class="example-box">
+        <h3 class="example-title">Content Slats with Images</h3>
+        <ol class="slats slats--with-image" aria-label="Featured products">
+          <li>
+            <a href="#">
+              <figure>
+                <img src="https://via.placeholder.com/80x80/667eea/ffffff?text=1" alt="Product thumbnail">
+              </figure>
+              <div class="content">
+                <h4>Premium Wireless Headphones</h4>
+                <p>Experience crystal-clear audio with active noise cancellation and 30-hour battery life. Perfect for music lovers and professionals.</p>
+                <span class="meta">$199.99 • 4.8★ (234 reviews)</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <figure>
+                <img src="https://via.placeholder.com/80x80/764ba2/ffffff?text=2" alt="Product thumbnail">
+              </figure>
+              <div class="content">
+                <h4>Smart Home Security Camera</h4>
+                <p>Keep your home safe with 4K video, night vision, and AI-powered motion detection. Easy setup and mobile app control.</p>
+                <span class="meta">$149.99 • 4.6★ (892 reviews)</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <figure>
+                <img src="https://via.placeholder.com/80x80/f59e0b/ffffff?text=3" alt="Product thumbnail">
+              </figure>
+              <div class="content">
+                <h4>Ergonomic Office Chair</h4>
+                <p>Support your posture with adjustable lumbar support, breathable mesh, and smooth-rolling casters.</p>
+                <span class="meta">$399.99 • 4.9★ (1,234 reviews)</span>
+              </div>
+            </a>
+          </li>
+        </ol>
+      </article>
+
+      <!-- Large Image Slats -->
+      <article class="example-box">
+        <h3 class="example-title">Large Image Slats</h3>
+        <span class="variant-label">Variant: Large Images</span>
+        <ul class="slats slats--with-image slats--large-image" aria-label="Featured tutorials">
+          <li>
+            <a href="#">
+              <figure>
+                <img src="https://via.placeholder.com/120x120/10b981/ffffff?text=Video" alt="Tutorial thumbnail">
+              </figure>
+              <div class="content">
+                <h4>Complete Guide to CSS Grid</h4>
+                <p>Master modern layout techniques with this comprehensive video tutorial series. Learn from basic concepts to advanced patterns.</p>
+                <span class="meta">45 min • Beginner to Advanced</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <figure>
+                <img src="https://via.placeholder.com/120x120/ef4444/ffffff?text=Course" alt="Course thumbnail">
+              </figure>
+              <div class="content">
+                <h4>Responsive Design Masterclass</h4>
+                <p>Build beautiful, responsive websites that work on any device. Includes real-world projects and best practices.</p>
+                <span class="meta">8 hours • 42 lessons</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Card Style Slats -->
+      <article class="example-box">
+        <h3 class="example-title">Card Style Slats</h3>
+        <span class="variant-label">Variant: Cards Grid</span>
+        <ul class="slats slats--cards" aria-label="Team members">
+          <li>
+            <article>
+              <h4>Sarah Johnson</h4>
+              <p><strong>Lead Designer</strong></p>
+              <p>Specializes in user experience design and brand identity. 10+ years creating beautiful, functional interfaces.</p>
+              <span class="meta">sarah@example.com</span>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4>Michael Chen</h4>
+              <p><strong>Senior Developer</strong></p>
+              <p>Full-stack developer with expertise in React, Node.js, and cloud architecture. Passionate about performance.</p>
+              <span class="meta">michael@example.com</span>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4>Emily Rodriguez</h4>
+              <p><strong>Product Manager</strong></p>
+              <p>Drives product strategy and roadmap. Expert in agile methodologies and user research.</p>
+              <span class="meta">emily@example.com</span>
+            </article>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Review Slats -->
+      <article class="example-box">
+        <h3 class="example-title">Customer Review Slats</h3>
+        <ul class="review-slats" aria-label="Customer reviews">
+          <li>
+            <article>
+              <header class="review-header">
+                <div class="reviewer-info">
+                  <span class="reviewer-avatar" aria-hidden="true">JD</span>
+                  <div>
+                    <span class="reviewer-name">John Doe</span>
+                    <time class="review-date" datetime="2024-01-20">January 20, 2024</time>
+                  </div>
+                </div>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  ★★★★★
+                </div>
+              </header>
+              <p class="review-content">
+                Absolutely love this product! The quality exceeded my expectations and the customer service was outstanding.
+                Would definitely recommend to anyone looking for a reliable solution.
+              </p>
+              <footer class="review-helpful">
+                <button type="button">👍 Helpful (42)</button>
+                <button type="button">👎 Not helpful (2)</button>
+              </footer>
+            </article>
+          </li>
+          <li>
+            <article>
+              <header class="review-header">
+                <div class="reviewer-info">
+                  <span class="reviewer-avatar" aria-hidden="true">AS</span>
+                  <div>
+                    <span class="reviewer-name">Alice Smith</span>
+                    <time class="review-date" datetime="2024-01-18">January 18, 2024</time>
+                  </div>
+                </div>
+                <div class="review-rating" aria-label="4 out of 5 stars">
+                  ★★★★☆
+                </div>
+              </header>
+              <p class="review-content">
+                Great product overall. Easy to set up and works as advertised. Only minor issue was with the packaging,
+                but the product itself is excellent.
+              </p>
+              <footer class="review-helpful">
+                <button type="button">👍 Helpful (28)</button>
+                <button type="button">👎 Not helpful (1)</button>
+              </footer>
+            </article>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Aside Pattern Section -->
+    <section class="pattern-section" aria-labelledby="aside-title">
+      <header class="pattern-header">
+        <h2 id="aside-title">Aside Pattern</h2>
+        <p>Sidebar content layouts for supplementary information, navigation, or related content</p>
+      </header>
+
+      <!-- Traditional Aside -->
+      <article class="example-box">
+        <h3 class="example-title">Traditional Float-based Aside</h3>
+        <article class="aside">
+          <aside>
+            <h4>Quick Facts</h4>
+            <dl>
+              <dt>Founded:</dt>
+              <dd>2015</dd>
+              <dt>Version:</dt>
+              <dd>2.0.0</dd>
+              <dt>License:</dt>
+              <dd>MIT</dd>
+              <dt>Downloads:</dt>
+              <dd>1.2M/month</dd>
+            </dl>
+          </aside>
+          <div class="main-content">
+            <h4>About Amphibious</h4>
+            <p>
+              Amphibious is a modern CSS framework that elegantly scales from desktop to mobile devices.
+              Built on a familiar 16-column grid system, it provides the flexibility and power needed for
+              responsive web design while maintaining simplicity and ease of use.
+            </p>
+            <p>
+              The framework includes a comprehensive set of components, utilities, and patterns that help
+              developers build beautiful, accessible websites quickly. With its focus on semantic HTML and
+              modern CSS features, Amphibious ensures your sites are future-proof and performant.
+            </p>
+          </div>
+        </article>
+      </article>
+
+      <!-- Modern Grid-based Aside -->
+      <article class="example-box">
+        <h3 class="example-title">Modern Grid-based Layout with Aside</h3>
+        <div class="content-with-aside">
+          <aside>
+            <nav aria-label="Documentation navigation">
+              <h4>Documentation</h4>
+              <ul>
+                <li><a href="#">Getting Started</a></li>
+                <li><a href="#">Installation</a></li>
+                <li><a href="#">Grid System</a></li>
+                <li><a href="#">Components</a></li>
+                <li><a href="#">Utilities</a></li>
+                <li><a href="#">Examples</a></li>
+              </ul>
+            </nav>
+
+            <section class="aside-callout">
+              <h4>Pro Tip!</h4>
+              <p>Use semantic HTML elements to improve accessibility and SEO. Screen readers and search engines will thank you!</p>
+            </section>
+          </aside>
+
+          <main>
+            <h4>Building Accessible Interfaces</h4>
+            <p>
+              Accessibility isn't just about compliance—it's about ensuring everyone can use your website
+              effectively. By following WCAG guidelines and using semantic HTML, you create experiences that
+              work for all users, regardless of their abilities or the devices they use.
+            </p>
+
+            <h5>Key Principles</h5>
+            <ul>
+              <li><strong>Perceivable:</strong> Information must be presentable in ways users can perceive</li>
+              <li><strong>Operable:</strong> Interface components must be operable by all users</li>
+              <li><strong>Understandable:</strong> Information and UI operation must be understandable</li>
+              <li><strong>Robust:</strong> Content must be robust enough for various assistive technologies</li>
+            </ul>
+
+            <h5>Best Practices</h5>
+            <p>
+              Start with semantic HTML as your foundation. Use heading elements to create a logical document
+              structure. Provide text alternatives for non-text content. Ensure sufficient color contrast.
+              Make all interactive elements keyboard accessible. Test with screen readers and other assistive
+              technologies.
+            </p>
+          </main>
+        </div>
+      </article>
+
+      <!-- E-commerce Product Page with Aside -->
+      <article class="example-box">
+        <h3 class="example-title">Product Page with Aside Info</h3>
+        <div class="content-with-aside">
+          <aside>
+            <section>
+              <h4>Specifications</h4>
+              <dl>
+                <dt>Brand:</dt>
+                <dd>TechPro</dd>
+                <dt>Model:</dt>
+                <dd>XP-2000</dd>
+                <dt>Weight:</dt>
+                <dd>350g</dd>
+                <dt>Battery:</dt>
+                <dd>30 hours</dd>
+                <dt>Connectivity:</dt>
+                <dd>Bluetooth 5.0</dd>
+                <dt>Warranty:</dt>
+                <dd>2 years</dd>
+              </dl>
+            </section>
+
+            <section class="aside-callout">
+              <h4>🚚 Free Shipping!</h4>
+              <p>Orders over $50 ship free. Express delivery available.</p>
+            </section>
+          </aside>
+
+          <main>
+            <h4>Premium Wireless Headphones</h4>
+            <div class="product-stats">
+              <div class="stat">
+                <span class="stat-value">4.8★</span>
+                <span class="stat-label">Rating</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">234</span>
+                <span class="stat-label">Reviews</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">1.2K</span>
+                <span class="stat-label">Sold</span>
+              </div>
+            </div>
+
+            <h5>Description</h5>
+            <p>
+              Experience audio like never before with our Premium Wireless Headphones. Featuring advanced
+              noise cancellation technology, these headphones create an immersive listening experience
+              whether you're commuting, working, or relaxing at home.
+            </p>
+
+            <h5>Key Features</h5>
+            <ul>
+              <li>Active Noise Cancellation (ANC) with ambient mode</li>
+              <li>30-hour battery life with quick charge</li>
+              <li>Premium leather ear cushions for all-day comfort</li>
+              <li>Multi-device connectivity with seamless switching</li>
+              <li>Customizable EQ through companion app</li>
+            </ul>
+
+            <p>
+              The ergonomic design ensures comfort during extended listening sessions, while the
+              foldable design makes them perfect for travel. With crystal-clear call quality and
+              voice assistant integration, these headphones are perfect for both entertainment and
+              productivity.
+            </p>
+          </main>
+        </div>
+      </article>
+    </section>
+
+    <!-- Combining Patterns -->
+    <section class="pattern-section" aria-labelledby="combined-title">
+      <header class="pattern-header">
+        <h2 id="combined-title">Combining Patterns</h2>
+        <p>Real-world examples showing how to combine stats, slats, and aside patterns effectively</p>
+      </header>
+
+      <!-- Dashboard Example -->
+      <article class="example-box">
+        <h3 class="example-title">Dashboard Layout</h3>
+        <div class="content-with-aside">
+          <aside>
+            <nav aria-label="Dashboard navigation">
+              <h4>Dashboard</h4>
+              <ul>
+                <li><a href="#">Overview</a></li>
+                <li><a href="#" aria-current="page">Analytics</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Settings</a></li>
+              </ul>
+            </nav>
+          </aside>
+
+          <main>
+            <h4>Analytics Overview</h4>
+
+            <!-- Stats at the top -->
+            <ul class="stats stats--large" aria-label="Key metrics">
+              <li>
+                <strong class="stat-value">$45.2K</strong>
+                <span class="stat-label">Revenue</span>
+              </li>
+              <li>
+                <strong class="stat-value">8,492</strong>
+                <span class="stat-label">Users</span>
+              </li>
+              <li>
+                <strong class="stat-value">2,847</strong>
+                <span class="stat-label">Orders</span>
+              </li>
+              <li>
+                <strong class="stat-value">98.5%</strong>
+                <span class="stat-label">Uptime</span>
+              </li>
+            </ul>
+
+            <!-- Slats for recent activity -->
+            <h5>Recent Activity</h5>
+            <ol class="slats slats--compact" aria-label="Recent transactions">
+              <li>
+                <article>
+                  <h4>Order #12345 completed</h4>
+                  <p>Customer: John Doe • Amount: $234.50</p>
+                  <time class="meta" datetime="2024-01-25T14:30">2 hours ago</time>
+                </article>
+              </li>
+              <li>
+                <article>
+                  <h4>New user registration</h4>
+                  <p>Alice Smith joined from organic search</p>
+                  <time class="meta" datetime="2024-01-25T13:15">3 hours ago</time>
+                </article>
+              </li>
+              <li>
+                <article>
+                  <h4>Payment received</h4>
+                  <p>Invoice #98765 • Amount: $1,250.00</p>
+                  <time class="meta" datetime="2024-01-25T11:00">5 hours ago</time>
+                </article>
+              </li>
+            </ol>
+          </main>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="pattern-section" style="background: #2c3e50; color: #adb5bd; text-align: center; padding: 2rem 0;">
+    <div class="container">
+      <p>Pea.rs patterns are part of Amphibious 2.0</p>
+      <p>Inspired by <a href="http://pea.rs/" style="color: #667eea;">pea.rs</a> - Common patterns of markup & style</p>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Initialize Icons -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Icons will be initialized automatically by the framework
+      console.log('Pea.rs Patterns Page Loaded');
+    });
+  </script>
+</body>
+</html>

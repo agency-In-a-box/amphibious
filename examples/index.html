@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples - Amphibious 2.0</title>
+  <meta name="description" content="Live examples and demos of Amphibious 2.0 components and patterns">
+  <link rel="stylesheet" href="../src/css/main.css">
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: "Avenir Next", Avenir, "Futura PT", Futura, -apple-system, sans-serif;
+    }
+
+    .examples-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+
+    .examples-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .example-card {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .example-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .example-card h3 {
+      margin: 0 0 1rem 0;
+      color: #2c3e50;
+    }
+
+    .example-card p {
+      color: #6c757d;
+      margin-bottom: 1.5rem;
+    }
+
+    .example-card a {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+    }
+
+    .example-card a:hover {
+      background: #5a6fd8;
+    }
+
+    .nav-breadcrumb {
+      margin-bottom: 2rem;
+    }
+
+    .nav-breadcrumb a {
+      color: #6c757d;
+      text-decoration: none;
+    }
+
+    .nav-breadcrumb a:hover {
+      color: #667eea;
+    }
+  </style>
+</head>
+<body>
+  <header class="examples-header">
+    <div class="container">
+      <h1>🎯 Examples & Demos</h1>
+      <p>Live demonstrations of Amphibious 2.0 components and patterns</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="nav-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">← Back to Homepage</a>
+    </nav>
+
+    <div class="examples-grid">
+      <!-- Core Components -->
+      <article class="example-card">
+        <h3>🎨 Component Showcase</h3>
+        <p>Complete overview of all available components with interactive examples.</p>
+        <a href="showcase.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>🛒 E-commerce Catalog</h3>
+        <p>Product listing page with cards, filters, pagination, and shopping cart.</p>
+        <a href="e-commerce-catalog.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>🛍️ Shopping Cart</h3>
+        <p>Full-featured shopping cart with quantity controls and checkout flow.</p>
+        <a href="e-commerce-cart.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>💳 Checkout Flow</h3>
+        <p>Multi-step checkout process with form validation and payment forms.</p>
+        <a href="checkout-flow.html">View Demo</a>
+      </article>
+
+      <!-- Navigation Examples -->
+      <article class="example-card">
+        <h3>🧭 Navigation Showcase</h3>
+        <p>Various navigation patterns including mega menus, breadcrumbs, and mobile nav.</p>
+        <a href="navigation-showcase.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>📱 Mobile Navigation</h3>
+        <p>Responsive mobile navigation patterns with drawer and overlay styles.</p>
+        <a href="mobile-navigation.html">View Demo</a>
+      </article>
+
+      <!-- UI Components -->
+      <article class="example-card">
+        <h3>🃏 Cards Demo</h3>
+        <p>Card layouts for content, products, profiles, and media presentations.</p>
+        <a href="cards-demo.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>🚨 Alerts Demo</h3>
+        <p>Alert messages, toasts, notifications, and status indicators.</p>
+        <a href="alerts-demo.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>🎠 Carousel Showcase</h3>
+        <p>Image carousels, product sliders, and testimonial rotators.</p>
+        <a href="carousel-showcase.html">View Demo</a>
+      </article>
+
+      <!-- Forms & Inputs -->
+      <article class="example-card">
+        <h3>📝 Form Elements</h3>
+        <p>Complete form controls with validation, styling, and accessibility.</p>
+        <a href="form-elements.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>🔗 Buttons & Input Groups</h3>
+        <p>Button styles, input groups, and interactive form components.</p>
+        <a href="buttons-input-groups.html">View Demo</a>
+      </article>
+
+      <!-- Patterns & Templates -->
+      <article class="example-card">
+        <h3>🍐 Pea.rs Patterns</h3>
+        <p>Semantic HTML patterns for stats, slats, asides, and content layouts.</p>
+        <a href="pears-patterns.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>📊 Dashboard Template</h3>
+        <p>Admin dashboard layout with sidebar, cards, charts, and data tables.</p>
+        <a href="dashboard-template.html">View Demo</a>
+      </article>
+
+      <!-- Advanced Examples -->
+      <article class="example-card">
+        <h3>🎭 Modal Gallery</h3>
+        <p>Modal dialogs, lightboxes, image galleries, and popup windows.</p>
+        <a href="modal-gallery.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>📋 Product Landing</h3>
+        <p>Complete product landing page with hero, features, testimonials, and CTA.</p>
+        <a href="product-landing.html">View Demo</a>
+      </article>
+
+      <article class="example-card">
+        <h3>📱 Progressive Web App</h3>
+        <p>PWA demo with offline capability, app shell, and modern web features.</p>
+        <a href="pwa-demo.html">View Demo</a>
+      </article>
+
+      <!-- Themes & Customization -->
+      <article class="example-card">
+        <h3>🎨 Theme Gallery</h3>
+        <p>Different color themes and customization examples.</p>
+        <a href="themes/">View Themes</a>
+      </article>
+    </div>
+
+    <!-- Back to docs -->
+    <div style="text-align: center; margin: 4rem 0; padding: 2rem; background: white; border-radius: 0.5rem;">
+      <h3>Need Documentation?</h3>
+      <p>Visit our comprehensive documentation for implementation details and API reference.</p>
+      <a href="../docs/" style="display: inline-block; background: #667eea; color: white; padding: 0.75rem 2rem; border-radius: 0.25rem; text-decoration: none; font-weight: 500;">View Documentation</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #2c3e50; color: #adb5bd; padding: 3rem 0; margin-top: 4rem;">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <h3 style="color: white; margin-top: 0;">Amphibious 2.0 Examples</h3>
+          <p>Interactive demonstrations of components and patterns.</p>
+        </div>
+        <div class="col-8">
+          <p><a href="../index.html" style="color: #adb5bd;">← Back to Homepage</a></p>
+          <p><a href="../docs/" style="color: #adb5bd;">Documentation</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="../src/index.js"></script>
+</body>
+</html>

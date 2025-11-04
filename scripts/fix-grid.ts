@@ -1,0 +1,369 @@
+/**
+ * Quick Grid Fix Script
+ * 
+ * This script creates a modern flexbox-based grid system to replace
+ * the broken float-based grid in Amphibious 2.0
+ * 
+ * Run with: bun run scripts/fix-grid.ts
+ */
+
+import { writeFileSync } from 'fs';
+import { resolve } from 'path';
+
+const GRID_CSS = `/* ==========================================================================
+   Modern Flexbox Grid System - Amphibious 2.0
+   16-Column responsive grid with proper box-sizing
+   ========================================================================== */
+
+/* Container
+   ========================================================================== */
+
+.container {
+  width: min(960px, 96%);
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+.container.fluid {
+  width: 96%;
+  max-width: none;
+}
+
+.container.fluid.bleed {
+  width: 100%;
+  padding: 0;
+}
+
+/* Row - Flexbox Container
+   ========================================================================== */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+/* Base Column Styles
+   ========================================================================== */
+
+.row > [class*="col"],
+.row > [class*="col-"] {
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 0 0 auto;
+  width: 100%; /* Default to full width */
+}
+
+/* 16-Column Grid - Percentage Based
+   Each column is 6.25% (100% / 16)
+   ========================================================================== */
+
+/* Modern naming: .col-1 through .col-16 */
+.col-1,
+.container .one.col  { width: 6.25%; }
+
+.col-2,
+.container .two.col  { width: 12.5%; }
+
+.col-3,
+.container .three.col  { width: 18.75%; }
+
+.col-4,
+.container .four.col,
+.container .one-quarter.col  { width: 25%; }
+
+.col-5,
+.container .five.col  { width: 31.25%; }
+
+.col-6,
+.container .six.col  { width: 37.5%; }
+
+.col-7,
+.container .seven.col  { width: 43.75%; }
+
+.col-8,
+.container .eight.col,
+.container .half.col  { width: 50%; }
+
+.col-9,
+.container .nine.col  { width: 56.25%; }
+
+.col-10,
+.container .ten.col  { width: 62.5%; }
+
+.col-11,
+.container .eleven.col  { width: 68.75%; }
+
+.col-12,
+.container .twelve.col,
+.container .three-quarters.col  { width: 75%; }
+
+.col-13,
+.container .thirteen.col  { width: 81.25%; }
+
+.col-14,
+.container .fourteen.col  { width: 87.5%; }
+
+.col-15,
+.container .fifteen.col  { width: 93.75%; }
+
+.col-16,
+.container .sixteen.col  { width: 100%; }
+
+/* Fractional Columns (Common Patterns)
+   ========================================================================== */
+
+.one-third.col,
+.col-one-third {
+  width: 33.333%;
+}
+
+.two-thirds.col,
+.col-two-thirds {
+  width: 66.666%;
+}
+
+/* Offset/Push Classes
+   Creates left margin to push columns right
+   ========================================================================== */
+
+.push-1,
+.push_one,
+.offset-1 { margin-left: calc(6.25% + 10px); }
+
+.push-2,
+.push_two,
+.offset-2 { margin-left: calc(12.5% + 10px); }
+
+.push-3,
+.push_three,
+.offset-3 { margin-left: calc(18.75% + 10px); }
+
+.push-4,
+.push_four,
+.offset-4 { margin-left: calc(25% + 10px); }
+
+.push-5,
+.push_five,
+.offset-5 { margin-left: calc(31.25% + 10px); }
+
+.push-6,
+.push_six,
+.offset-6 { margin-left: calc(37.5% + 10px); }
+
+.push-7,
+.push_seven,
+.offset-7 { margin-left: calc(43.75% + 10px); }
+
+.push-8,
+.push_eight,
+.offset-8 { margin-left: calc(50% + 10px); }
+
+/* Utility Classes
+   ========================================================================== */
+
+.col.centered,
+.col-centered {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.col.text-center,
+.text-center {
+  text-align: center;
+}
+
+.col.text-left,
+.text-left {
+  text-align: left;
+}
+
+.col.text-right,
+.text-right {
+  text-align: right;
+}
+
+/* Vertical Alignment Options
+   ========================================================================== */
+
+.row.align-top {
+  align-items: flex-start;
+}
+
+.row.align-middle {
+  align-items: center;
+}
+
+.row.align-bottom {
+  align-items: flex-end;
+}
+
+.row.align-stretch {
+  align-items: stretch;
+}
+
+/* Horizontal Alignment Options
+   ========================================================================== */
+
+.row.justify-start {
+  justify-content: flex-start;
+}
+
+.row.justify-center {
+  justify-content: center;
+}
+
+.row.justify-end {
+  justify-content: flex-end;
+}
+
+.row.justify-between {
+  justify-content: space-between;
+}
+
+.row.justify-around {
+  justify-content: space-around;
+}
+
+/* Column Order Control
+   ========================================================================== */
+
+.col-first {
+  order: -1;
+}
+
+.col-last {
+  order: 999;
+}
+
+/* No Gutters Option
+   ========================================================================== */
+
+.row.no-gutters {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutters > [class*="col"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Responsive Behavior
+   ========================================================================== */
+
+/* Tablet (768px to 960px) */
+@media (max-width: 960px) and (min-width: 769px) {
+  .container {
+    width: 96%;
+  }
+  
+  /* Optional: Keep layout on tablet */
+  .tablet-keep-cols .row > [class*="col"] {
+    /* Columns maintain their width on tablet */
+  }
+}
+
+/* Mobile (max 768px) - Stack all columns */
+@media (max-width: 768px) {
+  .row > [class*="col"],
+  .row > [class*="col-"] {
+    width: 100% !important;
+    margin-bottom: 1rem;
+    margin-left: 0 !important; /* Reset push/offset */
+  }
+  
+  .row.mobile-keep-cols > [class*="col"] {
+    width: auto !important;
+    flex: 1 1 0;
+  }
+  
+  /* Mobile-specific column sizes */
+  .col-mobile-half {
+    width: 50% !important;
+  }
+  
+  .col-mobile-third {
+    width: 33.333% !important;
+  }
+  
+  .col-mobile-quarter {
+    width: 25% !important;
+  }
+}
+
+/* Extra Small Mobile (max 480px) */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  .row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+  
+  .row > [class*="col"] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Print Styles
+   ========================================================================== */
+
+@media print {
+  .container {
+    width: 100%;
+  }
+  
+  .row > [class*="col"] {
+    page-break-inside: avoid;
+  }
+}
+
+/* Legacy Float-based Grid Support (Optional)
+   Uncomment if you need backwards compatibility with old float-based layouts
+   ========================================================================== */
+
+/*
+.row.legacy {
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.legacy:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row.legacy > [class*="col"] {
+  float: left;
+  display: inline;
+}
+*/
+`;
+
+// Write the fixed grid
+const gridPath = resolve(process.cwd(), 'src/css/grid.css');
+console.log('Writing modern flexbox grid to:', gridPath);
+
+try {
+  writeFileSync(gridPath, GRID_CSS, 'utf-8');
+  console.log('✅ Grid system updated successfully!');
+  console.log('\nNext steps:');
+  console.log('1. Run: bun run dev');
+  console.log('2. Open: http://localhost:2960');
+  console.log('3. Check the grid demo section');
+  console.log('4. Verify responsive behavior on mobile/tablet');
+  console.log('\nIf everything looks good, commit the changes.');
+} catch (error) {
+  console.error('❌ Error writing grid file:', error);
+  process.exit(1);
+}
