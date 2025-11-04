@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Showcase - Amphibious 2.0</title>
+  <meta name="description" content="Complete navigation component demonstrations including horizontal, vertical, breadcrumbs, and mobile patterns">
+  <style>
+    /* Demo Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+
+    .demo-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+
+    .demo-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+
+    .demo-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    .demo-section {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .demo-section h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+
+    .demo-section h3 {
+      color: #495057;
+      margin-top: 2rem;
+    }
+
+    .code-example {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      border-left: 4px solid #667eea;
+      margin: 1rem 0;
+    }
+
+    .demo-box {
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      background: #fff;
+    }
+
+    .demo-note {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    /* Navigation Demo Specific */
+    .nav-demo-container {
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      overflow: hidden;
+    }
+
+    .nav-demo-header {
+      background: #495057;
+      color: white;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    /* Vertical Nav Demo */
+    .vertical-nav-demo {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 2rem;
+      min-height: 400px;
+    }
+
+    .vertical-nav-demo .sidebar {
+      background: white;
+      border-right: 1px solid #dee2e6;
+      padding: 1rem;
+    }
+
+    .vertical-nav-demo .content {
+      padding: 1rem;
+    }
+
+    /* Mobile Preview */
+    .mobile-preview {
+      max-width: 375px;
+      margin: 0 auto;
+      border: 2px solid #2c3e50;
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .mobile-header {
+      background: #2c3e50;
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+
+    /* Interactive Controls */
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .controls button {
+      padding: 0.5rem 1rem;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .controls button:hover {
+      background: #5a67d8;
+    }
+
+    .controls button.active {
+      background: #764ba2;
+    }
+
+    /* Custom Navigation Styles for Demo */
+    .nav-style-1 {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .nav-style-2 {
+      background: white;
+      border-bottom: 3px solid #667eea;
+    }
+
+    .nav-style-3 {
+      background: #2c3e50;
+    }
+
+    .nav-transparent-demo {
+      background-image: url('https://placehold.co/1200x400/667eea/ffffff?text=Hero+Section');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      position: relative;
+    }
+
+    /* Tab Navigation Demo */
+    .tab-nav-demo .tab-content {
+      padding: 2rem;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-top: none;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    /* Mega Menu Demo */
+    .mega-menu-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+      display: none;
+      z-index: 1000;
+    }
+
+    .mega-menu-dropdown.open {
+      display: block;
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .mega-menu-section h4 {
+      color: #667eea;
+      margin: 0 0 1rem 0;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mega-menu-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .mega-menu-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .mega-menu-section a {
+      color: #495057;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mega-menu-section a:hover {
+      color: #667eea;
+    }
+  </style>
+</head>
+<body>
+  <!-- Demo Header -->
+  <header class="demo-header">
+    <div class="container">
+      <h1>🧭 Navigation Component Showcase</h1>
+      <p>Explore all navigation patterns, styles, and configurations in Amphibious 2.0</p>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <!-- Introduction -->
+    <section class="demo-section" aria-labelledby="nav-overview">
+      <h2 id="nav-overview">Navigation Overview</h2>
+      <p>The Amphibious navigation system provides flexible, responsive navigation components that work across all devices. Choose from horizontal, vertical, tabbed, or mobile-first patterns.</p>
+
+      <div class="demo-note">
+        <strong>Key Features:</strong> Responsive design, dropdown support, mobile menu, sticky behavior, search integration, theme toggle, keyboard navigation, and ARIA compliance.
+      </div>
+    </section>
+
+    <!-- Basic Horizontal Navigation -->
+    <section class="demo-section" aria-labelledby="horizontal-nav">
+      <h2 id="horizontal-nav">Horizontal Navigation</h2>
+      <p>The most common navigation pattern for websites and applications.</p>
+
+      <h3>Basic Horizontal Nav</h3>
+      <div class="nav-demo-container">
+        <div class="nav-demo-header">Basic Navigation</div>
+        <nav aria-label="Basic navigation example" style="background: white; padding: 1rem;">
+          <ul class="horizontal">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="code-example">
+        <pre><code>&lt;nav&gt;
+  &lt;ul class="horizontal"&gt;
+    &lt;li&gt;&lt;a href="#" class="active"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+
+      <h3>Horizontal Nav with Dropdowns</h3>
+      <div class="nav-demo-container">
+        <div class="nav-demo-header">Navigation with Dropdown Menus</div>
+        <nav aria-label="Navigation with dropdowns" style="background: #2c3e50; padding: 0;">
+          <ul class="horizontal" style="margin: 0;">
+            <li><a href="#" style="color: white;">Home</a></li>
+            <li>
+              <a href="#" style="color: white;">Products ▼</a>
+              <ul>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Clothing</a></li>
+                <li><a href="#">Home & Garden</a></li>
+                <li><a href="#">Sports & Outdoors</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" style="color: white;">Services ▼</a>
+              <ul>
+                <li><a href="#">Consulting</a></li>
+                <li><a href="#">Support</a></li>
+                <li>
+                  <a href="#">Training ▶</a>
+                  <ul>
+                    <li><a href="#">Online Courses</a></li>
+                    <li><a href="#">Workshops</a></li>
+                    <li><a href="#">Certification</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#" style="color: white;">About</a></li>
+            <li><a href="#" style="color: white;">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Modern Navigation Component -->
+    <section class="demo-section" aria-labelledby="modern-nav">
+      <h2 id="modern-nav">Modern Navigation Component</h2>
+      <p>The new Amphibious 2.0 navigation component with advanced features.</p>
+
+      <h3>Full Featured Navigation</h3>
+      <div id="modernNav"></div>
+
+      <div class="controls">
+        <button onclick="toggleSticky()">Toggle Sticky</button>
+        <button onclick="toggleTransparent()">Toggle Transparent</button>
+        <button onclick="simulateScroll()">Simulate Scroll</button>
+        <button onclick="openSearch()">Open Search</button>
+        <button onclick="toggleTheme()">Toggle Theme</button>
+      </div>
+
+      <div class="code-example">
+        <pre><code>// Create a modern navigation component
+const nav = amp.createNavigation('#nav-container', {
+  sticky: true,
+  transparent: false,
+  searchEnabled: true,
+  themeToggle: true,
+  githubUrl: 'https://github.com/your-org/amphibious',
+  githubStars: '1.2k',
+  currentPath: '/docs/'
+});</code></pre>
+      </div>
+
+      <h3>Navigation Styles</h3>
+      <div class="demo-box">
+        <h4>Style 1: Gradient Navigation</h4>
+        <nav class="nav-style-1" style="padding: 1rem;">
+          <ul class="horizontal">
+            <li><a href="#" style="color: white;">Home</a></li>
+            <li><a href="#" style="color: white;">Features</a></li>
+            <li><a href="#" style="color: white;">Pricing</a></li>
+            <li><a href="#" style="color: white;">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="demo-box">
+        <h4>Style 2: Minimal with Accent</h4>
+        <nav class="nav-style-2" style="padding: 1rem;">
+          <ul class="horizontal">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="demo-box">
+        <h4>Style 3: Dark Navigation</h4>
+        <nav class="nav-style-3" style="padding: 1rem;">
+          <ul class="horizontal">
+            <li><a href="#" style="color: #adb5bd;">Home</a></li>
+            <li><a href="#" style="color: #adb5bd;">Features</a></li>
+            <li><a href="#" style="color: #adb5bd;">Pricing</a></li>
+            <li><a href="#" style="color: #adb5bd;">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Vertical Navigation -->
+    <section class="demo-section" aria-labelledby="vertical-nav">
+      <h2 id="vertical-nav">Vertical Navigation</h2>
+      <p>Ideal for sidebars, admin panels, and documentation sites.</p>
+
+      <div class="vertical-nav-demo">
+        <aside class="sidebar" aria-label="Sidebar navigation">
+          <nav aria-label="Admin menu">
+            <ul class="vertical">
+              <li><a href="#" class="active">Dashboard</a></li>
+              <li>
+                <a href="#">Products</a>
+                <ul>
+                  <li><a href="#">All Products</a></li>
+                  <li><a href="#">Add New</a></li>
+                  <li><a href="#">Categories</a></li>
+                  <li><a href="#">Tags</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Orders</a>
+                <ul>
+                  <li><a href="#">All Orders</a></li>
+                  <li><a href="#">Pending</a></li>
+                  <li><a href="#">Completed</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Analytics</a></li>
+              <li><a href="#">Settings</a></li>
+            </ul>
+          </nav>
+        </aside>
+        <main class="content">
+          <h3>Main Content Area</h3>
+          <p>The vertical navigation works great for admin interfaces and documentation sites where you need to display many navigation items in a hierarchical structure.</p>
+        </main>
+      </div>
+
+      <div class="code-example">
+        <pre><code>&lt;nav&gt;
+  &lt;ul class="vertical"&gt;
+    &lt;li&gt;&lt;a href="#" class="active"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;Products&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;All Products&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Add New&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Breadcrumb Navigation -->
+    <section class="demo-section" aria-labelledby="breadcrumb-nav">
+      <h2 id="breadcrumb-nav">Breadcrumb Navigation</h2>
+      <p>Help users understand their location within the site hierarchy.</p>
+
+      <h3>Default Breadcrumbs</h3>
+      <nav aria-label="Breadcrumb navigation">
+        <ul class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Electronics</a></li>
+          <li><a href="#" class="active">Laptops</a></li>
+        </ul>
+      </nav>
+
+      <h3>Alternative Separators</h3>
+      <nav aria-label="Breadcrumb with slash separator">
+        <ul class="breadcrumb breadcrumb-slash">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Components</a></li>
+          <li><a href="#" class="active">Navigation</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Breadcrumb with arrow separator" style="margin-top: 1rem;">
+        <ul class="breadcrumb breadcrumb-arrow">
+          <li><a href="#">Store</a></li>
+          <li><a href="#">Category</a></li>
+          <li><a href="#">Subcategory</a></li>
+          <li><a href="#" class="active">Product</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Breadcrumb with dot separator" style="margin-top: 1rem;">
+        <ul class="breadcrumb breadcrumb-dot">
+          <li><a href="#">Level 1</a></li>
+          <li><a href="#">Level 2</a></li>
+          <li><a href="#">Level 3</a></li>
+          <li><a href="#" class="active">Current Page</a></li>
+        </ul>
+      </nav>
+
+      <div class="code-example">
+        <pre><code>&lt;nav&gt;
+  &lt;ul class="breadcrumb"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="active"&gt;Current Page&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Alternative separators --&gt;
+&lt;ul class="breadcrumb breadcrumb-slash"&gt;...&lt;/ul&gt;
+&lt;ul class="breadcrumb breadcrumb-arrow"&gt;...&lt;/ul&gt;
+&lt;ul class="breadcrumb breadcrumb-dot"&gt;...&lt;/ul&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Tab Navigation -->
+    <section class="demo-section" aria-labelledby="tab-nav">
+      <h2 id="tab-nav">Tab Navigation</h2>
+      <p>Organize content into switchable panes.</p>
+
+      <div class="tab-nav-demo">
+        <nav role="tablist" aria-label="Tab navigation">
+          <ul class="horizontal" style="border-bottom: 2px solid #dee2e6; margin: 0;">
+            <li><a href="#tab1" class="active" onclick="switchTab(event, 'tab1')">Overview</a></li>
+            <li><a href="#tab2" onclick="switchTab(event, 'tab2')">Features</a></li>
+            <li><a href="#tab3" onclick="switchTab(event, 'tab3')">Documentation</a></li>
+            <li><a href="#tab4" onclick="switchTab(event, 'tab4')">Support</a></li>
+          </ul>
+        </nav>
+        <div class="tab-content">
+          <div id="tab1" class="tab-pane active">
+            <h3>Overview Tab</h3>
+            <p>This is the overview content. Tab navigation is perfect for organizing related content into logical sections.</p>
+          </div>
+          <div id="tab2" class="tab-pane">
+            <h3>Features Tab</h3>
+            <p>Detailed feature information would go here. Users can switch between tabs without page reload.</p>
+          </div>
+          <div id="tab3" class="tab-pane">
+            <h3>Documentation Tab</h3>
+            <p>Technical documentation and API references would be displayed in this section.</p>
+          </div>
+          <div id="tab4" class="tab-pane">
+            <h3>Support Tab</h3>
+            <p>Contact information and support resources are available in this tab.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Navigation -->
+    <section class="demo-section" aria-labelledby="mobile-nav">
+      <h2 id="mobile-nav">Mobile Navigation</h2>
+      <p>Responsive navigation patterns optimized for mobile devices.</p>
+
+      <h3>Mobile Menu Demo</h3>
+      <div class="mobile-preview">
+        <div class="mobile-header">Mobile Device Preview</div>
+        <nav aria-label="Mobile navigation demo" style="background: white; padding: 1rem; border-bottom: 1px solid #dee2e6;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 600;">Logo</span>
+            <button class="nav-toggle" onclick="toggleMobileMenu()">
+              <span class="nav-toggle-icon"></span>
+            </button>
+          </div>
+          <ul class="vertical nav-mobile-hide" id="mobileMenu" style="margin-top: 1rem;">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <div style="padding: 1rem;">
+          <p>Mobile navigation collapses into a hamburger menu on small screens. Tap the menu icon to toggle.</p>
+        </div>
+      </div>
+
+      <div class="demo-note" style="margin-top: 2rem;">
+        <strong>Responsive Behavior:</strong> The navigation automatically adapts to screen size. Horizontal menus become vertical, dropdowns become accordions, and complex navigation collapses into a mobile-friendly hamburger menu.
+      </div>
+    </section>
+
+    <!-- Mega Menu -->
+    <section class="demo-section" aria-labelledby="mega-menu">
+      <h2 id="mega-menu">Mega Menu</h2>
+      <p>Large dropdown menus for complex site structures.</p>
+
+      <div class="nav-demo-container">
+        <div class="nav-demo-header">Mega Menu Navigation</div>
+        <nav aria-label="Mega menu navigation" style="background: white; padding: 1rem; position: relative;">
+          <ul class="horizontal">
+            <li><a href="#">Home</a></li>
+            <li>
+              <a href="#" onclick="toggleMegaMenu(event)">Products ▼</a>
+              <div class="mega-menu-dropdown" id="megaMenu">
+                <div class="mega-menu-grid">
+                  <div class="mega-menu-section">
+                    <h4>Electronics</h4>
+                    <ul>
+                      <li><a href="#">Computers</a></li>
+                      <li><a href="#">Phones</a></li>
+                      <li><a href="#">Tablets</a></li>
+                      <li><a href="#">Accessories</a></li>
+                    </ul>
+                  </div>
+                  <div class="mega-menu-section">
+                    <h4>Clothing</h4>
+                    <ul>
+                      <li><a href="#">Men's</a></li>
+                      <li><a href="#">Women's</a></li>
+                      <li><a href="#">Kids</a></li>
+                      <li><a href="#">Shoes</a></li>
+                    </ul>
+                  </div>
+                  <div class="mega-menu-section">
+                    <h4>Home & Garden</h4>
+                    <ul>
+                      <li><a href="#">Furniture</a></li>
+                      <li><a href="#">Decor</a></li>
+                      <li><a href="#">Kitchen</a></li>
+                      <li><a href="#">Outdoor</a></li>
+                    </ul>
+                  </div>
+                  <div class="mega-menu-section">
+                    <h4>Featured</h4>
+                    <ul>
+                      <li><a href="#" style="color: #dc3545;">🔥 Sale Items</a></li>
+                      <li><a href="#" style="color: #28a745;">✨ New Arrivals</a></li>
+                      <li><a href="#">Best Sellers</a></li>
+                      <li><a href="#">Gift Ideas</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Sticky Navigation -->
+    <section class="demo-section" aria-labelledby="sticky-nav">
+      <h2 id="sticky-nav">Sticky Navigation</h2>
+      <p>Navigation that stays visible when scrolling.</p>
+
+      <div class="demo-box" style="height: 400px; overflow-y: auto; position: relative;">
+        <nav class="nav-sticky" aria-label="Sticky navigation example" style="background: white; border-bottom: 1px solid #dee2e6; padding: 1rem;">
+          <ul class="horizontal">
+            <li><a href="#">Sticky Nav Item 1</a></li>
+            <li><a href="#">Sticky Nav Item 2</a></li>
+            <li><a href="#">Sticky Nav Item 3</a></li>
+            <li><a href="#">Sticky Nav Item 4</a></li>
+          </ul>
+        </nav>
+        <div style="padding: 2rem;">
+          <h3>Scroll this area</h3>
+          <p>The navigation above will stick to the top when you scroll.</p>
+          <div style="height: 600px; background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%); padding: 2rem;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            <p>Keep scrolling to see the sticky navigation in action...</p>
+            <p style="margin-top: 200px;">More content here...</p>
+            <p style="margin-top: 200px;">Even more content...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <pre><code>&lt;nav class="nav-sticky"&gt;
+  &lt;ul class="horizontal"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Filter Navigation -->
+    <section class="demo-section" aria-labelledby="filter-nav">
+      <h2 id="filter-nav">Filter Navigation</h2>
+      <p>Button group style navigation for filtering content.</p>
+
+      <nav aria-label="Filter navigation">
+        <dl class="filter-nav" role="group" aria-label="Content filters">
+          <dt>Filter:</dt>
+          <dd><a href="#" class="active">All</a></dd>
+          <dd><a href="#">Popular</a></dd>
+          <dd><a href="#">Recent</a></dd>
+          <dd><a href="#">Featured</a></dd>
+          <dd><a href="#">Trending</a></dd>
+        </dl>
+      </nav>
+
+      <div class="code-example">
+        <pre><code>&lt;nav&gt;
+  &lt;dl class="filter-nav"&gt;
+    &lt;dt&gt;Filter:&lt;/dt&gt;
+    &lt;dd&gt;&lt;a href="#" class="active"&gt;All&lt;/a&gt;&lt;/dd&gt;
+    &lt;dd&gt;&lt;a href="#"&gt;Popular&lt;/a&gt;&lt;/dd&gt;
+    &lt;dd&gt;&lt;a href="#"&gt;Recent&lt;/a&gt;&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="demo-section" aria-labelledby="best-practices">
+      <h2 id="best-practices">Best Practices</h2>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>Use semantic HTML elements (<code>&lt;nav&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code>)</li>
+        <li>Provide ARIA labels and roles for screen readers</li>
+        <li>Ensure keyboard navigation works (Tab, Enter, Escape)</li>
+        <li>Include focus states for all interactive elements</li>
+        <li>Use sufficient color contrast (WCAG 2.1 AA)</li>
+      </ul>
+
+      <h3>Performance</h3>
+      <ul>
+        <li>Lazy load dropdown content when possible</li>
+        <li>Use CSS transitions instead of JavaScript animations</li>
+        <li>Debounce scroll events for sticky navigation</li>
+        <li>Minimize DOM manipulation</li>
+      </ul>
+
+      <h3>Mobile Considerations</h3>
+      <ul>
+        <li>Touch targets should be at least 44x44 pixels</li>
+        <li>Avoid hover-only interactions</li>
+        <li>Use native scrolling for mobile menus</li>
+        <li>Test on real devices, not just browser emulation</li>
+      </ul>
+
+      <h3>SEO</h3>
+      <ul>
+        <li>Use descriptive link text</li>
+        <li>Implement proper heading hierarchy</li>
+        <li>Include breadcrumbs for better indexing</li>
+        <li>Ensure all navigation links are crawlable</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Demo Scripts -->
+  <script>
+    // Modern navigation demo
+    let modernNav;
+    document.addEventListener('DOMContentLoaded', () => {
+      modernNav = amp.createNavigation('#modernNav', {
+        sticky: false,
+        searchEnabled: true,
+        themeToggle: true,
+        githubUrl: 'https://github.com/your-org/amphibious',
+        githubStars: '1.2k'
+      });
+    });
+
+    // Toggle functions
+    function toggleSticky() {
+      const nav = document.querySelector('#modernNav .amp-nav');
+      nav.classList.toggle('amp-nav--sticky');
+    }
+
+    function toggleTransparent() {
+      const nav = document.querySelector('#modernNav .amp-nav');
+      nav.classList.toggle('amp-nav--transparent');
+    }
+
+    function simulateScroll() {
+      window.scrollBy(0, 500);
+      setTimeout(() => window.scrollBy(0, -500), 1000);
+    }
+
+    function openSearch() {
+      const searchBtn = document.querySelector('#modernNav .amp-nav__search');
+      if (searchBtn) searchBtn.click();
+    }
+
+    function toggleTheme() {
+      const themeBtn = document.querySelector('#modernNav .amp-nav__theme');
+      if (themeBtn) themeBtn.click();
+    }
+
+    // Tab navigation
+    function switchTab(event, tabId) {
+      event.preventDefault();
+
+      // Remove active from all tabs and panes
+      document.querySelectorAll('.tab-nav-demo a').forEach(link => {
+        link.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.remove('active');
+      });
+
+      // Add active to clicked tab and corresponding pane
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const toggle = document.querySelector('.nav-toggle');
+
+      menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded',
+        toggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+      );
+    }
+
+    // Mega menu toggle
+    function toggleMegaMenu(event) {
+      event.preventDefault();
+      const megaMenu = document.getElementById('megaMenu');
+      megaMenu.classList.toggle('open');
+    }
+
+    // Close mega menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const megaMenu = document.getElementById('megaMenu');
+      if (megaMenu && megaMenu.classList.contains('open')) {
+        if (!e.target.closest('.mega-menu-dropdown') && !e.target.closest('[onclick*="toggleMegaMenu"]')) {
+          megaMenu.classList.remove('open');
+        }
+      }
+    });
+
+    console.log('Navigation Showcase Loaded');
+  </script>
+</body>
+</html>

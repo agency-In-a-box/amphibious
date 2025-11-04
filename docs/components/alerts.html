@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerts Component - Amphibious 2.0 Documentation</title>
+  <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Alerts component - contextual feedback messages with multiple variants, styles, and toast notifications">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Documentation Header */
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .docs-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .docs-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Content Sections */
+    .section {
+      background: white;
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section h3 {
+      color: #34495e;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section h4 {
+      color: #7f8c8d;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .code-block code {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+    }
+
+    /* Inline code */
+    code {
+      background: #f1f5f9;
+      color: #e11d48;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875em;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* Demo Sections */
+    .demo-section {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .demo-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+    }
+
+    /* Feature List */
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #667eea;
+    }
+
+    .feature-card h4 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    /* Navigation */
+    .nav-breadcrumb {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 0;
+      margin-bottom: 1rem;
+    }
+
+    .nav-breadcrumb a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .nav-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Demo Grid */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    /* Toast Demo Area */
+    .toast-demo-area {
+      position: relative;
+      min-height: 300px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.125rem;
+      margin: 1rem 0;
+    }
+
+    .toast-demo-controls {
+      margin: 1rem 0;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .docs-header h1 {
+        font-size: 2rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      .toast-demo-controls {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="docs-header">
+    <div class="container">
+      <nav class="nav-breadcrumb">
+        <a href="/index.html">Home</a> ›
+        <a href="/docs/index.html">Documentation</a> ›
+        <a href="/docs/components/">Components</a> ›
+        <span>Alerts</span>
+      </nav>
+      <h1>Alerts Component</h1>
+      <p>Contextual feedback messages with multiple variants, styles, and toast notifications</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Overview -->
+    <section class="section">
+      <h2>Overview</h2>
+      <p>The Alerts component provides contextual feedback messages to users. They can be used for notifications, error messages, warnings, success confirmations, and general information. The component supports multiple styles, sizes, and interactive features including dismissible alerts and toast notifications.</p>
+
+      <div class="feature-list">
+        <div class="feature-card">
+          <h4>🎨 Multiple Variants</h4>
+          <p>Success, info, warning, error, and neutral alert types with semantic colors.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎭 Multiple Styles</h4>
+          <p>Default, solid, outline, minimal, and accent border styles for different contexts.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📏 Flexible Sizing</h4>
+          <p>Small, default, and large sizes to fit different content needs.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔥 Toast Notifications</h4>
+          <p>Positioned toast notifications with animations and auto-dismiss functionality.</p>
+        </div>
+        <div class="feature-card">
+          <h4>♿ Accessibility</h4>
+          <p>Focus management, screen reader support, and reduced motion preferences.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🌙 Dark Mode</h4>
+          <p>Automatic dark mode support with appropriate color adjustments.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basic Usage -->
+    <section class="section">
+      <h2>Basic Usage</h2>
+
+      <h3>Simple Alert</h3>
+      <div class="demo-section">
+        <div class="demo-title">Basic Alert Examples</div>
+        <div class="demo-grid">
+          <div class="alert">
+            <div class="alert__content">
+              <div class="alert__message">This is a default alert message.</div>
+            </div>
+          </div>
+
+          <div class="alert alert--success">
+            <div class="alert__icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="alert__content">
+              <div class="alert__message">Success! Your action was completed successfully.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Basic Alert --&gt;
+&lt;div class="alert"&gt;
+  &lt;div class="alert__content"&gt;
+    &lt;div class="alert__message"&gt;This is a default alert message.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Success Alert with Icon --&gt;
+&lt;div class="alert alert--success"&gt;
+  &lt;div class="alert__icon"&gt;
+    &lt;svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"&gt;
+      &lt;path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;div class="alert__content"&gt;
+    &lt;div class="alert__message"&gt;Success! Your action was completed successfully.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>Alert with Title and Actions</h3>
+      <div class="demo-section">
+        <div class="demo-title">Alert with Title and Action Buttons</div>
+        <div class="alert alert--warning">
+          <div class="alert__icon">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="alert__content">
+            <div class="alert__title">Warning</div>
+            <div class="alert__message">Your session will expire in 5 minutes. Would you like to extend it?</div>
+            <div class="alert__actions">
+              <button class="alert__action">Extend Session</button>
+              <button class="alert__action">Log Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="alert alert--warning"&gt;
+  &lt;div class="alert__icon"&gt;
+    &lt;!-- Warning icon SVG --&gt;
+  &lt;/div&gt;
+  &lt;div class="alert__content"&gt;
+    &lt;div class="alert__title"&gt;Warning&lt;/div&gt;
+    &lt;div class="alert__message"&gt;Your session will expire in 5 minutes. Would you like to extend it?&lt;/div&gt;
+    &lt;div class="alert__actions"&gt;
+      &lt;button class="alert__action"&gt;Extend Session&lt;/button&gt;
+      &lt;button class="alert__action"&gt;Log Out&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Alert Variants -->
+    <section class="section">
+      <h2>Alert Variants</h2>
+
+      <h3>Alert Types</h3>
+      <div class="demo-section">
+        <div class="demo-title">Different Alert Types</div>
+        <div class="demo-grid">
+          <div class="alert alert--success">
+            <div class="alert__icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="alert__content">
+              <div class="alert__title">Success</div>
+              <div class="alert__message">Your changes have been saved successfully.</div>
+            </div>
+          </div>
+
+          <div class="alert alert--info">
+            <div class="alert__icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="alert__content">
+              <div class="alert__title">Information</div>
+              <div class="alert__message">A new software update is available for download.</div>
+            </div>
+          </div>
+
+          <div class="alert alert--warning">
+            <div class="alert__icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="alert__content">
+              <div class="alert__title">Warning</div>
+              <div class="alert__message">Please review your entries before submitting the form.</div>
+            </div>
+          </div>
+
+          <div class="alert alert--error">
+            <div class="alert__icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="alert__content">
+              <div class="alert__title">Error</div>
+              <div class="alert__message">An error occurred while processing your request. Please try again.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Success Alert --&gt;
+&lt;div class="alert alert--success"&gt;...&lt;/div&gt;
+
+&lt;!-- Info Alert --&gt;
+&lt;div class="alert alert--info"&gt;...&lt;/div&gt;
+
+&lt;!-- Warning Alert --&gt;
+&lt;div class="alert alert--warning"&gt;...&lt;/div&gt;
+
+&lt;!-- Error Alert --&gt;
+&lt;div class="alert alert--error"&gt;...&lt;/div&gt;
+&lt;div class="alert alert--danger"&gt;...&lt;/div&gt;  &lt;!-- Alias --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Alert Styles -->
+    <section class="section">
+      <h2>Alert Styles</h2>
+
+      <h3>Style Variants</h3>
+      <div class="demo-section">
+        <div class="demo-title">Different Alert Styles</div>
+        <div class="demo-grid">
+          <!-- Default Style -->
+          <div class="alert alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Default Style</div>
+              <div class="alert__message">Subtle background with border.</div>
+            </div>
+          </div>
+
+          <!-- Solid Style -->
+          <div class="alert alert--solid alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Solid Style</div>
+              <div class="alert__message">Strong background with white text.</div>
+            </div>
+          </div>
+
+          <!-- Outline Style -->
+          <div class="alert alert--outline alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Outline Style</div>
+              <div class="alert__message">Transparent background with thick border.</div>
+            </div>
+          </div>
+
+          <!-- Minimal Style -->
+          <div class="alert alert--minimal alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Minimal Style</div>
+              <div class="alert__message">No background or border, text only.</div>
+            </div>
+          </div>
+
+          <!-- Accent Style -->
+          <div class="alert alert--accent alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Accent Style</div>
+              <div class="alert__message">Left border accent with subtle background.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Default Style --&gt;
+&lt;div class="alert alert--info"&gt;...&lt;/div&gt;
+
+&lt;!-- Solid Style --&gt;
+&lt;div class="alert alert--solid alert--info"&gt;...&lt;/div&gt;
+
+&lt;!-- Outline Style --&gt;
+&lt;div class="alert alert--outline alert--info"&gt;...&lt;/div&gt;
+
+&lt;!-- Minimal Style --&gt;
+&lt;div class="alert alert--minimal alert--info"&gt;...&lt;/div&gt;
+
+&lt;!-- Accent Style --&gt;
+&lt;div class="alert alert--accent alert--info"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Dismissible Alerts -->
+    <section class="section">
+      <h2>Dismissible Alerts</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Alerts with Dismiss Button</div>
+        <div class="demo-grid">
+          <div class="alert alert--success alert--dismissible">
+            <div class="alert__icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="alert__content">
+              <div class="alert__title">Dismissible Alert</div>
+              <div class="alert__message">This alert can be dismissed by clicking the × button.</div>
+            </div>
+            <button class="alert__dismiss" onclick="this.parentElement.style.display='none'">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="alert alert--success alert--dismissible"&gt;
+  &lt;div class="alert__icon"&gt;...&lt;/div&gt;
+  &lt;div class="alert__content"&gt;
+    &lt;div class="alert__title"&gt;Dismissible Alert&lt;/div&gt;
+    &lt;div class="alert__message"&gt;This alert can be dismissed.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="alert__dismiss" onclick="this.parentElement.remove()"&gt;
+    &lt;svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"&gt;
+      &lt;path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/&gt;
+    &lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Alert Sizes -->
+    <section class="section">
+      <h2>Alert Sizes</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Different Alert Sizes</div>
+        <div class="demo-grid">
+          <div class="alert alert--small alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Small Alert</div>
+              <div class="alert__message">Compact size for inline notifications.</div>
+            </div>
+          </div>
+
+          <div class="alert alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Default Alert</div>
+              <div class="alert__message">Standard size for most use cases.</div>
+            </div>
+          </div>
+
+          <div class="alert alert--large alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Large Alert</div>
+              <div class="alert__message">Larger size for important notifications that need more attention.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Small Alert --&gt;
+&lt;div class="alert alert--small alert--info"&gt;...&lt;/div&gt;
+
+&lt;!-- Default Alert --&gt;
+&lt;div class="alert alert--info"&gt;...&lt;/div&gt;
+
+&lt;!-- Large Alert --&gt;
+&lt;div class="alert alert--large alert--info"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Toast Notifications -->
+    <section class="section">
+      <h2>Toast Notifications</h2>
+
+      <h3>Positioned Toasts</h3>
+      <div class="demo-section">
+        <div class="demo-title">Toast Notification Demo</div>
+        <div class="toast-demo-area">
+          <span>Click buttons below to show toast notifications</span>
+        </div>
+        <div class="toast-demo-controls">
+          <button class="btn btn--primary" onclick="showToast('top-right')">Top Right</button>
+          <button class="btn btn--primary" onclick="showToast('top-left')">Top Left</button>
+          <button class="btn btn--primary" onclick="showToast('bottom-right')">Bottom Right</button>
+          <button class="btn btn--primary" onclick="showToast('bottom-left')">Bottom Left</button>
+          <button class="btn btn--primary" onclick="showToast('top-center')">Top Center</button>
+          <button class="btn btn--primary" onclick="showToast('bottom-center')">Bottom Center</button>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Toast Container --&gt;
+&lt;div class="toast-container toast-container--top-right"&gt;
+  &lt;div class="alert toast alert--success alert--dismissible"&gt;
+    &lt;div class="alert__icon"&gt;...&lt;/div&gt;
+    &lt;div class="alert__content"&gt;
+      &lt;div class="alert__title"&gt;Success!&lt;/div&gt;
+      &lt;div class="alert__message"&gt;Your action was completed.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="alert__dismiss"&gt;×&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Available positions --&gt;
+&lt;div class="toast-container toast-container--top-right"&gt;...&lt;/div&gt;
+&lt;div class="toast-container toast-container--top-left"&gt;...&lt;/div&gt;
+&lt;div class="toast-container toast-container--bottom-right"&gt;...&lt;/div&gt;
+&lt;div class="toast-container toast-container--bottom-left"&gt;...&lt;/div&gt;
+&lt;div class="toast-container toast-container--top-center"&gt;...&lt;/div&gt;
+&lt;div class="toast-container toast-container--bottom-center"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>Auto-Dismiss Toast</h3>
+      <div class="demo-section">
+        <div class="demo-title">Auto-Dismiss with Progress Bar</div>
+        <button class="btn btn--primary" onclick="showAutoDismissToast()">Show Auto-Dismiss Toast</button>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="alert toast toast--auto-dismiss alert--info" style="--dismiss-duration: 5s"&gt;
+  &lt;div class="alert__content"&gt;
+    &lt;div class="alert__title"&gt;Auto-Dismiss&lt;/div&gt;
+    &lt;div class="alert__message"&gt;This toast will auto-dismiss in 5 seconds.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Legacy Classes -->
+    <section class="section">
+      <h2>Legacy Support</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Legacy Alert Classes (Backward Compatibility)</div>
+        <div class="demo-grid">
+          <div class="error">Error: Legacy error class styling</div>
+          <div class="attn">Attention: Legacy attention class styling</div>
+          <div class="confirm">Confirm: Legacy confirm class styling</div>
+          <div class="dialog">Dialog: Legacy dialog class styling</div>
+          <div class="notify">Notify: Legacy notify class styling</div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Legacy classes for backward compatibility --&gt;
+&lt;div class="error"&gt;Error message&lt;/div&gt;
+&lt;div class="attn"&gt;Attention message&lt;/div&gt;
+&lt;div class="confirm"&gt;Confirmation message&lt;/div&gt;
+&lt;div class="dialog"&gt;Dialog message&lt;/div&gt;
+&lt;div class="notify"&gt;Notification message&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- CSS Classes -->
+    <section class="section">
+      <h2>CSS Classes Reference</h2>
+
+      <h3>Base Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.alert</code></td>
+            <td>Base alert container</td>
+          </tr>
+          <tr>
+            <td><code>.alert__icon</code></td>
+            <td>Alert icon container</td>
+          </tr>
+          <tr>
+            <td><code>.alert__content</code></td>
+            <td>Alert content wrapper</td>
+          </tr>
+          <tr>
+            <td><code>.alert__title</code></td>
+            <td>Alert title/heading</td>
+          </tr>
+          <tr>
+            <td><code>.alert__message</code></td>
+            <td>Alert message content</td>
+          </tr>
+          <tr>
+            <td><code>.alert__actions</code></td>
+            <td>Action buttons container</td>
+          </tr>
+          <tr>
+            <td><code>.alert__action</code></td>
+            <td>Individual action button</td>
+          </tr>
+          <tr>
+            <td><code>.alert__dismiss</code></td>
+            <td>Dismiss button</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Type Modifiers</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.alert--success</code></td>
+            <td>Success alert (green)</td>
+          </tr>
+          <tr>
+            <td><code>.alert--info</code></td>
+            <td>Information alert (blue)</td>
+          </tr>
+          <tr>
+            <td><code>.alert--warning</code></td>
+            <td>Warning alert (yellow)</td>
+          </tr>
+          <tr>
+            <td><code>.alert--error</code> / <code>.alert--danger</code></td>
+            <td>Error alert (red)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Style Modifiers</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.alert--solid</code></td>
+            <td>Solid background style</td>
+          </tr>
+          <tr>
+            <td><code>.alert--outline</code></td>
+            <td>Outline border style</td>
+          </tr>
+          <tr>
+            <td><code>.alert--minimal</code></td>
+            <td>Minimal style (no background/border)</td>
+          </tr>
+          <tr>
+            <td><code>.alert--accent</code></td>
+            <td>Left border accent style</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Size Modifiers</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.alert--small</code></td>
+            <td>Small alert size</td>
+          </tr>
+          <tr>
+            <td><code>.alert--large</code></td>
+            <td>Large alert size</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Toast Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.toast</code></td>
+            <td>Toast notification styling</td>
+          </tr>
+          <tr>
+            <td><code>.toast-container</code></td>
+            <td>Toast container for positioning</td>
+          </tr>
+          <tr>
+            <td><code>.toast-container--top-right</code></td>
+            <td>Position top-right</td>
+          </tr>
+          <tr>
+            <td><code>.toast-container--top-left</code></td>
+            <td>Position top-left</td>
+          </tr>
+          <tr>
+            <td><code>.toast-container--bottom-right</code></td>
+            <td>Position bottom-right</td>
+          </tr>
+          <tr>
+            <td><code>.toast-container--bottom-left</code></td>
+            <td>Position bottom-left</td>
+          </tr>
+          <tr>
+            <td><code>.toast-container--top-center</code></td>
+            <td>Position top-center</td>
+          </tr>
+          <tr>
+            <td><code>.toast-container--bottom-center</code></td>
+            <td>Position bottom-center</td>
+          </tr>
+          <tr>
+            <td><code>.toast--auto-dismiss</code></td>
+            <td>Auto-dismiss with progress bar</td>
+          </tr>
+          <tr>
+            <td><code>.alert--dismissible</code></td>
+            <td>Dismissible alert padding adjustment</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="section">
+      <h2>Best Practices</h2>
+
+      <h3>Content Guidelines</h3>
+      <ul>
+        <li><strong>Be concise:</strong> Keep alert messages short and actionable</li>
+        <li><strong>Use appropriate types:</strong> Match alert type to message context (error for failures, success for completion, etc.)</li>
+        <li><strong>Include actions:</strong> Provide clear next steps when appropriate</li>
+        <li><strong>Use icons:</strong> Include semantic icons to improve scanability</li>
+      </ul>
+
+      <h3>UX Considerations</h3>
+      <ul>
+        <li><strong>Toast positioning:</strong> Use top-right for success notifications, center for important warnings</li>
+        <li><strong>Auto-dismiss timing:</strong> 3-5 seconds for success, longer for warnings, never for errors</li>
+        <li><strong>Dismissible controls:</strong> Always allow users to dismiss alerts manually</li>
+        <li><strong>Persistent errors:</strong> Keep error alerts visible until resolved</li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li><strong>Color contrast:</strong> All alert variants meet WCAG contrast requirements</li>
+        <li><strong>Focus management:</strong> Dismiss buttons are properly focusable</li>
+        <li><strong>Screen readers:</strong> Use semantic markup and ARIA attributes for important alerts</li>
+        <li><strong>Reduced motion:</strong> Toast animations respect user preferences</li>
+      </ul>
+    </section>
+
+    <!-- JavaScript Integration -->
+    <section class="section">
+      <h2>JavaScript Integration</h2>
+
+      <div class="code-block">
+        <pre><code>// Create and show a toast notification
+function showToast(message, type = 'info', position = 'top-right', duration = 5000) {
+  // Create toast container if it doesn't exist
+  let container = document.querySelector(`.toast-container--${position}`);
+  if (!container) {
+    container = document.createElement('div');
+    container.className = `toast-container toast-container--${position}`;
+    document.body.appendChild(container);
+  }
+
+  // Create toast element
+  const toast = document.createElement('div');
+  toast.className = `alert toast alert--${type} alert--dismissible toast--auto-dismiss`;
+  toast.style.setProperty('--dismiss-duration', `${duration}ms`);
+
+  toast.innerHTML = `
+    &lt;div class="alert__content"&gt;
+      &lt;div class="alert__message"&gt;${message}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="alert__dismiss" onclick="this.parentElement.remove()"&gt;
+      &lt;svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"&gt;
+        &lt;path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/&gt;
+      &lt;/svg&gt;
+    &lt;/button&gt;
+  `;
+
+  // Add to container
+  container.appendChild(toast);
+
+  // Auto-dismiss after duration
+  if (duration > 0) {
+    setTimeout(() => {
+      if (toast.parentElement) {
+        toast.classList.add('toast--dismissing');
+        setTimeout(() => toast.remove(), 300);
+      }
+    }, duration);
+  }
+}
+
+// Usage examples
+showToast('Success message', 'success');
+showToast('Error occurred', 'error', 'top-center', 0); // No auto-dismiss
+showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="section">
+      <p>
+        <a href="/examples/alerts-demo.html">View Live Examples</a> |
+        <a href="/docs/components/">All Components</a> |
+        <a href="/docs/index.html">Documentation Home</a>
+      </p>
+      <p>&copy; 2024 Amphibious 2.0. Contextual feedback messages for modern web applications.</p>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Toast Demo JavaScript -->
+  <script>
+    function showToast(position) {
+      // Create container if it doesn't exist
+      let container = document.querySelector(`.toast-container--${position}`);
+      if (!container) {
+        container = document.createElement('div');
+        container.className = `toast-container toast-container--${position}`;
+        document.body.appendChild(container);
+      }
+
+      // Create toast
+      const toast = document.createElement('div');
+      toast.className = 'alert toast alert--success alert--dismissible';
+      toast.innerHTML = `
+        <div class="alert__icon">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div class="alert__content">
+          <div class="alert__title">Toast Notification</div>
+          <div class="alert__message">This is a ${position} positioned toast!</div>
+        </div>
+        <button class="alert__dismiss" onclick="this.parentElement.remove()">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      `;
+
+      container.appendChild(toast);
+
+      // Auto-dismiss after 4 seconds
+      setTimeout(() => {
+        if (toast.parentElement) {
+          toast.classList.add('toast--dismissing');
+          setTimeout(() => toast.remove(), 300);
+        }
+      }, 4000);
+    }
+
+    function showAutoDismissToast() {
+      let container = document.querySelector('.toast-container--top-right');
+      if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container toast-container--top-right';
+        document.body.appendChild(container);
+      }
+
+      const toast = document.createElement('div');
+      toast.className = 'alert toast toast--auto-dismiss alert--info';
+      toast.style.setProperty('--dismiss-duration', '5s');
+      toast.innerHTML = `
+        <div class="alert__content">
+          <div class="alert__title">Auto-Dismiss Toast</div>
+          <div class="alert__message">This toast will auto-dismiss in 5 seconds with a progress bar.</div>
+        </div>
+      `;
+
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        if (toast.parentElement) {
+          toast.classList.add('toast--dismissing');
+          setTimeout(() => toast.remove(), 300);
+        }
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

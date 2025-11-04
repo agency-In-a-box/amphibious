@@ -1,584 +1,501 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie ie8" lang="en"> <![endif]-->
-<!--[if IE 9]>    <html class="ie ie9" lang="en"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]>
-<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Amphibious | Simply Elegant HTML5/CSS3 Responsive Front End Development Kit | 1.5.5 December 2, 2015</title>
-<meta name="description" content="A.mphibio.us is a responsive design tool for rapid development has a familiar sixteen column, lightweight 960 grid as its base, but elegantly scales down to downsized browser windows">
-<meta name="keywords" content="css3, html5, responsive, web, design, mobile layout, responsive design">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foundation - Amphibious 2.0</title>
+  <meta name="description" content="Foundation documentation for Amphibious 2.0 - Core grid system, responsive columns, and layout fundamentals">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    /* Documentation specific styles */
+    .doc-section {
+      margin: 3rem 0;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border-color, #e5e7eb);
+    }
 
-<link rel="canonical" href="http://a.mphibio.us/index.html" />
+    .doc-section:last-child {
+      border-bottom: none;
+    }
 
+    .code-example {
+      background: var(--code-background, #f8f9fa);
+      border: 1px solid var(--border-color, #e5e7eb);
+      border-radius: 0.375rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
 
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/touch/apple-touch-icon-144x144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/touch/apple-touch-icon-114x114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/touch/apple-touch-icon-72x72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="/images/touch/apple-touch-icon-57x57-precomposed.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png">
-<!-- iPhone SPLASHSCREEN-->
-<link href="/images/startup/startup.png" media="(device-width: 320px)" rel="apple-touch-startup-image">
-<!-- iPhone (Retina) SPLASHSCREEN-->
-<link href="/images/startup/startup-retina.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-<!-- iPad (portrait) SPLASHSCREEN-->
-<link href="/images/startup/startup-tablet-portrait.png" media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
-<!-- iPad (landscape) SPLASHSCREEN-->
-<link href="/images/startup/startup-tablet-landscape.png" media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<!-- iPad (Retina, portrait) SPLASHSCREEN-->
-<link href="/images/startup/startup-tablet-portrait-retina.png" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-<!-- iPad (Retina, landscape) SPLASHSCREEN-->
-<link href="/images/startup/startup-tablet-landscape-retina.png" media="(device-width: 1536px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    .demo-grid {
+      margin: 1rem 0;
+    }
 
-<!-- Tile icon for Win8 (144x144 + tile color) -->
-<meta name="msapplication-TileImage" content="/images/touch/apple-touch-icon-144x144-precomposed.png">
-<meta name="msapplication-TileColor" content="#000000">
+    .demo-col {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      border-radius: 0.25rem;
+      font-weight: 600;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1, , maximum-scale=1.0, user-scalable=no">
-<meta http-equiv="cleartype" content="on">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="A.mphibio.us">
+    .golden-ratio-demo .demo-col {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
 
-<link rel="stylesheet" href="../css/a.mphibio.us.min.css">
-<link rel="stylesheet" href="../css/a.mphibio.us.docs.css">
+    .push-pull-demo .demo-col {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
 
-<script src="/js/js/modernizr-2.6.2.min.js"></script>
-<script src="/js/js/prefixfree.min.js"></script>
+    .media-query-demo {
+      background: var(--card-background, #ffffff);
+      border: 2px solid var(--primary-color, #3b82f6);
+      padding: 1rem;
+      text-align: center;
+      border-radius: 0.375rem;
+      margin: 1rem 0;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
 
-<!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
-<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
-  
+    @media (max-width: 768px) {
+      .media-query-demo {
+        background: var(--warning-color, #f59e0b);
+        color: white;
+        border-color: var(--warning-color, #f59e0b);
+      }
+      .media-query-demo::after {
+        content: " (Tablet View)";
+      }
+    }
+
+    @media (max-width: 480px) {
+      .media-query-demo {
+        background: var(--success-color, #10b981);
+        color: white;
+        border-color: var(--success-color, #10b981);
+      }
+      .media-query-demo::after {
+        content: " (Mobile View)";
+      }
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .feature-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color, #e5e7eb);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--success-color, #10b981);
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header class="container">
+    <div class="row">
+      <div class="col-16">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/sitemap.html">Sitemap</a></li>
+            <li aria-current="page">Foundation</li>
+          </ol>
+        </nav>
 
+        <h1>Foundation</h1>
+        <p class="lead">
+          The core grid system, responsive columns, and layout fundamentals that power Amphibious 2.0.
+          Built on a flexible 16-column system with semantic markup and modern CSS.
+        </p>
+      </div>
+    </div>
+  </header>
 
-<span id="download_button">
-<a class="button" href="http://a.mphibio.us/a.mphibio.us.rdk.zip" title="Download A.mphibio.us Rapid Developmet Kit(.zip )">A.mphibio.us RDK <span class="icon-github hml"></span></a>
-</span>
+  <main class="container">
 
-<div id="main" role="main" class="container">
+    <!-- Core -->
+    <section id="core" class="doc-section">
+      <div class="row">
+        <div class="col-16">
+          <h2>Core</h2>
+          <p>Amphibious 2.0 is built on modern CSS foundations with semantic HTML5 structure. The framework uses CSS custom properties for theming, flexbox for layout, and follows BEM methodology for component naming.</p>
 
-	<div id="maincontent" class="content">
-		<header class="sixteen col">
-			<h1 class="rmb mt">Foundation</h1>
-			<h3>Amphibious has a fluid and responsive layout system based on a solid sixteen column grid system.</h3>
-		</header>
+          <h3>Modern Foundation</h3>
+          <p>Built with contemporary web standards, Amphibious 2.0 provides:</p>
 
-		<section class="cfx" id="core">
-			<article class="sixteen col">
-				<header>
-					<h2>The Core</h2>
-				</header>
-				<h4>Built on the HTML5 Boilerplate</h4>
-				<p>Amphibious inherits all of strengths and years of cross browser research of the html5 boilerplate and helps you build fast, robust, and adaptable web apps or sites.</p>
-				<ol class="roman">
-					<li>Conditionl html classes not extra style sheets for browser behaviour</li>
-					<li>Minimal http requests</li>
-					<li>Mobile first approach</li>
-					<li>Modernizr feature detection and HTML5 Shiv</li>
-					<li>Favicons and Touch Icons</li>
-					<li>Google Chrome Frame</li>
-					<li>and....</li>
-				</ol>
-				<div class="row">
-<pre class="prettyprint linenums">
-&lt;!doctype html&gt;
-&lt;!--[if lt IE 7]&gt; &lt;html class=&quot;no-js ie lt-ie7&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 7]&gt;    &lt;html class=&quot;no-js ie ie7&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 8]&gt;    &lt;html class=&quot;no-js ie ie8&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 9]&gt;    &lt;html class=&quot;ie ie9&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
-&lt;!--[if (gt IE 9)|!(IE)]&gt;
-&lt;!--[if IEMobile 7 ]&gt;    &lt;html class=&quot;no-js iem7&quot;&gt; &lt;![endif]--&gt;
-&lt;!--[if (gt IEMobile 7)|!(IEMobile)]&gt;&lt;!--&gt; &lt;html class=&quot;no-js&quot;&gt; &lt;!--&lt;![endif]--&gt;
+          <ul class="feature-list">
+            <li>CSS Custom Properties for easy theming</li>
+            <li>Flexbox-based grid system</li>
+            <li>Mobile-first responsive design</li>
+            <li>Semantic HTML5 structure</li>
+            <li>BEM methodology for CSS naming</li>
+            <li>ES6+ JavaScript modules</li>
+            <li>Accessibility-first approach</li>
+          </ul>
 
+          <h3>Basic Structure</h3>
+          <div class="code-example">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
 &lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;
-&lt;title&gt;&lt;/title&gt;
-&lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;
-&lt;meta name=&quot;keywords&quot; content=&quot;&quot;&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Your Page Title&lt;/title&gt;
+  &lt;link rel="stylesheet" href="/src/css/main.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-8"&gt;Content&lt;/div&gt;
+      &lt;div class="col-8"&gt;Content&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
 
-&lt;link rel=&quot;canonical&quot; href=&quot;http://a.mphibio.us/index.html&quot; /&gt;
-</pre>
-					
-				</div>
-			</article>
-			<footer>
-				<p>Complete documentation on the boilerplate elements can be found at <a href="https://github.com/h5bp/html5-boilerplate/blob/v4.2.0/doc/html.md">https://github.com/h5bp/html5-boilerplate/blob/v4.2.0/doc/html.md</a>
-			</footer>
-		</section>
+          <h3>Container Types</h3>
+          <p>The <code>.container</code> class provides a centered, max-width wrapper for content. It's fluid by default and responsive to all screen sizes.</p>
+        </div>
+      </div>
+    </section>
 
-		<section class="cfx" id="grid">
-		
-			<article>
-				<header>
-				<div class="sixteen col">
-					<h2>The Grid</h2>
-				</div>
-				</header>
-				<div class="row">
-					<div class="sixteen col">
-						
-						<p>A.mphibio.us' base grid is a sixteen column variation of the 960 grid system. The syntax is simple, elegant, and lightweight columns, (or col for short) act like columns and <b>rows</b> well um... they act like rows and keep all the columns inside that row. It's effective and cross-browser, so you don’t have to worry about compatibility issues or page load inconsistencies.</p>
-						
-						<p>Amphibious relies on the combination of classes to determine the layout, <span class="class tag">.col</span> for example floats the element, while  <span class="class tag">.ten</span> determines that it spans ten columns of the grid. All column spans are name spaced to happen inside a container element to remian adaptpable.</p>
-						
-						<p>A simple layout example:</p>
-					
-					</div>
-				</div>
-				<div class="row example-grid">
-					<div class="sixteen col">Header</div>
-					<div class="six col">Left Column</div>
-					<div class="ten col">Right Column</div>
-					<div class="sixteen col">Footer</div>
-				</div>
-				
-				<div class="row">
-					<div class="sixteen col">
-						<div class="row dpb">
-							<small>would be marked up like</small>
-	
-							<pre class="prettyprint linenums">
-&lt;div class=&quot;container&quot;&gt;
-  &lt;div class=&quot;sixteen col&quot;&gt;Header&lt;/div&gt;
-  &lt;div class=&quot;col six&quot;&gt;Left Column&lt;/div&gt;
-  &lt;div class=&quot;col ten&quot;&gt;Right Column&lt;/div&gt;
-  &lt;div class=&quot;sixteen col&quot;&gt;Footer&lt;/div&gt;
-&lt;/div&gt;
-							</pre>
-							
-						</div>	
-						
-						<p>A more complex layout might include a row element for example:</p>
-					</div>
-				</div>
-				
-				
-				<div class="row example-grid">
-					<div class="sixteen col">Header</div>
-						<div class="six col" style="height:200px;">
-							<nav>
-								<ul>
-									<li>Nav Item</li>
-									<li>Nav Item</li>
-									<li>Nav Item</li>
-								</ul>
-							</nav>
-						</div>
-						<div class="ten col" style="height:200px;">
-							<div class="row">
-								<div class="six col first">
-									<h2>Main Content</h2>
-									<p>Some Copy</p>
-								</div>
-								<div class="four col last">
-									<h4>Inner sidebar</h4>
-									<p>Some Copy</p>
-								</div>
-							</div>
-							
-						</div>
-						<div class="sixteen col">Footer</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="sixteen col">
-						<div class="row dpb">
-							<small>would be marked up like</small>
-	
-							<pre class="prettyprint linenums">
-	&lt;div class=&quot;container&quot;&gt;
-		&lt;div class=&quot;sixteen col first last&quot;&gt;Header&lt;/div&gt;
-		&lt;div class=&quot;six col first&quot;&gt;
-		    &lt;nav&gt;
-		        &lt;ul&gt;
-		            &lt;li&gt;Nav Item&lt;/li&gt;
-		            &lt;li&gt;Nav Item&lt;/li&gt;
-		            &lt;li&gt;Nav Item&lt;/li&gt;
-		        &lt;/ul&gt;
-		    &lt;/nav&gt;
-		&lt;/div&gt;
-		&lt;div class=&quot;ten col last&quot;&gt;
-		    &lt;div class=&quot;row&quot;&gt;
-		        &lt;div class=&quot;six col first&quot;&gt;
-		            &lt;h2&gt;Main Content&lt;/h2&gt;
-		            &lt;p&gt;Some Copy&lt;/p&gt;
-		        &lt;/div&gt;
-		        &lt;div class=&quot;four col last&quot;&gt;
-		            &lt;h4&gt;Inner sidebar&lt;/h4&gt;
-		            &lt;p&gt;Some Copy&lt;/p&gt;
-		        &lt;/div&gt;
-		    &lt;/div&gt;
-		    
-		&lt;/div&gt;
-		&lt;div class=&quot;sixteen col first last&quot;&gt;Footer&lt;/div&gt;
-	&lt;/div&gt;
-							
-							</pre>
-						</div>
-					</div>
-				</div>
-				
-				<div id="responsive_col">
-					<div class="row">
-						<div class="sixteen col">
-							<p>A.mphibio.us has the flexibility to go mobile like a champ. <strong>Go ahead, resize the browser and watch as the layout reacts!</strong></p>
-							
-							<h3>Responsive Columns</h3>
-							<p>These set of column classes repond to two different grid size and casscade down to blocks for mobile devices.</p>
-						</div>
-					</div>
-					<div class="row example-grid">
-						<div class="one col">One</div>
-						<div class="fifteen col">Fifteen</div>
-						<div class="fourteen col">Fourteen</div>
-						<div class="two col">Two</div>
-						<div class="three col">Three</div>
-						<div class="thirteen col">Thirteen</div>
-						<div class="twelve col">Twelve</div>
-						<div class="four col">Four</div>
-						<div class="five col">Five</div>
-						<div class="eleven col">Eleven</div>
-						<div class="ten col">Ten</div>
-						<div class="six col">Six</div>
-						<div class="seven col">Seven</div>
-						<div class="nine col">Nine</div>
-						<div class="eight col">Eight</div>
-						<div class="eight col">Eight</div>
-						<div class="sixteen col">Sixteen</div>
-					</div>
-					<h4>Padded Columns</h4>
-					<div class="row example-grid">
-						<div class="one col padded">One</div>
-						<div class="fifteen col padded">Fifteen</div>
-						<div class="fourteen col padded">Fourteen</div>
-						<div class="two col padded">Two</div>
-						<div class="three col padded">Three</div>
-						<div class="thirteen col padded">Thirteen</div>
-						<div class="twelve col padded">Twelve</div>
-						<div class="four col padded">Four</div>
-						<div class="five col padded">Five</div>
-						<div class="eleven col padded">Eleven</div>
-						<div class="ten col padded">Ten</div>
-						<div class="six col padded">Six</div>
-						<div class="seven col padded">Seven</div>
-						<div class="nine col padded">Nine</div>
-						<div class="eight col padded">Eight</div>
-						<div class="eight col padded">Eight</div>
-						<div class="sixteen col padded">Sixteen</div>
-					</div>
-				</div>
-				
-				<div id="fluid_col" class="fluid">
-					<h3>Fluid Columns</h3>
-					<p>These set of column classes repond fluidly for all container sizes excluding mobile devices.</p>
-					<div class="row example-grid">
-						<div class="one-third col first">One Third</div>
-						<div class="one-third col">One Third</div>
-						<div class="one-third col last">One Third</div>
-						<div class="one-third col first">One Third</div>
-						<div class="two-thirds col last">Two Thirds</div>
-						<div class="one-quarter col first">One Quarter</div>
-						<div class="one-quarter col">One Quarter</div>
-						<div class="one-quarter col">One Quarter</div>
-						<div class="one-quarter col last">One Quarter</div>
-						<div class="one-quarter col first">One Quarter</div>
-						<div class="three-quarters col last">Three Quarters</div>
-						<div class="one-quarter col first">One Quarter</div>
-						<div class="half col">Half</div>
-						<div class="one-quarter col last">One Quarter</div>
-						<div class="half col first">Half</div>
-						<div class="half col last">Half</div>
-					</div>
-					<h4>Padded Columns</h4>
-					<div class="row example-grid">
-						<div class="one-third col padded">One Third</div>
-						<div class="one-third col padded">One Third</div>
-						<div class="one-third col padded">One Third</div>
-						<div class="one-third col padded">One Third</div>
-						<div class="two-thirds col padded">Two Thirds</div>
-						<div class="one-quarter col padded">One Quarter</div>
-						<div class="one-quarter col padded">One Quarter</div>
-						<div class="one-quarter col padded">One Quarter</div>
-						<div class="one-quarter col padded">One Quarter</div>
-						<div class="one-quarter col padded">One Quarter</div>
-						<div class="three-quarters col padded">Three Quarters</div>
-						<div class="one-quarter col padded">One Quarter</div>
-						<div class="half col padded">Half</div>
-						<div class="one-quarter col padded">One Quarter</div>
-						<div class="half col padded">Half</div>
-						<div class="half col padded">Half</div>
-					</div>
-					
-				</div>
-				
+    <!-- Semantic Grid -->
+    <section id="grid" class="doc-section">
+      <div class="row">
+        <div class="col-16">
+          <h2>Semantic Grid</h2>
+          <p>A 16-column grid system that provides precise control over layout while maintaining semantic meaning in your HTML.</p>
 
-				<footer id="golden_section" class="col sixteen">
-					<div class="row mb rb pb">
-					
-						<h3>Golden Section Layouts</h3>
-						<p>The sixteen column grid is flexible for most layouts and it allows us easily use the <a href="http://en.wikipedia.org/wiki/Golden_ratio">golden ratio</a> in our layouts for our human friends, you know... <i>a+b</i> is to <em>a</em> as <i>a</i> is to <em>b</em>. I don't always enjoy the math but <em>I see the natural order</em> well enough.</p>
-						
-						<p>Nesting columns is also a snap by adding <span class="class tag">first</span> or  <span class="class tag">last</span> class to, either the... you guessed it! <b>first</b> or <b>last</b> inset columns;</p>
-						
-						<div class="example-grid">
-						
-							<div class="sixteen col first last" style="padding-top: 120px;">
-								Sixteen
-								<div class="row" style="margin-top:120px;">
-									<div class="ten col first rmb match">Ten
-										<div class="row">
-											<div class="six col first">six</div>	
-											<div class="four col last">four</div>
-										</div>
-									</div>
-									<div class="six col last rmb match">Six
-										<div class="row">
-											<div class="two col first">Two</div>
-											<div class="four col last">four</div>		
-										</div>						
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						
-						<div class="row">
-							<small>look something like</small>
-<pre class="prettyprint linenums">
-&lt;div id=&quot;maincontent&quot; class=&quot;col sixteen content&quot;&gt;
-	&lt;section&gt;
-		&lt;div class=&quot;sixteen col first last&quot;&gt;
-			Sixteen
-			&lt;div class=&quot;row mt pt&quot;&gt;
-				&lt;div class=&quot;ten col first rmb match&quot;&gt;Ten
-					&lt;div class=&quot;row&quot;&gt;
-						&lt;div class=&quot;six col first&quot;&gt;six&lt;/div&gt;	
-						&lt;div class=&quot;four col last&quot;&gt;four&lt;/div&gt;
-					&lt;/div&gt;
-				&lt;/div&gt;
-				&lt;div class=&quot;six col last rmb match&quot;&gt;Six
-					&lt;div class=&quot;row&quot;&gt;
-						&lt;div class=&quot;two col first&quot;&gt;Two&lt;/div&gt;
-						&lt;div class=&quot;four col last&quot;&gt;four&lt;/div&gt;		
-					&lt;/div&gt;						
-				&lt;/div&gt;
-			&lt;/div&gt;
-			
-		&lt;/div&gt;
-	&lt;/section&gt;
-&lt;/div&gt;
-</pre>
-	
-						</div>
-					</div>
-							
-				</footer>
-				
-			</article>
-			
-		</section>
+          <h3>16-Column System</h3>
+          <p>Based on the proven 960 Grid System, each column represents 6.25% of the container width (16 columns = 100%).</p>
 
-		<section id="push_pull">
-		
-			<article>
-				<header>
-					<h2>SEO Optimization</h2>
-				</header>
-				<p>Source Ordering of content for maximum load efficiency.</p>
-				<div class="example-grid">
-					<div class="six col push_ten">
-						<span>&lt;div class=&quot;six col push_ten&quot;&gt;&lt;/div&gt;</span>
-					</div>
-					<div class="ten col pull_sixteen absolute">
-					<span>&lt;div class=&quot;ten col pull_sixteen absolute&quot;&gt;&lt;/div&gt;</span>	
-					</div>
-					<div class="sixteen col">sixteen col</div>
-				</div>
-				<footer>
-<pre class="prettyprint linenums">
-&lt;div class=&quot;six col push_ten&quot;&gt;
-	&lt;div class=&quot;six col push_ten&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ten col pull_sixteen absolute&quot;&gt;
-	&lt;div class=&quot;ten col pull_sixteen absolute&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sixteen col&quot;&gt;
-	sixteen col
-&lt;/div&gt;
-</pre>
-				</footer>
-			</article>
-			
-		</section>
+          <div class="demo-grid">
+            <div class="row">
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+              <div class="col-1"><div class="demo-col">1</div></div>
+            </div>
+            <div class="row">
+              <div class="col-4"><div class="demo-col">col-4</div></div>
+              <div class="col-4"><div class="demo-col">col-4</div></div>
+              <div class="col-4"><div class="demo-col">col-4</div></div>
+              <div class="col-4"><div class="demo-col">col-4</div></div>
+            </div>
+            <div class="row">
+              <div class="col-8"><div class="demo-col">col-8</div></div>
+              <div class="col-8"><div class="demo-col">col-8</div></div>
+            </div>
+            <div class="row">
+              <div class="col-16"><div class="demo-col">col-16 (full width)</div></div>
+            </div>
+          </div>
 
-		<section id="mediaQueries">
-		
-			<div class="row">
-				<article>
-					<h3>Media Queries</h3>
-					<p>A.mphibio.us uses a <strong>lot</strong> of media queries to serve the scalable grid, but also for the convenience of styling your site on different size screens. A.mphibio.us' media queries are almost exclusively targeted at max and min widths rather than device sizes or orientations. The advantage of this is browsers and future mobile devices that don't map to exact set dimensions will still benefit from the styles. That being said, all of the queries were written to be optimal on Apple iOS devices. The built in media queries include:</p>
-					<ul class="square">
-						<li><strong>Smaller than 960</strong>: Smaller than the standard base grid</li>
-						<li><strong>Tablet Portrait</strong>: Between 768px and 959px</li>
-						<li><strong>All Mobile Sizes</strong>: Less than 767px</li>
-						<li><strong>Just Mobile Landscape</strong>: Between 480px and 767px</li>
-						<li><strong>Just Mobile Portrait</strong>: Less than 479px</li>
-					</ul>
-	
-				</article>
-			</div>
-				
-		</section>
+          <div class="code-example">
+            <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-4"&gt;Quarter width&lt;/div&gt;
+  &lt;div class="col-8"&gt;Half width&lt;/div&gt;
+  &lt;div class="col-4"&gt;Quarter width&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
 
-	</div><!-- content -->
+          <h3>Simple Layout Example</h3>
+          <div class="demo-grid">
+            <div class="row">
+              <div class="col-16"><div class="demo-col">Header</div></div>
+              <div class="col-6"><div class="demo-col">Sidebar</div></div>
+              <div class="col-10"><div class="demo-col">Main Content</div></div>
+              <div class="col-16"><div class="demo-col">Footer</div></div>
+            </div>
+          </div>
 
-</div><!-- container -->
+          <div class="code-example">
+            <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-16"&gt;Header&lt;/div&gt;
+    &lt;div class="col-6"&gt;Sidebar&lt;/div&gt;
+    &lt;div class="col-10"&gt;Main Content&lt;/div&gt;
+    &lt;div class="col-16"&gt;Footer&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
 
-</div>
+          <h3>Nested Grids</h3>
+          <p>You can nest grids within columns for complex layouts:</p>
 
+          <div class="demo-grid">
+            <div class="row">
+              <div class="col-16"><div class="demo-col">Header</div></div>
+              <div class="col-6"><div class="demo-col">Navigation</div></div>
+              <div class="col-10">
+                <div class="demo-col" style="padding: 0;">
+                  <div class="row" style="margin: 0;">
+                    <div class="col-12"><div class="demo-col" style="margin: 0.5rem;">Main Content</div></div>
+                    <div class="col-4"><div class="demo-col" style="margin: 0.5rem;">Sidebar</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-16"><div class="demo-col">Footer</div></div>
+            </div>
+          </div>
 
-<footer id="amp_footer" class="row">
-	<p><a href="/"><span class="icon-amphibious hmr"></span></a> <a href="http://www.lassosoft.com/"><span class="icon-lassosoft hmr"></span></a> <a href="http://www.mergini.com/"><span class="icon-mergini hmr"></span></a> Curated by Clive Moore, at <a href="http://www.treefrog.ca"><span class="icon-treefrog hmr"></span>Treefrog Inc.</a> <strong>Twitter</strong>: <a href="http://www.twitter.com/cliveMoore" title="Follow Clive on Twitter">@cliveMoore</a> <a href="/sitemap.html"><span class="icon-flow-tree"></span> Sitemap</a></p>
-</footer>
+          <div class="code-example">
+            <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-16"&gt;Header&lt;/div&gt;
+    &lt;div class="col-6"&gt;Navigation&lt;/div&gt;
+    &lt;div class="col-10"&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="col-12"&gt;Main Content&lt;/div&gt;
+        &lt;div class="col-4"&gt;Sidebar&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-16"&gt;Footer&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Responsive Columns -->
+    <section id="responsive_col" class="doc-section">
+      <div class="row">
+        <div class="col-16">
+          <h2>Responsive Columns</h2>
+          <p>Columns adapt automatically to different screen sizes using mobile-first responsive design. <strong>Resize your browser window to see the layout react!</strong></p>
 
-<div id="mainnav" class="f t l r">
-<!--// WTF?
+          <h3>Breakpoints</h3>
+          <ul>
+            <li><strong>Mobile:</strong> ≤480px - <code>.col-mobile-*</code></li>
+            <li><strong>Tablet:</strong> ≤768px - <code>.col-tablet-*</code></li>
+            <li><strong>Desktop:</strong> >768px - <code>.col-*</code> (default)</li>
+          </ul>
 
-.f.t.l.r == .fixed .top .left .right
+          <div class="demo-grid">
+            <div class="row">
+              <div class="col-8 col-tablet-16 col-mobile-16">
+                <div class="demo-col">Desktop: 8 | Tablet: 16 | Mobile: 16</div>
+              </div>
+              <div class="col-8 col-tablet-16 col-mobile-16">
+                <div class="demo-col">Desktop: 8 | Tablet: 16 | Mobile: 16</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 col-tablet-8 col-mobile-16">
+                <div class="demo-col">4 | 8 | 16</div>
+              </div>
+              <div class="col-4 col-tablet-8 col-mobile-16">
+                <div class="demo-col">4 | 8 | 16</div>
+              </div>
+              <div class="col-4 col-tablet-8 col-mobile-16">
+                <div class="demo-col">4 | 8 | 16</div>
+              </div>
+              <div class="col-4 col-tablet-8 col-mobile-16">
+                <div class="demo-col">4 | 8 | 16</div>
+              </div>
+            </div>
+          </div>
 
-// .left (.l) or .right (.r) no longer floats left/right respectively
-when used in combination with the fixed or the absolute class
-they inherit different properties the result is
+          <div class="code-example">
+            <pre><code>&lt;div class="col-8 col-tablet-16 col-mobile-16"&gt;
+  Responsive column
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
 
-postion:fixed;top:0;left:0;right:0;
+    <!-- Fluid Columns -->
+    <section id="fluid_col" class="doc-section">
+      <div class="row">
+        <div class="col-16">
+          <h2>Fluid Columns</h2>
+          <p>The grid system is fluid by default, scaling proportionally with the container. All columns use percentage-based widths for maximum flexibility.</p>
 
-//-->
-	<div class="container">
-		<nav>
-			<ul id="horizontal" class="horizontal branded">
-				<li><a href="/index.html#intro" class="hpl">a.mphibio.us</a>
-					<ul>
-						<li><a href="/index.html#what_is_it">What is A.mphibio.us</a></li>
-						<li><a href="/index.html#how_its_made">What is it made of?</a></li>
-<!--						<li><a href="/index.html#slides">Flexslider Slideshows</a></li> -->
- 							<li><a href="/index.html#gallery">A.mphibio.us Showcase</a></li>
-						<li><a href="/index.html#evolution">The E.volution of A.mphibio.us</a></li>
-						<li><a href="/index.html#colophon">The A.mphibio.us Colophon</a></li>
-					</ul>
-				</li>
-				<li class="active"><a href="/docs/foundation.html">Foundation</a>
-					<ul>
-						<li><a href="/docs/foundation.html#core">Core</a></li>
-						<li><a href="/docs/foundation.html#grid">Symantic Grid</a></li>
-						<li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-						<li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-<!--//					<li><a href="/docs/foundation.html#padded_col">Padded Columns</a></li> //-->
-						<li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-						<li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-						<li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-					</ul>
-				</li>
-				<li><a href="/docs/form.html">Form</a>
-					<ul>
+          <h3>Flexible Layout</h3>
+          <p>Columns automatically adjust to their container's width, making them perfect for responsive designs and nested grids.</p>
 
-						<li><a href="/docs/form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
-						<li><a href="/docs/form.html#forms">Basic Forms</a></li>
-						<li><a href="/docs/form.html#multi_forms">Mutli Beside Forms</a></li>
-						<li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-						<li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-						<li><a href="/docs/form.html#datepicker_fields">jQuery Datepicker Fields</a></li>
-						<li><a href="/docs/form.html#tables">Tables <sub>not for layout</sub></a></li>
-					</ul>
-				</li>
-				<li><a href="/docs/function.html">Function</a>
-					<ul>
+          <div class="demo-grid">
+            <div class="row" style="background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 0.5rem;">
+              <div class="col-6"><div class="demo-col">col-6 (37.5%)</div></div>
+              <div class="col-10"><div class="demo-col">col-10 (62.5%)</div></div>
+            </div>
+          </div>
 
-						<li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-						<li><a href="/docs/function.html#horizcss">Horizontal Nav <sub>css</sub></a></li>
-						<li><a href="/docs/function.html#vertnav">Vertical Nav <sub>with tertiary</sub></a></li>
-						<li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-						<li><a href="/docs/function.html#tabmagic">Tabs</a></li>
-						<li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-					</ul>
-				</li>
-				<li><a href="/docs/features.html">Features</a>
-					<ul>
-						<li><a href="/docs/features.html#slides">Responsive Slide Shows</a></li>
-						<li><a href="/docs/features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
-						<li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-						<li><a href="/docs/features.html#icons">Webfont Icons <sub>by entypo</sub></a></li>
-					</ul>
-				</li>
-				<li><a href="javascript:;" class="modal_opener" amp-target="amp_overlay">Feedback</a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
+          <div class="code-example">
+            <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-6"&gt;37.5% width&lt;/div&gt;
+  &lt;div class="col-10"&gt;62.5% width&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<button id="nav_toggle" type="button"><span class="icon-carret-left"></span></button>
+    <!-- Golden Ratio Grids -->
+    <section id="golden_section" class="doc-section">
+      <div class="row">
+        <div class="col-16">
+          <h2>Golden Ratio Grids</h2>
+          <p>Create visually pleasing layouts using the golden ratio (1.618:1) with special column combinations that approximate this mathematical proportion.</p>
 
-<div id="amp_overlay" class="modal_overlay">
-	<div class="modal mt">
-		<section>
-			<div class="row">
-				<span class="icon-cross-round large right rmr modal_kill" amp-target="amp_overlay"></span>
-			</div>
-			<div id="disqus_thread"></div>
-			<script type="text/javascript">
-			    /* * * CONFIGURATION VARIABLES * * */
-			    var disqus_shortname = 'amphibious';
-			    
-			    /* * * DON'T EDIT BELOW THIS LINE * * */
-			    (function() {
-			        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			    })();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <h3>Golden Ratio Combinations</h3>
+          <p>Use <code>col-10</code> + <code>col-6</code> (ratio ≈ 1.67:1) or <code>col-9</code> + <code>col-7</code> (ratio ≈ 1.29:1) for golden section layouts.</p>
 
+          <div class="demo-grid golden-ratio-demo">
+            <div class="row">
+              <div class="col-10"><div class="demo-col">col-10 (Golden Large)</div></div>
+              <div class="col-6"><div class="demo-col">col-6 (Golden Small)</div></div>
+            </div>
+            <div class="row">
+              <div class="col-9"><div class="demo-col">col-9 (Golden Large)</div></div>
+              <div class="col-7"><div class="demo-col">col-7 (Golden Small)</div></div>
+            </div>
+          </div>
 
-		</section>
-	</div>
-</div>
+          <div class="code-example">
+            <pre><code>&lt;!-- Golden ratio layout --&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-10"&gt;Main content (golden large)&lt;/div&gt;
+  &lt;div class="col-6"&gt;Sidebar (golden small)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Source Ordering -->
+    <section id="push_pull" class="doc-section">
+      <div class="row">
+        <div class="col-16">
+          <h2>Source Ordering</h2>
+          <p>Change the visual order of columns without altering the HTML structure using CSS flexbox order property.</p>
 
-<a href="http://github.com/Treefrog/A.mphibio.us">
-  <img id="forkme" src="http://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub">
-</a>
+          <h3>Push and Pull Classes</h3>
+          <p>Use <code>.push-*</code> and <code>.pull-*</code> classes or CSS <code>order</code> property to reorder columns for different layouts.</p>
 
-  
-  
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../js/js/jquery-1.11.1.min.js"><\/script>')</script>
+          <div class="demo-grid push-pull-demo">
+            <div class="row">
+              <div class="col-8" style="order: 2;"><div class="demo-col">First in HTML (order: 2)</div></div>
+              <div class="col-8" style="order: 1;"><div class="demo-col">Second in HTML (order: 1)</div></div>
+            </div>
+          </div>
 
-<script type="text/javascript" src="../src/js/run_prettify.js"></script>
+          <div class="code-example">
+            <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-8" style="order: 2;"&gt;First in HTML&lt;/div&gt;
+  &lt;div class="col-8" style="order: 1;"&gt;Second in HTML&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script src="../js/a.mphibio.us.js"></script>
+    <!-- Media Queries -->
+    <section id="mediaQueries" class="doc-section">
+      <div class="row">
+        <div class="col-16">
+          <h2>Media Queries</h2>
+          <p>Amphibious 2.0 uses a mobile-first approach with carefully chosen breakpoints for optimal responsive behavior.</p>
 
-<script type="text/javascript">
+          <h3>Breakpoint System</h3>
+          <div class="code-example">
+            <pre><code>/* Mobile First (base styles) */
+.element {
+  /* Mobile styles */
+}
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35159096-1']);
-  _gaq.push(['_trackPageview']);
+/* Tablet and up */
+@media (min-width: 481px) {
+  .element {
+    /* Tablet styles */
+  }
+}
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+/* Desktop and up */
+@media (min-width: 769px) {
+  .element {
+    /* Desktop styles */
+  }
+}
 
-</script>
+/* Large screens */
+@media (min-width: 1024px) {
+  .element {
+    /* Large desktop styles */
+  }
+}</code></pre>
+          </div>
+
+          <h3>Responsive Demo</h3>
+          <p>Resize your browser window to see the media queries in action:</p>
+          <div class="media-query-demo">
+            This box changes color based on screen size: Desktop (Blue) → Tablet (Orange) → Mobile (Green)
+          </div>
+
+          <h3>Built-in Breakpoints</h3>
+          <ul>
+            <li><strong>Mobile Portrait:</strong> ≤480px</li>
+            <li><strong>Mobile Landscape:</strong> 481px - 768px</li>
+            <li><strong>Tablet:</strong> 769px - 1024px</li>
+            <li><strong>Desktop:</strong> 1025px+</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="row">
+      <div class="col-16">
+        <nav aria-label="Footer navigation">
+          <ul class="stats stats--inline">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/docs/form.html">Form</a></li>
+            <li><a href="/docs/function.html">Function</a></li>
+            <li><a href="/docs/features.html">Features</a></li>
+            <li><a href="/sitemap.html">Sitemap</a></li>
+          </ul>
+        </nav>
+        <p>&copy; 2024 Amphibious 2.0. Built with semantic HTML and accessibility in mind.</p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

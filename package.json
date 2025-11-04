@@ -16,7 +16,7 @@
   },
   "files": ["dist", "src"],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 2960 --host",
     "build": "vite build && tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "lint": "biome check .",
@@ -25,7 +25,9 @@
     "typecheck": "tsc --noEmit",
     "test": "bun test",
     "test:watch": "bun test --watch",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "fix:grid": "bun run scripts/fix-grid.ts",
+    "fix:images": "bun run scripts/update-image-placeholders.ts"
   },
   "keywords": ["css", "framework", "responsive", "grid", "components", "boilerplate", "html5"],
   "author": {
@@ -52,6 +54,7 @@
     "bun": ">=1.0.0"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
     "lucide": "^0.552.0"
   }
 }

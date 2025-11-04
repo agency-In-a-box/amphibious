@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Template - Amphibious 2.0</title>
+  <meta name="description" content="Flexible dashboard layout template with customizable widgets and responsive design">
+  <style>
+    /* Dashboard Template Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Dashboard Header */
+    .dashboard-header {
+      background: white;
+      border-bottom: 1px solid #dee2e6;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+    .brand-info h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #2c3e50;
+    }
+    .brand-subtitle {
+      margin: 0;
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+    .header-search {
+      flex: 1;
+      max-width: 400px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      background: #f8f9fa;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #667eea;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6c757d;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Dashboard Layout */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 0;
+      min-height: calc(100vh - 80px);
+    }
+
+    /* Collapsible Sidebar */
+    .dashboard-sidebar {
+      background: white;
+      border-right: 1px solid #dee2e6;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .dashboard-sidebar.collapsed {
+      grid-template-columns: 60px 1fr;
+      width: 60px;
+    }
+    .sidebar-toggle {
+      position: absolute;
+      top: 1rem;
+      right: -12px;
+      width: 24px;
+      height: 24px;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s;
+    }
+    .sidebar-toggle:hover {
+      background: #f8f9fa;
+    }
+    .collapsed .sidebar-toggle {
+      transform: rotate(180deg);
+    }
+
+    /* Sidebar Navigation */
+    .sidebar-nav {
+      padding: 1.5rem;
+      height: 100%;
+      overflow-y: auto;
+    }
+    .nav-section {
+      margin-bottom: 2rem;
+    }
+    .nav-section:last-child {
+      margin-bottom: 0;
+    }
+    .nav-section h3 {
+      margin: 0 0 1rem 0;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6c757d;
+      font-weight: 600;
+    }
+    .collapsed .nav-section h3 {
+      display: none;
+    }
+    .nav-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-section li {
+      margin-bottom: 0.25rem;
+    }
+    .nav-section a {
+      color: #495057;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .nav-section a:hover {
+      background: #f8f9fa;
+      color: #667eea;
+    }
+    .nav-section a.active {
+      background: #f0f4ff;
+      color: #667eea;
+      font-weight: 500;
+    }
+    .nav-section a.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #667eea;
+      border-radius: 0 3px 3px 0;
+    }
+    .collapsed .nav-section a {
+      justify-content: center;
+      padding: 0.75rem 0.5rem;
+    }
+    .collapsed .nav-section a span {
+      display: none;
+    }
+    .nav-badge {
+      margin-left: auto;
+      background: #dc3545;
+      color: white;
+      font-size: 0.65rem;
+      padding: 0.25rem 0.4rem;
+      border-radius: 10px;
+      min-width: 18px;
+      text-align: center;
+    }
+    .collapsed .nav-badge {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.25rem;
+      transform: scale(0.8);
+    }
+
+    /* Main Content Area */
+    .dashboard-main {
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    /* Widget Grid System */
+    .widget-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Widget Base Styles */
+    .widget {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid #f0f0f0;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .widget:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-color: #e0e0e0;
+    }
+
+    /* Widget Sizes */
+    .widget-sm { grid-column: span 3; }
+    .widget-md { grid-column: span 4; }
+    .widget-lg { grid-column: span 6; }
+    .widget-xl { grid-column: span 8; }
+    .widget-full { grid-column: span 12; }
+
+    /* Widget Header */
+    .widget-header {
+      display: flex;
+      justify-content: between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .widget-title {
+      margin: 0;
+      font-size: 1.125rem;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    .widget-subtitle {
+      margin: 0;
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+    .widget-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+
+    /* Metric Widgets */
+    .metric-widget {
+      text-align: center;
+    }
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin: 0.5rem 0;
+      line-height: 1;
+    }
+    .metric-label {
+      font-size: 0.875rem;
+      color: #6c757d;
+      margin: 0;
+    }
+    .metric-change {
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+    .metric-change.positive { color: #28a745; }
+    .metric-change.negative { color: #dc3545; }
+    .metric-change.neutral { color: #6c757d; }
+
+    /* Chart Widgets */
+    .chart-widget {
+      min-height: 200px;
+    }
+    .chart-placeholder {
+      height: 200px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+      font-style: italic;
+    }
+
+    /* List Widgets */
+    .list-widget ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .list-widget li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f8f9fa;
+    }
+    .list-widget li:last-child {
+      border-bottom: none;
+    }
+    .list-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+    .list-content {
+      flex: 1;
+    }
+    .list-content h4 {
+      margin: 0 0 0.25rem 0;
+      font-size: 0.875rem;
+      color: #2c3e50;
+    }
+    .list-content p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+    .list-meta {
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+
+    /* Progress Widget */
+    .progress-widget .progress-item {
+      margin-bottom: 1.5rem;
+    }
+    .progress-widget .progress-item:last-child {
+      margin-bottom: 0;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .progress-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #495057;
+    }
+    .progress-value {
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+    .progress-bar {
+      height: 6px;
+      background: #f0f0f0;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    /* Action Buttons */
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .btn-primary { background: #667eea; color: white; }
+    .btn-primary:hover { background: #5a67d8; }
+    .btn-secondary { background: #6c757d; color: white; }
+    .btn-secondary:hover { background: #5a6268; }
+    .btn-outline { background: transparent; color: #667eea; border: 1px solid #667eea; }
+    .btn-outline:hover { background: #667eea; color: white; }
+    .btn-ghost { background: transparent; color: #6c757d; border: none; }
+    .btn-ghost:hover { background: #f8f9fa; }
+    .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.75rem; }
+    .btn-xs { padding: 0.25rem 0.5rem; font-size: 0.65rem; }
+
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-muted { color: #6c757d; }
+    .text-primary { color: #667eea; }
+    .text-success { color: #28a745; }
+    .text-warning { color: #ffc107; }
+    .text-danger { color: #dc3545; }
+    .bg-primary { background: #e3f2fd; color: #1976d2; }
+    .bg-success { background: #e8f5e9; color: #388e3c; }
+    .bg-warning { background: #fff3e0; color: #f57c00; }
+    .bg-danger { background: #ffebee; color: #d32f2f; }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .widget-sm, .widget-md { grid-column: span 6; }
+      .widget-lg { grid-column: span 12; }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
+      .dashboard-sidebar {
+        display: none;
+      }
+      .dashboard-sidebar.mobile-open {
+        display: block;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        bottom: 0;
+        width: 280px;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      }
+      .widget-sm, .widget-md, .widget-lg, .widget-xl {
+        grid-column: span 12;
+      }
+      .header-search {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Dashboard Header -->
+  <header class="dashboard-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="header-brand">
+          <div class="brand-logo">A</div>
+          <div class="brand-info">
+            <h1>Analytics Dashboard</h1>
+            <p class="brand-subtitle">Real-time insights and metrics</p>
+          </div>
+        </div>
+
+        <div class="header-search">
+          <div class="search-icon">
+            <i data-lucide="search"></i>
+          </div>
+          <input type="search" class="search-input" placeholder="Search dashboards, reports, users...">
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-ghost btn-sm" data-tooltip="Notifications">
+            <i data-lucide="bell"></i>
+            <span class="nav-badge">5</span>
+          </button>
+          <button class="btn btn-ghost btn-sm" data-tooltip="Settings">
+            <i data-lucide="settings"></i>
+          </button>
+          <button class="btn btn-ghost btn-sm d-md-none" id="mobileSidebarToggle">
+            <i data-lucide="menu"></i>
+          </button>
+          <div style="width: 1px; height: 20px; background: #dee2e6; margin: 0 0.5rem;"></div>
+          <button class="btn btn-primary btn-sm">
+            <i data-lucide="plus"></i>
+            New Report
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Layout -->
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i data-lucide="chevron-left"></i>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Dashboard navigation">
+        <div class="nav-section">
+          <h3>Overview</h3>
+          <ul>
+            <li><a href="#dashboard" class="active">
+              <i data-lucide="layout-dashboard"></i>
+              <span>Dashboard</span>
+            </a></li>
+            <li><a href="#analytics">
+              <i data-lucide="trending-up"></i>
+              <span>Analytics</span>
+            </a></li>
+            <li><a href="#reports">
+              <i data-lucide="file-text"></i>
+              <span>Reports</span>
+              <span class="nav-badge">3</span>
+            </a></li>
+            <li><a href="#insights">
+              <i data-lucide="zap"></i>
+              <span>Insights</span>
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>Data Sources</h3>
+          <ul>
+            <li><a href="#users">
+              <i data-lucide="users"></i>
+              <span>Users</span>
+            </a></li>
+            <li><a href="#sales">
+              <i data-lucide="shopping-cart"></i>
+              <span>Sales</span>
+            </a></li>
+            <li><a href="#traffic">
+              <i data-lucide="globe"></i>
+              <span>Traffic</span>
+            </a></li>
+            <li><a href="#performance">
+              <i data-lucide="activity"></i>
+              <span>Performance</span>
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>Tools</h3>
+          <ul>
+            <li><a href="#export">
+              <i data-lucide="download"></i>
+              <span>Export Data</span>
+            </a></li>
+            <li><a href="#alerts">
+              <i data-lucide="alert-circle"></i>
+              <span>Alerts</span>
+              <span class="nav-badge">2</span>
+            </a></li>
+            <li><a href="#integrations">
+              <i data-lucide="link"></i>
+              <span>Integrations</span>
+            </a></li>
+            <li><a href="#settings">
+              <i data-lucide="settings"></i>
+              <span>Settings</span>
+            </a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-main" role="main">
+      <!-- Key Metrics Row -->
+      <div class="widget-grid">
+        <div class="widget widget-sm metric-widget">
+          <div class="metric-value text-primary">24.5K</div>
+          <div class="metric-label">Total Users</div>
+          <div class="metric-change positive">
+            <i data-lucide="trending-up"></i>
+            +12.5% vs last month
+          </div>
+        </div>
+
+        <div class="widget widget-sm metric-widget">
+          <div class="metric-value text-success">$142.8K</div>
+          <div class="metric-label">Revenue</div>
+          <div class="metric-change positive">
+            <i data-lucide="trending-up"></i>
+            +8.2% vs last month
+          </div>
+        </div>
+
+        <div class="widget widget-sm metric-widget">
+          <div class="metric-value text-warning">68.4%</div>
+          <div class="metric-label">Conversion Rate</div>
+          <div class="metric-change negative">
+            <i data-lucide="trending-down"></i>
+            -2.1% vs last month
+          </div>
+        </div>
+
+        <div class="widget widget-sm metric-widget">
+          <div class="metric-value text-danger">1.24s</div>
+          <div class="metric-label">Avg Load Time</div>
+          <div class="metric-change neutral">
+            <i data-lucide="minus"></i>
+            No change
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts and Analytics -->
+      <div class="widget-grid">
+        <div class="widget widget-lg chart-widget">
+          <div class="widget-header">
+            <div>
+              <h3 class="widget-title">Revenue Trends</h3>
+              <p class="widget-subtitle">Monthly revenue over the past year</p>
+            </div>
+            <div class="widget-actions">
+              <button class="btn btn-ghost btn-sm">
+                <i data-lucide="download"></i>
+              </button>
+              <button class="btn btn-ghost btn-sm">
+                <i data-lucide="more-horizontal"></i>
+              </button>
+            </div>
+          </div>
+          <div class="chart-placeholder">
+            📊 Revenue Chart Placeholder
+          </div>
+        </div>
+
+        <div class="widget widget-md chart-widget">
+          <div class="widget-header">
+            <div>
+              <h3 class="widget-title">Traffic Sources</h3>
+              <p class="widget-subtitle">Visitor acquisition channels</p>
+            </div>
+            <div class="widget-actions">
+              <button class="btn btn-ghost btn-sm">
+                <i data-lucide="external-link"></i>
+              </button>
+            </div>
+          </div>
+          <div class="chart-placeholder">
+            🥧 Pie Chart Placeholder
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress and Lists -->
+      <div class="widget-grid">
+        <div class="widget widget-md progress-widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Goal Progress</h3>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Monthly Sales Target</span>
+              <span class="progress-value">$84.2K / $100K</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 84%"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">User Acquisition</span>
+              <span class="progress-value">1,847 / 2,500</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 74%"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Product Launches</span>
+              <span class="progress-value">7 / 10</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget widget-md list-widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Recent Activity</h3>
+            <button class="btn btn-ghost btn-sm">View All</button>
+          </div>
+
+          <ul>
+            <li>
+              <div class="list-icon bg-success">
+                <i data-lucide="check"></i>
+              </div>
+              <div class="list-content">
+                <h4>New sale completed</h4>
+                <p>Premium plan purchased by John Doe</p>
+              </div>
+              <div class="list-meta">2m ago</div>
+            </li>
+
+            <li>
+              <div class="list-icon bg-primary">
+                <i data-lucide="user-plus"></i>
+              </div>
+              <div class="list-content">
+                <h4>New user registered</h4>
+                <p>Sarah Johnson joined from organic search</p>
+              </div>
+              <div class="list-meta">15m ago</div>
+            </li>
+
+            <li>
+              <div class="list-icon bg-warning">
+                <i data-lucide="alert-triangle"></i>
+              </div>
+              <div class="list-content">
+                <h4>Server performance alert</h4>
+                <p>Response time increased to 1.8s</p>
+              </div>
+              <div class="list-meta">1h ago</div>
+            </li>
+
+            <li>
+              <div class="list-icon bg-danger">
+                <i data-lucide="x-circle"></i>
+              </div>
+              <div class="list-content">
+                <h4>Payment failed</h4>
+                <p>Subscription renewal for Mike Wilson</p>
+              </div>
+              <div class="list-meta">3h ago</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="widget widget-sm list-widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Top Pages</h3>
+          </div>
+
+          <ul>
+            <li>
+              <div class="list-content">
+                <h4>/dashboard</h4>
+                <p>2,847 views</p>
+              </div>
+              <div class="list-meta text-success">+12%</div>
+            </li>
+
+            <li>
+              <div class="list-content">
+                <h4>/products</h4>
+                <p>1,923 views</p>
+              </div>
+              <div class="list-meta text-success">+8%</div>
+            </li>
+
+            <li>
+              <div class="list-content">
+                <h4>/pricing</h4>
+                <p>1,456 views</p>
+              </div>
+              <div class="list-meta text-danger">-3%</div>
+            </li>
+
+            <li>
+              <div class="list-content">
+                <h4>/about</h4>
+                <p>892 views</p>
+              </div>
+              <div class="list-meta text-success">+15%</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Full Width Widget -->
+      <div class="widget-grid">
+        <div class="widget widget-full">
+          <div class="widget-header">
+            <div>
+              <h3 class="widget-title">Advanced Analytics</h3>
+              <p class="widget-subtitle">Comprehensive data analysis and insights</p>
+            </div>
+            <div class="widget-actions">
+              <button class="btn btn-outline btn-sm">
+                <i data-lucide="filter"></i>
+                Filter
+              </button>
+              <button class="btn btn-primary btn-sm">
+                <i data-lucide="external-link"></i>
+                Open Report
+              </button>
+            </div>
+          </div>
+          <div class="chart-placeholder" style="height: 300px;">
+            📈 Advanced Analytics Chart Placeholder
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Dashboard Template Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sidebar toggle functionality
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      const sidebar = document.getElementById('dashboardSidebar');
+      const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+      });
+
+      mobileSidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('mobile-open');
+      });
+
+      // Close mobile sidebar when clicking outside
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          if (!sidebar.contains(e.target) && !mobileSidebarToggle.contains(e.target)) {
+            sidebar.classList.remove('mobile-open');
+          }
+        }
+      });
+
+      // Handle sidebar navigation
+      document.querySelectorAll('.sidebar-nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // Remove active class from all links
+          document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
+
+          // Add active class to clicked link
+          link.classList.add('active');
+
+          console.log('Navigated to:', link.querySelector('span')?.textContent.trim());
+        });
+      });
+
+      // Animate progress bars
+      const progressBars = document.querySelectorAll('.progress-fill');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const width = entry.target.style.width;
+            entry.target.style.width = '0%';
+            setTimeout(() => {
+              entry.target.style.width = width;
+            }, 200);
+          }
+        });
+      });
+
+      progressBars.forEach(bar => observer.observe(bar));
+
+      // Simulate real-time updates
+      setInterval(() => {
+        // Update metric values
+        const metrics = document.querySelectorAll('.metric-value');
+        metrics.forEach(metric => {
+          if (Math.random() > 0.95) { // 5% chance
+            const currentValue = metric.textContent;
+            metric.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+              metric.style.transform = 'scale(1)';
+            }, 200);
+          }
+        });
+
+        // Update notification badges
+        const badges = document.querySelectorAll('.nav-badge');
+        badges.forEach(badge => {
+          if (Math.random() > 0.98) { // 2% chance
+            const currentCount = parseInt(badge.textContent) || 0;
+            badge.textContent = currentCount + 1;
+            badge.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+              badge.style.transform = 'scale(1)';
+            }, 300);
+          }
+        });
+      }, 3000);
+
+      console.log('Dashboard Template Loaded');
+    });
+  </script>
+</body>
+</html>

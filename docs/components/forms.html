@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Component - Amphibious 2.0 Documentation</title>
+  <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Forms component - complete form styling system with validation states, floating labels, and responsive layouts">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Documentation Header */
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .docs-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .docs-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Content Sections */
+    .section {
+      background: white;
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section h3 {
+      color: #34495e;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section h4 {
+      color: #7f8c8d;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .code-block code {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+    }
+
+    /* Inline code */
+    code {
+      background: #f1f5f9;
+      color: #e11d48;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875em;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* Demo Sections */
+    .demo-section {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .demo-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+    }
+
+    /* Feature List */
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #667eea;
+    }
+
+    .feature-card h4 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    /* Navigation */
+    .nav-breadcrumb {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 0;
+      margin-bottom: 1rem;
+    }
+
+    .nav-breadcrumb a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .nav-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Form Demo Containers */
+    .form-demo {
+      background: white;
+      padding: 2rem;
+      border: 1px solid #dee2e6;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .form-examples {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    /* Validation Demo Styling */
+    .validation-demo .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .docs-header h1 {
+        font-size: 2rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      .form-examples {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="docs-header">
+    <div class="container">
+      <nav class="nav-breadcrumb">
+        <a href="/index.html">Home</a> ›
+        <a href="/docs/index.html">Documentation</a> ›
+        <a href="/docs/components/">Components</a> ›
+        <span>Forms</span>
+      </nav>
+      <h1>Forms Component</h1>
+      <p>Complete form styling system with validation states, floating labels, and responsive layouts</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Overview -->
+    <section class="section">
+      <h2>Overview</h2>
+      <p>The Forms component provides a comprehensive styling system for all form elements. It includes modern form controls, validation states, floating labels, inline forms, responsive layouts, and accessibility features. The component maintains consistency across all input types while providing flexibility for different use cases.</p>
+
+      <div class="feature-list">
+        <div class="feature-card">
+          <h4>📝 Complete Form Controls</h4>
+          <p>Styling for all input types, select, textarea, checkboxes, radios, and file inputs.</p>
+        </div>
+        <div class="feature-card">
+          <h4>✅ Validation States</h4>
+          <p>Built-in validation styling with success, error states, and feedback messages.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🏷️ Floating Labels</h4>
+          <p>Modern floating label inputs for improved user experience and space efficiency.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📐 Flexible Layouts</h4>
+          <p>Inline forms, grid layouts, responsive designs, and form grouping options.</p>
+        </div>
+        <div class="feature-card">
+          <h4>♿ Full Accessibility</h4>
+          <p>Proper focus management, ARIA attributes, and screen reader support.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎨 Customizable Styling</h4>
+          <p>CSS variables for easy theming and consistent design across all form elements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basic Form Elements -->
+    <section class="section">
+      <h2>Basic Form Elements</h2>
+
+      <h3>Text Inputs</h3>
+      <div class="demo-section">
+        <div class="demo-title">Text Input Types</div>
+        <div class="form-demo">
+          <div class="form-group">
+            <label for="text-input">Text Input</label>
+            <input type="text" id="text-input" class="form-control" placeholder="Enter text here">
+          </div>
+
+          <div class="form-group">
+            <label for="email-input">Email Input</label>
+            <input type="email" id="email-input" class="form-control" placeholder="user@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="password-input">Password Input</label>
+            <input type="password" id="password-input" class="form-control" placeholder="Enter password">
+          </div>
+
+          <div class="form-group">
+            <label for="number-input">Number Input</label>
+            <input type="number" id="number-input" class="form-control" placeholder="123" min="0" max="100">
+          </div>
+
+          <div class="form-group">
+            <label for="search-input">Search Input</label>
+            <input type="search" id="search-input" class="form-control" placeholder="Search...">
+          </div>
+
+          <div class="form-group">
+            <label for="url-input">URL Input</label>
+            <input type="url" id="url-input" class="form-control" placeholder="https://example.com">
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="text-input"&gt;Text Input&lt;/label&gt;
+  &lt;input type="text" id="text-input" class="form-control" placeholder="Enter text here"&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+  &lt;label for="email-input"&gt;Email Input&lt;/label&gt;
+  &lt;input type="email" id="email-input" class="form-control" placeholder="user@example.com"&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+  &lt;label for="password-input"&gt;Password Input&lt;/label&gt;
+  &lt;input type="password" id="password-input" class="form-control" placeholder="Enter password"&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>Select and Textarea</h3>
+      <div class="demo-section">
+        <div class="demo-title">Select Dropdown and Textarea</div>
+        <div class="form-demo">
+          <div class="form-group">
+            <label for="select-input">Select Dropdown</label>
+            <select id="select-input" class="form-control">
+              <option value="">Choose an option</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+              <option value="option4">Option 4</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="textarea-input">Textarea</label>
+            <textarea id="textarea-input" class="form-control" rows="4" placeholder="Enter your message here..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="multiple-select">Multiple Select</label>
+            <select id="multiple-select" class="form-control" multiple size="4">
+              <option value="apple">Apple</option>
+              <option value="banana">Banana</option>
+              <option value="orange">Orange</option>
+              <option value="grape">Grape</option>
+              <option value="strawberry">Strawberry</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="select-input"&gt;Select Dropdown&lt;/label&gt;
+  &lt;select id="select-input" class="form-control"&gt;
+    &lt;option value=""&gt;Choose an option&lt;/option&gt;
+    &lt;option value="option1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="option2"&gt;Option 2&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+  &lt;label for="textarea-input"&gt;Textarea&lt;/label&gt;
+  &lt;textarea id="textarea-input" class="form-control" rows="4" placeholder="Enter your message..."&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Checkboxes and Radios -->
+    <section class="section">
+      <h2>Checkboxes and Radio Buttons</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Checkbox and Radio Examples</div>
+        <div class="form-examples">
+          <div>
+            <h4>Checkboxes</h4>
+            <div class="form-check">
+              <input type="checkbox" id="check1" class="form-check-input">
+              <label for="check1" class="form-check-label">Default checkbox</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="check2" class="form-check-input" checked>
+              <label for="check2" class="form-check-label">Checked checkbox</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="check3" class="form-check-input" disabled>
+              <label for="check3" class="form-check-label">Disabled checkbox</label>
+            </div>
+          </div>
+
+          <div>
+            <h4>Radio Buttons</h4>
+            <div class="form-check">
+              <input type="radio" id="radio1" name="radioGroup" class="form-check-input">
+              <label for="radio1" class="form-check-label">First radio</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="radio2" name="radioGroup" class="form-check-input" checked>
+              <label for="radio2" class="form-check-label">Second radio (checked)</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="radio3" name="radioGroup" class="form-check-input" disabled>
+              <label for="radio3" class="form-check-label">Disabled radio</label>
+            </div>
+          </div>
+        </div>
+
+        <h4>Inline Checkboxes and Radios</h4>
+        <div style="margin-top: 1.5rem;">
+          <div class="form-check form-check-inline">
+            <input type="checkbox" id="inline-check1" class="form-check-input">
+            <label for="inline-check1" class="form-check-label">Inline 1</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="checkbox" id="inline-check2" class="form-check-input">
+            <label for="inline-check2" class="form-check-label">Inline 2</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="checkbox" id="inline-check3" class="form-check-input">
+            <label for="inline-check3" class="form-check-label">Inline 3</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Standard Checkboxes --&gt;
+&lt;div class="form-check"&gt;
+  &lt;input type="checkbox" id="check1" class="form-check-input"&gt;
+  &lt;label for="check1" class="form-check-label"&gt;Default checkbox&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Radio Buttons --&gt;
+&lt;div class="form-check"&gt;
+  &lt;input type="radio" id="radio1" name="radioGroup" class="form-check-input"&gt;
+  &lt;label for="radio1" class="form-check-label"&gt;First radio&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Inline Checkboxes --&gt;
+&lt;div class="form-check form-check-inline"&gt;
+  &lt;input type="checkbox" id="inline-check1" class="form-check-input"&gt;
+  &lt;label for="inline-check1" class="form-check-label"&gt;Inline 1&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Form Sizes -->
+    <section class="section">
+      <h2>Form Sizes</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Different Input Sizes</div>
+        <div class="form-demo">
+          <div class="form-group">
+            <label for="large-input">Large Input</label>
+            <input type="text" id="large-input" class="form-control form-control-lg" placeholder="Large input">
+          </div>
+
+          <div class="form-group">
+            <label for="default-input">Default Input</label>
+            <input type="text" id="default-input" class="form-control" placeholder="Default input">
+          </div>
+
+          <div class="form-group">
+            <label for="small-input">Small Input</label>
+            <input type="text" id="small-input" class="form-control form-control-sm" placeholder="Small input">
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Large Input --&gt;
+&lt;input type="text" class="form-control form-control-lg" placeholder="Large input"&gt;
+
+&lt;!-- Default Input --&gt;
+&lt;input type="text" class="form-control" placeholder="Default input"&gt;
+
+&lt;!-- Small Input --&gt;
+&lt;input type="text" class="form-control form-control-sm" placeholder="Small input"&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Floating Labels -->
+    <section class="section">
+      <h2>Floating Labels</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Floating Label Inputs</div>
+        <div class="form-demo">
+          <div class="form-floating">
+            <input type="text" id="floating-text" class="form-control" placeholder="Name">
+            <label for="floating-text">Full Name</label>
+          </div>
+
+          <div class="form-floating" style="margin-top: 1rem;">
+            <input type="email" id="floating-email" class="form-control" placeholder="name@example.com">
+            <label for="floating-email">Email address</label>
+          </div>
+
+          <div class="form-floating" style="margin-top: 1rem;">
+            <select id="floating-select" class="form-control">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <label for="floating-select">Works with selects</label>
+          </div>
+
+          <div class="form-floating" style="margin-top: 1rem;">
+            <textarea id="floating-textarea" class="form-control" placeholder="Leave a comment here" style="height: 100px"></textarea>
+            <label for="floating-textarea">Comments</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;div class="form-floating"&gt;
+  &lt;input type="text" id="floating-text" class="form-control" placeholder="Name"&gt;
+  &lt;label for="floating-text"&gt;Full Name&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-floating"&gt;
+  &lt;input type="email" id="floating-email" class="form-control" placeholder="name@example.com"&gt;
+  &lt;label for="floating-email"&gt;Email address&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-floating"&gt;
+  &lt;select id="floating-select" class="form-control"&gt;
+    &lt;option selected&gt;Open this select menu&lt;/option&gt;
+    &lt;option value="1"&gt;One&lt;/option&gt;
+    &lt;option value="2"&gt;Two&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;label for="floating-select"&gt;Works with selects&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Form Validation -->
+    <section class="section">
+      <h2>Form Validation</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Validation States</div>
+        <div class="form-demo validation-demo">
+          <div class="form-group">
+            <label for="valid-input">Valid Input</label>
+            <input type="text" id="valid-input" class="form-control is-valid" value="This looks good!">
+            <div class="valid-feedback">Great! This field is valid.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="invalid-input">Invalid Input</label>
+            <input type="text" id="invalid-input" class="form-control is-invalid" value="Invalid input">
+            <div class="invalid-feedback">Please provide a valid input.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="help-input">Input with Help Text</label>
+            <input type="text" id="help-input" class="form-control">
+            <div class="form-text">This is some helpful text to guide the user.</div>
+          </div>
+
+          <div class="form-group">
+            <label>Form Validation Example</label>
+            <div class="form-check">
+              <input type="checkbox" id="invalid-check" class="form-check-input is-invalid" required>
+              <label for="invalid-check" class="form-check-label">Agree to terms and conditions</label>
+              <div class="invalid-feedback">You must agree before submitting.</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn--primary" onclick="validateForm()">Validate Form</button>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Valid Input --&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="valid-input"&gt;Valid Input&lt;/label&gt;
+  &lt;input type="text" id="valid-input" class="form-control is-valid" value="This looks good!"&gt;
+  &lt;div class="valid-feedback"&gt;Great! This field is valid.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Invalid Input --&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="invalid-input"&gt;Invalid Input&lt;/label&gt;
+  &lt;input type="text" id="invalid-input" class="form-control is-invalid"&gt;
+  &lt;div class="invalid-feedback"&gt;Please provide a valid input.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Help Text --&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="help-input"&gt;Input with Help Text&lt;/label&gt;
+  &lt;input type="text" id="help-input" class="form-control"&gt;
+  &lt;div class="form-text"&gt;This is some helpful text.&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Form Layouts -->
+    <section class="section">
+      <h2>Form Layouts</h2>
+
+      <h3>Grid Layout</h3>
+      <div class="demo-section">
+        <div class="demo-title">Form Grid System</div>
+        <div class="form-demo">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" class="form-control" placeholder="John">
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" class="form-control" placeholder="Doe">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email-grid">Email</label>
+            <input type="email" id="email-grid" class="form-control" placeholder="john.doe@example.com">
+          </div>
+
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" class="form-control" placeholder="New York">
+            </div>
+            <div class="form-group">
+              <label for="state">State</label>
+              <select id="state" class="form-control">
+                <option>Choose...</option>
+                <option>California</option>
+                <option>New York</option>
+                <option>Texas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="zip">Zip</label>
+              <input type="text" id="zip" class="form-control" placeholder="12345">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Two Column Grid --&gt;
+&lt;div class="form-grid-2"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="first-name"&gt;First Name&lt;/label&gt;
+    &lt;input type="text" id="first-name" class="form-control"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="last-name"&gt;Last Name&lt;/label&gt;
+    &lt;input type="text" id="last-name" class="form-control"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Three Column Grid --&gt;
+&lt;div class="form-grid-3"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="city"&gt;City&lt;/label&gt;
+    &lt;input type="text" id="city" class="form-control"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="state"&gt;State&lt;/label&gt;
+    &lt;select id="state" class="form-control"&gt;...&lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="zip"&gt;Zip&lt;/label&gt;
+    &lt;input type="text" id="zip" class="form-control"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>Inline Form</h3>
+      <div class="demo-section">
+        <div class="demo-title">Inline Form Example</div>
+        <div class="form-demo">
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="inline-name">Name</label>
+              <input type="text" id="inline-name" class="form-control" placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label for="inline-email">Email</label>
+              <input type="email" id="inline-email" class="form-control" placeholder="jane@example.com">
+            </div>
+            <button type="submit" class="btn btn--primary">Sign up</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;form class="form-inline"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="inline-name"&gt;Name&lt;/label&gt;
+    &lt;input type="text" id="inline-name" class="form-control" placeholder="Jane Doe"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="inline-email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="inline-email" class="form-control" placeholder="jane@example.com"&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn--primary"&gt;Sign up&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Special Input Types -->
+    <section class="section">
+      <h2>Special Input Types</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Range, File, and Search Inputs</div>
+        <div class="form-demo">
+          <div class="form-group">
+            <label for="range-input">Range Input</label>
+            <input type="range" id="range-input" class="form-control" min="0" max="100" value="50">
+            <div class="form-text">Current value: <span id="range-value">50</span></div>
+          </div>
+
+          <div class="form-group">
+            <label for="file-input">File Input</label>
+            <input type="file" id="file-input" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="color-input">Color Input</label>
+            <input type="color" id="color-input" class="form-control" value="#667eea" style="height: 3rem;">
+          </div>
+
+          <div class="form-group">
+            <label for="date-input">Date Input</label>
+            <input type="date" id="date-input" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Search Form</label>
+            <div class="search-form">
+              <input type="search" class="form-control" placeholder="Search...">
+              <button type="submit">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;!-- Range Input --&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="range-input"&gt;Range Input&lt;/label&gt;
+  &lt;input type="range" id="range-input" class="form-control" min="0" max="100" value="50"&gt;
+&lt;/div&gt;
+
+&lt;!-- File Input --&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="file-input"&gt;File Input&lt;/label&gt;
+  &lt;input type="file" id="file-input" class="form-control"&gt;
+&lt;/div&gt;
+
+&lt;!-- Search Form --&gt;
+&lt;div class="search-form"&gt;
+  &lt;input type="search" class="form-control" placeholder="Search..."&gt;
+  &lt;button type="submit"&gt;🔍&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Complete Form Example -->
+    <section class="section">
+      <h2>Complete Form Example</h2>
+
+      <div class="demo-section">
+        <div class="demo-title">Contact Form with Validation</div>
+        <div class="form-demo">
+          <form id="contact-form" novalidate>
+            <fieldset>
+              <legend>Contact Information</legend>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="contact-first-name">First Name *</label>
+                  <input type="text" id="contact-first-name" class="form-control" required>
+                  <div class="invalid-feedback">Please enter your first name.</div>
+                </div>
+                <div class="form-group">
+                  <label for="contact-last-name">Last Name *</label>
+                  <input type="text" id="contact-last-name" class="form-control" required>
+                  <div class="invalid-feedback">Please enter your last name.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email">Email Address *</label>
+                <input type="email" id="contact-email" class="form-control" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-phone">Phone Number</label>
+                <input type="tel" id="contact-phone" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject">Subject *</label>
+                <select id="contact-subject" class="form-control" required>
+                  <option value="">Choose a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="support">Technical Support</option>
+                  <option value="sales">Sales Question</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="invalid-feedback">Please select a subject.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message *</label>
+                <textarea id="contact-message" class="form-control" rows="4" required placeholder="Tell us how we can help you..."></textarea>
+                <div class="invalid-feedback">Please enter your message.</div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-check">
+                  <input type="checkbox" id="contact-newsletter" class="form-check-input">
+                  <label for="contact-newsletter" class="form-check-label">Subscribe to our newsletter</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-check">
+                  <input type="checkbox" id="contact-terms" class="form-check-input" required>
+                  <label for="contact-terms" class="form-check-label">I agree to the terms and conditions *</label>
+                  <div class="invalid-feedback">You must agree to the terms and conditions.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn--primary">Send Message</button>
+                <button type="reset" class="btn btn--secondary">Clear Form</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre><code>&lt;form id="contact-form" novalidate&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Contact Information&lt;/legend&gt;
+
+    &lt;div class="form-grid-2"&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label for="first-name"&gt;First Name *&lt;/label&gt;
+        &lt;input type="text" id="first-name" class="form-control" required&gt;
+        &lt;div class="invalid-feedback"&gt;Please enter your first name.&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label for="last-name"&gt;Last Name *&lt;/label&gt;
+        &lt;input type="text" id="last-name" class="form-control" required&gt;
+        &lt;div class="invalid-feedback"&gt;Please enter your last name.&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+      &lt;label for="email"&gt;Email Address *&lt;/label&gt;
+      &lt;input type="email" id="email" class="form-control" required&gt;
+      &lt;div class="invalid-feedback"&gt;Please enter a valid email address.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+      &lt;button type="submit" class="btn btn--primary"&gt;Send Message&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- CSS Classes -->
+    <section class="section">
+      <h2>CSS Classes Reference</h2>
+
+      <h3>Form Control Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.form-control</code></td>
+            <td>Base form control styling</td>
+          </tr>
+          <tr>
+            <td><code>.form-control-sm</code></td>
+            <td>Small form control</td>
+          </tr>
+          <tr>
+            <td><code>.form-control-lg</code></td>
+            <td>Large form control</td>
+          </tr>
+          <tr>
+            <td><code>.form-group</code></td>
+            <td>Form field grouping container</td>
+          </tr>
+          <tr>
+            <td><code>.form-text</code> / <code>.help-text</code></td>
+            <td>Helper text for form fields</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Layout Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.form-inline</code></td>
+            <td>Inline form layout</td>
+          </tr>
+          <tr>
+            <td><code>.form-grid</code></td>
+            <td>Auto-fit grid layout</td>
+          </tr>
+          <tr>
+            <td><code>.form-grid-2</code></td>
+            <td>Two-column grid layout</td>
+          </tr>
+          <tr>
+            <td><code>.form-grid-3</code></td>
+            <td>Three-column grid layout</td>
+          </tr>
+          <tr>
+            <td><code>.form-row</code></td>
+            <td>Flex row for form fields</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Checkbox/Radio Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.form-check</code></td>
+            <td>Checkbox/radio wrapper</td>
+          </tr>
+          <tr>
+            <td><code>.form-check-input</code></td>
+            <td>Checkbox/radio input</td>
+          </tr>
+          <tr>
+            <td><code>.form-check-label</code></td>
+            <td>Checkbox/radio label</td>
+          </tr>
+          <tr>
+            <td><code>.form-check-inline</code></td>
+            <td>Inline checkbox/radio</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Floating Label Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.form-floating</code></td>
+            <td>Floating label container</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Validation Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.is-valid</code></td>
+            <td>Valid form control state</td>
+          </tr>
+          <tr>
+            <td><code>.is-invalid</code></td>
+            <td>Invalid form control state</td>
+          </tr>
+          <tr>
+            <td><code>.valid-feedback</code></td>
+            <td>Valid state feedback message</td>
+          </tr>
+          <tr>
+            <td><code>.invalid-feedback</code></td>
+            <td>Invalid state feedback message</td>
+          </tr>
+          <tr>
+            <td><code>.was-validated</code></td>
+            <td>Form validation trigger class</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Special Input Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.search-form</code></td>
+            <td>Search input with button</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- JavaScript Integration -->
+    <section class="section">
+      <h2>JavaScript Integration</h2>
+
+      <div class="code-block">
+        <pre><code>// Form validation utility
+class FormValidator {
+  constructor(form) {
+    this.form = form;
+    this.init();
+  }
+
+  init() {
+    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+    this.form.addEventListener('input', (e) => this.handleInput(e));
+    this.form.addEventListener('change', (e) => this.handleChange(e));
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    if (this.validateForm()) {
+      this.onValidSubmit();
+    } else {
+      this.onInvalidSubmit();
+    }
+  }
+
+  handleInput(e) {
+    const field = e.target;
+    if (field.classList.contains('is-invalid') || field.classList.contains('is-valid')) {
+      this.validateField(field);
+    }
+  }
+
+  handleChange(e) {
+    this.validateField(e.target);
+  }
+
+  validateForm() {
+    const fields = this.form.querySelectorAll('input, select, textarea');
+    let isValid = true;
+
+    fields.forEach(field => {
+      if (!this.validateField(field)) {
+        isValid = false;
+      }
+    });
+
+    this.form.classList.add('was-validated');
+    return isValid;
+  }
+
+  validateField(field) {
+    const isRequired = field.hasAttribute('required');
+    const isEmpty = !field.value.trim();
+    const isValidType = this.validateFieldType(field);
+
+    let isValid = true;
+
+    if (isRequired && isEmpty) {
+      isValid = false;
+    } else if (!isEmpty && !isValidType) {
+      isValid = false;
+    }
+
+    this.updateFieldState(field, isValid);
+    return isValid;
+  }
+
+  validateFieldType(field) {
+    const type = field.type;
+    const value = field.value.trim();
+
+    if (!value) return true; // Empty values are handled by required check
+
+    switch (type) {
+      case 'email':
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      case 'url':
+        try {
+          new URL(value);
+          return true;
+        } catch {
+          return false;
+        }
+      case 'tel':
+        return /^[\+]?[1-9][\d]{0,15}$/.test(value.replace(/[-\s\(\)]/g, ''));
+      default:
+        return field.checkValidity();
+    }
+  }
+
+  updateFieldState(field, isValid) {
+    field.classList.remove('is-valid', 'is-invalid');
+    field.classList.add(isValid ? 'is-valid' : 'is-invalid');
+
+    // Update feedback messages
+    const feedback = field.parentNode.querySelector(
+      isValid ? '.valid-feedback' : '.invalid-feedback'
+    );
+    if (feedback) {
+      feedback.style.display = 'block';
+    }
+
+    // Hide opposite feedback
+    const oppositeFeedback = field.parentNode.querySelector(
+      isValid ? '.invalid-feedback' : '.valid-feedback'
+    );
+    if (oppositeFeedback) {
+      oppositeFeedback.style.display = 'none';
+    }
+  }
+
+  onValidSubmit() {
+    // Handle successful form submission
+    console.log('Form is valid and ready to submit');
+
+    // Show success message
+    this.showMessage('Form submitted successfully!', 'success');
+
+    // You can add AJAX submission here
+    // this.submitFormData();
+  }
+
+  onInvalidSubmit() {
+    // Handle invalid form submission
+    console.log('Form has validation errors');
+
+    // Focus first invalid field
+    const firstInvalid = this.form.querySelector('.is-invalid');
+    if (firstInvalid) {
+      firstInvalid.focus();
+    }
+
+    this.showMessage('Please fix the errors below.', 'error');
+  }
+
+  showMessage(text, type) {
+    // Create and show alert message
+    const alert = document.createElement('div');
+    alert.className = `alert alert--${type}`;
+    alert.textContent = text;
+
+    this.form.insertBefore(alert, this.form.firstChild);
+
+    // Remove after 5 seconds
+    setTimeout(() => alert.remove(), 5000);
+  }
+
+  reset() {
+    this.form.reset();
+    this.form.classList.remove('was-validated');
+
+    // Clear all validation states
+    const fields = this.form.querySelectorAll('.is-valid, .is-invalid');
+    fields.forEach(field => {
+      field.classList.remove('is-valid', 'is-invalid');
+    });
+  }
+}
+
+// Auto-initialize forms with validation
+document.addEventListener('DOMContentLoaded', () => {
+  const forms = document.querySelectorAll('form[data-validate]');
+  forms.forEach(form => new FormValidator(form));
+});
+
+// Range input value display
+function updateRangeValue(input, displayElement) {
+  displayElement.textContent = input.value;
+}
+
+// Search form enhancement
+function enhanceSearchForms() {
+  const searchForms = document.querySelectorAll('.search-form');
+
+  searchForms.forEach(form => {
+    const input = form.querySelector('input[type="search"]');
+    const button = form.querySelector('button');
+
+    if (input && button) {
+      // Submit on button click
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        performSearch(input.value);
+      });
+
+      // Submit on Enter key
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          performSearch(input.value);
+        }
+      });
+    }
+  });
+}
+
+function performSearch(query) {
+  console.log('Searching for:', query);
+  // Implement your search logic here
+}
+
+// Initialize enhancements
+document.addEventListener('DOMContentLoaded', () => {
+  enhanceSearchForms();
+
+  // Initialize range value displays
+  const rangeInputs = document.querySelectorAll('input[type="range"]');
+  rangeInputs.forEach(input => {
+    const display = document.getElementById('range-value');
+    if (display) {
+      input.addEventListener('input', () => updateRangeValue(input, display));
+    }
+  });
+});</code></pre>
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="section">
+      <h2>Best Practices</h2>
+
+      <h3>Form Structure</h3>
+      <ul>
+        <li><strong>Semantic markup:</strong> Use proper form elements, fieldsets, and legends for screen readers</li>
+        <li><strong>Label association:</strong> Always associate labels with inputs using for/id attributes</li>
+        <li><strong>Required indicators:</strong> Clearly mark required fields with * or "required" text</li>
+        <li><strong>Logical grouping:</strong> Group related fields using fieldsets and form groups</li>
+      </ul>
+
+      <h3>User Experience</h3>
+      <ul>
+        <li><strong>Clear feedback:</strong> Provide immediate validation feedback as users type</li>
+        <li><strong>Error prevention:</strong> Use appropriate input types and constraints to prevent errors</li>
+        <li><strong>Progressive enhancement:</strong> Ensure forms work without JavaScript</li>
+        <li><strong>Mobile optimization:</strong> Use appropriate input types for mobile keyboards</li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li><strong>Focus management:</strong> Provide clear focus indicators and logical tab order</li>
+        <li><strong>Error handling:</strong> Announce validation errors to screen readers</li>
+        <li><strong>Sufficient contrast:</strong> Ensure form elements meet WCAG contrast requirements</li>
+        <li><strong>Touch targets:</strong> Make form controls large enough for touch interaction</li>
+      </ul>
+
+      <h3>Performance</h3>
+      <ul>
+        <li><strong>Debounced validation:</strong> Avoid excessive validation on every keystroke</li>
+        <li><strong>Lazy loading:</strong> Load complex form components only when needed</li>
+        <li><strong>Efficient selectors:</strong> Use efficient CSS selectors for form styling</li>
+        <li><strong>Minimal JavaScript:</strong> Use native HTML5 validation when possible</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="section">
+      <p>
+        <a href="/examples/forms-demo.html">View Live Examples</a> |
+        <a href="/docs/components/">All Components</a> |
+        <a href="/docs/index.html">Documentation Home</a>
+      </p>
+      <p>&copy; 2024 Amphibious 2.0. Complete form styling system for modern web applications.</p>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Demo JavaScript -->
+  <script>
+    // Range input value display
+    const rangeInput = document.getElementById('range-input');
+    const rangeValue = document.getElementById('range-value');
+
+    if (rangeInput && rangeValue) {
+      rangeInput.addEventListener('input', () => {
+        rangeValue.textContent = rangeInput.value;
+      });
+    }
+
+    // Form validation demo
+    function validateForm() {
+      const form = document.querySelector('.validation-demo');
+      const inputs = form.querySelectorAll('input, select, textarea');
+
+      inputs.forEach(input => {
+        // Simulate validation
+        const isValid = Math.random() > 0.5; // Random validation for demo
+
+        input.classList.remove('is-valid', 'is-invalid');
+        input.classList.add(isValid ? 'is-valid' : 'is-invalid');
+      });
+    }
+
+    // Contact form validation
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let isValid = true;
+        const requiredFields = contactForm.querySelectorAll('[required]');
+
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            field.classList.add('is-invalid');
+            isValid = false;
+          } else {
+            field.classList.remove('is-invalid');
+            field.classList.add('is-valid');
+          }
+        });
+
+        if (isValid) {
+          alert('Form submitted successfully! (This is just a demo)');
+        } else {
+          alert('Please fill in all required fields.');
+        }
+      });
+
+      // Real-time validation
+      const requiredFields = contactForm.querySelectorAll('[required]');
+      requiredFields.forEach(field => {
+        field.addEventListener('blur', () => {
+          if (field.value.trim()) {
+            field.classList.remove('is-invalid');
+            field.classList.add('is-valid');
+          } else {
+            field.classList.remove('is-valid');
+            field.classList.add('is-invalid');
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

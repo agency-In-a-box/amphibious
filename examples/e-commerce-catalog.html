@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce Product Catalog - Amphibious 2.0</title>
+  <meta name="description" content="Complete e-commerce product catalog demonstration with icons, tooltips, and modals">
+  <style>
+    /* E-commerce Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Header Styles */
+    .header {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-top {
+      background: #2c3e50;
+      color: white;
+      padding: 0.5rem 0;
+      font-size: 0.875rem;
+    }
+    .header-main {
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #667eea;
+      text-decoration: none;
+    }
+    .search-bar {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 2px solid #dee2e6;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .search-bar button {
+      padding: 0.75rem 1.5rem;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .header-icons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    /* Navigation */
+    .nav-categories {
+      background: #f8f9fa;
+      padding: 1rem 0;
+      border-top: 1px solid #dee2e6;
+    }
+    .nav-categories ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-categories a {
+      color: #495057;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-categories a:hover {
+      color: #667eea;
+    }
+
+    /* Breadcrumbs */
+    .breadcrumbs {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+    }
+    .breadcrumbs a {
+      color: #6c757d;
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      color: #667eea;
+    }
+    .breadcrumbs .separator {
+      margin: 0 0.5rem;
+      color: #dee2e6;
+    }
+
+    /* Product Grid */
+    .catalog-header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #dee2e6;
+      margin-bottom: 2rem;
+    }
+    .catalog-header h1 {
+      margin: 0 0 0.5rem 0;
+    }
+    .catalog-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .product-count {
+      color: #6c757d;
+    }
+    .sort-controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .sort-controls select {
+      padding: 0.5rem;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      background: white;
+    }
+    .view-toggles {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .view-toggles button {
+      padding: 0.5rem;
+      background: white;
+      border: 1px solid #dee2e6;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .view-toggles button.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    /* Filters Sidebar */
+    .filters {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .filter-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .filter-section:last-child {
+      border-bottom: none;
+    }
+    .filter-section legend {
+      margin: 0 0 1rem 0;
+      font-size: 1rem;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    .filter-section {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+    }
+    .filter-option input {
+      cursor: pointer;
+    }
+    .filter-count {
+      margin-left: auto;
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+    .price-range {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .price-range input {
+      width: 80px;
+      padding: 0.5rem;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+    }
+
+    /* Slats Pattern for Featured Products */
+    .slats {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .slats--products li {
+      margin: 0 0 1.5rem 0;
+      padding: 0 0 1.5rem 0;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .slats--products li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .slat-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .slat-image {
+      flex-shrink: 0;
+      margin: 0;
+    }
+    .slat-image img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .slat-content {
+      flex: 1;
+    }
+    .slat-content h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.25rem;
+      color: #2c3e50;
+    }
+    .slat-content p {
+      margin: 0 0 0.75rem 0;
+      color: #6c757d;
+      line-height: 1.5;
+    }
+    .slat-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .slat-meta .price {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .slat-meta .price--sale .price-current {
+      color: #dc3545;
+    }
+    .slat-meta .price--sale .price-original {
+      text-decoration: line-through;
+      color: #6c757d;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+    .slat-meta .rating {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .slat-meta .badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .slat-meta .badge--sale {
+      background: #28a745;
+      color: white;
+    }
+    .slat-meta .badge--discount {
+      background: #dc3545;
+      color: white;
+    }
+    .slat-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .btn--primary {
+      background: #667eea;
+      color: white;
+    }
+    .btn--primary:hover {
+      background: #5a67d8;
+    }
+    .btn--secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+      padding: 0.625rem;
+    }
+    .btn--secondary:hover {
+      background: #667eea;
+      color: white;
+    }
+
+    /* Product Cards */
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .product-image {
+      position: relative;
+      padding-bottom: 100%;
+      background: #f8f9fa;
+      overflow: hidden;
+    }
+    .product-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-badges {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .badge {
+      padding: 0.25rem 0.5rem;
+      background: #dc3545;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+    .badge.new { background: #28a745; }
+    .badge.sale { background: #dc3545; }
+    .badge.limited { background: #ffc107; color: #000; }
+    .product-actions {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .product-actions button {
+      width: 36px;
+      height: 36px;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .product-actions button:hover {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+    .product-info {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-category {
+      font-size: 0.75rem;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.25rem;
+    }
+    .product-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2c3e50;
+      margin: 0 0 0.5rem 0;
+      flex: 1;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .stars {
+      display: flex;
+      gap: 0.125rem;
+    }
+    .star {
+      color: #ffc107;
+    }
+    .star.empty {
+      color: #dee2e6;
+    }
+    .review-count {
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .price-current {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .price-original {
+      font-size: 1rem;
+      color: #6c757d;
+      text-decoration: line-through;
+    }
+    .price-discount {
+      font-size: 0.875rem;
+      color: #dc3545;
+      font-weight: 600;
+    }
+    .product-shipping {
+      font-size: 0.875rem;
+      color: #28a745;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+    .add-to-cart {
+      width: 100%;
+      padding: 0.75rem;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .add-to-cart:hover {
+      background: #5a67d8;
+    }
+
+    /* Quick View Modal */
+    .quick-view-content {
+      display: flex;
+      gap: 2rem;
+    }
+    .quick-view-image {
+      flex: 1;
+      background: #f8f9fa;
+      border-radius: 8px;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quick-view-info {
+      flex: 1;
+    }
+    .size-options {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .size-option {
+      padding: 0.5rem 1rem;
+      border: 2px solid #dee2e6;
+      background: white;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .size-option:hover,
+    .size-option.selected {
+      border-color: #667eea;
+      color: #667eea;
+    }
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .quantity-selector button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #dee2e6;
+      background: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .quantity-selector input {
+      width: 60px;
+      text-align: center;
+      padding: 0.5rem;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 3rem 0;
+    }
+    .pagination button {
+      padding: 0.5rem 1rem;
+      border: 1px solid #dee2e6;
+      background: white;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .pagination button:hover {
+      background: #f8f9fa;
+    }
+    .pagination button.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Footer */
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 3rem 0 1rem 0;
+      margin-top: 4rem;
+    }
+    .footer-section h4 {
+      margin: 0 0 1rem 0;
+      font-size: 1rem;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-section a {
+      color: #adb5bd;
+      text-decoration: none;
+    }
+    .footer-section a:hover {
+      color: white;
+    }
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #495057;
+      text-align: center;
+      color: #adb5bd;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .header-icons span {
+        display: none;
+      }
+      .catalog-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .quick-view-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <i data-lucide="truck" class="icon--xs"></i> Free shipping on orders over $50
+          </div>
+          <div class="col-8" style="text-align: right;">
+            <i data-lucide="phone" class="icon--xs"></i> Support: 1-800-SHOP-NOW
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <a href="#" class="logo">SHOPIFY 2.0</a>
+          </div>
+          <div class="col-8">
+            <div class="search-bar">
+              <input type="text" placeholder="Search products...">
+              <button>
+                <i data-lucide="search"></i>
+                Search
+              </button>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="header-icons" style="justify-content: flex-end;">
+              <button class="icon-button" data-tooltip="My Account">
+                <i data-lucide="user"></i>
+                <span>Account</span>
+              </button>
+              <button class="icon-button" data-tooltip="Wishlist (3 items)">
+                <i data-lucide="heart"></i>
+                <span>Wishlist</span>
+              </button>
+              <div class="icon-badge" data-tooltip="Shopping cart (5 items)">
+                <i data-lucide="shopping-cart"></i>
+                <span class="icon-badge__count">5</span>
+                <span>Cart</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav-categories">
+      <div class="container">
+        <ul>
+          <li><a href="#"><i data-lucide="package" class="icon--sm"></i> All Products</a></li>
+          <li><a href="#"><i data-lucide="shirt" class="icon--sm"></i> Clothing</a></li>
+          <li><a href="#"><i data-lucide="watch" class="icon--sm"></i> Accessories</a></li>
+          <li><a href="#"><i data-lucide="smartphone" class="icon--sm"></i> Electronics</a></li>
+          <li><a href="#"><i data-lucide="home" class="icon--sm"></i> Home & Garden</a></li>
+          <li><a href="#"><i data-lucide="gift" class="icon--sm"></i> Gifts</a></li>
+          <li><a href="#"><i data-lucide="tag" class="icon--sm"></i> Sale</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="#">Home</a>
+      <span class="separator">/</span>
+      <a href="#">Shop</a>
+      <span class="separator">/</span>
+      <a href="#">Clothing</a>
+      <span class="separator">/</span>
+      <span>All Products</span>
+    </div>
+  </div>
+
+  <!-- Featured Products Slat Pattern -->
+  <section class="container" style="margin: 2rem auto;">
+    <h2>Featured Products</h2>
+    <ul class="slats slats--products">
+      <li>
+        <article class="slat-item">
+          <figure class="slat-image">
+            <img src="https://placehold.co/120x120/667eea/ffffff?text=Featured" alt="Premium Denim" loading="lazy">
+          </figure>
+          <div class="slat-content">
+            <h3>Premium Japanese Denim</h3>
+            <p>Hand-crafted in Okayama using traditional techniques. Features selvedge construction and natural indigo dye.</p>
+            <div class="slat-meta">
+              <span class="price">$189.00</span>
+              <div class="rating">
+                <i data-lucide="star" class="icon--xs icon--filled"></i>
+                <i data-lucide="star" class="icon--xs icon--filled"></i>
+                <i data-lucide="star" class="icon--xs icon--filled"></i>
+                <i data-lucide="star" class="icon--xs icon--filled"></i>
+                <i data-lucide="star" class="icon--xs icon--filled"></i>
+                <span>(47 reviews)</span>
+              </div>
+            </article>
+          </div>
+          <div class="slat-actions">
+            <button class="btn btn--primary">Quick Shop</button>
+            <button class="btn btn--secondary" data-tooltip="Add to wishlist">
+              <i data-lucide="heart"></i>
+            </button>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="slat-item">
+          <figure class="slat-image">
+            <img src="https://placehold.co/120x120/f59e0b/ffffff?text=New" alt="Summer Collection" loading="lazy">
+          </figure>
+          <div class="slat-content">
+            <h3>Linen Summer Dress</h3>
+            <p>Breathable 100% linen dress perfect for warm weather. Available in multiple patterns and sizes XS-XXL.</p>
+            <div class="slat-meta">
+              <span class="price">$79.00</span>
+              <span class="badge badge--sale">New Arrival</span>
+            </div>
+          </div>
+          <div class="slat-actions">
+            <button class="btn btn--primary">Quick Shop</button>
+            <button class="btn btn--secondary" data-tooltip="Add to wishlist">
+              <i data-lucide="heart"></i>
+            </button>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="slat-item">
+          <figure class="slat-image">
+            <img src="https://placehold.co/120x120/10b981/ffffff?text=Sale" alt="Running Shoes" loading="lazy">
+          </figure>
+          <div class="slat-content">
+            <h3>Performance Running Shoes</h3>
+            <p>Engineered mesh upper with responsive cushioning. Perfect for daily training and long-distance runs.</p>
+            <div class="slat-meta">
+              <span class="price price--sale">
+                <span class="price-current">$99.00</span>
+                <span class="price-original">$149.00</span>
+              </span>
+              <span class="badge badge--discount">-33% OFF</span>
+            </div>
+          </div>
+          <div class="slat-actions">
+            <button class="btn btn--primary">Quick Shop</button>
+            <button class="btn btn--secondary" data-tooltip="Add to wishlist">
+              <i data-lucide="heart"></i>
+            </button>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Catalog Header -->
+  <div class="container">
+    <div class="catalog-header">
+      <h1>Shop All Products</h1>
+      <div class="catalog-controls">
+        <div class="product-count">Showing 1-12 of 156 products</div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <div class="sort-controls">
+            <label>Sort by:</label>
+            <select>
+              <option>Featured</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest First</option>
+              <option>Best Selling</option>
+              <option>Top Rated</option>
+            </select>
+          </div>
+          <div class="view-toggles">
+            <button class="active" data-tooltip="Grid View">
+              <i data-lucide="grid-3x3"></i>
+            </button>
+            <button data-tooltip="List View">
+              <i data-lucide="list"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Filters Sidebar -->
+      <aside class="col-4">
+        <section class="filters" aria-labelledby="filters-heading">
+          <h2 class="sr-only" id="filters-heading">Product Filters</h2>
+          <fieldset class="filter-section">
+            <legend>Categories</legend>
+            <label class="filter-option">
+              <input type="checkbox" checked>
+              <span>All Products</span>
+              <span class="filter-count">156</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>T-Shirts</span>
+              <span class="filter-count">42</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Jeans</span>
+              <span class="filter-count">28</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Dresses</span>
+              <span class="filter-count">35</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Shoes</span>
+              <span class="filter-count">51</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="filter-section">
+            <legend>Price Range</legend>
+            <div class="price-range">
+              <input type="number" placeholder="Min" value="0">
+              <span>-</span>
+              <input type="number" placeholder="Max" value="500">
+              <button style="padding: 0.5rem; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Go
+              </button>
+            </div>
+            <div style="margin-top: 1rem;">
+              <label class="filter-option">
+                <input type="checkbox">
+                <span>Under $25</span>
+                <span class="filter-count">23</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox">
+                <span>$25 - $50</span>
+                <span class="filter-count">45</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox">
+                <span>$50 - $100</span>
+                <span class="filter-count">67</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox">
+                <span>Over $100</span>
+                <span class="filter-count">21</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="filter-section">
+            <legend>Size</legend>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>XS</span>
+              <span class="filter-count">12</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>S</span>
+              <span class="filter-count">34</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>M</span>
+              <span class="filter-count">45</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>L</span>
+              <span class="filter-count">38</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>XL</span>
+              <span class="filter-count">27</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="filter-section">
+            <legend>Color</legend>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Black</span>
+              <span class="filter-count">45</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>White</span>
+              <span class="filter-count">38</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Blue</span>
+              <span class="filter-count">29</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Red</span>
+              <span class="filter-count">22</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Green</span>
+              <span class="filter-count">15</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="filter-section">
+            <legend>Brand</legend>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Nike</span>
+              <span class="filter-count">28</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Adidas</span>
+              <span class="filter-count">24</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Puma</span>
+              <span class="filter-count">19</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Under Armour</span>
+              <span class="filter-count">16</span>
+            </label>
+          </fieldset>
+        </section>
+      </aside>
+
+      <!-- Product Grid -->
+      <main class="col-12" role="main">
+        <div class="row">
+          <!-- Product 1 -->
+          <div class="col-4">
+            <article class="product-card">
+              <figure class="product-image">
+                <img src="https://placehold.co/400x400/667eea/ffffff?text=Product+1" alt="Product 1" loading="lazy">
+                <div class="product-badges">
+                  <span class="badge new">NEW</span>
+                  <span class="badge sale">-20%</span>
+                </div>
+                <div class="product-actions">
+                  <button data-tooltip="Quick View" onclick="openQuickView()">
+                    <i data-lucide="eye"></i>
+                  </button>
+                  <button data-tooltip="Add to Wishlist">
+                    <i data-lucide="heart"></i>
+                  </button>
+                  <button data-tooltip="Compare">
+                    <i data-lucide="git-compare"></i>
+                  </button>
+                </div>
+              </figure>
+              <div class="product-info">
+                <div class="product-category">T-Shirts</div>
+                <h3 class="product-name">Premium Cotton T-Shirt</h3>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star empty icon--xs"></i>
+                  </div>
+                  <span class="review-count">(24 reviews)</span>
+                </div>
+                <div class="product-price">
+                  <span class="price-current">$39.99</span>
+                  <span class="price-original">$49.99</span>
+                  <span class="price-discount">Save 20%</span>
+                </div>
+                <div class="product-shipping">
+                  <i data-lucide="truck" class="icon--xs"></i>
+                  Free Shipping
+                </div>
+                <button class="add-to-cart">
+                  <i data-lucide="shopping-cart"></i>
+                  Add to Cart
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="col-4">
+            <article class="product-card">
+              <figure class="product-image">
+                <img src="https://placehold.co/400x400/764ba2/ffffff?text=Product+2" alt="Product 2" loading="lazy">
+                <div class="product-badges">
+                  <span class="badge limited">LIMITED</span>
+                </div>
+                <div class="product-actions">
+                  <button data-tooltip="Quick View">
+                    <i data-lucide="eye"></i>
+                  </button>
+                  <button data-tooltip="Add to Wishlist">
+                    <i data-lucide="heart"></i>
+                  </button>
+                  <button data-tooltip="Compare">
+                    <i data-lucide="git-compare"></i>
+                  </button>
+                </div>
+              </figure>
+              <div class="product-info">
+                <div class="product-category">Jeans</div>
+                <h3 class="product-name">Slim Fit Denim Jeans</h3>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                  </div>
+                  <span class="review-count">(42 reviews)</span>
+                </div>
+                <div class="product-price">
+                  <span class="price-current">$89.99</span>
+                </div>
+                <div class="product-shipping">
+                  <i data-lucide="truck" class="icon--xs"></i>
+                  Free Shipping
+                </div>
+                <button class="add-to-cart">
+                  <i data-lucide="shopping-cart"></i>
+                  Add to Cart
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="col-4">
+            <article class="product-card">
+              <figure class="product-image">
+                <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Product+3" alt="Product 3" loading="lazy">
+                <div class="product-badges">
+                  <span class="badge sale">-30%</span>
+                </div>
+                <div class="product-actions">
+                  <button data-tooltip="Quick View">
+                    <i data-lucide="eye"></i>
+                  </button>
+                  <button data-tooltip="Add to Wishlist">
+                    <i data-lucide="heart"></i>
+                  </button>
+                  <button data-tooltip="Compare">
+                    <i data-lucide="git-compare"></i>
+                  </button>
+                </div>
+              </figure>
+              <div class="product-info">
+                <div class="product-category">Dresses</div>
+                <h3 class="product-name">Summer Floral Dress</h3>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star empty icon--xs"></i>
+                  </div>
+                  <span class="review-count">(18 reviews)</span>
+                </div>
+                <div class="product-price">
+                  <span class="price-current">$55.99</span>
+                  <span class="price-original">$79.99</span>
+                  <span class="price-discount">Save 30%</span>
+                </div>
+                <div class="product-shipping">
+                  <i data-lucide="clock" class="icon--xs"></i>
+                  Ships in 2-3 days
+                </div>
+                <button class="add-to-cart">
+                  <i data-lucide="shopping-cart"></i>
+                  Add to Cart
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="col-4">
+            <article class="product-card">
+              <figure class="product-image">
+                <img src="https://placehold.co/400x400/10b981/ffffff?text=Product+4" alt="Product 4" loading="lazy">
+                <div class="product-badges">
+                  <span class="badge new">NEW</span>
+                </div>
+                <div class="product-actions">
+                  <button data-tooltip="Quick View">
+                    <i data-lucide="eye"></i>
+                  </button>
+                  <button data-tooltip="Add to Wishlist">
+                    <i data-lucide="heart"></i>
+                  </button>
+                  <button data-tooltip="Compare">
+                    <i data-lucide="git-compare"></i>
+                  </button>
+                </div>
+              </figure>
+              <div class="product-info">
+                <div class="product-category">Shoes</div>
+                <h3 class="product-name">Running Sneakers Pro</h3>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                  </div>
+                  <span class="review-count">(56 reviews)</span>
+                </div>
+                <div class="product-price">
+                  <span class="price-current">$129.99</span>
+                </div>
+                <div class="product-shipping">
+                  <i data-lucide="zap" class="icon--xs"></i>
+                  Express Delivery
+                </div>
+                <button class="add-to-cart">
+                  <i data-lucide="shopping-cart"></i>
+                  Add to Cart
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- More products... -->
+          <!-- Repeat similar structure for products 5-12 -->
+          <div class="col-4">
+            <article class="product-card">
+              <figure class="product-image">
+                <img src="https://placehold.co/400x400/ef4444/ffffff?text=Product+5" alt="Product 5" loading="lazy">
+                <div class="product-badges">
+                  <span class="badge sale">-15%</span>
+                </div>
+                <div class="product-actions">
+                  <button data-tooltip="Quick View">
+                    <i data-lucide="eye"></i>
+                  </button>
+                  <button data-tooltip="Add to Wishlist">
+                    <i data-lucide="heart"></i>
+                  </button>
+                  <button data-tooltip="Compare">
+                    <i data-lucide="git-compare"></i>
+                  </button>
+                </div>
+              </figure>
+              <div class="product-info">
+                <div class="product-category">Accessories</div>
+                <h3 class="product-name">Leather Wallet Premium</h3>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star empty icon--xs"></i>
+                  </div>
+                  <span class="review-count">(31 reviews)</span>
+                </div>
+                <div class="product-price">
+                  <span class="price-current">$42.49</span>
+                  <span class="price-original">$49.99</span>
+                </div>
+                <div class="product-shipping">
+                  <i data-lucide="truck" class="icon--xs"></i>
+                  Free Shipping
+                </div>
+                <button class="add-to-cart">
+                  <i data-lucide="shopping-cart"></i>
+                  Add to Cart
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-4">
+            <article class="product-card">
+              <figure class="product-image">
+                <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Product+6" alt="Product 6" loading="lazy">
+                <div class="product-badges">
+                  <span class="badge limited">LAST CHANCE</span>
+                </div>
+                <div class="product-actions">
+                  <button data-tooltip="Quick View">
+                    <i data-lucide="eye"></i>
+                  </button>
+                  <button data-tooltip="Add to Wishlist">
+                    <i data-lucide="heart"></i>
+                  </button>
+                  <button data-tooltip="Compare">
+                    <i data-lucide="git-compare"></i>
+                  </button>
+                </div>
+              </figure>
+              <div class="product-info">
+                <div class="product-category">Electronics</div>
+                <h3 class="product-name">Wireless Headphones</h3>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                    <i data-lucide="star" class="star icon--xs icon--filled"></i>
+                  </div>
+                  <span class="review-count">(89 reviews)</span>
+                </div>
+                <div class="product-price">
+                  <span class="price-current">$199.99</span>
+                </div>
+                <div class="product-shipping">
+                  <i data-lucide="award" class="icon--xs"></i>
+                  Best Seller
+                </div>
+                <button class="add-to-cart">
+                  <i data-lucide="shopping-cart"></i>
+                  Add to Cart
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button disabled>
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <button class="active">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>...</button>
+          <button>13</button>
+          <button>
+            <i data-lucide="chevron-right"></i>
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div id="quickViewModal" class="modal" aria-hidden="true">
+    <div class="modal__dialog modal__dialog--lg">
+      <div class="modal__header">
+        <h3 class="modal__title">Quick View - Premium Cotton T-Shirt</h3>
+        <button class="modal__close" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal__body">
+        <div class="quick-view-content">
+          <div class="quick-view-image">
+            <img src="https://placehold.co/400x400/667eea/ffffff?text=Product" alt="Product" loading="lazy">
+          </div>
+          <div class="quick-view-info">
+            <div class="product-category">T-Shirts</div>
+            <h2>Premium Cotton T-Shirt</h2>
+            <div class="product-rating">
+              <div class="stars">
+                <i data-lucide="star" class="star icon--filled"></i>
+                <i data-lucide="star" class="star icon--filled"></i>
+                <i data-lucide="star" class="star icon--filled"></i>
+                <i data-lucide="star" class="star icon--filled"></i>
+                <i data-lucide="star" class="star"></i>
+              </div>
+              <span>(24 reviews)</span>
+            </div>
+            <div class="product-price" style="margin: 1rem 0;">
+              <span class="price-current" style="font-size: 1.5rem;">$39.99</span>
+              <span class="price-original">$49.99</span>
+              <span class="price-discount">Save 20%</span>
+            </div>
+            <p>Experience ultimate comfort with our premium cotton t-shirt. Made from 100% organic cotton, this shirt offers superior breathability and softness that lasts wash after wash.</p>
+
+            <h4>Select Size:</h4>
+            <div class="size-options">
+              <button class="size-option">XS</button>
+              <button class="size-option">S</button>
+              <button class="size-option selected">M</button>
+              <button class="size-option">L</button>
+              <button class="size-option">XL</button>
+            </div>
+
+            <h4>Quantity:</h4>
+            <div class="quantity-selector">
+              <button onclick="decrementQuantity()">-</button>
+              <input type="number" value="1" min="1" id="quantity">
+              <button onclick="incrementQuantity()">+</button>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+              <button class="add-to-cart" style="flex: 1;">
+                <i data-lucide="shopping-cart"></i>
+                Add to Cart
+              </button>
+              <button style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #667eea; color: #667eea; border-radius: 4px; cursor: pointer;">
+                <i data-lucide="heart"></i>
+                Save
+              </button>
+            </div>
+
+            <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #dee2e6;">
+              <p style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                <i data-lucide="truck"></i> Free shipping on orders over $50
+              </p>
+              <p style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                <i data-lucide="rotate-ccw"></i> 30-day return policy
+              </p>
+              <p style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                <i data-lucide="shield-check"></i> Secure checkout
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="footer-section">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Sale Items</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="footer-section">
+            <h4>Help</h4>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">Size Guide</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="footer-section">
+            <h4>About</h4>
+            <ul>
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SHOPIFY 2.0 - Built with Amphibious 2.0 Framework</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Page Scripts -->
+  <script>
+    // Quick view modal
+    function openQuickView() {
+      const modal = amp.createModal('quickView', '#quickViewModal');
+      modal.open();
+    }
+
+    // Quantity selector
+    function incrementQuantity() {
+      const input = document.getElementById('quantity');
+      input.value = parseInt(input.value) + 1;
+    }
+
+    function decrementQuantity() {
+      const input = document.getElementById('quantity');
+      if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('E-commerce Catalog Page Loaded');
+
+      // Add click handlers to all add to cart buttons
+      document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Show success tooltip
+          const tooltip = amp.createTooltip(btn, {
+            content: 'Added to cart!',
+            variant: 'success',
+            trigger: 'manual',
+            position: 'top'
+          });
+          tooltip.show();
+          setTimeout(() => tooltip.hide(), 2000);
+
+          // Update cart count
+          const badge = document.querySelector('.icon-badge__count');
+          if (badge) {
+            badge.textContent = parseInt(badge.textContent) + 1;
+          }
+        });
+      });
+
+      // Filter interactions
+      document.querySelectorAll('.filter-option input').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          console.log('Filter changed:', checkbox.nextElementSibling.textContent);
+          // In a real app, this would trigger product filtering
+        });
+      });
+    });
+  </script>
+</body>
+</html>

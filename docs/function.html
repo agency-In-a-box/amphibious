@@ -1,1027 +1,800 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>  <html class="no-js ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8]>  <html class="no-js ie ie8" lang="en"> <![endif]-->
-<!--[if IE 9]>  <html class="ie ie9" lang="en"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]>
-<!--[if IEMobile 7 ]>  <html class="no-js iem7"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Amphibious | Simply Elegant HTML5/CSS3 Responsive Front End Development Kit | 1.5.5 December 2, 2015</title>
-<meta name="description" content="A.mphibio.us is a responsive design tool for rapid development has a familiar sixteen column, lightweight 960 grid as its base, but elegantly scales down to downsized browser windows">
-<meta name="keywords" content="css3, html5, responsive, web, design, mobile layout, responsive design">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function - Amphibious 2.0 Documentation</title>
+    <link rel="stylesheet" href="../dist/amphibious.css">
+    <link rel="stylesheet" href="./docs.css">
+    <style>
+        /* Documentation-specific styles */
+        .docs-nav {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
 
-<link rel="canonical" href="http://a.mphibio.us/index.html" />
+        .docs-nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/touch/apple-touch-icon-144x144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/touch/apple-touch-icon-114x114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/touch/apple-touch-icon-72x72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="/images/touch/apple-touch-icon-57x57-precomposed.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png">
-<!-- iPhone SPLASHSCREEN-->
-<link href="/images/startup/startup.png" media="(device-width: 320px)" rel="apple-touch-startup-image">
-<!-- iPhone (Retina) SPLASHSCREEN-->
-<link href="/images/startup/startup-retina.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-<!-- iPad (portrait) SPLASHSCREEN-->
-<link href="/images/startup/startup-tablet-portrait.png" media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
-<!-- iPad (landscape) SPLASHSCREEN-->
-<link href="/images/startup/startup-tablet-landscape.png" media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<!-- iPad (Retina, portrait) SPLASHSCREEN-->
-<link href="/images/startup/startup-tablet-portrait-retina.png" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-<!-- iPad (Retina, landscape) SPLASHSCREEN-->
-<link href="/images/startup/startup-tablet-landscape-retina.png" media="(device-width: 1536px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        .docs-nav h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #343a40;
+        }
 
-<!-- Tile icon for Win8 (144x144 + tile color) -->
-<meta name="msapplication-TileImage" content="/images/touch/apple-touch-icon-144x144-precomposed.png">
-<meta name="msapplication-TileColor" content="#000000">
+        .docs-nav .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
 
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1, , maximum-scale=1.0, user-scalable=no">
-<meta http-equiv="cleartype" content="on">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="A.mphibio.us">
+        .docs-nav .nav-links a {
+            color: #6c757d;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: all 0.2s ease;
+        }
 
-<link rel="stylesheet" href="../css/a.mphibio.us.min.css">
-<link rel="stylesheet" href="../css/a.mphibio.us.docs.css">
+        .docs-nav .nav-links a:hover,
+        .docs-nav .nav-links a.active {
+            background: #fff;
+            color: #007bff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-<script src="/js/js/modernizr-2.6.2.min.js"></script>
-<script src="/js/js/prefixfree.min.js"></script>
+        .section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
 
-<!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
-<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
-  
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #97bc62;
+        }
+
+        .section h3 {
+            color: #495057;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .section h4 {
+            color: #6c757d;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .example {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .example-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .code-block code {
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: inherit;
+        }
+
+        /* Navigation Examples */
+        .navbar {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            margin: 1rem 0;
+        }
+
+        .navbar-inner {
+            padding: 0.5rem 1rem;
+        }
+
+        .horizontal {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .horizontal > li {
+            position: relative;
+        }
+
+        .horizontal > li > a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #495057;
+            text-decoration: none;
+            border-radius: 0.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .horizontal > li > a:hover {
+            background: #e9ecef;
+            color: #007bff;
+        }
+
+        .horizontal > li > ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            list-style: none;
+            margin: 0;
+            padding: 0.5rem 0;
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .horizontal > li:hover > ul {
+            display: block;
+        }
+
+        .horizontal > li > ul > li > a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #495057;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .horizontal > li > ul > li > a:hover {
+            background: #f8f9fa;
+            color: #007bff;
+        }
+
+        /* Vertical Navigation */
+        .vertical {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .vertical > li {
+            position: relative;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .vertical > li:last-child {
+            border-bottom: none;
+        }
+
+        .vertical > li > a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #495057;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .vertical > li > a:hover {
+            background: #f8f9fa;
+            color: #007bff;
+        }
+
+        .vertical > li > ul {
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: none;
+        }
+
+        .vertical > li:hover > ul {
+            display: block;
+        }
+
+        .vertical > li > ul > li > a {
+            display: block;
+            padding: 0.5rem 1rem 0.5rem 2rem;
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .vertical > li > ul > li > a:hover {
+            background: #e9ecef;
+            color: #007bff;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumb {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .breadcrumb li {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb li + li::before {
+            content: "/";
+            margin: 0 0.5rem;
+            color: #6c757d;
+        }
+
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb .active {
+            color: #6c757d;
+        }
+
+        /* Tabs */
+        .tabs {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .tabs li {
+            margin-bottom: -1px;
+        }
+
+        .tabs li a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #495057;
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-bottom: none;
+            border-radius: 0.375rem 0.375rem 0 0;
+            transition: all 0.2s ease;
+        }
+
+        .tabs li a:hover {
+            background: #f8f9fa;
+            border-color: #dee2e6;
+        }
+
+        .tabs li a.active {
+            background: #fff;
+            border-color: #dee2e6;
+            color: #007bff;
+        }
+
+        .tabs-content {
+            border: 1px solid #dee2e6;
+            border-top: none;
+            border-radius: 0 0 0.375rem 0.375rem;
+            background: #fff;
+        }
+
+        .tabs-content > li {
+            display: none;
+            padding: 1.5rem;
+        }
+
+        .tabs-content > li.active {
+            display: block;
+        }
+
+        /* Pagination */
+        .pagination {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .pagination li a,
+        .pagination li span {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: #007bff;
+            text-decoration: none;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease;
+        }
+
+        .pagination li a:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+        }
+
+        .pagination li.active span {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        .pagination li.disabled span {
+            color: #6c757d;
+            background: transparent;
+            border-color: #dee2e6;
+        }
+    </style>
 </head>
 <body>
-<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-
-<span id="download_button" class="a r dmt mr">
-<a class="button" href="http://a.mphibio.us/a.mphibio.us.rdk.zip" title="Download A.mphibio.us Rapid Developmet Kit(.zip )">A.mphibio.us RDK <span class="icon-github hml"></span></a>
-</span>
-
-<div id="main" role="main" class="container">
-
-<div id="maincontent" class="col sixteen content">
-	<header>
-		<h1 class="rmb mt">A.mphibio.us</h1>
-		<p class="meta v">1.5.5 <span class="date ml">Release <span class="mo">December</span> 2<sup>nd</sup> 2015</span></p>
-	</header>
-  
-	<section id="navigation">
-		<div class="row">
-			<h3>Navigation</h3>
-			<p>Create sleek, clean navigation bars and menu lists. Simple JQuery is used to link tabs and buttons to destination content. Create calls to action that are clearly defined and easy to identify.</p>
-			<h4>Horzintal menu bar</h4>
-			<div class="navbar">
-				<div class="navbar-inner">
-					<nav role="navigation">
-						<ul class="horizontal">
-							<li><a>Link One</a>
-								<ul>
-									<li><a>Link One</a>
-										<ul>
-											<li><a>Link One</a></li>
-											<li><a>Link Two</a></li>
-											<li><a>Link Three</a></li>
-											<li><a>Link Four</a></li>
-										</ul>
-									</li>
-									<li><a>Link Two</a></li>
-									<li><a>Link Three</a></li>
-									<li><a>Link Four</a></li>
-								</ul>
-							</li>
-							<li><a>Link Two</a></li>
-							<li><a>Link Three</a></li>
-							<li><a>Link Four</a></li>
-						</ul>
-					</nav>  
-				</div>
-			</div>
-		</div>
-		<div class="row mt">
-			<pre class="prettyprint linenums">
-&lt;div class=&quot;navbar&quot;&gt;
-  &lt;div class=&quot;navbar-inner&quot;&gt;
-    &lt;nav role=&quot;navigation&quot;&gt;
-      &lt;ul class=&quot;horizontal&quot;&gt;
-        &lt;li&gt;&lt;a&gt;Link One&lt;/a&gt;
-          &lt;ul&gt;
-            &lt;li&gt;&lt;a&gt;Link One&lt;/a&gt;
-              &lt;ul&gt;
-                &lt;li&gt;&lt;a&gt;Link One&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a&gt;Link Two&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a&gt;Link Three&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a&gt;Link Four&lt;/a&gt;&lt;/li&gt;
-              &lt;/ul&gt;
-            &lt;/li&gt;
-            &lt;li&gt;&lt;a&gt;Link Two&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a&gt;Link Three&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a&gt;Link Four&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/li&gt;
-        &lt;li&gt;&lt;a&gt;Link Two&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a&gt;Link Three&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a&gt;Link Four&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/nav&gt;  
-  &lt;/div&gt;
-&lt;/div&gt;
-			</pre>
-		</div>
-		<div class="row mt">
-			<pre id="horizcss" class="prettyprint linenums">
-nav ul,
-.nav ul,
-ul.nav
-{
-  list-style: none outside;
-}
-
-.navbar
-{
-  *position: relative;
-  *z-index: 2;
-  overflow: visible;
-}
-
-.navbar-inner
-{
-  background-color: #cfcfcf;
-  border-top: 1px solid #efefef;
-  border-bottom: 1px solid #fefefe;
-}
-
-.horizontal
-{
-  margin: 0;
-}
-
-.horizontal>li,
-.vertical>li,
-.vertical>li>ul>li,
-.vertical>li>ul>li>ul>li,
-.filter_nav>dt,
-.filter_nav>dd
-{
-  display: block;
-  float: left;
-  margin-bottom: 0;
-  margin-left: 0;
-}
-
-.vertical>li,
-.vertical>li>ul>li,
-.vertical>li>ul>li>ul>li
-{
-	float: none;
-	position: relative;
-}
-
-.horizontal>li>a,
-.vertical>li>a,
-.filter_nav>dd>a
-{
-  display: inline-block;
-  float: none;
-  padding: 0.5em 0.865em;
-  font-size: 1em;
-  text-decoration: none;
-}
-.vertical>li>a
-{
-	display: block;
-}
-
-.horizontal>li>a:hover,
-.vertical>li>a:hover
-{
-  background: #89ac4c;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.horizontal > li > ul,
-.horizontal > li > ul > li,
-.horizontal > li > ul > li > ul,
-.horizontal > li > ul > li > ul > li
-{
-  margin: 0 !important;
-  font-size: 1em;
-  list-style: none;
-}
-
-.horizontal > li > ul > li > a,
-.vertical > li > ul > li > a,
-.horizontal > li > ul > li > ul > li > a,
-.vertical > li > ul > li > ul > li > a
-{
-  display: block;
-  background: #ffffff;
-  background: rgba(255, 255, 255, 0.9);
-  color: #0080c6;
-  font-weight: bold;
-  text-decoration: none;
-  white-space: nowrap;
-  padding: .625em 3em .625em 1.125em;
-}
-
-.horizontal > li > ul > li > a:hover,
-.vertical > li > ul > li > a:hover,
-.horizontal > li > ul > li > ul > li > a:hover,
-.vertical > li > ul > li > ul > li > a:hover
-{
-  background: #0080c6;
-  background: rgba(0, 128, 198, 1);
-  color: #fff;
-}
-
-.horizontal > li > ul,
-.vertical > li > ul
-{
-  position: absolute;
-  z-index: 5000;
-  max-height: 0;
-  width: auto;
-  margin-left: 0;
-  margin-top: 0;
-/*  border: 1px solid #cfcfcf; */
-  -webkit-box-shadow: 0 1px 9px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 1px 9px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 1px 9px rgba(0, 0, 0, 0.25);
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-  display: none;
-}
-.vertical > li > ul
-{
-	top: 0;
-	left: 100%;
-  display: block;
-}
-
-.horizontal > li:hover > ul,
-.vertical > li:hover > ul
-{
-  height: auto;
-  display: block;
-}
-
-.horizontal > li:hover > ul:before,
-.vertical > li:hover > ul:before,
-.horizontal > li > ul > li:hover > ul:before,
-.vertical > li > ul > li:hover > ul:before
-{
-  border: solid;
-  border-color: #cfcfcf transparent;
-  border-width: 0 6px 6px 6px;
-  top: -6px;
-  content: "";
-  display: block;
-  left: 12%;
-  position: absolute;
-  z-index: 301;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-}
-
-.vertical > li:hover > ul:before,
-.horizontal > li > ul > li:hover > ul:before,
-.vertical > li > ul > li:hover > ul:before
-{
-  top: 1.125em;
-  left: -6px;
-  border-color: transparent #cfcfcf;
-  border-width: 6px 6px 6px 0;
-}
-
-.horizontal > li > ul > li
-{
-  /* This is the important rule for positioning the nav
-  /* you need to give the third level a place to start */
-  position: relative;
-}
-
-.horizontal > li > ul > li > ul,
-.vertical > li > ul > li > ul,
-.vertical > li > ul
-{
-  position: absolute;
-  top: 0%;
-  z-index: 5005;
-  margin: 0;
-  height: 0;
-  width: inherit;
-/*  border: 1px solid #cfcfcf; */
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-  display: none;
-}
-
-.horizontal > li > ul > li > ul,
-.vertical > li > ul > li > ul
-{
-	list-style: none;
-  left: 100%;
-}
-
-
-.horizontal > li > ul > li:hover > ul,
-.vertical > li > ul > li:hover > ul
-{
-  display: block;
-  left: 100%;
-  height: auto;
-}
-
-  
-			</pre>
-			<pre class="prettyprint linenums">  
-$('nav li').click(function(){
-  if ($(this).hasClass('active')) {
-  } else {
-  $('nav li').removeClass('active');
-  $(this).addClass('active');
-  }
-});  
-			</pre>
-		</div>
-		<div id="vertnav" class="row">
-			<div class="col five">
-				<h4>Vertical menu bar</h4>
-				<h5 class="rmt hmb">Not much change</h5>
-				<p>Simply change the class of the ul to <kbd>vertical</kbd> from <kbd>horizontal</kbd> and the behaviour changes</p>
-				<p>Customizing the look and feel of the menu's is as easy as updating the proper a elements</p>
-				
-				<nav role="navigation">
-					<ul class="vertical">
-						<li><a>Link One</a>
-							<ul>
-								<li><a>Link One</a>
-									<ul>
-										<li><a>Link One</a></li>
-										<li><a>Link Two</a></li>
-										<li><a>Link Three</a></li>
-										<li><a>Link Four</a></li>
-									</ul>
-								</li>
-								<li><a>Link Two</a></li>
-								<li><a>Link Three</a></li>
-								<li><a>Link Four</a></li>
-							</ul>
-						</li>
-						<li><a>Link Two</a></li>
-						<li><a>Link Three</a></li>
-						<li><a>Link Four</a></li>
-					</ul>
-				</nav>  
-			</div>
-			<div class="col ten">
-				<pre class="prettyprint linenums">
-&lt;nav role=&quot;navigation&quot;&gt;
-  &lt;ul class=&quot;vertical&quot;&gt;
-    &lt;li&gt;&lt;a&gt;Link One&lt;/a&gt;
-      &lt;ul&gt;
-        &lt;li&gt;&lt;a&gt;Link One&lt;/a&gt;
-          &lt;ul&gt;
-            &lt;li&gt;&lt;a&gt;Link One&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a&gt;Link Two&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a&gt;Link Three&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a&gt;Link Four&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/li&gt;
-        &lt;li&gt;&lt;a&gt;Link Two&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a&gt;Link Three&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a&gt;Link Four&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Link Two&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Link Three&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Link Four&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;
-				</pre>
-			</div>
-		</div>
-		<div id="breadcrumbs" class="row">
-			<h5>Breadcrumbs</h5>
-				<nav role="navigation">
-					<ul class="breadcrumb">
-						<li><a href="#">This is a link</a></li>
-						<li><a href="#">Lorem link</a></li>
-						<li><a href="#">Dolor link two</a></li>
-						<li><a href="#">Here is a link</a></li>
-						<li class="active">Active Link</li>
-					</ul>  
-				</nav>  
-			
-			<div class="row mt">
-				<pre class="prettyprint linenums">
-&lt;nav role=&quot;navigation&quot;&gt;
-  &lt;ul class=&quot;breadcrumb&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;This is a link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Lorem link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Dolor link two&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Here is a link&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;active&quot;&gt;Active Link&lt;/li&gt;
-  &lt;/ul&gt;  
-&lt;/nav&gt;  
-				</pre>
-				<pre class="prettyprint linenums">
-.breadcrumb
-{
-  font-size: 1.1em;
-  color: #ccc;
-  margin: 0;
-  font-size: .865em;
-}
-  
-.breadcrumb li
-{
-  display: inline-block;
-}
-
-.breadcrumb a,
-.breadcrumb a:visited
-{
-  margin: 0 .425em;
-  text-decoration: none;
-  color: #999;
-  white-space: nowrap;
-  float: left;
-}
-
-.breadcrumb li:first-child
-{
-  margin-left: 0;
-}
-
-.breadcrumb a:hover,
-.breadcrumb a:focus
-{
-  color: #333;
-}
-
-.breadcrumb a:active,
-.breadcrumb .active a
-{
-  color: #333;
-}
-
-
-.breadcrumb li:after
-{
-  display: inline-block;
-  content: '>';
-}
-
-.breadcrumb li:last-child:after
-{
-  content: '';
-  content: none;
-}
-				</pre>
-			</div>
-		</div>
-		
-		<div id="tabmagic" class="row mt">
-		
-			<h3>Tabs</h3>
-			<p>Some very simple tabs that have dead simple jQuery that hook them up to their corresponding content.</p>
-			<menu>
-				<ul id="example" class="tabs">
-					<li><a href="javascript:;" class="active" amp-tab-content="simple">Simple</a></li>
-					<li><a href="javascript:;" amp-tab-content="lightweight">Lightweight</a></li>
-					<li><a href="javascript:;" amp-tab-content="mobileFriendly">Mobile</a></li>
-				</ul>
-				<ul class="tabs-content">
-					<li id="simple" class="active">
-						<div class="inset">
-							<p>The tabs are clean and simple unordered-list markup and basic CSS.</p>
-						</div>
-					</li>
-					<li id="lightweight">
-						<div class="inset">
-							<p>The tabs are cross-browser, but don't need a ton of hacky CSS or markup.</p>
-						</div>
-					</li>
-					<li id="mobileFriendly">
-						<div class="inset">
-							<p>The tabs work like a charm even on mobile devices. If there are too many they will stack (it's not completely awesome, but still retains functionality).</p>
-						</div>
-					</li>
-				</ul>
-			</menu>
-			
-			<div class="row mt">
-				<pre class="prettyprint linenums">
-&lt;menu&gt;
-  &lt;ul class=&quot;tabs&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;javascript:;&quot; class=&quot;active&quot; amp-tab-content=&quot;simple&quot;&gt;Simple&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;javascript:;&quot; amp-tab-content=&quot;lightweight&quot;&gt;Lightweight&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;javascript:;&quot; amp-tab-content=&quot;mobileFriendly&quot;&gt;Mobile&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;ul class=&quot;tabs-content&quot;&gt;
-    &lt;li id=&quot;simple&quot; class=&quot;active&quot;&gt;
-      &lt;div class=&quot;inset&quot;&gt;
-        &lt;p&gt;The tabs are clean and simple unordered-list markup and basic CSS.&lt;/p&gt;
-      &lt;/div&gt;&lt;/li&gt;
-    &lt;li id=&quot;lightweight&quot;&gt;
-      &lt;div class=&quot;inset&quot;&gt;
-        &lt;p&gt;The tabs are cross-browser, but don't need a ton of hacky CSS or markup.&lt;/p&gt;
-      &lt;/div&gt;&lt;/li&gt;
-    &lt;li id=&quot;mobileFriendly&quot;&gt;
-      &lt;div class=&quot;inset&quot;&gt;
-        &lt;p&gt;The tabs work like a charm even on mobile devices. If there are too many they will stack (it's not completely awesome, but still retains functionality).&lt;/p&gt;
-    &lt;/div&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/menu&gt;
-				</pre>
-				<pre class="prettyprint linenums">
-/* ==========================================================================
-   9. Tabs (activated by scripts.js)
-   ========================================================================== */
-
-
-ul.tabs
-{
-  display: block;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-ul.tabs li
-{
-  display: inline-block;
-  float: left;
-  width: auto;
-  height: 30px;
-  padding: 0;
-  margin: 0;
-}
-
-ul.tabs li.right,
-ul.tabs li.r
-{
-  float: right;
-}
-
-ul.tabs.big,
-ul.tabs.bg
-{
-  font-size: 1.3em;
-}
-
-ul.tabs li a
-{
-  position: relative;
-  top: 3px;
-  display: block;
-  width: auto;
-  padding: 0px 20px;
-  line-height: 30px;
-  margin: 0;
-  color: #4d4d4d;
-  text-decoration: none;
-  background-color: #f1f1f1;
-  border: 1px solid #ededed;
-  border-bottom: 3px solid #fff;
-}
-
-ul.tabs li a:hover
-{
-  top: 2px;
-	background-color: #fafafa;
-}
-
-ul.tabs li a.active
-{
-	top: 0;
-  border-left-width: 1px;
-  margin: 0;
-  color: #6e574c;
-  background-color: #fff;
-}
-
-ul.tabs.mini li,
-ul.tabs.mini li a
-{
-  font: -webkit-control;
-  font-size: 0.826em;
-}
-
-ul.tabs li:first-child a.active
-{
-  margin-left: 0;
-}
-
-ul.tabs li:first-child a
-{
-  -webkit-border-top-left-radius: 2px;
-  -moz-border-radius-topleft: 2px;
-  border-top-left-radius: 2px;
-}
-
-ul.tabs li:last-child a
-{
-}
-
-ul.tabs-content
-{
-  position: relative;
-  top: 3px;
-  margin: 0;
-  display: block;
-  list-style: none;
-}
-
-ul.tabs-content > li
-{
-  display: none;
-}
-
-ul.tabs-content > li.active
-{
-  display: block;
-  background-color: #fefefe;
-}
-
-/* Clearfixing tabs for beautiful stacking */
-
-ul.tabs:before,
-ul.tabs:after
-{
-  content: '\0020';
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-
-ul.tabs:after
-{
-  clear: both;
-}
-
-ul.tabs
-{
-  zoom: 1;
-}
-					</pre>
-					<pre class="prettyprint linenums">  
-$('.tabs li a').click(function(){
-  var parent = $(this).closest('ul').attr('id');
-  var content = '#'+$(this).attr('amp-tab-content');
-  if ($(this).hasClass('active') && content.length) {
-    } else {
-      if (parent > 0)
-        {
-          $('#'+parent+'.tabs li a').removeClass('active');
-          $(this).addClass('active');
-        } else {
-          $('.tabs li a').removeClass('active');
-          $(this).addClass('active');
-        }
-      $(content).show().addClass('active').siblings().hide().removeClass('active');
-    }
-  return false;
-});  
-					</pre>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="" class="row mt">  
-		<div id="pagination" class="col eight first">
-			<h4>Pagination</h4>
-			<menu role="navigation">
-				<ul class="pager_nav">
-					<li><a class="button" href="#uxnav">First</a></li>
-					<li class="active">1</span></li>
-					<li><a class="button" href="#uxnav">2</a></li>
-					<li><a class="button" href="#uxnav">3</a></li>
-					<li><a class="button" href="#uxnav">4</a></li>
-					<li><a class="button" href="#uxnav">5</a></li>
-					<li><a class="button" href="#uxnav">...</a></li>
-					<li><a class="button" href="#uxnav">Last</a></li>
-					<li><input type="text"><button type="button" class="button">Jump</button></li>
-				</ul>
-			</menu>
-				
-			<pre class="prettyprint linenums">
-&lt;menu role=&quot;navigation&quot;&gt;
-  &lt;ul class=&quot;pager_nav&quot;&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;First&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span class=&quot;button active&quot;&gt;1&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;5&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;...&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Last&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;
-      &lt;input type=&quot;text&quot;&gt;
-      &lt;button type=&quot;button&quot; class=&quot;button&quot;&gt;Jump&lt;/button&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/menu&gt;
-			</pre>
-		</div>
-		<div class="col eight last">
-			<h4>Filter Nav</h4>
-			<menu role="navigation">
-				<dl class="filter_nav">
-					<dt>Filter by:</dt>
-					<dd class="active"><a href="#uxnav">Option 1</a></dd>
-					<dd><a href="#uxnav">Option 2</a></dd>
-					<dd><a href="#uxnav">Option 3</a></dd>
-				</dl>
-			</menu>
-				
-			<pre class="prettyprint linenums">
-&lt;menu role=&quot;navigation&quot;&gt;
-  &lt;dl class=&quot;filter_nav&quot;&gt;
-    &lt;dt&gt;Filter by:&lt;/dt&gt;
-    &lt;dd class=&quot;active&quot;&gt;&lt;a href=&quot;#uxnav&quot;&gt;Option 1&lt;/a&gt;&lt;/dd&gt;
-    &lt;dd&gt;&lt;a href=&quot;#uxnav&quot;&gt;Option 2&lt;/a&gt;&lt;/dd&gt;
-    &lt;dd&gt;&lt;a href=&quot;#uxnav&quot;&gt;Option 3&lt;/a&gt;&lt;/dd&gt;
-  &lt;/dl&gt;
-&lt;/menu&gt;
-			</pre>
-			
-			<h4>Button Group</h4>
-			<menu role="navigation">
-				<ul class="button_grp">
-					<li><a class="button" href="#uxnav"><span class="icon-arrow-left hmr"></span>Prev</a></li>
-					<li><a class="button" href="#uxnav">Next<span class="icon-arrow-right hml"></span></a></li>
-				</ul>
-			</menu>
-			<pre class="prettyprint linenums">
-&lt;menu role=&quot;navigation&quot;&gt;
-  &lt;ul class=&quot;button_grp&quot;&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#uxnav&quot;&gt;&lt;span class=&quot;icon-arrow-left hmr&quot;&gt;&lt;/span&gt;Prev&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class=&quot;button&quot; href=&quot;#uxnav&quot;&gt;Next&lt;span class=&quot;icon-arrow-right hml&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/menu&gt;
-			</pre>
-		</div>
-	</section>
-	<section id="modals" class="row mt">
-		<div class="col sixteen">
-        	<h1>Modals</h1>
-
-<p>There are two flavours and three sizes of modal boxes included with the mergini framework application modals and inline modals, application modals activate an empty container and the foot of the mergini application and take over the whole screen with a blur effect, inline modals are ones you build inside your application and call as neccessary and do not include the blur and focus functions.</p>
-
-<h2>Inline Modals</h2>
-
-<p>Inline modals are pretty easy to implement simply add the <a href="http://a.mphibio.us">a.mphibio.us</a> listener class <kbd>modal_opener</kbd> and assign the element an <kbd>amp-target</kbd> attribute the <kbd>id</kbd> of the modal you want to launch.</p>
-
-<p>Closing a modal is just as simple;assign the button, link, or icon the listener <kbd>modal_kill</kbd> and the proper <kbd>amp-target</kbd> attribute and it's gone.</p>
-
-			<pre class="prettyprint linenums">
-&lt;button class=&quot;modal_opener&quot; amp-target=&quot;launcher_modal&quot;&gt;Sample Modal Opener&lt;/button&gt;
-
-&lt;div id=&quot;launcher_modal&quot; class=&quot;overlay&quot;&gt;
-  &lt;div id=&quot;launcher_content&quot; class=&quot;modal small&quot;&gt;
-    &lt;header&gt;
-    &lt;!--// We recomend using this closing button on all modals the javascript is already handled simply add the
-    class modal_kill and assign the amp-target attribute to the id of your overlay container id it is included in the 
-default configuration of the modal launcher //--&gt;
-      &lt;span class=&quot;icon-close-icon right modal_kill&quot; amp-target=&quot;launcher_modal&quot;&gt;&lt;/span&gt;
-      &lt;h3&gt;Modal Header &lt;/h3&gt;
-    &lt;/header&gt;
-    &lt;section&gt;
-      ...
-    &lt;/section&gt;
-    &lt;footer&gt;
-      &lt;fieldset class=&quot;form-actions&quot;&gt;
-        &lt;button id=&quot;eventDetailActionBtn&quot; type=&quot;button&quot; class=&quot;&quot;&gt;Action&lt;/button&gt;
-        &lt;button type=&quot;reset&quot; class=&quot;modal_kill cancel&quot; amp-target=&quot;launcher_modal&quot;&gt;Cancel&lt;/button&gt;
-      &lt;/fieldset&gt;
-    &lt;/footer&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-			</pre>
-			<div class="row">
-				<button class="modal_opener" amp-target="launcher_modal">Sample Modal Opener</button>
-			</div>
-			<a href="#" class="modal_opener" amp-target="launcher_modal">Sample Modal Opener</a>
-			
-			<div class="dialog">If using an anchor as the modal trigger include an href element (see below) for better mobile compatibility, or stick to buttons for greater usability.</div>
-			
-			<pre class="prettyprint linenums">
-&lt;a href=&quot;#&quot; class=&quot;modal_opener&quot; amp-target=&quot;launcher_modal&quot;&gt;Sample Modal Opener&lt;/a&gt;
-			</pre>
-			
-			<h2>Modal Sizing</h2>
-			
-			<p>Modals are designed to be fluid the default width of the modal is 90% of the screen width up to a maximum width of 940px, a minimum width of 660px and the height grows according to the content within them.</p>
-			
-			<p>Adding the class(es) <kbd>small</kbd> or <kbd>medium</kbd> to the <kbd>modal</kbd> either in your source code or dynamically will change the width of the modal to a width of 200px or 30% of the screen for small and 400px or 60% of the screen width.</p>
-			
-			<h2>Dialogues</h2>
-			
-			<p>A.mphibio.us has some default messaging dialogue boxes available for user feedback assign anyone of the following classes to a container and have consitant feedback elements. Or add and remove these classes to a feedback container as part of your user error handling techniques. They can contain any kind of html.</p>
-			
-			<div class="error">Sample Error message</div>
-			
-			<pre class="prettyprint linenums">
-&lt;div class=&quot;error&quot;&gt;Sample Error message&lt;/div&gt;
-			</pre>
-			
-			<div class="attn"><span class="icon-mergini_logo r"></span>Sample Attention message with icon</div>
-			
-			<pre class="prettyprint linenums">
-&lt;div class=&quot;attn&quot;&gt;&lt;span class=&quot;icon-mergini_logo r&quot;&gt;&lt;/span&gt;Sample Attention message with icon&lt;/div&gt;
-			</pre>
-
-			<div id="feedback" class="dialog">
-				<span class="icon-close a r mr cancel" amp-target="feedback"></span>
-				<h3>Title</h3>
-				<p>Sample Attention message with icon</p>
-			</div>
-			
-			<pre class="prettyprint linenums">
-&lt;div id=&quot;feedback&quot; class=&quot;dialog&quot;&gt;
-  &lt;span class=&quot;icon-close a r mr cancel&quot; amp-target=&quot;feedback&quot;&gt;&lt;/span&gt;
-  &lt;h3&gt;Title&lt;/h3&gt;
-  &lt;p&gt;Sample Attention message with icon&lt;/p&gt;
-&lt;/div&gt;
-			</pre>
-
+    <!-- Documentation Navigation -->
+    <nav class="docs-nav">
+        <div class="container">
+            <h1>Amphibious 2.0 Documentation</h1>
+            <div class="nav-links">
+                <a href="foundation.html">Foundation</a>
+                <a href="form.html">Form</a>
+                <a href="function.html" class="active">Function</a>
+                <a href="features.html">Features</a>
+            </div>
         </div>
-	</section>
-	
-</div><!-- /#maincontent.content -->
+    </nav>
 
-</div><!-- /#main.container -->
-	
-	
-<footer id="amp_footer" class="row">
-	<p><a href="/"><span class="icon-amphibious hmr"></span></a> <a href="http://www.lassosoft.com/"><span class="icon-lassosoft hmr"></span></a> <a href="http://www.mergini.com/"><span class="icon-mergini hmr"></span></a> Curated by Clive Moore, at <a href="http://www.treefrog.ca"><span class="icon-treefrog hmr"></span>Treefrog Inc.</a> <strong>Twitter</strong>: <a href="http://www.twitter.com/cliveMoore" title="Follow Clive on Twitter">@cliveMoore</a> <a href="/sitemap.html"><span class="icon-flow-tree"></span> Sitemap</a></p>
-</footer>
+    <div class="container">
+        <!-- Page Header -->
+        <header>
+            <h1>Function</h1>
+            <p class="lead">Navigation, breadcrumbs, tabs, pagination, and interactive UI components for creating functional user interfaces.</p>
+        </header>
 
-<div id="mainnav" class="f t l r">
-<!--// WTF?
+        <!-- Navigation Section -->
+        <section id="navigation" class="section">
+            <h2>Navigation</h2>
+            <p>Create sleek, clean navigation bars and menu lists. Simple JavaScript is used to link tabs and buttons to destination content. Create calls to action that are clearly defined and easy to identify.</p>
 
-.f.t.l.r == .fixed .top .left .right
+            <h3 id="horizontal-nav">Horizontal Navigation</h3>
+            <p>Horizontal navigation bars with dropdown support and tertiary menus.</p>
 
-// .left (.l) or .right (.r) no longer floats left/right respectively
-when used in combination with the fixed or the absolute class
-they inherit different properties the result is
+            <div class="example">
+                <div class="example-title">Basic Horizontal Navigation</div>
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <nav role="navigation">
+                            <ul class="horizontal">
+                                <li>
+                                    <a href="#">Products</a>
+                                    <ul>
+                                        <li><a href="#">Web Development</a></li>
+                                        <li><a href="#">Mobile Apps</a></li>
+                                        <li><a href="#">E-commerce</a></li>
+                                        <li><a href="#">Consulting</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Services</a>
+                                    <ul>
+                                        <li><a href="#">Design</a></li>
+                                        <li><a href="#">Development</a></li>
+                                        <li><a href="#">Support</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
 
-postion:fixed;top:0;left:0;right:0;
+            <div class="code-block">
+                <pre><code>&lt;div class="navbar"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;nav role="navigation"&gt;
+      &lt;ul class="horizontal"&gt;
+        &lt;li&gt;
+          &lt;a href="#"&gt;Products&lt;/a&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Web Development&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Mobile Apps&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;E-commerce&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Consulting&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href="#"&gt;Services&lt;/a&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Design&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Development&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Support&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
 
-//-->
-	<div class="container">
-		<nav>
-			<ul id="horizontal" class="horizontal branded">
-				<li><a href="/index.html#intro" class="hpl">a.mphibio.us</a>
-					<ul>
-						<li><a href="/index.html#what_is_it">What is A.mphibio.us</a></li>
-						<li><a href="/index.html#how_its_made">What is it made of?</a></li>
-<!--						<li><a href="/index.html#slides">Flexslider Slideshows</a></li> -->
- 							<li><a href="/index.html#gallery">A.mphibio.us Showcase</a></li>
-						<li><a href="/index.html#evolution">The E.volution of A.mphibio.us</a></li>
-						<li><a href="/index.html#colophon">The A.mphibio.us Colophon</a></li>
-					</ul>
-				</li>
-				<li><a href="/docs/foundation.html">Foundation</a>
-					<ul>
-						<li><a href="/docs/foundation.html#core">Core</a></li>
-						<li><a href="/docs/foundation.html#grid">Symantic Grid</a></li>
-						<li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-						<li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-<!--//					<li><a href="/docs/foundation.html#padded_col">Padded Columns</a></li> //-->
-						<li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-						<li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-						<li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-					</ul>
-				</li>
-				<li><a href="/docs/form.html">Form</a>
-					<ul>
+            <h3 id="vertical-nav">Vertical Navigation</h3>
+            <p>Vertical navigation menus with collapsible submenus. Simply change the class from <code>horizontal</code> to <code>vertical</code>.</p>
 
-						<li><a href="/docs/form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
-						<li><a href="/docs/form.html#forms">Basic Forms</a></li>
-						<li><a href="/docs/form.html#multi_forms">Mutli Beside Forms</a></li>
-						<li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-						<li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-						<li><a href="/docs/form.html#datepicker_fields">jQuery Datepicker Fields</a></li>
-						<li><a href="/docs/form.html#tables">Tables <sub>not for layout</sub></a></li>
-					</ul>
-				</li>
-				<li class="active"><a href="/docs/function.html">Function</a>
-					<ul>
+            <div class="row">
+                <div class="col-4">
+                    <div class="example">
+                        <div class="example-title">Vertical Menu</div>
+                        <nav role="navigation">
+                            <ul class="vertical">
+                                <li>
+                                    <a href="#">Dashboard</a>
+                                    <ul>
+                                        <li><a href="#">Analytics</a></li>
+                                        <li><a href="#">Reports</a></li>
+                                        <li><a href="#">Settings</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Projects</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Settings</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="code-block">
+                        <pre><code>&lt;nav role="navigation"&gt;
+  &lt;ul class="vertical"&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;Dashboard&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Analytics&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Reports&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Team&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-						<li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-						<li><a href="/docs/function.html#horizcss">Horizontal Nav <sub>css</sub></a></li>
-						<li><a href="/docs/function.html#vertnav">Vertical Nav <sub>with tertiary</sub></a></li>
-						<li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-						<li><a href="/docs/function.html#tabmagic">Tabs</a></li>
-						<li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-					</ul>
-				</li>
-				<li><a href="/docs/features.html">Features</a>
-					<ul>
-						<li><a href="/docs/features.html#slides">Responsive Slide Shows</a></li>
-						<li><a href="/docs/features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
-						<li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-						<li><a href="/docs/features.html#icons">Webfont Icons <sub>by entypo</sub></a></li>
-					</ul>
-				</li>
-				<li><a href="javascript:;" class="modal_opener" amp-target="amp_overlay">Feedback</a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
+        <!-- Breadcrumbs Section -->
+        <section id="breadcrumbs" class="section">
+            <h2>Breadcrumbs</h2>
+            <p>Breadcrumb navigation shows users their current location within a site hierarchy and provides a way to navigate back to parent pages.</p>
 
-<button id="nav_toggle" type="button"><span class="icon-carret-left"></span></button>
+            <div class="example">
+                <div class="example-title">Basic Breadcrumbs</div>
+                <nav role="navigation">
+                    <ul class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Function</a></li>
+                        <li class="active">Breadcrumbs</li>
+                    </ul>
+                </nav>
+            </div>
 
-<div id="amp_overlay" class="modal_overlay">
-	<div class="modal mt">
-		<section>
-			<div class="row">
-				<span class="icon-cross-round large right rmr modal_kill" amp-target="amp_overlay"></span>
-			</div>
-			<div id="disqus_thread"></div>
-			<script type="text/javascript">
-			    /* * * CONFIGURATION VARIABLES * * */
-			    var disqus_shortname = 'amphibious';
-			    
-			    /* * * DON'T EDIT BELOW THIS LINE * * */
-			    (function() {
-			        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			    })();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            <div class="code-block">
+                <pre><code>&lt;nav role="navigation"&gt;
+  &lt;ul class="breadcrumb"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Function&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;Breadcrumbs&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+        </section>
 
-			
-		</section>
-	</div>
-</div>
+        <!-- Tabs Section -->
+        <section id="tabs" class="section">
+            <h2>Tabs</h2>
+            <p>Simple, clean tab interface with JavaScript integration for switching between content panels.</p>
 
+            <div class="example">
+                <div class="example-title">Interactive Tabs</div>
+                <menu>
+                    <ul class="tabs">
+                        <li><a href="javascript:;" class="active" data-tab="simple">Simple</a></li>
+                        <li><a href="javascript:;" data-tab="lightweight">Lightweight</a></li>
+                        <li><a href="javascript:;" data-tab="mobile">Mobile Friendly</a></li>
+                    </ul>
+                    <ul class="tabs-content">
+                        <li id="simple" class="active">
+                            <p>The tabs are clean and simple unordered-list markup with basic CSS. They provide an intuitive way to organize content into logical sections.</p>
+                        </li>
+                        <li id="lightweight">
+                            <p>The tabs are cross-browser compatible and don't require heavy JavaScript frameworks. The implementation is lightweight and performant.</p>
+                        </li>
+                        <li id="mobile">
+                            <p>The tabs work seamlessly on mobile devices. On smaller screens, they stack gracefully while maintaining full functionality.</p>
+                        </li>
+                    </ul>
+                </menu>
+            </div>
 
-<a href="http://github.com/Treefrog/A.mphibio.us">
-	<img id="forkme" src="http://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub">
-</a>
+            <div class="code-block">
+                <pre><code>&lt;menu&gt;
+  &lt;ul class="tabs"&gt;
+    &lt;li&gt;&lt;a href="javascript:;" class="active" data-tab="simple"&gt;Simple&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="javascript:;" data-tab="lightweight"&gt;Lightweight&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="javascript:;" data-tab="mobile"&gt;Mobile Friendly&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="tabs-content"&gt;
+    &lt;li id="simple" class="active"&gt;
+      &lt;p&gt;The tabs are clean and simple...&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id="lightweight"&gt;
+      &lt;p&gt;The tabs are cross-browser compatible...&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id="mobile"&gt;
+      &lt;p&gt;The tabs work seamlessly on mobile devices...&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/menu&gt;</code></pre>
+            </div>
 
-<div id="launcher_modal" class="modal_overlay">
-	<div id="launcher_content" class="modal small">
-		<header>
-			<span class="icon-cross-round large right rmr modal_kill" amp-target="launcher_modal"></span>
+            <h4>JavaScript Implementation</h4>
+            <div class="code-block">
+                <pre><code>// Tab switching functionality
+document.querySelectorAll('.tabs a').forEach(tab => {
+  tab.addEventListener('click', function(e) {
+    e.preventDefault();
 
-			<h3>Modal Header </h3>
-		</header>
-		<section>
-			Modal body...
-		</section>
-		<footer>
-			<fieldset class="form-actions">
-				<button id="eventDetailActionBtn" type="submit" class="">Action</button>
-				<button type="reset" class="modal_kill" amp-target="launcher_modal">Cancel</button>
-			</fieldset>
-		</footer>
-	</div>
-</div>
+    // Remove active class from all tabs and content
+    document.querySelectorAll('.tabs a').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tabs-content li').forEach(content => {
+      content.classList.remove('active');
+    });
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/js/jquery-1.11.1.min.js"><\/script>')</script>
+    // Add active class to clicked tab
+    this.classList.add('active');
 
-<script type="text/javascript" src="/src/js/run_prettify.js"></script>
-<script type="text/javascript" src="/src/js/jquery-ui.min.js"></script>
+    // Show corresponding content
+    const targetId = this.getAttribute('data-tab');
+    document.getElementById(targetId).classList.add('active');
+  });
+});</code></pre>
+            </div>
+        </section>
 
-<script src="/js/a.mphibio.us.js"></script>
+        <!-- Pagination Section -->
+        <section id="pagination" class="section">
+            <h2>Pagination</h2>
+            <p>Navigation components for multi-page content, including standard pagination, filter navigation, and button groups.</p>
 
-<script type="text/javascript">
+            <div class="row">
+                <div class="col-6">
+                    <h4>Standard Pagination</h4>
+                    <div class="example">
+                        <nav role="navigation">
+                            <ul class="pagination">
+                                <li><a href="#">‹ Prev</a></li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">...</a></li>
+                                <li><a href="#">Next ›</a></li>
+                            </ul>
+                        </nav>
+                    </div>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35159096-1']);
-  _gaq.push(['_trackPageview']);
+                    <div class="code-block">
+                        <pre><code>&lt;nav role="navigation"&gt;
+  &lt;ul class="pagination"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;‹ Prev&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Next ›&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
 
-  (function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+                <div class="col-6">
+                    <h4>Filter Navigation</h4>
+                    <div class="example">
+                        <nav role="navigation">
+                            <ul class="pagination">
+                                <li><strong>Filter by:</strong></li>
+                                <li class="active"><span>All</span></li>
+                                <li><a href="#">Active</a></li>
+                                <li><a href="#">Completed</a></li>
+                                <li><a href="#">Archived</a></li>
+                            </ul>
+                        </nav>
+                    </div>
 
-</script>
+                    <div class="code-block">
+                        <pre><code>&lt;nav role="navigation"&gt;
+  &lt;ul class="pagination"&gt;
+    &lt;li&gt;&lt;strong&gt;Filter by:&lt;/strong&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;&lt;span&gt;All&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Active&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Completed&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Archived&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Button Groups</h4>
+            <div class="example">
+                <nav role="navigation">
+                    <ul class="pagination">
+                        <li><a href="#">← Previous</a></li>
+                        <li><a href="#">Next →</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;nav role="navigation"&gt;
+  &lt;ul class="pagination"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;← Previous&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Next →&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Steps Section -->
+        <section id="steps" class="section">
+            <h2>Steps & Progress</h2>
+            <p>Step indicators and progress navigation for multi-step processes and workflows.</p>
+
+            <div class="example">
+                <div class="example-title">Step Indicator</div>
+                <nav role="navigation">
+                    <ul class="pagination">
+                        <li class="active"><span>1. Account</span></li>
+                        <li><a href="#">2. Profile</a></li>
+                        <li><a href="#">3. Preferences</a></li>
+                        <li><a href="#">4. Complete</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;nav role="navigation"&gt;
+  &lt;ul class="pagination"&gt;
+    &lt;li class="active"&gt;&lt;span&gt;1. Account&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2. Profile&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3. Preferences&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4. Complete&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Best Practices Section -->
+        <section id="best-practices" class="section">
+            <h2>Best Practices</h2>
+
+            <h3>Accessibility</h3>
+            <ul>
+                <li>Always use semantic HTML elements like <code>&lt;nav&gt;</code> and <code>role="navigation"</code></li>
+                <li>Provide clear, descriptive link text</li>
+                <li>Use ARIA attributes where appropriate</li>
+                <li>Ensure sufficient color contrast for all interactive elements</li>
+                <li>Make navigation keyboard accessible</li>
+            </ul>
+
+            <h3>Mobile Considerations</h3>
+            <ul>
+                <li>Horizontal navigation should stack or collapse on smaller screens</li>
+                <li>Touch targets should be at least 44px × 44px</li>
+                <li>Consider using hamburger menus for complex navigation</li>
+                <li>Test tab interfaces on touch devices</li>
+            </ul>
+
+            <h3>Performance</h3>
+            <ul>
+                <li>Use CSS transitions instead of JavaScript animations where possible</li>
+                <li>Minimize DOM manipulation in tab switching</li>
+                <li>Consider lazy loading for content-heavy tabs</li>
+                <li>Use event delegation for large pagination sets</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- JavaScript for interactive demos -->
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tabs a').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Remove active class from all tabs and content
+                const tabContainer = this.closest('menu');
+                tabContainer.querySelectorAll('.tabs a').forEach(t => t.classList.remove('active'));
+                tabContainer.querySelectorAll('.tabs-content li').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Show corresponding content
+                const targetId = this.getAttribute('data-tab');
+                tabContainer.querySelector('#' + targetId).classList.add('active');
+            });
+        });
+
+        // Enhanced navigation dropdowns
+        document.querySelectorAll('.horizontal > li').forEach(item => {
+            const submenu = item.querySelector('ul');
+            if (submenu) {
+                item.addEventListener('mouseenter', () => {
+                    submenu.style.display = 'block';
+                });
+                item.addEventListener('mouseleave', () => {
+                    submenu.style.display = 'none';
+                });
+            }
+        });
+
+        // Vertical navigation toggle
+        document.querySelectorAll('.vertical > li').forEach(item => {
+            const submenu = item.querySelector('ul');
+            if (submenu) {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const isVisible = submenu.style.display === 'block';
+                    submenu.style.display = isVisible ? 'none' : 'block';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

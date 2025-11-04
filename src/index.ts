@@ -17,6 +17,11 @@ import { Forms } from './js/forms';
 import { Modal, ModalManager } from './js/modal';
 import { Icon, EcommerceIcons } from './js/icons';
 import { Tooltip, EcommerceTooltips } from './js/tooltip';
+import { AmphibiousCarousel } from './js/carousel';
+
+// Import new component modules
+import { AmphibiousNavigation, createNavigation } from './components/navigation';
+import { AmphibiousFooter, createFooter } from './components/footer';
 
 // Initialize modules
 let navigation: Navigation | null = null;
@@ -39,6 +44,7 @@ export const amp = {
     ecommerceIcons: EcommerceIcons,
     tooltip: Tooltip,
     ecommerceTooltips: EcommerceTooltips,
+    carousel: AmphibiousCarousel,
   },
 
   /**
@@ -252,6 +258,27 @@ export const amp = {
   createShippingTooltip(element: HTMLElement, shippingData: any): Tooltip {
     return EcommerceTooltips.shippingInfo(element, shippingData);
   },
+
+  /**
+   * Utility: Create navigation component
+   */
+  createNavigation(selector: string | HTMLElement, options?: any): AmphibiousNavigation {
+    return createNavigation(selector, options);
+  },
+
+  /**
+   * Utility: Create footer component
+   */
+  createFooter(selector: string | HTMLElement, options?: any): AmphibiousFooter {
+    return createFooter(selector, options);
+  },
+
+  /**
+   * Utility: Create carousel component
+   */
+  createCarousel(selector: string | HTMLElement, options?: any): AmphibiousCarousel {
+    return new AmphibiousCarousel(selector, options);
+  },
 };
 
 // Auto-initialize on DOM ready
@@ -264,7 +291,23 @@ if (typeof window !== 'undefined') {
 }
 
 // Export modules for direct access
-export { Navigation, SmoothScroll, Tabs, Forms, Modal, ModalManager, Icon, EcommerceIcons, Tooltip, EcommerceTooltips };
+export {
+  Navigation,
+  SmoothScroll,
+  Tabs,
+  Forms,
+  Modal,
+  ModalManager,
+  Icon,
+  EcommerceIcons,
+  Tooltip,
+  EcommerceTooltips,
+  AmphibiousNavigation,
+  createNavigation,
+  AmphibiousFooter,
+  createFooter,
+  AmphibiousCarousel,
+};
 
 // Export for module usage
 export default amp;

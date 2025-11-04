@@ -120,10 +120,16 @@ export class Tooltip {
 
   private handleMouseEnter(): void {
     this.clearHideTimeout();
-    this.show();
+    if (this.options.delay > 0) {
+      this.clearShowTimeout();
+      this.showTimeout = setTimeout(() => this.show(), this.options.delay);
+    } else {
+      this.show();
+    }
   }
 
   private handleMouseLeave(): void {
+    this.clearShowTimeout();
     if (!this.options.interactive) {
       this.hide();
     }
@@ -213,11 +219,18 @@ export class Tooltip {
     if (!this.tooltipElement) return;
 
     const triggerRect = this.element.getBoundingClientRect();
-    const tooltipRect = this.tooltipElement.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     const scrollX = window.pageXOffset;
     const scrollY = window.pageYOffset;
+
+    // First, position the tooltip off-screen to get its dimensions
+    this.tooltipElement.style.visibility = 'hidden';
+    this.tooltipElement.style.left = '-9999px';
+    this.tooltipElement.style.top = '-9999px';
+    this.tooltipElement.style.display = 'block';
+
+    const tooltipRect = this.tooltipElement.getBoundingClientRect();
 
     let position = this.options.position;
 
@@ -227,7 +240,8 @@ export class Tooltip {
     // Calculate coordinates
     const coords = this.calculatePosition(position, triggerRect, tooltipRect);
 
-    // Apply position
+    // Apply final position
+    this.tooltipElement.style.visibility = 'visible';
     this.tooltipElement.style.left = `${coords.x + scrollX}px`;
     this.tooltipElement.style.top = `${coords.y + scrollY}px`;
 
@@ -248,9 +262,10 @@ export class Tooltip {
     viewportHeight: number
   ): TooltipOptions['position'] {
     const coords = this.calculatePosition(position, triggerRect, tooltipRect);
+    const margin = 10; // Add margin from viewport edges
 
     // Check if tooltip goes outside viewport and adjust
-    if (coords.x < 0) {
+    if (coords.x < margin) {
       if (position?.includes('left')) return position.replace('left', 'right') as TooltipOptions['position'];
       if (position?.includes('top') || position?.includes('bottom')) {
         const basePart = position?.split('-')[0];
@@ -258,7 +273,7 @@ export class Tooltip {
       }
     }
 
-    if (coords.x + tooltipRect.width > viewportWidth) {
+    if (coords.x + tooltipRect.width > viewportWidth - margin) {
       if (position?.includes('right')) return position.replace('right', 'left') as TooltipOptions['position'];
       if (position?.includes('top') || position?.includes('bottom')) {
         const basePart = position?.split('-')[0];
@@ -266,12 +281,16 @@ export class Tooltip {
       }
     }
 
-    if (coords.y < 0) {
+    if (coords.y < margin) {
       if (position?.includes('top')) return position.replace('top', 'bottom') as TooltipOptions['position'];
+      // If still doesn't fit, try horizontal positioning
+      if (!position?.includes('bottom')) return 'right';
     }
 
-    if (coords.y + tooltipRect.height > viewportHeight) {
+    if (coords.y + tooltipRect.height > viewportHeight - margin) {
       if (position?.includes('bottom')) return position.replace('bottom', 'top') as TooltipOptions['position'];
+      // If still doesn't fit, try horizontal positioning
+      if (!position?.includes('top')) return 'left';
     }
 
     return position;

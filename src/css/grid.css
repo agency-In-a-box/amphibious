@@ -1,573 +1,338 @@
 /* ==========================================================================
-   16-Column Grid System - Amphibious 2.0
-   Based on 960 Grid System principles from original A.mphibio.us
+   Modern Flexbox Grid System - Amphibious 2.0
+   16-Column responsive grid with proper box-sizing
    ========================================================================== */
 
 /* Container
    ========================================================================== */
 
 .container {
-  width: var(--container-width, 960px);
+  width: min(960px, 96%);
   margin: 0 auto;
   padding: 0;
   position: relative;
 }
 
 .container.fluid {
-  width: var(--container-width-fluid, 96%);
+  width: 96%;
+  max-width: none;
 }
 
 .container.fluid.bleed {
   width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-/* Row - Clearfix for float-based grid
-   ========================================================================== */
-
-.row {
-  margin: 0;
   padding: 0;
 }
 
-.row:before,
-.row:after {
-  content: " ";
-  display: table;
-}
-
-.row:after {
-  clear: both;
-}
-
-/* Base Column Styles
+/* Row - Flexbox Container
    ========================================================================== */
 
-.container .col {
-  float: left;
-  display: inline;
-  margin-left: 10px;
-  margin-right: 10px;
-  position: relative;
-}
-
-.container .col.padded {
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-/* First and Last Column Modifiers */
-.col.first,
-.col.sixteen .col.sixteen {
-  margin-left: 0 !important;
-  padding-left: 0;
-}
-
-.col.last,
-.col.sixteen .col.sixteen {
-  margin-right: 0 !important;
-  padding-right: 0;
-}
-
-/* 16-Column Grid - Fixed Width (960px)
-   ========================================================================== */
-
-/* Column 1 */
-.container .one.col,
-.container .col-1,
-.container table th.one,
-.container table td.one {
-  width: 40px;
-}
-
-/* Column 2 */
-.container .two.col,
-.container .col-2,
-.container table th.two,
-.container table td.two {
-  width: 100px;
-}
-
-/* Column 3 */
-.container .three.col,
-.container .col-3,
-.container table th.three,
-.container table td.three {
-  width: 160px;
-}
-
-/* Column 4 - One Quarter */
-.container .four.col,
-.container .col-4,
-.container .one-quarter.col,
-.container table th.four,
-.container table td.four {
-  width: 220px;
-}
-
-/* Column 5 */
-.container .five.col,
-.container .col-5,
-.container table th.five,
-.container table td.five {
-  width: 280px;
-}
-
-/* Column 6 */
-.container .six.col,
-.container .col-6,
-.container table th.six,
-.container table td.six {
-  width: 340px;
-}
-
-/* Column 7 */
-.container .seven.col,
-.container .col-7,
-.container table th.seven,
-.container table td.seven {
-  width: 400px;
-}
-
-/* Column 8 - Half */
-.container .eight.col,
-.container .col-8,
-.container .half.col,
-.container table th.eight,
-.container table td.eight {
-  width: 460px;
-}
-
-/* Column 9 */
-.container .nine.col,
-.container .col-9,
-.container table th.nine,
-.container table td.nine {
-  width: 520px;
-}
-
-/* Column 10 */
-.container .ten.col,
-.container .col-10,
-.container table th.ten,
-.container table td.ten {
-  width: 580px;
-}
-
-/* Column 11 */
-.container .eleven.col,
-.container .col-11,
-.container table th.eleven,
-.container table td.eleven {
-  width: 640px;
-}
-
-/* Column 12 - Three Quarters */
-.container .twelve.col,
-.container .col-12,
-.container .three-quarters.col,
-.container table th.twelve,
-.container table td.twelve {
-  width: 700px;
-}
-
-/* Column 13 */
-.container .thirteen.col,
-.container .col-13,
-.container table th.thirteen,
-.container table td.thirteen {
-  width: 760px;
-}
-
-/* Column 14 */
-.container .fourteen.col,
-.container .col-14,
-.container table th.fourteen,
-.container table td.fourteen {
-  width: 820px;
-}
-
-/* Column 15 */
-.container .fifteen.col,
-.container .col-15,
-.container table th.fifteen,
-.container table td.fifteen {
-  width: 880px;
-}
-
-/* Column 16 - Full Width */
-.container .sixteen.col,
-.container .col-16,
-.container table th.sixteen,
-.container table td.sixteen {
-  width: 940px;
-}
-
-/* Fluid Grid - Percentage Based
-   ========================================================================== */
-
-.container.fluid .one.col,
-.container.fluid .col-1 {
-  width: 4.25%;
-}
-.container.fluid .two.col,
-.container.fluid .col-2 {
-  width: 10.5%;
-}
-.container.fluid .three.col,
-.container.fluid .col-3 {
-  width: 16.75%;
-}
-.container.fluid .four.col,
-.container.fluid .col-4,
-.container.fluid .one-quarter.col {
-  width: 23%;
-}
-.container.fluid .five.col,
-.container.fluid .col-5 {
-  width: 29.25%;
-}
-.container.fluid .six.col,
-.container.fluid .col-6 {
-  width: 35.5%;
-}
-.container.fluid .seven.col,
-.container.fluid .col-7 {
-  width: 41.75%;
-}
-.container.fluid .eight.col,
-.container.fluid .col-8,
-.container.fluid .half.col {
-  width: 48%;
-}
-.container.fluid .nine.col,
-.container.fluid .col-9 {
-  width: 54.25%;
-}
-.container.fluid .ten.col,
-.container.fluid .col-10 {
-  width: 60.5%;
-}
-.container.fluid .eleven.col,
-.container.fluid .col-11 {
-  width: 66.75%;
-}
-.container.fluid .twelve.col,
-.container.fluid .col-12,
-.container.fluid .three-quarters.col {
-  width: 73%;
-}
-.container.fluid .thirteen.col,
-.container.fluid .col-13 {
-  width: 79.25%;
-}
-.container.fluid .fourteen.col,
-.container.fluid .col-14 {
-  width: 85.5%;
-}
-.container.fluid .fifteen.col,
-.container.fluid .col-15 {
-  width: 91.75%;
-}
-.container.fluid .sixteen.col,
-.container.fluid .col-16 {
-  width: 98%;
-}
-
-/* Push Classes (Offset to the right)
-   ========================================================================== */
-
-.container .push-1,
-.container .push_one {
-  margin-left: 60px;
-}
-.container .push-2,
-.container .push_two {
-  margin-left: 120px;
-}
-.container .push-3,
-.container .push_three {
-  margin-left: 180px;
-}
-.container .push-4,
-.container .push_four {
-  margin-left: 240px;
-}
-.container .push-5,
-.container .push_five {
-  margin-left: 300px;
-}
-.container .push-6,
-.container .push_six {
-  margin-left: 370px;
-}
-.container .push-7,
-.container .push_seven {
-  margin-left: 420px;
-}
-.container .push-8,
-.container .push_eight {
-  margin-left: 480px;
-}
-.container .push-9,
-.container .push_nine {
-  margin-left: 540px;
-}
-.container .push-10,
-.container .push_ten {
-  margin-left: 610px;
-}
-.container .push-11,
-.container .push_eleven {
-  margin-left: 660px;
-}
-.container .push-12,
-.container .push_twelve {
-  margin-left: 720px;
-}
-.container .push-13,
-.container .push_thirteen {
-  margin-left: 780px;
-}
-.container .push-14,
-.container .push_fourteen {
-  margin-left: 840px;
-}
-.container .push-15,
-.container .push_fifteen {
-  margin-left: 900px;
-}
-
-/* Special push classes */
-.container .push-one-third,
-.container .push_one-third {
-  margin-left: 32% !important;
-}
-.container .push-two-thirds,
-.container .push_two-thirds {
-  margin-left: 66%;
-}
-
-/* Pull Classes (Offset to the left)
-   ========================================================================== */
-
-.container .pull-1,
-.container .pull_one {
-  margin-left: -60px;
-}
-.container .pull-2,
-.container .pull_two {
-  margin-left: -120px;
-}
-.container .pull-3,
-.container .pull_three {
-  margin-left: -180px;
-}
-.container .pull-4,
-.container .pull_four {
-  margin-left: -240px;
-}
-.container .pull-5,
-.container .pull_five {
-  margin-left: -300px;
-}
-.container .pull-6,
-.container .pull_six {
-  margin-left: -360px;
-}
-.container .pull-7,
-.container .pull_seven {
-  margin-left: -420px;
-}
-.container .pull-8,
-.container .pull_eight {
-  margin-left: -480px;
-}
-.container .pull-9,
-.container .pull_nine {
-  margin-left: -540px;
-}
-.container .pull-10,
-.container .pull_ten {
-  margin-left: -590px;
-}
-.container .pull-11,
-.container .pull_eleven {
-  margin-left: -660px;
-}
-.container .pull-12,
-.container .pull_twelve {
-  margin-left: -720px;
-}
-.container .pull-13,
-.container .pull_thirteen {
-  margin-left: -780px;
-}
-.container .pull-14,
-.container .pull_fourteen {
-  margin-left: -840px;
-}
-.container .pull-15,
-.container .pull_fifteen {
-  margin-left: -900px;
-}
-.container .pull-16,
-.container .pull_sixteen {
-  margin-left: -950px;
-}
-
-/* Offset Classes (Alternative naming)
-   ========================================================================== */
-
-.container .offset-1 {
-  margin-left: 60px;
-}
-.container .offset-2 {
-  margin-left: 120px;
-}
-.container .offset-3 {
-  margin-left: 180px;
-}
-.container .offset-4 {
-  margin-left: 240px;
-}
-.container .offset-5 {
-  margin-left: 300px;
-}
-.container .offset-6 {
-  margin-left: 370px;
-}
-.container .offset-7 {
-  margin-left: 420px;
-}
-.container .offset-8 {
-  margin-left: 480px;
-}
-.container .offset-9 {
-  margin-left: 540px;
-}
-.container .offset-10 {
-  margin-left: 610px;
-}
-.container .offset-11 {
-  margin-left: 660px;
-}
-.container .offset-12 {
-  margin-left: 720px;
-}
-.container .offset-13 {
-  margin-left: 780px;
-}
-.container .offset-14 {
-  margin-left: 840px;
-}
-.container .offset-15 {
-  margin-left: 900px;
-}
-
-/* Modern Flexbox Alternative
-   ========================================================================== */
-
-.row.flex {
+.row {
   display: flex;
   flex-wrap: wrap;
   margin-left: -10px;
   margin-right: -10px;
 }
 
-.row.flex > .col {
-  float: none;
-  display: block;
+/* Base Column Styles
+   ========================================================================== */
+
+.row > [class*="col"],
+.row > [class*="col-"] {
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
   flex: 0 0 auto;
+  width: 100%; /* Default to full width */
 }
 
-/* Flexbox column sizing */
-.row.flex .col-1 {
-  flex: 0 0 6.25%;
-  max-width: 6.25%;
+/* 16-Column Grid - Percentage Based
+   Each column is 6.25% (100% / 16)
+   ========================================================================== */
+
+/* Modern naming: .col-1 through .col-16 */
+.col-1,
+.container .one.col  { width: 6.25%; }
+
+.col-2,
+.container .two.col  { width: 12.5%; }
+
+.col-3,
+.container .three.col  { width: 18.75%; }
+
+.col-4,
+.container .four.col,
+.container .one-quarter.col  { width: 25%; }
+
+.col-5,
+.container .five.col  { width: 31.25%; }
+
+.col-6,
+.container .six.col  { width: 37.5%; }
+
+.col-7,
+.container .seven.col  { width: 43.75%; }
+
+.col-8,
+.container .eight.col,
+.container .half.col  { width: 50%; }
+
+.col-9,
+.container .nine.col  { width: 56.25%; }
+
+.col-10,
+.container .ten.col  { width: 62.5%; }
+
+.col-11,
+.container .eleven.col  { width: 68.75%; }
+
+.col-12,
+.container .twelve.col,
+.container .three-quarters.col  { width: 75%; }
+
+.col-13,
+.container .thirteen.col  { width: 81.25%; }
+
+.col-14,
+.container .fourteen.col  { width: 87.5%; }
+
+.col-15,
+.container .fifteen.col  { width: 93.75%; }
+
+.col-16,
+.container .sixteen.col  { width: 100%; }
+
+/* Fractional Columns (Common Patterns)
+   ========================================================================== */
+
+.one-third.col,
+.col-one-third {
+  width: 33.333%;
 }
-.row.flex .col-2 {
-  flex: 0 0 12.5%;
-  max-width: 12.5%;
+
+.two-thirds.col,
+.col-two-thirds {
+  width: 66.666%;
 }
-.row.flex .col-3 {
-  flex: 0 0 18.75%;
-  max-width: 18.75%;
-}
-.row.flex .col-4 {
-  flex: 0 0 25%;
-  max-width: 25%;
-}
-.row.flex .col-5 {
-  flex: 0 0 31.25%;
-  max-width: 31.25%;
-}
-.row.flex .col-6 {
-  flex: 0 0 37.5%;
-  max-width: 37.5%;
-}
-.row.flex .col-7 {
-  flex: 0 0 43.75%;
-  max-width: 43.75%;
-}
-.row.flex .col-8 {
-  flex: 0 0 50%;
-  max-width: 50%;
-}
-.row.flex .col-9 {
-  flex: 0 0 56.25%;
-  max-width: 56.25%;
-}
-.row.flex .col-10 {
-  flex: 0 0 62.5%;
-  max-width: 62.5%;
-}
-.row.flex .col-11 {
-  flex: 0 0 68.75%;
-  max-width: 68.75%;
-}
-.row.flex .col-12 {
-  flex: 0 0 75%;
-  max-width: 75%;
-}
-.row.flex .col-13 {
-  flex: 0 0 81.25%;
-  max-width: 81.25%;
-}
-.row.flex .col-14 {
-  flex: 0 0 87.5%;
-  max-width: 87.5%;
-}
-.row.flex .col-15 {
-  flex: 0 0 93.75%;
-  max-width: 93.75%;
-}
-.row.flex .col-16 {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
+
+/* Offset/Push Classes
+   Creates left margin to push columns right
+   ========================================================================== */
+
+.push-1,
+.push_one,
+.offset-1 { margin-left: calc(6.25% + 10px); }
+
+.push-2,
+.push_two,
+.offset-2 { margin-left: calc(12.5% + 10px); }
+
+.push-3,
+.push_three,
+.offset-3 { margin-left: calc(18.75% + 10px); }
+
+.push-4,
+.push_four,
+.offset-4 { margin-left: calc(25% + 10px); }
+
+.push-5,
+.push_five,
+.offset-5 { margin-left: calc(31.25% + 10px); }
+
+.push-6,
+.push_six,
+.offset-6 { margin-left: calc(37.5% + 10px); }
+
+.push-7,
+.push_seven,
+.offset-7 { margin-left: calc(43.75% + 10px); }
+
+.push-8,
+.push_eight,
+.offset-8 { margin-left: calc(50% + 10px); }
 
 /* Utility Classes
    ========================================================================== */
 
-.col.centered {
+.col.centered,
+.col-centered {
   margin-left: auto !important;
   margin-right: auto !important;
-  float: none !important;
-  display: block;
 }
 
-.col.text-center {
+.col.text-center,
+.text-center {
   text-align: center;
 }
 
-.col.text-left {
+.col.text-left,
+.text-left {
   text-align: left;
 }
 
-.col.text-right {
+.col.text-right,
+.text-right {
   text-align: right;
 }
+
+/* Vertical Alignment Options
+   ========================================================================== */
+
+.row.align-top {
+  align-items: flex-start;
+}
+
+.row.align-middle {
+  align-items: center;
+}
+
+.row.align-bottom {
+  align-items: flex-end;
+}
+
+.row.align-stretch {
+  align-items: stretch;
+}
+
+/* Horizontal Alignment Options
+   ========================================================================== */
+
+.row.justify-start {
+  justify-content: flex-start;
+}
+
+.row.justify-center {
+  justify-content: center;
+}
+
+.row.justify-end {
+  justify-content: flex-end;
+}
+
+.row.justify-between {
+  justify-content: space-between;
+}
+
+.row.justify-around {
+  justify-content: space-around;
+}
+
+/* Column Order Control
+   ========================================================================== */
+
+.col-first {
+  order: -1;
+}
+
+.col-last {
+  order: 999;
+}
+
+/* No Gutters Option
+   ========================================================================== */
+
+.row.no-gutters {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutters > [class*="col"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Responsive Behavior
+   ========================================================================== */
+
+/* Tablet (768px to 960px) */
+@media (max-width: 960px) and (min-width: 769px) {
+  .container {
+    width: 96%;
+  }
+  
+  /* Optional: Keep layout on tablet */
+  .tablet-keep-cols .row > [class*="col"] {
+    /* Columns maintain their width on tablet */
+  }
+}
+
+/* Mobile (max 768px) - Stack all columns */
+@media (max-width: 768px) {
+  .row > [class*="col"],
+  .row > [class*="col-"] {
+    width: 100% !important;
+    margin-bottom: 1rem;
+    margin-left: 0 !important; /* Reset push/offset */
+  }
+  
+  .row.mobile-keep-cols > [class*="col"] {
+    width: auto !important;
+    flex: 1 1 0;
+  }
+  
+  /* Mobile-specific column sizes */
+  .col-mobile-half {
+    width: 50% !important;
+  }
+  
+  .col-mobile-third {
+    width: 33.333% !important;
+  }
+  
+  .col-mobile-quarter {
+    width: 25% !important;
+  }
+}
+
+/* Extra Small Mobile (max 480px) */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  .row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+  
+  .row > [class*="col"] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Print Styles
+   ========================================================================== */
+
+@media print {
+  .container {
+    width: 100%;
+  }
+  
+  .row > [class*="col"] {
+    page-break-inside: avoid;
+  }
+}
+
+/* Legacy Float-based Grid Support (Optional)
+   Uncomment if you need backwards compatibility with old float-based layouts
+   ========================================================================== */
+
+/*
+.row.legacy {
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.legacy:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row.legacy > [class*="col"] {
+  float: left;
+  display: inline;
+}
+*/

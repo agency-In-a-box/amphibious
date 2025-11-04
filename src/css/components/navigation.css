@@ -635,3 +635,432 @@ ul.nav {
     transition: none;
   }
 }
+
+/* ==========================================================================
+   Modern Amphibious 2.0 Navigation Component
+   ========================================================================== */
+
+/* Modern Navigation Base */
+.amp-nav {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.amp-nav--transparent {
+  background: transparent;
+  box-shadow: none;
+}
+
+.amp-nav--sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  animation: slideDown 0.3s ease;
+}
+
+.amp-nav--hidden {
+  transform: translateY(-100%);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Navigation Wrapper */
+.amp-nav__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+/* Brand */
+.amp-nav__brand {
+  display: flex;
+  align-items: center;
+}
+
+.amp-nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-text, #2c3e50);
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.amp-nav__logo:hover {
+  color: var(--color-primary, #667eea);
+}
+
+.amp-nav__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Menu */
+.amp-nav__menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.amp-nav__item {
+  position: relative;
+}
+
+.amp-nav__link {
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--color-text, #2c3e50);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.amp-nav__link:hover {
+  color: var(--color-primary, #667eea);
+}
+
+.amp-nav__link--active {
+  color: var(--color-primary, #667eea);
+}
+
+.amp-nav__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary, #667eea);
+}
+
+/* Dropdown */
+.amp-nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.amp-nav__dropdown--open,
+.amp-nav__item:hover .amp-nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.amp-nav__dropdown-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--color-text, #2c3e50);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.amp-nav__dropdown-link:hover {
+  background: var(--color-background, #f8f9fa);
+  color: var(--color-primary, #667eea);
+}
+
+/* Actions */
+.amp-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.amp-nav__search,
+.amp-nav__theme {
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--color-text, #2c3e50);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amp-nav__search:hover,
+.amp-nav__theme:hover {
+  color: var(--color-primary, #667eea);
+}
+
+.amp-nav__github {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-background, #f8f9fa);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--color-text, #2c3e50);
+  transition: all 0.2s;
+}
+
+.amp-nav__github:hover {
+  background: var(--color-primary, #667eea);
+  color: white;
+}
+
+.amp-nav__stars {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Mobile Toggle */
+.amp-nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.amp-nav__toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--color-text, #2c3e50);
+  margin: 3px 0;
+  transition: all 0.3s;
+}
+
+.amp-nav__toggle--open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.amp-nav__toggle--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.amp-nav__toggle--open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Overlay */
+.amp-nav__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.amp-nav__overlay--visible {
+  display: block;
+  opacity: 1;
+}
+
+/* Search Modal */
+.amp-nav__search-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.amp-nav__search-modal--open {
+  display: flex;
+}
+
+.amp-nav__search-content {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem;
+  position: relative;
+}
+
+.amp-nav__search-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.25rem;
+  border: 2px solid var(--color-border, #dee2e6);
+  border-radius: 4px;
+  outline: none;
+}
+
+.amp-nav__search-input:focus {
+  border-color: var(--color-primary, #667eea);
+}
+
+.amp-nav__search-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--color-text-muted, #6c757d);
+}
+
+.amp-nav__search-results {
+  margin-top: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.amp-nav__search-result {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--color-text, #2c3e50);
+  transition: background 0.2s;
+}
+
+.amp-nav__search-result:hover {
+  background: var(--color-background, #f8f9fa);
+}
+
+.amp-nav__search-result-title {
+  font-weight: 500;
+}
+
+.amp-nav__search-result-category {
+  color: var(--color-text-muted, #6c757d);
+  font-size: 0.875rem;
+}
+
+.amp-nav__search-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-muted, #6c757d);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .amp-nav__menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    width: 80%;
+    max-width: 300px;
+    background: white;
+    flex-direction: column;
+    padding: 5rem 2rem 2rem;
+    gap: 0;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    transition: right 0.3s;
+    overflow-y: auto;
+  }
+
+  .amp-nav__menu--open {
+    right: 0;
+  }
+
+  .amp-nav__item {
+    border-bottom: 1px solid var(--color-border, #dee2e6);
+  }
+
+  .amp-nav__link {
+    padding: 1rem 0;
+  }
+
+  .amp-nav__dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding-left: 1rem;
+    display: none;
+  }
+
+  .amp-nav__dropdown--open {
+    display: block;
+  }
+
+  .amp-nav__toggle {
+    display: flex;
+  }
+
+  .amp-nav__actions {
+    margin-right: 1rem;
+  }
+
+  .amp-nav__github {
+    display: none;
+  }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .amp-nav {
+  background: var(--color-background-dark, #1a1a1a);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .amp-nav__logo,
+[data-theme="dark"] .amp-nav__link,
+[data-theme="dark"] .amp-nav__search,
+[data-theme="dark"] .amp-nav__theme {
+  color: var(--color-text-dark, #e0e0e0);
+}
+
+[data-theme="dark"] .amp-nav__dropdown {
+  background: var(--color-background-dark, #2a2a2a);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .amp-nav__dropdown-link {
+  color: var(--color-text-dark, #e0e0e0);
+}
+
+[data-theme="dark"] .amp-nav__dropdown-link:hover {
+  background: var(--color-background-dark-hover, #3a3a3a);
+}
+
+[data-theme="dark"] .amp-nav__menu {
+  background: var(--color-background-dark, #1a1a1a);
+}
+
+[data-theme="dark"] .amp-nav__toggle span {
+  background: var(--color-text-dark, #e0e0e0);
+}

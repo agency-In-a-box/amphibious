@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel Component - Amphibious 2.0 Documentation</title>
+  <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Carousel component powered by Splide.js">
+  <style>
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Documentation Header */
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .docs-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .docs-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Content Sections */
+    .section {
+      background: white;
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section h3 {
+      color: #34495e;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section h4 {
+      color: #7f8c8d;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .code-block code {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* Feature List */
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #667eea;
+    }
+
+    .feature-card h4 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    /* Examples */
+    .example {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .example-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    /* Navigation */
+    .nav-breadcrumb {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 0;
+      margin-bottom: 1rem;
+    }
+
+    .nav-breadcrumb a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .nav-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .docs-header h1 {
+        font-size: 2rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="docs-header">
+    <div class="container">
+      <nav class="nav-breadcrumb">
+        <a href="/index.html">Home</a> ›
+        <a href="/docs/getting-started.html">Documentation</a> ›
+        <span>Carousel Component</span>
+      </nav>
+      <h1>Carousel Component</h1>
+      <p>Responsive, accessible carousels powered by Splide.js with Amphibious styling</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Overview -->
+    <section class="section">
+      <h2>Overview</h2>
+      <p>The Amphibious Carousel component provides a flexible, accessible, and responsive carousel solution powered by <a href="https://splidejs.com/" target="_blank">Splide.js</a>. It's perfect for image galleries, product showcases, testimonials, content slides, and more.</p>
+
+      <div class="feature-list">
+        <div class="feature-card">
+          <h4>🚀 High Performance</h4>
+          <p>Lightweight and optimized for smooth animations and fast load times.</p>
+        </div>
+        <div class="feature-card">
+          <h4>♿ Accessibility First</h4>
+          <p>Full keyboard navigation, screen reader support, and WCAG 2.1 AA compliance.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Responsive Design</h4>
+          <p>Adapts seamlessly to all screen sizes with configurable breakpoints.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎨 Multiple Variants</h4>
+          <p>Pre-built styles for cards, images, testimonials, and thumbnails.</p>
+        </div>
+        <div class="feature-card">
+          <h4>⚙️ Flexible Configuration</h4>
+          <p>Extensive options for customization via JavaScript or data attributes.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔄 Auto-initialization</h4>
+          <p>Automatically initializes from data attributes or manual JavaScript setup.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="section">
+      <h2>Quick Start</h2>
+
+      <h3>Basic HTML Structure</h3>
+      <div class="code-block">
+        <pre><code>&lt;!-- Auto-initialized carousel --&gt;
+&lt;div class="amp-carousel amp-carousel--cards"
+     data-carousel
+     data-carousel-per-page="3"
+     data-carousel-autoplay="true"
+     aria-label="Featured products"&gt;
+  &lt;article&gt;
+    &lt;h3&gt;Product 1&lt;/h3&gt;
+    &lt;p&gt;Product description&lt;/p&gt;
+  &lt;/article&gt;
+  &lt;article&gt;
+    &lt;h3&gt;Product 2&lt;/h3&gt;
+    &lt;p&gt;Product description&lt;/p&gt;
+  &lt;/article&gt;
+  &lt;article&gt;
+    &lt;h3&gt;Product 3&lt;/h3&gt;
+    &lt;p&gt;Product description&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>JavaScript Initialization</h3>
+      <div class="code-block">
+        <pre><code>// Create carousel with custom options
+const carousel = amp.createCarousel('#my-carousel', {
+  type: 'slide',
+  perPage: 2,
+  gap: '2rem',
+  autoplay: true,
+  interval: 3000,
+  variant: 'cards'
+});</code></pre>
+      </div>
+    </section>
+
+    <!-- Configuration -->
+    <section class="section">
+      <h2>Configuration Options</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>variant</code></td>
+            <td>string</td>
+            <td>'default'</td>
+            <td>Visual variant: 'default', 'cards', 'images', 'testimonials', 'thumbnails'</td>
+          </tr>
+          <tr>
+            <td><code>size</code></td>
+            <td>string</td>
+            <td>undefined</td>
+            <td>Size modifier: 'sm', 'md', 'lg', 'xl'</td>
+          </tr>
+          <tr>
+            <td><code>type</code></td>
+            <td>string</td>
+            <td>'slide'</td>
+            <td>Transition type: 'slide', 'loop', 'fade'</td>
+          </tr>
+          <tr>
+            <td><code>perPage</code></td>
+            <td>number</td>
+            <td>3</td>
+            <td>Number of slides visible per page</td>
+          </tr>
+          <tr>
+            <td><code>gap</code></td>
+            <td>string</td>
+            <td>'1rem'</td>
+            <td>Gap between slides</td>
+          </tr>
+          <tr>
+            <td><code>autoplay</code></td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Enable automatic slide progression</td>
+          </tr>
+          <tr>
+            <td><code>interval</code></td>
+            <td>number</td>
+            <td>5000</td>
+            <td>Autoplay interval in milliseconds</td>
+          </tr>
+          <tr>
+            <td><code>arrows</code></td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Show navigation arrows</td>
+          </tr>
+          <tr>
+            <td><code>pagination</code></td>
+            <td>string | boolean</td>
+            <td>true</td>
+            <td>Pagination type: true, false, 'dots', 'progress', 'none'</td>
+          </tr>
+          <tr>
+            <td><code>keyboard</code></td>
+            <td>string</td>
+            <td>'global'</td>
+            <td>Keyboard navigation: 'global', 'focused', false</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Data Attributes -->
+    <section class="section">
+      <h2>Data Attributes</h2>
+      <p>Configure carousels using HTML data attributes for auto-initialization:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Values</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>data-carousel</code></td>
+            <td>-</td>
+            <td>Mark element for auto-initialization</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-type</code></td>
+            <td>slide, loop, fade</td>
+            <td>Set carousel transition type</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-per-page</code></td>
+            <td>number</td>
+            <td>Number of slides per page</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-gap</code></td>
+            <td>CSS value</td>
+            <td>Gap between slides (e.g., '2rem', '20px')</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-variant</code></td>
+            <td>cards, images, testimonials, thumbnails</td>
+            <td>Visual variant</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-size</code></td>
+            <td>sm, md, lg, xl</td>
+            <td>Size modifier</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-autoplay</code></td>
+            <td>true, false</td>
+            <td>Enable autoplay</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-interval</code></td>
+            <td>number</td>
+            <td>Autoplay interval in milliseconds</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-arrows</code></td>
+            <td>true, false</td>
+            <td>Show navigation arrows</td>
+          </tr>
+          <tr>
+            <td><code>data-carousel-pagination</code></td>
+            <td>dots, progress, none</td>
+            <td>Pagination type</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- CSS Classes -->
+    <section class="section">
+      <h2>CSS Classes</h2>
+
+      <h3>Base Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.amp-carousel</code></td>
+            <td>Base carousel container class</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Variant Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.amp-carousel--cards</code></td>
+            <td>Card-style carousel with hover effects</td>
+          </tr>
+          <tr>
+            <td><code>.amp-carousel--images</code></td>
+            <td>Image gallery carousel</td>
+          </tr>
+          <tr>
+            <td><code>.amp-carousel--testimonials</code></td>
+            <td>Testimonial carousel with centered text</td>
+          </tr>
+          <tr>
+            <td><code>.amp-carousel--thumbnails</code></td>
+            <td>Thumbnail navigation carousel</td>
+          </tr>
+          <tr>
+            <td><code>.amp-carousel--progress</code></td>
+            <td>Progress bar pagination style</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Size Modifier Classes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Max Height</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.amp-carousel--sm</code></td>
+            <td>200px</td>
+            <td>Small carousel size</td>
+          </tr>
+          <tr>
+            <td><code>.amp-carousel--md</code></td>
+            <td>300px</td>
+            <td>Medium carousel size</td>
+          </tr>
+          <tr>
+            <td><code>.amp-carousel--lg</code></td>
+            <td>400px</td>
+            <td>Large carousel size</td>
+          </tr>
+          <tr>
+            <td><code>.amp-carousel--xl</code></td>
+            <td>500px</td>
+            <td>Extra large carousel size</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- JavaScript API -->
+    <section class="section">
+      <h2>JavaScript API</h2>
+
+      <h3>Creating a Carousel</h3>
+      <div class="code-block">
+        <pre><code>// Basic creation
+const carousel = amp.createCarousel('#my-carousel');
+
+// With options
+const carousel = amp.createCarousel('#my-carousel', {
+  type: 'slide',
+  perPage: 2,
+  autoplay: true,
+  variant: 'cards'
+});</code></pre>
+      </div>
+
+      <h3>Instance Methods</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Parameters</th>
+            <th>Returns</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>mount()</code></td>
+            <td>-</td>
+            <td>Splide</td>
+            <td>Initialize and mount the carousel</td>
+          </tr>
+          <tr>
+            <td><code>destroy()</code></td>
+            <td>-</td>
+            <td>void</td>
+            <td>Destroy the carousel and remove event listeners</td>
+          </tr>
+          <tr>
+            <td><code>go(control)</code></td>
+            <td>number | string</td>
+            <td>void</td>
+            <td>Navigate to a specific slide (index, '>', '<')</td>
+          </tr>
+          <tr>
+            <td><code>play()</code></td>
+            <td>-</td>
+            <td>void</td>
+            <td>Start autoplay</td>
+          </tr>
+          <tr>
+            <td><code>pause()</code></td>
+            <td>-</td>
+            <td>void</td>
+            <td>Pause autoplay</td>
+          </tr>
+          <tr>
+            <td><code>refresh()</code></td>
+            <td>-</td>
+            <td>void</td>
+            <td>Refresh the carousel layout</td>
+          </tr>
+          <tr>
+            <td><code>getSplide()</code></td>
+            <td>-</td>
+            <td>Splide</td>
+            <td>Get the underlying Splide instance</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Control Examples</h3>
+      <div class="code-block">
+        <pre><code>// Navigation
+carousel.go(2);     // Go to slide 2
+carousel.go('>');   // Next slide
+carousel.go('<');   // Previous slide
+carousel.go('>>');  // Last slide
+carousel.go('<<');  // First slide
+
+// Playback control
+carousel.play();
+carousel.pause();
+
+// Layout updates
+carousel.refresh(); // Useful after dynamic content changes</code></pre>
+      </div>
+    </section>
+
+    <!-- Examples -->
+    <section class="section">
+      <h2>Usage Examples</h2>
+
+      <div class="example">
+        <div class="example-title">Image Gallery Carousel</div>
+        <div class="code-block">
+          <pre><code>&lt;div class="amp-carousel amp-carousel--images amp-carousel--lg"
+     data-carousel
+     data-carousel-type="slide"
+     data-carousel-per-page="1"
+     aria-label="Photo gallery"&gt;
+  &lt;img src="https://picsum.photos/800/600?random=1" alt="Gallery image 1"&gt;
+  &lt;img src="https://picsum.photos/800/600?random=2" alt="Gallery image 2"&gt;
+  &lt;img src="https://picsum.photos/800/600?random=3" alt="Gallery image 3"&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-title">Product Cards Carousel</div>
+        <div class="code-block">
+          <pre><code>&lt;div class="amp-carousel amp-carousel--cards"
+     data-carousel
+     data-carousel-per-page="3"
+     data-carousel-gap="2rem"
+     aria-label="Featured products"&gt;
+  &lt;article class="product-card"&gt;
+    &lt;img src="https://placehold.co/600x600/667eea/FFF?text=Product+1" alt="Product 1"&gt;
+    &lt;h3&gt;Product Name&lt;/h3&gt;
+    &lt;p class="price"&gt;$99.99&lt;/p&gt;
+    &lt;button class="btn"&gt;Add to Cart&lt;/button&gt;
+  &lt;/article&gt;
+  &lt;!-- More products... --&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-title">Testimonials Carousel</div>
+        <div class="code-block">
+          <pre><code>&lt;div class="amp-carousel amp-carousel--testimonials"
+     data-carousel
+     data-carousel-per-page="1"
+     data-carousel-autoplay="true"
+     data-carousel-interval="5000"
+     aria-label="Customer testimonials"&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;"This product changed my life!"&lt;/p&gt;
+    &lt;footer&gt;&lt;cite&gt;— Happy Customer&lt;/cite&gt;&lt;/footer&gt;
+  &lt;/blockquote&gt;
+  &lt;!-- More testimonials... --&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-title">Synced Carousels (Main + Thumbnails)</div>
+        <div class="code-block">
+          <pre><code>&lt;!-- Main carousel --&gt;
+&lt;div id="main-carousel" class="amp-carousel amp-carousel--images"&gt;
+  &lt;img src="main1.jpg" alt="Main view 1"&gt;
+  &lt;img src="main2.jpg" alt="Main view 2"&gt;
+  &lt;img src="main3.jpg" alt="Main view 3"&gt;
+&lt;/div&gt;
+
+&lt;!-- Thumbnail carousel --&gt;
+&lt;div id="thumb-carousel" class="amp-carousel amp-carousel--thumbnails"
+     data-carousel-arrows="false"
+     data-carousel-pagination="none"&gt;
+  &lt;img src="https://picsum.photos/300/200?random=1" alt="Thumbnail 1"&gt;
+  &lt;img src="https://picsum.photos/300/200?random=2" alt="Thumbnail 2"&gt;
+  &lt;img src="https://picsum.photos/300/200?random=3" alt="Thumbnail 3"&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// Sync the carousels
+const main = amp.createCarousel('#main-carousel');
+const thumbs = amp.createCarousel('#thumb-carousel');
+main.getSplide().sync(thumbs.getSplide());
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility -->
+    <section class="section">
+      <h2>Accessibility Features</h2>
+
+      <div class="feature-list">
+        <div class="feature-card">
+          <h4>Keyboard Navigation</h4>
+          <p>Full keyboard support with arrow keys, Enter, Space, Home, and End keys for navigation.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Screen Reader Support</h4>
+          <p>Proper ARIA labels, roles, and announcements for slide changes and navigation.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Focus Management</h4>
+          <p>Visible focus indicators and proper focus handling for all interactive elements.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Reduced Motion</h4>
+          <p>Respects user's motion preferences and disables animations when requested.</p>
+        </div>
+        <div class="feature-card">
+          <h4>High Contrast</h4>
+          <p>Compatible with high contrast mode and provides alternative styling.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Semantic HTML</h4>
+          <p>Uses proper semantic elements and maintains logical document structure.</p>
+        </div>
+      </div>
+
+      <h3>Accessibility Best Practices</h3>
+      <ul>
+        <li>Always provide meaningful <code>aria-label</code> or <code>aria-labelledby</code> attributes</li>
+        <li>Use descriptive <code>alt</code> text for images</li>
+        <li>Include proper headings and semantic structure</li>
+        <li>Test with keyboard navigation and screen readers</li>
+        <li>Avoid auto-playing carousels unless absolutely necessary</li>
+        <li>Provide pause/play controls for auto-playing content</li>
+      </ul>
+    </section>
+
+    <!-- Performance -->
+    <section class="section">
+      <h2>Performance Tips</h2>
+
+      <ul>
+        <li><strong>Lazy Loading:</strong> Use <code>loading="lazy"</code> for images in slides</li>
+        <li><strong>Image Optimization:</strong> Provide appropriately sized images for different viewports</li>
+        <li><strong>Minimal DOM:</strong> Keep slide content minimal and avoid complex nested structures</li>
+        <li><strong>Destroy Unused:</strong> Call <code>carousel.destroy()</code> when removing carousels from DOM</li>
+        <li><strong>Responsive Images:</strong> Use <code>srcset</code> and <code>sizes</code> attributes for optimal image delivery</li>
+      </ul>
+    </section>
+
+    <!-- Browser Support -->
+    <section class="section">
+      <h2>Browser Support</h2>
+
+      <p>The Carousel component supports all modern browsers:</p>
+
+      <ul>
+        <li>Chrome 60+</li>
+        <li>Firefox 55+</li>
+        <li>Safari 12+</li>
+        <li>Edge 79+</li>
+        <li>iOS Safari 12+</li>
+        <li>Android Chrome 60+</li>
+      </ul>
+
+      <p>For older browser support, polyfills for ES6 features may be required.</p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="section">
+      <p><a href="/examples/carousel-showcase.html">View Live Examples</a> | <a href="/docs/api-reference.html">API Reference</a> | <a href="/docs/getting-started.html">Getting Started</a></p>
+      <p>&copy; 2024 Amphibious 2.0. Built with accessibility and performance in mind.</p>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+</body>
+</html>

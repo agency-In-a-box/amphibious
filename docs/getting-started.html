@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started - Amphibious 2.0 Documentation</title>
+  <meta name="description" content="Quick start guide for Amphibious 2.0 - Modern CSS framework with semantic HTML patterns">
+  <style>
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Documentation Header */
+    .docs-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .docs-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .docs-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Documentation Layout */
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar Navigation */
+    .docs-sidebar {
+      position: sticky;
+      top: 1rem;
+      height: fit-content;
+    }
+    .docs-nav {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .docs-nav h3 {
+      margin: 0 0 1rem 0;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6c757d;
+    }
+    .docs-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .docs-nav li {
+      margin-bottom: 0.5rem;
+    }
+    .docs-nav a {
+      color: #495057;
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .docs-nav a:hover {
+      background: #f8f9fa;
+      color: #667eea;
+    }
+    .docs-nav a.active {
+      background: #f0f4ff;
+      color: #667eea;
+      font-weight: 500;
+    }
+    .docs-nav ul ul {
+      margin-left: 1rem;
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+      border-left: 2px solid #f0f0f0;
+    }
+
+    /* Main Content */
+    .docs-content {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .docs-content h2 {
+      margin: 2rem 0 1rem 0;
+      color: #2c3e50;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+    .docs-content h2:first-child {
+      margin-top: 0;
+    }
+    .docs-content h3 {
+      margin: 1.5rem 0 0.75rem 0;
+      color: #495057;
+    }
+    .docs-content h4 {
+      margin: 1rem 0 0.5rem 0;
+      color: #6c757d;
+    }
+
+    /* Code Examples */
+    .code-block {
+      background: #f4f4f4;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .code-block pre {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 0.125rem 0.25rem;
+      border-radius: 3px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+      color: #e83e8c;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      border-left: 4px solid;
+    }
+    .callout-info {
+      background: #e3f2fd;
+      border-color: #2196f3;
+    }
+    .callout-success {
+      background: #e8f5e9;
+      border-color: #4caf50;
+    }
+    .callout-warning {
+      background: #fff3e0;
+      border-color: #ff9800;
+    }
+    .callout-danger {
+      background: #ffebee;
+      border-color: #f44336;
+    }
+    .callout h4 {
+      margin: 0 0 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Tables */
+    .docs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    .docs-table th,
+    .docs-table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .docs-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #495057;
+    }
+    .docs-table tbody tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* Version Badge */
+    .version-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background: #28a745;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    /* Quick Links */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .quick-link {
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .quick-link:hover {
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .quick-link h4 {
+      margin: 0 0 0.5rem 0;
+      color: #667eea;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .quick-link p {
+      margin: 0;
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+      }
+      .docs-sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Documentation Header -->
+  <header class="docs-header">
+    <div class="container">
+      <h1>🚀 Getting Started</h1>
+      <p>Get up and running with Amphibious 2.0 in minutes</p>
+    </div>
+  </header>
+
+  <!-- Documentation Content -->
+  <div class="container">
+    <div class="docs-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="docs-sidebar">
+        <nav class="docs-nav" aria-label="Documentation navigation">
+          <h3>Getting Started</h3>
+          <ul>
+            <li><a href="#installation" class="active">Installation</a></li>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#structure">Project Structure</a></li>
+            <li><a href="#configuration">Configuration</a></li>
+          </ul>
+
+          <h3>Core Concepts</h3>
+          <ul>
+            <li><a href="#grid-system">Grid System</a></li>
+            <li><a href="#responsive">Responsive Design</a></li>
+            <li><a href="#patterns">Pea.rs Patterns</a></li>
+            <li><a href="#semantic-html">Semantic HTML</a></li>
+          </ul>
+
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="/docs/api-reference.html">API Reference</a></li>
+            <li><a href="/examples/">Examples</a></li>
+            <li><a href="https://github.com/your-org/amphibious">GitHub</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Documentation Content -->
+      <main class="docs-content" role="main">
+        <section aria-labelledby="installation">
+          <h2 id="installation">Installation <span class="version-badge">v2.0.0</span></h2>
+
+          <p>There are several ways to get started with Amphibious 2.0. Choose the method that works best for your project.</p>
+
+          <h3>Method 1: NPM / Bun (Recommended)</h3>
+          <div class="code-block">
+            <pre><code># Using npm
+npm install @amphibious/core
+
+# Using bun (faster)
+bun add @amphibious/core
+
+# Using yarn
+yarn add @amphibious/core</code></pre>
+          </div>
+
+          <p>Then import in your JavaScript:</p>
+          <div class="code-block">
+            <pre><code>// Import CSS
+import '@amphibious/core/css';
+
+// Import JavaScript components
+import { createNavigation, createModal } from '@amphibious/core';</code></pre>
+          </div>
+
+          <h3>Method 2: CDN</h3>
+          <p>For quick prototypes or simple projects, you can use our CDN:</p>
+          <div class="code-block">
+            <pre><code>&lt;!-- CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@amphibious/core@2/dist/amphibious.min.css"&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script type="module" src="https://cdn.jsdelivr.net/npm/@amphibious/core@2/dist/amphibious.min.js"&gt;&lt;/script&gt;</code></pre>
+          </div>
+
+          <h3>Method 3: Download</h3>
+          <p>Download the compiled CSS and JavaScript files directly:</p>
+          <div class="quick-links">
+            <a href="#" class="quick-link">
+              <h4><i data-lucide="download"></i> Download CSS</h4>
+              <p>Minified CSS (42KB)</p>
+            </a>
+            <a href="#" class="quick-link">
+              <h4><i data-lucide="download"></i> Download JS</h4>
+              <p>Minified JavaScript (18KB)</p>
+            </a>
+            <a href="#" class="quick-link">
+              <h4><i data-lucide="package"></i> Download Bundle</h4>
+              <p>Complete package with examples</p>
+            </a>
+          </div>
+        </section>
+
+        <section aria-labelledby="quick-start">
+          <h2 id="quick-start">Quick Start</h2>
+
+          <p>Here's a minimal HTML template to get you started:</p>
+
+          <div class="code-block">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My Amphibious Project&lt;/title&gt;
+  &lt;link rel="stylesheet" href="path/to/amphibious.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav class="amp-nav" aria-label="Main navigation"&gt;
+      &lt;div class="container"&gt;
+        &lt;!-- Navigation content --&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main class="container"&gt;
+    &lt;section&gt;
+      &lt;h1&gt;Welcome to Amphibious 2.0&lt;/h1&gt;
+      &lt;p&gt;Start building amazing responsive layouts!&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;script type="module" src="path/to/amphibious.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="callout callout-info">
+            <h4><i data-lucide="info"></i> Pro Tip</h4>
+            <p>Always use semantic HTML elements like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;aside&gt;</code> for better accessibility and SEO.</p>
+          </div>
+        </section>
+
+        <section aria-labelledby="structure">
+          <h2 id="structure">Project Structure</h2>
+
+          <p>Amphibious 2.0 follows a modular architecture. Here's the recommended project structure:</p>
+
+          <div class="code-block">
+            <pre><code>your-project/
+├── dist/                 # Built files
+│   ├── amphibious.css
+│   └── amphibious.js
+├── src/
+│   ├── css/
+│   │   ├── main.css     # Main entry point
+│   │   ├── variables.css # CSS custom properties
+│   │   ├── grid.css      # Grid system
+│   │   └── components/   # Component styles
+│   └── js/
+│       ├── index.ts      # JavaScript entry
+│       └── components/   # JS components
+├── examples/            # Usage examples
+└── docs/               # Documentation</code></pre>
+          </div>
+
+          <h3>Core Files</h3>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>Purpose</th>
+                <th>Size</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>amphibious.css</code></td>
+                <td>Complete CSS framework</td>
+                <td>42KB (minified)</td>
+              </tr>
+              <tr>
+                <td><code>amphibious.js</code></td>
+                <td>JavaScript components</td>
+                <td>18KB (minified)</td>
+              </tr>
+              <tr>
+                <td><code>variables.css</code></td>
+                <td>CSS custom properties for theming</td>
+                <td>3KB</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section aria-labelledby="configuration">
+          <h2 id="configuration">Configuration</h2>
+
+          <h3>CSS Variables</h3>
+          <p>Customize Amphibious by overriding CSS custom properties:</p>
+
+          <div class="code-block">
+            <pre><code>:root {
+  /* Colors */
+  --color-primary: #667eea;
+  --color-secondary: #764ba2;
+  --color-success: #48bb78;
+  --color-danger: #f56565;
+  --color-warning: #ed8936;
+  --color-info: #4299e1;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* Grid */
+  --grid-columns: 16;
+  --grid-gutter: 1rem;
+  --container-width: 960px;
+
+  /* Borders */
+  --border-radius: 4px;
+  --border-color: #dee2e6;
+}</code></pre>
+          </div>
+
+          <h3>JavaScript Configuration</h3>
+          <p>Configure JavaScript components during initialization:</p>
+
+          <div class="code-block">
+            <pre><code>// Navigation configuration
+const nav = amp.createNavigation('#nav', {
+  sticky: true,
+  transparent: false,
+  searchEnabled: true,
+  themeToggle: true,
+  breakpoint: 768
+});
+
+// Modal configuration
+const modal = amp.createModal('#myModal', {
+  size: 'lg',
+  centered: true,
+  backdrop: true,
+  keyboard: true,
+  animation: 'fade'
+});</code></pre>
+          </div>
+
+          <div class="callout callout-warning">
+            <h4><i data-lucide="alert-triangle"></i> Important</h4>
+            <p>Always test your custom configurations across different browsers and devices to ensure consistency.</p>
+          </div>
+        </section>
+
+        <section aria-labelledby="grid-system">
+          <h2 id="grid-system">Grid System</h2>
+
+          <p>Amphibious uses a powerful 16-column grid system based on the 960 Grid System principles.</p>
+
+          <h3>Basic Grid</h3>
+          <div class="code-block">
+            <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-8"&gt;Half width (8/16)&lt;/div&gt;
+    &lt;div class="col-8"&gt;Half width (8/16)&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-4"&gt;Quarter (4/16)&lt;/div&gt;
+    &lt;div class="col-4"&gt;Quarter (4/16)&lt;/div&gt;
+    &lt;div class="col-4"&gt;Quarter (4/16)&lt;/div&gt;
+    &lt;div class="col-4"&gt;Quarter (4/16)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <h3>Responsive Grid</h3>
+          <p>Use responsive column classes for different screen sizes:</p>
+
+          <div class="code-block">
+            <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-16 col-tablet-8 col-desktop-4"&gt;
+    Full width on mobile, half on tablet, quarter on desktop
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Class Prefix</th>
+                <th>Screen Size</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td><code>.col-mobile-*</code></td>
+                <td>&lt; 480px</td>
+              </tr>
+              <tr>
+                <td>Tablet</td>
+                <td><code>.col-tablet-*</code></td>
+                <td>481px - 768px</td>
+              </tr>
+              <tr>
+                <td>Desktop</td>
+                <td><code>.col-*</code></td>
+                <td>&gt; 768px</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section aria-labelledby="patterns">
+          <h2 id="patterns">Pea.rs Patterns</h2>
+
+          <p>Amphibious 2.0 includes common UI patterns from pea.rs for rapid development.</p>
+
+          <h3>Stats Pattern</h3>
+          <div class="code-block">
+            <pre><code>&lt;ul class="stats"&gt;
+  &lt;li&gt;
+    &lt;strong class="stat-value"&gt;1,234&lt;/strong&gt;
+    &lt;span class="stat-label"&gt;Users&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong class="stat-value"&gt;99.9%&lt;/strong&gt;
+    &lt;span class="stat-label"&gt;Uptime&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          </div>
+
+          <h3>Slats Pattern</h3>
+          <div class="code-block">
+            <pre><code>&lt;ul class="slats"&gt;
+  &lt;li&gt;
+    &lt;h3&gt;Item Title&lt;/h3&gt;
+    &lt;p&gt;Description of the item with relevant details.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3&gt;Another Item&lt;/h3&gt;
+    &lt;p&gt;More information about this particular item.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          </div>
+
+          <h3>Aside Pattern</h3>
+          <div class="code-block">
+            <pre><code>&lt;aside class="aside-content"&gt;
+  &lt;h3&gt;Related Information&lt;/h3&gt;
+  &lt;p&gt;Supplementary content that supports the main content.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Additional resource 1&lt;/li&gt;
+    &lt;li&gt;Additional resource 2&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+          </div>
+        </section>
+
+        <section aria-labelledby="semantic-html">
+          <h2 id="semantic-html">Semantic HTML</h2>
+
+          <p>Amphibious 2.0 emphasizes the use of semantic HTML for better accessibility, SEO, and maintainability.</p>
+
+          <h3>Document Structure</h3>
+          <div class="code-block">
+            <pre><code>&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav aria-label="Main navigation"&gt;
+      &lt;!-- Navigation items --&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main role="main"&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h1&gt;Article Title&lt;/h1&gt;
+        &lt;time datetime="2024-01-01"&gt;January 1, 2024&lt;/time&gt;
+      &lt;/header&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Section Heading&lt;/h2&gt;
+        &lt;p&gt;Content...&lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;aside&gt;
+        &lt;h3&gt;Related Links&lt;/h3&gt;
+        &lt;!-- Sidebar content --&gt;
+      &lt;/aside&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;!-- Footer content --&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+          </div>
+
+          <h3>Form Structure</h3>
+          <div class="code-block">
+            <pre><code>&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Personal Information&lt;/legend&gt;
+
+    &lt;div class="form-group"&gt;
+      &lt;label for="name"&gt;
+        Name
+        &lt;span aria-label="required"&gt;*&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;input type="text" id="name" name="name" required aria-required="true"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+      &lt;label for="email"&gt;
+        Email
+        &lt;span aria-label="required"&gt;*&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;input type="email" id="email" name="email" required aria-required="true"&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <div class="callout callout-success">
+            <h4><i data-lucide="check-circle"></i> Best Practice</h4>
+            <p>Always use semantic elements instead of generic <code>&lt;div&gt;</code> elements when possible. This improves accessibility and helps search engines understand your content structure.</p>
+          </div>
+        </section>
+
+        <section aria-labelledby="next-steps">
+          <h2 id="next-steps">Next Steps</h2>
+
+          <div class="quick-links">
+            <a href="/docs/components.html" class="quick-link">
+              <h4><i data-lucide="layers"></i> Components</h4>
+              <p>Explore all available UI components</p>
+            </a>
+            <a href="/examples/" class="quick-link">
+              <h4><i data-lucide="code"></i> Examples</h4>
+              <p>See live demos and code samples</p>
+            </a>
+            <a href="/docs/api-reference.html" class="quick-link">
+              <h4><i data-lucide="book"></i> API Reference</h4>
+              <p>Complete API documentation</p>
+            </a>
+            <a href="/playground/" class="quick-link">
+              <h4><i data-lucide="play"></i> Playground</h4>
+              <p>Experiment with components</p>
+            </a>
+          </div>
+
+          <div class="callout callout-info">
+            <h4><i data-lucide="message-circle"></i> Need Help?</h4>
+            <p>Join our community on <a href="https://discord.gg/amphibious">Discord</a> or check out the <a href="https://github.com/your-org/amphibious/discussions">GitHub Discussions</a> for support and updates.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Load Framework -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Documentation Scripts -->
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+          // Update active nav item
+          document.querySelectorAll('.docs-nav a').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Highlight current section in nav on scroll
+    const sections = document.querySelectorAll('section[aria-labelledby]');
+    const navLinks = document.querySelectorAll('.docs-nav a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('aria-labelledby');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    console.log('Documentation Page Loaded');
+  </script>
+</body>
+</html>

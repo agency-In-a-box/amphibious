@@ -1,0 +1,407 @@
+# Claude Code CLI Instructions for Image Link Updates
+
+## Task: Replace Broken Image Links with Placeholder Services
+
+This document provides instructions for Claude Code CLI (claude.ai/code) to systematically find and replace broken image links in the Amphibious project with placeholder services.
+
+## Context
+
+During the migration from A.mphibio.us to Amphibious 2.0, many image references are broken or point to old paths. We need to replace these with placeholder services until proper assets are created.
+
+## Placeholder Services to Use
+
+### 1. **Placehold.co** (Primary - Recommended)
+Modern, fast, reliable placeholder service.
+
+```
+https://placehold.co/{width}x{height}/{bg-color}/{text-color}?text={text}
+```
+
+Examples:
+- `https://placehold.co/600x400` - Simple 600x400 gray placeholder
+- `https://placehold.co/800x600/667eea/FFF?text=Product+Image` - Custom colors with text
+- `https://placehold.co/400x400/EEE/999?text=Avatar` - Square avatar placeholder
+
+**Advantages:**
+- Fast loading
+- No rate limits
+- Custom text
+- Modern formats (WebP support)
+- SSL/HTTPS
+
+### 2. **Placeholder.com** (Backup)
+```
+https://placehold.co/{width}x{height}/{bg-color}/{text-color}?text={text}
+```
+
+### 3. **Picsum Photos** (For Realistic Images)
+When you want actual photo content instead of solid colors:
+```
+https://picsum.photos/{width}/{height}
+```
+
+Options:
+- `https://picsum.photos/800/600` - Random photo
+- `https://picsum.photos/800/600?grayscale` - Black and white
+- `https://picsum.photos/800/600?blur=2` - Blurred image
+
+## File Patterns to Search
+
+### Extensions to Check
+- `*.html`
+- `*.md`
+- `*.tsx` / `*.jsx` (if present)
+- `*.css` (for background images)
+
+### Search Patterns
+
+Look for:
+1. Broken image sources: `src="images/` or `src="/images/` or `src="../images/`
+2. Missing images: Any `<img>` tag pointing to non-existent files
+3. External broken links: `http://` links that return 404
+4. Background images in CSS: `url('images/` or `url('/images/`
+
+## Replacement Strategy
+
+### For Product Images (E-commerce)
+```html
+<!-- Before -->
+<img src="images/product-1.jpg" alt="Premium Sneakers">
+
+<!-- After -->
+<img src="https://placehold.co/600x600/667eea/FFF?text=Premium+Sneakers" 
+     alt="Premium Sneakers" 
+     loading="lazy">
+```
+
+### For Avatar/Profile Images
+```html
+<!-- Before -->
+<img src="/img/avatar.png" alt="User Avatar">
+
+<!-- After -->
+<img src="https://placehold.co/200x200/764ba2/FFF?text=User" 
+     alt="User Avatar" 
+     class="avatar"
+     loading="lazy">
+```
+
+### For Hero/Banner Images
+```html
+<!-- Before -->
+<div class="hero" style="background-image: url('images/hero.jpg')">
+
+<!-- After -->
+<div class="hero" style="background-image: url('https://picsum.photos/1920/600')">
+```
+
+Or with solid color:
+```html
+<div class="hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+```
+
+### For Gallery/Thumbnails
+```html
+<!-- Before -->
+<img src="gallery/thumb-1.jpg" alt="Gallery item 1">
+
+<!-- After -->
+<img src="https://picsum.photos/300/200?random=1" 
+     alt="Gallery item 1"
+     loading="lazy">
+```
+
+## Size Guidelines
+
+Use these standard sizes for consistency:
+
+| Use Case | Dimensions | Example URL |
+|----------|-----------|-------------|
+| Product Card | 400x400 | `https://placehold.co/400x400/667eea/FFF?text=Product` |
+| Product Detail | 800x800 | `https://placehold.co/800x800/667eea/FFF?text=Product` |
+| Avatar Small | 50x50 | `https://placehold.co/50x50/764ba2/FFF?text=U` |
+| Avatar Medium | 100x100 | `https://placehold.co/100x100/764ba2/FFF?text=User` |
+| Avatar Large | 200x200 | `https://placehold.co/200x200/764ba2/FFF?text=User` |
+| Banner/Hero | 1920x600 | `https://picsum.photos/1920/600` |
+| Thumbnail | 300x200 | `https://picsum.photos/300/200` |
+| Card Image | 600x400 | `https://placehold.co/600x400/667eea/FFF` |
+| Icon Badge | 80x80 | `https://placehold.co/80x80/f59e0b/FFF?text=Icon` |
+
+## Color Palette for Placeholders
+
+Use Amphibious brand colors:
+
+| Color Name | Hex Code | Usage |
+|-----------|----------|-------|
+| Primary Purple | #667eea | Main brand color, primary actions |
+| Secondary Purple | #764ba2 | Accents, gradients |
+| Warning Orange | #f59e0b | Warnings, highlights |
+| Success Green | #10b981 | Success states |
+| Info Blue | #3b82f6 | Information |
+| Danger Red | #ef4444 | Errors, critical actions |
+| Neutral Gray | #6c757d | Subtle placeholders |
+| Light Gray | #e9ecef | Backgrounds |
+
+## Automated Script Approach
+
+Claude Code can create a script to do this systematically:
+
+```typescript
+// scripts/update-image-placeholders.ts
+import { readFileSync, writeFileSync } from 'fs';
+import { glob } from 'glob';
+
+interface ImageReplacement {
+  pattern: RegExp;
+  replacement: string;
+  description: string;
+}
+
+const replacements: ImageReplacement[] = [
+  {
+    pattern: /src=["'](?:\.\.\/)?images\/product-(\d+)\.(jpg|png)["']/g,
+    replacement: 'src="https://placehold.co/600x600/667eea/FFF?text=Product+$1"',
+    description: 'Product images'
+  },
+  {
+    pattern: /src=["'](?:\.\.\/)?images\/avatar\.(jpg|png)["']/g,
+    replacement: 'src="https://placehold.co/200x200/764ba2/FFF?text=User"',
+    description: 'Avatar images'
+  },
+  {
+    pattern: /src=["'](?:\.\.\/)?images\/hero\.(jpg|png)["']/g,
+    replacement: 'src="https://picsum.photos/1920/600"',
+    description: 'Hero images'
+  },
+  // Add more patterns as needed
+];
+
+async function updateImagePlaceholders() {
+  const files = await glob('**/*.{html,md}', {
+    ignore: ['node_modules/**', 'dist/**']
+  });
+
+  for (const file of files) {
+    let content = readFileSync(file, 'utf-8');
+    let modified = false;
+
+    for (const { pattern, replacement, description } of replacements) {
+      if (pattern.test(content)) {
+        content = content.replace(pattern, replacement);
+        modified = true;
+        console.log(`✓ Updated ${description} in ${file}`);
+      }
+    }
+
+    if (modified) {
+      writeFileSync(file, content, 'utf-8');
+    }
+  }
+}
+
+updateImagePlaceholders();
+```
+
+## Manual Search & Replace Patterns
+
+For Claude Code to execute in the terminal:
+
+### Find all image references
+```bash
+# Find all img tags
+grep -r "<img" --include="*.html" --include="*.md" .
+
+# Find broken image paths
+grep -r 'src="images/' --include="*.html" .
+grep -r 'src="/images/' --include="*.html" .
+
+# Find CSS background images
+grep -r "url('images/" --include="*.css" .
+grep -r 'url("images/' --include="*.css" .
+```
+
+### Find and replace with sed (macOS/Linux)
+```bash
+# Replace product images
+find . -name "*.html" -type f -exec sed -i '' \
+  's|src="images/product-\([0-9]*\)\.\(jpg\|png\)"|src="https://placehold.co/600x600/667eea/FFF?text=Product+\1"|g' {} \;
+
+# Replace avatar images  
+find . -name "*.html" -type f -exec sed -i '' \
+  's|src="images/avatar\.\(jpg\|png\)"|src="https://placehold.co/200x200/764ba2/FFF?text=User"|g' {} \;
+
+# Replace via.placeholder.com with placehold.co
+find . -name "*.html" -type f -exec sed -i '' \
+  's|https://placehold.co/|https://placehold.co/|g' {} \;
+```
+
+## Execution Workflow for Claude Code
+
+When Claude Code CLI is invoked with this task:
+
+1. **Scan Phase**
+   ```bash
+   cd /Users/clivemoore/Documents/GitHub/AIAB/amphibious
+   
+   # Find all files with image references
+   find . -type f \( -name "*.html" -o -name "*.md" \) -not -path "*/node_modules/*" -not -path "*/dist/*" | \
+     xargs grep -l '<img\|background.*url'
+   ```
+
+2. **Analysis Phase**
+   - List all unique image paths found
+   - Categorize by type (product, avatar, hero, etc.)
+   - Determine appropriate placeholder size and color
+   - Report findings to user
+
+3. **Replacement Phase**
+   - Create backup of files before modification
+   - Apply replacements systematically
+   - Add `loading="lazy"` attribute if missing
+   - Ensure alt text is preserved
+   - Log all changes made
+
+4. **Verification Phase**
+   ```bash
+   # Test that replaced URLs are valid
+   curl -I https://placehold.co/600x600/667eea/FFF?text=Test
+   
+   # Check for any remaining broken images
+   grep -r 'src="images/' --include="*.html" .
+   ```
+
+5. **Report Phase**
+   - Summary of files modified
+   - Count of replacements by type
+   - List of any images that couldn't be automatically replaced
+   - Recommendations for next steps
+
+## Special Cases
+
+### Images in Data Attributes
+```html
+<!-- Before -->
+<div data-image="images/product.jpg">
+
+<!-- After -->
+<div data-image="https://placehold.co/600x600/667eea/FFF?text=Product">
+```
+
+### Srcset for Responsive Images
+```html
+<!-- Before -->
+<img src="images/product.jpg" 
+     srcset="images/product-400.jpg 400w, images/product-800.jpg 800w"
+     alt="Product">
+
+<!-- After -->
+<img src="https://placehold.co/600x600/667eea/FFF?text=Product"
+     srcset="https://placehold.co/400x400/667eea/FFF?text=Product 400w,
+             https://placehold.co/800x800/667eea/FFF?text=Product 800w"
+     alt="Product"
+     loading="lazy">
+```
+
+### CSS Background Images
+```css
+/* Before */
+.hero {
+  background-image: url('images/hero.jpg');
+}
+
+/* After */
+.hero {
+  background-image: url('https://picsum.photos/1920/600');
+}
+```
+
+## Exclusions
+
+Do NOT replace images in:
+- `/node_modules/`
+- `/dist/`
+- `/public/` (if they exist and are working)
+- Documentation images that are actually present
+- SVG files (these should work)
+
+## Post-Replacement Tasks
+
+After replacing placeholders:
+
+1. **Update Documentation**
+   - Document which placeholders are used where
+   - Note which need to be replaced with real assets
+   - Create asset requirements list
+
+2. **Create Asset Pipeline**
+   - Set up `/public/images/` directory structure
+   - Define naming conventions for real assets
+   - Create guidelines for image optimization
+
+3. **Add to TODO**
+   - List all placeholder replacements as future tasks
+   - Prioritize based on visibility (hero images first)
+   - Assign to design team if applicable
+
+## Testing
+
+After replacements, verify:
+
+```bash
+# Start dev server
+bun run dev
+
+# Visit http://localhost:2960 and check:
+# - All images load
+# - No broken image icons
+# - Placeholder text is appropriate
+# - Colors match brand
+# - Sizes are correct for context
+```
+
+## Example Commands for Claude Code
+
+```bash
+# Full workflow
+cd /Users/clivemoore/Documents/GitHub/AIAB/amphibious
+
+# 1. Find all broken image references
+echo "Scanning for broken images..."
+grep -rn 'src="images/' --include="*.html" examples/ docs/ *.html | tee broken-images.log
+
+# 2. Create replacements
+echo "Creating replacements..."
+# (Claude Code will write a custom script based on findings)
+
+# 3. Apply replacements
+bun run scripts/update-image-placeholders.ts
+
+# 4. Verify
+echo "Verifying replacements..."
+grep -r 'placehold.co' --include="*.html" . | wc -l
+echo "images replaced with placeholders"
+
+# 5. Test
+bun run dev
+```
+
+## Notes for Claude Code
+
+- Always create a backup before bulk replacements
+- Preserve alt text - it's crucial for accessibility
+- Add `loading="lazy"` for performance
+- Use brand colors from the Amphibious palette
+- Document all replacements made
+- Report any images that couldn't be automatically handled
+- Test at least one page manually before proceeding with bulk operations
+
+## Success Criteria
+
+✅ All image links are valid URLs
+✅ No broken image icons in browser
+✅ Appropriate placeholder sizes for context
+✅ Brand colors used consistently
+✅ Alt text preserved or improved
+✅ Loading attribute added for performance
+✅ Documentation updated with list of placeholders
+✅ Original broken links logged for reference

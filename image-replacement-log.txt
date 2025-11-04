@@ -1,0 +1,52 @@
+Amphibious Image Replacement Log - 2025-11-04T15:45:02.663Z
+============================================================
+
+index.html: Update via.placeholder.com to placehold.co - 3 replacement(s)
+FIXES-SUMMARY.md: Update via.placeholder.com to placehold.co - 1 replacement(s)
+docs/form.html: GitHub fork ribbon placeholder - 1 replacement(s)
+docs/tests/fluid.html: GitHub fork ribbon placeholder - 1 replacement(s)
+docs/carousel.html: Gallery/generic images with realistic photos - 3 replacement(s)
+docs/carousel.html: Product images with brand colors - 1 replacement(s)
+docs/carousel.html: Thumbnail images with realistic photos - 3 replacement(s)
+docs/components/cards.html: Avatar placeholder - 1 replacement(s)
+docs/components/cards.html: Generic image placeholder - 2 replacement(s)
+docs/components/modal.html: Generic image placeholder - 1 replacement(s)
+docs/features.html: Gallery/generic images with realistic photos - 2 replacement(s)
+CLAUDE-CODE-IMAGE-INSTRUCTIONS.md: Update via.placeholder.com to placehold.co - 2 replacement(s)
+examples/e-commerce-cart.html: Update via.placeholder.com to placehold.co - 11 replacement(s)
+examples/pears-patterns.html: Update via.placeholder.com to placehold.co - 5 replacement(s)
+examples/checkout-flow.html: Update via.placeholder.com to placehold.co - 7 replacement(s)
+examples/navigation-showcase.html: Update via.placeholder.com to placehold.co - 1 replacement(s)
+examples/e-commerce-catalog.html: Update via.placeholder.com to placehold.co - 10 replacement(s)
+examples/e-commerce-product.html: Update via.placeholder.com to placehold.co - 15 replacement(s)
+index.html: Added loading="lazy" to 3 images
+docs/form.html: Added loading="lazy" to 1 images
+docs/tests/fluid.html: Added loading="lazy" to 1 images
+examples/e-commerce-cart.html: Added loading="lazy" to 11 images
+examples/pears-patterns.html: Added loading="lazy" to 5 images
+examples/sidebar-demo.html: Added loading="lazy" to 1 images
+examples/checkout-flow.html: Added loading="lazy" to 7 images
+examples/modal.html: Added loading="lazy" to 4 images
+examples/cards-demo.html: Added loading="lazy" to 5 images
+examples/themes/green/home.html: Added loading="lazy" to 4 images
+examples/themes/green/product.html: Added loading="lazy" to 15 images
+examples/themes/green/contact.html: Added loading="lazy" to 5 images
+examples/themes/green/interior.html: Added loading="lazy" to 6 images
+examples/themes/green/store.html: Added loading="lazy" to 15 images
+examples/themes/green/cart.html: Added loading="lazy" to 11 images
+examples/themes/green/interior_two.html: Added loading="lazy" to 5 images
+examples/themes/classic/home.html: Added loading="lazy" to 7 images
+examples/themes/classic/product.html: Added loading="lazy" to 15 images
+examples/themes/classic/interior_three.html: Added loading="lazy" to 3 images
+examples/themes/classic/contact.html: Added loading="lazy" to 5 images
+examples/themes/classic/interior.html: Added loading="lazy" to 6 images
+examples/themes/classic/store.html: Added loading="lazy" to 15 images
+examples/themes/classic/cart.html: Added loading="lazy" to 11 images
+examples/themes/classic/interior_two.html: Added loading="lazy" to 5 images
+examples/e-commerce-catalog.html: Added loading="lazy" to 10 images
+examples/e-commerce-product.html: Added loading="lazy" to 14 images
+
+Total files modified: 15
+Total replacements: 70
+
+Replacement completed at: 2025-11-04T15:45:02.725Z

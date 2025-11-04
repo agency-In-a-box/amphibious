@@ -462,7 +462,6 @@
 /* Legacy Support - Map old classes to new ones */
 .error {
   background-color: var(--alert-error-bg);
-  border-color: var(--alert-error-border);
   color: var(--alert-error-text);
   padding: var(--alert-padding);
   border-radius: var(--alert-border-radius);
@@ -472,7 +471,6 @@
 
 .attn {
   background-color: var(--alert-warning-bg);
-  border-color: var(--alert-warning-border);
   color: var(--alert-warning-text);
   padding: var(--alert-padding);
   border-radius: var(--alert-border-radius);
@@ -482,7 +480,6 @@
 
 .confirm {
   background-color: var(--alert-success-bg);
-  border-color: var(--alert-success-border);
   color: var(--alert-success-text);
   padding: var(--alert-padding);
   border-radius: var(--alert-border-radius);
@@ -493,7 +490,6 @@
 .dialog,
 .dialogue {
   background-color: var(--alert-neutral-bg);
-  border-color: var(--alert-neutral-border);
   color: var(--alert-neutral-text);
   padding: var(--alert-padding);
   border-radius: var(--alert-border-radius);
@@ -503,7 +499,6 @@
 
 .notify {
   background-color: var(--alert-info-bg);
-  border-color: var(--alert-info-border);
   color: var(--alert-info-text);
   padding: 0.75rem;
   font-size: 0.8125rem;
