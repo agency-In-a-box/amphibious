@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Progress Component - Amphibious 2.0
+   Progress bars and indicators for loading states and completion
+   ========================================================================== */
+
+/* Progress Variables
+   ========================================================================== */
+
+:root {
+  --progress-height: 0.5rem;
+  --progress-height-sm: 0.25rem;
+  --progress-height-lg: 1rem;
+  --progress-bg: #e5e7eb;
+  --progress-border-radius: 0.25rem;
+  --progress-bar-bg: #3b82f6;
+  --progress-bar-transition: width 0.6s ease;
+
+  /* Progress Colors */
+  --progress-primary: #3b82f6;
+  --progress-secondary: #6b7280;
+  --progress-success: #10b981;
+  --progress-danger: #ef4444;
+  --progress-warning: #f59e0b;
+  --progress-info: #06b6d4;
+
+  /* Progress Text */
+  --progress-text-color: #374151;
+  --progress-text-size: 0.875rem;
+  --progress-label-margin: 0.5rem;
+}
+
+/* Base Progress Styles
+   ========================================================================== */
+
+.progress {
+  display: block;
+  width: 100%;
+  height: var(--progress-height);
+  background-color: var(--progress-bg);
+  border-radius: var(--progress-border-radius);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--progress-bar-bg);
+  transition: var(--progress-bar-transition);
+  width: 0%;
+  border-radius: var(--progress-border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Progress Sizes
+   ========================================================================== */
+
+.progress-sm {
+  height: var(--progress-height-sm);
+}
+
+.progress-lg {
+  height: var(--progress-height-lg);
+}
+
+/* Progress Colors
+   ========================================================================== */
+
+.progress-bar-primary {
+  background-color: var(--progress-primary);
+}
+
+.progress-bar-secondary {
+  background-color: var(--progress-secondary);
+}
+
+.progress-bar-success {
+  background-color: var(--progress-success);
+}
+
+.progress-bar-danger {
+  background-color: var(--progress-danger);
+}
+
+.progress-bar-warning {
+  background-color: var(--progress-warning);
+}
+
+.progress-bar-info {
+  background-color: var(--progress-info);
+}
+
+/* Progress with Label
+   ========================================================================== */
+
+.progress-group {
+  margin-bottom: 1rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--progress-label-margin);
+  font-size: var(--progress-text-size);
+  color: var(--progress-text-color);
+  font-weight: 500;
+}
+
+.progress-label .progress-percentage {
+  font-weight: 600;
+  color: var(--progress-bar-bg);
+}
+
+/* Striped Progress
+   ========================================================================== */
+
+.progress-bar-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+/* Animated Progress
+   ========================================================================== */
+
+.progress-bar-animated {
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Circular Progress
+   ========================================================================== */
+
+.progress-circular {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: conic-gradient(var(--progress-primary) 0deg, var(--progress-bg) 0deg);
+  position: relative;
+}
+
+.progress-circular::before {
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: calc(100% - 0.5rem);
+  height: calc(100% - 0.5rem);
+  border-radius: 50%;
+  background: var(--color-background, #ffffff);
+}
+
+.progress-circular-sm {
+  width: 2rem;
+  height: 2rem;
+}
+
+.progress-circular-lg {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* Progress with Steps
+   ========================================================================== */
+
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.progress-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--progress-bg);
+  z-index: 1;
+}
+
+.progress-step.is-completed:not(:last-child)::after {
+  background-color: var(--progress-success);
+}
+
+.progress-step-circle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--progress-bg);
+  border: 2px solid var(--progress-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #9ca3af;
+}
+
+.progress-step.is-active .progress-step-circle {
+  background-color: var(--progress-primary);
+  border-color: var(--progress-primary);
+  color: white;
+}
+
+.progress-step.is-completed .progress-step-circle {
+  background-color: var(--progress-success);
+  border-color: var(--progress-success);
+  color: white;
+}
+
+.progress-step-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--progress-text-color);
+  text-align: center;
+  font-weight: 500;
+}
+
+.progress-step.is-active .progress-step-label {
+  color: var(--progress-primary);
+  font-weight: 600;
+}
+
+.progress-step.is-completed .progress-step-label {
+  color: var(--progress-success);
+}
+
+/* Dark Mode Support
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --progress-bg: #374151;
+    --progress-text-color: #f3f4f6;
+  }
+}
+
+/* Responsive Behavior
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .progress-steps {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .progress-step:not(:last-child)::after {
+    display: none;
+  }
+
+  .progress-step-label {
+    margin-top: 0.25rem;
+  }
+}
