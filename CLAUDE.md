@@ -4,20 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 ## Project Overview
 
-**Amphibious 2.0** is a modern CSS framework and component library within the AIAB monorepo. It's a complete rebuild of [A.mphibio.us](http://a.mphibio.us) (circa 2015), modernizing the build system and tooling while preserving the elegant responsive design patterns.
+**Amphibious 2.0** is a modern CSS framework and component library within the AIAB monorepo. It's a complete rebuild of [A.mphibio.us](http://a.mphibio.us) (circa 2015), modernizing the build system, implementing Atomic Design principles, and establishing a production-ready component ecosystem.
 
 **Root directory**: `/Users/clivemoore/Documents/GitHub/AIAB/amphibious`
 
 **Original source**: `/Users/clivemoore/Documents/GitHub/A.mphibio.us` (legacy Grunt-based version)
 
-## Current Status
+## Current Status: 95% Complete - QA Phase
 
-✅ **Core Framework**: Modern build system (Vite 6) with TypeScript and Biome
-✅ **Grid System**: 16-column responsive grid with modern flexbox implementation
-✅ **Image System**: All broken links replaced with brand-consistent placeholders
-✅ **Performance**: Lazy loading enabled, optimized build pipeline
-✅ **Components**: 25+ UI components with comprehensive examples
-⚠️ **Migration**: Legacy component migration from A.mphibio.us in progress
+✅ **Core Framework**: Modern build system (Vite 6) with TypeScript and Biome  
+✅ **Grid System**: 16-column responsive grid with modern flexbox implementation  
+✅ **Image System**: All broken links replaced with brand-consistent placeholders  
+✅ **Performance**: Lazy loading enabled, optimized build pipeline  
+✅ **Atomic Design**: Complete implementation with tokens, atoms, molecules, organisms  
+✅ **Components**: 25+ production-ready UI components with comprehensive examples  
+✅ **Theming**: CSS custom properties system with dark mode foundation  
+🔍 **QA Phase**: Navigation testing, cross-browser validation, pre-launch preparation
 
 **Quick Start**: `bun install && bun run dev` → http://localhost:2960
 
@@ -88,46 +90,65 @@ bun run fix:images      # Replace broken images with placeholders
 - **Styling**: CSS with CSS Variables (Sass optional for themes)
 - **Types**: TypeScript for JS functionality
 - **Module System**: ESM (ES Modules)
+- **Design System**: Atomic Design methodology
 
-### File Structure
+### File Structure - Atomic Design Organization
 ```
 amphibious/
 ├── src/
 │   ├── css/
-│   │   ├── components/          # Modern component system
-│   │   │   ├── cards.css
-│   │   │   ├── alerts.css
-│   │   │   ├── navigation.css
-│   │   │   ├── breadcrumbs.css
-│   │   │   ├── tabs.css
-│   │   │   ├── pagination.css
-│   │   │   ├── steps.css
-│   │   │   ├── sidebar.css
-│   │   │   ├── input-groups.css
-│   │   │   └── responsive-tables.css
-│   │   ├── normalize.css        # CSS reset
-│   │   ├── variables.css        # CSS custom properties
-│   │   ├── typography.css       # Text styles
-│   │   ├── grid.css            # 16-column grid system
-│   │   ├── grid-responsive.css # Responsive breakpoints
-│   │   ├── helpers.css         # Utility classes
-│   │   ├── print.css           # Print styles
-│   │   └── main.css            # Entry point (imports all)
-│   ├── js/                      # JavaScript plugins (to migrate)
-│   └── index.ts                # Main TypeScript entry
-├── scripts/                     # Automation scripts
-│   ├── fix-grid.ts              # Grid system modernization
+│   │   ├── tokens/
+│   │   │   └── design-tokens.css    # Subatomic foundation (colors, spacing, etc.)
+│   │   ├── atoms/                   # Basic building blocks
+│   │   │   ├── badges.css           # Status indicators
+│   │   │   ├── buttons.css          # Button system
+│   │   │   ├── icons.css            # Icon system
+│   │   │   ├── spinners.css         # Loading indicators
+│   │   │   └── icon-buttons.css     # Icon-only buttons
+│   │   ├── molecules/               # Simple component combinations
+│   │   │   ├── alerts.css           # System notifications
+│   │   │   ├── progress.css         # Progress indicators
+│   │   │   ├── tags.css             # Removable labels/chips
+│   │   │   ├── tooltip.css          # Contextual help
+│   │   │   └── pears.css            # Content patterns (stats, slats)
+│   │   ├── organisms/               # Complex UI sections
+│   │   │   ├── cards.css            # Card components
+│   │   │   ├── navigation.css       # Navigation patterns
+│   │   │   ├── breadcrumbs.css      # Breadcrumb trails
+│   │   │   ├── tabs.css             # Tabbed interfaces
+│   │   │   ├── pagination.css       # Page navigation
+│   │   │   ├── steps.css            # Multi-step processes
+│   │   │   ├── sidebar.css          # Sidebar layouts
+│   │   │   ├── footer.css           # Footer sections
+│   │   │   ├── carousel.css         # Image/content carousels (Splide.js)
+│   │   │   ├── forms.css            # Form layouts
+│   │   │   ├── modals.css           # Modal dialogs
+│   │   │   └── tables.css           # Table components
+│   │   ├── normalize.css            # CSS reset
+│   │   ├── variables.css            # Legacy CSS custom properties
+│   │   ├── typography.css           # Text styles
+│   │   ├── grid.css                 # 16-column grid system
+│   │   ├── grid-responsive.css      # Responsive breakpoints
+│   │   ├── helpers.css              # Utility classes
+│   │   ├── print.css                # Print styles
+│   │   ├── main.css                 # Classic entry point
+│   │   └── main-atomic.css          # Atomic Design entry point
+│   ├── js/                          # JavaScript plugins
+│   └── index.ts                     # Main TypeScript entry
+├── scripts/                         # Automation scripts
+│   ├── fix-grid.ts                  # Grid system modernization
 │   └── update-image-placeholders.ts # Image placeholder replacement
-├── scss/                        # Sass theme system (optional)
-├── examples/                    # Live usage examples
-├── docs/                        # Component documentation
-├── public/                      # Static assets
-├── dist/                        # Built output (gitignored)
-├── index.html                   # Development preview page
-├── vite.config.ts              # Vite configuration
-├── tsconfig.json               # TypeScript config
-├── biome.json                  # Biome linting/formatting
-└── package.json                # Dependencies & scripts
+├── scss/                            # Sass theme system (optional)
+├── examples/                        # Live usage examples
+│   └── atomic-design-demo.html      # Complete atomic showcase
+├── docs/                            # Component documentation
+├── public/                          # Static assets
+├── dist/                            # Built output (gitignored)
+├── index.html                       # Development preview page
+├── vite.config.ts                   # Vite configuration
+├── tsconfig.json                    # TypeScript config
+├── biome.json                       # Biome linting/formatting
+└── package.json                     # Dependencies & scripts
 ```
 
 ### Build Process
@@ -139,9 +160,83 @@ amphibious/
 
 **Production**: Vite bundles everything
 - Entry: `src/index.ts` → `dist/amphibious.js`
-- Styles: `src/css/main.css` → `dist/amphibious.css`
+- Styles: `src/css/main.css` or `src/css/main-atomic.css` → `dist/amphibious.css`
 - Minification: Automatic via esbuild
 - Source maps: Generated for debugging
+
+## Design System - Atomic Design
+
+Amphibious 2.0 implements Brad Frost's Atomic Design methodology for systematic, scalable component architecture.
+
+### Design Tokens (Subatomic)
+**Location**: `src/css/tokens/design-tokens.css`
+
+Foundation for the entire design system:
+- **Colors**: Primary, secondary, semantic (success, warning, error, info)
+- **Typography**: Font families, sizes, weights, line heights
+- **Spacing**: Consistent scale (4px base)
+- **Shadows**: Elevation system
+- **Borders**: Radius, widths
+- **Transitions**: Duration, timing functions
+- **Dark Mode**: CSS variable switching for theme support
+
+### Atoms (5 Components)
+**Location**: `src/css/atoms/`
+
+Basic building blocks that can't be broken down further:
+- **badges.css** - Status indicators (primary, success, warning, error, info)
+- **buttons.css** - Complete button system with states and variants
+- **icons.css** - Icon system integration
+- **spinners.css** - Loading indicators (small, medium, large)
+- **icon-buttons.css** - Icon-only interactive buttons
+
+### Molecules (5 Components)
+**Location**: `src/css/molecules/`
+
+Simple combinations of atoms:
+- **alerts.css** - System notifications with semantic colors
+- **progress.css** - Progress bars, circular progress, step indicators
+- **tags.css** - Removable chips/labels for filters and categories
+- **tooltip.css** - Contextual help overlays
+- **pears.css** - Content patterns (stats, slats, feature lists)
+
+### Organisms (12+ Components)
+**Location**: `src/css/organisms/`
+
+Complex UI sections combining molecules and atoms:
+- **cards.css** - Card layouts with headers, footers, images
+- **navigation.css** - Nav bars, menus, mobile patterns
+- **breadcrumbs.css** - Hierarchical navigation trails
+- **tabs.css** - Tabbed interface patterns
+- **pagination.css** - Page navigation controls
+- **steps.css** - Multi-step process indicators
+- **sidebar.css** - Sidebar navigation layouts
+- **footer.css** - Footer sections and patterns
+- **carousel.css** - Image/content carousels (uses Splide.js)
+- **forms.css** - Form layouts and input groups
+- **modals.css** - Modal dialog patterns
+- **tables.css** - Responsive table components
+
+### Using Atomic Design
+
+Two entry points available:
+
+**Classic** (`main.css`):
+```css
+@import 'normalize.css';
+@import 'variables.css';
+@import 'typography.css';
+/* ... traditional organization */
+```
+
+**Atomic** (`main-atomic.css`):
+```css
+@import 'tokens/design-tokens.css';
+@import 'atoms/buttons.css';
+@import 'molecules/alerts.css';
+@import 'organisms/cards.css';
+/* ... atomic organization */
+```
 
 ## Grid System
 
@@ -151,6 +246,7 @@ Based on 960 Grid System principles:
 - 16 equal columns with gutters
 - Columns: `.col-1` through `.col-16`
 - Math: Each column = 6.25% of container
+- Modern flexbox implementation (no floats)
 
 ### Usage
 ```html
@@ -170,98 +266,85 @@ Based on 960 Grid System principles:
 ## Component System
 
 ### Design Principles
+- **Atomic Design**: Systematic component hierarchy
 - **BEM Methodology**: Block Element Modifier naming
 - **Mobile-First**: Base styles for small screens, enhance up
-- **Accessibility**: ARIA attributes where needed
+- **Accessibility**: ARIA attributes, keyboard navigation, focus states
 - **Modular**: Each component in separate file
 - **CSS Variables**: Easy theming without Sass
+- **Dark Mode Ready**: Variable switching for theme support
 
-### Component Status
-All components marked with `TODO` need migration from original A.mphibio.us:
+### Complete Component Inventory (25+)
 
-**Completed (basic placeholders)**:
-- ✅ Cards (basic structure)
-- ✅ Alerts (basic structure)
-- ✅ Grid system (basic structure)
+**✅ Atoms (5)**:
+- Badges
+- Buttons
+- Icons
+- Spinners
+- Icon Buttons
 
-**To Migrate from A.mphibio.us**:
-- ⏳ Navigation (from `src/css/components/navigation.css`)
-- ⏳ Breadcrumbs (from `src/css/components/breadcrumbs.css`)
-- ⏳ Tabs (from `src/css/components/tabs.css`)
-- ⏳ Pagination (from `src/css/components/pagination.css`)
-- ⏳ Steps (from `src/css/components/steps.css`)
-- ⏳ Sidebar (from `src/css/components/sidebar.css`)
-- ⏳ Input Groups (from `src/css/components/input-groups.css`)
-- ⏳ Responsive Tables (from `src/css/components/responsive-tables.css`)
-- ⏳ Full normalize.css
-- ⏳ Complete typography system
-- ⏳ All helper utilities
+**✅ Molecules (5)**:
+- Alerts
+- Progress Indicators
+- Tags/Chips
+- Tooltips
+- Content Patterns (Pears)
 
-## Migration Guide
+**✅ Organisms (12+)**:
+- Cards
+- Navigation
+- Breadcrumbs
+- Tabs
+- Pagination
+- Steps
+- Sidebar
+- Footer
+- Carousel (Splide.js)
+- Forms
+- Modals
+- Tables
 
-### From Original A.mphibio.us
+**✅ Foundation**:
+- Design Tokens
+- Grid System (16-column flexbox)
+- Typography System
+- Utility Classes
+- Normalize/Reset
 
-**Source Location**: `/Users/clivemoore/Documents/GitHub/A.mphibio.us`
+## Theming System
 
-#### To Migrate a Component:
+### Current Implementation (6/10 Ease of Use)
 
-1. **Locate original file**:
-   ```bash
-   # Original: /Users/clivemoore/Documents/GitHub/A.mphibio.us/src/css/components/[name].css
-   # Target: /Users/clivemoore/Documents/GitHub/AIAB/amphibious/src/css/components/[name].css
-   ```
+**What Works**:
+- ✅ Design tokens in `tokens/design-tokens.css`
+- ✅ CSS custom properties throughout
+- ✅ Dark mode foundation
+- ✅ Color system with semantic variants
+- ✅ Component-level customization possible
 
-2. **Copy and modernize**:
-   - Replace old vendor prefixes with modern CSS
-   - Convert fixed values to CSS variables where appropriate
-   - Ensure mobile-first approach
-   - Add comments for complex selectors
-   - Test responsive behavior
+**What Needs Improvement**:
+- ⚠️ Missing theme compilation documentation
+- ⚠️ No example themes provided
+- ⚠️ Vite configuration for theme builds not documented
+- ⚠️ Theme creation workflow unclear
 
-3. **Update imports**:
-   - Ensure component is imported in `src/css/main.css`
-   - Check import order (normalize → variables → layout → components → utilities)
-
-4. **Test in dev server**:
-   ```bash
-   bun run dev
-   # View at http://localhost:3000
-   ```
-
-### CSS Variable Migration
-
-**Old approach** (Sass variables):
-```scss
-$primary-color: #0066cc;
-```
-
-**New approach** (CSS variables):
-```css
-:root {
-  --color-primary: #0066cc;
-}
-.button { background: var(--color-primary); }
-```
-
-### Grunt → Vite Translation
-
-| Old Grunt Task | New Vite Equivalent |
-|---------------|-------------------|
-| `grunt watch` | `bun run dev` (automatic) |
-| `grunt concat:css` | Automatic via imports |
-| `grunt concat:js` | Automatic bundling |
-| `grunt cssmin` | `bun run build` (automatic) |
-| `grunt uglify` | `bun run build` (automatic) |
-| `grunt sass` | Native CSS (or Vite Sass plugin) |
+### Future Theming Enhancements
+- [ ] Comprehensive theme documentation
+- [ ] Multiple example themes (light, dark, high-contrast)
+- [ ] Vite configuration guide for custom themes
+- [ ] Theme starter template
+- [ ] Theme switching demo
 
 ## Development Best Practices
 
 ### When Editing CSS
 1. **Edit source files** in `src/css/`, never in `dist/`
-2. **Use CSS variables** from `variables.css` for theming
-3. **Follow BEM naming**: `.block__element--modifier`
-4. **Mobile-first**: Base styles, then `@media (min-width: ...)`
-5. **Test responsive**: Check all three breakpoints
+2. **Use design tokens** from `tokens/design-tokens.css` for consistency
+3. **Follow Atomic Design**: Put components in appropriate hierarchy
+4. **Follow BEM naming**: `.block__element--modifier`
+5. **Mobile-first**: Base styles, then `@media (min-width: ...)`
+6. **Test responsive**: Check all three breakpoints
+7. **Use CSS variables**: Leverage theming system
 
 ### When Editing TypeScript
 1. **Type everything**: No `any` types
@@ -270,11 +353,23 @@ $primary-color: #0066cc;
 4. **Document**: JSDoc comments for public APIs
 
 ### Adding New Components
-1. Create file: `src/css/components/[name].css`
-2. Add import: In `src/css/main.css`
-3. Create example: In `examples/[name].html`
-4. Document: In `docs/[name].md`
-5. Test: Run `bun run dev` and verify
+
+**Atoms**:
+1. Create file: `src/css/atoms/[name].css`
+2. Add import: In `src/css/main-atomic.css` under atoms section
+3. Use design tokens for consistency
+
+**Molecules**:
+1. Create file: `src/css/molecules/[name].css`
+2. Combine existing atoms
+3. Add import: In `src/css/main-atomic.css` under molecules section
+
+**Organisms**:
+1. Create file: `src/css/organisms/[name].css`
+2. Combine molecules and atoms
+3. Add import: In `src/css/main-atomic.css` under organisms section
+4. Create example: In `examples/[name].html`
+5. Document: In `docs/[name].md`
 
 ## Key Differences from Legacy Version
 
@@ -285,15 +380,18 @@ $primary-color: #0066cc;
 
 ### Modern JavaScript
 - ❌ No jQuery dependency
-- ❌ No old plugin files
+- ❌ No old plugin files (except Splide.js for carousel)
 - ✅ Native ES6+ modules
 - ✅ TypeScript for safety
 
 ### CSS Approach
 - ❌ No manual concatenation
 - ❌ No separate minification step
+- ❌ No float-based grid
 - ✅ ES6 imports (`@import`)
 - ✅ CSS variables for theming
+- ✅ Atomic Design organization
+- ✅ Modern flexbox grid
 - ✅ Automatic processing
 
 ### Build Output
@@ -318,7 +416,7 @@ import '@agency-in-a-box/amphibious/css';
 ```
 
 ### Publishing
-Once stable, can be published to npm:
+Preparing for NPM publication:
 ```bash
 bun run build
 npm publish
@@ -326,12 +424,12 @@ npm publish
 
 ## Known Issues & Fixes
 
-### Grid System Issues
-The current grid system has several problems with float-based layouts, incorrect width calculations, and responsive behavior. See **[GRID-FIX-GUIDE.md](GRID-FIX-GUIDE.md)** for:
-- Detailed analysis of grid issues
-- Three solution options (float-based fix, flexbox, CSS grid)
-- Recommended modern flexbox implementation
-- Step-by-step migration guide
+### ✅ Grid System (RESOLVED)
+**Status**: Successfully migrated from float-based to modern flexbox implementation.
+
+See **[GRID-FIX-GUIDE.md](GRID-FIX-GUIDE.md)** for:
+- Analysis of original float-based issues
+- Modern flexbox solution implemented
 - Testing checklist
 
 ### ✅ Image Links (RESOLVED)
@@ -355,7 +453,8 @@ The current grid system has several problems with float-based layouts, incorrect
 ## Important Notes
 
 ### CSS Import Order Matters
-Order in `main.css` is critical:
+
+**Classic Organization** (`main.css`):
 1. Normalize (reset)
 2. Variables (theme)
 3. Typography (base text)
@@ -364,57 +463,125 @@ Order in `main.css` is critical:
 6. Helpers (utilities)
 7. Print (media query)
 
+**Atomic Organization** (`main-atomic.css`):
+1. Design Tokens (subatomic)
+2. Atoms (basic elements)
+3. Molecules (simple combinations)
+4. Organisms (complex sections)
+5. Typography (text styles)
+6. Grid (layout system)
+7. Helpers (utilities)
+8. Print (media query)
+
 ### Backwards Compatibility
-Maintain class names from original A.mphibio.us where possible:
+Maintains class names from original A.mphibio.us:
 - `.col-*` → Keep
 - `.container` → Keep
 - Component classes → Keep original names
+- Atomic Design adds organization, doesn't break existing code
 
 ### Performance
 - Vite dev server is instant (HMR)
 - Production builds are optimized
-- No runtime dependencies
+- Tree-shaking enabled
+- No runtime dependencies (except Splide.js for carousel)
 - Pure CSS (no JS required for styles)
 
-## Testing Checklist
+## Pre-Launch QA Checklist
 
-### Core System Tests
-Before committing changes:
-- [ ] `bun run lint` passes
-- [ ] `bun run typecheck` passes
-- [ ] `bun run build` succeeds
-- [ ] Test in dev server (`bun run dev`)
-- [ ] Check responsive breakpoints
-- [ ] Verify in multiple browsers
-- [ ] Check print styles
+### Navigation Testing
+- [ ] Desktop navigation fully functional
+- [ ] Mobile navigation (hamburger menu) works
+- [ ] All nav links accessible
+- [ ] Keyboard navigation works
+- [ ] Focus states visible
 
 ### Grid System Verification
-After running `bun run fix:grid`:
 - [ ] No horizontal scrollbar on any page
 - [ ] All column widths add up to exactly 100%
 - [ ] Consistent 20px gutters between columns
-- [ ] Responsive stacking works on mobile
+- [ ] Responsive stacking works on mobile (≤480px)
+- [ ] Tablet layout correct (≤768px)
 - [ ] No console errors related to layout
 
-### Image System Verification
-After running `bun run fix:images`:
-- [ ] No broken image icons visible
-- [ ] All placeholder images load correctly
-- [ ] Appropriate sizes for context (check various pages)
-- [ ] Brand colors used consistently
-- [ ] No 404 errors in browser network tab
-- [ ] Lazy loading working (check DevTools)
+### Component Functionality
+- [ ] All 25+ components render correctly
+- [ ] Interactive components work (tabs, modals, etc.)
+- [ ] Accessibility features functional (ARIA, keyboard nav)
+- [ ] Dark mode switches properly (if implemented)
+- [ ] Print styles work
+
+### Cross-Browser Testing
+- [ ] Chrome/Edge (Chromium)
+- [ ] Firefox
+- [ ] Safari (macOS/iOS)
+- [ ] Mobile browsers (iOS Safari, Chrome Mobile)
+
+### Build & Deploy
+- [ ] `bun run lint` passes
+- [ ] `bun run typecheck` passes
+- [ ] `bun run build` succeeds without errors
+- [ ] Production build works (`bun run preview`)
+- [ ] File sizes reasonable (< 100kb CSS, < 50kb JS)
+
+### Documentation
+- [ ] README.md complete
+- [ ] Component examples all working
+- [ ] API documentation complete
+- [ ] Theme creation guide ready
+- [ ] NPM package.json ready
+
+## NPM Publication Preparation
+
+### Pre-Publication Checklist
+- [ ] Version number set (semantic versioning)
+- [ ] package.json metadata complete
+- [ ] README.md polished
+- [ ] LICENSE file included
+- [ ] CHANGELOG.md created
+- [ ] .npmignore configured
+- [ ] Keywords for discoverability
+- [ ] Repository links correct
+- [ ] Build artifacts in correct location
+
+### Publication Steps
+```bash
+# 1. Final build
+bun run build
+
+# 2. Version bump
+npm version patch|minor|major
+
+# 3. Publish
+npm publish
+
+# 4. Create GitHub release
+git tag v2.0.0
+git push --tags
+```
 
 ## Future Enhancements
 
-Planned improvements:
-- [ ] Storybook integration (like `headless` module)
+### Immediate (Post-Launch)
+- [ ] Attract contributors for QA
+- [ ] Gather user feedback
+- [ ] Bug fixes from real-world usage
+- [ ] Performance monitoring
+
+### Short-Term
+- [ ] Improved theming documentation
+- [ ] Multiple example themes
+- [ ] Theme builder tool
+- [ ] Storybook integration
+- [ ] Component playground
+
+### Long-Term
 - [ ] Component unit tests
 - [ ] Automated visual regression testing
-- [ ] Dark mode theme
+- [ ] Accessibility audit & improvements
 - [ ] RTL (right-to-left) support
-- [ ] Accessibility audit
 - [ ] Performance benchmarks
+- [ ] CDN distribution
 
 ## Resources
 
@@ -423,7 +590,11 @@ Planned improvements:
 - **Biome Docs**: https://biomejs.dev
 - **CSS Variables**: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 - **BEM Methodology**: http://getbem.com
+- **Atomic Design**: https://atomicdesign.bradfrost.com
+- **Splide.js**: https://splidejs.com (carousel component)
 
 ---
 
-**Migration Status**: 🚧 Active - Core structure complete, components need migration from original source
+**Status**: 🎯 95% Complete - QA Phase  
+**Next Milestone**: NPM Publication & Public Release  
+**Focus**: Navigation testing, cross-browser validation, documentation polish

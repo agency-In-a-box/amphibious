@@ -72,7 +72,7 @@ export class AmphibiousNavigation {
         <div class="amp-nav__wrapper">
           <div class="amp-nav__brand">
             <a href="/" class="amp-nav__logo">
-              <span class="amp-nav__icon">🐸</span>
+              <i data-lucide="waves" class="amp-nav__icon"></i>
               <span class="amp-nav__text">Amphibious 2.0</span>
             </a>
           </div>

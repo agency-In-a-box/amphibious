@@ -27,7 +27,8 @@
     "test:watch": "bun test --watch",
     "clean": "rm -rf dist",
     "fix:grid": "bun run scripts/fix-grid.ts",
-    "fix:images": "bun run scripts/update-image-placeholders.ts"
+    "fix:images": "bun run scripts/update-image-placeholders.ts",
+    "fix:docs": "bun run scripts/fix-docs.ts"
   },
   "keywords": ["css", "framework", "responsive", "grid", "components", "boilerplate", "html5"],
   "author": {
