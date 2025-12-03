@@ -16,24 +16,24 @@ import { createIcons, icons } from 'lucide';
 import { initNavigationDropdowns } from './js/navigation-dropdown.js';
 
 // Simple initialization without complex TypeScript dependencies
-console.log('🐸 Amphibious 2.0 loaded successfully');
+console.log('Amphibious 2.0 loaded successfully');
 
 // Initialize basic functionality
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🐸 Amphibious 2.0 initialized');
+  console.log('Amphibious 2.0 initialized');
 
   // Initialize Lucide icons
   createIcons({ icons });
   const iconElements = document.querySelectorAll('[data-lucide]');
-  console.log(`🎨 Initialized ${iconElements.length} Lucide icons`);
+  console.log(`Initialized ${iconElements.length} Lucide icons`);
 
   // Initialize navigation dropdowns
   initNavigationDropdowns();
-  console.log(`📱 Enhanced navigation dropdowns`);
+  console.log(`Enhanced navigation dropdowns`);
 
   // Basic tooltip initialization
   const tooltips = document.querySelectorAll('[data-tooltip]');
-  console.log(`💬 Found ${tooltips.length} tooltips`);
+  console.log(`Found ${tooltips.length} tooltips`);
 });
 
 // Export simple namespace

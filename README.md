@@ -1,14 +1,14 @@
-# Amphibious 2.0 🐸
+# Amphibious 2.0
 
 [![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/agency-In-a-box/amphibious)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-95%25%20complete-orange.svg)](QA-NAVIGATION-REPORT.md)
+[![Status](https://img.shields.io/badge/status-95%25%20complete-orange.svg)](docs/qa-reports/navigation-report.md)
 
 > The Elegant HTML5 Boilerplate for Responsive Web Development - Evolved
 
 **Amphibious** is a modern CSS framework and component library, rebuilt from the ground up with modern tooling while preserving the elegant responsive design patterns that made the original [A.mphibio.us](http://a.mphibio.us) great.
 
-## ✨ Features
+## Features
 
 - **Modern Build System** - Vite 6 with TypeScript and Biome
 - **Atomic Design System** - Systematic component architecture with tokens, atoms, molecules, and organisms
@@ -20,7 +20,7 @@
 - **Zero Dependencies** - Pure CSS (except Splide.js for carousel)
 - **Performance Optimized** - Lazy loading, tree-shaking, minification
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -43,7 +43,7 @@ Visit `http://localhost:2960` to see the framework in action.
 bun run build        # Build for production
 ```
 
-## 📦 Usage
+## Usage
 
 ### As a Module
 
@@ -59,7 +59,7 @@ import '@agency-in-a-box/amphibious/css';
 <script type="module" src="path/to/amphibious.js"></script>
 ```
 
-## 🎨 Grid System
+## Grid System
 
 Amphibious uses a **16-column grid** for maximum flexibility:
 
@@ -85,7 +85,7 @@ Amphibious uses a **16-column grid** for maximum flexibility:
 </div>
 ```
 
-## 🧩 Components
+## Components
 
 ### Cards
 
@@ -106,13 +106,13 @@ Amphibious uses a **16-column grid** for maximum flexibility:
 <div class="alert alert-info">Info message</div>
 ```
 
-## 📊 Project Status
+## Project Status
 
 **Current Version**: 2.0.0
 **Completion**: 95% - QA Phase
 **Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
 
-### ✅ Completed
+### Completed
 - Atomic Design System implementation
 - Modern build system (Vite 6)
 - 25+ production-ready components
@@ -121,14 +121,14 @@ Amphibious uses a **16-column grid** for maximum flexibility:
 - Grid system modernization
 - Image placeholder system
 
-### 🚧 Remaining Work
+### Remaining Work
 - [ ] NPM package publication
 - [ ] CDN distribution setup
 - [ ] Additional theme templates
 - [ ] Component unit tests
 - [ ] Storybook integration
 
-## 🛠 Development Commands
+## Development Commands
 
 ```bash
 bun run dev          # Start dev server
@@ -141,7 +141,7 @@ bun run typecheck    # TypeScript type checking
 bun run clean        # Clean build directory
 ```
 
-## 📖 Documentation
+## Documentation
 
 Full documentation coming soon. For now, refer to:
 
@@ -149,7 +149,7 @@ Full documentation coming soon. For now, refer to:
 - `examples/` - Live examples
 - Original [A.mphibio.us docs](http://a.mphibio.us)
 
-## 🏗 Project Structure
+## Project Structure
 
 ```
 amphibious/
@@ -168,7 +168,7 @@ amphibious/
 └── dist/                 # Built files (generated)
 ```
 
-## 🌊 Philosophy
+## Philosophy
 
 Amphibious embraces **mobile-first responsive design** with:
 
@@ -178,11 +178,11 @@ Amphibious embraces **mobile-first responsive design** with:
 - Performance-first approach
 - Clean, readable code
 
-## 📜 License
+## License
 
 MIT License - see LICENSE file for details
 
-## 🙏 Credits
+## Credits
 
 Original A.mphibio.us created by **Clive Moore** [@cliveMoore](https://clivemoore.ca)
 
@@ -190,13 +190,13 @@ Rebuilt as part of the **AIAB** (Agency In A Box) monorepo.
 
 ---
 
-**Status**: 🎯 95% Complete - Ready for production use
+**Status**: 95% Complete - Ready for production use
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 🔗 Links
+## Links
 
 - [GitHub Repository](https://github.com/agency-In-a-box/amphibious)
 - [Documentation](https://github.com/agency-In-a-box/amphibious/tree/main/docs)
