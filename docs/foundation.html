@@ -6,6 +6,7 @@
   <title>Foundation - Amphibious 2.0</title>
   <meta name="description" content="Foundation documentation for Amphibious 2.0 - Core grid system, responsive columns, and layout fundamentals">
   <link rel="stylesheet" href="/src/css/main.css">
+  <link rel="stylesheet" href="/docs/docs.css">
   <style>
     /* Navigation styles */
     .site-nav {
@@ -252,16 +253,16 @@
         <li><a href="/docs/function.html">Function</a>
           <ul>
             <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizcss">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertnav">Vertical Nav</a></li>
+            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
+            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
             <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabmagic">Tabs</a></li>
+            <li><a href="/docs/function.html#tabs">Tabs</a></li>
             <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
           </ul>
         </li>
         <li><a href="/docs/features.html">Features</a>
           <ul>
-            <li><a href="/docs/features.html#slides">Responsive Slide Shows</a></li>
+            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
             <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
             <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
             <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
@@ -565,20 +566,45 @@
           <h2>Source Ordering</h2>
           <p>Change the visual order of columns without altering the HTML structure using CSS flexbox order property.</p>
 
-          <h3>Push and Pull Classes</h3>
-          <p>Use <code>.push-*</code> and <code>.pull-*</code> classes or CSS <code>order</code> property to reorder columns for different layouts.</p>
+          <h3>Reordering Columns</h3>
+          <p>Use <code>.col-first</code> and <code>.col-last</code> classes to change the visual order of columns. This is the modern flexbox replacement for the legacy pull classes.</p>
 
           <div class="demo-grid push-pull-demo">
             <div class="row">
-              <div class="col-8" style="order: 2;"><div class="demo-col">First in HTML (order: 2)</div></div>
-              <div class="col-8" style="order: 1;"><div class="demo-col">Second in HTML (order: 1)</div></div>
+              <div class="col-8 col-last"><div class="demo-col">First in HTML (order: 2)</div></div>
+              <div class="col-8 col-first"><div class="demo-col">Second in HTML (order: 1)</div></div>
             </div>
           </div>
 
           <div class="code-example">
             <pre><code>&lt;div class="row"&gt;
-  &lt;div class="col-8" style="order: 2;"&gt;First in HTML&lt;/div&gt;
-  &lt;div class="col-8" style="order: 1;"&gt;Second in HTML&lt;/div&gt;
+  &lt;div class="col-8 col-last"&gt;First in HTML&lt;/div&gt;
+  &lt;div class="col-8 col-first"&gt;Second in HTML&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <h3>Push Classes for Offsetting</h3>
+          <p>Use <code>.push-*</code> or <code>.offset-*</code> classes to add left margin and offset columns:</p>
+
+          <div class="demo-grid">
+            <div class="row">
+              <div class="col-8 push-4"><div class="demo-col">col-8 push-4</div></div>
+              <div class="col-4"><div class="demo-col">col-4</div></div>
+            </div>
+            <div class="row">
+              <div class="col-6 push-2"><div class="demo-col">col-6 push-2</div></div>
+              <div class="col-6 push-2"><div class="demo-col">col-6 push-2</div></div>
+            </div>
+          </div>
+
+          <div class="code-example">
+            <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-8 push-4"&gt;col-8 push-4&lt;/div&gt;
+  &lt;div class="col-4"&gt;col-4&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-6 push-2"&gt;col-6 push-2&lt;/div&gt;
+  &lt;div class="col-6 push-2"&gt;col-6 push-2&lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </div>

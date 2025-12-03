@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amphibious 2.0 - Modern CSS Framework</title>
+  <meta name="description" content="A modern, lightweight CSS framework with beautiful components, responsive grid, and SaaS-ready design patterns. Built with TypeScript and Vite.">
+  <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce, saas">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Amphibious Core Styles -->
+  <link rel="stylesheet" href="/src/css/main-atomic.css">
+  
+  <style>
+    /* ============================================
+       MODERN SAAS DEFAULT THEME
+       Inspired by HeroHire.ai aesthetic
+       ============================================ */
+    
+    :root {
+      /* Primary Colors - Soft Blue */
+      --color-primary: #3b82f6;
+      --color-primary-hover: #2563eb;
+      --color-primary-light: #eff6ff;
+      
+      /* Backgrounds */
+      --color-background: #ffffff;
+      --color-background-subtle: #f8fafc;
+      --color-background-muted: #f1f5f9;
+      
+      /* Text Colors */
+      --color-text: #1e293b;
+      --color-text-secondary: #64748b;
+      --color-text-muted: #94a3b8;
+      --color-heading: #0f172a;
+      
+      /* Borders */
+      --color-border: #e2e8f0;
+      --color-border-light: #f1f5f9;
+      
+      /* Typography */
+      --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      /* Spacing */
+      --spacing-4: 1rem;
+      --spacing-6: 1.5rem;
+      --spacing-8: 2rem;
+      --spacing-12: 3rem;
+      --spacing-16: 4rem;
+      --spacing-20: 5rem;
+      
+      /* Radius */
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      
+      /* Transitions */
+      --transition-fast: 150ms;
+      --transition-normal: 200ms;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-family-base);
+      font-size: 1rem;
+      line-height: 1.625;
+      color: var(--color-text);
+      background-color: var(--color-background);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Container */
+    .saas-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Navigation */
+    .saas-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    
+    .saas-nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4rem;
+      gap: var(--spacing-8);
+    }
+    
+    .saas-nav__logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-heading);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .saas-nav__logo svg {
+      color: var(--color-primary);
+    }
+    
+    .saas-nav__links {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-8);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .saas-nav__link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    
+    .saas-nav__link:hover {
+      color: var(--color-text);
+    }
+    
+    .saas-nav__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    /* Buttons */
+    .saas-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    
+    .saas-btn--primary {
+      background: var(--color-primary);
+      color: white;
+    }
+    
+    .saas-btn--primary:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .saas-btn--secondary {
+      background: white;
+      color: var(--color-text);
+      border-color: var(--color-border);
+    }
+    
+    .saas-btn--secondary:hover {
+      background: var(--color-background-subtle);
+    }
+    
+    .saas-btn--ghost {
+      background: transparent;
+      color: var(--color-text-secondary);
+    }
+    
+    .saas-btn--ghost:hover {
+      color: var(--color-text);
+      background: var(--color-background-muted);
+    }
+    
+    .saas-btn--lg {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+    
+    /* Hero */
+    .saas-hero {
+      padding: var(--spacing-20) 0;
+      text-align: center;
+      background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-subtle) 100%);
+    }
+    
+    .saas-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--spacing-6);
+    }
+    
+    .saas-hero__badge::before {
+      content: '✦';
+      font-size: 0.75em;
+    }
+    
+    .saas-hero__title {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-heading);
+      margin: 0 0 var(--spacing-6);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .saas-hero__title-accent {
+      color: var(--color-primary);
+    }
+    
+    .saas-hero__subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto var(--spacing-8);
+      line-height: 1.625;
+    }
+    
+    .saas-hero__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-8);
+    }
+    
+    .saas-hero__features {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-6);
+      flex-wrap: wrap;
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    
+    .saas-hero__feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .saas-hero__feature::before {
+      content: '✓';
+      color: #10b981;
+      font-weight: 700;
+    }
+    
+    /* Stats */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-12);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: var(--spacing-4);
+    }
+    
+    .stat-item__value {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--color-heading);
+      display: block;
+    }
+    
+    .stat-item__label {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    
+    /* Sections */
+    .saas-section {
+      padding: var(--spacing-20) 0;
+    }
+    
+    .saas-section--subtle {
+      background: var(--color-background-subtle);
+    }
+    
+    .saas-section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--spacing-12);
+    }
+    
+    .saas-section-header__title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--color-heading);
+      margin: 0 0 var(--spacing-4);
+      line-height: 1.25;
+    }
+    
+    .saas-section-header__subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+    
+    /* Feature Cards */
+    .saas-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-8);
+    }
+    
+    .saas-feature-card {
+      padding: var(--spacing-6);
+      background: var(--color-background);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-xl);
+      transition: all var(--transition-normal);
+    }
+    
+    .saas-feature-card:hover {
+      border-color: var(--color-border);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    
+    .saas-feature-card__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-4);
+    }
+    
+    .saas-feature-card__title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-heading);
+      margin: 0 0 0.5rem;
+    }
+    
+    .saas-feature-card__description {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      margin: 0;
+      line-height: 1.625;
+    }
+    
+    /* CTA */
+    .saas-cta {
+      background: var(--color-background-muted);
+      border-radius: var(--radius-2xl);
+      padding: var(--spacing-16);
+      text-align: center;
+      margin: var(--spacing-8) 0;
+    }
+    
+    .saas-cta__title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--color-heading);
+      margin: 0 0 var(--spacing-4);
+    }
+    
+    .saas-cta__subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      margin: 0 0 var(--spacing-8);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .saas-cta__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-4);
+    }
+    
+    .saas-cta__note {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+    
+    /* Footer */
+    .saas-footer {
+      padding: var(--spacing-16) 0 var(--spacing-8);
+      border-top: 1px solid var(--color-border-light);
+    }
+    
+    .saas-footer__grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: var(--spacing-12);
+      margin-bottom: var(--spacing-12);
+    }
+    
+    .saas-footer__brand {
+      max-width: 280px;
+    }
+    
+    .saas-footer__logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-heading);
+      margin-bottom: var(--spacing-4);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .saas-footer__tagline {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.625;
+      margin: 0;
+    }
+    
+    .saas-footer__column-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-heading);
+      margin: 0 0 var(--spacing-4);
+    }
+    
+    .saas-footer__links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .saas-footer__link {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    
+    .saas-footer__link:hover {
+      color: var(--color-text);
+    }
+    
+    .saas-footer__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--spacing-8);
+      border-top: 1px solid var(--color-border-light);
+    }
+    
+    .saas-footer__copyright {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+    
+    .saas-footer__legal {
+      display: flex;
+      gap: var(--spacing-6);
+    }
+    
+    .saas-footer__legal a {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+    
+    .saas-footer__legal a:hover {
+      color: var(--color-text);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .saas-footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-8);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .saas-nav__links {
+        display: none;
+      }
+      
+      .saas-hero {
+        padding: var(--spacing-12) 0;
+      }
+      
+      .saas-hero__title {
+        font-size: 2.25rem;
+      }
+      
+      .saas-hero__features {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .saas-section {
+        padding: var(--spacing-12) 0;
+      }
+      
+      .saas-cta {
+        padding: 2.5rem;
+        border-radius: var(--radius-xl);
+      }
+      
+      .saas-footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-8);
+      }
+      
+      .saas-footer__bottom {
+        flex-direction: column;
+        gap: var(--spacing-4);
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="saas-nav">
+    <div class="saas-container">
+      <div class="saas-nav__inner">
+        <a href="/" class="saas-nav__logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+            <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+            <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+          </svg>
+          Amphibious
+        </a>
+        
+        <ul class="saas-nav__links">
+          <li><a href="#features" class="saas-nav__link">Features</a></li>
+          <li><a href="/docs/foundation.html" class="saas-nav__link">Foundation</a></li>
+          <li><a href="/docs/form.html" class="saas-nav__link">Form</a></li>
+          <li><a href="/docs/function.html" class="saas-nav__link">Function</a></li>
+          <li><a href="/examples/" class="saas-nav__link">Examples</a></li>
+        </ul>
+        
+        <div class="saas-nav__actions">
+          <a href="https://github.com/your-repo/amphibious" class="saas-btn saas-btn--ghost">GitHub</a>
+          <a href="/docs/getting-started.html" class="saas-btn saas-btn--primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="saas-hero">
+    <div class="saas-container">
+      <span class="saas-hero__badge">Version 2.0 — Built with Vite & TypeScript</span>
+      
+      <h1 class="saas-hero__title">
+        Build modern websites<br>
+        <span class="saas-hero__title-accent">faster than ever</span>
+      </h1>
+      
+      <p class="saas-hero__subtitle">
+        A lightweight, modern CSS framework with beautiful components, 
+        responsive 16-column grid, and SaaS-ready patterns. No dependencies, just pure CSS.
+      </p>
+      
+      <div class="saas-hero__actions">
+        <a href="/docs/getting-started.html" class="saas-btn saas-btn--primary saas-btn--lg">
+          Get Started Free
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="/examples/" class="saas-btn saas-btn--secondary saas-btn--lg">
+          View Examples
+        </a>
+      </div>
+      
+      <div class="saas-hero__features">
+        <span class="saas-hero__feature">Zero dependencies</span>
+        <span class="saas-hero__feature">Modern flexbox grid</span>
+        <span class="saas-hero__feature">25+ components</span>
+      </div>
+      
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-item__value">25+</span>
+          <span class="stat-item__label">Components</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">16</span>
+          <span class="stat-item__label">Column Grid</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">1,600+</span>
+          <span class="stat-item__label">Lucide Icons</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">&lt;50kb</span>
+          <span class="stat-item__label">Gzipped</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="saas-section saas-section--subtle">
+    <div class="saas-container">
+      <header class="saas-section-header">
+        <h2 class="saas-section-header__title">Why developers choose Amphibious</h2>
+        <p class="saas-section-header__subtitle">
+          Everything you need to build beautiful, responsive websites without the bloat
+        </p>
+      </header>
+      
+      <div class="saas-features">
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="7" height="7" x="3" y="3" rx="1"/>
+              <rect width="7" height="7" x="14" y="3" rx="1"/>
+              <rect width="7" height="7" x="14" y="14" rx="1"/>
+              <rect width="7" height="7" x="3" y="14" rx="1"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">Modern Grid System</h3>
+          <p class="saas-feature-card__description">
+            16-column flexbox grid with responsive breakpoints. No floats, no clearfixes, just clean modern CSS.
+          </p>
+        </article>
+        
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">Dark Mode Ready</h3>
+          <p class="saas-feature-card__description">
+            CSS custom properties make theming a breeze. Switch between light and dark modes with a single class.
+          </p>
+        </article>
+        
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+              <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+              <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+              <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">25+ Components</h3>
+          <p class="saas-feature-card__description">
+            Buttons, cards, modals, navigation, forms, and more. All built with semantic HTML and accessibility in mind.
+          </p>
+        </article>
+        
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">Lightning Fast</h3>
+          <p class="saas-feature-card__description">
+            Under 50kb gzipped. No JavaScript required for styles. Tree-shakable when you need only specific components.
+          </p>
+        </article>
+        
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="m4.93 4.93 4.24 4.24"/>
+              <path d="m14.83 9.17 4.24-4.24"/>
+              <path d="m14.83 14.83 4.24 4.24"/>
+              <path d="m9.17 14.83-4.24 4.24"/>
+              <circle cx="12" cy="12" r="4"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">Accessibility First</h3>
+          <p class="saas-feature-card__description">
+            WCAG 2.1 compliant. Semantic HTML, ARIA attributes, keyboard navigation, and screen reader support.
+          </p>
+        </article>
+        
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="21" r="1"/>
+              <circle cx="19" cy="21" r="1"/>
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">E-commerce Ready</h3>
+          <p class="saas-feature-card__description">
+            Product cards, shopping carts, checkout flows, and rating systems. Perfect for online stores.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="saas-section">
+    <div class="saas-container">
+      <div class="saas-cta">
+        <h2 class="saas-cta__title">Ready to build something amazing?</h2>
+        <p class="saas-cta__subtitle">
+          Get started with Amphibious in minutes. No complex setup, no dependencies, 
+          just beautiful components that work.
+        </p>
+        <div class="saas-cta__actions">
+          <a href="/docs/getting-started.html" class="saas-btn saas-btn--primary saas-btn--lg">
+            Get Started Free
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="https://github.com/your-repo/amphibious" class="saas-btn saas-btn--secondary saas-btn--lg">
+            View on GitHub
+          </a>
+        </div>
+        <p class="saas-cta__note">Free and open source · MIT License · No credit card required</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="saas-footer">
+    <div class="saas-container">
+      <div class="saas-footer__grid">
+        <div class="saas-footer__brand">
+          <div class="saas-footer__logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+              <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+              <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+              <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+            </svg>
+            Amphibious 2.0
+          </div>
+          <p class="saas-footer__tagline">
+            A modern CSS framework for building beautiful, responsive websites. 
+            The evolution of A.mphibio.us — rebuilt from the ground up.
+          </p>
+        </div>
+        
+        <nav>
+          <h4 class="saas-footer__column-title">Documentation</h4>
+          <ul class="saas-footer__links">
+            <li><a href="/docs/foundation.html" class="saas-footer__link">Foundation</a></li>
+            <li><a href="/docs/form.html" class="saas-footer__link">Form</a></li>
+            <li><a href="/docs/function.html" class="saas-footer__link">Function</a></li>
+            <li><a href="/docs/features.html" class="saas-footer__link">Features</a></li>
+          </ul>
+        </nav>
+        
+        <nav>
+          <h4 class="saas-footer__column-title">Examples</h4>
+          <ul class="saas-footer__links">
+            <li><a href="/examples/e-commerce-catalog.html" class="saas-footer__link">E-commerce</a></li>
+            <li><a href="/examples/dashboard-template.html" class="saas-footer__link">Dashboard</a></li>
+            <li><a href="/examples/navigation-showcase.html" class="saas-footer__link">Navigation</a></li>
+            <li><a href="/examples/themes/" class="saas-footer__link">Themes</a></li>
+          </ul>
+        </nav>
+        
+        <nav>
+          <h4 class="saas-footer__column-title">Resources</h4>
+          <ul class="saas-footer__links">
+            <li><a href="https://github.com/your-repo/amphibious" class="saas-footer__link">GitHub</a></li>
+            <li><a href="/CHANGELOG.md" class="saas-footer__link">Changelog</a></li>
+            <li><a href="/atomic-design-demo.html" class="saas-footer__link">Atomic Design</a></li>
+            <li><a href="/sitemap.html" class="saas-footer__link">Sitemap</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <div class="saas-footer__bottom">
+        <p class="saas-footer__copyright">© 2024 Amphibious. MIT License.</p>
+        <nav class="saas-footer__legal">
+          <a href="/LICENSE">License</a>
+          <a href="/CONTRIBUTING.md">Contributing</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load Framework JS (for icons and interactions) -->
+  <script type="module" src="/src/index.js"></script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 /* ==========================================================================
    Responsive Grid System - Amphibious 2.0
    16-Column responsive breakpoints for tablet and mobile devices
+   Uses percentage-based widths for consistency
    ========================================================================== */
 
 /* Tablet (Portrait) - 768px to 960px
@@ -8,375 +9,76 @@
 
 @media only screen and (min-width: 768px) and (max-width: 960px) {
   .container {
-    width: 768px;
+    width: 96%;
+    max-width: 768px;
   }
 
-  .container .col {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  .container .col.padded {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .col.first {
-    margin-left: 0 !important;
-    margin-right: 10px;
-  }
-
-  .col.last {
-    margin-right: 0 !important;
-    margin-left: 10px;
-  }
-
-  /* Responsive column widths for tablet */
-  .container .one.col,
-  .container .col-1 {
-    width: 28px;
-  }
-  .container .two.col,
-  .container .col-2 {
-    width: 76px;
-  }
-  .container .three.col,
-  .container .col-3 {
-    width: 124px;
-  }
-  .container .four.col,
-  .container .col-4 {
-    width: 172px;
-  }
-  .container .five.col,
-  .container .col-5 {
-    width: 220px;
-  }
-  .container .six.col,
-  .container .col-6 {
-    width: 268px;
-  }
-  .container .seven.col,
-  .container .col-7 {
-    width: 316px;
-  }
-  .container .eight.col,
-  .container .col-8,
-  .container .half.col {
-    width: 364px;
-  }
-  .container .nine.col,
-  .container .col-9 {
-    width: 412px;
-  }
-  .container .ten.col,
-  .container .col-10 {
-    width: 460px;
-  }
-  .container .eleven.col,
-  .container .col-11 {
-    width: 508px;
-  }
-  .container .twelve.col,
-  .container .col-12 {
-    width: 556px;
-  }
-  .container .thirteen.col,
-  .container .col-13 {
-    width: 604px;
-  }
-  .container .fourteen.col,
-  .container .col-14 {
-    width: 652px;
-  }
-  .container .fifteen.col,
-  .container .col-15 {
-    width: 700px;
-  }
-  .container .sixteen.col,
-  .container .col-16 {
-    width: 748px;
-  }
-
-  /* Fractional columns for tablet */
-  .container .one-third.col.padded {
-    width: 30.625%;
-  }
-  .container .two-thirds.col.padded {
-    width: 64%;
-  }
-  .container .one-quarter.col.padded {
-    width: 22.3625%;
-  }
-  .container .half.col.padded {
-    width: 47.325%;
-  }
-  .container .three-quarters.col.padded {
-    width: 72.325%;
-  }
-
-  /* Push classes for tablet */
-  .container .push-1,
-  .container .push_one {
-    margin-left: 48px;
-  }
-  .container .push-2,
-  .container .push_two {
-    margin-left: 96px;
-  }
-  .container .push-3,
-  .container .push_three {
-    margin-left: 144px;
-  }
-  .container .push-4,
-  .container .push_four {
-    margin-left: 192px;
-  }
-  .container .push-5,
-  .container .push_five {
-    margin-left: 240px;
-  }
-  .container .push-6,
-  .container .push_six {
-    margin-left: 288px;
-  }
-  .container .push-7,
-  .container .push_seven {
-    margin-left: 336px;
-  }
-  .container .push-8,
-  .container .push_eight {
-    margin-left: 384px;
-  }
-  .container .push-9,
-  .container .push_nine {
-    margin-left: 432px;
-  }
-  .container .push-10,
-  .container .push_ten {
-    margin-left: 480px;
-  }
-  .container .push-11,
-  .container .push_eleven {
-    margin-left: 528px;
-  }
-  .container .push-12,
-  .container .push_twelve {
-    margin-left: 576px;
-  }
-  .container .push-13,
-  .container .push_thirteen {
-    margin-left: 624px;
-  }
-  .container .push-14,
-  .container .push_fourteen {
-    margin-left: 672px;
-  }
-  .container .push-15,
-  .container .push_fifteen {
-    margin-left: 720px;
-  }
-
-  /* Pull classes for tablet */
-  .container .pull-1,
-  .container .pull_one {
-    margin-left: -48px;
-  }
-  .container .pull-2,
-  .container .pull_two {
-    margin-left: -96px;
-  }
-  .container .pull-3,
-  .container .pull_three {
-    margin-left: -144px;
-  }
-  .container .pull-4,
-  .container .pull_four {
-    margin-left: -192px;
-  }
-  .container .pull-5,
-  .container .pull_five {
-    margin-left: -240px;
-  }
-  .container .pull-6,
-  .container .pull_six {
-    margin-left: -288px;
-  }
-  .container .pull-7,
-  .container .pull_seven {
-    margin-left: -336px;
-  }
-  .container .pull-8,
-  .container .pull_eight {
-    margin-left: -384px;
-  }
-  .container .pull-9,
-  .container .pull_nine {
-    margin-left: -432px;
-  }
-  .container .pull-10,
-  .container .pull_ten {
-    margin-left: -480px;
-  }
-  .container .pull-11,
-  .container .pull_eleven {
-    margin-left: -528px;
-  }
-  .container .pull-12,
-  .container .pull_twelve {
-    margin-left: -576px;
-  }
-  .container .pull-13,
-  .container .pull_thirteen {
-    margin-left: -624px;
-  }
-  .container .pull-14,
-  .container .pull_fourteen {
-    margin-left: -672px;
-  }
-  .container .pull-15,
-  .container .pull_fifteen {
-    margin-left: -720px;
-  }
-  .container .pull-16,
-  .container .pull_sixteen {
-    margin-left: -760px;
-  }
+  /* Tablet-specific column overrides if needed */
+  .col-tablet-1 { width: 6.25% !important; }
+  .col-tablet-2 { width: 12.5% !important; }
+  .col-tablet-3 { width: 18.75% !important; }
+  .col-tablet-4 { width: 25% !important; }
+  .col-tablet-5 { width: 31.25% !important; }
+  .col-tablet-6 { width: 37.5% !important; }
+  .col-tablet-7 { width: 43.75% !important; }
+  .col-tablet-8 { width: 50% !important; }
+  .col-tablet-9 { width: 56.25% !important; }
+  .col-tablet-10 { width: 62.5% !important; }
+  .col-tablet-11 { width: 68.75% !important; }
+  .col-tablet-12 { width: 75% !important; }
+  .col-tablet-13 { width: 81.25% !important; }
+  .col-tablet-14 { width: 87.5% !important; }
+  .col-tablet-15 { width: 93.75% !important; }
+  .col-tablet-16 { width: 100% !important; }
 }
 
-/* Mobile (All) - Max width 768px
+/* Mobile (All) - Max width 767px
    ========================================================================== */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .container {
     width: 94%;
     margin: 0 auto;
   }
 
-  .container .col {
-    margin: 0;
-  }
-
-  .container .col.first {
+  /* Stack all columns on mobile by default */
+  .row > [class*="col-"],
+  .row > .col {
+    width: 100% !important;
     margin-left: 0 !important;
-  }
-
-  .container .col.last {
     margin-right: 0 !important;
+    margin-bottom: 1rem;
   }
 
-  /* All columns become full width on mobile */
-  .container .one.col,
-  .container .two.col,
-  .container .three.col,
-  .container .four.col,
-  .container .five.col,
-  .container .six.col,
-  .container .seven.col,
-  .container .eight.col,
-  .container .nine.col,
-  .container .ten.col,
-  .container .eleven.col,
-  .container .twelve.col,
-  .container .thirteen.col,
-  .container .fourteen.col,
-  .container .fifteen.col,
-  .container .sixteen.col,
-  .container .col-1,
-  .container .col-2,
-  .container .col-3,
-  .container .col-4,
-  .container .col-5,
-  .container .col-6,
-  .container .col-7,
-  .container .col-8,
-  .container .col-9,
-  .container .col-10,
-  .container .col-11,
-  .container .col-12,
-  .container .col-13,
-  .container .col-14,
-  .container .col-15,
-  .container .col-16,
-  .container .one-third.col,
-  .container .two-thirds.col,
-  .container .one-quarter.col,
-  .container .half.col,
-  .container .three-quarters.col {
-    width: 100%;
-    float: none;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 1em;
-  }
+  /* Mobile-specific column widths - use these to keep columns side-by-side */
+  .col-mobile-1 { width: 6.25% !important; }
+  .col-mobile-2 { width: 12.5% !important; }
+  .col-mobile-3 { width: 18.75% !important; }
+  .col-mobile-4 { width: 25% !important; }
+  .col-mobile-5 { width: 31.25% !important; }
+  .col-mobile-6 { width: 37.5% !important; }
+  .col-mobile-7 { width: 43.75% !important; }
+  .col-mobile-8 { width: 50% !important; }
+  .col-mobile-9 { width: 56.25% !important; }
+  .col-mobile-10 { width: 62.5% !important; }
+  .col-mobile-11 { width: 68.75% !important; }
+  .col-mobile-12 { width: 75% !important; }
+  .col-mobile-13 { width: 81.25% !important; }
+  .col-mobile-14 { width: 87.5% !important; }
+  .col-mobile-15 { width: 93.75% !important; }
+  .col-mobile-16 { width: 100% !important; }
+
+  /* Convenience classes */
+  .col-mobile-half { width: 50% !important; }
+  .col-mobile-third { width: 33.333% !important; }
+  .col-mobile-quarter { width: 25% !important; }
+  .col-mobile-full { width: 100% !important; }
 
   /* Reset all push/pull classes on mobile */
-  .container .push-1,
-  .container .push-2,
-  .container .push-3,
-  .container .push-4,
-  .container .push-5,
-  .container .push-6,
-  .container .push-7,
-  .container .push-8,
-  .container .push-9,
-  .container .push-10,
-  .container .push-11,
-  .container .push-12,
-  .container .push-13,
-  .container .push-14,
-  .container .push-15,
-  .container .push_one,
-  .container .push_two,
-  .container .push_three,
-  .container .push_four,
-  .container .push_five,
-  .container .push_six,
-  .container .push_seven,
-  .container .push_eight,
-  .container .push_nine,
-  .container .push_ten,
-  .container .push_eleven,
-  .container .push_twelve,
-  .container .push_thirteen,
-  .container .push_fourteen,
-  .container .push_fifteen {
-    margin-left: 0;
-  }
-
-  .container .pull-1,
-  .container .pull-2,
-  .container .pull-3,
-  .container .pull-4,
-  .container .pull-5,
-  .container .pull-6,
-  .container .pull-7,
-  .container .pull-8,
-  .container .pull-9,
-  .container .pull-10,
-  .container .pull-11,
-  .container .pull-12,
-  .container .pull-13,
-  .container .pull-14,
-  .container .pull-15,
-  .container .pull-16,
-  .container .pull_one,
-  .container .pull_two,
-  .container .pull_three,
-  .container .pull_four,
-  .container .pull_five,
-  .container .pull_six,
-  .container .pull_seven,
-  .container .pull_eight,
-  .container .pull_nine,
-  .container .pull_ten,
-  .container .pull_eleven,
-  .container .pull_twelve,
-  .container .pull_thirteen,
-  .container .pull_fourteen,
-  .container .pull_fifteen,
-  .container .pull_sixteen {
-    margin-left: 0;
+  [class*="push-"],
+  [class*="offset-"],
+  [class*="pull-"] {
+    margin-left: 0 !important;
   }
 
   /* Fixed positioning becomes relative on mobile */
@@ -385,34 +87,28 @@
   }
 }
 
-/* Mobile (Landscape) - 480px to 768px
+/* Mobile (Landscape) - 480px to 767px
    ========================================================================== */
 
-@media only screen and (min-width: 480px) and (max-width: 768px) {
+@media only screen and (min-width: 480px) and (max-width: 767px) {
   /* Allow some columns to be side-by-side on landscape mobile */
-  .container .mobile-half {
-    width: 48%;
-    float: left;
-    margin-right: 2%;
+  .mobile-half {
+    width: 48% !important;
+    margin-right: 2% !important;
+    margin-bottom: 1rem;
   }
 
-  .container .mobile-half:last-child {
-    margin-right: 0;
+  .mobile-half:last-child {
+    margin-right: 0 !important;
   }
 
-  .container .mobile-third {
-    width: 31.33%;
-    float: left;
-    margin-right: 3%;
+  .mobile-third {
+    width: 31.33% !important;
+    margin-right: 3% !important;
   }
 
-  .container .mobile-third:last-child {
-    margin-right: 0;
-  }
-
-  /* Preserve some specific widths for pagination or special cases */
-  .container .pager_nav .one.col {
-    width: 28px;
+  .mobile-third:last-child {
+    margin-right: 0 !important;
   }
 }
 
@@ -425,12 +121,16 @@
     padding: 0 10px;
   }
 
-  /* Ensure all columns are truly full width */
-  .container .col,
-  .container [class*="col-"] {
-    padding-left: 0;
-    padding-right: 0;
-    margin-bottom: 1.5em;
+  .row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+
+  .row > [class*="col-"],
+  .row > .col {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 1rem;
   }
 }
 
@@ -450,7 +150,19 @@
   display: none;
 }
 
-@media only screen and (max-width: 768px) {
+.show-on-mobile {
+  display: none;
+}
+
+.show-on-tablet {
+  display: none;
+}
+
+.show-on-desktop {
+  display: block;
+}
+
+@media only screen and (max-width: 767px) {
   .hide-on-mobile {
     display: none !important;
   }
@@ -470,9 +182,9 @@
   }
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 961px) {
   .hide-on-desktop {
-    display: block;
+    display: none !important;
   }
 
   .show-on-desktop {
@@ -483,20 +195,31 @@
 /* Flexbox responsive enhancements
    ========================================================================== */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .row.flex {
     flex-direction: column;
   }
 
-  .row.flex > .col {
+  .row.flex > [class*="col-"] {
     flex: 0 0 100%;
     max-width: 100%;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
   }
 
   /* Allow row reversal on mobile */
   .row.flex.reverse-mobile {
     flex-direction: column-reverse;
+  }
+  
+  /* Keep columns side by side on mobile when needed */
+  .row.mobile-keep-cols {
+    flex-direction: row;
+  }
+  
+  .row.mobile-keep-cols > [class*="col-"] {
+    width: auto !important;
+    flex: 1 1 0;
+    margin-bottom: 0;
   }
 }
 
@@ -508,7 +231,7 @@
     width: 100%;
   }
 
-  .col {
+  [class*="col-"] {
     page-break-inside: avoid;
   }
 

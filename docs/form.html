@@ -6,12 +6,7 @@
   <title>Form - Amphibious 2.0</title>
   <meta name="description" content="Form documentation for Amphibious 2.0 - Typography, forms, tables, and content structure">
   <link rel="stylesheet" href="/src/css/main.css">
-<link rel="stylesheet" href="/css/a.mphibio.us.docs.css">
-
-<script src="../src/js/modernizr-2.6.2.min.js"></script>
-
-<!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
-<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+  <link rel="stylesheet" href="/docs/docs.css">
 
 </head>
 <body>
@@ -52,16 +47,16 @@
         <li><a href="/docs/function.html">Function</a>
           <ul>
             <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizcss">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertnav">Vertical Nav</a></li>
+            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
+            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
             <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabmagic">Tabs</a></li>
+            <li><a href="/docs/function.html#tabs">Tabs</a></li>
             <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
           </ul>
         </li>
         <li><a href="/docs/features.html">Features</a>
           <ul>
-            <li><a href="/docs/features.html#slides">Responsive Slide Shows</a></li>
+            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
             <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
             <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
             <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
@@ -944,7 +939,7 @@ postion:fixed;top:0;left:0;right:0;
 					<ul>
 						<li><a href="/index.html#what_is_it">What is A.mphibio.us</a></li>
 						<li><a href="/index.html#how_its_made">What is it made of?</a></li>
-<!--						<li><a href="/index.html#slides">Flexslider Slideshows</a></li> -->
+<!--						<li><a href="/index.html#slideshows">Flexslider Slideshows</a></li> -->
  							<li><a href="/index.html#gallery">A.mphibio.us Showcase</a></li>
 						<li><a href="/index.html#evolution">The E.volution of A.mphibio.us</a></li>
 						<li><a href="/index.html#colophon">The A.mphibio.us Colophon</a></li>
@@ -978,16 +973,16 @@ postion:fixed;top:0;left:0;right:0;
 					<ul>
 
 						<li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-						<li><a href="/docs/function.html#horizcss">Horizontal Nav <sub>css</sub></a></li>
-						<li><a href="/docs/function.html#vertnav">Vertical Nav <sub>with tertiary</sub></a></li>
+						<li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
+						<li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
 						<li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-						<li><a href="/docs/function.html#tabmagic">Tabs</a></li>
+						<li><a href="/docs/function.html#tabs">Tabs</a></li>
 						<li><a href="/docs/function.html#pagination">Pagination nav</a></li>
 					</ul>
 				</li>
 				<li><a href="/docs/features.html">Features</a>
 					<ul>
-						<li><a href="/docs/features.html#slides">Responsive Slide Shows</a></li>
+						<li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
 						<li><a href="/docs/features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
 						<li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
 						<li><a href="/docs/features.html#icons">Webfont Icons <sub>by entypo</sub></a></li>
@@ -1030,33 +1025,8 @@ postion:fixed;top:0;left:0;right:0;
 
 <a id="to_top" class="icon reset" href="#maincontent"><span class=" icon-arrow-up7"></span></a>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/js/jquery-1.11.1.min.js"><\/script>')</script>
-
-<script type="text/javascript" src="../src/js/run_prettify.js"></script>
-<script type="text/javascript" src="../src/js/jquery-ui.min.js"></script>
-
-<script src="/js/a.mphibio.us.js"></script>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.datepicker').datepicker();
-	});
-</script>
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35159096-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<!-- Load Amphibious Framework -->
+  <script type="module" src="/src/index.js"></script>
 
 </body>
 </html>
