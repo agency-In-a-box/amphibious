@@ -1,4 +1,8 @@
-# 🐸 Amphibious 2.0
+# Amphibious 2.0 🐸
+
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/agency-In-a-box/amphibious)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-95%25%20complete-orange.svg)](QA-NAVIGATION-REPORT.md)
 
 > The Elegant HTML5 Boilerplate for Responsive Web Development - Evolved
 
@@ -6,13 +10,15 @@
 
 ## ✨ Features
 
-- **16-Column Grid System** - Flexible, responsive grid based on proven patterns
-- **Modern Component Library** - Cards, alerts, navigation, tables, and more
-- **Mobile-First** - Responsive breakpoints for all device sizes
-- **CSS Variables** - Easy theming with custom properties
-- **Zero Dependencies** - Pure CSS and vanilla JavaScript
-- **TypeScript Ready** - Full type definitions included
-- **Vite Powered** - Lightning-fast development and builds
+- **Modern Build System** - Vite 6 with TypeScript and Biome
+- **Atomic Design System** - Systematic component architecture with tokens, atoms, molecules, and organisms
+- **16-Column Grid System** - Flexible flexbox-based responsive grid
+- **25+ Components** - Production-ready UI components including cards, modals, tabs, carousels, and more
+- **E-commerce Ready** - Built with modern web applications in mind
+- **Dark Mode Foundation** - CSS custom properties for theming
+- **Accessibility First** - ARIA attributes and keyboard navigation
+- **Zero Dependencies** - Pure CSS (except Splide.js for carousel)
+- **Performance Optimized** - Lazy loading, tree-shaking, minification
 
 ## 🚀 Quick Start
 
@@ -26,10 +32,10 @@ bun install
 ### Development
 
 ```bash
-bun run dev          # Start development server on port 3000
+bun run dev          # Start development server on port 2960
 ```
 
-Visit `http://localhost:3000` to see the framework in action.
+Visit `http://localhost:2960` to see the framework in action.
 
 ### Build
 
@@ -100,16 +106,27 @@ Amphibious uses a **16-column grid** for maximum flexibility:
 <div class="alert alert-info">Info message</div>
 ```
 
-## 🎯 Migration Status
+## 📊 Project Status
 
-This is a **modern rebuild** of A.mphibio.us. Core components marked `TODO` need to be migrated from the original source:
+**Current Version**: 2.0.0
+**Completion**: 95% - QA Phase
+**Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
 
-- [ ] Complete CSS component migration
-- [ ] JavaScript plugin migration
-- [ ] Theme system (SCSS)
-- [ ] Complete documentation
-- [ ] Examples and demos
-- [ ] Testing suite
+### ✅ Completed
+- Atomic Design System implementation
+- Modern build system (Vite 6)
+- 25+ production-ready components
+- Navigation system with dropdowns
+- Accessibility features
+- Grid system modernization
+- Image placeholder system
+
+### 🚧 Remaining Work
+- [ ] NPM package publication
+- [ ] CDN distribution setup
+- [ ] Additional theme templates
+- [ ] Component unit tests
+- [ ] Storybook integration
 
 ## 🛠 Development Commands
 
@@ -173,4 +190,15 @@ Rebuilt as part of the **AIAB** (Agency In A Box) monorepo.
 
 ---
 
-**Status**: 🚧 Active Development - Migration from A.mphibio.us in progress
+**Status**: 🎯 95% Complete - Ready for production use
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 🔗 Links
+
+- [GitHub Repository](https://github.com/agency-In-a-box/amphibious)
+- [Documentation](https://github.com/agency-In-a-box/amphibious/tree/main/docs)
+- [Examples](https://github.com/agency-In-a-box/amphibious/tree/main/examples)
+- [Agency In A Box](https://github.com/agency-In-a-box)
