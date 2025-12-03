@@ -1,0 +1,886 @@
+/**
+ * Modern SaaS Theme
+ * Inspired by HeroHire.ai - Clean, minimal SaaS landing page aesthetic
+ * 
+ * Design Characteristics:
+ * - Soft blue primary with light gray backgrounds
+ * - Generous whitespace and clean typography
+ * - Subtle shadows and rounded corners
+ * - Pill-shaped badges and buttons
+ * - Modern, professional feel
+ */
+
+/* ============================================
+   THEME TOKENS - Override base design tokens
+   ============================================ */
+
+:root {
+  /* Primary Colors - Soft Blue */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-light: #eff6ff;
+  --color-primary-dark: #1d4ed8;
+  
+  /* Secondary Colors */
+  --color-secondary: #64748b;
+  --color-secondary-hover: #475569;
+  
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #06b6d4;
+  
+  /* Backgrounds */
+  --color-background: #ffffff;
+  --color-background-subtle: #f8fafc;
+  --color-background-muted: #f1f5f9;
+  --color-background-accent: #eff6ff;
+  
+  /* Text Colors */
+  --color-text: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-heading: #0f172a;
+  
+  /* Borders */
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+  
+  /* Typography - Modern Sans */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+    'Helvetica Neue', Arial, sans-serif;
+  --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Font Sizes - Larger for impact */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Spacing Scale */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  
+  /* Border Radius - More rounded */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Shadows - Softer, more subtle */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  
+  /* Container */
+  --container-max-width: 1200px;
+  --container-padding: 1.5rem;
+  
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 200ms;
+  --transition-slow: 300ms;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ============================================
+   LAYOUT - Modern Container
+   ============================================ */
+
+.saas-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.saas-section {
+  padding: var(--spacing-20) 0;
+}
+
+.saas-section--lg {
+  padding: var(--spacing-24) 0;
+}
+
+.saas-section--xl {
+  padding: var(--spacing-32) 0;
+}
+
+.saas-section--subtle {
+  background-color: var(--color-background-subtle);
+}
+
+.saas-section--accent {
+  background-color: var(--color-background-accent);
+}
+
+
+/* ============================================
+   NAVIGATION - Clean Header
+   ============================================ */
+
+.saas-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.saas-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  gap: var(--spacing-8);
+}
+
+.saas-nav__logo {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.saas-nav__logo svg {
+  color: var(--color-primary);
+}
+
+.saas-nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.saas-nav__link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast) var(--transition-timing);
+}
+
+.saas-nav__link:hover {
+  color: var(--color-text);
+}
+
+.saas-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.saas-hero {
+  padding: var(--spacing-20) 0 var(--spacing-24);
+  text-align: center;
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-subtle) 100%);
+}
+
+.saas-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--color-background-accent);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-6);
+}
+
+.saas-hero__badge::before {
+  content: '✦';
+  font-size: 0.75em;
+}
+
+.saas-hero__title {
+  font-size: clamp(2.5rem, 5vw, var(--font-size-6xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-6);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.saas-hero__title-accent {
+  color: var(--color-primary);
+}
+
+.saas-hero__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-8);
+  line-height: var(--line-height-relaxed);
+}
+
+.saas-hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-8);
+}
+
+.saas-hero__features {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-6);
+  flex-wrap: wrap;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.saas-hero__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.saas-hero__feature::before {
+  content: '✓';
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+}
+
+
+/* ============================================
+   BUTTONS - Modern Pill Style
+   ============================================ */
+
+.saas-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--transition-timing);
+  white-space: nowrap;
+}
+
+.saas-btn--primary {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.saas-btn--primary:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.saas-btn--secondary {
+  background: white;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.saas-btn--secondary:hover {
+  background: var(--color-background-subtle);
+  border-color: var(--color-text-muted);
+}
+
+.saas-btn--ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-color: transparent;
+}
+
+.saas-btn--ghost:hover {
+  color: var(--color-text);
+  background: var(--color-background-muted);
+}
+
+.saas-btn--lg {
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-base);
+}
+
+.saas-btn--sm {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-xs);
+}
+
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+
+.saas-section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-12);
+}
+
+.saas-section-header__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--color-background-accent);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-4);
+}
+
+.saas-section-header__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-4);
+  line-height: var(--line-height-tight);
+}
+
+.saas-section-header__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ============================================
+   FEATURE CARDS - 3 Column Grid
+   ============================================ */
+
+.saas-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-8);
+}
+
+.saas-feature-card {
+  padding: var(--spacing-6);
+  background: var(--color-background);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-normal) var(--transition-timing);
+}
+
+.saas-feature-card:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.saas-feature-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-background-accent);
+  color: var(--color-primary);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-4);
+}
+
+.saas-feature-card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.saas-feature-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-2);
+}
+
+.saas-feature-card__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ============================================
+   SHOWCASE / PRODUCT IMAGE SECTION
+   ============================================ */
+
+.saas-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-12);
+  align-items: center;
+}
+
+.saas-showcase--reverse {
+  direction: rtl;
+}
+
+.saas-showcase--reverse > * {
+  direction: ltr;
+}
+
+.saas-showcase__content {
+  max-width: 480px;
+}
+
+.saas-showcase__badge {
+  display: inline-flex;
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--color-background-accent);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-4);
+}
+
+.saas-showcase__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-4);
+  line-height: var(--line-height-tight);
+}
+
+.saas-showcase__description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-6);
+  line-height: var(--line-height-relaxed);
+}
+
+.saas-showcase__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.saas-showcase__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.saas-showcase__list-item::before {
+  content: '→';
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.saas-showcase__image {
+  background: var(--color-background-muted);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border-light);
+}
+
+.saas-showcase__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+
+.saas-testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.saas-testimonial {
+  background: var(--color-background);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  transition: all var(--transition-normal) var(--transition-timing);
+}
+
+.saas-testimonial:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.saas-testimonial__quote {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--spacing-6);
+}
+
+.saas-testimonial__quote::before {
+  content: '"';
+  color: var(--color-primary);
+}
+
+.saas-testimonial__author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.saas-testimonial__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+}
+
+.saas-testimonial__avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.saas-testimonial__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.saas-testimonial__name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+}
+
+.saas-testimonial__role {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.saas-cta {
+  background: var(--color-background-muted);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-16);
+  text-align: center;
+  margin: var(--spacing-8) 0;
+}
+
+.saas-cta__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-4);
+}
+
+.saas-cta__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-8);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.saas-cta__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-4);
+}
+
+.saas-cta__note {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.saas-footer {
+  padding: var(--spacing-16) 0 var(--spacing-8);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.saas-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--spacing-12);
+  margin-bottom: var(--spacing-12);
+}
+
+.saas-footer__brand {
+  max-width: 280px;
+}
+
+.saas-footer__logo {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.saas-footer__tagline {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.saas-footer__column-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-4);
+}
+
+.saas-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.saas-footer__link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast) var(--transition-timing);
+}
+
+.saas-footer__link:hover {
+  color: var(--color-text);
+}
+
+.saas-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.saas-footer__copyright {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.saas-footer__legal {
+  display: flex;
+  gap: var(--spacing-6);
+}
+
+.saas-footer__legal a {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.saas-footer__legal a:hover {
+  color: var(--color-text);
+}
+
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-4 { margin-top: var(--spacing-4); }
+.mb-4 { margin-bottom: var(--spacing-4); }
+.mt-8 { margin-top: var(--spacing-8); }
+.mb-8 { margin-bottom: var(--spacing-8); }
+.mt-16 { margin-top: var(--spacing-16); }
+.mb-16 { margin-bottom: var(--spacing-16); }
+
+.py-8 { padding-top: var(--spacing-8); padding-bottom: var(--spacing-8); }
+.py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
+.py-24 { padding-top: var(--spacing-24); padding-bottom: var(--spacing-24); }
+
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .saas-showcase {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+  
+  .saas-showcase--reverse {
+    direction: ltr;
+  }
+  
+  .saas-showcase__content {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .saas-showcase__list {
+    align-items: center;
+  }
+  
+  .saas-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-8);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+  }
+  
+  .saas-nav__links {
+    display: none;
+  }
+  
+  .saas-hero {
+    padding: var(--spacing-12) 0 var(--spacing-16);
+  }
+  
+  .saas-hero__title {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .saas-hero__features {
+    flex-direction: column;
+    gap: var(--spacing-3);
+  }
+  
+  .saas-section {
+    padding: var(--spacing-12) 0;
+  }
+  
+  .saas-section-header__title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .saas-cta {
+    padding: var(--spacing-10);
+    border-radius: var(--radius-xl);
+  }
+  
+  .saas-cta__title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .saas-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+  
+  .saas-footer__bottom {
+    flex-direction: column;
+    gap: var(--spacing-4);
+    text-align: center;
+  }
+}

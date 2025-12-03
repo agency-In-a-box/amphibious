@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amphibious 2.0 - Modern CSS Framework for SaaS & Web Apps</title>
+  <meta name="description" content="A modern, lightweight CSS framework with beautiful components, responsive grid, and SaaS-ready design patterns.">
+  
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Amphibious Core -->
+  <link rel="stylesheet" href="/src/css/main-atomic.css">
+  
+  <!-- Modern SaaS Theme -->
+  <link rel="stylesheet" href="theme.css">
+  
+  <style>
+    /* Page-specific overrides */
+    .product-screenshot {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+    }
+    
+    .product-screenshot img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-12);
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: var(--spacing-4);
+    }
+    
+    .stat-item__value {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-heading);
+      display: block;
+    }
+    
+    .stat-item__label {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+    }
+    
+    @media (max-width: 768px) {
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="saas-nav">
+    <div class="saas-container">
+      <div class="saas-nav__inner">
+        <!-- Logo -->
+        <a href="/" class="saas-nav__logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+            <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+            <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+          </svg>
+          Amphibious
+        </a>
+        
+        <!-- Navigation Links -->
+        <ul class="saas-nav__links">
+          <li><a href="#features" class="saas-nav__link">Features</a></li>
+          <li><a href="#how-it-works" class="saas-nav__link">How it Works</a></li>
+          <li><a href="#testimonials" class="saas-nav__link">Testimonials</a></li>
+          <li><a href="/docs/" class="saas-nav__link">Docs</a></li>
+        </ul>
+        
+        <!-- Actions -->
+        <div class="saas-nav__actions">
+          <a href="https://github.com/your-repo/amphibious" class="saas-btn saas-btn--ghost">GitHub</a>
+          <a href="/docs/getting-started.html" class="saas-btn saas-btn--primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="saas-hero">
+    <div class="saas-container">
+      <span class="saas-hero__badge">Built for developers</span>
+      
+      <h1 class="saas-hero__title">
+        Build modern websites<br>
+        <span class="saas-hero__title-accent">faster than ever</span>
+      </h1>
+      
+      <p class="saas-hero__subtitle">
+        A lightweight, modern CSS framework with beautiful components, 
+        responsive grid, and SaaS-ready patterns. No dependencies, just pure CSS.
+      </p>
+      
+      <div class="saas-hero__actions">
+        <a href="/docs/getting-started.html" class="saas-btn saas-btn--primary saas-btn--lg">
+          Get Started Free
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="/examples/" class="saas-btn saas-btn--secondary saas-btn--lg">
+          View Examples
+        </a>
+      </div>
+      
+      <div class="saas-hero__features">
+        <span class="saas-hero__feature">Zero dependencies</span>
+        <span class="saas-hero__feature">Modern flexbox grid</span>
+        <span class="saas-hero__feature">25+ components</span>
+      </div>
+      
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-item__value">25+</span>
+          <span class="stat-item__label">Components</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">16</span>
+          <span class="stat-item__label">Column Grid</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">1,600+</span>
+          <span class="stat-item__label">Lucide Icons</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">&lt;50kb</span>
+          <span class="stat-item__label">Gzipped</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="saas-section saas-section--subtle">
+    <div class="saas-container">
+      <header class="saas-section-header">
+        <h2 class="saas-section-header__title">Why developers choose Amphibious</h2>
+        <p class="saas-section-header__subtitle">
+          Everything you need to build beautiful, responsive websites without the bloat
+        </p>
+      </header>
+      
+      <div class="saas-features">
+        <!-- Feature 1 -->
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="7" height="7" x="3" y="3" rx="1"/>
+              <rect width="7" height="7" x="14" y="3" rx="1"/>
+              <rect width="7" height="7" x="14" y="14" rx="1"/>
+              <rect width="7" height="7" x="3" y="14" rx="1"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">Modern Grid System</h3>
+          <p class="saas-feature-card__description">
+            16-column flexbox grid with responsive breakpoints. No floats, no clearfixes, just clean modern CSS.
+          </p>
+        </article>
+        
+        <!-- Feature 2 -->
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">Dark Mode Ready</h3>
+          <p class="saas-feature-card__description">
+            CSS custom properties make theming a breeze. Switch between light and dark modes with a single class.
+          </p>
+        </article>
+        
+        <!-- Feature 3 -->
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+              <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+              <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+              <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">25+ Components</h3>
+          <p class="saas-feature-card__description">
+            Buttons, cards, modals, navigation, forms, and more. All built with semantic HTML and accessibility in mind.
+          </p>
+        </article>
+        
+        <!-- Feature 4 -->
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">Lightning Fast</h3>
+          <p class="saas-feature-card__description">
+            Under 50kb gzipped. No JavaScript required for styles. Tree-shakable when you need only specific components.
+          </p>
+        </article>
+        
+        <!-- Feature 5 -->
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="m4.93 4.93 4.24 4.24"/>
+              <path d="m14.83 9.17 4.24-4.24"/>
+              <path d="m14.83 14.83 4.24 4.24"/>
+              <path d="m9.17 14.83-4.24 4.24"/>
+              <circle cx="12" cy="12" r="4"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">Accessibility First</h3>
+          <p class="saas-feature-card__description">
+            WCAG 2.1 compliant. Semantic HTML, ARIA attributes, keyboard navigation, and screen reader support built-in.
+          </p>
+        </article>
+        
+        <!-- Feature 6 -->
+        <article class="saas-feature-card">
+          <div class="saas-feature-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="21" r="1"/>
+              <circle cx="19" cy="21" r="1"/>
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+            </svg>
+          </div>
+          <h3 class="saas-feature-card__title">E-commerce Ready</h3>
+          <p class="saas-feature-card__description">
+            Product cards, shopping carts, checkout flows, and rating systems. Perfect for online stores.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works Section -->
+  <section id="how-it-works" class="saas-section">
+    <div class="saas-container">
+      <div class="saas-showcase">
+        <div class="saas-showcase__content">
+          <span class="saas-showcase__badge">How it works</span>
+          <h2 class="saas-showcase__title">An atomic design system that scales</h2>
+          <p class="saas-showcase__description">
+            Amphibious uses Brad Frost's Atomic Design methodology. Start with design tokens, 
+            build atoms, combine into molecules, and compose complex organisms. Every component 
+            works together seamlessly.
+          </p>
+          <ul class="saas-showcase__list">
+            <li class="saas-showcase__list-item">Design tokens: colors, typography, spacing foundation</li>
+            <li class="saas-showcase__list-item">Atoms: buttons, badges, icons, spinners</li>
+            <li class="saas-showcase__list-item">Molecules: alerts, progress bars, tooltips</li>
+            <li class="saas-showcase__list-item">Organisms: cards, navigation, modals, forms</li>
+          </ul>
+        </div>
+        <div class="saas-showcase__image">
+          <div class="product-screenshot">
+            <img src="https://placehold.co/600x400/f1f5f9/64748b?text=Component+Library" alt="Amphibious Component Library" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Second Showcase (reversed) -->
+  <section class="saas-section saas-section--subtle">
+    <div class="saas-container">
+      <div class="saas-showcase saas-showcase--reverse">
+        <div class="saas-showcase__content">
+          <span class="saas-showcase__badge">Developer Experience</span>
+          <h2 class="saas-showcase__title">Built with modern tooling</h2>
+          <p class="saas-showcase__description">
+            Powered by Vite 6 for lightning-fast development. TypeScript support, 
+            hot module replacement, and optimized production builds out of the box.
+          </p>
+          <ul class="saas-showcase__list">
+            <li class="saas-showcase__list-item">Vite 6 dev server with instant HMR</li>
+            <li class="saas-showcase__list-item">TypeScript for type-safe JavaScript</li>
+            <li class="saas-showcase__list-item">Biome for linting and formatting</li>
+            <li class="saas-showcase__list-item">CSS custom properties for easy theming</li>
+          </ul>
+        </div>
+        <div class="saas-showcase__image">
+          <div class="product-screenshot">
+            <img src="https://placehold.co/600x400/f1f5f9/64748b?text=Developer+Tools" alt="Amphibious Developer Tools" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="saas-section">
+    <div class="saas-container">
+      <header class="saas-section-header">
+        <h2 class="saas-section-header__title">Trusted by developers</h2>
+        <p class="saas-section-header__subtitle">
+          Join developers who've made Amphibious their go-to CSS framework
+        </p>
+      </header>
+      
+      <div class="saas-testimonials">
+        <!-- Testimonial 1 -->
+        <article class="saas-testimonial">
+          <p class="saas-testimonial__quote">
+            Finally, a CSS framework that doesn't require a PhD to customize. 
+            The design tokens make theming incredibly simple. I built our entire 
+            dashboard in a weekend."
+          </p>
+          <footer class="saas-testimonial__author">
+            <div class="saas-testimonial__avatar">SC</div>
+            <div class="saas-testimonial__info">
+              <span class="saas-testimonial__name">Sarah Chen</span>
+              <span class="saas-testimonial__role">Frontend Developer at TechCorp</span>
+            </div>
+          </footer>
+        </article>
+        
+        <!-- Testimonial 2 -->
+        <article class="saas-testimonial">
+          <p class="saas-testimonial__quote">
+            The atomic design approach is brilliant. Components compose beautifully 
+            and the accessibility features are top-notch. Our WCAG audit passed 
+            with flying colors."
+          </p>
+          <footer class="saas-testimonial__author">
+            <div class="saas-testimonial__avatar">MR</div>
+            <div class="saas-testimonial__info">
+              <span class="saas-testimonial__name">Michael Rodriguez</span>
+              <span class="saas-testimonial__role">Lead Designer at StartupX</span>
+            </div>
+          </footer>
+        </article>
+        
+        <!-- Testimonial 3 -->
+        <article class="saas-testimonial">
+          <p class="saas-testimonial__quote">
+            The e-commerce components saved us weeks of development time. 
+            Product cards, carts, checkout flows — all beautifully designed 
+            and ready to customize."
+          </p>
+          <footer class="saas-testimonial__author">
+            <div class="saas-testimonial__avatar">EW</div>
+            <div class="saas-testimonial__info">
+              <span class="saas-testimonial__name">Emily Watson</span>
+              <span class="saas-testimonial__role">CTO at ShopifyPlus Agency</span>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="saas-section">
+    <div class="saas-container">
+      <div class="saas-cta">
+        <h2 class="saas-cta__title">Ready to build something amazing?</h2>
+        <p class="saas-cta__subtitle">
+          Get started with Amphibious in minutes. No complex setup, no dependencies, 
+          just beautiful components that work.
+        </p>
+        <div class="saas-cta__actions">
+          <a href="/docs/getting-started.html" class="saas-btn saas-btn--primary saas-btn--lg">
+            Get Started Free
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="https://github.com/your-repo/amphibious" class="saas-btn saas-btn--secondary saas-btn--lg">
+            View on GitHub
+          </a>
+        </div>
+        <p class="saas-cta__note">Free and open source · MIT License · No credit card required</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="saas-footer">
+    <div class="saas-container">
+      <div class="saas-footer__grid">
+        <!-- Brand -->
+        <div class="saas-footer__brand">
+          <div class="saas-footer__logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+              <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+              <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+              <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+            </svg>
+            Amphibious
+          </div>
+          <p class="saas-footer__tagline">
+            A modern CSS framework for building beautiful, responsive websites. 
+            From job post to hired candidate in 3 weeks or less.
+          </p>
+        </div>
+        
+        <!-- Product Links -->
+        <nav>
+          <h4 class="saas-footer__column-title">Product</h4>
+          <ul class="saas-footer__links">
+            <li><a href="/docs/getting-started.html" class="saas-footer__link">Getting Started</a></li>
+            <li><a href="/docs/components.html" class="saas-footer__link">Components</a></li>
+            <li><a href="/examples/" class="saas-footer__link">Examples</a></li>
+            <li><a href="/docs/themes.html" class="saas-footer__link">Themes</a></li>
+          </ul>
+        </nav>
+        
+        <!-- Resources Links -->
+        <nav>
+          <h4 class="saas-footer__column-title">Resources</h4>
+          <ul class="saas-footer__links">
+            <li><a href="/docs/" class="saas-footer__link">Documentation</a></li>
+            <li><a href="https://github.com/your-repo/amphibious" class="saas-footer__link">GitHub</a></li>
+            <li><a href="/changelog.html" class="saas-footer__link">Changelog</a></li>
+            <li><a href="/docs/migration.html" class="saas-footer__link">Migration Guide</a></li>
+          </ul>
+        </nav>
+        
+        <!-- Company Links -->
+        <nav>
+          <h4 class="saas-footer__column-title">Community</h4>
+          <ul class="saas-footer__links">
+            <li><a href="https://twitter.com/amphibious" class="saas-footer__link">Twitter</a></li>
+            <li><a href="https://discord.gg/amphibious" class="saas-footer__link">Discord</a></li>
+            <li><a href="/contributing.html" class="saas-footer__link">Contributing</a></li>
+            <li><a href="/code-of-conduct.html" class="saas-footer__link">Code of Conduct</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <div class="saas-footer__bottom">
+        <p class="saas-footer__copyright">© 2024 Amphibious. MIT License.</p>
+        <nav class="saas-footer__legal">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/src/index.js"></script>
+</body>
+</html>

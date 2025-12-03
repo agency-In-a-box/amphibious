@@ -156,12 +156,26 @@
       transform: translateY(-10px);
       transition: all 0.2s ease;
       z-index: 1001;
+      pointer-events: none;
     }
 
-    .horizontal.branded > li:hover > ul {
+    .horizontal.branded > li:hover > ul,
+    .horizontal.branded > li:focus-within > ul {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Add a pseudo-element to bridge the gap between menu item and dropdown */
+    .horizontal.branded > li::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: transparent;
     }
 
     .horizontal.branded ul li a {
@@ -289,16 +303,16 @@
         <li><a href="/docs/function.html">Function</a>
           <ul>
             <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-            <li><a href="/docs/function.html#horizcss">Horizontal Nav <sub>css</sub></a></li>
-            <li><a href="/docs/function.html#vertnav">Vertical Nav <sub>with tertiary</sub></a></li>
+            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
+            <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
             <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabmagic">Tabs</a></li>
+            <li><a href="/docs/function.html#tabs">Tabs</a></li>
             <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
           </ul>
         </li>
         <li><a href="/docs/features.html">Features</a>
           <ul>
-            <li><a href="/docs/features.html#slides">Responsive Slide Shows</a></li>
+            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
             <li><a href="/docs/features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
             <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
             <li><a href="/docs/features.html#icons">Lucide Icons <sub>modern SVG icons</sub></a></li>
@@ -515,21 +529,21 @@
         <ol class="slats" aria-label="Recent updates">
           <li>
             <article>
-              <h4><a href="examples/pears-patterns.html">🍐 Pea.rs Patterns Showcase</a></h4>
+              <h4><a href="examples/pears-patterns.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg> Pea.rs Patterns Showcase</a></h4>
               <p>Explore the complete collection of semantic UI patterns including stats, slats, and aside layouts.</p>
               <time class="meta" datetime="2024-01-25">January 25, 2024</time>
             </article>
           </li>
           <li>
             <article>
-              <h4><a href="examples/e-commerce-cart.html">🛒 Shopping Cart with Semantic HTML</a></h4>
+              <h4><a href="examples/e-commerce-cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> Shopping Cart with Semantic HTML</a></h4>
               <p>Full-featured shopping cart implementation using proper semantic elements and ARIA attributes.</p>
               <time class="meta" datetime="2024-01-24">January 24, 2024</time>
             </article>
           </li>
           <li>
             <article>
-              <h4><a href="examples/navigation-showcase.html">🧭 Navigation Components</a></h4>
+              <h4><a href="examples/navigation-showcase.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> Navigation Components</a></h4>
               <p>Comprehensive navigation patterns including mega menus, breadcrumbs, tabs, and mobile navigation.</p>
               <time class="meta" datetime="2024-01-23">January 23, 2024</time>
             </article>

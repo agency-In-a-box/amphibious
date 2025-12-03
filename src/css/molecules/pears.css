@@ -245,16 +245,21 @@ ul.slats li:last-child {
   gap: 1.5rem;
 }
 
-.slats--cards li {
+ul.slats.slats--cards li,
+ol.slats.slats--cards li,
+.slats.slats--cards li {
   background: white;
   border-radius: 8px;
   padding: 1.5rem;
   border: 1px solid var(--border-color, #e5e7eb);
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
   margin: 0;
   transition: box-shadow 0.2s;
 }
 
-.slats--cards li:hover {
+ul.slats.slats--cards li:hover,
+ol.slats.slats--cards li:hover,
+.slats.slats--cards li:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 

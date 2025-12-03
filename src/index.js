@@ -9,6 +9,12 @@
 // Import core styles
 import './css/main.css';
 
+// Import Lucide icons
+import { createIcons, icons } from 'lucide';
+
+// Import navigation dropdown enhancement
+import { initNavigationDropdowns } from './js/navigation-dropdown.js';
+
 // Simple initialization without complex TypeScript dependencies
 console.log('🐸 Amphibious 2.0 loaded successfully');
 
@@ -16,22 +22,26 @@ console.log('🐸 Amphibious 2.0 loaded successfully');
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🐸 Amphibious 2.0 initialized');
 
+  // Initialize Lucide icons
+  createIcons({ icons });
+  const iconElements = document.querySelectorAll('[data-lucide]');
+  console.log(`🎨 Initialized ${iconElements.length} Lucide icons`);
+
+  // Initialize navigation dropdowns
+  initNavigationDropdowns();
+  console.log(`📱 Enhanced navigation dropdowns`);
+
   // Basic tooltip initialization
   const tooltips = document.querySelectorAll('[data-tooltip]');
-  console.log(`Found ${tooltips.length} tooltips`);
-
-  // Basic icon initialization
-  const icons = document.querySelectorAll('[data-lucide]');
-  console.log(`Found ${icons.length} icons`);
-
-  // Initialize Lucide icons if available
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
+  console.log(`💬 Found ${tooltips.length} tooltips`);
 });
 
 // Export simple namespace
 window.amp = {
   version: '2.0.0',
-  initialized: true
+  initialized: true,
+  // Expose Lucide for dynamic icon creation
+  icons: {
+    refresh: () => createIcons({ icons })
+  }
 };

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features - Amphibious 2.0 Documentation</title>
-    <link rel="stylesheet" href="../dist/amphibious.css">
-    <link rel="stylesheet" href="./docs.css">
+    <link rel="stylesheet" href="/src/css/main.css">
+    <link rel="stylesheet" href="/docs/docs.css">
     <style>
     /* Navigation styles */
     .site-nav {
@@ -596,16 +596,16 @@
         <li><a href="/docs/function.html">Function</a>
           <ul>
             <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizcss">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertnav">Vertical Nav</a></li>
+            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
+            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
             <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabmagic">Tabs</a></li>
+            <li><a href="/docs/function.html#tabs">Tabs</a></li>
             <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
           </ul>
         </li>
         <li class="active"><a href="/docs/features.html">Features</a>
           <ul>
-            <li><a href="/docs/features.html#slides">Responsive Slide Shows</a></li>
+            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
             <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
             <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
             <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
@@ -952,6 +952,129 @@ function showSlide(n) {
             </div>
         </section>
 
+        <!-- Pea.rs Patterns Section -->
+        <section id="pears" class="section">
+            <h2>Pea.rs Content Patterns</h2>
+            <p>Pea.rs are common patterns of markup &amp; style for frequently used UI elements. Originally inspired by <a href="http://pea.rs/" target="_blank">pea.rs</a>, these patterns provide semantic, accessible, and beautifully styled components.</p>
+
+            <h3>Stats Pattern</h3>
+            <p>Display statistics horizontally with clear visual separation. Perfect for dashboards, profiles, and summaries.</p>
+
+            <div class="example">
+                <div class="example-title">Basic Stats</div>
+                <ul class="stats" style="list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:1rem;">
+                    <li style="position:relative; padding-right:1rem; margin-right:1rem; border-right:1px solid #dee2e6;">
+                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#667eea; line-height:1.2;">1,234</span>
+                        <span style="display:block; margin-top:0.25rem; font-size:0.875rem; color:#6c757d; text-transform:uppercase; letter-spacing:0.5px;">Downloads</span>
+                    </li>
+                    <li style="position:relative; padding-right:1rem; margin-right:1rem; border-right:1px solid #dee2e6;">
+                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#667eea; line-height:1.2;">567</span>
+                        <span style="display:block; margin-top:0.25rem; font-size:0.875rem; color:#6c757d; text-transform:uppercase; letter-spacing:0.5px;">Contributors</span>
+                    </li>
+                    <li style="position:relative;">
+                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#667eea; line-height:1.2;">23,456</span>
+                        <span style="display:block; margin-top:0.25rem; font-size:0.875rem; color:#6c757d; text-transform:uppercase; letter-spacing:0.5px;">Stars</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;ul class="stats"&gt;
+  &lt;li&gt;
+    &lt;span class="stat-value"&gt;1,234&lt;/span&gt;
+    &lt;span class="stat-label"&gt;Downloads&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;span class="stat-value"&gt;567&lt;/span&gt;
+    &lt;span class="stat-label"&gt;Contributors&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;span class="stat-value"&gt;23,456&lt;/span&gt;
+    &lt;span class="stat-label"&gt;Stars&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+
+            <h3>Slats Pattern</h3>
+            <p>Vertical list items with optional images and metadata. Ideal for article listings, product catalogs, and search results.</p>
+
+            <div class="example">
+                <div class="example-title">Article Slats with Images</div>
+                <ul class="slats" style="list-style:none; margin:0; padding:0;">
+                    <li style="margin:0 0 1.5rem 0; padding:0 0 1.5rem 0; border-bottom:1px solid #e5e7eb;">
+                        <a href="#" style="text-decoration:none; color:inherit; display:flex; gap:1rem; align-items:flex-start;">
+                            <div style="width:80px; height:80px; background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius:8px; flex-shrink:0;"></div>
+                            <div style="flex:1;">
+                                <h4 style="margin:0 0 0.5rem 0; line-height:1.3; color:#2c3e50;">Getting Started with Amphibious 2.0</h4>
+                                <p style="margin:0; color:#4b5563; line-height:1.6; font-size:0.875rem;">Learn how to quickly integrate the Amphibious CSS framework into your next project.</p>
+                                <span style="display:block; margin-top:0.5rem; font-size:0.75rem; color:#6c757d;">5 min read • Nov 2025</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="margin:0; padding:0;">
+                        <a href="#" style="text-decoration:none; color:inherit; display:flex; gap:1rem; align-items:flex-start;">
+                            <div style="width:80px; height:80px; background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius:8px; flex-shrink:0;"></div>
+                            <div style="flex:1;">
+                                <h4 style="margin:0 0 0.5rem 0; line-height:1.3; color:#2c3e50;">Advanced Grid Techniques</h4>
+                                <p style="margin:0; color:#4b5563; line-height:1.6; font-size:0.875rem;">Master the semantic grid system with responsive columns and golden ratio layouts.</p>
+                                <span style="display:block; margin-top:0.5rem; font-size:0.75rem; color:#6c757d;">8 min read • Nov 2025</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;ul class="slats slats--with-image"&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;img src="article-image.jpg" alt="Article thumbnail"&gt;
+      &lt;div class="content"&gt;
+        &lt;h4&gt;Article Title&lt;/h4&gt;
+        &lt;p&gt;Article description text here.&lt;/p&gt;
+        &lt;span class="meta"&gt;5 min read • Nov 2025&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+
+            <h3>Aside Pattern</h3>
+            <p>Sidebar content that floats alongside main content. Use for supplementary information, navigation, or callouts.</p>
+
+            <div class="example">
+                <div class="example-title">Aside Callout Box</div>
+                <div style="background:#f8f9fa; border-left:4px solid #667eea; padding:1rem; border-radius:0 4px 4px 0;">
+                    <h4 style="margin:0 0 0.5rem 0; color:#667eea;">Pro Tip</h4>
+                    <p style="margin:0; font-size:0.875rem; color:#4b5563;">Combine the aside pattern with sticky positioning to keep supplementary content visible as users scroll through your main content.</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <pre><code>&lt;!-- Grid-based aside layout --&gt;
+&lt;div class="content-with-aside"&gt;
+  &lt;aside&gt;
+    &lt;h4&gt;Related Links&lt;/h4&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Examples&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/aside&gt;
+  &lt;main&gt;
+    &lt;!-- Main content here --&gt;
+  &lt;/main&gt;
+&lt;/div&gt;
+
+&lt;!-- Callout box --&gt;
+&lt;div class="aside-callout"&gt;
+  &lt;h4&gt;Note&lt;/h4&gt;
+  &lt;p&gt;Important information goes here.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <p style="margin-top:2rem;"><a href="/examples/pears-patterns.html" style="color:#667eea; text-decoration:none; font-weight:500;">View the full Pea.rs Patterns documentation →</a></p>
+        </section>
+
         <!-- Icons Section -->
         <section id="icons" class="section">
             <h2>Icon System</h2>
@@ -1104,7 +1227,7 @@ lucide.createIcons();</code></pre>
     </div>
 
     <!-- JavaScript for slideshow functionality -->
-    <script>
+    <script type="module">
         let slideIndex = 1;
 
         function changeSlide(n) {
@@ -1120,7 +1243,7 @@ lucide.createIcons();</code></pre>
             const dots = document.querySelectorAll('.slide-dot');
 
             if (n > slides.length) slideIndex = 1;
-            if (n < 1) slideIndex = slides.length;
+            if (1 > n) slideIndex = slides.length;
 
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
@@ -1133,6 +1256,10 @@ lucide.createIcons();</code></pre>
             }
         }
 
+        // Make functions globally available for onclick handlers
+        window.changeSlide = changeSlide;
+        window.currentSlide = currentSlide;
+
         // Auto-advance slideshow every 5 seconds
         setInterval(() => {
             changeSlide(1);
@@ -1142,14 +1269,17 @@ lucide.createIcons();</code></pre>
         let startX = 0;
         let endX = 0;
 
-        document.querySelector('.slideshow-container').addEventListener('touchstart', (e) => {
-            startX = e.changedTouches[0].screenX;
-        });
+        const container = document.querySelector('.slideshow-container');
+        if (container) {
+            container.addEventListener('touchstart', (e) => {
+                startX = e.changedTouches[0].screenX;
+            });
 
-        document.querySelector('.slideshow-container').addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
+            container.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+        }
 
         function handleSwipe() {
             const threshold = 50;

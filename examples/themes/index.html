@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Themes - Amphibious 2.0</title>
+  <meta name="description" content="Theme gallery for Amphibious 2.0 CSS Framework">
+  <link rel="stylesheet" href="../../src/css/main.css">
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: "Avenir Next", Avenir, "Futura PT", Futura, -apple-system, sans-serif;
+    }
+
+    .themes-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+
+    .themes-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .theme-card {
+      background: white;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .theme-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .theme-card__preview {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-card__content {
+      padding: 1.5rem;
+    }
+
+    .theme-card h3 {
+      margin: 0 0 0.5rem 0;
+      color: #2c3e50;
+    }
+
+    .theme-card p {
+      color: #6c757d;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .theme-card__badge {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .theme-card__badge--new {
+      background: #10b981;
+    }
+
+    .theme-card a {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+    }
+
+    .theme-card a:hover {
+      background: #5a6fd8;
+    }
+
+    /* Theme Preview Styles */
+    .preview-modern-saas {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .preview-modern-saas::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+    }
+
+    .preview-modern-saas::after {
+      content: 'Modern SaaS';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .preview-modern-saas .hero-preview {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 40px;
+      background: #3b82f6;
+      border-radius: 8px;
+    }
+
+    .preview-classic {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .preview-classic::after {
+      content: 'Classic';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .preview-green {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    }
+
+    .preview-green::after {
+      content: 'Green';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .preview-yosemite {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    }
+
+    .preview-yosemite::after {
+      content: 'Yosemite';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .preview-lassosoft {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .preview-lassosoft::after {
+      content: 'Lassosoft';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .nav-breadcrumb {
+      margin-bottom: 2rem;
+    }
+
+    .nav-breadcrumb a {
+      color: #6c757d;
+      text-decoration: none;
+    }
+
+    .nav-breadcrumb a:hover {
+      color: #667eea;
+    }
+  </style>
+</head>
+<body>
+  <header class="themes-header">
+    <div class="container">
+      <h1>🎨 Theme Gallery</h1>
+      <p>Beautiful themes and landing page templates for Amphibious 2.0</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="nav-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">← Back to Examples</a>
+    </nav>
+
+    <div class="themes-grid">
+      <!-- Modern SaaS Theme -->
+      <article class="theme-card">
+        <div class="theme-card__preview preview-modern-saas">
+        </div>
+        <div class="theme-card__content">
+          <span class="theme-card__badge theme-card__badge--new">New</span>
+          <h3>Modern SaaS</h3>
+          <p>Clean, minimal landing page inspired by HeroHire.ai. Perfect for SaaS products, startups, and modern web apps.</p>
+          <a href="modern-saas/index.html">View Theme</a>
+        </div>
+      </article>
+
+      <!-- Classic Theme -->
+      <article class="theme-card">
+        <div class="theme-card__preview preview-classic">
+        </div>
+        <div class="theme-card__content">
+          <span class="theme-card__badge">Default</span>
+          <h3>Classic</h3>
+          <p>The original Amphibious theme with gradient headers and a professional look.</p>
+          <a href="classic/index.html">View Theme</a>
+        </div>
+      </article>
+
+      <!-- Green Theme -->
+      <article class="theme-card">
+        <div class="theme-card__preview preview-green">
+        </div>
+        <div class="theme-card__content">
+          <h3>Green</h3>
+          <p>Fresh green color palette, perfect for environmental, health, or nature-focused projects.</p>
+          <a href="green/index.html">View Theme</a>
+        </div>
+      </article>
+
+      <!-- Yosemite Theme -->
+      <article class="theme-card">
+        <div class="theme-card__preview preview-yosemite">
+        </div>
+        <div class="theme-card__content">
+          <h3>Yosemite</h3>
+          <p>Deep blue corporate theme inspired by macOS Yosemite. Great for enterprise and business sites.</p>
+          <a href="yosemite/index.html">View Theme</a>
+        </div>
+      </article>
+
+      <!-- Lassosoft Theme -->
+      <article class="theme-card">
+        <div class="theme-card__preview preview-lassosoft">
+        </div>
+        <div class="theme-card__content">
+          <h3>Lassosoft</h3>
+          <p>Warm amber tones with a friendly, approachable feel. Great for creative agencies and portfolios.</p>
+          <a href="lassosoft/index.html">View Theme</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Theme Customization Info -->
+    <div style="text-align: center; margin: 4rem 0; padding: 2rem; background: white; border-radius: 0.5rem;">
+      <h3>Create Your Own Theme</h3>
+      <p>Amphibious uses CSS custom properties for easy theming. Override the design tokens to create your own look.</p>
+      <pre style="background: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; text-align: left; overflow-x: auto; margin: 1rem 0;">
+:root {
+  --color-primary: #your-brand-color;
+  --color-primary-hover: #your-hover-color;
+  --font-family-base: 'Your Font', sans-serif;
+}</pre>
+      <a href="../../docs/theming.html" style="display: inline-block; background: #667eea; color: white; padding: 0.75rem 2rem; border-radius: 0.25rem; text-decoration: none; font-weight: 500;">Learn More About Theming</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #2c3e50; color: #adb5bd; padding: 3rem 0; margin-top: 4rem;">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <h3 style="color: white; margin-top: 0;">Amphibious 2.0 Themes</h3>
+          <p>Beautiful, customizable themes for every project.</p>
+        </div>
+        <div class="col-8">
+          <p><a href="../../index.html" style="color: #adb5bd;">← Back to Homepage</a></p>
+          <p><a href="../../docs/" style="color: #adb5bd;">Documentation</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load Framework -->
+  <script type="module" src="../../src/index.js"></script>
+</body>
+</html>
