@@ -17,7 +17,8 @@
   "files": ["dist", "src"],
   "scripts": {
     "dev": "vite --port 2960 --host",
-    "build": "vite build && tsc --emitDeclarationOnly",
+    "build": "vite build",
+    "build:ts": "vite build && tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",

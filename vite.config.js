@@ -32,7 +32,7 @@ export default defineConfig({
     emptyOutDir: false, // Changed to false to preserve manually copied files
     sourcemap: true,
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(__dirname, 'src/index.js'),
       name: 'Amphibious',
       fileName: (format) => `amphibious.${format}.js`,
       formats: ['es', 'umd']
