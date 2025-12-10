@@ -1,6 +1,6 @@
 [build]
-  # No build command needed - static site
-  publish = "."
+  command = "bun install && bun run build"
+  publish = "dist"
 
 # Redirects for SPA-like behavior (optional)
 [[redirects]]
@@ -11,6 +11,12 @@
 [[redirects]]
   from = "/examples"
   to = "/examples/index.html"
+  status = 200
+
+# Fallback for 404s - redirect to home page
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
 
 # Headers for better caching
