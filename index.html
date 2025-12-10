@@ -7,6 +7,7 @@
   <meta name="description" content="Amphibious 2.0 - A modern, responsive CSS framework and component library built for e-commerce and modern web applications">
   <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/src/css/main.css">
   <style>
     /* Homepage specific styles */
     .demo-section {
@@ -35,7 +36,7 @@
       color: #2c3e50;
     }
     .demo-grid {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       color: white;
       padding: 1rem;
       text-align: center;
@@ -43,7 +44,7 @@
       margin: 0.25rem 0;
     }
     .hero {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       color: white;
       padding: 5rem 0;
       text-align: center;
@@ -80,124 +81,6 @@
     .hero .stats li {
       border-right-color: rgba(255,255,255,0.2);
     }
-    /* Navigation */
-    .site-nav {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .site-nav .container {
-      position: relative;
-    }
-
-    /* Horizontal Navigation */
-    .horizontal.branded {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .horizontal.branded > li {
-      position: relative;
-    }
-
-    .horizontal.branded > li > a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 500;
-      padding: 0.75rem 1.5rem;
-      display: block;
-      transition: background-color 0.2s, color 0.2s;
-      border-bottom: 3px solid transparent;
-    }
-
-    .horizontal.branded > li:hover > a,
-    .horizontal.branded > li.active > a {
-      background-color: #667eea;
-      color: white;
-      border-bottom-color: #4c63d2;
-    }
-
-    .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #667eea !important;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .horizontal.branded > li.active > a.site-logo {
-      color: white !important;
-    }
-
-    /* Dropdown Menus */
-    .horizontal.branded ul {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      border-radius: 0 0 8px 8px;
-      min-width: 280px;
-      list-style: none;
-      margin: 0;
-      padding: 0.5rem 0;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.2s ease;
-      z-index: 1001;
-      pointer-events: none;
-    }
-
-    .horizontal.branded > li:hover > ul,
-    .horizontal.branded > li:focus-within > ul {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    /* Add a pseudo-element to bridge the gap between menu item and dropdown */
-    .horizontal.branded > li::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      height: 10px;
-      background: transparent;
-    }
-
-    .horizontal.branded ul li a {
-      display: block;
-      padding: 0.5rem 1.5rem;
-      color: #2c3e50;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: background-color 0.15s;
-      border-left: 3px solid transparent;
-    }
-
-    .horizontal.branded ul li a:hover {
-      background-color: #f8f9fa;
-      border-left-color: #667eea;
-    }
-
-    .horizontal.branded ul li a sub {
-      font-size: 0.75rem;
-      color: #6c757d;
-      font-style: italic;
-    }
     /* Section Headers */
     .section-header {
       text-align: center;
@@ -222,7 +105,7 @@
     }
     /* CTA Section */
     .cta-section {
-      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      background: linear-gradient(135deg, #c97400 0%, #ED8B00 100%);
       color: white;
       padding: 4rem 0;
       text-align: center;
@@ -255,7 +138,7 @@
     }
     .btn-primary {
       background: white;
-      color: #667eea;
+      color: #ED8B00;
     }
     .btn-secondary {
       background: transparent;
@@ -269,7 +152,7 @@
   <nav class="site-nav" aria-label="Main navigation">
     <div class="container">
       <ul class="horizontal branded">
-        <li class="active"><a href="#" class="site-logo" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves" style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg> Amphibious</a>
+        <li class="active"><a href="#" class="site-logo" aria-current="page">Amphibious</a>
           <ul>
             <li><a href="#what_is_it">What is Amphibious 2.0</a></li>
             <li><a href="#how_its_made">What is it made of?</a></li>
@@ -326,7 +209,7 @@
   <!-- Hero Section -->
   <header class="hero">
     <div class="container">
-      <h1><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves" style="display: inline-block; vertical-align: middle; margin-right: 1rem;"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg> Amphibious 2.0</h1>
+      <h1>Amphibious 2.0</h1>
       <p>The modern evolution of the elegant responsive CSS framework. Built with TypeScript, powered by Vite, and designed for today's web with comprehensive components and e-commerce focus.</p>
 
       <!-- Hero Stats using pea.rs pattern -->

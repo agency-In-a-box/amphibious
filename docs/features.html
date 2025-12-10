@@ -7,110 +7,6 @@
     <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="/docs/docs.css">
     <style>
-    /* Navigation styles */
-    .site-nav {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      margin-bottom: 2rem;
-    }
-
-    .horizontal.branded {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .horizontal.branded > li {
-      position: relative;
-    }
-
-    .horizontal.branded > li > a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 500;
-      padding: 0.75rem 1.5rem;
-      display: block;
-      transition: background-color 0.2s, color 0.2s;
-      border-bottom: 3px solid transparent;
-    }
-
-    .horizontal.branded > li:hover > a,
-    .horizontal.branded > li.active > a {
-      background-color: #667eea;
-      color: white;
-      border-bottom-color: #4c63d2;
-    }
-
-    .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #667eea !important;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .horizontal.branded > li.active > a.site-logo {
-      color: white !important;
-    }
-
-    /* Dropdown Menus */
-    .horizontal.branded ul {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      border-radius: 0 0 8px 8px;
-      min-width: 280px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.2s ease;
-      z-index: 1001;
-    }
-
-    .horizontal.branded li:hover > ul {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .horizontal.branded ul li {
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .horizontal.branded ul li:last-child {
-      border-bottom: none;
-    }
-
-    .horizontal.branded ul a {
-      display: block;
-      padding: 0.75rem 1.5rem;
-      color: #2c3e50;
-      text-decoration: none;
-      transition: background-color 0.2s;
-      font-size: 0.9rem;
-    }
-
-    .horizontal.branded ul a:hover {
-      background-color: #f8f9fa;
-      color: #667eea;
-    }
-
-
         /* Documentation-specific styles */
         .docs-nav {
             background: #f8f9fa;
@@ -563,14 +459,7 @@
   <nav class="site-nav" aria-label="Main navigation">
     <div class="container">
       <ul class="horizontal branded">
-        <li><a href="/" class="site-logo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves">
-            <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-            <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-            <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-          </svg>
-          Amphibious
-        </a></li>
+        <li><a href="/" class="site-logo">Amphibious</a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
           <ul>
             <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -647,7 +536,7 @@
                 <div class="slideshow">
                     <div class="slideshow-container">
                         <div class="slide active">
-                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <div style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
                                 Slide 1
                             </div>
                             <div class="slide-content">
@@ -964,15 +853,15 @@ function showSlide(n) {
                 <div class="example-title">Basic Stats</div>
                 <ul class="stats" style="list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:1rem;">
                     <li style="position:relative; padding-right:1rem; margin-right:1rem; border-right:1px solid #dee2e6;">
-                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#667eea; line-height:1.2;">1,234</span>
+                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#ED8B00; line-height:1.2;">1,234</span>
                         <span style="display:block; margin-top:0.25rem; font-size:0.875rem; color:#6c757d; text-transform:uppercase; letter-spacing:0.5px;">Downloads</span>
                     </li>
                     <li style="position:relative; padding-right:1rem; margin-right:1rem; border-right:1px solid #dee2e6;">
-                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#667eea; line-height:1.2;">567</span>
+                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#ED8B00; line-height:1.2;">567</span>
                         <span style="display:block; margin-top:0.25rem; font-size:0.875rem; color:#6c757d; text-transform:uppercase; letter-spacing:0.5px;">Contributors</span>
                     </li>
                     <li style="position:relative;">
-                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#667eea; line-height:1.2;">23,456</span>
+                        <span style="display:block; font-size:1.75rem; font-weight:700; color:#ED8B00; line-height:1.2;">23,456</span>
                         <span style="display:block; margin-top:0.25rem; font-size:0.875rem; color:#6c757d; text-transform:uppercase; letter-spacing:0.5px;">Stars</span>
                     </li>
                 </ul>
@@ -1003,7 +892,7 @@ function showSlide(n) {
                 <ul class="slats" style="list-style:none; margin:0; padding:0;">
                     <li style="margin:0 0 1.5rem 0; padding:0 0 1.5rem 0; border-bottom:1px solid #e5e7eb;">
                         <a href="#" style="text-decoration:none; color:inherit; display:flex; gap:1rem; align-items:flex-start;">
-                            <div style="width:80px; height:80px; background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius:8px; flex-shrink:0;"></div>
+                            <div style="width:80px; height:80px; background:linear-gradient(135deg, #ED8B00 0%, #c97400 100%); border-radius:8px; flex-shrink:0;"></div>
                             <div style="flex:1;">
                                 <h4 style="margin:0 0 0.5rem 0; line-height:1.3; color:#2c3e50;">Getting Started with Amphibious 2.0</h4>
                                 <p style="margin:0; color:#4b5563; line-height:1.6; font-size:0.875rem;">Learn how to quickly integrate the Amphibious CSS framework into your next project.</p>
@@ -1044,8 +933,8 @@ function showSlide(n) {
 
             <div class="example">
                 <div class="example-title">Aside Callout Box</div>
-                <div style="background:#f8f9fa; border-left:4px solid #667eea; padding:1rem; border-radius:0 4px 4px 0;">
-                    <h4 style="margin:0 0 0.5rem 0; color:#667eea;">Pro Tip</h4>
+                <div style="background:#f8f9fa; border-left:4px solid #ED8B00; padding:1rem; border-radius:0 4px 4px 0;">
+                    <h4 style="margin:0 0 0.5rem 0; color:#ED8B00;">Pro Tip</h4>
                     <p style="margin:0; font-size:0.875rem; color:#4b5563;">Combine the aside pattern with sticky positioning to keep supplementary content visible as users scroll through your main content.</p>
                 </div>
             </div>
@@ -1072,7 +961,7 @@ function showSlide(n) {
 &lt;/div&gt;</code></pre>
             </div>
 
-            <p style="margin-top:2rem;"><a href="/examples/pears-patterns.html" style="color:#667eea; text-decoration:none; font-weight:500;">View the full Pea.rs Patterns documentation →</a></p>
+            <p style="margin-top:2rem;"><a href="/examples/pears-patterns.html" style="color:#ED8B00; text-decoration:none; font-weight:500;">View the full Pea.rs Patterns documentation →</a></p>
         </section>
 
         <!-- Icons Section -->
