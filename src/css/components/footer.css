@@ -92,13 +92,13 @@
 
 .amp-footer__newsletter-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #ED8B00;
   background: #212a3a;
 }
 
 .amp-footer__newsletter-button {
   padding: 0.75rem 1.5rem;
-  background: #667eea;
+  background: #ED8B00;
   color: white;
   border: none;
   border-radius: 4px;
@@ -112,7 +112,7 @@
 }
 
 .amp-footer__newsletter-button:hover {
-  background: #5a67d8;
+  background: #c97400;
 }
 
 .amp-footer__newsletter-note {
@@ -196,7 +196,7 @@
 }
 
 .amp-footer__built a {
-  color: #667eea;
+  color: #ED8B00;
 }
 
 .amp-footer__built a:hover {
@@ -233,7 +233,7 @@
 }
 
 .amp-footer__social-link:hover {
-  background: #667eea;
+  background: #ED8B00;
   color: white;
   transform: translateY(-2px);
 }
@@ -245,7 +245,7 @@
   right: 2rem;
   width: 48px;
   height: 48px;
-  background: #667eea;
+  background: #ED8B00;
   color: white;
   border: none;
   border-radius: 50%;
@@ -262,7 +262,7 @@
 }
 
 .amp-footer__back-to-top:hover {
-  background: #5a67d8;
+  background: #c97400;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
@@ -303,7 +303,7 @@
 }
 
 .amp-footer__logo:hover {
-  color: #667eea;
+  color: #ED8B00;
 }
 
 .amp-footer__brand p {
@@ -405,7 +405,7 @@
 }
 
 [data-theme="light"] .amp-footer a:hover {
-  color: #667eea;
+  color: #ED8B00;
 }
 
 [data-theme="light"] .amp-footer__newsletter-input {
@@ -416,7 +416,7 @@
 
 [data-theme="light"] .amp-footer__newsletter-input:focus {
   background: white;
-  border-color: #667eea;
+  border-color: #ED8B00;
 }
 
 [data-theme="light"] .amp-footer__newsletter-note {
@@ -448,7 +448,7 @@
 }
 
 [data-theme="light"] .amp-footer__social-link:hover {
-  background: #667eea;
+  background: #ED8B00;
   color: white;
 }
 

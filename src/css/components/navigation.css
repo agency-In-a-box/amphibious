@@ -701,7 +701,7 @@ ul.nav {
 }
 
 .amp-nav__logo:hover {
-  color: var(--color-primary, #667eea);
+  color: var(--color-primary, #ED8B00);
 }
 
 .amp-nav__icon {
@@ -733,11 +733,11 @@ ul.nav {
 }
 
 .amp-nav__link:hover {
-  color: var(--color-primary, #667eea);
+  color: var(--color-primary, #ED8B00);
 }
 
 .amp-nav__link--active {
-  color: var(--color-primary, #667eea);
+  color: var(--color-primary, #ED8B00);
 }
 
 .amp-nav__link--active::after {
@@ -747,7 +747,7 @@ ul.nav {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--color-primary, #667eea);
+  background: var(--color-primary, #ED8B00);
 }
 
 /* Dropdown */
@@ -784,7 +784,7 @@ ul.nav {
 
 .amp-nav__dropdown-link:hover {
   background: var(--color-background, #f8f9fa);
-  color: var(--color-primary, #667eea);
+  color: var(--color-primary, #ED8B00);
 }
 
 /* Actions */
@@ -809,7 +809,7 @@ ul.nav {
 
 .amp-nav__search:hover,
 .amp-nav__theme:hover {
-  color: var(--color-primary, #667eea);
+  color: var(--color-primary, #ED8B00);
 }
 
 .amp-nav__github {
@@ -825,7 +825,7 @@ ul.nav {
 }
 
 .amp-nav__github:hover {
-  background: var(--color-primary, #667eea);
+  background: var(--color-primary, #ED8B00);
   color: white;
 }
 
@@ -924,7 +924,7 @@ ul.nav {
 }
 
 .amp-nav__search-input:focus {
-  border-color: var(--color-primary, #667eea);
+  border-color: var(--color-primary, #ED8B00);
 }
 
 .amp-nav__search-close {
