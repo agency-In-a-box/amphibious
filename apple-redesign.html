@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amphibious 2.0 - Apple Design System</title>
+    <link rel="stylesheet" href="src/css/apple-design-system.css">
+    <style>
+        /* Code block copy functionality */
+        .code-container {
+            position: relative;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--apple-gray-700);
+            background: var(--apple-white);
+            border: 1px solid var(--apple-gray-300);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 150ms ease;
+            z-index: 10;
+        }
+
+        .copy-button:hover {
+            color: var(--apple-orange);
+            border-color: var(--apple-orange);
+            background: var(--apple-orange-fade);
+        }
+
+        .copy-button.copied {
+            color: rgb(52, 199, 89);
+            border-color: rgb(52, 199, 89);
+            background: rgba(52, 199, 89, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-8);
+            text-align: center;
+            margin: var(--space-10) 0;
+        }
+
+        .stat-number {
+            font-size: var(--text-4xl);
+            font-weight: var(--weight-bold);
+            color: var(--apple-orange);
+            margin-bottom: var(--space-2);
+        }
+
+        .stat-label {
+            font-size: var(--text-sm);
+            color: var(--apple-gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Example sections */
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+
+        .example-item {
+            padding: var(--space-6);
+            background: var(--apple-gray-100);
+            border-radius: var(--radius-xl);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--weight-semibold);
+            color: var(--apple-black);
+            margin-bottom: var(--space-4);
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="apple-nav">
+        <div class="apple-nav-container">
+            <a href="#" class="apple-nav-logo">Amphibious</a>
+            <ul class="apple-nav-menu">
+                <li><a href="#foundation" class="apple-nav-item">Foundation</a></li>
+                <li><a href="#components" class="apple-nav-item">Components</a></li>
+                <li><a href="#examples" class="apple-nav-item">Examples</a></li>
+                <li><a href="#docs" class="apple-nav-item active">Documentation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="apple-hero-section">
+        <div class="apple-hero-badge">
+            Version 2.0
+        </div>
+        <h1 class="apple-hero-title">Amphibious 2.0</h1>
+        <p class="apple-hero-subtitle">
+            The modern evolution of elegant responsive CSS framework.<br>
+            Built with TypeScript, powered by Vite, designed for today's web.
+        </p>
+
+        <div class="stats-grid">
+            <div>
+                <div class="stat-number">1,641+</div>
+                <div class="stat-label">Lucide Icons</div>
+            </div>
+            <div>
+                <div class="stat-number">16</div>
+                <div class="stat-label">Column Grid</div>
+            </div>
+            <div>
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Components</div>
+            </div>
+            <div>
+                <div class="stat-number">2.0</div>
+                <div class="stat-label">Latest Version</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
+            <a href="#" class="apple-button">Get Started</a>
+            <a href="#" class="apple-button-outline">View on GitHub</a>
+        </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section class="apple-section">
+        <div class="apple-container">
+            <h2 class="apple-headline" style="text-align: center; margin-bottom: var(--space-8);">Typography System</h2>
+
+            <div class="example-grid">
+                <div class="example-item">
+                    <h3 class="example-title">Headlines</h3>
+                    <h1 class="apple-hero">Hero Title</h1>
+                    <h2 class="apple-headline">Headline</h2>
+                    <h3 class="apple-title">Title</h3>
+                    <h4 class="apple-subtitle">Subtitle</h4>
+                </div>
+
+                <div class="example-item">
+                    <h3 class="example-title">Body Text</h3>
+                    <p class="apple-body-large">Large body text for emphasis and introductions.</p>
+                    <p class="apple-body">Regular body text for content and descriptions.</p>
+                    <p class="apple-caption">Caption text for supporting information.</p>
+                    <a href="#" class="apple-link">Link with hover effect →</a>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                <pre class="apple-code-block"><code><span class="comment">/* Typography Classes */</span>
+<span class="keyword">&lt;h1</span> <span class="keyword">class</span>=<span class="string">"apple-hero"</span><span class="keyword">&gt;</span>Hero Title<span class="keyword">&lt;/h1&gt;</span>
+<span class="keyword">&lt;h2</span> <span class="keyword">class</span>=<span class="string">"apple-headline"</span><span class="keyword">&gt;</span>Headline<span class="keyword">&lt;/h2&gt;</span>
+<span class="keyword">&lt;p</span> <span class="keyword">class</span>=<span class="string">"apple-body"</span><span class="keyword">&gt;</span>Body text<span class="keyword">&lt;/p&gt;</span>
+<span class="keyword">&lt;a</span> <span class="keyword">href</span>=<span class="string">"#"</span> <span class="keyword">class</span>=<span class="string">"apple-link"</span><span class="keyword">&gt;</span>Link<span class="keyword">&lt;/a&gt;</span></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <section class="apple-section" style="background: var(--apple-gray-100);">
+        <div class="apple-container">
+            <h2 class="apple-headline" style="text-align: center; margin-bottom: var(--space-8);">Button System</h2>
+
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; margin-bottom: var(--space-8);">
+                <button class="apple-button">Primary Button</button>
+                <button class="apple-button-outline">Outline Button</button>
+                <button class="apple-button-ghost">Ghost Button</button>
+                <button class="apple-button" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
+            </div>
+
+            <!-- Code Example -->
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                <pre class="apple-code-block"><code><span class="comment">/* Button Components */</span>
+<span class="keyword">&lt;button</span> <span class="keyword">class</span>=<span class="string">"apple-button"</span><span class="keyword">&gt;</span>Primary Button<span class="keyword">&lt;/button&gt;</span>
+<span class="keyword">&lt;button</span> <span class="keyword">class</span>=<span class="string">"apple-button-outline"</span><span class="keyword">&gt;</span>Outline Button<span class="keyword">&lt;/button&gt;</span>
+<span class="keyword">&lt;button</span> <span class="keyword">class</span>=<span class="string">"apple-button-ghost"</span><span class="keyword">&gt;</span>Ghost Button<span class="keyword">&lt;/button&gt;</span></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="apple-section">
+        <div class="apple-container">
+            <h2 class="apple-headline" style="text-align: center; margin-bottom: var(--space-8);">Card Components</h2>
+
+            <div class="apple-grid apple-grid-3">
+                <div class="apple-card">
+                    <img src="https://placehold.co/400x240/FF6900/FFF?text=Feature" alt="Feature" class="apple-card-media">
+                    <h3 class="apple-card-title">Modern Design</h3>
+                    <p class="apple-card-description">Clean, minimal aesthetic inspired by Apple's design philosophy.</p>
+                    <a href="#" class="apple-button-ghost">Learn more →</a>
+                </div>
+
+                <div class="apple-card">
+                    <img src="https://placehold.co/400x240/FF6900/FFF?text=Responsive" alt="Responsive" class="apple-card-media">
+                    <h3 class="apple-card-title">Fully Responsive</h3>
+                    <p class="apple-card-description">Adapts seamlessly to any screen size with fluid layouts.</p>
+                    <a href="#" class="apple-button-ghost">Learn more →</a>
+                </div>
+
+                <div class="apple-card">
+                    <img src="https://placehold.co/400x240/FF6900/FFF?text=Components" alt="Components" class="apple-card-media">
+                    <h3 class="apple-card-title">25+ Components</h3>
+                    <p class="apple-card-description">Everything you need to build modern web applications.</p>
+                    <a href="#" class="apple-button-ghost">Learn more →</a>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="code-container" style="margin-top: var(--space-8);">
+                <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                <pre class="apple-code-block"><code><span class="comment">/* Card Component */</span>
+<span class="keyword">&lt;div</span> <span class="keyword">class</span>=<span class="string">"apple-card"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;img</span> <span class="keyword">src</span>=<span class="string">"..."</span> <span class="keyword">class</span>=<span class="string">"apple-card-media"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;h3</span> <span class="keyword">class</span>=<span class="string">"apple-card-title"</span><span class="keyword">&gt;</span>Title<span class="keyword">&lt;/h3&gt;</span>
+    <span class="keyword">&lt;p</span> <span class="keyword">class</span>=<span class="string">"apple-card-description"</span><span class="keyword">&gt;</span>Description<span class="keyword">&lt;/p&gt;</span>
+    <span class="keyword">&lt;a</span> <span class="keyword">href</span>=<span class="string">"#"</span> <span class="keyword">class</span>=<span class="string">"apple-button-ghost"</span><span class="keyword">&gt;</span>Learn more →<span class="keyword">&lt;/a&gt;</span>
+<span class="keyword">&lt;/div&gt;</span></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="apple-section" style="background: var(--apple-gray-100);">
+        <div class="apple-container">
+            <h2 class="apple-headline" style="text-align: center; margin-bottom: var(--space-3);">Key Features</h2>
+            <p class="apple-body-large" style="text-align: center; color: var(--apple-gray-700); margin-bottom: var(--space-10);">
+                Everything you need to build modern, responsive web applications
+            </p>
+
+            <div class="apple-grid apple-grid-3">
+                <div class="apple-feature">
+                    <div class="apple-feature-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="11" y2="17"></line></svg>
+                    </div>
+                    <h3 class="apple-feature-title">Component Library</h3>
+                    <p class="apple-feature-description">Over 25 production-ready components built with modern CSS and JavaScript.</p>
+                </div>
+
+                <div class="apple-feature">
+                    <div class="apple-feature-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    </div>
+                    <h3 class="apple-feature-title">16-Column Grid</h3>
+                    <p class="apple-feature-description">Flexible grid system with responsive breakpoints for any layout.</p>
+                </div>
+
+                <div class="apple-feature">
+                    <div class="apple-feature-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <h3 class="apple-feature-title">Lightning Fast</h3>
+                    <p class="apple-feature-description">Optimized for performance with minimal CSS and zero jQuery dependencies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section class="apple-section">
+        <div class="apple-container">
+            <h2 class="apple-headline" style="text-align: center; margin-bottom: var(--space-8);">Form Elements</h2>
+
+            <div class="apple-grid apple-grid-2">
+                <div>
+                    <label class="apple-label" for="email">Email Address</label>
+                    <input type="email" id="email" class="apple-input" placeholder="you@example.com">
+                </div>
+                <div>
+                    <label class="apple-label" for="name">Full Name</label>
+                    <input type="text" id="name" class="apple-input" placeholder="John Appleseed">
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="code-container" style="margin-top: var(--space-8);">
+                <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                <pre class="apple-code-block"><code><span class="comment">/* Form Elements */</span>
+<span class="keyword">&lt;label</span> <span class="keyword">class</span>=<span class="string">"apple-label"</span> <span class="keyword">for</span>=<span class="string">"email"</span><span class="keyword">&gt;</span>Email Address<span class="keyword">&lt;/label&gt;</span>
+<span class="keyword">&lt;input</span> <span class="keyword">type</span>=<span class="string">"email"</span> <span class="keyword">id</span>=<span class="string">"email"</span> <span class="keyword">class</span>=<span class="string">"apple-input"</span> <span class="keyword">placeholder</span>=<span class="string">"you@example.com"</span><span class="keyword">&gt;</span></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alerts Section -->
+    <section class="apple-section" style="background: var(--apple-gray-100);">
+        <div class="apple-container">
+            <h2 class="apple-headline" style="text-align: center; margin-bottom: var(--space-8);">Alert System</h2>
+
+            <div class="apple-alert apple-alert-success">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span>Success! Your changes have been saved.</span>
+            </div>
+
+            <div class="apple-alert apple-alert-warning">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <span>Warning: Please review before proceeding.</span>
+            </div>
+
+            <div class="apple-alert apple-alert-error">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                <span>Error: Unable to process your request.</span>
+            </div>
+
+            <!-- Code Example -->
+            <div class="code-container" style="margin-top: var(--space-8);">
+                <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                <pre class="apple-code-block"><code><span class="comment">/* Alert Components */</span>
+<span class="keyword">&lt;div</span> <span class="keyword">class</span>=<span class="string">"apple-alert apple-alert-success"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;svg&gt;</span>...<span class="keyword">&lt;/svg&gt;</span>
+    <span class="keyword">&lt;span&gt;</span>Success message<span class="keyword">&lt;/span&gt;</span>
+<span class="keyword">&lt;/div&gt;</span>
+
+<span class="keyword">&lt;div</span> <span class="keyword">class</span>=<span class="string">"apple-alert apple-alert-warning"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;svg&gt;</span>...<span class="keyword">&lt;/svg&gt;</span>
+    <span class="keyword">&lt;span&gt;</span>Warning message<span class="keyword">&lt;/span&gt;</span>
+<span class="keyword">&lt;/div&gt;</span></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="apple-section">
+        <div class="apple-container">
+            <h2 class="apple-headline" style="text-align: center; margin-bottom: var(--space-8);">Quick Start</h2>
+
+            <!-- Installation Code -->
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                <pre class="apple-code-block"><code><span class="comment"># Install Amphibious 2.0</span>
+<span class="keyword">npm</span> install @amphibious/css
+
+<span class="comment"># Or using CDN</span>
+<span class="keyword">&lt;link</span> <span class="keyword">rel</span>=<span class="string">"stylesheet"</span> <span class="keyword">href</span>=<span class="string">"https://unpkg.com/@amphibious/css@2.0/dist/apple.css"</span><span class="keyword">&gt;</span></code></pre>
+            </div>
+
+            <h3 class="apple-title" style="margin: var(--space-8) 0 var(--space-4);">Basic HTML Template</h3>
+
+            <!-- HTML Template -->
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                <pre class="apple-code-block"><code><span class="keyword">&lt;!DOCTYPE html&gt;</span>
+<span class="keyword">&lt;html</span> <span class="keyword">lang</span>=<span class="string">"en"</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;head&gt;</span>
+    <span class="keyword">&lt;meta</span> <span class="keyword">charset</span>=<span class="string">"UTF-8"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;meta</span> <span class="keyword">name</span>=<span class="string">"viewport"</span> <span class="keyword">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;title&gt;</span>My Amphibious App<span class="keyword">&lt;/title&gt;</span>
+    <span class="keyword">&lt;link</span> <span class="keyword">rel</span>=<span class="string">"stylesheet"</span> <span class="keyword">href</span>=<span class="string">"amphibious/apple.css"</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;/head&gt;</span>
+<span class="keyword">&lt;body&gt;</span>
+    <span class="comment">&lt;!-- Navigation --&gt;</span>
+    <span class="keyword">&lt;nav</span> <span class="keyword">class</span>=<span class="string">"apple-nav"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;div</span> <span class="keyword">class</span>=<span class="string">"apple-nav-container"</span><span class="keyword">&gt;</span>
+            <span class="keyword">&lt;a</span> <span class="keyword">href</span>=<span class="string">"#"</span> <span class="keyword">class</span>=<span class="string">"apple-nav-logo"</span><span class="keyword">&gt;</span>Your Logo<span class="keyword">&lt;/a&gt;</span>
+            <span class="keyword">&lt;ul</span> <span class="keyword">class</span>=<span class="string">"apple-nav-menu"</span><span class="keyword">&gt;</span>
+                <span class="keyword">&lt;li&gt;&lt;a</span> <span class="keyword">href</span>=<span class="string">"#"</span> <span class="keyword">class</span>=<span class="string">"apple-nav-item"</span><span class="keyword">&gt;</span>Home<span class="keyword">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="keyword">&lt;li&gt;&lt;a</span> <span class="keyword">href</span>=<span class="string">"#"</span> <span class="keyword">class</span>=<span class="string">"apple-nav-item"</span><span class="keyword">&gt;</span>About<span class="keyword">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="keyword">&lt;/ul&gt;</span>
+        <span class="keyword">&lt;/div&gt;</span>
+    <span class="keyword">&lt;/nav&gt;</span>
+
+    <span class="comment">&lt;!-- Hero Section --&gt;</span>
+    <span class="keyword">&lt;section</span> <span class="keyword">class</span>=<span class="string">"apple-hero-section"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;h1</span> <span class="keyword">class</span>=<span class="string">"apple-hero-title"</span><span class="keyword">&gt;</span>Welcome<span class="keyword">&lt;/h1&gt;</span>
+        <span class="keyword">&lt;p</span> <span class="keyword">class</span>=<span class="string">"apple-hero-subtitle"</span><span class="keyword">&gt;</span>Build something amazing<span class="keyword">&lt;/p&gt;</span>
+        <span class="keyword">&lt;button</span> <span class="keyword">class</span>=<span class="string">"apple-button"</span><span class="keyword">&gt;</span>Get Started<span class="keyword">&lt;/button&gt;</span>
+    <span class="keyword">&lt;/section&gt;</span>
+<span class="keyword">&lt;/body&gt;</span>
+<span class="keyword">&lt;/html&gt;</span></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.parentElement.querySelector('code');
+            const textToCopy = codeBlock.textContent;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

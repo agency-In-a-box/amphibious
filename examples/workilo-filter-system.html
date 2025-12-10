@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workilo-Style Filter System - Amphibious 2.0</title>
+  <link rel="stylesheet" href="workilo-filter-system.css">
+</head>
+<body>
+  <!-- Main Container -->
+  <div class="filter-container">
+
+    <!-- Horizontal Filter Bar -->
+    <div class="filter-bar">
+      <!-- Filter Toggle & Count -->
+      <button class="filter-toggle" onclick="toggleFilterDrawer()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </svg>
+        <span class="filter-count">0 Filters</span>
+        <svg class="toggle-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+
+      <!-- Quick Filter Pills -->
+      <div class="filter-pills">
+        <!-- Category Pill -->
+        <div class="filter-pill" data-filter="category">
+          <button class="pill-button" onclick="togglePill(this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Category</span>
+          </button>
+          <div class="pill-dropdown">
+            <label class="pill-option">
+              <input type="checkbox" value="content">
+              <span>Content</span>
+              <span class="option-count">2</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" value="research">
+              <span>Research</span>
+              <span class="option-count">1</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" value="analytics">
+              <span>Analytics</span>
+              <span class="option-count">1</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" value="project">
+              <span>Project Management</span>
+              <span class="option-count">1</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" value="customer">
+              <span>Customer Support</span>
+              <span class="option-count">1</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" value="sales">
+              <span>Sales</span>
+              <span class="option-count">1</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" value="executive">
+              <span>Executive</span>
+              <span class="option-count">1</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Skills Pill -->
+        <div class="filter-pill" data-filter="skills">
+          <button class="pill-button" onclick="togglePill(this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Skills</span>
+          </button>
+          <div class="pill-dropdown multi-column">
+            <div class="dropdown-column">
+              <label class="pill-option">
+                <input type="checkbox" value="slides">
+                <span>Slides</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" value="narrative">
+                <span>Narrative</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" value="clusters">
+                <span>Clusters</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" value="serp">
+                <span>SERP gaps</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" value="ga4">
+                <span>GA4</span>
+              </label>
+            </div>
+            <div class="dropdown-column">
+              <label class="pill-option">
+                <input type="checkbox" value="dashboards">
+                <span>Dashboards</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" value="blogs">
+                <span>Blogs</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" value="pages">
+                <span>Pages</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" value="roadmaps">
+                <span>Roadmaps</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Mode Pill -->
+        <div class="filter-pill" data-filter="workmode">
+          <button class="pill-button" onclick="togglePill(this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <span>Work Mode</span>
+          </button>
+          <div class="pill-dropdown">
+            <label class="pill-option with-arrow">
+              <input type="checkbox" value="structure-design">
+              <span>Structure → Design</span>
+            </label>
+            <label class="pill-option with-arrow">
+              <input type="checkbox" value="research-synthesis">
+              <span>Research → Synthesis</span>
+            </label>
+            <label class="pill-option with-arrow">
+              <input type="checkbox" value="ingest-explain">
+              <span>Ingest → Explain</span>
+            </label>
+            <label class="pill-option with-arrow">
+              <input type="checkbox" value="brief-draft">
+              <span>Brief → Draft</span>
+            </label>
+            <label class="pill-option with-arrow">
+              <input type="checkbox" value="plan-track">
+              <span>Plan → Track</span>
+            </label>
+            <label class="pill-option with-arrow">
+              <input type="checkbox" value="listen-resolve">
+              <span>Listen → Resolve</span>
+            </label>
+            <label class="pill-option with-arrow">
+              <input type="checkbox" value="research-outreach">
+              <span>Research → Outreach</span>
+            </label>
+            <label class="pill-option with-arrow">
+              <input type="checkbox" value="schedule-summarize">
+              <span>Schedule → Summarize</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Pricing Tier Pill -->
+        <div class="filter-pill" data-filter="pricing">
+          <button class="pill-button" onclick="togglePill(this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <span>Pricing Tier</span>
+          </button>
+          <div class="pill-dropdown">
+            <div class="pricing-option">
+              <label class="pill-option">
+                <input type="radio" name="pricing" value="starter">
+                <div class="pricing-info">
+                  <span class="pricing-name">Starter</span>
+                  <span class="pricing-desc">Basic tasks</span>
+                </div>
+              </label>
+            </div>
+            <div class="pricing-option">
+              <label class="pill-option">
+                <input type="radio" name="pricing" value="professional">
+                <div class="pricing-info">
+                  <span class="pricing-name">Professional</span>
+                  <span class="pricing-desc">Complex workflows</span>
+                </div>
+              </label>
+            </div>
+            <div class="pricing-option">
+              <label class="pill-option">
+                <input type="radio" name="pricing" value="enterprise">
+                <div class="pricing-info">
+                  <span class="pricing-name">Enterprise</span>
+                  <span class="pricing-desc">Custom solutions</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Response Time Pill -->
+        <div class="filter-pill" data-filter="response">
+          <button class="pill-button" onclick="togglePill(this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Response Time</span>
+          </button>
+          <div class="pill-dropdown">
+            <div class="response-grid">
+              <label class="pill-option response-option">
+                <input type="checkbox" value="instant">
+                <div class="response-info">
+                  <span class="response-name">Instant</span>
+                  <span class="response-time">&lt; 1 second</span>
+                </div>
+              </label>
+              <label class="pill-option response-option">
+                <input type="checkbox" value="fast">
+                <div class="response-info">
+                  <span class="response-name">Fast</span>
+                  <span class="response-time">1-5 seconds</span>
+                </div>
+              </label>
+              <label class="pill-option response-option">
+                <input type="checkbox" value="standard">
+                <div class="response-info">
+                  <span class="response-name">Standard</span>
+                  <span class="response-time">5-30 seconds</span>
+                </div>
+              </label>
+            </div>
+            <div class="selected-indicators">
+              <span class="indicator active" data-value="fast">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Fast
+              </span>
+              <span class="indicator" data-value="standard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+                Standard
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sort Dropdown -->
+      <div class="sort-dropdown">
+        <button class="sort-button" onclick="toggleSort(this)">
+          <span>Sort</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="sort-menu">
+          <button class="sort-option active" data-sort="popular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            Most Popular
+          </button>
+          <button class="sort-option" data-sort="alphabetical">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 13h6M3 8h10M3 18h4"></path>
+            </svg>
+            Alphabetical
+          </button>
+          <button class="sort-option" data-sort="newest">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            Newest First
+          </button>
+          <button class="sort-option" data-sort="fastest">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            Fastest Response
+          </button>
+          <button class="sort-option" data-sort="category">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            By Category
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collapsible Filter Drawer -->
+    <div class="filter-drawer" id="filterDrawer">
+      <div class="drawer-content">
+        <div class="drawer-header">
+          <h3>All Filters</h3>
+          <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
+        </div>
+
+        <div class="drawer-filters">
+          <!-- Category Section -->
+          <div class="drawer-section">
+            <h4>Category</h4>
+            <div class="drawer-options">
+              <label class="drawer-option">
+                <input type="checkbox" value="content">
+                <span>Content</span>
+                <span class="badge">2</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="research">
+                <span>Research</span>
+                <span class="badge">1</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="analytics">
+                <span>Analytics</span>
+                <span class="badge">1</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="project">
+                <span>Project Management</span>
+                <span class="badge">1</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="customer">
+                <span>Customer Support</span>
+                <span class="badge">1</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="sales">
+                <span>Sales</span>
+                <span class="badge">1</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="executive">
+                <span>Executive</span>
+                <span class="badge">1</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="drawer-section">
+            <h4>Skills</h4>
+            <div class="drawer-options grid-2">
+              <label class="drawer-option">
+                <input type="checkbox" value="slides">
+                <span>Slides</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="narrative">
+                <span>Narrative</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="clusters">
+                <span>Clusters</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="serp">
+                <span>SERP gaps</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="ga4">
+                <span>GA4</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="dashboards">
+                <span>Dashboards</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="blogs">
+                <span>Blogs</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="pages">
+                <span>Pages</span>
+              </label>
+              <label class="drawer-option">
+                <input type="checkbox" value="roadmaps">
+                <span>Roadmaps</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Work Mode Section -->
+          <div class="drawer-section">
+            <h4>Work Mode</h4>
+            <div class="drawer-options">
+              <label class="drawer-option workflow">
+                <input type="checkbox" value="structure-design">
+                <span>Structure → Design</span>
+              </label>
+              <label class="drawer-option workflow">
+                <input type="checkbox" value="research-synthesis">
+                <span>Research → Synthesis</span>
+              </label>
+              <label class="drawer-option workflow">
+                <input type="checkbox" value="ingest-explain">
+                <span>Ingest → Explain</span>
+              </label>
+              <label class="drawer-option workflow">
+                <input type="checkbox" value="brief-draft">
+                <span>Brief → Draft</span>
+              </label>
+              <label class="drawer-option workflow">
+                <input type="checkbox" value="plan-track">
+                <span>Plan → Track</span>
+              </label>
+              <label class="drawer-option workflow">
+                <input type="checkbox" value="listen-resolve">
+                <span>Listen → Resolve</span>
+              </label>
+              <label class="drawer-option workflow">
+                <input type="checkbox" value="research-outreach">
+                <span>Research → Outreach</span>
+              </label>
+              <label class="drawer-option workflow">
+                <input type="checkbox" value="schedule-summarize">
+                <span>Schedule → Summarize</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Response Time Section -->
+          <div class="drawer-section">
+            <h4>Response Time</h4>
+            <div class="drawer-options">
+              <label class="drawer-option response">
+                <input type="checkbox" value="instant">
+                <div>
+                  <span>Instant</span>
+                  <small>&lt; 1 second</small>
+                </div>
+              </label>
+              <label class="drawer-option response">
+                <input type="checkbox" value="fast">
+                <div>
+                  <span>Fast</span>
+                  <small>1-5 seconds</small>
+                </div>
+              </label>
+              <label class="drawer-option response">
+                <input type="checkbox" value="standard">
+                <div>
+                  <span>Standard</span>
+                  <small>5-30 seconds</small>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="results-info">
+      <span>Showing <strong>8</strong> of 8 workalongs</span>
+    </div>
+  </div>
+
+  <script src="workilo-filter-system.js"></script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+/**
+ * Apple-Inspired Design System for Amphibious 2.0
+ * Design Philosophy: Radical Simplicity, Generous Whitespace, Perfect Typography
+ * Primary Color: Pantone 144 Orange (#FF6900)
+ */
+
+/* ==========================================================================
+   Core Design Tokens - Apple Aesthetic
+   ========================================================================== */
+
+:root {
+  /* Primary Palette - Pantone 144 Orange */
+  --apple-orange: #FF6900;
+  --apple-orange-light: #FF8533;
+  --apple-orange-dark: #E65100;
+  --apple-orange-subtle: rgba(255, 105, 0, 0.08);
+  --apple-orange-fade: rgba(255, 105, 0, 0.04);
+
+  /* Grayscale - Apple's Precise Grays */
+  --apple-black: #1d1d1f;
+  --apple-gray-900: #424245;
+  --apple-gray-700: #6e6e73;
+  --apple-gray-500: #86868b;
+  --apple-gray-300: #d2d2d7;
+  --apple-gray-100: #f5f5f7;
+  --apple-white: #ffffff;
+
+  /* Typography - SF Pro Display/Text Inspired */
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+
+  /* Font Weights - Apple's Precise Scale */
+  --weight-ultralight: 100;
+  --weight-thin: 200;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Type Scale - Apple's Harmonious Sizing */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1.0625rem; /* 17px - Apple's body text */
+  --text-lg: 1.25rem;     /* 20px */
+  --text-xl: 1.5rem;      /* 24px */
+  --text-2xl: 2rem;       /* 32px */
+  --text-3xl: 2.5rem;     /* 40px */
+  --text-4xl: 3rem;       /* 48px */
+  --text-5xl: 4rem;       /* 64px */
+  --text-6xl: 5rem;       /* 80px */
+
+  /* Line Heights - Perfect Readability */
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.47059; /* Apple's golden ratio */
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Spacing - Apple's Spatial System */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 2.5rem;    /* 40px */
+  --space-8: 3rem;      /* 48px */
+  --space-9: 4rem;      /* 64px */
+  --space-10: 5rem;     /* 80px */
+  --space-11: 7rem;     /* 112px */
+  --space-12: 9rem;     /* 144px */
+
+  /* Border Radius - Apple's Subtle Curves */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-2xl: 1.25rem;  /* 20px */
+  --radius-full: 9999px;
+
+  /* Shadows - Subtle Depth */
+  --shadow-xs: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 12px 24px 0 rgba(0, 0, 0, 0.12);
+  --shadow-2xl: 0 20px 40px 0 rgba(0, 0, 0, 0.15);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* Transitions - Apple's Smooth Animations */
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in: cubic-bezier(0.42, 0, 1, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+}
+
+/* ==========================================================================
+   Base Reset - Apple Clean Slate
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-text);
+  font-size: 100%;
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: var(--apple-black);
+  background-color: var(--apple-white);
+}
+
+/* ==========================================================================
+   Typography - Apple's Perfect Type
+   ========================================================================== */
+
+.apple-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-6xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.03em;
+  color: var(--apple-black);
+  margin: 0;
+}
+
+.apple-headline {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--apple-black);
+  margin: 0;
+}
+
+.apple-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  color: var(--apple-black);
+  margin: 0;
+}
+
+.apple-subtitle {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  letter-spacing: 0;
+  color: var(--apple-gray-700);
+  margin: 0;
+}
+
+.apple-body {
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--apple-gray-900);
+}
+
+.apple-body-large {
+  font-family: var(--font-text);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--apple-gray-700);
+}
+
+.apple-caption {
+  font-family: var(--font-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--apple-gray-500);
+}
+
+.apple-link {
+  color: var(--apple-orange);
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-in-out);
+}
+
+.apple-link:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   Navigation - Apple's Minimal Nav Bar
+   ========================================================================== */
+
+.apple-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--apple-gray-300);
+  z-index: 9999;
+}
+
+.apple-nav-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apple-nav-logo {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--apple-black);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-in-out);
+}
+
+.apple-nav-logo:hover {
+  color: var(--apple-orange);
+}
+
+.apple-nav-menu {
+  display: flex;
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.apple-nav-item {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  color: var(--apple-gray-700);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-in-out);
+  padding: 0;
+  margin: 0;
+}
+
+.apple-nav-item:hover,
+.apple-nav-item.active {
+  color: var(--apple-orange);
+}
+
+/* ==========================================================================
+   Hero Section - Apple's Stunning Headers
+   ========================================================================== */
+
+.apple-hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-10) var(--space-5);
+  background: linear-gradient(180deg, var(--apple-white) 0%, var(--apple-gray-100) 100%);
+}
+
+.apple-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--apple-orange-subtle);
+  color: var(--apple-orange);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  margin-bottom: var(--space-5);
+}
+
+.apple-hero-title {
+  font-size: clamp(var(--text-4xl), 8vw, var(--text-6xl));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-5);
+  background: linear-gradient(135deg, var(--apple-black) 0%, var(--apple-gray-700) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.apple-hero-subtitle {
+  font-size: clamp(var(--text-lg), 3vw, var(--text-2xl));
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  color: var(--apple-gray-700);
+  max-width: 800px;
+  margin: 0 auto var(--space-8);
+}
+
+/* ==========================================================================
+   Buttons - Apple's Iconic CTAs
+   ========================================================================== */
+
+.apple-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: 1;
+  color: var(--apple-white);
+  background: var(--apple-orange);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-in-out);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.apple-button:hover {
+  background: var(--apple-orange-dark);
+  transform: scale(1.02);
+}
+
+.apple-button:active {
+  transform: scale(0.98);
+}
+
+.apple-button-outline {
+  color: var(--apple-orange);
+  background: transparent;
+  border: 1px solid var(--apple-orange);
+}
+
+.apple-button-outline:hover {
+  color: var(--apple-white);
+  background: var(--apple-orange);
+}
+
+.apple-button-ghost {
+  color: var(--apple-orange);
+  background: transparent;
+  padding: var(--space-2) var(--space-4);
+}
+
+.apple-button-ghost:hover {
+  background: var(--apple-orange-subtle);
+}
+
+/* ==========================================================================
+   Cards - Apple's Content Containers
+   ========================================================================== */
+
+.apple-card {
+  background: var(--apple-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.apple-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+.apple-card-media {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+}
+
+.apple-card-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--apple-black);
+  margin-bottom: var(--space-3);
+}
+
+.apple-card-description {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--apple-gray-700);
+  margin-bottom: var(--space-5);
+}
+
+/* ==========================================================================
+   Grid System - Apple's Flexible Layout
+   ========================================================================== */
+
+.apple-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.apple-container-wide {
+  max-width: 1280px;
+}
+
+.apple-grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.apple-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.apple-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.apple-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* ==========================================================================
+   Section Spacing - Apple's Generous Whitespace
+   ========================================================================== */
+
+.apple-section {
+  padding: var(--space-11) 0;
+}
+
+.apple-section-sm {
+  padding: var(--space-9) 0;
+}
+
+.apple-section-lg {
+  padding: var(--space-12) 0;
+}
+
+/* ==========================================================================
+   Feature Blocks - Apple's Product Showcases
+   ========================================================================== */
+
+.apple-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.apple-feature-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--apple-orange-subtle);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-5);
+  color: var(--apple-orange);
+}
+
+.apple-feature-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.apple-feature-title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  color: var(--apple-black);
+  margin-bottom: var(--space-3);
+}
+
+.apple-feature-description {
+  font-size: var(--text-base);
+  color: var(--apple-gray-700);
+  line-height: var(--leading-relaxed);
+  max-width: 400px;
+}
+
+/* ==========================================================================
+   Code Blocks - Apple's Developer Style
+   ========================================================================== */
+
+.apple-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  padding: var(--space-1) var(--space-2);
+  background: var(--apple-gray-100);
+  border-radius: var(--radius-sm);
+  color: var(--apple-orange);
+}
+
+.apple-code-block {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  padding: var(--space-5);
+  background: var(--apple-gray-100);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  color: var(--apple-black);
+}
+
+.apple-code-block .comment {
+  color: var(--apple-gray-500);
+}
+
+.apple-code-block .keyword {
+  color: var(--apple-orange);
+  font-weight: var(--weight-medium);
+}
+
+.apple-code-block .string {
+  color: var(--apple-orange-dark);
+}
+
+/* ==========================================================================
+   Forms - Apple's Minimal Inputs
+   ========================================================================== */
+
+.apple-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  color: var(--apple-black);
+  background: var(--apple-gray-100);
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+.apple-input:focus {
+  outline: none;
+  background: var(--apple-white);
+  border-color: var(--apple-orange);
+  box-shadow: 0 0 0 4px var(--apple-orange-subtle);
+}
+
+.apple-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--apple-gray-700);
+  margin-bottom: var(--space-2);
+}
+
+/* ==========================================================================
+   Alerts - Apple's Subtle Notifications
+   ========================================================================== */
+
+.apple-alert {
+  padding: var(--space-4) var(--space-5);
+  background: var(--apple-gray-100);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.apple-alert-success {
+  background: rgba(52, 199, 89, 0.1);
+  color: rgb(52, 199, 89);
+}
+
+.apple-alert-warning {
+  background: var(--apple-orange-subtle);
+  color: var(--apple-orange);
+}
+
+.apple-alert-error {
+  background: rgba(255, 59, 48, 0.1);
+  color: rgb(255, 59, 48);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .apple-nav-menu {
+    gap: var(--space-4);
+  }
+
+  .apple-grid-2,
+  .apple-grid-3,
+  .apple-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .apple-hero-section {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .apple-section {
+    padding: var(--space-9) 0;
+  }
+}
