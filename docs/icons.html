@@ -158,8 +158,8 @@
 
     .search-input {
       width: 100%;
-      padding: 1rem;
-      font-size: 1.125rem;
+      padding: 0.8rem;
+      font-size: 1rem;
       border: 2px solid #e9ecef;
       border-radius: 8px;
       background: white;
@@ -280,13 +280,19 @@
       margin-bottom: 1rem;
     }
 
-    .icon-display i {
-      font-size: 32px;
+    .icon-display i,
+    .icon-display svg,
+    .icon-display [data-lucide] {
+      width: 32px;
+      height: 32px;
       color: #495057;
       transition: color 0.2s;
+      stroke-width: 2;
     }
 
-    .icon-item:hover .icon-display i {
+    .icon-item:hover .icon-display i,
+    .icon-item:hover .icon-display svg,
+    .icon-item:hover .icon-display [data-lucide] {
       color: #667eea;
     }
 
@@ -438,11 +444,6 @@
     <div class="container">
       <ul class="horizontal branded">
         <li><a href="/" class="site-logo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves">
-            <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-            <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-            <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-          </svg>
           Amphibious
         </a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
@@ -933,6 +934,12 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
 
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Lucide icons on page load
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+        console.log('Lucide icons initialized on page load');
+      }
+
       initializeFilters();
       renderIcons();
 
@@ -1059,6 +1066,11 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
       });
 
       iconCategories.innerHTML = html;
+
+      // Initialize Lucide icons after adding them to DOM
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
 
       // Add click handlers to icon items
       addIconClickHandlers();

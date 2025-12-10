@@ -1,0 +1,657 @@
+/**
+ * Workilo-Style Filter System
+ * Modern filter UI with horizontal pills and collapsible drawer
+ */
+
+/* ==========================================================================
+   BASE & VARIABLES
+   ========================================================================== */
+
+:root {
+  --primary-color: #FF6900;
+  --primary-hover: #E65100;
+  --primary-light: rgba(255, 105, 0, 0.1);
+  --primary-fade: rgba(255, 105, 0, 0.05);
+
+  --success-color: #10b981;
+  --success-light: rgba(16, 185, 129, 0.1);
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+
+  --border-color: #e5e7eb;
+  --border-light: #f3f4f6;
+  --bg-white: #ffffff;
+  --bg-gray: #f9fafb;
+  --bg-dark: #1f2937;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-gray);
+}
+
+/* ==========================================================================
+   FILTER CONTAINER
+   ========================================================================== */
+
+.filter-container {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ==========================================================================
+   HORIZONTAL FILTER BAR
+   ========================================================================== */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Filter Toggle Button */
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.filter-toggle:hover {
+  background: var(--bg-gray);
+  border-color: var(--primary-color);
+}
+
+.filter-toggle.active {
+  background: var(--primary-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.filter-toggle svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  transition: transform var(--transition-base);
+}
+
+.filter-toggle.active .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.filter-count {
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   FILTER PILLS
+   ========================================================================== */
+
+.filter-pills {
+  display: flex;
+  gap: 0.75rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  position: relative;
+}
+
+.pill-button {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.pill-button:hover {
+  background: var(--bg-gray);
+  border-color: var(--text-secondary);
+}
+
+.pill-button.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--bg-white);
+}
+
+.pill-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Pill Dropdown */
+.pill-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 220px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: 0.5rem;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-fast);
+}
+
+.filter-pill.open .pill-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Multi-column dropdown */
+.pill-dropdown.multi-column {
+  display: flex;
+  gap: 1rem;
+  min-width: 320px;
+}
+
+.dropdown-column {
+  flex: 1;
+  min-width: 140px;
+}
+
+/* Pill Options */
+.pill-option {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  font-size: 0.8125rem;
+}
+
+.pill-option:hover {
+  background: var(--bg-gray);
+}
+
+.pill-option input[type="checkbox"],
+.pill-option input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.625rem;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.pill-option span {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.option-count {
+  margin-left: auto;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  background: var(--bg-gray);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-full);
+}
+
+/* Pricing Options */
+.pricing-option {
+  padding: 0.25rem 0;
+}
+
+.pricing-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.625rem;
+}
+
+.pricing-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.pricing-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Response Options */
+.response-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.response-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0.625rem;
+  width: 100%;
+}
+
+.response-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.response-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Selected Indicators */
+.selected-indicators {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--bg-gray);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.indicator.active {
+  background: var(--success-light);
+  color: var(--success-color);
+}
+
+.indicator svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ==========================================================================
+   SORT DROPDOWN
+   ========================================================================== */
+
+.sort-dropdown {
+  position: relative;
+  margin-left: auto;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.sort-button:hover {
+  background: var(--bg-gray);
+  border-color: var(--text-secondary);
+}
+
+.sort-button.active {
+  border-color: var(--primary-color);
+  background: var(--primary-fade);
+}
+
+.sort-button svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  transition: transform var(--transition-base);
+}
+
+.sort-button.active svg {
+  transform: rotate(180deg);
+}
+
+/* Sort Menu */
+.sort-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 200px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: 0.5rem;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-fast);
+}
+
+.sort-dropdown.open .sort-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.sort-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  text-align: left;
+}
+
+.sort-option:hover {
+  background: var(--bg-gray);
+}
+
+.sort-option.active {
+  background: var(--success-light);
+  color: var(--success-color);
+  font-weight: 500;
+}
+
+.sort-option svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   COLLAPSIBLE FILTER DRAWER
+   ========================================================================== */
+
+.filter-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-slow);
+  margin-bottom: 1rem;
+}
+
+.filter-drawer.open {
+  max-height: 800px;
+}
+
+.drawer-content {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.drawer-header h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.clear-filters {
+  padding: 0.375rem 0.875rem;
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.clear-filters:hover {
+  opacity: 0.8;
+}
+
+/* Drawer Filters Layout */
+.drawer-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.drawer-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-section h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.drawer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.drawer-options.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.drawer-option {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  font-size: 0.875rem;
+}
+
+.drawer-option:hover {
+  background: var(--bg-gray);
+}
+
+.drawer-option input[type="checkbox"],
+.drawer-option input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.625rem;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.drawer-option span {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.drawer-option .badge {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  background: var(--bg-gray);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-full);
+}
+
+.drawer-option.workflow span {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-size: 0.8125rem;
+}
+
+.drawer-option.response div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.drawer-option.response small {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   RESULTS INFO
+   ========================================================================== */
+
+.results-info {
+  padding: 0.75rem 1rem;
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.results-info strong {
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-pills {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .sort-dropdown {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .sort-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pill-dropdown {
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  .filter-pill.open .pill-dropdown {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .drawer-filters {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.pill-dropdown,
+.sort-menu {
+  animation: slideDown var(--transition-fast) ease-out;
+}
+
+.filter-drawer.open .drawer-content {
+  animation: fadeIn var(--transition-slow) ease-out;
+}

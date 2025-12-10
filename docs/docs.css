@@ -34,6 +34,88 @@ body {
    Documentation Navigation
    ============================================================================ */
 
+/* Site Navigation */
+.site-nav {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-nav .container {
+  position: relative;
+}
+
+/* Horizontal Navigation */
+.horizontal.branded {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.horizontal.branded > li {
+  position: relative;
+}
+
+.horizontal.branded a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+}
+
+.horizontal.branded a:hover,
+.horizontal.branded li.active > a {
+  color: #667eea;
+}
+
+.site-logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #667eea !important;
+}
+
+/* Dropdown menus */
+.horizontal.branded ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+  min-width: 200px;
+  list-style: none;
+  margin-top: 0.5rem;
+  z-index: 1000;
+}
+
+.horizontal.branded li:hover > ul {
+  display: block;
+}
+
+.horizontal.branded ul a {
+  padding: 0.5rem 1rem;
+  display: block;
+  font-weight: normal;
+  font-size: 0.925rem;
+}
+
+.horizontal.branded ul a:hover {
+  background: #f8f9fa;
+}
+
 .docs-nav {
   background: #f8f9fa;
   border-bottom: 1px solid #dee2e6;

@@ -3,201 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.mphibio.us - Button & Input Group Components</title>
-    <link rel="stylesheet" href="/css/a.mphibio.us.css">
+    <title>Amphibious 2.0 - Buttons & Input Groups</title>
+    <link rel="stylesheet" href="/src/css/main.css">
     <style>
-        /* Demo styles */
+        /* Page Layout */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 2rem;
+            padding: 0;
             background: #f8f9fa;
         }
-        
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .page-header p {
+            text-align: center;
+            margin: 1rem 0 0;
+            opacity: 0.9;
+        }
+
+        /* Demo Sections */
         .demo-section {
             background: white;
             margin-bottom: 2rem;
             padding: 2rem;
-            border-radius: 0.5rem;
+            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .demo-section h2 {
             margin-top: 0;
-            color: #333;
-            border-bottom: 2px solid #0d6efd;
+            color: #2c3e50;
+            border-bottom: 2px solid #667eea;
             padding-bottom: 0.5rem;
+            font-size: 1.75rem;
         }
-        
+
         .demo-section h3 {
             margin-top: 2rem;
-            color: #666;
+            color: #495057;
+            font-size: 1.25rem;
         }
-        
-        .demo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+        .demo-row {
+            display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            align-items: center;
         }
-        
-        .demo-item {
-            padding: 1rem;
-            background: #f8f9fa;
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
             border-radius: 0.375rem;
-            border: 1px solid #dee2e6;
+            transition: all 0.15s ease-in-out;
         }
-        
-        .demo-item h4 {
-            margin: 0 0 0.5rem 0;
-            font-size: 0.875rem;
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Button Variants */
+        .btn-primary {
+            color: #fff;
+            background-color: #667eea;
+            border-color: #667eea;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a67d8;
+            border-color: #5a67d8;
+        }
+
+        .btn-secondary {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-danger {
+            color: #fff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-warning {
+            color: #212529;
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        /* Outline Buttons */
+        .btn-outline-primary {
+            color: #667eea;
+            border-color: #667eea;
+        }
+
+        .btn-outline-primary:hover {
+            color: #fff;
+            background-color: #667eea;
+            border-color: #667eea;
+        }
+
+        .btn-outline-secondary {
             color: #6c757d;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            border-color: #6c757d;
         }
-        
-        .demo-spacing {
-            margin: 0.5rem 0;
+
+        .btn-outline-secondary:hover {
+            color: #fff;
+            background-color: #6c757d;
         }
-        
+
+        /* Button Sizes */
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        /* Button Groups */
+        .btn-group {
+            display: inline-flex;
+            vertical-align: middle;
+        }
+
+        .btn-group > .btn {
+            position: relative;
+            flex: 0 1 auto;
+        }
+
+        .btn-group > .btn:not(:first-child) {
+            margin-left: -1px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .btn-group > .btn:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        /* Input Groups */
+        .input-group {
+            display: flex;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .input-group > .form-control {
+            flex: 1 1 auto;
+            min-width: 0;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+        }
+
+        .input-group-prepend,
+        .input-group-append {
+            display: flex;
+        }
+
+        .input-group-text {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+
+        .input-group > .input-group-prepend > .input-group-text {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: 0;
+        }
+
+        .input-group > .form-control:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .input-group > .input-group-append > .input-group-text {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: 0;
+        }
+
+        .input-group > .form-control:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        /* Form Controls */
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #667eea;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        /* Custom Select */
+        .custom-select {
+            display: inline-block;
+            width: 100%;
+            padding: 0.5rem 2rem 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            vertical-align: middle;
+            background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E") no-repeat right 1rem center;
+            background-size: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            appearance: none;
+        }
+
+        /* Code Display */
         .code-block {
             background: #f8f9fa;
             border: 1px solid #dee2e6;
             border-radius: 0.375rem;
             padding: 1rem;
-            margin: 1rem 0;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
             overflow-x: auto;
         }
-        
-        .code-block pre {
-            margin: 0;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+
+        code {
+            background: #f8f9fa;
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
             font-size: 0.875rem;
-            line-height: 1.4;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>A.mphibio.us Button & Input Group Components</h1>
-        <p>Modern, accessible, and responsive button and input group components with CSS custom properties.</p>
-    </header>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Buttons & Input Groups</h1>
+        <p>Interactive button styles and input group components</p>
+    </div>
 
-    <!-- Button Variants -->
-    <section class="demo-section">
-        <h2>Button Variants</h2>
-        
-        <h3>Solid Buttons</h3>
-        <div class="demo-spacing">
-            <button class="btn btn-primary">Primary</button>
-            <button class="btn btn-secondary">Secondary</button>
-            <button class="btn btn-success">Success</button>
-            <button class="btn btn-danger">Danger</button>
-            <button class="btn btn-warning">Warning</button>
-            <button class="btn btn-info">Info</button>
-            <button class="btn btn-light">Light</button>
-            <button class="btn btn-dark">Dark</button>
-        </div>
-        
-        <h3>Outline Buttons</h3>
-        <div class="demo-spacing">
-            <button class="btn btn-outline-primary">Primary</button>
-            <button class="btn btn-outline-secondary">Secondary</button>
-            <button class="btn btn-outline-success">Success</button>
-            <button class="btn btn-outline-danger">Danger</button>
-            <button class="btn btn-outline-warning">Warning</button>
-            <button class="btn btn-outline-info">Info</button>
-            <button class="btn btn-outline-light">Light</button>
-            <button class="btn btn-outline-dark">Dark</button>
-        </div>
-        
-        <h3>Button Sizes</h3>
-        <div class="demo-spacing">
-            <button class="btn btn-primary btn-xs">Extra Small</button>
-            <button class="btn btn-primary btn-sm">Small</button>
-            <button class="btn btn-primary">Default</button>
-            <button class="btn btn-primary btn-lg">Large</button>
-        </div>
-        
-        <h3>Special Button Types</h3>
-        <div class="demo-spacing">
-            <button class="btn btn-primary btn-pill">Pill Button</button>
-            <button class="btn btn-secondary btn-ghost">Ghost Button</button>
-            <button class="btn btn-primary btn-icon">🏠</button>
-            <button class="btn btn-primary btn-block">Full Width Button</button>
-        </div>
-    </section>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Basic Buttons Section -->
+        <section class="demo-section">
+            <h2>Button Styles</h2>
 
-    <!-- Button Groups -->
-    <section class="demo-section">
-        <h2>Button Groups</h2>
-        
-        <h3>Horizontal Button Groups</h3>
-        <div class="demo-spacing">
-            <div class="btn-group" role="group">
-                <button class="btn btn-primary">Left</button>
-                <button class="btn btn-primary">Middle</button>
-                <button class="btn btn-primary">Right</button>
+            <h3>Basic Buttons</h3>
+            <div class="demo-row">
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-danger">Danger</button>
+                <button class="btn btn-warning">Warning</button>
+                <button class="btn btn-info">Info</button>
             </div>
-        </div>
-        
-        <div class="demo-spacing">
-            <div class="btn-group" role="group">
-                <button class="btn btn-outline-secondary">View</button>
-                <button class="btn btn-outline-secondary">Edit</button>
-                <button class="btn btn-outline-secondary">Delete</button>
-            </div>
-        </div>
-        
-        <h3>Vertical Button Groups</h3>
-        <div class="demo-spacing">
-            <div class="btn-group-vertical" role="group">
-                <button class="btn btn-secondary">Top</button>
-                <button class="btn btn-secondary">Middle</button>
-                <button class="btn btn-secondary">Bottom</button>
-            </div>
-        </div>
-        
-        <h3>Button Group Sizes</h3>
-        <div class="demo-spacing">
-            <div class="btn-group btn-group-sm" role="group">
-                <button class="btn btn-info">Small</button>
-                <button class="btn btn-info">Group</button>
-            </div>
-            
-            <div class="btn-group btn-group-lg" role="group">
-                <button class="btn btn-success">Large</button>
-                <button class="btn btn-success">Group</button>
-            </div>
-        </div>
-        
-        <h3>Button Toolbar</h3>
-        <div class="btn-toolbar" role="toolbar">
-            <div class="btn-group" role="group">
-                <button class="btn btn-secondary">1</button>
-                <button class="btn btn-secondary">2</button>
-                <button class="btn btn-secondary">3</button>
-            </div>
-            <div class="btn-group" role="group">
-                <button class="btn btn-secondary">5</button>
-                <button class="btn btn-secondary">6</button>
-                <button class="btn btn-secondary">7</button>
-            </div>
-            <div class="btn-group" role="group">
-                <button class="btn btn-secondary">8</button>
-            </div>
-        </div>
-    </section>
 
-    <!-- Input Groups -->
-    <section class="demo-section">
-        <h2>Input Groups</h2>
-        
-        <h3>Basic Input Groups</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Prepend Text</h4>
+            <h3>Outline Buttons</h3>
+            <div class="demo-row">
+                <button class="btn btn-outline-primary">Primary</button>
+                <button class="btn btn-outline-secondary">Secondary</button>
+            </div>
+
+            <h3>Button Sizes</h3>
+            <div class="demo-row">
+                <button class="btn btn-primary btn-sm">Small</button>
+                <button class="btn btn-primary">Default</button>
+                <button class="btn btn-primary btn-lg">Large</button>
+            </div>
+
+            <div class="code-block">
+                <code>&lt;button class="btn btn-primary"&gt;Primary Button&lt;/button&gt;</code>
+            </div>
+        </section>
+
+        <!-- Button Groups Section -->
+        <section class="demo-section">
+            <h2>Button Groups</h2>
+
+            <h3>Basic Button Group</h3>
+            <div class="demo-row">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">Left</button>
+                    <button type="button" class="btn btn-primary">Middle</button>
+                    <button type="button" class="btn btn-primary">Right</button>
+                </div>
+            </div>
+
+            <h3>Button Toolbar</h3>
+            <div class="demo-row">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-secondary">1</button>
+                    <button type="button" class="btn btn-outline-secondary">2</button>
+                    <button type="button" class="btn btn-outline-secondary">3</button>
+                    <button type="button" class="btn btn-outline-secondary">4</button>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <code>&lt;div class="btn-group" role="group"&gt;...&lt;/div&gt;</code>
+            </div>
+        </section>
+
+        <!-- Input Groups Section -->
+        <section class="demo-section">
+            <h2>Input Groups</h2>
+
+            <h3>Basic Input Group</h3>
+            <div class="demo-row">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
@@ -205,344 +393,59 @@
                     <input type="text" class="form-control" placeholder="Username">
                 </div>
             </div>
-            
-            <div class="demo-item">
-                <h4>Append Button</h4>
+
+            <h3>Input Group with Button</h3>
+            <div class="demo-row">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search...">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">Go!</button>
+                        <button class="btn btn-primary" type="button">Search</button>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <h3>Search Input Groups</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Simple Search</h4>
-                <div class="input-group-search">
-                    <input type="text" placeholder="Search products...">
-                    <button class="btn-search" type="submit">Search</button>
-                </div>
-            </div>
-            
-            <div class="demo-item">
-                <h4>Search with Icon</h4>
-                <div class="input-group-search-icon">
-                    <input type="text" placeholder="Search with icon...">
-                </div>
-            </div>
-        </div>
-        
-        <h3>Number Input Groups</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Quantity Selector</h4>
-                <div class="input-group-number">
-                    <button class="btn-decrease" type="button">−</button>
-                    <input type="number" value="1" min="1" max="99">
-                    <button class="btn-increase" type="button">+</button>
-                </div>
-            </div>
-        </div>
-        
-        <h3>Currency Input Groups</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Price Input</h4>
-                <div class="input-group-currency">
-                    <span class="currency-symbol">$</span>
-                    <input type="number" step="0.01" placeholder="0.00">
-                </div>
-            </div>
-            
-            <div class="demo-item">
-                <h4>Euro Price</h4>
-                <div class="input-group-currency">
-                    <span class="currency-symbol">€</span>
-                    <input type="number" step="0.01" placeholder="0,00">
-                </div>
-            </div>
-        </div>
-        
-        <h3>Date Range Input</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Date Range Picker</h4>
-                <div class="input-group-daterange">
-                    <input type="date" placeholder="Start date">
-                    <span class="separator">–</span>
-                    <input type="date" placeholder="End date">
-                </div>
-            </div>
-        </div>
-        
-        <h3>Multi-Input Groups</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Credit Card</h4>
-                <div class="input-group-multi">
-                    <input type="text" placeholder="1234" maxlength="4">
-                    <input type="text" placeholder="5678" maxlength="4">
-                    <input type="text" placeholder="9012" maxlength="4">
-                    <input type="text" placeholder="3456" maxlength="4">
-                </div>
-            </div>
-            
-            <div class="demo-item">
-                <h4>Phone Number</h4>
-                <div class="input-group-multi">
-                    <input type="text" placeholder="555" maxlength="3">
-                    <input type="text" placeholder="123" maxlength="3">
-                    <input type="text" placeholder="4567" maxlength="4">
-                </div>
-            </div>
-        </div>
-        
-        <h3>Tag Input</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Tags</h4>
-                <div class="input-group-tags">
-                    <span class="tag">JavaScript <button class="tag-remove">×</button></span>
-                    <span class="tag">CSS <button class="tag-remove">×</button></span>
-                    <span class="tag">HTML <button class="tag-remove">×</button></span>
-                    <input type="text" placeholder="Add tag...">
-                </div>
-            </div>
-        </div>
-        
-        <h3>Copy Input</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>API Key</h4>
-                <div class="input-group-copy">
-                    <input type="text" value="sk-1234567890abcdef" readonly>
-                    <button class="btn-copy" type="button">Copy</button>
-                </div>
-            </div>
-        </div>
-        
-        <h3>Social Media Input</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Twitter Handle</h4>
-                <div class="input-group-social">
-                    <span class="social-prefix">twitter.com/</span>
-                    <input type="text" placeholder="username">
-                </div>
-            </div>
-            
-            <div class="demo-item">
-                <h4>Website URL</h4>
-                <div class="input-group-social">
-                    <span class="social-prefix">https://</span>
-                    <input type="text" placeholder="example.com">
-                </div>
-            </div>
-        </div>
-        
-        <h3>File Upload</h3>
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>File Input</h4>
-                <div class="input-group-file">
-                    <input type="file" id="file1">
-                    <label for="file1" class="file-label">
-                        📁 Choose File
-                    </label>
-                    <span class="file-info">No file chosen</span>
-                </div>
-            </div>
-            
-            <div class="demo-item">
-                <h4>Drag & Drop</h4>
-                <div class="input-group-file-drop">
-                    <input type="file" id="file2" multiple>
-                    <div class="drop-icon">📤</div>
-                    <div class="drop-text">Drag files here or click to browse</div>
-                    <div class="drop-hint">Supports multiple files</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Modern Input Groups -->
-    <section class="demo-section">
-        <h2>Modern Input Groups (Simplified)</h2>
-        
-        <div class="demo-grid">
-            <div class="demo-item">
-                <h4>Search</h4>
-                <div class="input-group-modern">
-                    <input type="text" placeholder="Search...">
-                    <button class="btn btn-primary">🔍</button>
+            <h3>Input Group with Select</h3>
+            <div class="demo-row">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Options</label>
+                    </div>
+                    <select class="custom-select">
+                        <option selected>Choose...</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
                 </div>
             </div>
-            
-            <div class="demo-item">
-                <h4>Email Subscribe</h4>
-                <div class="input-group-modern">
-                    <input type="email" placeholder="Enter your email">
-                    <button class="btn btn-success">Subscribe</button>
+
+            <h3>Multiple Inputs</h3>
+            <div class="demo-row">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">First and last name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="First name">
+                    <input type="text" class="form-control" placeholder="Last name">
                 </div>
             </div>
-            
-            <div class="demo-item">
-                <h4>Newsletter</h4>
-                <div class="input-group-modern">
-                    <input type="email" placeholder="your@email.com">
-                    <button class="btn btn-dark">Join</button>
-                </div>
+
+            <div class="code-block">
+                <code>&lt;div class="input-group"&gt;<br>
+                &nbsp;&nbsp;&lt;input type="text" class="form-control"&gt;<br>
+                &nbsp;&nbsp;&lt;button class="btn btn-primary"&gt;Button&lt;/button&gt;<br>
+                &lt;/div&gt;</code>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Code Examples -->
-    <section class="demo-section">
-        <h2>Code Examples</h2>
-        
-        <h3>Basic Button</h3>
-        <div class="code-block">
-            <pre><code>&lt;button class="btn btn-primary"&gt;Click me&lt;/button&gt;</code></pre>
-        </div>
-        
-        <h3>Button Group</h3>
-        <div class="code-block">
-            <pre><code>&lt;div class="btn-group" role="group"&gt;
-    &lt;button class="btn btn-primary"&gt;Left&lt;/button&gt;
-    &lt;button class="btn btn-primary"&gt;Middle&lt;/button&gt;
-    &lt;button class="btn btn-primary"&gt;Right&lt;/button&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-        
-        <h3>Search Input Group</h3>
-        <div class="code-block">
-            <pre><code>&lt;div class="input-group-search"&gt;
-    &lt;input type="text" placeholder="Search..."&gt;
-    &lt;button class="btn-search" type="submit"&gt;Search&lt;/button&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-        
-        <h3>Modern Input Group</h3>
-        <div class="code-block">
-            <pre><code>&lt;div class="input-group-modern"&gt;
-    &lt;input type="email" placeholder="your@email.com"&gt;
-    &lt;button class="btn btn-primary"&gt;Subscribe&lt;/button&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-        
-        <h3>Number Input with Controls</h3>
-        <div class="code-block">
-            <pre><code>&lt;div class="input-group-number"&gt;
-    &lt;button class="btn-decrease" type="button"&gt;−&lt;/button&gt;
-    &lt;input type="number" value="1" min="1" max="99"&gt;
-    &lt;button class="btn-increase" type="button"&gt;+&lt;/button&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-    </section>
-
-    <!-- Floating Action Button -->
-    <button class="btn btn-primary btn-fab" title="Add new item">+</button>
-
-    <!-- JavaScript for Interactive Components -->
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>
-        // Number input controls
-        document.querySelectorAll('.input-group-number').forEach(group => {
-            const input = group.querySelector('input');
-            const decreaseBtn = group.querySelector('.btn-decrease');
-            const increaseBtn = group.querySelector('.btn-increase');
-            
-            decreaseBtn.addEventListener('click', () => {
-                const value = parseInt(input.value) || 0;
-                const min = parseInt(input.min) || 0;
-                if (value > min) {
-                    input.value = value - 1;
-                }
-            });
-            
-            increaseBtn.addEventListener('click', () => {
-                const value = parseInt(input.value) || 0;
-                const max = parseInt(input.max) || 100;
-                if (value < max) {
-                    input.value = value + 1;
-                }
-            });
-        });
-        
-        // Copy functionality
-        document.querySelectorAll('.btn-copy').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const input = btn.parentElement.querySelector('input');
-                input.select();
-                document.execCommand('copy');
-                
-                const originalText = btn.textContent;
-                btn.textContent = 'Copied!';
-                btn.classList.add('copied');
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.classList.remove('copied');
-                }, 2000);
-            });
-        });
-        
-        // Tag removal
-        document.querySelectorAll('.tag-remove').forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.parentElement.remove();
-            });
-        });
-        
-        // File input updates
-        document.querySelectorAll('.input-group-file input[type="file"]').forEach(input => {
-            input.addEventListener('change', (e) => {
-                const fileInfo = input.parentElement.querySelector('.file-info');
-                if (fileInfo) {
-                    const files = e.target.files;
-                    if (files.length === 1) {
-                        fileInfo.textContent = files[0].name;
-                    } else if (files.length > 1) {
-                        fileInfo.textContent = `${files.length} files selected`;
-                    } else {
-                        fileInfo.textContent = 'No file chosen';
-                    }
-                }
-            });
-        });
-        
-        // Drag and drop file input
-        document.querySelectorAll('.input-group-file-drop').forEach(dropZone => {
-            const input = dropZone.querySelector('input[type="file"]');
-            
-            dropZone.addEventListener('click', () => input.click());
-            
-            dropZone.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                dropZone.classList.add('dragover');
-            });
-            
-            dropZone.addEventListener('dragleave', () => {
-                dropZone.classList.remove('dragover');
-            });
-            
-            dropZone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                dropZone.classList.remove('dragover');
-                input.files = e.dataTransfer.files;
-                
-                // Update text
-                const files = e.dataTransfer.files;
-                const dropText = dropZone.querySelector('.drop-text');
-                if (files.length === 1) {
-                    dropText.textContent = files[0].name;
-                } else if (files.length > 1) {
-                    dropText.textContent = `${files.length} files selected`;
-                }
-            });
-        });
+        // Initialize Lucide icons if present
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>

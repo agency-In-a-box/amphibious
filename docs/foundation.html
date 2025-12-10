@@ -222,11 +222,7 @@
     <div class="container">
       <ul class="horizontal branded">
         <li><a href="/" class="site-logo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves" style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
-            <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-            <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-            <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-          </svg> Amphibious
+          Amphibious
         </a></li>
         <li class="active"><a href="/docs/foundation.html">Foundation</a>
           <ul>
@@ -297,7 +293,7 @@
 
     <!-- Core -->
     <section id="core" class="doc-section">
-      <div class="row">
+      <article class="row">
         <div class="col-16">
           <h2>Core</h2>
           <p>Amphibious 2.0 is built on modern CSS foundations with semantic HTML5 structure. The framework uses CSS custom properties for theming, flexbox for layout, and follows BEM methodology for component naming.</p>
@@ -326,12 +322,30 @@
   &lt;link rel="stylesheet" href="/src/css/main.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;div class="container"&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="col-8"&gt;Content&lt;/div&gt;
-      &lt;div class="col-8"&gt;Content&lt;/div&gt;
+  &lt;header&gt;
+    &lt;nav aria-label="Main navigation"&gt;
+      &lt;!-- Navigation menu --&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main class="container"&gt;
+    &lt;section class="row"&gt;
+      &lt;article class="col-12"&gt;
+        &lt;h1&gt;Page Title&lt;/h1&gt;
+        &lt;p&gt;Main content...&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;aside class="col-4"&gt;
+        &lt;h2&gt;Related Information&lt;/h2&gt;
+        &lt;p&gt;Sidebar content...&lt;/p&gt;
+      &lt;/aside&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;div class="container"&gt;
+      &lt;p&gt;&amp;copy; 2024 Your Site&lt;/p&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
+  &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
           </div>
@@ -339,12 +353,12 @@
           <h3>Container Types</h3>
           <p>The <code>.container</code> class provides a centered, max-width wrapper for content. It's fluid by default and responsive to all screen sizes.</p>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Semantic Grid -->
     <section id="grid" class="doc-section">
-      <div class="row">
+      <article class="row">
         <div class="col-16">
           <h2>Semantic Grid</h2>
           <p>A 16-column grid system that provides precise control over layout while maintaining semantic meaning in your HTML.</p>
@@ -397,20 +411,20 @@
           <h3>Simple Layout Example</h3>
           <div class="demo-grid">
             <div class="row">
-              <div class="col-16"><div class="demo-col">Header</div></div>
-              <div class="col-6"><div class="demo-col">Sidebar</div></div>
-              <div class="col-10"><div class="demo-col">Main Content</div></div>
-              <div class="col-16"><div class="demo-col">Footer</div></div>
+              <header class="col-16"><div class="demo-col">Header</div></header>
+              <aside class="col-6"><div class="demo-col">Sidebar</div></aside>
+              <article class="col-10"><div class="demo-col">Main Content</div></article>
+              <footer class="col-16"><div class="demo-col">Footer</div></footer>
             </div>
           </div>
 
           <div class="code-example">
             <pre><code>&lt;div class="container"&gt;
   &lt;div class="row"&gt;
-    &lt;div class="col-16"&gt;Header&lt;/div&gt;
-    &lt;div class="col-6"&gt;Sidebar&lt;/div&gt;
-    &lt;div class="col-10"&gt;Main Content&lt;/div&gt;
-    &lt;div class="col-16"&gt;Footer&lt;/div&gt;
+    &lt;header class="col-16"&gt;Header&lt;/header&gt;
+    &lt;aside class="col-6"&gt;Sidebar&lt;/aside&gt;
+    &lt;article class="col-10"&gt;Main Content&lt;/article&gt;
+    &lt;footer class="col-16"&gt;Footer&lt;/footer&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
@@ -420,41 +434,41 @@
 
           <div class="demo-grid">
             <div class="row">
-              <div class="col-16"><div class="demo-col">Header</div></div>
-              <div class="col-6"><div class="demo-col">Navigation</div></div>
-              <div class="col-10">
+              <header class="col-16"><div class="demo-col">Header</div></header>
+              <nav class="col-6"><div class="demo-col">Navigation</div></nav>
+              <main class="col-10">
                 <div class="demo-col" style="padding: 0;">
                   <div class="row" style="margin: 0;">
-                    <div class="col-12"><div class="demo-col" style="margin: 0.5rem;">Main Content</div></div>
-                    <div class="col-4"><div class="demo-col" style="margin: 0.5rem;">Sidebar</div></div>
+                    <article class="col-12"><div class="demo-col" style="margin: 0.5rem;">Main Content</div></article>
+                    <aside class="col-4"><div class="demo-col" style="margin: 0.5rem;">Sidebar</div></aside>
                   </div>
                 </div>
-              </div>
-              <div class="col-16"><div class="demo-col">Footer</div></div>
+              </main>
+              <footer class="col-16"><div class="demo-col">Footer</div></footer>
             </div>
           </div>
 
           <div class="code-example">
             <pre><code>&lt;div class="container"&gt;
   &lt;div class="row"&gt;
-    &lt;div class="col-16"&gt;Header&lt;/div&gt;
-    &lt;div class="col-6"&gt;Navigation&lt;/div&gt;
-    &lt;div class="col-10"&gt;
+    &lt;header class="col-16"&gt;Header&lt;/header&gt;
+    &lt;nav class="col-6"&gt;Navigation&lt;/nav&gt;
+    &lt;main class="col-10"&gt;
       &lt;div class="row"&gt;
-        &lt;div class="col-12"&gt;Main Content&lt;/div&gt;
-        &lt;div class="col-4"&gt;Sidebar&lt;/div&gt;
+        &lt;article class="col-12"&gt;Main Content&lt;/article&gt;
+        &lt;aside class="col-4"&gt;Sidebar&lt;/aside&gt;
       &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-16"&gt;Footer&lt;/div&gt;
+    &lt;/main&gt;
+    &lt;footer class="col-16"&gt;Footer&lt;/footer&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </div>
+      </article>
     </section>
     <!-- Responsive Columns -->
     <section id="responsive_col" class="doc-section">
-      <div class="row">
+      <article class="row">
         <div class="col-16">
           <h2>Responsive Columns</h2>
           <p>Columns adapt automatically to different screen sizes using mobile-first responsive design. <strong>Resize your browser window to see the layout react!</strong></p>
@@ -497,12 +511,12 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Fluid Columns -->
     <section id="fluid_col" class="doc-section">
-      <div class="row">
+      <article class="row">
         <div class="col-16">
           <h2>Fluid Columns</h2>
           <p>The grid system is fluid by default, scaling proportionally with the container. All columns use percentage-based widths for maximum flexibility.</p>
@@ -524,12 +538,12 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Golden Ratio Grids -->
     <section id="golden_section" class="doc-section">
-      <div class="row">
+      <article class="row">
         <div class="col-16">
           <h2>Golden Ratio Grids</h2>
           <p>Create visually pleasing layouts using the golden ratio (1.618:1) with special column combinations that approximate this mathematical proportion.</p>
@@ -556,12 +570,12 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Source Ordering -->
     <section id="push_pull" class="doc-section">
-      <div class="row">
+      <article class="row">
         <div class="col-16">
           <h2>Source Ordering</h2>
           <p>Change the visual order of columns without altering the HTML structure using CSS flexbox order property.</p>
@@ -608,12 +622,12 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Media Queries -->
     <section id="mediaQueries" class="doc-section">
-      <div class="row">
+      <article class="row">
         <div class="col-16">
           <h2>Media Queries</h2>
           <p>Amphibious 2.0 uses a mobile-first approach with carefully chosen breakpoints for optimal responsive behavior.</p>
@@ -661,7 +675,7 @@
             <li><strong>Desktop:</strong> 1025px+</li>
           </ul>
         </div>
-      </div>
+      </article>
     </section>
   </main>
 

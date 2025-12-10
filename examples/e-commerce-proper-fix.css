@@ -1,0 +1,591 @@
+/**
+ * E-commerce Catalog PROPER Layout Fixes
+ * Bulletproof fixes for featured products and grid layout
+ */
+
+/* ==========================================================================
+   Featured Products Section - PROPER INLINE LAYOUT
+   ========================================================================== */
+
+.slats--products {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem 0;
+}
+
+.slats--products li {
+  margin-bottom: 1rem;
+}
+
+/* Featured Product Item - Horizontal Layout */
+.slat-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.slat-item:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  border-color: #667eea;
+}
+
+/* Product Image */
+.slat-image {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.slat-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Product Content */
+.slat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.slat-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2c3e50;
+  line-height: 1.3;
+}
+
+.slat-content p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  color: #6c757d;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Meta Information */
+.slat-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.slat-meta .price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.slat-meta .price-original {
+  text-decoration: line-through;
+  color: #6c757d;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.slat-meta .price-current {
+  color: #dc3545;
+}
+
+.slat-meta .rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.slat-meta .rating .icon--filled {
+  color: #ffc107;
+}
+
+.slat-meta .badge {
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.slat-meta .badge--sale {
+  background: #28a745;
+  color: white;
+}
+
+.slat-meta .badge--discount {
+  background: #dc3545;
+  color: white;
+}
+
+/* Action Buttons - INLINE, NOT FULL WIDTH */
+.slat-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.slat-actions .btn {
+  white-space: nowrap;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slat-actions .btn--primary {
+  padding: 0.625rem 1.25rem;
+  background: #667eea;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.slat-actions .btn--primary:hover {
+  background: #5a67d8;
+  transform: translateY(-1px);
+}
+
+.slat-actions .btn--secondary {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: white;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slat-actions .btn--secondary:hover {
+  background: #f8f9fa;
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.slat-actions .btn--secondary i,
+.slat-actions .btn--secondary svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================================================
+   Main Catalog Layout - FILTERS BESIDE PRODUCTS
+   ========================================================================== */
+
+/* Main catalog container with sidebar */
+.catalog-main {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Filters Sidebar - LEFT SIDE */
+.catalog-sidebar {
+  flex-shrink: 0;
+  width: 280px;
+  position: sticky;
+  top: 1rem;
+}
+
+.filters {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+}
+
+.filter-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.filter-section h3,
+.filter-section legend {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #495057;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.5px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.625rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.filter-option:hover {
+  color: #2c3e50;
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.filter-option span {
+  flex: 1;
+}
+
+.filter-count {
+  font-size: 0.75rem;
+  color: #adb5bd;
+}
+
+/* Price range inputs */
+.price-range {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.price-range input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+/* Product Grid - RIGHT SIDE */
+.catalog-products {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Product Grid Container */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* Individual Product Card */
+.product-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+  border-color: #667eea;
+}
+
+/* Product Image */
+.product-image {
+  position: relative;
+  padding-bottom: 100%;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.product-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+/* Product Badges */
+.product-badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.product-badges .badge {
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  color: white;
+}
+
+.badge.new {
+  background: #28a745;
+}
+
+.badge.sale {
+  background: #dc3545;
+}
+
+.badge.limited {
+  background: #ffc107;
+  color: #212529;
+}
+
+/* Product Actions (Heart, Compare) */
+.product-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.product-actions button {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #dee2e6;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.product-actions button:hover {
+  background: white;
+  border-color: #667eea;
+  color: #667eea;
+}
+
+/* Product Info */
+.product-info {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-category {
+  font-size: 0.75rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.25rem 0;
+}
+
+.product-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  width: 14px;
+  height: 14px;
+  color: #ffc107;
+}
+
+.star.empty {
+  color: #dee2e6;
+}
+
+.review-count {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+.product-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.price-current {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.price-original {
+  font-size: 0.875rem;
+  color: #6c757d;
+  text-decoration: line-through;
+}
+
+.price-discount {
+  font-size: 0.75rem;
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.product-shipping {
+  font-size: 0.75rem;
+  color: #28a745;
+  margin-bottom: 0.75rem;
+}
+
+/* Add to Cart Button */
+.add-to-cart {
+  width: 100%;
+  padding: 0.75rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.add-to-cart:hover {
+  background: #5a67d8;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .catalog-sidebar {
+    width: 240px;
+  }
+}
+
+@media (max-width: 992px) {
+  .catalog-main {
+    flex-direction: column;
+  }
+
+  .catalog-sidebar {
+    width: 100%;
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slat-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slat-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  .slat-actions {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .slat-actions .btn--primary {
+    flex: 1;
+    max-width: 200px;
+  }
+}
+
+/* ==========================================================================
+   Utility Fixes
+   ========================================================================== */
+
+/* Hide original problematic styles */
+.col-3:first-child {
+  display: block !important;
+  width: auto !important;
+}
+
+/* Ensure proper grid layout */
+.row.catalog-main {
+  display: flex !important;
+  margin: 0;
+}
+
+.catalog-main .col-3 {
+  width: auto !important;
+  padding: 0 !important;
+}
+
+.catalog-main .col-9 {
+  width: auto !important;
+  padding: 0 !important;
+  flex: 1;
+}
+
+/* Fix button icons */
+button i,
+button svg {
+  pointer-events: none;
+}
+
+/* Ensure tooltips work */
+[data-tooltip] {
+  position: relative;
+}

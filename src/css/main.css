@@ -40,6 +40,9 @@
 @import "./components/tags.css";
 @import "./components/pears.css";
 
+/* Apple Design System */
+@import "./apple-design-system.css";
+
 /* Utilities */
 @import "./helpers.css";
 @import "./print.css";
