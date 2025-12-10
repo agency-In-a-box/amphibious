@@ -18,7 +18,7 @@
 
     /* Documentation Header */
     .docs-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       color: white;
       padding: 3rem 0;
       margin-bottom: 3rem;
@@ -52,7 +52,7 @@
 
     .section h2 {
       color: #2c3e50;
-      border-bottom: 2px solid #667eea;
+      border-bottom: 2px solid #ED8B00;
       padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
     }
@@ -149,7 +149,7 @@
       background: #f8f9fa;
       padding: 1.5rem;
       border-radius: 0.5rem;
-      border-left: 4px solid #667eea;
+      border-left: 4px solid #ED8B00;
     }
 
     .feature-card h4 {
@@ -165,7 +165,7 @@
     }
 
     .nav-breadcrumb a {
-      color: #667eea;
+      color: #ED8B00;
       text-decoration: none;
     }
 
@@ -175,7 +175,7 @@
 
     /* Demo Navigation Containers */
     .demo-nav-container {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
       padding: 1rem;
       border-radius: 0.5rem;
@@ -197,7 +197,7 @@
       border-radius: 0.5rem;
       max-width: 300px;
       --nav-text: #2c3e50;
-      --nav-text-hover: #667eea;
+      --nav-text-hover: #ED8B00;
     }
 
     .demo-nav-vertical .vertical > li > a {
@@ -249,6 +249,56 @@
   </style>
 </head>
 <body>
+  <!-- Site Navigation -->
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="container">
+    <ul class="horizontal branded">
+      <li><a href="/" class="site-logo">Amphibious</a></li>
+      <li><a href="/docs/foundation.html">Foundation</a>
+        <ul>
+          <li><a href="/docs/foundation.html#core">Core</a></li>
+          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
+          <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
+          <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
+          <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
+          <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
+          <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
+        </ul>
+      </li>
+      <li><a href="/docs/form.html">Form</a>
+        <ul>
+          <li><a href="/docs/form.html#typography">Typography</a></li>
+          <li><a href="/docs/form.html#forms">Basic Forms</a></li>
+          <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
+          <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
+          <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
+          <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
+          <li><a href="/docs/form.html#tables">Tables</a></li>
+        </ul>
+      </li>
+      <li><a href="/docs/function.html">Function</a>
+        <ul>
+          <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
+          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
+          <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
+          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
+          <li><a href="/docs/function.html#tabs">Tabs</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+        </ul>
+      </li>
+      <li><a href="/docs/features.html">Features</a>
+        <ul>
+          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
+          <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
+          <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
+          <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
+        </ul>
+      </li>
+      <li><a href="/examples/">Examples</a></li>
+    </ul>
+  </div>
+</nav>
+
   <header class="docs-header">
     <div class="container">
       <nav class="nav-breadcrumb">
@@ -697,7 +747,7 @@
         <p>The navigation automatically adapts to mobile devices. Try resizing your browser window to see the mobile hamburger menu appear.</p>
 
         <div class="demo-responsive">
-          <nav style="background: #667eea; color: white; padding: 1rem;">
+          <nav style="background: #ED8B00; color: white; padding: 1rem;">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <div>
                 <strong>Your Brand</strong>
@@ -746,7 +796,7 @@
         <div class="demo-title">Different Navigation States</div>
 
         <h4>Sticky Navigation</h4>
-        <div style="background: #667eea; color: white; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+        <div style="background: #ED8B00; color: white; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
           <nav class="nav-sticky">
             <ul class="horizontal">
               <li><a href="#home">Home</a></li>
@@ -758,7 +808,7 @@
         </div>
 
         <h4>Transparent Navigation</h4>
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 0.5rem;">
+        <div style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); color: white; padding: 2rem; border-radius: 0.5rem;">
           <nav class="nav-transparent">
             <ul class="horizontal">
               <li><a href="#home">Home</a></li>

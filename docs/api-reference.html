@@ -6,110 +6,6 @@
   <title>API Reference - Amphibious 2.0 Documentation</title>
   <meta name="description" content="Complete API reference for Amphibious 2.0 - CSS classes, JavaScript methods, and component configuration">
   <style>
-    /* Navigation styles */
-    .site-nav {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      margin-bottom: 2rem;
-    }
-
-    .horizontal.branded {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .horizontal.branded > li {
-      position: relative;
-    }
-
-    .horizontal.branded > li > a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 500;
-      padding: 0.75rem 1.5rem;
-      display: block;
-      transition: background-color 0.2s, color 0.2s;
-      border-bottom: 3px solid transparent;
-    }
-
-    .horizontal.branded > li:hover > a,
-    .horizontal.branded > li.active > a {
-      background-color: #667eea;
-      color: white;
-      border-bottom-color: #4c63d2;
-    }
-
-    .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #667eea !important;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .horizontal.branded > li.active > a.site-logo {
-      color: white !important;
-    }
-
-    /* Dropdown Menus */
-    .horizontal.branded ul {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      border-radius: 0 0 8px 8px;
-      min-width: 280px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.2s ease;
-      z-index: 1001;
-    }
-
-    .horizontal.branded li:hover > ul {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .horizontal.branded ul li {
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .horizontal.branded ul li:last-child {
-      border-bottom: none;
-    }
-
-    .horizontal.branded ul a {
-      display: block;
-      padding: 0.75rem 1.5rem;
-      color: #2c3e50;
-      text-decoration: none;
-      transition: background-color 0.2s;
-      font-size: 0.9rem;
-    }
-
-    .horizontal.branded ul a:hover {
-      background-color: #f8f9fa;
-      color: #667eea;
-    }
-
-
     /* Documentation Styles */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -121,7 +17,7 @@
 
     /* Documentation Header */
     .docs-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       color: white;
       padding: 3rem 0;
       margin-bottom: 3rem;
@@ -184,11 +80,11 @@
     }
     .docs-nav a:hover {
       background: #f8f9fa;
-      color: #667eea;
+      color: #ED8B00;
     }
     .docs-nav a.active {
       background: #f0f4ff;
-      color: #667eea;
+      color: #ED8B00;
       font-weight: 500;
     }
     .docs-nav ul ul {
@@ -226,7 +122,7 @@
     /* API Method/Class Signatures */
     .api-signature {
       background: #f8f9fa;
-      border-left: 4px solid #667eea;
+      border-left: 4px solid #ED8B00;
       padding: 1rem 1.25rem;
       margin: 1rem 0;
       border-radius: 4px;
@@ -320,7 +216,7 @@
     }
     .css-class-card h4 {
       margin: 0 0 0.5rem 0;
-      color: #667eea;
+      color: #ED8B00;
       font-family: 'Courier New', Courier, monospace;
     }
     .css-class-card p {
@@ -385,7 +281,7 @@
     }
     .search-input:focus {
       outline: none;
-      border-color: #667eea;
+      border-color: #ED8B00;
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
@@ -408,9 +304,7 @@
   <nav class="site-nav" aria-label="Main navigation">
     <div class="container">
       <ul class="horizontal branded">
-        <li><a href="/" class="site-logo">
-          Amphibious
-        </a></li>
+        <li><a href="/" class="site-logo">Amphibious</a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
           <ul>
             <li><a href="/docs/foundation.html#core">Core</a></li>
