@@ -6,110 +6,6 @@
   <title>Grid System - Amphibious 2.0 Documentation</title>
   <meta name="description" content="Comprehensive guide to the Amphibious 16-column responsive grid system">
   <style>
-    /* Navigation styles */
-    .site-nav {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      margin-bottom: 2rem;
-    }
-
-    .horizontal.branded {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .horizontal.branded > li {
-      position: relative;
-    }
-
-    .horizontal.branded > li > a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 500;
-      padding: 0.75rem 1.5rem;
-      display: block;
-      transition: background-color 0.2s, color 0.2s;
-      border-bottom: 3px solid transparent;
-    }
-
-    .horizontal.branded > li:hover > a,
-    .horizontal.branded > li.active > a {
-      background-color: #667eea;
-      color: white;
-      border-bottom-color: #4c63d2;
-    }
-
-    .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #667eea !important;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .horizontal.branded > li.active > a.site-logo {
-      color: white !important;
-    }
-
-    /* Dropdown Menus */
-    .horizontal.branded ul {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      border-radius: 0 0 8px 8px;
-      min-width: 280px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.2s ease;
-      z-index: 1001;
-    }
-
-    .horizontal.branded li:hover > ul {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .horizontal.branded ul li {
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .horizontal.branded ul li:last-child {
-      border-bottom: none;
-    }
-
-    .horizontal.branded ul a {
-      display: block;
-      padding: 0.75rem 1.5rem;
-      color: #2c3e50;
-      text-decoration: none;
-      transition: background-color 0.2s;
-      font-size: 0.9rem;
-    }
-
-    .horizontal.branded ul a:hover {
-      background-color: #f8f9fa;
-      color: #667eea;
-    }
-
-
     /* Documentation Styles */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -120,7 +16,7 @@
       background: #f8f9fa;
     }
     .doc-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       color: white;
       padding: 3rem 0;
       margin-bottom: 3rem;
@@ -159,7 +55,7 @@
       transition: all 0.2s;
     }
     .doc-nav a:hover {
-      border-bottom-color: #667eea;
+      border-bottom-color: #ED8B00;
     }
     .doc-section {
       background: white;
@@ -170,7 +66,7 @@
     }
     .doc-section h2 {
       margin-top: 0;
-      color: #667eea;
+      color: #ED8B00;
       border-bottom: 2px solid #f0f0f0;
       padding-bottom: 0.5rem;
     }
@@ -183,7 +79,7 @@
       padding: 1rem;
       border-radius: 4px;
       overflow-x: auto;
-      border-left: 4px solid #667eea;
+      border-left: 4px solid #ED8B00;
     }
     code {
       background: #f4f4f4;
@@ -207,7 +103,7 @@
       margin-bottom: 0;
     }
     .grid-example [class*="col-"] {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       color: white;
       padding: 1rem;
       text-align: center;
@@ -241,7 +137,7 @@
     }
     .demo-controls button {
       padding: 0.5rem 1rem;
-      background: #667eea;
+      background: #ED8B00;
       color: white;
       border: none;
       border-radius: 4px;
@@ -250,10 +146,10 @@
       transition: background 0.2s;
     }
     .demo-controls button:hover {
-      background: #5a67d8;
+      background: #c97400;
     }
     .demo-controls button.active {
-      background: #764ba2;
+      background: #c97400;
     }
 
     /* Responsive Preview */
@@ -325,7 +221,7 @@
     .badge {
       display: inline-block;
       padding: 0.25rem 0.5rem;
-      background: #667eea;
+      background: #ED8B00;
       color: white;
       border-radius: 3px;
       font-size: 0.75rem;
@@ -341,9 +237,7 @@
   <nav class="site-nav" aria-label="Main navigation">
     <div class="container">
       <ul class="horizontal branded">
-        <li><a href="/" class="site-logo">
-          Amphibious
-        </a></li>
+        <li><a href="/" class="site-logo">Amphibious</a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
           <ul>
             <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -622,10 +516,10 @@
             <div style="padding: 1rem;">
               <strong>10 Column Parent</strong>
               <div class="row" style="margin-top: 1rem;">
-                <div class="col-6 first" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <div class="col-6 first" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); color: white;">
                   6 Nested
                 </div>
-                <div class="col-4 last" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <div class="col-4 last" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); color: white;">
                   4 Nested
                 </div>
               </div>

@@ -5,33 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-commerce Product Catalog - Amphibious 2.0</title>
   <meta name="description" content="Complete e-commerce product catalog demonstration with icons, tooltips, and modals">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="e-commerce-modern.css">
   <style>
-    /* Lucide Icons Styles */
-    [data-lucide] {
-      display: inline-block;
-      width: 1.25rem;
-      height: 1.25rem;
-      stroke-width: 2;
-      vertical-align: middle;
-      margin-right: 0.25rem;
-    }
-
-    .icon--xs[data-lucide] {
-      width: 0.875rem;
-      height: 0.875rem;
-    }
-
-    .icon--sm[data-lucide] {
-      width: 1rem;
-      height: 1rem;
-    }
-
-    .icon--filled[data-lucide] {
-      fill: currentColor;
-    }
-
     /* E-commerce Styles */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -61,7 +35,7 @@
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: #667eea;
+      color: #ED8B00;
       text-decoration: none;
     }
     .search-bar {
@@ -77,7 +51,7 @@
     }
     .search-bar button {
       padding: 0.75rem 1.5rem;
-      background: #667eea;
+      background: #ED8B00;
       color: white;
       border: none;
       border-radius: 4px;
@@ -114,7 +88,7 @@
       gap: 0.5rem;
     }
     .nav-categories a:hover {
-      color: #667eea;
+      color: #ED8B00;
     }
 
     /* Breadcrumbs */
@@ -127,7 +101,7 @@
       text-decoration: none;
     }
     .breadcrumbs a:hover {
-      color: #667eea;
+      color: #ED8B00;
     }
     .breadcrumbs .separator {
       margin: 0 0.5rem;
@@ -176,9 +150,9 @@
       border-radius: 4px;
     }
     .view-toggles button.active {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
-      border-color: #667eea;
+      border-color: #ED8B00;
     }
 
     /* Filters Sidebar */
@@ -344,20 +318,20 @@
       gap: 0.5rem;
     }
     .btn--primary {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
     }
     .btn--primary:hover {
-      background: #5a67d8;
+      background: #c97400;
     }
     .btn--secondary {
       background: white;
-      color: #667eea;
-      border: 2px solid #667eea;
+      color: #ED8B00;
+      border: 2px solid #ED8B00;
       padding: 0.625rem;
     }
     .btn--secondary:hover {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
     }
 
@@ -431,9 +405,9 @@
       transition: all 0.2s;
     }
     .product-actions button:hover {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
-      border-color: #667eea;
+      border-color: #ED8B00;
     }
     .product-info {
       padding: 1rem;
@@ -507,7 +481,7 @@
     .add-to-cart {
       width: 100%;
       padding: 0.75rem;
-      background: #667eea;
+      background: #ED8B00;
       color: white;
       border: none;
       border-radius: 4px;
@@ -520,7 +494,7 @@
       gap: 0.5rem;
     }
     .add-to-cart:hover {
-      background: #5a67d8;
+      background: #c97400;
     }
 
     /* Quick View Modal */
@@ -555,8 +529,8 @@
     }
     .size-option:hover,
     .size-option.selected {
-      border-color: #667eea;
-      color: #667eea;
+      border-color: #ED8B00;
+      color: #ED8B00;
     }
     .quantity-selector {
       display: flex;
@@ -600,9 +574,9 @@
       background: #f8f9fa;
     }
     .pagination button.active {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
-      border-color: #667eea;
+      border-color: #ED8B00;
     }
     .pagination button:disabled {
       opacity: 0.5;
@@ -656,8 +630,60 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/src/css/main.css">
 </head>
 <body>
+  <!-- Site Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <ul class="horizontal branded">
+        <li><a href="/" class="site-logo">Amphibious</a></li>
+        <li><a href="/docs/foundation.html">Foundation</a>
+          <ul>
+            <li><a href="/docs/foundation.html#core">Core</a></li>
+            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
+            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
+            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
+            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
+            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
+            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/form.html">Form</a>
+          <ul>
+            <li><a href="/docs/form.html#typography">Typography</a></li>
+            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
+            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
+            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
+            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
+            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
+            <li><a href="/docs/form.html#tables">Tables</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/function.html">Function</a>
+          <ul>
+            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
+            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
+            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
+            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
+            <li><a href="/docs/function.html#tabs">Tabs</a></li>
+            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/features.html">Features</a>
+          <ul>
+            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
+            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
+            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
+            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
+          </ul>
+        </li>
+        <li><a href="/examples/">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
   <!-- Header -->
   <header class="header">
     <div class="header-top">
@@ -680,11 +706,8 @@
             <a href="#" class="logo">SHOPIFY 2.0</a>
           </div>
           <div class="col-8">
-            <div class="search-bar" style="position: relative;">
-              <input type="text" placeholder="Search products..." id="searchInput">
-              <button class="clear-search" onclick="document.getElementById('searchInput').value=''; this.style.display='none';" style="position: absolute; right: 80px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #6c757d; cursor: pointer; padding: 4px; display: none;">
-                <i data-lucide="x"></i>
-              </button>
+            <div class="search-bar">
+              <input type="text" placeholder="Search products...">
               <button>
                 <i data-lucide="search"></i>
                 Search
@@ -706,7 +729,7 @@
                 <span class="icon-badge__count">5</span>
                 <span>Cart</span>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>
@@ -826,10 +849,10 @@
       <h1>Shop All Products</h1>
       <div class="catalog-controls">
         <div class="product-count">Showing 1-12 of 156 products</div>
-        <div class="sort-controls-wrapper">
+        <div style="display: flex; gap: 1rem; align-items: center;">
           <div class="sort-controls">
-            <label for="sort-select">Sort by:</label>
-            <select id="sort-select">
+            <label>Sort by:</label>
+            <select>
               <option>Featured</option>
               <option>Price: Low to High</option>
               <option>Price: High to Low</option>
@@ -853,244 +876,164 @@
 
   <!-- Main Content -->
   <div class="container">
-    <div class="catalog-main">
-      <!-- Modern Filter Sidebar -->
-      <aside class="catalog-sidebar">
-        <div class="filters-modern" id="filtersPanel">
-          <!-- Filter Header -->
-          <div class="filters-header">
-            <h2 class="filters-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-              </svg>
-              Filters
-            </h2>
-            <button class="filters-clear" onclick="clearAllFilters()">Clear all</button>
-          </div>
+    <div class="row">
+      <!-- Filters Sidebar -->
+      <aside class="col-4">
+        <section class="filters" aria-labelledby="filters-heading">
+          <h2 class="sr-only" id="filters-heading">Product Filters</h2>
+          <fieldset class="filter-section">
+            <legend>Categories</legend>
+            <label class="filter-option">
+              <input type="checkbox" checked>
+              <span>All Products</span>
+              <span class="filter-count">156</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>T-Shirts</span>
+              <span class="filter-count">42</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Jeans</span>
+              <span class="filter-count">28</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Dresses</span>
+              <span class="filter-count">35</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Shoes</span>
+              <span class="filter-count">51</span>
+            </label>
+          </fieldset>
 
-          <!-- Active Filters Display -->
-          <div class="active-filters" id="activeFilters">
-            <div class="active-filters-label">Active Filters</div>
-            <div class="filter-tags" id="filterTags"></div>
-          </div>
+          <fieldset class="filter-section">
+            <legend>Price Range</legend>
+            <div class="price-range">
+              <input type="number" placeholder="Min" value="0">
+              <span>-</span>
+              <input type="number" placeholder="Max" value="500">
+              <button style="padding: 0.5rem; background: #ED8B00; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Go
+              </button>
+            </div>
+            <div style="margin-top: 1rem;">
+              <label class="filter-option">
+                <input type="checkbox">
+                <span>Under $25</span>
+                <span class="filter-count">23</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox">
+                <span>$25 - $50</span>
+                <span class="filter-count">45</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox">
+                <span>$50 - $100</span>
+                <span class="filter-count">67</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox">
+                <span>Over $100</span>
+                <span class="filter-count">21</span>
+              </label>
+            </div>
+          </fieldset>
 
-          <!-- Category Filter Group -->
-          <div class="filter-group" data-filter="category">
-            <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-              <h3 class="filter-group-title">Category</h3>
-              <span class="filter-group-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-            </div>
-            <div class="filter-group-content">
-              <label class="filter-item">
-                <input type="checkbox" name="category" value="tshirts">
-                <span class="filter-checkbox"></span>
-                <span class="filter-label">
-                  T-Shirts
-                  <span class="filter-count">42</span>
-                </span>
-              </label>
-              <label class="filter-item">
-                <input type="checkbox" name="category" value="jeans">
-                <span class="filter-checkbox"></span>
-                <span class="filter-label">
-                  Jeans
-                  <span class="filter-count">28</span>
-                </span>
-              </label>
-              <label class="filter-item">
-                <input type="checkbox" name="category" value="dresses">
-                <span class="filter-checkbox"></span>
-                <span class="filter-label">
-                  Dresses
-                  <span class="filter-count">35</span>
-                </span>
-              </label>
-              <label class="filter-item">
-                <input type="checkbox" name="category" value="shoes">
-                <span class="filter-checkbox"></span>
-                <span class="filter-label">
-                  Shoes
-                  <span class="filter-count">51</span>
-                </span>
-              </label>
-            </div>
-          </div>
+          <fieldset class="filter-section">
+            <legend>Size</legend>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>XS</span>
+              <span class="filter-count">12</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>S</span>
+              <span class="filter-count">34</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>M</span>
+              <span class="filter-count">45</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>L</span>
+              <span class="filter-count">38</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>XL</span>
+              <span class="filter-count">27</span>
+            </label>
+          </fieldset>
 
-          <!-- Brand Dropdown Filter -->
-          <div class="filter-group" data-filter="brand">
-            <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-              <h3 class="filter-group-title">Brand</h3>
-              <span class="filter-group-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-            </div>
-            <div class="filter-group-content">
-              <div class="filter-dropdown" id="brandDropdown">
-                <button class="filter-dropdown-trigger" onclick="toggleDropdown(this)">
-                  <span>Select Brand</span>
-                  <svg class="filter-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="filter-dropdown-menu">
-                  <div class="filter-dropdown-option" onclick="selectBrand(this, 'Nike')">
-                    Nike
-                    <span class="filter-count">28</span>
-                  </div>
-                  <div class="filter-dropdown-option" onclick="selectBrand(this, 'Adidas')">
-                    Adidas
-                    <span class="filter-count">24</span>
-                  </div>
-                  <div class="filter-dropdown-option" onclick="selectBrand(this, 'Puma')">
-                    Puma
-                    <span class="filter-count">19</span>
-                  </div>
-                  <div class="filter-dropdown-option" onclick="selectBrand(this, 'Under Armour')">
-                    Under Armour
-                    <span class="filter-count">16</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <fieldset class="filter-section">
+            <legend>Color</legend>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Black</span>
+              <span class="filter-count">45</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>White</span>
+              <span class="filter-count">38</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Blue</span>
+              <span class="filter-count">29</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Red</span>
+              <span class="filter-count">22</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Green</span>
+              <span class="filter-count">15</span>
+            </label>
+          </fieldset>
 
-          <!-- Price Range Filter -->
-          <div class="filter-group" data-filter="price">
-            <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-              <h3 class="filter-group-title">Price Range</h3>
-              <span class="filter-group-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-            </div>
-            <div class="filter-group-content">
-              <div class="price-range-container">
-                <div class="price-slider">
-                  <div class="price-slider-fill"></div>
-                  <div class="price-slider-handle min"></div>
-                  <div class="price-slider-handle max"></div>
-                </div>
-                <div class="price-inputs">
-                  <div class="price-input-group">
-                    <input type="number" min="0" max="500" value="25" id="minPrice">
-                  </div>
-                  <span class="price-separator">–</span>
-                  <div class="price-input-group">
-                    <input type="number" min="0" max="500" value="250" id="maxPrice">
-                  </div>
-                </div>
-              </div>
-              <!-- Quick price options -->
-              <label class="filter-item">
-                <input type="radio" name="price" value="0-25">
-                <span class="filter-radio"></span>
-                <span class="filter-label">Under $25</span>
-              </label>
-              <label class="filter-item">
-                <input type="radio" name="price" value="25-50">
-                <span class="filter-radio"></span>
-                <span class="filter-label">$25 - $50</span>
-              </label>
-              <label class="filter-item">
-                <input type="radio" name="price" value="50-100">
-                <span class="filter-radio"></span>
-                <span class="filter-label">$50 - $100</span>
-              </label>
-              <label class="filter-item">
-                <input type="radio" name="price" value="100+">
-                <span class="filter-radio"></span>
-                <span class="filter-label">Over $100</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Size Filter -->
-          <div class="filter-group" data-filter="size">
-            <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-              <h3 class="filter-group-title">Size</h3>
-              <span class="filter-group-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-            </div>
-            <div class="filter-group-content">
-              <div class="size-options">
-                <button class="size-option" onclick="toggleSize(this)">XS</button>
-                <button class="size-option" onclick="toggleSize(this)">S</button>
-                <button class="size-option selected" onclick="toggleSize(this)">M</button>
-                <button class="size-option" onclick="toggleSize(this)">L</button>
-                <button class="size-option" onclick="toggleSize(this)">XL</button>
-                <button class="size-option unavailable">XXL</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Color Filter -->
-          <div class="filter-group" data-filter="color">
-            <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-              <h3 class="filter-group-title">Color</h3>
-              <span class="filter-group-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-            </div>
-            <div class="filter-group-content">
-              <div class="color-swatches">
-                <button class="color-swatch" onclick="toggleColor(this)" title="Black">
-                  <div class="color-swatch-inner" style="background: #000000;"></div>
-                </button>
-                <button class="color-swatch" onclick="toggleColor(this)" title="White">
-                  <div class="color-swatch-inner" style="background: #ffffff;"></div>
-                </button>
-                <button class="color-swatch selected" onclick="toggleColor(this)" title="Blue">
-                  <div class="color-swatch-inner" style="background: #3b82f6;"></div>
-                </button>
-                <button class="color-swatch" onclick="toggleColor(this)" title="Red">
-                  <div class="color-swatch-inner" style="background: #ef4444;"></div>
-                </button>
-                <button class="color-swatch" onclick="toggleColor(this)" title="Green">
-                  <div class="color-swatch-inner" style="background: #10b981;"></div>
-                </button>
-                <button class="color-swatch" onclick="toggleColor(this)" title="Yellow">
-                  <div class="color-swatch-inner" style="background: #f59e0b;"></div>
-                </button>
-                <button class="color-swatch" onclick="toggleColor(this)" title="Purple">
-                  <div class="color-swatch-inner" style="background: #8b5cf6;"></div>
-                </button>
-                <button class="color-swatch" onclick="toggleColor(this)" title="Pink">
-                  <div class="color-swatch-inner" style="background: #ec4899;"></div>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Apply Filters -->
-          <div class="filters-apply">
-            <button class="filters-apply-button" onclick="applyFilters()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              Apply Filters
-            </button>
-            <div class="filter-result-count">Showing 42 of 156 products</div>
-          </div>
-        </div>
+          <fieldset class="filter-section">
+            <legend>Brand</legend>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Nike</span>
+              <span class="filter-count">28</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Adidas</span>
+              <span class="filter-count">24</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Puma</span>
+              <span class="filter-count">19</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox">
+              <span>Under Armour</span>
+              <span class="filter-count">16</span>
+            </label>
+          </fieldset>
+        </section>
       </aside>
 
       <!-- Product Grid -->
-      <main class="catalog-products" role="main">
-        <div class="products-grid">
+      <main class="col-12" role="main">
+        <div class="row">
           <!-- Product 1 -->
-          <article class="product-card">
+          <div class="col-4">
+            <article class="product-card">
               <figure class="product-image">
                 <img src="https://placehold.co/400x400/667eea/ffffff?text=Product+1" alt="Product 1" loading="lazy">
                 <div class="product-badges">
@@ -1383,9 +1326,6 @@
           </div>
         </div>
 
-        <!-- Pagination Separator -->
-        <hr class="pagination-separator">
-
         <!-- Pagination -->
         <div class="pagination">
           <button disabled>
@@ -1459,7 +1399,7 @@
                 <i data-lucide="shopping-cart"></i>
                 Add to Cart
               </button>
-              <button style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #667eea; color: #667eea; border-radius: 4px; cursor: pointer;">
+              <button style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #ED8B00; color: #ED8B00; border-radius: 4px; cursor: pointer;">
                 <i data-lucide="heart"></i>
                 Save
               </button>
@@ -1481,17 +1421,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Mobile Filter Toggle Button -->
-  <button class="mobile-filter-toggle" onclick="toggleMobileFilters()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-    </svg>
-    Filters
-  </button>
-
-  <!-- Filter Overlay for Mobile -->
-  <div class="filters-overlay" id="filtersOverlay" onclick="closeMobileFilters()"></div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -1548,9 +1477,6 @@
     </div>
   </footer>
 
-  <!-- Load Lucide Icons (must be before page loads) -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
   <!-- Load Framework -->
   <script type="module" src="/src/index.js"></script>
 
@@ -1578,12 +1504,6 @@
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
       console.log('E-commerce Catalog Page Loaded');
-
-      // Initialize Lucide icons
-      if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-        console.log('Lucide icons initialized');
-      }
 
       // Add click handlers to all add to cart buttons
       document.querySelectorAll('.add-to-cart').forEach(btn => {
@@ -1615,285 +1535,6 @@
         });
       });
     });
-
-    // Clear Search Functionality
-    document.getElementById('searchInput').addEventListener('input', function() {
-      const clearBtn = this.nextElementSibling;
-      clearBtn.style.display = this.value ? 'block' : 'none';
-    });
-
-    // Modern Filter System JavaScript
-    // Toggle filter drawer
-    function toggleFilterDrawer() {
-      const drawer = document.getElementById('filterDrawer');
-      const overlay = document.getElementById('filtersOverlay');
-      const toggle = document.querySelector('.filter-toggle');
-
-      drawer.classList.toggle('open');
-      overlay.classList.toggle('open');
-      toggle.classList.toggle('active');
-
-      if (drawer.classList.contains('open')) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    }
-
-    // Toggle filter group collapse
-    function toggleFilterGroup(header) {
-      const group = header.parentElement;
-      group.classList.toggle('collapsed');
-    }
-
-    // Toggle dropdown
-    function toggleDropdown(trigger) {
-      const dropdown = trigger.parentElement;
-      dropdown.classList.toggle('open');
-    }
-
-    // Select brand from dropdown
-    function selectBrand(option, brand) {
-      const dropdown = option.closest('.filter-dropdown');
-      const trigger = dropdown.querySelector('.filter-dropdown-trigger span');
-
-      // Update selected state
-      dropdown.querySelectorAll('.filter-dropdown-option').forEach(opt => {
-        opt.classList.remove('selected');
-      });
-      option.classList.add('selected');
-
-      // Update trigger text
-      trigger.textContent = brand;
-      trigger.parentElement.classList.add('active');
-
-      // Close dropdown
-      dropdown.classList.remove('open');
-
-      // Add to active filters
-      addActiveFilter(brand, 'brand');
-    }
-
-    // Toggle size selection
-    function toggleSize(button) {
-      if (!button.classList.contains('unavailable')) {
-        button.classList.toggle('selected');
-        const size = button.textContent;
-        if (button.classList.contains('selected')) {
-          addActiveFilter(size, 'size');
-        } else {
-          removeFilterByText(size);
-        }
-      }
-    }
-
-    // Toggle color selection
-    function toggleColor(button) {
-      button.classList.toggle('selected');
-      const color = button.getAttribute('title');
-      if (button.classList.contains('selected')) {
-        addActiveFilter(color, 'color');
-      } else {
-        removeFilterByText(color);
-      }
-    }
-
-    // Add active filter tag
-    function addActiveFilter(text, type) {
-      const activeFilters = document.getElementById('activeFilters');
-      const filterTags = document.getElementById('filterTags');
-
-      // Check if filter already exists
-      const existing = Array.from(filterTags.children).find(tag =>
-        tag.textContent.trim().startsWith(text)
-      );
-      if (existing) return;
-
-      activeFilters.classList.add('has-filters');
-
-      const tag = document.createElement('span');
-      tag.className = 'filter-tag';
-      tag.dataset.type = type;
-      tag.innerHTML = `
-        ${text}
-        <button class="filter-tag-remove" onclick="removeFilter(this)">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      `;
-
-      filterTags.appendChild(tag);
-      updateFilterCount();
-    }
-
-    // Update filter count
-    function updateFilterCount() {
-      const filterTags = document.getElementById('filterTags');
-      const count = filterTags ? filterTags.children.length : 0;
-      const filterCountElement = document.querySelector('.filter-count');
-
-      if (filterCountElement) {
-        filterCountElement.textContent = count === 0 ? '0 Filters' : `${count} Filter${count !== 1 ? 's' : ''}`;
-      }
-
-      // Update toggle appearance
-      const filterToggle = document.querySelector('.filter-toggle');
-      if (filterToggle) {
-        if (count > 0) {
-          filterToggle.classList.add('active');
-        } else {
-          filterToggle.classList.remove('active');
-        }
-      }
-    }
-
-    // Remove filter by text
-    function removeFilterByText(text) {
-      const filterTags = document.getElementById('filterTags');
-      const tag = Array.from(filterTags.children).find(tag =>
-        tag.textContent.trim().startsWith(text)
-      );
-      if (tag) {
-        tag.remove();
-        if (filterTags.children.length === 0) {
-          document.getElementById('activeFilters').classList.remove('has-filters');
-        }
-      }
-    }
-
-    // Remove filter tag
-    function removeFilter(button) {
-      const tag = button.parentElement;
-      const text = tag.textContent.trim().replace('×', '').trim();
-      tag.remove();
-
-      const filterTags = document.getElementById('filterTags');
-      const activeFilters = document.getElementById('activeFilters');
-
-      if (filterTags.children.length === 0) {
-        activeFilters.classList.remove('has-filters');
-      }
-
-      // Uncheck corresponding inputs
-      document.querySelectorAll('.filter-item input').forEach(input => {
-        const label = input.nextElementSibling.nextElementSibling;
-        if (label && label.textContent.includes(text)) {
-          input.checked = false;
-        }
-      });
-
-      // Deselect size/color buttons
-      document.querySelectorAll('.size-option.selected, .color-swatch.selected').forEach(btn => {
-        if (btn.textContent === text || btn.getAttribute('title') === text) {
-          btn.classList.remove('selected');
-        }
-      });
-    }
-
-    // Clear all filters
-    function clearAllFilters() {
-      // Clear all checkboxes
-      document.querySelectorAll('.filter-item input').forEach(input => {
-        input.checked = false;
-      });
-
-      // Clear all selections
-      document.querySelectorAll('.size-option.selected').forEach(btn => {
-        btn.classList.remove('selected');
-      });
-
-      document.querySelectorAll('.color-swatch.selected').forEach(btn => {
-        btn.classList.remove('selected');
-      });
-
-      // Clear dropdowns
-      document.querySelectorAll('.filter-dropdown-trigger span').forEach(span => {
-        if (!span.textContent.includes('Select')) {
-          span.textContent = 'Select Brand';
-          span.parentElement.classList.remove('active');
-        }
-      });
-
-      document.querySelectorAll('.filter-dropdown-option.selected').forEach(opt => {
-        opt.classList.remove('selected');
-      });
-
-      // Clear active filters
-      document.getElementById('filterTags').innerHTML = '';
-      document.getElementById('activeFilters').classList.remove('has-filters');
-
-      // Reset price range
-      document.getElementById('minPrice').value = 25;
-      document.getElementById('maxPrice').value = 250;
-    }
-
-    // Apply filters
-    function applyFilters() {
-      console.log('Applying filters...');
-      // In a real app, this would trigger the product filtering
-      // Update result count
-      const count = Math.floor(Math.random() * 100) + 50;
-      document.querySelector('.filter-result-count').textContent = `Showing ${count} of 156 products`;
-    }
-
-    // Mobile filter toggle
-    function toggleMobileFilters() {
-      document.getElementById('filtersPanel').classList.add('open');
-      document.getElementById('filtersOverlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMobileFilters() {
-      document.getElementById('filtersPanel').classList.remove('open');
-      document.getElementById('filtersOverlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Initialize active filters display when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializeFilters);
-    } else {
-      initializeFilters();
-    }
-
-    function initializeFilters() {
-      // Add event listeners for checkboxes
-      document.querySelectorAll('.filter-item input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-          const labelText = this.parentElement.querySelector('.filter-label').childNodes[0].textContent.trim();
-          if (this.checked) {
-            addActiveFilter(labelText, this.name);
-          } else {
-            removeFilterByText(labelText);
-          }
-        });
-      });
-
-      // Add event listeners for radio buttons
-      document.querySelectorAll('.filter-item input[type="radio"]').forEach(radio => {
-        radio.addEventListener('change', function() {
-          if (this.checked) {
-            // Remove other price filters
-            const priceFilters = document.querySelectorAll('.filter-tag[data-type="price"]');
-            priceFilters.forEach(tag => tag.remove());
-
-            const label = this.parentElement.querySelector('.filter-label').textContent.trim();
-            addActiveFilter(label, 'price');
-          }
-        });
-      });
-
-      // Close dropdowns when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.filter-dropdown')) {
-          document.querySelectorAll('.filter-dropdown.open').forEach(dropdown => {
-            dropdown.classList.remove('open');
-          });
-        }
-      });
-    }
   </script>
 </body>
 </html>

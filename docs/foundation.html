@@ -8,109 +8,6 @@
   <link rel="stylesheet" href="/src/css/main.css">
   <link rel="stylesheet" href="/docs/docs.css">
   <style>
-    /* Navigation styles */
-    .site-nav {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      margin-bottom: 2rem;
-    }
-
-    .horizontal.branded {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .horizontal.branded > li {
-      position: relative;
-    }
-
-    .horizontal.branded > li > a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 500;
-      padding: 0.75rem 1.5rem;
-      display: block;
-      transition: background-color 0.2s, color 0.2s;
-      border-bottom: 3px solid transparent;
-    }
-
-    .horizontal.branded > li:hover > a,
-    .horizontal.branded > li.active > a {
-      background-color: #667eea;
-      color: white;
-      border-bottom-color: #4c63d2;
-    }
-
-    .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #667eea !important;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .horizontal.branded > li.active > a.site-logo {
-      color: white !important;
-    }
-
-    /* Dropdown Menus */
-    .horizontal.branded ul {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      border-radius: 0 0 8px 8px;
-      min-width: 280px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.2s ease;
-      z-index: 1001;
-    }
-
-    .horizontal.branded li:hover > ul {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .horizontal.branded ul li {
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .horizontal.branded ul li:last-child {
-      border-bottom: none;
-    }
-
-    .horizontal.branded ul a {
-      display: block;
-      padding: 0.75rem 1.5rem;
-      color: #2c3e50;
-      text-decoration: none;
-      transition: background-color 0.2s;
-      font-size: 0.9rem;
-    }
-
-    .horizontal.branded ul a:hover {
-      background-color: #f8f9fa;
-      color: #667eea;
-    }
-
     /* Documentation specific styles */
     .doc-section {
       margin: 3rem 0;
@@ -139,7 +36,7 @@
     }
 
     .demo-col {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       color: white;
       padding: 1rem;
       margin-bottom: 1rem;
@@ -221,9 +118,7 @@
   <nav class="site-nav" aria-label="Main navigation">
     <div class="container">
       <ul class="horizontal branded">
-        <li><a href="/" class="site-logo">
-          Amphibious
-        </a></li>
+        <li><a href="/" class="site-logo">Amphibious</a></li>
         <li class="active"><a href="/docs/foundation.html">Foundation</a>
           <ul>
             <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -293,7 +188,7 @@
 
     <!-- Core -->
     <section id="core" class="doc-section">
-      <article class="row">
+      <div class="row">
         <div class="col-16">
           <h2>Core</h2>
           <p>Amphibious 2.0 is built on modern CSS foundations with semantic HTML5 structure. The framework uses CSS custom properties for theming, flexbox for layout, and follows BEM methodology for component naming.</p>
@@ -322,30 +217,12 @@
   &lt;link rel="stylesheet" href="/src/css/main.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;header&gt;
-    &lt;nav aria-label="Main navigation"&gt;
-      &lt;!-- Navigation menu --&gt;
-    &lt;/nav&gt;
-  &lt;/header&gt;
-
-  &lt;main class="container"&gt;
-    &lt;section class="row"&gt;
-      &lt;article class="col-12"&gt;
-        &lt;h1&gt;Page Title&lt;/h1&gt;
-        &lt;p&gt;Main content...&lt;/p&gt;
-      &lt;/article&gt;
-      &lt;aside class="col-4"&gt;
-        &lt;h2&gt;Related Information&lt;/h2&gt;
-        &lt;p&gt;Sidebar content...&lt;/p&gt;
-      &lt;/aside&gt;
-    &lt;/section&gt;
-  &lt;/main&gt;
-
-  &lt;footer&gt;
-    &lt;div class="container"&gt;
-      &lt;p&gt;&amp;copy; 2024 Your Site&lt;/p&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-8"&gt;Content&lt;/div&gt;
+      &lt;div class="col-8"&gt;Content&lt;/div&gt;
     &lt;/div&gt;
-  &lt;/footer&gt;
+  &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
           </div>
@@ -353,12 +230,12 @@
           <h3>Container Types</h3>
           <p>The <code>.container</code> class provides a centered, max-width wrapper for content. It's fluid by default and responsive to all screen sizes.</p>
         </div>
-      </article>
+      </div>
     </section>
 
     <!-- Semantic Grid -->
     <section id="grid" class="doc-section">
-      <article class="row">
+      <div class="row">
         <div class="col-16">
           <h2>Semantic Grid</h2>
           <p>A 16-column grid system that provides precise control over layout while maintaining semantic meaning in your HTML.</p>
@@ -411,20 +288,20 @@
           <h3>Simple Layout Example</h3>
           <div class="demo-grid">
             <div class="row">
-              <header class="col-16"><div class="demo-col">Header</div></header>
-              <aside class="col-6"><div class="demo-col">Sidebar</div></aside>
-              <article class="col-10"><div class="demo-col">Main Content</div></article>
-              <footer class="col-16"><div class="demo-col">Footer</div></footer>
+              <div class="col-16"><div class="demo-col">Header</div></div>
+              <div class="col-6"><div class="demo-col">Sidebar</div></div>
+              <div class="col-10"><div class="demo-col">Main Content</div></div>
+              <div class="col-16"><div class="demo-col">Footer</div></div>
             </div>
           </div>
 
           <div class="code-example">
             <pre><code>&lt;div class="container"&gt;
   &lt;div class="row"&gt;
-    &lt;header class="col-16"&gt;Header&lt;/header&gt;
-    &lt;aside class="col-6"&gt;Sidebar&lt;/aside&gt;
-    &lt;article class="col-10"&gt;Main Content&lt;/article&gt;
-    &lt;footer class="col-16"&gt;Footer&lt;/footer&gt;
+    &lt;div class="col-16"&gt;Header&lt;/div&gt;
+    &lt;div class="col-6"&gt;Sidebar&lt;/div&gt;
+    &lt;div class="col-10"&gt;Main Content&lt;/div&gt;
+    &lt;div class="col-16"&gt;Footer&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
@@ -434,41 +311,41 @@
 
           <div class="demo-grid">
             <div class="row">
-              <header class="col-16"><div class="demo-col">Header</div></header>
-              <nav class="col-6"><div class="demo-col">Navigation</div></nav>
-              <main class="col-10">
+              <div class="col-16"><div class="demo-col">Header</div></div>
+              <div class="col-6"><div class="demo-col">Navigation</div></div>
+              <div class="col-10">
                 <div class="demo-col" style="padding: 0;">
                   <div class="row" style="margin: 0;">
-                    <article class="col-12"><div class="demo-col" style="margin: 0.5rem;">Main Content</div></article>
-                    <aside class="col-4"><div class="demo-col" style="margin: 0.5rem;">Sidebar</div></aside>
+                    <div class="col-12"><div class="demo-col" style="margin: 0.5rem;">Main Content</div></div>
+                    <div class="col-4"><div class="demo-col" style="margin: 0.5rem;">Sidebar</div></div>
                   </div>
                 </div>
-              </main>
-              <footer class="col-16"><div class="demo-col">Footer</div></footer>
+              </div>
+              <div class="col-16"><div class="demo-col">Footer</div></div>
             </div>
           </div>
 
           <div class="code-example">
             <pre><code>&lt;div class="container"&gt;
   &lt;div class="row"&gt;
-    &lt;header class="col-16"&gt;Header&lt;/header&gt;
-    &lt;nav class="col-6"&gt;Navigation&lt;/nav&gt;
-    &lt;main class="col-10"&gt;
+    &lt;div class="col-16"&gt;Header&lt;/div&gt;
+    &lt;div class="col-6"&gt;Navigation&lt;/div&gt;
+    &lt;div class="col-10"&gt;
       &lt;div class="row"&gt;
-        &lt;article class="col-12"&gt;Main Content&lt;/article&gt;
-        &lt;aside class="col-4"&gt;Sidebar&lt;/aside&gt;
+        &lt;div class="col-12"&gt;Main Content&lt;/div&gt;
+        &lt;div class="col-4"&gt;Sidebar&lt;/div&gt;
       &lt;/div&gt;
-    &lt;/main&gt;
-    &lt;footer class="col-16"&gt;Footer&lt;/footer&gt;
+    &lt;/div&gt;
+    &lt;div class="col-16"&gt;Footer&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </article>
+      </div>
     </section>
     <!-- Responsive Columns -->
     <section id="responsive_col" class="doc-section">
-      <article class="row">
+      <div class="row">
         <div class="col-16">
           <h2>Responsive Columns</h2>
           <p>Columns adapt automatically to different screen sizes using mobile-first responsive design. <strong>Resize your browser window to see the layout react!</strong></p>
@@ -511,12 +388,12 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </article>
+      </div>
     </section>
 
     <!-- Fluid Columns -->
     <section id="fluid_col" class="doc-section">
-      <article class="row">
+      <div class="row">
         <div class="col-16">
           <h2>Fluid Columns</h2>
           <p>The grid system is fluid by default, scaling proportionally with the container. All columns use percentage-based widths for maximum flexibility.</p>
@@ -538,12 +415,12 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </article>
+      </div>
     </section>
 
     <!-- Golden Ratio Grids -->
     <section id="golden_section" class="doc-section">
-      <article class="row">
+      <div class="row">
         <div class="col-16">
           <h2>Golden Ratio Grids</h2>
           <p>Create visually pleasing layouts using the golden ratio (1.618:1) with special column combinations that approximate this mathematical proportion.</p>
@@ -570,12 +447,12 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </article>
+      </div>
     </section>
 
     <!-- Source Ordering -->
     <section id="push_pull" class="doc-section">
-      <article class="row">
+      <div class="row">
         <div class="col-16">
           <h2>Source Ordering</h2>
           <p>Change the visual order of columns without altering the HTML structure using CSS flexbox order property.</p>
@@ -622,12 +499,12 @@
 &lt;/div&gt;</code></pre>
           </div>
         </div>
-      </article>
+      </div>
     </section>
 
     <!-- Media Queries -->
     <section id="mediaQueries" class="doc-section">
-      <article class="row">
+      <div class="row">
         <div class="col-16">
           <h2>Media Queries</h2>
           <p>Amphibious 2.0 uses a mobile-first approach with carefully chosen breakpoints for optimal responsive behavior.</p>
@@ -675,7 +552,7 @@
             <li><strong>Desktop:</strong> 1025px+</li>
           </ul>
         </div>
-      </article>
+      </div>
     </section>
   </main>
 

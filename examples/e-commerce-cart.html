@@ -45,7 +45,7 @@
     }
 
     .cart-count {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
       padding: 0.25rem 0.75rem;
       border-radius: 20px;
@@ -57,14 +57,14 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      color: #667eea;
+      color: #ED8B00;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
     }
 
     .continue-shopping:hover {
-      color: #5a67d8;
+      color: #c97400;
     }
 
     /* Cart Progress */
@@ -122,7 +122,7 @@
     }
 
     .progress-step.active .progress-step-icon {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
       transform: scale(1.1);
     }
@@ -138,7 +138,7 @@
     }
 
     .progress-step.active .progress-step-label {
-      color: #667eea;
+      color: #ED8B00;
       font-weight: 600;
     }
 
@@ -243,7 +243,7 @@
     }
 
     .cart-item-name:hover {
-      color: #667eea;
+      color: #ED8B00;
     }
 
     .cart-item-variants {
@@ -364,7 +364,7 @@
     .save-for-later {
       background: none;
       border: none;
-      color: #667eea;
+      color: #ED8B00;
       cursor: pointer;
       font-size: 0.875rem;
       display: flex;
@@ -460,7 +460,7 @@
     .checkout-button {
       width: 100%;
       padding: 1rem;
-      background: #667eea;
+      background: #ED8B00;
       color: white;
       border: none;
       border-radius: 4px;
@@ -475,7 +475,7 @@
     }
 
     .checkout-button:hover {
-      background: #5a67d8;
+      background: #c97400;
     }
 
     .paypal-button {
@@ -527,8 +527,8 @@
     .promo-button {
       padding: 0.75rem 1.5rem;
       background: white;
-      color: #667eea;
-      border: 2px solid #667eea;
+      color: #ED8B00;
+      border: 2px solid #ED8B00;
       border-radius: 4px;
       cursor: pointer;
       font-weight: 500;
@@ -536,7 +536,7 @@
     }
 
     .promo-button:hover {
-      background: #667eea;
+      background: #ED8B00;
       color: white;
     }
 
@@ -648,7 +648,7 @@
     .recently-item-price {
       font-size: 1rem;
       font-weight: 600;
-      color: #667eea;
+      color: #ED8B00;
     }
 
     /* Saved Items */
@@ -739,8 +739,60 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/src/css/main.css">
 </head>
 <body>
+  <!-- Site Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <ul class="horizontal branded">
+        <li><a href="/" class="site-logo">Amphibious</a></li>
+        <li><a href="/docs/foundation.html">Foundation</a>
+          <ul>
+            <li><a href="/docs/foundation.html#core">Core</a></li>
+            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
+            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
+            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
+            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
+            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
+            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/form.html">Form</a>
+          <ul>
+            <li><a href="/docs/form.html#typography">Typography</a></li>
+            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
+            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
+            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
+            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
+            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
+            <li><a href="/docs/form.html#tables">Tables</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/function.html">Function</a>
+          <ul>
+            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
+            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
+            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
+            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
+            <li><a href="/docs/function.html#tabs">Tabs</a></li>
+            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/features.html">Features</a>
+          <ul>
+            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
+            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
+            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
+            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
+          </ul>
+        </li>
+        <li><a href="/examples/">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
   <!-- Cart Header -->
   <header class="cart-header">
     <div class="container">
@@ -1118,7 +1170,7 @@
           </button>
 
           <p style="text-align: center; margin-top: 1rem; font-size: 0.875rem; color: #6c757d;">
-            or <a href="#" style="color: #667eea; text-decoration: none;">Pay in 4 interest-free payments</a>
+            or <a href="#" style="color: #ED8B00; text-decoration: none;">Pay in 4 interest-free payments</a>
           </p>
         </section>
 
