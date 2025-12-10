@@ -39,7 +39,7 @@
     .brand-logo {
       width: 40px;
       height: 40px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -74,7 +74,7 @@
     }
     .search-input:focus {
       outline: none;
-      border-color: #667eea;
+      border-color: #ED8B00;
       background: white;
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
@@ -177,11 +177,11 @@
     }
     .nav-section a:hover {
       background: #f8f9fa;
-      color: #667eea;
+      color: #ED8B00;
     }
     .nav-section a.active {
       background: #f0f4ff;
-      color: #667eea;
+      color: #ED8B00;
       font-weight: 500;
     }
     .nav-section a.active::before {
@@ -191,7 +191,7 @@
       top: 0;
       bottom: 0;
       width: 3px;
-      background: #667eea;
+      background: #ED8B00;
       border-radius: 0 3px 3px 0;
     }
     .collapsed .nav-section a {
@@ -397,7 +397,7 @@
     }
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(90deg, #ED8B00 0%, #c97400 100%);
       border-radius: 3px;
       transition: width 0.3s ease;
     }
@@ -416,12 +416,12 @@
       text-decoration: none;
       font-size: 0.875rem;
     }
-    .btn-primary { background: #667eea; color: white; }
-    .btn-primary:hover { background: #5a67d8; }
+    .btn-primary { background: #ED8B00; color: white; }
+    .btn-primary:hover { background: #c97400; }
     .btn-secondary { background: #6c757d; color: white; }
     .btn-secondary:hover { background: #5a6268; }
-    .btn-outline { background: transparent; color: #667eea; border: 1px solid #667eea; }
-    .btn-outline:hover { background: #667eea; color: white; }
+    .btn-outline { background: transparent; color: #ED8B00; border: 1px solid #ED8B00; }
+    .btn-outline:hover { background: #ED8B00; color: white; }
     .btn-ghost { background: transparent; color: #6c757d; border: none; }
     .btn-ghost:hover { background: #f8f9fa; }
     .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.75rem; }
@@ -431,7 +431,7 @@
     .text-center { text-align: center; }
     .text-right { text-align: right; }
     .text-muted { color: #6c757d; }
-    .text-primary { color: #667eea; }
+    .text-primary { color: #ED8B00; }
     .text-success { color: #28a745; }
     .text-warning { color: #ffc107; }
     .text-danger { color: #dc3545; }
@@ -471,8 +471,60 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/src/css/main.css">
 </head>
 <body>
+  <!-- Site Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <ul class="horizontal branded">
+        <li><a href="/" class="site-logo">Amphibious</a></li>
+        <li><a href="/docs/foundation.html">Foundation</a>
+          <ul>
+            <li><a href="/docs/foundation.html#core">Core</a></li>
+            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
+            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
+            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
+            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
+            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
+            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/form.html">Form</a>
+          <ul>
+            <li><a href="/docs/form.html#typography">Typography</a></li>
+            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
+            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
+            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
+            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
+            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
+            <li><a href="/docs/form.html#tables">Tables</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/function.html">Function</a>
+          <ul>
+            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
+            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
+            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
+            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
+            <li><a href="/docs/function.html#tabs">Tabs</a></li>
+            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/features.html">Features</a>
+          <ul>
+            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
+            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
+            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
+            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
+          </ul>
+        </li>
+        <li><a href="/examples/">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
   <!-- Dashboard Header -->
   <header class="dashboard-header">
     <div class="container">
