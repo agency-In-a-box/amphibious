@@ -20,8 +20,6 @@ export interface ModalOptions {
 
 export class Modal {
   private element: HTMLElement;
-  private eventListeners: Array<{ element: Element | Document | Window; type: string; handler: EventListener }> = [];
-
   private backdrop: HTMLElement | null = null;
   private options: ModalOptions;
   private focusableElements: HTMLElement[] = [];
@@ -58,24 +56,6 @@ export class Modal {
   /**
    * Initialize modal
    */
-  /**
-   * Add event listener with cleanup tracking
-   */
-  private addEventListener(element: Element | Document | Window, type: string, handler: EventListener): void {
-    element.addEventListener(type, handler);
-    this.eventListeners.push({ element, type, handler });
-  }
-
-  /**
-   * Remove all tracked event listeners
-   */
-  private removeAllEventListeners(): void {
-    this.eventListeners.forEach(({ element, type, handler }) => {
-      element.removeEventListener(type, handler);
-    });
-    this.eventListeners = [];
-  }
-
   private init(): void {
     // Add modal classes
     this.element.classList.add('modal');
@@ -116,8 +96,7 @@ export class Modal {
     document.body.appendChild(this.backdrop);
 
     if (this.options.closeOnBackdrop && this.options.backdrop !== 'static') {
-      const handler = () => this.close();
-      this.addEventListener(this.backdrop, 'click', handler);
+      this.backdrop.addEventListener('click', () => this.close());
     }
   }
 
@@ -128,55 +107,49 @@ export class Modal {
     // Close button
     const closeButtons = this.element.querySelectorAll('[data-modal-close], .modal__close');
     closeButtons.forEach(button => {
-      const handler = () => this.close();
-      this.addEventListener(button, 'click', handler);
+      button.addEventListener('click', () => this.close());
     });
 
     // Confirm button
     const confirmButtons = this.element.querySelectorAll('[data-modal-confirm]');
     confirmButtons.forEach(button => {
-      const handler = () => {
+      button.addEventListener('click', () => {
         if (this.options.onConfirm) {
           this.options.onConfirm();
         }
         this.close();
-      };
-      this.addEventListener(button, 'click', handler);
+      });
     });
 
     // Cancel button
     const cancelButtons = this.element.querySelectorAll('[data-modal-cancel]');
     cancelButtons.forEach(button => {
-      const handler = () => {
+      button.addEventListener('click', () => {
         if (this.options.onCancel) {
           this.options.onCancel();
         }
         this.close();
-      };
-      this.addEventListener(button, 'click', handler);
+      });
     });
 
     // Keyboard events
     if (this.options.keyboard) {
-      const keyHandler = (e: Event) => this.handleKeydown(e as KeyboardEvent);
-      this.addEventListener(this.element, 'keydown', keyHandler);
+      this.element.addEventListener('keydown', (e) => this.handleKeydown(e));
     }
 
     // Prevent closing when clicking inside modal
     const dialog = this.element.querySelector('.modal__dialog');
     if (dialog) {
-      const stopHandler = (e: Event) => e.stopPropagation();
-      this.addEventListener(dialog, 'click', stopHandler);
+      dialog.addEventListener('click', (e) => e.stopPropagation());
     }
 
     // Click outside to close
     if (this.options.closeOnBackdrop && this.options.backdrop !== 'static') {
-      const clickHandler = (e: Event) => {
+      this.element.addEventListener('click', (e) => {
         if (e.target === this.element) {
           this.close();
         }
-      };
-      this.addEventListener(this.element, 'click', clickHandler);
+      });
     }
   }
 
@@ -392,14 +365,17 @@ export class Modal {
   public destroy(): void {
     this.close();
 
-    // Remove all event listeners
-    this.removeAllEventListeners();
-
     // Remove backdrop
     if (this.backdrop) {
       this.backdrop.remove();
       this.backdrop = null;
     }
+
+    // Remove event listeners
+    const closeButtons = this.element.querySelectorAll('[data-modal-close], .modal__close');
+    closeButtons.forEach(button => {
+      button.replaceWith(button.cloneNode(true));
+    });
 
     // Reset element
     this.element.classList.remove('modal', `modal--${this.options.size}`, `modal--${this.options.variant}`);
