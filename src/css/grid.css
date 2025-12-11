@@ -156,8 +156,8 @@
 
 .col.centered,
 .col-centered {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .col.text-center,
@@ -273,28 +273,28 @@
   }
   
   /* Mobile-specific column classes */
-  .col-mobile-1 { width: 6.25% !important; }
-  .col-mobile-2 { width: 12.5% !important; }
-  .col-mobile-3 { width: 18.75% !important; }
-  .col-mobile-4 { width: 25% !important; }
-  .col-mobile-5 { width: 31.25% !important; }
-  .col-mobile-6 { width: 37.5% !important; }
-  .col-mobile-7 { width: 43.75% !important; }
-  .col-mobile-8 { width: 50% !important; }
-  .col-mobile-9 { width: 56.25% !important; }
-  .col-mobile-10 { width: 62.5% !important; }
-  .col-mobile-11 { width: 68.75% !important; }
-  .col-mobile-12 { width: 75% !important; }
-  .col-mobile-13 { width: 81.25% !important; }
-  .col-mobile-14 { width: 87.5% !important; }
-  .col-mobile-15 { width: 93.75% !important; }
-  .col-mobile-16 { width: 100% !important; }
+  .col-mobile-1 { width: 6.25%; }
+  .col-mobile-2 { width: 12.5%; }
+  .col-mobile-3 { width: 18.75%; }
+  .col-mobile-4 { width: 25%; }
+  .col-mobile-5 { width: 31.25%; }
+  .col-mobile-6 { width: 37.5%; }
+  .col-mobile-7 { width: 43.75%; }
+  .col-mobile-8 { width: 50%; }
+  .col-mobile-9 { width: 56.25%; }
+  .col-mobile-10 { width: 62.5%; }
+  .col-mobile-11 { width: 68.75%; }
+  .col-mobile-12 { width: 75%; }
+  .col-mobile-13 { width: 81.25%; }
+  .col-mobile-14 { width: 87.5%; }
+  .col-mobile-15 { width: 93.75%; }
+  .col-mobile-16 { width: 100%; }
   
   /* Convenience classes */
-  .col-mobile-half { width: 50% !important; }
-  .col-mobile-third { width: 33.333% !important; }
-  .col-mobile-quarter { width: 25% !important; }
-  .col-mobile-full { width: 100% !important; }
+  .col-mobile-half { width: 50%; }
+  .col-mobile-third { width: 33.333%; }
+  .col-mobile-quarter { width: 25%; }
+  .col-mobile-full { width: 100%; }
   
   /* Keep columns side-by-side on mobile */
   .row.mobile-keep-cols > [class*="col"] {

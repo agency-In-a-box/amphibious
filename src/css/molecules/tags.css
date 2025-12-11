@@ -165,8 +165,8 @@
    ========================================================================== */
 
 .tag-solid {
-  color: white !important;
-  border-color: transparent !important;
+  color: white;
+  border-color: transparent;
 }
 
 .tag-solid.tag-primary {
@@ -187,7 +187,7 @@
 
 .tag-solid.tag-warning {
   background-color: #d97706;
-  color: white !important;
+  color: white;
 }
 
 .tag-solid.tag-info {

@@ -37,8 +37,8 @@ http://peter.freilicht.net/float-label-implementation/
   /*   -webkit-animation: float-labels 300ms none ease-out; */
 
   /* There is a bug sometimes pausing the animation. This avoids that.*/
-  animation-play-state: running !important;
-  -webkit-animation-play-state: running !important;
+  animation-play-state: running;
+  -webkit-animation-play-state: running;
 }
 
 /* Label highlight effect also for non-JS browsers */

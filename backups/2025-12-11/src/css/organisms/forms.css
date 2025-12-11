@@ -1,0 +1,547 @@
+/* ==========================================================================
+   Forms Component - Amphibious 2.0
+   Complete form styling system with validation states
+   Based on original A.mphibio.us with modern enhancements
+   ========================================================================== */
+
+/* Form Variables (extend in variables.css if needed)
+   ========================================================================== */
+
+:root {
+  --form-font-size: 1rem;
+  --form-line-height: 1.5;
+  --form-padding-y: 0.375rem;
+  --form-padding-x: 0.75rem;
+  --form-border-radius: 0.25rem;
+  --form-border-width: 1px;
+  --form-border-color: #ced4da;
+  --form-bg: #fff;
+  --form-focus-bg: #fff;
+  --form-focus-border-color: #80bdff;
+  --form-focus-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  --form-disabled-bg: #e9ecef;
+  --form-placeholder-color: #6c757d;
+  --form-text-color: #495057;
+  --form-label-margin-bottom: 0.5rem;
+  --form-group-margin-bottom: 1rem;
+  --form-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Base Form Styles
+   ========================================================================== */
+
+form {
+  margin-bottom: 1rem;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+  color: inherit;
+  white-space: normal;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: var(--form-label-margin-bottom);
+  font-weight: 500;
+}
+
+/* Form Controls
+   ========================================================================== */
+
+.form-control,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="color"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: var(--form-padding-y) var(--form-padding-x);
+  font-family: inherit;
+  font-size: var(--form-font-size);
+  font-weight: 400;
+  line-height: var(--form-line-height);
+  color: var(--form-text-color);
+  background-color: var(--form-bg);
+  background-clip: padding-box;
+  border: var(--form-border-width) solid var(--form-border-color);
+  border-radius: var(--form-border-radius);
+  transition: var(--form-transition);
+  appearance: none;
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  color: var(--form-text-color);
+  background-color: var(--form-focus-bg);
+  border-color: var(--form-focus-border-color);
+  outline: 0;
+  box-shadow: var(--form-focus-shadow);
+}
+
+.form-control::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--form-placeholder-color);
+  opacity: 1;
+}
+
+.form-control:disabled,
+.form-control[readonly],
+input:disabled,
+input[readonly],
+select:disabled,
+select[readonly],
+textarea:disabled,
+textarea[readonly] {
+  background-color: var(--form-disabled-bg);
+  opacity: 1;
+}
+
+/* Select
+   ========================================================================== */
+
+select:not([multiple]):not([size]) {
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right var(--form-padding-x) center;
+  background-size: 16px 12px;
+}
+
+/* Textarea
+   ========================================================================== */
+
+textarea {
+  min-height: calc(var(--form-line-height) * 1em + var(--form-padding-y) * 2 + 2px);
+  resize: vertical;
+}
+
+/* Checkboxes and Radios
+   ========================================================================== */
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.125em;
+  vertical-align: top;
+  background-color: var(--form-bg);
+  border: var(--form-border-width) solid var(--form-border-color);
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  border-radius: 0.25em;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--color-primary, #0d6efd);
+  border-color: var(--color-primary, #0d6efd);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+input[type="radio"]:checked {
+  background-color: var(--color-primary, #0d6efd);
+  border-color: var(--color-primary, #0d6efd);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3ccircle fill='%23fff' cx='10' cy='10' r='5'/%3e%3c/svg%3e");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  border-color: var(--form-focus-border-color);
+  box-shadow: var(--form-focus-shadow);
+}
+
+/* Form Check (wrapper for checkboxes/radios)
+   ========================================================================== */
+
+.form-check {
+  display: block;
+  min-height: var(--form-line-height);
+  padding-left: 1.75em;
+  margin-bottom: 0.125rem;
+}
+
+.form-check-input {
+  float: left;
+  margin-left: -1.75em;
+}
+
+.form-check-label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.form-check-inline {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0;
+  margin-right: 1rem;
+}
+
+.form-check-inline .form-check-input {
+  position: static;
+  margin-top: 0;
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* Form Groups
+   ========================================================================== */
+
+.form-group {
+  margin-bottom: var(--form-group-margin-bottom);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+.form-row > .col,
+.form-row > [class*="col-"] {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+/* Form Grid
+   ========================================================================== */
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.form-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .form-grid-2,
+  .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form Sizes
+   ========================================================================== */
+
+.form-control-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.2rem;
+}
+
+.form-control-lg {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+}
+
+/* Form Validation States
+   ========================================================================== */
+
+/* Valid */
+.is-valid,
+.was-validated .form-control:valid,
+.was-validated input:valid,
+.was-validated select:valid,
+.was-validated textarea:valid {
+  border-color: var(--color-success, #198754);
+}
+
+.is-valid:focus,
+.was-validated .form-control:valid:focus {
+  border-color: var(--color-success, #198754);
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.valid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--color-success, #198754);
+}
+
+.is-valid ~ .valid-feedback,
+.was-validated :valid ~ .valid-feedback {
+  display: block;
+}
+
+/* Invalid */
+.is-invalid,
+.was-validated .form-control:invalid,
+.was-validated input:invalid,
+.was-validated select:invalid,
+.was-validated textarea:invalid {
+  border-color: var(--color-danger, #dc3545);
+}
+
+.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
+  border-color: var(--color-danger, #dc3545);
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--color-danger, #dc3545);
+}
+
+.is-invalid ~ .invalid-feedback,
+.was-validated :invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* Form Help Text
+   ========================================================================== */
+
+.form-text,
+.help-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--form-placeholder-color);
+}
+
+/* Inline Forms
+   ========================================================================== */
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline .form-control,
+.form-inline input,
+.form-inline select {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+.form-inline .form-group {
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 0;
+  margin-right: 1rem;
+}
+
+.form-inline label {
+  margin-bottom: 0;
+  margin-right: 0.5rem;
+}
+
+/* Floating Labels
+   ========================================================================== */
+
+.form-floating {
+  position: relative;
+}
+
+.form-floating > .form-control,
+.form-floating > select {
+  height: calc(3.5rem + 2px);
+  padding: 1rem 0.75rem;
+}
+
+.form-floating > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transform-origin: 0 0;
+  transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.form-floating > .form-control::placeholder {
+  color: transparent;
+}
+
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > select ~ label {
+  opacity: 0.65;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+/* Range Input
+   ========================================================================== */
+
+input[type="range"] {
+  width: 100%;
+  height: 1.4rem;
+  padding: 0;
+  background-color: transparent;
+  appearance: none;
+}
+
+input[type="range"]:focus {
+  outline: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-primary, #0d6efd);
+  border: 0;
+  border-radius: 1rem;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 0.5rem;
+  color: transparent;
+  cursor: pointer;
+  background-color: #dee2e6;
+  border-color: transparent;
+  border-radius: 1rem;
+}
+
+/* File Input
+   ========================================================================== */
+
+input[type="file"] {
+  overflow: hidden;
+}
+
+input[type="file"]::file-selector-button {
+  padding: var(--form-padding-y) var(--form-padding-x);
+  margin: calc(var(--form-padding-y) * -1) calc(var(--form-padding-x) * -1);
+  margin-inline-end: var(--form-padding-x);
+  color: var(--form-text-color);
+  background-color: #e9ecef;
+  pointer-events: none;
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+  border-inline-end-width: var(--form-border-width);
+  border-radius: 0;
+  transition: var(--form-transition);
+}
+
+input[type="file"]:hover:not(:disabled):not([readonly])::file-selector-button {
+  background-color: #dae0e5;
+}
+
+/* Search Form
+   ========================================================================== */
+
+.search-form {
+  position: relative;
+}
+
+.search-form input[type="search"] {
+  padding-right: 2.5rem;
+}
+
+.search-form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 0;
+  background: transparent;
+  padding: 0 0.75rem;
+  color: var(--form-placeholder-color);
+}
+
+/* Accessibility
+   ========================================================================== */
+
+.form-control:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary, #0d6efd);
+  outline-offset: 2px;
+}
+
+/* Print Styles
+   ========================================================================== */
+
+@media print {
+  .form-control,
+  input,
+  select,
+  textarea {
+    border: 1px solid #000 !important;
+    background: transparent !important;
+  }
+}
+
+/* Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-control,
+  input,
+  select,
+  textarea,
+  .form-floating > label {
+    transition: none;
+  }
+}

@@ -218,8 +218,8 @@ form.search fieldset input[type="submit"]
 #search_form button.search_submit,
 #search_form button.search_cancel
 {
-	background: transparent !important;
-	border: transparent !important;
+	background: transparent;
+	border: transparent;
 	font-size: 1.2em;
 	padding: .025em;
 	color: #404041;
@@ -231,7 +231,7 @@ form.search fieldset input[type="submit"]
 #search_form button.search_cancel:hover
 {
 	color: #d2202f;
-	border: transparent !important;
+	border: transparent;
 }
 
 #search_form button.search_cancel

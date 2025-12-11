@@ -1,0 +1,95 @@
+{
+  "summary": {
+    "total": 48,
+    "byCategory": {
+      "utility": 3,
+      "print": 38,
+      "grid": 7
+    },
+    "byJustification": {
+      "removable": 9,
+      "needed": 39
+    },
+    "topFiles": [
+      [
+        "src/css/print.css",
+        38
+      ],
+      [
+        "src/css/grid-responsive.css",
+        7
+      ],
+      [
+        "src/css/helpers.css",
+        3
+      ]
+    ]
+  },
+  "removable": [
+    {
+      "file": "src/css/helpers.css",
+      "line": 13,
+      "selector": ".assistive-text",
+      "property": "display",
+      "value": "none"
+    },
+    {
+      "file": "src/css/helpers.css",
+      "line": 758,
+      "selector": ".print-only",
+      "property": "display",
+      "value": "block"
+    },
+    {
+      "file": "src/css/grid-responsive.css",
+      "line": 167,
+      "selector": ".hide-on-mobile",
+      "property": "display",
+      "value": "none"
+    },
+    {
+      "file": "src/css/grid-responsive.css",
+      "line": 171,
+      "selector": ".show-on-mobile",
+      "property": "display",
+      "value": "block"
+    },
+    {
+      "file": "src/css/grid-responsive.css",
+      "line": 177,
+      "selector": ".hide-on-tablet",
+      "property": "display",
+      "value": "none"
+    },
+    {
+      "file": "src/css/grid-responsive.css",
+      "line": 181,
+      "selector": ".show-on-tablet",
+      "property": "display",
+      "value": "block"
+    },
+    {
+      "file": "src/css/grid-responsive.css",
+      "line": 187,
+      "selector": ".hide-on-desktop",
+      "property": "display",
+      "value": "none"
+    },
+    {
+      "file": "src/css/grid-responsive.css",
+      "line": 191,
+      "selector": ".show-on-desktop",
+      "property": "display",
+      "value": "block"
+    },
+    {
+      "file": "src/css/grid-responsive.css",
+      "line": 239,
+      "selector": ".hide-on-print",
+      "property": "display",
+      "value": "none"
+    }
+  ],
+  "questionable": [],
+  "needed": 39
+}

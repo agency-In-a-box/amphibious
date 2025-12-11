@@ -15,7 +15,7 @@
 }
 
 .sitemap li ul li {
-  width: 100% !important;
+  width: 100%;
 }
 
 .container .sitemap.col.one,
@@ -277,7 +277,7 @@
   .sitemap.col.eight li,
   .sitemap.col.nine li,
   .sitemap.col.ten li {
-    width: 98% !important;
+    width: 98%;
     margin-left: 2%;
   }
   .sitemap.col i li {

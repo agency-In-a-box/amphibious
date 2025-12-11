@@ -13,11 +13,11 @@
   }
 
   .container .col.first {
-    margin-left: 0 !important;
+    margin-left: 0;
   }
 
   .container .col.last {
-    margin-right: 0 !important;
+    margin-right: 0;
   }
 
   .container .one.col,
@@ -59,6 +59,6 @@
   }
 
   .fixed {
-    position: relative !important;
+    position: relative;
   }
 }

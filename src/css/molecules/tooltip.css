@@ -418,7 +418,7 @@
 /* Print Styles */
 @media print {
   .tooltip {
-    display: none !important;
+    display: none;
   }
 }
 

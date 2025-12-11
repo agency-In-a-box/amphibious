@@ -471,16 +471,16 @@
 /* Print Styles */
 @media print {
   .icon {
-    stroke: #000 !important;
+    stroke: #000;
   }
 
   .icon-button {
-    background: none !important;
+    background: none;
   }
 
   .icon-badge__count {
-    background: #000 !important;
-    color: white !important;
+    background: #000;
+    color: white;
   }
 }
 
