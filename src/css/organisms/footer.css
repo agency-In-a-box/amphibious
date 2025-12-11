@@ -479,7 +479,7 @@
   .amp-footer__newsletter-row,
   .amp-footer__social,
   .amp-footer__back-to-top {
-    display: none !important;
+    display: none;
   }
 
   .amp-footer {

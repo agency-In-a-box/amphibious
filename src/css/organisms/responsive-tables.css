@@ -190,20 +190,20 @@
 /* Print Styles */
 @media print {
   .rwd-table {
-    background: transparent !important;
-    color: black !important;
+    background: transparent;
+    color: black;
     border: 1px solid #000;
   }
 
   .rwd-table th,
   .rwd-table td {
-    display: table-cell !important;
-    padding: 0.25em !important;
+    display: table-cell;
+    padding: 0.25em;
     border: 1px solid #ccc;
   }
 
   .rwd-table td::before {
-    display: none !important;
+    display: none;
   }
 }
 

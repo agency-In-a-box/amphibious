@@ -536,7 +536,7 @@ button:focus-visible {
 @media print {
   .btn,
   button {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -551,7 +551,7 @@ button:focus-visible {
 
   .btn-group-responsive > .btn {
     width: 100%;
-    margin-left: 0 !important;
+    margin-left: 0;
     margin-top: -1px;
     border-radius: 0;
   }

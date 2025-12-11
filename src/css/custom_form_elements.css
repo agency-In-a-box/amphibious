@@ -18,7 +18,7 @@
 }
 
 .styled_select select {
-  width: 100% !important;
+  width: 100%;
   color: #39b3cb;
   /* 	padding-right: 1.625em; */
 }

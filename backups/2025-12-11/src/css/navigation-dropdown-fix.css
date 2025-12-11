@@ -1,0 +1,77 @@
+/* Navigation Dropdown Enhancement Fix */
+/* Fixes hover interaction issues with navigation dropdowns */
+
+/* Ensure dropdowns use pointer-events properly */
+.horizontal.branded ul {
+  pointer-events: none !important;
+}
+
+.horizontal.branded > li:hover > ul,
+.horizontal.branded > li:focus-within > ul,
+.horizontal.branded > li.dropdown-open > ul {
+  pointer-events: auto !important;
+}
+
+/* Show dropdown when open class is added via JavaScript */
+.horizontal.branded > li.dropdown-open > ul {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Add a bridge between menu item and dropdown to prevent gap issues */
+.horizontal.branded > li::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* Ensure dropdown stays visible when hovering over it */
+.horizontal.branded > li {
+  position: relative;
+}
+
+/* Add a delay to dropdown hiding for better UX */
+.horizontal.branded ul {
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease !important;
+}
+
+/* Make sure dropdowns are above other content */
+.horizontal.branded ul {
+  z-index: 1001 !important;
+}
+
+/* Improve touch device support */
+@media (hover: none) and (pointer: coarse) {
+  .horizontal.branded > li > a {
+    padding: 1rem 1.5rem;
+  }
+
+  /* On touch devices, require tap to open dropdown */
+  .horizontal.branded > li:focus-within > ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Ensure site-nav has proper z-index stacking */
+.site-nav {
+  z-index: 1000 !important;
+  position: sticky;
+  top: 0;
+}
+
+/* Optional: Add visual indicator for dropdown items */
+.horizontal.branded > li:has(ul) > a::after {
+  content: ' ▾';
+  font-size: 0.8em;
+  opacity: 0.6;
+  margin-left: 0.25rem;
+}

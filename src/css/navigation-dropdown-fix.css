@@ -3,20 +3,20 @@
 
 /* Ensure dropdowns use pointer-events properly */
 .horizontal.branded ul {
-  pointer-events: none !important;
+  pointer-events: none;
 }
 
 .horizontal.branded > li:hover > ul,
 .horizontal.branded > li:focus-within > ul,
 .horizontal.branded > li.dropdown-open > ul {
-  pointer-events: auto !important;
+  pointer-events: auto;
 }
 
 /* Show dropdown when open class is added via JavaScript */
 .horizontal.branded > li.dropdown-open > ul {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 /* Add a bridge between menu item and dropdown to prevent gap issues */
@@ -38,12 +38,12 @@
 
 /* Add a delay to dropdown hiding for better UX */
 .horizontal.branded ul {
-  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease !important;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
 }
 
 /* Make sure dropdowns are above other content */
 .horizontal.branded ul {
-  z-index: 1001 !important;
+  z-index: 1001;
 }
 
 /* Improve touch device support */
@@ -63,7 +63,7 @@
 
 /* Ensure site-nav has proper z-index stacking */
 .site-nav {
-  z-index: 1000 !important;
+  z-index: 1000;
   position: sticky;
   top: 0;
 }

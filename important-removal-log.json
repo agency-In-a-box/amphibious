@@ -1,0 +1,119 @@
+{
+  "timestamp": "2025-12-11T01:07:02.839Z",
+  "totalRemoved": 234,
+  "filesSummary": [
+    {
+      "file": "src/css/helpers.css",
+      "removals": 107
+    },
+    {
+      "file": "src/css/grid-responsive.css",
+      "removals": 48
+    },
+    {
+      "file": "src/css/grid.css",
+      "removals": 22
+    },
+    {
+      "file": "src/css/navigation-dropdown-fix.css",
+      "removals": 8
+    },
+    {
+      "file": "src/css/organisms/responsive-tables.css",
+      "removals": 5
+    },
+    {
+      "file": "src/css/tablet_sixteen.css",
+      "removals": 4
+    },
+    {
+      "file": "src/css/atoms/icons.css",
+      "removals": 4
+    },
+    {
+      "file": "src/css/mobile_l_sixteen.css",
+      "removals": 3
+    },
+    {
+      "file": "src/css/mobile_p_sixteen.css",
+      "removals": 3
+    },
+    {
+      "file": "src/css/grid_sixteen.css",
+      "removals": 3
+    },
+    {
+      "file": "src/css/forms.css",
+      "removals": 3
+    },
+    {
+      "file": "src/css/molecules/tags.css",
+      "removals": 3
+    },
+    {
+      "file": "src/css/always_fluid.css",
+      "removals": 2
+    },
+    {
+      "file": "src/css/append_prepend.css",
+      "removals": 2
+    },
+    {
+      "file": "src/css/float_labels.css",
+      "removals": 2
+    },
+    {
+      "file": "src/css/sitemap.css",
+      "removals": 2
+    },
+    {
+      "file": "src/css/atoms/buttons.css",
+      "removals": 2
+    },
+    {
+      "file": "src/css/organisms/forms.css",
+      "removals": 2
+    },
+    {
+      "file": "src/css/custom_form_elements.css",
+      "removals": 1
+    },
+    {
+      "file": "src/css/navigation.css",
+      "removals": 1
+    },
+    {
+      "file": "src/css/molecules/tooltip.css",
+      "removals": 1
+    },
+    {
+      "file": "src/css/organisms/breadcrumbs.css",
+      "removals": 1
+    },
+    {
+      "file": "src/css/organisms/tabs.css",
+      "removals": 1
+    },
+    {
+      "file": "src/css/organisms/sidebar.css",
+      "removals": 1
+    },
+    {
+      "file": "src/css/organisms/modal.css",
+      "removals": 1
+    },
+    {
+      "file": "src/css/organisms/navigation.css",
+      "removals": 1
+    },
+    {
+      "file": "src/css/organisms/footer.css",
+      "removals": 1
+    }
+  ],
+  "preservedPatterns": [
+    "/@media\\s+print/",
+    "/\\.(hide|hidden|show|visible|print-only|assistive-text)/",
+    "/\\.(absolute|fixed).*float.*none/"
+  ]
+}

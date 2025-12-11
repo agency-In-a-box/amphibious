@@ -599,7 +599,7 @@ ul.nav {
   .horizontal > li > ul,
   .vertical > li > ul,
   .filter-nav {
-    display: none !important;
+    display: none;
   }
 
   .horizontal > li,

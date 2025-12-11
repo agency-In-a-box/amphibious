@@ -73,7 +73,7 @@ ul.nav {
 .horizontal > li > ul > li,
 .horizontal > li > ul > li > ul,
 .horizontal > li > ul > li > ul > li {
-  margin: 0 !important;
+  margin: 0;
   font-size: 1em;
   list-style: none;
 }

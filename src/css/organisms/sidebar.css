@@ -523,7 +523,7 @@
   }
 
   .sidebar-layout__content {
-    margin-left: 0 !important;
+    margin-left: 0;
   }
 }
 

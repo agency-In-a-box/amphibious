@@ -18,12 +18,12 @@
   }
 
   .col.first {
-    margin-left: 0 !important;
+    margin-left: 0;
     margin-right: 10px;
   }
 
   .col.last {
-    margin-right: 0 !important;
+    margin-right: 0;
     margin-left: 10px;
   }
 
@@ -55,8 +55,8 @@
   .container .one-quarter.col.padded,
   .container .half.col.padded,
   .container .three-quarters.col.padded {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-left: 0;
+    margin-right: 0;
     margin-bottom: 0;
   }
 

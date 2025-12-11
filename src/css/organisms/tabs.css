@@ -427,7 +427,7 @@
   }
 
   .tabs__panel {
-    display: block !important;
+    display: block;
     padding: 0;
     background: transparent;
     border: none;
