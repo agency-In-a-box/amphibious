@@ -5,8 +5,6 @@
 
 export class Forms {
   private forms: NodeListOf<HTMLFormElement>;
-  private eventListeners: Array<{ element: Element; type: string; handler: EventListener }> = [];
-
   private validationRules: Map<string, (value: string) => boolean>;
 
   constructor() {
@@ -14,30 +12,6 @@ export class Forms {
     this.validationRules = new Map();
     this.setupDefaultRules();
   }
-
-  /**
-   * Add event listener with cleanup tracking
-   */
-  private addEventListener(element: Element, type: string, handler: EventListener): void {
-    element.addEventListener(type, handler);
-    this.eventListeners.push({ element, type, handler });
-  }
-
-  /**
-   * Clean up all event listeners
-   */
-  public destroy(): void {
-    // Remove all tracked event listeners
-    this.eventListeners.forEach(({ element, type, handler }) => {
-      element.removeEventListener(type, handler);
-    });
-    this.eventListeners = [];
-
-    // Clean up any created elements
-    document.querySelectorAll('.char-counter').forEach(el => el.remove());
-    document.querySelectorAll('.password-toggle').forEach(el => el.remove());
-  }
-
 
   /**
    * Initialize forms functionality
@@ -113,13 +87,12 @@ export class Forms {
     });
 
     // Form submission
-    const submitHandler = (e: Event) => {
+    form.addEventListener('submit', (e) => {
       if (!this.validateForm(form)) {
         e.preventDefault();
         this.focusFirstError(form);
       }
-    };
-    this.addEventListener(form, 'submit', submitHandler);
+    });
   }
 
   /**
@@ -127,32 +100,29 @@ export class Forms {
    */
   private setupField(field: HTMLInputElement): void {
     // Real-time validation on blur
-    const blurHandler = () => {
+    field.addEventListener('blur', () => {
       this.validateField(field);
-    };
-    this.addEventListener(field, 'blur', blurHandler);
+    });
 
     // Clear error on input
-    const inputHandler = () => {
+    field.addEventListener('input', () => {
       if (field.classList.contains('is-invalid')) {
         this.clearFieldError(field);
       }
 
       // Update character counter if present
       this.updateCharCounter(field);
-    };
-    this.addEventListener(field, 'input', inputHandler);
+    });
 
     // Custom validation rules
     const customRule = field.dataset.validate;
     if (customRule && this.validationRules.has(customRule)) {
-      const customBlurHandler = () => {
+      field.addEventListener('blur', () => {
         const rule = this.validationRules.get(customRule);
         if (rule && !rule(field.value)) {
           this.showFieldError(field, field.dataset.validateMessage || 'Invalid input');
         }
-      };
-      this.addEventListener(field, 'blur', customBlurHandler);
+      });
     }
   }
 
@@ -365,14 +335,13 @@ export class Forms {
       }
 
       // Update on input
-      const floatHandler = () => {
+      field.addEventListener('input', () => {
         if (field.value) {
           field.classList.add('filled');
         } else {
           field.classList.remove('filled');
         }
-      };
-      this.addEventListener(field, 'input', floatHandler);
+      });
     });
   }
 
@@ -395,10 +364,9 @@ export class Forms {
       input.parentElement?.appendChild(counter);
 
       // Update counter
-      const counterHandler = () => {
+      input.addEventListener('input', () => {
         this.updateCharCounter(input);
-      };
-      this.addEventListener(input, 'input', counterHandler);
+      });
 
       // Initial update
       this.updateCharCounter(input);
@@ -452,7 +420,7 @@ export class Forms {
       wrapper?.appendChild(toggle);
 
       // Toggle functionality
-      const toggleHandler = () => {
+      toggle.addEventListener('click', () => {
         const type = input.type === 'password' ? 'text' : 'password';
         input.type = type;
         toggle.classList.toggle('is-visible');
@@ -460,8 +428,7 @@ export class Forms {
           type === 'password'
             ? '<span class="password-toggle__icon">👁</span>'
             : '<span class="password-toggle__icon">👁‍🗨</span>';
-      };
-      this.addEventListener(toggle, 'click', toggleHandler);
+      });
     });
   }
 

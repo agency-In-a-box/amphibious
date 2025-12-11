@@ -5,10 +5,6 @@
 
 export class Navigation {
   private navElement: HTMLElement | null;
-  private eventListeners: Array<{ element: Element | Document | Window; type: string; handler: EventListener }> = [];
-  private resizeTimer: ReturnType<typeof setTimeout> | null = null;
-  private tabKeyHandler: ((e: KeyboardEvent) => void) | null = null;
-
   private toggleButton: HTMLElement | null;
   private mobileBreakpoint = 768;
   private isOpen = false;
@@ -17,41 +13,6 @@ export class Navigation {
     this.navElement = document.querySelector('.nav, .navigation, nav');
     this.toggleButton = document.querySelector('#nav_toggle, .nav__toggle, .nav-toggle');
   }
-
-  /**
-   * Add event listener with cleanup tracking
-   */
-  private addEventListener(element: Element | Document | Window, type: string, handler: EventListener): void {
-    element.addEventListener(type, handler);
-    this.eventListeners.push({ element, type, handler });
-  }
-
-  /**
-   * Clean up all event listeners
-   */
-  public destroy(): void {
-    // Clear resize timer
-    if (this.resizeTimer) {
-      clearTimeout(this.resizeTimer);
-    }
-
-    // Remove tab key handler if it exists
-    if (this.tabKeyHandler) {
-      document.removeEventListener('keydown', this.tabKeyHandler);
-    }
-
-    // Remove all tracked event listeners
-    this.eventListeners.forEach(({ element, type, handler }) => {
-      element.removeEventListener(type, handler);
-    });
-    this.eventListeners = [];
-
-    // Close menu if open
-    if (this.isOpen) {
-      this.closeMenu();
-    }
-  }
-
 
   /**
    * Initialize navigation functionality
@@ -69,14 +30,13 @@ export class Navigation {
   private setupMobileToggle(): void {
     if (!this.toggleButton) return;
 
-    const toggleHandler = (e: Event) => {
+    this.toggleButton.addEventListener('click', (e) => {
       e.preventDefault();
       this.toggleMenu();
-    };
-    this.addEventListener(this.toggleButton, 'click', toggleHandler);
+    });
 
     // Close menu when clicking outside
-    const clickOutsideHandler = (e: Event) => {
+    document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
       if (
         this.isOpen &&
@@ -85,17 +45,15 @@ export class Navigation {
       ) {
         this.closeMenu();
       }
-    };
-    this.addEventListener(document, 'click', clickOutsideHandler);
+    });
 
     // Close menu on Escape key
-    const escapeHandler = (e: Event) => {
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isOpen) {
         this.closeMenu();
         this.toggleButton?.focus();
       }
-    };
-    this.addEventListener(document, 'keydown', escapeHandler);
+    });
   }
 
   /**
@@ -212,16 +170,17 @@ export class Navigation {
    * Handle window resize
    */
   private handleResize(): void {
-    const resizeHandler = () => {
-      if (this.resizeTimer) clearTimeout(this.resizeTimer);
-      this.resizeTimer = setTimeout(() => {
+    let resizeTimer: ReturnType<typeof setTimeout>;
+
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
         const isMobile = window.innerWidth < this.mobileBreakpoint;
         if (!isMobile && this.isOpen) {
           this.closeMenu();
         }
       }, 250);
-    };
-    this.addEventListener(window, 'resize', resizeHandler);
+    });
   }
 
   /**
@@ -255,8 +214,7 @@ export class Navigation {
       }
     };
 
-    this.tabKeyHandler = handleTabKey;
-    document.addEventListener('keydown', this.tabKeyHandler);
+    document.addEventListener('keydown', handleTabKey);
   }
 }
 
