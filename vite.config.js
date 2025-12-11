@@ -29,7 +29,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    emptyOutDir: false, // Changed to false to preserve manually copied files
+    emptyOutDir: true, // Clean dist on each build to prevent stale artifacts
     sourcemap: true,
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
