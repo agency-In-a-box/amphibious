@@ -1,0 +1,281 @@
+/* ==========================================================================
+   Modern Grid System - Amphibious 2.0
+   16-column responsive grid using CSS Grid and Flexbox
+   No jQuery dependencies, uses modern CSS pseudo-classes
+   ========================================================================== */
+
+/* Grid Variables
+   ========================================================================== */
+
+:root {
+  --grid-columns: 16;
+  --grid-gap: 20px;
+  --container-max-width: 960px;
+  --container-padding: 20px;
+}
+
+/* Container
+   ========================================================================== */
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  width: 96%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 2%;
+}
+
+/* Modern CSS Grid Implementation
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gap);
+  margin-bottom: var(--grid-gap);
+}
+
+/* Column spans for CSS Grid */
+.span-1 { grid-column: span 1; }
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+.span-5 { grid-column: span 5; }
+.span-6 { grid-column: span 6; }
+.span-7 { grid-column: span 7; }
+.span-8 { grid-column: span 8; }
+.span-9 { grid-column: span 9; }
+.span-10 { grid-column: span 10; }
+.span-11 { grid-column: span 11; }
+.span-12 { grid-column: span 12; }
+.span-13 { grid-column: span 13; }
+.span-14 { grid-column: span 14; }
+.span-15 { grid-column: span 15; }
+.span-16 { grid-column: span 16; }
+
+/* Flexbox Row Implementation (Backward Compatible)
+   ========================================================================== */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--grid-gap) / -2);
+  margin-right: calc(var(--grid-gap) / -2);
+  margin-bottom: var(--grid-gap);
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Column system for flexbox rows */
+[class*="col-"] {
+  box-sizing: border-box;
+  padding-left: calc(var(--grid-gap) / 2);
+  padding-right: calc(var(--grid-gap) / 2);
+  float: left;
+}
+
+/* 16-column widths */
+.col-1 { width: 6.25%; }
+.col-2 { width: 12.5%; }
+.col-3 { width: 18.75%; }
+.col-4 { width: 25%; }
+.col-5 { width: 31.25%; }
+.col-6 { width: 37.5%; }
+.col-7 { width: 43.75%; }
+.col-8 { width: 50%; }
+.col-9 { width: 56.25%; }
+.col-10 { width: 62.5%; }
+.col-11 { width: 68.75%; }
+.col-12 { width: 75%; }
+.col-13 { width: 81.25%; }
+.col-14 { width: 87.5%; }
+.col-15 { width: 93.75%; }
+.col-16 { width: 100%; }
+
+/* Modern pseudo-class selectors (no jQuery needed)
+   ========================================================================== */
+
+/* Remove left padding from first column in each row */
+.row > [class*="col-"]:first-child {
+  padding-left: 0;
+}
+
+/* Remove right padding from last column in each row */
+.row > [class*="col-"]:last-child {
+  padding-right: 0;
+}
+
+/* For grid items, no padding adjustments needed due to gap */
+.grid > * {
+  min-width: 0; /* Prevent overflow */
+}
+
+/* Offset classes
+   ========================================================================== */
+
+.offset-1 { margin-left: 6.25%; }
+.offset-2 { margin-left: 12.5%; }
+.offset-3 { margin-left: 18.75%; }
+.offset-4 { margin-left: 25%; }
+.offset-5 { margin-left: 31.25%; }
+.offset-6 { margin-left: 37.5%; }
+.offset-7 { margin-left: 43.75%; }
+.offset-8 { margin-left: 50%; }
+.offset-9 { margin-left: 56.25%; }
+.offset-10 { margin-left: 62.5%; }
+.offset-11 { margin-left: 68.75%; }
+.offset-12 { margin-left: 75%; }
+.offset-13 { margin-left: 81.25%; }
+.offset-14 { margin-left: 87.5%; }
+.offset-15 { margin-left: 93.75%; }
+
+/* Push/Pull for source ordering
+   ========================================================================== */
+
+.push-1 { left: 6.25%; position: relative; }
+.push-2 { left: 12.5%; position: relative; }
+.push-3 { left: 18.75%; position: relative; }
+.push-4 { left: 25%; position: relative; }
+.push-5 { left: 31.25%; position: relative; }
+.push-6 { left: 37.5%; position: relative; }
+.push-7 { left: 43.75%; position: relative; }
+.push-8 { left: 50%; position: relative; }
+
+.pull-1 { right: 6.25%; position: relative; }
+.pull-2 { right: 12.5%; position: relative; }
+.pull-3 { right: 18.75%; position: relative; }
+.pull-4 { right: 25%; position: relative; }
+.pull-5 { right: 31.25%; position: relative; }
+.pull-6 { right: 37.5%; position: relative; }
+.pull-7 { right: 43.75%; position: relative; }
+.pull-8 { right: 50%; position: relative; }
+
+/* Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  :root {
+    --grid-columns: 12;
+  }
+
+  .container {
+    max-width: 750px;
+  }
+
+  /* Tablet column classes */
+  .col-tablet-1 { width: 8.333%; }
+  .col-tablet-2 { width: 16.667%; }
+  .col-tablet-3 { width: 25%; }
+  .col-tablet-4 { width: 33.333%; }
+  .col-tablet-5 { width: 41.667%; }
+  .col-tablet-6 { width: 50%; }
+  .col-tablet-7 { width: 58.333%; }
+  .col-tablet-8 { width: 66.667%; }
+  .col-tablet-9 { width: 75%; }
+  .col-tablet-10 { width: 83.333%; }
+  .col-tablet-11 { width: 91.667%; }
+  .col-tablet-12 { width: 100%; }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  :root {
+    --grid-columns: 1;
+    --grid-gap: 10px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  /* Stack all columns on mobile */
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  [class*="col-"] {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: var(--grid-gap);
+  }
+
+  /* Remove margins from last child */
+  [class*="col-"]:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Mobile-specific columns */
+  .col-mobile-half { width: 50%; }
+  .col-mobile-third { width: 33.333%; }
+  .col-mobile-quarter { width: 25%; }
+
+  /* Reset offsets on mobile */
+  [class*="offset-"] {
+    margin-left: 0;
+  }
+
+  /* Reset push/pull on mobile */
+  [class*="push-"],
+  [class*="pull-"] {
+    position: static;
+    left: auto;
+    right: auto;
+  }
+
+  /* CSS Grid becomes single column */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  [class*="span-"] {
+    grid-column: span 1;
+  }
+}
+
+/* Utility Classes
+   ========================================================================== */
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.hide-mobile { display: none !important; }
+@media (min-width: 768px) {
+  .hide-mobile { display: block !important; }
+  .hide-desktop { display: none !important; }
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Print Styles
+   ========================================================================== */
+
+@media print {
+  .container {
+    width: 100%;
+    max-width: none;
+  }
+
+  .row,
+  [class*="col-"] {
+    page-break-inside: avoid;
+  }
+}

@@ -200,7 +200,6 @@ FILES_TO_PROCESS.forEach(filename => {
   const filepath = join(DOCS_DIR, filename);
 
   if (!existsSync(filepath)) {
-    console.log(`⚠️  File not found: ${filename}`);
     skippedCount++;
     return;
   }
@@ -214,7 +213,6 @@ FILES_TO_PROCESS.forEach(filename => {
 
   // Check if navigation already exists
   if (content.includes('site-nav')) {
-    console.log(`✓ Navigation already exists in ${filename}`);
     skippedCount++;
     return;
   }
@@ -269,14 +267,8 @@ FILES_TO_PROCESS.forEach(filename => {
 
   // Write the updated file
   writeFileSync(filepath, content);
-  console.log(`✅ Updated ${filename}`);
   processedCount++;
 });
 
-console.log(`\n📊 Summary:`);
-console.log(`   - Processed: ${processedCount} files`);
-console.log(`   - Skipped: ${skippedCount} files`);
-console.log(`   - Backups saved to: ${BACKUP_DIR}`);
 
 // Also update the foundation.html that was already modified
-console.log(`\n🔧 Note: foundation.html was already updated manually and has the navigation.`);

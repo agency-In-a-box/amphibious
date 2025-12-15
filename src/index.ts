@@ -58,7 +58,6 @@ export const amp = {
       forms?: boolean;
     } = {},
   ): void {
-    console.log('🐸 Amphibious 2.0 initialized');
 
     // Core initialization
     this.detectDevice();

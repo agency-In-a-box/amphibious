@@ -148,63 +148,8 @@
   </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
-      <ul class="horizontal branded">
-        <li class="active"><a href="#" class="site-logo" aria-current="page">Amphibious</a>
-          <ul>
-            <li><a href="#what_is_it">What is Amphibious 2.0</a></li>
-            <li><a href="#how_its_made">What is it made of?</a></li>
-            <li><a href="#gallery">Amphibious 2.0 Showcase</a></li>
-            <li><a href="#evolution">The Evolution of Amphibious</a></li>
-            <li><a href="#colophon">The Amphibious Colophon</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables <sub>not for layout</sub></a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons <sub>modern SVG icons</sub></a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
+  <div id="navigation-include"></div>
 
   <!-- Hero Section -->
   <header class="hero">
@@ -498,39 +443,50 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer style="background: #2c3e50; color: #adb5bd; padding: 3rem 0; margin-top: 0;">
-    <div class="container">
-      <div class="row">
-        <section class="col-8">
-          <h3 style="color: white; margin-top: 0;">Amphibious 2.0</h3>
-          <p>The modern evolution of A.mphibio.us. Built with TypeScript, powered by Vite, designed for today's web.</p>
-          <p style="font-size: 0.875rem; opacity: 0.8;">© 2024 Amphibious. MIT License.</p>
-        </section>
-        <nav class="col-4" aria-label="Documentation">
-          <h4 style="color: white;">Documentation</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li><a href="/docs/getting-started.html" style="color: #adb5bd; text-decoration: none;">Getting Started</a></li>
-            <li><a href="/docs/grid-system.html" style="color: #adb5bd; text-decoration: none;">Grid System</a></li>
-            <li><a href="/docs/components.html" style="color: #adb5bd; text-decoration: none;">Components</a></li>
-            <li><a href="/docs/api.html" style="color: #adb5bd; text-decoration: none;">API Reference</a></li>
-          </ul>
-        </nav>
-        <nav class="col-4" aria-label="Examples">
-          <h4 style="color: white;">Examples</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li><a href="examples/pears-patterns.html" style="color: #adb5bd; text-decoration: none;">Pea.rs Patterns</a></li>
-            <li><a href="examples/e-commerce-catalog.html" style="color: #adb5bd; text-decoration: none;">E-commerce</a></li>
-            <li><a href="examples/navigation-showcase.html" style="color: #adb5bd; text-decoration: none;">Navigation</a></li>
-            <li><a href="examples/showcase.html" style="color: #adb5bd; text-decoration: none;">Component Showcase</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer Include -->
+  <div id="footer-include"></div>
 
   <!-- Load Framework -->
   <script type="module" src="/src/index.js"></script>
+
+  <!-- Load Navigation Include -->
+  <script>
+    async function loadIncludes() {
+      // Load navigation
+      const navPlaceholder = document.getElementById('navigation-include');
+      if (navPlaceholder) {
+        try {
+          const response = await fetch('/includes/navigation.html');
+          const html = await response.text();
+          navPlaceholder.outerHTML = html;
+        } catch (error) {
+          console.error('Failed to load navigation:', error);
+        }
+      }
+
+      // Load footer
+      const footerPlaceholder = document.getElementById('footer-include');
+      if (footerPlaceholder) {
+        try {
+          const response = await fetch('/includes/footer.html');
+          const html = await response.text();
+          footerPlaceholder.outerHTML = html;
+        } catch (error) {
+          console.error('Failed to load footer:', error);
+        }
+      }
+
+      // Re-initialize navigation component after loading
+      if (window.amphibiousNav) {
+        window.amphibiousNav.setActiveStates();
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadIncludes);
+    } else {
+      loadIncludes();
+    }
+  </script>
 
   <!-- Initialize -->
   <script>

@@ -152,7 +152,6 @@ function removeItem(itemId) {
 function saveForLater(itemId) {
   const item = cartState.items.find(i => i.id === itemId);
   if (item) {
-    console.log('Saving for later:', item.name);
     // In a real app, this would move to saved items
     removeItem(itemId);
   }
@@ -264,12 +263,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Checkout Buttons
   document.querySelector('.btn-checkout.primary')?.addEventListener('click', function() {
-    console.log('Proceeding to checkout...');
     alert('Proceeding to checkout with ' + cartState.items.length + ' items');
   });
 
   document.querySelector('.btn-paypal')?.addEventListener('click', function() {
-    console.log('PayPal checkout...');
     alert('Redirecting to PayPal checkout...');
   });
 
@@ -277,7 +274,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.recent-item').forEach(item => {
     item.addEventListener('click', function() {
       const productName = this.querySelector('h4').textContent;
-      console.log('Viewing product:', productName);
     });
   });
 

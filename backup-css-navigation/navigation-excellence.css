@@ -1,0 +1,314 @@
+/**
+ * Navigation Excellence Patch - Amphibious 2.0
+ *
+ * Design Excellence Corrections:
+ * - Avenir typography enforcement
+ * - Pantone 144 (#ED8B00) brand color
+ * - 4px baseline grid alignment
+ * - 200ms micro-interactions
+ * - Premium motion curves
+ */
+
+/* ==========================================================================
+   Navigation Excellence - Brand Standards Compliance
+   ========================================================================== */
+
+/* Override navigation variables with brand-compliant values */
+:root {
+  /* Brand Colors - Pantone 144 */
+  --nav-primary: var(--color-primary, #ED8B00);
+  --nav-primary-hover: #c97400; /* 15% darker */
+  --nav-primary-active: #b86800; /* 20% darker */
+
+  /* Typography - Explicit Avenir */
+  --nav-font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* 4px Grid-Aligned Spacing (using rem) */
+  --nav-padding-xs: 0.5rem;    /* 8px = 2 × 4px */
+  --nav-padding-sm: 0.75rem;   /* 12px = 3 × 4px */
+  --nav-padding-md: 1rem;      /* 16px = 4 × 4px */
+  --nav-padding-lg: 1.25rem;   /* 20px = 5 × 4px */
+  --nav-padding-xl: 1.5rem;    /* 24px = 6 × 4px */
+
+  /* Premium Motion Signatures */
+  --nav-transition-sharp: 200ms cubic-bezier(0.4, 0.0, 0.6, 1);
+  --nav-transition-smooth: 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  --nav-transition-bounce: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Grid-Aligned Border Radius */
+  --nav-radius-sm: 0.25rem;  /* 4px */
+  --nav-radius-md: 0.5rem;   /* 8px */
+  --nav-radius-lg: 0.75rem;  /* 12px */
+
+  /* Enhanced Shadows */
+  --nav-shadow-subtle: 0 1px 3px 0 rgba(237, 139, 0, 0.1);
+  --nav-shadow-hover: 0 4px 6px -1px rgba(237, 139, 0, 0.15);
+  --nav-shadow-active: 0 2px 4px -1px rgba(237, 139, 0, 0.2);
+}
+
+/* Typography Excellence - Enforce Avenir */
+.horizontal,
+.vertical,
+.breadcrumb,
+.filter-nav,
+.nav-toggle,
+nav,
+.site-nav {
+  font-family: var(--nav-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Primary Navigation - Brand-Compliant Spacing */
+.horizontal > li > a,
+.vertical > li > a {
+  /* Grid-aligned padding */
+  padding: var(--nav-padding-sm) var(--nav-padding-md);
+
+  /* Premium transitions */
+  transition: all var(--nav-transition-sharp);
+  transition-property: color, background-color, transform, box-shadow;
+
+  /* Subtle depth on hover */
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover States - Pantone 144 */
+.horizontal > li > a:hover,
+.vertical > li > a:hover {
+  color: var(--nav-primary);
+  background-color: rgba(237, 139, 0, 0.04);
+  transform: translateX(2px);
+}
+
+/* Active States - Strong Brand Presence */
+.horizontal > li.active > a,
+.vertical > li.active > a,
+.horizontal > li > a:active,
+.vertical > li > a:active {
+  color: #fff;
+  background-color: var(--nav-primary);
+  box-shadow: var(--nav-shadow-active);
+}
+
+/* Focus States - Accessibility + Brand */
+.horizontal > li > a:focus-visible,
+.vertical > li > a:focus-visible {
+  outline: 2px solid var(--nav-primary);
+  outline-offset: 2px;
+  border-radius: var(--nav-radius-sm);
+}
+
+/* Dropdown Menus - Refined Spacing */
+.horizontal > li > ul,
+.vertical > li > ul {
+  /* Grid-aligned positioning */
+  top: calc(100% + 0.25rem); /* 4px gap */
+
+  /* Premium shadow */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Smooth appearance */
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--nav-transition-smooth),
+              transform var(--nav-transition-smooth);
+
+  /* Grid-aligned radius */
+  border-radius: var(--nav-radius-md);
+  overflow: hidden;
+}
+
+/* Dropdown visible state */
+.horizontal > li:hover > ul,
+.vertical > li:hover > ul {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dropdown Items - Consistent Spacing */
+.horizontal > li > ul > li > a,
+.vertical > li > ul > li > a {
+  padding: var(--nav-padding-xs) var(--nav-padding-md);
+  transition: all var(--nav-transition-sharp);
+  border-left: 3px solid transparent;
+}
+
+.horizontal > li > ul > li > a:hover,
+.vertical > li > ul > li > a:hover {
+  background-color: rgba(237, 139, 0, 0.08);
+  border-left-color: var(--nav-primary);
+  padding-left: calc(var(--nav-padding-md) + 0.25rem);
+}
+
+/* Breadcrumbs - Brand Colors */
+.breadcrumb a {
+  color: var(--nav-primary);
+  transition: all var(--nav-transition-sharp);
+  padding: var(--nav-padding-xs);
+  margin: 0 var(--nav-padding-xs);
+  border-radius: var(--nav-radius-sm);
+}
+
+.breadcrumb a:hover {
+  background-color: rgba(237, 139, 0, 0.08);
+  text-decoration: none;
+}
+
+/* Filter Navigation - Brand Enhancement */
+.filter-nav > dt {
+  border: 1px solid var(--nav-primary);
+  padding: var(--nav-padding-xs) var(--nav-padding-sm);
+  border-radius: var(--nav-radius-md) 0 0 var(--nav-radius-md);
+  background: linear-gradient(135deg,
+    rgba(237, 139, 0, 0.05) 0%,
+    rgba(237, 139, 0, 0.02) 100%);
+  font-weight: 600;
+  color: var(--nav-primary);
+}
+
+.filter-nav > dd > a {
+  padding: var(--nav-padding-xs) var(--nav-padding-sm);
+  transition: all var(--nav-transition-sharp);
+  border-color: rgba(237, 139, 0, 0.3);
+}
+
+.filter-nav > dd > a:hover {
+  background: linear-gradient(135deg,
+    rgba(237, 139, 0, 0.08) 0%,
+    rgba(237, 139, 0, 0.04) 100%);
+  border-color: var(--nav-primary);
+  color: var(--nav-primary);
+}
+
+.filter-nav > dd > a:active,
+.filter-nav > dd > a.active {
+  background: var(--nav-primary);
+  border-color: var(--nav-primary);
+  color: #fff;
+  font-weight: 500;
+}
+
+.filter-nav > dd:last-child > a {
+  border-radius: 0 var(--nav-radius-md) var(--nav-radius-md) 0;
+}
+
+/* Mobile Navigation Toggle - Premium Feel */
+.nav-toggle {
+  border: 1px solid rgba(237, 139, 0, 0.3);
+  padding: var(--nav-padding-xs);
+  border-radius: var(--nav-radius-md);
+  transition: all var(--nav-transition-sharp);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.nav-toggle:hover {
+  background-color: rgba(237, 139, 0, 0.08);
+  border-color: var(--nav-primary);
+  transform: scale(1.05);
+}
+
+.nav-toggle:active {
+  transform: scale(0.98);
+}
+
+/* Hamburger Icon - Brand Color */
+.nav-toggle-icon,
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  background-color: var(--nav-primary);
+  transition: all var(--nav-transition-sharp);
+}
+
+/* Site Logo - Brand Emphasis */
+.site-logo {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--nav-primary);
+  transition: all var(--nav-transition-bounce);
+}
+
+.site-logo:hover {
+  transform: scale(1.05);
+  color: var(--nav-primary-hover);
+}
+
+/* Branded Navigation Bar */
+.branded {
+  border-bottom: 2px solid var(--nav-primary);
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(237, 139, 0, 0.02) 100%);
+}
+
+/* Skip Navigation - Accessibility + Brand */
+.skip-nav {
+  background: var(--nav-primary);
+  padding: var(--nav-padding-xs) var(--nav-padding-md);
+  border-radius: var(--nav-radius-md);
+  font-weight: 500;
+  transition: all var(--nav-transition-sharp);
+  box-shadow: var(--nav-shadow-hover);
+}
+
+.skip-nav:focus {
+  top: var(--nav-padding-xs);
+  transform: translateY(0);
+}
+
+/* Responsive Adjustments - Maintain Grid */
+@media only screen and (max-width: 800px) {
+  .horizontal > li > a,
+  .vertical > li > a {
+    padding: var(--nav-padding-sm) var(--nav-padding-md);
+    border-bottom: 1px solid rgba(237, 139, 0, 0.1);
+  }
+
+  .horizontal > li > ul > li > a,
+  .vertical > li > ul > li > a {
+    padding-left: calc(var(--nav-padding-md) * 2);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .horizontal > li > a,
+  .vertical > li > a {
+    padding: var(--nav-padding-sm) var(--nav-padding-md);
+    font-size: 0.9375rem; /* Slightly smaller on mobile */
+  }
+
+  .breadcrumb a {
+    margin: 0 var(--nav-padding-xs);
+    padding: calc(var(--nav-padding-xs) / 2);
+  }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .horizontal > li > a:hover,
+  .vertical > li > a:hover {
+    background-color: rgba(237, 139, 0, 0.15);
+  }
+
+  .branded {
+    background: linear-gradient(to bottom,
+      rgba(10, 10, 10, 1) 0%,
+      rgba(237, 139, 0, 0.05) 100%);
+  }
+}

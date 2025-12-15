@@ -93,7 +93,6 @@ async function removeImportantFromFile(filePath: string, preservePatterns: RegEx
 }
 
 async function main() {
-  console.log('🧹 Removing unnecessary !important declarations...\n');
 
   // Define patterns for declarations we want to preserve
   const preservePatterns = [
@@ -142,7 +141,6 @@ async function main() {
   for (const file of targetFiles) {
     const fullPath = join(process.cwd(), file);
     if (!existsSync(fullPath)) {
-      console.log(`⚠️  Skipping ${file} (not found)`);
       continue;
     }
 
@@ -151,9 +149,7 @@ async function main() {
       if (removed > 0) {
         results.push({ file, removals: removed });
         totalRemoved += removed;
-        console.log(`✅ ${file}: Removed ${removed} !important declarations`);
       } else {
-        console.log(`⏭️  ${file}: No removals needed`);
       }
     } catch (error) {
       console.error(`❌ Error processing ${file}:`, error);
@@ -161,14 +157,9 @@ async function main() {
   }
 
   // Print summary
-  console.log('\n📊 REMOVAL SUMMARY');
-  console.log('='.repeat(60));
-  console.log(`Total !important declarations removed: ${totalRemoved}`);
-  console.log('\nBy File:');
   results
     .sort((a, b) => b.removals - a.removals)
     .forEach(({ file, removals }) => {
-      console.log(`  ${removals.toString().padStart(3)} - ${file}`);
     });
 
   // Save removal log
@@ -180,16 +171,8 @@ async function main() {
   };
 
   await writeFile('important-removal-log.json', JSON.stringify(log, null, 2));
-  console.log('\n📄 Removal log saved to important-removal-log.json');
-  console.log('📦 Backups saved to backups/ directory');
 
   // Next steps
-  console.log('\n🎯 NEXT STEPS');
-  console.log('='.repeat(60));
-  console.log('1. Run "bun run build" to test the build');
-  console.log('2. Test the framework visually in the browser');
-  console.log('3. Run the audit script again to verify improvements');
-  console.log('4. If issues arise, backups are in the backups/ directory');
 }
 
 main().catch(console.error);

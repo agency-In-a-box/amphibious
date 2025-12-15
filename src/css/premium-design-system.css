@@ -1,0 +1,334 @@
+/**
+ * Premium Design System - Inspired by Goose Digital
+ *
+ * A design language that understands the weight of empty space,
+ * the rhythm of motion, and the poetry of restraint.
+ *
+ * Design Philosophy:
+ * - Space is not empty, it's opportunity
+ * - Motion should feel inevitable, not decorative
+ * - Depth through subtlety, not simulation
+ * - Typography that breathes
+ */
+
+/* ==========================================================================
+   Design Tokens - The Atomic Truth
+   ========================================================================== */
+
+:root {
+  /* Spatial Harmony - Based on 4px baseline grid */
+  --space-unit: 0.25rem; /* 4px - the quantum of space */
+  --space-xxs: calc(var(--space-unit) * 1);   /* 4px - whisper */
+  --space-xs: calc(var(--space-unit) * 2);    /* 8px - breath */
+  --space-sm: calc(var(--space-unit) * 4);    /* 16px - pause */
+  --space-md: calc(var(--space-unit) * 6);    /* 24px - statement */
+  --space-lg: calc(var(--space-unit) * 8);    /* 32px - declaration */
+  --space-xl: calc(var(--space-unit) * 12);   /* 48px - emphasis */
+  --space-xxl: calc(var(--space-unit) * 16);  /* 64px - drama */
+  --space-xxxl: calc(var(--space-unit) * 24); /* 96px - stage */
+
+  /* Color Philosophy - Restraint with Purpose */
+  --color-primary: #1863dc; /* Goose Digital Blue - confidence without arrogance */
+  --color-primary-hover: #1454bf; /* 8% darker - subtle acknowledgment */
+  --color-primary-active: #0f3d8a; /* 15% darker - commitment */
+
+  --color-ink: #0a0a0a; /* Not quite black - softer on screens */
+  --color-ink-light: #404040; /* Secondary text */
+  --color-ink-lighter: #6e6e6e; /* Tertiary text */
+
+  --color-canvas: #ffffff;
+  --color-canvas-subtle: #fafafa; /* Barely there - felt not seen */
+  --color-canvas-element: #f5f5f5; /* Interactive backgrounds */
+
+  /* Elevation through Shadow - Not Skeuomorphism */
+  --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+               0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Motion Signatures - Each serves a purpose */
+  --motion-sharp: 200ms cubic-bezier(0.4, 0.0, 0.6, 1); /* Decisive */
+  --motion-smooth: 250ms cubic-bezier(0.4, 0.0, 0.2, 1); /* Natural */
+  --motion-bounce: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Playful */
+  --motion-slow: 400ms cubic-bezier(0.4, 0.0, 0.2, 1); /* Dramatic */
+
+  /* Typography Scale - Musical Intervals */
+  --text-xs: 0.75rem;    /* 12px - whisper */
+  --text-sm: 0.875rem;   /* 14px - conversation */
+  --text-base: 1rem;     /* 16px - statement */
+  --text-lg: 1.125rem;   /* 18px - emphasis */
+  --text-xl: 1.25rem;    /* 20px - subtitle */
+  --text-2xl: 1.5rem;    /* 24px - title */
+  --text-3xl: 1.875rem;  /* 30px - headline */
+  --text-4xl: 2.25rem;   /* 36px - hero */
+  --text-5xl: 3rem;      /* 48px - display */
+
+  /* Line Heights - Let text breathe */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Border Radius - Soft but not weak */
+  --radius-sm: 0.125rem;  /* 2px - subtle softening */
+  --radius-md: 0.375rem;  /* 6px - noticeable comfort */
+  --radius-lg: 0.5rem;    /* 8px - friendly */
+  --radius-xl: 0.75rem;   /* 12px - approachable */
+  --radius-full: 9999px;  /* Complete circle */
+}
+
+/* ==========================================================================
+   Interactive Elements - Where Design Meets Intention
+   ========================================================================== */
+
+/* Buttons that feel inevitable */
+.btn-premium {
+  /* Structure */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-lg);
+
+  /* Typography */
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  text-decoration: none;
+
+  /* Appearance */
+  color: var(--color-canvas);
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-md);
+
+  /* Behavior */
+  cursor: pointer;
+  transition: all var(--motion-smooth);
+  transform: translateY(0);
+  box-shadow: var(--shadow-medium);
+
+  /* Subtle details that matter */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.btn-premium:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-large);
+}
+
+.btn-premium:active {
+  background: var(--color-primary-active);
+  transform: translateY(0);
+  box-shadow: var(--shadow-subtle);
+  transition-duration: 100ms; /* Faster feedback on press */
+}
+
+/* Ghost buttons - presence through absence */
+.btn-ghost {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-md);
+  transition: all var(--motion-sharp);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ghost::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-ink);
+  transform: translateX(-100%);
+  transition: transform var(--motion-smooth);
+}
+
+.btn-ghost:hover::before {
+  transform: translateX(0);
+}
+
+.btn-ghost:hover {
+  color: var(--color-canvas);
+  border-color: var(--color-ink);
+}
+
+/* ==========================================================================
+   Content Containers - Architecture of Information
+   ========================================================================== */
+
+.card-premium {
+  background: var(--color-canvas);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: all var(--motion-smooth);
+  box-shadow: var(--shadow-subtle);
+
+  /* Subtle border for definition on white */
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.card-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Image containers with intelligent loading states */
+.image-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-canvas-subtle);
+
+  /* Aspect ratio container */
+  aspect-ratio: 16 / 9;
+
+  /* Skeleton loading animation */
+  background: linear-gradient(
+    90deg,
+    var(--color-canvas-subtle) 0%,
+    var(--color-canvas-element) 50%,
+    var(--color-canvas-subtle) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--motion-slow);
+}
+
+.image-frame:hover img {
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Typography - Words with Weight
+   ========================================================================== */
+
+.heading-hero {
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  line-height: var(--leading-tight);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  /* Subtle gradient for premium feel */
+  background: linear-gradient(135deg, var(--color-ink) 0%, var(--color-ink-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-balance {
+  text-wrap: balance; /* Modern CSS for better line breaks */
+}
+
+/* ==========================================================================
+   Micro-interactions - The Details That Delight
+   ========================================================================== */
+
+/* Link hover with underline animation */
+.link-animated {
+  position: relative;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--motion-sharp);
+}
+
+.link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--motion-smooth);
+}
+
+.link-animated:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Focus states that respect accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-primary);
+  color: var(--color-canvas);
+}
+
+/* ==========================================================================
+   Responsive Rhythm - Design that Adapts
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    /* Slightly tighter spacing on mobile */
+    --space-unit: 0.25rem;
+
+    /* Adjusted type scale */
+    --text-base: 0.9375rem; /* 15px */
+  }
+
+  /* Touch-friendly tap targets */
+  .btn-premium {
+    min-height: 44px; /* iOS HIG recommendation */
+    padding: var(--space-sm) var(--space-md);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ink: #f0f0f0;
+    --color-ink-light: #b0b0b0;
+    --color-canvas: #0a0a0a;
+    --color-canvas-subtle: #141414;
+    --color-canvas-element: #1f1f1f;
+
+    /* Shadows need to be lighter in dark mode */
+    --shadow-subtle: 0 1px 2px 0 rgba(255, 255, 255, 0.05);
+  }
+}

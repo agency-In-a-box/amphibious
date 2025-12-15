@@ -421,47 +421,28 @@ async function fixFormsMemoryLeaks(): Promise<MemoryLeakFix> {
 }
 
 async function main() {
-  console.log('🔧 Fixing memory leaks in JavaScript/TypeScript modules...\n');
 
   const results: MemoryLeakFix[] = [];
 
   try {
     // Fix modal memory leaks
-    console.log('📝 Fixing modal.ts...');
     results.push(await fixModalMemoryLeaks());
 
     // Fix navigation memory leaks
-    console.log('📝 Fixing navigation.ts...');
     results.push(await fixNavigationMemoryLeaks());
 
     // Fix forms memory leaks
-    console.log('📝 Fixing forms.ts...');
     results.push(await fixFormsMemoryLeaks());
 
     // Summary
-    console.log('\n✅ MEMORY LEAK FIXES COMPLETE');
-    console.log('='.repeat(60));
 
     results.forEach(result => {
       if (result.fixed) {
-        console.log(`✅ ${result.file}`);
-        console.log(`   ${result.description}`);
       } else {
-        console.log(`❌ ${result.file} - Failed`);
       }
     });
 
-    console.log('\n📋 Changes Made:');
-    console.log('- Added event listener tracking arrays to all classes');
-    console.log('- Replaced anonymous functions with named handlers');
-    console.log('- Added destroy() methods for proper cleanup');
-    console.log('- Removed cloneNode(true) workaround in modal.ts');
-    console.log('- Fixed closure-based event listeners that couldn\'t be removed');
 
-    console.log('\n⚠️  IMPORTANT:');
-    console.log('1. Test all components to ensure functionality is preserved');
-    console.log('2. Call destroy() methods when components are no longer needed');
-    console.log('3. Consider using WeakMap for DOM element references in future');
 
   } catch (error) {
     console.error('❌ Error fixing memory leaks:', error);

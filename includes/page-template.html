@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Title - Amphibious 2.0</title>
+  <meta name="description" content="Page description">
+
+  <!-- Amphibious CSS -->
+  <link rel="stylesheet" href="/src/css/main.css">
+
+  <!-- Page-specific styles (optional) -->
+  <style>
+    /* Page-specific CSS here */
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Include -->
+  <!-- Option 1: Static include (server-side includes or build tool) -->
+  <!--#include virtual="/includes/navigation.html" -->
+
+  <!-- Option 2: Dynamic JavaScript loader -->
+  <div id="navigation-include"></div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Breadcrumb (optional) -->
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li><a href="/docs/">Documentation</a></li>
+          <li>Current Page</li>
+        </ol>
+      </nav>
+
+      <!-- Page Content -->
+      <h1>Page Title</h1>
+      <p>Your content here...</p>
+    </div>
+  </main>
+
+  <!-- Footer Include -->
+  <!-- Option 1: Static include (server-side includes or build tool) -->
+  <!--#include virtual="/includes/footer.html" -->
+
+  <!-- Option 2: Dynamic JavaScript loader -->
+  <div id="footer-include"></div>
+
+  <!-- Amphibious JavaScript -->
+  <script type="module" src="/src/index.js"></script>
+
+  <!-- Optional: JavaScript include loader for development -->
+  <script>
+    // For development without server-side includes
+    // This can be removed in production if using SSI or a build tool
+
+    async function loadIncludes() {
+      // Load navigation
+      const navPlaceholder = document.getElementById('navigation-include');
+      if (navPlaceholder) {
+        try {
+          const response = await fetch('/includes/navigation.html');
+          const html = await response.text();
+          navPlaceholder.outerHTML = html;
+        } catch (error) {
+          console.error('Failed to load navigation:', error);
+        }
+      }
+
+      // Load footer
+      const footerPlaceholder = document.getElementById('footer-include');
+      if (footerPlaceholder) {
+        try {
+          const response = await fetch('/includes/footer.html');
+          const html = await response.text();
+          footerPlaceholder.outerHTML = html;
+        } catch (error) {
+          console.error('Failed to load footer:', error);
+        }
+      }
+
+      // Re-initialize navigation component after loading
+      if (window.amphibiousNav) {
+        window.amphibiousNav.setActiveStates();
+      }
+    }
+
+    // Load includes on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadIncludes);
+    } else {
+      loadIncludes();
+    }
+  </script>
+</body>
+</html>

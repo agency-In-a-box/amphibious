@@ -15,6 +15,9 @@ import { createIcons, icons } from 'lucide';
 // Import navigation dropdown enhancement
 import { initNavigationDropdowns } from './js/navigation-dropdown.js';
 
+// Import navigation component
+import NavigationComponent from './js/navigation-component.js';
+
 // Simple initialization without complex TypeScript dependencies
 console.log('Amphibious 2.0 loaded successfully');
 

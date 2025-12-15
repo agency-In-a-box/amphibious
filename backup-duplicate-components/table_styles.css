@@ -54,11 +54,12 @@ table.amp.stripped thead th {
   background: #dedede;
 }
 
-table.amp.stripped tr.odd td {
+/* Use modern CSS pseudo-classes instead of jQuery .odd/.even */
+table.amp.stripped tbody tr:nth-child(odd) td {
   background: #f3f3f3;
 }
 
-table.amp.stripped tr.even td {
+table.amp.stripped tbody tr:nth-child(even) td {
   background: #fff;
 }
 

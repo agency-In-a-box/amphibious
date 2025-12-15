@@ -249,58 +249,9 @@
 </head>
 <body>
   <!-- Site Navigation -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
-      <ul class="horizontal branded">
-        <li><a href="/" class="site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
-
-
-  <!-- Demo Header -->
-  <header class="demo-header">
+    <!-- Navigation Include -->
+  <div id="navigation-include"></div>
+<header class="demo-header">
     <div class="container">
       <h1>🧭 Navigation Component Showcase</h1>
       <p>Explore all navigation patterns, styles, and configurations in Amphibious 2.0</p>
@@ -888,6 +839,45 @@ const nav = amp.createNavigation('#nav-container', {
     });
 
     console.log('Navigation Showcase Loaded');
+  </script>
+
+  <!-- Load Navigation and Footer Includes -->
+  <script>
+    async function loadIncludes() {
+      // Load navigation
+      const navPlaceholder = document.getElementById('navigation-include');
+      if (navPlaceholder) {
+        try {
+          const response = await fetch('/includes/navigation.html');
+          const html = await response.text();
+          navPlaceholder.outerHTML = html;
+        } catch (error) {
+          console.error('Failed to load navigation:', error);
+        }
+      }
+
+      // Load footer
+      const footerPlaceholder = document.getElementById('footer-include');
+      if (footerPlaceholder) {
+        try {
+          const response = await fetch('/includes/footer.html');
+          const html = await response.text();
+          footerPlaceholder.outerHTML = html;
+        } catch (error) {
+          console.error('Failed to load footer:', error);
+        }
+      }
+
+      // Re-initialize navigation component after loading
+      if (window.amphibiousNav) {
+        window.amphibiousNav.setActiveStates();
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadIncludes);
+    } else {
+      loadIncludes();
+    }
   </script>
 </body>
 </html>

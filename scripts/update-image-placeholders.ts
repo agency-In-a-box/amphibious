@@ -84,7 +84,6 @@ async function createBackup(filePath: string): Promise<void> {
   const backupPath = `${filePath}.backup-${Date.now()}`;
   const content = readFileSync(filePath, 'utf-8');
   writeFileSync(backupPath, content, 'utf-8');
-  console.log(`📁 Created backup: ${backupPath}`);
 }
 
 function findFiles(dir: string, extensions: string[], ignore: string[] = []): string[] {
@@ -124,7 +123,6 @@ function findFiles(dir: string, extensions: string[], ignore: string[] = []): st
 }
 
 async function updateImagePlaceholders(): Promise<void> {
-  console.log('🚀 Starting Amphibious image placeholder update...\n');
 
   // Create log file
   const logFile = 'image-replacement-log.txt';
@@ -140,7 +138,6 @@ async function updateImagePlaceholders(): Promise<void> {
   // Find files to process
   const files = findFiles('.', ['html', 'md'], ['node_modules', 'dist', '.backup-', logFile]);
 
-  console.log(`📄 Found ${files.length} files to process...\n`);
 
   for (const file of files) {
     if (!existsSync(file)) continue;
@@ -165,7 +162,6 @@ async function updateImagePlaceholders(): Promise<void> {
         const count = matches.length;
         fileReplacements += count;
 
-        console.log(`  ✓ ${description}: ${count} replacement(s)`);
         logEntries.push(`${file}: ${description} - ${count} replacement(s)`);
       }
     }
@@ -174,12 +170,10 @@ async function updateImagePlaceholders(): Promise<void> {
       writeFileSync(file, content, 'utf-8');
       filesModified++;
       totalReplacements += fileReplacements;
-      console.log(`📝 Updated ${file} (${fileReplacements} replacements)\n`);
     }
   }
 
   // Add loading="lazy" to img tags that don't have it
-  console.log('🏃‍♂️ Adding loading="lazy" to image tags...\n');
 
   for (const file of files.filter(f => f.endsWith('.html'))) {
     if (!existsSync(file)) continue;
@@ -197,7 +191,6 @@ async function updateImagePlaceholders(): Promise<void> {
       });
 
       writeFileSync(file, content, 'utf-8');
-      console.log(`⚡ Added loading="lazy" to ${matches.length} images in ${file}`);
       logEntries.push(`${file}: Added loading="lazy" to ${matches.length} images`);
     }
   }
@@ -210,26 +203,9 @@ async function updateImagePlaceholders(): Promise<void> {
   writeFileSync(logFile, logEntries.join('\n'), 'utf-8');
 
   // Summary
-  console.log('\n' + '='.repeat(60));
-  console.log('📊 IMAGE REPLACEMENT SUMMARY');
-  console.log('='.repeat(60));
-  console.log(`✅ Files processed: ${files.length}`);
-  console.log(`📝 Files modified: ${filesModified}`);
-  console.log(`🔄 Total replacements: ${totalReplacements}`);
-  console.log(`📁 Log file: ${logFile}`);
-  console.log('='.repeat(60));
 
   if (filesModified > 0) {
-    console.log('\n🎉 Image replacement completed successfully!');
-    console.log('\nNext steps:');
-    console.log('1. Run: bun run dev');
-    console.log('2. Visit: http://localhost:2960');
-    console.log('3. Verify all images load correctly');
-    console.log('4. Check browser network tab for any 404s');
-    console.log('5. Test responsive behavior');
-    console.log('\nIf everything looks good, commit the changes.');
   } else {
-    console.log('\n✨ No images needed replacement - all good!');
   }
 }
 

@@ -142,7 +142,6 @@ async function analyzeFile(filePath: string): Promise<ImportantDeclaration[]> {
 }
 
 async function main() {
-  console.log('🔍 Auditing !important declarations in Amphibious CSS...\n');
 
   const cssDir = join(process.cwd(), 'src/css');
   const files = await findCSSFiles(cssDir);
@@ -172,56 +171,32 @@ async function main() {
   }, {} as Record<string, number>);
 
   // Print summary
-  console.log('📊 SUMMARY');
-  console.log('='.repeat(60));
-  console.log(`Total !important declarations: ${total}`);
-  console.log('\nBy Category:');
   Object.entries(byCategory).sort((a, b) => b[1] - a[1]).forEach(([cat, count]) => {
-    console.log(`  ${cat}: ${count} (${((count/total) * 100).toFixed(1)}%)`);
   });
 
-  console.log('\nBy Justification:');
   Object.entries(byJustification).forEach(([just, count]) => {
     const emoji = just === 'needed' ? '✅' : just === 'questionable' ? '⚠️' : '❌';
-    console.log(`  ${emoji} ${just}: ${count} (${((count/total) * 100).toFixed(1)}%)`);
   });
 
-  console.log('\nTop Files:');
   Object.entries(byFile)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
     .forEach(([file, count]) => {
-      console.log(`  ${count.toString().padStart(3)} - ${file}`);
     });
 
   // List removable declarations
-  console.log('\n❌ REMOVABLE DECLARATIONS');
-  console.log('='.repeat(60));
   const removable = allDeclarations.filter(d => d.justification === 'removable');
-  console.log(`Found ${removable.length} declarations that can be safely removed:\n`);
 
   removable.slice(0, 20).forEach(d => {
-    console.log(`${d.file}:${d.line}`);
-    console.log(`  Selector: ${d.selector}`);
-    console.log(`  Property: ${d.property}: ${d.value} !important`);
-    console.log('');
   });
 
   if (removable.length > 20) {
-    console.log(`... and ${removable.length - 20} more\n`);
   }
 
   // List questionable declarations
-  console.log('⚠️  QUESTIONABLE DECLARATIONS');
-  console.log('='.repeat(60));
   const questionable = allDeclarations.filter(d => d.justification === 'questionable');
-  console.log(`Found ${questionable.length} declarations that need review:\n`);
 
   questionable.slice(0, 10).forEach(d => {
-    console.log(`${d.file}:${d.line}`);
-    console.log(`  Selector: ${d.selector}`);
-    console.log(`  Property: ${d.property}: ${d.value} !important`);
-    console.log('');
   });
 
   // Save detailed report
@@ -250,16 +225,8 @@ async function main() {
   };
 
   await Bun.write('important-audit-report.json', JSON.stringify(report, null, 2));
-  console.log('\n📄 Detailed report saved to important-audit-report.json');
 
   // Provide action plan
-  console.log('\n🎯 ACTION PLAN');
-  console.log('='.repeat(60));
-  console.log('1. Start by removing the "removable" declarations');
-  console.log('2. Review and refactor "questionable" declarations');
-  console.log('3. Document why "needed" declarations must remain');
-  console.log('4. Consider using CSS layers or :where() for better specificity control');
-  console.log(`\nEstimated improvement: Remove ${removable.length + Math.floor(questionable.length/2)} of ${total} declarations (${Math.round(((removable.length + Math.floor(questionable.length/2))/total) * 100)}%)`);
 }
 
 main().catch(console.error);
