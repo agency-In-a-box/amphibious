@@ -29,9 +29,9 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    emptyOutDir: true,
-    sourcemap: false,
-    minify: true,
+    emptyOutDir: true, // Clean dist on each build to prevent stale artifacts
+    sourcemap: false, // Disable sourcemaps in production to reduce size
+    minify: true, // Enable minification
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'Amphibious',
@@ -43,6 +43,7 @@ export default defineConfig({
       output: {
         globals: {},
         assetFileNames: (assetInfo) => {
+          // Output main CSS as amphibious.css
           if (assetInfo.name === 'style.css' || assetInfo.name?.endsWith('.css')) {
             return 'amphibious.css';
           }
@@ -50,7 +51,8 @@ export default defineConfig({
         }
       }
     },
-    chunkSizeWarningLimit: 500
+    // Optimize chunk size
+    chunkSizeWarningLimit: 500 // Warn if chunks exceed 500kb
   },
   css: {
     devSourcemap: true,

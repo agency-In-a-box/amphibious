@@ -69,6 +69,10 @@ export class Navigation {
   private setupMobileToggle(): void {
     if (!this.toggleButton) return;
 
+    // Set initial ARIA state
+    this.toggleButton.setAttribute('aria-expanded', 'false');
+    this.toggleButton.setAttribute('aria-label', 'Toggle navigation menu');
+
     const toggleHandler = (e: Event) => {
       e.preventDefault();
       this.toggleMenu();

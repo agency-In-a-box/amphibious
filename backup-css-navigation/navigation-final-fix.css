@@ -1,0 +1,353 @@
+/**
+ * Navigation Final Fix - Complete Redesign
+ * Fixes all navigation issues with proper spacing, colors, and indicators
+ */
+
+/* ==========================================================================
+   Reset Previous Overrides
+   ========================================================================== */
+
+/* Clear conflicting styles */
+.horizontal > li > a::after,
+.horizontal > li.active > a::after,
+.site-logo::before {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Main Navigation Styles
+   ========================================================================== */
+
+/* Base navigation items */
+.horizontal > li > a,
+.vertical > li > a {
+  display: inline-block;
+  padding: 0.75rem 1rem; /* Equal padding all sides */
+  color: #333; /* Charcoal gray default */
+  text-decoration: none;
+  transition: all 200ms ease;
+  position: relative;
+  font-family: var(--nav-font-family, "Avenir Next", Avenir, -apple-system, sans-serif);
+}
+
+/* Hover state - Orange text on white */
+.horizontal > li > a:hover,
+.vertical > li > a:hover {
+  color: #ED8B00; /* Orange text */
+  background-color: transparent; /* No background change */
+}
+
+/* Active state - White text on orange background */
+.horizontal > li.active > a,
+.vertical > li.active > a,
+.horizontal > li > a.active,
+.vertical > li > a.active {
+  background-color: #ED8B00; /* Solid orange background */
+  color: white; /* White text */
+  font-weight: 600;
+  padding: 0.75rem 1rem; /* Maintain consistent padding */
+}
+
+/* Active hover - maintain active state */
+.horizontal > li.active > a:hover,
+.vertical > li.active > a:hover {
+  background-color: #ED8B00;
+  color: white;
+}
+
+/* ==========================================================================
+   Dropdown Indicators
+   ========================================================================== */
+
+/* Add dropdown arrow for items with submenus */
+.horizontal > li:has(ul) > a,
+.vertical > li:has(ul) > a {
+  padding-right: 2rem; /* Extra space for arrow */
+}
+
+/* Dropdown arrow - inline with text */
+.horizontal > li:has(ul) > a::before,
+.vertical > li:has(ul) > a::before {
+  content: '▾';
+  position: absolute;
+  right: 0.75rem; /* Inside the padding area */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.625rem;
+  line-height: 1;
+  color: inherit;
+  transition: transform 200ms ease;
+  display: inline-block;
+}
+
+/* Rotate arrow when hovering parent */
+.horizontal > li:hover > a::before,
+.vertical > li:hover > a::before,
+.horizontal > li:focus-within > a::before,
+.vertical > li:focus-within > a::before {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* ==========================================================================
+   Dropdown Menus
+   ========================================================================== */
+
+/* Dropdown container */
+.horizontal > li > ul,
+.vertical > li > ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: white;
+  border: 1px solid #ddd; /* Simple border */
+  border-top: none; /* No top border */
+  border-radius: 0; /* No rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition: all 200ms ease;
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
+}
+
+/* Show dropdown on hover */
+.horizontal > li:hover > ul,
+.vertical > li:hover > ul,
+.horizontal > li:focus-within > ul,
+.vertical > li:focus-within > ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown items */
+.horizontal > li > ul > li > a,
+.vertical > li > ul > li > a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  border: none;
+  border-left: 3px solid transparent;
+  background: white;
+  transition: all 150ms ease;
+}
+
+/* Dropdown item hover */
+.horizontal > li > ul > li > a:hover,
+.vertical > li > ul > li > a:hover {
+  background-color: #f8f8f8;
+  color: #ED8B00;
+  border-left-color: #ED8B00;
+  padding-left: 1.25rem; /* Slight indent on hover */
+}
+
+/* Active dropdown item */
+.horizontal > li > ul > li.active > a,
+.vertical > li > ul > li.active > a {
+  color: #ED8B00;
+  font-weight: 500;
+  background-color: #fff5e6;
+  border-left-color: #ED8B00;
+}
+
+/* ==========================================================================
+   Site Logo Special Case
+   ========================================================================== */
+
+.site-logo {
+  font-weight: 600;
+  color: #ED8B00 !important; /* Always orange */
+  padding: 0.75rem 1rem !important;
+}
+
+.site-logo:hover {
+  color: #c97400 !important; /* Darker orange on hover */
+  transform: none; /* No transform effects */
+}
+
+/* Logo in active state should not have orange background */
+.horizontal > li.active > a.site-logo,
+.vertical > li.active > a.site-logo {
+  background-color: transparent !important;
+  color: #ED8B00 !important;
+}
+
+/* ==========================================================================
+   Breadcrumb Navigation Fixes
+   ========================================================================== */
+
+.breadcrumb {
+  padding: 0.5rem 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center; /* Vertically center all items */
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center; /* Center content vertically */
+  margin: 0;
+}
+
+.breadcrumb li a {
+  color: #ED8B00;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  transition: all 150ms ease;
+  display: inline-block;
+}
+
+.breadcrumb li a:hover {
+  background-color: rgba(237, 139, 0, 0.08);
+  border-radius: 2px;
+}
+
+/* Breadcrumb separator - properly aligned */
+.breadcrumb li::after {
+  content: "›"; /* Chevron character */
+  margin: 0 0.5rem; /* Equal spacing on both sides */
+  color: #999;
+  font-size: 1em; /* Same size as text */
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle; /* Center vertically with text */
+}
+
+/* Remove separator from last item */
+.breadcrumb li:last-child::after {
+  display: none;
+}
+
+/* Alternative separators with proper alignment */
+.breadcrumb-slash li::after {
+  content: "/";
+  vertical-align: middle;
+}
+
+.breadcrumb-arrow li::after {
+  content: "→";
+  vertical-align: middle;
+}
+
+.breadcrumb-dot li::after {
+  content: "•";
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Branded Navigation Bar
+   ========================================================================== */
+
+.horizontal.branded {
+  background: white; /* Clean white background */
+  border-bottom: 1px solid #e5e5e5; /* Subtle bottom border */
+  padding: 0;
+  margin: 0;
+}
+
+.horizontal.branded > li {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Filter Navigation
+   ========================================================================== */
+
+.filter-nav > dt {
+  border: 1px solid #ED8B00;
+  padding: 0.5rem 0.75rem;
+  background: #fff5e6;
+  color: #ED8B00;
+  font-weight: 600;
+  border-radius: 0;
+}
+
+.filter-nav > dd > a {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  background: white;
+  color: #333;
+  transition: all 150ms ease;
+  border-radius: 0;
+}
+
+.filter-nav > dd > a:hover {
+  background: #f8f8f8;
+  color: #ED8B00;
+  border-color: #ED8B00;
+}
+
+.filter-nav > dd > a.active {
+  background: #ED8B00;
+  color: white;
+  border-color: #ED8B00;
+}
+
+/* ==========================================================================
+   Mobile Navigation
+   ========================================================================== */
+
+@media only screen and (max-width: 800px) {
+  /* Stack navigation vertically */
+  .horizontal > li {
+    display: block;
+    float: none;
+  }
+
+  .horizontal > li > a {
+    display: block;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  /* Dropdown indicators stay inline */
+  .horizontal > li:has(ul) > a::before {
+    right: 1rem;
+  }
+
+  /* Dropdowns become indented blocks */
+  .horizontal > li > ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border: none;
+    border-left: 2px solid #ED8B00;
+    margin-left: 1rem;
+    box-shadow: none;
+    display: none;
+  }
+
+  .horizontal > li:hover > ul,
+  .horizontal > li.is-open > ul {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   Focus States for Accessibility
+   ========================================================================== */
+
+.horizontal > li > a:focus-visible,
+.vertical > li > a:focus-visible,
+.breadcrumb a:focus-visible {
+  outline: 2px solid #ED8B00;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Performance
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

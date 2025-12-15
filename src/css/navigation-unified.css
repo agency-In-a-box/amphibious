@@ -1,0 +1,597 @@
+/* ==========================================================================
+   Unified Navigation System - Amphibious 2.0
+   Complete navigation with 3-level dropdowns, mobile toggle, single HTML structure
+   Consolidates all 6 navigation variants into one comprehensive solution
+   ========================================================================== */
+
+/* Navigation Design Tokens
+   ========================================================================== */
+
+:root {
+  /* Core Colors - Using Pantone 144 as primary */
+  --nav-primary: #ED8B00;
+  --nav-primary-hover: #ff9500;
+  --nav-primary-active: #d87a00;
+
+  /* Navigation Colors */
+  --nav-bg: #ffffff;
+  --nav-text: #333333;
+  --nav-text-hover: var(--nav-primary);
+  --nav-text-active: #ffffff;
+  --nav-active-bg: var(--nav-primary);
+  --nav-border: rgba(0, 0, 0, 0.1);
+
+  /* Dropdown Colors */
+  --nav-dropdown-bg: #ffffff;
+  --nav-dropdown-text: #333333;
+  --nav-dropdown-hover-bg: #f5f5f5;
+  --nav-dropdown-hover-text: var(--nav-primary);
+  --nav-dropdown-border: rgba(0, 0, 0, 0.1);
+  --nav-dropdown-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  /* Mobile Navigation */
+  --nav-mobile-bg: #ffffff;
+  --nav-mobile-overlay: rgba(0, 0, 0, 0.5);
+  --nav-mobile-border: rgba(0, 0, 0, 0.1);
+
+  /* Spacing - Based on 4px grid */
+  --nav-padding-x: 1rem;    /* 16px = 4 × 4px */
+  --nav-padding-y: 0.75rem; /* 12px = 3 × 4px */
+  --nav-gap: 0.25rem;       /* 4px */
+
+  /* Typography */
+  --nav-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --nav-font-size: 1rem;
+  --nav-font-weight: 500;
+
+  /* Transitions & Animations */
+  --nav-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index Layers */
+  --nav-z-index: 1000;
+  --nav-dropdown-z-index: 1001;
+  --nav-mobile-z-index: 1002;
+  --nav-mobile-overlay-z-index: 1001;
+}
+
+/* Reset & Base Styles
+   ========================================================================== */
+
+.site-nav {
+  position: relative;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  font-family: var(--nav-font-family);
+  font-size: var(--nav-font-size);
+  z-index: var(--nav-z-index);
+}
+
+.site-nav * {
+  box-sizing: border-box;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  color: inherit;
+  text-decoration: none;
+  transition: all var(--nav-transition);
+}
+
+/* Container
+   ========================================================================== */
+
+.site-nav .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--nav-padding-x);
+  position: relative;
+}
+
+/* Mobile Toggle Button
+   ========================================================================== */
+
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: var(--nav-mobile-z-index);
+}
+
+.nav-toggle-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 2px;
+  background: var(--nav-text);
+  transition: all var(--nav-transition);
+}
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--nav-text);
+  transition: all var(--nav-transition);
+}
+
+.nav-toggle-icon::before {
+  top: -8px;
+}
+
+.nav-toggle-icon::after {
+  top: 8px;
+}
+
+/* Toggle Active State */
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon {
+  background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* Main Navigation List
+   ========================================================================== */
+
+.horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* First Level Items */
+.horizontal > li {
+  position: relative;
+  margin: 0;
+}
+
+.horizontal > li > a {
+  display: block;
+  padding: var(--nav-padding-y) var(--nav-padding-x);
+  color: var(--nav-text);
+  font-weight: var(--nav-font-weight);
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Hover States */
+.horizontal > li > a:hover,
+.horizontal > li > a:focus {
+  color: var(--nav-text-hover);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Active States */
+.horizontal > li.active > a,
+.horizontal > li > a[aria-current="page"] {
+  background-color: var(--nav-active-bg);
+  color: var(--nav-text-active);
+}
+
+/* Site Logo Special Styling */
+.site-logo {
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding-left: 0 !important;
+}
+
+/* Dropdown Indicators - Semantic Detection
+   ========================================================================== */
+
+/* Automatically detect dropdowns by presence of nested ul */
+.horizontal > li:has(> ul) > a::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: currentColor transparent transparent transparent;
+  opacity: 0.5;
+  transition: transform var(--nav-transition);
+}
+
+/* Rotate on hover */
+.horizontal > li:has(> ul):hover > a::after {
+  transform: rotate(180deg);
+}
+
+/* For browsers that don't support :has(), use attribute selector as fallback */
+@supports not selector(:has(*)) {
+  .horizontal > li[aria-haspopup="true"] > a::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    border-color: currentColor transparent transparent transparent;
+    opacity: 0.5;
+    transition: transform var(--nav-transition);
+  }
+
+  .horizontal > li[aria-haspopup="true"]:hover > a::after {
+    transform: rotate(180deg);
+  }
+}
+
+/* Dropdown Menus - Level 1
+   ========================================================================== */
+
+.horizontal ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: var(--nav-dropdown-bg);
+  border: 1px solid var(--nav-dropdown-border);
+  border-radius: 4px;
+  box-shadow: var(--nav-dropdown-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--nav-transition);
+  z-index: var(--nav-dropdown-z-index);
+}
+
+/* Show on hover/focus */
+.horizontal > li:hover > ul,
+.horizontal > li:focus-within > ul,
+.horizontal > li > a:focus + ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Invisible bridge to prevent dropdown from closing */
+.horizontal > li > ul::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: transparent;
+}
+
+/* Dropdown Items */
+.horizontal ul li {
+  position: relative;
+}
+
+.horizontal ul a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--nav-dropdown-text);
+  font-size: 0.9375rem;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.horizontal ul a:hover,
+.horizontal ul a:focus {
+  background-color: var(--nav-dropdown-hover-bg);
+  color: var(--nav-dropdown-hover-text);
+}
+
+/* Dropdown Menus - Level 2 (Third Level)
+   ========================================================================== */
+
+.horizontal ul ul {
+  top: 0;
+  left: 100%;
+  margin-left: -1px;
+}
+
+/* Show third level on hover */
+.horizontal ul > li:hover > ul,
+.horizontal ul > li:focus-within > ul,
+.horizontal ul > li > a:focus + ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Third level indicator - Semantic detection */
+.horizontal ul li:has(> ul) > a::after {
+  content: '';
+  float: right;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 4px;
+  border-color: transparent transparent transparent currentColor;
+  margin-left: auto;
+  margin-right: 0;
+  opacity: 0.5;
+}
+
+/* Fallback for browsers without :has() */
+@supports not selector(:has(*)) {
+  .horizontal ul li[aria-haspopup="true"] > a::after {
+    content: '';
+    float: right;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 0 4px 4px;
+    border-color: transparent transparent transparent currentColor;
+    margin-left: auto;
+    margin-right: 0;
+    opacity: 0.5;
+  }
+}
+
+/* Dropdown Menus - Level 3
+   ========================================================================== */
+
+.horizontal ul ul ul {
+  /* Same positioning as level 2 */
+  top: 0;
+  left: 100%;
+}
+
+/* Mobile Navigation (< 768px)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  /* Show mobile toggle */
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+  }
+
+  /* Hide desktop utility */
+  .hide-mobile {
+    display: none !important;
+  }
+
+  /* Mobile menu container */
+  .horizontal {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--nav-mobile-bg);
+    padding: 1rem;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform var(--nav-transition-slow);
+    z-index: var(--nav-mobile-z-index);
+  }
+
+  /* Show mobile menu when active */
+  .nav-toggle[aria-expanded="true"] ~ .horizontal,
+  .horizontal.is-active {
+    transform: translateX(0);
+  }
+
+  /* Mobile overlay */
+  .site-nav::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--nav-mobile-overlay);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--nav-transition-slow);
+    z-index: var(--nav-mobile-overlay-z-index);
+  }
+
+  .nav-toggle[aria-expanded="true"] ~ .site-nav::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobile menu items */
+  .horizontal > li {
+    border-bottom: 1px solid var(--nav-mobile-border);
+  }
+
+  .horizontal > li > a {
+    padding: 1rem 0;
+    font-size: 1.125rem;
+  }
+
+  /* Mobile dropdowns - static positioning */
+  .horizontal ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+    display: none;
+  }
+
+  /* Show dropdown when parent is active */
+  .horizontal > li.is-expanded > ul,
+  .horizontal ul > li.is-expanded > ul {
+    display: block;
+  }
+
+  /* Mobile dropdown toggle - Semantic detection */
+  .horizontal li:has(> ul) > a::after {
+    float: right;
+    transition: transform var(--nav-transition);
+  }
+
+  .horizontal li.is-expanded > a::after {
+    transform: rotate(180deg);
+  }
+
+  /* Fallback for browsers without :has() */
+  @supports not selector(:has(*)) {
+    .horizontal li[aria-haspopup="true"] > a::after {
+      float: right;
+      transition: transform var(--nav-transition);
+    }
+  }
+
+  /* Mobile dropdown items */
+  .horizontal ul a {
+    padding: 0.75rem 0;
+    font-size: 1rem;
+  }
+
+  /* Third level mobile */
+  .horizontal ul ul {
+    position: static;
+    left: auto;
+    padding-left: 1rem;
+  }
+}
+
+/* Tablet Adjustments (768px - 1024px)
+   ========================================================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .horizontal > li > a {
+    padding: var(--nav-padding-y) 0.75rem;
+    font-size: 0.9375rem;
+  }
+
+  .site-logo {
+    font-size: 1rem;
+  }
+}
+
+/* Desktop Only Utilities
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .hide-desktop {
+    display: none !important;
+  }
+
+  /* Ensure dropdowns don't go off-screen */
+  .horizontal > li:last-child ul,
+  .horizontal > li:nth-last-child(2) ul {
+    left: auto;
+    right: 0;
+  }
+
+  .horizontal ul > li:last-child ul,
+  .horizontal ul > li:nth-last-child(2) ul {
+    left: auto;
+    right: 100%;
+  }
+}
+
+/* Accessibility
+   ========================================================================== */
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus styles */
+.site-nav a:focus {
+  outline: 2px solid var(--nav-primary);
+  outline-offset: 2px;
+}
+
+.nav-toggle:focus {
+  outline: 2px solid var(--nav-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--nav-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  z-index: 10000;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Print Styles
+   ========================================================================== */
+
+@media print {
+  .site-nav,
+  .nav-toggle {
+    display: none !important;
+  }
+}
+
+/* State Classes for JavaScript Enhancement
+   ========================================================================== */
+
+/* These classes are added by JavaScript for interaction states */
+/* The CSS automatically detects structure through :has() or ARIA attributes */
+/* No need for .has-dropdown or .has-submenu classes - structure is semantic */
+
+.is-active { /* Mobile menu is open */ }
+.is-expanded { /* Mobile dropdown is expanded */ }
+.is-closing { /* Animation out state */ }
+
+/* Smooth Height Transitions for Mobile */
+@media (max-width: 767px) {
+  .horizontal ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--nav-transition-slow);
+  }
+
+  .horizontal li.is-expanded > ul {
+    max-height: 500px; /* Adjust based on content */
+  }
+}

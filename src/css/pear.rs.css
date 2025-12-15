@@ -29,27 +29,12 @@ ul.stats li {
   border-right: 1px solid #ccc;
 }
 
-/* Source:
-http://verboselogging.com/2010/01/17/making-nth-child-work-everywhere
-
-Now you can change your CSS rule to something poor IE can understand:
-like .last for example :P */
-
-ul.stats li.last,
+/* Modern CSS - no jQuery needed */
 ul.stats li:last-child {
   margin: 0;
   padding: 0;
   border: none;
 }
-
-/* Top it off with some jQuery sauce...
-
-This class (.last) is added via the a.mphibio.us.js (scripts.js in development mode)
-for ie capable last-child formating - Great for table styling too - copy/paste make your own
-
-$('ul li:last-child').addClass('last');
-
-*/
 
 ul.stats li {
   display: block;

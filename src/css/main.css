@@ -10,9 +10,8 @@
 @import "./tokens/design-tokens.css";
 @import "./typography.css";
 
-/* Layout */
-@import "./grid.css";
-@import "./grid-responsive.css";
+/* Layout - Modern Grid System */
+@import "./grid-modern.css"; /* Modern grid with CSS Grid/Flexbox, no jQuery deps */
 
 /* Atomic Design Components */
 /* Atoms */
@@ -31,7 +30,7 @@
 
 /* Organisms */
 @import "./organisms/cards.css";
-@import "./organisms/navigation.css";
+@import "./navigation-unified.css"; /* Unified navigation system */
 @import "./organisms/modal.css";
 @import "./organisms/forms.css";
 @import "./organisms/tabs.css";
@@ -41,10 +40,7 @@
 @import "./organisms/sidebar.css";
 @import "./organisms/footer.css";
 @import "./organisms/carousel.css";
-@import "./organisms/responsive-tables.css";
-
-/* Navigation fixes */
-@import "./navigation-dropdown-fix.css";
+@import "./organisms/tables.css"; /* Unified table component */
 
 /* Apple Design System */
 @import "./apple-design-system.css";

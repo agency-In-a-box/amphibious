@@ -109,7 +109,6 @@ function clearAllFilters() {
 
 // Apply Filters (Mock Function)
 function applyFilters() {
-  console.log('Applying filters:', filterState);
 
   // Update results count (mock)
   const resultsElement = document.querySelector('.results-info strong');
@@ -205,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function() {
       dropdown.querySelector('.sort-button').classList.remove('active');
 
       // Apply sort
-      console.log('Sorting by:', filterState.sortBy);
       applyFilters();
     });
   });

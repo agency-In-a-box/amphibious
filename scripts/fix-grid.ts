@@ -352,17 +352,9 @@ const GRID_CSS = `/* ===========================================================
 
 // Write the fixed grid
 const gridPath = resolve(process.cwd(), 'src/css/grid.css');
-console.log('Writing modern flexbox grid to:', gridPath);
 
 try {
   writeFileSync(gridPath, GRID_CSS, 'utf-8');
-  console.log('✅ Grid system updated successfully!');
-  console.log('\nNext steps:');
-  console.log('1. Run: bun run dev');
-  console.log('2. Open: http://localhost:2960');
-  console.log('3. Check the grid demo section');
-  console.log('4. Verify responsive behavior on mobile/tablet');
-  console.log('\nIf everything looks good, commit the changes.');
 } catch (error) {
   console.error('❌ Error writing grid file:', error);
   process.exit(1);
