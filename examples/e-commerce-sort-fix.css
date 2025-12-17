@@ -78,12 +78,12 @@
 }
 
 .sort-controls select:hover {
-  border-color: #FF6900;
+  border-color: #ff6900;
 }
 
 .sort-controls select:focus {
   outline: none;
-  border-color: #FF6900;
+  border-color: #ff6900;
   box-shadow: 0 0 0 3px rgba(255, 105, 0, 0.1);
 }
 
@@ -122,14 +122,14 @@
 }
 
 .view-toggles button:hover {
-  border-color: #FF6900;
+  border-color: #ff6900;
   background: rgba(255, 105, 0, 0.05);
 }
 
 .view-toggles button.active {
-  background: #FF6900;
+  background: #ff6900;
   color: white;
-  border-color: #FF6900;
+  border-color: #ff6900;
 }
 
 .view-toggles button.active svg,
@@ -178,7 +178,9 @@
 }
 
 /* Firefox specific fixes */
-@-moz-document url-prefix() {
+/* @-moz-document is non-standard and not supported by most parsers
+   Using @supports instead for feature detection */
+@supports (-moz-appearance: none) {
   .sort-controls select {
     padding-right: 2rem;
   }
