@@ -207,23 +207,29 @@ describe('SmoothScroll Module', () => {
   });
 
   describe('Focus Management', () => {
-    it('should focus target element after scroll', () => {
+    it('should focus target element after scroll', async () => {
       smoothScroll = new SmoothScroll({ duration: 0 });
       smoothScroll.init();
 
       const target = document.querySelector('#section1') as HTMLElement;
       smoothScroll.scrollToElement(target, 0);
 
+      // Wait for the animation frame to complete
+      await new Promise(resolve => setTimeout(resolve, 10));
+
       expect(document.activeElement).toBe(target);
     });
 
-    it('should handle elements with existing tabindex', () => {
+    it('should handle elements with existing tabindex', async () => {
       smoothScroll = new SmoothScroll({ duration: 0 });
 
       const target = document.querySelector('#section2') as HTMLElement;
       target.setAttribute('tabindex', '0');
 
       smoothScroll.scrollToElement(target, 0);
+
+      // Wait for the animation frame to complete
+      await new Promise(resolve => setTimeout(resolve, 10));
 
       expect(document.activeElement).toBe(target);
       expect(target.getAttribute('tabindex')).toBe('0'); // Should preserve
