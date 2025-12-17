@@ -10,16 +10,16 @@
 
 :root {
   /* Primary Brand Color - Pantone 144 */
-  --primary-color: #FF6900;
-  --primary-hover: #E65100;
-  --primary-light: #FF8533;
+  --primary-color: #ff6900;
+  --primary-hover: #e65100;
+  --primary-light: #ff8533;
   --primary-fade: rgba(255, 105, 0, 0.1);
 
   /* Remove all blue references */
-  --link-color: #FF6900;
-  --link-hover: #E65100;
-  --button-primary: #FF6900;
-  --button-primary-hover: #E65100;
+  --link-color: #ff6900;
+  --link-hover: #e65100;
+  --button-primary: #ff6900;
+  --button-primary-hover: #e65100;
 
   /* Neutrals */
   --text-primary: #2c3e50;
@@ -30,20 +30,28 @@
 }
 
 /* Override ANY blue colors in existing styles */
-a, .link, .apple-link {
+a,
+.link,
+.apple-link {
   color: var(--primary-color) !important;
 }
 
-a:hover, .link:hover, .apple-link:hover {
+a:hover,
+.link:hover,
+.apple-link:hover {
   color: var(--primary-hover) !important;
 }
 
-.btn--primary, .apple-button, button.primary {
+.btn--primary,
+.apple-button,
+button.primary {
   background: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
 }
 
-.btn--primary:hover, .apple-button:hover, button.primary:hover {
+.btn--primary:hover,
+.apple-button:hover,
+button.primary:hover {
   background: var(--primary-hover) !important;
   border-color: var(--primary-hover) !important;
 }
@@ -486,12 +494,18 @@ a:hover, .link:hover, .apple-link:hover {
 }
 
 /* Fix any col-* issues */
-.col-3, .col-4, .col-6, .col-8, .col-9, .col-12 {
+.col-3,
+.col-4,
+.col-6,
+.col-8,
+.col-9,
+.col-12 {
   padding: 0 !important;
 }
 
 /* Global button color fix */
-button, .btn {
+button,
+.btn {
   transition: all 0.2s ease;
 }
 

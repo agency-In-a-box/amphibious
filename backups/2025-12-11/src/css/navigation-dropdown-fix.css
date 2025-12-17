@@ -21,7 +21,7 @@
 
 /* Add a bridge between menu item and dropdown to prevent gap issues */
 .horizontal.branded > li::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   left: 0;
@@ -70,7 +70,7 @@
 
 /* Optional: Add visual indicator for dropdown items */
 .horizontal.branded > li:has(ul) > a::after {
-  content: ' ▾';
+  content: " ▾";
   font-size: 0.8em;
   opacity: 0.6;
   margin-left: 0.25rem;

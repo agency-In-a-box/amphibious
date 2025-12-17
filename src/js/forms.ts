@@ -34,10 +34,9 @@ export class Forms {
     this.eventListeners = [];
 
     // Clean up any created elements
-    document.querySelectorAll('.char-counter').forEach(el => el.remove());
-    document.querySelectorAll('.password-toggle').forEach(el => el.remove());
+    document.querySelectorAll('.char-counter').forEach((el) => el.remove());
+    document.querySelectorAll('.password-toggle').forEach((el) => el.remove());
   }
-
 
   /**
    * Initialize forms functionality

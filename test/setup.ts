@@ -48,22 +48,22 @@ let mockScrollX = 0;
 
 Object.defineProperty(global.window, 'scrollY', {
   get: () => mockScrollY,
-  configurable: true
+  configurable: true,
 });
 
 Object.defineProperty(global.window, 'pageYOffset', {
   get: () => mockScrollY,
-  configurable: true
+  configurable: true,
 });
 
 Object.defineProperty(global.window, 'scrollX', {
   get: () => mockScrollX,
-  configurable: true
+  configurable: true,
 });
 
 Object.defineProperty(global.window, 'pageXOffset', {
   get: () => mockScrollX,
-  configurable: true
+  configurable: true,
 });
 
 // Mock scrollTo
@@ -90,7 +90,7 @@ global.window.scrollBy = (x: number | ScrollToOptions, y?: number) => {
 
 // Mock getBoundingClientRect for elements
 const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
-Element.prototype.getBoundingClientRect = function() {
+Element.prototype.getBoundingClientRect = function () {
   const rect = originalGetBoundingClientRect.call(this);
   // Return a mock rect with proper values
   return {
@@ -102,6 +102,6 @@ Element.prototype.getBoundingClientRect = function() {
     height: rect.height || 100,
     x: rect.x || 0,
     y: rect.y || 0,
-    toJSON: () => ({})
+    toJSON: () => ({}),
   };
 };

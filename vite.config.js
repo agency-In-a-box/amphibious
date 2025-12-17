@@ -11,20 +11,20 @@ export default defineConfig({
     port: 2960,
     host: true,
     fs: {
-      strict: false
-    }
+      strict: false,
+    },
   },
   preview: {
     port: 2961,
-    host: true
+    host: true,
   },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
       '@css': resolve(__dirname, './src/css'),
       '@js': resolve(__dirname, './src/js'),
-      '@components': resolve(__dirname, './src/components')
-    }
+      '@components': resolve(__dirname, './src/components'),
+    },
   },
   build: {
     outDir: 'dist',
@@ -37,18 +37,18 @@ export default defineConfig({
         drop_console: true,
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug'],
-        passes: 2
+        passes: 2,
       },
       mangle: true,
       format: {
-        comments: false
-      }
+        comments: false,
+      },
     },
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'Amphibious',
       fileName: (format) => `amphibious.${format}.js`,
-      formats: ['es', 'umd']
+      formats: ['es', 'umd'],
     },
     rollupOptions: {
       external: [],
@@ -59,17 +59,17 @@ export default defineConfig({
             return 'amphibious.css';
           }
           return assetInfo.name || 'asset';
-        }
+        },
       },
       treeshake: {
         moduleSideEffects: false,
-        propertyReadSideEffects: false
-      }
+        propertyReadSideEffects: false,
+      },
     },
-    chunkSizeWarningLimit: 500
+    chunkSizeWarningLimit: 500,
   },
   css: {
     devSourcemap: true,
-    postcss: {}
-  }
+    postcss: {},
+  },
 });

@@ -767,69 +767,67 @@
             // apply event handling to headers
             // this is to big, perhaps break it out?
             $headers
-              .click(
-                function (e) {
-                  var totalRows = ($this[0].tBodies[0] && $this[0].tBodies[0].rows.length) || 0;
-                  if (!this.sortDisabled && totalRows > 0) {
-                    // Only call sortStart if sorting is
-                    // enabled.
-                    $this.trigger('sortStart');
-                    // store exp, for speed
-                    var $cell = $(this);
-                    // get current column index
-                    var i = this.column;
-                    // get current column sort order
-                    this.order = this.count++ % 2;
-                    // always sort on the locked order.
-                    if (this.lockedOrder) this.order = this.lockedOrder;
+              .click(function (e) {
+                var totalRows = ($this[0].tBodies[0] && $this[0].tBodies[0].rows.length) || 0;
+                if (!this.sortDisabled && totalRows > 0) {
+                  // Only call sortStart if sorting is
+                  // enabled.
+                  $this.trigger('sortStart');
+                  // store exp, for speed
+                  var $cell = $(this);
+                  // get current column index
+                  var i = this.column;
+                  // get current column sort order
+                  this.order = this.count++ % 2;
+                  // always sort on the locked order.
+                  if (this.lockedOrder) this.order = this.lockedOrder;
 
-                    // user only whants to sort on one
-                    // column
-                    if (!e[config.sortMultiSortKey]) {
-                      // flush the sort list
-                      config.sortList = [];
-                      if (config.sortForce != null) {
-                        var a = config.sortForce;
-                        for (var j = 0; j < a.length; j++) {
-                          if (a[j][0] != i) {
-                            config.sortList.push(a[j]);
-                          }
+                  // user only whants to sort on one
+                  // column
+                  if (!e[config.sortMultiSortKey]) {
+                    // flush the sort list
+                    config.sortList = [];
+                    if (config.sortForce != null) {
+                      var a = config.sortForce;
+                      for (var j = 0; j < a.length; j++) {
+                        if (a[j][0] != i) {
+                          config.sortList.push(a[j]);
                         }
-                      }
-                      // add column to sort list
-                      config.sortList.push([i, this.order]);
-                      // multi column sorting
-                    } else {
-                      // the user has clicked on an all
-                      // ready sortet column.
-                      if (isValueInArray(i, config.sortList)) {
-                        // revers the sorting direction
-                        // for all tables.
-                        for (var j = 0; j < config.sortList.length; j++) {
-                          var s = config.sortList[j],
-                            o = config.headerList[s[0]];
-                          if (s[0] == i) {
-                            o.count = s[1];
-                            o.count++;
-                            s[1] = o.count % 2;
-                          }
-                        }
-                      } else {
-                        // add column to sort list array
-                        config.sortList.push([i, this.order]);
                       }
                     }
-                    setTimeout(() => {
-                      // set css for headers
-                      setHeadersCss($this[0], $headers, config.sortList, sortCSS);
-                      appendToTable($this[0], multisort($this[0], config.sortList, cache));
-                    }, 1);
-                    // stop normal event by returning false
-                    return false;
+                    // add column to sort list
+                    config.sortList.push([i, this.order]);
+                    // multi column sorting
+                  } else {
+                    // the user has clicked on an all
+                    // ready sortet column.
+                    if (isValueInArray(i, config.sortList)) {
+                      // revers the sorting direction
+                      // for all tables.
+                      for (var j = 0; j < config.sortList.length; j++) {
+                        var s = config.sortList[j],
+                          o = config.headerList[s[0]];
+                        if (s[0] == i) {
+                          o.count = s[1];
+                          o.count++;
+                          s[1] = o.count % 2;
+                        }
+                      }
+                    } else {
+                      // add column to sort list array
+                      config.sortList.push([i, this.order]);
+                    }
                   }
-                  // cancel selection
-                },
-              )
+                  setTimeout(() => {
+                    // set css for headers
+                    setHeadersCss($this[0], $headers, config.sortList, sortCSS);
+                    appendToTable($this[0], multisort($this[0], config.sortList, cache));
+                  }, 1);
+                  // stop normal event by returning false
+                  return false;
+                }
+                // cancel selection
+              })
               .mousedown(function () {
                 if (config.cancelSelection) {
                   this.onselectstart = () => false;

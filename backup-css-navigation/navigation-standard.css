@@ -63,7 +63,7 @@
 
 /* Hover state */
 .horizontal > li > a:hover {
-  color: #ED8B00;
+  color: #ed8b00;
   background-color: rgba(237, 139, 0, 0.04);
 }
 
@@ -71,14 +71,14 @@
 .horizontal > li.active > a,
 .horizontal > li > a.active,
 .horizontal > li > a[aria-current="page"] {
-  color: #ED8B00;
+  color: #ed8b00;
   font-weight: 500;
 }
 
 /* Site logo special styling */
 .site-logo {
   font-weight: 600 !important;
-  color: #ED8B00 !important;
+  color: #ed8b00 !important;
   letter-spacing: -0.01em;
 }
 
@@ -97,7 +97,7 @@
 }
 
 .horizontal > li:has(> ul) > a::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -165,14 +165,14 @@
 
 /* Dropdown hover state */
 .horizontal > li > ul > li > a:hover {
-  color: #ED8B00;
+  color: #ed8b00;
   background-color: rgba(237, 139, 0, 0.06);
 }
 
 /* Active dropdown item */
 .horizontal > li > ul > li.active > a,
 .horizontal > li > ul > li > a.active {
-  color: #ED8B00;
+  color: #ed8b00;
   font-weight: 500;
 }
 
@@ -216,7 +216,7 @@
 
 /* Tertiary indicator */
 .horizontal > li > ul > li:has(> ul) > a::after {
-  content: '›';
+  content: "›";
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -251,12 +251,12 @@
 }
 
 .breadcrumb a:hover {
-  color: #ED8B00;
+  color: #ed8b00;
 }
 
 /* Breadcrumb separator */
 .breadcrumb li:not(:last-child)::after {
-  content: '›';
+  content: "›";
   margin: 0 0.5rem;
   color: #ccc;
 }
@@ -298,7 +298,7 @@
 
 .nav-toggle-icon::before,
 .nav-toggle-icon::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   width: 100%;
@@ -366,7 +366,7 @@
     transform: none;
     box-shadow: none;
     border: none;
-    border-left: 3px solid #ED8B00;
+    border-left: 3px solid #ed8b00;
     margin-left: 1rem;
     padding: 0;
     display: none;
@@ -400,7 +400,7 @@
 .horizontal > li > a:focus-visible,
 .breadcrumb a:focus-visible,
 .nav-toggle:focus-visible {
-  outline: 2px solid #ED8B00;
+  outline: 2px solid #ed8b00;
   outline-offset: 2px;
 }
 
@@ -441,7 +441,7 @@
   }
 
   .horizontal > li::after {
-    content: ' | ';
+    content: " | ";
     margin: 0 0.5rem;
   }
 

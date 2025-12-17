@@ -11,25 +11,20 @@
 .horizontal > li.active > a,
 .horizontal > li > a.active {
   /* Softer, more natural gradient */
-  background: linear-gradient(135deg,
-    var(--color-primary) 0%,
-    rgba(237, 139, 0, 0.95) 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, rgba(237, 139, 0, 0.95) 100%);
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Fix right edge of active tab */
 .horizontal > li.active > a::after {
-  content: '';
+  content: "";
   position: absolute;
   right: -1px;
   top: 0;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom,
-    transparent 0%,
-    var(--color-primary) 50%,
-    transparent 100%);
+  background: linear-gradient(to bottom, transparent 0%, var(--color-primary) 50%, transparent 100%);
 }
 
 /* ==========================================================================
@@ -46,9 +41,7 @@
 
 /* Active item hover should maintain active state */
 .horizontal > li.active > a:hover {
-  background: linear-gradient(135deg,
-    rgba(237, 139, 0, 0.98) 0%,
-    rgba(237, 139, 0, 0.92) 100%);
+  background: linear-gradient(135deg, rgba(237, 139, 0, 0.98) 0%, rgba(237, 139, 0, 0.92) 100%);
   color: white;
 }
 
@@ -83,7 +76,7 @@
 
 /* Add invisible bridge to maintain hover state */
 .horizontal > li::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   left: 0;
@@ -143,9 +136,7 @@
 
 /* Branded navigation specific fixes */
 .horizontal.branded {
-  background: linear-gradient(to bottom,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(237, 139, 0, 0.02) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(237, 139, 0, 0.02) 100%);
   border-bottom: 2px solid rgba(237, 139, 0, 0.2);
   position: relative;
   z-index: 100;
@@ -174,7 +165,7 @@
 
 /* Arrow indicator for items with dropdowns */
 .horizontal > li:has(ul) > a::after {
-  content: '▾';
+  content: "▾";
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -215,7 +206,7 @@
 }
 
 .horizontal > li.active > a.site-logo::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 1.5rem;
@@ -249,7 +240,7 @@
 
 /* Arrow for tertiary items */
 .horizontal > li > ul > li:has(ul) > a::after {
-  content: '▸';
+  content: "▸";
   position: absolute;
   right: 1rem;
   top: 50%;

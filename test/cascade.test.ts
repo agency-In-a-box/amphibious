@@ -86,7 +86,9 @@ describe('CSS @layer Cascade', () => {
     const styleContent = document.querySelector('style')?.textContent || '';
 
     // Check that layer definition comes first
-    expect(styleContent).toContain('@layer reset, tokens, base, layout, components, themes, utilities');
+    expect(styleContent).toContain(
+      '@layer reset, tokens, base, layout, components, themes, utilities',
+    );
 
     // Check that layers are defined in order
     const baseIndex = styleContent.indexOf('@layer base');

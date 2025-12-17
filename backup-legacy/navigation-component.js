@@ -52,11 +52,11 @@ class NavigationComponent {
     const currentHash = window.location.hash;
 
     // Remove all active classes
-    document.querySelectorAll('.horizontal li').forEach(li => {
+    document.querySelectorAll('.horizontal li').forEach((li) => {
       li.classList.remove('active');
     });
 
-    document.querySelectorAll('.horizontal a').forEach(link => {
+    document.querySelectorAll('.horizontal a').forEach((link) => {
       link.classList.remove('active');
       link.removeAttribute('aria-current');
     });
@@ -72,7 +72,7 @@ class NavigationComponent {
     }
 
     // Find and mark active page
-    document.querySelectorAll('.horizontal a').forEach(link => {
+    document.querySelectorAll('.horizontal a').forEach((link) => {
       const href = link.getAttribute('href');
       if (!href) return;
 
@@ -139,7 +139,7 @@ class NavigationComponent {
 
     const dropdownParents = document.querySelectorAll('.horizontal > li:has(ul)');
 
-    dropdownParents.forEach(parent => {
+    dropdownParents.forEach((parent) => {
       const link = parent.querySelector('> a');
       if (!link) return;
 

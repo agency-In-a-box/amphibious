@@ -7,30 +7,51 @@
 let cartState = {
   items: [
     { id: 1, name: 'Premium Cotton T-Shirt', price: 49.99, quantity: 1, selected: true },
-    { id: 2, name: 'Slim Fit Denim Jeans', price: 89.99, originalPrice: 119.99, quantity: 1, selected: true },
-    { id: 3, name: 'Wireless Headphones Pro', price: 299.99, quantity: 1, maxQty: 3, selected: true },
-    { id: 4, name: 'Running Sneakers Pro', price: 129.99, originalPrice: 159.99, quantity: 2, selected: true },
-    { id: 5, name: 'Premium Leather Wallet', price: 59.99, quantity: 1, selected: true }
-  ]
+    {
+      id: 2,
+      name: 'Slim Fit Denim Jeans',
+      price: 89.99,
+      originalPrice: 119.99,
+      quantity: 1,
+      selected: true,
+    },
+    {
+      id: 3,
+      name: 'Wireless Headphones Pro',
+      price: 299.99,
+      quantity: 1,
+      maxQty: 3,
+      selected: true,
+    },
+    {
+      id: 4,
+      name: 'Running Sneakers Pro',
+      price: 129.99,
+      originalPrice: 159.99,
+      quantity: 2,
+      selected: true,
+    },
+    { id: 5, name: 'Premium Leather Wallet', price: 59.99, quantity: 1, selected: true },
+  ],
 };
 
 // Format Currency
 function formatCurrency(amount) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'USD',
   }).format(amount);
 }
 
 // Calculate Totals
 function calculateTotals() {
-  const selectedItems = cartState.items.filter(item => item.selected);
+  const selectedItems = cartState.items.filter((item) => item.selected);
 
   let subtotal = 0;
   let savings = 0;
   let itemCount = 0;
 
-  selectedItems.forEach(item => {
+  selectedItems.forEach((item) => {
     const itemTotal = item.price * item.quantity;
     subtotal += itemTotal;
     itemCount += item.quantity;
@@ -50,7 +71,7 @@ function calculateTotals() {
     tax,
     shipping,
     total,
-    itemCount
+    itemCount,
   };
 }
 
@@ -62,20 +83,28 @@ function updateSummary() {
   document.querySelector('.cart-count').textContent = `${totals.itemCount} items`;
 
   // Update summary lines
-  document.querySelector('.summary-line:nth-child(1) span:last-child').textContent = formatCurrency(totals.subtotal);
-  document.querySelector('.summary-line:nth-child(2) span:last-child').textContent = totals.shipping === 0 ? 'FREE' : formatCurrency(totals.shipping);
-  document.querySelector('.summary-line:nth-child(3) span:last-child').textContent = formatCurrency(totals.tax);
+  document.querySelector('.summary-line:nth-child(1) span:last-child').textContent = formatCurrency(
+    totals.subtotal,
+  );
+  document.querySelector('.summary-line:nth-child(2) span:last-child').textContent =
+    totals.shipping === 0 ? 'FREE' : formatCurrency(totals.shipping);
+  document.querySelector('.summary-line:nth-child(3) span:last-child').textContent = formatCurrency(
+    totals.tax,
+  );
 
   if (totals.savings > 0) {
-    document.querySelector('.summary-line.savings span:last-child').textContent = `-${formatCurrency(totals.savings)}`;
+    document.querySelector('.summary-line.savings span:last-child').textContent =
+      `-${formatCurrency(totals.savings)}`;
   }
 
-  document.querySelector('.summary-total span:last-child').textContent = formatCurrency(totals.total);
+  document.querySelector('.summary-total span:last-child').textContent = formatCurrency(
+    totals.total,
+  );
 }
 
 // Handle Quantity Changes
 function handleQuantityChange(itemId, change) {
-  const item = cartState.items.find(i => i.id === itemId);
+  const item = cartState.items.find((i) => i.id === itemId);
   if (!item) return;
 
   const newQty = item.quantity + change;
@@ -108,7 +137,7 @@ function handleQuantityChange(itemId, change) {
 
 // Handle Item Selection
 function handleItemSelection(itemId, selected) {
-  const item = cartState.items.find(i => i.id === itemId);
+  const item = cartState.items.find((i) => i.id === itemId);
   if (item) {
     item.selected = selected;
     updateSummary();
@@ -117,12 +146,12 @@ function handleItemSelection(itemId, selected) {
 
 // Handle Select All
 function handleSelectAll(selected) {
-  cartState.items.forEach(item => {
+  cartState.items.forEach((item) => {
     item.selected = selected;
   });
 
   // Update all checkboxes
-  document.querySelectorAll('.cart-item input[type="checkbox"]').forEach(checkbox => {
+  document.querySelectorAll('.cart-item input[type="checkbox"]').forEach((checkbox) => {
     checkbox.checked = selected;
   });
 
@@ -131,7 +160,7 @@ function handleSelectAll(selected) {
 
 // Remove Item
 function removeItem(itemId) {
-  const index = cartState.items.findIndex(i => i.id === itemId);
+  const index = cartState.items.findIndex((i) => i.id === itemId);
   if (index > -1) {
     cartState.items.splice(index, 1);
 
@@ -150,7 +179,7 @@ function removeItem(itemId) {
 
 // Save for Later
 function saveForLater(itemId) {
-  const item = cartState.items.find(i => i.id === itemId);
+  const item = cartState.items.find((i) => i.id === itemId);
   if (item) {
     // In a real app, this would move to saved items
     removeItem(itemId);
@@ -161,7 +190,8 @@ function saveForLater(itemId) {
 function clearCart() {
   if (confirm('Are you sure you want to clear your cart?')) {
     cartState.items = [];
-    document.querySelector('.cart-items').innerHTML = '<p style="text-align: center; padding: 3rem; color: #6b7280;">Your cart is empty</p>';
+    document.querySelector('.cart-items').innerHTML =
+      '<p style="text-align: center; padding: 3rem; color: #6b7280;">Your cart is empty</p>';
     updateSummary();
   }
 }
@@ -181,11 +211,11 @@ function applyPromo() {
 }
 
 // Initialize Event Listeners
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Select All Checkbox
   const selectAllCheckbox = document.getElementById('selectAll');
   if (selectAllCheckbox) {
-    selectAllCheckbox.addEventListener('change', function() {
+    selectAllCheckbox.addEventListener('change', function () {
       handleSelectAll(this.checked);
     });
   }
@@ -197,12 +227,12 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.cart-item').forEach((cartItem, index) => {
     const checkbox = cartItem.querySelector('input[type="checkbox"]');
     if (checkbox) {
-      checkbox.addEventListener('change', function() {
-        const itemId = parseInt(cartItem.dataset.itemId) || (index + 1);
+      checkbox.addEventListener('change', function () {
+        const itemId = parseInt(cartItem.dataset.itemId) || index + 1;
         handleItemSelection(itemId, this.checked);
 
         // Update select all checkbox
-        const allChecked = cartState.items.every(item => item.selected);
+        const allChecked = cartState.items.every((item) => item.selected);
         const selectAll = document.getElementById('selectAll');
         if (selectAll) {
           selectAll.checked = allChecked;
@@ -213,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Quantity Buttons
   document.querySelectorAll('.cart-item').forEach((cartItem, index) => {
-    const itemId = parseInt(cartItem.dataset.itemId) || (index + 1);
+    const itemId = parseInt(cartItem.dataset.itemId) || index + 1;
 
     const minusBtn = cartItem.querySelector('.qty-btn.minus');
     const plusBtn = cartItem.querySelector('.qty-btn.plus');
@@ -230,9 +260,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (qtyInput) {
-      qtyInput.addEventListener('change', function() {
+      qtyInput.addEventListener('change', function () {
         const newQty = parseInt(this.value) || 1;
-        const item = cartState.items.find(i => i.id === itemId);
+        const item = cartState.items.find((i) => i.id === itemId);
         if (item) {
           const diff = newQty - item.quantity;
           if (diff !== 0) {
@@ -255,24 +285,24 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.promo-apply')?.addEventListener('click', applyPromo);
 
   // Promo Code Input - Enter Key
-  document.querySelector('.promo-input')?.addEventListener('keypress', function(e) {
+  document.querySelector('.promo-input')?.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       applyPromo();
     }
   });
 
   // Checkout Buttons
-  document.querySelector('.btn-checkout.primary')?.addEventListener('click', function() {
+  document.querySelector('.btn-checkout.primary')?.addEventListener('click', function () {
     alert('Proceeding to checkout with ' + cartState.items.length + ' items');
   });
 
-  document.querySelector('.btn-paypal')?.addEventListener('click', function() {
+  document.querySelector('.btn-paypal')?.addEventListener('click', function () {
     alert('Redirecting to PayPal checkout...');
   });
 
   // Recently Viewed Items
-  document.querySelectorAll('.recent-item').forEach(item => {
-    item.addEventListener('click', function() {
+  document.querySelectorAll('.recent-item').forEach((item) => {
+    item.addEventListener('click', function () {
       const productName = this.querySelector('h4').textContent;
     });
   });

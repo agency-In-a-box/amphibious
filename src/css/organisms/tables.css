@@ -192,7 +192,7 @@ tr.info,
 }
 
 .table-sortable th::after {
-  content: '↕';
+  content: "↕";
   position: absolute;
   right: var(--table-padding-x);
   opacity: 0.3;
@@ -204,12 +204,12 @@ tr.info,
 }
 
 .table-sortable th.sort-asc::after {
-  content: '↑';
+  content: "↑";
   opacity: 1;
 }
 
 .table-sortable th.sort-desc::after {
-  content: '↓';
+  content: "↓";
   opacity: 1;
 }
 
@@ -298,19 +298,38 @@ tr.info,
    ========================================================================== */
 
 /* Text Alignment */
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
 
 /* Column Width Control */
-.col-auto { width: auto; }
-.col-min { width: 1%; white-space: nowrap; }
-.col-25 { width: 25%; }
-.col-50 { width: 50%; }
-.col-75 { width: 75%; }
+.col-auto {
+  width: auto;
+}
+.col-min {
+  width: 1%;
+  white-space: nowrap;
+}
+.col-25 {
+  width: 25%;
+}
+.col-50 {
+  width: 50%;
+}
+.col-75 {
+  width: 75%;
+}
 
 /* Cell Utilities */
-.no-wrap { white-space: nowrap; }
+.no-wrap {
+  white-space: nowrap;
+}
 .truncate {
   max-width: 200px;
   white-space: nowrap;

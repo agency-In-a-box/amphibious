@@ -77,15 +77,14 @@
 
 /* Tooltip animations */
 .tooltip {
-  transition: opacity var(--tooltip-transition-duration) var(--tooltip-transition-easing),
-              transform var(--tooltip-transition-duration) var(--tooltip-transition-easing),
-              left 0.1s ease-out,
-              top 0.1s ease-out;
+  transition: opacity var(--tooltip-transition-duration) var(--tooltip-transition-easing), transform
+    var(--tooltip-transition-duration) var(--tooltip-transition-easing), left 0.1s ease-out, top
+    0.1s ease-out;
 }
 
 /* Tooltip Arrow Base */
 .tooltip::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 0;
@@ -391,7 +390,7 @@
 }
 
 .tooltip-trigger[data-tooltip]:hover::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   left: 50%;

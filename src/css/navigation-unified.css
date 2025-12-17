@@ -9,7 +9,7 @@
 
 :root {
   /* Core Colors - Using Pantone 144 as primary */
-  --nav-primary: #ED8B00;
+  --nav-primary: #ed8b00;
   --nav-primary-hover: #ff9500;
   --nav-primary-active: #d87a00;
 
@@ -35,12 +35,13 @@
   --nav-mobile-border: rgba(0, 0, 0, 0.1);
 
   /* Spacing - Based on 4px grid */
-  --nav-padding-x: 1rem;    /* 16px = 4 × 4px */
+  --nav-padding-x: 1rem; /* 16px = 4 × 4px */
   --nav-padding-y: 0.75rem; /* 12px = 3 × 4px */
-  --nav-gap: 0.25rem;       /* 4px */
+  --nav-gap: 0.25rem; /* 4px */
 
   /* Typography */
-  --nav-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --nav-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
   --nav-font-size: 1rem;
   --nav-font-weight: 500;
 
@@ -121,7 +122,7 @@
 
 .nav-toggle-icon::before,
 .nav-toggle-icon::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   width: 24px;
@@ -205,7 +206,7 @@
 
 /* Automatically detect dropdowns by presence of nested ul */
 .horizontal > li:has(> ul) > a::after {
-  content: '';
+  content: "";
   display: inline-block;
   width: 0;
   height: 0;
@@ -226,7 +227,7 @@
 /* For browsers that don't support :has(), use attribute selector as fallback */
 @supports not selector(:has(*)) {
   .horizontal > li[aria-haspopup="true"] > a::after {
-    content: '';
+    content: "";
     display: inline-block;
     width: 0;
     height: 0;
@@ -274,7 +275,7 @@
 
 /* Invisible bridge to prevent dropdown from closing */
 .horizontal > li > ul::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -10px;
   left: 0;
@@ -323,7 +324,7 @@
 
 /* Third level indicator - Semantic detection */
 .horizontal ul li:has(> ul) > a::after {
-  content: '';
+  content: "";
   float: right;
   width: 0;
   height: 0;
@@ -338,7 +339,7 @@
 /* Fallback for browsers without :has() */
 @supports not selector(:has(*)) {
   .horizontal ul li[aria-haspopup="true"] > a::after {
-    content: '';
+    content: "";
     float: right;
     width: 0;
     height: 0;
@@ -402,7 +403,7 @@
 
   /* Mobile overlay */
   .site-nav::after {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
@@ -579,9 +580,15 @@
 /* The CSS automatically detects structure through :has() or ARIA attributes */
 /* No need for .has-dropdown or .has-submenu classes - structure is semantic */
 
-.is-active { /* Mobile menu is open */ }
-.is-expanded { /* Mobile dropdown is expanded */ }
-.is-closing { /* Animation out state */ }
+.is-active {
+  /* Mobile menu is open */
+}
+.is-expanded {
+  /* Mobile dropdown is expanded */
+}
+.is-closing {
+  /* Animation out state */
+}
 
 /* Smooth Height Transitions for Mobile */
 @media (max-width: 767px) {

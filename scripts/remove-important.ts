@@ -22,7 +22,10 @@ async function createBackup(filePath: string): Promise<void> {
   await writeFile(backupPath, content);
 }
 
-async function removeImportantFromFile(filePath: string, preservePatterns: RegExp[]): Promise<number> {
+async function removeImportantFromFile(
+  filePath: string,
+  preservePatterns: RegExp[],
+): Promise<number> {
   let content = await readFile(filePath, 'utf-8');
   const originalContent = content;
   let removalCount = 0;
@@ -58,12 +61,17 @@ async function removeImportantFromFile(filePath: string, preservePatterns: RegEx
       }
 
       // Preserve certain utility classes that legitimately need !important
-      if (selector.includes('.hide') || selector.includes('.hidden') ||
-          selector.includes('.show') || selector.includes('.visible') ||
-          selector.includes('.print-only') || selector.includes('.assistive-text') ||
-          selector.includes('@media print') ||
-          (selector.includes('.absolute') && line.includes('float')) ||
-          (selector.includes('.fixed') && line.includes('float'))) {
+      if (
+        selector.includes('.hide') ||
+        selector.includes('.hidden') ||
+        selector.includes('.show') ||
+        selector.includes('.visible') ||
+        selector.includes('.print-only') ||
+        selector.includes('.assistive-text') ||
+        selector.includes('@media print') ||
+        (selector.includes('.absolute') && line.includes('float')) ||
+        (selector.includes('.fixed') && line.includes('float'))
+      ) {
         shouldPreserve = true;
       }
 
@@ -93,7 +101,6 @@ async function removeImportantFromFile(filePath: string, preservePatterns: RegEx
 }
 
 async function main() {
-
   // Define patterns for declarations we want to preserve
   const preservePatterns = [
     // Print media queries typically need !important
@@ -157,17 +164,14 @@ async function main() {
   }
 
   // Print summary
-  results
-    .sort((a, b) => b.removals - a.removals)
-    .forEach(({ file, removals }) => {
-    });
+  results.sort((a, b) => b.removals - a.removals).forEach(({ file, removals }) => {});
 
   // Save removal log
   const log = {
     timestamp: new Date().toISOString(),
     totalRemoved,
     filesSummary: results,
-    preservedPatterns: preservePatterns.map(p => p.toString())
+    preservedPatterns: preservePatterns.map((p) => p.toString()),
   };
 
   await writeFile('important-removal-log.json', JSON.stringify(log, null, 2));

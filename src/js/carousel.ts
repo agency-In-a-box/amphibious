@@ -13,7 +13,7 @@ const DEFAULT_ICONS = {
   </svg>`,
   next: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <path d="M9 18l6-6-6-6"/>
-  </svg>`
+  </svg>`,
 };
 
 export interface AmphibiousCarouselOptions extends Omit<Partial<SplideOptions>, 'pagination'> {
@@ -35,9 +35,8 @@ export class AmphibiousCarousel {
   private options: AmphibiousCarouselOptions;
 
   constructor(selector: string | HTMLElement, options: AmphibiousCarouselOptions = {}) {
-    this.element = typeof selector === 'string'
-      ? document.querySelector(selector) as HTMLElement
-      : selector;
+    this.element =
+      typeof selector === 'string' ? (document.querySelector(selector) as HTMLElement) : selector;
 
     if (!this.element) {
       throw new Error(`Carousel element not found: ${selector}`);
@@ -65,7 +64,7 @@ export class AmphibiousCarousel {
         play: 'Start autoplay',
         pause: 'Pause autoplay',
       },
-      ...options
+      ...options,
     };
 
     this.init();
@@ -118,13 +117,14 @@ export class AmphibiousCarousel {
         list.className = 'splide__list';
 
         // Move existing slides to list
-        const slides = Array.from(this.element.children).filter(child =>
-          !child.classList.contains('splide__track') &&
-          !child.classList.contains('splide__arrows') &&
-          !child.classList.contains('splide__pagination')
+        const slides = Array.from(this.element.children).filter(
+          (child) =>
+            !child.classList.contains('splide__track') &&
+            !child.classList.contains('splide__arrows') &&
+            !child.classList.contains('splide__pagination'),
         );
 
-        slides.forEach(slide => {
+        slides.forEach((slide) => {
           if (!slide.classList.contains('splide__slide')) {
             slide.classList.add('splide__slide');
           }
@@ -141,18 +141,19 @@ export class AmphibiousCarousel {
     // Configure responsive breakpoints
     const breakpoints = {
       768: {
-        perPage: Math.max(1, Math.floor((this.options.perPage as number || 3) * 0.6)),
+        perPage: Math.max(1, Math.floor(((this.options.perPage as number) || 3) * 0.6)),
         gap: '0.5rem',
       },
       480: {
         perPage: 1,
         gap: '0.25rem',
         arrows: false,
-      }
+      },
     };
 
     // Convert our custom pagination options to Splide format
-    const { selector, autoInit, variant, size, customIcons, pagination, ...splideOptions } = this.options;
+    const { selector, autoInit, variant, size, customIcons, pagination, ...splideOptions } =
+      this.options;
 
     // Handle pagination conversion
     if (pagination === 'dots') {
@@ -174,7 +175,7 @@ export class AmphibiousCarousel {
 
     const icons = {
       ...DEFAULT_ICONS,
-      ...this.options.customIcons
+      ...this.options.customIcons,
     };
 
     this.splide.on('mounted', () => {
@@ -245,7 +246,7 @@ export class AmphibiousCarousel {
     const elements = document.querySelectorAll<HTMLElement>(selector);
     const carousels: AmphibiousCarousel[] = [];
 
-    elements.forEach(element => {
+    elements.forEach((element) => {
       const options: AmphibiousCarouselOptions = {};
 
       // Parse data attributes
@@ -280,7 +281,10 @@ declare global {
   interface Window {
     amp: {
       Carousel: typeof AmphibiousCarousel;
-      createCarousel: (selector: string | HTMLElement, options?: AmphibiousCarouselOptions) => AmphibiousCarousel;
+      createCarousel: (
+        selector: string | HTMLElement,
+        options?: AmphibiousCarouselOptions,
+      ) => AmphibiousCarousel;
     };
   }
 }

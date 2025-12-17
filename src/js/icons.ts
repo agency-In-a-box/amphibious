@@ -35,41 +35,41 @@ import {
   Lock,
   CheckCircle,
   Waves,
-  Link
+  Link,
 } from 'lucide';
 
 // Create icons object with only the icons we use
 const icons = {
   'shopping-cart': ShoppingCart,
-  'heart': Heart,
-  'star': Star,
-  'package': Package,
-  'truck': Truck,
+  heart: Heart,
+  star: Star,
+  package: Package,
+  truck: Truck,
   'credit-card': CreditCard,
-  'filter': Filter,
-  'search': Search,
-  'x': X,
+  filter: Filter,
+  search: Search,
+  x: X,
   'chevron-left': ChevronLeft,
   'chevron-right': ChevronRight,
   'chevron-up': ChevronUp,
   'chevron-down': ChevronDown,
-  'check': Check,
+  check: Check,
   'alert-circle': AlertCircle,
-  'info': Info,
+  info: Info,
   'help-circle': HelpCircle,
   'arrow-up': ArrowUp,
   'arrow-right': ArrowRight,
-  'moon': Moon,
-  'sun': Sun,
-  'github': Github,
-  'twitter': Twitter,
+  moon: Moon,
+  sun: Sun,
+  github: Github,
+  twitter: Twitter,
   'message-circle': MessageCircle,
   'file-text': FileText,
-  'users': Users,
-  'lock': Lock,
+  users: Users,
+  lock: Lock,
   'check-circle': CheckCircle,
-  'waves': Waves,
-  'link': Link
+  waves: Waves,
+  link: Link,
 };
 
 export interface IconOptions {
@@ -110,7 +110,7 @@ export class Icon {
       color = 'currentColor',
       strokeWidth = 2,
       class: className = '',
-      'aria-label': ariaLabel
+      'aria-label': ariaLabel,
     } = options;
 
     // Create icon element using Lucide's data attribute approach
@@ -155,7 +155,11 @@ export class Icon {
    * @param name - Icon name
    * @param options - Icon options
    */
-  static appendTo(container: HTMLElement, name: string, options: IconOptions = {}): HTMLElement | null {
+  static appendTo(
+    container: HTMLElement,
+    name: string,
+    options: IconOptions = {},
+  ): HTMLElement | null {
     const icon = this.create(name, options);
     if (icon) {
       container.appendChild(icon);
@@ -183,12 +187,13 @@ export class Icon {
       onClick?: () => void;
       variant?: 'default' | 'primary' | 'success' | 'danger';
       size?: 'sm' | 'default' | 'lg';
-    } = {}
+    } = {},
   ): HTMLButtonElement {
     const { onClick, variant = 'default', size: buttonSize = 'default', ...iconOptions } = options;
 
     const button = document.createElement('button');
-    button.className = `icon-button ${variant !== 'default' ? `icon-button--${variant}` : ''} ${buttonSize !== 'default' ? `icon-button--${buttonSize}` : ''}`.trim();
+    button.className =
+      `icon-button ${variant !== 'default' ? `icon-button--${variant}` : ''} ${buttonSize !== 'default' ? `icon-button--${buttonSize}` : ''}`.trim();
 
     if (onClick) {
       button.addEventListener('click', onClick);
@@ -214,12 +219,13 @@ export class Icon {
     options: IconOptions & {
       layout?: 'horizontal' | 'vertical' | 'reverse';
       tag?: keyof HTMLElementTagNameMap;
-    } = {}
+    } = {},
   ): HTMLElement {
     const { layout = 'horizontal', tag = 'span', ...iconOptions } = options;
 
     const container = document.createElement(tag);
-    container.className = `icon-text ${layout === 'vertical' ? 'icon-text--vertical' : ''} ${layout === 'reverse' ? 'icon-text--reverse' : ''}`.trim();
+    container.className =
+      `icon-text ${layout === 'vertical' ? 'icon-text--vertical' : ''} ${layout === 'reverse' ? 'icon-text--reverse' : ''}`.trim();
 
     const icon = this.create(name, iconOptions);
     const textNode = document.createElement('span');
@@ -249,7 +255,7 @@ export class Icon {
     count?: number,
     options: IconOptions & {
       badgeSize?: 'sm' | 'default' | 'lg';
-    } = {}
+    } = {},
   ): HTMLElement {
     const { badgeSize = 'default', ...iconOptions } = options;
 
@@ -262,7 +268,8 @@ export class Icon {
     }
 
     const badge = document.createElement('span');
-    badge.className = `icon-badge__count ${badgeSize !== 'default' ? `icon-badge__count--${badgeSize}` : ''}`.trim();
+    badge.className =
+      `icon-badge__count ${badgeSize !== 'default' ? `icon-badge__count--${badgeSize}` : ''}`.trim();
 
     if (count !== undefined && count > 0) {
       badge.textContent = count > 99 ? '99+' : count.toString();
@@ -281,7 +288,7 @@ export class EcommerceIcons {
   static cart(count: number = 0, options: IconOptions = {}): HTMLElement {
     return Icon.createWithBadge('shopping-cart', count, {
       'aria-label': `Shopping cart with ${count} items`,
-      ...options
+      ...options,
     });
   }
 
@@ -292,7 +299,7 @@ export class EcommerceIcons {
     return Icon.create(filled ? 'heart' : 'heart', {
       class: filled ? 'icon--filled icon--danger' : '',
       'aria-label': filled ? 'Remove from wishlist' : 'Add to wishlist',
-      ...options
+      ...options,
     });
   }
 
@@ -307,7 +314,7 @@ export class EcommerceIcons {
     for (let i = 1; i <= maxRating; i++) {
       const star = Icon.create('star', {
         class: i <= rating ? 'icon--filled icon--warning' : '',
-        ...options
+        ...options,
       });
       if (star) {
         container.appendChild(star);
@@ -323,7 +330,7 @@ export class EcommerceIcons {
   static search(options: IconOptions = {}): HTMLElement | null {
     return Icon.create('search', {
       'aria-label': 'Search',
-      ...options
+      ...options,
     });
   }
 
@@ -333,7 +340,7 @@ export class EcommerceIcons {
   static account(options: IconOptions = {}): HTMLElement | null {
     return Icon.create('user', {
       'aria-label': 'Account',
-      ...options
+      ...options,
     });
   }
 
@@ -343,7 +350,7 @@ export class EcommerceIcons {
   static filter(options: IconOptions = {}): HTMLElement | null {
     return Icon.create('filter', {
       'aria-label': 'Filter',
-      ...options
+      ...options,
     });
   }
 }

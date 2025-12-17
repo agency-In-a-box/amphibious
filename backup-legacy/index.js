@@ -45,6 +45,6 @@ window.amp = {
   initialized: true,
   // Expose Lucide for dynamic icon creation
   icons: {
-    refresh: () => createIcons({ icons })
-  }
+    refresh: () => createIcons({ icons }),
+  },
 };

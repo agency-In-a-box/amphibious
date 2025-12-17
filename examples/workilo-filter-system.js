@@ -11,7 +11,7 @@ const filterState = {
   pricing: null,
   responseTimes: new Set(),
   activeCount: 0,
-  sortBy: 'popular'
+  sortBy: 'popular',
 };
 
 // Toggle Filter Drawer
@@ -29,7 +29,7 @@ function togglePill(button) {
   const wasOpen = pill.classList.contains('open');
 
   // Close all other pills
-  document.querySelectorAll('.filter-pill').forEach(p => {
+  document.querySelectorAll('.filter-pill').forEach((p) => {
     if (p !== pill) {
       p.classList.remove('open');
     }
@@ -98,7 +98,7 @@ function clearAllFilters() {
   filterState.responseTimes.clear();
 
   // Clear all checkboxes and radio buttons
-  document.querySelectorAll('.pill-option input, .drawer-option input').forEach(input => {
+  document.querySelectorAll('.pill-option input, .drawer-option input').forEach((input) => {
     input.checked = false;
   });
 
@@ -109,53 +109,56 @@ function clearAllFilters() {
 
 // Apply Filters (Mock Function)
 function applyFilters() {
-
   // Update results count (mock)
   const resultsElement = document.querySelector('.results-info strong');
   if (resultsElement) {
     const filtered = Math.max(1, 8 - filterState.activeCount);
     resultsElement.textContent = filtered;
-    resultsElement.parentElement.innerHTML =
-      `Showing <strong>${filtered}</strong> of 8 workalongs`;
+    resultsElement.parentElement.innerHTML = `Showing <strong>${filtered}</strong> of 8 workalongs`;
   }
 }
 
 // Initialize Event Listeners
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Sync filter options between pills and drawer
   const filterGroups = [
     { name: 'category', state: 'categories' },
     { name: 'skills', state: 'skills' },
     { name: 'workmode', state: 'workModes' },
-    { name: 'response', state: 'responseTimes' }
+    { name: 'response', state: 'responseTimes' },
   ];
 
   filterGroups.forEach(({ name, state }) => {
     // Handle pill checkboxes
-    document.querySelectorAll(`.filter-pill[data-filter="${name}"] input[type="checkbox"]`).forEach(input => {
-      input.addEventListener('change', function() {
-        if (this.checked) {
-          filterState[state].add(this.value);
-        } else {
-          filterState[state].delete(this.value);
-        }
+    document
+      .querySelectorAll(`.filter-pill[data-filter="${name}"] input[type="checkbox"]`)
+      .forEach((input) => {
+        input.addEventListener('change', function () {
+          if (this.checked) {
+            filterState[state].add(this.value);
+          } else {
+            filterState[state].delete(this.value);
+          }
 
-        // Sync with drawer
-        const drawerInput = document.querySelector(`.drawer-option input[value="${this.value}"]`);
-        if (drawerInput) {
-          drawerInput.checked = this.checked;
-        }
+          // Sync with drawer
+          const drawerInput = document.querySelector(`.drawer-option input[value="${this.value}"]`);
+          if (drawerInput) {
+            drawerInput.checked = this.checked;
+          }
 
-        updateFilterCount();
-        applyFilters();
+          updateFilterCount();
+          applyFilters();
+        });
       });
-    });
 
     // Handle drawer checkboxes
-    document.querySelectorAll(`.drawer-section input[type="checkbox"][value]`).forEach(input => {
-      const group = input.closest('.drawer-section')?.querySelector('h4')?.textContent.toLowerCase();
+    document.querySelectorAll(`.drawer-section input[type="checkbox"][value]`).forEach((input) => {
+      const group = input
+        .closest('.drawer-section')
+        ?.querySelector('h4')
+        ?.textContent.toLowerCase();
       if (group && group.includes(name.replace('mode', ' mode'))) {
-        input.addEventListener('change', function() {
+        input.addEventListener('change', function () {
           if (this.checked) {
             filterState[state].add(this.value);
           } else {
@@ -163,7 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
           }
 
           // Sync with pill
-          const pillInput = document.querySelector(`.filter-pill[data-filter="${name}"] input[value="${this.value}"]`);
+          const pillInput = document.querySelector(
+            `.filter-pill[data-filter="${name}"] input[value="${this.value}"]`,
+          );
           if (pillInput) {
             pillInput.checked = this.checked;
           }
@@ -176,21 +181,23 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Handle pricing radio buttons
-  document.querySelectorAll('.filter-pill[data-filter="pricing"] input[type="radio"]').forEach(input => {
-    input.addEventListener('change', function() {
-      if (this.checked) {
-        filterState.pricing = this.value;
-        updateFilterCount();
-        applyFilters();
-      }
+  document
+    .querySelectorAll('.filter-pill[data-filter="pricing"] input[type="radio"]')
+    .forEach((input) => {
+      input.addEventListener('change', function () {
+        if (this.checked) {
+          filterState.pricing = this.value;
+          updateFilterCount();
+          applyFilters();
+        }
+      });
     });
-  });
 
   // Handle sort options
-  document.querySelectorAll('.sort-option').forEach(button => {
-    button.addEventListener('click', function() {
+  document.querySelectorAll('.sort-option').forEach((button) => {
+    button.addEventListener('click', function () {
       // Update active state
-      document.querySelectorAll('.sort-option').forEach(opt => {
+      document.querySelectorAll('.sort-option').forEach((opt) => {
         opt.classList.remove('active');
       });
       this.classList.add('active');
@@ -209,10 +216,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Close dropdowns when clicking outside
-  document.addEventListener('click', function(e) {
+  document.addEventListener('click', function (e) {
     // Close pill dropdowns
     if (!e.target.closest('.filter-pill')) {
-      document.querySelectorAll('.filter-pill').forEach(pill => {
+      document.querySelectorAll('.filter-pill').forEach((pill) => {
         pill.classList.remove('open');
         pill.querySelector('.pill-button')?.classList.remove('active');
       });
@@ -229,15 +236,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Prevent closing when clicking inside dropdowns
-  document.querySelectorAll('.pill-dropdown, .sort-menu').forEach(dropdown => {
-    dropdown.addEventListener('click', function(e) {
+  document.querySelectorAll('.pill-dropdown, .sort-menu').forEach((dropdown) => {
+    dropdown.addEventListener('click', function (e) {
       e.stopPropagation();
     });
   });
 
   // Handle response time indicators
-  document.querySelectorAll('.filter-pill[data-filter="response"] input').forEach(input => {
-    input.addEventListener('change', function() {
+  document.querySelectorAll('.filter-pill[data-filter="response"] input').forEach((input) => {
+    input.addEventListener('change', function () {
       // Update visual indicators
       const indicator = document.querySelector(`.indicator[data-value="${this.value}"]`);
       if (indicator) {

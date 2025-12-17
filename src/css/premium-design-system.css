@@ -18,13 +18,13 @@
 :root {
   /* Spatial Harmony - Based on 4px baseline grid */
   --space-unit: 0.25rem; /* 4px - the quantum of space */
-  --space-xxs: calc(var(--space-unit) * 1);   /* 4px - whisper */
-  --space-xs: calc(var(--space-unit) * 2);    /* 8px - breath */
-  --space-sm: calc(var(--space-unit) * 4);    /* 16px - pause */
-  --space-md: calc(var(--space-unit) * 6);    /* 24px - statement */
-  --space-lg: calc(var(--space-unit) * 8);    /* 32px - declaration */
-  --space-xl: calc(var(--space-unit) * 12);   /* 48px - emphasis */
-  --space-xxl: calc(var(--space-unit) * 16);  /* 64px - drama */
+  --space-xxs: calc(var(--space-unit) * 1); /* 4px - whisper */
+  --space-xs: calc(var(--space-unit) * 2); /* 8px - breath */
+  --space-sm: calc(var(--space-unit) * 4); /* 16px - pause */
+  --space-md: calc(var(--space-unit) * 6); /* 24px - statement */
+  --space-lg: calc(var(--space-unit) * 8); /* 32px - declaration */
+  --space-xl: calc(var(--space-unit) * 12); /* 48px - emphasis */
+  --space-xxl: calc(var(--space-unit) * 16); /* 64px - drama */
   --space-xxxl: calc(var(--space-unit) * 24); /* 96px - stage */
 
   /* Color Philosophy - Restraint with Purpose */
@@ -42,12 +42,9 @@
 
   /* Elevation through Shadow - Not Skeuomorphism */
   --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-                   0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-                  0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-               0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   /* Motion Signatures - Each serves a purpose */
   --motion-sharp: 200ms cubic-bezier(0.4, 0.0, 0.6, 1); /* Decisive */
@@ -56,15 +53,15 @@
   --motion-slow: 400ms cubic-bezier(0.4, 0.0, 0.2, 1); /* Dramatic */
 
   /* Typography Scale - Musical Intervals */
-  --text-xs: 0.75rem;    /* 12px - whisper */
-  --text-sm: 0.875rem;   /* 14px - conversation */
-  --text-base: 1rem;     /* 16px - statement */
-  --text-lg: 1.125rem;   /* 18px - emphasis */
-  --text-xl: 1.25rem;    /* 20px - subtitle */
-  --text-2xl: 1.5rem;    /* 24px - title */
-  --text-3xl: 1.875rem;  /* 30px - headline */
-  --text-4xl: 2.25rem;   /* 36px - hero */
-  --text-5xl: 3rem;      /* 48px - display */
+  --text-xs: 0.75rem; /* 12px - whisper */
+  --text-sm: 0.875rem; /* 14px - conversation */
+  --text-base: 1rem; /* 16px - statement */
+  --text-lg: 1.125rem; /* 18px - emphasis */
+  --text-xl: 1.25rem; /* 20px - subtitle */
+  --text-2xl: 1.5rem; /* 24px - title */
+  --text-3xl: 1.875rem; /* 30px - headline */
+  --text-4xl: 2.25rem; /* 36px - hero */
+  --text-5xl: 3rem; /* 48px - display */
 
   /* Line Heights - Let text breathe */
   --leading-tight: 1.25;
@@ -74,11 +71,11 @@
   --leading-loose: 2;
 
   /* Border Radius - Soft but not weak */
-  --radius-sm: 0.125rem;  /* 2px - subtle softening */
-  --radius-md: 0.375rem;  /* 6px - noticeable comfort */
-  --radius-lg: 0.5rem;    /* 8px - friendly */
-  --radius-xl: 0.75rem;   /* 12px - approachable */
-  --radius-full: 9999px;  /* Complete circle */
+  --radius-sm: 0.125rem; /* 2px - subtle softening */
+  --radius-md: 0.375rem; /* 6px - noticeable comfort */
+  --radius-lg: 0.5rem; /* 8px - friendly */
+  --radius-xl: 0.75rem; /* 12px - approachable */
+  --radius-full: 9999px; /* Complete circle */
 }
 
 /* ==========================================================================
@@ -143,7 +140,7 @@
 }
 
 .btn-ghost::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -206,8 +203,12 @@
 }
 
 @keyframes skeleton-loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .image-frame img {
@@ -255,7 +256,7 @@
 }
 
 .link-animated::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -312,7 +313,9 @@ html {
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms;
     animation-iteration-count: 1;
     transition-duration: 0.01ms;

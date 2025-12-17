@@ -5,7 +5,11 @@
 
 export class Navigation {
   private navElement: HTMLElement | null;
-  private eventListeners: Array<{ element: Element | Document | Window; type: string; handler: EventListener }> = [];
+  private eventListeners: Array<{
+    element: Element | Document | Window;
+    type: string;
+    handler: EventListener;
+  }> = [];
   private resizeTimer: ReturnType<typeof setTimeout> | null = null;
   private tabKeyHandler: ((e: KeyboardEvent) => void) | null = null;
 
@@ -21,7 +25,11 @@ export class Navigation {
   /**
    * Add event listener with cleanup tracking
    */
-  private addEventListener(element: Element | Document | Window, type: string, handler: EventListener): void {
+  private addEventListener(
+    element: Element | Document | Window,
+    type: string,
+    handler: EventListener,
+  ): void {
     element.addEventListener(type, handler);
     this.eventListeners.push({ element, type, handler });
   }
@@ -51,7 +59,6 @@ export class Navigation {
       this.closeMenu();
     }
   }
-
 
   /**
    * Initialize navigation functionality

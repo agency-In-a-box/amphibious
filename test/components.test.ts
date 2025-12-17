@@ -17,7 +17,7 @@ beforeAll(() => {
   dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', {
     url: 'http://localhost',
     pretendToBeVisual: true,
-    resources: 'usable'
+    resources: 'usable',
   });
   document = dom.window.document;
   window = dom.window as unknown as Window;
@@ -30,20 +30,13 @@ afterAll(() => {
 });
 
 describe('Amphibious 2.0 Component Inventory', () => {
-
   describe('CSS Components', () => {
     const cssBasePath = path.join(process.cwd(), 'src/css');
 
     test('Atoms - Basic building blocks exist', () => {
-      const atoms = [
-        'badges.css',
-        'buttons.css',
-        'icon-buttons.css',
-        'icons.css',
-        'spinners.css'
-      ];
+      const atoms = ['badges.css', 'buttons.css', 'icon-buttons.css', 'icons.css', 'spinners.css'];
 
-      atoms.forEach(atom => {
+      atoms.forEach((atom) => {
         const filePath = path.join(cssBasePath, 'atoms', atom);
         expect(fs.existsSync(filePath)).toBe(true);
 
@@ -54,15 +47,9 @@ describe('Amphibious 2.0 Component Inventory', () => {
     });
 
     test('Molecules - Simple combinations exist', () => {
-      const molecules = [
-        'alerts.css',
-        'pears.css',
-        'progress.css',
-        'tags.css',
-        'tooltip.css'
-      ];
+      const molecules = ['alerts.css', 'pears.css', 'progress.css', 'tags.css', 'tooltip.css'];
 
-      molecules.forEach(molecule => {
+      molecules.forEach((molecule) => {
         const filePath = path.join(cssBasePath, 'molecules', molecule);
         expect(fs.existsSync(filePath)).toBe(true);
 
@@ -81,13 +68,13 @@ describe('Amphibious 2.0 Component Inventory', () => {
         'modal.css',
         'navigation.css',
         'pagination.css',
-        'tables.css',  // Changed from responsive-tables.css
+        'tables.css', // Changed from responsive-tables.css
         'sidebar.css',
         'steps.css',
-        'tabs.css'
+        'tabs.css',
       ];
 
-      organisms.forEach(organism => {
+      organisms.forEach((organism) => {
         const filePath = path.join(cssBasePath, 'organisms', organism);
         expect(fs.existsSync(filePath)).toBe(true);
 
@@ -115,12 +102,9 @@ describe('Amphibious 2.0 Component Inventory', () => {
     });
 
     test('Grid system is complete', () => {
-      const gridFiles = [
-        'grid.css',
-        'grid-responsive.css'
-      ];
+      const gridFiles = ['grid.css', 'grid-responsive.css'];
 
-      gridFiles.forEach(file => {
+      gridFiles.forEach((file) => {
         const filePath = path.join(cssBasePath, file);
         expect(fs.existsSync(filePath)).toBe(true);
 
@@ -146,7 +130,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
       const content = fs.readFileSync(typographyFile, 'utf-8');
 
       // Check for heading styles
-      ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach(heading => {
+      ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach((heading) => {
         expect(content).toContain(heading);
       });
 
@@ -192,10 +176,10 @@ describe('Amphibious 2.0 Component Inventory', () => {
         'navigation.ts',
         'smooth-scroll.ts',
         'tabs.ts',
-        'tooltip.ts'
+        'tooltip.ts',
       ];
 
-      modules.forEach(module => {
+      modules.forEach((module) => {
         const filePath = path.join(jsBasePath, module);
         expect(fs.existsSync(filePath)).toBe(true);
 
@@ -213,14 +197,13 @@ describe('Amphibious 2.0 Component Inventory', () => {
       expect(fs.existsSync(navFile)).toBe(true);
 
       const content = fs.readFileSync(navFile, 'utf-8');
-      expect(content).toContain('setupDropdowns');  // The dropdown setup method
+      expect(content).toContain('setupDropdowns'); // The dropdown setup method
       expect(content).toContain('aria-expanded');
       expect(content).toContain('aria-label');
     });
   });
 
   describe('Component Functionality Tests', () => {
-
     test('Button component renders correctly', () => {
       const button = document.createElement('button');
       button.className = 'btn btn-primary';
@@ -443,47 +426,46 @@ describe('Amphibious 2.0 Component Inventory', () => {
   });
 
   describe('Component Completeness for App Development', () => {
-
     test('Essential components for modern web app', () => {
       const essentialComponents = {
         // Layout
         'Grid System': true,
-        'Container': true,
+        Container: true,
         'Flexbox Utilities': true,
 
         // Navigation
-        'Navbar': true,
-        'Sidebar': true,
-        'Breadcrumbs': true,
-        'Pagination': true,
-        'Tabs': true,
+        Navbar: true,
+        Sidebar: true,
+        Breadcrumbs: true,
+        Pagination: true,
+        Tabs: true,
 
         // Content
-        'Cards': true,
-        'Tables': true,
-        'Lists': true,
+        Cards: true,
+        Tables: true,
+        Lists: true,
 
         // Forms
         'Form Controls': true,
         'Input Groups': true,
-        'Validation': true,
+        Validation: true,
 
         // Feedback
-        'Alerts': true,
-        'Modals': true,
-        'Tooltips': true,
+        Alerts: true,
+        Modals: true,
+        Tooltips: true,
         'Progress Bars': true,
-        'Spinners': true,
+        Spinners: true,
 
         // Media
-        'Carousel': true,
-        'Images': true,
-        'Icons': true,
+        Carousel: true,
+        Images: true,
+        Icons: true,
 
         // Interactive
-        'Buttons': true,
-        'Dropdowns': true,
-        'Collapse': true
+        Buttons: true,
+        Dropdowns: true,
+        Collapse: true,
       };
 
       // This is a checklist - all should be true
@@ -501,7 +483,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
         'Rating Stars': true,
         'Product Gallery': true,
         'Quantity Selector': true,
-        'Filter/Sort Controls': true
+        'Filter/Sort Controls': true,
       };
 
       // Check if e-commerce patterns exist
@@ -519,7 +501,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
         'Focus states': true,
         'Screen reader support': true,
         'Color contrast': true,
-        'Skip links': true
+        'Skip links': true,
       };
 
       // Check for ARIA in navigation (dropdowns are now in navigation.ts)
@@ -538,7 +520,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
         'Responsive grid': true,
         'Responsive utilities': true,
         'Mobile navigation': true,
-        'Touch support': true
+        'Touch support': true,
       };
 
       const gridResponsiveFile = path.join(process.cwd(), 'src/css/grid-responsive.css');

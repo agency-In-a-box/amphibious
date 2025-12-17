@@ -6,7 +6,7 @@
 export function initNavigationDropdowns() {
   const navItems = document.querySelectorAll('.horizontal.branded > li');
 
-  navItems.forEach(item => {
+  navItems.forEach((item) => {
     const link = item.querySelector('> a');
     const dropdown = item.querySelector('ul');
 
@@ -94,7 +94,7 @@ export function initNavigationDropdowns() {
       closeDropdown(item, link, dropdown);
     } else {
       // Close other dropdowns first
-      navItems.forEach(otherItem => {
+      navItems.forEach((otherItem) => {
         if (otherItem !== item) {
           const otherLink = otherItem.querySelector('> a');
           const otherDropdown = otherItem.querySelector('ul');
@@ -110,7 +110,7 @@ export function initNavigationDropdowns() {
   // Close dropdowns on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      navItems.forEach(item => {
+      navItems.forEach((item) => {
         const link = item.querySelector('> a');
         const dropdown = item.querySelector('ul');
         if (dropdown) {

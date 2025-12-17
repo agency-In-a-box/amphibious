@@ -33,7 +33,7 @@
 /* Hover state - Orange text on white */
 .horizontal > li > a:hover,
 .vertical > li > a:hover {
-  color: #ED8B00; /* Orange text */
+  color: #ed8b00; /* Orange text */
   background-color: transparent; /* No background change */
 }
 
@@ -42,7 +42,7 @@
 .vertical > li.active > a,
 .horizontal > li > a.active,
 .vertical > li > a.active {
-  background-color: #ED8B00; /* Solid orange background */
+  background-color: #ed8b00; /* Solid orange background */
   color: white; /* White text */
   font-weight: 600;
   padding: 0.75rem 1rem; /* Maintain consistent padding */
@@ -51,7 +51,7 @@
 /* Active hover - maintain active state */
 .horizontal > li.active > a:hover,
 .vertical > li.active > a:hover {
-  background-color: #ED8B00;
+  background-color: #ed8b00;
   color: white;
 }
 
@@ -68,7 +68,7 @@
 /* Dropdown arrow - inline with text */
 .horizontal > li:has(ul) > a::before,
 .vertical > li:has(ul) > a::before {
-  content: '▾';
+  content: "▾";
   position: absolute;
   right: 0.75rem; /* Inside the padding area */
   top: 50%;
@@ -140,18 +140,18 @@
 .horizontal > li > ul > li > a:hover,
 .vertical > li > ul > li > a:hover {
   background-color: #f8f8f8;
-  color: #ED8B00;
-  border-left-color: #ED8B00;
+  color: #ed8b00;
+  border-left-color: #ed8b00;
   padding-left: 1.25rem; /* Slight indent on hover */
 }
 
 /* Active dropdown item */
 .horizontal > li > ul > li.active > a,
 .vertical > li > ul > li.active > a {
-  color: #ED8B00;
+  color: #ed8b00;
   font-weight: 500;
   background-color: #fff5e6;
-  border-left-color: #ED8B00;
+  border-left-color: #ed8b00;
 }
 
 /* ==========================================================================
@@ -160,7 +160,7 @@
 
 .site-logo {
   font-weight: 600;
-  color: #ED8B00 !important; /* Always orange */
+  color: #ed8b00 !important; /* Always orange */
   padding: 0.75rem 1rem !important;
 }
 
@@ -173,7 +173,7 @@
 .horizontal > li.active > a.site-logo,
 .vertical > li.active > a.site-logo {
   background-color: transparent !important;
-  color: #ED8B00 !important;
+  color: #ed8b00 !important;
 }
 
 /* ==========================================================================
@@ -197,7 +197,7 @@
 }
 
 .breadcrumb li a {
-  color: #ED8B00;
+  color: #ed8b00;
   text-decoration: none;
   padding: 0.25rem 0.5rem;
   transition: all 150ms ease;
@@ -261,10 +261,10 @@
    ========================================================================== */
 
 .filter-nav > dt {
-  border: 1px solid #ED8B00;
+  border: 1px solid #ed8b00;
   padding: 0.5rem 0.75rem;
   background: #fff5e6;
-  color: #ED8B00;
+  color: #ed8b00;
   font-weight: 600;
   border-radius: 0;
 }
@@ -280,14 +280,14 @@
 
 .filter-nav > dd > a:hover {
   background: #f8f8f8;
-  color: #ED8B00;
-  border-color: #ED8B00;
+  color: #ed8b00;
+  border-color: #ed8b00;
 }
 
 .filter-nav > dd > a.active {
-  background: #ED8B00;
+  background: #ed8b00;
   color: white;
-  border-color: #ED8B00;
+  border-color: #ed8b00;
 }
 
 /* ==========================================================================
@@ -318,7 +318,7 @@
     visibility: visible;
     transform: none;
     border: none;
-    border-left: 2px solid #ED8B00;
+    border-left: 2px solid #ed8b00;
     margin-left: 1rem;
     box-shadow: none;
     display: none;
@@ -337,7 +337,7 @@
 .horizontal > li > a:focus-visible,
 .vertical > li > a:focus-visible,
 .breadcrumb a:focus-visible {
-  outline: 2px solid #ED8B00;
+  outline: 2px solid #ed8b00;
   outline-offset: 2px;
 }
 
