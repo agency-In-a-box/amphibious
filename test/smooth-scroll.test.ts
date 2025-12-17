@@ -3,7 +3,7 @@
  * Tests for anchor scrolling, easing functions, and scroll utilities
  */
 
-import { describe, it, expect, beforeEach, afterEach } from 'bun:test';
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import { SmoothScroll } from '../src/js/smooth-scroll';
 
 describe('SmoothScroll Module', () => {

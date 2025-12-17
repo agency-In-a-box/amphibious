@@ -9,19 +9,19 @@
 // Import core styles
 import './css/main.css';
 
+import { AmphibiousCarousel } from './js/carousel';
+import { Forms } from './js/forms';
+import { EcommerceIcons, Icon } from './js/icons';
+import { Modal, ModalManager } from './js/modal';
 // Import JavaScript modules
 import { Navigation } from './js/navigation';
 import { SmoothScroll } from './js/smooth-scroll';
 import { Tabs } from './js/tabs';
-import { Forms } from './js/forms';
-import { Modal, ModalManager } from './js/modal';
-import { Icon, EcommerceIcons } from './js/icons';
-import { Tooltip, EcommerceTooltips } from './js/tooltip';
-import { AmphibiousCarousel } from './js/carousel';
+import { EcommerceTooltips, Tooltip } from './js/tooltip';
 
+import { AmphibiousFooter, createFooter } from './components/footer';
 // Import new component modules
 import { AmphibiousNavigation, createNavigation } from './components/navigation';
-import { AmphibiousFooter, createFooter } from './components/footer';
 
 // Initialize modules
 let navigation: Navigation | null = null;

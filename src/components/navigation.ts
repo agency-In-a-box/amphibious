@@ -20,9 +20,9 @@ export interface NavigationOptions {
 export class AmphibiousNavigation {
   private element: HTMLElement;
   private options: NavigationOptions;
-  private isOpen: boolean = false;
-  private isSticky: boolean = false;
-  private scrollThreshold: number = 100;
+  private isOpen = false;
+  private isSticky = false;
+  private scrollThreshold = 100;
 
   constructor(selector: string | HTMLElement, options: NavigationOptions = {}) {
     this.element =

@@ -72,6 +72,7 @@ hr {
  */
 
 pre {
+  /* biome-ignore lint/suspicious/noDuplicateFontNames: Intentional for Safari/Chrome bug */
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
   overflow: auto;
@@ -117,6 +118,7 @@ strong {
 code,
 kbd,
 samp {
+  /* biome-ignore lint/suspicious/noDuplicateFontNames: Intentional for Safari/Chrome bug */
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }

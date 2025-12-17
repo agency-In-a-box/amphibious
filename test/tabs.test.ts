@@ -3,7 +3,7 @@
  * Tests for tab switching, keyboard navigation, and ARIA attributes
  */
 
-import { describe, it, expect, beforeEach, afterEach } from 'bun:test';
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import { Tabs } from '../src/js/tabs';
 
 describe('Tabs Module', () => {

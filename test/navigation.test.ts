@@ -3,7 +3,7 @@
  * Tests for mobile menu toggle, dropdowns, and keyboard navigation
  */
 
-import { describe, it, expect, beforeEach, afterEach } from 'bun:test';
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import { Navigation } from '../src/js/navigation';
 
 describe('Navigation Module', () => {

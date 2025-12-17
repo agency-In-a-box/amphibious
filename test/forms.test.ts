@@ -3,7 +3,7 @@
  * Tests for form validation, character counters, and password toggles
  */
 
-import { describe, it, expect, beforeEach, afterEach } from 'bun:test';
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import { Forms } from '../src/js/forms';
 
 describe('Forms Module', () => {
