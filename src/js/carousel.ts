@@ -242,7 +242,7 @@ export class AmphibiousCarousel {
   }
 
   // Static method for auto-initialization
-  static autoInit(selector: string = '.amp-carousel[data-carousel]'): AmphibiousCarousel[] {
+  static autoInit(selector = '.amp-carousel[data-carousel]'): AmphibiousCarousel[] {
     const elements = document.querySelectorAll<HTMLElement>(selector);
     const carousels: AmphibiousCarousel[] = [];
 
@@ -253,14 +253,14 @@ export class AmphibiousCarousel {
       const dataset = element.dataset;
 
       if (dataset.carouselType) options.type = dataset.carouselType as any;
-      if (dataset.carouselPerPage) options.perPage = parseInt(dataset.carouselPerPage);
+      if (dataset.carouselPerPage) options.perPage = Number.parseInt(dataset.carouselPerPage);
       if (dataset.carouselGap) options.gap = dataset.carouselGap;
       if (dataset.carouselVariant) options.variant = dataset.carouselVariant as any;
       if (dataset.carouselSize) options.size = dataset.carouselSize as any;
       if (dataset.carouselPagination) options.pagination = dataset.carouselPagination as any;
       if (dataset.carouselArrows) options.arrows = dataset.carouselArrows === 'true';
       if (dataset.carouselAutoplay) options.autoplay = dataset.carouselAutoplay === 'true';
-      if (dataset.carouselInterval) options.interval = parseInt(dataset.carouselInterval);
+      if (dataset.carouselInterval) options.interval = Number.parseInt(dataset.carouselInterval);
 
       // Keep pagination as string for our custom handling
 

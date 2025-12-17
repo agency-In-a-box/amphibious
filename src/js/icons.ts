@@ -6,36 +6,36 @@
 import { createIcons } from 'lucide';
 // Only import specific icons that are actually used
 import {
-  ShoppingCart,
-  Heart,
-  Star,
-  Package,
-  Truck,
-  CreditCard,
-  Filter,
-  Search,
-  X,
+  AlertCircle,
+  ArrowRight,
+  ArrowUp,
+  Check,
+  CheckCircle,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   ChevronUp,
-  ChevronDown,
-  Check,
-  AlertCircle,
-  Info,
-  HelpCircle,
-  ArrowUp,
-  ArrowRight,
-  Moon,
-  Sun,
-  Github,
-  Twitter,
-  MessageCircle,
+  CreditCard,
   FileText,
-  Users,
-  Lock,
-  CheckCircle,
-  Waves,
+  Filter,
+  Github,
+  Heart,
+  HelpCircle,
+  Info,
   Link,
+  Lock,
+  MessageCircle,
+  Moon,
+  Package,
+  Search,
+  ShoppingCart,
+  Star,
+  Sun,
+  Truck,
+  Twitter,
+  Users,
+  Waves,
+  X,
 } from 'lucide';
 
 // Create icons object with only the icons we use
@@ -285,7 +285,7 @@ export class EcommerceIcons {
   /**
    * Create shopping cart icon with item count
    */
-  static cart(count: number = 0, options: IconOptions = {}): HTMLElement {
+  static cart(count = 0, options: IconOptions = {}): HTMLElement {
     return Icon.createWithBadge('shopping-cart', count, {
       'aria-label': `Shopping cart with ${count} items`,
       ...options,
@@ -295,7 +295,7 @@ export class EcommerceIcons {
   /**
    * Create wishlist heart icon
    */
-  static wishlist(filled: boolean = false, options: IconOptions = {}): HTMLElement | null {
+  static wishlist(filled = false, options: IconOptions = {}): HTMLElement | null {
     return Icon.create(filled ? 'heart' : 'heart', {
       class: filled ? 'icon--filled icon--danger' : '',
       'aria-label': filled ? 'Remove from wishlist' : 'Add to wishlist',
@@ -306,7 +306,7 @@ export class EcommerceIcons {
   /**
    * Create star rating
    */
-  static rating(rating: number, maxRating: number = 5, options: IconOptions = {}): HTMLElement {
+  static rating(rating: number, maxRating = 5, options: IconOptions = {}): HTMLElement {
     const container = document.createElement('div');
     container.className = 'rating';
     container.setAttribute('aria-label', `Rating: ${rating} out of ${maxRating} stars`);

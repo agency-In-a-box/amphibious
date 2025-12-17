@@ -8,7 +8,9 @@
       "*.min.css",
       "backup-*/**",
       "backups/**",
-      ".claude/**"
+      ".claude/**",
+      "src/icomoon*/**",
+      "examples/**"
     ]
   },
   "organizeImports": {

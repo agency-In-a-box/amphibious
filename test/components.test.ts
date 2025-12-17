@@ -3,10 +3,10 @@
  * Tests all CSS and JavaScript components for completeness and functionality
  */
 
-import { describe, test, expect, beforeAll, afterAll } from 'bun:test';
-import { JSDOM } from 'jsdom';
+import { afterAll, beforeAll, describe, expect, test } from 'bun:test';
 import fs from 'fs';
 import path from 'path';
+import { JSDOM } from 'jsdom';
 
 // Setup DOM environment
 let dom: JSDOM;

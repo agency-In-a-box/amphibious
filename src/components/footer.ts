@@ -20,7 +20,7 @@ export interface FooterOptions {
 export class AmphibiousFooter {
   private element: HTMLElement;
   private options: FooterOptions;
-  private backToTopVisible: boolean = false;
+  private backToTopVisible = false;
 
   constructor(selector: string | HTMLElement, options: FooterOptions = {}) {
     this.element =

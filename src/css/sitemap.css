@@ -106,7 +106,7 @@
   padding: 1em 0.5em;
   display: block;
   font-size: 1em;
-  font-family: "source_sans_probold";
+  font-family: "source_sans_probold", sans-serif;
   font-weight: normal;
   text-align: center;
   text-decoration: none;
@@ -140,7 +140,7 @@
   word-wrap: break-word;
   color: #505050;
   font-weight: normal;
-  font-family: "source_sans_proregular";
+  font-family: "source_sans_proregular", sans-serif;
   text-transform: none;
 }
 
@@ -171,7 +171,7 @@
 .sitemap li li a:visited:before {
   color: #505050;
   font-weight: normal;
-  font-family: "source_sans_proregular";
+  font-family: "source_sans_proregular", sans-serif;
   text-transform: none;
 }
 

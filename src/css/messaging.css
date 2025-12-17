@@ -79,8 +79,7 @@ span.error:empty,
   margin: 0 0.2em 0.4em 0;
   text-decoration: none;
 }
-.amp_tags {
-}
+/* .amp_tags - styles to be added when needed */
 /* Adapted from http://css-tricks.com/downloads/css-stuff/ Breadcrumbs with CSS Triangles
 
 .amp_tag:after
