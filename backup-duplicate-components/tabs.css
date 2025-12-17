@@ -107,5 +107,5 @@ ul.tabs:after {
 }
 
 ul.tabs {
-  zoom: 1;
+  /* zoom: 1; */ /* IE6/7 hasLayout hack removed */
 }

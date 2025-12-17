@@ -34,7 +34,7 @@
     min-height:200px;
     width: 90%;
     max-width: 940px;
-    *height:500px;
+    /* *height:500px; */ /* IE7 hack removed */
     overflow:auto;
     z-index:99999;
     margin-top: 15%;
