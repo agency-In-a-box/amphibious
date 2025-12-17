@@ -178,6 +178,11 @@ export class Forms {
    * Validate individual field
    */
   private validateField(field: HTMLInputElement): boolean {
+    // Skip validation for non-required empty fields
+    if (!field.hasAttribute('required') && !field.value.trim()) {
+      return true;
+    }
+
     // Required validation
     if (field.hasAttribute('required') && !field.value.trim()) {
       this.showFieldError(field, field.dataset.requiredMessage || 'This field is required');

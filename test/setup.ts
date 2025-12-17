@@ -69,12 +69,21 @@ Object.defineProperty(global.window, 'pageXOffset', {
 // Mock scrollTo
 global.window.scrollTo = (x: number | ScrollToOptions, y?: number) => {
   if (typeof x === 'object') {
-    mockScrollX = x.left || 0;
-    mockScrollY = x.top || 0;
+    mockScrollX = x.left !== undefined ? x.left : mockScrollX;
+    mockScrollY = x.top !== undefined ? x.top : mockScrollY;
   } else {
     mockScrollX = x;
-    mockScrollY = y || 0;
+    mockScrollY = y !== undefined ? y : 0;
   }
+  // Update the scrollY getter to return the new value
+  Object.defineProperty(global.window, 'scrollY', {
+    get: () => mockScrollY,
+    configurable: true,
+  });
+  Object.defineProperty(global.window, 'pageYOffset', {
+    get: () => mockScrollY,
+    configurable: true,
+  });
 };
 
 // Mock scrollBy
@@ -86,6 +95,15 @@ global.window.scrollBy = (x: number | ScrollToOptions, y?: number) => {
     mockScrollX += x;
     mockScrollY += y || 0;
   }
+};
+
+// Mock requestAnimationFrame for animations
+global.requestAnimationFrame = (callback: FrameRequestCallback) => {
+  return setTimeout(() => callback(Date.now()), 0) as unknown as number;
+};
+
+global.cancelAnimationFrame = (id: number) => {
+  clearTimeout(id);
 };
 
 // Mock getBoundingClientRect for elements
