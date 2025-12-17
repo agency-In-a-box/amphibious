@@ -227,21 +227,28 @@ describe('Forms Module', () => {
 
   describe('Custom Validation Rules', () => {
     it('should add and use custom validation rule', () => {
-      forms = new Forms();
-      forms.init();
+      // Create a form with a field that uses custom validation
+      const form = document.createElement('form');
+      form.id = 'custom-form';
 
-      // Add custom rule
-      forms.addRule('customRule', (value) => value === 'valid');
-
-      // Create field with custom rule
       const field = document.createElement('input');
+      field.id = 'custom-field';
       field.setAttribute('data-validate', 'customRule');
       field.value = 'invalid';
-      container.appendChild(field);
 
+      form.appendChild(field);
+      container.appendChild(form);
+
+      // Initialize forms and add custom rule
+      forms = new Forms();
+      forms.addRule('customRule', (value) => value === 'valid');
+      forms.init();
+
+      // Test invalid value
       field.dispatchEvent(new Event('blur'));
       expect(field.classList.contains('is-invalid')).toBe(true);
 
+      // Test valid value
       field.value = 'valid';
       field.dispatchEvent(new Event('blur'));
       expect(field.classList.contains('is-valid')).toBe(true);
@@ -329,16 +336,22 @@ describe('Forms Module', () => {
       forms = new Forms();
       forms.init();
 
-      // Fill required fields
+      // Fill all required fields with valid data
       const emailField = document.querySelector('#email') as HTMLInputElement;
       const passwordField = document.querySelector('#password') as HTMLInputElement;
 
       emailField.value = 'test@example.com';
       passwordField.value = 'password123';
 
+      // Trigger blur to validate fields
+      emailField.dispatchEvent(new Event('blur'));
+      passwordField.dispatchEvent(new Event('blur'));
+
       const event = new Event('submit', { cancelable: true });
       container.dispatchEvent(event);
 
+      // When form is valid, it should not prevent default and should add was-validated class
+      expect(event.defaultPrevented).toBe(false);
       expect(container.classList.contains('was-validated')).toBe(true);
     });
 

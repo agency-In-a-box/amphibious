@@ -10,12 +10,12 @@
 .hidden,
 .print-only,
 .assistive-text {
-  display: none !important;
+  display: none;
 }
 
 .show,
 .visible {
-  display: block !important;
+  display: block;
 }
 
 .invisible {
@@ -755,7 +755,7 @@
 
   .show-print,
   .print-only {
-    display: block !important;
+    display: block;
   }
 
   .page-break-before {

@@ -169,9 +169,8 @@ export class Forms {
       }
     });
 
-    if (isValid) {
-      form.classList.add('was-validated');
-    }
+    // Always add was-validated to indicate validation has been performed
+    form.classList.add('was-validated');
 
     return isValid;
   }

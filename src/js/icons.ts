@@ -3,7 +3,74 @@
  * Lucide Icons integration with TypeScript
  */
 
-import { createIcons, icons } from 'lucide';
+import { createIcons } from 'lucide';
+// Only import specific icons that are actually used
+import {
+  ShoppingCart,
+  Heart,
+  Star,
+  Package,
+  Truck,
+  CreditCard,
+  Filter,
+  Search,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+  ChevronDown,
+  Check,
+  AlertCircle,
+  Info,
+  HelpCircle,
+  ArrowUp,
+  ArrowRight,
+  Moon,
+  Sun,
+  Github,
+  Twitter,
+  MessageCircle,
+  FileText,
+  Users,
+  Lock,
+  CheckCircle,
+  Waves,
+  Link
+} from 'lucide';
+
+// Create icons object with only the icons we use
+const icons = {
+  'shopping-cart': ShoppingCart,
+  'heart': Heart,
+  'star': Star,
+  'package': Package,
+  'truck': Truck,
+  'credit-card': CreditCard,
+  'filter': Filter,
+  'search': Search,
+  'x': X,
+  'chevron-left': ChevronLeft,
+  'chevron-right': ChevronRight,
+  'chevron-up': ChevronUp,
+  'chevron-down': ChevronDown,
+  'check': Check,
+  'alert-circle': AlertCircle,
+  'info': Info,
+  'help-circle': HelpCircle,
+  'arrow-up': ArrowUp,
+  'arrow-right': ArrowRight,
+  'moon': Moon,
+  'sun': Sun,
+  'github': Github,
+  'twitter': Twitter,
+  'message-circle': MessageCircle,
+  'file-text': FileText,
+  'users': Users,
+  'lock': Lock,
+  'check-circle': CheckCircle,
+  'waves': Waves,
+  'link': Link
+};
 
 export interface IconOptions {
   size?: number;

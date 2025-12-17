@@ -31,7 +31,19 @@ export default defineConfig({
     assetsDir: 'assets',
     emptyOutDir: true,
     sourcemap: false,
-    minify: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug'],
+        passes: 2
+      },
+      mangle: true,
+      format: {
+        comments: false
+      }
+    },
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'Amphibious',
@@ -48,6 +60,10 @@ export default defineConfig({
           }
           return assetInfo.name || 'asset';
         }
+      },
+      treeshake: {
+        moduleSideEffects: false,
+        propertyReadSideEffects: false
       }
     },
     chunkSizeWarningLimit: 500
