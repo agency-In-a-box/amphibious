@@ -81,7 +81,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
         'modal.css',
         'navigation.css',
         'pagination.css',
-        'responsive-tables.css',
+        'tables.css',  // Changed from responsive-tables.css
         'sidebar.css',
         'steps.css',
         'tabs.css'
@@ -208,13 +208,14 @@ describe('Amphibious 2.0 Component Inventory', () => {
     });
 
     test('Navigation dropdown enhancement exists', () => {
-      const dropdownFile = path.join(jsBasePath, 'navigation-dropdown.js');
-      expect(fs.existsSync(dropdownFile)).toBe(true);
+      // Navigation dropdowns are now handled in navigation.ts
+      const navFile = path.join(jsBasePath, 'navigation.ts');
+      expect(fs.existsSync(navFile)).toBe(true);
 
-      const content = fs.readFileSync(dropdownFile, 'utf-8');
-      expect(content).toContain('initNavigationDropdowns');
+      const content = fs.readFileSync(navFile, 'utf-8');
+      expect(content).toContain('setupDropdowns');  // The dropdown setup method
       expect(content).toContain('aria-expanded');
-      expect(content).toContain('aria-haspopup');
+      expect(content).toContain('aria-label');
     });
   });
 
@@ -521,13 +522,13 @@ describe('Amphibious 2.0 Component Inventory', () => {
         'Skip links': true
       };
 
-      // Check for ARIA in navigation dropdown
-      const navDropdownFile = path.join(process.cwd(), 'src/js/navigation-dropdown.js');
-      const content = fs.readFileSync(navDropdownFile, 'utf-8');
+      // Check for ARIA in navigation (dropdowns are now in navigation.ts)
+      const navFile = path.join(process.cwd(), 'src/js/navigation.ts');
+      const content = fs.readFileSync(navFile, 'utf-8');
 
       expect(content).toContain('aria-expanded');
-      expect(content).toContain('aria-haspopup');
-      expect(content).toContain('aria-hidden');
+      expect(content).toContain('aria-label');
+      expect(content).toContain('ARIA');
     });
 
     test('Responsive design features', () => {

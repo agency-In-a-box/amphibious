@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS @layer Cascade Test - Amphibious 2.0</title>
+  <link rel="stylesheet" href="./dist/css/main.css">
+  <style>
+    /* Test conflicting styles to verify layer precedence */
+
+    /* Component layer style (should be overridden by utilities) */
+    @layer components {
+      .test-box {
+        padding: 2rem;
+        margin: 2rem;
+        background: lightblue;
+        text-align: left;
+      }
+    }
+
+    /* Base layer style (should be overridden by components and utilities) */
+    @layer base {
+      .test-box {
+        padding: 3rem;
+        background: lightgreen;
+      }
+    }
+
+    /* No layer (should be highest priority after utilities) */
+    .test-override {
+      background: coral !important; /* Testing that we still respect !important when needed */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CSS @layer Cascade Testing</h1>
+
+    <section>
+      <h2>1. Testing Layer Precedence</h2>
+      <div class="test-box">
+        <p>This box should have lightblue background (component layer wins over base)</p>
+      </div>
+
+      <div class="test-box text-center">
+        <p>This box should be center-aligned (utility class overrides component)</p>
+      </div>
+
+      <div class="test-box p-0">
+        <p>This box should have NO padding (utility class p-0 overrides component padding)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Testing Utility Overrides</h2>
+
+      <!-- Testing padding utilities -->
+      <div class="card-premium pt-0">
+        <p>Card with no top padding (pt-0 utility)</p>
+      </div>
+
+      <!-- Testing margin utilities -->
+      <div class="btn-premium mb-0 inline-block">
+        Premium button with no bottom margin
+      </div>
+
+      <!-- Testing text alignment -->
+      <nav class="site-nav">
+        <ul class="horizontal text-right">
+          <li><a href="#">Should be right-aligned</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <section>
+      <h2>3. Testing Grid System</h2>
+      <div class="row">
+        <div class="col-8 text-center">
+          <div style="background: #f0f0f0; padding: 1rem;">
+            8 columns - center aligned
+          </div>
+        </div>
+        <div class="col-4 text-right">
+          <div style="background: #e0e0e0; padding: 1rem;">
+            4 columns - right aligned
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Testing Theme Overrides</h2>
+
+      <!-- Premium design system button -->
+      <button class="btn-premium mr-1">Premium Button</button>
+
+      <!-- Ghost button with utility overrides -->
+      <button class="btn-ghost mt-2 mb-2">Ghost Button with Margin</button>
+
+      <!-- Testing theme + utility combinations -->
+      <div class="card-premium mt-0 p-0">
+        <p>Premium card with no margin-top and no padding (utilities win)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. Testing Navigation Cascade</h2>
+      <nav class="site-nav">
+        <div class="container">
+          <ul class="horizontal">
+            <li class="active"><a href="#">Active Item</a></li>
+            <li><a href="#" class="text-primary">Primary Color Override</a></li>
+            <li class="text-right full-width"><a href="#">Right Aligned Item</a></li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+    <section>
+      <h2>6. Testing Helper Classes Priority</h2>
+
+      <!-- Display utilities -->
+      <div class="card-premium hide">
+        This card should be hidden (display: none)
+      </div>
+
+      <div class="btn-premium inline-block">
+        Button forced to inline-block
+      </div>
+
+      <!-- Position utilities -->
+      <div style="position: relative; height: 100px; background: #f5f5f5;">
+        <div class="absolute top right" style="background: orange; padding: 0.5rem;">
+          Absolute positioned top-right
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>7. Results Summary</h2>
+      <div class="card-premium">
+        <h3>Expected Behavior:</h3>
+        <ul>
+          <li>✓ Utility classes (helpers.css) override all component styles</li>
+          <li>✓ Theme styles override base component styles</li>
+          <li>✓ Component styles override base styles</li>
+          <li>✓ No !important needed for utility classes to win</li>
+          <li>✓ Navigation active states work without !important</li>
+          <li>✓ Grid system respects utility overrides</li>
+        </ul>
+
+        <h3>Layer Order (lowest to highest priority):</h3>
+        <ol>
+          <li>reset - Normalizations</li>
+          <li>tokens - CSS variables</li>
+          <li>base - Typography</li>
+          <li>layout - Grid system</li>
+          <li>components - UI components</li>
+          <li>themes - Design systems</li>
+          <li>utilities - Helper classes (highest)</li>
+        </ol>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Test that our cascade is working
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Testing CSS cascade behavior...');
+
+      // Get computed styles for test elements
+      const testBox = document.querySelector('.test-box.text-center');
+      if (testBox) {
+        const styles = window.getComputedStyle(testBox);
+        console.log('Text alignment:', styles.textAlign); // Should be "center"
+      }
+
+      const noPaddingBox = document.querySelector('.test-box.p-0');
+      if (noPaddingBox) {
+        const styles = window.getComputedStyle(noPaddingBox);
+        console.log('Padding:', styles.padding); // Should be "0px"
+      }
+
+      console.log('Cascade test complete. Check visual output above.');
+    });
+  </script>
+</body>
+</html>

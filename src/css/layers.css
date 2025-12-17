@@ -1,0 +1,25 @@
+/**
+ * CSS Layer Architecture for Amphibious 2.0
+ *
+ * Layers are evaluated in the order they're defined.
+ * Later layers override earlier ones without needing !important.
+ *
+ * Layer Hierarchy:
+ * 1. reset     - Normalize and resets (lowest priority)
+ * 2. tokens    - Design tokens and CSS variables
+ * 3. base      - Base element styles
+ * 4. layout    - Grid and layout systems
+ * 5. components - Component styles (atoms, molecules, organisms)
+ * 6. themes    - Theme variations
+ * 7. utilities  - Utility classes (highest priority)
+ */
+
+/* Define layer order explicitly */
+@layer reset, tokens, base, layout, components, themes, utilities;
+
+/*
+ * Browser Support Note:
+ * @layer is supported in all modern browsers (2022+)
+ * For older browsers, the cascade will still work,
+ * just without the layer-based prioritization.
+ */

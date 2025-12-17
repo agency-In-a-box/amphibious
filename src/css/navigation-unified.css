@@ -197,7 +197,7 @@
 .site-logo {
   font-weight: 600;
   font-size: 1.125rem;
-  padding-left: 0 !important;
+  padding-left: 0;
 }
 
 /* Dropdown Indicators - Semantic Detection
@@ -374,7 +374,7 @@
 
   /* Hide desktop utility */
   .hide-mobile {
-    display: none !important;
+    display: none;
   }
 
   /* Mobile menu container */
@@ -502,7 +502,7 @@
 
 @media (min-width: 768px) {
   .hide-desktop {
-    display: none !important;
+    display: none;
   }
 
   /* Ensure dropdowns don't go off-screen */
@@ -568,7 +568,7 @@
 @media print {
   .site-nav,
   .nav-toggle {
-    display: none !important;
+    display: none;
   }
 }
 
