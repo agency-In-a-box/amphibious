@@ -290,7 +290,9 @@ describe('Forms Module', () => {
       forms.init();
 
       const passwordField = document.querySelector('#password') as HTMLInputElement;
-      const toggle = passwordField.parentElement?.querySelector('.password-toggle') as HTMLButtonElement;
+      const toggle = passwordField.parentElement?.querySelector(
+        '.password-toggle',
+      ) as HTMLButtonElement;
 
       expect(passwordField.type).toBe('password');
 

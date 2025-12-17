@@ -20,7 +20,11 @@ export interface ModalOptions {
 
 export class Modal {
   private element: HTMLElement;
-  private eventListeners: Array<{ element: Element | Document | Window; type: string; handler: EventListener }> = [];
+  private eventListeners: Array<{
+    element: Element | Document | Window;
+    type: string;
+    handler: EventListener;
+  }> = [];
 
   private backdrop: HTMLElement | null = null;
   private options: ModalOptions;
@@ -49,7 +53,7 @@ export class Modal {
       keyboard: true,
       focus: true,
       backdrop: true,
-      ...options
+      ...options,
     };
 
     this.init();
@@ -61,7 +65,11 @@ export class Modal {
   /**
    * Add event listener with cleanup tracking
    */
-  private addEventListener(element: Element | Document | Window, type: string, handler: EventListener): void {
+  private addEventListener(
+    element: Element | Document | Window,
+    type: string,
+    handler: EventListener,
+  ): void {
     element.addEventListener(type, handler);
     this.eventListeners.push({ element, type, handler });
   }
@@ -127,14 +135,14 @@ export class Modal {
   private setupEventHandlers(): void {
     // Close button
     const closeButtons = this.element.querySelectorAll('[data-modal-close], .modal__close');
-    closeButtons.forEach(button => {
+    closeButtons.forEach((button) => {
       const handler = () => this.close();
       this.addEventListener(button, 'click', handler);
     });
 
     // Confirm button
     const confirmButtons = this.element.querySelectorAll('[data-modal-confirm]');
-    confirmButtons.forEach(button => {
+    confirmButtons.forEach((button) => {
       const handler = () => {
         if (this.options.onConfirm) {
           this.options.onConfirm();
@@ -146,7 +154,7 @@ export class Modal {
 
     // Cancel button
     const cancelButtons = this.element.querySelectorAll('[data-modal-cancel]');
-    cancelButtons.forEach(button => {
+    cancelButtons.forEach((button) => {
       const handler = () => {
         if (this.options.onCancel) {
           this.options.onCancel();
@@ -223,7 +231,7 @@ export class Modal {
   private getFocusableElements(): void {
     const selector = 'a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
     const elements = this.element.querySelectorAll(selector);
-    this.focusableElements = Array.from(elements).filter(el => {
+    this.focusableElements = Array.from(elements).filter((el) => {
       const element = el as HTMLElement;
       return !element.hasAttribute('disabled') && element.offsetParent !== null;
     }) as HTMLElement[];
@@ -286,7 +294,7 @@ export class Modal {
     // Dispatch open event
     const openEvent = new CustomEvent('modal:open', {
       detail: { modal: this },
-      bubbles: true
+      bubbles: true,
     });
     this.element.dispatchEvent(openEvent);
 
@@ -327,7 +335,7 @@ export class Modal {
     // Dispatch close event
     const closeEvent = new CustomEvent('modal:close', {
       detail: { modal: this },
-      bubbles: true
+      bubbles: true,
     });
     this.element.dispatchEvent(closeEvent);
 
@@ -351,7 +359,10 @@ export class Modal {
   /**
    * Update modal content
    */
-  public setContent(content: string | HTMLElement, target: 'body' | 'header' | 'footer' = 'body'): void {
+  public setContent(
+    content: string | HTMLElement,
+    target: 'body' | 'header' | 'footer' = 'body',
+  ): void {
     let targetElement: HTMLElement | null = null;
 
     switch (target) {
@@ -402,7 +413,11 @@ export class Modal {
     }
 
     // Reset element
-    this.element.classList.remove('modal', `modal--${this.options.size}`, `modal--${this.options.variant}`);
+    this.element.classList.remove(
+      'modal',
+      `modal--${this.options.size}`,
+      `modal--${this.options.variant}`,
+    );
     this.element.removeAttribute('role');
     this.element.removeAttribute('aria-modal');
     this.element.removeAttribute('aria-hidden');
@@ -470,7 +485,7 @@ export class ModalManager {
    * Close all modals
    */
   static closeAll(): void {
-    this.modals.forEach(modal => modal.close());
+    this.modals.forEach((modal) => modal.close());
   }
 
   /**
@@ -488,14 +503,17 @@ export class ModalManager {
    * Destroy all modals
    */
   static destroyAll(): void {
-    this.modals.forEach(modal => modal.destroy());
+    this.modals.forEach((modal) => modal.destroy());
     this.modals.clear();
   }
 
   /**
    * Create alert modal
    */
-  static alert(message: string, type: 'success' | 'error' | 'warning' | 'info' = 'info'): Promise<void> {
+  static alert(
+    message: string,
+    type: 'success' | 'error' | 'warning' | 'info' = 'info',
+  ): Promise<void> {
     return new Promise((resolve) => {
       const modalHtml = `
         <div class="modal__dialog">
@@ -517,7 +535,7 @@ export class ModalManager {
         onClose: () => {
           modalElement.remove();
           resolve();
-        }
+        },
       });
 
       modalElement.classList.add(`modal--${type}`);
@@ -528,7 +546,11 @@ export class ModalManager {
   /**
    * Create confirm modal
    */
-  static confirm(message: string, confirmText = 'Confirm', cancelText = 'Cancel'): Promise<boolean> {
+  static confirm(
+    message: string,
+    confirmText = 'Confirm',
+    cancelText = 'Cancel',
+  ): Promise<boolean> {
     return new Promise((resolve) => {
       const modalHtml = `
         <div class="modal__dialog">
@@ -559,7 +581,7 @@ export class ModalManager {
         onClose: () => {
           modalElement.remove();
           resolve(false);
-        }
+        },
       });
 
       modal.open();

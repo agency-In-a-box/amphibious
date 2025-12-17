@@ -23,6 +23,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
+    "format:check": "biome check --formatter-enabled=false . && biome format .",
     "typecheck": "tsc --noEmit",
     "test": "bun test --preload ./test/setup.ts",
     "test:watch": "bun test --watch",

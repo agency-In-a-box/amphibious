@@ -23,9 +23,8 @@ export class AmphibiousFooter {
   private backToTopVisible: boolean = false;
 
   constructor(selector: string | HTMLElement, options: FooterOptions = {}) {
-    this.element = typeof selector === 'string'
-      ? document.querySelector(selector) as HTMLElement
-      : selector;
+    this.element =
+      typeof selector === 'string' ? (document.querySelector(selector) as HTMLElement) : selector;
 
     if (!this.element) {
       throw new Error(`Footer element not found: ${selector}`);
@@ -40,7 +39,7 @@ export class AmphibiousFooter {
       companyName: 'Amphibious',
       companyUrl: 'https://clivemoore.ca',
       newsletterAction: '/api/newsletter',
-      ...options
+      ...options,
     };
 
     this.init();
@@ -311,7 +310,9 @@ export class AmphibiousFooter {
 
     return `
       <div class="amp-footer__social">
-        ${this.options.social.map(platform => `
+        ${this.options.social
+          .map(
+            (platform) => `
           <a
             href="${socialUrls[platform] || '#'}"
             class="amp-footer__social-link"
@@ -322,7 +323,9 @@ export class AmphibiousFooter {
           >
             <i data-lucide="${socialIcons[platform] || 'link'}"></i>
           </a>
-        `).join('')}
+        `,
+          )
+          .join('')}
       </div>
     `;
   }
@@ -343,10 +346,12 @@ export class AmphibiousFooter {
   private attachEventListeners(): void {
     // Newsletter form submissions
     const forms = this.element.querySelectorAll('[id^="newsletterForm"]');
-    forms.forEach(form => {
+    forms.forEach((form) => {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const input = (form as HTMLFormElement).querySelector('input[type="email"]') as HTMLInputElement;
+        const input = (form as HTMLFormElement).querySelector(
+          'input[type="email"]',
+        ) as HTMLInputElement;
         if (input && input.value) {
           this.handleNewsletterSubmit(input.value);
           input.value = '';
@@ -361,7 +366,7 @@ export class AmphibiousFooter {
         backToTopBtn.addEventListener('click', () => {
           window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'smooth',
           });
         });
       }
@@ -403,7 +408,7 @@ export class AmphibiousFooter {
     } else {
       // Default behavior - show success message
       const forms = this.element.querySelectorAll('[id^="newsletterForm"]');
-      forms.forEach(form => {
+      forms.forEach((form) => {
         const originalContent = form.innerHTML;
         form.innerHTML = `
           <div class="amp-footer__newsletter-success">
@@ -428,7 +433,7 @@ export class AmphibiousFooter {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email }),
-      }).catch(error => {
+      }).catch((error) => {
         console.error('Newsletter subscription error:', error);
       });
     }
@@ -446,6 +451,9 @@ export class AmphibiousFooter {
 }
 
 // Export factory function
-export function createFooter(selector: string | HTMLElement, options?: FooterOptions): AmphibiousFooter {
+export function createFooter(
+  selector: string | HTMLElement,
+  options?: FooterOptions,
+): AmphibiousFooter {
   return new AmphibiousFooter(selector, options);
 }

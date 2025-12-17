@@ -232,7 +232,7 @@
 
 /* Remove icon (using CSS) */
 .tag-remove::before {
-  content: '×';
+  content: "×";
   font-size: 0.875rem;
   font-weight: bold;
   line-height: 1;

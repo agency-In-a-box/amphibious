@@ -5,7 +5,7 @@
  */
 
 /* Import Splide core styles */
-@import '@splidejs/splide/dist/css/splide.min.css';
+@import "@splidejs/splide/dist/css/splide.min.css";
 
 /* Amphibious Carousel Integration */
 .amp-carousel {

@@ -39,7 +39,7 @@
 }
 
 .slat-item:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Compact image */
@@ -273,7 +273,7 @@
 }
 
 .product-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
@@ -637,7 +637,10 @@
   margin: 0;
 }
 
-.col-3, .col-4, .col-9, .col-12 {
+.col-3,
+.col-4,
+.col-9,
+.col-12 {
   width: auto !important;
   padding: 0 !important;
 }

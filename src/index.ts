@@ -58,7 +58,6 @@ export const amp = {
       forms?: boolean;
     } = {},
   ): void {
-
     // Core initialization
     this.detectDevice();
 

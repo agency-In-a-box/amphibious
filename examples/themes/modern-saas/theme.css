@@ -1,7 +1,7 @@
 /**
  * Modern SaaS Theme
  * Inspired by HeroHire.ai - Clean, minimal SaaS landing page aesthetic
- * 
+ *
  * Design Characteristics:
  * - Soft blue primary with light gray backgrounds
  * - Generous whitespace and clean typography
@@ -20,45 +20,45 @@
   --color-primary-hover: #2563eb;
   --color-primary-light: #eff6ff;
   --color-primary-dark: #1d4ed8;
-  
+
   /* Secondary Colors */
   --color-secondary: #64748b;
   --color-secondary-hover: #475569;
-  
+
   /* Semantic Colors */
   --color-success: #10b981;
   --color-danger: #ef4444;
   --color-warning: #f59e0b;
   --color-info: #06b6d4;
-  
+
   /* Backgrounds */
   --color-background: #ffffff;
   --color-background-subtle: #f8fafc;
   --color-background-muted: #f1f5f9;
   --color-background-accent: #eff6ff;
-  
+
   /* Text Colors */
   --color-text: #1e293b;
   --color-text-secondary: #64748b;
   --color-text-muted: #94a3b8;
   --color-heading: #0f172a;
-  
+
   /* Borders */
   --color-border: #e2e8f0;
   --color-border-light: #f1f5f9;
-  
+
   /* Typography - Modern Sans */
-  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
-    'Helvetica Neue', Arial, sans-serif;
-  --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
-  
+  --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-family-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
   /* Font Weights */
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  
+
   /* Font Sizes - Larger for impact */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -70,14 +70,14 @@
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
   --font-size-6xl: 3.75rem;
-  
+
   /* Line Heights */
   --line-height-tight: 1.25;
   --line-height-snug: 1.375;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.625;
   --line-height-loose: 2;
-  
+
   /* Spacing Scale */
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -93,7 +93,7 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  
+
   /* Border Radius - More rounded */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
@@ -101,25 +101,24 @@
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
   --radius-full: 9999px;
-  
+
   /* Shadows - Softer, more subtle */
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  
+
   /* Container */
   --container-max-width: 1200px;
   --container-padding: 1.5rem;
-  
+
   /* Transitions */
   --transition-fast: 150ms;
   --transition-normal: 200ms;
   --transition-slow: 300ms;
   --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 /* ============================================
    BASE STYLES
@@ -134,7 +133,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 /* ============================================
    LAYOUT - Modern Container
@@ -165,7 +163,6 @@ body {
 .saas-section--accent {
   background-color: var(--color-background-accent);
 }
-
 
 /* ============================================
    NAVIGATION - Clean Header
@@ -229,7 +226,6 @@ body {
   gap: var(--spacing-3);
 }
 
-
 /* ============================================
    HERO SECTION
    ============================================ */
@@ -237,7 +233,11 @@ body {
 .saas-hero {
   padding: var(--spacing-20) 0 var(--spacing-24);
   text-align: center;
-  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-subtle) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-background) 0%,
+    var(--color-background-subtle) 100%
+  );
 }
 
 .saas-hero__badge {
@@ -254,7 +254,7 @@ body {
 }
 
 .saas-hero__badge::before {
-  content: '✦';
+  content: "✦";
   font-size: 0.75em;
 }
 
@@ -307,11 +307,10 @@ body {
 }
 
 .saas-hero__feature::before {
-  content: '✓';
+  content: "✓";
   color: var(--color-success);
   font-weight: var(--font-weight-bold);
 }
-
 
 /* ============================================
    BUTTONS - Modern Pill Style
@@ -380,7 +379,6 @@ body {
   font-size: var(--font-size-xs);
 }
 
-
 /* ============================================
    SECTION HEADERS
    ============================================ */
@@ -419,7 +417,6 @@ body {
   margin: 0;
   line-height: var(--line-height-relaxed);
 }
-
 
 /* ============================================
    FEATURE CARDS - 3 Column Grid
@@ -475,7 +472,6 @@ body {
   margin: 0;
   line-height: var(--line-height-relaxed);
 }
-
 
 /* ============================================
    SHOWCASE / PRODUCT IMAGE SECTION
@@ -546,7 +542,7 @@ body {
 }
 
 .saas-showcase__list-item::before {
-  content: '→';
+  content: "→";
   color: var(--color-primary);
   font-weight: var(--font-weight-bold);
   flex-shrink: 0;
@@ -565,7 +561,6 @@ body {
   width: 100%;
   height: auto;
 }
-
 
 /* ============================================
    TESTIMONIALS
@@ -644,7 +639,6 @@ body {
   color: var(--color-text-muted);
 }
 
-
 /* ============================================
    CTA SECTION
    ============================================ */
@@ -687,7 +681,6 @@ body {
   color: var(--color-text-muted);
   margin: 0;
 }
-
 
 /* ============================================
    FOOTER
@@ -782,28 +775,57 @@ body {
   color: var(--color-text);
 }
 
-
 /* ============================================
    UTILITY CLASSES
    ============================================ */
 
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
 
-.mt-0 { margin-top: 0; }
-.mb-0 { margin-bottom: 0; }
-.mt-4 { margin-top: var(--spacing-4); }
-.mb-4 { margin-bottom: var(--spacing-4); }
-.mt-8 { margin-top: var(--spacing-8); }
-.mb-8 { margin-bottom: var(--spacing-8); }
-.mt-16 { margin-top: var(--spacing-16); }
-.mb-16 { margin-bottom: var(--spacing-16); }
+.mt-0 {
+  margin-top: 0;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.mt-4 {
+  margin-top: var(--spacing-4);
+}
+.mb-4 {
+  margin-bottom: var(--spacing-4);
+}
+.mt-8 {
+  margin-top: var(--spacing-8);
+}
+.mb-8 {
+  margin-bottom: var(--spacing-8);
+}
+.mt-16 {
+  margin-top: var(--spacing-16);
+}
+.mb-16 {
+  margin-bottom: var(--spacing-16);
+}
 
-.py-8 { padding-top: var(--spacing-8); padding-bottom: var(--spacing-8); }
-.py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
-.py-24 { padding-top: var(--spacing-24); padding-bottom: var(--spacing-24); }
-
+.py-8 {
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-8);
+}
+.py-16 {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+}
+.py-24 {
+  padding-top: var(--spacing-24);
+  padding-bottom: var(--spacing-24);
+}
 
 /* ============================================
    RESPONSIVE
@@ -814,20 +836,20 @@ body {
     grid-template-columns: 1fr;
     gap: var(--spacing-8);
   }
-  
+
   .saas-showcase--reverse {
     direction: ltr;
   }
-  
+
   .saas-showcase__content {
     max-width: 100%;
     text-align: center;
   }
-  
+
   .saas-showcase__list {
     align-items: center;
   }
-  
+
   .saas-footer__grid {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-8);
@@ -838,46 +860,46 @@ body {
   :root {
     --container-padding: 1rem;
   }
-  
+
   .saas-nav__links {
     display: none;
   }
-  
+
   .saas-hero {
     padding: var(--spacing-12) 0 var(--spacing-16);
   }
-  
+
   .saas-hero__title {
     font-size: var(--font-size-4xl);
   }
-  
+
   .saas-hero__features {
     flex-direction: column;
     gap: var(--spacing-3);
   }
-  
+
   .saas-section {
     padding: var(--spacing-12) 0;
   }
-  
+
   .saas-section-header__title {
     font-size: var(--font-size-2xl);
   }
-  
+
   .saas-cta {
     padding: var(--spacing-10);
     border-radius: var(--radius-xl);
   }
-  
+
   .saas-cta__title {
     font-size: var(--font-size-2xl);
   }
-  
+
   .saas-footer__grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-8);
   }
-  
+
   .saas-footer__bottom {
     flex-direction: column;
     gap: var(--spacing-4);

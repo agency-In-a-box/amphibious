@@ -43,7 +43,7 @@ ul.stats li .stat-value {
   font-size: 1.75rem;
   font-weight: 700;
   text-decoration: none;
-  color: var(--primary-color, #ED8B00);
+  color: var(--primary-color, #ed8b00);
   line-height: 1.2;
   transition: color 0.2s ease;
 }
@@ -76,10 +76,18 @@ ul.stats li .stat-label {
 }
 
 /* Colored Stats Variant */
-.stats.stats--colored li:nth-child(1) a { color: #ED8B00; }
-.stats.stats--colored li:nth-child(2) a { color: #10b981; }
-.stats.stats--colored li:nth-child(3) a { color: #f59e0b; }
-.stats.stats--colored li:nth-child(4) a { color: #ef4444; }
+.stats.stats--colored li:nth-child(1) a {
+  color: #ed8b00;
+}
+.stats.stats--colored li:nth-child(2) a {
+  color: #10b981;
+}
+.stats.stats--colored li:nth-child(3) a {
+  color: #f59e0b;
+}
+.stats.stats--colored li:nth-child(4) a {
+  color: #ef4444;
+}
 
 /* Stats Grid for Cards */
 .stats-grid {
@@ -112,7 +120,7 @@ ul.stats li .stat-label {
 .stat-card__number {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-color, #ED8B00);
+  color: var(--primary-color, #ed8b00);
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -187,7 +195,7 @@ ul.slats li:last-child {
 
 .slats li a:hover h3,
 .slats li a:hover h4 {
-  color: var(--primary-color, #ED8B00);
+  color: var(--primary-color, #ed8b00);
 }
 
 .slats li p {
@@ -343,13 +351,13 @@ article.aside .main-content {
 }
 
 .content-with-aside aside a:hover {
-  color: var(--primary-color, #ED8B00);
+  color: var(--primary-color, #ed8b00);
 }
 
 /* Aside Callout Box */
 .aside-callout {
   background: var(--bg-light, #f8f9fa);
-  border-left: 4px solid var(--primary-color, #ED8B00);
+  border-left: 4px solid var(--primary-color, #ed8b00);
   padding: 1rem;
   margin: 1.5rem 0;
   border-radius: 0 4px 4px 0;
@@ -357,7 +365,7 @@ article.aside .main-content {
 
 .aside-callout h4 {
   margin: 0 0 0.5rem 0;
-  color: var(--primary-color, #ED8B00);
+  color: var(--primary-color, #ed8b00);
 }
 
 .aside-callout p {
@@ -388,7 +396,7 @@ article.aside .main-content {
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-color, #ED8B00);
+  color: var(--primary-color, #ed8b00);
   margin-bottom: 0.25rem;
 }
 
@@ -433,7 +441,7 @@ article.aside .main-content {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: var(--primary-color, #ED8B00);
+  color: var(--primary-color, #ed8b00);
 }
 
 .review-slats .reviewer-name {

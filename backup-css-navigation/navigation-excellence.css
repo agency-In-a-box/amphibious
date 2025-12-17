@@ -16,7 +16,7 @@
 /* Override navigation variables with brand-compliant values */
 :root {
   /* Brand Colors - Pantone 144 */
-  --nav-primary: var(--color-primary, #ED8B00);
+  --nav-primary: var(--color-primary, #ed8b00);
   --nav-primary-hover: #c97400; /* 15% darker */
   --nav-primary-active: #b86800; /* 20% darker */
 
@@ -24,11 +24,11 @@
   --nav-font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* 4px Grid-Aligned Spacing (using rem) */
-  --nav-padding-xs: 0.5rem;    /* 8px = 2 × 4px */
-  --nav-padding-sm: 0.75rem;   /* 12px = 3 × 4px */
-  --nav-padding-md: 1rem;      /* 16px = 4 × 4px */
-  --nav-padding-lg: 1.25rem;   /* 20px = 5 × 4px */
-  --nav-padding-xl: 1.5rem;    /* 24px = 6 × 4px */
+  --nav-padding-xs: 0.5rem; /* 8px = 2 × 4px */
+  --nav-padding-sm: 0.75rem; /* 12px = 3 × 4px */
+  --nav-padding-md: 1rem; /* 16px = 4 × 4px */
+  --nav-padding-lg: 1.25rem; /* 20px = 5 × 4px */
+  --nav-padding-xl: 1.5rem; /* 24px = 6 × 4px */
 
   /* Premium Motion Signatures */
   --nav-transition-sharp: 200ms cubic-bezier(0.4, 0.0, 0.6, 1);
@@ -36,9 +36,9 @@
   --nav-transition-bounce: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   /* Grid-Aligned Border Radius */
-  --nav-radius-sm: 0.25rem;  /* 4px */
-  --nav-radius-md: 0.5rem;   /* 8px */
-  --nav-radius-lg: 0.75rem;  /* 12px */
+  --nav-radius-sm: 0.25rem; /* 4px */
+  --nav-radius-md: 0.5rem; /* 8px */
+  --nav-radius-lg: 0.75rem; /* 12px */
 
   /* Enhanced Shadows */
   --nav-shadow-subtle: 0 1px 3px 0 rgba(237, 139, 0, 0.1);
@@ -109,14 +109,12 @@ nav,
   top: calc(100% + 0.25rem); /* 4px gap */
 
   /* Premium shadow */
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
-              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   /* Smooth appearance */
   opacity: 0;
   transform: translateY(-8px);
-  transition: opacity var(--nav-transition-smooth),
-              transform var(--nav-transition-smooth);
+  transition: opacity var(--nav-transition-smooth), transform var(--nav-transition-smooth);
 
   /* Grid-aligned radius */
   border-radius: var(--nav-radius-md);
@@ -164,9 +162,7 @@ nav,
   border: 1px solid var(--nav-primary);
   padding: var(--nav-padding-xs) var(--nav-padding-sm);
   border-radius: var(--nav-radius-md) 0 0 var(--nav-radius-md);
-  background: linear-gradient(135deg,
-    rgba(237, 139, 0, 0.05) 0%,
-    rgba(237, 139, 0, 0.02) 100%);
+  background: linear-gradient(135deg, rgba(237, 139, 0, 0.05) 0%, rgba(237, 139, 0, 0.02) 100%);
   font-weight: 600;
   color: var(--nav-primary);
 }
@@ -178,9 +174,7 @@ nav,
 }
 
 .filter-nav > dd > a:hover {
-  background: linear-gradient(135deg,
-    rgba(237, 139, 0, 0.08) 0%,
-    rgba(237, 139, 0, 0.04) 100%);
+  background: linear-gradient(135deg, rgba(237, 139, 0, 0.08) 0%, rgba(237, 139, 0, 0.04) 100%);
   border-color: var(--nav-primary);
   color: var(--nav-primary);
 }
@@ -241,9 +235,7 @@ nav,
 /* Branded Navigation Bar */
 .branded {
   border-bottom: 2px solid var(--nav-primary);
-  background: linear-gradient(to bottom,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(237, 139, 0, 0.02) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(237, 139, 0, 0.02) 100%);
 }
 
 /* Skip Navigation - Accessibility + Brand */
@@ -307,8 +299,6 @@ nav,
   }
 
   .branded {
-    background: linear-gradient(to bottom,
-      rgba(10, 10, 10, 1) 0%,
-      rgba(237, 139, 0, 0.05) 100%);
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 1) 0%, rgba(237, 139, 0, 0.05) 100%);
   }
 }

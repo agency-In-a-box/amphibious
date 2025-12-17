@@ -190,13 +190,13 @@ const FILES_TO_PROCESS = [
   'api-reference.html',
   'carousel.html',
   'icons.html',
-  'index.html'
+  'index.html',
 ];
 
 let processedCount = 0;
 let skippedCount = 0;
 
-FILES_TO_PROCESS.forEach(filename => {
+FILES_TO_PROCESS.forEach((filename) => {
   const filepath = join(DOCS_DIR, filename);
 
   if (!existsSync(filepath)) {
@@ -242,7 +242,8 @@ FILES_TO_PROCESS.forEach(filename => {
   if (bodyMatch) {
     const bodyTag = bodyMatch[0];
     const insertPosition = content.indexOf(bodyTag) + bodyTag.length;
-    content = content.slice(0, insertPosition) + '\n' + navHtml + '\n' + content.slice(insertPosition);
+    content =
+      content.slice(0, insertPosition) + '\n' + navHtml + '\n' + content.slice(insertPosition);
   }
 
   // Fix semantic structure - wrap content in proper sections
@@ -257,11 +258,12 @@ FILES_TO_PROCESS.forEach(filename => {
 
     if (contentStart > 0 && footerStart > contentStart) {
       const mainContent = content.slice(contentStart, footerStart);
-      content = content.slice(0, contentStart) +
-                '\n<main id="main-content">\n' +
-                mainContent +
-                '\n</main>\n' +
-                content.slice(footerStart);
+      content =
+        content.slice(0, contentStart) +
+        '\n<main id="main-content">\n' +
+        mainContent +
+        '\n</main>\n' +
+        content.slice(footerStart);
     }
   }
 
@@ -269,6 +271,5 @@ FILES_TO_PROCESS.forEach(filename => {
   writeFileSync(filepath, content);
   processedCount++;
 });
-
 
 // Also update the foundation.html that was already modified

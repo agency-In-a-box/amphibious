@@ -1,9 +1,9 @@
 /**
  * Quick Grid Fix Script
- * 
+ *
  * This script creates a modern flexbox-based grid system to replace
  * the broken float-based grid in Amphibious 2.0
- * 
+ *
  * Run with: bun run scripts/fix-grid.ts
  */
 

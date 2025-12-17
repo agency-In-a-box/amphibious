@@ -23,7 +23,7 @@ const COLORS = {
   info: '3b82f6',
   danger: 'ef4444',
   neutral: '6c757d',
-  light: 'e9ecef'
+  light: 'e9ecef',
 };
 
 const replacements: ImageReplacement[] = [
@@ -32,7 +32,7 @@ const replacements: ImageReplacement[] = [
     pattern: /https:\/\/via\.placeholder\.com\//g,
     replacement: 'https://placehold.co/',
     description: 'Update via.placeholder.com to placehold.co',
-    fileTypes: ['html', 'md']
+    fileTypes: ['html', 'md'],
   },
 
   // Documentation example images
@@ -40,35 +40,35 @@ const replacements: ImageReplacement[] = [
     pattern: /src="image(\d+)\.jpg"/g,
     replacement: 'src="https://picsum.photos/800/600?random=$1"',
     description: 'Gallery/generic images with realistic photos',
-    fileTypes: ['html']
+    fileTypes: ['html'],
   },
 
   {
     pattern: /src="product(\d+)\.jpg"/g,
     replacement: `src="https://placehold.co/600x600/${COLORS.primary}/FFF?text=Product+$1"`,
     description: 'Product images with brand colors',
-    fileTypes: ['html']
+    fileTypes: ['html'],
   },
 
   {
     pattern: /src="thumb(\d+)\.jpg"/g,
     replacement: 'src="https://picsum.photos/300/200?random=$1"',
     description: 'Thumbnail images with realistic photos',
-    fileTypes: ['html']
+    fileTypes: ['html'],
   },
 
   {
     pattern: /src="avatar\.jpg"/g,
     replacement: `src="https://placehold.co/200x200/${COLORS.secondary}/FFF?text=User"`,
     description: 'Avatar placeholder',
-    fileTypes: ['html']
+    fileTypes: ['html'],
   },
 
   {
     pattern: /src="image\.jpg"/g,
     replacement: 'src="https://picsum.photos/600/400"',
     description: 'Generic image placeholder',
-    fileTypes: ['html']
+    fileTypes: ['html'],
   },
 
   // External GitHub ribbon (broken S3 link)
@@ -76,8 +76,8 @@ const replacements: ImageReplacement[] = [
     pattern: /src="http:\/\/s3\.amazonaws\.com\/github\/ribbons\/[^"]+"/g,
     replacement: `src="https://placehold.co/149x149/${COLORS.danger}/FFF?text=GitHub"`,
     description: 'GitHub fork ribbon placeholder',
-    fileTypes: ['html']
-  }
+    fileTypes: ['html'],
+  },
 ];
 
 async function createBackup(filePath: string): Promise<void> {
@@ -98,7 +98,7 @@ function findFiles(dir: string, extensions: string[], ignore: string[] = []): st
         const relativeFilePath = relativePath ? join(relativePath, entry) : entry;
 
         // Skip ignored directories/files
-        if (ignore.some(pattern => relativeFilePath.includes(pattern))) {
+        if (ignore.some((pattern) => relativeFilePath.includes(pattern))) {
           continue;
         }
 
@@ -123,13 +123,12 @@ function findFiles(dir: string, extensions: string[], ignore: string[] = []): st
 }
 
 async function updateImagePlaceholders(): Promise<void> {
-
   // Create log file
   const logFile = 'image-replacement-log.txt';
   const logEntries: string[] = [
     `Amphibious Image Replacement Log - ${new Date().toISOString()}`,
     '='.repeat(60),
-    ''
+    '',
   ];
 
   let totalReplacements = 0;
@@ -137,7 +136,6 @@ async function updateImagePlaceholders(): Promise<void> {
 
   // Find files to process
   const files = findFiles('.', ['html', 'md'], ['node_modules', 'dist', '.backup-', logFile]);
-
 
   for (const file of files) {
     if (!existsSync(file)) continue;
@@ -175,7 +173,7 @@ async function updateImagePlaceholders(): Promise<void> {
 
   // Add loading="lazy" to img tags that don't have it
 
-  for (const file of files.filter(f => f.endsWith('.html'))) {
+  for (const file of files.filter((f) => f.endsWith('.html'))) {
     if (!existsSync(file)) continue;
 
     let content = readFileSync(file, 'utf-8');

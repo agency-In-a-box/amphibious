@@ -65,8 +65,8 @@
   z-index: var(--modal-backdrop-z-index);
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--modal-transition-duration) var(--modal-transition-easing),
-              visibility var(--modal-transition-duration) var(--modal-transition-easing);
+  transition: opacity var(--modal-transition-duration) var(--modal-transition-easing), visibility
+    var(--modal-transition-duration) var(--modal-transition-easing);
   backdrop-filter: blur(4px);
 }
 
@@ -89,8 +89,8 @@
   padding: 1rem;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--modal-transition-duration) var(--modal-transition-easing),
-              visibility var(--modal-transition-duration) var(--modal-transition-easing);
+  transition: opacity var(--modal-transition-duration) var(--modal-transition-easing), visibility
+    var(--modal-transition-duration) var(--modal-transition-easing);
   overflow-y: auto;
 }
 
@@ -170,8 +170,7 @@
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
-  transition: color 0.15s ease-in-out,
-              transform 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, transform 0.15s ease-in-out;
   border-radius: 0.25rem;
 }
 

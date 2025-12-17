@@ -11,18 +11,9 @@
       "needed": 39
     },
     "topFiles": [
-      [
-        "src/css/print.css",
-        38
-      ],
-      [
-        "src/css/grid-responsive.css",
-        7
-      ],
-      [
-        "src/css/helpers.css",
-        3
-      ]
+      ["src/css/print.css", 38],
+      ["src/css/grid-responsive.css", 7],
+      ["src/css/helpers.css", 3]
     ]
   },
   "removable": [

@@ -14,22 +14,54 @@
   }
 
   /* Tablet-specific column overrides if needed */
-  .col-tablet-1 { width: 6.25%; }
-  .col-tablet-2 { width: 12.5%; }
-  .col-tablet-3 { width: 18.75%; }
-  .col-tablet-4 { width: 25%; }
-  .col-tablet-5 { width: 31.25%; }
-  .col-tablet-6 { width: 37.5%; }
-  .col-tablet-7 { width: 43.75%; }
-  .col-tablet-8 { width: 50%; }
-  .col-tablet-9 { width: 56.25%; }
-  .col-tablet-10 { width: 62.5%; }
-  .col-tablet-11 { width: 68.75%; }
-  .col-tablet-12 { width: 75%; }
-  .col-tablet-13 { width: 81.25%; }
-  .col-tablet-14 { width: 87.5%; }
-  .col-tablet-15 { width: 93.75%; }
-  .col-tablet-16 { width: 100%; }
+  .col-tablet-1 {
+    width: 6.25%;
+  }
+  .col-tablet-2 {
+    width: 12.5%;
+  }
+  .col-tablet-3 {
+    width: 18.75%;
+  }
+  .col-tablet-4 {
+    width: 25%;
+  }
+  .col-tablet-5 {
+    width: 31.25%;
+  }
+  .col-tablet-6 {
+    width: 37.5%;
+  }
+  .col-tablet-7 {
+    width: 43.75%;
+  }
+  .col-tablet-8 {
+    width: 50%;
+  }
+  .col-tablet-9 {
+    width: 56.25%;
+  }
+  .col-tablet-10 {
+    width: 62.5%;
+  }
+  .col-tablet-11 {
+    width: 68.75%;
+  }
+  .col-tablet-12 {
+    width: 75%;
+  }
+  .col-tablet-13 {
+    width: 81.25%;
+  }
+  .col-tablet-14 {
+    width: 87.5%;
+  }
+  .col-tablet-15 {
+    width: 93.75%;
+  }
+  .col-tablet-16 {
+    width: 100%;
+  }
 }
 
 /* Mobile (All) - Max width 767px
@@ -51,28 +83,68 @@
   }
 
   /* Mobile-specific column widths - use these to keep columns side-by-side */
-  .col-mobile-1 { width: 6.25%; }
-  .col-mobile-2 { width: 12.5%; }
-  .col-mobile-3 { width: 18.75%; }
-  .col-mobile-4 { width: 25%; }
-  .col-mobile-5 { width: 31.25%; }
-  .col-mobile-6 { width: 37.5%; }
-  .col-mobile-7 { width: 43.75%; }
-  .col-mobile-8 { width: 50%; }
-  .col-mobile-9 { width: 56.25%; }
-  .col-mobile-10 { width: 62.5%; }
-  .col-mobile-11 { width: 68.75%; }
-  .col-mobile-12 { width: 75%; }
-  .col-mobile-13 { width: 81.25%; }
-  .col-mobile-14 { width: 87.5%; }
-  .col-mobile-15 { width: 93.75%; }
-  .col-mobile-16 { width: 100%; }
+  .col-mobile-1 {
+    width: 6.25%;
+  }
+  .col-mobile-2 {
+    width: 12.5%;
+  }
+  .col-mobile-3 {
+    width: 18.75%;
+  }
+  .col-mobile-4 {
+    width: 25%;
+  }
+  .col-mobile-5 {
+    width: 31.25%;
+  }
+  .col-mobile-6 {
+    width: 37.5%;
+  }
+  .col-mobile-7 {
+    width: 43.75%;
+  }
+  .col-mobile-8 {
+    width: 50%;
+  }
+  .col-mobile-9 {
+    width: 56.25%;
+  }
+  .col-mobile-10 {
+    width: 62.5%;
+  }
+  .col-mobile-11 {
+    width: 68.75%;
+  }
+  .col-mobile-12 {
+    width: 75%;
+  }
+  .col-mobile-13 {
+    width: 81.25%;
+  }
+  .col-mobile-14 {
+    width: 87.5%;
+  }
+  .col-mobile-15 {
+    width: 93.75%;
+  }
+  .col-mobile-16 {
+    width: 100%;
+  }
 
   /* Convenience classes */
-  .col-mobile-half { width: 50%; }
-  .col-mobile-third { width: 33.333%; }
-  .col-mobile-quarter { width: 25%; }
-  .col-mobile-full { width: 100%; }
+  .col-mobile-half {
+    width: 50%;
+  }
+  .col-mobile-third {
+    width: 33.333%;
+  }
+  .col-mobile-quarter {
+    width: 25%;
+  }
+  .col-mobile-full {
+    width: 100%;
+  }
 
   /* Reset all push/pull classes on mobile */
   [class*="push-"],
@@ -210,12 +282,12 @@
   .row.flex.reverse-mobile {
     flex-direction: column-reverse;
   }
-  
+
   /* Keep columns side by side on mobile when needed */
   .row.mobile-keep-cols {
     flex-direction: row;
   }
-  
+
   .row.mobile-keep-cols > [class*="col-"] {
     width: auto;
     flex: 1 1 0;

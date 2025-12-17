@@ -6,7 +6,7 @@
   --text-secondary: #6c757d;
   --border-color: #dee2e6;
   --bg-light: #f8f9fa;
-  --filter-orange: #FF6900;
+  --filter-orange: #ff6900;
   --filter-orange-light: rgba(255, 105, 0, 0.1);
 }
 
@@ -241,7 +241,7 @@
 }
 
 .filter-item input:checked + .filter-checkbox::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 6px;
   top: 2px;
@@ -253,7 +253,7 @@
 }
 
 .filter-item input:checked + .filter-radio::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   top: 50%;
@@ -412,7 +412,7 @@
 }
 
 .filters-apply-button:hover {
-  background: #E65100;
+  background: #e65100;
 }
 
 .filter-result-count {

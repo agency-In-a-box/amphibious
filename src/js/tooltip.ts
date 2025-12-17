@@ -6,7 +6,19 @@
 export interface TooltipOptions {
   content?: string;
   html?: string;
-  position?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end';
+  position?:
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end';
   variant?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'light';
   size?: 'sm' | 'default' | 'lg';
   trigger?: 'hover' | 'click' | 'focus' | 'manual';
@@ -44,7 +56,8 @@ export class Tooltip {
 
     // Default options
     this.options = {
-      content: this.element.getAttribute('title') || this.element.getAttribute('data-tooltip') || '',
+      content:
+        this.element.getAttribute('title') || this.element.getAttribute('data-tooltip') || '',
       html: '',
       position: 'top',
       variant: 'default',
@@ -149,8 +162,11 @@ export class Tooltip {
   }
 
   private handleDocumentClick(event: Event): void {
-    if (this.isVisible && !this.element.contains(event.target as Node) &&
-        (!this.tooltipElement || !this.tooltipElement.contains(event.target as Node))) {
+    if (
+      this.isVisible &&
+      !this.element.contains(event.target as Node) &&
+      (!this.tooltipElement || !this.tooltipElement.contains(event.target as Node))
+    ) {
       this.hide();
     }
   }
@@ -235,7 +251,14 @@ export class Tooltip {
     let position = this.options.position;
 
     // Auto-adjust position if tooltip would go outside viewport
-    position = this.adjustPositionForViewport(position, triggerRect, tooltipRect, viewportWidth, viewportHeight) || 'top';
+    position =
+      this.adjustPositionForViewport(
+        position,
+        triggerRect,
+        tooltipRect,
+        viewportWidth,
+        viewportHeight,
+      ) || 'top';
 
     // Calculate coordinates
     const coords = this.calculatePosition(position, triggerRect, tooltipRect);
@@ -249,7 +272,7 @@ export class Tooltip {
     if (position !== this.options.position) {
       this.tooltipElement.className = this.tooltipElement.className.replace(
         /tooltip--\w+(-\w+)?/g,
-        `tooltip--${position}`
+        `tooltip--${position}`,
       );
     }
   }
@@ -259,14 +282,15 @@ export class Tooltip {
     triggerRect: DOMRect,
     tooltipRect: DOMRect,
     viewportWidth: number,
-    viewportHeight: number
+    viewportHeight: number,
   ): TooltipOptions['position'] {
     const coords = this.calculatePosition(position, triggerRect, tooltipRect);
     const margin = 10; // Add margin from viewport edges
 
     // Check if tooltip goes outside viewport and adjust
     if (coords.x < margin) {
-      if (position?.includes('left')) return position.replace('left', 'right') as TooltipOptions['position'];
+      if (position?.includes('left'))
+        return position.replace('left', 'right') as TooltipOptions['position'];
       if (position?.includes('top') || position?.includes('bottom')) {
         const basePart = position?.split('-')[0];
         return `${basePart}-start` as TooltipOptions['position'];
@@ -274,7 +298,8 @@ export class Tooltip {
     }
 
     if (coords.x + tooltipRect.width > viewportWidth - margin) {
-      if (position?.includes('right')) return position.replace('right', 'left') as TooltipOptions['position'];
+      if (position?.includes('right'))
+        return position.replace('right', 'left') as TooltipOptions['position'];
       if (position?.includes('top') || position?.includes('bottom')) {
         const basePart = position?.split('-')[0];
         return `${basePart}-end` as TooltipOptions['position'];
@@ -282,13 +307,15 @@ export class Tooltip {
     }
 
     if (coords.y < margin) {
-      if (position?.includes('top')) return position.replace('top', 'bottom') as TooltipOptions['position'];
+      if (position?.includes('top'))
+        return position.replace('top', 'bottom') as TooltipOptions['position'];
       // If still doesn't fit, try horizontal positioning
       if (!position?.includes('bottom')) return 'right';
     }
 
     if (coords.y + tooltipRect.height > viewportHeight - margin) {
-      if (position?.includes('bottom')) return position.replace('bottom', 'top') as TooltipOptions['position'];
+      if (position?.includes('bottom'))
+        return position.replace('bottom', 'top') as TooltipOptions['position'];
       // If still doesn't fit, try horizontal positioning
       if (!position?.includes('top')) return 'left';
     }
@@ -296,14 +323,18 @@ export class Tooltip {
     return position;
   }
 
-  private calculatePosition(position: TooltipOptions['position'], triggerRect: DOMRect, tooltipRect: DOMRect): { x: number; y: number } {
+  private calculatePosition(
+    position: TooltipOptions['position'],
+    triggerRect: DOMRect,
+    tooltipRect: DOMRect,
+  ): { x: number; y: number } {
     const offset = this.options.offset;
     let x = 0;
     let y = 0;
 
     switch (position) {
       case 'top':
-        x = triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2);
+        x = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
         y = triggerRect.top - tooltipRect.height - offset;
         break;
       case 'top-start':
@@ -315,7 +346,7 @@ export class Tooltip {
         y = triggerRect.top - tooltipRect.height - offset;
         break;
       case 'bottom':
-        x = triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2);
+        x = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
         y = triggerRect.bottom + offset;
         break;
       case 'bottom-start':
@@ -328,7 +359,7 @@ export class Tooltip {
         break;
       case 'left':
         x = triggerRect.left - tooltipRect.width - offset;
-        y = triggerRect.top + (triggerRect.height / 2) - (tooltipRect.height / 2);
+        y = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
         break;
       case 'left-start':
         x = triggerRect.left - tooltipRect.width - offset;
@@ -340,7 +371,7 @@ export class Tooltip {
         break;
       case 'right':
         x = triggerRect.right + offset;
-        y = triggerRect.top + (triggerRect.height / 2) - (tooltipRect.height / 2);
+        y = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
         break;
       case 'right-start':
         x = triggerRect.right + offset;
@@ -571,12 +602,15 @@ export class EcommerceTooltips {
   /**
    * Create product info tooltip
    */
-  static productInfo(element: HTMLElement, productData: {
-    name: string;
-    price: string;
-    description?: string;
-    image?: string;
-  }): Tooltip {
+  static productInfo(
+    element: HTMLElement,
+    productData: {
+      name: string;
+      price: string;
+      description?: string;
+      image?: string;
+    },
+  ): Tooltip {
     const content = `
       <div class="tooltip--product-info">
         <div class="product-name">${productData.name}</div>
@@ -598,11 +632,14 @@ export class EcommerceTooltips {
   /**
    * Create shipping info tooltip
    */
-  static shippingInfo(element: HTMLElement, shippingData: {
-    method: string;
-    cost: string;
-    time: string;
-  }): Tooltip {
+  static shippingInfo(
+    element: HTMLElement,
+    shippingData: {
+      method: string;
+      cost: string;
+      time: string;
+    },
+  ): Tooltip {
     const content = `
       <div class="tooltip--with-icon">
         <i data-lucide="truck" class="tooltip__icon"></i>

@@ -98,7 +98,7 @@
 .spinner-dots::before,
 .spinner-dots::after,
 .spinner-dots {
-  content: '';
+  content: "";
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
@@ -116,7 +116,9 @@
 }
 
 @keyframes spinner-dots {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     transform: scale(0);
   }
   40% {
@@ -132,7 +134,8 @@
 }
 
 @keyframes spinner-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0);
     opacity: 1;
   }
@@ -148,12 +151,7 @@
   height: calc(var(--spinner-size) / 2);
   border: none;
   border-radius: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--spinner-color),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--spinner-color), transparent);
   animation: spinner-wave 1.5s infinite;
 }
 

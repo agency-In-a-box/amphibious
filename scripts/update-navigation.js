@@ -31,7 +31,7 @@ const filesToUpdate = [
   'examples/checkout.html',
   'examples/pears-patterns.html',
   'examples/navigation-showcase.html',
-  'examples/atomic-design-demo.html'
+  'examples/atomic-design-demo.html',
 ];
 
 const includeScript = `
@@ -95,12 +95,15 @@ function updateFile(filePath) {
   const navPatterns = [
     /<nav\s+class=["']site-nav["'][\s\S]*?<\/nav>\s*(?:<!--[^>]*?-->\s*)?/gi,
     /<!--\s*Site Navigation\s*-->[\s\S]*?<\/nav>/gi,
-    /<ul\s+class=["']horizontal\s+branded["'][\s\S]*?<\/ul>\s*<\/div>\s*<\/nav>/gi
+    /<ul\s+class=["']horizontal\s+branded["'][\s\S]*?<\/ul>\s*<\/div>\s*<\/nav>/gi,
   ];
 
   for (const pattern of navPatterns) {
     if (pattern.test(content)) {
-      content = content.replace(pattern, '  <!-- Navigation Include -->\n  <div id="navigation-include"></div>\n');
+      content = content.replace(
+        pattern,
+        '  <!-- Navigation Include -->\n  <div id="navigation-include"></div>\n',
+      );
       modified = true;
       break;
     }
@@ -109,7 +112,10 @@ function updateFile(filePath) {
   // Replace footer if exists
   const footerPattern = /<footer[\s\S]*?<\/footer>/gi;
   if (footerPattern.test(content)) {
-    content = content.replace(footerPattern, '  <!-- Footer Include -->\n  <div id="footer-include"></div>');
+    content = content.replace(
+      footerPattern,
+      '  <!-- Footer Include -->\n  <div id="footer-include"></div>',
+    );
     modified = true;
   }
 
@@ -124,8 +130,6 @@ function updateFile(filePath) {
   }
 }
 
-
-filesToUpdate.forEach(file => {
+filesToUpdate.forEach((file) => {
   updateFile(file);
 });
-

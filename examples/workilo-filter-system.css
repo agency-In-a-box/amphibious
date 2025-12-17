@@ -8,8 +8,8 @@
    ========================================================================== */
 
 :root {
-  --primary-color: #FF6900;
-  --primary-hover: #E65100;
+  --primary-color: #ff6900;
+  --primary-hover: #e65100;
   --primary-light: rgba(255, 105, 0, 0.1);
   --primary-fade: rgba(255, 105, 0, 0.05);
 
@@ -49,7 +49,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Helvetica Neue", sans-serif;
   line-height: 1.5;
   color: var(--text-primary);
   background: var(--bg-gray);
@@ -547,7 +548,7 @@ body {
 }
 
 .drawer-option.workflow span {
-  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace;
   font-size: 0.8125rem;
 }
 

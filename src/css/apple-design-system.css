@@ -10,9 +10,9 @@
 
 :root {
   /* Primary Palette - Pantone 144 Orange */
-  --apple-orange: #FF6900;
-  --apple-orange-light: #FF8533;
-  --apple-orange-dark: #E65100;
+  --apple-orange: #ff6900;
+  --apple-orange-light: #ff8533;
+  --apple-orange-dark: #e65100;
   --apple-orange-subtle: rgba(255, 105, 0, 0.08);
   --apple-orange-fade: rgba(255, 105, 0, 0.04);
 
@@ -26,8 +26,10 @@
   --apple-white: #ffffff;
 
   /* Typography - SF Pro Display/Text Inspired */
-  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   --font-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
 
   /* Font Weights - Apple's Precise Scale */
@@ -40,16 +42,16 @@
   --weight-bold: 700;
 
   /* Type Scale - Apple's Harmonious Sizing */
-  --text-xs: 0.75rem;     /* 12px */
-  --text-sm: 0.875rem;    /* 14px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
   --text-base: 1.0625rem; /* 17px - Apple's body text */
-  --text-lg: 1.25rem;     /* 20px */
-  --text-xl: 1.5rem;      /* 24px */
-  --text-2xl: 2rem;       /* 32px */
-  --text-3xl: 2.5rem;     /* 40px */
-  --text-4xl: 3rem;       /* 48px */
-  --text-5xl: 4rem;       /* 64px */
-  --text-6xl: 5rem;       /* 80px */
+  --text-lg: 1.25rem; /* 20px */
+  --text-xl: 1.5rem; /* 24px */
+  --text-2xl: 2rem; /* 32px */
+  --text-3xl: 2.5rem; /* 40px */
+  --text-4xl: 3rem; /* 48px */
+  --text-5xl: 4rem; /* 64px */
+  --text-6xl: 5rem; /* 80px */
 
   /* Line Heights - Perfect Readability */
   --leading-tight: 1.1;
@@ -60,26 +62,26 @@
 
   /* Spacing - Apple's Spatial System */
   --space-0: 0;
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.5rem;    /* 24px */
-  --space-6: 2rem;      /* 32px */
-  --space-7: 2.5rem;    /* 40px */
-  --space-8: 3rem;      /* 48px */
-  --space-9: 4rem;      /* 64px */
-  --space-10: 5rem;     /* 80px */
-  --space-11: 7rem;     /* 112px */
-  --space-12: 9rem;     /* 144px */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.5rem; /* 24px */
+  --space-6: 2rem; /* 32px */
+  --space-7: 2.5rem; /* 40px */
+  --space-8: 3rem; /* 48px */
+  --space-9: 4rem; /* 64px */
+  --space-10: 5rem; /* 80px */
+  --space-11: 7rem; /* 112px */
+  --space-12: 9rem; /* 144px */
 
   /* Border Radius - Apple's Subtle Curves */
   --radius-none: 0;
-  --radius-sm: 0.25rem;   /* 4px */
-  --radius-md: 0.5rem;    /* 8px */
-  --radius-lg: 0.75rem;   /* 12px */
-  --radius-xl: 1rem;      /* 16px */
-  --radius-2xl: 1.25rem;  /* 20px */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-2xl: 1.25rem; /* 20px */
   --radius-full: 9999px;
 
   /* Shadows - Subtle Depth */

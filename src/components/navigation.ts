@@ -25,9 +25,8 @@ export class AmphibiousNavigation {
   private scrollThreshold: number = 100;
 
   constructor(selector: string | HTMLElement, options: NavigationOptions = {}) {
-    this.element = typeof selector === 'string'
-      ? document.querySelector(selector) as HTMLElement
-      : selector;
+    this.element =
+      typeof selector === 'string' ? (document.querySelector(selector) as HTMLElement) : selector;
 
     if (!this.element) {
       throw new Error(`Navigation element not found: ${selector}`);
@@ -40,7 +39,7 @@ export class AmphibiousNavigation {
       searchEnabled: true,
       themeToggle: true,
       githubUrl: 'https://github.com/your-org/amphibious',
-      ...options
+      ...options,
     };
 
     this.init();
@@ -113,22 +112,34 @@ export class AmphibiousNavigation {
           </ul>
 
           <div class="amp-nav__actions">
-            ${this.options.searchEnabled ? `
+            ${
+              this.options.searchEnabled
+                ? `
               <button class="amp-nav__search" aria-label="Search" data-tooltip="Search docs">
                 <i data-lucide="search"></i>
               </button>
-            ` : ''}
-            ${this.options.themeToggle ? `
+            `
+                : ''
+            }
+            ${
+              this.options.themeToggle
+                ? `
               <button class="amp-nav__theme" aria-label="Toggle theme" data-tooltip="Toggle theme">
                 <i data-lucide="moon" id="themeIcon"></i>
               </button>
-            ` : ''}
-            ${this.options.githubUrl ? `
+            `
+                : ''
+            }
+            ${
+              this.options.githubUrl
+                ? `
               <a href="${this.options.githubUrl}" class="amp-nav__github" target="_blank" rel="noopener" data-tooltip="View on GitHub">
                 <i data-lucide="github"></i>
                 ${this.options.githubStars ? `<span class="amp-nav__stars">${this.options.githubStars}</span>` : ''}
               </a>
-            ` : ''}
+            `
+                : ''
+            }
           </div>
 
           <button class="amp-nav__toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -143,7 +154,9 @@ export class AmphibiousNavigation {
       <div class="amp-nav__overlay" aria-hidden="true"></div>
 
       <!-- Search Modal -->
-      ${this.options.searchEnabled ? `
+      ${
+        this.options.searchEnabled
+          ? `
         <div class="amp-nav__search-modal" aria-hidden="true">
           <div class="amp-nav__search-content">
             <input type="search" class="amp-nav__search-input" placeholder="Search documentation...">
@@ -153,7 +166,9 @@ export class AmphibiousNavigation {
             <div class="amp-nav__search-results"></div>
           </div>
         </div>
-      ` : ''}
+      `
+          : ''
+      }
     `;
 
     // Replace existing element content
@@ -220,7 +235,7 @@ export class AmphibiousNavigation {
 
     // Dropdown menus
     const dropdownItems = this.element.querySelectorAll('.amp-nav__item');
-    dropdownItems.forEach(item => {
+    dropdownItems.forEach((item) => {
       const link = item.querySelector('.amp-nav__link');
       const dropdown = item.querySelector('.amp-nav__dropdown');
 
@@ -350,7 +365,7 @@ export class AmphibiousNavigation {
     const currentPath = this.options.currentPath || window.location.pathname;
     const links = this.element.querySelectorAll('.amp-nav__link');
 
-    links.forEach(link => {
+    links.forEach((link) => {
       const linkPath = link.getAttribute('data-path');
       if (linkPath && currentPath.startsWith(linkPath)) {
         link.classList.add('amp-nav__link--active');
@@ -388,9 +403,7 @@ export class AmphibiousNavigation {
       { title: 'Icons', path: '/examples/icons-enhanced.html', category: 'Examples' },
       { title: 'Tooltips', path: '/docs/components/tooltips.html', category: 'Components' },
       { title: 'Getting Started', path: '/docs/getting-started.html', category: 'Documentation' },
-    ].filter(item =>
-      item.title.toLowerCase().includes(query.toLowerCase())
-    );
+    ].filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
 
     if (mockResults.length === 0) {
       resultsContainer.innerHTML = `
@@ -399,12 +412,16 @@ export class AmphibiousNavigation {
         </div>
       `;
     } else {
-      resultsContainer.innerHTML = mockResults.map(result => `
+      resultsContainer.innerHTML = mockResults
+        .map(
+          (result) => `
         <a href="${result.path}" class="amp-nav__search-result">
           <span class="amp-nav__search-result-title">${result.title}</span>
           <span class="amp-nav__search-result-category">${result.category}</span>
         </a>
-      `).join('');
+      `,
+        )
+        .join('');
     }
   }
 
@@ -420,6 +437,9 @@ export class AmphibiousNavigation {
 }
 
 // Export factory function
-export function createNavigation(selector: string | HTMLElement, options?: NavigationOptions): AmphibiousNavigation {
+export function createNavigation(
+  selector: string | HTMLElement,
+  options?: NavigationOptions,
+): AmphibiousNavigation {
   return new AmphibiousNavigation(selector, options);
 }

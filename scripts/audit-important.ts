@@ -25,7 +25,7 @@ async function findCSSFiles(dir: string): Promise<string[]> {
   for (const item of items) {
     const path = join(dir, item.name);
     if (item.isDirectory()) {
-      files.push(...await findCSSFiles(path));
+      files.push(...(await findCSSFiles(path)));
     } else if (item.name.endsWith('.css')) {
       files.push(path);
     }
@@ -38,20 +38,33 @@ function categorizeFile(filePath: string): ImportantDeclaration['category'] {
   if (filePath.includes('helpers.css')) return 'utility';
   if (filePath.includes('grid')) return 'grid';
   if (filePath.includes('print.css')) return 'print';
-  if (filePath.includes('/atoms/') || filePath.includes('/molecules/') || filePath.includes('/organisms/')) return 'component';
+  if (
+    filePath.includes('/atoms/') ||
+    filePath.includes('/molecules/') ||
+    filePath.includes('/organisms/')
+  )
+    return 'component';
   return 'other';
 }
 
-function analyzeJustification(selector: string, property: string, category: ImportantDeclaration['category']): ImportantDeclaration['justification'] {
+function analyzeJustification(
+  selector: string,
+  property: string,
+  category: ImportantDeclaration['category'],
+): ImportantDeclaration['justification'] {
   // Utility classes often need !important to override component styles
   if (category === 'utility') {
     // Display utilities like .hide, .show typically need !important
-    if (selector.includes('.hide') || selector.includes('.hidden') ||
-        selector.includes('.show') || selector.includes('.visible')) {
+    if (
+      selector.includes('.hide') ||
+      selector.includes('.hidden') ||
+      selector.includes('.show') ||
+      selector.includes('.visible')
+    ) {
       return 'needed';
     }
     // Position reset utilities might need it
-    if (property === 'float' && selector.includes('.absolute') || selector.includes('.fixed')) {
+    if ((property === 'float' && selector.includes('.absolute')) || selector.includes('.fixed')) {
       return 'needed';
     }
     // Text alignment utilities usually need it
@@ -132,7 +145,7 @@ async function analyzeFile(filePath: string): Promise<ImportantDeclaration[]> {
           value,
           context,
           category,
-          justification
+          justification,
         });
       }
     }
@@ -142,7 +155,6 @@ async function analyzeFile(filePath: string): Promise<ImportantDeclaration[]> {
 }
 
 async function main() {
-
   const cssDir = join(process.cwd(), 'src/css');
   const files = await findCSSFiles(cssDir);
 
@@ -155,24 +167,34 @@ async function main() {
 
   // Generate summary statistics
   const total = allDeclarations.length;
-  const byCategory = allDeclarations.reduce((acc, d) => {
-    acc[d.category] = (acc[d.category] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  const byCategory = allDeclarations.reduce(
+    (acc, d) => {
+      acc[d.category] = (acc[d.category] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
 
-  const byJustification = allDeclarations.reduce((acc, d) => {
-    acc[d.justification] = (acc[d.justification] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  const byJustification = allDeclarations.reduce(
+    (acc, d) => {
+      acc[d.justification] = (acc[d.justification] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
 
-  const byFile = allDeclarations.reduce((acc, d) => {
-    acc[d.file] = (acc[d.file] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  const byFile = allDeclarations.reduce(
+    (acc, d) => {
+      acc[d.file] = (acc[d.file] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
 
   // Print summary
-  Object.entries(byCategory).sort((a, b) => b[1] - a[1]).forEach(([cat, count]) => {
-  });
+  Object.entries(byCategory)
+    .sort((a, b) => b[1] - a[1])
+    .forEach(([cat, count]) => {});
 
   Object.entries(byJustification).forEach(([just, count]) => {
     const emoji = just === 'needed' ? '✅' : just === 'questionable' ? '⚠️' : '❌';
@@ -181,23 +203,20 @@ async function main() {
   Object.entries(byFile)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
-    .forEach(([file, count]) => {
-    });
+    .forEach(([file, count]) => {});
 
   // List removable declarations
-  const removable = allDeclarations.filter(d => d.justification === 'removable');
+  const removable = allDeclarations.filter((d) => d.justification === 'removable');
 
-  removable.slice(0, 20).forEach(d => {
-  });
+  removable.slice(0, 20).forEach((d) => {});
 
   if (removable.length > 20) {
   }
 
   // List questionable declarations
-  const questionable = allDeclarations.filter(d => d.justification === 'questionable');
+  const questionable = allDeclarations.filter((d) => d.justification === 'questionable');
 
-  questionable.slice(0, 10).forEach(d => {
-  });
+  questionable.slice(0, 10).forEach((d) => {});
 
   // Save detailed report
   const report = {
@@ -205,23 +224,25 @@ async function main() {
       total,
       byCategory,
       byJustification,
-      topFiles: Object.entries(byFile).sort((a, b) => b[1] - a[1]).slice(0, 10)
+      topFiles: Object.entries(byFile)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10),
     },
-    removable: removable.map(d => ({
+    removable: removable.map((d) => ({
       file: d.file,
       line: d.line,
       selector: d.selector,
       property: d.property,
-      value: d.value
+      value: d.value,
     })),
-    questionable: questionable.map(d => ({
+    questionable: questionable.map((d) => ({
       file: d.file,
       line: d.line,
       selector: d.selector,
       property: d.property,
-      value: d.value
+      value: d.value,
     })),
-    needed: allDeclarations.filter(d => d.justification === 'needed').length
+    needed: allDeclarations.filter((d) => d.justification === 'needed').length,
   };
 
   await Bun.write('important-audit-report.json', JSON.stringify(report, null, 2));

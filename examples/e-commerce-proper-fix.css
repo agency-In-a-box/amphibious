@@ -25,13 +25,13 @@
   background: white;
   padding: 1.25rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   border: 1px solid #e9ecef;
   transition: all 0.2s ease;
 }
 
 .slat-item:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   border-color: #667eea;
 }
 
@@ -208,7 +208,7 @@
   background: white;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   border: 1px solid #e9ecef;
 }
 
@@ -297,7 +297,7 @@
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   border: 1px solid #e9ecef;
   transition: all 0.2s ease;
   display: flex;
@@ -306,7 +306,7 @@
 }
 
 .product-card:hover {
-  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   transform: translateY(-2px);
   border-color: #667eea;
 }
