@@ -215,7 +215,7 @@ describe('SmoothScroll Module', () => {
       smoothScroll.scrollToElement(target, 0);
 
       // Wait for the animation frame to complete
-      await new Promise(resolve => setTimeout(resolve, 10));
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
       expect(document.activeElement).toBe(target);
     });
@@ -229,7 +229,7 @@ describe('SmoothScroll Module', () => {
       smoothScroll.scrollToElement(target, 0);
 
       // Wait for the animation frame to complete
-      await new Promise(resolve => setTimeout(resolve, 10));
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
       expect(document.activeElement).toBe(target);
       expect(target.getAttribute('tabindex')).toBe('0'); // Should preserve

@@ -1,7 +1,15 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "files": {
-    "ignore": ["dist/**", "node_modules/**", "*.min.js", "*.min.css", "backup-*/**", "backups/**", ".claude/**"]
+    "ignore": [
+      "dist/**",
+      "node_modules/**",
+      "*.min.js",
+      "*.min.css",
+      "backup-*/**",
+      "backups/**",
+      ".claude/**"
+    ]
   },
   "organizeImports": {
     "enabled": true
