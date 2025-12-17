@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "files": {
-    "ignore": ["dist/**", "node_modules/**", "*.min.js", "*.min.css"]
+    "ignore": ["dist/**", "node_modules/**", "*.min.js", "*.min.css", "backup-*/**", "backups/**", ".claude/**"]
   },
   "organizeImports": {
     "enabled": true
@@ -14,14 +14,14 @@
         "noNonNullAssertion": "off"
       }
     },
-    "ignore": ["dist/**", "node_modules/**"]
+    "ignore": ["dist/**", "node_modules/**", "backup-*/**", "backups/**", ".claude/**"]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100,
-    "ignore": ["dist/**", "node_modules/**"]
+    "ignore": ["dist/**", "node_modules/**", "backup-*/**", "backups/**", ".claude/**"]
   },
   "javascript": {
     "formatter": {
