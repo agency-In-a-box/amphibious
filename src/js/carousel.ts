@@ -49,7 +49,7 @@ export class AmphibiousCarousel {
       gap: '1rem',
       padding: '0',
       arrows: true,
-      pagination: 'dots' as any,
+      pagination: true,
       wheel: false,
       keyboard: 'global',
       accessibility: {

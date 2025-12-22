@@ -10,7 +10,7 @@ const window = new Window();
 const document = window.document;
 
 // Set up globals
-global.window = window as any;
+global.window = window as unknown as Window & typeof globalThis;
 global.document = document;
 global.navigator = window.navigator;
 global.HTMLElement = window.HTMLElement;
@@ -25,7 +25,7 @@ global.HTMLCollection = window.HTMLCollection;
 
 // Add common browser APIs
 global.requestAnimationFrame = (callback: FrameRequestCallback) => {
-  return setTimeout(callback, 0) as any;
+  return setTimeout(callback, 0) as unknown as number;
 };
 
 global.cancelAnimationFrame = (id: number) => {

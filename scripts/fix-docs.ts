@@ -58,7 +58,8 @@ for (const file of htmlFiles) {
     const tagRegex = /<\/?([a-zA-Z][a-zA-Z0-9]*)[^>]*>/g;
     let match: RegExpExecArray | null = null;
 
-    while ((match = tagRegex.exec(content)) !== null) {
+    match = tagRegex.exec(content);
+    while (match !== null) {
       const isClosing = match[0].startsWith('</');
       const tagName = match[1].toLowerCase();
 
@@ -76,6 +77,7 @@ for (const file of htmlFiles) {
       } else {
         tagStack.push(tagName);
       }
+      match = tagRegex.exec(content);
     }
 
     if (issues.length > 0 || tagStack.length > 0) {
