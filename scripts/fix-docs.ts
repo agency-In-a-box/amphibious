@@ -56,7 +56,7 @@ for (const file of htmlFiles) {
     // Check for unclosed tags
     const tagStack = [];
     const tagRegex = /<\/?([a-zA-Z][a-zA-Z0-9]*)[^>]*>/g;
-    let match;
+    let match: RegExpExecArray | null = null;
 
     while ((match = tagRegex.exec(content)) !== null) {
       const isClosing = match[0].startsWith('</');

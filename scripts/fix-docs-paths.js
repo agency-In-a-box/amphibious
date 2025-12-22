@@ -13,7 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const docsDir = path.resolve(__dirname, '..', 'docs');
 
 // Get all HTML files in docs directory
-const htmlFiles = fs.readdirSync(docsDir).filter(file => file.endsWith('.html'));
+const htmlFiles = fs.readdirSync(docsDir).filter((file) => file.endsWith('.html'));
 
 console.log('🔧 Fixing paths in docs HTML files...\n');
 

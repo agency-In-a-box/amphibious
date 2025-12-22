@@ -5,9 +5,9 @@
  * This updates all HTML files to use module imports instead of direct CSS links
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const docsDir = path.join(__dirname, '..', 'docs');
@@ -29,22 +29,28 @@ function fixHTMLFile(filePath) {
   const oldScriptPattern = /<script\s+type="module"\s+src="[^"]*\/src\/index\.ts"[^>]*><\/script>/g;
 
   if (oldScriptPattern.test(content)) {
-    content = content.replace(oldScriptPattern, `  <script type="module">
+    content = content.replace(
+      oldScriptPattern,
+      `  <script type="module">
     import '../src/css/main.css';
     import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
-  </script>`);
+  </script>`,
+    );
     modified = true;
   } else if (!content.includes('import amp from')) {
     // Add module script before closing body if not present
     const bodyClosePattern = /<\/body>/;
     if (bodyClosePattern.test(content)) {
-      content = content.replace(bodyClosePattern, `  <script type="module">
+      content = content.replace(
+        bodyClosePattern,
+        `  <script type="module">
     import '../src/css/main.css';
     import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
-</body>`);
+</body>`,
+      );
       modified = true;
     }
   }
@@ -69,7 +75,7 @@ function processDirectory(dir, label) {
   const files = fs.readdirSync(dir);
   let fixedCount = 0;
 
-  files.forEach(file => {
+  files.forEach((file) => {
     if (file.endsWith('.html')) {
       const filePath = path.join(dir, file);
       fixedCount += fixHTMLFile(filePath);
@@ -94,7 +100,7 @@ const rootDir = path.join(__dirname, '..');
 const rootFiles = ['index.html', 'sitemap.html', 'apple-redesign.html', 'test-cascade.html'];
 
 console.log('\n📁 Processing root files...');
-rootFiles.forEach(file => {
+rootFiles.forEach((file) => {
   const filePath = path.join(rootDir, file);
   if (fs.existsSync(filePath)) {
     totalFixed += fixHTMLFile(filePath);
@@ -102,4 +108,6 @@ rootFiles.forEach(file => {
 });
 
 console.log(`\n✨ Done! Fixed ${totalFixed} files for proper module loading.`);
-console.log('\n💡 Note: The dev server at http://localhost:2961/ should now properly load all styles and scripts.');
+console.log(
+  '\n💡 Note: The dev server at http://localhost:2961/ should now properly load all styles and scripts.',
+);
