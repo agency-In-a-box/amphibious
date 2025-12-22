@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Grid System</title>
+  <script type="module">
+    import '/src/css/main.css';
+  </script>
+  <style>
+    /* Visual debugging */
+    .test-box {
+      background: #ed8b00;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border: 2px solid #333;
+      min-height: 100px;
+    }
+
+    .sidebar-box {
+      background: #c9702f;
+    }
+
+    .main-box {
+      background: #d97638;
+    }
+
+    .row {
+      border: 3px dashed red;
+      margin-bottom: 20px;
+    }
+
+    body {
+      padding: 20px;
+    }
+
+    /* Force display for testing */
+    .force-flex {
+      display: flex !important;
+    }
+
+    .debug-col-6 {
+      flex: 0 0 37.5% !important;
+      max-width: 37.5% !important;
+      background: green !important;
+    }
+
+    .debug-col-10 {
+      flex: 0 0 62.5% !important;
+      max-width: 62.5% !important;
+      background: blue !important;
+    }
+  </style>
+</head>
+<body>
+  <h1>Grid Debug Tests</h1>
+
+  <h2>Test 1: Basic divs with col-6 and col-10</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 test-box sidebar-box">Col-6 Sidebar</div>
+      <div class="col-10 test-box main-box">Col-10 Main</div>
+    </div>
+  </div>
+
+  <h2>Test 2: Semantic HTML with col-6 and col-10</h2>
+  <div class="container">
+    <div class="row">
+      <aside class="col-6 test-box sidebar-box">Aside Col-6</aside>
+      <main class="col-10 test-box main-box">Main Col-10</main>
+    </div>
+  </div>
+
+  <h2>Test 3: Force flex with debug classes</h2>
+  <div class="container">
+    <div class="row force-flex">
+      <div class="debug-col-6 test-box">Debug Col-6</div>
+      <div class="debug-col-10 test-box">Debug Col-10</div>
+    </div>
+  </div>
+
+  <h2>Test 4: Check what styles are applied</h2>
+  <div class="container">
+    <div class="row" id="test-row">
+      <div class="col-6" id="test-col6">Test Col-6</div>
+      <div class="col-10" id="test-col10">Test Col-10</div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      const row = document.getElementById('test-row');
+      const col6 = document.getElementById('test-col6');
+      const col10 = document.getElementById('test-col10');
+
+      const rowStyles = window.getComputedStyle(row);
+      const col6Styles = window.getComputedStyle(col6);
+      const col10Styles = window.getComputedStyle(col10);
+
+      console.log('Row display:', rowStyles.display);
+      console.log('Row flex-wrap:', rowStyles.flexWrap);
+
+      console.log('Col-6 flex:', col6Styles.flex);
+      console.log('Col-6 max-width:', col6Styles.maxWidth);
+      console.log('Col-6 width:', col6Styles.width);
+
+      console.log('Col-10 flex:', col10Styles.flex);
+      console.log('Col-10 max-width:', col10Styles.maxWidth);
+      console.log('Col-10 width:', col10Styles.width);
+
+      // Display in page
+      const output = document.createElement('pre');
+      output.textContent = `
+Row computed styles:
+  display: ${rowStyles.display}
+  flex-wrap: ${rowStyles.flexWrap}
+
+Col-6 computed styles:
+  flex: ${col6Styles.flex}
+  max-width: ${col6Styles.maxWidth}
+  width: ${col6Styles.width}
+
+Col-10 computed styles:
+  flex: ${col10Styles.flex}
+  max-width: ${col10Styles.maxWidth}
+  width: ${col10Styles.width}
+      `;
+      document.body.appendChild(output);
+    });
+  </script>
+</body>
+</html>

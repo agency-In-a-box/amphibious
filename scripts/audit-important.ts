@@ -4,8 +4,8 @@
  * Generates a report for systematic removal strategy
  */
 
-import { readdir, readFile } from 'fs/promises';
-import { join } from 'path';
+import { readFile, readdir } from 'node:fs/promises';
+import { join } from 'node:path';
 
 interface ImportantDeclaration {
   file: string;

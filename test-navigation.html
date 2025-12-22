@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Test - Amphibious</title>
+  <style>
+    /* Temporary inline styles to verify the navigation works */
+    .horizontal {
+      display: flex !important;
+      flex-wrap: wrap;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .horizontal > li {
+      position: relative;
+      margin: 0;
+    }
+
+    .horizontal > li > a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .horizontal > li > a:hover {
+      color: #ed8b00;
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .site-nav {
+      background: white;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Dropdown styles */
+    .horizontal ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      display: none;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      z-index: 1000;
+    }
+
+    .horizontal > li:hover > ul {
+      display: block;
+    }
+
+    .horizontal ul a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .horizontal ul a:hover {
+      background-color: #f5f5f5;
+      color: #ed8b00;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <ul class="horizontal">
+        <li><a href="/" class="site-logo">Amphibious</a></li>
+        <li><a href="#">Foundation</a>
+          <ul>
+            <li><a href="#">Core</a></li>
+            <li><a href="#">Grid System</a></li>
+            <li><a href="#">Responsive</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Form</a>
+          <ul>
+            <li><a href="#">Typography</a></li>
+            <li><a href="#">Basic Forms</a></li>
+            <li><a href="#">Tables</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Function</a>
+          <ul>
+            <li><a href="#">Navigation</a></li>
+            <li><a href="#">Modals</a></li>
+            <li><a href="#">Tabs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container" style="margin-top: 2rem;">
+    <h1>Navigation Test</h1>
+    <p>This page demonstrates that the navigation CSS works when applied directly. The horizontal menu with dropdowns should display correctly above.</p>
+
+    <h2>The Issue</h2>
+    <p>The navigation CSS exists in navigation-unified.css but isn't being applied properly when loaded through Vite's module system.</p>
+
+    <h2>Next Steps</h2>
+    <p>Now let's load the CSS module below and see if it overrides these inline styles:</p>
+  </div>
+
+  <script type="module">
+    import './src/css/main.css';
+    import amp from './src/index.ts';
+
+    console.log('CSS module imported');
+    console.log('Amp initialized:', amp);
+
+    // Check if navigation styles are applied
+    setTimeout(() => {
+      const nav = document.querySelector('.horizontal');
+      const computed = window.getComputedStyle(nav);
+      console.log('Navigation display:', computed.display);
+      console.log('Navigation flex-wrap:', computed.flexWrap);
+
+      if (computed.display !== 'flex') {
+        console.error('Navigation CSS not applied! Display is:', computed.display);
+      } else {
+        console.log('Navigation CSS successfully applied!');
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

@@ -9,7 +9,7 @@
 :root {
   --spinner-size: 2rem;
   --spinner-border-width: 0.2rem;
-  --spinner-color: #3b82f6;
+  --spinner-color: var(--color-primary);
   --spinner-track-color: #e5e7eb;
   --spinner-speed: 1s;
 }
@@ -63,7 +63,7 @@
    ========================================================================== */
 
 .spinner-primary {
-  --spinner-color: #3b82f6;
+  --spinner-color: var(--color-primary);
 }
 
 .spinner-secondary {

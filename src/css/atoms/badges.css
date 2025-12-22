@@ -16,9 +16,9 @@
   --badge-transition: all 0.15s ease;
 
   /* Badge Colors */
-  --badge-primary-bg: #3b82f6;
+  --badge-primary-bg: var(--color-primary);
   --badge-primary-color: #ffffff;
-  --badge-primary-border: #3b82f6;
+  --badge-primary-border: var(--color-primary);
 
   --badge-secondary-bg: #6b7280;
   --badge-secondary-color: #ffffff;

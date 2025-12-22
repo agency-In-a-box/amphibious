@@ -61,7 +61,7 @@ export class SmoothScroll {
       const target = document.querySelector(window.location.hash);
       if (target) {
         setTimeout(() => {
-          this.scrollToElement(target as HTMLElement, 0);
+          this.scrollToElement(target as HTMLElement, this.duration);
         }, 100);
       }
     }
@@ -70,7 +70,8 @@ export class SmoothScroll {
     window.addEventListener('hashchange', () => {
       const target = document.querySelector(window.location.hash);
       if (target) {
-        this.scrollToElement(target as HTMLElement);
+        // Use instant scroll if duration is 0
+        this.scrollToElement(target as HTMLElement, this.duration);
       }
     });
   }
@@ -97,6 +98,21 @@ export class SmoothScroll {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition - this.offset;
+
+    // Instant scroll if duration is 0
+    if (duration === 0) {
+      window.scrollTo(0, targetPosition - this.offset);
+      // Focus target for accessibility
+      if (target.hasAttribute('tabindex')) {
+        target.focus();
+      } else {
+        target.setAttribute('tabindex', '-1');
+        target.focus();
+        target.removeAttribute('tabindex');
+      }
+      return;
+    }
+
     let startTime: number | null = null;
 
     const animation = (currentTime: number) => {
@@ -128,7 +144,7 @@ export class SmoothScroll {
    * Easing function for smooth animation
    */
   private easeInOutCubic(t: number): number {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    return t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
   }
 
   /**
@@ -136,8 +152,15 @@ export class SmoothScroll {
    */
   public scrollToTop(duration?: number): void {
     const startPosition = window.scrollY;
+    const animDuration = duration !== undefined ? duration : this.duration;
+
+    // Instant scroll if duration is 0
+    if (animDuration === 0) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
     let startTime: number | null = null;
-    const animDuration = duration || this.duration;
 
     const animation = (currentTime: number) => {
       if (startTime === null) startTime = currentTime;

@@ -17,9 +17,14 @@
   "files": ["dist", "src"],
   "scripts": {
     "dev": "vite --port 2960 --host",
-    "build": "vite build",
+    "build": "NODE_ENV=production vite build --config vite.config.production.js",
+    "build:lib": "NODE_ENV=production vite build",
+    "build:site": "NODE_ENV=production vite build --config vite.config.prod.js && node scripts/build-site.js",
     "build:ts": "vite build && tsc --emitDeclarationOnly",
+    "build:analyze": "ANALYZE=true NODE_ENV=production vite build --config vite.config.prod.js",
+    "build:watch": "NODE_ENV=production vite build --config vite.config.prod.js --watch",
     "preview": "vite preview",
+    "preview:prod": "vite preview --config vite.config.prod.js",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
@@ -28,6 +33,7 @@
     "test": "bun test --preload ./test/setup.ts",
     "test:watch": "bun test --watch",
     "clean": "rm -rf dist",
+    "clean:all": "rm -rf dist node_modules bun.lockb",
     "fix:grid": "bun run scripts/fix-grid.ts",
     "fix:images": "bun run scripts/update-image-placeholders.ts",
     "fix:docs": "bun run scripts/fix-docs.ts"
@@ -45,14 +51,19 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@types/jsdom": "^27.0.0",
+    "@fullhuman/postcss-purgecss": "^7.0.2",
     "@types/node": "^25.0.2",
+    "autoprefixer": "^10.4.23",
+    "cssnano": "^7.1.2",
     "happy-dom": "^20.0.11",
-    "jsdom": "^27.3.0",
+    "postcss": "^8.5.6",
+    "postcss-preset-env": "^10.5.0",
+    "rollup-plugin-visualizer": "^6.0.5",
     "sass": "^1.80.7",
     "terser": "^5.44.1",
     "typescript": "^5.6.3",
-    "vite": "^6.0.1"
+    "vite": "^6.0.1",
+    "vite-plugin-compression": "^0.5.1"
   },
   "peerDependencies": {
     "typescript": ">=5.0.0"
@@ -62,7 +73,6 @@
     "bun": ">=1.0.0"
   },
   "dependencies": {
-    "@splidejs/splide": "^4.1.4",
-    "lucide": "^0.552.0"
+    "@splidejs/splide": "^4.1.4"
   }
 }

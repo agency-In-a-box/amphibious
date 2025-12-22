@@ -4,8 +4,8 @@
  * Implements proper event listener cleanup and WeakMap patterns
  */
 
-import { readFile, writeFile, mkdir } from 'fs/promises';
-import { join, dirname } from 'path';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
 
 interface MemoryLeakFix {
   file: string;
@@ -20,7 +20,7 @@ async function createBackup(filePath: string): Promise<void> {
     'memory-leaks',
     new Date().toISOString().split('T')[0],
   );
-  const backupPath = join(backupDir, filePath.replace(process.cwd() + '/', ''));
+  const backupPath = join(backupDir, filePath.replace(`${process.cwd()}/`, ''));
 
   await mkdir(dirname(backupPath), { recursive: true });
   const content = await readFile(filePath, 'utf-8');
@@ -37,18 +37,13 @@ async function fixModalMemoryLeaks(): Promise<MemoryLeakFix> {
   const classStart = content.indexOf('export class Modal {');
   const firstProperty = content.indexOf('private element: HTMLElement;');
 
-  content =
-    content.slice(0, firstProperty) +
-    `private element: HTMLElement;
+  content = `${content.slice(0, firstProperty)}private element: HTMLElement;
   private eventListeners: Array<{ element: Element | Document | Window; type: string; handler: EventListener }> = [];
-` +
-    content.slice(firstProperty + 'private element: HTMLElement;'.length);
+${content.slice(firstProperty + 'private element: HTMLElement;'.length)}`;
 
   // Add addEventListener helper method
   const initMethod = content.indexOf('  private init(): void {');
-  content =
-    content.slice(0, initMethod) +
-    `  /**
+  content = `${content.slice(0, initMethod)}  /**
    * Add event listener with cleanup tracking
    */
   private addEventListener(element: Element | Document | Window, type: string, handler: EventListener): void {
@@ -66,8 +61,7 @@ async function fixModalMemoryLeaks(): Promise<MemoryLeakFix> {
     this.eventListeners = [];
   }
 
-` +
-    content.slice(initMethod);
+${content.slice(initMethod)}`;
 
   // Replace setupEventHandlers method with proper cleanup
   const setupEventHandlersStart = content.indexOf('  private setupEventHandlers(): void {');
@@ -203,21 +197,16 @@ async function fixNavigationMemoryLeaks(): Promise<MemoryLeakFix> {
   const classStart = content.indexOf('export class Navigation {');
   const firstProperty = content.indexOf('  private navElement: HTMLElement | null;');
 
-  content =
-    content.slice(0, firstProperty) +
-    `  private navElement: HTMLElement | null;
+  content = `${content.slice(0, firstProperty)}  private navElement: HTMLElement | null;
   private eventListeners: Array<{ element: Element | Document | Window; type: string; handler: EventListener }> = [];
   private resizeTimer: ReturnType<typeof setTimeout> | null = null;
   private tabKeyHandler: ((e: KeyboardEvent) => void) | null = null;
-` +
-    content.slice(firstProperty + '  private navElement: HTMLElement | null;'.length);
+${content.slice(firstProperty + '  private navElement: HTMLElement | null;'.length)}`;
 
   // Add addEventListener helper
   const constructorEnd = content.indexOf('  }', content.indexOf('constructor()')) + 3;
 
-  content =
-    content.slice(0, constructorEnd) +
-    `
+  content = `${content.slice(0, constructorEnd)}
 
   /**
    * Add event listener with cleanup tracking
@@ -252,8 +241,7 @@ async function fixNavigationMemoryLeaks(): Promise<MemoryLeakFix> {
       this.closeMenu();
     }
   }
-` +
-    content.slice(constructorEnd);
+${content.slice(constructorEnd)}`;
 
   // Fix setupMobileToggle to use tracked listeners
   content = content.replace(
@@ -329,19 +317,14 @@ async function fixFormsMemoryLeaks(): Promise<MemoryLeakFix> {
   const classStart = content.indexOf('export class Forms {');
   const firstProperty = content.indexOf('  private forms: NodeListOf<HTMLFormElement>;');
 
-  content =
-    content.slice(0, firstProperty) +
-    `  private forms: NodeListOf<HTMLFormElement>;
+  content = `${content.slice(0, firstProperty)}  private forms: NodeListOf<HTMLFormElement>;
   private eventListeners: Array<{ element: Element; type: string; handler: EventListener }> = [];
-` +
-    content.slice(firstProperty + '  private forms: NodeListOf<HTMLFormElement>;'.length);
+${content.slice(firstProperty + '  private forms: NodeListOf<HTMLFormElement>;'.length)}`;
 
   // Add addEventListener helper and destroy method
   const constructorEnd = content.indexOf('  }', content.indexOf('constructor()')) + 3;
 
-  content =
-    content.slice(0, constructorEnd) +
-    `
+  content = `${content.slice(0, constructorEnd)}
 
   /**
    * Add event listener with cleanup tracking
@@ -365,8 +348,7 @@ async function fixFormsMemoryLeaks(): Promise<MemoryLeakFix> {
     document.querySelectorAll('.char-counter').forEach(el => el.remove());
     document.querySelectorAll('.password-toggle').forEach(el => el.remove());
   }
-` +
-    content.slice(constructorEnd);
+${content.slice(constructorEnd)}`;
 
   // Fix form submit listener
   content = content.replace(

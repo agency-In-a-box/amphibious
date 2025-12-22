@@ -4,8 +4,8 @@
  * Replaces broken/outdated image references with modern placeholders
  */
 
-import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from 'fs';
-import { join, extname } from 'path';
+import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { extname, join } from 'node:path';
 
 interface ImageReplacement {
   pattern: RegExp;
@@ -89,7 +89,7 @@ async function createBackup(filePath: string): Promise<void> {
 function findFiles(dir: string, extensions: string[], ignore: string[] = []): string[] {
   const files: string[] = [];
 
-  function walkDir(currentDir: string, relativePath: string = '') {
+  function walkDir(currentDir: string, relativePath = '') {
     try {
       const entries = readdirSync(currentDir);
 
@@ -196,7 +196,7 @@ async function updateImagePlaceholders(): Promise<void> {
   // Write log file
   logEntries.push('', `Total files modified: ${filesModified}`);
   logEntries.push(`Total replacements: ${totalReplacements}`);
-  logEntries.push('', 'Replacement completed at: ' + new Date().toISOString());
+  logEntries.push('', `Replacement completed at: ${new Date().toISOString()}`);
 
   writeFileSync(logFile, logEntries.join('\n'), 'utf-8');
 

@@ -1,311 +1,51 @@
 /**
- * Amphibious 2.0
- * Modern responsive CSS framework and component library
- *
- * The evolution of A.mphibio.us - rebuilt with modern tooling
- * while preserving the elegant responsive patterns.
+ * Amphibious 2.0 - Production Entry Point
+ * Modern CSS Framework with Design Excellence
  */
 
-// Import core styles
+// Core CSS imports in proper cascade order
+import './css/tokens/design-tokens.css';
+import './css/normalize.css';
+import './css/typography.css';
+import './css/grid-modern.css';
 import './css/main.css';
 
-import { AmphibiousCarousel } from './js/carousel';
-import { Forms } from './js/forms';
-import { EcommerceIcons, Icon } from './js/icons';
-import { Modal, ModalManager } from './js/modal';
-// Import JavaScript modules
-import { Navigation } from './js/navigation';
-import { SmoothScroll } from './js/smooth-scroll';
-import { Tabs } from './js/tabs';
-import { EcommerceTooltips, Tooltip } from './js/tooltip';
+// Navigation component and JavaScript
+import './js/navigation.js';
 
-import { AmphibiousFooter, createFooter } from './components/footer';
-// Import new component modules
-import { AmphibiousNavigation, createNavigation } from './components/navigation';
+// Export version and initialization
+export const VERSION = '2.0.0';
 
-// Initialize modules
-let navigation: Navigation | null = null;
-let smoothScroll: SmoothScroll | null = null;
-let tabs: Tabs | null = null;
-let forms: Forms | null = null;
-
-// Amphibious namespace
-export const amp = {
-  version: '2.0.0',
-
-  // Module references
-  modules: {
-    navigation: null as Navigation | null,
-    smoothScroll: null as SmoothScroll | null,
-    tabs: null as Tabs | null,
-    forms: null as Forms | null,
-    modalManager: ModalManager,
-    icon: Icon,
-    ecommerceIcons: EcommerceIcons,
-    tooltip: Tooltip,
-    ecommerceTooltips: EcommerceTooltips,
-    carousel: AmphibiousCarousel,
-  },
-
-  /**
-   * Initialize Amphibious framework
-   */
-  init(
-    options: {
-      navigation?: boolean;
-      smoothScroll?: boolean | { duration?: number; offset?: number };
-      tabs?: boolean;
-      forms?: boolean;
-    } = {},
-  ): void {
-    // Core initialization
-    this.detectDevice();
-
-    // Initialize icons
-    Icon.init();
-
-    // Initialize tooltips from data attributes
-    Tooltip.initFromData();
-
-    // Initialize modules based on options (all enabled by default)
-    const defaults = {
-      navigation: true,
-      smoothScroll: true,
-      tabs: true,
-      forms: true,
-      ...options,
-    };
-
-    // Navigation module
-    if (defaults.navigation) {
-      navigation = new Navigation();
-      navigation.init();
-      this.modules.navigation = navigation;
-    }
-
-    // Smooth scroll module
-    if (defaults.smoothScroll) {
-      const scrollOptions = typeof defaults.smoothScroll === 'object' ? defaults.smoothScroll : {};
-      smoothScroll = new SmoothScroll(scrollOptions);
-      smoothScroll.init();
-      this.modules.smoothScroll = smoothScroll;
-    }
-
-    // Tabs module
-    if (defaults.tabs) {
-      tabs = new Tabs();
-      tabs.init();
-      this.modules.tabs = tabs;
-    }
-
-    // Forms module
-    if (defaults.forms) {
-      forms = new Forms();
-      forms.init();
-      this.modules.forms = forms;
-    }
-  },
-
-  /**
-   * Detect device type and add classes
-   */
-  detectDevice(): void {
-    const html = document.documentElement;
-
-    // Feature detection
-    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-    if (hasTouch) {
-      html.classList.add('touch');
-    } else {
-      html.classList.add('no-touch');
-    }
-
-    // Viewport width detection
-    const updateViewport = () => {
-      const width = window.innerWidth;
-      html.classList.remove('mobile', 'tablet', 'desktop');
-
-      if (width < 768) {
-        html.classList.add('mobile');
-      } else if (width < 1024) {
-        html.classList.add('tablet');
-      } else {
-        html.classList.add('desktop');
-      }
-    };
-
-    updateViewport();
-    window.addEventListener('resize', updateViewport);
-  },
-
-  /**
-   * Utility: Scroll to top
-   */
-  scrollToTop(duration?: number): void {
-    if (this.modules.smoothScroll) {
-      this.modules.smoothScroll.scrollToTop(duration);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  },
-
-  /**
-   * Utility: Select tab by index
-   */
-  selectTab(containerSelector: string, index: number): void {
-    if (this.modules.tabs) {
-      this.modules.tabs.selectTabByIndex(containerSelector, index);
-    }
-  },
-
-  /**
-   * Utility: Validate form
-   */
-  validateForm(formSelector: string): boolean {
-    if (this.modules.forms) {
-      return this.modules.forms.validate(formSelector);
-    }
-    return false;
-  },
-
-  /**
-   * Utility: Reset form
-   */
-  resetForm(formSelector: string): void {
-    if (this.modules.forms) {
-      this.modules.forms.reset(formSelector);
-    }
-  },
-
-  /**
-   * Utility: Add custom validation rule
-   */
-  addValidationRule(name: string, validator: (value: string) => boolean): void {
-    if (this.modules.forms) {
-      this.modules.forms.addRule(name, validator);
-    }
-  },
-
-  /**
-   * Utility: Create modal
-   */
-  createModal(id: string, element: string | HTMLElement, options?: any): Modal {
-    return ModalManager.create(id, element, options);
-  },
-
-  /**
-   * Utility: Show alert modal
-   */
-  alert(message: string, type?: 'success' | 'error' | 'warning' | 'info'): Promise<void> {
-    return ModalManager.alert(message, type);
-  },
-
-  /**
-   * Utility: Show confirm modal
-   */
-  confirm(message: string, confirmText?: string, cancelText?: string): Promise<boolean> {
-    return ModalManager.confirm(message, confirmText, cancelText);
-  },
-
-  /**
-   * Utility: Create icon
-   */
-  createIcon(name: string, options?: any): HTMLElement | null {
-    return Icon.create(name, options);
-  },
-
-  /**
-   * Utility: Create icon button
-   */
-  createIconButton(name: string, options?: any): HTMLButtonElement {
-    return Icon.createButton(name, options);
-  },
-
-  /**
-   * Utility: Create shopping cart icon
-   */
-  createCart(count?: number, options?: any): HTMLElement {
-    return EcommerceIcons.cart(count, options);
-  },
-
-  /**
-   * Utility: Create rating stars
-   */
-  createRating(rating: number, maxRating?: number, options?: any): HTMLElement {
-    return EcommerceIcons.rating(rating, maxRating, options);
-  },
-
-  /**
-   * Utility: Create tooltip
-   */
-  createTooltip(element: HTMLElement | string, options?: any): Tooltip {
-    return new Tooltip(element, options);
-  },
-
-  /**
-   * Utility: Create product info tooltip
-   */
-  createProductTooltip(element: HTMLElement, productData: any): Tooltip {
-    return EcommerceTooltips.productInfo(element, productData);
-  },
-
-  /**
-   * Utility: Create shipping info tooltip
-   */
-  createShippingTooltip(element: HTMLElement, shippingData: any): Tooltip {
-    return EcommerceTooltips.shippingInfo(element, shippingData);
-  },
-
-  /**
-   * Utility: Create navigation component
-   */
-  createNavigation(selector: string | HTMLElement, options?: any): AmphibiousNavigation {
-    return createNavigation(selector, options);
-  },
-
-  /**
-   * Utility: Create footer component
-   */
-  createFooter(selector: string | HTMLElement, options?: any): AmphibiousFooter {
-    return createFooter(selector, options);
-  },
-
-  /**
-   * Utility: Create carousel component
-   */
-  createCarousel(selector: string | HTMLElement, options?: any): AmphibiousCarousel {
-    return new AmphibiousCarousel(selector, options);
-  },
-};
-
-// Auto-initialize on DOM ready
-if (typeof window !== 'undefined') {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => amp.init());
-  } else {
-    amp.init();
+export function init() {
+  // Initialize navigation if not already done
+  if (!window.amphibiousNav && typeof NavigationComponent !== 'undefined') {
+    window.amphibiousNav = new NavigationComponent();
   }
+
+  // Add data attribute for CSS feature detection
+  document.documentElement.setAttribute('data-amphibious', VERSION);
+
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    document.documentElement.classList.add('reduced-motion');
+  }
+
+  // Check for dark mode preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (prefersDark) {
+    document.documentElement.classList.add('dark-mode');
+  }
+
+  console.info(`Amphibious ${VERSION} initialized`);
 }
 
-// Export modules for direct access
-export {
-  Navigation,
-  SmoothScroll,
-  Tabs,
-  Forms,
-  Modal,
-  ModalManager,
-  Icon,
-  EcommerceIcons,
-  Tooltip,
-  EcommerceTooltips,
-  AmphibiousNavigation,
-  createNavigation,
-  AmphibiousFooter,
-  createFooter,
-  AmphibiousCarousel,
-};
+// Auto-initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 
-// Export for module usage
-export default amp;
+// Export for manual initialization
+export default { VERSION, init };

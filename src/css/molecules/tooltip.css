@@ -242,7 +242,7 @@
 
 /* Tooltip Variants */
 .tooltip--primary {
-  --tooltip-bg: var(--color-primary, #3b82f6);
+  --tooltip-bg: var(--color-primary, var(--color-primary));
   --tooltip-color: #ffffff;
 }
 
@@ -262,7 +262,7 @@
 }
 
 .tooltip--info {
-  --tooltip-bg: var(--color-info, #3b82f6);
+  --tooltip-bg: var(--color-info, var(--color-primary));
   --tooltip-color: #ffffff;
 }
 
@@ -489,7 +489,7 @@
 
 /* Focus Management */
 .tooltip-trigger:focus {
-  outline: 2px solid var(--color-primary, #3b82f6);
+  outline: 2px solid var(--color-primary, var(--color-primary));
   outline-offset: 2px;
 }
 

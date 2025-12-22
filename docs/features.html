@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features - Amphibious 2.0 Documentation</title>
-    <link rel="stylesheet" href="/src/css/main.css">
-    <link rel="stylesheet" href="/docs/docs.css">
+      <!-- CSS loaded via JavaScript module -->
+    <link rel="stylesheet" href="./docs.css">
     <style>
         /* Documentation-specific styles */
         .docs-nav {
@@ -913,7 +913,7 @@ function showSlide(n) {
 &lt;/div&gt;</code></pre>
             </div>
 
-            <p style="margin-top:2rem;"><a href="/examples/pears-patterns.html" style="color:#ED8B00; text-decoration:none; font-weight:500;">View the full Pea.rs Patterns documentation →</a></p>
+            <p style="margin-top:2rem;"><a href="../examples/pears-patterns.html" style="color:#ED8B00; text-decoration:none; font-weight:500;">View the full Pea.rs Patterns documentation →</a></p>
         </section>
 
         <!-- Icons Section -->
@@ -1182,6 +1182,11 @@ lucide.createIcons();</code></pre>
     } else {
       loadIncludes();
     }
+  </script>
+  <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
   </script>
 </body>
 </html>

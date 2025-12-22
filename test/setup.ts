@@ -42,6 +42,9 @@ global.DOMParser = window.DOMParser;
 // Location
 global.location = window.location;
 
+// Mock HashChangeEvent if not available
+global.HashChangeEvent = window.HashChangeEvent || (class HashChangeEvent extends Event {} as any);
+
 // Mock scrolling behavior for tests
 let mockScrollY = 0;
 let mockScrollX = 0;

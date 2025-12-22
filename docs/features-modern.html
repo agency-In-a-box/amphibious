@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features - Amphibious 2.0 Documentation</title>
-    <link rel="stylesheet" href="/src/css/main.css">
+      <!-- CSS loaded via JavaScript module -->
     <style>
         /* Modern Professional Theme */
         :root {
@@ -418,11 +418,11 @@
             <div class="nav-content">
                 <a href="/" class="nav-logo">Amphibious 2.0</a>
                 <ul class="nav-menu">
-                    <li><a href="/docs/foundation.html">Foundation</a></li>
-                    <li><a href="/docs/form.html">Forms</a></li>
-                    <li><a href="/docs/function.html">Components</a></li>
-                    <li class="active"><a href="/docs/features.html">Features</a></li>
-                    <li><a href="/examples/">Examples</a></li>
+                    <li><a href="./foundation.html">Foundation</a></li>
+                    <li><a href="./form.html">Forms</a></li>
+                    <li><a href="./function.html">Components</a></li>
+                    <li class="active"><a href="./features.html">Features</a></li>
+                    <li><a href="../examples/">Examples</a></li>
                 </ul>
             </div>
         </div>
@@ -639,11 +639,11 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-links">
-                <a href="/docs/">Documentation</a>
-                <a href="/examples/">Examples</a>
+                <a href="./">Documentation</a>
+                <a href="../examples/">Examples</a>
                 <a href="https://github.com/amphibious">GitHub</a>
-                <a href="/docs/changelog.html">Changelog</a>
-                <a href="/docs/support.html">Support</a>
+                <a href="./changelog.html">Changelog</a>
+                <a href="./support.html">Support</a>
             </div>
             <p>&copy; 2024 Amphibious 2.0. Built with performance and accessibility in mind.</p>
         </div>
@@ -664,5 +664,10 @@
             });
         });
     </script>
+  <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
+  </script>
 </body>
 </html>

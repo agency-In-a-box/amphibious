@@ -84,7 +84,7 @@ export class Forms {
 
     // Number validation
     this.validationRules.set('number', (value: string) => {
-      return !isNaN(Number(value));
+      return !Number.isNaN(Number(value));
     });
 
     // Alpha only
@@ -212,7 +212,7 @@ export class Forms {
         }
         break;
 
-      case 'number':
+      case 'number': {
         const min = field.getAttribute('min');
         const max = field.getAttribute('max');
         const value = Number(field.value);
@@ -227,6 +227,7 @@ export class Forms {
           return false;
         }
         break;
+      }
     }
 
     // Pattern validation
@@ -291,7 +292,7 @@ export class Forms {
     field.setAttribute('aria-invalid', 'true');
     field.setAttribute(
       'aria-describedby',
-      errorElement.id || 'error-' + Math.random().toString(36).substr(2, 9),
+      errorElement.id || `error-${Math.random().toString(36).substr(2, 9)}`,
     );
   }
 

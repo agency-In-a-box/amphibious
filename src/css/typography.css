@@ -93,6 +93,8 @@ h6 {
 
 p {
   margin: 0 0 1.4em 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 p img,
@@ -156,7 +158,7 @@ kbd {
   top: -0.1em;
   font-size: 0.8em;
   padding: 0.3em 0.4em 0.2em;
-  border: 1px solid var(--color-border-kbd, #1b378c);
+  border: 1px solid var(--color-border-kbd, var(--color-primary));
   background-color: var(--color-bg-kbd, #fff);
   font-style: normal;
   border-radius: var(--border-radius-sm, 3px);
@@ -203,7 +205,7 @@ blockquote cite a:visited {
 
 a,
 a:visited {
-  color: var(--color-link, #1b378c);
+  color: var(--color-link);
   text-decoration: none;
   outline: 0;
   transition: all 0.3s ease-out;
@@ -217,7 +219,7 @@ a:active,
 a:hover,
 a:focus {
   outline: 0;
-  color: var(--color-link-hover, #191919);
+  color: var(--color-link-hover);
 }
 
 p a,
@@ -384,13 +386,13 @@ hr {
    ========================================================================== */
 
 ::selection {
-  background: var(--color-selection-bg, #b3d4fc);
-  color: var(--color-selection-text, #000);
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
   text-shadow: none;
 }
 
 ::-moz-selection {
-  background: var(--color-selection-bg, #b3d4fc);
-  color: var(--color-selection-text, #000);
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
   text-shadow: none;
 }

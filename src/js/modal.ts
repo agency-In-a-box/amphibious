@@ -450,7 +450,7 @@ export class ModalManager {
    */
   static create(id: string, element: string | HTMLElement, options: ModalOptions = {}): Modal {
     const modal = new Modal(element, options);
-    this.modals.set(id, modal);
+    ModalManager.modals.set(id, modal);
     return modal;
   }
 
@@ -458,14 +458,14 @@ export class ModalManager {
    * Get modal by ID
    */
   static get(id: string): Modal | undefined {
-    return this.modals.get(id);
+    return ModalManager.modals.get(id);
   }
 
   /**
    * Open modal by ID
    */
   static open(id: string): void {
-    const modal = this.modals.get(id);
+    const modal = ModalManager.modals.get(id);
     if (modal) {
       modal.open();
     }
@@ -475,7 +475,7 @@ export class ModalManager {
    * Close modal by ID
    */
   static close(id: string): void {
-    const modal = this.modals.get(id);
+    const modal = ModalManager.modals.get(id);
     if (modal) {
       modal.close();
     }
@@ -485,17 +485,17 @@ export class ModalManager {
    * Close all modals
    */
   static closeAll(): void {
-    this.modals.forEach((modal) => modal.close());
+    ModalManager.modals.forEach((modal) => modal.close());
   }
 
   /**
    * Destroy modal by ID
    */
   static destroy(id: string): void {
-    const modal = this.modals.get(id);
+    const modal = ModalManager.modals.get(id);
     if (modal) {
       modal.destroy();
-      this.modals.delete(id);
+      ModalManager.modals.delete(id);
     }
   }
 
@@ -503,8 +503,8 @@ export class ModalManager {
    * Destroy all modals
    */
   static destroyAll(): void {
-    this.modals.forEach((modal) => modal.destroy());
-    this.modals.clear();
+    ModalManager.modals.forEach((modal) => modal.destroy());
+    ModalManager.modals.clear();
   }
 
   /**
@@ -518,7 +518,7 @@ export class ModalManager {
       const modalHtml = `
         <div class="modal__dialog">
           <div class="modal__body">
-            <div class="modal__icon">${this.getIcon(type)}</div>
+            <div class="modal__icon">${ModalManager.getIcon(type)}</div>
             <p>${message}</p>
             <button class="btn btn--primary" data-modal-close>OK</button>
           </div>
@@ -599,7 +599,6 @@ export class ModalManager {
         return '✕';
       case 'warning':
         return '!';
-      case 'info':
       default:
         return 'i';
     }

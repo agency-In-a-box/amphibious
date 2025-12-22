@@ -4,23 +4,24 @@
    Enhanced from navigation.css with CSS variables and additional features
    ========================================================================== */
 
-/* CSS Custom Properties for Breadcrumbs */
+/* CSS Custom Properties for Breadcrumbs - Following SOP Design Excellence */
 :root {
-  /* Breadcrumb Colors */
+  /* Breadcrumb Colors - Using global link state variables */
   --breadcrumb-text: #6b7280;
-  --breadcrumb-text-hover: #374151;
-  --breadcrumb-text-active: #1f2937;
+  --breadcrumb-text-hover: var(--color-link-hover); /* Use global hover color */
+  --breadcrumb-text-active: var(--color-link-active); /* Use global active color */
+  --breadcrumb-text-focus: var(--color-link-focus); /* Use global focus color */
   --breadcrumb-separator: #9ca3af;
   --breadcrumb-bg: transparent;
-  --breadcrumb-bg-hover: #f3f4f6;
+  --breadcrumb-bg-hover: rgba(237, 139, 0, 0.08); /* Subtle brand orange background */
   --breadcrumb-border: #e5e7eb;
 
-  /* Breadcrumb Spacing and Sizing */
-  --breadcrumb-padding: 0.5rem 0.75rem;
-  --breadcrumb-gap: 0.5rem;
-  --breadcrumb-font-size: 0.875rem;
-  --breadcrumb-border-radius: 0.375rem;
-  --breadcrumb-separator-size: 0.75rem;
+  /* Breadcrumb Spacing and Sizing - 4px grid aligned */
+  --breadcrumb-padding: 0.5rem 0.75rem; /* 8px 12px = 2×4px 3×4px */
+  --breadcrumb-gap: 0.5rem; /* 8px = 2×4px */
+  --breadcrumb-font-size: 0.875rem; /* 14px - aligned with navigation */
+  --breadcrumb-border-radius: 0.25rem; /* 4px = 1×4px */
+  --breadcrumb-separator-size: 0.875rem; /* Match font size */
 
   /* Breadcrumb Transitions */
   --breadcrumb-transition: all 0.2s ease;
@@ -38,7 +39,7 @@
   }
 }
 
-/* Base Breadcrumb Styles */
+/* Base Breadcrumb Styles - Following SOP Design Excellence */
 .breadcrumb {
   display: flex;
   align-items: center;
@@ -46,7 +47,9 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  font-family: var(--font-family-headings); /* Use Avenir like navigation */
   font-size: var(--breadcrumb-font-size);
+  font-weight: var(--font-weight-medium); /* 500 weight for consistency */
   color: var(--breadcrumb-text);
 }
 
@@ -56,7 +59,7 @@
   margin: 0;
 }
 
-.breadcrumb__link {
+.breadcrumb .breadcrumb__link {
   display: flex;
   align-items: center;
   gap: 0.375rem;
@@ -68,22 +71,22 @@
   white-space: nowrap;
 }
 
-.breadcrumb__link:hover,
-.breadcrumb__link:focus {
+.breadcrumb .breadcrumb__link:hover,
+.breadcrumb .breadcrumb__link:focus {
   color: var(--breadcrumb-text-hover);
   background-color: var(--breadcrumb-bg-hover);
 }
 
-.breadcrumb__link:focus-visible {
-  outline: 2px solid var(--color-primary, #3b82f6);
+.breadcrumb .breadcrumb__link:focus-visible {
+  outline: 2px solid var(--color-primary, #ED8B00);
   outline-offset: 2px;
 }
 
-/* Current/Active Breadcrumb */
-.breadcrumb__item--current .breadcrumb__link,
-.breadcrumb__current {
-  color: var(--breadcrumb-text-active);
-  font-weight: 600;
+/* Current/Active Breadcrumb - Enhanced visibility for accessibility */
+.breadcrumb .breadcrumb__item--current .breadcrumb__link,
+.breadcrumb .breadcrumb__current {
+  color: var(--breadcrumb-text-active); /* Use global active color */
+  font-weight: var(--font-weight-semibold); /* 600 for emphasis */
   cursor: default;
 }
 
@@ -99,7 +102,7 @@
   flex-shrink: 0;
 }
 
-/* Breadcrumb Separators */
+/* Breadcrumb Separators - Ensure visibility */
 .breadcrumb__separator {
   display: flex;
   align-items: center;
@@ -107,6 +110,7 @@
   margin: 0 var(--breadcrumb-gap);
   color: var(--breadcrumb-separator);
   font-size: var(--breadcrumb-separator-size);
+  font-weight: normal;
   user-select: none;
 }
 
@@ -174,8 +178,8 @@
 }
 
 .breadcrumb--pills .breadcrumb__item--current .breadcrumb__link {
-  background-color: var(--color-primary, #3b82f6);
-  border-color: var(--color-primary, #3b82f6);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
   color: white;
 }
 
@@ -190,12 +194,12 @@
 }
 
 .breadcrumb--underlined .breadcrumb__link:hover {
-  border-bottom-color: var(--color-primary, #3b82f6);
+  border-bottom-color: var(--color-primary);
   background-color: transparent;
 }
 
 .breadcrumb--underlined .breadcrumb__item--current .breadcrumb__link {
-  border-bottom-color: var(--color-primary, #3b82f6);
+  border-bottom-color: var(--color-primary);
 }
 
 /* Breadcrumb with Home Icon */
@@ -287,10 +291,10 @@
     --breadcrumb-gap: 0.375rem;
   }
 
-  /* Auto-ellipsis on mobile */
-  .breadcrumb:not(.breadcrumb--ellipsis) .breadcrumb__item:not(:first-child):not(:last-child) {
+  /* Auto-ellipsis on mobile - DISABLED for debugging */
+  /* .breadcrumb:not(.breadcrumb--ellipsis) .breadcrumb__item:not(:first-child):not(:last-child) {
     display: none;
-  }
+  } */
 
   .breadcrumb:not(.breadcrumb--ellipsis)::after {
     content: "…";
@@ -305,10 +309,10 @@
     --breadcrumb-padding: 0.25rem 0.5rem;
   }
 
-  /* Show only first and last on very small screens */
-  .breadcrumb__item:not(:first-child):not(:last-child) {
+  /* Show only first and last on very small screens - DISABLED for debugging */
+  /* .breadcrumb__item:not(:first-child):not(:last-child) {
     display: none;
-  }
+  } */
 
   .breadcrumb__item:first-child::after {
     content: " … ";
@@ -422,10 +426,18 @@
   right: 0;
 }
 
-/* Accessibility Enhancements */
-.breadcrumb__link[aria-current="page"] {
-  color: var(--breadcrumb-text-active);
-  font-weight: 600;
+/* Accessibility Enhancements - Active states with brand orange text only */
+.breadcrumb .breadcrumb__item--current .breadcrumb__link[aria-current="page"] {
+  color: var(--breadcrumb-text-active); /* Use global active color */
+  font-weight: var(--font-weight-semibold);
+  background-color: transparent;
+  border-radius: 0;
+  outline: none; /* Remove browser default blue outline */
+}
+
+.breadcrumb .breadcrumb__item--current .breadcrumb__link[aria-current="page"]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* Screen reader support */

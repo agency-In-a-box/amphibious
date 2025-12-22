@@ -5,8 +5,8 @@
  * Adds consistent navigation to all documentation pages
  */
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs';
-import { join, basename } from 'path';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { basename, join } from 'node:path';
 
 const DOCS_DIR = '/Users/clivemoore/Documents/GitHub/AIAB/amphibious/docs';
 const BACKUP_DIR = join(DOCS_DIR, 'backups', `nav-fix-${Date.now()}`);
@@ -242,8 +242,7 @@ FILES_TO_PROCESS.forEach((filename) => {
   if (bodyMatch) {
     const bodyTag = bodyMatch[0];
     const insertPosition = content.indexOf(bodyTag) + bodyTag.length;
-    content =
-      content.slice(0, insertPosition) + '\n' + navHtml + '\n' + content.slice(insertPosition);
+    content = `${content.slice(0, insertPosition)}\n${navHtml}\n${content.slice(insertPosition)}`;
   }
 
   // Fix semantic structure - wrap content in proper sections
@@ -258,12 +257,7 @@ FILES_TO_PROCESS.forEach((filename) => {
 
     if (contentStart > 0 && footerStart > contentStart) {
       const mainContent = content.slice(contentStart, footerStart);
-      content =
-        content.slice(0, contentStart) +
-        '\n<main id="main-content">\n' +
-        mainContent +
-        '\n</main>\n' +
-        content.slice(footerStart);
+      content = `${content.slice(0, contentStart)}\n<main id="main-content">\n${mainContent}\n</main>\n${content.slice(footerStart)}`;
     }
   }
 

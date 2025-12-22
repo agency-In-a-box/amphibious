@@ -4,30 +4,9 @@
  */
 
 import { afterAll, beforeAll, describe, expect, test } from 'bun:test';
-import fs from 'fs';
-import path from 'path';
-import { JSDOM } from 'jsdom';
-
-// Setup DOM environment
-let dom: JSDOM;
-let document: Document;
-let window: Window;
-
-beforeAll(() => {
-  dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', {
-    url: 'http://localhost',
-    pretendToBeVisual: true,
-    resources: 'usable',
-  });
-  document = dom.window.document;
-  window = dom.window as unknown as Window;
-  global.document = document as any;
-  global.window = window as any;
-});
-
-afterAll(() => {
-  dom.window.close();
-});
+import fs from 'node:fs';
+import path from 'node:path';
+// DOM setup is handled by test/setup.ts which uses happy-dom
 
 describe('Amphibious 2.0 Component Inventory', () => {
   describe('CSS Components', () => {

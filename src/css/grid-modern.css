@@ -4,14 +4,14 @@
    No jQuery dependencies, uses modern CSS pseudo-classes
    ========================================================================== */
 
-/* Grid Variables
+/* Grid Variables - 4px aligned
    ========================================================================== */
 
 :root {
   --grid-columns: 16;
-  --grid-gap: 20px;
-  --container-max-width: 960px;
-  --container-padding: 20px;
+  --grid-gap: 20px; /* 5 × 4px = 20px (4px aligned) */
+  --container-max-width: 1200px; /* 300 × 4px = 1200px (4px aligned) */
+  --container-padding: 20px; /* 5 × 4px = 20px (4px aligned) */
 }
 
 /* Container
@@ -20,9 +20,14 @@
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 var(--container-padding);
+  padding: 0 1rem; /* 16px base padding */
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Special alignment for content that should align with navigation text */
+.container.align-with-nav {
+  padding-left: 2rem; /* 32px = 16px container + 16px nav item padding */
 }
 
 .container-fluid {
@@ -103,6 +108,14 @@
   margin-bottom: var(--grid-gap);
 }
 
+/* Ensure nested rows also display as flex */
+[class*="col-"] .row {
+  margin-left: calc(var(--grid-gap) / -2);
+  margin-right: calc(var(--grid-gap) / -2);
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .row::after {
   content: "";
   display: table;
@@ -114,71 +127,106 @@
   box-sizing: border-box;
   padding-left: calc(var(--grid-gap) / 2);
   padding-right: calc(var(--grid-gap) / 2);
-  float: left;
+  /* Remove float - we're using flexbox! */
 }
 
-/* 16-column widths */
+/* Ensure all direct children of rows have proper flex defaults */
+.row > * {
+  flex-shrink: 0; /* Prevent shrinking below specified size */
+}
+
+/* But columns that don't have explicit col- classes should expand */
+.row > div:not([class*="col-"]) {
+  flex: 1 1 auto;
+}
+
+/* 16-column widths - using flexbox */
 .col-1 {
-  width: 6.25%;
+  width: auto;
+  flex: 0 0 6.25%;
+  max-width: 6.25%;
 }
 .col-2 {
-  width: 12.5%;
+  width: auto;
+  flex: 0 0 12.5%;
+  max-width: 12.5%;
 }
 .col-3 {
-  width: 18.75%;
+  width: auto;
+  flex: 0 0 18.75%;
+  max-width: 18.75%;
 }
 .col-4 {
-  width: 25%;
+  width: auto;
+  flex: 0 0 25%;
+  max-width: 25%;
 }
 .col-5 {
-  width: 31.25%;
+  width: auto;
+  flex: 0 0 31.25%;
+  max-width: 31.25%;
 }
 .col-6 {
-  width: 37.5%;
+  width: auto;
+  flex: 0 0 37.5%;
+  max-width: 37.5%;
 }
 .col-7 {
-  width: 43.75%;
+  width: auto;
+  flex: 0 0 43.75%;
+  max-width: 43.75%;
 }
 .col-8 {
-  width: 50%;
+  width: auto;
+  flex: 0 0 50%;
+  max-width: 50%;
 }
 .col-9 {
-  width: 56.25%;
+  width: auto;
+  flex: 0 0 56.25%;
+  max-width: 56.25%;
 }
 .col-10 {
-  width: 62.5%;
+  width: auto;
+  flex: 0 0 62.5%;
+  max-width: 62.5%;
 }
 .col-11 {
-  width: 68.75%;
+  width: auto;
+  flex: 0 0 68.75%;
+  max-width: 68.75%;
 }
 .col-12 {
-  width: 75%;
+  width: auto;
+  flex: 0 0 75%;
+  max-width: 75%;
 }
 .col-13 {
-  width: 81.25%;
+  width: auto;
+  flex: 0 0 81.25%;
+  max-width: 81.25%;
 }
 .col-14 {
-  width: 87.5%;
+  width: auto;
+  flex: 0 0 87.5%;
+  max-width: 87.5%;
 }
 .col-15 {
-  width: 93.75%;
+  width: auto;
+  flex: 0 0 93.75%;
+  max-width: 93.75%;
 }
 .col-16 {
-  width: 100%;
+  width: auto;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 
 /* Modern pseudo-class selectors (no jQuery needed)
    ========================================================================== */
 
-/* Remove left padding from first column in each row */
-.row > [class*="col-"]:first-child {
-  padding-left: 0;
-}
-
-/* Remove right padding from last column in each row */
-.row > [class*="col-"]:last-child {
-  padding-right: 0;
-}
+/* Keep consistent padding for all columns */
+/* Padding is handled by the column base styles */
 
 /* For grid items, no padding adjustments needed due to gap */
 .grid > * {
@@ -308,55 +356,14 @@
 
 /* Tablet (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  :root {
-    --grid-columns: 12;
-  }
-
   .container {
     max-width: 750px;
   }
-
-  /* Tablet column classes */
-  .col-tablet-1 {
-    width: 8.333%;
-  }
-  .col-tablet-2 {
-    width: 16.667%;
-  }
-  .col-tablet-3 {
-    width: 25%;
-  }
-  .col-tablet-4 {
-    width: 33.333%;
-  }
-  .col-tablet-5 {
-    width: 41.667%;
-  }
-  .col-tablet-6 {
-    width: 50%;
-  }
-  .col-tablet-7 {
-    width: 58.333%;
-  }
-  .col-tablet-8 {
-    width: 66.667%;
-  }
-  .col-tablet-9 {
-    width: 75%;
-  }
-  .col-tablet-10 {
-    width: 83.333%;
-  }
-  .col-tablet-11 {
-    width: 91.667%;
-  }
-  .col-tablet-12 {
-    width: 100%;
-  }
+  /* Regular column classes work on tablet, no need for tablet-specific classes */
 }
 
-/* Mobile (< 768px) */
-@media (max-width: 767px) {
+/* Mobile (< 480px) - Only apply on actual mobile devices */
+@media (max-width: 479px) {
   :root {
     --grid-columns: 1;
     --grid-gap: 10px;
@@ -373,6 +380,8 @@
   }
 
   [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
     width: 100%;
     padding-left: 0;
     padding-right: 0;

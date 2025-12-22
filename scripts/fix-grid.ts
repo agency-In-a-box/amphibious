@@ -7,8 +7,8 @@
  * Run with: bun run scripts/fix-grid.ts
  */
 
-import { writeFileSync } from 'fs';
-import { resolve } from 'path';
+import { writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 const GRID_CSS = `/* ==========================================================================
    Modern Flexbox Grid System - Amphibious 2.0

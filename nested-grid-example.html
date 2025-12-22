@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nested Grid Example</title>
+  <script type="module">
+    import '/src/css/main.css';
+  </script>
+  <style>
+    /* Visual styling for demo */
+    .demo-box {
+      background: #d97638;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 4px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header { background: #d97638; }
+    .navigation { background: #c9702f; }
+    .main-content { background: #d97638; }
+    .sidebar { background: #e08548; }
+    .footer { background: #bd6329; }
+
+    .nested-item {
+      background: #a85420;
+      margin: 10px 0;
+    }
+
+    body {
+      padding: 20px 0;
+      background: #f5f5f5;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      text-align: left;
+      font-size: 1.2em;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nested Grids</h1>
+  <p>You can nest grids within columns for complex layouts:</p>
+
+  <div class="container">
+    <!-- Header Row -->
+    <div class="row">
+      <header class="col-16 demo-box header">Header</header>
+    </div>
+
+    <!-- Content Row with Navigation and Main/Sidebar -->
+    <div class="row">
+      <!-- Navigation Column -->
+      <nav class="col-5 demo-box navigation">Navigation</nav>
+
+      <!-- Main Content + Sidebar Column -->
+      <div class="col-11">
+        <div class="row">
+          <main class="col-12 demo-box main-content">Main Content</main>
+          <aside class="col-4 demo-box sidebar">Sidebar</aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Row -->
+    <div class="row">
+      <footer class="col-16 demo-box footer">Footer</footer>
+    </div>
+  </div>
+
+  <!-- Code Example -->
+  <div class="container" style="margin-top: 40px;">
+    <pre style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 4px; overflow-x: auto;">
+&lt;div class="container"&gt;
+  &lt;!-- Header --&gt;
+  &lt;div class="row"&gt;
+    &lt;header class="col-16"&gt;Header&lt;/header&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Content Row --&gt;
+  &lt;div class="row"&gt;
+    &lt;!-- Navigation --&gt;
+    &lt;nav class="col-5"&gt;Navigation&lt;/nav&gt;
+
+    &lt;!-- Main + Sidebar nested grid --&gt;
+    &lt;div class="col-11"&gt;
+      &lt;div class="row"&gt;
+        &lt;main class="col-12"&gt;Main Content&lt;/main&gt;
+        &lt;aside class="col-4"&gt;Sidebar&lt;/aside&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Footer --&gt;
+  &lt;div class="row"&gt;
+    &lt;footer class="col-16"&gt;Footer&lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="container">
+    <h2>Another Nested Example: Card Grid</h2>
+    <div class="row">
+      <div class="col-8">
+        <div class="demo-box main-content">
+          <div style="width: 100%;">
+            <p style="margin-bottom: 15px;">Cards Container</p>
+            <div class="row">
+              <div class="col-8 demo-box nested-item">Card 1</div>
+              <div class="col-8 demo-box nested-item">Card 2</div>
+              <div class="col-8 demo-box nested-item">Card 3</div>
+              <div class="col-8 demo-box nested-item">Card 4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="col-8 demo-box sidebar">
+        Sidebar with nested content
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-16 demo-box nested-item">Widget 1</div>
+          <div class="col-16 demo-box nested-item">Widget 2</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

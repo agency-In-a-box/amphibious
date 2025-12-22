@@ -355,7 +355,7 @@ tr.info,
 
 /* Focus styles for keyboard navigation */
 table tbody tr:focus {
-  outline: 2px solid var(--color-primary, #3b82f6);
+  outline: 2px solid var(--color-primary, var(--color-primary));
   outline-offset: -2px;
 }
 

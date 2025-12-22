@@ -14,16 +14,16 @@
   --pagination-text-disabled: #9ca3af;
 
   /* Active/Current State */
-  --pagination-active-bg: var(--color-primary, #3b82f6);
+  --pagination-active-bg: var(--color-primary, var(--color-primary));
   --pagination-active-text: #ffffff;
-  --pagination-active-border: var(--color-primary, #3b82f6);
+  --pagination-active-border: var(--color-primary, var(--color-primary));
 
   /* Hover State */
   --pagination-hover-bg: #f3f4f6;
   --pagination-hover-border: #d1d5db;
 
   /* Focus State */
-  --pagination-focus-ring: rgba(59, 130, 246, 0.2);
+  --pagination-focus-ring: rgba(237, 139, 0, 0.2);
 
   /* Pagination Spacing */
   --pagination-padding: 0.5rem 0.75rem;

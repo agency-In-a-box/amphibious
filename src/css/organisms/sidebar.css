@@ -12,7 +12,7 @@
   --sidebar-text: #d1d5db;
   --sidebar-text-hover: #ffffff;
   --sidebar-text-active: #ffffff;
-  --sidebar-link-active-bg: var(--color-primary, #3b82f6);
+  --sidebar-link-active-bg: var(--color-primary, var(--color-primary));
   --sidebar-link-hover-bg: rgba(255, 255, 255, 0.05);
   --sidebar-brand-bg: #111827;
 

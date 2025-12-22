@@ -3,7 +3,7 @@
  * A responsive, accessible navigation system with mobile support
  */
 
-import { Icon } from '../js/icons';
+import { initializeIcons } from '../js/icons-lightweight';
 
 export interface NavigationOptions {
   sticky?: boolean;
@@ -384,7 +384,7 @@ export class AmphibiousNavigation {
 
     if (themeIcon) {
       themeIcon.setAttribute('data-lucide', newTheme === 'dark' ? 'sun' : 'moon');
-      Icon.init();
+      initializeIcons();
     }
   }
 
@@ -427,7 +427,7 @@ export class AmphibiousNavigation {
 
   private initializeIcons(): void {
     setTimeout(() => {
-      Icon.init();
+      initializeIcons();
     }, 10);
   }
 

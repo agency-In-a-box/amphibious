@@ -4,9 +4,9 @@
  * Based on audit-important.ts results
  */
 
-import { readFile, writeFile, mkdir } from 'fs/promises';
-import { join, dirname } from 'path';
-import { existsSync } from 'fs';
+import { existsSync } from 'node:fs';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
 
 interface RemovalTarget {
   file: string;
@@ -15,7 +15,7 @@ interface RemovalTarget {
 
 async function createBackup(filePath: string): Promise<void> {
   const backupDir = join(process.cwd(), 'backups', new Date().toISOString().split('T')[0]);
-  const backupPath = join(backupDir, filePath.replace(process.cwd() + '/', ''));
+  const backupPath = join(backupDir, filePath.replace(`${process.cwd()}/`, ''));
 
   await mkdir(dirname(backupPath), { recursive: true });
   const content = await readFile(filePath, 'utf-8');
@@ -26,7 +26,7 @@ async function removeImportantFromFile(
   filePath: string,
   preservePatterns: RegExp[],
 ): Promise<number> {
-  let content = await readFile(filePath, 'utf-8');
+  const content = await readFile(filePath, 'utf-8');
   const originalContent = content;
   let removalCount = 0;
 

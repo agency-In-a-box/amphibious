@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Function - Amphibious 2.0 Documentation</title>
-    <link rel="stylesheet" href="/src/css/main.css">
-    <link rel="stylesheet" href="/docs/docs.css">
+      <!-- CSS loaded via JavaScript module -->
+    <link rel="stylesheet" href="./docs.css">
     <style>
         /* Documentation-specific styles */
         .docs-nav {
@@ -836,6 +836,11 @@ document.querySelectorAll('.tabs a').forEach(tab => {
     } else {
       loadIncludes();
     }
+  </script>
+  <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
   </script>
 </body>
 </html>
