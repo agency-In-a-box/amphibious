@@ -12,11 +12,11 @@
   --progress-height-lg: 1rem;
   --progress-bg: #e5e7eb;
   --progress-border-radius: 0.25rem;
-  --progress-bar-bg: #3b82f6;
+  --progress-bar-bg: var(--color-primary);
   --progress-bar-transition: width 0.6s ease;
 
   /* Progress Colors */
-  --progress-primary: #3b82f6;
+  --progress-primary: var(--color-primary);
   --progress-secondary: #6b7280;
   --progress-success: #10b981;
   --progress-danger: #ef4444;

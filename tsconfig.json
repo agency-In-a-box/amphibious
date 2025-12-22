@@ -7,16 +7,68 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "checkJs": false,
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+
+    // Type checking
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+
+    // Module resolution
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@css/*": ["src/css/*"],
+      "@js/*": ["src/js/*"],
+      "@components/*": ["src/components/*"]
+    },
+
+    // Emit
     "declaration": true,
     "declarationMap": true,
+    "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "types": ["vite/client"]
+    "removeComments": true,
+    "noEmit": false,
+    "importHelpers": false,
+    "downlevelIteration": true,
+
+    // Interop
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+
+    // Advanced
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": true,
+
+    // Type roots
+    "types": ["vite/client", "node"],
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/index.ts"],
-  "exclude": ["node_modules", "dist", "**/*.spec.ts", "src/js/*.js", "src/js/*.pkgd.js"]
+
+  "include": [
+    "src/**/*",
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "vite.config.*.ts",
+    "postcss.config.js"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "backup-*",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }

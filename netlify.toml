@@ -1,5 +1,5 @@
 [build]
-  command = "bun install && bun run build"
+  command = "bun install && bun run build:site"
   publish = "dist"
 
 # Redirects for SPA-like behavior (optional)

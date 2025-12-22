@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Layout Example</title>
+  <script type="module">
+    import '/src/css/main.css';
+  </script>
+  <style>
+    /* Visual styling for demo */
+    .header, .sidebar, .main-content, .footer {
+      background: #d97638;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .sidebar {
+      background: #c9702f;
+    }
+
+    .main-content {
+      background: #d97638;
+    }
+
+    .footer {
+      background: #bd6329;
+    }
+
+    /* Debug - ensure row is flex */
+    .row {
+      border: 2px dashed blue;
+      margin-bottom: 10px;
+    }
+
+    body {
+      padding: 20px 0;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Layout Example</h1>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="row">
+      <header class="col-16 header">Header</header>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="row">
+      <aside class="col-6 sidebar">Sidebar</aside>
+      <main class="col-10 main-content">Main Content</main>
+    </div>
+
+    <!-- Footer -->
+    <div class="row">
+      <footer class="col-16 footer">Footer</footer>
+    </div>
+  </div>
+
+  <!-- Code Example -->
+  <div class="container" style="margin-top: 40px;">
+    <pre style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 4px; overflow-x: auto;">
+&lt;div class="container"&gt;
+  &lt;!-- Header --&gt;
+  &lt;div class="row"&gt;
+    &lt;header class="col-16"&gt;Header&lt;/header&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Main Content Area --&gt;
+  &lt;div class="row"&gt;
+    &lt;aside class="col-6"&gt;Sidebar&lt;/aside&gt;
+    &lt;main class="col-10"&gt;Main Content&lt;/main&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Footer --&gt;
+  &lt;div class="row"&gt;
+    &lt;footer class="col-16"&gt;Footer&lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+</body>
+</html>

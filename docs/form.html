@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form - Amphibious 2.0</title>
   <meta name="description" content="Form documentation for Amphibious 2.0 - Typography, forms, tables, and content structure">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="/docs/docs.css">
+    <!-- CSS loaded via JavaScript module -->
+  <link rel="stylesheet" href="./docs.css">
 
 </head>
 <body>
@@ -20,13 +20,13 @@
 
 
 <div id="main" role="main" class="container">
-
-	<div id="maincontent" class="col sixteen content">
+	<div class="row">
+		<div id="maincontent" class="col-16 content">
 		<header>
-			<h1 class="rmb mt">Form</h1>
-			<blockquote class="l">
+			<h1 >Form</h1>
+			<blockquote class="text-left">
 					<p>&ldquo;Form follows function &ndash; that has been misunderstood. Form and function should be one, joined in a sacred union.&rdquo;</p>
-					<cite class="r"><span class="author fn">Frank Lloyd Wright</span>, Architect, <span class="date">circa. 1906</span></cite>
+					<cite class="text-right"><span class="author fn">Frank Lloyd Wright</span>, Architect, <span class="date">circa. 1906</span></cite>
 				</blockquote>
 		</header>
 
@@ -39,7 +39,7 @@
 				<p>Margins and line heights are set relative to the base for the most adaptive/scalable user experience indepentant of what device you are using</p>
 			</div>
 			<div class="row">
-				<div class="eight col first headings">
+				<div class="col-8 headings">
 					<h1>Heading &lt;h1&gt;</h1>
 					<h2>Heading &lt;h2&gt;</h2>
 					<h3>Heading &lt;h3&gt;</h3>
@@ -47,8 +47,7 @@
 					<h5>Heading &lt;h5&gt;</h5>
 					<h6>Heading &lt;h6&gt;</h6>
 
-					<div class="row mt">
-						<pre class="prettyprint linenums">
+					<pre class="prettyprint linenums">
 &lt;h1&gt;Heading &amp;lt;h1&amp;gt;&lt;/h1&gt;
 &lt;h2&gt;Heading &amp;lt;h2&amp;gt;&lt;/h2&gt;
 &lt;h3&gt;Heading &amp;lt;h3&amp;gt;&lt;/h3&gt;
@@ -56,29 +55,26 @@
 &lt;h5&gt;Heading &amp;lt;h5&amp;gt;&lt;/h5&gt;
 &lt;h6&gt;Heading &amp;lt;h6&amp;gt;&lt;/h6&gt;
 </pre>
-					</div>
 
-					<h6 class="mt">Blockquote Example</h6>
+					<h6 >Blockquote Example</h6>
 
-					<blockquote class="vcard row mb">
+					<blockquote class="vcard mb">
 						<p>It strikes me as obvious now that &ldquo;responsive web&rdquo; should actually be called &ldquo;amphibious web&rdquo;. It works here, it works there.<br>
 					Where else would you like it to work?</p>
-					<cite class="r"><span class="author fn">Sean Stephens</span>, CEO, <span class="org">Treefrog Interactive Inc.</span></cite>
+					<cite class="text-right"><span class="author fn">Sean Stephens</span>, CEO, <span class="org">Treefrog Interactive Inc.</span></cite>
 					</blockquote>
 
-					<div class="row mt">
-						<pre class="prettyprint linenums">
+					<pre class="prettyprint linenums">
 &lt;blockquote class=&quot;vcard row mb&quot;&gt;
 	&lt;p&gt;It strikes me as obvious now that &amp;ldquo;responsive web&amp;rdquo; should actually be called &amp;ldquo;amphibious web&amp;rdquo;. It works here, it works there.&lt;br&gt;
 Where else would you like it to work?&lt;/p&gt;
 	&lt;cite class=&quot;r&quot;&gt;&lt;span class=&quot;author fn&quot;&gt;Sean Stephens&lt;/span&gt;, CEO, &lt;span class=&quot;org&quot;&gt;Treefrog Interactive Inc.&lt;/span&gt;&lt;/cite&gt;
 &lt;/blockquote class=&quot;
 </pre>
-					</div>
 
 					<h6>Microformats <a href="http://microformats.org/wiki/hcard">hCard</a> Example</h6>
 
-					<div class="vcard row">
+					<div class="vcard">
 						<h6 class="org"><a class="url" href="#">Treefrog Interactive Inc</a></h6>
 						<p class="n"><a class="url nickname" href="https://twitter.com/cliveMoore"><span class="given-name">Clive</span> <span>Moore</span></a></p>
 						<p class="adr">
@@ -87,8 +83,7 @@ Where else would you like it to work?&lt;/p&gt;
 						</p>
 						<p class="tel"><a href="tel:9058364442">(905) 836 4442</a></p>
 					</div>
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 &lt;div class=&quot;vcard row&quot;&gt;
   &lt;h6 class=&quot;org&quot;&gt;&lt;a class=&quot;url&quot; href=&quot;#&quot;&gt;Treefrog Interactive Inc&lt;/a&gt;&lt;h6&gt;
   &lt;p class=&quot;n&quot;&gt;&lt;a class=&quot;url nickname&quot; href=&quot;https://twitter.com/cliveMoore&quot;&gt;&lt;span class=&quot;given-name&quot;&gt;Clive&lt;/span&gt; &lt;span&gt;Moore&lt;/span&gt;&lt;/a&gt;&lt;p&gt;
@@ -99,17 +94,15 @@ Where else would you like it to work?&lt;/p&gt;
   &lt;p class=&quot;tel&quot;&gt;&lt;a href=&quot;tel:9058364442&quot;&gt;(905) 836 4442&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </pre>
-				</div>
 
 					<aside>
 						<div class="vcard">
-						 <address class="author"><span class="">Example address block pea.rs by </span>
+						 <address class="author"><span >Example address block pea.rs by </span>
 							<em class="fn"><a title="Stuff by Clive Moore" href="#">Clive Moore</a></em>
 						</address><span> on </span>
 							 <time datetime="2013-19-03" class="published updated">March 19<sup>th</sup>, 2013</time>
 						</div>
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 &lt;div class=&quot;vcard&quot;&gt;
 	&lt;address class=&quot;author&quot;&gt;
 	&lt;span class=&quot;&quot;&gt;Example address block pea.rs by &lt;/span&gt;
@@ -118,18 +111,17 @@ Where else would you like it to work?&lt;/p&gt;
 	&lt;time datetime=&quot;2013-19-03&quot; class=&quot;published updated&quot;&gt;March 19&lt;sup&gt;th&lt;/sup&gt;, 2013&lt;/time&gt;
 &lt;/div&gt;
 </pre>
-				</div>
 					</aside>
 
 				</div>
 
-				<div class="col last eight">
+				<div class="col-8">
 
-					<h5 class="rmt">Standard Lists</h5>
+					<h5 >Standard Lists</h5>
 
 					<div class="row">
 
-						<div class="col first four">
+						<div class="col-4">
 							<ul>
 								<li>Unordered Lists
 								<ul>
@@ -163,7 +155,7 @@ Where else would you like it to work?&lt;/p&gt;
 							</ul>
 						</div>
 
-						<div class="col four last">
+						<div class="col-4">
 							<ol>
 								<li>Ordered Lists
 								<ol>
@@ -254,8 +246,7 @@ Where else would you like it to work?&lt;/p&gt;
 					also : architected to optimize the inherent strenghts of &lt;casscading style sheets&gt;</dd>
 
 				</dl>
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 &lt;dl&gt;
 	&lt;dt&gt;am&middot;phib&middot;i&middot;ous &lt;sub class=&quot;meta&quot;&gt;noun &lt;i&gt;\am-&#712;fi-b&#275;-&#601;s\&lt;/i&gt;&lt;/sub&gt;&lt;/dt&gt;
 	&lt;dd&gt;: simply the most elegant css framework&lt;/dd&gt;
@@ -266,7 +257,6 @@ Where else would you like it to work?&lt;/p&gt;
 
 &lt;/dl&gt;
 </pre>
-				</div>
 
 		</div>
 
@@ -280,21 +270,19 @@ Where else would you like it to work?&lt;/p&gt;
 				<h3>Buttons</h3>
 				<p>A.mphibio.us treats buttons as they are meant to be treated, giving them the right amount of weight and a powerful hover effect to make them irresistibly clickable. Calls to action have never been more apparent. Did I mention easy to use, just add a button or submit or even add the class <kbd>button</kbd> to a link</p>
 				<a class="button modal_opener" amp-target="amp_overlay">Click Me For Action</a>
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 &lt;a class=&quot;button modal_opener&quot; amp-target=&quot;amp_overlay&quot;&gt;Click Me For Action&lt;/a&gt;
 </pre>
-				</div>
 			</div>
 			<div class="row">
 				<h3>Forms</h3>
-				<p><del>Web developers</del> <strong>I</strong> often fear the form itself. They are usually a pain in the neck to code. But with A.mphibio.us’ versatile naming convention basic sytatic structure and time-saving style attributes, forms are a cinch to program and implement. </p>
+				<p><del>Web developers</del> <strong>I</strong> often fear the form itself. They are usually a pain in the neck to code. But with A.mphibio.us' versatile naming convention, basic syntactic structure, and time-saving style attributes, forms are a cinch to program and implement.</p>
 
 			</div>
 			<div class="row">
 
 			<h4>Standard Fields</h4>
-				<div class="col seven first">
+				<div class="col-7">
 
 					<form>
 						<fieldset>
@@ -325,7 +313,7 @@ Where else would you like it to work?&lt;/p&gt;
 					</form>
 				</div>
 
-				<div class="col nine last">
+				<div class="col-9">
 <pre class="prettyprint linenums">
 &lt;form&gt;
 	&lt;fieldset&gt;
@@ -355,11 +343,10 @@ Where else would you like it to work?&lt;/p&gt;
 	&lt;button type=&quot;submit&quot;&gt;Submit Form&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-				</div>
 			</div>
 			<div class="row">
 
-				<div class="col seven first">
+				<div class="col-7">
 				<h4>Search Field</h4>
 					<form action="/" class="search">
 						<fieldset>
@@ -368,7 +355,7 @@ Where else would you like it to work?&lt;/p&gt;
 						</fieldset>
 					</form>
 				</div>
-				<div class="col nine last">
+				<div class="col-9">
 <pre class="prettyprint linenums">
 &lt;form action=&quot;/&quot; class=&quot;search&quot;&gt;
 	&lt;fieldset&gt;
@@ -377,11 +364,10 @@ Where else would you like it to work?&lt;/p&gt;
 	&lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-				</div>
 			</div>
 			<div class="row">
 
-				<div class="col seven first">
+				<div class="col-7">
 				<h4>Advanced Search Field</h4>
 
 				  <div id="search_form" class="inline search">
@@ -399,7 +385,7 @@ Where else would you like it to work?&lt;/p&gt;
 				</div>
 				
 				</div>
-				<div class="col nine last">
+				<div class="col-9">
 <pre class="prettyprint linenums">
 &lt;div id=&quot;search_form&quot; class=&quot;inline search&quot;&gt;
 	&lt;form class=&quot;search_form&quot; action=&quot;/search-results&quot;&gt;
@@ -415,7 +401,6 @@ Where else would you like it to work?&lt;/p&gt;
 	&lt;/form&gt;
 &lt;/div&gt;
 </pre>
-				</div>
 			</div>
 
 
@@ -459,7 +444,6 @@ Where else would you like it to work?&lt;/p&gt;
     &lt;option&gt;Cylon&lt;/option&gt;
   &lt;/select&gt;
 &lt;/div&gt;</code></pre>
-					</div>
 
 					<fieldset id="custom_checkbox_radios" class="radio">
 						<label for="notifications">Notifications</label>
@@ -473,7 +457,6 @@ Where else would you like it to work?&lt;/p&gt;
 					<div class="dialog">
 						<p>Custom radio and checkboxes are also a snap by adding the class <kbd>custom</kbd> to the radio or checkbox element and including an empty span right after the input.</p>
 						<pre><code>&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Send me email&lt;/label&gt;</code></pre>
-					</div>
 
 					<fieldset>
 						<label for="url">URL</label>
@@ -493,8 +476,7 @@ Where else would you like it to work?&lt;/p&gt;
 						<input type="submit" value="Submit" />
 					</fieldset>
 				</form>
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 &lt;form class=&quot;multi beside&quot;&gt;
   &lt;fieldset&gt;
     &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
@@ -546,18 +528,17 @@ Where else would you like it to work?&lt;/p&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-				</div>
 
 
 		</section>
 
 		<section>
-			<div id="append_prepend_icons" class="col sixteen">
+			<div id="append_prepend_icons" class="col-16">
 				<h3>Append and Prepend Icons</h3>
 				<p>Like fancy form layouts we do to, that's we've added the prepend and append icon classes to form elements.</p>
 
 				<div class="row">
-					<div class="col eight first">
+					<div class="col-8">
 						<form>
 							<fieldset>
 								<label for="user">Username</label>
@@ -572,7 +553,7 @@ Where else would you like it to work?&lt;/p&gt;
 						</form>
 
 					</div>
-					<div class="col eight first">
+					<div class="col-8">
 						<form>
 							<fieldset>
 								<label for="user2">Username</label>
@@ -588,9 +569,8 @@ Where else would you like it to work?&lt;/p&gt;
 
 					</div>
 				</div>
-				<div class="row">
-<pre class="prettyprint linenums">
-&lt;div class=&quot;col eight first&quot;&gt;
+				<pre class="prettyprint linenums">
+&lt;div class=&quot;col-8&quot;&gt;
   &lt;form&gt;
     &lt;fieldset&gt;
       &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
@@ -605,7 +585,7 @@ Where else would you like it to work?&lt;/p&gt;
   &lt;/form&gt;
 
 &lt;/div&gt;
-&lt;div class=&quot;col eight first&quot;&gt;
+&lt;div class=&quot;col-8&quot;&gt;
   &lt;form&gt;
     &lt;fieldset&gt;
       &lt;label for=&quot;user2&quot;&gt;Username&lt;/label&gt;
@@ -621,7 +601,6 @@ Where else would you like it to work?&lt;/p&gt;
 
 &lt;/div&gt;
 </pre>
-				</div>
 
 				<div class="row mt">
 					<form class="multi beside">
@@ -638,8 +617,7 @@ Where else would you like it to work?&lt;/p&gt;
 					</form>
 
 				</div>
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 &lt;form class=&quot;multi beside&quot;&gt;
   &lt;fieldset&gt;
     &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
@@ -653,7 +631,6 @@ Where else would you like it to work?&lt;/p&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-				</div>
 
 				<div class="row mt">
 					<form class="multi beside">
@@ -670,8 +647,7 @@ Where else would you like it to work?&lt;/p&gt;
 					</form>
 
 				</div>
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 &lt;form class=&quot;multi beside&quot;&gt;
  &lt;fieldset&gt;
     &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
@@ -685,7 +661,6 @@ Where else would you like it to work?&lt;/p&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-				</div>
 
 				<form id="datepicker_fields" class="multi beside">
 					<fieldset class="date_picker_set">
@@ -702,8 +677,7 @@ Where else would you like it to work?&lt;/p&gt;
 					</fieldset>
 				</form>
 
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 &lt;form class=&quot;multi beside&quot;&gt;
   &lt;fieldset class=&quot;date_picker_set&quot;&gt;
     &lt;fieldset class=&quot;form_group&quot;&gt;
@@ -719,7 +693,6 @@ Where else would you like it to work?&lt;/p&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-				</div>
 				<form class="multi beside">
 					<fieldset class="date_picker_set">
 						<fieldset class="form_group">
@@ -736,8 +709,7 @@ Where else would you like it to work?&lt;/p&gt;
 				</form>
 			</div>
 
-				<div class="row">
-<pre class="prettyprint linenums">
+				<pre class="prettyprint linenums">
 	&lt;form class=&quot;multi beside&quot;&gt;
   &lt;fieldset class=&quot;date_picker_set&quot;&gt;
     &lt;fieldset class=&quot;form_group&quot;&gt;
@@ -753,7 +725,6 @@ Where else would you like it to work?&lt;/p&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-				</div>
 		</section>
 
 		<section id="tables">
@@ -852,11 +823,9 @@ Where else would you like it to work?&lt;/p&gt;
 
 		</section>
 
-	</div><!-- content -->
-
+		</div><!-- content -->
+	</div><!-- row -->
 </div><!-- container -->
-
-</div>
 
 
 </main>
@@ -888,47 +857,47 @@ postion:fixed;top:0;left:0;right:0;
 						<li><a href="/index.html#colophon">The A.mphibio.us Colophon</a></li>
 					</ul>
 				</li>
-				<li><a href="/docs/foundation.html">Foundation</a>
+				<li><a href="./foundation.html">Foundation</a>
 					<ul>
-						<li><a href="/docs/foundation.html#core">Core</a></li>
-						<li><a href="/docs/foundation.html#grid">Symantic Grid</a></li>
-						<li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-						<li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-<!--//					<li><a href="/docs/foundation.html#padded_col">Padded Columns</a></li> //-->
-						<li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-						<li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-						<li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
+						<li><a href="./foundation.html#core">Core</a></li>
+						<li><a href="./foundation.html#grid">Symantic Grid</a></li>
+						<li><a href="./foundation.html#responsive_col">Responsive Columns</a></li>
+						<li><a href="./foundation.html#fluid_col">Fluid Columns</a></li>
+<!--//					<li><a href="./foundation.html#padded_col">Padded Columns</a></li> //-->
+						<li><a href="./foundation.html#golden_section">Golden ratio grids</a></li>
+						<li><a href="./foundation.html#push_pull">Source Ordering</a></li>
+						<li><a href="./foundation.html#mediaQueries">Media Queries</a></li>
 					</ul>
 				</li>
-				<li class="active"><a href="/docs/form.html">Form</a>
+				<li class="active"><a href="./form.html">Form</a>
 					<ul>
 
-						<li><a href="/docs/form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
-						<li><a href="/docs/form.html#forms">Basic Forms</a></li>
-						<li><a href="/docs/form.html#multi_forms">Mutli Beside Forms</a></li>
-						<li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-						<li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-						<li><a href="/docs/form.html#datepicker_fields">jQuery Datepicker Fields</a></li>
-						<li><a href="/docs/form.html#tables">Tables <sub>not for layout</sub></a></li>
+						<li><a href="./form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
+						<li><a href="./form.html#forms">Basic Forms</a></li>
+						<li><a href="./form.html#multi_forms">Mutli Beside Forms</a></li>
+						<li><a href="./form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
+						<li><a href="./form.html#append_prepend_icons">Prepend and Append Icons</a></li>
+						<li><a href="./form.html#datepicker_fields">jQuery Datepicker Fields</a></li>
+						<li><a href="./form.html#tables">Tables <sub>not for layout</sub></a></li>
 					</ul>
 				</li>
-				<li><a href="/docs/function.html">Function</a>
+				<li><a href="./function.html">Function</a>
 					<ul>
 
-						<li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-						<li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-						<li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-						<li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-						<li><a href="/docs/function.html#tabs">Tabs</a></li>
-						<li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+						<li><a href="./function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
+						<li><a href="./function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
+						<li><a href="./function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
+						<li><a href="./function.html#breadcrumbs">Breadcrumbs</a></li>
+						<li><a href="./function.html#tabs">Tabs</a></li>
+						<li><a href="./function.html#pagination">Pagination nav</a></li>
 					</ul>
 				</li>
-				<li><a href="/docs/features.html">Features</a>
+				<li><a href="./features.html">Features</a>
 					<ul>
-						<li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-						<li><a href="/docs/features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
-						<li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-						<li><a href="/docs/features.html#icons">Webfont Icons <sub>by entypo</sub></a></li>
+						<li><a href="./features.html#slideshows">Responsive Slide Shows</a></li>
+						<li><a href="./features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
+						<li><a href="./features.html#pears">Content Pea.rs</a></li>
+						<li><a href="./features.html#icons">Webfont Icons <sub>by entypo</sub></a></li>
 					</ul>
 				</li>
 				<li><a href="javascript:;" class="modal_opener" amp-target="amp_overlay">Feedback</a></li>
@@ -1305,7 +1274,7 @@ aside .vcard address {
 
 /* Responsive improvements */
 @media (max-width: 768px) {
-  .col.eight.first,
+  .col-8,
   .col.nine.last {
     width: 100%;
     margin: 0 0 2rem 0;
@@ -1323,7 +1292,11 @@ aside .vcard address {
 </style>
 
 <!-- Load Amphibious Framework -->
-  <script type="module" src="/src/index.js"></script>
+    <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
+  </script>
 
 
   <!-- Load Navigation and Footer Includes -->

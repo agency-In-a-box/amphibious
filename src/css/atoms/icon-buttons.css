@@ -21,7 +21,7 @@
   --icon-button-active-bg: #e5e7eb;
 
   /* Icon Button Primary */
-  --icon-button-primary-bg: #3b82f6;
+  --icon-button-primary-bg: var(--color-primary);
   --icon-button-primary-color: #ffffff;
   --icon-button-primary-hover-bg: #2563eb;
 
@@ -61,7 +61,7 @@
 }
 
 .icon-button:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 

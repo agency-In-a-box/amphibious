@@ -285,8 +285,8 @@
 
           <h3>Resources</h3>
           <ul>
-            <li><a href="/docs/api-reference.html">API Reference</a></li>
-            <li><a href="/examples/">Examples</a></li>
+            <li><a href="./api-reference.html">API Reference</a></li>
+            <li><a href="../examples/">Examples</a></li>
             <li><a href="https://github.com/your-org/amphibious">GitHub</a></li>
           </ul>
         </nav>
@@ -691,15 +691,15 @@ const modal = amp.createModal('#myModal', {
           <h2 id="next-steps">Next Steps</h2>
 
           <div class="quick-links">
-            <a href="/docs/components.html" class="quick-link">
+            <a href="./components.html" class="quick-link">
               <h4><i data-lucide="layers"></i> Components</h4>
               <p>Explore all available UI components</p>
             </a>
-            <a href="/examples/" class="quick-link">
+            <a href="../examples/" class="quick-link">
               <h4><i data-lucide="code"></i> Examples</h4>
               <p>See live demos and code samples</p>
             </a>
-            <a href="/docs/api-reference.html" class="quick-link">
+            <a href="./api-reference.html" class="quick-link">
               <h4><i data-lucide="book"></i> API Reference</h4>
               <p>Complete API documentation</p>
             </a>
@@ -719,7 +719,11 @@ const modal = amp.createModal('#myModal', {
   </div>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
+    <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
+  </script>
 
   <!-- Documentation Scripts -->
   <script>

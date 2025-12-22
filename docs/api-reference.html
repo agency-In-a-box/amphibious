@@ -893,7 +893,11 @@ setTimeout(() => modal.close(), 3000);</code></pre>
   </div>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
+    <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
+  </script>
 
   <!-- Documentation Scripts -->
   <script>

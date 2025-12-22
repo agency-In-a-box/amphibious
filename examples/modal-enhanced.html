@@ -411,7 +411,7 @@
             color: #718096;
         }
     </style>
-  <link rel="stylesheet" href="/src/css/main.css">
+    <!-- CSS loaded via JavaScript module -->
 </head>
 <body>
   <!-- Site Navigation -->
@@ -1131,5 +1131,10 @@ modal.<span class="string">toggle</span>();
             amp.alert(messages[type] || 'Mobile modal', 'info');
         };
     </script>
+  <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
+  </script>
 </body>
 </html>

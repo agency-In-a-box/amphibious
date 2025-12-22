@@ -202,18 +202,20 @@ export class Navigation {
 
         switch (key) {
           case 'ArrowRight':
-          case 'ArrowDown':
+          case 'ArrowDown': {
             e.preventDefault();
             const nextIndex = (index + 1) % links.length;
             (links[nextIndex] as HTMLElement).focus();
             break;
+          }
 
           case 'ArrowLeft':
-          case 'ArrowUp':
+          case 'ArrowUp': {
             e.preventDefault();
             const prevIndex = (index - 1 + links.length) % links.length;
             (links[prevIndex] as HTMLElement).focus();
             break;
+          }
         }
       });
     });

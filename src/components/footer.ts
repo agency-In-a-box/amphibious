@@ -3,7 +3,7 @@
  * A comprehensive footer with newsletter, social links, and site map
  */
 
-import { Icon } from '../js/icons';
+import { initializeIcons } from '../js/icons-lightweight';
 
 export interface FooterOptions {
   newsletter?: boolean;
@@ -352,7 +352,7 @@ export class AmphibiousFooter {
         const input = (form as HTMLFormElement).querySelector(
           'input[type="email"]',
         ) as HTMLInputElement;
-        if (input && input.value) {
+        if (input?.value) {
           this.handleNewsletterSubmit(input.value);
           input.value = '';
         }
@@ -441,7 +441,7 @@ export class AmphibiousFooter {
 
   private initializeIcons(): void {
     setTimeout(() => {
-      Icon.init();
+      initializeIcons();
     }, 10);
   }
 

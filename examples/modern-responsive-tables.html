@@ -114,7 +114,7 @@
             font-size: 0.9rem;
         }
     </style>
-  <link rel="stylesheet" href="/src/css/main.css">
+    <!-- CSS loaded via JavaScript module -->
 </head>
 <body>
   <!-- Site Navigation -->
@@ -427,5 +427,10 @@
     <!-- Scripts -->
     <script src="/js/js/jquery-1.11.1.min.js"></script>
     <script src="/js/js/modernizr-2.6.2.min.js"></script>
+  <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
+  </script>
 </body>
 </html>

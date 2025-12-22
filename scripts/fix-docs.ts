@@ -10,9 +10,9 @@
  * 4. Creates necessary documentation assets
  */
 
+import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { $ } from 'bun';
-import { existsSync, copyFileSync, readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
 
 // Step 1: Clean and build
 try {

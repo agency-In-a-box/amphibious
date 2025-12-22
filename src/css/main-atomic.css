@@ -56,8 +56,7 @@
    LAYOUT SYSTEMS
    Grid and layout utilities
    ========================================================================== */
-@import "./grid.css";
-@import "./grid-responsive.css";
+@import "./grid-modern.css"; /* The ONE modern 16-column flexbox grid system */
 
 /* ==========================================================================
    UTILITIES

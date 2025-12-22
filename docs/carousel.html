@@ -185,8 +185,8 @@
 <header class="docs-header">
     <div class="container">
       <nav class="nav-breadcrumb">
-        <a href="/index.html">Home</a> ›
-        <a href="/docs/getting-started.html">Documentation</a> ›
+        <a href="../index.html">Home</a> ›
+        <a href="./getting-started.html">Documentation</a> ›
         <span>Carousel Component</span>
       </nav>
       <h1>Carousel Component</h1>
@@ -756,7 +756,11 @@ main.getSplide().sync(thumbs.getSplide());
   <div id="footer-include"></div>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
+    <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
+  </script>
 
   <!-- Load Navigation and Footer Includes -->
   <script>

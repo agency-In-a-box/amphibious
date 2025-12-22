@@ -34,16 +34,15 @@
   --nav-mobile-overlay: rgba(0, 0, 0, 0.5);
   --nav-mobile-border: rgba(0, 0, 0, 0.1);
 
-  /* Spacing - Based on 4px grid */
+  /* Spacing - Strictly 4px grid aligned */
   --nav-padding-x: 1rem; /* 16px = 4 × 4px */
   --nav-padding-y: 0.75rem; /* 12px = 3 × 4px */
-  --nav-gap: 0.25rem; /* 4px */
+  --nav-gap: 0.25rem; /* 4px = 1 × 4px */
 
-  /* Typography */
-  --nav-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    sans-serif;
-  --nav-font-size: 1rem;
-  --nav-font-weight: 500;
+  /* Typography - Following SOP Design Excellence with Avenir */
+  --nav-font-family: var(--font-family-headings);
+  --nav-font-size: 1rem; /* 16px base size */
+  --nav-font-weight: var(--font-weight-medium); /* 500 */
 
   /* Transitions & Animations */
   --nav-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -65,7 +64,10 @@
   border-bottom: 1px solid var(--nav-border);
   font-family: var(--nav-font-family);
   font-size: var(--nav-font-size);
+  font-weight: var(--nav-font-weight);
   z-index: var(--nav-z-index);
+  /* Add padding-bottom to create space between nav items and border */
+  padding-bottom: 4px; /* 1 grid unit following 4px baseline */
 }
 
 .site-nav * {
@@ -84,11 +86,11 @@
   transition: all var(--nav-transition);
 }
 
-/* Container
+/* Container - Align with main content grid
    ========================================================================== */
 
 .site-nav .container {
-  max-width: 1200px;
+  max-width: var(--container-width); /* Use design token for consistency */
   margin: 0 auto;
   padding: 0 var(--nav-padding-x);
   position: relative;
@@ -175,30 +177,50 @@
   display: block;
   padding: var(--nav-padding-y) var(--nav-padding-x);
   color: var(--nav-text);
+  font-family: var(--nav-font-family);
+  font-size: var(--nav-font-size);
   font-weight: var(--nav-font-weight);
+  line-height: 1.5; /* Consistent baseline */
   white-space: nowrap;
   position: relative;
+  /* Transparent border to prevent height changes on hover */
+  border-bottom: 3px solid transparent;
+  transition: border-color var(--nav-transition);
 }
 
-/* Hover States */
+/* Hover States - Underline effect following SOP Design Excellence */
 .horizontal > li > a:hover,
 .horizontal > li > a:focus {
   color: var(--nav-text-hover);
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: transparent;
+  /* Orange underline on hover - just change color */
+  border-bottom-color: var(--color-primary);
 }
 
-/* Active States */
+/* Active States - Orange bottom border following SOP Design Excellence */
 .horizontal > li.active > a,
 .horizontal > li > a[aria-current="page"] {
-  background-color: var(--nav-active-bg);
-  color: var(--nav-text-active);
+  color: var(--nav-text-hover); /* Use brand orange text */
+  background-color: transparent; /* Remove background */
+  /* Orange bottom border for active state - just change color */
+  border-bottom-color: var(--color-primary);
 }
 
-/* Site Logo Special Styling */
-.site-logo {
-  font-weight: 600;
-  font-size: 1.125rem;
+/* Site Logo Special Styling - Aligned with navigation baseline */
+.site-nav .site-logo,
+.site-nav a.site-logo {
+  font-family: var(--nav-font-family);
+  font-weight: var(--font-weight-semibold); /* 600 for emphasis */
+  font-size: var(--nav-font-size); /* Same as navigation: 1rem */
+  line-height: 1.5; /* Match navigation line-height */
+  color: var(--nav-text); /* Same as other nav items */
   padding-left: 0;
+}
+
+/* Logo hover state - same as other nav items */
+.site-nav .site-logo:hover,
+.site-nav a.site-logo:hover {
+  color: var(--nav-text-hover); /* Orange on hover like other nav items */
 }
 
 /* Dropdown Indicators - Semantic Detection
@@ -397,7 +419,8 @@
 
   /* Show mobile menu when active */
   .nav-toggle[aria-expanded="true"] ~ .horizontal,
-  .horizontal.is-active {
+  .horizontal.is-active,
+  #main-nav.is-active {
     transform: translateX(0);
   }
 

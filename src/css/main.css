@@ -1,75 +1,60 @@
 /**
  * Amphibious 2.0 - Main CSS Entry Point
  *
- * This file imports all core CSS modules using @layer architecture
- * for better cascade control and elimination of !important declarations.
+ * Direct imports without @layer architecture for better browser compatibility
  * Edit source files in src/css/ - never edit the built files in dist/
  */
 
-/* Layer Architecture Definition */
-@import "./layers.css";
+/* Reset and Normalize - First for proper cascade */
+@import "./normalize.css";
 
-/* Reset Layer - Normalize and resets */
-@layer reset {
-  @import "./normalize.css";
-}
+/* Design tokens and variables */
+@import "./tokens/design-tokens.css";
 
-/* Tokens Layer - Design tokens and variables */
-@layer tokens {
-  @import "./tokens/design-tokens.css";
-}
+/* Typography and base elements */
+@import "./typography.css";
 
-/* Base Layer - Typography and base elements */
-@layer base {
-  @import "./typography.css";
-}
+/* Grid and layout systems */
+@import "./grid-modern.css"; /* The ONE modern grid system using flexbox */
 
-/* Layout Layer - Grid and layout systems */
-@layer layout {
-  @import "./grid-modern.css"; /* Modern grid with CSS Grid/Flexbox, no jQuery deps */
-}
+/* Atomic Design Components */
 
-/* Components Layer - Atomic Design Components */
-@layer components {
-  /* Atoms - Basic building blocks */
-  @import "./atoms/badges.css";
-  @import "./atoms/buttons.css";
-  @import "./atoms/icons.css";
-  @import "./atoms/spinners.css";
-  @import "./atoms/icon-buttons.css";
+/* Atoms - Basic building blocks */
+@import "./atoms/badges.css";
+@import "./atoms/buttons.css";
+@import "./atoms/icons.css";
+@import "./atoms/spinners.css";
+@import "./atoms/icon-buttons.css";
 
-  /* Molecules - Simple component combinations */
-  @import "./molecules/alerts.css";
-  @import "./molecules/progress.css";
-  @import "./molecules/tags.css";
-  @import "./molecules/tooltip.css";
-  @import "./molecules/pears.css";
+/* Molecules - Simple component combinations */
+@import "./molecules/alerts.css";
+@import "./molecules/progress.css";
+@import "./molecules/tags.css";
+@import "./molecules/tooltip.css";
+@import "./molecules/pears.css";
 
-  /* Organisms - Complex components */
-  @import "./organisms/cards.css";
-  @import "./navigation-unified.css"; /* Unified navigation system */
-  @import "./organisms/modal.css";
-  @import "./organisms/forms.css";
-  @import "./organisms/tabs.css";
-  @import "./organisms/pagination.css";
-  @import "./organisms/breadcrumbs.css";
-  @import "./organisms/steps.css";
-  @import "./organisms/sidebar.css";
-  @import "./organisms/footer.css";
-  @import "./organisms/carousel.css";
-  @import "./organisms/tables.css"; /* Unified table component */
-}
+/* Organisms - Complex components */
+@import "./organisms/cards.css";
+@import "./organisms/modal.css";
+@import "./organisms/forms.css";
+@import "./organisms/tabs.css";
+@import "./organisms/pagination.css";
+@import "./organisms/breadcrumbs.css";
+@import "./organisms/steps.css";
+@import "./organisms/sidebar.css";
+@import "./organisms/footer.css";
+@import "./organisms/carousel.css";
+@import "./organisms/tables.css"; /* Unified table component */
 
-/* Themes Layer - Theme variations and design systems */
-@layer themes {
-  @import "./apple-design-system.css";
-  @import "./premium-design-system.css";
-}
+/* Navigation - Load AFTER components to override base styles */
+@import "./navigation-unified.css";
 
-/* Utilities Layer - Helper classes (highest priority) */
-@layer utilities {
-  @import "./helpers.css";
-}
+/* Theme variations and design systems */
+@import "./apple-design-system.css";
+@import "./premium-design-system.css";
 
-/* Print styles - Outside layers as they only apply to print media */
+/* Helper classes - Last for highest priority */
+@import "./helpers.css";
+
+/* Print styles */
 @import "./print.css";

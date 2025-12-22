@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Simple Grid</title>
+  <script type="module">
+    import '/src/css/main.css';
+  </script>
+  <style>
+    .test {
+      background: #d97638;
+      color: white;
+      padding: 20px;
+      border: 2px solid black;
+      text-align: center;
+    }
+    .sidebar { background: #a85420; }
+    body { padding: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Simplest Test Case</h1>
+
+  <h2>Direct col-12 and col-4 in a row</h2>
+  <div class="row">
+    <div class="col-12 test">Col-12 (should be 75%)</div>
+    <div class="col-4 test sidebar">Col-4 (should be 25%)</div>
+  </div>
+
+  <h2>Check computed styles</h2>
+  <div class="row" id="test-row">
+    <div class="col-12 test" id="test-12">Col-12</div>
+    <div class="col-4 test sidebar" id="test-4">Col-4</div>
+  </div>
+
+  <pre id="debug"></pre>
+
+  <script>
+    window.addEventListener('load', () => {
+      const row = document.getElementById('test-row');
+      const col12 = document.getElementById('test-12');
+      const col4 = document.getElementById('test-4');
+
+      const rowStyles = window.getComputedStyle(row);
+      const col12Styles = window.getComputedStyle(col12);
+      const col4Styles = window.getComputedStyle(col4);
+
+      document.getElementById('debug').textContent = `
+Window width: ${window.innerWidth}px
+
+Row:
+  display: ${rowStyles.display}
+  flex-wrap: ${rowStyles.flexWrap}
+  width: ${rowStyles.width}
+
+Col-12:
+  display: ${col12Styles.display}
+  flex: ${col12Styles.flex}
+  flex-grow: ${col12Styles.flexGrow}
+  flex-shrink: ${col12Styles.flexShrink}
+  flex-basis: ${col12Styles.flexBasis}
+  max-width: ${col12Styles.maxWidth}
+  width: ${col12Styles.width}
+
+Col-4:
+  display: ${col4Styles.display}
+  flex: ${col4Styles.flex}
+  flex-grow: ${col4Styles.flexGrow}
+  flex-shrink: ${col4Styles.flexShrink}
+  flex-basis: ${col4Styles.flexBasis}
+  max-width: ${col4Styles.maxWidth}
+  width: ${col4Styles.width}
+      `;
+    });
+  </script>
+</body>
+</html>

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Foundation - Amphibious 2.0</title>
   <meta name="description" content="Foundation documentation for Amphibious 2.0 - Core grid system, responsive columns, and layout fundamentals">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="/docs/docs.css">
+    <!-- CSS loaded via JavaScript module -->
+  <link rel="stylesheet" href="./docs.css">
   <style>
     /* Documentation specific styles */
     .doc-section {
@@ -117,16 +117,25 @@
   <!-- Site Navigation -->
     <!-- Navigation Include -->
   <div id="navigation-include"></div>
-<header class="container">
-    <div class="row">
-      <div class="col-16">
-        <nav aria-label="Breadcrumb">
-          <ol class="breadcrumb">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/sitemap.html">Sitemap</a></li>
-            <li aria-current="page">Foundation</li>
-          </ol>
-        </nav>
+<header>
+    <div class="container align-with-nav">
+      <div class="row">
+        <div class="col-16">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb breadcrumb--slash">
+              <li class="breadcrumb__item">
+                <a href="../index.html" class="breadcrumb__link">Home</a>
+              </li>
+              <span class="breadcrumb__separator" aria-hidden="true"></span>
+              <li class="breadcrumb__item">
+                <a href="index.html" class="breadcrumb__link">Sitemap</a>
+              </li>
+              <span class="breadcrumb__separator" aria-hidden="true"></span>
+              <li class="breadcrumb__item breadcrumb__item--current">
+                <a href="#" class="breadcrumb__link" aria-current="page">Foundation</a>
+              </li>
+            </ol>
+          </nav>
 
         <h1>Foundation</h1>
         <p class="lead">
@@ -137,7 +146,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container align-with-nav">
 
     <!-- Core -->
     <section id="core" class="doc-section">
@@ -167,15 +176,35 @@
   &lt;meta charset="UTF-8"&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
   &lt;title&gt;Your Page Title&lt;/title&gt;
-  &lt;link rel="stylesheet" href="/src/css/main.css"&gt;
+  &lt;link rel="stylesheet" href="../src/css/main.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;div class="container"&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="col-8"&gt;Content&lt;/div&gt;
-      &lt;div class="col-8"&gt;Content&lt;/div&gt;
+  &lt;header&gt;
+    &lt;div class="container"&gt;
+      &lt;nav class="row"&gt;
+        &lt;!-- Navigation content --&gt;
+      &lt;/nav&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+          &lt;article class="col-12"&gt;Main content&lt;/article&gt;
+          &lt;aside class="col-4"&gt;Sidebar&lt;/aside&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="col-16"&gt;Footer content&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
           </div>
@@ -231,11 +260,15 @@
           </div>
 
           <div class="code-example">
-            <pre><code>&lt;div class="row"&gt;
-  &lt;div class="col-4"&gt;Quarter width&lt;/div&gt;
-  &lt;div class="col-8"&gt;Half width&lt;/div&gt;
-  &lt;div class="col-4"&gt;Quarter width&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+            <pre><code>&lt;section&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;aside class="col-4"&gt;Sidebar content&lt;/aside&gt;
+      &lt;main class="col-8"&gt;Main content&lt;/main&gt;
+      &lt;aside class="col-4"&gt;Secondary sidebar&lt;/aside&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
           </div>
 
           <h3>Simple Layout Example</h3>
@@ -249,14 +282,32 @@
           </div>
 
           <div class="code-example">
-            <pre><code>&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-16"&gt;Header&lt;/div&gt;
-    &lt;div class="col-6"&gt;Sidebar&lt;/div&gt;
-    &lt;div class="col-10"&gt;Main Content&lt;/div&gt;
-    &lt;div class="col-16"&gt;Footer&lt;/div&gt;
+            <pre><code>&lt;header&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-16"&gt;Site header content&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="row"&gt;
+        &lt;aside class="col-6"&gt;Navigation sidebar&lt;/aside&gt;
+        &lt;article class="col-10"&gt;Main content&lt;/article&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-16"&gt;Footer content&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
           </div>
 
           <h3>Nested Grids</h3>
@@ -279,19 +330,37 @@
           </div>
 
           <div class="code-example">
-            <pre><code>&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-16"&gt;Header&lt;/div&gt;
-    &lt;div class="col-6"&gt;Navigation&lt;/div&gt;
-    &lt;div class="col-10"&gt;
+            <pre><code>&lt;header&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-16"&gt;Site header&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;div class="container"&gt;
       &lt;div class="row"&gt;
-        &lt;div class="col-12"&gt;Main Content&lt;/div&gt;
-        &lt;div class="col-4"&gt;Sidebar&lt;/div&gt;
+        &lt;nav class="col-6"&gt;Primary navigation&lt;/nav&gt;
+        &lt;div class="col-10"&gt;
+          &lt;div class="row"&gt;
+            &lt;article class="col-12"&gt;Main content&lt;/article&gt;
+            &lt;aside class="col-4"&gt;Related links&lt;/aside&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="col-16"&gt;Footer&lt;/div&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-16"&gt;Site footer&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/footer&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -336,9 +405,15 @@
           </div>
 
           <div class="code-example">
-            <pre><code>&lt;div class="col-8 col-tablet-16 col-mobile-16"&gt;
-  Responsive column
-&lt;/div&gt;</code></pre>
+            <pre><code>&lt;section&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;main class="col-8 col-tablet-16 col-mobile-16"&gt;
+        Responsive main content
+      &lt;/main&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -362,10 +437,14 @@
           </div>
 
           <div class="code-example">
-            <pre><code>&lt;div class="row"&gt;
-  &lt;div class="col-6"&gt;37.5% width&lt;/div&gt;
-  &lt;div class="col-10"&gt;62.5% width&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+            <pre><code>&lt;section&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;aside class="col-6"&gt;Sidebar content&lt;/aside&gt;
+      &lt;main class="col-10"&gt;Primary content&lt;/main&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -394,10 +473,14 @@
 
           <div class="code-example">
             <pre><code>&lt;!-- Golden ratio layout --&gt;
-&lt;div class="row"&gt;
-  &lt;div class="col-10"&gt;Main content (golden large)&lt;/div&gt;
-  &lt;div class="col-6"&gt;Sidebar (golden small)&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;section&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;article class="col-10"&gt;Main content (golden large)&lt;/article&gt;
+      &lt;aside class="col-6"&gt;Related content (golden small)&lt;/aside&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -421,10 +504,14 @@
           </div>
 
           <div class="code-example">
-            <pre><code>&lt;div class="row"&gt;
-  &lt;div class="col-8 col-last"&gt;First in HTML&lt;/div&gt;
-  &lt;div class="col-8 col-first"&gt;Second in HTML&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+            <pre><code>&lt;section&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;aside class="col-8 col-last"&gt;Sidebar (appears second)&lt;/aside&gt;
+      &lt;main class="col-8 col-first"&gt;Main content (appears first)&lt;/main&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
           </div>
 
           <h3>Push Classes for Offsetting</h3>
@@ -442,14 +529,18 @@
           </div>
 
           <div class="code-example">
-            <pre><code>&lt;div class="row"&gt;
-  &lt;div class="col-8 push-4"&gt;col-8 push-4&lt;/div&gt;
-  &lt;div class="col-4"&gt;col-4&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="row"&gt;
-  &lt;div class="col-6 push-2"&gt;col-6 push-2&lt;/div&gt;
-  &lt;div class="col-6 push-2"&gt;col-6 push-2&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+            <pre><code>&lt;section&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;main class="col-8 push-4"&gt;Offset main content&lt;/main&gt;
+      &lt;aside class="col-4"&gt;Sidebar content&lt;/aside&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;article class="col-6 push-2"&gt;Article one&lt;/article&gt;
+      &lt;article class="col-6 push-2"&gt;Article two&lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -550,6 +641,11 @@
     } else {
       loadIncludes();
     }
+  </script>
+  <script type="module">
+    import '../src/css/main.css';
+    import amp from '../src/index.ts';
+    // Amphibious auto-initializes when the module loads
   </script>
 </body>
 </html>

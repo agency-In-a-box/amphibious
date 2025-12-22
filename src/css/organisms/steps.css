@@ -8,10 +8,10 @@
 :root {
   /* Step Colors */
   --step-bg: #f3f4f6;
-  --step-bg-active: var(--color-primary, #3b82f6);
+  --step-bg-active: var(--color-primary, var(--color-primary));
   --step-bg-complete: #10b981;
   --step-border: #e5e7eb;
-  --step-border-active: var(--color-primary, #3b82f6);
+  --step-border-active: var(--color-primary, var(--color-primary));
   --step-border-complete: #10b981;
   --step-text: #6b7280;
   --step-text-active: #ffffff;
@@ -109,7 +109,7 @@
   background-color: var(--step-bg-active);
   border-color: var(--step-border-active);
   color: var(--step-text-active);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 4px rgba(237, 139, 0, 0.2);
 }
 
 .steps__item--complete .steps__circle {
@@ -392,7 +392,7 @@
 }
 
 .steps--labels .steps__item--active {
-  background-color: rgba(59, 130, 246, 0.05);
+  background-color: rgba(237, 139, 0, 0.05);
   border-color: var(--step-border-active);
 }
 

@@ -7,7 +7,7 @@
   <meta name="description" content="Amphibious 2.0 - A modern, responsive CSS framework and component library built for e-commerce and modern web applications">
   <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/src/css/main.css">
+    <!-- CSS loaded via JavaScript module -->
   <style>
     /* Homepage specific styles */
     .demo-section {
@@ -493,6 +493,11 @@
     document.addEventListener('DOMContentLoaded', () => {
       console.log('🐸 Amphibious 2.0 Homepage - Semantic HTML with Pea.rs Patterns');
     });
+  </script>
+  <script type="module">
+    import '/src/css/main.css';
+    import amp from '/src/index.ts';
+    // Amphibious auto-initializes when the module loads
   </script>
 </body>
 </html>

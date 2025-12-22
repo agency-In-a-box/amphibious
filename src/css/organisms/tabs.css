@@ -10,12 +10,12 @@
   --tab-bg: transparent;
   --tab-bg-active: #ffffff;
   --tab-border: #e5e7eb;
-  --tab-border-active: var(--color-primary, #3b82f6);
+  --tab-border-active: var(--color-primary, var(--color-primary));
   --tab-text: #6b7280;
   --tab-text-hover: #374151;
   --tab-text-active: #1f2937;
-  --tab-indicator: var(--color-primary, #3b82f6);
-  --tab-focus: rgba(59, 130, 246, 0.2);
+  --tab-indicator: var(--color-primary, var(--color-primary));
+  --tab-focus: rgba(237, 139, 0, 0.2);
 
   /* Tab Panel Colors */
   --tab-panel-bg: #ffffff;

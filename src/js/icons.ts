@@ -89,11 +89,11 @@ export class Icon {
    * This should be called once when the app starts
    */
   static init(): void {
-    if (this.initialized) return;
+    if (Icon.initialized) return;
 
     // Initialize Lucide with all icons
     createIcons({ icons });
-    this.initialized = true;
+    Icon.initialized = true;
   }
 
   /**
@@ -103,7 +103,7 @@ export class Icon {
    * @returns HTMLElement or null if icon not found
    */
   static create(name: string, options: IconOptions = {}): HTMLElement | null {
-    this.init();
+    Icon.init();
 
     const {
       size = 24,
@@ -160,7 +160,7 @@ export class Icon {
     name: string,
     options: IconOptions = {},
   ): HTMLElement | null {
-    const icon = this.create(name, options);
+    const icon = Icon.create(name, options);
     if (icon) {
       container.appendChild(icon);
     }
@@ -172,7 +172,7 @@ export class Icon {
    * Call this after dynamically adding icons
    */
   static refresh(): void {
-    this.init();
+    Icon.init();
     createIcons({ icons });
   }
 
@@ -199,7 +199,7 @@ export class Icon {
       button.addEventListener('click', onClick);
     }
 
-    const icon = this.create(name, iconOptions);
+    const icon = Icon.create(name, iconOptions);
     if (icon) {
       button.appendChild(icon);
     }
@@ -227,7 +227,7 @@ export class Icon {
     container.className =
       `icon-text ${layout === 'vertical' ? 'icon-text--vertical' : ''} ${layout === 'reverse' ? 'icon-text--reverse' : ''}`.trim();
 
-    const icon = this.create(name, iconOptions);
+    const icon = Icon.create(name, iconOptions);
     const textNode = document.createElement('span');
     textNode.textContent = text;
 
@@ -262,7 +262,7 @@ export class Icon {
     const container = document.createElement('div');
     container.className = 'icon-badge';
 
-    const icon = this.create(name, iconOptions);
+    const icon = Icon.create(name, iconOptions);
     if (icon) {
       container.appendChild(icon);
     }
