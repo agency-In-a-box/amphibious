@@ -103,7 +103,7 @@ describe('Tabs Module', () => {
       tabs.init();
 
       let eventFired = false;
-      let eventDetail: any = null;
+      let eventDetail: { tabId: string; tabIndex: number } | null = null;
 
       container.addEventListener('tab:change', (e: Event) => {
         eventFired = true;

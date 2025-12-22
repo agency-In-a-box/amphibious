@@ -46,7 +46,7 @@
 @import "./organisms/carousel.css";
 @import "./organisms/tables.css"; /* Unified table component */
 
-/* Navigation - Load AFTER components to override base styles */
+/* Navigation - Using unified navigation system */
 @import "./navigation-unified.css";
 
 /* Theme variations and design systems */

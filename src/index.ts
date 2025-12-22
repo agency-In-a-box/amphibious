@@ -3,11 +3,7 @@
  * Modern CSS Framework with Design Excellence
  */
 
-// Core CSS imports in proper cascade order
-import './css/tokens/design-tokens.css';
-import './css/normalize.css';
-import './css/typography.css';
-import './css/grid-modern.css';
+// Core CSS imports - main.css includes all components
 import './css/main.css';
 
 // Navigation component and JavaScript
