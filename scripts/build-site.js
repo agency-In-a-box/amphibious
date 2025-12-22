@@ -19,12 +19,7 @@ if (!fs.existsSync(distDir)) {
 }
 
 // Copy HTML files
-const htmlFiles = [
-  'index.html',
-  'sitemap.html',
-  'apple-redesign.html',
-  'test-cascade.html'
-];
+const htmlFiles = ['index.html', 'sitemap.html', 'apple-redesign.html', 'test-cascade.html'];
 
 console.log('📄 Copying HTML files...');
 for (const file of htmlFiles) {
@@ -41,7 +36,7 @@ const directories = [
   { src: 'src', dest: 'src' },
   { src: 'docs', dest: 'docs' },
   { src: 'examples', dest: 'examples' },
-  { src: 'images', dest: 'images' }
+  { src: 'images', dest: 'images' },
 ];
 
 console.log('\n📁 Copying directories...');

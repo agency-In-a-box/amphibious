@@ -78,7 +78,7 @@
 }
 
 .breadcrumb .breadcrumb__link:focus-visible {
-  outline: 2px solid var(--color-primary, #ED8B00);
+  outline: 2px solid var(--color-primary, #ed8b00);
   outline-offset: 2px;
 }
 

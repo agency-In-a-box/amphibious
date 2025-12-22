@@ -1,8 +1,8 @@
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import compression from 'vite-plugin-compression';
-import { visualizer } from 'rollup-plugin-visualizer';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -50,13 +50,14 @@ export default defineConfig({
     }),
 
     // Bundle size visualization (only in analyze mode)
-    process.env.ANALYZE && visualizer({
-      filename: './dist/stats.html',
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
-      template: 'sunburst',
-    }),
+    process.env.ANALYZE &&
+      visualizer({
+        filename: './dist/stats.html',
+        open: true,
+        gzipSize: true,
+        brotliSize: true,
+        template: 'sunburst',
+      }),
   ].filter(Boolean),
 
   build: {
@@ -122,10 +123,7 @@ export default defineConfig({
           ],
 
           // Utilities
-          'amphibious-utils': [
-            './src/css/helpers.css',
-            './src/css/print.css',
-          ],
+          'amphibious-utils': ['./src/css/helpers.css', './src/css/print.css'],
         },
 
         // Asset naming

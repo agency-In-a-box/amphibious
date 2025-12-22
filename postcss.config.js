@@ -28,16 +28,17 @@ export default {
     }),
 
     // Minify CSS in production
-    isProd && cssnano({
-      preset: [
-        'default',
-        {
-          discardComments: {
-            removeAll: true,
+    isProd &&
+      cssnano({
+        preset: [
+          'default',
+          {
+            discardComments: {
+              removeAll: true,
+            },
+            normalizeWhitespace: true,
           },
-          normalizeWhitespace: true,
-        },
-      ],
-    }),
+        ],
+      }),
   ].filter(Boolean),
 };
