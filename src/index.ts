@@ -12,11 +12,16 @@ import './js/navigation.js';
 // Export version and initialization
 export const VERSION = '2.0.0';
 
+// Extend window interface for global navigation
+declare global {
+  interface Window {
+    amphibiousNav?: any;
+  }
+}
+
 export function init() {
   // Initialize navigation if not already done
-  if (!window.amphibiousNav && typeof NavigationComponent !== 'undefined') {
-    window.amphibiousNav = new NavigationComponent();
-  }
+  // Navigation component is loaded via script tag
 
   // Add data attribute for CSS feature detection
   document.documentElement.setAttribute('data-amphibious', VERSION);

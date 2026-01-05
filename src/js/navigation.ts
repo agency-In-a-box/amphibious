@@ -101,7 +101,7 @@ export class Navigation {
 
     // Close menu on Escape key
     const escapeHandler = (e: Event) => {
-      if (e.key === 'Escape' && this.isOpen) {
+      if ((e as KeyboardEvent).key === 'Escape' && this.isOpen) {
         this.closeMenu();
         this.toggleButton?.focus();
       }
