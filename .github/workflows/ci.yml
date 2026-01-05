@@ -100,7 +100,7 @@ jobs:
         run: |
           echo "Bundle sizes:"
           du -sh dist/
-          ls -lh dist/*.js dist/*.css
+          find dist -name "*.js" -o -name "*.css" | xargs ls -lh
 
           # Fail if total dist size exceeds 2MB
           SIZE=$(du -sb dist/ | cut -f1)
@@ -143,8 +143,8 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: main
-          head: HEAD
+          base: ${{ github.event.pull_request.base.sha || github.event.before }}
+          head: ${{ github.event.pull_request.head.sha || github.sha }}
 
   deploy-preview:
     name: Deploy Preview
