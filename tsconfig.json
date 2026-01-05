@@ -50,7 +50,7 @@
     "useDefineForClassFields": true,
 
     // Type roots
-    "types": ["vite/client", "node"],
+    "types": ["node"],
     "typeRoots": ["./node_modules/@types", "./types"]
   },
 

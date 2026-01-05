@@ -138,7 +138,7 @@ export function createIcon(
     }
   }
 
-  return svgElement || wrapper;
+  return (svgElement || wrapper) as HTMLElement;
 }
 
 /**
