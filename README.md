@@ -8,6 +8,14 @@
 
 **Amphibious** is a modern CSS framework and component library, rebuilt from the ground up with modern tooling while preserving the elegant responsive design patterns that made the original [A.mphibio.us](http://a.mphibio.us) great.
 
+## 📁 Documentation
+
+- **[Planning Documents](./docs/planning/)** - Architecture plans and TODOs
+- **[Launch Materials](./docs/launch/)** - Social media and launch content
+- **[Archive](./docs/archive/)** - Historical audits and reports
+- **[Components](./docs/components/)** - Component documentation
+- **[QA Reports](./docs/qa-reports/)** - Quality assurance reports
+
 ## Features
 
 - **Modern Build System** - Vite 6 with TypeScript and Biome
