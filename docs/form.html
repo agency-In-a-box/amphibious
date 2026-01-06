@@ -8,1016 +8,6 @@
     <!-- CSS loaded via JavaScript module -->
   <link rel="stylesheet" href="./docs.css">
 
-</head>
-<body>
-  <!-- Site Navigation -->
-    <!-- Navigation Include -->
-  <!-- Site Navigation Include - Amphibious 2.0 -->
-<!-- Include this file in all pages to maintain consistent navigation -->
-<nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
-    <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="nav-toggle-icon" aria-hidden="true"></span>
-      <span class="sr-only">Toggle navigation</span>
-    </button>
-
-    <ul id="main-nav" class="horizontal">
-      <li>
-        <a href="/" class="site-logo">Amphibious</a>
-        <ul>
-          <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
-          <li><a href="/#how_its_made">What is it made of?</a></li>
-          <li><a href="/#gallery">Amphibious 2.0 Showcase</a></li>
-          <li><a href="/#evolution">The Evolution of Amphibious</a></li>
-          <li><a href="/#colophon">The Amphibious Colophon</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#ordering">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#media">Media Queries</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#basic">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#prepend">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#picker">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#modals">Modals</a></li>
-          <li><a href="/docs/features.html#tooltips">Tooltips</a></li>
-          <li><a href="/docs/features.html#accordion">Accordion</a></li>
-          <li><a href="/docs/features.html#carousel">Carousel</a></li>
-          <li><a href="/docs/features.html#cards">Cards</a></li>
-          <li><a href="/docs/features.html#alerts">Alerts</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/examples/">Examples</a>
-        <ul>
-          <li><a href="/examples/showcase.html">Component Showcase</a></li>
-          <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
-          <li><a href="/examples/shopping-cart.html">Shopping Cart</a></li>
-          <li><a href="/examples/checkout.html">Checkout Flow</a></li>
-          <li><a href="/examples/pears-patterns.html">Pea.rs Patterns</a></li>
-          <li><a href="/examples/navigation-showcase.html">Navigation Components</a></li>
-          <li><a href="/examples/atomic-design-demo.html">Atomic Design Demo</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
-<main id="main-content">
-
-
-<!-- IE6 warning removed - no longer supported -->
-
-
-<div id="main" role="main" class="container">
-	<div class="row">
-		<div id="maincontent" class="col-16 content">
-		<header>
-			<h1 >Form</h1>
-			<blockquote class="text-left">
-					<p>&ldquo;Form follows function &ndash; that has been misunderstood. Form and function should be one, joined in a sacred union.&rdquo;</p>
-					<cite class="text-right"><span class="author fn">Frank Lloyd Wright</span>, Architect, <span class="date">circa. 1906</span></cite>
-				</blockquote>
-		</header>
-
-
-		<section id="typography" class="row">
-			<div class="row">
-				<h3>Typography</h3>
-
-				<p class="intro">The typography of A.mphibio.us is designed to create a strong visual hierarchy based on the golden ratio with basic styles, with h6, h3, and h1 as the proportional steps. The primary font is Lucida Grande, but the font stack can be easily changed with just a couple adjustments. Regular paragraphs are set at the equilvalent of 16px base with 22px line height.</p>
-				<p>Margins and line heights are set relative to the base for the most adaptive/scalable user experience indepentant of what device you are using</p>
-			</div>
-			<div class="row">
-				<div class="col-8 headings">
-					<h1>Heading &lt;h1&gt;</h1>
-					<h2>Heading &lt;h2&gt;</h2>
-					<h3>Heading &lt;h3&gt;</h3>
-					<h4>Heading &lt;h4&gt;</h4>
-					<h5>Heading &lt;h5&gt;</h5>
-					<h6>Heading &lt;h6&gt;</h6>
-
-					<pre class="prettyprint linenums">
-&lt;h1&gt;Heading &amp;lt;h1&amp;gt;&lt;/h1&gt;
-&lt;h2&gt;Heading &amp;lt;h2&amp;gt;&lt;/h2&gt;
-&lt;h3&gt;Heading &amp;lt;h3&amp;gt;&lt;/h3&gt;
-&lt;h4&gt;Heading &amp;lt;h4&amp;gt;&lt;/h4&gt;
-&lt;h5&gt;Heading &amp;lt;h5&amp;gt;&lt;/h5&gt;
-&lt;h6&gt;Heading &amp;lt;h6&amp;gt;&lt;/h6&gt;
-</pre>
-
-					<h6 >Blockquote Example</h6>
-
-					<blockquote class="vcard mb">
-						<p>It strikes me as obvious now that &ldquo;responsive web&rdquo; should actually be called &ldquo;amphibious web&rdquo;. It works here, it works there.<br>
-					Where else would you like it to work?</p>
-					<cite class="text-right"><span class="author fn">Sean Stephens</span>, CEO, <span class="org">Treefrog Interactive Inc.</span></cite>
-					</blockquote>
-
-					<pre class="prettyprint linenums">
-&lt;blockquote class=&quot;vcard row mb&quot;&gt;
-	&lt;p&gt;It strikes me as obvious now that &amp;ldquo;responsive web&amp;rdquo; should actually be called &amp;ldquo;amphibious web&amp;rdquo;. It works here, it works there.&lt;br&gt;
-Where else would you like it to work?&lt;/p&gt;
-	&lt;cite class=&quot;r&quot;&gt;&lt;span class=&quot;author fn&quot;&gt;Sean Stephens&lt;/span&gt;, CEO, &lt;span class=&quot;org&quot;&gt;Treefrog Interactive Inc.&lt;/span&gt;&lt;/cite&gt;
-&lt;/blockquote class=&quot;
-</pre>
-
-					<h6>Microformats <a href="http://microformats.org/wiki/hcard">hCard</a> Example</h6>
-
-					<div class="vcard">
-						<h6 class="org"><a class="url" href="#">Treefrog Interactive Inc</a></h6>
-						<p class="n"><a class="url nickname" href="https://twitter.com/cliveMoore"><span class="given-name">Clive</span> <span>Moore</span></a></p>
-						<p class="adr">
-							<span class="street-address">My Favourite Place</span><br>
-							<span class="region">Whotown</span>, <span class="postal-code">R0F LMA</span>, <span class="country-name">Canada</span>
-						</p>
-						<p class="tel"><a href="tel:9058364442">(905) 836 4442</a></p>
-					</div>
-				<pre class="prettyprint linenums">
-&lt;div class=&quot;vcard row&quot;&gt;
-  &lt;h6 class=&quot;org&quot;&gt;&lt;a class=&quot;url&quot; href=&quot;#&quot;&gt;Treefrog Interactive Inc&lt;/a&gt;&lt;h6&gt;
-  &lt;p class=&quot;n&quot;&gt;&lt;a class=&quot;url nickname&quot; href=&quot;https://twitter.com/cliveMoore&quot;&gt;&lt;span class=&quot;given-name&quot;&gt;Clive&lt;/span&gt; &lt;span&gt;Moore&lt;/span&gt;&lt;/a&gt;&lt;p&gt;
-  &lt;p class=&quot;adr&quot;&gt;
-    &lt;span class=&quot;street-address&quot;&gt;My Favourite Place&lt;/span&gt;&lt;br&gt;
-    &lt;span class=&quot;region&quot;&gt;Whotown&lt;/span&gt;, &lt;span class=&quot;postal-code&quot;&gt;R0F LMA&lt;/span&gt;, &lt;span class=&quot;country-name&quot;&gt;Canada&lt;/span&gt;
-  &lt;/p&gt;
-  &lt;p class=&quot;tel&quot;&gt;&lt;a href=&quot;tel:9058364442&quot;&gt;(905) 836 4442&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-</pre>
-
-					<aside>
-						<div class="vcard">
-						 <address class="author"><span >Example address block pea.rs by </span>
-							<em class="fn"><a title="Stuff by Clive Moore" href="#">Clive Moore</a></em>
-						</address><span> on </span>
-							 <time datetime="2013-19-03" class="published updated">March 19<sup>th</sup>, 2013</time>
-						</div>
-				<pre class="prettyprint linenums">
-&lt;div class=&quot;vcard&quot;&gt;
-	&lt;address class=&quot;author&quot;&gt;
-	&lt;span class=&quot;&quot;&gt;Example address block pea.rs by &lt;/span&gt;
-		&lt;em class=&quot;fn&quot;&gt;&lt;a title=&quot;Stuff by Clive Moore&quot; href=&quot;#&quot;&gt;Clive Moore&lt;/a&gt;&lt;/em&gt;
-	&lt;/address&gt;&lt;span&gt; on &lt;/span&gt;
-	&lt;time datetime=&quot;2013-19-03&quot; class=&quot;published updated&quot;&gt;March 19&lt;sup&gt;th&lt;/sup&gt;, 2013&lt;/time&gt;
-&lt;/div&gt;
-</pre>
-					</aside>
-
-				</div>
-
-				<div class="col-8">
-
-					<h5 >Standard Lists</h5>
-
-					<div class="row">
-
-						<div class="col-4">
-							<ul>
-								<li>Unordered Lists
-								<ul>
-									<li>Including Some
-									<ul>
-										<li>Nesting Styles</li>
-									</ul></li>
-									<li>Including Some
-									<ul>
-										<li>Nesting Styles</li>
-										<li>Nesting Styles</li>
-									</ul></li>
-								</ul></li>
-							</ul>
-
-							<h6>Classes</h6>
-							<ul class="disc">
-								<li>Disc Bullets
-								<ul class="circle">
-									<li>Circle Bullets
-									<ul class="square">
-										<li>Square Bullets</li>
-									</ul></li>
-								</ul></li>
-							</ul>
-							<ul class="img">
-								<li>Image Bullets
-									<ul>
-										<li>Image Bullets</li>
-									</ul></li>
-							</ul>
-						</div>
-
-						<div class="col-4">
-							<ol>
-								<li>Ordered Lists
-								<ol>
-									<li>Including Some
-									<ol>
-										<li>Deeply Nesting
-											<ol>
-												<li>&lt;ol&gt; Styles</li>
-											</ol></li>
-									</ol></li>
-									<li>Including
-										<ol>
-											<li>Deeply Nesting</li>
-											<li>Deeply Nesting</li>
-											<li>Deeply Nesting</li>
-										</ol>
-								</ol></li>
-								<li>Default Bullets
-								<ol>
-									<li>Including Some
-									<ol>
-										<li>Deeply Nesting
-											<ol>
-												<li>&lt;ol&gt; Styles</li>
-											</ol></li>
-									</ol></li>
-								</ol></li>
-							</ol>
-
-							<h6>Classes</h6>
-							<ol class="upper_roman">
-								<li>Upper Roman
-								<ol class="roman">
-									<li>Roman
-									<ol class="upper_latin">
-										<li>Upper Latin
-											<ol class="latin">
-												<li>Latin</li>
-											</ol></li>
-									</ol></li>
-								</ol></li>
-							</ol>
-						</div>
-						</div>
-						<div class="row">
-							<pre class="prettyprint linenums">
-&lt;ul class=&quot;disc&quot;&gt;
-	&lt;li&gt;Disc Bullets
-	&lt;ul class=&quot;circle&quot;&gt;
-		&lt;li&gt;Circle Bullets
-		&lt;ul class=&quot;square&quot;&gt;
-			&lt;li&gt;Square Bullets&lt;/li&gt;
-		&lt;/ul&gt;&lt;/li&gt;
-	&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class=&quot;img&quot;&gt;
-	&lt;li&gt;Image Bullets
-		&lt;ul&gt;
-			&lt;li&gt;Image Bullets&lt;/li&gt;
-		&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-							</pre>
-							<pre class="prettyprint linenums">
-&lt;ol class=&quot;upper_roman&quot;&gt;
-	&lt;li&gt;Upper Roman
-	&lt;ol class=&quot;roman&quot;&gt;
-		&lt;li&gt;Roman
-		&lt;ol class=&quot;upper_latin&quot;&gt;
-			&lt;li&gt;Upper Latin
-				&lt;ol class=&quot;latin&quot;&gt;
-					&lt;li&gt;Latin&lt;/li&gt;
-				&lt;/ol&gt;&lt;/li&gt;
-		&lt;/ol&gt;&lt;/li&gt;
-	&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-							</pre>
-						</div>
-
-
-				<h5 class="mb rb">Definition Lists</h5>
-
-				<dl>
-					<dt>am·phib·i·ous <sub class="meta">noun <i>\am-ˈfi-bē-əs\</i></sub></dt>
-					<dd>: simply the most elegant css framework</dd>
-					<dd><b>a</b> : relating to or adapted for both desktop and mobile<br>
-					&lt;a.mphibio.us devices&gt;<br>
-					<b>b</b> : design executed by the coordinated action of HTML5, CSS3, and JavaScript organized for rapid development &lt;<abbr title="Rapid Development Tool Kit">RDK</abbr>&gt;;<br>
-					also : architected to optimize the inherent strenghts of &lt;casscading style sheets&gt;</dd>
-
-				</dl>
-				<pre class="prettyprint linenums">
-&lt;dl&gt;
-	&lt;dt&gt;am&middot;phib&middot;i&middot;ous &lt;sub class=&quot;meta&quot;&gt;noun &lt;i&gt;\am-&#712;fi-b&#275;-&#601;s\&lt;/i&gt;&lt;/sub&gt;&lt;/dt&gt;
-	&lt;dd&gt;: simply the most elegant css framework&lt;/dd&gt;
-	&lt;dd&gt;&lt;b&gt;a&lt;/b&gt; : relating to or adapted for both desktop and mobile&lt;br&gt;
-	&amp;lt;a.mphibio.us devices&amp;gt;&lt;br&gt;
-	&lt;b&gt;b&lt;/b&gt; : design executed by the coordinated action of HTML5, CSS3, and JavaScript organized for rapid development &amp;lt;&lt;abbr title=&quot;Rapid Development Tool Kit&quot;&gt;RDK&lt;/abbr&gt;&amp;gt;;&lt;br&gt;
-	also : architected to optimize the inherent strengths of &amp;lt;casscading style sheets&amp;gt;&lt;/dd&gt;
-
-&lt;/dl&gt;
-</pre>
-
-		</div>
-
-		</section>
-
-
-
-
-		<section id="forms">
-			<div class="row">
-				<h3>Buttons</h3>
-				<p>A.mphibio.us treats buttons as they are meant to be treated, giving them the right amount of weight and a powerful hover effect to make them irresistibly clickable. Calls to action have never been more apparent. Did I mention easy to use, just add a button or submit or even add the class <kbd>button</kbd> to a link</p>
-				<a class="button modal_opener" amp-target="amp_overlay">Click Me For Action</a>
-				<pre class="prettyprint linenums">
-&lt;a class=&quot;button modal_opener&quot; amp-target=&quot;amp_overlay&quot;&gt;Click Me For Action&lt;/a&gt;
-</pre>
-			</div>
-			<div class="row">
-				<h3>Forms</h3>
-				<p><del>Web developers</del> <strong>I</strong> often fear the form itself. They are usually a pain in the neck to code. But with A.mphibio.us' versatile naming convention, basic syntactic structure, and time-saving style attributes, forms are a cinch to program and implement.</p>
-
-			</div>
-			<div class="row">
-
-			<h4>Standard Fields</h4>
-				<div class="col-7">
-
-					<form>
-						<fieldset>
-							<label class="above" for="regularInput">Regular Input</label>
-							<input type="text" id="regularInput" placeholder="Sample Placeholder Text" />
-						</fieldset>
-
-						<fieldset>
-							<label class="above" for="regularInputError">Regular Input with error class</label>
-							<input type="text" id="regularInputError" class="error" placeholder="Sample of an error field" />
-						</fieldset>
-
-						<fieldset>
-							<label class="above" for="regularTextarea">Regular Textarea</label>
-							<textarea id="regularTextarea"></textarea>
-						</fieldset>
-
-						<fieldset class="radio">
-							<label for="notifications">Notifications</label>
-							<ul>
-								<li><label><input type="radio" name="notifications" /> Send me email</label></li>
-								<li><label><input type="radio" name="notifications" /> Don't send me email</label></li>
-								<li><label><input type="radio" name="notifications" /> Send me flowers</label></li>
-							</ul>
-						</fieldset>
-
-						<button type="submit">Submit Form</button>
-					</form>
-				</div>
-
-				<div class="col-9">
-<pre class="prettyprint linenums">
-&lt;form&gt;
-	&lt;fieldset&gt;
-		&lt;label class=&quot;above&quot; for=&quot;regularInput&quot;&gt;Regular Input&lt;/label&gt;
-		&lt;input type=&quot;text&quot; id=&quot;regularInput&quot; placeholder=&quot;Sample Placeholder Text&quot; /&gt;
-	&lt;/fieldset&gt;
-
-	&lt;fieldset&gt;
-		&lt;label class=&quot;above&quot; for=&quot;regularInputError&quot;&gt;Regular Input with error class&lt;/label&gt;
-		&lt;input type=&quot;text&quot; id=&quot;regularInputError&quot; class=&quot;error&quot; placeholder=&quot;Sample of an error field&quot; /&gt;
-	&lt;/fieldset&gt;
-
-	&lt;fieldset&gt;
-		&lt;label class=&quot;above&quot; for=&quot;regularTextarea&quot;&gt;Regular Textarea&lt;/label&gt;
-		&lt;textarea id=&quot;regularTextarea&quot;&gt;&lt;/textarea&gt;
-	&lt;/fieldset&gt;
-
-	&lt;fieldset class=&quot;radio&quot;&gt;
-		&lt;label for=&quot;notifications&quot;&gt;Notifications&lt;/label&gt;
-		&lt;ul&gt;
-			&lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; /&gt; Send me email&lt;/label&gt;&lt;/li&gt;
-			&lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; /&gt; Don't send me email&lt;/label&gt;&lt;/li&gt;
-			&lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; /&gt; Send me flowers&lt;/label&gt;&lt;/li&gt;
-		&lt;/ul&gt;
-	&lt;/fieldset&gt;
-
-	&lt;button type=&quot;submit&quot;&gt;Submit Form&lt;/button&gt;
-&lt;/form&gt;
-</pre>
-			</div>
-			<div class="row">
-
-				<div class="col-7">
-				<h4>Search Field</h4>
-					<form action="/" class="search">
-						<fieldset>
-							<input type="text" placeholder="Search">
-							<input type="submit"  class="icon-search" value="">
-						</fieldset>
-					</form>
-				</div>
-				<div class="col-9">
-<pre class="prettyprint linenums">
-&lt;form action=&quot;/&quot; class=&quot;search&quot;&gt;
-	&lt;fieldset&gt;
-		&lt;input type=&quot;text&quot; placeholder=&quot;Search&quot; /&gt;
-		&lt;input type=&quot;submit&quot; class=&quot;icon&quot; value=&quot;&amp;#128269;&quot; /&gt;
-	&lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
-			</div>
-			<div class="row">
-
-				<div class="col-7">
-				<h4>Advanced Search Field</h4>
-
-				  <div id="search_form" class="inline search">
-					<form class="search_form" action="/search-results">
-						<fieldset>
-							<input class="search_text" type="text" name="q" placeholder="Search">
-							<button type="reset" class="search_cancel search_toggle">
-								<span class="icon-cross-round"></span>
-							</button>
-							<button type="submit" class="search_submit">
-								<span class="icon-search"></span>
-							</button>
-						</fieldset>
-					</form>
-				</div>
-				
-				</div>
-				<div class="col-9">
-<pre class="prettyprint linenums">
-&lt;div id=&quot;search_form&quot; class=&quot;inline search&quot;&gt;
-	&lt;form class=&quot;search_form&quot; action=&quot;/search-results&quot;&gt;
-		&lt;fieldset&gt;
-			&lt;input class=&quot;search_text&quot; type=&quot;text&quot; name=&quot;q&quot; placeholder=&quot;Search&quot;&gt;
-			&lt;button type=&quot;reset&quot; class=&quot;search_cancel search_toggle&quot;&gt;
-				&lt;span class=&quot;icon-cross-round&quot;&gt;&lt;/span&gt;
-			&lt;/button&gt;
-			&lt;button type=&quot;submit&quot; class=&quot;search_submit&quot;&gt;
-				&lt;span class=&quot;icon-search&quot;&gt;&lt;/span&gt;
-			&lt;/button&gt;
-		&lt;/fieldset&gt;
-	&lt;/form&gt;
-&lt;/div&gt;
-</pre>
-			</div>
-
-
-
-			</section>
-
-			<section id="multi_forms">
-				<h4>Multi Form</h4>
-
-				<p>Simply by adding the class(es) <kbd>multi</kbd> and <kbd>beside</kbd> to the form itself everything is new again</p>
-
-				<form class="multi beside">
-					<fieldset>
-						<label for="name">Name</label>
-						<input type="text" id="name" class="form-text" />
-						<p class="form-help">This is help text under the form field.</p>
-					</fieldset>
-
-					<fieldset>
-						<label for="email">Email</label>
-						<input type="email" id="email" class="form-text" />
-					</fieldset>
-
-					<fieldset>
-						<label for="gender">Gender</label>
-						<div class="styled_select">
-						<select id="gender">
-							<option>Male</option>
-							<option>Female</option>
-							<option>Cylon</option>
-						</select>
-						</div>
-					</fieldset>
-
-					<div class="dialog">
-						<p>Wrap the <kbd>select</kbd> element in a <kbd>div</kbd> with the class <kbd>styled_select</kbd> for more control over presentation.</p>
-						<pre><code>&lt;div class=&quot;styled_select&quot;&gt;
-  &lt;select id=&quot;gender&quot;&gt;
-    &lt;option&gt;Male&lt;/option&gt;
-    &lt;option&gt;Female&lt;/option&gt;
-    &lt;option&gt;Cylon&lt;/option&gt;
-  &lt;/select&gt;
-&lt;/div&gt;</code></pre>
-
-					<fieldset id="custom_checkbox_radios" class="radio">
-						<label for="notifications">Notifications</label>
-						<ul>
-							<li><label><input type="radio" name="notifications" class="custom"><span></span>Send me email</label></li>
-							<li><label><input type="radio" name="notifications" class="custom"><span></span>Don't send me email</label></li>
-							<li><label><input type="radio" name="notifications" class="custom"><span></span>Send me flowers</label></li>
-						</ul>
-					</fieldset>
-
-					<div class="dialog">
-						<p>Custom radio and checkboxes are also a snap by adding the class <kbd>custom</kbd> to the radio or checkbox element and including an empty span right after the input.</p>
-						<pre><code>&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Send me email&lt;/label&gt;</code></pre>
-
-					<fieldset>
-						<label for="url">URL</label>
-						<input type="url" id="url" class="form-text" placeholder="http://yourdomain.com" />
-					</fieldset>
-
-					<fieldset>
-						<label for="bio">Bio</label>
-						<textarea id="bio"></textarea>
-					</fieldset>
-
-					<fieldset class="check">
-						<label><input type="checkbox" class="custom"><span></span>I accept the terms of service.</label>
-					</fieldset>
-
-					<fieldset class="form-actions">
-						<input type="submit" value="Submit" />
-					</fieldset>
-				</form>
-				<pre class="prettyprint linenums">
-&lt;form class=&quot;multi beside&quot;&gt;
-  &lt;fieldset&gt;
-    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
-    &lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-text&quot; /&gt;
-    &lt;p class=&quot;form-help&quot;&gt;This is help text under the form field.&lt;/p&gt;
-  &lt;/fieldset&gt;
-
-  &lt;fieldset&gt;
-    &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
-    &lt;input type=&quot;email&quot; id=&quot;email&quot; class=&quot;form-text&quot; /&gt;
-  &lt;/fieldset&gt;
-
-  &lt;fieldset&gt;
-    &lt;label for=&quot;gender&quot;&gt;Gender&lt;/label&gt;
-    &lt;div class=&quot;styled_select&quot;&gt;
-    &lt;select id=&quot;gender&quot;&gt;
-      &lt;option&gt;Male&lt;/option&gt;
-      &lt;option&gt;Female&lt;/option&gt;
-      &lt;option&gt;Cylon&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;/div&gt;
-  &lt;/fieldset&gt;
-
-  &lt;fieldset class=&quot;radio&quot;&gt;
-    &lt;label for=&quot;notifications&quot;&gt;Notifications&lt;/label&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Send me email&lt;/label&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Don't send me email&lt;/label&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Send me flowers&lt;/label&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/fieldset&gt;
-
-  &lt;fieldset&gt;
-    &lt;label for=&quot;url&quot;&gt;URL&lt;/label&gt;
-    &lt;input type=&quot;url&quot; id=&quot;url&quot; class=&quot;form-text&quot; placeholder=&quot;http://yourdomain.com&quot; /&gt;
-  &lt;/fieldset&gt;
-
-  &lt;fieldset&gt;
-    &lt;label for=&quot;bio&quot;&gt;Bio&lt;/label&gt;
-    &lt;textarea id=&quot;bio&quot;&gt;&lt;/textarea&gt;
-  &lt;/fieldset&gt;
-
-  &lt;fieldset class=&quot;check&quot;&gt;
-    &lt;label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;I accept the terms of service.&lt;/label&gt;
-  &lt;/fieldset&gt;
-
-  &lt;fieldset class=&quot;form-actions&quot;&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
-
-
-		</section>
-
-		<section>
-			<div id="append_prepend_icons" class="col-16">
-				<h3>Append and Prepend Icons</h3>
-				<p>Like fancy form layouts we do to, that's we've added the prepend and append icon classes to form elements.</p>
-
-				<div class="row">
-					<div class="col-8">
-						<form>
-							<fieldset>
-								<label for="user">Username</label>
-								<input type="text" id="user" class="prepend_icon">
-								<label for="user" class="prepend_to"><span class="icon-user"></span></label>
-							</fieldset>
-							<fieldset>
-								<label for="password">Password</label>
-								<input type="password" id="password" class="prepend_icon">
-								<label for="password" class="prepend_to"><span class="icon-lock"></span></label>
-							</fieldset>
-						</form>
-
-					</div>
-					<div class="col-8">
-						<form>
-							<fieldset>
-								<label for="user2">Username</label>
-								<input type="text" id="user2" class="append_icon">
-								<label for="user2" class="append_to"><span class="icon-user"></span></label>
-							</fieldset>
-							<fieldset>
-								<label for="password2">Password</label>
-								<input type="password" id="password2" class="append_icon">
-								<label for="password2" class="append_to"><span class="icon-lock"></span></label>
-							</fieldset>
-						</form>
-
-					</div>
-				</div>
-				<pre class="prettyprint linenums">
-&lt;div class=&quot;col-8&quot;&gt;
-  &lt;form&gt;
-    &lt;fieldset&gt;
-      &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;user&quot; class=&quot;prepend_icon&quot;&gt;
-      &lt;label for=&quot;user&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-user&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-    &lt;/fieldset&gt;
-    &lt;fieldset&gt;
-      &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
-      &lt;input type=&quot;password&quot; id=&quot;password&quot; class=&quot;prepend_icon&quot;&gt;
-      &lt;label for=&quot;password&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-lock&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-    &lt;/fieldset&gt;
-  &lt;/form&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-8&quot;&gt;
-  &lt;form&gt;
-    &lt;fieldset&gt;
-      &lt;label for=&quot;user2&quot;&gt;Username&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;user2&quot; class=&quot;append_icon&quot;&gt;
-      &lt;label for=&quot;user2&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-user&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-    &lt;/fieldset&gt;
-    &lt;fieldset&gt;
-      &lt;label for=&quot;password2&quot;&gt;Password&lt;/label&gt;
-      &lt;input type=&quot;password&quot; id=&quot;password2&quot; class=&quot;append_icon&quot;&gt;
-      &lt;label for=&quot;password2&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-lock&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-    &lt;/fieldset&gt;
-  &lt;/form&gt;
-
-&lt;/div&gt;
-</pre>
-
-				<div class="row mt">
-					<form class="multi beside">
-						<fieldset>
-							<label for="user">Username</label>
-							<input type="text" id="user" class="prepend_icon">
-							<label for="user" class="prepend_to"><span class="icon-user"></span></label>
-						</fieldset>
-						<fieldset>
-							<label for="password">Password</label>
-							<input type="password" id="password" class="prepend_icon">
-							<label for="password" class="prepend_to"><span class="icon-lock"></span></label>
-						</fieldset>
-					</form>
-
-				</div>
-				<pre class="prettyprint linenums">
-&lt;form class=&quot;multi beside&quot;&gt;
-  &lt;fieldset&gt;
-    &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
-    &lt;input type=&quot;text&quot; id=&quot;user&quot; class=&quot;prepend_icon&quot;&gt;
-    &lt;label for=&quot;user&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-user&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-  &lt;/fieldset&gt;
-  &lt;fieldset&gt;
-    &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
-    &lt;input type=&quot;password&quot; id=&quot;password&quot; class=&quot;prepend_icon&quot;&gt;
-    &lt;label for=&quot;password&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-lock&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
-
-				<div class="row mt">
-					<form class="multi beside">
-						<fieldset>
-							<label for="user">Username</label>
-							<input type="text" id="user" class="append_icon">
-							<label for="user" class="append_to"><span class="icon-user"></span></label>
-						</fieldset>
-						<fieldset>
-							<label for="password">Password</label>
-							<input type="password" id="password" class="append_icon">
-							<label for="password" class="append_to"><span class="icon-lock"></span></label>
-						</fieldset>
-					</form>
-
-				</div>
-				<pre class="prettyprint linenums">
-&lt;form class=&quot;multi beside&quot;&gt;
- &lt;fieldset&gt;
-    &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
-    &lt;input type=&quot;text&quot; id=&quot;user&quot; class=&quot;append_icon&quot;&gt;
-    &lt;label for=&quot;user&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-user&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-  &lt;/fieldset&gt;
-  &lt;fieldset&gt;
-    &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
-    &lt;input type=&quot;password&quot; id=&quot;password&quot; class=&quot;append_icon&quot;&gt;
-    &lt;label for=&quot;password&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-lock&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
-
-				<form id="datepicker_fields" class="multi beside">
-					<fieldset class="date_picker_set">
-						<fieldset class="form_group">
-							<label for="startdateB">From</label>
-							<input type="text" id="startdateB" class="datepicker prepend_icon">
-							<label for="startdateB" class="prepend_to"><span class="icon-calendar"></span></label>
-						</fieldset>
-						<fieldset class="form_group">
-							<label for="enddateB">To</label>
-							<input type="text" id="enddateB" class="datepicker prepend_icon">
-							<label for="enddateB" class="prepend_to"><span class="icon-calendar"></span></label>
-						</fieldset>
-					</fieldset>
-				</form>
-
-				<pre class="prettyprint linenums">
-&lt;form class=&quot;multi beside&quot;&gt;
-  &lt;fieldset class=&quot;date_picker_set&quot;&gt;
-    &lt;fieldset class=&quot;form_group&quot;&gt;
-      &lt;label for=&quot;startdateB&quot;&gt;From&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;startdateB&quot; class=&quot;datepicker prepend_icon&quot;&gt;
-      &lt;label for=&quot;startdateB&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-    &lt;/fieldset&gt;
-    &lt;fieldset class=&quot;form_group&quot;&gt;
-      &lt;label for=&quot;enddateB&quot;&gt;To&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;enddateB&quot; class=&quot;datepicker prepend_icon&quot;&gt;
-      &lt;label for=&quot;enddateB&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-    &lt;/fieldset&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
-				<form class="multi beside">
-					<fieldset class="date_picker_set">
-						<fieldset class="form_group">
-							<label for="startdateB">From</label>
-							<input type="text" id="startdateB" class="datepicker append_icon">
-							<label for="startdateB" class="append_to"><span class="icon-calendar"></span></label>
-						</fieldset>
-						<fieldset class="form_group">
-							<label for="enddateB">To</label>
-							<input type="text" id="enddateB" class="datepicker append_icon">
-							<label for="enddateB" class="append_to"><span class="icon-calendar"></span></label>
-						</fieldset>
-					</fieldset>
-				</form>
-			</div>
-
-				<pre class="prettyprint linenums">
-	&lt;form class=&quot;multi beside&quot;&gt;
-  &lt;fieldset class=&quot;date_picker_set&quot;&gt;
-    &lt;fieldset class=&quot;form_group&quot;&gt;
-      &lt;label for=&quot;startdateB&quot;&gt;From&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;startdateB&quot; class=&quot;datepicker append_icon&quot;&gt;
-      &lt;label for=&quot;startdateB&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-    &lt;/fieldset&gt;
-    &lt;fieldset class=&quot;form_group&quot;&gt;
-      &lt;label for=&quot;enddateB&quot;&gt;To&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;enddateB&quot; class=&quot;datepicker append_icon&quot;&gt;
-      &lt;label for=&quot;enddateB&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
-    &lt;/fieldset&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
-		</section>
-
-		<section id="tables">
-			<h3>Table Styles</h3>
-			<p>We hate tables for layout but they do come in handy when building and application. A.mphibio.us has some default styles to help get you started but they do require you to add the class <kbd>amp</kbd> to the table. We do this on purpose to avoid conflicting table styles with third party plugins like datepickers and calendars you may wish to use in your next project.</p>
-
-			<table class="amp">
-				<caption>This table has the class "amp" so inehrits certain properties from the base.</caption>
-				<thead>
-					<tr>
-						<th>TH 1</th>
-						<th>TH Two</th>
-						<th>TH Three</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>TF 1</th>
-						<th>TF 2</th>
-						<th>TF 3</th>
-					</tr>
-				</tfoot>
-			</table>
-
-			<table class="amp stripped">
-				<caption>This table has the classes <kbd>amp</kbd> and <kbd>stripped</kbd> so inehrits both base and stripped styles.</caption>
-				<thead>
-					<tr>
-						<th>TH 1</th>
-						<th>TH Two</th>
-						<th>TH Three</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-					<tr>
-						<td>Col 1</td>
-						<td>Col 2</td>
-						<td>Col 3</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>TF 1</th>
-						<th>TF 2</th>
-						<th>TF 3</th>
-					</tr>
-				</tfoot>
-			</table>
-
-		</section>
-
-		</div><!-- content -->
-	</div><!-- row -->
-</div><!-- container -->
-
-
-</main>
-  <!-- Footer Include -->
-  <div id="footer-include"></div>
-
-<div id="mainnav" class="f t l r">
-<!--// WTF?
-
-.f.t.l.r == .fixed .top .left .right
-
-// .left (.l) or .right (.r) no longer floats left/right respectively
-when used in combination with the fixed or the absolute class
-they inherit different properties the result is
-
-postion:fixed;top:0;left:0;right:0;
-
-//-->
-	<div class="container">
-		<nav>
-			<ul id="horizontal" class="horizontal branded">
-				<li><a href="/index.html#intro" class="hpl">a.mphibio.us</a>
-					<ul>
-						<li><a href="/index.html#what_is_it">What is A.mphibio.us</a></li>
-						<li><a href="/index.html#how_its_made">What is it made of?</a></li>
-<!--						<li><a href="/index.html#slideshows">Flexslider Slideshows</a></li> -->
- 							<li><a href="/index.html#gallery">A.mphibio.us Showcase</a></li>
-						<li><a href="/index.html#evolution">The E.volution of A.mphibio.us</a></li>
-						<li><a href="/index.html#colophon">The A.mphibio.us Colophon</a></li>
-					</ul>
-				</li>
-				<li><a href="./foundation.html">Foundation</a>
-					<ul>
-						<li><a href="./foundation.html#core">Core</a></li>
-						<li><a href="./foundation.html#grid">Symantic Grid</a></li>
-						<li><a href="./foundation.html#responsive_col">Responsive Columns</a></li>
-						<li><a href="./foundation.html#fluid_col">Fluid Columns</a></li>
-<!--//					<li><a href="./foundation.html#padded_col">Padded Columns</a></li> //-->
-						<li><a href="./foundation.html#golden_section">Golden ratio grids</a></li>
-						<li><a href="./foundation.html#push_pull">Source Ordering</a></li>
-						<li><a href="./foundation.html#mediaQueries">Media Queries</a></li>
-					</ul>
-				</li>
-				<li class="active"><a href="./form.html">Form</a>
-					<ul>
-
-						<li><a href="./form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
-						<li><a href="./form.html#forms">Basic Forms</a></li>
-						<li><a href="./form.html#multi_forms">Mutli Beside Forms</a></li>
-						<li><a href="./form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-						<li><a href="./form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-						<li><a href="./form.html#datepicker_fields">jQuery Datepicker Fields</a></li>
-						<li><a href="./form.html#tables">Tables <sub>not for layout</sub></a></li>
-					</ul>
-				</li>
-				<li><a href="./function.html">Function</a>
-					<ul>
-
-						<li><a href="./function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-						<li><a href="./function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-						<li><a href="./function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-						<li><a href="./function.html#breadcrumbs">Breadcrumbs</a></li>
-						<li><a href="./function.html#tabs">Tabs</a></li>
-						<li><a href="./function.html#pagination">Pagination nav</a></li>
-					</ul>
-				</li>
-				<li><a href="./features.html">Features</a>
-					<ul>
-						<li><a href="./features.html#slideshows">Responsive Slide Shows</a></li>
-						<li><a href="./features.html#helpers">Layout Helpers <sub>& shorthand classes</sub></a></li>
-						<li><a href="./features.html#pears">Content Pea.rs</a></li>
-						<li><a href="./features.html#icons">Webfont Icons <sub>by entypo</sub></a></li>
-					</ul>
-				</li>
-				<li><a href="javascript:;" class="modal_opener" amp-target="amp_overlay">Feedback</a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
-
-<button id="nav_toggle" type="button"><span class="icon-carret-left"></span></button>
-
-<div id="amp_overlay" class="modal_overlay">
-	<div class="modal mt">
-		<section>
-			<div class="row">
-				<span class="icon-cross-round large right rmr modal_kill" amp-target="amp_overlay"></span>
-			</div>
-			<div id="disqus_thread"></div>
-			<script type="text/javascript">
-			    /* * * CONFIGURATION VARIABLES * * */
-			    var disqus_shortname = 'amphibious';
-
-			    /* * * DON'T EDIT BELOW THIS LINE * * */
-			    (function() {
-			        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			    })();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-		</section>
-	</div>
-</div>
-
-<a href="http://github.com/Treefrog/A.mphibio.us">
-  <img id="forkme" src="https://placehold.co/149x149/ef4444/FFF?text=GitHub" alt="Fork me on GitHub" loading="lazy">
-</a>
-
-<a id="to_top" class="icon reset" href="#maincontent"><span class=" icon-arrow-up7"></span></a>
-
 <!-- Form Page Layout Improvements -->
 <style>
 /* ===========================================================================
@@ -1370,7 +360,1113 @@ aside .vcard address {
     padding: 1rem;
   }
 }
+
+/* Apple-esque Search Field Styling */
+.search-form {
+  position: relative;
+  max-width: 100%;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f5f5f7;
+  border-radius: 10px;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.search-input-wrapper:focus-within {
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 125, 250, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #86868b;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  color: #1d1d1f;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #86868b;
+}
+
+.search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2386868b'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E") center/contain no-repeat;
+  cursor: pointer;
+  margin-right: 4px;
+}
 </style>
+
+</head>
+<body>
+  <!-- Site Navigation -->
+    <!-- Navigation Include -->
+  <!-- Site Navigation Include - Amphibious 2.0 -->
+<!-- Include this file in all pages to maintain consistent navigation -->
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="container">
+    <button type="button" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+
+    <ul id="main-nav" class="horizontal">
+      <li>
+        <a href="/" class="site-logo">Amphibious</a>
+        <ul>
+          <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
+          <li><a href="/#how_its_made">What is it made of?</a></li>
+          <li><a href="/#gallery">Amphibious 2.0 Showcase</a></li>
+          <li><a href="/#evolution">The Evolution of Amphibious</a></li>
+          <li><a href="/#colophon">The Amphibious Colophon</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/docs/foundation.html">Foundation</a>
+        <ul>
+          <li><a href="/docs/foundation.html#core">Core</a></li>
+          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
+          <li><a href="/docs/foundation.html#responsive">Responsive Columns</a></li>
+          <li><a href="/docs/foundation.html#fluid">Fluid Columns</a></li>
+          <li><a href="/docs/foundation.html#golden">Golden ratio grids</a></li>
+          <li><a href="/docs/foundation.html#ordering">Source Ordering</a></li>
+          <li><a href="/docs/foundation.html#media">Media Queries</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/docs/form.html">Form</a>
+        <ul>
+          <li><a href="/docs/form.html#typography">Typography</a></li>
+          <li><a href="/docs/form.html#basic">Basic Forms</a></li>
+          <li><a href="/docs/form.html#multi">Multi Beside Forms</a></li>
+          <li><a href="/docs/form.html#custom">Custom Checkboxes and Radios</a></li>
+          <li><a href="/docs/form.html#prepend">Prepend and Append Icons</a></li>
+          <li><a href="/docs/form.html#picker">Date Picker Fields</a></li>
+          <li><a href="/docs/form.html#tables">Tables</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/docs/function.html">Function</a>
+        <ul>
+          <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
+          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
+          <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
+          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
+          <li><a href="/docs/function.html#tabs">Tabs</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/docs/features.html">Features</a>
+        <ul>
+          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
+          <li><a href="/docs/features.html#modals">Modals</a></li>
+          <li><a href="/docs/features.html#tooltips">Tooltips</a></li>
+          <li><a href="/docs/features.html#accordion">Accordion</a></li>
+          <li><a href="/docs/features.html#carousel">Carousel</a></li>
+          <li><a href="/docs/features.html#cards">Cards</a></li>
+          <li><a href="/docs/features.html#alerts">Alerts</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/examples/">Examples</a>
+        <ul>
+          <li><a href="/examples/showcase.html">Component Showcase</a></li>
+          <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
+          <li><a href="/examples/shopping-cart.html">Shopping Cart</a></li>
+          <li><a href="/examples/checkout.html">Checkout Flow</a></li>
+          <li><a href="/examples/pears-patterns.html">Pea.rs Patterns</a></li>
+          <li><a href="/examples/navigation-showcase.html">Navigation Components</a></li>
+          <li><a href="/examples/atomic-design-demo.html">Atomic Design Demo</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<main id="main-content" aria-label="Form documentation content">
+
+
+<!-- IE6 warning removed - no longer supported -->
+
+
+<div id="main" class="container">
+	<div class="row">
+		<div id="maincontent" class="col-16 content">
+		<header>
+			<h1 >Form</h1>
+			<blockquote class="text-left">
+					<p>&ldquo;Form follows function &ndash; that has been misunderstood. Form and function should be one, joined in a sacred union.&rdquo;</p>
+					<cite class="text-right"><span class="author fn">Frank Lloyd Wright</span>, Architect, <span class="date">circa. 1906</span></cite>
+				</blockquote>
+		</header>
+
+
+		<section id="typography" class="row">
+			<div class="row">
+				<h3>Typography</h3>
+
+				<p class="intro">The typography of A.mphibio.us is designed to create a strong visual hierarchy based on the golden ratio with basic styles, with h6, h3, and h1 as the proportional steps. The primary font is Lucida Grande, but the font stack can be easily changed with just a couple adjustments. Regular paragraphs are set at the equilvalent of 16px base with 22px line height.</p>
+				<p>Margins and line heights are set relative to the base for the most adaptive/scalable user experience indepentant of what device you are using</p>
+			</div>
+			<div class="row">
+				<div class="col-8 headings">
+					<h1>Heading &lt;h1&gt;</h1>
+					<h2>Heading &lt;h2&gt;</h2>
+					<h3>Heading &lt;h3&gt;</h3>
+					<h4>Heading &lt;h4&gt;</h4>
+					<h5>Heading &lt;h5&gt;</h5>
+					<h6>Heading &lt;h6&gt;</h6>
+
+					<pre class="prettyprint linenums">
+&lt;h1&gt;Heading &amp;lt;h1&amp;gt;&lt;/h1&gt;
+&lt;h2&gt;Heading &amp;lt;h2&amp;gt;&lt;/h2&gt;
+&lt;h3&gt;Heading &amp;lt;h3&amp;gt;&lt;/h3&gt;
+&lt;h4&gt;Heading &amp;lt;h4&amp;gt;&lt;/h4&gt;
+&lt;h5&gt;Heading &amp;lt;h5&amp;gt;&lt;/h5&gt;
+&lt;h6&gt;Heading &amp;lt;h6&amp;gt;&lt;/h6&gt;
+</pre>
+
+					<h6 >Blockquote Example</h6>
+
+					<blockquote class="vcard mb">
+						<p>It strikes me as obvious now that &ldquo;responsive web&rdquo; should actually be called &ldquo;amphibious web&rdquo;. It works here, it works there.<br>
+					Where else would you like it to work?</p>
+					<cite class="text-right"><span class="author fn">Sean Stephens</span>, CEO, <span class="org">Treefrog Interactive Inc.</span></cite>
+					</blockquote>
+
+					<pre class="prettyprint linenums">
+&lt;blockquote class=&quot;vcard row mb&quot;&gt;
+	&lt;p&gt;It strikes me as obvious now that &amp;ldquo;responsive web&amp;rdquo; should actually be called &amp;ldquo;amphibious web&amp;rdquo;. It works here, it works there.&lt;br&gt;
+Where else would you like it to work?&lt;/p&gt;
+	&lt;cite class=&quot;r&quot;&gt;&lt;span class=&quot;author fn&quot;&gt;Sean Stephens&lt;/span&gt;, CEO, &lt;span class=&quot;org&quot;&gt;Treefrog Interactive Inc.&lt;/span&gt;&lt;/cite&gt;
+&lt;/blockquote class=&quot;
+</pre>
+
+					<h6>Microformats <a href="http://microformats.org/wiki/hcard">hCard</a> Example</h6>
+
+					<div class="vcard">
+						<h6 class="org"><a class="url" href="#">Treefrog Interactive Inc</a></h6>
+						<p class="n"><a class="url nickname" href="https://twitter.com/cliveMoore"><span class="given-name">Clive</span> <span>Moore</span></a></p>
+						<p class="adr">
+							<span class="street-address">My Favourite Place</span><br>
+							<span class="region">Whotown</span>, <span class="postal-code">R0F LMA</span>, <span class="country-name">Canada</span>
+						</p>
+						<p class="tel"><a href="tel:9058364442">(905)&nbsp;836&nbsp;4442</a></p>
+					</div>
+				<pre class="prettyprint linenums">
+&lt;div class=&quot;vcard row&quot;&gt;
+  &lt;h6 class=&quot;org&quot;&gt;&lt;a class=&quot;url&quot; href=&quot;#&quot;&gt;Treefrog Interactive Inc&lt;/a&gt;&lt;h6&gt;
+  &lt;p class=&quot;n&quot;&gt;&lt;a class=&quot;url nickname&quot; href=&quot;https://twitter.com/cliveMoore&quot;&gt;&lt;span class=&quot;given-name&quot;&gt;Clive&lt;/span&gt; &lt;span&gt;Moore&lt;/span&gt;&lt;/a&gt;&lt;p&gt;
+  &lt;p class=&quot;adr&quot;&gt;
+    &lt;span class=&quot;street-address&quot;&gt;My Favourite Place&lt;/span&gt;&lt;br&gt;
+    &lt;span class=&quot;region&quot;&gt;Whotown&lt;/span&gt;, &lt;span class=&quot;postal-code&quot;&gt;R0F LMA&lt;/span&gt;, &lt;span class=&quot;country-name&quot;&gt;Canada&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p class=&quot;tel&quot;&gt;&lt;a href=&quot;tel:9058364442&quot;&gt;(905) 836 4442&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+					<aside>
+						<div class="vcard">
+						 <address class="author"><span >Example address block pea.rs by </span>
+							<em class="fn"><a title="Stuff by Clive Moore" href="#">Clive Moore</a></em>
+						</address><span> on </span>
+							 <time datetime="2013-19-03" class="published updated">March 19<sup>th</sup>, 2013</time>
+						</div>
+				<pre class="prettyprint linenums">
+&lt;div class=&quot;vcard&quot;&gt;
+	&lt;address class=&quot;author&quot;&gt;
+	&lt;span class=&quot;&quot;&gt;Example address block pea.rs by &lt;/span&gt;
+		&lt;em class=&quot;fn&quot;&gt;&lt;a title=&quot;Stuff by Clive Moore&quot; href=&quot;#&quot;&gt;Clive Moore&lt;/a&gt;&lt;/em&gt;
+	&lt;/address&gt;&lt;span&gt; on &lt;/span&gt;
+	&lt;time datetime=&quot;2013-19-03&quot; class=&quot;published updated&quot;&gt;March 19&lt;sup&gt;th&lt;/sup&gt;, 2013&lt;/time&gt;
+&lt;/div&gt;
+</pre>
+					</aside>
+
+				</div>
+
+				<div class="col-8">
+
+					<h5 >Standard Lists</h5>
+
+					<div class="row">
+
+						<div class="col-4">
+							<ul>
+								<li>Unordered Lists
+								<ul>
+									<li>Including Some
+									<ul>
+										<li>Nesting Styles</li>
+									</ul></li>
+									<li>Including Some
+									<ul>
+										<li>Nesting Styles</li>
+										<li>Nesting Styles</li>
+									</ul></li>
+								</ul></li>
+							</ul>
+
+							<h6>Classes</h6>
+							<ul class="disc">
+								<li>Disc Bullets
+								<ul class="circle">
+									<li>Circle Bullets
+									<ul class="square">
+										<li>Square Bullets</li>
+									</ul></li>
+								</ul></li>
+							</ul>
+							<ul class="img">
+								<li>Image Bullets
+									<ul>
+										<li>Image Bullets</li>
+									</ul></li>
+							</ul>
+						</div>
+
+						<div class="col-4">
+							<ol>
+								<li>Ordered Lists
+								<ol>
+									<li>Including Some
+									<ol>
+										<li>Deeply Nesting
+											<ol>
+												<li>&lt;ol&gt; Styles</li>
+											</ol></li>
+									</ol></li>
+									<li>Including
+										<ol>
+											<li>Deeply Nesting</li>
+											<li>Deeply Nesting</li>
+											<li>Deeply Nesting</li>
+										</ol>
+								</li>
+								</ol></li>
+								<li>Default Bullets
+								<ol>
+									<li>Including Some
+									<ol>
+										<li>Deeply Nesting
+											<ol>
+												<li>&lt;ol&gt; Styles</li>
+											</ol></li>
+									</ol></li>
+								</ol></li>
+							</ol>
+
+							<h6>Classes</h6>
+							<ol class="upper_roman">
+								<li>Upper Roman
+								<ol class="roman">
+									<li>Roman
+									<ol class="upper_latin">
+										<li>Upper Latin
+											<ol class="latin">
+												<li>Latin</li>
+											</ol></li>
+									</ol></li>
+								</ol></li>
+							</ol>
+						</div>
+						</div>
+						<div class="row">
+							<pre class="prettyprint linenums">
+&lt;ul class=&quot;disc&quot;&gt;
+	&lt;li&gt;Disc Bullets
+	&lt;ul class=&quot;circle&quot;&gt;
+		&lt;li&gt;Circle Bullets
+		&lt;ul class=&quot;square&quot;&gt;
+			&lt;li&gt;Square Bullets&lt;/li&gt;
+		&lt;/ul&gt;&lt;/li&gt;
+	&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class=&quot;img&quot;&gt;
+	&lt;li&gt;Image Bullets
+		&lt;ul&gt;
+			&lt;li&gt;Image Bullets&lt;/li&gt;
+		&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+							</pre>
+							<pre class="prettyprint linenums">
+&lt;ol class=&quot;upper_roman&quot;&gt;
+	&lt;li&gt;Upper Roman
+	&lt;ol class=&quot;roman&quot;&gt;
+		&lt;li&gt;Roman
+		&lt;ol class=&quot;upper_latin&quot;&gt;
+			&lt;li&gt;Upper Latin
+				&lt;ol class=&quot;latin&quot;&gt;
+					&lt;li&gt;Latin&lt;/li&gt;
+				&lt;/ol&gt;&lt;/li&gt;
+		&lt;/ol&gt;&lt;/li&gt;
+	&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+							</pre>
+						</div>
+
+
+				<h5 class="mb rb">Definition Lists</h5>
+
+				<dl>
+					<dt>am·phib·i·ous <sub class="meta">noun <i>\am-ˈfi-bē-əs\</i></sub></dt>
+					<dd>: simply the most elegant css framework</dd>
+					<dd><b>a</b> : relating to or adapted for both desktop and mobile<br>
+					&lt;a.mphibio.us devices&gt;<br>
+					<b>b</b> : design executed by the coordinated action of HTML5, CSS3, and JavaScript organized for rapid development &lt;<abbr title="Rapid Development Tool Kit">RDK</abbr>&gt;;<br>
+					also : architected to optimize the inherent strenghts of &lt;casscading style sheets&gt;</dd>
+
+				</dl>
+				<pre class="prettyprint linenums">
+&lt;dl&gt;
+	&lt;dt&gt;am&middot;phib&middot;i&middot;ous &lt;sub class=&quot;meta&quot;&gt;noun &lt;i&gt;\am-&#712;fi-b&#275;-&#601;s\&lt;/i&gt;&lt;/sub&gt;&lt;/dt&gt;
+	&lt;dd&gt;: simply the most elegant css framework&lt;/dd&gt;
+	&lt;dd&gt;&lt;b&gt;a&lt;/b&gt; : relating to or adapted for both desktop and mobile&lt;br&gt;
+	&amp;lt;a.mphibio.us devices&amp;gt;&lt;br&gt;
+	&lt;b&gt;b&lt;/b&gt; : design executed by the coordinated action of HTML5, CSS3, and JavaScript organized for rapid development &amp;lt;&lt;abbr title=&quot;Rapid Development Tool Kit&quot;&gt;RDK&lt;/abbr&gt;&amp;gt;;&lt;br&gt;
+	also : architected to optimize the inherent strengths of &amp;lt;casscading style sheets&amp;gt;&lt;/dd&gt;
+
+&lt;/dl&gt;
+</pre>
+
+		</div>
+		</div><!-- close row from line 122 -->
+
+		</section>
+
+
+
+
+		<section id="forms">
+			<div class="row">
+				<h3>Buttons</h3>
+				<p>A.mphibio.us treats buttons as they are meant to be treated, giving them the right amount of weight and a powerful hover effect to make them irresistibly clickable. Calls to action have never been more apparent. Did I mention easy to use, just add a button or submit or even add the class <kbd>button</kbd> to a link</p>
+				<a class="button modal_opener" amp-target="amp_overlay">Click Me For Action</a>
+				<pre class="prettyprint linenums">
+&lt;a class=&quot;button modal_opener&quot; amp-target=&quot;amp_overlay&quot;&gt;Click Me For Action&lt;/a&gt;
+</pre>
+			</div>
+			<div class="row">
+				<h3>Forms</h3>
+				<p><del>Web developers</del> <strong>I</strong> often fear the form itself. They are usually a pain in the neck to code. But with A.mphibio.us' versatile naming convention, basic syntactic structure, and time-saving style attributes, forms are a cinch to program and implement.</p>
+
+			</div>
+			<div class="row">
+
+			<h4>Standard Fields</h4>
+				<div class="col-7">
+
+					<form>
+						<fieldset>
+							<legend class="sr-only">Text Input</legend>
+							<label class="above" for="regularInput">Regular Input</label>
+							<input type="text" id="regularInput" placeholder="Sample Placeholder Text">
+						</fieldset>
+
+						<fieldset>
+							<legend class="sr-only">Error Input</legend>
+							<label class="above" for="regularInputError">Regular Input with error class</label>
+							<input type="text" id="regularInputError" class="is-invalid" placeholder="Sample of an error field" aria-invalid="true" aria-describedby="regularInputError-error">
+							<span id="regularInputError-error" class="invalid-feedback" style="display: block;">This field has an error</span>
+						</fieldset>
+
+						<fieldset>
+							<legend class="sr-only">Textarea</legend>
+							<label class="above" for="regularTextarea">Regular Textarea</label>
+							<textarea id="regularTextarea"></textarea>
+						</fieldset>
+
+						<fieldset class="radio">
+							<legend>Notifications</legend>
+							<ul>
+								<li><label><input type="radio" name="notifications"> Send me email</label></li>
+								<li><label><input type="radio" name="notifications"> Don't send me email</label></li>
+								<li><label><input type="radio" name="notifications"> Send me flowers</label></li>
+							</ul>
+						</fieldset>
+
+						<button type="submit">Submit Form</button>
+					</form>
+				</div>
+
+				<div class="col-9">
+<pre class="prettyprint linenums">
+&lt;form&gt;
+	&lt;fieldset&gt;
+		&lt;label class=&quot;above&quot; for=&quot;regularInput&quot;&gt;Regular Input&lt;/label&gt;
+		&lt;input type=&quot;text&quot; id=&quot;regularInput&quot; placeholder=&quot;Sample Placeholder Text&quot; /&gt;
+	&lt;/fieldset&gt;
+
+	&lt;fieldset&gt;
+		&lt;label class=&quot;above&quot; for=&quot;regularInputError&quot;&gt;Regular Input with error class&lt;/label&gt;
+		&lt;input type=&quot;text&quot; id=&quot;regularInputError&quot; class=&quot;error&quot; placeholder=&quot;Sample of an error field&quot; /&gt;
+	&lt;/fieldset&gt;
+
+	&lt;fieldset&gt;
+		&lt;label class=&quot;above&quot; for=&quot;regularTextarea&quot;&gt;Regular Textarea&lt;/label&gt;
+		&lt;textarea id=&quot;regularTextarea&quot;&gt;&lt;/textarea&gt;
+	&lt;/fieldset&gt;
+
+	&lt;fieldset class=&quot;radio&quot;&gt;
+		&lt;label for=&quot;notifications&quot;&gt;Notifications&lt;/label&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; /&gt; Send me email&lt;/label&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; /&gt; Don't send me email&lt;/label&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; /&gt; Send me flowers&lt;/label&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/fieldset&gt;
+
+	&lt;button type=&quot;submit&quot;&gt;Submit Form&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+			</div>
+			</div><!-- close Standard Fields row -->
+			<div class="row">
+
+				<div class="col-7">
+				<h4>Search Field</h4>
+					<form action="/" class="search-form" role="search">
+						<fieldset class="search-input-wrapper">
+							<legend class="sr-only">Site Search</legend>
+							<span class="icon-search search-icon" aria-hidden="true"></span>
+							<input type="search" placeholder="Search" class="search-input" aria-label="Search">
+							<button type="submit" class="sr-only">Search</button>
+						</fieldset>
+					</form>
+				</div>
+				<div class="col-9">
+<pre class="prettyprint linenums">
+&lt;form action=&quot;/&quot; class=&quot;search-form&quot;&gt;
+	&lt;fieldset class=&quot;search-input-wrapper&quot;&gt;
+		&lt;span class=&quot;icon-search search-icon&quot;&gt;&lt;/span&gt;
+		&lt;input type=&quot;search&quot; placeholder=&quot;Search&quot; class=&quot;search-input&quot;&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+			</div>
+			</div><!-- close Search Field row -->
+			<div class="row">
+
+				<div class="col-7">
+				<h4>Advanced Search Field</h4>
+
+				  <div id="search_form" class="inline search">
+					<form class="search_form" action="/search-results" role="search">
+						<fieldset>
+							<legend class="sr-only">Advanced Search</legend>
+							<input class="search_text" type="search" name="q" placeholder="Search" aria-label="Search">
+							<button type="reset" class="search_cancel search_toggle" aria-label="Clear search">
+								<span class="icon-cross-round" aria-hidden="true"></span>
+							</button>
+							<button type="submit" class="search_submit" aria-label="Submit search">
+								<span class="icon-search" aria-hidden="true"></span>
+							</button>
+						</fieldset>
+					</form>
+				</div>
+
+				</div>
+				<div class="col-9">
+<pre class="prettyprint linenums">
+&lt;div id=&quot;search_form&quot; class=&quot;inline search&quot;&gt;
+	&lt;form class=&quot;search_form&quot; action=&quot;/search-results&quot;&gt;
+		&lt;fieldset&gt;
+			&lt;input class=&quot;search_text&quot; type=&quot;text&quot; name=&quot;q&quot; placeholder=&quot;Search&quot;&gt;
+			&lt;button type=&quot;reset&quot; class=&quot;search_cancel search_toggle&quot;&gt;
+				&lt;span class=&quot;icon-cross-round&quot;&gt;&lt;/span&gt;
+			&lt;/button&gt;
+			&lt;button type=&quot;submit&quot; class=&quot;search_submit&quot;&gt;
+				&lt;span class=&quot;icon-search&quot;&gt;&lt;/span&gt;
+			&lt;/button&gt;
+		&lt;/fieldset&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+</pre>
+			</div>
+			</div><!-- close Advanced Search Field row -->
+
+
+
+			</section>
+
+			<section id="multi_forms">
+				<h4>Multi Form</h4>
+
+				<p>Simply by adding the class(es) <kbd>multi</kbd> and <kbd>beside</kbd> to the form itself everything is new again</p>
+
+				<form class="multi beside">
+					<fieldset>
+						<legend class="sr-only">Name Field</legend>
+						<label for="name">Name</label>
+						<input type="text" id="name" class="form-text" aria-describedby="name-help">
+						<p id="name-help" class="form-help">This is help text under the form field.</p>
+					</fieldset>
+
+					<fieldset>
+						<legend class="sr-only">Email Field</legend>
+						<label for="email">Email</label>
+						<input type="email" id="email" class="form-text">
+					</fieldset>
+
+					<fieldset>
+						<legend class="sr-only">Gender Selection</legend>
+						<label for="gender">Gender</label>
+						<div class="styled_select">
+						<select id="gender">
+							<option>Male</option>
+							<option>Female</option>
+							<option>Cylon</option>
+						</select>
+						</div>
+					</fieldset>
+
+					<div class="dialog">
+						<p>Wrap the <kbd>select</kbd> element in a <kbd>div</kbd> with the class <kbd>styled_select</kbd> for more control over presentation.</p>
+						<pre><code>&lt;div class=&quot;styled_select&quot;&gt;
+  &lt;select id=&quot;gender&quot;&gt;
+    &lt;option&gt;Male&lt;/option&gt;
+    &lt;option&gt;Female&lt;/option&gt;
+    &lt;option&gt;Cylon&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+					</div>
+
+					<fieldset id="custom_checkbox_radios" class="radio">
+						<legend>Notifications</legend>
+						<ul>
+							<li><label><input type="radio" name="notifications2" class="custom"><span></span>Send me email</label></li>
+							<li><label><input type="radio" name="notifications2" class="custom"><span></span>Don't send me email</label></li>
+							<li><label><input type="radio" name="notifications2" class="custom"><span></span>Send me flowers</label></li>
+						</ul>
+					</fieldset>
+
+					<div class="dialog">
+						<p>Custom radio and checkboxes are also a snap by adding the class <kbd>custom</kbd> to the radio or checkbox element and including an empty span right after the input.</p>
+						<pre><code>&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Send me email&lt;/label&gt;</code></pre>
+					</div>
+
+					<fieldset>
+						<legend class="sr-only">URL Field</legend>
+						<label for="url">URL</label>
+						<input type="url" id="url" class="form-text" placeholder="http://yourdomain.com">
+					</fieldset>
+
+					<fieldset>
+						<legend class="sr-only">Bio Field</legend>
+						<label for="bio">Bio</label>
+						<textarea id="bio"></textarea>
+					</fieldset>
+
+					<fieldset class="check">
+						<legend class="sr-only">Terms Agreement</legend>
+						<label><input type="checkbox" class="custom"><span></span>I accept the terms of service.</label>
+					</fieldset>
+
+					<fieldset class="form-actions">
+						<legend class="sr-only">Form Actions</legend>
+						<button type="submit">Submit</button>
+					</fieldset>
+				</form>
+				<pre class="prettyprint linenums">
+&lt;form class=&quot;multi beside&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-text&quot; /&gt;
+    &lt;p class=&quot;form-help&quot;&gt;This is help text under the form field.&lt;/p&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset&gt;
+    &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; class=&quot;form-text&quot; /&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset&gt;
+    &lt;label for=&quot;gender&quot;&gt;Gender&lt;/label&gt;
+    &lt;div class=&quot;styled_select&quot;&gt;
+    &lt;select id=&quot;gender&quot;&gt;
+      &lt;option&gt;Male&lt;/option&gt;
+      &lt;option&gt;Female&lt;/option&gt;
+      &lt;option&gt;Cylon&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset class=&quot;radio&quot;&gt;
+    &lt;label for=&quot;notifications&quot;&gt;Notifications&lt;/label&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Send me email&lt;/label&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Don't send me email&lt;/label&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;notifications&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;Send me flowers&lt;/label&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset&gt;
+    &lt;label for=&quot;url&quot;&gt;URL&lt;/label&gt;
+    &lt;input type=&quot;url&quot; id=&quot;url&quot; class=&quot;form-text&quot; placeholder=&quot;http://yourdomain.com&quot; /&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset&gt;
+    &lt;label for=&quot;bio&quot;&gt;Bio&lt;/label&gt;
+    &lt;textarea id=&quot;bio&quot;&gt;&lt;/textarea&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset class=&quot;check&quot;&gt;
+    &lt;label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;custom&quot;&gt;&lt;span&gt;&lt;/span&gt;I accept the terms of service.&lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset class=&quot;form-actions&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+
+
+		</section>
+
+		<section>
+			<div id="append_prepend_icons" class="col-16">
+				<h3>Append and Prepend Icons</h3>
+				<p>Like fancy form layouts we do to, that's we've added the prepend and append icon classes to form elements.</p>
+
+				<div class="row">
+					<div class="col-8">
+						<form>
+							<fieldset>
+								<legend class="sr-only">Username with prepend icon</legend>
+								<label for="user3">Username</label>
+								<input type="text" id="user3" class="prepend_icon" autocomplete="username">
+								<label for="user3" class="prepend_to"><span class="icon-user" aria-hidden="true"></span></label>
+							</fieldset>
+							<fieldset>
+								<legend class="sr-only">Password with prepend icon</legend>
+								<label for="password3">Password</label>
+								<input type="password" id="password3" class="prepend_icon" autocomplete="current-password">
+								<label for="password3" class="prepend_to"><span class="icon-lock" aria-hidden="true"></span></label>
+							</fieldset>
+							<button type="submit" class="sr-only">Submit</button>
+						</form>
+
+					</div>
+					<div class="col-8">
+						<form>
+							<fieldset>
+								<legend class="sr-only">Username with append icon</legend>
+								<label for="user4">Username</label>
+								<input type="text" id="user4" class="append_icon" autocomplete="username">
+								<label for="user4" class="append_to"><span class="icon-user" aria-hidden="true"></span></label>
+							</fieldset>
+							<fieldset>
+								<legend class="sr-only">Password with append icon</legend>
+								<label for="password4">Password</label>
+								<input type="password" id="password4" class="append_icon" autocomplete="current-password">
+								<label for="password4" class="append_to"><span class="icon-lock" aria-hidden="true"></span></label>
+							</fieldset>
+							<button type="submit" class="sr-only">Submit</button>
+						</form>
+
+					</div>
+				</div>
+				<pre class="prettyprint linenums">
+&lt;div class=&quot;col-8&quot;&gt;
+  &lt;form&gt;
+    &lt;fieldset&gt;
+      &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
+      &lt;input type=&quot;text&quot; id=&quot;user&quot; class=&quot;prepend_icon&quot;&gt;
+      &lt;label for=&quot;user&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-user&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset&gt;
+      &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+      &lt;input type=&quot;password&quot; id=&quot;password&quot; class=&quot;prepend_icon&quot;&gt;
+      &lt;label for=&quot;password&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-lock&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;col-8&quot;&gt;
+  &lt;form&gt;
+    &lt;fieldset&gt;
+      &lt;label for=&quot;user2&quot;&gt;Username&lt;/label&gt;
+      &lt;input type=&quot;text&quot; id=&quot;user2&quot; class=&quot;append_icon&quot;&gt;
+      &lt;label for=&quot;user2&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-user&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset&gt;
+      &lt;label for=&quot;password2&quot;&gt;Password&lt;/label&gt;
+      &lt;input type=&quot;password&quot; id=&quot;password2&quot; class=&quot;append_icon&quot;&gt;
+      &lt;label for=&quot;password2&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-lock&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+
+&lt;/div&gt;
+</pre>
+
+				<div class="row mt">
+					<form class="multi beside">
+						<fieldset>
+							<legend class="sr-only">Username</legend>
+							<label for="user5">Username</label>
+							<input type="text" id="user5" class="prepend_icon" autocomplete="username">
+							<label for="user5" class="prepend_to"><span class="icon-user" aria-hidden="true"></span></label>
+						</fieldset>
+						<fieldset>
+							<legend class="sr-only">Password</legend>
+							<label for="password5">Password</label>
+							<input type="password" id="password5" class="prepend_icon" autocomplete="current-password">
+							<label for="password5" class="prepend_to"><span class="icon-lock" aria-hidden="true"></span></label>
+						</fieldset>
+						<button type="submit" class="sr-only">Submit</button>
+					</form>
+
+				</div>
+				<pre class="prettyprint linenums">
+&lt;form class=&quot;multi beside&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;user&quot; class=&quot;prepend_icon&quot;&gt;
+    &lt;label for=&quot;user&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-user&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset&gt;
+    &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;password&quot; class=&quot;prepend_icon&quot;&gt;
+    &lt;label for=&quot;password&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-lock&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+
+				<div class="row mt">
+					<form class="multi beside">
+						<fieldset>
+							<legend class="sr-only">Username</legend>
+							<label for="user6">Username</label>
+							<input type="text" id="user6" class="append_icon" autocomplete="username">
+							<label for="user6" class="append_to"><span class="icon-user" aria-hidden="true"></span></label>
+						</fieldset>
+						<fieldset>
+							<legend class="sr-only">Password</legend>
+							<label for="password6">Password</label>
+							<input type="password" id="password6" class="append_icon" autocomplete="current-password">
+							<label for="password6" class="append_to"><span class="icon-lock" aria-hidden="true"></span></label>
+						</fieldset>
+						<button type="submit" class="sr-only">Submit</button>
+					</form>
+
+				</div>
+				<pre class="prettyprint linenums">
+&lt;form class=&quot;multi beside&quot;&gt;
+ &lt;fieldset&gt;
+    &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;user&quot; class=&quot;append_icon&quot;&gt;
+    &lt;label for=&quot;user&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-user&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset&gt;
+    &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;password&quot; class=&quot;append_icon&quot;&gt;
+    &lt;label for=&quot;password&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-lock&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+
+				<form id="datepicker_fields" class="multi beside">
+					<fieldset class="date_picker_set">
+						<legend class="sr-only">Date Range Selection</legend>
+						<fieldset class="form_group">
+							<legend class="sr-only">Start Date</legend>
+							<label for="startdateB1">From</label>
+							<input type="date" id="startdateB1" class="datepicker prepend_icon">
+							<label for="startdateB1" class="prepend_to"><span class="icon-calendar" aria-hidden="true"></span></label>
+						</fieldset>
+						<fieldset class="form_group">
+							<legend class="sr-only">End Date</legend>
+							<label for="enddateB1">To</label>
+							<input type="date" id="enddateB1" class="datepicker prepend_icon">
+							<label for="enddateB1" class="prepend_to"><span class="icon-calendar" aria-hidden="true"></span></label>
+						</fieldset>
+					</fieldset>
+					<button type="submit" class="sr-only">Submit</button>
+				</form>
+
+				<pre class="prettyprint linenums">
+&lt;form class=&quot;multi beside&quot;&gt;
+  &lt;fieldset class=&quot;date_picker_set&quot;&gt;
+    &lt;fieldset class=&quot;form_group&quot;&gt;
+      &lt;label for=&quot;startdateB&quot;&gt;From&lt;/label&gt;
+      &lt;input type=&quot;text&quot; id=&quot;startdateB&quot; class=&quot;datepicker prepend_icon&quot;&gt;
+      &lt;label for=&quot;startdateB&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset class=&quot;form_group&quot;&gt;
+      &lt;label for=&quot;enddateB&quot;&gt;To&lt;/label&gt;
+      &lt;input type=&quot;text&quot; id=&quot;enddateB&quot; class=&quot;datepicker prepend_icon&quot;&gt;
+      &lt;label for=&quot;enddateB&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+				<form class="multi beside">
+					<fieldset class="date_picker_set">
+						<legend class="sr-only">Date Range Selection</legend>
+						<fieldset class="form_group">
+							<legend class="sr-only">Start Date</legend>
+							<label for="startdateB2">From</label>
+							<input type="date" id="startdateB2" class="datepicker append_icon">
+							<label for="startdateB2" class="append_to"><span class="icon-calendar" aria-hidden="true"></span></label>
+						</fieldset>
+						<fieldset class="form_group">
+							<legend class="sr-only">End Date</legend>
+							<label for="enddateB2">To</label>
+							<input type="date" id="enddateB2" class="datepicker append_icon">
+							<label for="enddateB2" class="append_to"><span class="icon-calendar" aria-hidden="true"></span></label>
+						</fieldset>
+					</fieldset>
+					<button type="submit" class="sr-only">Submit</button>
+				</form>
+			</div>
+
+				<pre class="prettyprint linenums">
+	&lt;form class=&quot;multi beside&quot;&gt;
+  &lt;fieldset class=&quot;date_picker_set&quot;&gt;
+    &lt;fieldset class=&quot;form_group&quot;&gt;
+      &lt;label for=&quot;startdateB&quot;&gt;From&lt;/label&gt;
+      &lt;input type=&quot;text&quot; id=&quot;startdateB&quot; class=&quot;datepicker append_icon&quot;&gt;
+      &lt;label for=&quot;startdateB&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset class=&quot;form_group&quot;&gt;
+      &lt;label for=&quot;enddateB&quot;&gt;To&lt;/label&gt;
+      &lt;input type=&quot;text&quot; id=&quot;enddateB&quot; class=&quot;datepicker append_icon&quot;&gt;
+      &lt;label for=&quot;enddateB&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+		</section>
+
+		<section id="tables">
+			<h3>Table Styles</h3>
+			<p>We hate tables for layout but they do come in handy when building and application. A.mphibio.us has some default styles to help get you started but they do require you to add the class <kbd>amp</kbd> to the table. We do this on purpose to avoid conflicting table styles with third party plugins like datepickers and calendars you may wish to use in your next project.</p>
+
+			<table class="amp">
+				<caption>This table has the class "amp" so inehrits certain properties from the base.</caption>
+				<thead>
+					<tr>
+						<th>TH 1</th>
+						<th>TH Two</th>
+						<th>TH Three</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>TF 1</th>
+						<th>TF 2</th>
+						<th>TF 3</th>
+					</tr>
+				</tfoot>
+			</table>
+
+			<table class="amp stripped">
+				<caption>This table has the classes <kbd>amp</kbd> and <kbd>stripped</kbd> so inehrits both base and stripped styles.</caption>
+				<thead>
+					<tr>
+						<th>TH 1</th>
+						<th>TH Two</th>
+						<th>TH Three</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+					<tr>
+						<td>Col 1</td>
+						<td>Col 2</td>
+						<td>Col 3</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>TF 1</th>
+						<th>TF 2</th>
+						<th>TF 3</th>
+					</tr>
+				</tfoot>
+			</table>
+
+		</section>
+
+		</div><!-- content -->
+	</div><!-- row -->
+</div><!-- container -->
+
+
+</main>
+  <!-- Footer Include -->
+  <div id="footer-include"></div>
+
+<div id="mainnav" class="f t l r">
+<!--// WTF?
+
+.f.t.l.r == .fixed .top .left .right
+
+// .left (.l) or .right (.r) no longer floats left/right respectively
+when used in combination with the fixed or the absolute class
+they inherit different properties the result is
+
+postion:fixed;top:0;left:0;right:0;
+
+//-->
+	<div class="container">
+		<nav aria-label="Secondary navigation">
+			<ul id="horizontal" class="horizontal branded">
+				<li><a href="/index.html#intro" class="hpl">a.mphibio.us</a>
+					<ul>
+						<li><a href="/index.html#what_is_it">What is A.mphibio.us</a></li>
+						<li><a href="/index.html#how_its_made">What is it made of?</a></li>
+<!--						<li><a href="/index.html#slideshows">Flexslider Slideshows</a></li> -->
+ 							<li><a href="/index.html#gallery">A.mphibio.us Showcase</a></li>
+						<li><a href="/index.html#evolution">The E.volution of A.mphibio.us</a></li>
+						<li><a href="/index.html#colophon">The A.mphibio.us Colophon</a></li>
+					</ul>
+				</li>
+				<li><a href="./foundation.html">Foundation</a>
+					<ul>
+						<li><a href="./foundation.html#core">Core</a></li>
+						<li><a href="./foundation.html#grid">Symantic Grid</a></li>
+						<li><a href="./foundation.html#responsive_col">Responsive Columns</a></li>
+						<li><a href="./foundation.html#fluid_col">Fluid Columns</a></li>
+<!--//					<li><a href="./foundation.html#padded_col">Padded Columns</a></li> //-->
+						<li><a href="./foundation.html#golden_section">Golden ratio grids</a></li>
+						<li><a href="./foundation.html#push_pull">Source Ordering</a></li>
+						<li><a href="./foundation.html#mediaQueries">Media Queries</a></li>
+					</ul>
+				</li>
+				<li class="active"><a href="./form.html">Form</a>
+					<ul>
+
+						<li><a href="./form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
+						<li><a href="./form.html#forms">Basic Forms</a></li>
+						<li><a href="./form.html#multi_forms">Mutli Beside Forms</a></li>
+						<li><a href="./form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
+						<li><a href="./form.html#append_prepend_icons">Prepend and Append Icons</a></li>
+						<li><a href="./form.html#datepicker_fields">jQuery Datepicker Fields</a></li>
+						<li><a href="./form.html#tables">Tables <sub>not for layout</sub></a></li>
+					</ul>
+				</li>
+				<li><a href="./function.html">Function</a>
+					<ul>
+
+						<li><a href="./function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
+						<li><a href="./function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
+						<li><a href="./function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
+						<li><a href="./function.html#breadcrumbs">Breadcrumbs</a></li>
+						<li><a href="./function.html#tabs">Tabs</a></li>
+						<li><a href="./function.html#pagination">Pagination nav</a></li>
+					</ul>
+				</li>
+				<li><a href="./features.html">Features</a>
+					<ul>
+						<li><a href="./features.html#slideshows">Responsive Slide Shows</a></li>
+						<li><a href="./features.html#helpers">Layout Helpers <sub>&amp; shorthand classes</sub></a></li>
+						<li><a href="./features.html#pears">Content Pea.rs</a></li>
+						<li><a href="./features.html#icons">Webfont Icons <sub>by entypo</sub></a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:;" class="modal_opener" amp-target="amp_overlay">Feedback</a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
+
+<button id="nav_toggle" type="button" aria-label="Toggle side navigation"><span class="icon-carret-left" aria-hidden="true"></span></button>
+
+<div id="amp_overlay" class="modal_overlay">
+	<div class="modal mt">
+		<section>
+			<div class="row">
+				<button type="button" class="modal_kill" amp-target="amp_overlay" aria-label="Close modal"><span class="icon-cross-round large right rmr" aria-hidden="true"></span></button>
+			</div>
+			<div id="disqus_thread"></div>
+			<script>
+			    /* * * CONFIGURATION VARIABLES * * */
+			    var disqus_shortname = 'amphibious';
+
+			    /* * * DON'T EDIT BELOW THIS LINE * * */
+			    (function() {
+			        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			    })();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		</section>
+	</div>
+</div>
+
+<a href="http://github.com/Treefrog/A.mphibio.us">
+  <img id="forkme" src="https://placehold.co/149x149/ef4444/FFF?text=GitHub" alt="Fork me on GitHub" loading="lazy">
+</a>
+
+<a id="to_top" class="icon reset" href="#maincontent" aria-label="Back to top"><span class="icon-arrow-up7" aria-hidden="true"></span></a>
 
 <!-- Load Amphibious Framework -->
     <script type="module">
@@ -1380,6 +1476,6 @@ aside .vcard address {
   </script>
 
 
-  
+
 </body>
 </html>
