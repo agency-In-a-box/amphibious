@@ -42,7 +42,7 @@ p {
   vertical-align: top;
 }
 
-/* Fix 3: Button height inconsistency
+/* Fix 3: Button height consistency
    ========================================================================== */
 
 button,
@@ -50,7 +50,7 @@ input[type="submit"],
 input[type="button"],
 .button {
   display: inline-block;
-  padding: 12px 24px; /* Per SOP: follows 4px grid */
+  padding: 12px 24px; /* Per SOP: follows 4px grid - equal all around */
   line-height: 1.5;
   min-height: 44px; /* Per SOP: iOS HIG minimum touch target */
   border-radius: 6px; /* Per SOP: standard radius */
@@ -60,12 +60,12 @@ input[type="button"],
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1); /* Per SOP timing */
   vertical-align: middle;
+  box-sizing: border-box; /* Include padding and border in height */
 }
 
-/* Remove any stupid line height issues */
+/* Ensure consistent line height without breaking layout */
 button:not(.icon) {
-  line-height: normal !important;
-  height: auto !important;
+  line-height: 1.5; /* Match the line-height above */
 }
 
 /* Fix 4: Standard Fields heading - block level

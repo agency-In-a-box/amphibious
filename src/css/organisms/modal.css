@@ -54,6 +54,28 @@
   }
 }
 
+/* Modal Overlay (Amphibious naming convention) */
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-backdrop-bg);
+  z-index: var(--modal-backdrop-z-index);
+  display: none;
+  opacity: 0;
+  transition: opacity var(--modal-transition-duration) var(--modal-transition-easing);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
 /* Modal Backdrop */
 .modal-backdrop {
   position: fixed;
@@ -94,6 +116,7 @@
   overflow-y: auto;
 }
 
+.modal_overlay.active .modal,
 .modal.is-visible {
   opacity: 1;
   visibility: visible;
