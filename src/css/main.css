@@ -56,5 +56,8 @@
 /* Helper classes - Last for highest priority */
 @import "./helpers.css";
 
+/* QA Fixes - Design Excellence Audit */
+@import "./forms-qa-fixes.css";
+
 /* Print styles */
 @import "./print.css";
