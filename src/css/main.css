@@ -62,6 +62,7 @@
 /* Page-specific styles */
 @import "./pages/home.css";
 @import "./pages/examples.css";
+@import "./pages/docs.css";
 
 /* Print styles */
 @import "./print.css";
