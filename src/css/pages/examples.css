@@ -18,6 +18,11 @@
   color: white;
 }
 
+.examples-header p {
+  color: white;
+  opacity: 0.95;
+}
+
 /* Examples Grid */
 .examples-grid {
   display: grid;
