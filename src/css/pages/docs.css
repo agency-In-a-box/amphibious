@@ -1,0 +1,51 @@
+/**
+ * Documentation Pages Specific Styles
+ * Amphibious 2.0
+ */
+
+/* Documentation Header */
+.docs-header,
+.doc-header {
+  background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+}
+
+.docs-header h1,
+.doc-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: white;
+}
+
+.docs-header p,
+.doc-header p {
+  margin: 1rem 0 0 0;
+  font-size: 1.25rem;
+  opacity: 0.9;
+  color: white;
+}
+
+/* Demo Header (for demo pages) */
+.demo-header {
+  background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+}
+
+.demo-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: white;
+}
+
+.demo-header p {
+  margin: 1rem 0 0 0;
+  font-size: 1.25rem;
+  opacity: 0.9;
+  color: white;
+}
