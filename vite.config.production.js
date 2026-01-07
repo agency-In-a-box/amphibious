@@ -53,7 +53,10 @@ export default defineConfig({
         'examples/cards-demo': resolve(__dirname, 'examples/cards-demo.html'),
         'examples/carousel-showcase': resolve(__dirname, 'examples/carousel-showcase.html'),
         'examples/modal': resolve(__dirname, 'examples/modal.html'),
-        'examples/tabs-pagination-steps-demo': resolve(__dirname, 'examples/tabs-pagination-steps-demo.html'),
+        'examples/tabs-pagination-steps-demo': resolve(
+          __dirname,
+          'examples/tabs-pagination-steps-demo.html',
+        ),
       },
 
       output: {
