@@ -4,8 +4,8 @@
  */
 
 // Import components
-import NavigationComponent from './navigation.js';
 import ModalComponent from './modal.js';
+import NavigationComponent from './navigation.js';
 
 // Initialize components when DOM is ready
 const init = () => {
