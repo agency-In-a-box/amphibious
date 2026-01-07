@@ -1440,19 +1440,7 @@ postion:fixed;top:0;left:0;right:0;
 			<div class="row">
 				<button type="button" class="modal_kill" amp-target="amp_overlay" aria-label="Close modal"><span class="icon-cross-round large right rmr" aria-hidden="true"></span></button>
 			</div>
-			<div id="disqus_thread"></div>
-			<script>
-			    /* * * CONFIGURATION VARIABLES * * */
-			    var disqus_shortname = 'amphibious';
-
-			    /* * * DON'T EDIT BELOW THIS LINE * * */
-			    (function() {
-			        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			    })();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			<!-- Comments section removed - Disqus no longer supported -->
 		</section>
 	</div>
 </div>
@@ -1464,10 +1452,12 @@ postion:fixed;top:0;left:0;right:0;
 <a id="to_top" class="icon reset" href="#maincontent" aria-label="Back to top"><span class="icon-arrow-up7" aria-hidden="true"></span></a>
 
 <!-- Load Amphibious Framework -->
+    <!-- Load Framework JavaScript -->
+    <script type="module" src="../src/js/index.js"></script>
+
     <script type="module">
     import '../src/css/main.css';
-    import amp from '../src/index.ts';
-    // Amphibious auto-initializes when the module loads
+    // CSS is loaded via module
   </script>
 
 
