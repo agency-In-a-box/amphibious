@@ -460,10 +460,10 @@
   </div>
 
   <script type="module">
-    import amp from '../dist/amphibious.js';
+    import { ModalComponent } from '../src/js/index.js';
 
-    // Initialize Amphibious
-    window.amp = amp;
+    // Initialize modal component
+    window.amphibiousModal = new ModalComponent();
 
     // Create modal instances
     const modals = {};
