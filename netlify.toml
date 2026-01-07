@@ -2,22 +2,22 @@
   command = "bun install && bun run build"
   publish = "dist"
 
-# Redirects for SPA-like behavior (optional)
+# Redirects for directory indexes
 [[redirects]]
-  from = "/docs"
+  from = "/docs/"
   to = "/docs/index.html"
   status = 200
 
 [[redirects]]
-  from = "/examples"
+  from = "/examples/"
   to = "/examples/index.html"
   status = 200
 
-# Fallback for 404s - redirect to home page
+# Only redirect actual 404s to home page, not all pages!
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
+  to = "/404.html"
+  status = 404
 
 # Headers for MIME types and caching
 [[headers]]
