@@ -49,9 +49,11 @@ button,
 input[type="submit"],
 input[type="button"],
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 24px; /* Per SOP: follows 4px grid - equal all around */
-  line-height: 1.5;
+  line-height: 1;
   min-height: 44px; /* Per SOP: iOS HIG minimum touch target */
   border-radius: 6px; /* Per SOP: standard radius */
   font-size: 1rem;
@@ -61,11 +63,13 @@ input[type="button"],
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1); /* Per SOP timing */
   vertical-align: middle;
   box-sizing: border-box; /* Include padding and border in height */
+  text-decoration: none;
 }
 
-/* Ensure consistent line height without breaking layout */
-button:not(.icon) {
-  line-height: 1.5; /* Match the line-height above */
+/* Ensure consistent appearance */
+button:not(.icon),
+a.button {
+  line-height: 1; /* Tight line height to prevent extra space */
 }
 
 /* Fix 4: Standard Fields heading - block level
