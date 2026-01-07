@@ -49,12 +49,11 @@ button,
 input[type="submit"],
 input[type="button"],
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px; /* 12px all around per request */
-  line-height: 1;
-  min-height: 44px; /* Per SOP: iOS HIG minimum touch target */
+  display: inline-block;
+  padding: 12px !important; /* Force 12px all around */
+  line-height: 1 !important;
+  height: auto !important;
+  min-height: unset !important;
   border-radius: 6px; /* Per SOP: standard radius */
   font-size: 1rem;
   font-weight: 600;
