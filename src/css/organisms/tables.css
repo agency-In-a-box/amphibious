@@ -107,7 +107,9 @@ table tbody tr:last-child td {
    ========================================================================== */
 
 /* Striped Rows - Using modern CSS, no jQuery needed */
-.table-striped tbody tr:nth-child(odd) {
+.table-striped tbody tr:nth-child(odd),
+.amp.striped tbody tr:nth-child(odd),
+.amp.stripped tbody tr:nth-child(odd) {
   background: var(--table-row-striped);
 }
 
