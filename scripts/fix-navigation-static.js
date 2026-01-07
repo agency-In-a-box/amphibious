@@ -37,7 +37,7 @@ const filesToUpdate = [
   'examples/pears-patterns.html',
   'examples/navigation-showcase.html',
   'examples/atomic-design-demo.html',
-  'index.html'
+  'index.html',
 ];
 
 function updateFile(filePath) {
@@ -53,15 +53,13 @@ function updateFile(filePath) {
 
   // Replace the navigation-include div with actual navigation
   if (content.includes('<div id="navigation-include"></div>')) {
-    content = content.replace(
-      '<div id="navigation-include"></div>',
-      cleanNavHTML
-    );
+    content = content.replace('<div id="navigation-include"></div>', cleanNavHTML);
     modified = true;
   }
 
   // Remove the dynamic loading script
-  const loadIncludesPattern = /<!--\s*Load Navigation[^>]*-->[\s\S]*?loadIncludes\(\);\s*}\s*<\/script>/gi;
+  const loadIncludesPattern =
+    /<!--\s*Load Navigation[^>]*-->[\s\S]*?loadIncludes\(\);\s*}\s*<\/script>/gi;
   if (loadIncludesPattern.test(content)) {
     content = content.replace(loadIncludesPattern, '');
     modified = true;

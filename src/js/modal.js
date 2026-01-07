@@ -27,7 +27,7 @@ class ModalComponent {
    * Initialize modal opener buttons
    */
   initModalOpeners() {
-    document.querySelectorAll('.modal_opener').forEach(opener => {
+    document.querySelectorAll('.modal_opener').forEach((opener) => {
       opener.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = opener.getAttribute('amp-target');
@@ -42,7 +42,7 @@ class ModalComponent {
    * Initialize modal close buttons
    */
   initModalClosers() {
-    document.querySelectorAll('.modal_kill').forEach(closer => {
+    document.querySelectorAll('.modal_kill').forEach((closer) => {
       closer.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = closer.getAttribute('amp-target');
@@ -57,7 +57,7 @@ class ModalComponent {
    * Close modal when clicking overlay background
    */
   initOverlayClick() {
-    document.querySelectorAll('.modal_overlay').forEach(overlay => {
+    document.querySelectorAll('.modal_overlay').forEach((overlay) => {
       overlay.addEventListener('click', (e) => {
         // Only close if clicking the overlay itself, not modal content
         if (e.target === overlay) {
@@ -98,7 +98,9 @@ class ModalComponent {
     modal.setAttribute('aria-hidden', 'false');
 
     // Focus first focusable element in modal
-    const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const focusable = modal.querySelector(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
     if (focusable) {
       focusable.focus();
     }
