@@ -10,7 +10,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  /* Removed overflow-x: hidden to prevent dropdown clipping */
 }
 
 .col-16,

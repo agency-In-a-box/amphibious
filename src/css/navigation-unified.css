@@ -50,9 +50,9 @@
 
   /* Z-index Layers */
   --nav-z-index: 1000;
-  --nav-dropdown-z-index: 1001;
-  --nav-mobile-z-index: 1002;
-  --nav-mobile-overlay-z-index: 1001;
+  --nav-dropdown-z-index: 9999; /* Increased to ensure dropdowns appear above all content */
+  --nav-mobile-z-index: 10000;
+  --nav-mobile-overlay-z-index: 9998;
 }
 
 /* Reset & Base Styles
@@ -68,6 +68,7 @@
   z-index: var(--nav-z-index);
   /* Add padding-bottom to create space between nav items and border */
   padding-bottom: 4px; /* 1 grid unit following 4px baseline */
+  overflow: visible !important; /* Ensure dropdowns aren't clipped */
 }
 
 .site-nav * {
