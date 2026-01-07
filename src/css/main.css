@@ -59,5 +59,9 @@
 /* QA Fixes - Design Excellence Audit */
 @import "./forms-qa-fixes.css";
 
+/* Page-specific styles */
+@import "./pages/home.css";
+@import "./pages/examples.css";
+
 /* Print styles */
 @import "./print.css";
