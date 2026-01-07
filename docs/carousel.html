@@ -627,7 +627,7 @@ const carousel = amp.createCarousel('#my-carousel', {
             <td><code>go(control)</code></td>
             <td>number | string</td>
             <td>void</td>
-            <td>Navigate to a specific slide (index, '>', '<')</td>
+            <td>Navigate to a specific slide (index, '&gt;', '&lt;')</td>
           </tr>
           <tr>
             <td><code>play()</code></td>
@@ -660,10 +660,10 @@ const carousel = amp.createCarousel('#my-carousel', {
       <div class="code-block">
         <pre><code>// Navigation
 carousel.go(2);     // Go to slide 2
-carousel.go('>');   // Next slide
-carousel.go('<');   // Previous slide
-carousel.go('>>');  // Last slide
-carousel.go('<<');  // First slide
+carousel.go('&gt;');   // Next slide
+carousel.go('&lt;');   // Previous slide
+carousel.go('&gt;&gt;');  // Last slide
+carousel.go('&lt;&lt;');  // First slide
 
 // Playback control
 carousel.play();

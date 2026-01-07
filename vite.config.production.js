@@ -35,8 +35,25 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        foundation: resolve(__dirname, 'docs/foundation.html'),
-        form: resolve(__dirname, 'docs/form.html'),
+        // Docs pages
+        'docs/foundation': resolve(__dirname, 'docs/foundation.html'),
+        'docs/form': resolve(__dirname, 'docs/form.html'),
+        'docs/features': resolve(__dirname, 'docs/features.html'),
+        'docs/function': resolve(__dirname, 'docs/function.html'),
+        'docs/api-reference': resolve(__dirname, 'docs/api-reference.html'),
+        'docs/carousel': resolve(__dirname, 'docs/carousel.html'),
+        'docs/getting-started': resolve(__dirname, 'docs/getting-started.html'),
+        'docs/grid-system': resolve(__dirname, 'docs/grid-system.html'),
+        'docs/icons': resolve(__dirname, 'docs/icons.html'),
+        'docs/index': resolve(__dirname, 'docs/index.html'),
+        // Examples pages
+        'examples/index': resolve(__dirname, 'examples/index.html'),
+        'examples/navigation-showcase': resolve(__dirname, 'examples/navigation-showcase.html'),
+        'examples/atomic-design-demo': resolve(__dirname, 'examples/atomic-design-demo.html'),
+        'examples/cards-demo': resolve(__dirname, 'examples/cards-demo.html'),
+        'examples/carousel-showcase': resolve(__dirname, 'examples/carousel-showcase.html'),
+        'examples/modal': resolve(__dirname, 'examples/modal.html'),
+        'examples/tabs-pagination-steps-demo': resolve(__dirname, 'examples/tabs-pagination-steps-demo.html'),
       },
 
       output: {
