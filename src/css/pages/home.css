@@ -37,7 +37,7 @@
 
 /* Demo Grid */
 .demo-grid {
-  background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
+  background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
   color: white;
   padding: 1rem;
   text-align: center;
@@ -47,7 +47,7 @@
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
+  background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
   color: white;
   padding: 5rem 0;
   text-align: center;
@@ -121,7 +121,7 @@
 
 /* CTA Section */
 .cta-section {
-  background: linear-gradient(135deg, #c97400 0%, #ED8B00 100%);
+  background: linear-gradient(135deg, #c97400 0%, #ed8b00 100%);
   color: white;
   padding: 4rem 0;
   text-align: center;
@@ -161,7 +161,7 @@
 
 .btn-primary {
   background: white;
-  color: #ED8B00;
+  color: #ed8b00;
 }
 
 .btn-secondary {

@@ -5,7 +5,7 @@
 
 /* Examples Header */
 .examples-header {
-  background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
+  background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
   color: white;
   padding: 3rem 0;
   margin-bottom: 3rem;
@@ -58,7 +58,7 @@
 .example-card a {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: #ED8B00;
+  background: #ed8b00;
   color: white;
   text-decoration: none;
   border-radius: 0.25rem;
@@ -81,11 +81,11 @@
 }
 
 .nav-breadcrumb a:hover {
-  color: #ED8B00;
+  color: #ed8b00;
 }
 
 /* Page Body */
 body {
-  font-family: 'Avenir Next', 'Avenir', 'Futura PT', 'Futura', -apple-system, sans-serif;
+  font-family: "Avenir Next", "Avenir", "Futura PT", "Futura", -apple-system, sans-serif;
   background: #f8f9fa;
 }
