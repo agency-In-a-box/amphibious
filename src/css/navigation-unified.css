@@ -420,8 +420,11 @@
 
   /* Show mobile menu when active */
   .nav-toggle[aria-expanded="true"] ~ .horizontal,
+  .nav-toggle[aria-expanded="true"] ~ #main-nav,
   .horizontal.is-active,
-  #main-nav.is-active {
+  #main-nav.is-active,
+  .site-nav.menu-open .horizontal,
+  .site-nav.menu-open #main-nav {
     transform: translateX(0);
   }
 

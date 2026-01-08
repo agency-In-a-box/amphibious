@@ -79,12 +79,18 @@ class NavigationComponent {
   initMobileToggle() {
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.getElementById('main-nav');
+    const siteNav = document.querySelector('.site-nav');
 
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
         const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
         toggle.setAttribute('aria-expanded', !isExpanded);
         nav.classList.toggle('is-active');
+
+        // Also toggle class on parent nav for better CSS targeting
+        if (siteNav) {
+          siteNav.classList.toggle('menu-open');
+        }
       });
     }
   }
