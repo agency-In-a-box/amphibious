@@ -286,6 +286,11 @@
   display: inline-block;
 }
 
+/* Reset figure margins when used as icon badge */
+figure.icon-badge {
+  margin: 0;
+}
+
 .icon-badge__count {
   position: absolute;
   top: -4px;
