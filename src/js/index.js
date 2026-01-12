@@ -6,6 +6,7 @@
 // Import components
 import ModalComponent from './modal.js';
 import NavigationComponent from './navigation.js';
+import toast from './toast.js';
 
 // Initialize components when DOM is ready
 const init = () => {
@@ -26,4 +27,4 @@ if (document.readyState === 'loading') {
 }
 
 // Export for module usage
-export { NavigationComponent, ModalComponent };
+export { NavigationComponent, ModalComponent, toast };

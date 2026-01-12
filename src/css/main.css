@@ -31,6 +31,7 @@
 @import "./molecules/progress.css";
 @import "./molecules/tags.css";
 @import "./molecules/tooltip.css";
+@import "./molecules/toast.css";
 @import "./molecules/pears.css";
 
 /* Organisms - Complex components */
@@ -45,6 +46,7 @@
 @import "./organisms/footer.css";
 @import "./organisms/carousel.css";
 @import "./organisms/tables.css"; /* Unified table component */
+@import "./organisms/data-table.css"; /* Advanced data table */
 
 /* Navigation - Using unified navigation system */
 @import "./navigation-unified.css";

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast Notifications - Amphibious 2.0</title>
+  <meta name="description" content="Interactive toast notification examples for the Amphibious CSS framework">
+
+  <style>
+    body {
+      padding: 2rem;
+      background: #f9fafb;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .demo-section {
+      margin: 3rem 0;
+    }
+    .demo-section h2 {
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.5rem;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .demo-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .demo-card h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #374151;
+      font-size: 1.125rem;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #3b82f6;
+      color: white;
+    }
+    .button:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .button--success {
+      background: #10b981;
+    }
+    .button--success:hover {
+      background: #059669;
+    }
+    .button--error {
+      background: #ef4444;
+    }
+    .button--error:hover {
+      background: #dc2626;
+    }
+    .button--warning {
+      background: #f59e0b;
+    }
+    .button--warning:hover {
+      background: #d97706;
+    }
+    .button--dark {
+      background: #1f2937;
+    }
+    .button--dark:hover {
+      background: #111827;
+    }
+    .position-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .position-btn {
+      padding: 0.5rem;
+      border: 1px solid #e5e7eb;
+      background: white;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.75rem;
+    }
+    .position-btn:hover {
+      background: #f3f4f6;
+      border-color: #3b82f6;
+    }
+    .position-btn.active {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+    }
+    .config-panel {
+      background: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.375rem;
+      margin: 1rem 0;
+    }
+    .config-group {
+      margin-bottom: 1rem;
+    }
+    .config-group:last-child {
+      margin-bottom: 0;
+    }
+    .config-group label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #374151;
+    }
+    .config-group input,
+    .config-group select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .checkbox-group input {
+      width: auto;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 0.125rem 0.25rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      font-family: monospace;
+    }
+    .example-code {
+      background: #1f2937;
+      color: #e5e7eb;
+      padding: 1rem;
+      border-radius: 0.375rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Include -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+
+      <ul id="main-nav" class="horizontal branded">
+        <li><a href="/" class="site-logo">Amphibious</a></li>
+        <li><a href="/docs/foundation.html">Foundation</a></li>
+        <li><a href="/docs/form.html">Form</a></li>
+        <li><a href="/docs/function.html">Function</a></li>
+        <li><a href="/docs/features.html">Features</a></li>
+        <li><a href="/examples/" class="active">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Toast Notification Component</h1>
+    <p>Temporary notification messages that auto-dismiss. Perfect for user feedback, confirmations, and alerts.</p>
+
+    <!-- Basic Examples -->
+    <div class="demo-section">
+      <h2>Basic Toast Types</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Success Toast</h3>
+          <p>Show a success notification</p>
+          <button class="button button--success" onclick="showSuccessToast()">Show Success</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>Error Toast</h3>
+          <p>Show an error notification</p>
+          <button class="button button--error" onclick="showErrorToast()">Show Error</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>Warning Toast</h3>
+          <p>Show a warning notification</p>
+          <button class="button button--warning" onclick="showWarningToast()">Show Warning</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>Info Toast</h3>
+          <p>Show an info notification</p>
+          <button class="button" onclick="showInfoToast()">Show Info</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Position Controls -->
+    <div class="demo-section">
+      <h2>Toast Positions</h2>
+      <div class="demo-card">
+        <h3>Choose Position</h3>
+        <p>Click to change where toasts appear:</p>
+        <div class="position-controls">
+          <button class="position-btn" onclick="setPosition('top-left')">Top Left</button>
+          <button class="position-btn" onclick="setPosition('top-center')">Top Center</button>
+          <button class="position-btn active" onclick="setPosition('top-right')">Top Right</button>
+          <button class="position-btn" onclick="setPosition('bottom-left')">Bottom Left</button>
+          <button class="position-btn" onclick="setPosition('bottom-center')">Bottom Center</button>
+          <button class="position-btn" onclick="setPosition('bottom-right')">Bottom Right</button>
+        </div>
+        <button class="button" onclick="showPositionToast()">Show Toast at Current Position</button>
+      </div>
+    </div>
+
+    <!-- Advanced Examples -->
+    <div class="demo-section">
+      <h2>Advanced Features</h2>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>With Title & Message</h3>
+          <button class="button" onclick="showDetailedToast()">Show Detailed Toast</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>With Actions</h3>
+          <button class="button" onclick="showActionToast()">Show with Actions</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>Dark Theme</h3>
+          <button class="button button--dark" onclick="showDarkToast()">Show Dark Toast</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>No Auto-Dismiss</h3>
+          <button class="button" onclick="showPersistentToast()">Show Persistent</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>Custom Duration</h3>
+          <button class="button" onclick="showCustomDurationToast()">10 Second Toast</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>Multiple Toasts</h3>
+          <button class="button" onclick="showMultipleToasts()">Show 3 Toasts</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Configuration -->
+    <div class="demo-section">
+      <h2>Custom Configuration</h2>
+      <div class="demo-card">
+        <h3>Build Your Own Toast</h3>
+        <div class="config-panel">
+          <div class="config-group">
+            <label for="custom-title">Title (optional)</label>
+            <input type="text" id="custom-title" placeholder="Toast Title">
+          </div>
+          <div class="config-group">
+            <label for="custom-message">Message</label>
+            <input type="text" id="custom-message" placeholder="Your message here" value="This is a custom toast!">
+          </div>
+          <div class="config-group">
+            <label for="custom-type">Type</label>
+            <select id="custom-type">
+              <option value="">Default</option>
+              <option value="success">Success</option>
+              <option value="error">Error</option>
+              <option value="warning">Warning</option>
+              <option value="info">Info</option>
+            </select>
+          </div>
+          <div class="config-group">
+            <label for="custom-duration">Duration (ms)</label>
+            <input type="number" id="custom-duration" value="5000" min="0" step="1000">
+          </div>
+          <div class="config-group checkbox-group">
+            <input type="checkbox" id="custom-dark" />
+            <label for="custom-dark">Dark Theme</label>
+          </div>
+          <div class="config-group checkbox-group">
+            <input type="checkbox" id="custom-progress" checked />
+            <label for="custom-progress">Show Progress Bar</label>
+          </div>
+        </div>
+        <button class="button" onclick="showCustomToast()">Show Custom Toast</button>
+      </div>
+    </div>
+
+    <!-- Code Examples -->
+    <div class="demo-section">
+      <h2>Usage Examples</h2>
+      <div class="demo-card">
+        <h3>JavaScript API</h3>
+        <div class="example-code">
+<pre><code>// Simple notifications
+Toast.success('Operation completed!');
+Toast.error('Something went wrong');
+Toast.warning('Please check your input');
+Toast.info('New update available');
+
+// With options
+Toast.show({
+  type: 'success',
+  title: 'Success!',
+  message: 'Your changes have been saved',
+  duration: 5000,
+  position: 'top-right',
+  icon: true,
+  progress: true,
+  closable: true
+});
+
+// With actions
+Toast.show({
+  type: 'info',
+  title: 'Confirm Action',
+  message: 'Are you sure you want to proceed?',
+  actions: [
+    {
+      label: 'Yes',
+      primary: true,
+      handler: () => console.log('Confirmed')
+    },
+    {
+      label: 'No',
+      handler: () => console.log('Cancelled')
+    }
+  ]
+});
+
+// Clear all toasts
+Toast.hideAll();</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Amphibious JS -->
+  <script type="module" src="../src/js/index.js"></script>
+
+  <!-- Demo Scripts -->
+  <script>
+    let currentPosition = 'top-right';
+
+    function showSuccessToast() {
+      Toast.success('Operation completed successfully!', { position: currentPosition });
+    }
+
+    function showErrorToast() {
+      Toast.error('An error occurred. Please try again.', { position: currentPosition });
+    }
+
+    function showWarningToast() {
+      Toast.warning('Please review your input before continuing.', { position: currentPosition });
+    }
+
+    function showInfoToast() {
+      Toast.info('New features are available in this update.', { position: currentPosition });
+    }
+
+    function setPosition(position) {
+      currentPosition = position;
+      document.querySelectorAll('.position-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+
+    function showPositionToast() {
+      Toast.info(`Toast shown at ${currentPosition}`, { position: currentPosition });
+    }
+
+    function showDetailedToast() {
+      Toast.show({
+        type: 'success',
+        title: 'File Uploaded',
+        message: 'Your document has been successfully uploaded and processed.',
+        icon: true,
+        position: currentPosition
+      });
+    }
+
+    function showActionToast() {
+      Toast.show({
+        type: 'info',
+        title: 'Unsaved Changes',
+        message: 'You have unsaved changes. What would you like to do?',
+        position: currentPosition,
+        actions: [
+          {
+            label: 'Save',
+            primary: true,
+            handler: () => {
+              Toast.success('Changes saved!', { position: currentPosition });
+            }
+          },
+          {
+            label: 'Discard',
+            handler: () => {
+              Toast.info('Changes discarded', { position: currentPosition });
+            }
+          }
+        ]
+      });
+    }
+
+    function showDarkToast() {
+      Toast.show({
+        type: 'info',
+        message: 'This is a dark themed toast notification',
+        dark: true,
+        position: currentPosition
+      });
+    }
+
+    function showPersistentToast() {
+      Toast.show({
+        type: 'warning',
+        title: 'Persistent Notification',
+        message: 'This toast will not auto-dismiss. Click the X to close.',
+        duration: 0,
+        position: currentPosition
+      });
+    }
+
+    function showCustomDurationToast() {
+      Toast.show({
+        type: 'info',
+        message: 'This toast will stay for 10 seconds',
+        duration: 10000,
+        position: currentPosition
+      });
+    }
+
+    function showMultipleToasts() {
+      setTimeout(() => Toast.success('First toast message', { position: currentPosition }), 0);
+      setTimeout(() => Toast.info('Second toast message', { position: currentPosition }), 500);
+      setTimeout(() => Toast.warning('Third toast message', { position: currentPosition }), 1000);
+    }
+
+    function showCustomToast() {
+      const title = document.getElementById('custom-title').value;
+      const message = document.getElementById('custom-message').value;
+      const type = document.getElementById('custom-type').value;
+      const duration = parseInt(document.getElementById('custom-duration').value);
+      const dark = document.getElementById('custom-dark').checked;
+      const progress = document.getElementById('custom-progress').checked;
+
+      Toast.show({
+        type: type || undefined,
+        title: title || undefined,
+        message: message || 'Custom toast notification',
+        duration: duration,
+        dark: dark,
+        progress: progress,
+        position: currentPosition,
+        icon: !!type
+      });
+    }
+  </script>
+</body>
+</html>
