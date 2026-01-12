@@ -82,17 +82,73 @@ class NavigationComponent {
     const siteNav = document.querySelector('.site-nav');
 
     if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', !isExpanded);
-        nav.classList.toggle('is-active');
+      // Toggle button click handler
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.toggleMobileMenu(toggle, nav, siteNav);
+      });
 
-        // Also toggle class on parent nav for better CSS targeting
-        if (siteNav) {
-          siteNav.classList.toggle('menu-open');
+      // Click outside to close
+      document.addEventListener('click', (e) => {
+        const isMenuOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isMenuOpen && !nav.contains(e.target) && !toggle.contains(e.target)) {
+          this.closeMobileMenu(toggle, nav, siteNav);
         }
       });
+
+      // ESC key to close
+      document.addEventListener('keydown', (e) => {
+        const isMenuOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isMenuOpen && e.key === 'Escape') {
+          this.closeMobileMenu(toggle, nav, siteNav);
+          toggle.focus(); // Return focus to toggle button
+        }
+      });
+
+      // Prevent clicks inside menu from closing it
+      nav.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
     }
+  }
+
+  /**
+   * Toggle mobile menu state
+   */
+  toggleMobileMenu(toggle, nav, siteNav) {
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+    if (isExpanded) {
+      this.closeMobileMenu(toggle, nav, siteNav);
+    } else {
+      this.openMobileMenu(toggle, nav, siteNav);
+    }
+  }
+
+  /**
+   * Open mobile menu
+   */
+  openMobileMenu(toggle, nav, siteNav) {
+    toggle.setAttribute('aria-expanded', 'true');
+    nav.classList.add('is-active');
+    if (siteNav) {
+      siteNav.classList.add('menu-open');
+    }
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+  }
+
+  /**
+   * Close mobile menu
+   */
+  closeMobileMenu(toggle, nav, siteNav) {
+    toggle.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('is-active');
+    if (siteNav) {
+      siteNav.classList.remove('menu-open');
+    }
+    // Restore body scroll
+    document.body.style.overflow = '';
   }
 
   /**

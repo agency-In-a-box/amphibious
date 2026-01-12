@@ -441,11 +441,14 @@
     visibility: hidden;
     transition: all var(--nav-transition-slow);
     z-index: var(--nav-mobile-overlay-z-index);
+    pointer-events: none;
   }
 
-  .nav-toggle[aria-expanded="true"] ~ .site-nav::after {
+  .nav-toggle[aria-expanded="true"] ~ .site-nav::after,
+  .site-nav.menu-open::after {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 
   /* Mobile menu items */
