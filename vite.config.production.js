@@ -57,6 +57,7 @@ export default defineConfig({
           __dirname,
           'examples/tabs-pagination-steps-demo.html',
         ),
+        'examples/form-validation-demo': resolve(__dirname, 'examples/form-validation-demo.html'),
       },
 
       output: {

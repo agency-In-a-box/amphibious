@@ -25,6 +25,9 @@
 @import "./atoms/icons.css";
 @import "./atoms/spinners.css";
 @import "./atoms/icon-buttons.css";
+@import "./atoms/avatar.css";
+@import "./atoms/switch.css";
+@import "./atoms/skeleton.css";
 
 /* Molecules - Simple component combinations */
 @import "./molecules/alerts.css";
@@ -33,6 +36,9 @@
 @import "./molecules/tooltip.css";
 @import "./molecules/toast.css";
 @import "./molecules/pears.css";
+@import "./molecules/accordion.css";
+@import "./molecules/dropdown.css";
+@import "./molecules/search-bar.css";
 
 /* Organisms - Complex components */
 @import "./organisms/cards.css";
@@ -47,6 +53,8 @@
 @import "./organisms/carousel.css";
 @import "./organisms/tables.css"; /* Unified table component */
 @import "./organisms/data-table.css"; /* Advanced data table */
+@import "./organisms/datepicker.css"; /* Date picker component */
+@import "./organisms/file-upload.css"; /* File upload component */
 
 /* Navigation - Using unified navigation system */
 @import "./navigation-unified.css";
@@ -60,6 +68,12 @@
 
 /* QA Fixes - Design Excellence Audit */
 @import "./forms-qa-fixes.css";
+
+/* Form Validation States - Comprehensive validation patterns */
+@import "./forms/validation-states.css";
+
+/* Accessibility Contrast Fixes - WCAG compliance */
+@import "./accessibility/contrast-fixes.css";
 
 /* Page-specific styles */
 @import "./pages/home.css";

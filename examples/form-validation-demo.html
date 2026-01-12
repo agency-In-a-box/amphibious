@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation States - Amphibious 2.0</title>
+  <link rel="stylesheet" href="../dist/amphibious.css">
+  <link rel="stylesheet" href="../src/css/forms/validation-states.css">
+  <link rel="stylesheet" href="../src/css/accessibility/contrast-fixes.css">
+  <style>
+    .demo-section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .demo-section h2 {
+      margin-bottom: 1.5rem;
+      color: #1f2937;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.5rem;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .example-form {
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#" class="site-logo">Amphibious</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav id="main-nav" class="main-nav">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="foundation.html">Foundation</a></li>
+            <li><a href="form.html">Form</a></li>
+            <li class="active"><a href="form-validation-demo.html">Validation</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Form Validation States</h1>
+      <p class="lead">Comprehensive form validation patterns with accessibility</p>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 3rem 1rem;">
+
+    <!-- Required Fields Section -->
+    <section class="demo-section">
+      <h2>Required Field Indicators</h2>
+      <div class="example-form">
+        <div class="form-field">
+          <label for="required1" class="required">Full Name</label>
+          <input type="text" id="required1" class="form-control" placeholder="Enter your full name">
+          <span class="helper-text">This field is required</span>
+        </div>
+
+        <div class="form-field">
+          <label for="optional1" class="optional">Company</label>
+          <input type="text" id="optional1" class="form-control" placeholder="Enter company name">
+          <span class="helper-text">You can leave this field blank</span>
+        </div>
+
+        <div class="form-field--required">
+          <label for="required2">Email Address</label>
+          <input type="email" id="required2" class="form-control" placeholder="name@example.com">
+        </div>
+      </div>
+    </section>
+
+    <!-- Validation States Section -->
+    <section class="demo-section">
+      <h2>Validation States</h2>
+      <div class="demo-grid">
+
+        <!-- Error State -->
+        <div class="example-form">
+          <h3>Error State</h3>
+          <div class="form-field error">
+            <label for="error1">Email Address</label>
+            <input type="email" id="error1" class="form-control" value="invalid.email">
+            <span class="error-message">Please enter a valid email address</span>
+          </div>
+
+          <div class="form-field">
+            <label for="error2">Password</label>
+            <input type="password" id="error2" class="form-control error" value="123">
+            <span class="error-message">Password must be at least 8 characters</span>
+          </div>
+        </div>
+
+        <!-- Success State -->
+        <div class="example-form">
+          <h3>Success State</h3>
+          <div class="form-field success">
+            <label for="success1">Username</label>
+            <input type="text" id="success1" class="form-control" value="johndoe">
+            <span class="success-message">Username is available!</span>
+          </div>
+
+          <div class="form-field">
+            <label for="success2">Email</label>
+            <input type="email" id="success2" class="form-control success" value="john@example.com">
+            <span class="success-message">Email format is valid</span>
+          </div>
+        </div>
+
+        <!-- Warning State -->
+        <div class="example-form">
+          <h3>Warning State</h3>
+          <div class="form-field warning">
+            <label for="warning1">Username</label>
+            <input type="text" id="warning1" class="form-control" value="john">
+            <span class="warning-message">Username is very short</span>
+          </div>
+
+          <div class="form-field">
+            <label for="warning2">Password</label>
+            <input type="password" id="warning2" class="form-control warning" value="password123">
+            <span class="warning-message">Consider using a stronger password</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Helper Text Section -->
+    <section class="demo-section">
+      <h2>Helper Text & Descriptions</h2>
+      <div class="example-form">
+
+        <div class="form-field">
+          <label for="helper1">API Key</label>
+          <input type="text" id="helper1" class="form-control" placeholder="sk-...">
+          <span class="helper-text">Your API key can be found in your account settings</span>
+        </div>
+
+        <div class="form-field">
+          <label for="helper2">Bio</label>
+          <textarea id="helper2" class="form-control" rows="3" maxlength="200" placeholder="Tell us about yourself"></textarea>
+          <span class="helper-text helper-text--icon">Keep it brief and professional</span>
+          <span class="character-count">0 / 200</span>
+        </div>
+
+        <div class="form-field">
+          <label for="helper3">Website URL</label>
+          <input type="url" id="helper3" class="form-control" placeholder="https://example.com">
+          <span class="helper-text">Include the full URL with https://</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Inline Validation Section -->
+    <section class="demo-section">
+      <h2>Inline Validation</h2>
+      <div class="example-form">
+
+        <div class="form-field">
+          <label for="inline1">Email with Check</label>
+          <div class="inline-validation">
+            <input type="email" id="inline1" class="form-control success" value="valid@email.com">
+            <span class="validation-indicator success">✓</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="inline2">Invalid Entry</label>
+          <div class="inline-validation">
+            <input type="text" id="inline2" class="form-control error" value="invalid">
+            <span class="validation-indicator error">✗</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="inline3">Checking...</label>
+          <div class="inline-validation">
+            <input type="text" id="inline3" class="form-control" value="checking">
+            <span class="validation-indicator loading"></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Validation Summary Section -->
+    <section class="demo-section">
+      <h2>Validation Summary</h2>
+      <div class="example-form">
+
+        <div class="validation-summary error">
+          <h3 class="validation-summary-title">Please correct the following errors:</h3>
+          <ul>
+            <li>Email address is required</li>
+            <li>Password must be at least 8 characters</li>
+            <li>Please accept the terms and conditions</li>
+          </ul>
+        </div>
+
+        <div class="validation-summary warning" style="margin-top: 1rem;">
+          <h3 class="validation-summary-title">Please review:</h3>
+          <ul>
+            <li>Your password could be stronger</li>
+            <li>Consider adding a phone number for account recovery</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Field Groups Section -->
+    <section class="demo-section">
+      <h2>Field Group Validation</h2>
+      <div class="example-form">
+
+        <div class="field-group error">
+          <label>Select your interests (at least one required)</label>
+          <div style="margin-top: 0.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="checkbox" name="interests"> Web Development
+            </label>
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="checkbox" name="interests"> Mobile Apps
+            </label>
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="checkbox" name="interests"> Data Science
+            </label>
+          </div>
+          <span class="error-message">Please select at least one interest</span>
+        </div>
+
+        <div class="field-group success" style="margin-top: 1.5rem;">
+          <label>Preferred Contact Method</label>
+          <div style="margin-top: 0.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="radio" name="contact" checked> Email
+            </label>
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="radio" name="contact"> Phone
+            </label>
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="radio" name="contact"> SMS
+            </label>
+          </div>
+          <span class="success-message">Contact preference saved</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Accessibility States Section -->
+    <section class="demo-section">
+      <h2>Accessibility States</h2>
+      <div class="example-form">
+
+        <div class="form-field">
+          <label for="disabled1">Disabled Input</label>
+          <input type="text" id="disabled1" class="form-control" value="Cannot edit" disabled>
+          <span class="helper-text">This field is disabled</span>
+        </div>
+
+        <div class="form-field">
+          <label for="readonly1">Read-only Input</label>
+          <input type="text" id="readonly1" class="form-control" value="Read only value" readonly>
+          <span class="helper-text">This field is read-only</span>
+        </div>
+
+        <div class="form-field">
+          <label for="aria1">ARIA Invalid State</label>
+          <input type="email" id="aria1" class="form-control" value="invalid" aria-invalid="true" aria-describedby="aria1-error">
+          <span id="aria1-error" class="error-message">This field has an ARIA invalid state</span>
+        </div>
+
+        <div class="form-field">
+          <label for="aria2">ARIA Valid State</label>
+          <input type="email" id="aria2" class="form-control" value="valid@example.com" aria-valid="true">
+          <span class="success-message">This field has an ARIA valid state</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Amphibious 2.0. Form validation patterns that work.</p>
+    </div>
+  </footer>
+
+  <script src="../src/js/navigation.js"></script>
+  <script>
+    // Character counter demo
+    document.getElementById('helper2').addEventListener('input', function(e) {
+      const count = e.target.value.length;
+      const max = e.target.maxLength;
+      const counter = e.target.parentElement.querySelector('.character-count');
+      counter.textContent = `${count} / ${max}`;
+
+      if (count >= max * 0.9) {
+        counter.classList.add('warning');
+      } else if (count >= max) {
+        counter.classList.add('error');
+      } else {
+        counter.classList.remove('warning', 'error');
+      }
+    });
+  </script>
+</body>
+</html>
