@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,7 +30,7 @@ const filesToFix = [
   'tooltip-enhanced.html',
   'tooltip.html',
   'user-dashboard.html',
-  'workilo-filter-system.html'
+  'workilo-filter-system.html',
 ];
 
 const examplesDir = path.join(__dirname, '..', 'examples');
@@ -53,10 +53,11 @@ function fixFile(filename) {
   }
 
   // Add mobile toggle button after <div class="container"> in nav
-  const navPattern = /<nav[^>]*class="[^"]*site-nav[^"]*"[^>]*>[\s\S]*?<div[^>]*class="[^"]*container[^"]*"[^>]*>/;
+  const navPattern =
+    /<nav[^>]*class="[^"]*site-nav[^"]*"[^>]*>[\s\S]*?<div[^>]*class="[^"]*container[^"]*"[^>]*>/;
   if (navPattern.test(content)) {
     content = content.replace(navPattern, (match) => {
-      return match + `
+      return `${match}
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -91,10 +92,9 @@ function fixFile(filename) {
     fs.writeFileSync(filepath, content);
     console.log(`✅ Fixed ${filename}`);
     return true;
-  } else {
-    console.log(`ℹ️  No changes needed for ${filename}`);
-    return false;
   }
+  console.log(`ℹ️  No changes needed for ${filename}`);
+  return false;
 }
 
 console.log('🔧 Fixing mobile navigation in example files...\n');
@@ -113,7 +113,7 @@ for (const file of filesToFix) {
   }
 }
 
-console.log(`\n📊 Summary:`);
+console.log('\n📊 Summary:');
 console.log(`   Fixed: ${fixedCount} files`);
 console.log(`   Errors: ${errorCount} files`);
 console.log(`   Total: ${filesToFix.length} files`);
