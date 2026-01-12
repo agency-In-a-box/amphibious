@@ -745,7 +745,12 @@
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
     <div class="container">
-      <ul class="horizontal branded">
+      <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+
+      <ul id="main-nav" class="horizontal branded">
         <li><a href="/" class="site-logo">Amphibious</a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
           <ul>
