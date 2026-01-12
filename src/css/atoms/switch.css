@@ -1,0 +1,465 @@
+/**
+ * Switch/Toggle Component
+ * Settings UI toggles with smooth animations
+ * Part of Amphibious 2.0 Component Library
+ */
+
+/* ========================================
+   BASE SWITCH
+   ======================================== */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.75rem;
+  vertical-align: middle;
+}
+
+.switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.switch-slider::before {
+  content: '';
+  position: absolute;
+  height: 1.25rem;
+  width: 1.25rem;
+  left: 0.25rem;
+  bottom: 0.25rem;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Checked state */
+.switch-input:checked + .switch-slider {
+  background-color: #2563eb;
+}
+
+.switch-input:checked + .switch-slider::before {
+  transform: translateX(1.25rem);
+}
+
+/* Focus state */
+.switch-input:focus + .switch-slider {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.switch-input:focus-visible + .switch-slider {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Hover state */
+.switch:hover .switch-slider::before {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Active state */
+.switch:active .switch-slider::before {
+  width: 1.5rem;
+}
+
+.switch-input:checked ~ .switch-slider:active::before {
+  transform: translateX(1rem);
+}
+
+/* ========================================
+   SWITCH SIZES
+   ======================================== */
+
+/* Small - 20px height */
+.switch--sm {
+  width: 2.25rem;
+  height: 1.25rem;
+}
+
+.switch--sm .switch-slider::before {
+  height: 0.875rem;
+  width: 0.875rem;
+  left: 0.1875rem;
+  bottom: 0.1875rem;
+}
+
+.switch--sm .switch-input:checked + .switch-slider::before {
+  transform: translateX(1rem);
+}
+
+.switch--sm:active .switch-slider::before {
+  width: 1.125rem;
+}
+
+/* Large - 32px height */
+.switch--lg {
+  width: 4rem;
+  height: 2rem;
+}
+
+.switch--lg .switch-slider::before {
+  height: 1.5rem;
+  width: 1.5rem;
+  left: 0.25rem;
+  bottom: 0.25rem;
+}
+
+.switch--lg .switch-input:checked + .switch-slider::before {
+  transform: translateX(2rem);
+}
+
+.switch--lg:active .switch-slider::before {
+  width: 1.75rem;
+}
+
+/* ========================================
+   SWITCH COLORS
+   ======================================== */
+
+/* Primary (Orange) */
+.switch--primary .switch-input:checked + .switch-slider {
+  background-color: #a65e00;
+}
+
+.switch--primary .switch-input:focus + .switch-slider {
+  box-shadow: 0 0 0 3px rgba(166, 94, 0, 0.2);
+}
+
+/* Success (Green) */
+.switch--success .switch-input:checked + .switch-slider {
+  background-color: #16a34a;
+}
+
+.switch--success .switch-input:focus + .switch-slider {
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+/* Danger (Red) */
+.switch--danger .switch-input:checked + .switch-slider {
+  background-color: #dc2626;
+}
+
+.switch--danger .switch-input:focus + .switch-slider {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+/* Warning (Yellow) */
+.switch--warning .switch-input:checked + .switch-slider {
+  background-color: #f59e0b;
+}
+
+.switch--warning .switch-input:focus + .switch-slider {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+/* Info (Blue - default) */
+.switch--info .switch-input:checked + .switch-slider {
+  background-color: #2563eb;
+}
+
+/* Dark */
+.switch--dark .switch-input:checked + .switch-slider {
+  background-color: #1f2937;
+}
+
+/* ========================================
+   SWITCH WITH LABELS
+   ======================================== */
+
+.switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.switch-label {
+  font-size: 0.9375rem;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switch-label--left {
+  order: -1;
+}
+
+/* Labels inside switch */
+.switch--labeled {
+  width: 4rem;
+}
+
+.switch--labeled .switch-slider {
+  font-size: 0.625rem;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.switch--labeled .switch-slider::after {
+  content: 'OFF';
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.switch--labeled .switch-input:checked + .switch-slider::after {
+  content: 'ON';
+  opacity: 1;
+}
+
+/* Icons in switch */
+.switch--icons .switch-slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.375rem;
+}
+
+.switch--icons .switch-slider::after {
+  content: '✕';
+  color: #94a3b8;
+  font-size: 0.75rem;
+  transition: opacity 0.3s;
+}
+
+.switch--icons .switch-input:checked + .switch-slider::after {
+  content: '✓';
+  color: white;
+  opacity: 1;
+}
+
+/* ========================================
+   SWITCH STATES
+   ======================================== */
+
+/* Disabled state */
+.switch--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.switch--disabled .switch-slider {
+  cursor: not-allowed;
+  background-color: #e5e7eb;
+}
+
+.switch--disabled .switch-input:checked + .switch-slider {
+  background-color: #9ca3af;
+}
+
+.switch-input:disabled + .switch-slider {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.switch-input:disabled:checked + .switch-slider {
+  background-color: #9ca3af;
+}
+
+/* Loading state */
+.switch--loading .switch-slider::before {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ========================================
+   SWITCH VARIANTS
+   ======================================== */
+
+/* Square variant */
+.switch--square .switch-slider {
+  border-radius: 0.375rem;
+}
+
+.switch--square .switch-slider::before {
+  border-radius: 0.25rem;
+}
+
+/* Outline variant */
+.switch--outline .switch-slider {
+  background-color: transparent;
+  border: 2px solid #cbd5e1;
+}
+
+.switch--outline .switch-slider::before {
+  background-color: #cbd5e1;
+}
+
+.switch--outline .switch-input:checked + .switch-slider {
+  background-color: transparent;
+  border-color: #2563eb;
+}
+
+.switch--outline .switch-input:checked + .switch-slider::before {
+  background-color: #2563eb;
+}
+
+/* iOS style variant */
+.switch--ios {
+  width: 3.25rem;
+  height: 2rem;
+}
+
+.switch--ios .switch-slider {
+  background-color: #e5e7eb;
+  border: 2px solid #e5e7eb;
+}
+
+.switch--ios .switch-slider::before {
+  height: 1.625rem;
+  width: 1.625rem;
+  left: 0.0625rem;
+  bottom: 0.0625rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 3px 1px rgba(0, 0, 0, 0.06);
+}
+
+.switch--ios .switch-input:checked + .switch-slider {
+  background-color: #34c759;
+  border-color: #34c759;
+}
+
+.switch--ios .switch-input:checked + .switch-slider::before {
+  transform: translateX(1.25rem);
+}
+
+/* ========================================
+   SWITCH GROUP
+   ======================================== */
+
+.switch-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.switch-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s;
+}
+
+.switch-group-item:hover {
+  background: #f3f4f6;
+}
+
+.switch-group-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.switch-group-title {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.switch-group-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+.switch-input:focus-visible + .switch-slider {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .switch-slider {
+    border: 2px solid;
+  }
+
+  .switch-input:checked + .switch-slider {
+    background-color: Highlight;
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 640px) {
+  .switch-group-item {
+    padding: 0.5rem;
+  }
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  .switch-slider {
+    background-color: #4b5563;
+  }
+
+  .switch-input:checked + .switch-slider {
+    background-color: #3b82f6;
+  }
+
+  .switch-label {
+    color: #d1d5db;
+  }
+
+  .switch--outline .switch-slider {
+    border-color: #4b5563;
+  }
+
+  .switch--outline .switch-slider::before {
+    background-color: #6b7280;
+  }
+
+  .switch-group-item {
+    background: #1f2937;
+  }
+
+  .switch-group-item:hover {
+    background: #374151;
+  }
+
+  .switch-group-title {
+    color: #f3f4f6;
+  }
+
+  .switch-group-description {
+    color: #9ca3af;
+  }
+
+  .switch--ios .switch-slider {
+    background-color: #4b5563;
+    border-color: #4b5563;
+  }
+}

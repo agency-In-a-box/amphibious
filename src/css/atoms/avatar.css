@@ -1,0 +1,480 @@
+/**
+ * Avatar Component
+ * User profile pictures and identity displays
+ * Part of Amphibious 2.0 Component Library
+ */
+
+/* ========================================
+   BASE AVATAR
+   ======================================== */
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Avatar initials */
+.avatar-initials {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Avatar icon */
+.avatar-icon {
+  width: 60%;
+  height: 60%;
+  fill: currentColor;
+}
+
+/* ========================================
+   AVATAR SIZES
+   ======================================== */
+
+/* Extra Small - 24px */
+.avatar--xs {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.625rem;
+}
+
+/* Small - 32px */
+.avatar--sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
+}
+
+/* Medium - 40px (default) */
+.avatar--md {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+}
+
+/* Large - 48px */
+.avatar--lg {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.125rem;
+}
+
+/* Extra Large - 64px */
+.avatar--xl {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.5rem;
+}
+
+/* XXL - 96px */
+.avatar--2xl {
+  width: 6rem;
+  height: 6rem;
+  font-size: 2rem;
+}
+
+/* XXXL - 128px */
+.avatar--3xl {
+  width: 8rem;
+  height: 8rem;
+  font-size: 2.5rem;
+}
+
+/* ========================================
+   AVATAR SHAPES
+   ======================================== */
+
+.avatar--rounded {
+  border-radius: 0.5rem;
+}
+
+.avatar--square {
+  border-radius: 0;
+}
+
+/* ========================================
+   AVATAR COLORS
+   ======================================== */
+
+/* Primary */
+.avatar--primary {
+  background-color: #fff3e0;
+  color: #a65e00;
+}
+
+/* Secondary */
+.avatar--secondary {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+/* Success */
+.avatar--success {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+/* Danger */
+.avatar--danger {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Warning */
+.avatar--warning {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+/* Info */
+.avatar--info {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+/* Dark */
+.avatar--dark {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+/* Light */
+.avatar--light {
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+/* ========================================
+   AVATAR STATUS INDICATOR
+   ======================================== */
+
+.avatar--status {
+  position: relative;
+}
+
+.avatar-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  height: 25%;
+  min-width: 8px;
+  min-height: 8px;
+  border-radius: 50%;
+  background-color: #6b7280;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Status colors */
+.avatar-status--online {
+  background-color: #10b981;
+}
+
+.avatar-status--offline {
+  background-color: #6b7280;
+}
+
+.avatar-status--busy {
+  background-color: #dc2626;
+}
+
+.avatar-status--away {
+  background-color: #f59e0b;
+}
+
+/* Status position for square avatars */
+.avatar--square .avatar-status,
+.avatar--rounded .avatar-status {
+  border-radius: 50%;
+}
+
+/* Adjust status size for different avatar sizes */
+.avatar--xs .avatar-status {
+  width: 6px;
+  height: 6px;
+  border-width: 1px;
+}
+
+.avatar--sm .avatar-status {
+  width: 8px;
+  height: 8px;
+  border-width: 1.5px;
+}
+
+.avatar--lg .avatar-status {
+  width: 14px;
+  height: 14px;
+}
+
+.avatar--xl .avatar-status {
+  width: 18px;
+  height: 18px;
+}
+
+.avatar--2xl .avatar-status {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+}
+
+/* ========================================
+   AVATAR WITH BADGE
+   ======================================== */
+
+.avatar--badge {
+  position: relative;
+}
+
+.avatar-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background-color: #dc2626;
+  color: white;
+  border-radius: 9px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Badge adjustments for sizes */
+.avatar--lg .avatar-badge {
+  min-width: 20px;
+  height: 20px;
+  font-size: 0.75rem;
+}
+
+.avatar--xl .avatar-badge {
+  min-width: 24px;
+  height: 24px;
+  font-size: 0.875rem;
+  top: -6px;
+  right: -6px;
+}
+
+/* ========================================
+   AVATAR GROUP
+   ======================================== */
+
+.avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.avatar-group .avatar {
+  margin-right: -0.5rem;
+  border: 2px solid white;
+  transition: transform 0.2s ease, z-index 0.2s ease;
+}
+
+.avatar-group .avatar:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.avatar-group .avatar:last-child {
+  margin-right: 0;
+}
+
+/* Stacked variant */
+.avatar-group--stacked {
+  flex-direction: row-reverse;
+}
+
+.avatar-group--stacked .avatar {
+  margin-right: 0;
+  margin-left: -0.5rem;
+}
+
+.avatar-group--stacked .avatar:last-child {
+  margin-left: 0;
+}
+
+/* Group counter */
+.avatar-group-counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 2px solid white;
+  margin-left: -0.5rem;
+}
+
+/* ========================================
+   AVATAR WITH TEXT
+   ======================================== */
+
+.avatar-with-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.avatar-name {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.875rem;
+}
+
+.avatar-description {
+  color: #6b7280;
+  font-size: 0.75rem;
+  margin-top: 0.125rem;
+}
+
+/* ========================================
+   AVATAR PLACEHOLDER
+   ======================================== */
+
+.avatar--placeholder {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ========================================
+   AVATAR STATES
+   ======================================== */
+
+/* Clickable avatar */
+.avatar--clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.avatar--clickable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.avatar--clickable:active {
+  transform: scale(0.95);
+}
+
+/* Bordered avatar */
+.avatar--bordered {
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 640px) {
+  .avatar-group .avatar {
+    margin-right: -0.75rem;
+  }
+
+  .avatar-with-text {
+    gap: 0.5rem;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+.avatar[role="button"] {
+  cursor: pointer;
+}
+
+.avatar[role="button"]:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .avatar {
+    border: 1px solid currentColor;
+  }
+
+  .avatar-status {
+    border-width: 3px;
+  }
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  .avatar {
+    background-color: #374151;
+    color: #d1d5db;
+  }
+
+  .avatar--light {
+    background-color: #4b5563;
+    color: #e5e7eb;
+  }
+
+  .avatar-status {
+    border-color: #1f2937;
+  }
+
+  .avatar-group .avatar {
+    border-color: #1f2937;
+  }
+
+  .avatar-name {
+    color: #f3f4f6;
+  }
+
+  .avatar-description {
+    color: #9ca3af;
+  }
+
+  .avatar--bordered {
+    border-color: #374151;
+  }
+}
