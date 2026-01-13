@@ -174,6 +174,29 @@ class NavigationComponent {
       });
     });
   }
+
+  /**
+   * Destroy navigation component and clean up event listeners
+   */
+  destroy() {
+    // Remove all event listeners from toggles
+    const toggles = document.querySelectorAll('.nav-toggle');
+    toggles.forEach((toggle) => {
+      const clone = toggle.cloneNode(true);
+      toggle.parentNode.replaceChild(clone, toggle);
+    });
+
+    // Remove dropdown event listeners
+    const dropdowns = document.querySelectorAll('.has-dropdown');
+    dropdowns.forEach((dropdown) => {
+      const clone = dropdown.cloneNode(true);
+      dropdown.parentNode.replaceChild(clone, dropdown);
+    });
+
+    // Clear references
+    this.navToggles = null;
+    this.navMenus = null;
+  }
 }
 
 // Initialize navigation when DOM is ready

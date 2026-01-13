@@ -16,7 +16,7 @@ const init = () => {
   // Initialize modals
   window.amphibiousModal = new ModalComponent();
 
-  console.log('Amphibious 2.0 components initialized');
+  // Components initialized successfully
 };
 
 // Check if DOM is already loaded

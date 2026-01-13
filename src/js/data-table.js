@@ -688,6 +688,47 @@ class DataTableComponent {
       link.click();
     }
   }
+
+  /**
+   * Clean up and destroy the component
+   */
+  destroy() {
+    // Remove all event listeners
+    const headers = this.table.querySelectorAll('[data-sortable]');
+    headers.forEach((header) => {
+      header.replaceWith(header.cloneNode(true));
+    });
+
+    // Remove pagination event listeners
+    if (this.prevButton) {
+      this.prevButton.replaceWith(this.prevButton.cloneNode(true));
+    }
+    if (this.nextButton) {
+      this.nextButton.replaceWith(this.nextButton.cloneNode(true));
+    }
+
+    // Remove search event listener
+    if (this.searchInput) {
+      this.searchInput.replaceWith(this.searchInput.cloneNode(true));
+    }
+
+    // Remove filter event listeners
+    const filters = this.table.querySelectorAll('[data-filter]');
+    filters.forEach((filter) => {
+      filter.replaceWith(filter.cloneNode(true));
+    });
+
+    // Remove check all listener
+    const checkAll = this.table.querySelector('[data-check-all]');
+    if (checkAll) {
+      checkAll.replaceWith(checkAll.cloneNode(true));
+    }
+
+    // Clear data references
+    this.data = null;
+    this.filteredData = null;
+    this.config = null;
+  }
 }
 
 // Auto-initialize tables with data-table attribute

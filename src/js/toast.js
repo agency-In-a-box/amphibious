@@ -274,6 +274,25 @@ class ToastComponent {
   info(message, options = {}) {
     return this.show({ ...options, type: 'info', message, icon: true });
   }
+
+  /**
+   * Destroy all toasts and clean up
+   */
+  destroy() {
+    // Clear all active toasts
+    this.toasts.forEach((config, id) => {
+      this.hide(id);
+    });
+
+    // Remove container if it exists
+    if (this.container?.parentNode) {
+      this.container.parentNode.removeChild(this.container);
+    }
+
+    // Clear references
+    this.container = null;
+    this.toasts.clear();
+  }
 }
 
 // Auto-initialize
