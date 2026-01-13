@@ -80,7 +80,7 @@ class SearchBarEnhanced {
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
 
-      ...options
+      ...options,
     };
 
     // State management
@@ -97,7 +97,7 @@ class SearchBarEnhanced {
       activeFilters: new Set(),
       page: 1,
       hasMore: false,
-      lastSearch: null
+      lastSearch: null,
     };
 
     // Debounce timer
@@ -240,7 +240,7 @@ class SearchBarEnhanced {
       const popularList = document.createElement('div');
       popularList.className = 'search-bar-popular-list';
 
-      this.options.popularSearches.forEach(term => {
+      this.options.popularSearches.forEach((term) => {
         const item = document.createElement('div');
         item.className = 'search-bar-popular-item';
         item.textContent = term;
@@ -317,7 +317,7 @@ class SearchBarEnhanced {
     filtersPanel.className = 'search-bar-filters-panel';
     filtersPanel.style.display = 'none';
 
-    this.options.filters.forEach(filter => {
+    this.options.filters.forEach((filter) => {
       const filterGroup = document.createElement('div');
       filterGroup.className = 'search-bar-filter-group';
 
@@ -325,7 +325,7 @@ class SearchBarEnhanced {
       label.textContent = filter.label;
 
       if (filter.type === 'checkbox') {
-        filter.options.forEach(option => {
+        filter.options.forEach((option) => {
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
           checkbox.value = option.value;
@@ -333,7 +333,7 @@ class SearchBarEnhanced {
 
           const checkLabel = document.createElement('label');
           checkLabel.appendChild(checkbox);
-          checkLabel.appendChild(document.createTextNode(' ' + option.label));
+          checkLabel.appendChild(document.createTextNode(` ${option.label}`));
 
           filterGroup.appendChild(checkLabel);
         });
@@ -341,7 +341,7 @@ class SearchBarEnhanced {
         const select = document.createElement('select');
         select.name = filter.name;
 
-        filter.options.forEach(option => {
+        filter.options.forEach((option) => {
           const optionEl = document.createElement('option');
           optionEl.value = option.value;
           optionEl.textContent = option.label;
@@ -371,7 +371,7 @@ class SearchBarEnhanced {
       filtersPanel.style.display = filtersPanel.style.display === 'none' ? 'block' : 'none';
     });
 
-    filtersPanel.querySelectorAll('input, select').forEach(filter => {
+    filtersPanel.querySelectorAll('input, select').forEach((filter) => {
       this.addHandler(filter, 'change', () => this.applyFilters());
     });
   }
@@ -467,7 +467,11 @@ class SearchBarEnhanced {
     if (this.options.source && typeof this.options.source === 'string') {
       this.addHandler(this.resultsList, 'scroll', () => {
         const { scrollTop, scrollHeight, clientHeight } = this.resultsList;
-        if (scrollTop + clientHeight >= scrollHeight - 50 && this.state.hasMore && !this.state.isLoading) {
+        if (
+          scrollTop + clientHeight >= scrollHeight - 50 &&
+          this.state.hasMore &&
+          !this.state.isLoading
+        ) {
           this.loadMore();
         }
       });
@@ -521,7 +525,7 @@ class SearchBarEnhanced {
   }
 
   handleKeydown(e) {
-    switch(e.key) {
+    switch (e.key) {
       case 'Enter':
         e.preventDefault();
         if (this.state.highlightedIndex >= 0) {
@@ -633,7 +637,6 @@ class SearchBarEnhanced {
       if (this.options.onSearch) {
         this.options.onSearch(query, results, this);
       }
-
     } catch (error) {
       this.showError();
     } finally {
@@ -654,14 +657,14 @@ class SearchBarEnhanced {
       }
 
       // Add filters to URL
-      this.state.activeFilters.forEach(filter => {
+      this.state.activeFilters.forEach((filter) => {
         url.searchParams.append('filter', filter);
       });
 
       const response = await fetch(url, {
         method: this.options.method,
         headers: this.options.headers,
-        signal: controller.signal
+        signal: controller.signal,
       });
 
       if (!response.ok) {
@@ -677,7 +680,6 @@ class SearchBarEnhanced {
       }
 
       return data;
-
     } finally {
       this.abortControllers.delete(controller);
     }
@@ -685,14 +687,13 @@ class SearchBarEnhanced {
 
   searchLocal(query) {
     const lowerQuery = query.toLowerCase();
-    const results = this.options.source.filter(item => {
-      const searchText = typeof item === 'string' ? item : (item.text || item.label || '');
+    const results = this.options.source.filter((item) => {
+      const searchText = typeof item === 'string' ? item : item.text || item.label || '';
 
       if (this.options.fuzzySearch) {
         return this.fuzzyMatch(searchText.toLowerCase(), lowerQuery);
-      } else {
-        return searchText.toLowerCase().includes(lowerQuery);
       }
+      return searchText.toLowerCase().includes(lowerQuery);
     });
 
     return results.slice(0, this.options.maxResults);
@@ -719,14 +720,14 @@ class SearchBarEnhanced {
     if (this.filtersPanel) {
       this.state.activeFilters.clear();
 
-      this.filtersPanel.querySelectorAll('input:checked, select').forEach(filter => {
+      this.filtersPanel.querySelectorAll('input:checked, select').forEach((filter) => {
         if (filter.value) {
           this.state.activeFilters.add(filter.value);
 
           // Filter results based on filter logic
           // This is a simple example, real implementation would be more complex
           if (filter.dataset.filterField) {
-            results = results.filter(item => {
+            results = results.filter((item) => {
               return item[filter.dataset.filterField] === filter.value;
             });
           }
@@ -736,7 +737,7 @@ class SearchBarEnhanced {
 
     // Apply categories
     if (this.options.categories && this.state.selectedCategory) {
-      results = results.filter(item => item.category === this.state.selectedCategory);
+      results = results.filter((item) => item.category === this.state.selectedCategory);
     }
 
     // Sort results
@@ -777,10 +778,11 @@ class SearchBarEnhanced {
   groupResults(results) {
     const groups = new Map();
 
-    results.forEach(item => {
-      const groupKey = typeof this.options.groupBy === 'function'
-        ? this.options.groupBy(item)
-        : item[this.options.groupBy];
+    results.forEach((item) => {
+      const groupKey =
+        typeof this.options.groupBy === 'function'
+          ? this.options.groupBy(item)
+          : item[this.options.groupBy];
 
       if (!groups.has(groupKey)) {
         groups.set(groupKey, []);
@@ -832,7 +834,7 @@ class SearchBarEnhanced {
     if (this.options.resultTemplate) {
       resultEl.innerHTML = this.options.resultTemplate(item, this.state.query, this);
     } else {
-      const text = typeof item === 'string' ? item : (item.text || item.label || item.title || '');
+      const text = typeof item === 'string' ? item : item.text || item.label || item.title || '';
       const displayText = this.options.highlight
         ? this.highlightQuery(text, this.state.query)
         : text;
@@ -867,7 +869,7 @@ class SearchBarEnhanced {
   selectItem(item) {
     this.state.selectedItem = item;
 
-    const text = typeof item === 'string' ? item : (item.text || item.label || item.title || '');
+    const text = typeof item === 'string' ? item : item.text || item.label || item.title || '';
     this.input.value = text;
     this.state.query = text;
 
@@ -918,7 +920,7 @@ class SearchBarEnhanced {
 
     this.recentList.innerHTML = '';
 
-    this.state.recentSearches.forEach(search => {
+    this.state.recentSearches.forEach((search) => {
       const item = document.createElement('div');
       item.className = 'search-bar-recent-item';
       item.innerHTML = `
@@ -1009,7 +1011,10 @@ class SearchBarEnhanced {
       const spaceBelow = window.innerHeight - rect.bottom;
       const spaceAbove = rect.top;
 
-      this.resultsContainer.classList.remove('search-bar-results--top', 'search-bar-results--bottom');
+      this.resultsContainer.classList.remove(
+        'search-bar-results--top',
+        'search-bar-results--bottom',
+      );
 
       if (spaceBelow < this.options.maxHeight && spaceAbove > spaceBelow) {
         this.resultsContainer.classList.add('search-bar-results--top');
@@ -1083,7 +1088,7 @@ class SearchBarEnhanced {
   }
 
   removeRecentSearch(search) {
-    this.state.recentSearches = this.state.recentSearches.filter(s => s !== search);
+    this.state.recentSearches = this.state.recentSearches.filter((s) => s !== search);
     this.saveRecentSearches();
     this.renderRecentSearches();
 
@@ -1146,11 +1151,11 @@ class SearchBarEnhanced {
    */
   destroy() {
     // Cancel any pending operations
-    this.abortControllers.forEach(controller => controller.abort());
+    this.abortControllers.forEach((controller) => controller.abort());
     this.abortControllers.clear();
 
     // Clear all timers
-    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.forEach((timer) => clearTimeout(timer));
     this.timers.clear();
 
     if (this.searchDebounceTimer) {
@@ -1166,7 +1171,7 @@ class SearchBarEnhanced {
     this.handlers.clear();
 
     // Disconnect observers
-    this.observers.forEach(observer => observer.disconnect());
+    this.observers.forEach((observer) => observer.disconnect());
     this.observers.clear();
 
     // Clean up voice recognition
@@ -1176,7 +1181,7 @@ class SearchBarEnhanced {
     }
 
     // Remove created elements
-    this.createdElements.forEach(element => {
+    this.createdElements.forEach((element) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -1214,7 +1219,7 @@ class SearchBarEnhanced {
 if (window.AmphibiousRegistry) {
   window.AmphibiousRegistry.registerComponent('search-bar', SearchBarEnhanced, {
     selector: '[data-search-bar]',
-    autoInit: true
+    autoInit: true,
   });
 }
 

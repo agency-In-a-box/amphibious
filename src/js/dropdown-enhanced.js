@@ -19,7 +19,7 @@ class DropdownEnhanced {
       searchable: options.searchable || element.dataset.searchable === 'true',
       multiple: options.multiple || element.dataset.multiple === 'true',
       placeholder: options.placeholder || element.dataset.placeholder || 'Select an option',
-      maxItems: options.maxItems || parseInt(element.dataset.maxItems) || null,
+      maxItems: options.maxItems || Number.parseInt(element.dataset.maxItems) || null,
 
       // Advanced options
       allowCreate: options.allowCreate || false,
@@ -56,7 +56,7 @@ class DropdownEnhanced {
       onSelect: options.onSelect || null,
       onRemove: options.onRemove || null,
 
-      ...options
+      ...options,
     };
 
     // State management
@@ -107,11 +107,11 @@ class DropdownEnhanced {
     const optgroups = nativeSelect.querySelectorAll('optgroup');
 
     if (optgroups.length > 0) {
-      optgroups.forEach(group => {
+      optgroups.forEach((group) => {
         const groupLabel = group.label;
         const groupOptions = group.querySelectorAll('option');
 
-        groupOptions.forEach(option => {
+        groupOptions.forEach((option) => {
           items.push({
             value: option.value,
             text: option.textContent,
@@ -123,7 +123,7 @@ class DropdownEnhanced {
         });
       });
     } else {
-      nativeSelect.querySelectorAll('option').forEach(option => {
+      nativeSelect.querySelectorAll('option').forEach((option) => {
         if (option.value) {
           items.push({
             value: option.value,
@@ -364,7 +364,7 @@ class DropdownEnhanced {
     const startIndex = Math.floor(scrollTop / itemHeight);
     const endIndex = Math.min(
       startIndex + Math.ceil(containerHeight / itemHeight) + 1,
-      this.state.filteredItems.length
+      this.state.filteredItems.length,
     );
 
     // Update spacer height
@@ -469,9 +469,12 @@ class DropdownEnhanced {
           clearTimeout(this.searchDebounceTimer);
         }
 
-        this.searchDebounceTimer = setTimeout(() => {
-          this.handleSearch(e.target.value);
-        }, this.options.ajax ? 300 : 0);
+        this.searchDebounceTimer = setTimeout(
+          () => {
+            this.handleSearch(e.target.value);
+          },
+          this.options.ajax ? 300 : 0,
+        );
 
         this.timers.add(this.searchDebounceTimer);
       };
@@ -527,9 +530,9 @@ class DropdownEnhanced {
   }
 
   handleKeydown(e) {
-    const items = this.state.filteredItems.filter(i => !i.disabled);
+    const items = this.state.filteredItems.filter((i) => !i.disabled);
 
-    switch(e.key) {
+    switch (e.key) {
       case 'Enter':
         if (this.state.isOpen && this.state.highlightedIndex >= 0) {
           e.preventDefault();
@@ -558,10 +561,7 @@ class DropdownEnhanced {
         if (!this.state.isOpen) {
           this.open();
         } else {
-          this.state.highlightedIndex = Math.min(
-            this.state.highlightedIndex + 1,
-            items.length - 1
-          );
+          this.state.highlightedIndex = Math.min(this.state.highlightedIndex + 1, items.length - 1);
           this.updateHighlight();
           this.scrollToHighlighted();
         }
@@ -570,10 +570,7 @@ class DropdownEnhanced {
       case 'ArrowUp':
         e.preventDefault();
         if (this.state.isOpen) {
-          this.state.highlightedIndex = Math.max(
-            this.state.highlightedIndex - 1,
-            0
-          );
+          this.state.highlightedIndex = Math.max(this.state.highlightedIndex - 1, 0);
           this.updateHighlight();
           this.scrollToHighlighted();
         }
@@ -649,7 +646,6 @@ class DropdownEnhanced {
 
       this.state.allItems = data;
       this.renderItems();
-
     } catch (error) {
       this.noResults.textContent = 'Error loading data';
       this.noResults.style.display = 'block';
@@ -662,7 +658,7 @@ class DropdownEnhanced {
   filterItems(searchTerm) {
     const term = searchTerm.toLowerCase();
 
-    return this.state.allItems.filter(item => {
+    return this.state.allItems.filter((item) => {
       const text = item.text.toLowerCase();
       const value = item.value.toString().toLowerCase();
 
@@ -694,10 +690,11 @@ class DropdownEnhanced {
   groupItems(items) {
     const groups = new Map();
 
-    items.forEach(item => {
-      const groupKey = typeof this.options.groupBy === 'function'
-        ? this.options.groupBy(item)
-        : item[this.options.groupBy];
+    items.forEach((item) => {
+      const groupKey =
+        typeof this.options.groupBy === 'function'
+          ? this.options.groupBy(item)
+          : item[this.options.groupBy];
 
       if (!groups.has(groupKey)) {
         groups.set(groupKey, []);
@@ -709,7 +706,7 @@ class DropdownEnhanced {
     // Flatten groups
     const grouped = [];
     groups.forEach((groupItems, groupName) => {
-      groupItems.forEach(item => {
+      groupItems.forEach((item) => {
         grouped.push({ ...item, group: groupName });
       });
     });
@@ -786,7 +783,7 @@ class DropdownEnhanced {
         this.valueText.className = 'dropdown-value-text';
         this.valueText.innerHTML = '';
 
-        this.state.selectedItems.forEach(item => {
+        this.state.selectedItems.forEach((item) => {
           const tag = document.createElement('span');
           tag.className = 'dropdown-tag';
 
@@ -829,7 +826,7 @@ class DropdownEnhanced {
   updateNativeSelect() {
     if (!this.nativeSelect) return;
 
-    this.nativeSelect.querySelectorAll('option').forEach(option => {
+    this.nativeSelect.querySelectorAll('option').forEach((option) => {
       option.selected = this.state.selectedValues.includes(option.value);
     });
 
@@ -897,10 +894,10 @@ class DropdownEnhanced {
   }
 
   setInitialValue() {
-    const selectedItems = this.state.allItems.filter(item => item.selected);
+    const selectedItems = this.state.allItems.filter((item) => item.selected);
 
     if (selectedItems.length > 0) {
-      this.state.selectedValues = selectedItems.map(item => item.value);
+      this.state.selectedValues = selectedItems.map((item) => item.value);
       this.state.selectedItems = selectedItems;
       this.updateDisplay();
     }
@@ -910,9 +907,9 @@ class DropdownEnhanced {
     if (!this.nativeSelect) return;
 
     const selectedOptions = Array.from(this.nativeSelect.selectedOptions);
-    this.state.selectedValues = selectedOptions.map(opt => opt.value);
-    this.state.selectedItems = this.state.allItems.filter(item =>
-      this.state.selectedValues.includes(item.value)
+    this.state.selectedValues = selectedOptions.map((opt) => opt.value);
+    this.state.selectedItems = this.state.allItems.filter((item) =>
+      this.state.selectedValues.includes(item.value),
     );
 
     this.updateDisplay();
@@ -937,7 +934,7 @@ class DropdownEnhanced {
     }
 
     if (this.options.highlightFirst && !this.state.highlightedIndex) {
-      const firstEnabled = this.state.filteredItems.findIndex(i => !i.disabled);
+      const firstEnabled = this.state.filteredItems.findIndex((i) => !i.disabled);
       if (firstEnabled >= 0) {
         this.state.highlightedIndex = firstEnabled;
         this.updateHighlight();
@@ -1048,14 +1045,10 @@ class DropdownEnhanced {
   setValue(value) {
     if (this.options.multiple && Array.isArray(value)) {
       this.state.selectedValues = value;
-      this.state.selectedItems = this.state.allItems.filter(item =>
-        value.includes(item.value)
-      );
+      this.state.selectedItems = this.state.allItems.filter((item) => value.includes(item.value));
     } else if (value) {
       this.state.selectedValues = [value];
-      this.state.selectedItems = this.state.allItems.filter(item =>
-        item.value === value
-      );
+      this.state.selectedItems = this.state.allItems.filter((item) => item.value === value);
     } else {
       this.clear();
     }
@@ -1071,7 +1064,7 @@ class DropdownEnhanced {
   }
 
   removeOption(value) {
-    this.state.allItems = this.state.allItems.filter(item => item.value !== value);
+    this.state.allItems = this.state.allItems.filter((item) => item.value !== value);
     this.removeItem({ value });
     this.renderItems(this.state.searchTerm);
   }
@@ -1090,7 +1083,7 @@ class DropdownEnhanced {
     this.close();
 
     // Clear all timers
-    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.forEach((timer) => clearTimeout(timer));
     this.timers.clear();
 
     if (this.searchDebounceTimer) {
@@ -1106,11 +1099,11 @@ class DropdownEnhanced {
     this.handlers.clear();
 
     // Disconnect observers
-    this.observers.forEach(observer => observer.disconnect());
+    this.observers.forEach((observer) => observer.disconnect());
     this.observers.clear();
 
     // Remove created elements
-    this.createdElements.forEach(element => {
+    this.createdElements.forEach((element) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }

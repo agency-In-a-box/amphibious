@@ -82,20 +82,20 @@ class ComponentRegistry {
   registerBuiltInComponents() {
     // Import and register each component
     const components = [
-      { type: 'accordion', constructor: window.Accordion },
-      { type: 'datepicker', constructor: window.DatePicker },
-      { type: 'dropdown', constructor: window.Dropdown },
-      { type: 'file-upload', constructor: window.FileUpload },
-      { type: 'modal', constructor: window.ModalComponent },
-      { type: 'navigation', constructor: window.NavigationComponent },
-      { type: 'search-bar', constructor: window.SearchBar },
-      { type: 'toast', constructor: window.ToastComponent },
-      { type: 'data-table', constructor: window.DataTableComponent },
+      { type: 'accordion', ComponentClass: window.Accordion },
+      { type: 'datepicker', ComponentClass: window.DatePicker },
+      { type: 'dropdown', ComponentClass: window.Dropdown },
+      { type: 'file-upload', ComponentClass: window.FileUpload },
+      { type: 'modal', ComponentClass: window.ModalComponent },
+      { type: 'navigation', ComponentClass: window.NavigationComponent },
+      { type: 'search-bar', ComponentClass: window.SearchBar },
+      { type: 'toast', ComponentClass: window.ToastComponent },
+      { type: 'data-table', ComponentClass: window.DataTableComponent },
     ];
 
-    components.forEach(({ type, constructor }) => {
-      if (constructor) {
-        this.registerComponent(type, constructor);
+    components.forEach(({ type, ComponentClass }) => {
+      if (ComponentClass) {
+        this.registerComponent(type, ComponentClass);
       }
     });
   }
@@ -103,14 +103,14 @@ class ComponentRegistry {
   /**
    * Register a component type
    */
-  registerComponent(type, constructor, config = {}) {
+  registerComponent(type, ComponentClass, config = {}) {
     if (this.componentTypes.has(type)) {
       this.log(`Component type "${type}" already registered`, 'warn');
       return;
     }
 
     this.componentTypes.set(type, {
-      constructor,
+      constructor: ComponentClass,
       config: {
         selector: config.selector || `[data-${type}]`,
         autoInit: config.autoInit !== false,
@@ -205,9 +205,7 @@ class ComponentRegistry {
    * Destroy a component instance
    */
   destroyComponent(idOrElement) {
-    const id = typeof idOrElement === 'string'
-      ? idOrElement
-      : idOrElement.dataset?.componentId;
+    const id = typeof idOrElement === 'string' ? idOrElement : idOrElement.dataset?.componentId;
 
     if (!id || !this.components.has(id)) {
       this.log(`Component not found: ${id}`, 'warn');
@@ -322,7 +320,9 @@ class ComponentRegistry {
 
     Array.from(element.attributes).forEach((attr) => {
       if (attr.name.startsWith(prefix)) {
-        const key = attr.name.slice(prefix.length).replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+        const key = attr.name
+          .slice(prefix.length)
+          .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
 
         // Try to parse JSON values
         let value = attr.value;
@@ -332,7 +332,7 @@ class ComponentRegistry {
           // Keep as string if not valid JSON
           if (value === 'true') value = true;
           if (value === 'false') value = false;
-          if (!isNaN(value) && value !== '') value = Number(value);
+          if (!Number.isNaN(value) && value !== '') value = Number(value);
         }
 
         options[key] = value;
@@ -415,7 +415,7 @@ class ComponentRegistry {
   log(message, level = 'info') {
     if (!this.config.debug) return;
 
-    const prefix = `[Amphibious Registry]`;
+    const prefix = '[Amphibious Registry]';
 
     switch (level) {
       case 'error':
