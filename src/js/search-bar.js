@@ -26,7 +26,7 @@ class SearchBar {
       onChange: options.onChange || null,
       onClear: options.onClear || null,
       renderItem: options.renderItem || null,
-      ...options
+      ...options,
     };
 
     this.isOpen = false;
@@ -130,7 +130,7 @@ class SearchBar {
     const categoriesDiv = document.createElement('div');
     categoriesDiv.className = 'search-bar-categories';
 
-    this.options.categories.forEach(category => {
+    this.options.categories.forEach((category) => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'search-bar-category';
@@ -204,7 +204,11 @@ class SearchBar {
 
     if (value.length >= this.options.minChars) {
       this.search(value);
-    } else if (value.length === 0 && this.options.recentSearches && this.recentSearches.length > 0) {
+    } else if (
+      value.length === 0 &&
+      this.options.recentSearches &&
+      this.recentSearches.length > 0
+    ) {
       this.showRecentSearches();
     }
   }
@@ -221,7 +225,7 @@ class SearchBar {
   handleKeydown(e) {
     const items = this.resultsContainer.querySelectorAll('.search-bar-item');
 
-    switch(e.key) {
+    switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
         this.currentFocus++;
@@ -307,13 +311,14 @@ class SearchBar {
   filterLocalData(query) {
     const lowerQuery = query.toLowerCase();
 
-    return this.options.source.filter(item => {
+    return this.options.source.filter((item) => {
       if (typeof item === 'string') {
         return item.toLowerCase().includes(lowerQuery);
-      } else if (typeof item === 'object') {
-        return this.options.searchKeys.some(key => {
+      }
+      if (typeof item === 'object') {
+        return this.options.searchKeys.some((key) => {
           const value = this.getNestedValue(item, key);
-          return value && value.toString().toLowerCase().includes(lowerQuery);
+          return value?.toString().toLowerCase().includes(lowerQuery);
         });
       }
       return false;
@@ -372,11 +377,15 @@ class SearchBar {
           <div class="search-bar-item-title">
             ${this.highlightMatch(title, query)}
           </div>
-          ${subtitle ? `
+          ${
+            subtitle
+              ? `
             <div class="search-bar-item-subtitle">
               ${this.highlightMatch(subtitle, query)}
             </div>
-          ` : ''}
+          `
+              : ''
+          }
         </div>
       `;
     }
@@ -422,7 +431,7 @@ class SearchBar {
     const recentDiv = document.createElement('div');
     recentDiv.className = 'search-bar-recent';
 
-    this.recentSearches.forEach(search => {
+    this.recentSearches.forEach((search) => {
       const item = document.createElement('button');
       item.type = 'button';
       item.className = 'search-bar-item';
@@ -477,7 +486,8 @@ class SearchBar {
 
     // Update input
     if (!this.options.clearOnSelect) {
-      const value = typeof result === 'string' ? result : (result.title || result.name || result.text || '');
+      const value =
+        typeof result === 'string' ? result : result.title || result.name || result.text || '';
       this.input.value = value;
     }
 
@@ -493,7 +503,7 @@ class SearchBar {
   selectCategory(category) {
     // Update UI
     const buttons = this.wrapper.querySelectorAll('.search-bar-category');
-    buttons.forEach(btn => {
+    buttons.forEach((btn) => {
       btn.classList.toggle('search-bar-category--active', btn.dataset.category === category);
     });
 
@@ -544,7 +554,7 @@ class SearchBar {
     if (!this.options.recentSearches) return;
 
     // Remove if already exists
-    this.recentSearches = this.recentSearches.filter(s => s !== query);
+    this.recentSearches = this.recentSearches.filter((s) => s !== query);
 
     // Add to beginning
     this.recentSearches.unshift(query);
@@ -586,7 +596,7 @@ class SearchBar {
 // Auto-initialize
 document.addEventListener('DOMContentLoaded', () => {
   const searchBars = document.querySelectorAll('[data-search-bar="true"]');
-  searchBars.forEach(element => {
+  searchBars.forEach((element) => {
     new SearchBar(element);
   });
 });

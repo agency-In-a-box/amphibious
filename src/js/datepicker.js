@@ -20,7 +20,7 @@ class DatePicker {
       onChange: options.onChange || null,
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
-      ...options
+      ...options,
     };
 
     this.isOpen = false;
@@ -262,7 +262,7 @@ class DatePicker {
   }
 
   render() {
-    switch(this.viewMode) {
+    switch (this.viewMode) {
       case 'days':
         this.renderDays();
         break;
@@ -280,8 +280,20 @@ class DatePicker {
     const month = this.viewDate.getMonth();
 
     // Update header
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-                       'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
     this.monthText.textContent = monthNames[month];
     this.yearText.textContent = year;
 
@@ -292,7 +304,7 @@ class DatePicker {
     const weekdays = document.createElement('div');
     weekdays.className = 'datepicker-weekdays';
     const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-    dayNames.forEach(day => {
+    dayNames.forEach((day) => {
       const weekday = document.createElement('div');
       weekday.className = 'datepicker-weekday';
       weekday.textContent = day;
@@ -313,10 +325,7 @@ class DatePicker {
     const firstDayOfWeek = firstDay.getDay();
     for (let i = firstDayOfWeek - 1; i >= 0; i--) {
       const day = prevLastDay.getDate() - i;
-      const dayBtn = this.createDayButton(
-        new Date(year, month - 1, day),
-        'other-month'
-      );
+      const dayBtn = this.createDayButton(new Date(year, month - 1, day), 'other-month');
       daysGrid.appendChild(dayBtn);
     }
 
@@ -330,10 +339,7 @@ class DatePicker {
     // Next month days
     const remainingDays = 42 - daysGrid.children.length;
     for (let day = 1; day <= remainingDays; day++) {
-      const dayBtn = this.createDayButton(
-        new Date(year, month + 1, day),
-        'other-month'
-      );
+      const dayBtn = this.createDayButton(new Date(year, month + 1, day), 'other-month');
       daysGrid.appendChild(dayBtn);
     }
 
@@ -386,8 +392,20 @@ class DatePicker {
     const monthsGrid = document.createElement('div');
     monthsGrid.className = 'datepicker-months';
 
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
 
     monthNames.forEach((name, index) => {
       const monthBtn = document.createElement('button');
@@ -399,9 +417,11 @@ class DatePicker {
         monthBtn.classList.add('datepicker-month-option--current');
       }
 
-      if (this.selectedDate &&
-          index === this.selectedDate.getMonth() &&
-          year === this.selectedDate.getFullYear()) {
+      if (
+        this.selectedDate &&
+        index === this.selectedDate.getMonth() &&
+        year === this.selectedDate.getFullYear()
+      ) {
         monthBtn.classList.add('datepicker-month-option--selected');
       }
 
@@ -460,7 +480,7 @@ class DatePicker {
 
   // Navigation methods
   navigate(direction) {
-    switch(this.viewMode) {
+    switch (this.viewMode) {
       case 'days':
         this.viewDate.setMonth(this.viewDate.getMonth() + direction);
         break;
@@ -468,7 +488,7 @@ class DatePicker {
         this.viewDate.setFullYear(this.viewDate.getFullYear() + direction);
         break;
       case 'years':
-        this.viewDate.setFullYear(this.viewDate.getFullYear() + (direction * 10));
+        this.viewDate.setFullYear(this.viewDate.getFullYear() + direction * 10);
         break;
     }
     this.render();
@@ -519,12 +539,13 @@ class DatePicker {
   }
 
   setDate(date) {
+    let parsedDate = date;
     if (typeof date === 'string') {
-      date = this.parseDate(date);
+      parsedDate = this.parseDate(date);
     }
-    if (date instanceof Date && !isNaN(date)) {
-      this.selectedDate = date;
-      this.viewDate = new Date(date);
+    if (parsedDate instanceof Date && !Number.isNaN(parsedDate.getTime())) {
+      this.selectedDate = parsedDate;
+      this.viewDate = new Date(parsedDate);
       this.updateInput();
       this.render();
     }
@@ -539,8 +560,8 @@ class DatePicker {
 
   updateTime() {
     if (this.selectedDate && this.options.showTime) {
-      let hours = parseInt(this.hourInput.value) || 12;
-      const minutes = parseInt(this.minuteInput.value) || 0;
+      let hours = Number.parseInt(this.hourInput.value) || 12;
+      const minutes = Number.parseInt(this.minuteInput.value) || 0;
       const isPM = this.pmBtn.classList.contains('datepicker-time-period-btn--active');
 
       if (isPM && hours !== 12) hours += 12;
@@ -595,9 +616,11 @@ class DatePicker {
   }
 
   isSameDay(date1, date2) {
-    return date1.getDate() === date2.getDate() &&
-           date1.getMonth() === date2.getMonth() &&
-           date1.getFullYear() === date2.getFullYear();
+    return (
+      date1.getDate() === date2.getDate() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getFullYear() === date2.getFullYear()
+    );
   }
 
   isDisabled(date) {
@@ -609,7 +632,7 @@ class DatePicker {
     if (this.options.disabledDays.includes(date.getDay())) return true;
 
     // Check specific disabled dates
-    return this.options.disabledDates.some(d => this.isSameDay(date, d));
+    return this.options.disabledDates.some((d) => this.isSameDay(date, d));
   }
 
   // Control methods
@@ -669,7 +692,7 @@ class DatePicker {
 // Auto-initialize
 document.addEventListener('DOMContentLoaded', () => {
   const datepickers = document.querySelectorAll('[data-datepicker="true"]');
-  datepickers.forEach(element => {
+  datepickers.forEach((element) => {
     new DatePicker(element);
   });
 });

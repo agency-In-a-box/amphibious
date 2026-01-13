@@ -243,7 +243,7 @@
 }
 
 .datepicker-day--today::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 2px;
   left: 50%;

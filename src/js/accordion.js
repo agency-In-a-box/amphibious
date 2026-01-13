@@ -13,7 +13,7 @@ class Accordion {
       animated: options.animated !== false,
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
-      ...options
+      ...options,
     };
 
     this.items = Array.from(this.accordion.querySelectorAll('.accordion-item'));
@@ -36,9 +36,10 @@ class Accordion {
       content.setAttribute('aria-labelledby', `${itemId}-header`);
 
       // Set initial state
-      const isOpen = item.classList.contains('active') ||
-                     (this.options.defaultOpen === index ||
-                      this.options.defaultOpen === 'all');
+      const isOpen =
+        item.classList.contains('active') ||
+        this.options.defaultOpen === index ||
+        this.options.defaultOpen === 'all';
 
       this.setItemState(item, header, content, isOpen);
 
@@ -62,7 +63,7 @@ class Accordion {
       // Opening
       if (!this.options.allowMultiple) {
         // Close other items
-        this.items.forEach(otherItem => {
+        this.items.forEach((otherItem) => {
           if (otherItem !== item) {
             const otherHeader = otherItem.querySelector('.accordion-header');
             const otherContent = otherItem.querySelector('.accordion-content');
@@ -97,7 +98,7 @@ class Accordion {
       // Calculate and set max-height for animation
       if (this.options.animated) {
         const scrollHeight = content.scrollHeight;
-        content.style.maxHeight = scrollHeight + 'px';
+        content.style.maxHeight = `${scrollHeight}px`;
       }
     } else {
       item.classList.remove('active');
@@ -114,7 +115,7 @@ class Accordion {
     const key = event.key;
     let preventDefault = false;
 
-    switch(key) {
+    switch (key) {
       case 'Enter':
       case ' ':
         this.toggle(item, event);
@@ -149,7 +150,7 @@ class Accordion {
 
   setupKeyboardNavigation() {
     // Make headers focusable
-    this.items.forEach(item => {
+    this.items.forEach((item) => {
       const header = item.querySelector('.accordion-header');
       if (!header.hasAttribute('tabindex')) {
         header.setAttribute('tabindex', '0');
@@ -181,7 +182,7 @@ class Accordion {
 
   // Public methods
   openAll() {
-    this.items.forEach(item => {
+    this.items.forEach((item) => {
       const header = item.querySelector('.accordion-header');
       const content = item.querySelector('.accordion-content');
       this.setItemState(item, header, content, true);
@@ -189,7 +190,7 @@ class Accordion {
   }
 
   closeAll() {
-    this.items.forEach(item => {
+    this.items.forEach((item) => {
       const header = item.querySelector('.accordion-header');
       const content = item.querySelector('.accordion-content');
       this.setItemState(item, header, content, false);
@@ -215,7 +216,7 @@ class Accordion {
   }
 
   destroy() {
-    this.items.forEach(item => {
+    this.items.forEach((item) => {
       const header = item.querySelector('.accordion-header');
       header.removeEventListener('click', this.toggle);
       header.removeEventListener('keydown', this.handleKeydown);
@@ -226,7 +227,7 @@ class Accordion {
 // Auto-initialize accordions on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   const accordions = document.querySelectorAll('.accordion[data-auto-init="true"]');
-  accordions.forEach(accordion => {
+  accordions.forEach((accordion) => {
     new Accordion(accordion);
   });
 });

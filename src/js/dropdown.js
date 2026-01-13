@@ -11,11 +11,11 @@ class Dropdown {
       searchable: options.searchable || element.dataset.searchable === 'true',
       multiple: options.multiple || element.dataset.multiple === 'true',
       placeholder: options.placeholder || element.dataset.placeholder || 'Select an option',
-      maxItems: options.maxItems || parseInt(element.dataset.maxItems) || null,
+      maxItems: options.maxItems || Number.parseInt(element.dataset.maxItems) || null,
       onChange: options.onChange || null,
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
-      ...options
+      ...options,
     };
 
     this.isOpen = false;
@@ -105,34 +105,35 @@ class Dropdown {
     const options = this.nativeSelect.querySelectorAll('option');
 
     if (optgroups.length > 0) {
-      optgroups.forEach(group => {
+      optgroups.forEach((group) => {
         const groupLabel = group.label;
         const groupOptions = group.querySelectorAll('option');
 
         this.items.push({
           type: 'group',
-          label: groupLabel
+          label: groupLabel,
         });
 
-        groupOptions.forEach(option => {
+        groupOptions.forEach((option) => {
           this.items.push({
             type: 'option',
             value: option.value,
             text: option.textContent,
             selected: option.selected,
-            disabled: option.disabled
+            disabled: option.disabled,
           });
         });
       });
     } else {
-      options.forEach(option => {
-        if (option.value) { // Skip empty placeholders
+      options.forEach((option) => {
+        if (option.value) {
+          // Skip empty placeholders
           this.items.push({
             type: 'option',
             value: option.value,
             text: option.textContent,
             selected: option.selected,
-            disabled: option.disabled
+            disabled: option.disabled,
           });
         }
       });
@@ -146,13 +147,13 @@ class Dropdown {
 
     let currentGroup = null;
     const itemsToRender = searchTerm
-      ? this.items.filter(item =>
-          item.type === 'option' &&
-          item.text.toLowerCase().includes(searchTerm.toLowerCase())
+      ? this.items.filter(
+          (item) =>
+            item.type === 'option' && item.text.toLowerCase().includes(searchTerm.toLowerCase()),
         )
       : this.items;
 
-    itemsToRender.forEach(item => {
+    itemsToRender.forEach((item) => {
       if (item.type === 'group') {
         currentGroup = document.createElement('div');
         currentGroup.className = 'dropdown-group';
@@ -236,9 +237,9 @@ class Dropdown {
 
   handleKeydown(e) {
     const items = Array.from(this.filteredItems);
-    const currentIndex = items.findIndex(item => item === document.activeElement);
+    const currentIndex = items.findIndex((item) => item === document.activeElement);
 
-    switch(e.key) {
+    switch (e.key) {
       case 'Enter':
       case ' ':
         if (e.target === this.selectBtn) {
@@ -304,7 +305,7 @@ class Dropdown {
       this.updateDisplay();
     } else {
       // Single select logic
-      this.filteredItems.forEach(i => {
+      this.filteredItems.forEach((i) => {
         i.classList.remove('selected');
         i.setAttribute('aria-selected', 'false');
       });
@@ -319,7 +320,7 @@ class Dropdown {
     // Update native select
     if (this.nativeSelect) {
       const options = this.nativeSelect.querySelectorAll('option');
-      options.forEach(option => {
+      options.forEach((option) => {
         option.selected = this.selectedValues.includes(option.value);
       });
 
@@ -342,8 +343,8 @@ class Dropdown {
       this.valueSpan.className = 'dropdown-value';
       this.valueSpan.innerHTML = '';
 
-      this.selectedValues.forEach(value => {
-        const item = this.items.find(i => i.value === value);
+      this.selectedValues.forEach((value) => {
+        const item = this.items.find((i) => i.value === value);
         if (item) {
           const tag = document.createElement('span');
           tag.className = 'dropdown-tag';
@@ -356,7 +357,7 @@ class Dropdown {
       });
 
       // Handle tag removal
-      this.valueSpan.querySelectorAll('.dropdown-tag-remove').forEach(btn => {
+      this.valueSpan.querySelectorAll('.dropdown-tag-remove').forEach((btn) => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           const value = btn.dataset.value;
@@ -373,16 +374,16 @@ class Dropdown {
         });
       });
     } else {
-      const item = this.items.find(i => i.value === this.selectedValues[0]);
+      const item = this.items.find((i) => i.value === this.selectedValues[0]);
       this.valueSpan.className = 'dropdown-value';
       this.valueSpan.textContent = item ? item.text : '';
     }
   }
 
   setInitialValue() {
-    const selectedItems = this.items.filter(item => item.selected);
+    const selectedItems = this.items.filter((item) => item.selected);
     if (selectedItems.length > 0) {
-      this.selectedValues = selectedItems.map(item => item.value);
+      this.selectedValues = selectedItems.map((item) => item.value);
       this.updateDisplay();
       this.renderItems();
     }
@@ -461,7 +462,7 @@ class Dropdown {
 // Auto-initialize dropdowns
 document.addEventListener('DOMContentLoaded', () => {
   const dropdowns = document.querySelectorAll('[data-dropdown="true"]');
-  dropdowns.forEach(element => {
+  dropdowns.forEach((element) => {
     new Dropdown(element);
   });
 });
