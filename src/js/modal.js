@@ -133,6 +133,30 @@ class ModalComponent {
       opener.focus();
     }
   }
+
+  /**
+   * Destroy the modal component and clean up event listeners
+   */
+  destroy() {
+    // Remove all event listeners by replacing elements
+    const openers = document.querySelectorAll('.modal_opener');
+    openers.forEach((opener) => {
+      const clone = opener.cloneNode(true);
+      opener.parentNode.replaceChild(clone, opener);
+    });
+
+    const closers = document.querySelectorAll('[modal_close]');
+    closers.forEach((closer) => {
+      const clone = closer.cloneNode(true);
+      closer.parentNode.replaceChild(clone, closer);
+    });
+
+    // Remove document event listener (ESC key)
+    document.removeEventListener('keydown', this.handleEscape);
+
+    // Clear references
+    this.activeModal = null;
+  }
 }
 
 // Initialize modal when DOM is ready

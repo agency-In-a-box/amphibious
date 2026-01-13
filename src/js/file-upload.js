@@ -484,8 +484,8 @@ class FileUpload {
   }
 
   showError(message) {
+    // Custom error display - console removed for production
     // You can implement custom error display here
-    console.error(message);
 
     if (this.options.onError) {
       this.options.onError(null, new Error(message), this);

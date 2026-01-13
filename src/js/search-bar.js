@@ -301,7 +301,7 @@ class SearchBar {
         this.options.onSearch(query, results, this);
       }
     } catch (error) {
-      console.error('Search error:', error);
+      // Handle search error - console removed for production
       this.renderError();
     } finally {
       this.wrapper.classList.remove('search-bar--loading');
