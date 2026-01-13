@@ -52,7 +52,7 @@
 .required,
 label.required::after,
 .form-label.required::after {
-  content: ' *';
+  content: " *";
   color: var(--validation-error);
   font-weight: 700;
   margin-left: 0.25rem;
@@ -62,7 +62,7 @@ label.required::after,
 .optional::after,
 label.optional::after,
 .form-label.optional::after {
-  content: ' (optional)';
+  content: " (optional)";
   color: var(--validation-neutral);
   font-size: 0.875em;
   font-weight: 400;
@@ -72,7 +72,7 @@ label.optional::after,
 /* Required field group */
 .form-field--required label::after,
 .input-group--required label::after {
-  content: ' *';
+  content: " *";
   color: var(--validation-error);
   font-weight: 700;
   margin-left: 0.25rem;
@@ -296,7 +296,7 @@ input.warning {
 }
 
 .helper-text--icon::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 1rem;
   height: 1rem;
@@ -367,7 +367,9 @@ input.warning {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ========================================

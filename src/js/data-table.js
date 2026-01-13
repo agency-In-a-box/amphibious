@@ -16,7 +16,7 @@ class DataTableComponent {
       pageSize: 10,
       selectable: false,
       expandable: false,
-      ...options
+      ...options,
     };
 
     this.data = [];
@@ -73,11 +73,11 @@ class DataTableComponent {
    * Extract data from existing HTML table
    */
   extractDataFromTable() {
-    const headers = Array.from(this.table.querySelectorAll('thead th')).map(th => ({
+    const headers = Array.from(this.table.querySelectorAll('thead th')).map((th) => ({
       key: th.dataset.key || th.textContent.trim().toLowerCase().replace(/\s+/g, '_'),
       label: th.textContent.trim(),
       sortable: th.classList.contains('sortable') || this.config.sortable,
-      type: th.dataset.type || 'string'
+      type: th.dataset.type || 'string',
     }));
 
     const rows = Array.from(this.table.querySelectorAll('tbody tr'));
@@ -181,7 +181,8 @@ class DataTableComponent {
 
     const icon = document.createElement('span');
     icon.className = 'data-table-search__icon';
-    icon.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="5"/><path d="m15 15-4.35-4.35"/></svg>';
+    icon.innerHTML =
+      '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="5"/><path d="m15 15-4.35-4.35"/></svg>';
 
     const input = document.createElement('input');
     input.className = 'data-table-search__input';
@@ -202,7 +203,7 @@ class DataTableComponent {
     const container = document.createElement('div');
     container.className = 'data-table-filters';
 
-    this.config.filters.forEach(filter => {
+    this.config.filters.forEach((filter) => {
       const button = document.createElement('button');
       button.className = 'data-table-filter';
       button.dataset.filterKey = filter.key;
@@ -318,7 +319,7 @@ class DataTableComponent {
   initializeFilters() {
     const filterButtons = this.element.querySelectorAll('.data-table-filter');
 
-    filterButtons.forEach(button => {
+    filterButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const key = button.dataset.filterKey;
         const value = button.dataset.filterValue;
@@ -328,7 +329,7 @@ class DataTableComponent {
           delete this.filters[key];
         } else {
           // Remove active from other filters in same group
-          filterButtons.forEach(btn => {
+          filterButtons.forEach((btn) => {
             if (btn.dataset.filterKey === key) {
               btn.classList.remove('data-table-filter--active');
             }
@@ -379,7 +380,7 @@ class DataTableComponent {
 
     // Add checkbox to each row
     const tbody = this.table.querySelector('tbody');
-    tbody.querySelectorAll('tr').forEach(row => {
+    tbody.querySelectorAll('tr').forEach((row) => {
       const checkTd = document.createElement('td');
       checkTd.innerHTML = '<input type="checkbox" class="data-table__checkbox">';
       row.insertBefore(checkTd, row.firstChild);
@@ -389,7 +390,9 @@ class DataTableComponent {
     const checkAll = this.table.querySelector('[data-check-all]');
     checkAll?.addEventListener('change', (e) => {
       const checkboxes = this.table.querySelectorAll('tbody .data-table__checkbox');
-      checkboxes.forEach(cb => cb.checked = e.target.checked);
+      checkboxes.forEach((cb) => {
+        cb.checked = e.target.checked;
+      });
     });
   }
 
@@ -406,11 +409,11 @@ class DataTableComponent {
     }
 
     // Update header classes
-    this.table.querySelectorAll('thead th').forEach(th => {
+    this.table.querySelectorAll('thead th').forEach((th) => {
       th.classList.remove('sort--asc', 'sort--desc');
     });
 
-    const columnIndex = this.config.columns?.findIndex(c => c.key === column) ?? column;
+    const columnIndex = this.config.columns?.findIndex((c) => c.key === column) ?? column;
     const header = this.table.querySelectorAll('thead th')[columnIndex];
     if (header) {
       header.classList.add(`sort--${this.sortDirection}`);
@@ -427,16 +430,16 @@ class DataTableComponent {
 
     // Apply search filter
     if (this.searchTerm) {
-      data = data.filter(row => {
-        return Object.values(row).some(value =>
-          String(value).toLowerCase().includes(this.searchTerm)
+      data = data.filter((row) => {
+        return Object.values(row).some((value) =>
+          String(value).toLowerCase().includes(this.searchTerm),
         );
       });
     }
 
     // Apply custom filters
     Object.entries(this.filters).forEach(([key, value]) => {
-      data = data.filter(row => row[key] === value);
+      data = data.filter((row) => row[key] === value);
     });
 
     // Apply sorting
@@ -446,9 +449,9 @@ class DataTableComponent {
         const bVal = b[this.sortColumn];
 
         // Handle numeric sorting
-        const aNum = parseFloat(aVal);
-        const bNum = parseFloat(bVal);
-        if (!isNaN(aNum) && !isNaN(bNum)) {
+        const aNum = Number.parseFloat(aVal);
+        const bNum = Number.parseFloat(bVal);
+        if (!Number.isNaN(aNum) && !Number.isNaN(bNum)) {
           return this.sortDirection === 'asc' ? aNum - bNum : bNum - aNum;
         }
 
@@ -513,7 +516,7 @@ class DataTableComponent {
     }
 
     // Render data rows
-    data.forEach(rowData => {
+    data.forEach((rowData) => {
       const row = document.createElement('tr');
 
       // Add checkbox if selectable
@@ -524,7 +527,7 @@ class DataTableComponent {
       }
 
       // Add data cells
-      this.config.columns?.forEach(column => {
+      this.config.columns?.forEach((column) => {
         const cell = document.createElement('td');
         const value = rowData[column.key];
 
@@ -567,7 +570,7 @@ class DataTableComponent {
       // Calculate page range
       const maxButtons = 5;
       let startPage = Math.max(1, this.currentPage - Math.floor(maxButtons / 2));
-      let endPage = Math.min(totalPages, startPage + maxButtons - 1);
+      const endPage = Math.min(totalPages, startPage + maxButtons - 1);
 
       if (endPage - startPage < maxButtons - 1) {
         startPage = Math.max(1, endPage - maxButtons + 1);
@@ -656,12 +659,12 @@ class DataTableComponent {
    */
   getSelected() {
     const checkboxes = this.table.querySelectorAll('tbody .data-table__checkbox:checked');
-    const indices = Array.from(checkboxes).map(cb => {
+    const indices = Array.from(checkboxes).map((cb) => {
       const row = cb.closest('tr');
       return Array.from(row.parentNode.children).indexOf(row);
     });
 
-    return indices.map(i => this.filteredData[i]).filter(Boolean);
+    return indices.map((i) => this.filteredData[i]).filter(Boolean);
   }
 
   /**
@@ -671,9 +674,9 @@ class DataTableComponent {
     const data = this.filteredData.length > 0 ? this.filteredData : this.data;
 
     if (format === 'csv') {
-      const headers = this.config.columns.map(c => c.label).join(',');
-      const rows = data.map(row =>
-        this.config.columns.map(c => `"${row[c.key] || ''}"`).join(',')
+      const headers = this.config.columns.map((c) => c.label).join(',');
+      const rows = data.map((row) =>
+        this.config.columns.map((c) => `"${row[c.key] || ''}"`).join(','),
       );
       const csv = [headers, ...rows].join('\n');
 
@@ -689,7 +692,7 @@ class DataTableComponent {
 
 // Auto-initialize tables with data-table attribute
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-table]').forEach(element => {
+  document.querySelectorAll('[data-table]').forEach((element) => {
     const options = element.dataset.table ? JSON.parse(element.dataset.table) : {};
     new DataTableComponent(element, options);
   });

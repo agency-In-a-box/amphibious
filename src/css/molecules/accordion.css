@@ -86,7 +86,7 @@
 
 /* Accordion icon/chevron */
 .accordion-header::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 1.5rem;
   top: 50%;
@@ -121,7 +121,7 @@
 
 /* Plus/Minus variant */
 .accordion--plus-minus .accordion-header::after {
-  content: '+';
+  content: "+";
   border: none;
   font-size: 1.5rem;
   width: auto;
@@ -133,7 +133,7 @@
 
 .accordion--plus-minus .accordion-item.active .accordion-header::after,
 .accordion--plus-minus .accordion-header[aria-expanded="true"]::after {
-  content: '−';
+  content: "−";
   transform: translateY(-50%);
 }
 

@@ -21,7 +21,7 @@ class FileUpload {
       onProgress: options.onProgress || null,
       onError: options.onError || null,
       onRemove: options.onRemove || null,
-      ...options
+      ...options,
     };
 
     this.files = [];
@@ -144,7 +144,7 @@ class FileUpload {
     }
 
     // Validate and add files
-    files.forEach(file => {
+    files.forEach((file) => {
       if (this.validateFile(file)) {
         this.addFile(file);
       }
@@ -162,14 +162,16 @@ class FileUpload {
   validateFile(file) {
     // Check file size
     if (file.size > this.options.maxSize) {
-      this.showError(`File "${file.name}" exceeds maximum size of ${this.formatSize(this.options.maxSize)}`);
+      this.showError(
+        `File "${file.name}" exceeds maximum size of ${this.formatSize(this.options.maxSize)}`,
+      );
       return false;
     }
 
     // Check file type
     if (this.options.accept !== '*') {
-      const accepts = this.options.accept.split(',').map(a => a.trim());
-      const isValid = accepts.some(accept => {
+      const accepts = this.options.accept.split(',').map((a) => a.trim());
+      const isValid = accepts.some((accept) => {
         if (accept.startsWith('.')) {
           return file.name.toLowerCase().endsWith(accept.toLowerCase());
         }
@@ -186,7 +188,7 @@ class FileUpload {
     }
 
     // Check duplicates
-    if (this.files.some(f => f.name === file.name && f.size === file.size)) {
+    if (this.files.some((f) => f.name === file.name && f.size === file.size)) {
       this.showError(`File "${file.name}" already added`);
       return false;
     }
@@ -203,7 +205,7 @@ class FileUpload {
       type: file.type,
       status: 'pending',
       progress: 0,
-      error: null
+      error: null,
     };
 
     this.files.push(fileObj);
@@ -276,7 +278,7 @@ class FileUpload {
   }
 
   removeFile(fileId) {
-    const index = this.files.findIndex(f => f.id === fileId);
+    const index = this.files.findIndex((f) => f.id === fileId);
     if (index > -1) {
       const fileObj = this.files[index];
 
@@ -350,7 +352,7 @@ class FileUpload {
       xhr.open('POST', this.options.uploadUrl);
 
       // Add custom headers
-      Object.keys(this.options.headers).forEach(key => {
+      Object.keys(this.options.headers).forEach((key) => {
         xhr.setRequestHeader(key, this.options.headers[key]);
       });
 
@@ -368,7 +370,7 @@ class FileUpload {
     if (item) {
       const bar = item.querySelector('.file-upload-progress-bar');
       if (bar) {
-        bar.style.width = percent + '%';
+        bar.style.width = `${percent}%`;
       }
     }
 
@@ -399,7 +401,7 @@ class FileUpload {
   async uploadAll() {
     if (this.isUploading) return;
 
-    const pendingFiles = this.files.filter(f => f.status === 'pending');
+    const pendingFiles = this.files.filter((f) => f.status === 'pending');
     if (pendingFiles.length === 0) return;
 
     this.isUploading = true;
@@ -426,7 +428,7 @@ class FileUpload {
     const sizes = ['B', 'KB', 'MB', 'GB'];
     if (bytes === 0) return '0 B';
     const i = Math.floor(Math.log(bytes) / Math.log(1024));
-    return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+    return `${Math.round((bytes / 1024 ** i) * 100) / 100} ${sizes[i]}`;
   }
 
   getAcceptText() {
@@ -476,7 +478,7 @@ class FileUpload {
       uploading: 'Uploading...',
       success: 'Uploaded',
       error: 'Failed',
-      cancelled: 'Cancelled'
+      cancelled: 'Cancelled',
     };
     return statusTexts[status] || status;
   }
@@ -514,7 +516,7 @@ class FileUpload {
 // Auto-initialize
 document.addEventListener('DOMContentLoaded', () => {
   const uploads = document.querySelectorAll('[data-file-upload="true"]');
-  uploads.forEach(element => {
+  uploads.forEach((element) => {
     new FileUpload(element);
   });
 });

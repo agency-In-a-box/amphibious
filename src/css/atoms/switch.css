@@ -36,7 +36,7 @@
 }
 
 .switch-slider::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 1.25rem;
   width: 1.25rem;
@@ -214,13 +214,13 @@
 }
 
 .switch--labeled .switch-slider::after {
-  content: 'OFF';
+  content: "OFF";
   opacity: 1;
   transition: opacity 0.3s;
 }
 
 .switch--labeled .switch-input:checked + .switch-slider::after {
-  content: 'ON';
+  content: "ON";
   opacity: 1;
 }
 
@@ -233,14 +233,14 @@
 }
 
 .switch--icons .switch-slider::after {
-  content: '✕';
+  content: "✕";
   color: #94a3b8;
   font-size: 0.75rem;
   transition: opacity 0.3s;
 }
 
 .switch--icons .switch-input:checked + .switch-slider::after {
-  content: '✓';
+  content: "✓";
   color: white;
   opacity: 1;
 }
@@ -279,7 +279,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast Components - Live Preview</title>
+  <style>
+    body {
+      font-family: -apple-system, system-ui, sans-serif;
+      background: #1a1a1a;
+      color: white;
+      padding: 2rem;
+      margin: 0;
+    }
+    .demo-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .demo-header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ED8B00, #ff9500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .trigger-btn {
+      padding: 1rem;
+      border: 2px solid;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .trigger-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .btn-success {
+      background: #10b981;
+      border-color: #10b981;
+      color: white;
+    }
+    .btn-error {
+      background: #ef4444;
+      border-color: #ef4444;
+      color: white;
+    }
+    .btn-warning {
+      background: #f59e0b;
+      border-color: #f59e0b;
+      color: white;
+    }
+    .btn-info {
+      background: #3b82f6;
+      border-color: #3b82f6;
+      color: white;
+    }
+
+    /* Mock toast styles for preview */
+    .toast-preview {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: white;
+      color: #1a1a1a;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 300px;
+      animation: slideIn 0.3s ease-out;
+    }
+    .toast-success {
+      border-left: 4px solid #10b981;
+    }
+    .toast-error {
+      border-left: 4px solid #ef4444;
+    }
+    .toast-warning {
+      border-left: 4px solid #f59e0b;
+    }
+    .toast-info {
+      border-left: 4px solid #3b82f6;
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    .stats {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 2rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ED8B00;
+    }
+    .stat-label {
+      font-size: 0.875rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-header">
+    <h1>AMPHIBIOUS 2.0</h1>
+    <p>Toast Components - Click to Preview</p>
+  </div>
+
+  <div class="button-grid">
+    <button class="trigger-btn btn-success" onclick="showToast('success')">
+      ✅ Success Toast
+    </button>
+    <button class="trigger-btn btn-error" onclick="showToast('error')">
+      ❌ Error Toast
+    </button>
+    <button class="trigger-btn btn-warning" onclick="showToast('warning')">
+      ⚠️ Warning Toast
+    </button>
+    <button class="trigger-btn btn-info" onclick="showToast('info')">
+      ℹ️ Info Toast
+    </button>
+  </div>
+
+  <div class="stats">
+    <h2>This Week's Shipping Stats</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-number">25</div>
+        <div class="stat-label">Components</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">21</div>
+        <div class="stat-label">Pages Fixed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">93%</div>
+        <div class="stat-label">Size Reduced</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Mobile Coverage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mock toasts for demo -->
+  <div id="toast-container"></div>
+
+  <script>
+    const messages = {
+      success: 'Changes saved successfully!',
+      error: 'Something went wrong. Try again.',
+      warning: 'Check your input before continuing.',
+      info: 'New features available in this update.'
+    };
+
+    function showToast(type) {
+      // Remove existing toast
+      const container = document.getElementById('toast-container');
+      container.innerHTML = '';
+
+      // Create new toast
+      const toast = document.createElement('div');
+      toast.className = `toast-preview toast-${type}`;
+      toast.innerHTML = `
+        <span style="font-size: 1.5rem">${type === 'success' ? '✅' : type === 'error' ? '❌' : type === 'warning' ? '⚠️' : 'ℹ️'}</span>
+        <div>
+          <strong style="display: block; margin-bottom: 4px;">${type.charAt(0).toUpperCase() + type.slice(1)}</strong>
+          <span style="color: #666; font-size: 0.875rem;">${messages[type]}</span>
+        </div>
+      `;
+
+      container.appendChild(toast);
+
+      // Auto remove after 3 seconds
+      setTimeout(() => {
+        toast.style.animation = 'slideIn 0.3s ease-out reverse';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // Auto-show success toast on load for preview
+    setTimeout(() => showToast('success'), 500);
+  </script>
+</body>
+</html>
