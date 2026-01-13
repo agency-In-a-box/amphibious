@@ -195,24 +195,33 @@ class DatePickerEnhanced {
 
     const shortcuts = [
       { label: 'Today', value: () => new Date() },
-      { label: 'Yesterday', value: () => {
-        const d = new Date();
-        d.setDate(d.getDate() - 1);
-        return d;
-      }},
-      { label: 'Last Week', value: () => {
-        const d = new Date();
-        d.setDate(d.getDate() - 7);
-        return d;
-      }},
-      { label: 'Last Month', value: () => {
-        const d = new Date();
-        d.setMonth(d.getMonth() - 1);
-        return d;
-      }},
+      {
+        label: 'Yesterday',
+        value: () => {
+          const d = new Date();
+          d.setDate(d.getDate() - 1);
+          return d;
+        },
+      },
+      {
+        label: 'Last Week',
+        value: () => {
+          const d = new Date();
+          d.setDate(d.getDate() - 7);
+          return d;
+        },
+      },
+      {
+        label: 'Last Month',
+        value: () => {
+          const d = new Date();
+          d.setMonth(d.getMonth() - 1);
+          return d;
+        },
+      },
     ];
 
-    shortcuts.forEach(shortcut => {
+    shortcuts.forEach((shortcut) => {
       const btn = document.createElement('button');
       btn.className = 'datepicker-shortcut';
       btn.type = 'button';
@@ -309,10 +318,10 @@ class DatePickerEnhanced {
       if (!this.state.isOpen) return;
 
       const focused = this.state.focusedDate || this.state.viewDate;
-      let newDate = new Date(focused);
+      const newDate = new Date(focused);
       let preventDefault = false;
 
-      switch(e.key) {
+      switch (e.key) {
         case 'ArrowLeft':
           newDate.setDate(newDate.getDate() - 1);
           preventDefault = true;
@@ -384,7 +393,7 @@ class DatePickerEnhanced {
 
   // Render methods
   render() {
-    switch(this.state.viewMode) {
+    switch (this.state.viewMode) {
       case 'days':
         this.renderDays();
         break;
@@ -411,7 +420,7 @@ class DatePickerEnhanced {
     // Week headers
     html += '<div class="datepicker-weekdays">';
     const weekDays = this.getWeekDays();
-    weekDays.forEach(day => {
+    weekDays.forEach((day) => {
       html += `<div class="datepicker-weekday">${day}</div>`;
     });
     html += '</div>';
@@ -451,7 +460,7 @@ class DatePickerEnhanced {
     this.body.innerHTML = html;
 
     // Bind date click events
-    this.body.querySelectorAll('.datepicker-date').forEach(btn => {
+    this.body.querySelectorAll('.datepicker-date').forEach((btn) => {
       if (!btn.disabled) {
         const handler = () => {
           const [y, m, d] = btn.dataset.date.split('-').map(Number);
@@ -484,9 +493,9 @@ class DatePickerEnhanced {
     this.body.innerHTML = html;
 
     // Bind month click events
-    this.body.querySelectorAll('.datepicker-month').forEach(btn => {
+    this.body.querySelectorAll('.datepicker-month').forEach((btn) => {
       const handler = () => {
-        this.state.viewDate.setMonth(parseInt(btn.dataset.month));
+        this.state.viewDate.setMonth(Number.parseInt(btn.dataset.month));
         this.state.viewMode = 'days';
         this.render();
       };
@@ -519,9 +528,9 @@ class DatePickerEnhanced {
     this.body.innerHTML = html;
 
     // Bind year click events
-    this.body.querySelectorAll('.datepicker-year').forEach(btn => {
+    this.body.querySelectorAll('.datepicker-year').forEach((btn) => {
       const handler = () => {
-        this.state.viewDate.setFullYear(parseInt(btn.dataset.year));
+        this.state.viewDate.setFullYear(Number.parseInt(btn.dataset.year));
         this.state.viewMode = 'months';
         this.render();
       };
@@ -559,10 +568,11 @@ class DatePickerEnhanced {
   }
 
   isDateSelected(date) {
-    return this.state.selectedDates.some(d =>
-      d.getFullYear() === date.getFullYear() &&
-      d.getMonth() === date.getMonth() &&
-      d.getDate() === date.getDate()
+    return this.state.selectedDates.some(
+      (d) =>
+        d.getFullYear() === date.getFullYear() &&
+        d.getMonth() === date.getMonth() &&
+        d.getDate() === date.getDate(),
     );
   }
 
@@ -575,20 +585,20 @@ class DatePickerEnhanced {
     if (this.options.disabledDays.includes(date.getDay())) return true;
 
     // Check specific disabled dates
-    return this.options.disabledDates.some(d => {
+    return this.options.disabledDates.some((d) => {
       const disabled = new Date(d);
-      return disabled.getFullYear() === date.getFullYear() &&
-             disabled.getMonth() === date.getMonth() &&
-             disabled.getDate() === date.getDate();
+      return (
+        disabled.getFullYear() === date.getFullYear() &&
+        disabled.getMonth() === date.getMonth() &&
+        disabled.getDate() === date.getDate()
+      );
     });
   }
 
   // Localization helpers
   getMonthNames() {
     const formatter = new Intl.DateTimeFormat(this.options.locale, { month: 'short' });
-    return Array.from({ length: 12 }, (_, i) =>
-      formatter.format(new Date(2000, i, 1))
-    );
+    return Array.from({ length: 12 }, (_, i) => formatter.format(new Date(2000, i, 1)));
   }
 
   getWeekDays() {
@@ -605,12 +615,12 @@ class DatePickerEnhanced {
   updateHeader() {
     const formatter = new Intl.DateTimeFormat(this.options.locale, {
       month: 'long',
-      year: 'numeric'
+      year: 'numeric',
     });
     const parts = formatter.formatToParts(this.state.viewDate);
 
-    const month = parts.find(p => p.type === 'month').value;
-    const year = parts.find(p => p.type === 'year').value;
+    const month = parts.find((p) => p.type === 'month').value;
+    const year = parts.find((p) => p.type === 'year').value;
 
     this.monthText.textContent = month;
     this.yearText.textContent = year;
@@ -648,7 +658,7 @@ class DatePickerEnhanced {
     });
 
     if (this.options.multiple) {
-      const dates = this.state.selectedDates.map(d => formatter.format(d));
+      const dates = this.state.selectedDates.map((d) => formatter.format(d));
       this.element.value = dates.join(', ');
     } else if (this.options.range && this.state.rangeStart && this.state.rangeEnd) {
       this.element.value = `${formatter.format(this.state.rangeStart)} - ${formatter.format(this.state.rangeEnd)}`;
@@ -661,7 +671,7 @@ class DatePickerEnhanced {
 
   // Navigation methods
   navigate(direction) {
-    switch(this.state.viewMode) {
+    switch (this.state.viewMode) {
       case 'days':
         this.state.viewDate.setMonth(this.state.viewDate.getMonth() + direction);
         break;
@@ -669,7 +679,7 @@ class DatePickerEnhanced {
         this.state.viewDate.setFullYear(this.state.viewDate.getFullYear() + direction);
         break;
       case 'years':
-        this.state.viewDate.setFullYear(this.state.viewDate.getFullYear() + (direction * 10));
+        this.state.viewDate.setFullYear(this.state.viewDate.getFullYear() + direction * 10);
         break;
     }
     this.render();
@@ -685,10 +695,11 @@ class DatePickerEnhanced {
     if (this.isDateDisabled(date)) return;
 
     if (this.options.multiple) {
-      const index = this.state.selectedDates.findIndex(d =>
-        d.getFullYear() === date.getFullYear() &&
-        d.getMonth() === date.getMonth() &&
-        d.getDate() === date.getDate()
+      const index = this.state.selectedDates.findIndex(
+        (d) =>
+          d.getFullYear() === date.getFullYear() &&
+          d.getMonth() === date.getMonth() &&
+          d.getDate() === date.getDate(),
       );
 
       if (index > -1) {
@@ -787,7 +798,7 @@ class DatePickerEnhanced {
   parseInitialValue() {
     try {
       const date = new Date(this.element.value);
-      if (!isNaN(date.getTime())) {
+      if (!Number.isNaN(date.getTime())) {
         this.state.selectedDates = [date];
         this.state.viewDate = new Date(date);
       }
@@ -800,19 +811,19 @@ class DatePickerEnhanced {
   getValue() {
     if (this.options.multiple) {
       return this.state.selectedDates;
-    } else if (this.options.range) {
+    }
+    if (this.options.range) {
       return {
         start: this.state.rangeStart,
         end: this.state.rangeEnd,
       };
-    } else {
-      return this.state.selectedDates[0] || null;
     }
+    return this.state.selectedDates[0] || null;
   }
 
   setValue(value) {
     if (this.options.multiple && Array.isArray(value)) {
-      this.state.selectedDates = value.map(v => new Date(v));
+      this.state.selectedDates = value.map((v) => new Date(v));
     } else if (this.options.range && value.start && value.end) {
       this.state.rangeStart = new Date(value.start);
       this.state.rangeEnd = new Date(value.end);
@@ -854,11 +865,11 @@ class DatePickerEnhanced {
     this.dynamicHandlers.clear();
 
     // Clear all timers
-    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.forEach((timer) => clearTimeout(timer));
     this.timers.clear();
 
     // Remove all created DOM elements
-    this.createdElements.forEach(element => {
+    this.createdElements.forEach((element) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -866,7 +877,7 @@ class DatePickerEnhanced {
     this.createdElements.clear();
 
     // Restore original input
-    if (this.wrapper && this.wrapper.parentNode) {
+    if (this.wrapper?.parentNode) {
       this.wrapper.parentNode.insertBefore(this.element, this.wrapper);
       this.wrapper.parentNode.removeChild(this.wrapper);
     }

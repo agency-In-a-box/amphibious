@@ -74,7 +74,7 @@ class FileUploadEnhanced {
       onRetry: options.onRetry || null,
       onChunkUpload: options.onChunkUpload || null,
 
-      ...options
+      ...options,
     };
 
     // State management
@@ -86,7 +86,7 @@ class FileUploadEnhanced {
       failed: new Set(),
       paused: new Set(),
       totalProgress: 0,
-      isDragging: false
+      isDragging: false,
     };
 
     // Statistics
@@ -97,7 +97,7 @@ class FileUploadEnhanced {
       startTime: null,
       endTime: null,
       successCount: 0,
-      errorCount: 0
+      errorCount: 0,
     };
 
     this.init();
@@ -365,7 +365,7 @@ class FileUploadEnhanced {
       const items = e.clipboardData.items;
       const files = [];
 
-      for (let item of items) {
+      for (const item of items) {
         if (item.kind === 'file') {
           const file = item.getAsFile();
           if (file) files.push(file);
@@ -383,7 +383,7 @@ class FileUploadEnhanced {
   async handleDataTransferItems(items) {
     const entries = [];
 
-    for (let item of items) {
+    for (const item of items) {
       if (item.webkitGetAsEntry) {
         const entry = item.webkitGetAsEntry();
         if (entry) entries.push(entry);
@@ -409,13 +409,13 @@ class FileUploadEnhanced {
           reader.readEntries(resolve);
         });
 
-        for (let childEntry of entries) {
+        for (const childEntry of entries) {
           await traverse(childEntry);
         }
       }
     };
 
-    for (let entry of entries) {
+    for (const entry of entries) {
       await traverse(entry);
     }
 
@@ -442,7 +442,7 @@ class FileUploadEnhanced {
     }
 
     // Process each file
-    files.forEach(file => {
+    files.forEach((file) => {
       if (this.validateFile(file)) {
         this.addFile(file);
       }
@@ -467,7 +467,7 @@ class FileUploadEnhanced {
     // Size check
     if (file.size > this.options.maxSize) {
       this.showError(
-        `File "${file.name}" exceeds maximum size of ${this.formatSize(this.options.maxSize)}`
+        `File "${file.name}" exceeds maximum size of ${this.formatSize(this.options.maxSize)}`,
       );
       return false;
     }
@@ -497,10 +497,12 @@ class FileUploadEnhanced {
 
     // Duplicate check
     if (this.options.duplicateCheck) {
-      for (let [id, fileObj] of this.state.files) {
-        if (fileObj.file.name === file.name &&
-            fileObj.file.size === file.size &&
-            fileObj.file.lastModified === file.lastModified) {
+      for (const [id, fileObj] of this.state.files) {
+        if (
+          fileObj.file.name === file.name &&
+          fileObj.file.size === file.size &&
+          fileObj.file.lastModified === file.lastModified
+        ) {
           this.showError(`File "${file.name}" already added`);
           return false;
         }
@@ -513,9 +515,9 @@ class FileUploadEnhanced {
   checkFileType(file) {
     if (this.options.accept === '*') return true;
 
-    const accepts = this.options.accept.split(',').map(a => a.trim());
+    const accepts = this.options.accept.split(',').map((a) => a.trim());
 
-    return accepts.some(accept => {
+    return accepts.some((accept) => {
       if (accept.startsWith('.')) {
         return file.name.toLowerCase().endsWith(accept.toLowerCase());
       }
@@ -553,7 +555,7 @@ class FileUploadEnhanced {
       endTime: null,
       speed: 0,
       timeRemaining: null,
-      thumbnail: null
+      thumbnail: null,
     };
 
     // Generate thumbnail
@@ -602,12 +604,12 @@ class FileUploadEnhanced {
             (blob) => {
               const resizedFile = new File([blob], file.name, {
                 type: `image/${this.options.imageFormat}`,
-                lastModified: Date.now()
+                lastModified: Date.now(),
               });
               resolve(resizedFile);
             },
             `image/${this.options.imageFormat}`,
-            this.options.imageQuality
+            this.options.imageQuality,
           );
         };
 
@@ -805,7 +807,7 @@ class FileUploadEnhanced {
       // Auto retry
       if (fileObj.retries < this.options.retryCount) {
         fileObj.retries++;
-        const delay = this.options.retryDelay * Math.pow(2, fileObj.retries - 1);
+        const delay = this.options.retryDelay * 2 ** (fileObj.retries - 1);
 
         const timer = setTimeout(() => {
           this.retryUpload(fileId);
@@ -867,7 +869,7 @@ class FileUploadEnhanced {
       xhr.open('POST', this.options.uploadUrl);
 
       // Headers
-      Object.keys(this.options.headers).forEach(key => {
+      Object.keys(this.options.headers).forEach((key) => {
         xhr.setRequestHeader(key, this.options.headers[key]);
       });
 
@@ -930,7 +932,7 @@ class FileUploadEnhanced {
 
       xhr.open('POST', this.options.uploadUrl);
 
-      Object.keys(this.options.headers).forEach(key => {
+      Object.keys(this.options.headers).forEach((key) => {
         xhr.setRequestHeader(key, this.options.headers[key]);
       });
 
@@ -1036,7 +1038,7 @@ class FileUploadEnhanced {
     let totalSize = 0;
     let uploadedSize = 0;
 
-    this.state.files.forEach(fileObj => {
+    this.state.files.forEach((fileObj) => {
       totalSize += fileObj.size;
       uploadedSize += fileObj.uploadedSize;
     });
@@ -1051,8 +1053,9 @@ class FileUploadEnhanced {
     if (fileCount > 0) {
       this.statsBar.style.display = 'flex';
 
-      const pendingCount = Array.from(this.state.files.values())
-        .filter(f => f.status === 'pending').length;
+      const pendingCount = Array.from(this.state.files.values()).filter(
+        (f) => f.status === 'pending',
+      ).length;
 
       this.statsText.textContent = `${fileCount} files (${this.formatSize(this.stats.totalSize)}) - ${pendingCount} pending`;
 
@@ -1074,7 +1077,7 @@ class FileUploadEnhanced {
 
     // Clean up
     this.state.files.delete(fileId);
-    this.state.queue = this.state.queue.filter(id => id !== fileId);
+    this.state.queue = this.state.queue.filter((id) => id !== fileId);
     this.state.uploading.delete(fileId);
     this.state.completed.delete(fileId);
     this.state.failed.delete(fileId);
@@ -1097,8 +1100,8 @@ class FileUploadEnhanced {
 
   uploadAll() {
     const pendingFiles = Array.from(this.state.files.values())
-      .filter(f => f.status === 'pending')
-      .map(f => f.id);
+      .filter((f) => f.status === 'pending')
+      .map((f) => f.id);
 
     // Upload in parallel with limit
     const uploadNext = () => {
@@ -1115,7 +1118,7 @@ class FileUploadEnhanced {
 
   clearAll() {
     // Cancel all uploads
-    this.state.files.forEach(fileObj => {
+    this.state.files.forEach((fileObj) => {
       if (fileObj.xhr) {
         fileObj.xhr.abort();
       }
@@ -1140,7 +1143,7 @@ class FileUploadEnhanced {
       startTime: null,
       endTime: null,
       successCount: 0,
-      errorCount: 0
+      errorCount: 0,
     };
 
     this.updateStats();
@@ -1169,13 +1172,13 @@ class FileUploadEnhanced {
     if (!this.options.resumable) return;
 
     try {
-      const uploads = Array.from(this.state.files.values()).map(f => ({
+      const uploads = Array.from(this.state.files.values()).map((f) => ({
         id: f.id,
         name: f.name,
         size: f.size,
         type: f.type,
         chunks: f.chunks,
-        progress: f.progress
+        progress: f.progress,
       }));
 
       localStorage.setItem('amphibious-uploads', JSON.stringify(uploads));
@@ -1185,7 +1188,7 @@ class FileUploadEnhanced {
   }
 
   hasCamera() {
-    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+    return !!navigator.mediaDevices?.getUserMedia;
   }
 
   async openCamera() {
@@ -1208,11 +1211,11 @@ class FileUploadEnhanced {
         canvas.height = video.videoHeight;
         canvas.getContext('2d').drawImage(video, 0, 0);
 
-        canvas.toBlob(blob => {
+        canvas.toBlob((blob) => {
           const file = new File([blob], `photo-${Date.now()}.jpg`, { type: 'image/jpeg' });
           this.handleFiles([file]);
 
-          stream.getTracks().forEach(track => track.stop());
+          stream.getTracks().forEach((track) => track.stop());
           modal.remove();
         });
       };
@@ -1220,7 +1223,7 @@ class FileUploadEnhanced {
       const closeBtn = document.createElement('button');
       closeBtn.textContent = 'Close';
       closeBtn.onclick = () => {
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
         modal.remove();
       };
 
@@ -1230,7 +1233,6 @@ class FileUploadEnhanced {
 
       document.body.appendChild(modal);
       this.createdElements.add(modal);
-
     } catch (error) {
       this.showError('Camera access denied');
     }
@@ -1239,15 +1241,15 @@ class FileUploadEnhanced {
   // Helper methods
   getFileIcon(type) {
     const icons = {
-      'image': '🖼️',
-      'video': '🎥',
-      'audio': '🎵',
+      image: '🖼️',
+      video: '🎥',
+      audio: '🎵',
       'application/pdf': '📄',
       'application/zip': '📦',
-      'text': '📝'
+      text: '📝',
     };
 
-    for (let key in icons) {
+    for (const key in icons) {
       if (type.startsWith(key)) {
         return `<span class="file-upload-icon-emoji">${icons[key]}</span>`;
       }
@@ -1262,7 +1264,7 @@ class FileUploadEnhanced {
       uploading: 'Uploading...',
       success: 'Complete',
       error: 'Failed',
-      paused: 'Paused'
+      paused: 'Paused',
     };
     return texts[status] || status;
   }
@@ -1326,7 +1328,7 @@ class FileUploadEnhanced {
     if (fileId) {
       this.pauseUpload(fileId);
     } else {
-      this.state.uploading.forEach(id => this.pauseUpload(id));
+      this.state.uploading.forEach((id) => this.pauseUpload(id));
     }
   }
 
@@ -1336,7 +1338,7 @@ class FileUploadEnhanced {
       this.uploadFile(fileId);
     } else {
       const paused = Array.from(this.state.paused);
-      paused.forEach(id => {
+      paused.forEach((id) => {
         this.state.paused.delete(id);
         this.uploadFile(id);
       });
@@ -1356,11 +1358,11 @@ class FileUploadEnhanced {
    */
   destroy() {
     // Cancel all active uploads
-    this.activeUploads.forEach(xhr => xhr.abort());
+    this.activeUploads.forEach((xhr) => xhr.abort());
     this.activeUploads.clear();
 
     // Clear all timers
-    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.forEach((timer) => clearTimeout(timer));
     this.timers.clear();
 
     // Remove all event listeners
@@ -1372,15 +1374,15 @@ class FileUploadEnhanced {
     this.handlers.clear();
 
     // Abort all file readers
-    this.fileReaders.forEach(reader => reader.abort());
+    this.fileReaders.forEach((reader) => reader.abort());
     this.fileReaders.clear();
 
     // Revoke object URLs
-    this.objectURLs.forEach(url => URL.revokeObjectURL(url));
+    this.objectURLs.forEach((url) => URL.revokeObjectURL(url));
     this.objectURLs.clear();
 
     // Remove created elements
-    this.createdElements.forEach(element => {
+    this.createdElements.forEach((element) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -1412,7 +1414,7 @@ class FileUploadEnhanced {
 if (window.AmphibiousRegistry) {
   window.AmphibiousRegistry.registerComponent('file-upload', FileUploadEnhanced, {
     selector: '[data-file-upload]',
-    autoInit: true
+    autoInit: true,
   });
 }
 
