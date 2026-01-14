@@ -6,6 +6,8 @@
 class ModalComponent {
   constructor() {
     this.activeModal = null;
+    // Bind the escape handler so we can remove it later
+    this.handleEscape = this.handleEscape.bind(this);
     this.init();
   }
 
@@ -68,14 +70,19 @@ class ModalComponent {
   }
 
   /**
+   * Handle escape key press
+   */
+  handleEscape(e) {
+    if (e.key === 'Escape' && this.activeModal) {
+      this.closeModal(this.activeModal);
+    }
+  }
+
+  /**
    * Close modal on escape key press
    */
   initEscapeKey() {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.activeModal) {
-        this.closeModal(this.activeModal);
-      }
-    });
+    document.addEventListener('keydown', this.handleEscape);
   }
 
   /**
