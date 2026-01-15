@@ -402,6 +402,15 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       console.log('🐸 Amphibious 2.0 Homepage - Semantic HTML with Pea.rs Patterns');
+
+      // Ensure dark mode toggle is initialized
+      if (typeof DarkModeToggle !== 'undefined' && !window.darkModeToggle) {
+        window.darkModeToggle = new DarkModeToggle({
+          showToggle: true,
+          togglePosition: 'bottom-right'
+        });
+        console.log('🌓 Dark mode toggle initialized');
+      }
     });
   </script>
   <script type="module">
