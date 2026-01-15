@@ -1,0 +1,268 @@
+/**
+ * Light Mode Fixes
+ * Ensures proper text colors and backgrounds in light mode
+ * Fixes issues where dark mode styles were bleeding into light mode
+ */
+
+/* Explicit light mode styles - ensure text is dark when in light mode */
+:root:not([data-theme="dark"]),
+[data-theme="light"] {
+  /* Reset text colors to dark for light mode */
+  --color-text: #212529;
+  --color-text-secondary: #6c757d;
+  --color-text-tertiary: #868e96;
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-border: #dedede;
+}
+
+/* When NOT in dark mode preference */
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+  :root:not([data-theme="dark"]) {
+    /* Breadcrumbs should have transparent background */
+    .breadcrumb {
+      background: transparent !important;
+    }
+
+    /* Amphibious logo should always be brand orange */
+    .site-logo,
+    .nav-link.site-logo,
+    a.site-logo {
+      color: var(--apple-orange-500, #ED8B00) !important;
+    }
+
+    /* Ensure all text is dark in light mode */
+    h1, h2, h3, h4, h5, h6 {
+      color: #212529 !important;
+    }
+
+    p, span, div:not(.hero):not(.cta-section), li, td, th {
+      color: #212529;
+    }
+
+    /* Stats and features should have dark text */
+    .stat-card__number,
+    .stat-card__label,
+    .feature-box h3,
+    .feature-box h4,
+    .feature-box p {
+      color: #212529 !important;
+    }
+
+    /* Recent updates section */
+    .updates-section h2,
+    .updates-section h3,
+    .updates-section p,
+    #updates-title {
+      color: #212529 !important;
+    }
+
+    .slats--with-image h3 {
+      color: #212529 !important;
+    }
+
+    .slats--with-image p {
+      color: #6c757d !important;
+    }
+
+    /* Code examples borders */
+    pre, code, .code-example {
+      border-color: #666666 !important;
+    }
+
+    /* Grid examples - change orange gradient to dark gray */
+    .demo-grid {
+      background: #888888 !important;
+      color: white !important;
+    }
+
+    /* Navigation fixes */
+    .site-nav {
+      background: transparent;
+      border-bottom: 1px solid var(--color-border, #dedede);
+    }
+
+    .site-nav a:not(.site-logo) {
+      color: #212529;
+    }
+
+    .site-nav a:hover {
+      color: var(--apple-orange-500, #ED8B00);
+    }
+
+    /* Component cards should have light backgrounds */
+    .component-card,
+    .feature-card,
+    .stat-card {
+      background: #ffffff !important;
+      color: #212529 !important;
+      border: 1px solid #dedede;
+    }
+
+    /* Alerts in light mode */
+    .alert {
+      border: 1px solid;
+    }
+
+    .alert-success {
+      background: #d4edda;
+      color: #155724;
+      border-color: #c3e6cb;
+    }
+
+    .alert-info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border-color: #bee5eb;
+    }
+
+    .alert-warning {
+      background: #fff3cd;
+      color: #856404;
+      border-color: #ffeaa7;
+    }
+
+    .alert-danger {
+      background: #f8d7da;
+      color: #721c24;
+      border-color: #f5c6cb;
+    }
+
+    /* Meta text should be gray */
+    .meta,
+    .text-muted {
+      color: #6c757d !important;
+    }
+
+    /* Icons should be dark */
+    [data-lucide],
+    .lucide,
+    .icon--sm,
+    .icon--lg,
+    i[class*="icon"]:not(.icon--warning):not(.icon--filled) {
+      color: #212529;
+      stroke: #212529;
+    }
+
+    .stat-card__icon svg {
+      stroke: var(--apple-orange-500, #ED8B00);
+    }
+  }
+}
+
+/* Explicit light mode when manually set */
+[data-theme="light"] {
+  /* Same rules as above for manual light mode */
+  .breadcrumb {
+    background: transparent !important;
+  }
+
+  .site-logo,
+  .nav-link.site-logo,
+  a.site-logo {
+    color: var(--apple-orange-500, #ED8B00) !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #212529 !important;
+  }
+
+  p, span, div:not(.hero):not(.cta-section), li, td, th {
+    color: #212529;
+  }
+
+  .stat-card__number,
+  .stat-card__label,
+  .feature-box h3,
+  .feature-box h4,
+  .feature-box p {
+    color: #212529 !important;
+  }
+
+  .updates-section h2,
+  .updates-section h3,
+  .updates-section p,
+  #updates-title {
+    color: #212529 !important;
+  }
+
+  .slats--with-image h3 {
+    color: #212529 !important;
+  }
+
+  .slats--with-image p {
+    color: #6c757d !important;
+  }
+
+  pre, code, .code-example {
+    border-color: #666666 !important;
+  }
+
+  .demo-grid {
+    background: #888888 !important;
+    color: white !important;
+  }
+
+  .site-nav {
+    background: transparent;
+    border-bottom: 1px solid var(--color-border, #dedede);
+  }
+
+  .site-nav a:not(.site-logo) {
+    color: #212529;
+  }
+
+  .site-nav a:hover {
+    color: var(--apple-orange-500, #ED8B00);
+  }
+
+  .component-card,
+  .feature-card,
+  .stat-card {
+    background: #ffffff !important;
+    color: #212529 !important;
+    border: 1px solid #dedede;
+  }
+
+  .alert-success {
+    background: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+  }
+
+  .alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+  }
+
+  .alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+  }
+
+  .alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+  }
+
+  .meta,
+  .text-muted {
+    color: #6c757d !important;
+  }
+
+  [data-lucide],
+  .lucide,
+  .icon--sm,
+  .icon--lg,
+  i[class*="icon"]:not(.icon--warning):not(.icon--filled) {
+    color: #212529;
+    stroke: #212529;
+  }
+
+  .stat-card__icon svg {
+    stroke: var(--apple-orange-500, #ED8B00);
+  }
+}
