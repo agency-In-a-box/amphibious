@@ -1,0 +1,138 @@
+/**
+ * Dark Mode Toggle Button Styles
+ * A clean, accessible toggle button for theme switching
+ */
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10000;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  min-height: 48px !important;
+  max-height: 48px !important;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  padding: 0;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Icon container */
+.dark-mode-toggle__icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode-toggle__icon svg {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Light mode - show sun icon */
+:root:not([data-theme="dark"]) .dark-mode-toggle .light-icon,
+[data-theme="light"] .dark-mode-toggle .light-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+  stroke: #ED8B00;
+}
+
+:root:not([data-theme="dark"]) .dark-mode-toggle .dark-icon,
+[data-theme="light"] .dark-mode-toggle .dark-icon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+/* Dark mode - show moon icon */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dark-mode-toggle {
+    background: rgba(28, 28, 30, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :root:not([data-theme="light"]) .dark-mode-toggle .light-icon {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
+  :root:not([data-theme="light"]) .dark-mode-toggle .dark-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+    stroke: #FFD60A;
+  }
+}
+
+[data-theme="dark"] .dark-mode-toggle {
+  background: rgba(28, 28, 30, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .dark-mode-toggle .light-icon {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+[data-theme="dark"] .dark-mode-toggle .dark-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+  stroke: #FFD60A;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .dark-mode-toggle {
+    width: 44px;
+    height: 44px;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .dark-mode-toggle__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Accessibility */
+.dark-mode-toggle:focus-visible {
+  outline: 3px solid var(--apple-orange-500, #ED8B00);
+  outline-offset: 2px;
+}
+
+/* Animation for toggle */
+@keyframes toggleRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dark-mode-toggle.animating .dark-mode-toggle__icon {
+  animation: toggleRotate 0.5s ease;
+}

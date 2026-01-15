@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/src/css/pages/home-dark-fixes.css">
   <link rel="stylesheet" href="/src/css/pages/light-mode-fixes.css">
   <link rel="stylesheet" href="/src/css/pages/updates-section-fix.css">
+  <link rel="stylesheet" href="/src/css/components/dark-mode-toggle.css">
 </head>
 <body data-dark-mode-toggle>
   <!-- Navigation Include -->
@@ -97,6 +98,14 @@
         </ul>
       </li>
     </ul>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode (⌘+Shift+D)">
+      <span class="dark-mode-toggle__icon">
+        <i data-lucide="sun" class="light-icon"></i>
+        <i data-lucide="moon" class="dark-icon"></i>
+      </span>
+    </button>
   </div>
 </nav>
 
@@ -395,6 +404,9 @@
   <!-- Footer Include -->
   <div id="footer-include"></div>
 
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
   <!-- Load Framework -->
   <script type="module" src="/src/js/index.js"></script>
 
@@ -406,12 +418,45 @@
     document.addEventListener('DOMContentLoaded', () => {
       console.log('🐸 Amphibious 2.0.1 Homepage - Semantic HTML with Pea.rs Patterns');
 
-      // Ensure dark mode toggle is initialized
-      if (typeof DarkModeToggle !== 'undefined' && !window.darkModeToggle) {
-        window.darkModeToggle = new DarkModeToggle({
-          showToggle: true,
-          togglePosition: 'bottom-right'
+      // Initialize Lucide icons
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+
+      // Initialize dark mode toggle
+      const toggleBtn = document.getElementById('dark-mode-toggle');
+      if (toggleBtn) {
+        // Get current theme
+        const currentTheme = document.documentElement.getAttribute('data-theme') ||
+                           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        // Set initial state
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('amphibious-theme') || currentTheme);
+
+        // Add click handler
+        toggleBtn.addEventListener('click', () => {
+          const html = document.documentElement;
+          const currentTheme = html.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+          html.setAttribute('data-theme', newTheme);
+          localStorage.setItem('amphibious-theme', newTheme);
+
+          // Add animation class
+          toggleBtn.classList.add('animating');
+          setTimeout(() => toggleBtn.classList.remove('animating'), 500);
+
+          console.log(`🌓 Theme switched to ${newTheme} mode`);
         });
+
+        // Keyboard shortcut (Cmd+Shift+D)
+        document.addEventListener('keydown', (e) => {
+          if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'D') {
+            e.preventDefault();
+            toggleBtn.click();
+          }
+        });
+
         console.log('🌓 Dark mode toggle initialized');
       }
     });
