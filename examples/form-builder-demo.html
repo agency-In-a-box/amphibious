@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Builder Demo - Amphibious 2.0</title>
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    body {
+      background: var(--apple-gray-50, #fafafa);
+      padding: 0;
+      margin: 0;
+    }
+
+    .demo-header {
+      background: white;
+      border-bottom: 1px solid var(--apple-gray-200, #eee);
+      padding: 24px 0;
+      margin-bottom: 32px;
+    }
+
+    .demo-header h1 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .demo-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--apple-success, #34c759);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 12px;
+    }
+
+    .demo-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      background: white;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .demo-tab {
+      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--duration-instant) var(--ease-apple-smooth);
+    }
+
+    .demo-tab:hover {
+      background: var(--apple-gray-100);
+    }
+
+    .demo-tab.active {
+      background: var(--apple-orange-500, #ED8B00);
+      color: white;
+    }
+
+    .demo-content {
+      display: none;
+    }
+
+    .demo-content.active {
+      display: block;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 1.125rem;
+      color: var(--apple-gray-900);
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-list li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--apple-success);
+      font-weight: bold;
+    }
+
+    .demo-section {
+      margin-bottom: 48px;
+    }
+
+    .demo-section h2 {
+      margin-bottom: 24px;
+      font-size: 1.5rem;
+      color: var(--apple-gray-900);
+    }
+
+    .code-block {
+      background: var(--apple-gray-900);
+      color: var(--apple-gray-100);
+      padding: 24px;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-family: var(--font-family-monospace);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .code-comment {
+      color: var(--apple-success);
+      opacity: 0.7;
+    }
+
+    .builder-wrapper {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      min-height: 600px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .template-btn {
+      padding: 16px;
+      background: white;
+      border: 2px solid var(--apple-gray-200);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--duration-instant) var(--ease-apple-bounce);
+    }
+
+    .template-btn:hover {
+      border-color: var(--apple-orange-500);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .template-btn h4 {
+      margin: 0 0 8px 0;
+      font-size: 1rem;
+      color: var(--apple-gray-900);
+    }
+
+    .template-btn p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .output-section {
+      background: var(--apple-gray-50);
+      padding: 24px;
+      border-radius: 12px;
+      margin-top: 32px;
+    }
+
+    .output-section h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .output-code {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: var(--font-family-monospace);
+      font-size: 0.75rem;
+      overflow-x: auto;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .copy-btn {
+      padding: 4px 8px;
+      background: var(--apple-info);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--apple-orange-500);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-header">
+    <div class="container">
+      <h1>Form Builder
+        <span class="demo-badge">INTERACTIVE</span>
+      </h1>
+      <p class="lead">Professional drag-and-drop form builder with 20+ field types and advanced logic</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Tab Navigation -->
+    <div class="demo-tabs">
+      <button class="demo-tab active" data-tab="builder">Builder</button>
+      <button class="demo-tab" data-tab="templates">Templates</button>
+      <button class="demo-tab" data-tab="features">Features</button>
+      <button class="demo-tab" data-tab="integration">Integration</button>
+    </div>
+
+    <!-- Builder Tab -->
+    <div id="builder" class="demo-content active">
+      <div class="action-buttons">
+        <button class="btn btn-primary" onclick="clearForm()">Clear Form</button>
+        <button class="btn btn-secondary" onclick="loadSample()">Load Sample</button>
+        <button class="btn btn-secondary" onclick="exportJSON()">Export JSON</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Import JSON</button>
+        <input type="file" id="importFile" style="display:none" accept=".json" onchange="importJSON(event)">
+      </div>
+
+      <div class="builder-wrapper">
+        <div id="formBuilder" data-form-builder></div>
+      </div>
+
+      <div class="output-section">
+        <h3>
+          Form Configuration
+          <button class="copy-btn" onclick="copyConfig()">Copy JSON</button>
+        </h3>
+        <pre class="output-code" id="configOutput">{}</pre>
+      </div>
+    </div>
+
+    <!-- Templates Tab -->
+    <div id="templates" class="demo-content">
+      <div class="demo-section">
+        <h2>Quick Start Templates</h2>
+        <div class="template-grid">
+          <button class="template-btn" onclick="loadTemplate('contact')">
+            <h4>Contact Form</h4>
+            <p>Name, email, message</p>
+          </button>
+          <button class="template-btn" onclick="loadTemplate('registration')">
+            <h4>Registration</h4>
+            <p>Complete user signup</p>
+          </button>
+          <button class="template-btn" onclick="loadTemplate('survey')">
+            <h4>Survey</h4>
+            <p>Multi-step feedback</p>
+          </button>
+          <button class="template-btn" onclick="loadTemplate('application')">
+            <h4>Job Application</h4>
+            <p>Resume & details</p>
+          </button>
+          <button class="template-btn" onclick="loadTemplate('payment')">
+            <h4>Payment Form</h4>
+            <p>Billing information</p>
+          </button>
+          <button class="template-btn" onclick="loadTemplate('booking')">
+            <h4>Booking Form</h4>
+            <p>Date & time selection</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Tab -->
+    <div id="features" class="demo-content">
+      <div class="demo-section">
+        <h2>Comprehensive Feature Set</h2>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Field Types</h3>
+            <ul class="feature-list">
+              <li>Text, Email, Password</li>
+              <li>Number, Phone, URL</li>
+              <li>Textarea with character count</li>
+              <li>Select & Multi-select</li>
+              <li>Radio & Checkbox groups</li>
+              <li>Date, Time, DateTime</li>
+              <li>File upload with preview</li>
+              <li>Color picker</li>
+              <li>Range slider</li>
+              <li>Signature pad</li>
+              <li>Rating stars</li>
+              <li>HTML content blocks</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h3>Validation</h3>
+            <ul class="feature-list">
+              <li>Required fields</li>
+              <li>Min/max length</li>
+              <li>Pattern matching (regex)</li>
+              <li>Email validation</li>
+              <li>URL validation</li>
+              <li>Number ranges</li>
+              <li>File type restrictions</li>
+              <li>File size limits</li>
+              <li>Custom error messages</li>
+              <li>Real-time validation</li>
+              <li>Conditional requirements</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h3>Logic & Conditions</h3>
+            <ul class="feature-list">
+              <li>Show/hide fields</li>
+              <li>Enable/disable fields</li>
+              <li>Skip logic</li>
+              <li>Calculated fields</li>
+              <li>Dynamic options</li>
+              <li>Field dependencies</li>
+              <li>Multi-page forms</li>
+              <li>Progress indicators</li>
+              <li>Save & resume</li>
+              <li>Auto-save drafts</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h3>User Experience</h3>
+            <ul class="feature-list">
+              <li>Drag & drop interface</li>
+              <li>Live preview mode</li>
+              <li>Undo/redo support</li>
+              <li>Keyboard shortcuts</li>
+              <li>Touch gestures</li>
+              <li>Responsive design</li>
+              <li>Accessibility compliant</li>
+              <li>Dark mode support</li>
+              <li>Multi-language ready</li>
+              <li>Custom themes</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h3>Developer Features</h3>
+            <ul class="feature-list">
+              <li>JSON import/export</li>
+              <li>Event callbacks</li>
+              <li>Custom field types</li>
+              <li>API integration</li>
+              <li>Webhook support</li>
+              <li>Form templates</li>
+              <li>CSS customization</li>
+              <li>Plugin architecture</li>
+              <li>TypeScript support</li>
+              <li>Zero dependencies</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h3>Performance</h3>
+            <ul class="feature-list">
+              <li>~45KB minified</li>
+              <li>Lazy loading</li>
+              <li>Virtual scrolling</li>
+              <li>Debounced saves</li>
+              <li>Optimized renders</li>
+              <li>Memory efficient</li>
+              <li>60fps animations</li>
+              <li>RAF-based updates</li>
+              <li>Event delegation</li>
+              <li>Cleanup on destroy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h2>Statistics</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value">20+</div>
+            <div class="stat-label">Field Types</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">45KB</div>
+            <div class="stat-label">Bundle Size</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">0</div>
+            <div class="stat-label">Dependencies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Accessible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Integration Tab -->
+    <div id="integration" class="demo-content">
+      <div class="demo-section">
+        <h2>Quick Start</h2>
+        <div class="code-block">
+<span class="code-comment">// Initialize the form builder</span>
+const builder = new FormBuilder(document.getElementById('formBuilder'), {
+  fields: [],
+  onSave: (formData) => {
+    console.log('Form saved:', formData);
+  },
+  onChange: (formData) => {
+    console.log('Form changed:', formData);
+  }
+});
+
+<span class="code-comment">// Load existing form</span>
+builder.loadForm(existingFormData);
+
+<span class="code-comment">// Get form configuration</span>
+const config = builder.getFormData();
+
+<span class="code-comment">// Switch to preview mode</span>
+builder.setMode('preview');
+
+<span class="code-comment">// Add custom field type</span>
+builder.addFieldType({
+  type: 'custom',
+  label: 'Custom Field',
+  icon: '⚡',
+  defaultProps: { ... }
+});
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h2>Event Handling</h2>
+        <div class="code-block">
+builder.on('field-add', (field) => {
+  console.log('Field added:', field);
+});
+
+builder.on('field-update', (field) => {
+  console.log('Field updated:', field);
+});
+
+builder.on('field-delete', (fieldId) => {
+  console.log('Field deleted:', fieldId);
+});
+
+builder.on('mode-change', (mode) => {
+  console.log('Mode changed to:', mode);
+});
+
+builder.on('validation-error', (errors) => {
+  console.log('Validation errors:', errors);
+});
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h2>Form Submission</h2>
+        <div class="code-block">
+<span class="code-comment">// Handle form submission in preview mode</span>
+builder.on('submit', async (formData) => {
+  try {
+    const response = await fetch('/api/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+    console.log('Submission successful:', result);
+  } catch (error) {
+    console.error('Submission failed:', error);
+  }
+});
+
+<span class="code-comment">// Validate before submission</span>
+const isValid = builder.validate();
+if (isValid) {
+  const data = builder.getFormValues();
+  // Process form data
+}
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h2>Conditional Logic</h2>
+        <div class="code-block">
+<span class="code-comment">// Add conditional logic to fields</span>
+const conditionalField = {
+  id: 'field_2',
+  type: 'text',
+  label: 'Company Name',
+  conditions: [
+    {
+      field: 'field_1',
+      operator: 'equals',
+      value: 'business',
+      action: 'show'
+    }
+  ]
+};
+
+<span class="code-comment">// Complex conditions</span>
+const complexCondition = {
+  logic: 'AND', <span class="code-comment">// AND or OR</span>
+  conditions: [
+    { field: 'age', operator: 'greater_than', value: 18 },
+    { field: 'country', operator: 'in', value: ['US', 'CA', 'UK'] }
+  ],
+  action: 'enable' <span class="code-comment">// show, hide, enable, disable</span>
+};
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/src/js/form-builder.js"></script>
+  <script>
+    // Initialize form builder
+    let formBuilder;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      formBuilder = new FormBuilder(document.getElementById('formBuilder'), {
+        onSave: (data) => {
+          updateOutput(data);
+          showToast('Form saved successfully!');
+        },
+        onChange: (data) => {
+          updateOutput(data);
+        }
+      });
+    });
+
+    // Tab switching
+    document.querySelectorAll('.demo-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabName = tab.dataset.tab;
+
+        // Update active tab
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Update content
+        document.querySelectorAll('.demo-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        document.getElementById(tabName).classList.add('active');
+      });
+    });
+
+    // Helper functions
+    function updateOutput(data) {
+      const output = document.getElementById('configOutput');
+      output.textContent = JSON.stringify(data, null, 2);
+    }
+
+    function clearForm() {
+      formBuilder.clearForm();
+      showToast('Form cleared');
+    }
+
+    function loadSample() {
+      const sampleForm = {
+        fields: [
+          {
+            id: 'name',
+            type: 'text',
+            label: 'Full Name',
+            required: true,
+            placeholder: 'Enter your full name'
+          },
+          {
+            id: 'email',
+            type: 'email',
+            label: 'Email Address',
+            required: true,
+            placeholder: 'email@example.com'
+          },
+          {
+            id: 'phone',
+            type: 'phone',
+            label: 'Phone Number',
+            placeholder: '(555) 123-4567'
+          },
+          {
+            id: 'subject',
+            type: 'select',
+            label: 'Subject',
+            required: true,
+            options: [
+              { value: '', label: 'Select a subject' },
+              { value: 'general', label: 'General Inquiry' },
+              { value: 'support', label: 'Technical Support' },
+              { value: 'sales', label: 'Sales Question' },
+              { value: 'feedback', label: 'Feedback' }
+            ]
+          },
+          {
+            id: 'message',
+            type: 'textarea',
+            label: 'Message',
+            required: true,
+            rows: 5,
+            placeholder: 'Enter your message here...',
+            maxLength: 500,
+            showCount: true
+          },
+          {
+            id: 'subscribe',
+            type: 'checkbox',
+            label: 'Subscribe to newsletter',
+            value: 'yes'
+          }
+        ]
+      };
+
+      formBuilder.loadForm(sampleForm);
+      showToast('Sample form loaded');
+    }
+
+    function exportJSON() {
+      const data = formBuilder.getFormData();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'form-configuration.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Form exported');
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const data = JSON.parse(e.target.result);
+            formBuilder.loadForm(data);
+            showToast('Form imported successfully');
+          } catch (error) {
+            showToast('Invalid JSON file', 'error');
+          }
+        };
+        reader.readAsText(file);
+      }
+    }
+
+    function copyConfig() {
+      const output = document.getElementById('configOutput').textContent;
+      navigator.clipboard.writeText(output).then(() => {
+        showToast('Configuration copied to clipboard');
+      });
+    }
+
+    function loadTemplate(type) {
+      const templates = {
+        contact: {
+          fields: [
+            { id: 'name', type: 'text', label: 'Name', required: true },
+            { id: 'email', type: 'email', label: 'Email', required: true },
+            { id: 'message', type: 'textarea', label: 'Message', required: true }
+          ]
+        },
+        registration: {
+          fields: [
+            { id: 'username', type: 'text', label: 'Username', required: true },
+            { id: 'email', type: 'email', label: 'Email', required: true },
+            { id: 'password', type: 'password', label: 'Password', required: true },
+            { id: 'confirm', type: 'password', label: 'Confirm Password', required: true },
+            { id: 'terms', type: 'checkbox', label: 'I agree to the terms', required: true }
+          ]
+        },
+        survey: {
+          fields: [
+            { id: 'satisfaction', type: 'radio', label: 'How satisfied are you?', options: [
+              { value: '5', label: 'Very Satisfied' },
+              { value: '4', label: 'Satisfied' },
+              { value: '3', label: 'Neutral' },
+              { value: '2', label: 'Dissatisfied' },
+              { value: '1', label: 'Very Dissatisfied' }
+            ]},
+            { id: 'feedback', type: 'textarea', label: 'Additional Feedback' }
+          ]
+        },
+        application: {
+          fields: [
+            { id: 'name', type: 'text', label: 'Full Name', required: true },
+            { id: 'email', type: 'email', label: 'Email', required: true },
+            { id: 'phone', type: 'phone', label: 'Phone', required: true },
+            { id: 'resume', type: 'file', label: 'Resume', required: true, accept: '.pdf,.doc,.docx' },
+            { id: 'coverLetter', type: 'textarea', label: 'Cover Letter' }
+          ]
+        },
+        payment: {
+          fields: [
+            { id: 'cardNumber', type: 'text', label: 'Card Number', required: true },
+            { id: 'expiry', type: 'text', label: 'Expiry Date', required: true, placeholder: 'MM/YY' },
+            { id: 'cvv', type: 'text', label: 'CVV', required: true },
+            { id: 'name', type: 'text', label: 'Cardholder Name', required: true },
+            { id: 'billing', type: 'text', label: 'Billing Address', required: true }
+          ]
+        },
+        booking: {
+          fields: [
+            { id: 'service', type: 'select', label: 'Service', required: true, options: [
+              { value: 'consultation', label: 'Consultation' },
+              { value: 'meeting', label: 'Meeting' },
+              { value: 'appointment', label: 'Appointment' }
+            ]},
+            { id: 'date', type: 'date', label: 'Preferred Date', required: true },
+            { id: 'time', type: 'time', label: 'Preferred Time', required: true },
+            { id: 'duration', type: 'select', label: 'Duration', options: [
+              { value: '30', label: '30 minutes' },
+              { value: '60', label: '1 hour' },
+              { value: '90', label: '1.5 hours' },
+              { value: '120', label: '2 hours' }
+            ]},
+            { id: 'notes', type: 'textarea', label: 'Additional Notes' }
+          ]
+        }
+      };
+
+      if (templates[type]) {
+        formBuilder.loadForm(templates[type]);
+        // Switch to builder tab
+        document.querySelector('[data-tab="builder"]').click();
+        showToast(`${type.charAt(0).toUpperCase() + type.slice(1)} template loaded`);
+      }
+    }
+
+    function showToast(message, type = 'success') {
+      // Create toast element
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        padding: 12px 24px;
+        background: ${type === 'error' ? 'var(--apple-danger)' : 'var(--apple-success)'};
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        animation: slideInUp 0.3s ease;
+      `;
+      toast.textContent = message;
+
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.animation = 'slideOutDown 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // Add animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInUp {
+        from {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideOutDown {
+        from {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
