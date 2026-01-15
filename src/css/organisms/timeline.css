@@ -1,0 +1,546 @@
+/**
+ * Timeline Styles
+ * Interactive chronological event display with Apple-level polish
+ * Part of Amphibious 2.0 Component Library
+ */
+
+/* Main container */
+.timeline {
+  position: relative;
+  width: 100%;
+  padding: 24px 0;
+}
+
+.timeline-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline-wrapper {
+  position: relative;
+  overflow: auto;
+  max-height: 600px;
+}
+
+.timeline-horizontal .timeline-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: none;
+  padding: 40px 0;
+}
+
+/* Track and connector */
+.timeline-track {
+  position: relative;
+  min-height: 200px;
+  transform-origin: center;
+  transition: transform var(--duration-slow, 400ms) var(--ease-apple-smooth);
+}
+
+.timeline-horizontal .timeline-track {
+  min-width: 100%;
+  min-height: auto;
+  height: 200px;
+}
+
+.timeline-connector {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background: var(--apple-gray-300, #e0e0e0);
+  z-index: 1;
+}
+
+.timeline-horizontal .timeline-connector {
+  width: 100%;
+  height: 2px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-default .timeline-connector {
+  left: 60px;
+}
+
+.timeline-compact .timeline-connector {
+  display: none;
+}
+
+/* Events container */
+.timeline-events {
+  position: relative;
+  z-index: 2;
+}
+
+/* Timeline group */
+.timeline-group {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timeline-horizontal .timeline-group {
+  width: auto;
+  height: 100%;
+  flex-direction: row;
+}
+
+.timeline-group.centered {
+  align-items: center;
+}
+
+/* Event element */
+.timeline-event {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all var(--duration-fast, 250ms) var(--ease-apple-bounce);
+  cursor: pointer;
+}
+
+.timeline-event:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-event.selected {
+  box-shadow: 0 0 0 2px var(--apple-orange-500, #ed8b00);
+}
+
+.timeline-event.expanded .event-body {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 12px;
+}
+
+.timeline-event.expanded .expand-btn svg {
+  transform: rotate(180deg);
+}
+
+/* Event positioning */
+.timeline-vertical .timeline-event.left {
+  margin-right: calc(50% + 40px);
+}
+
+.timeline-vertical .timeline-event.right {
+  margin-left: calc(50% + 40px);
+}
+
+.timeline-default .timeline-event {
+  margin-left: 100px;
+}
+
+.timeline-centered .timeline-event.left {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* Event dot */
+.event-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--apple-orange-500, #ed8b00);
+  border: 3px solid white;
+  box-shadow: 0 0 0 1px var(--apple-gray-200, #e0e0e0);
+  z-index: 3;
+}
+
+.timeline-vertical .event-dot {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-default .event-dot {
+  left: 60px;
+}
+
+.timeline-event.milestone .event-dot {
+  width: 24px;
+  height: 24px;
+  border-width: 4px;
+}
+
+/* Event content */
+.event-content {
+  flex: 1;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.event-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.event-time {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #666);
+  white-space: nowrap;
+}
+
+.event-body {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all var(--duration-slow, 400ms) var(--ease-apple-smooth);
+}
+
+.event-description {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #666);
+}
+
+.event-details {
+  margin-top: 12px;
+}
+
+.event-details img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.event-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.event-links a {
+  padding: 4px 8px;
+  background: var(--apple-gray-100, #f5f5f5);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: var(--apple-orange-500, var(--color-primary));
+  text-decoration: none;
+  transition: all var(--duration-instant, 150ms) var(--ease-apple-bounce);
+}
+
+.event-links a:hover {
+  background: var(--apple-orange-500, var(--color-primary));
+  color: white;
+}
+
+/* Event actions */
+.event-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.expand-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary, #666);
+  transition: all var(--duration-instant, 150ms) var(--ease-apple-smooth);
+}
+
+.expand-btn:hover {
+  color: var(--apple-orange-500, var(--color-primary));
+}
+
+.expand-btn svg {
+  transition: transform var(--duration-fast, 250ms) var(--ease-apple-bounce);
+}
+
+/* Date markers */
+.timeline-date {
+  padding: 4px 12px;
+  background: var(--apple-gray-100, #f5f5f5);
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #666);
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+/* Today marker */
+.timeline-today {
+  position: absolute;
+  z-index: 2;
+}
+
+.today-line {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--apple-info, #007aff);
+  opacity: 0.5;
+}
+
+.timeline-horizontal .today-line {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.today-label {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  background: var(--apple-info, #007aff);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* Branching layout */
+.timeline-branch {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.branch-node {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--apple-orange-500, #ed8b00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.node-date {
+  display: none;
+}
+
+.branch-events {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Compact layout */
+.timeline-list.compact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-list.compact .timeline-event {
+  position: static;
+  margin: 0;
+}
+
+/* Controls */
+.timeline-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 12px;
+  background: var(--apple-gray-50, #fafafa);
+  border-radius: 8px;
+}
+
+/* Filters */
+.timeline-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary, #666);
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: white;
+  border: 1px solid var(--color-border, #dedede);
+  border-radius: 16px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--duration-instant, 150ms) var(--ease-apple-bounce);
+}
+
+.filter-btn:hover {
+  border-color: var(--apple-orange-500, var(--color-primary));
+}
+
+.filter-btn.active {
+  background: var(--apple-orange-500, var(--color-primary));
+  border-color: var(--apple-orange-500, var(--color-primary));
+  color: white;
+}
+
+.filter-btn.active .filter-dot {
+  background: white !important;
+}
+
+.filter-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.filter-text {
+  font-weight: 500;
+}
+
+/* Zoom controls */
+.timeline-zoom {
+  display: flex;
+  gap: 4px;
+}
+
+.zoom-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid var(--color-border, #dedede);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--duration-instant, 150ms) var(--ease-apple-bounce);
+}
+
+.zoom-btn:hover {
+  background: var(--apple-orange-500, var(--color-primary));
+  border-color: var(--apple-orange-500, var(--color-primary));
+  color: white;
+}
+
+/* Empty state */
+.timeline-empty {
+  text-align: center;
+  padding: 48px;
+  color: var(--color-text-secondary, #666);
+  font-size: 1.125rem;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .timeline-event {
+    background: var(--apple-gray-800, #424242);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .timeline-connector {
+    background: var(--apple-gray-700, #616161);
+  }
+
+  .event-dot {
+    border-color: var(--apple-gray-800, #424242);
+  }
+
+  .timeline-date {
+    background: var(--apple-gray-700, #616161);
+    color: var(--apple-gray-200, #e0e0e0);
+  }
+
+  .timeline-controls {
+    background: var(--apple-gray-900, #212121);
+  }
+
+  .filter-btn,
+  .zoom-btn {
+    background: var(--apple-gray-800, #424242);
+    border-color: var(--apple-gray-700, #616161);
+    color: var(--apple-gray-200, #e0e0e0);
+  }
+}
+
+/* Animations */
+@keyframes timelineSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-event {
+  animation: timelineSlideIn var(--duration-slow, 400ms) var(--ease-apple-bounce) backwards;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-event,
+  .event-body,
+  .expand-btn svg {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .timeline-vertical .timeline-event.left,
+  .timeline-vertical .timeline-event.right {
+    margin-left: 60px;
+    margin-right: 0;
+  }
+
+  .timeline-vertical .event-dot {
+    left: 30px;
+  }
+
+  .timeline-vertical .timeline-connector {
+    left: 30px;
+  }
+
+  .timeline-controls {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .timeline-filters {
+    flex-wrap: wrap;
+  }
+}
