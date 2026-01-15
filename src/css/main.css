@@ -58,6 +58,7 @@
 @import "./organisms/color-picker.css"; /* Color picker component */
 @import "./organisms/range-slider.css"; /* Range slider component */
 @import "./organisms/timeline.css"; /* Timeline component */
+@import "./organisms/form-builder.css"; /* Form builder component */
 
 /* Navigation - Using unified navigation system */
 @import "./navigation-unified.css";
