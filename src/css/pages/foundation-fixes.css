@@ -1,0 +1,299 @@
+/**
+ * Foundation Page Comprehensive Fixes
+ * Addresses all visibility, spacing, and color issues
+ */
+
+/* ==========================================================================
+   1. Breadcrumb Spacing - Reduce top margin
+   ========================================================================== */
+
+.breadcrumb {
+  margin-top: 0.5rem !important;  /* Reduced from default */
+  margin-bottom: 1.5rem !important;
+  padding: 0.5rem 0;
+}
+
+/* ==========================================================================
+   2. Core Section Text Visibility - Fix unreadable body text
+   ========================================================================== */
+
+/* Light mode - ensure all text is dark and readable */
+:root:not([data-theme="dark"]),
+[data-theme="light"] {
+  /* Core section text */
+  .core-section h2,
+  .core-section h3,
+  .core-section h4,
+  .core-section p,
+  .core-section li,
+  .core-section span,
+  #core h2,
+  #core h3,
+  #core h4,
+  #core p,
+  #core li,
+  #core span {
+    color: #212529 !important;
+  }
+
+  /* All body text */
+  main p,
+  main li,
+  main span:not(.demo-col),
+  article p,
+  article li,
+  section p,
+  section li {
+    color: #212529 !important;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: #212529 !important;
+  }
+}
+
+/* Dark mode - ensure proper text colors */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    .core-section h2,
+    .core-section h3,
+    .core-section h4,
+    .core-section p,
+    .core-section li,
+    #core h2,
+    #core h3,
+    #core h4,
+    #core p,
+    #core li {
+      color: #ffffff !important;
+    }
+
+    main p,
+    main li,
+    main span:not(.demo-col),
+    article p,
+    article li,
+    section p,
+    section li {
+      color: #ffffff !important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #ffffff !important;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .core-section h2,
+  .core-section h3,
+  .core-section h4,
+  .core-section p,
+  .core-section li,
+  #core h2,
+  #core h3,
+  #core h4,
+  #core p,
+  #core li {
+    color: #ffffff !important;
+  }
+
+  main p,
+  main li,
+  main span:not(.demo-col),
+  article p,
+  article li,
+  section p,
+  section li {
+    color: #ffffff !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+  }
+}
+
+/* ==========================================================================
+   3. Code Block Backgrounds - Dark gray instead of white
+   ========================================================================== */
+
+.code-example,
+pre,
+code {
+  background: #2d2d2d !important;
+  color: #f8f8f2 !important;
+  border: 1px solid #666666 !important;
+  border-radius: 0.375rem;
+}
+
+/* Inline code */
+code:not(pre code) {
+  padding: 0.125rem 0.375rem;
+  background: #3a3a3a !important;
+  color: #f8f8f2 !important;
+  border: 1px solid #555555 !important;
+}
+
+/* Code blocks in light mode should also be dark */
+:root:not([data-theme="dark"]) .code-example,
+:root:not([data-theme="dark"]) pre,
+[data-theme="light"] .code-example,
+[data-theme="light"] pre {
+  background: #2d2d2d !important;
+  color: #f8f8f2 !important;
+}
+
+:root:not([data-theme="dark"]) code:not(pre code),
+[data-theme="light"] code:not(pre code) {
+  background: #3a3a3a !important;
+  color: #f8f8f2 !important;
+}
+
+/* ==========================================================================
+   4. Remove Orange Backgrounds - Make transparent
+   ========================================================================== */
+
+/* Remove any orange gradients or backgrounds */
+.demo-grid,
+.demo-col,
+.golden-ratio-demo .demo-col,
+.push-pull-demo .demo-col {
+  background: transparent !important;
+  border: 2px solid #666666;
+  color: inherit;
+}
+
+/* Ensure demo columns have proper text color */
+:root:not([data-theme="dark"]) .demo-col,
+[data-theme="light"] .demo-col {
+  color: #212529 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .demo-col {
+    color: #ffffff !important;
+  }
+}
+
+[data-theme="dark"] .demo-col {
+  color: #ffffff !important;
+}
+
+/* Media query demo - remove orange */
+.media-query-demo {
+  background: transparent !important;
+  border: 2px solid #666666 !important;
+}
+
+@media (max-width: 768px) {
+  .media-query-demo {
+    background: transparent !important;
+    border-color: #999999 !important;
+  }
+}
+
+/* ==========================================================================
+   5. Bottom of Page Text - Fix built-in breakpoints visibility
+   ========================================================================== */
+
+/* Breakpoints section */
+#breakpoints h2,
+#breakpoints h3,
+#breakpoints p,
+#breakpoints li,
+#breakpoints code,
+.breakpoints-section h2,
+.breakpoints-section h3,
+.breakpoints-section p,
+.breakpoints-section li,
+.breakpoints-section code {
+  color: inherit !important;
+}
+
+/* Table text in breakpoints */
+#breakpoints table,
+#breakpoints th,
+#breakpoints td,
+.breakpoints-section table,
+.breakpoints-section th,
+.breakpoints-section td {
+  color: inherit !important;
+}
+
+/* Light mode specific */
+:root:not([data-theme="dark"]) #breakpoints,
+:root:not([data-theme="dark"]) .breakpoints-section,
+[data-theme="light"] #breakpoints,
+[data-theme="light"] .breakpoints-section {
+  color: #212529 !important;
+}
+
+:root:not([data-theme="dark"]) #breakpoints * ,
+:root:not([data-theme="dark"]) .breakpoints-section *,
+[data-theme="light"] #breakpoints *,
+[data-theme="light"] .breakpoints-section * {
+  color: #212529 !important;
+}
+
+/* Dark mode specific */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #breakpoints,
+  :root:not([data-theme="light"]) .breakpoints-section {
+    color: #ffffff !important;
+  }
+
+  :root:not([data-theme="light"]) #breakpoints *,
+  :root:not([data-theme="light"]) .breakpoints-section * {
+    color: #ffffff !important;
+  }
+}
+
+[data-theme="dark"] #breakpoints,
+[data-theme="dark"] .breakpoints-section {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] #breakpoints *,
+[data-theme="dark"] .breakpoints-section * {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Additional Global Fixes
+   ========================================================================== */
+
+/* Ensure all sections have proper text color inheritance */
+.doc-section {
+  color: inherit;
+}
+
+/* Fix any remaining visibility issues */
+main {
+  color: inherit;
+}
+
+/* Tables should have visible text */
+table {
+  color: inherit;
+}
+
+th, td {
+  color: inherit;
+}
+
+/* Lists should be visible */
+ul, ol, dl {
+  color: inherit;
+}
+
+li, dt, dd {
+  color: inherit;
+}
+
+/* Ensure demo columns inside code examples maintain their styling */
+.code-example .demo-col {
+  background: #666666 !important;
+  color: white !important;
+  border: none !important;
+}
