@@ -49,11 +49,11 @@ class Timeline {
       dateFormat: options.dateFormat || {
         year: 'numeric',
         month: 'short',
-        day: 'numeric'
+        day: 'numeric',
       },
       timeFormat: options.timeFormat || {
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
       },
 
       // Colors
@@ -61,7 +61,7 @@ class Timeline {
         default: 'var(--apple-orange-500, #ed8b00)',
         milestone: 'var(--apple-success, #34c759)',
         today: 'var(--apple-info, #007aff)',
-        connector: 'var(--apple-gray-300, #e0e0e0)'
+        connector: 'var(--apple-gray-300, #e0e0e0)',
       },
 
       // Labels
@@ -71,7 +71,7 @@ class Timeline {
         zoomIn: options.labels?.zoomIn || 'Zoom In',
         zoomOut: options.labels?.zoomOut || 'Zoom Out',
         reset: options.labels?.reset || 'Reset View',
-        ...options.labels
+        ...options.labels,
       },
 
       // Callbacks
@@ -81,7 +81,7 @@ class Timeline {
       onDateRangeChange: options.onDateRangeChange || null,
       onFilter: options.onFilter || null,
 
-      ...options
+      ...options,
     };
 
     // State
@@ -94,7 +94,7 @@ class Timeline {
       zoomLevel: 1,
       panPosition: 0,
       dateRange: null,
-      isAnimating: false
+      isAnimating: false,
     };
 
     // Track resources for cleanup
@@ -129,10 +129,10 @@ class Timeline {
 
     // Calculate date range
     if (this.state.events.length) {
-      const dates = this.state.events.map(e => new Date(e.date));
+      const dates = this.state.events.map((e) => new Date(e.date));
       this.state.dateRange = {
         start: new Date(Math.min(...dates)),
-        end: new Date(Math.max(...dates))
+        end: new Date(Math.max(...dates)),
       };
     }
   }
@@ -208,7 +208,7 @@ class Timeline {
       filterLabel.textContent = 'Filter: ';
       filters.appendChild(filterLabel);
 
-      this.options.groups.forEach(group => {
+      this.options.groups.forEach((group) => {
         const filterBtn = document.createElement('button');
         filterBtn.className = 'filter-btn';
         filterBtn.dataset.group = group.id;
@@ -333,7 +333,7 @@ class Timeline {
       }
 
       // Events for this date
-      events.forEach(event => {
+      events.forEach((event) => {
         const eventEl = this.createEventElement(event, side);
         group.appendChild(eventEl);
 
@@ -362,7 +362,7 @@ class Timeline {
       const group = document.createElement('div');
       group.className = 'timeline-group centered';
 
-      events.forEach(event => {
+      events.forEach((event) => {
         const side = index % 2 === 0 ? 'left' : 'right';
         const eventEl = this.createEventElement(event, side);
         group.appendChild(eventEl);
@@ -398,7 +398,7 @@ class Timeline {
       const branchEvents = document.createElement('div');
       branchEvents.className = 'branch-events';
 
-      events.forEach(event => {
+      events.forEach((event) => {
         const eventEl = this.createEventElement(event, 'branch');
         branchEvents.appendChild(eventEl);
       });
@@ -422,7 +422,7 @@ class Timeline {
     list.className = 'timeline-list compact';
 
     Object.entries(eventsByDate).forEach(([date, events]) => {
-      events.forEach(event => {
+      events.forEach((event) => {
         const eventEl = this.createEventElement(event, 'compact');
         list.appendChild(eventEl);
       });
@@ -451,8 +451,9 @@ class Timeline {
     // Event dot
     const dot = document.createElement('div');
     dot.className = 'event-dot';
-    const dotColor = event.milestone ? this.options.colors.milestone :
-                     event.color || this.getGroupColor(event.group) || this.options.colors.default;
+    const dotColor = event.milestone
+      ? this.options.colors.milestone
+      : event.color || this.getGroupColor(event.group) || this.options.colors.default;
     dot.style.background = dotColor;
 
     // Event content
@@ -501,7 +502,7 @@ class Timeline {
           const links = document.createElement('div');
           links.className = 'event-links';
 
-          event.details.links.forEach(link => {
+          event.details.links.forEach((link) => {
             const a = document.createElement('a');
             a.href = link.url;
             a.textContent = link.text;
@@ -559,7 +560,7 @@ class Timeline {
       if (!eventEl) return;
 
       const eventId = eventEl.dataset.eventId;
-      const event = this.state.events.find(e => e.id === eventId);
+      const event = this.state.events.find((e) => e.id === eventId);
 
       if (e.target.closest('.expand-btn')) {
         this.toggleExpand(eventId);
@@ -569,7 +570,11 @@ class Timeline {
     };
 
     this.eventsContainer.addEventListener('click', eventHandler);
-    this.handlers.set('events', { element: this.eventsContainer, type: 'click', handler: eventHandler });
+    this.handlers.set('events', {
+      element: this.eventsContainer,
+      type: 'click',
+      handler: eventHandler,
+    });
 
     // Filter buttons
     if (this.options.showFilters) {
@@ -577,7 +582,11 @@ class Timeline {
       filterBtns.forEach((btn, index) => {
         const filterHandler = () => this.toggleFilter(btn.dataset.group);
         btn.addEventListener('click', filterHandler);
-        this.handlers.set(`filter-${index}`, { element: btn, type: 'click', handler: filterHandler });
+        this.handlers.set(`filter-${index}`, {
+          element: btn,
+          type: 'click',
+          handler: filterHandler,
+        });
       });
     }
 
@@ -596,13 +605,21 @@ class Timeline {
       if (zoomOutBtn) {
         const zoomOutHandler = () => this.zoomOut();
         zoomOutBtn.addEventListener('click', zoomOutHandler);
-        this.handlers.set('zoom-out', { element: zoomOutBtn, type: 'click', handler: zoomOutHandler });
+        this.handlers.set('zoom-out', {
+          element: zoomOutBtn,
+          type: 'click',
+          handler: zoomOutHandler,
+        });
       }
 
       if (resetBtn) {
         const resetHandler = () => this.resetZoom();
         resetBtn.addEventListener('click', resetHandler);
-        this.handlers.set('zoom-reset', { element: resetBtn, type: 'click', handler: resetHandler });
+        this.handlers.set('zoom-reset', {
+          element: resetBtn,
+          type: 'click',
+          handler: resetHandler,
+        });
       }
     }
 
@@ -653,12 +670,32 @@ class Timeline {
     document.addEventListener('mouseup', endHandler);
     document.addEventListener('touchend', endHandler);
 
-    this.handlers.set('pan-start-mouse', { element: this.wrapper, type: 'mousedown', handler: startHandler });
-    this.handlers.set('pan-start-touch', { element: this.wrapper, type: 'touchstart', handler: startHandler });
-    this.handlers.set('pan-move-mouse', { element: document, type: 'mousemove', handler: moveHandler });
-    this.handlers.set('pan-move-touch', { element: document, type: 'touchmove', handler: moveHandler });
+    this.handlers.set('pan-start-mouse', {
+      element: this.wrapper,
+      type: 'mousedown',
+      handler: startHandler,
+    });
+    this.handlers.set('pan-start-touch', {
+      element: this.wrapper,
+      type: 'touchstart',
+      handler: startHandler,
+    });
+    this.handlers.set('pan-move-mouse', {
+      element: document,
+      type: 'mousemove',
+      handler: moveHandler,
+    });
+    this.handlers.set('pan-move-touch', {
+      element: document,
+      type: 'touchmove',
+      handler: moveHandler,
+    });
     this.handlers.set('pan-end-mouse', { element: document, type: 'mouseup', handler: endHandler });
-    this.handlers.set('pan-end-touch', { element: document, type: 'touchend', handler: endHandler });
+    this.handlers.set('pan-end-touch', {
+      element: document,
+      type: 'touchend',
+      handler: endHandler,
+    });
   }
 
   handleEventClick(event) {
@@ -679,13 +716,13 @@ class Timeline {
     this.state.selectedEvent = eventId;
 
     // Update UI
-    this.element.querySelectorAll('.timeline-event').forEach(el => {
+    this.element.querySelectorAll('.timeline-event').forEach((el) => {
       el.classList.toggle('selected', el.dataset.eventId === eventId);
     });
 
     // Trigger callback
     if (this.options.onEventSelect) {
-      const event = this.state.events.find(e => e.id === eventId);
+      const event = this.state.events.find((e) => e.id === eventId);
       this.options.onEventSelect(event);
     }
   }
@@ -714,7 +751,7 @@ class Timeline {
 
     // Trigger callback
     if (this.options.onEventExpand) {
-      const event = this.state.events.find(e => e.id === eventId);
+      const event = this.state.events.find((e) => e.id === eventId);
       const isExpanded = this.state.expandedEvents.has(eventId);
       this.options.onEventExpand(event, isExpanded);
     }
@@ -738,7 +775,7 @@ class Timeline {
     if (this.state.activeFilters.size === 0) {
       this.state.filteredEvents = [...this.state.events];
     } else {
-      this.state.filteredEvents = this.state.events.filter(event => {
+      this.state.filteredEvents = this.state.events.filter((event) => {
         return this.state.activeFilters.has(event.group);
       });
     }
@@ -813,7 +850,7 @@ class Timeline {
 
   navigateEvents(direction) {
     const events = Array.from(this.element.querySelectorAll('.timeline-event'));
-    const currentIndex = events.findIndex(el => el.classList.contains('selected'));
+    const currentIndex = events.findIndex((el) => el.classList.contains('selected'));
 
     let nextIndex;
     if (direction === 'next') {
@@ -837,8 +874,8 @@ class Timeline {
 
     events.forEach((event, index) => {
       event.style.opacity = '0';
-      event.style.transform = this.options.orientation === 'horizontal' ?
-        'translateX(-20px)' : 'translateY(-20px)';
+      event.style.transform =
+        this.options.orientation === 'horizontal' ? 'translateX(-20px)' : 'translateY(-20px)';
 
       const timer = setTimeout(() => {
         event.style.transition = `all ${this.options.animationDuration}ms var(--ease-apple-bounce)`;
@@ -849,9 +886,12 @@ class Timeline {
       this.timers.add(timer);
     });
 
-    const completeTimer = setTimeout(() => {
-      this.state.isAnimating = false;
-    }, events.length * this.options.staggerDelay + this.options.animationDuration);
+    const completeTimer = setTimeout(
+      () => {
+        this.state.isAnimating = false;
+      },
+      events.length * this.options.staggerDelay + this.options.animationDuration,
+    );
 
     this.timers.add(completeTimer);
   }
@@ -860,7 +900,7 @@ class Timeline {
   groupEventsByDate(events) {
     const grouped = {};
 
-    events.forEach(event => {
+    events.forEach((event) => {
       const date = new Date(event.date).toDateString();
       if (!grouped[date]) {
         grouped[date] = [];
@@ -887,8 +927,9 @@ class Timeline {
     if (!this.state.dateRange) return false;
 
     const time = date.getTime();
-    return time >= this.state.dateRange.start.getTime() &&
-           time <= this.state.dateRange.end.getTime();
+    return (
+      time >= this.state.dateRange.start.getTime() && time <= this.state.dateRange.end.getTime()
+    );
   }
 
   formatDate(date) {
@@ -902,7 +943,7 @@ class Timeline {
   }
 
   getGroupColor(groupId) {
-    const group = this.options.groups.find(g => g.id === groupId);
+    const group = this.options.groups.find((g) => g.id === groupId);
     return group?.color || null;
   }
 
@@ -918,13 +959,13 @@ class Timeline {
   }
 
   removeEvent(eventId) {
-    this.state.events = this.state.events.filter(e => e.id !== eventId);
+    this.state.events = this.state.events.filter((e) => e.id !== eventId);
     this.processEvents();
     this.render();
   }
 
   updateEvent(eventId, updates) {
-    const event = this.state.events.find(e => e.id === eventId);
+    const event = this.state.events.find((e) => e.id === eventId);
     if (event) {
       Object.assign(event, updates);
       this.processEvents();
@@ -935,7 +976,7 @@ class Timeline {
   setDateRange(startDate, endDate) {
     this.state.dateRange = {
       start: new Date(startDate),
-      end: new Date(endDate)
+      end: new Date(endDate),
     };
     this.render();
   }
@@ -961,7 +1002,7 @@ class Timeline {
 
   destroy() {
     // Clear timers
-    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.forEach((timer) => clearTimeout(timer));
     this.timers.clear();
 
     // Remove event listeners
@@ -971,15 +1012,15 @@ class Timeline {
     this.handlers.clear();
 
     // Disconnect observers
-    this.observers.forEach(observer => observer.disconnect());
+    this.observers.forEach((observer) => observer.disconnect());
     this.observers.clear();
 
     // Clear animations
-    this.animations.forEach(animation => animation.cancel());
+    this.animations.forEach((animation) => animation.cancel());
     this.animations.clear();
 
     // Remove created elements
-    this.createdElements.forEach(element => {
+    this.createdElements.forEach((element) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -994,7 +1035,7 @@ class Timeline {
 
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-timeline]').forEach(element => {
+  document.querySelectorAll('[data-timeline]').forEach((element) => {
     new Timeline(element);
   });
 });

@@ -18,10 +18,10 @@ class RangeSlider {
     this.element = element;
     this.options = {
       // Basic options
-      min: options.min !== undefined ? options.min : parseFloat(element.min) || 0,
-      max: options.max !== undefined ? options.max : parseFloat(element.max) || 100,
-      step: options.step !== undefined ? options.step : parseFloat(element.step) || 1,
-      value: options.value || parseFloat(element.value) || 0,
+      min: options.min !== undefined ? options.min : Number.parseFloat(element.min) || 0,
+      max: options.max !== undefined ? options.max : Number.parseFloat(element.max) || 100,
+      step: options.step !== undefined ? options.step : Number.parseFloat(element.step) || 1,
+      value: options.value || Number.parseFloat(element.value) || 0,
 
       // Dual handle mode
       dual: options.dual || false,
@@ -62,7 +62,7 @@ class RangeSlider {
       onStart: options.onStart || null,
       onEnd: options.onEnd || null,
 
-      ...options
+      ...options,
     };
 
     // State
@@ -72,7 +72,7 @@ class RangeSlider {
       value: this.options.value,
       values: [...this.options.values],
       lastEmittedValue: null,
-      lastEmittedValues: null
+      lastEmittedValues: null,
     };
 
     // Track resources for cleanup
@@ -202,7 +202,7 @@ class RangeSlider {
       const tick = document.createElement('div');
       tick.className = 'range-slider-tick';
 
-      const value = this.options.min + (i * this.options.tickSteps);
+      const value = this.options.min + i * this.options.tickSteps;
       const percent = ((value - this.options.min) / range) * 100;
 
       if (this.options.orientation === 'vertical') {
@@ -226,7 +226,7 @@ class RangeSlider {
     const stepSize = range / this.options.scaleSteps;
 
     for (let i = 0; i <= this.options.scaleSteps; i++) {
-      const value = this.options.min + (i * stepSize);
+      const value = this.options.min + i * stepSize;
       const label = document.createElement('div');
       label.className = 'range-slider-scale-label';
 
@@ -297,12 +297,20 @@ class RangeSlider {
     // Mouse events
     const mouseDownHandler = (e) => this.handleStart(e, type);
     handle.addEventListener('mousedown', mouseDownHandler);
-    this.handlers.set(`${type}-mousedown`, { element: handle, type: 'mousedown', handler: mouseDownHandler });
+    this.handlers.set(`${type}-mousedown`, {
+      element: handle,
+      type: 'mousedown',
+      handler: mouseDownHandler,
+    });
 
     // Touch events
     const touchStartHandler = (e) => this.handleStart(e, type);
     handle.addEventListener('touchstart', touchStartHandler, { passive: false });
-    this.handlers.set(`${type}-touchstart`, { element: handle, type: 'touchstart', handler: touchStartHandler });
+    this.handlers.set(`${type}-touchstart`, {
+      element: handle,
+      type: 'touchstart',
+      handler: touchStartHandler,
+    });
 
     // Focus events for accessibility
     const focusHandler = () => handle.classList.add('focused');
@@ -320,8 +328,8 @@ class RangeSlider {
     this.state.isDragging = true;
     this.state.activeHandle = handleType;
 
-    const handle = handleType === 'min' ? this.handleMin :
-                   handleType === 'max' ? this.handleMax : this.handle;
+    const handle =
+      handleType === 'min' ? this.handleMin : handleType === 'max' ? this.handleMax : this.handle;
     handle.classList.add('active');
 
     // Get track dimensions
@@ -502,7 +510,7 @@ class RangeSlider {
     if (!handle.classList.contains('range-slider-handle')) return;
 
     let value;
-    let step = e.shiftKey ? this.options.step * 10 : this.options.step;
+    const step = e.shiftKey ? this.options.step * 10 : this.options.step;
 
     if (this.options.dual) {
       const isMin = handle.classList.contains('min');
@@ -540,14 +548,20 @@ class RangeSlider {
           if (isMin) {
             this.state.values[0] = this.options.min;
           } else {
-            this.state.values[1] = Math.max(this.options.min, this.state.values[0] + this.options.gap);
+            this.state.values[1] = Math.max(
+              this.options.min,
+              this.state.values[0] + this.options.gap,
+            );
           }
           break;
 
         case 'End':
           e.preventDefault();
           if (isMin) {
-            this.state.values[0] = Math.min(this.options.max, this.state.values[1] - this.options.gap);
+            this.state.values[0] = Math.min(
+              this.options.max,
+              this.state.values[1] - this.options.gap,
+            );
           } else {
             this.state.values[1] = this.options.max;
           }
@@ -714,10 +728,10 @@ class RangeSlider {
 
   formatValue(value) {
     // Round to step precision
-    const precision = this.options.step < 1 ?
-      this.options.step.toString().split('.')[1]?.length || 0 : 0;
+    const precision =
+      this.options.step < 1 ? this.options.step.toString().split('.')[1]?.length || 0 : 0;
 
-    value = parseFloat(value.toFixed(precision));
+    value = Number.parseFloat(value.toFixed(precision));
 
     // Apply custom formatter
     let formatted = this.options.format(value);
@@ -735,7 +749,7 @@ class RangeSlider {
     let closest = this.options.snapValues[0];
     let minDiff = Math.abs(value - closest);
 
-    for (let snapValue of this.options.snapValues) {
+    for (const snapValue of this.options.snapValues) {
       const diff = Math.abs(value - snapValue);
       if (diff < minDiff) {
         minDiff = diff;
@@ -829,11 +843,11 @@ class RangeSlider {
     this.handlers.clear();
 
     // Clear timers
-    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.forEach((timer) => clearTimeout(timer));
     this.timers.clear();
 
     // Remove created elements
-    this.createdElements.forEach(element => {
+    this.createdElements.forEach((element) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -847,7 +861,7 @@ class RangeSlider {
 
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-range-slider]').forEach(element => {
+  document.querySelectorAll('[data-range-slider]').forEach((element) => {
     new RangeSlider(element);
   });
 });

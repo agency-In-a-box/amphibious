@@ -21,10 +21,28 @@ class FormBuilder {
     this.options = {
       // Field types to include
       fieldTypes: options.fieldTypes || [
-        'text', 'email', 'password', 'number', 'tel', 'url',
-        'textarea', 'select', 'radio', 'checkbox', 'switch',
-        'date', 'time', 'datetime', 'color', 'range', 'file',
-        'heading', 'paragraph', 'divider', 'spacer', 'html'
+        'text',
+        'email',
+        'password',
+        'number',
+        'tel',
+        'url',
+        'textarea',
+        'select',
+        'radio',
+        'checkbox',
+        'switch',
+        'date',
+        'time',
+        'datetime',
+        'color',
+        'range',
+        'file',
+        'heading',
+        'paragraph',
+        'divider',
+        'spacer',
+        'html',
       ],
 
       // UI options
@@ -59,7 +77,7 @@ class FormBuilder {
         export: options.labels?.export || 'Export JSON',
         import: options.labels?.import || 'Import JSON',
         clear: options.labels?.clear || 'Clear All',
-        ...options.labels
+        ...options.labels,
       },
 
       // Callbacks
@@ -69,7 +87,7 @@ class FormBuilder {
       onFieldRemove: options.onFieldRemove || null,
       onFieldUpdate: options.onFieldUpdate || null,
 
-      ...options
+      ...options,
     };
 
     // State
@@ -84,7 +102,7 @@ class FormBuilder {
       formData: {},
       validationErrors: {},
       history: [],
-      historyIndex: -1
+      historyIndex: -1,
     };
 
     // Field definitions
@@ -114,8 +132,8 @@ class FormBuilder {
           required: false,
           minLength: null,
           maxLength: null,
-          pattern: null
-        }
+          pattern: null,
+        },
       },
       email: {
         label: 'Email',
@@ -127,8 +145,8 @@ class FormBuilder {
           name: '',
           placeholder: 'email@example.com',
           required: false,
-          validation: 'email'
-        }
+          validation: 'email',
+        },
       },
       password: {
         label: 'Password',
@@ -141,8 +159,8 @@ class FormBuilder {
           placeholder: 'Enter password...',
           required: false,
           minLength: 8,
-          showStrength: true
-        }
+          showStrength: true,
+        },
       },
       number: {
         label: 'Number',
@@ -156,8 +174,8 @@ class FormBuilder {
           required: false,
           min: null,
           max: null,
-          step: 1
-        }
+          step: 1,
+        },
       },
       tel: {
         label: 'Phone',
@@ -169,8 +187,8 @@ class FormBuilder {
           name: '',
           placeholder: '(555) 123-4567',
           required: false,
-          pattern: null
-        }
+          pattern: null,
+        },
       },
       url: {
         label: 'URL',
@@ -181,8 +199,8 @@ class FormBuilder {
           label: 'Website URL',
           name: '',
           placeholder: 'https://example.com',
-          required: false
-        }
+          required: false,
+        },
       },
 
       // Text areas
@@ -197,8 +215,8 @@ class FormBuilder {
           placeholder: 'Enter your message...',
           required: false,
           rows: 4,
-          maxLength: null
-        }
+          maxLength: null,
+        },
       },
 
       // Selection fields
@@ -215,9 +233,9 @@ class FormBuilder {
           options: [
             { value: 'option1', label: 'Option 1' },
             { value: 'option2', label: 'Option 2' },
-            { value: 'option3', label: 'Option 3' }
-          ]
-        }
+            { value: 'option3', label: 'Option 3' },
+          ],
+        },
       },
       radio: {
         label: 'Radio Group',
@@ -231,9 +249,9 @@ class FormBuilder {
           options: [
             { value: 'option1', label: 'Option 1' },
             { value: 'option2', label: 'Option 2' },
-            { value: 'option3', label: 'Option 3' }
-          ]
-        }
+            { value: 'option3', label: 'Option 3' },
+          ],
+        },
       },
       checkbox: {
         label: 'Checkbox',
@@ -244,8 +262,8 @@ class FormBuilder {
           label: 'Checkbox',
           name: '',
           required: false,
-          value: 'checked'
-        }
+          value: 'checked',
+        },
       },
       switch: {
         label: 'Toggle Switch',
@@ -256,8 +274,8 @@ class FormBuilder {
           label: 'Enable Feature',
           name: '',
           required: false,
-          value: false
-        }
+          value: false,
+        },
       },
 
       // Date & Time
@@ -271,8 +289,8 @@ class FormBuilder {
           name: '',
           required: false,
           min: null,
-          max: null
-        }
+          max: null,
+        },
       },
       time: {
         label: 'Time Picker',
@@ -282,8 +300,8 @@ class FormBuilder {
           type: 'time',
           label: 'Time',
           name: '',
-          required: false
-        }
+          required: false,
+        },
       },
       datetime: {
         label: 'Date & Time',
@@ -293,8 +311,8 @@ class FormBuilder {
           type: 'datetime-local',
           label: 'Date & Time',
           name: '',
-          required: false
-        }
+          required: false,
+        },
       },
 
       // Special inputs
@@ -306,8 +324,8 @@ class FormBuilder {
           type: 'color',
           label: 'Choose Color',
           name: '',
-          value: '#ED8B00'
-        }
+          value: '#ED8B00',
+        },
       },
       range: {
         label: 'Range Slider',
@@ -320,8 +338,8 @@ class FormBuilder {
           min: 0,
           max: 100,
           step: 1,
-          value: 50
-        }
+          value: 50,
+        },
       },
       file: {
         label: 'File Upload',
@@ -334,8 +352,8 @@ class FormBuilder {
           required: false,
           accept: '*',
           multiple: false,
-          maxSize: 5242880 // 5MB
-        }
+          maxSize: 5242880, // 5MB
+        },
       },
 
       // Layout elements
@@ -347,8 +365,8 @@ class FormBuilder {
           type: 'heading',
           text: 'Section Title',
           level: 'h3',
-          className: ''
-        }
+          className: '',
+        },
       },
       paragraph: {
         label: 'Paragraph',
@@ -357,8 +375,8 @@ class FormBuilder {
         defaultProps: {
           type: 'paragraph',
           text: 'Add some descriptive text here...',
-          className: ''
-        }
+          className: '',
+        },
       },
       divider: {
         label: 'Divider',
@@ -366,8 +384,8 @@ class FormBuilder {
         category: 'layout',
         defaultProps: {
           type: 'divider',
-          style: 'solid'
-        }
+          style: 'solid',
+        },
       },
       spacer: {
         label: 'Spacer',
@@ -375,8 +393,8 @@ class FormBuilder {
         category: 'layout',
         defaultProps: {
           type: 'spacer',
-          height: 24
-        }
+          height: 24,
+        },
       },
       html: {
         label: 'Custom HTML',
@@ -384,9 +402,9 @@ class FormBuilder {
         category: 'layout',
         defaultProps: {
           type: 'html',
-          content: '<div>Custom HTML content</div>'
-        }
-      }
+          content: '<div>Custom HTML content</div>',
+        },
+      },
     };
   }
 
@@ -469,7 +487,7 @@ class FormBuilder {
       const fieldList = document.createElement('div');
       fieldList.className = 'toolbox-fields';
 
-      fields.forEach(field => {
+      fields.forEach((field) => {
         const fieldEl = document.createElement('div');
         fieldEl.className = 'toolbox-field';
         fieldEl.draggable = true;
@@ -697,7 +715,7 @@ class FormBuilder {
     const templateList = document.createElement('div');
     templateList.className = 'template-list';
 
-    this.options.templates.forEach(template => {
+    this.options.templates.forEach((template) => {
       const templateEl = document.createElement('div');
       templateEl.className = 'template-item';
       templateEl.dataset.templateId = template.id;
@@ -716,19 +734,19 @@ class FormBuilder {
     // Toolbox drag events
     if (this.toolbox) {
       const fieldEls = this.toolbox.querySelectorAll('.toolbox-field');
-      fieldEls.forEach(field => {
+      fieldEls.forEach((field) => {
         this.attachDragEvents(field, 'new');
       });
 
       // Template clicks
       const templates = this.toolbox.querySelectorAll('.template-item');
-      templates.forEach(template => {
+      templates.forEach((template) => {
         const handler = () => this.loadTemplate(template.dataset.templateId);
         template.addEventListener('click', handler);
         this.handlers.set(`template-${template.dataset.templateId}`, {
           element: template,
           type: 'click',
-          handler
+          handler,
         });
       });
     }
@@ -738,13 +756,13 @@ class FormBuilder {
 
     // Tab switching
     const tabs = this.element.querySelectorAll('.tab-btn');
-    tabs.forEach(tab => {
+    tabs.forEach((tab) => {
       const handler = () => this.switchTab(tab.dataset.tab);
       tab.addEventListener('click', handler);
       this.handlers.set(`tab-${tab.dataset.tab}`, {
         element: tab,
         type: 'click',
-        handler
+        handler,
       });
     });
 
@@ -799,7 +817,11 @@ class FormBuilder {
     if (this.fileInput) {
       const fileHandler = (e) => this.handleFileImport(e);
       this.fileInput.addEventListener('change', fileHandler);
-      this.handlers.set('file-input', { element: this.fileInput, type: 'change', handler: fileHandler });
+      this.handlers.set('file-input', {
+        element: this.fileInput,
+        type: 'change',
+        handler: fileHandler,
+      });
     }
 
     // Multi-step navigation
@@ -843,13 +865,13 @@ class FormBuilder {
     this.handlers.set(`drag-start-${element.dataset.fieldType || element.dataset.fieldId}`, {
       element,
       type: 'dragstart',
-      handler: dragStartHandler
+      handler: dragStartHandler,
     });
 
     this.handlers.set(`drag-end-${element.dataset.fieldType || element.dataset.fieldId}`, {
       element,
       type: 'dragend',
-      handler: dragEndHandler
+      handler: dragEndHandler,
     });
   }
 
@@ -877,15 +899,15 @@ class FormBuilder {
       const fieldType = e.target.dataset.fieldType;
       this.state.draggedField = {
         type: fieldType,
-        isNew: true
+        isNew: true,
       };
     } else {
       // Dragging existing field
       const fieldId = e.target.dataset.fieldId;
-      const field = this.state.fields.find(f => f.id === fieldId);
+      const field = this.state.fields.find((f) => f.id === fieldId);
       this.state.draggedField = {
         ...field,
-        isNew: false
+        isNew: false,
       };
     }
 
@@ -903,7 +925,7 @@ class FormBuilder {
     e.target.classList.remove('dragging');
 
     // Remove all drag indicators
-    this.element.querySelectorAll('.drag-over, .drag-before, .drag-after').forEach(el => {
+    this.element.querySelectorAll('.drag-over, .drag-before, .drag-after').forEach((el) => {
       el.classList.remove('drag-over', 'drag-before', 'drag-after');
     });
   }
@@ -917,7 +939,7 @@ class FormBuilder {
     if (!target) return;
 
     // Remove previous indicators
-    this.element.querySelectorAll('.drag-over, .drag-before, .drag-after').forEach(el => {
+    this.element.querySelectorAll('.drag-over, .drag-before, .drag-after').forEach((el) => {
       el.classList.remove('drag-over', 'drag-before', 'drag-after');
     });
 
@@ -969,7 +991,7 @@ class FormBuilder {
       id,
       type,
       ...definition.defaultProps,
-      name: `field_${id}`
+      name: `field_${id}`,
     };
   }
 
@@ -979,7 +1001,7 @@ class FormBuilder {
       this.state.fields.push(field);
     } else {
       const targetId = targetElement.dataset.fieldId;
-      const targetIndex = this.state.fields.findIndex(f => f.id === targetId);
+      const targetIndex = this.state.fields.findIndex((f) => f.id === targetId);
 
       if (position === 'before') {
         this.state.fields.splice(targetIndex, 0, field);
@@ -1005,7 +1027,7 @@ class FormBuilder {
 
   moveField(fieldId, targetElement, position) {
     // Find and remove field from current position
-    const fieldIndex = this.state.fields.findIndex(f => f.id === fieldId);
+    const fieldIndex = this.state.fields.findIndex((f) => f.id === fieldId);
     const field = this.state.fields.splice(fieldIndex, 1)[0];
 
     // Insert at new position
@@ -1013,7 +1035,7 @@ class FormBuilder {
       this.state.fields.push(field);
     } else {
       const targetId = targetElement.dataset.fieldId;
-      const targetIndex = this.state.fields.findIndex(f => f.id === targetId);
+      const targetIndex = this.state.fields.findIndex((f) => f.id === targetId);
 
       if (position === 'before') {
         this.state.fields.splice(targetIndex, 0, field);
@@ -1046,7 +1068,7 @@ class FormBuilder {
     }
 
     // Render each field
-    this.state.fields.forEach(field => {
+    this.state.fields.forEach((field) => {
       const fieldEl = this.renderField(field);
       this.canvas.appendChild(fieldEl);
     });
@@ -1115,7 +1137,7 @@ class FormBuilder {
     this.handlers.set(`field-click-${field.id}`, {
       element: fieldEl,
       type: 'click',
-      handler: clickHandler
+      handler: clickHandler,
     });
 
     const duplicateHandler = (e) => {
@@ -1126,7 +1148,7 @@ class FormBuilder {
     this.handlers.set(`field-duplicate-${field.id}`, {
       element: duplicateBtn,
       type: 'click',
-      handler: duplicateHandler
+      handler: duplicateHandler,
     });
 
     const deleteHandler = (e) => {
@@ -1137,7 +1159,7 @@ class FormBuilder {
     this.handlers.set(`field-delete-${field.id}`, {
       element: deleteBtn,
       type: 'click',
-      handler: deleteHandler
+      handler: deleteHandler,
     });
 
     return fieldEl;
@@ -1162,16 +1184,22 @@ class FormBuilder {
 
       case 'select':
         return `<select disabled>
-          ${field.options?.map(opt => `<option>${opt.label}</option>`).join('') || '<option>Option</option>'}
+          ${field.options?.map((opt) => `<option>${opt.label}</option>`).join('') || '<option>Option</option>'}
         </select>`;
 
       case 'radio':
-        return field.options?.map(opt => `
+        return (
+          field.options
+            ?.map(
+              (opt) => `
           <label class="radio-label">
             <input type="radio" name="${field.name}" disabled />
             <span>${opt.label}</span>
           </label>
-        `).join('') || '<label><input type="radio" disabled /> Option</label>';
+        `,
+            )
+            .join('') || '<label><input type="radio" disabled /> Option</label>'
+        );
 
       case 'checkbox':
         return `<label class="checkbox-label">
@@ -1220,7 +1248,7 @@ class FormBuilder {
     this.state.selectedField = fieldId;
 
     // Update UI
-    this.canvas.querySelectorAll('.form-field').forEach(el => {
+    this.canvas.querySelectorAll('.form-field').forEach((el) => {
       el.classList.toggle('selected', el.dataset.fieldId === fieldId);
     });
 
@@ -1231,7 +1259,7 @@ class FormBuilder {
   }
 
   showProperties(fieldId) {
-    const field = this.state.fields.find(f => f.id === fieldId);
+    const field = this.state.fields.find((f) => f.id === fieldId);
     if (!field) {
       this.propertiesContent.innerHTML = `
         <div class="properties-empty">
@@ -1253,7 +1281,7 @@ class FormBuilder {
     // Field-specific properties
     const properties = this.getFieldProperties(field);
 
-    properties.forEach(prop => {
+    properties.forEach((prop) => {
       const group = document.createElement('div');
       group.className = 'property-group';
 
@@ -1272,7 +1300,7 @@ class FormBuilder {
       this.handlers.set(`prop-${fieldId}-${prop.name}`, {
         element: input,
         type: 'change',
-        handler: changeHandler
+        handler: changeHandler,
       });
     });
 
@@ -1298,7 +1326,7 @@ class FormBuilder {
     const common = [
       { name: 'label', label: 'Label', type: 'text' },
       { name: 'name', label: 'Field Name', type: 'text' },
-      { name: 'placeholder', label: 'Placeholder', type: 'text' }
+      { name: 'placeholder', label: 'Placeholder', type: 'text' },
     ];
 
     const specific = {
@@ -1306,40 +1334,35 @@ class FormBuilder {
       number: [
         { name: 'min', label: 'Min Value', type: 'number' },
         { name: 'max', label: 'Max Value', type: 'number' },
-        { name: 'step', label: 'Step', type: 'number' }
+        { name: 'step', label: 'Step', type: 'number' },
       ],
-      textarea: [
-        { name: 'rows', label: 'Rows', type: 'number' }
-      ],
-      select: [
-        { name: 'multiple', label: 'Multiple Selection', type: 'checkbox' }
-      ],
+      textarea: [{ name: 'rows', label: 'Rows', type: 'number' }],
+      select: [{ name: 'multiple', label: 'Multiple Selection', type: 'checkbox' }],
       file: [
         { name: 'accept', label: 'Accepted Types', type: 'text' },
-        { name: 'multiple', label: 'Multiple Files', type: 'checkbox' }
+        { name: 'multiple', label: 'Multiple Files', type: 'checkbox' },
       ],
       range: [
         { name: 'min', label: 'Min Value', type: 'number' },
         { name: 'max', label: 'Max Value', type: 'number' },
         { name: 'step', label: 'Step', type: 'number' },
-        { name: 'value', label: 'Default Value', type: 'number' }
-      ]
+        { name: 'value', label: 'Default Value', type: 'number' },
+      ],
     };
 
     const layout = {
       heading: [
         { name: 'text', label: 'Text', type: 'text' },
-        { name: 'level', label: 'Level', type: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }
+        {
+          name: 'level',
+          label: 'Level',
+          type: 'select',
+          options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+        },
       ],
-      paragraph: [
-        { name: 'text', label: 'Text', type: 'textarea' }
-      ],
-      spacer: [
-        { name: 'height', label: 'Height (px)', type: 'number' }
-      ],
-      html: [
-        { name: 'content', label: 'HTML Content', type: 'textarea' }
-      ]
+      paragraph: [{ name: 'text', label: 'Text', type: 'textarea' }],
+      spacer: [{ name: 'height', label: 'Height (px)', type: 'number' }],
+      html: [{ name: 'content', label: 'HTML Content', type: 'textarea' }],
     };
 
     // Return appropriate properties based on field type
@@ -1361,7 +1384,7 @@ class FormBuilder {
       case 'select':
         input = document.createElement('select');
         input.className = 'property-input';
-        prop.options.forEach(opt => {
+        prop.options.forEach((opt) => {
           const option = document.createElement('option');
           option.value = opt;
           option.textContent = opt;
@@ -1456,14 +1479,16 @@ class FormBuilder {
   }
 
   updateFieldProperty(fieldId, property, value) {
-    const field = this.state.fields.find(f => f.id === fieldId);
+    const field = this.state.fields.find((f) => f.id === fieldId);
     if (!field) return;
 
     // Convert value type if needed
     if (property === 'required' || property === 'multiple') {
       value = value === 'true' || value === true;
-    } else if (['min', 'max', 'step', 'rows', 'height', 'minLength', 'maxLength'].includes(property)) {
-      value = value ? parseInt(value) : null;
+    } else if (
+      ['min', 'max', 'step', 'rows', 'height', 'minLength', 'maxLength'].includes(property)
+    ) {
+      value = value ? Number.parseInt(value) : null;
     }
 
     field[property] = value;
@@ -1482,16 +1507,16 @@ class FormBuilder {
   }
 
   duplicateField(fieldId) {
-    const field = this.state.fields.find(f => f.id === fieldId);
+    const field = this.state.fields.find((f) => f.id === fieldId);
     if (!field) return;
 
     const newField = {
       ...field,
       id: this.generateId(),
-      name: `field_${this.generateId()}`
+      name: `field_${this.generateId()}`,
     };
 
-    const index = this.state.fields.findIndex(f => f.id === fieldId);
+    const index = this.state.fields.findIndex((f) => f.id === fieldId);
     this.state.fields.splice(index + 1, 0, newField);
 
     this.renderFields();
@@ -1500,7 +1525,7 @@ class FormBuilder {
   }
 
   deleteField(fieldId) {
-    const index = this.state.fields.findIndex(f => f.id === fieldId);
+    const index = this.state.fields.findIndex((f) => f.id === fieldId);
     if (index === -1) return;
 
     const field = this.state.fields[index];
@@ -1529,7 +1554,7 @@ class FormBuilder {
 
   switchTab(tab) {
     // Update tab buttons
-    this.element.querySelectorAll('.tab-btn').forEach(btn => {
+    this.element.querySelectorAll('.tab-btn').forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.tab === tab);
     });
 
@@ -1554,7 +1579,7 @@ class FormBuilder {
     const form = document.createElement('form');
     form.className = 'preview-form';
 
-    this.state.fields.forEach(field => {
+    this.state.fields.forEach((field) => {
       const fieldEl = this.createPreviewField(field);
       form.appendChild(fieldEl);
     });
@@ -1653,7 +1678,7 @@ class FormBuilder {
           input.appendChild(placeholder);
         }
 
-        field.options?.forEach(opt => {
+        field.options?.forEach((opt) => {
           const option = document.createElement('option');
           option.value = opt.value;
           option.textContent = opt.label;
@@ -1834,10 +1859,10 @@ class FormBuilder {
       fields: this.state.fields,
       settings: {
         multiStep: this.options.enableMultiStep,
-        validation: this.options.enableValidation
+        validation: this.options.enableValidation,
       },
       version: '1.0',
-      created: new Date().toISOString()
+      created: new Date().toISOString(),
     };
 
     // Save to localStorage
@@ -1896,10 +1921,10 @@ class FormBuilder {
       fields: this.state.fields,
       settings: {
         multiStep: this.options.enableMultiStep,
-        validation: this.options.enableValidation
+        validation: this.options.enableValidation,
       },
       version: '1.0',
-      created: new Date().toISOString()
+      created: new Date().toISOString(),
     };
 
     const json = JSON.stringify(formData, null, 2);
@@ -1915,7 +1940,7 @@ class FormBuilder {
   }
 
   loadTemplate(templateId) {
-    const template = this.options.templates.find(t => t.id === templateId);
+    const template = this.options.templates.find((t) => t.id === templateId);
     if (!template) return;
 
     this.state.fields = [...template.fields];
@@ -1983,7 +2008,7 @@ class FormBuilder {
       selection: 'Selection',
       datetime: 'Date & Time',
       special: 'Special Inputs',
-      layout: 'Layout Elements'
+      layout: 'Layout Elements',
     };
 
     return labels[category] || category;
@@ -1999,8 +2024,8 @@ class FormBuilder {
       fields: this.state.fields,
       settings: {
         multiStep: this.options.enableMultiStep,
-        validation: this.options.enableValidation
-      }
+        validation: this.options.enableValidation,
+      },
     };
   }
 
@@ -2020,7 +2045,7 @@ class FormBuilder {
 
   destroy() {
     // Clear timers
-    this.timers.forEach(timer => clearInterval(timer));
+    this.timers.forEach((timer) => clearInterval(timer));
     this.timers.clear();
 
     // Remove event handlers
@@ -2030,11 +2055,11 @@ class FormBuilder {
     this.handlers.clear();
 
     // Disconnect observers
-    this.observers.forEach(observer => observer.disconnect());
+    this.observers.forEach((observer) => observer.disconnect());
     this.observers.clear();
 
     // Remove created elements
-    this.createdElements.forEach(element => {
+    this.createdElements.forEach((element) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -2049,7 +2074,7 @@ class FormBuilder {
 
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-form-builder]').forEach(element => {
+  document.querySelectorAll('[data-form-builder]').forEach((element) => {
     new FormBuilder(element);
   });
 });
