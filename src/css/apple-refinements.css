@@ -15,14 +15,23 @@
    ========================================================================== */
 
 /* Apply Apple's signature tight letter-spacing to all headings */
-h1, h2, h3, h4, h5, h6,
-.headline, .title, .display {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.headline,
+.title,
+.display {
   letter-spacing: -0.02em; /* Apple's signature: Creates premium, tight feel */
   font-feature-settings: "kern" 1; /* Enable kerning for optimal spacing */
 }
 
 /* Tighter spacing for hero/display text */
-h1, .display-1, .hero-title {
+h1,
+.display-1,
+.hero-title {
   letter-spacing: -0.03em; /* Even tighter for large sizes */
   line-height: 1.05; /* Tighter line-height for impact */
 }
@@ -40,9 +49,12 @@ p {
 }
 
 /* Premium feel for buttons and UI text */
-.btn, button,
-.nav-link, .tab-link,
-.form-label, .badge {
+.btn,
+button,
+.nav-link,
+.tab-link,
+.form-label,
+.badge {
   letter-spacing: -0.01em;
 }
 
@@ -71,45 +83,56 @@ p {
 }
 
 /* Apply signature easing to all transitions */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   transition-timing-function: var(--ease-apple-default);
 }
 
 /* Refined button transitions with Apple bounce */
-.btn, button {
+.btn,
+button {
   transition: all var(--duration-instant) var(--ease-apple-bounce);
 }
 
-.btn:hover, button:hover {
+.btn:hover,
+button:hover {
   transform: translateY(-1px);
   transition: all var(--duration-fast) var(--ease-apple-bounce);
 }
 
-.btn:active, button:active {
+.btn:active,
+button:active {
   transform: translateY(0);
   transition: all var(--duration-instant) var(--ease-apple-in);
 }
 
 /* Links with smooth Apple easing */
 a {
-  transition: color var(--duration-instant) var(--ease-apple-smooth),
-              opacity var(--duration-instant) var(--ease-apple-smooth);
+  transition: color var(--duration-instant) var(--ease-apple-smooth), opacity
+    var(--duration-instant) var(--ease-apple-smooth);
 }
 
 /* Form inputs with refined focus transitions */
-input, textarea, select {
-  transition: border-color var(--duration-fast) var(--ease-apple-default),
-              box-shadow var(--duration-fast) var(--ease-apple-default),
-              background-color var(--duration-fast) var(--ease-apple-default);
+input,
+textarea,
+select {
+  transition: border-color var(--duration-fast) var(--ease-apple-default), box-shadow
+    var(--duration-fast) var(--ease-apple-default), background-color var(--duration-fast)
+    var(--ease-apple-default);
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   transition-duration: var(--duration-instant);
   transition-timing-function: var(--ease-apple-bounce);
 }
 
 /* Modals and overlays with elegant entrance */
-.modal, .overlay, .drawer {
+.modal,
+.overlay,
+.drawer {
   animation-duration: var(--duration-slow);
   animation-timing-function: var(--ease-apple-smooth);
 }
@@ -193,7 +216,8 @@ input:focus, textarea:focus, select:focus {
   }
 }
 
-.skeleton, .loading {
+.skeleton,
+.loading {
   background: linear-gradient(
     90deg,
     var(--apple-gray-100) 25%,
@@ -243,20 +267,22 @@ input:focus, textarea:focus, select:focus {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15),
-              0 0 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
 /* Image hover with subtle zoom */
-.img-hover, .gallery-item {
+.img-hover,
+.gallery-item {
   overflow: hidden;
 }
 
-.img-hover img, .gallery-item img {
+.img-hover img,
+.gallery-item img {
   transition: transform var(--duration-slow) var(--ease-apple-smooth);
 }
 
-.img-hover:hover img, .gallery-item:hover img {
+.img-hover:hover img,
+.gallery-item:hover img {
   transform: scale(1.05);
 }
 
@@ -292,12 +318,14 @@ input:focus, textarea:focus, select:focus {
   transition: box-shadow var(--duration-instant) var(--ease-apple-bounce);
 }
 
-button:focus-visible, .btn:focus-visible {
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.25),
-              0 2px 4px rgba(0, 0, 0, 0.1);
+button:focus-visible,
+.btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   border-color: var(--apple-orange-500);
   box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
 }
@@ -361,7 +389,9 @@ html {
 /* High-resolution display optimizations */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   /* Use thinner borders on retina displays */
-  .btn, .card, .form-control {
+  .btn,
+  .card,
+  .form-control {
     border-width: 0.5px;
   }
 }

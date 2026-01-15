@@ -25,9 +25,19 @@ class ColorPicker {
 
       // Preset colors
       presets: options.presets || [
-        '#ED8B00', '#FF6900', '#FCB900', '#7BDCB5', '#00D084',
-        '#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7',
-        '#9900EF', '#000000', '#FFFFFF'
+        '#ED8B00',
+        '#FF6900',
+        '#FCB900',
+        '#7BDCB5',
+        '#00D084',
+        '#8ED1FC',
+        '#0693E3',
+        '#ABB8C3',
+        '#EB144C',
+        '#F78DA7',
+        '#9900EF',
+        '#000000',
+        '#FFFFFF',
       ],
 
       // Swatches
@@ -47,7 +57,7 @@ class ColorPicker {
         save: options.labels?.save || 'Save',
         cancel: options.labels?.cancel || 'Cancel',
         eyeDropper: options.labels?.eyeDropper || 'Pick from screen',
-        ...options.labels
+        ...options.labels,
       },
 
       // Callbacks
@@ -55,7 +65,7 @@ class ColorPicker {
       onSave: options.onSave || null,
       onCancel: options.onCancel || null,
 
-      ...options
+      ...options,
     };
 
     // State
@@ -64,7 +74,7 @@ class ColorPicker {
       color: this.parseColor(this.options.value),
       recentColors: this.loadRecentColors(),
       isDragging: false,
-      activeInput: 'hex'
+      activeInput: 'hex',
     };
 
     // Track resources for cleanup
@@ -122,13 +132,17 @@ class ColorPicker {
     // Build picker UI
     this.picker.innerHTML = `
       <div class="color-picker-header">
-        ${this.options.eyeDropper ? `
+        ${
+          this.options.eyeDropper
+            ? `
           <button type="button" class="eyedropper-btn" title="${this.options.labels.eyeDropper}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M15 15l-2 5L9 9l11 4-5 2z"/>
             </svg>
           </button>
-        ` : ''}
+        `
+            : ''
+        }
       </div>
 
       <div class="color-picker-body">
@@ -146,17 +160,23 @@ class ColorPicker {
           </div>
         </div>
 
-        ${this.options.alpha ? `
+        ${
+          this.options.alpha
+            ? `
           <!-- Alpha slider -->
           <div class="alpha-slider-wrapper">
             <div class="alpha-slider">
               <div class="alpha-cursor"></div>
             </div>
           </div>
-        ` : ''}
+        `
+            : ''
+        }
 
         <!-- Color inputs -->
-        ${this.options.showInput ? `
+        ${
+          this.options.showInput
+            ? `
           <div class="color-inputs">
             <div class="input-tabs">
               <button type="button" class="tab-btn active" data-format="hex">HEX</button>
@@ -184,12 +204,16 @@ class ColorPicker {
                   <label>B</label>
                   <input type="number" class="b-input" min="0" max="255">
                 </div>
-                ${this.options.alpha ? `
+                ${
+                  this.options.alpha
+                    ? `
                   <div class="field">
                     <label>A</label>
                     <input type="number" class="a-input" min="0" max="1" step="0.01">
                   </div>
-                ` : ''}
+                `
+                    : ''
+                }
               </div>
 
               <!-- HSL inputs -->
@@ -206,49 +230,75 @@ class ColorPicker {
                   <label>L</label>
                   <input type="number" class="l-input" min="0" max="100">
                 </div>
-                ${this.options.alpha ? `
+                ${
+                  this.options.alpha
+                    ? `
                   <div class="field">
                     <label>A</label>
                     <input type="number" class="a2-input" min="0" max="1" step="0.01">
                   </div>
-                ` : ''}
+                `
+                    : ''
+                }
               </div>
             </div>
           </div>
-        ` : ''}
+        `
+            : ''
+        }
 
         <!-- Preset colors -->
-        ${this.options.showPresets ? `
+        ${
+          this.options.showPresets
+            ? `
           <div class="color-presets">
             <div class="preset-label">Presets</div>
             <div class="preset-colors">
-              ${this.options.presets.map(color => `
+              ${this.options.presets
+                .map(
+                  (color) => `
                 <button type="button" class="color-swatch" data-color="${color}" style="background: ${color}"></button>
-              `).join('')}
+              `,
+                )
+                .join('')}
             </div>
           </div>
-        ` : ''}
+        `
+            : ''
+        }
 
         <!-- Recent colors -->
-        ${this.options.showRecent && this.state.recentColors.length > 0 ? `
+        ${
+          this.options.showRecent && this.state.recentColors.length > 0
+            ? `
           <div class="color-recent">
             <div class="recent-label">Recent</div>
             <div class="recent-colors">
-              ${this.state.recentColors.map(color => `
+              ${this.state.recentColors
+                .map(
+                  (color) => `
                 <button type="button" class="color-swatch" data-color="${color}" style="background: ${color}"></button>
-              `).join('')}
+              `,
+                )
+                .join('')}
             </div>
           </div>
-        ` : ''}
+        `
+            : ''
+        }
       </div>
 
       <!-- Buttons -->
-      ${this.options.showButtons && !this.options.inline ? `
+      ${
+        this.options.showButtons && !this.options.inline
+          ? `
         <div class="color-picker-footer">
           <button type="button" class="btn-cancel">${this.options.labels.cancel}</button>
           <button type="button" class="btn-save">${this.options.labels.save}</button>
         </div>
-      ` : ''}
+      `
+          : ''
+      }
     `;
 
     this.wrapper.appendChild(this.picker);
@@ -281,24 +331,40 @@ class ColorPicker {
     if (this.trigger) {
       const triggerHandler = () => this.toggle();
       this.trigger.addEventListener('click', triggerHandler);
-      this.handlers.set('trigger-click', { element: this.trigger, type: 'click', handler: triggerHandler });
+      this.handlers.set('trigger-click', {
+        element: this.trigger,
+        type: 'click',
+        handler: triggerHandler,
+      });
     }
 
     // Spectrum interaction
     const spectrumMouseDown = (e) => this.handleSpectrumStart(e);
     this.spectrum.addEventListener('mousedown', spectrumMouseDown);
-    this.handlers.set('spectrum-mousedown', { element: this.spectrum, type: 'mousedown', handler: spectrumMouseDown });
+    this.handlers.set('spectrum-mousedown', {
+      element: this.spectrum,
+      type: 'mousedown',
+      handler: spectrumMouseDown,
+    });
 
     // Hue slider interaction
     const hueMouseDown = (e) => this.handleHueStart(e);
     this.hueSlider.addEventListener('mousedown', hueMouseDown);
-    this.handlers.set('hue-mousedown', { element: this.hueSlider, type: 'mousedown', handler: hueMouseDown });
+    this.handlers.set('hue-mousedown', {
+      element: this.hueSlider,
+      type: 'mousedown',
+      handler: hueMouseDown,
+    });
 
     // Alpha slider interaction
     if (this.alphaSlider) {
       const alphaMouseDown = (e) => this.handleAlphaStart(e);
       this.alphaSlider.addEventListener('mousedown', alphaMouseDown);
-      this.handlers.set('alpha-mousedown', { element: this.alphaSlider, type: 'mousedown', handler: alphaMouseDown });
+      this.handlers.set('alpha-mousedown', {
+        element: this.alphaSlider,
+        type: 'mousedown',
+        handler: alphaMouseDown,
+      });
     }
 
     // Input tabs
@@ -317,7 +383,11 @@ class ColorPicker {
     presetSwatches.forEach((swatch, index) => {
       const swatchHandler = () => this.selectColor(swatch.dataset.color);
       swatch.addEventListener('click', swatchHandler);
-      this.handlers.set(`preset-${index}`, { element: swatch, type: 'click', handler: swatchHandler });
+      this.handlers.set(`preset-${index}`, {
+        element: swatch,
+        type: 'click',
+        handler: swatchHandler,
+      });
     });
 
     // Recent swatches
@@ -325,7 +395,11 @@ class ColorPicker {
     recentSwatches.forEach((swatch, index) => {
       const swatchHandler = () => this.selectColor(swatch.dataset.color);
       swatch.addEventListener('click', swatchHandler);
-      this.handlers.set(`recent-${index}`, { element: swatch, type: 'click', handler: swatchHandler });
+      this.handlers.set(`recent-${index}`, {
+        element: swatch,
+        type: 'click',
+        handler: swatchHandler,
+      });
     });
 
     // Eyedropper
@@ -333,7 +407,11 @@ class ColorPicker {
     if (eyedropperBtn) {
       const eyedropperHandler = () => this.pickFromScreen();
       eyedropperBtn.addEventListener('click', eyedropperHandler);
-      this.handlers.set('eyedropper', { element: eyedropperBtn, type: 'click', handler: eyedropperHandler });
+      this.handlers.set('eyedropper', {
+        element: eyedropperBtn,
+        type: 'click',
+        handler: eyedropperHandler,
+      });
     }
 
     // Buttons
@@ -359,7 +437,11 @@ class ColorPicker {
         }
       };
       document.addEventListener('click', outsideHandler);
-      this.handlers.set('outside-click', { element: document, type: 'click', handler: outsideHandler });
+      this.handlers.set('outside-click', {
+        element: document,
+        type: 'click',
+        handler: outsideHandler,
+      });
     }
 
     // Keyboard navigation
@@ -381,7 +463,7 @@ class ColorPicker {
     const rgbInputs = ['r', 'g', 'b'];
     if (this.options.alpha) rgbInputs.push('a');
 
-    rgbInputs.forEach(channel => {
+    rgbInputs.forEach((channel) => {
       const input = this.picker.querySelector(`.${channel}-input`);
       if (input) {
         const rgbHandler = () => this.handleRGBInput();
@@ -394,7 +476,7 @@ class ColorPicker {
     const hslInputs = ['h', 's', 'l'];
     if (this.options.alpha) hslInputs.push('a2');
 
-    hslInputs.forEach(channel => {
+    hslInputs.forEach((channel) => {
       const input = this.picker.querySelector(`.${channel}-input`);
       if (input) {
         const hslHandler = () => this.handleHSLInput();
@@ -503,10 +585,12 @@ class ColorPicker {
   }
 
   handleRGBInput() {
-    const r = parseInt(this.picker.querySelector('.r-input').value) || 0;
-    const g = parseInt(this.picker.querySelector('.g-input').value) || 0;
-    const b = parseInt(this.picker.querySelector('.b-input').value) || 0;
-    const a = this.options.alpha ? parseFloat(this.picker.querySelector('.a-input').value) || 1 : 1;
+    const r = Number.parseInt(this.picker.querySelector('.r-input').value) || 0;
+    const g = Number.parseInt(this.picker.querySelector('.g-input').value) || 0;
+    const b = Number.parseInt(this.picker.querySelector('.b-input').value) || 0;
+    const a = this.options.alpha
+      ? Number.parseFloat(this.picker.querySelector('.a-input').value) || 1
+      : 1;
 
     const hsv = this.rgbToHsv(r, g, b);
     this.state.color = { ...hsv, a };
@@ -514,10 +598,12 @@ class ColorPicker {
   }
 
   handleHSLInput() {
-    const h = parseInt(this.picker.querySelector('.h-input').value) || 0;
-    const s = parseInt(this.picker.querySelector('.s-input').value) || 0;
-    const l = parseInt(this.picker.querySelector('.l-input').value) || 0;
-    const a = this.options.alpha ? parseFloat(this.picker.querySelector('.a2-input').value) || 1 : 1;
+    const h = Number.parseInt(this.picker.querySelector('.h-input').value) || 0;
+    const s = Number.parseInt(this.picker.querySelector('.s-input').value) || 0;
+    const l = Number.parseInt(this.picker.querySelector('.l-input').value) || 0;
+    const a = this.options.alpha
+      ? Number.parseFloat(this.picker.querySelector('.a2-input').value) || 1
+      : 1;
 
     const rgb = this.hslToRgb(h, s, l);
     const hsv = this.rgbToHsv(rgb.r, rgb.g, rgb.b);
@@ -610,7 +696,8 @@ class ColorPicker {
     if (hInput && document.activeElement !== hInput) hInput.value = Math.round(hsl.h);
     if (sInput && document.activeElement !== sInput) sInput.value = Math.round(hsl.s);
     if (lInput && document.activeElement !== lInput) lInput.value = Math.round(hsl.l);
-    if (a2Input && document.activeElement !== a2Input) a2Input.value = this.state.color.a.toFixed(2);
+    if (a2Input && document.activeElement !== a2Input)
+      a2Input.value = this.state.color.a.toFixed(2);
   }
 
   updateFromHSV() {
@@ -658,12 +745,12 @@ class ColorPicker {
     this.state.activeInput = format;
 
     // Update tabs
-    this.picker.querySelectorAll('.tab-btn').forEach(btn => {
+    this.picker.querySelectorAll('.tab-btn').forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.format === format);
     });
 
     // Update input groups
-    this.picker.querySelectorAll('.input-group').forEach(group => {
+    this.picker.querySelectorAll('.input-group').forEach((group) => {
       group.classList.toggle('active', group.dataset.format === format);
     });
   }
@@ -675,20 +762,20 @@ class ColorPicker {
     // Try to parse as hex
     const hex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i.exec(color);
     if (hex) {
-      const r = parseInt(hex[1], 16);
-      const g = parseInt(hex[2], 16);
-      const b = parseInt(hex[3], 16);
-      const a = hex[4] ? parseInt(hex[4], 16) / 255 : 1;
+      const r = Number.parseInt(hex[1], 16);
+      const g = Number.parseInt(hex[2], 16);
+      const b = Number.parseInt(hex[3], 16);
+      const a = hex[4] ? Number.parseInt(hex[4], 16) / 255 : 1;
       return { ...this.rgbToHsv(r, g, b), a };
     }
 
     // Try to parse as rgb/rgba
     const rgb = /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/.exec(color);
     if (rgb) {
-      const r = parseInt(rgb[1]);
-      const g = parseInt(rgb[2]);
-      const b = parseInt(rgb[3]);
-      const a = rgb[4] ? parseFloat(rgb[4]) : 1;
+      const r = Number.parseInt(rgb[1]);
+      const g = Number.parseInt(rgb[2]);
+      const b = Number.parseInt(rgb[3]);
+      const a = rgb[4] ? Number.parseFloat(rgb[4]) : 1;
       return { ...this.rgbToHsv(r, g, b), a };
     }
 
@@ -715,7 +802,9 @@ class ColorPicker {
       default: // hex
         const hex = this.rgbToHex(rgb.r, rgb.g, rgb.b);
         if (this.options.alpha && color.a < 1) {
-          const alphaHex = Math.round(color.a * 255).toString(16).padStart(2, '0');
+          const alphaHex = Math.round(color.a * 255)
+            .toString(16)
+            .padStart(2, '0');
           return hex + alphaHex;
         }
         return hex;
@@ -732,8 +821,8 @@ class ColorPicker {
     const delta = max - min;
 
     let h = 0;
-    let s = max === 0 ? 0 : delta / max;
-    let v = max;
+    const s = max === 0 ? 0 : delta / max;
+    const v = max;
 
     if (delta !== 0) {
       if (max === r) {
@@ -748,7 +837,7 @@ class ColorPicker {
     return {
       h: h * 360,
       s: s * 100,
-      v: v * 100
+      v: v * 100,
     };
   }
 
@@ -769,19 +858,43 @@ class ColorPicker {
       const t = v * (1 - (1 - f) * s);
 
       switch (i % 6) {
-        case 0: r = v; g = t; b = p; break;
-        case 1: r = q; g = v; b = p; break;
-        case 2: r = p; g = v; b = t; break;
-        case 3: r = p; g = q; b = v; break;
-        case 4: r = t; g = p; b = v; break;
-        case 5: r = v; g = p; b = q; break;
+        case 0:
+          r = v;
+          g = t;
+          b = p;
+          break;
+        case 1:
+          r = q;
+          g = v;
+          b = p;
+          break;
+        case 2:
+          r = p;
+          g = v;
+          b = t;
+          break;
+        case 3:
+          r = p;
+          g = q;
+          b = v;
+          break;
+        case 4:
+          r = t;
+          g = p;
+          b = v;
+          break;
+        case 5:
+          r = v;
+          g = p;
+          b = q;
+          break;
       }
     }
 
     return {
       r: Math.round(r * 255),
       g: Math.round(g * 255),
-      b: Math.round(b * 255)
+      b: Math.round(b * 255),
     };
   }
 
@@ -792,7 +905,9 @@ class ColorPicker {
 
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
-    let h, s, l = (max + min) / 2;
+    let h,
+      s,
+      l = (max + min) / 2;
 
     if (max === min) {
       h = s = 0;
@@ -801,16 +916,22 @@ class ColorPicker {
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
 
       switch (max) {
-        case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
-        case g: h = ((b - r) / d + 2) / 6; break;
-        case b: h = ((r - g) / d + 4) / 6; break;
+        case r:
+          h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+          break;
+        case g:
+          h = ((b - r) / d + 2) / 6;
+          break;
+        case b:
+          h = ((r - g) / d + 4) / 6;
+          break;
       }
     }
 
     return {
       h: h * 360,
       s: s * 100,
-      l: l * 100
+      l: l * 100,
     };
   }
 
@@ -827,32 +948,37 @@ class ColorPicker {
       const hue2rgb = (p, q, t) => {
         if (t < 0) t += 1;
         if (t > 1) t -= 1;
-        if (t < 1/6) return p + (q - p) * 6 * t;
-        if (t < 1/2) return q;
-        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+        if (t < 1 / 6) return p + (q - p) * 6 * t;
+        if (t < 1 / 2) return q;
+        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
         return p;
       };
 
       const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
       const p = 2 * l - q;
 
-      r = hue2rgb(p, q, h + 1/3);
+      r = hue2rgb(p, q, h + 1 / 3);
       g = hue2rgb(p, q, h);
-      b = hue2rgb(p, q, h - 1/3);
+      b = hue2rgb(p, q, h - 1 / 3);
     }
 
     return {
       r: Math.round(r * 255),
       g: Math.round(g * 255),
-      b: Math.round(b * 255)
+      b: Math.round(b * 255),
     };
   }
 
   rgbToHex(r, g, b) {
-    return '#' + [r, g, b].map(x => {
-      const hex = x.toString(16);
-      return hex.length === 1 ? '0' + hex : hex;
-    }).join('');
+    return (
+      '#' +
+      [r, g, b]
+        .map((x) => {
+          const hex = x.toString(16);
+          return hex.length === 1 ? '0' + hex : hex;
+        })
+        .join('')
+    );
   }
 
   // Recent colors management
@@ -866,7 +992,7 @@ class ColorPicker {
   }
 
   saveRecentColor(color) {
-    const recent = this.state.recentColors.filter(c => c !== color);
+    const recent = this.state.recentColors.filter((c) => c !== color);
     recent.unshift(color);
     this.state.recentColors = recent.slice(0, this.options.maxRecent);
 
@@ -973,11 +1099,11 @@ class ColorPicker {
     this.handlers.clear();
 
     // Clear timers
-    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.forEach((timer) => clearTimeout(timer));
     this.timers.clear();
 
     // Remove created elements
-    this.createdElements.forEach(element => {
+    this.createdElements.forEach((element) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -993,7 +1119,7 @@ class ColorPicker {
 
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-color-picker]').forEach(element => {
+  document.querySelectorAll('[data-color-picker]').forEach((element) => {
     new ColorPicker(element);
   });
 });

@@ -1,0 +1,818 @@
+/**
+ * Dark Mode Theme for Amphibious 2.0
+ *
+ * Comprehensive dark mode implementation with Apple-quality polish
+ * Supports both system preference and manual toggle
+ *
+ * Features:
+ * - Automatic color scheme detection
+ * - Manual toggle override capability
+ * - Smooth transitions between modes
+ * - Optimized contrast ratios for accessibility
+ * - Reduced eye strain with carefully chosen colors
+ */
+
+/* ==========================================================================
+   Dark Mode Color System
+   ========================================================================== */
+
+:root {
+  /* Light mode defaults (already defined, but listed for reference) */
+  --color-mode: 'light';
+
+  /* Transition for smooth theme switching */
+  --theme-transition: background-color 200ms ease,
+                      color 200ms ease,
+                      border-color 200ms ease,
+                      box-shadow 200ms ease;
+}
+
+/* Dark mode colors - activated by system preference or data attribute */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-mode: 'dark';
+
+    /* Primary brand colors adjusted for dark mode */
+    --apple-orange-500: #ff9500; /* Brighter for better contrast */
+    --apple-orange-600: #ff8800;
+    --apple-orange-700: #ff7700;
+    --color-primary: #ff9500;
+    --color-primary-hover: #ffaa00;
+
+    /* Gray scale for dark mode - inverted and adjusted */
+    --apple-gray-50: #1c1c1e;   /* Darkest background */
+    --apple-gray-100: #2c2c2e;  /* Elevated background */
+    --apple-gray-200: #3a3a3c;  /* Secondary elevated */
+    --apple-gray-300: #48484a;  /* Tertiary elevated */
+    --apple-gray-400: #636366;  /* Quaternary elevated */
+    --apple-gray-500: #8e8e93;  /* Secondary label */
+    --apple-gray-600: #aeaeb2;  /* Tertiary label */
+    --apple-gray-700: #c7c7cc;  /* Quaternary label */
+    --apple-gray-800: #d1d1d6;  /* Light text */
+    --apple-gray-900: #e5e5ea;  /* Primary text */
+
+    /* Semantic colors for dark mode */
+    --color-background: #000000;
+    --color-surface: #1c1c1e;
+    --color-surface-elevated: #2c2c2e;
+    --color-surface-overlay: #3a3a3c;
+
+    /* Text colors with proper contrast */
+    --color-text: #ffffff;
+    --color-text-secondary: #aeaeb2;
+    --color-text-tertiary: #8e8e93;
+    --color-text-quaternary: #636366;
+    --color-text-disabled: #48484a;
+
+    /* Border colors */
+    --color-border: #3a3a3c;
+    --color-border-light: #2c2c2e;
+    --color-border-strong: #48484a;
+
+    /* Status colors adjusted for dark mode */
+    --apple-success: #30d158;
+    --apple-warning: #ffd60a;
+    --apple-danger: #ff453a;
+    --apple-info: #0a84ff;
+
+    /* Component-specific adjustments */
+    --card-background: var(--color-surface);
+    --card-border: var(--color-border);
+    --input-background: var(--color-surface);
+    --input-border: var(--color-border);
+    --button-background: var(--color-surface-elevated);
+    --button-border: var(--color-border-strong);
+
+    /* Shadows for dark mode (more subtle) */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Manual dark mode toggle (overrides system preference) */
+[data-theme="dark"] {
+  --color-mode: 'dark';
+
+  /* Copy all dark mode variables here for manual toggle */
+  --apple-orange-500: #ff9500;
+  --apple-orange-600: #ff8800;
+  --apple-orange-700: #ff7700;
+  --color-primary: #ff9500;
+  --color-primary-hover: #ffaa00;
+
+  --apple-gray-50: #1c1c1e;
+  --apple-gray-100: #2c2c2e;
+  --apple-gray-200: #3a3a3c;
+  --apple-gray-300: #48484a;
+  --apple-gray-400: #636366;
+  --apple-gray-500: #8e8e93;
+  --apple-gray-600: #aeaeb2;
+  --apple-gray-700: #c7c7cc;
+  --apple-gray-800: #d1d1d6;
+  --apple-gray-900: #e5e5ea;
+
+  --color-background: #000000;
+  --color-surface: #1c1c1e;
+  --color-surface-elevated: #2c2c2e;
+  --color-surface-overlay: #3a3a3c;
+
+  --color-text: #ffffff;
+  --color-text-secondary: #aeaeb2;
+  --color-text-tertiary: #8e8e93;
+  --color-text-quaternary: #636366;
+  --color-text-disabled: #48484a;
+
+  --color-border: #3a3a3c;
+  --color-border-light: #2c2c2e;
+  --color-border-strong: #48484a;
+
+  --apple-success: #30d158;
+  --apple-warning: #ffd60a;
+  --apple-danger: #ff453a;
+  --apple-info: #0a84ff;
+
+  --card-background: var(--color-surface);
+  --card-border: var(--color-border);
+  --input-background: var(--color-surface);
+  --input-border: var(--color-border);
+  --button-background: var(--color-surface-elevated);
+  --button-border: var(--color-border-strong);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   Base Element Styles for Dark Mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+  }
+
+  :root:not([data-theme="light"]) body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: var(--theme-transition);
+  }
+
+  /* Headings */
+  :root:not([data-theme="light"]) h1,
+  :root:not([data-theme="light"]) h2,
+  :root:not([data-theme="light"]) h3,
+  :root:not([data-theme="light"]) h4,
+  :root:not([data-theme="light"]) h5,
+  :root:not([data-theme="light"]) h6 {
+    color: var(--color-text);
+  }
+
+  /* Links */
+  :root:not([data-theme="light"]) a {
+    color: var(--apple-info);
+  }
+
+  :root:not([data-theme="light"]) a:hover {
+    color: #409cff;
+  }
+
+  /* Code blocks */
+  :root:not([data-theme="light"]) code,
+  :root:not([data-theme="light"]) pre {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  /* Blockquotes */
+  :root:not([data-theme="light"]) blockquote {
+    border-left-color: var(--color-border-strong);
+    color: var(--color-text-secondary);
+  }
+
+  /* Tables */
+  :root:not([data-theme="light"]) table {
+    border-color: var(--color-border);
+  }
+
+  :root:not([data-theme="light"]) th {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) td {
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) tr:nth-child(even) {
+    background-color: var(--color-surface);
+  }
+
+  /* Horizontal rules */
+  :root:not([data-theme="light"]) hr {
+    border-color: var(--color-border);
+  }
+}
+
+/* Manual dark mode styles */
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: var(--theme-transition);
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] a {
+  color: var(--apple-info);
+}
+
+[data-theme="dark"] a:hover {
+  color: #409cff;
+}
+
+[data-theme="dark"] code,
+[data-theme="dark"] pre {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] blockquote {
+  border-left-color: var(--color-border-strong);
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] table {
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] th {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] td {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+[data-theme="dark"] hr {
+  border-color: var(--color-border);
+}
+
+/* ==========================================================================
+   Form Elements Dark Mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) input,
+  :root:not([data-theme="light"]) textarea,
+  :root:not([data-theme="light"]) select {
+    background-color: var(--input-background);
+    border-color: var(--input-border);
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) input::placeholder,
+  :root:not([data-theme="light"]) textarea::placeholder {
+    color: var(--color-text-quaternary);
+  }
+
+  :root:not([data-theme="light"]) input:focus,
+  :root:not([data-theme="light"]) textarea:focus,
+  :root:not([data-theme="light"]) select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.25);
+  }
+
+  :root:not([data-theme="light"]) input[type="checkbox"],
+  :root:not([data-theme="light"]) input[type="radio"] {
+    background-color: var(--input-background);
+    border-color: var(--input-border);
+  }
+
+  :root:not([data-theme="light"]) input[type="checkbox"]:checked,
+  :root:not([data-theme="light"]) input[type="radio"]:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  :root:not([data-theme="light"]) label {
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) fieldset {
+    border-color: var(--color-border);
+  }
+
+  :root:not([data-theme="light"]) legend {
+    color: var(--color-text);
+  }
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: var(--input-background);
+  border-color: var(--input-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--color-text-quaternary);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.25);
+}
+
+[data-theme="dark"] input[type="checkbox"],
+[data-theme="dark"] input[type="radio"] {
+  background-color: var(--input-background);
+  border-color: var(--input-border);
+}
+
+[data-theme="dark"] input[type="checkbox"]:checked,
+[data-theme="dark"] input[type="radio"]:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] label {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] fieldset {
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] legend {
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Button Dark Mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn {
+    background-color: var(--button-background);
+    border-color: var(--button-border);
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) .btn:hover {
+    background-color: var(--color-surface-overlay);
+    border-color: var(--color-border-strong);
+  }
+
+  :root:not([data-theme="light"]) .btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #000000;
+  }
+
+  :root:not([data-theme="light"]) .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
+
+  :root:not([data-theme="light"]) .btn-secondary {
+    background-color: var(--color-surface-elevated);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) .btn-danger {
+    background-color: var(--apple-danger);
+    border-color: var(--apple-danger);
+    color: #ffffff;
+  }
+
+  :root:not([data-theme="light"]) .btn-success {
+    background-color: var(--apple-success);
+    border-color: var(--apple-success);
+    color: #ffffff;
+  }
+}
+
+[data-theme="dark"] .btn {
+  background-color: var(--button-background);
+  border-color: var(--button-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .btn:hover {
+  background-color: var(--color-surface-overlay);
+  border-color: var(--color-border-strong);
+}
+
+[data-theme="dark"] .btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #000000;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .btn-danger {
+  background-color: var(--apple-danger);
+  border-color: var(--apple-danger);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .btn-success {
+  background-color: var(--apple-success);
+  border-color: var(--apple-success);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Card Component Dark Mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .card {
+    background-color: var(--card-background);
+    border-color: var(--card-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  :root:not([data-theme="light"]) .card-header {
+    background-color: var(--color-surface-elevated);
+    border-bottom-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) .card-footer {
+    background-color: var(--color-surface-elevated);
+    border-top-color: var(--color-border);
+  }
+
+  :root:not([data-theme="light"]) .card-title {
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) .card-text {
+    color: var(--color-text-secondary);
+  }
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--card-background);
+  border-color: var(--card-border);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .card-header {
+  background-color: var(--color-surface-elevated);
+  border-bottom-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .card-footer {
+  background-color: var(--color-surface-elevated);
+  border-top-color: var(--color-border);
+}
+
+[data-theme="dark"] .card-title {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .card-text {
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   Navigation Dark Mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .nav,
+  :root:not([data-theme="light"]) .navbar {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  :root:not([data-theme="light"]) .nav-link {
+    color: var(--color-text-secondary);
+  }
+
+  :root:not([data-theme="light"]) .nav-link:hover {
+    color: var(--color-text);
+    background-color: var(--color-surface-elevated);
+  }
+
+  :root:not([data-theme="light"]) .nav-link.active {
+    color: var(--color-primary);
+    background-color: var(--color-surface-elevated);
+  }
+
+  :root:not([data-theme="light"]) .breadcrumb {
+    background-color: var(--color-surface);
+  }
+
+  :root:not([data-theme="light"]) .breadcrumb-item {
+    color: var(--color-text-secondary);
+  }
+
+  :root:not([data-theme="light"]) .breadcrumb-item.active {
+    color: var(--color-text);
+  }
+}
+
+[data-theme="dark"] .nav,
+[data-theme="dark"] .navbar {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .nav-link {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface-elevated);
+}
+
+[data-theme="dark"] .nav-link.active {
+  color: var(--color-primary);
+  background-color: var(--color-surface-elevated);
+}
+
+[data-theme="dark"] .breadcrumb {
+  background-color: var(--color-surface);
+}
+
+[data-theme="dark"] .breadcrumb-item {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .breadcrumb-item.active {
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Modal & Overlay Dark Mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .modal-backdrop,
+  :root:not([data-theme="light"]) .overlay {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+
+  :root:not([data-theme="light"]) .modal-content {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-xl);
+  }
+
+  :root:not([data-theme="light"]) .modal-header {
+    border-bottom-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  :root:not([data-theme="light"]) .modal-footer {
+    border-top-color: var(--color-border);
+  }
+
+  :root:not([data-theme="light"]) .modal-title {
+    color: var(--color-text);
+  }
+}
+
+[data-theme="dark"] .modal-backdrop,
+[data-theme="dark"] .overlay {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-xl);
+}
+
+[data-theme="dark"] .modal-header {
+  border-bottom-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .modal-footer {
+  border-top-color: var(--color-border);
+}
+
+[data-theme="dark"] .modal-title {
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Utility Classes Dark Mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bg-light {
+    background-color: var(--color-surface) !important;
+  }
+
+  :root:not([data-theme="light"]) .bg-dark {
+    background-color: var(--color-background) !important;
+  }
+
+  :root:not([data-theme="light"]) .text-muted {
+    color: var(--color-text-secondary) !important;
+  }
+
+  :root:not([data-theme="light"]) .text-dark {
+    color: var(--color-text) !important;
+  }
+
+  :root:not([data-theme="light"]) .text-light {
+    color: var(--color-text-secondary) !important;
+  }
+
+  :root:not([data-theme="light"]) .border {
+    border-color: var(--color-border) !important;
+  }
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: var(--color-surface) !important;
+}
+
+[data-theme="dark"] .bg-dark {
+  background-color: var(--color-background) !important;
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--color-text-secondary) !important;
+}
+
+[data-theme="dark"] .text-dark {
+  color: var(--color-text) !important;
+}
+
+[data-theme="dark"] .text-light {
+  color: var(--color-text-secondary) !important;
+}
+
+[data-theme="dark"] .border {
+  border-color: var(--color-border) !important;
+}
+
+/* ==========================================================================
+   Smooth Theme Transition
+   ========================================================================== */
+
+.theme-transition * {
+  transition: var(--theme-transition) !important;
+}
+
+/* Disable transitions for instant feedback */
+@media (prefers-reduced-motion: reduce) {
+  .theme-transition * {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   Dark Mode Toggle Component
+   ========================================================================== */
+
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-apple-bounce);
+  z-index: 9999;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-xl);
+}
+
+.dark-mode-toggle:active {
+  transform: scale(0.95);
+}
+
+.dark-mode-toggle svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-text);
+  transition: transform var(--duration-fast) var(--ease-apple-bounce);
+}
+
+.dark-mode-toggle:hover svg {
+  transform: rotate(20deg);
+}
+
+/* Icon states */
+.dark-mode-toggle .sun-icon {
+  display: none;
+}
+
+.dark-mode-toggle .moon-icon {
+  display: block;
+}
+
+[data-theme="dark"] .dark-mode-toggle .sun-icon,
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dark-mode-toggle .sun-icon {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) .dark-mode-toggle .moon-icon {
+    display: none;
+  }
+}
+
+[data-theme="dark"] .dark-mode-toggle .moon-icon {
+  display: none;
+}
+
+/* ==========================================================================
+   Accessibility Improvements for Dark Mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  /* Ensure focus indicators are visible */
+  :root:not([data-theme="light"]) :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Improve selection visibility */
+  :root:not([data-theme="light"]) ::selection {
+    background-color: var(--color-primary);
+    color: #000000;
+  }
+
+  /* Ensure sufficient contrast for disabled elements */
+  :root:not([data-theme="light"]) :disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+[data-theme="dark"] :focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] ::selection {
+  background-color: var(--color-primary);
+  color: #000000;
+}
+
+[data-theme="dark"] :disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

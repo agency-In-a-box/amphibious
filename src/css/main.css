@@ -70,6 +70,9 @@
 /* Apple Design Excellence Refinements - Elevates framework to 9.0/10 */
 @import "./apple-refinements.css";
 
+/* Dark Mode Theme - Comprehensive dark mode support */
+@import "./dark-mode.css";
+
 /* Helper classes - Last for highest priority */
 @import "./helpers.css";
 
