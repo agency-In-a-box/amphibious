@@ -55,6 +55,9 @@
 @import "./organisms/data-table.css"; /* Advanced data table */
 @import "./organisms/datepicker.css"; /* Date picker component */
 @import "./organisms/file-upload.css"; /* File upload component */
+@import "./organisms/color-picker.css"; /* Color picker component */
+@import "./organisms/range-slider.css"; /* Range slider component */
+@import "./organisms/timeline.css"; /* Timeline component */
 
 /* Navigation - Using unified navigation system */
 @import "./navigation-unified.css";

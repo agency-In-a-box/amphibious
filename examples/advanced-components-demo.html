@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Components Demo - Amphibious 2.0</title>
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    .demo-section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--apple-gray-200, #eee);
+    }
+
+    .demo-section:last-child {
+      border-bottom: none;
+    }
+
+    .demo-title {
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .demo-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--apple-success, #34c759);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 12px;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin: 32px 0;
+    }
+
+    .demo-card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .demo-card h3 {
+      margin-bottom: 16px;
+      font-size: 1.125rem;
+      color: var(--apple-gray-900);
+    }
+
+    .code-snippet {
+      background: var(--apple-gray-50);
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      font-family: var(--font-family-monospace);
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+    }
+
+    .feature-list li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--apple-success);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="demo-section">
+      <h1 class="display-massive">Advanced Components
+        <span class="demo-badge">NEW</span>
+      </h1>
+      <p class="lead">Premium UI components with Apple-level polish and zero dependencies</p>
+    </section>
+
+    <!-- Color Picker Demo -->
+    <section class="demo-section">
+      <div class="demo-title">
+        <h2>Color Picker</h2>
+        <span class="badge">Interactive</span>
+      </div>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Default Color Picker</h3>
+          <input type="text" id="color1" value="#ED8B00" data-color-picker />
+
+          <ul class="feature-list">
+            <li>Visual spectrum picker</li>
+            <li>HEX, RGB, HSL input modes</li>
+            <li>Preset color palettes</li>
+            <li>Recently used colors</li>
+          </ul>
+        </div>
+
+        <div class="demo-card">
+          <h3>Inline Color Picker</h3>
+          <input type="text" id="color2" value="#34c759" />
+
+          <ul class="feature-list">
+            <li>Always visible interface</li>
+            <li>Alpha channel support</li>
+            <li>Eyedropper tool (Chrome)</li>
+            <li>Keyboard navigation</li>
+          </ul>
+        </div>
+
+        <div class="demo-card">
+          <h3>Custom Presets</h3>
+          <input type="text" id="color3" value="#007aff" />
+
+          <div class="code-snippet">
+new ColorPicker(element, {
+  presets: ['#ED8B00', '#34c759', '#007aff'],
+  showRecent: true,
+  format: 'rgb'
+});
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Range Slider Demo -->
+    <section class="demo-section">
+      <div class="demo-title">
+        <h2>Range Slider</h2>
+        <span class="badge">Touch Enabled</span>
+      </div>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Single Handle Slider</h3>
+          <input type="range" id="slider1" min="0" max="100" value="50" data-range-slider />
+
+          <ul class="feature-list">
+            <li>Smooth drag interaction</li>
+            <li>Tooltip with value</li>
+            <li>Keyboard navigation</li>
+            <li>Touch support</li>
+          </ul>
+        </div>
+
+        <div class="demo-card">
+          <h3>Dual Handle Range</h3>
+          <input type="range" id="slider2" data-range-slider />
+
+          <ul class="feature-list">
+            <li>Min/max selection</li>
+            <li>Gap enforcement</li>
+            <li>Custom formatting</li>
+            <li>Snap to values</li>
+          </ul>
+        </div>
+
+        <div class="demo-card">
+          <h3>With Scale & Ticks</h3>
+          <input type="range" id="slider3" min="0" max="1000" step="50" data-range-slider />
+
+          <div class="code-snippet">
+new RangeSlider(element, {
+  showScale: true,
+  showTicks: true,
+  prefix: '$',
+  format: (v) => v.toLocaleString()
+});
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card" style="margin-top: 32px;">
+        <h3>Vertical Slider</h3>
+        <div style="height: 200px; display: flex; justify-content: center;">
+          <input type="range" id="slider4" min="0" max="100" value="75" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Demo -->
+    <section class="demo-section">
+      <div class="demo-title">
+        <h2>Timeline</h2>
+        <span class="badge">Animated</span>
+      </div>
+
+      <div class="demo-card">
+        <h3>Project Timeline</h3>
+        <div id="timeline1" data-timeline></div>
+      </div>
+
+      <div class="demo-grid" style="margin-top: 32px;">
+        <div class="demo-card">
+          <h3>Features</h3>
+          <ul class="feature-list">
+            <li>Vertical & horizontal layouts</li>
+            <li>Multiple timeline styles</li>
+            <li>Interactive events</li>
+            <li>Filtering and grouping</li>
+            <li>Zoom and pan controls</li>
+            <li>Animated transitions</li>
+            <li>Milestone markers</li>
+            <li>Date range selection</li>
+          </ul>
+        </div>
+
+        <div class="demo-card">
+          <h3>Layouts</h3>
+          <select id="timelineLayout" class="form-control" style="margin-bottom: 16px;">
+            <option value="default">Default</option>
+            <option value="centered">Centered</option>
+            <option value="branching">Branching</option>
+            <option value="compact">Compact</option>
+          </select>
+
+          <select id="timelineOrientation" class="form-control">
+            <option value="vertical">Vertical</option>
+            <option value="horizontal">Horizontal</option>
+          </select>
+        </div>
+
+        <div class="demo-card">
+          <h3>Code Example</h3>
+          <div class="code-snippet">
+new Timeline(element, {
+  orientation: 'vertical',
+  layout: 'centered',
+  showFilters: true,
+  events: [...],
+  groups: [...]
+});
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integration Examples -->
+    <section class="demo-section">
+      <div class="demo-title">
+        <h2>Real-World Integration</h2>
+      </div>
+
+      <div class="demo-card">
+        <h3>Theme Customizer</h3>
+        <form id="themeForm" style="display: grid; gap: 24px;">
+          <div>
+            <label>Primary Color</label>
+            <input type="text" id="themeColor" value="#ED8B00" />
+          </div>
+
+          <div>
+            <label>Border Radius</label>
+            <input type="range" id="borderRadius" min="0" max="20" value="6" />
+          </div>
+
+          <div>
+            <label>Font Size</label>
+            <input type="range" id="fontSize" min="12" max="20" value="16" />
+          </div>
+
+          <div>
+            <label>Spacing Scale</label>
+            <input type="range" id="spacing" min="0.5" max="2" step="0.1" value="1" />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Apply Theme</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Performance Metrics -->
+    <section class="demo-section">
+      <div class="demo-title">
+        <h2>Performance Metrics</h2>
+      </div>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Color Picker</h3>
+          <ul class="feature-list">
+            <li>Bundle size: ~18KB</li>
+            <li>Zero dependencies</li>
+            <li>60fps interactions</li>
+            <li>Touch optimized</li>
+          </ul>
+        </div>
+
+        <div class="demo-card">
+          <h3>Range Slider</h3>
+          <ul class="feature-list">
+            <li>Bundle size: ~12KB</li>
+            <li>RAF-based updates</li>
+            <li>Hardware accelerated</li>
+            <li>Accessibility compliant</li>
+          </ul>
+        </div>
+
+        <div class="demo-card">
+          <h3>Timeline</h3>
+          <ul class="feature-list">
+            <li>Bundle size: ~22KB</li>
+            <li>Virtual scrolling ready</li>
+            <li>Lazy loading support</li>
+            <li>Smooth 60fps zoom</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/src/js/color-picker.js"></script>
+  <script src="/src/js/range-slider.js"></script>
+  <script src="/src/js/timeline.js"></script>
+
+  <script>
+    // Initialize Color Pickers
+    const color2 = new ColorPicker(document.getElementById('color2'), {
+      inline: true,
+      alpha: true,
+      showButtons: false
+    });
+
+    const color3 = new ColorPicker(document.getElementById('color3'), {
+      presets: ['#ED8B00', '#34c759', '#007aff', '#ff3b30', '#ff9500'],
+      showRecent: true,
+      format: 'rgb',
+      labels: {
+        pick: 'Choose Brand Color'
+      }
+    });
+
+    // Initialize Range Sliders
+    const slider2 = new RangeSlider(document.getElementById('slider2'), {
+      dual: true,
+      values: [25, 75],
+      showTooltip: true,
+      gap: 10
+    });
+
+    const slider3 = new RangeSlider(document.getElementById('slider3'), {
+      showScale: true,
+      showTicks: true,
+      tickSteps: 100,
+      scaleSteps: 10,
+      prefix: '$',
+      format: (value) => value.toLocaleString(),
+      snap: true,
+      snapValues: [0, 250, 500, 750, 1000]
+    });
+
+    const slider4 = new RangeSlider(document.getElementById('slider4'), {
+      orientation: 'vertical',
+      showTooltip: true,
+      suffix: '%'
+    });
+
+    // Initialize Timeline
+    const timelineEvents = [
+      {
+        id: '1',
+        date: '2024-01-15',
+        title: 'Project Kickoff',
+        description: 'Initial planning and requirements gathering',
+        milestone: true,
+        group: 'planning'
+      },
+      {
+        id: '2',
+        date: '2024-02-01',
+        title: 'Design Phase',
+        description: 'UI/UX design and prototyping',
+        group: 'design',
+        details: {
+          links: [
+            { text: 'View Prototype', url: '#' },
+            { text: 'Design Specs', url: '#' }
+          ]
+        }
+      },
+      {
+        id: '3',
+        date: '2024-03-15',
+        title: 'Development Sprint 1',
+        description: 'Core functionality implementation',
+        group: 'development'
+      },
+      {
+        id: '4',
+        date: '2024-04-01',
+        title: 'Testing Phase',
+        description: 'QA testing and bug fixes',
+        group: 'testing'
+      },
+      {
+        id: '5',
+        date: '2024-05-01',
+        title: 'Launch',
+        description: 'Production deployment and monitoring',
+        milestone: true,
+        group: 'deployment'
+      }
+    ];
+
+    const timelineGroups = [
+      { id: 'planning', name: 'Planning', color: '#007aff' },
+      { id: 'design', name: 'Design', color: '#ff9500' },
+      { id: 'development', name: 'Development', color: '#34c759' },
+      { id: 'testing', name: 'Testing', color: '#ffcc00' },
+      { id: 'deployment', name: 'Deployment', color: '#ff3b30' }
+    ];
+
+    const timeline = new Timeline(document.getElementById('timeline1'), {
+      events: timelineEvents,
+      groups: timelineGroups,
+      showFilters: true,
+      showToday: true,
+      expandable: true,
+      animated: true,
+      onEventClick: (event) => {
+        console.log('Event clicked:', event);
+      }
+    });
+
+    // Timeline layout switcher
+    document.getElementById('timelineLayout').addEventListener('change', (e) => {
+      // Would need to recreate timeline with new layout
+      console.log('Layout changed to:', e.target.value);
+    });
+
+    document.getElementById('timelineOrientation').addEventListener('change', (e) => {
+      // Would need to recreate timeline with new orientation
+      console.log('Orientation changed to:', e.target.value);
+    });
+
+    // Theme Customizer
+    const themeColor = new ColorPicker(document.getElementById('themeColor'), {
+      onChange: (color) => {
+        document.documentElement.style.setProperty('--color-primary', color);
+      }
+    });
+
+    const borderRadiusSlider = new RangeSlider(document.getElementById('borderRadius'), {
+      showTooltip: true,
+      suffix: 'px',
+      onChange: (value) => {
+        document.documentElement.style.setProperty('--border-radius', `${value}px`);
+      }
+    });
+
+    const fontSizeSlider = new RangeSlider(document.getElementById('fontSize'), {
+      showTooltip: true,
+      suffix: 'px',
+      onChange: (value) => {
+        document.documentElement.style.setProperty('--font-size-base', `${value}px`);
+      }
+    });
+
+    const spacingSlider = new RangeSlider(document.getElementById('spacing'), {
+      showTooltip: true,
+      format: (value) => `${value}x`,
+      onChange: (value) => {
+        document.documentElement.style.setProperty('--spacing-scale', value);
+      }
+    });
+
+    document.getElementById('themeForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Theme applied! These changes would be saved to your configuration.');
+    });
+  </script>
+</body>
+</html>
