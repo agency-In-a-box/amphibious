@@ -115,6 +115,43 @@
       color: var(--color-text-secondary, #aeaeb2) !important;
     }
 
+    /* Recent Updates Section - Fix white text on light background */
+    .updates-section h2,
+    .updates-section h3,
+    #updates-title {
+      color: var(--color-text, #ffffff) !important;
+    }
+
+    .updates-section p {
+      color: var(--color-text-secondary, #aeaeb2) !important;
+    }
+
+    /* Slats with images - ensure proper dark mode */
+    .slats--with-image li {
+      background: var(--color-surface-elevated, #2c2c2e);
+      border: 1px solid var(--color-border, #3a3a3c);
+    }
+
+    .slats--with-image h3 {
+      color: var(--color-text, #ffffff) !important;
+    }
+
+    .slats--with-image p {
+      color: var(--color-text-secondary, #aeaeb2) !important;
+    }
+
+    .slats--with-image .meta {
+      color: var(--color-text-tertiary, #8e8e93) !important;
+    }
+
+    .slats--with-image a {
+      color: inherit;
+    }
+
+    .slats--with-image a:hover {
+      background: var(--color-surface-overlay, #3a3a3c);
+    }
+
     /* Component cards */
     .component-card {
       background: var(--color-surface-elevated, #2c2c2e) !important;
@@ -323,6 +360,43 @@
   #whats-new p,
   #whats-new .description {
     color: var(--color-text-secondary, #aeaeb2) !important;
+  }
+
+  /* Recent Updates Section - Fix white text on light background */
+  .updates-section h2,
+  .updates-section h3,
+  #updates-title {
+    color: var(--color-text, #ffffff) !important;
+  }
+
+  .updates-section p {
+    color: var(--color-text-secondary, #aeaeb2) !important;
+  }
+
+  /* Slats with images - ensure proper dark mode */
+  .slats--with-image li {
+    background: var(--color-surface-elevated, #2c2c2e);
+    border: 1px solid var(--color-border, #3a3a3c);
+  }
+
+  .slats--with-image h3 {
+    color: var(--color-text, #ffffff) !important;
+  }
+
+  .slats--with-image p {
+    color: var(--color-text-secondary, #aeaeb2) !important;
+  }
+
+  .slats--with-image .meta {
+    color: var(--color-text-tertiary, #8e8e93) !important;
+  }
+
+  .slats--with-image a {
+    color: inherit;
+  }
+
+  .slats--with-image a:hover {
+    background: var(--color-surface-overlay, #3a3a3c);
   }
 
   .component-card {
