@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
   <title>Amphibious 2.0 - Modern CSS Framework</title>
   <meta name="description" content="Amphibious 2.0 - A modern, responsive CSS framework and component library built for e-commerce and modern web applications">
   <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <!-- Homepage Styles -->
   <link rel="stylesheet" href="/src/css/pages/home.css">
+  <link rel="stylesheet" href="/src/css/pages/home-dark-mode.css">
 </head>
-<body>
+<body data-dark-mode-toggle>
   <!-- Navigation Include -->
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
@@ -393,7 +395,8 @@
   <!-- Load Framework -->
   <script type="module" src="/src/js/index.js"></script>
 
-  
+  <!-- Dark Mode Toggle -->
+  <script src="/src/js/dark-mode-toggle.js"></script>
 
   <!-- Initialize -->
   <script>

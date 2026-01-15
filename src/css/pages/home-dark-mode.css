@@ -1,0 +1,164 @@
+/**
+ * Dark Mode Overrides for Homepage
+ * Fixes contrast issues with hardcoded colors in home.css
+ */
+
+/* Dark mode using system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .demo-section {
+    border-bottom-color: var(--color-border, #3a3a3c);
+  }
+
+  :root:not([data-theme="light"]) .feature-card {
+    background: var(--color-surface-elevated, #2c2c2e);
+    border-color: var(--color-border, #3a3a3c);
+    color: var(--color-text, #ffffff);
+  }
+
+  :root:not([data-theme="light"]) .feature-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  :root:not([data-theme="light"]) .feature-card h4 {
+    color: var(--color-text, #ffffff);
+  }
+
+  :root:not([data-theme="light"]) .section-header h2 {
+    color: var(--color-text, #ffffff);
+  }
+
+  :root:not([data-theme="light"]) .section-header p {
+    color: var(--color-text-secondary, #aeaeb2);
+  }
+
+  :root:not([data-theme="light"]) .feature-grid {
+    background: var(--color-surface-elevated, #2c2c2e);
+  }
+
+  /* Demo grid - keep the orange gradient but darken it */
+  :root:not([data-theme="light"]) .demo-grid {
+    background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+  }
+
+  /* Hero section - keep but darken */
+  :root:not([data-theme="light"]) .hero {
+    background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+  }
+
+  /* CTA section gradient adjustment */
+  :root:not([data-theme="light"]) .cta-section {
+    background: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
+  }
+
+  /* Key features boxes */
+  :root:not([data-theme="light"]) .key-features-grid .feature-box {
+    background: var(--color-surface-elevated, #2c2c2e);
+    border-color: var(--color-border, #3a3a3c);
+    color: var(--color-text, #ffffff);
+  }
+
+  :root:not([data-theme="light"]) .key-features-grid .feature-box h3 {
+    color: var(--color-text, #ffffff);
+  }
+
+  :root:not([data-theme="light"]) .key-features-grid .feature-box p {
+    color: var(--color-text-secondary, #aeaeb2);
+  }
+
+  /* Component showcase cards */
+  :root:not([data-theme="light"]) .component-card {
+    background: var(--color-surface-elevated, #2c2c2e);
+    border-color: var(--color-border, #3a3a3c);
+  }
+
+  :root:not([data-theme="light"]) .component-card h3 {
+    color: var(--color-text, #ffffff);
+  }
+
+  /* Any white backgrounds should become dark surfaces */
+  :root:not([data-theme="light"]) [style*="background: white"],
+  :root:not([data-theme="light"]) [style*="background:#fff"],
+  :root:not([data-theme="light"]) [style*="background:#ffffff"],
+  :root:not([data-theme="light"]) [style*="background-color: white"],
+  :root:not([data-theme="light"]) [style*="background-color:#fff"],
+  :root:not([data-theme="light"]) [style*="background-color:#ffffff"] {
+    background: var(--color-surface-elevated, #2c2c2e) !important;
+    color: var(--color-text, #ffffff) !important;
+  }
+}
+
+/* Manual dark mode (data-theme="dark") */
+[data-theme="dark"] .demo-section {
+  border-bottom-color: var(--color-border, #3a3a3c);
+}
+
+[data-theme="dark"] .feature-card {
+  background: var(--color-surface-elevated, #2c2c2e);
+  border-color: var(--color-border, #3a3a3c);
+  color: var(--color-text, #ffffff);
+}
+
+[data-theme="dark"] .feature-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .feature-card h4 {
+  color: var(--color-text, #ffffff);
+}
+
+[data-theme="dark"] .section-header h2 {
+  color: var(--color-text, #ffffff);
+}
+
+[data-theme="dark"] .section-header p {
+  color: var(--color-text-secondary, #aeaeb2);
+}
+
+[data-theme="dark"] .feature-grid {
+  background: var(--color-surface-elevated, #2c2c2e);
+}
+
+[data-theme="dark"] .demo-grid {
+  background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+}
+
+[data-theme="dark"] .cta-section {
+  background: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
+}
+
+[data-theme="dark"] .key-features-grid .feature-box {
+  background: var(--color-surface-elevated, #2c2c2e);
+  border-color: var(--color-border, #3a3a3c);
+  color: var(--color-text, #ffffff);
+}
+
+[data-theme="dark"] .key-features-grid .feature-box h3 {
+  color: var(--color-text, #ffffff);
+}
+
+[data-theme="dark"] .key-features-grid .feature-box p {
+  color: var(--color-text-secondary, #aeaeb2);
+}
+
+[data-theme="dark"] .component-card {
+  background: var(--color-surface-elevated, #2c2c2e);
+  border-color: var(--color-border, #3a3a3c);
+}
+
+[data-theme="dark"] .component-card h3 {
+  color: var(--color-text, #ffffff);
+}
+
+[data-theme="dark"] [style*="background: white"],
+[data-theme="dark"] [style*="background:#fff"],
+[data-theme="dark"] [style*="background:#ffffff"],
+[data-theme="dark"] [style*="background-color: white"],
+[data-theme="dark"] [style*="background-color:#fff"],
+[data-theme="dark"] [style*="background-color:#ffffff"] {
+  background: var(--color-surface-elevated, #2c2c2e) !important;
+  color: var(--color-text, #ffffff) !important;
+}
