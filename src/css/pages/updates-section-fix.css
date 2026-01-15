@@ -1,0 +1,142 @@
+/**
+ * Recent Updates Section Background Fix
+ * Ensures the entire section has one consistent background
+ */
+
+/* Light mode - entire section gets one background */
+.updates-section {
+  background: #f8f9fa;
+  padding: 48px 0;
+  margin: 48px 0;
+}
+
+.updates-section .container {
+  background: transparent;
+}
+
+/* Remove individual backgrounds from slat items in light mode */
+.slats--with-image li {
+  background: transparent !important;
+  border: none !important;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.slats--with-image li:last-child {
+  border-bottom: none;
+}
+
+.slats--with-image a {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.slats--with-image a:hover {
+  transform: translateX(4px);
+  background: transparent !important;
+}
+
+/* Dark mode - section gets dark background */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .updates-section {
+    background: var(--color-surface, #1c1c1e);
+    border-top: 1px solid var(--color-border, #3a3a3c);
+    border-bottom: 1px solid var(--color-border, #3a3a3c);
+  }
+
+  :root:not([data-theme="light"]) .slats--with-image li {
+    background: transparent !important;
+    border-bottom: 1px solid var(--color-border, #3a3a3c);
+  }
+
+  :root:not([data-theme="light"]) .slats--with-image h3 {
+    color: var(--color-text, #ffffff) !important;
+  }
+
+  :root:not([data-theme="light"]) .slats--with-image p {
+    color: var(--color-text-secondary, #aeaeb2) !important;
+  }
+
+  :root:not([data-theme="light"]) .slats--with-image .meta {
+    color: var(--color-text-tertiary, #8e8e93) !important;
+  }
+}
+
+[data-theme="dark"] .updates-section {
+  background: var(--color-surface, #1c1c1e);
+  border-top: 1px solid var(--color-border, #3a3a3c);
+  border-bottom: 1px solid var(--color-border, #3a3a3c);
+}
+
+[data-theme="dark"] .slats--with-image li {
+  background: transparent !important;
+  border-bottom: 1px solid var(--color-border, #3a3a3c);
+}
+
+[data-theme="dark"] .slats--with-image h3 {
+  color: var(--color-text, #ffffff) !important;
+}
+
+[data-theme="dark"] .slats--with-image p {
+  color: var(--color-text-secondary, #aeaeb2) !important;
+}
+
+[data-theme="dark"] .slats--with-image .meta {
+  color: var(--color-text-tertiary, #8e8e93) !important;
+}
+
+/* Fix the colored boxes with icons */
+.slats--with-image figure {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Version box */
+.slats--with-image li:nth-child(1) figure {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Icons box */
+.slats--with-image li:nth-child(2) figure {
+  background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+}
+
+/* E-commerce box */
+.slats--with-image li:nth-child(3) figure {
+  background: linear-gradient(135deg, #ffa751 0%, #ff6922 100%);
+}
+
+/* Ensure text contrast in the colored boxes */
+.slats--with-image figure img {
+  display: none; /* Hide placeholder images */
+}
+
+.slats--with-image figure::before {
+  color: white;
+  font-weight: 600;
+}
+
+.slats--with-image li:nth-child(1) figure::before {
+  content: "2.0";
+}
+
+.slats--with-image li:nth-child(2) figure::before {
+  content: "Icons";
+}
+
+.slats--with-image li:nth-child(3) figure::before {
+  content: "Shop";
+}
