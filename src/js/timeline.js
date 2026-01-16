@@ -742,7 +742,7 @@ class Timeline {
       const body = eventEl.querySelector('.event-body');
       if (body) {
         if (eventEl.classList.contains('expanded')) {
-          body.style.maxHeight = body.scrollHeight + 'px';
+          body.style.maxHeight = `${body.scrollHeight}px`;
         } else {
           body.style.maxHeight = '0';
         }
@@ -838,13 +838,14 @@ class Timeline {
         break;
 
       case 'Enter':
-      case ' ':
+      case ' ': {
         e.preventDefault();
         const eventId = selectedEl.dataset.eventId;
         if (this.options.expandable) {
           this.toggleExpand(eventId);
         }
         break;
+      }
     }
   }
 

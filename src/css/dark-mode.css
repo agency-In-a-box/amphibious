@@ -18,19 +18,17 @@
 
 :root {
   /* Light mode defaults (already defined, but listed for reference) */
-  --color-mode: 'light';
+  --color-mode: "light";
 
   /* Transition for smooth theme switching */
-  --theme-transition: background-color 200ms ease,
-                      color 200ms ease,
-                      border-color 200ms ease,
-                      box-shadow 200ms ease;
+  --theme-transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease,
+    box-shadow 200ms ease;
 }
 
 /* Dark mode colors - activated by system preference or data attribute */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-mode: 'dark';
+    --color-mode: "dark";
 
     /* Primary brand colors adjusted for dark mode */
     --apple-orange-500: #ff9500; /* Brighter for better contrast */
@@ -40,16 +38,16 @@
     --color-primary-hover: #ffaa00;
 
     /* Gray scale for dark mode - inverted and adjusted */
-    --apple-gray-50: #1c1c1e;   /* Darkest background */
-    --apple-gray-100: #2c2c2e;  /* Elevated background */
-    --apple-gray-200: #3a3a3c;  /* Secondary elevated */
-    --apple-gray-300: #48484a;  /* Tertiary elevated */
-    --apple-gray-400: #636366;  /* Quaternary elevated */
-    --apple-gray-500: #8e8e93;  /* Secondary label */
-    --apple-gray-600: #aeaeb2;  /* Tertiary label */
-    --apple-gray-700: #c7c7cc;  /* Quaternary label */
-    --apple-gray-800: #d1d1d6;  /* Light text */
-    --apple-gray-900: #e5e5ea;  /* Primary text */
+    --apple-gray-50: #1c1c1e; /* Darkest background */
+    --apple-gray-100: #2c2c2e; /* Elevated background */
+    --apple-gray-200: #3a3a3c; /* Secondary elevated */
+    --apple-gray-300: #48484a; /* Tertiary elevated */
+    --apple-gray-400: #636366; /* Quaternary elevated */
+    --apple-gray-500: #8e8e93; /* Secondary label */
+    --apple-gray-600: #aeaeb2; /* Tertiary label */
+    --apple-gray-700: #c7c7cc; /* Quaternary label */
+    --apple-gray-800: #d1d1d6; /* Light text */
+    --apple-gray-900: #e5e5ea; /* Primary text */
 
     /* Semantic colors for dark mode */
     --color-background: #000000;
@@ -93,7 +91,7 @@
 
 /* Manual dark mode toggle (overrides system preference) */
 [data-theme="dark"] {
-  --color-mode: 'dark';
+  --color-mode: "dark";
 
   /* Copy all dark mode variables here for manual toggle */
   --apple-orange-500: #ff9500;
@@ -763,19 +761,22 @@
   display: block;
 }
 
-[data-theme="dark"] .dark-mode-toggle .sun-icon,
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .dark-mode-toggle .sun-icon {
-    display: block;
-  }
-
-  :root:not([data-theme="light"]) .dark-mode-toggle .moon-icon {
-    display: none;
-  }
+[data-theme="dark"] .dark-mode-toggle .sun-icon {
+  display: none;
 }
 
 [data-theme="dark"] .dark-mode-toggle .moon-icon {
-  display: none;
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dark-mode-toggle .sun-icon {
+    display: none;
+  }
+
+  :root:not([data-theme="light"]) .dark-mode-toggle .moon-icon {
+    display: block;
+  }
 }
 
 /* ==========================================================================

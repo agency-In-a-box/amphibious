@@ -58,7 +58,7 @@
 [data-theme="light"] .dark-mode-toggle .light-icon {
   opacity: 1;
   transform: rotate(0deg);
-  stroke: #ED8B00;
+  stroke: #ed8b00;
 }
 
 :root:not([data-theme="dark"]) .dark-mode-toggle .dark-icon,
@@ -82,7 +82,7 @@
   :root:not([data-theme="light"]) .dark-mode-toggle .dark-icon {
     opacity: 1;
     transform: rotate(0deg);
-    stroke: #FFD60A;
+    stroke: #ffd60a;
   }
 }
 
@@ -99,7 +99,7 @@
 [data-theme="dark"] .dark-mode-toggle .dark-icon {
   opacity: 1;
   transform: rotate(0deg);
-  stroke: #FFD60A;
+  stroke: #ffd60a;
 }
 
 /* Mobile adjustments */
@@ -119,7 +119,7 @@
 
 /* Accessibility */
 .dark-mode-toggle:focus-visible {
-  outline: 3px solid var(--apple-orange-500, #ED8B00);
+  outline: 3px solid var(--apple-orange-500, #ed8b00);
   outline-offset: 2px;
 }
 

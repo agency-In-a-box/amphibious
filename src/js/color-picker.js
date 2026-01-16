@@ -792,14 +792,16 @@ class ColorPicker {
         }
         return `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
 
-      case 'hsl':
+      case 'hsl': {
         const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
         if (this.options.alpha && color.a < 1) {
           return `hsla(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%, ${color.a.toFixed(2)})`;
         }
         return `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`;
+      }
 
-      default: // hex
+      default: {
+        // hex
         const hex = this.rgbToHex(rgb.r, rgb.g, rgb.b);
         if (this.options.alpha && color.a < 1) {
           const alphaHex = Math.round(color.a * 255)
@@ -808,6 +810,7 @@ class ColorPicker {
           return hex + alphaHex;
         }
         return hex;
+      }
     }
   }
 
@@ -846,7 +849,9 @@ class ColorPicker {
     s /= 100;
     v /= 100;
 
-    let r, g, b;
+    let r;
+    let g;
+    let b;
 
     if (s === 0) {
       r = g = b = v;
@@ -905,9 +910,9 @@ class ColorPicker {
 
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
-    let h,
-      s,
-      l = (max + min) / 2;
+    let h;
+    let s;
+    const l = (max + min) / 2;
 
     if (max === min) {
       h = s = 0;
@@ -940,7 +945,9 @@ class ColorPicker {
     s /= 100;
     l /= 100;
 
-    let r, g, b;
+    let r;
+    let g;
+    let b;
 
     if (s === 0) {
       r = g = b = l;
@@ -970,15 +977,12 @@ class ColorPicker {
   }
 
   rgbToHex(r, g, b) {
-    return (
-      '#' +
-      [r, g, b]
-        .map((x) => {
-          const hex = x.toString(16);
-          return hex.length === 1 ? '0' + hex : hex;
-        })
-        .join('')
-    );
+    return `#${[r, g, b]
+      .map((x) => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? `0${hex}` : hex;
+      })
+      .join('')}`;
   }
 
   // Recent colors management
