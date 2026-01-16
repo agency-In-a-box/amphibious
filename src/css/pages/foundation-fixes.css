@@ -8,7 +8,7 @@
    ========================================================================== */
 
 .breadcrumb {
-  margin-top: 0.5rem !important;  /* Reduced from default */
+  margin-top: 0.5rem !important; /* Reduced from default */
   margin-bottom: 1.5rem !important;
   padding: 0.5rem 0;
 }
@@ -48,7 +48,12 @@
   }
 
   /* Headings */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: #212529 !important;
   }
 }
@@ -79,7 +84,12 @@
       color: #ffffff !important;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: #ffffff !important;
     }
   }
@@ -109,7 +119,12 @@
     color: #ffffff !important;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: #ffffff !important;
   }
 }
@@ -229,7 +244,7 @@ code:not(pre code) {
   color: #212529 !important;
 }
 
-:root:not([data-theme="dark"]) #breakpoints * ,
+:root:not([data-theme="dark"]) #breakpoints *,
 :root:not([data-theme="dark"]) .breakpoints-section *,
 [data-theme="light"] #breakpoints *,
 [data-theme="light"] .breakpoints-section * {
@@ -278,16 +293,21 @@ table {
   color: inherit;
 }
 
-th, td {
+th,
+td {
   color: inherit;
 }
 
 /* Lists should be visible */
-ul, ol, dl {
+ul,
+ol,
+dl {
   color: inherit;
 }
 
-li, dt, dd {
+li,
+dt,
+dd {
   color: inherit;
 }
 

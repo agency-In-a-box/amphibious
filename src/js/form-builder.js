@@ -1276,7 +1276,7 @@ class FormBuilder {
     // Basic properties
     const basicSection = document.createElement('div');
     basicSection.className = 'property-section';
-    basicSection.innerHTML = `<h4>Basic</h4>`;
+    basicSection.innerHTML = '<h4>Basic</h4>';
 
     // Field-specific properties
     const properties = this.getFieldProperties(field);
@@ -1421,7 +1421,7 @@ class FormBuilder {
   createValidationSection(field) {
     const section = document.createElement('div');
     section.className = 'property-section';
-    section.innerHTML = `<h4>Validation</h4>`;
+    section.innerHTML = '<h4>Validation</h4>';
 
     const required = document.createElement('div');
     required.className = 'property-group';
@@ -1608,22 +1608,25 @@ class FormBuilder {
     wrapper.className = 'form-group';
 
     switch (field.type) {
-      case 'heading':
+      case 'heading': {
         const heading = document.createElement(field.level || 'h3');
         heading.textContent = field.text;
         wrapper.appendChild(heading);
         break;
+      }
 
-      case 'paragraph':
+      case 'paragraph': {
         const p = document.createElement('p');
         p.textContent = field.text;
         wrapper.appendChild(p);
         break;
+      }
 
-      case 'divider':
+      case 'divider': {
         const hr = document.createElement('hr');
         wrapper.appendChild(hr);
         break;
+      }
 
       case 'spacer':
         wrapper.style.height = `${field.height || 24}px`;
@@ -1633,7 +1636,7 @@ class FormBuilder {
         wrapper.innerHTML = field.content || '';
         break;
 
-      default:
+      default: {
         if (field.label && field.type !== 'checkbox' && field.type !== 'switch') {
           const label = document.createElement('label');
           label.textContent = field.label;
@@ -1646,6 +1649,7 @@ class FormBuilder {
         const input = this.createFormInput(field);
         wrapper.appendChild(input);
         break;
+      }
     }
 
     return wrapper;
@@ -1708,7 +1712,7 @@ class FormBuilder {
         });
         break;
 
-      case 'checkbox':
+      case 'checkbox': {
         input = document.createElement('label');
         input.className = 'checkbox-label';
 
@@ -1724,8 +1728,9 @@ class FormBuilder {
         input.appendChild(checkbox);
         input.appendChild(span);
         break;
+      }
 
-      case 'switch':
+      case 'switch': {
         input = document.createElement('label');
         input.className = 'switch-label';
 
@@ -1747,6 +1752,7 @@ class FormBuilder {
         input.appendChild(switchEl);
         input.appendChild(text);
         break;
+      }
 
       case 'file':
         input = document.createElement('input');

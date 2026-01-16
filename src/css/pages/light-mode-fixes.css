@@ -28,15 +28,25 @@
     .site-logo,
     .nav-link.site-logo,
     a.site-logo {
-      color: var(--apple-orange-500, #ED8B00) !important;
+      color: var(--apple-orange-500, #ed8b00) !important;
     }
 
     /* Ensure all text is dark in light mode */
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: #212529 !important;
     }
 
-    p, span, div:not(.hero):not(.cta-section), li, td, th {
+    p,
+    span,
+    div:not(.hero):not(.cta-section),
+    li,
+    td,
+    th {
       color: #212529;
     }
 
@@ -66,7 +76,9 @@
     }
 
     /* Code examples borders */
-    pre, code, .code-example {
+    pre,
+    code,
+    .code-example {
       border-color: #666666 !important;
     }
 
@@ -87,7 +99,7 @@
     }
 
     .site-nav a:hover {
-      color: var(--apple-orange-500, #ED8B00);
+      color: var(--apple-orange-500, #ed8b00);
     }
 
     /* Component cards should have light backgrounds */
@@ -145,7 +157,7 @@
     }
 
     .stat-card__icon svg {
-      stroke: var(--apple-orange-500, #ED8B00);
+      stroke: var(--apple-orange-500, #ed8b00);
     }
   }
 }
@@ -160,14 +172,24 @@
   .site-logo,
   .nav-link.site-logo,
   a.site-logo {
-    color: var(--apple-orange-500, #ED8B00) !important;
+    color: var(--apple-orange-500, #ed8b00) !important;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: #212529 !important;
   }
 
-  p, span, div:not(.hero):not(.cta-section), li, td, th {
+  p,
+  span,
+  div:not(.hero):not(.cta-section),
+  li,
+  td,
+  th {
     color: #212529;
   }
 
@@ -194,7 +216,9 @@
     color: #6c757d !important;
   }
 
-  pre, code, .code-example {
+  pre,
+  code,
+  .code-example {
     border-color: #666666 !important;
   }
 
@@ -213,7 +237,7 @@
   }
 
   .site-nav a:hover {
-    color: var(--apple-orange-500, #ED8B00);
+    color: var(--apple-orange-500, #ed8b00);
   }
 
   .component-card,
@@ -263,6 +287,6 @@
   }
 
   .stat-card__icon svg {
-    stroke: var(--apple-orange-500, #ED8B00);
+    stroke: var(--apple-orange-500, #ed8b00);
   }
 }

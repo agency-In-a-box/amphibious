@@ -16,7 +16,7 @@ class DarkModeToggle {
       togglePosition: options.togglePosition || 'bottom-right', // 'bottom-right', 'bottom-left', 'top-right', 'top-left'
       transitionDuration: options.transitionDuration || 200,
       onChange: options.onChange || null,
-      ...options
+      ...options,
     };
 
     // State
@@ -62,7 +62,7 @@ class DarkModeToggle {
   }
 
   getSystemPreference() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
       return 'dark';
     }
     return 'light';
@@ -117,7 +117,7 @@ class DarkModeToggle {
     if (this.options.onChange) {
       this.options.onChange({
         theme: this.currentTheme,
-        effectiveTheme: effectiveTheme
+        effectiveTheme: effectiveTheme,
       });
     }
   }
@@ -167,7 +167,7 @@ class DarkModeToggle {
       'bottom-right': { bottom: '24px', right: '24px' },
       'bottom-left': { bottom: '24px', left: '24px' },
       'top-right': { top: '24px', right: '24px' },
-      'top-left': { top: '24px', left: '24px' }
+      'top-left': { top: '24px', left: '24px' },
     };
 
     const position = positions[this.options.togglePosition] || positions['bottom-right'];
@@ -208,9 +208,10 @@ class DarkModeToggle {
     if (!this.toggleButton) return;
 
     const effectiveTheme = this.getEffectiveTheme();
-    const statusText = this.currentTheme === 'system'
-      ? `System (${effectiveTheme})`
-      : effectiveTheme.charAt(0).toUpperCase() + effectiveTheme.slice(1);
+    const statusText =
+      this.currentTheme === 'system'
+        ? `System (${effectiveTheme})`
+        : effectiveTheme.charAt(0).toUpperCase() + effectiveTheme.slice(1);
 
     this.toggleButton.setAttribute('aria-label', `Dark mode: ${statusText}. Click to toggle.`);
     this.toggleButton.setAttribute('title', `Dark mode: ${statusText} (⌘+Shift+D)`);
