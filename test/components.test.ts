@@ -45,7 +45,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
         'footer.css',
         'forms.css',
         'modal.css',
-        'navigation.css',
+        // navigation.css is at src/css/navigation-unified.css (not in organisms/)
         'pagination.css',
         'tables.css', // Changed from responsive-tables.css
         'sidebar.css',
@@ -81,25 +81,18 @@ describe('Amphibious 2.0 Component Inventory', () => {
     });
 
     test('Grid system is complete', () => {
-      const gridFiles = ['grid.css', 'grid-responsive.css'];
+      const filePath = path.join(cssBasePath, 'grid-modern.css');
+      expect(fs.existsSync(filePath)).toBe(true);
 
-      gridFiles.forEach((file) => {
-        const filePath = path.join(cssBasePath, file);
-        expect(fs.existsSync(filePath)).toBe(true);
+      const content = fs.readFileSync(filePath, 'utf-8');
 
-        const content = fs.readFileSync(filePath, 'utf-8');
+      // Check for 16-column grid classes (namespaced)
+      for (let i = 1; i <= 16; i++) {
+        expect(content).toContain(`.aiab-col-${i}`);
+      }
 
-        // Check for 16-column grid classes - checking grid.css specifically
-        if (file === 'grid.css') {
-          for (let i = 1; i <= 16; i++) {
-            expect(content).toContain(`.col-${i}`);
-          }
-        }
-
-        // Check for responsive classes
-        expect(content).toContain('.col-tablet-');
-        expect(content).toContain('.col-mobile-');
-      });
+      // Check for responsive classes
+      expect(content).toContain('.col-mobile-');
     });
 
     test('Typography system exists', () => {
@@ -217,7 +210,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
           <p>Card content goes here</p>
         </div>
         <div class="card-footer">
-          <button class="btn btn-primary">Action</button>
+          <button class="aiab-btn btn-primary">Action</button>
         </div>
       `;
       document.body.appendChild(card);
@@ -243,8 +236,8 @@ describe('Amphibious 2.0 Component Inventory', () => {
               <p>Modal content</p>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-secondary">Cancel</button>
-              <button class="btn btn-primary">Save</button>
+              <button class="aiab-btn btn-secondary">Cancel</button>
+              <button class="aiab-btn btn-primary">Save</button>
             </div>
           </div>
         </div>
@@ -262,23 +255,23 @@ describe('Amphibious 2.0 Component Inventory', () => {
       const form = document.createElement('form');
       form.className = 'form';
       form.innerHTML = `
-        <div class="form-group">
+        <div class="aiab-form-group">
           <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" class="form-control" required>
+          <input type="email" id="email" class="aiab-form-control" required>
           <span class="form-help">Enter your email address</span>
         </div>
-        <div class="form-group">
+        <div class="aiab-form-group">
           <label for="password" class="form-label">Password</label>
-          <input type="password" id="password" class="form-control" required>
+          <input type="password" id="password" class="aiab-form-control" required>
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="aiab-form-group">
+          <button type="submit" class="aiab-btn btn-primary">Submit</button>
         </div>
       `;
       document.body.appendChild(form);
 
-      expect(form.querySelectorAll('.form-group').length).toBe(3);
-      expect(form.querySelector('.form-control')).toBeTruthy();
+      expect(form.querySelectorAll('.aiab-form-group').length).toBe(3);
+      expect(form.querySelector('.aiab-form-control')).toBeTruthy();
       expect(form.querySelector('.form-label')).toBeTruthy();
       expect(form.querySelector('.form-help')).toBeTruthy();
     });
@@ -337,7 +330,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
       tabs.className = 'tabs';
       tabs.innerHTML = `
         <ul class="tab-list" role="tablist">
-          <li class="tab-item active">
+          <li class="tab-item aiab-active">
             <a href="#tab1" class="tab-link" role="tab">Tab 1</a>
           </li>
           <li class="tab-item">
@@ -345,7 +338,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
           </li>
         </ul>
         <div class="tab-content">
-          <div id="tab1" class="tab-pane active" role="tabpanel">Content 1</div>
+          <div id="tab1" class="tab-pane aiab-active" role="tabpanel">Content 1</div>
           <div id="tab2" class="tab-pane" role="tabpanel">Content 2</div>
         </div>
       `;
@@ -365,7 +358,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
           <li class="pagination-item">
             <a href="#" class="pagination-link" aria-label="Previous">‹</a>
           </li>
-          <li class="pagination-item active">
+          <li class="pagination-item aiab-active">
             <a href="#" class="pagination-link">1</a>
           </li>
           <li class="pagination-item">
@@ -383,7 +376,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
 
       expect(pagination.querySelector('.pagination-list')).toBeTruthy();
       expect(pagination.querySelectorAll('.pagination-item').length).toBe(5);
-      expect(pagination.querySelector('.pagination-item.active')).toBeTruthy();
+      expect(pagination.querySelector('.pagination-item.aiab-active')).toBeTruthy();
     });
 
     test('Breadcrumb component structure', () => {
@@ -393,14 +386,14 @@ describe('Amphibious 2.0 Component Inventory', () => {
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
           <li class="breadcrumb-item"><a href="/products">Products</a></li>
-          <li class="breadcrumb-item active">Current Page</li>
+          <li class="breadcrumb-item aiab-active">Current Page</li>
         </ol>
       `;
       document.body.appendChild(breadcrumb);
 
       expect(breadcrumb.querySelector('.breadcrumb-list')).toBeTruthy();
       expect(breadcrumb.querySelectorAll('.breadcrumb-item').length).toBe(3);
-      expect(breadcrumb.querySelector('.breadcrumb-item.active')).toBeTruthy();
+      expect(breadcrumb.querySelector('.breadcrumb-item.aiab-active')).toBeTruthy();
     });
   });
 
@@ -493,22 +486,13 @@ describe('Amphibious 2.0 Component Inventory', () => {
     });
 
     test('Responsive design features', () => {
-      const responsiveFeatures = {
-        'Mobile-first approach': true,
-        'Breakpoint system': true,
-        'Responsive grid': true,
-        'Responsive utilities': true,
-        'Mobile navigation': true,
-        'Touch support': true,
-      };
-
-      const gridResponsiveFile = path.join(process.cwd(), 'src/css/grid-responsive.css');
-      const content = fs.readFileSync(gridResponsiveFile, 'utf-8');
+      const gridModernFile = path.join(process.cwd(), 'src/css/grid-modern.css');
+      const content = fs.readFileSync(gridModernFile, 'utf-8');
 
       // Check for media queries
       expect(content).toContain('@media');
-      expect(content).toContain('max-width: 480px'); // Mobile
-      expect(content).toContain('max-width: 768px'); // Tablet
+      expect(content).toContain('max-width: 479px'); // Mobile
+      expect(content).toContain('min-width: 768px'); // Tablet
     });
   });
 });

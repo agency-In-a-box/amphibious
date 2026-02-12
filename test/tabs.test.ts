@@ -13,7 +13,7 @@ describe('Tabs Module', () => {
   beforeEach(() => {
     // Setup DOM structure
     document.body.innerHTML = `
-      <div class="tabs">
+      <div class="aiab-tabs">
         <div class="tabs__list" role="tablist">
           <button class="tabs__tab" role="tab">Tab 1</button>
           <button class="tabs__tab" role="tab">Tab 2</button>
@@ -33,7 +33,7 @@ describe('Tabs Module', () => {
       </div>
     `;
 
-    container = document.querySelector('.tabs') as HTMLElement;
+    container = document.querySelector('.aiab-tabs') as HTMLElement;
   });
 
   afterEach(() => {
@@ -122,7 +122,7 @@ describe('Tabs Module', () => {
       tabs = new Tabs();
       tabs.init();
 
-      tabs.selectTabByIndex('.tabs', 2);
+      tabs.selectTabByIndex('.aiab-tabs', 2);
 
       const tabElements = container.querySelectorAll('[role="tab"]');
       const panels = container.querySelectorAll('.tabs__panel') as NodeListOf<HTMLElement>;
@@ -138,7 +138,7 @@ describe('Tabs Module', () => {
       const tabElements = container.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
       tabElements[1].click();
 
-      const activeTab = tabs.getActiveTab('.tabs');
+      const activeTab = tabs.getActiveTab('.aiab-tabs');
       expect(activeTab).toBe(tabElements[1]);
     });
   });
@@ -168,7 +168,7 @@ describe('Tabs Module', () => {
       const tabElements = container.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
 
       // Focus last tab
-      tabs.selectTabByIndex('.tabs', 2);
+      tabs.selectTabByIndex('.aiab-tabs', 2);
       tabElements[2].focus();
 
       // Arrow right should wrap to first
@@ -185,7 +185,7 @@ describe('Tabs Module', () => {
       const tabElements = container.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
 
       // Select middle tab
-      tabs.selectTabByIndex('.tabs', 1);
+      tabs.selectTabByIndex('.aiab-tabs', 1);
 
       // Press End key
       const endEvent = new KeyboardEvent('keydown', { key: 'End' });

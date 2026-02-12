@@ -122,13 +122,13 @@ describe('CSS @layer Integration with Components', () => {
     nav.className = 'site-nav';
     nav.innerHTML = `
       <ul class="horizontal">
-        <li class="active"><a href="#">Active</a></li>
+        <li class="aiab-active"><a href="#">Active</a></li>
         <li><a href="#">Normal</a></li>
       </ul>
     `;
     document.body.appendChild(nav);
 
-    const activeItem = nav.querySelector('.active');
+    const activeItem = nav.querySelector('.aiab-active');
     expect(activeItem).toBeTruthy();
 
     // The active class should work without needing !important
@@ -139,13 +139,13 @@ describe('CSS @layer Integration with Components', () => {
     const row = document.createElement('div');
     row.className = 'row';
     row.innerHTML = `
-      <div class="col-6 text-center">Column 1</div>
-      <div class="col-6 text-right">Column 2</div>
+      <div class="aiab-col-6 text-center">Column 1</div>
+      <div class="aiab-col-6 text-right">Column 2</div>
     `;
     document.body.appendChild(row);
 
-    const col1 = row.querySelector('.col-6.text-center');
-    const col2 = row.querySelector('.col-6.text-right');
+    const col1 = row.querySelector('.aiab-col-6.text-center');
+    const col2 = row.querySelector('.aiab-col-6.text-right');
 
     expect(col1?.classList.contains('text-center')).toBe(true);
     expect(col2?.classList.contains('text-right')).toBe(true);

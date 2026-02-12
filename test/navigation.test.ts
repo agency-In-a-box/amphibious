@@ -13,7 +13,7 @@ describe('Navigation Module', () => {
   beforeEach(() => {
     // Setup DOM structure
     document.body.innerHTML = `
-      <nav class="nav">
+      <nav class="aiab-nav">
         <button id="nav_toggle" class="nav__toggle">
           <span class="nav__hamburger"></span>
         </button>
@@ -32,7 +32,7 @@ describe('Navigation Module', () => {
       </nav>
     `;
 
-    container = document.querySelector('.nav') as HTMLElement;
+    container = document.querySelector('.aiab-nav') as HTMLElement;
     navigation = new Navigation();
   });
 
