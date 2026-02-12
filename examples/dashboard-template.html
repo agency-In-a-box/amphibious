@@ -179,12 +179,12 @@
       background: #f8f9fa;
       color: #ED8B00;
     }
-    .nav-section a.active {
+    .nav-section a.aiab-active {
       background: #f0f4ff;
       color: #ED8B00;
       font-weight: 500;
     }
-    .nav-section a.active::before {
+    .nav-section a.aiab-active::before {
       content: '';
       position: absolute;
       left: 0;
@@ -403,7 +403,7 @@
     }
 
     /* Action Buttons */
-    .btn {
+    .aiab-btn {
       padding: 0.5rem 1rem;
       border: none;
       border-radius: 6px;
@@ -476,7 +476,7 @@
 <body>
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -532,7 +532,7 @@
 
   <!-- Dashboard Header -->
   <header class="dashboard-header">
-    <div class="container">
+    <div class="aiab-container">
       <div class="header-content">
         <div class="header-brand">
           <div class="brand-logo">A</div>
@@ -550,18 +550,18 @@
         </div>
 
         <div class="header-actions">
-          <button class="btn btn-ghost btn-sm" data-tooltip="Notifications">
+          <button class="aiab-btn btn-ghost btn-sm" data-tooltip="Notifications">
             <i data-lucide="bell"></i>
             <span class="nav-badge">5</span>
           </button>
-          <button class="btn btn-ghost btn-sm" data-tooltip="Settings">
+          <button class="aiab-btn btn-ghost btn-sm" data-tooltip="Settings">
             <i data-lucide="settings"></i>
           </button>
-          <button class="btn btn-ghost btn-sm d-md-none" id="mobileSidebarToggle">
+          <button class="aiab-btn btn-ghost btn-sm d-md-none" id="mobileSidebarToggle">
             <i data-lucide="menu"></i>
           </button>
           <div style="width: 1px; height: 20px; background: #dee2e6; margin: 0 0.5rem;"></div>
-          <button class="btn btn-primary btn-sm">
+          <button class="aiab-btn btn-primary btn-sm">
             <i data-lucide="plus"></i>
             New Report
           </button>
@@ -582,7 +582,7 @@
         <div class="nav-section">
           <h3>Overview</h3>
           <ul>
-            <li><a href="#dashboard" class="active">
+            <li><a href="#dashboard" class="aiab-active">
               <i data-lucide="layout-dashboard"></i>
               <span>Dashboard</span>
             </a></li>
@@ -699,10 +699,10 @@
               <p class="widget-subtitle">Monthly revenue over the past year</p>
             </div>
             <div class="widget-actions">
-              <button class="btn btn-ghost btn-sm">
+              <button class="aiab-btn btn-ghost btn-sm">
                 <i data-lucide="download"></i>
               </button>
-              <button class="btn btn-ghost btn-sm">
+              <button class="aiab-btn btn-ghost btn-sm">
                 <i data-lucide="more-horizontal"></i>
               </button>
             </div>
@@ -719,7 +719,7 @@
               <p class="widget-subtitle">Visitor acquisition channels</p>
             </div>
             <div class="widget-actions">
-              <button class="btn btn-ghost btn-sm">
+              <button class="aiab-btn btn-ghost btn-sm">
                 <i data-lucide="external-link"></i>
               </button>
             </div>
@@ -771,7 +771,7 @@
         <div class="widget widget-md list-widget">
           <div class="widget-header">
             <h3 class="widget-title">Recent Activity</h3>
-            <button class="btn btn-ghost btn-sm">View All</button>
+            <button class="aiab-btn btn-ghost btn-sm">View All</button>
           </div>
 
           <ul>
@@ -871,11 +871,11 @@
               <p class="widget-subtitle">Comprehensive data analysis and insights</p>
             </div>
             <div class="widget-actions">
-              <button class="btn btn-outline btn-sm">
+              <button class="aiab-btn btn-outline btn-sm">
                 <i data-lucide="filter"></i>
                 Filter
               </button>
-              <button class="btn btn-primary btn-sm">
+              <button class="aiab-btn btn-primary btn-sm">
                 <i data-lucide="external-link"></i>
                 Open Report
               </button>

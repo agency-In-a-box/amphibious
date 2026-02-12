@@ -42,7 +42,7 @@
       color: #6c757d;
       font-weight: 500;
     }
-    .progress-steps li.active {
+    .progress-steps li.aiab-active {
       color: #ED8B00;
     }
     .progress-steps li.completed {
@@ -59,7 +59,7 @@
       font-weight: 600;
       transition: all 0.3s;
     }
-    .progress-steps li.active .step-number {
+    .progress-steps li.aiab-active .step-number {
       background: #ED8B00;
       color: white;
     }
@@ -111,10 +111,10 @@
       gap: 1rem;
       margin-bottom: 1rem;
     }
-    .form-group {
+    .aiab-form-group {
       margin-bottom: 1rem;
     }
-    .form-group.full-width {
+    .aiab-form-group.full-width {
       grid-column: 1 / -1;
     }
     label {
@@ -257,7 +257,7 @@
       padding-top: 2rem;
       border-top: 2px solid #f0f0f0;
     }
-    .btn {
+    .aiab-btn {
       padding: 0.875rem 2rem;
       border: none;
       border-radius: 4px;
@@ -334,7 +334,7 @@
 <body>
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -390,7 +390,7 @@
 
   <!-- Checkout Header -->
   <header class="checkout-header">
-    <div class="container">
+    <div class="aiab-container">
       <nav aria-label="Checkout progress">
         <ol class="progress-steps">
           <li class="completed">
@@ -400,7 +400,7 @@
             <span>Cart</span>
           </li>
           <li class="step-connector completed"></li>
-          <li class="active">
+          <li class="aiab-active">
             <span class="step-number">2</span>
             <span>Shipping</span>
           </li>
@@ -420,10 +420,10 @@
   </header>
 
   <!-- Main Content -->
-  <main class="container" style="padding: 2rem 0;">
-    <div class="row">
+  <main class="aiab-container" style="padding: 2rem 0;">
+    <div class="aiab-row">
       <!-- Checkout Form -->
-      <section class="col-10" aria-labelledby="checkout-heading">
+      <section class="aiab-col-10" aria-labelledby="checkout-heading">
         <h1 id="checkout-heading" class="sr-only">Checkout</h1>
 
         <form class="checkout-form" id="shippingForm">
@@ -432,7 +432,7 @@
           <fieldset>
             <legend>Contact Details</legend>
             <div class="form-row">
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="email">
                   Email Address
                   <span class="required" aria-label="required">*</span>
@@ -440,7 +440,7 @@
                 <input type="email" id="email" name="email" required aria-required="true" placeholder="john@example.com">
                 <span class="form-help">We'll send order confirmation here</span>
               </div>
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="phone">
                   Phone Number
                   <span class="required" aria-label="required">*</span>
@@ -454,14 +454,14 @@
           <fieldset>
             <legend>Shipping Address</legend>
             <div class="form-row">
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="firstName">
                   First Name
                   <span class="required" aria-label="required">*</span>
                 </label>
                 <input type="text" id="firstName" name="firstName" required aria-required="true">
               </div>
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="lastName">
                   Last Name
                   <span class="required" aria-label="required">*</span>
@@ -470,7 +470,7 @@
               </div>
             </div>
 
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="address1">
                 Street Address
                 <span class="required" aria-label="required">*</span>
@@ -478,20 +478,20 @@
               <input type="text" id="address1" name="address1" required aria-required="true" placeholder="123 Main Street">
             </div>
 
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="address2">Apartment, Suite, etc. (optional)</label>
               <input type="text" id="address2" name="address2" placeholder="Apt 4B">
             </div>
 
             <div class="form-row">
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="city">
                   City
                   <span class="required" aria-label="required">*</span>
                 </label>
                 <input type="text" id="city" name="city" required aria-required="true">
               </div>
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="state">
                   State / Province
                   <span class="required" aria-label="required">*</span>
@@ -508,14 +508,14 @@
             </div>
 
             <div class="form-row">
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="zipCode">
                   ZIP / Postal Code
                   <span class="required" aria-label="required">*</span>
                 </label>
                 <input type="text" id="zipCode" name="zipCode" required aria-required="true" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="12345">
               </div>
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="country">
                   Country
                   <span class="required" aria-label="required">*</span>
@@ -594,7 +594,7 @@
               </label>
             </div>
 
-            <div class="form-group" style="margin-top: 1rem;">
+            <div class="aiab-form-group" style="margin-top: 1rem;">
               <label for="notes">Delivery Instructions (optional)</label>
               <textarea id="notes" name="notes" rows="3" placeholder="Leave at front door, ring doorbell, etc."></textarea>
             </div>
@@ -610,7 +610,7 @@
                 <i data-lucide="lock" class="icon--xs"></i>
                 Secure Checkout
               </div>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="aiab-btn btn-primary">
                 Continue to Payment
                 <i data-lucide="arrow-right"></i>
               </button>
@@ -620,7 +620,7 @@
       </section>
 
       <!-- Order Summary Aside -->
-      <aside class="col-6" aria-labelledby="order-summary">
+      <aside class="aiab-col-6" aria-labelledby="order-summary">
         <div class="order-summary">
           <h3 id="order-summary">Order Summary</h3>
 
@@ -683,7 +683,7 @@
             <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem;">Have a promo code?</h4>
             <div style="display: flex; gap: 0.5rem;">
               <input type="text" placeholder="Enter code" style="flex: 1; padding: 0.5rem; border: 1px solid #dee2e6; border-radius: 4px;">
-              <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">Apply</button>
+              <button class="aiab-btn btn-secondary" style="padding: 0.5rem 1rem;">Apply</button>
             </div>
           </div>
 

@@ -44,7 +44,7 @@
   transform: translateY(-50%) translateX(2px);
 }
 
-.filter-toggle.active {
+.filter-toggle.aiab-active {
   background: var(--filter-orange-light);
   border-color: var(--filter-orange);
   color: var(--filter-orange);
@@ -483,7 +483,7 @@
   gap: 0.5rem;
 }
 
-.badge {
+.aiab-badge {
   padding: 0.375rem 0.75rem;
   background: #dc3545;
   color: white;
@@ -494,15 +494,15 @@
   letter-spacing: 0.5px;
 }
 
-.badge.new {
+.aiab-badge.new {
   background: #28a745;
 }
 
-.badge.sale {
+.aiab-badge.sale {
   background: #dc3545;
 }
 
-.badge.limited {
+.aiab-badge.limited {
   background: #ffc107;
   color: #000;
 }
@@ -662,7 +662,7 @@
   background: var(--border-color);
 }
 
-.pagination {
+.aiab-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -670,7 +670,7 @@
   margin: 3rem 0;
 }
 
-.pagination button {
+.aiab-pagination button {
   min-width: 40px;
   height: 40px;
   padding: 0.5rem;
@@ -685,23 +685,23 @@
   justify-content: center;
 }
 
-.pagination button:hover {
+.aiab-pagination button:hover {
   background: var(--bg-light);
   border-color: var(--primary-color);
 }
 
-.pagination button.active {
+.aiab-pagination button.aiab-active {
   background: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
 }
 
-.pagination button:disabled {
+.aiab-pagination button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-.pagination button:disabled:hover {
+.aiab-pagination button:disabled:hover {
   background: white;
   border-color: var(--border-color);
 }

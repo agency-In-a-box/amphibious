@@ -104,7 +104,7 @@ body {
   border-color: var(--primary-color);
 }
 
-.filter-toggle.active {
+.filter-toggle.aiab-active {
   background: var(--primary-light);
   border-color: var(--primary-color);
   color: var(--primary-color);
@@ -117,7 +117,7 @@ body {
   transition: transform var(--transition-base);
 }
 
-.filter-toggle.active .toggle-arrow {
+.filter-toggle.aiab-active .toggle-arrow {
   transform: rotate(180deg);
 }
 
@@ -160,7 +160,7 @@ body {
   border-color: var(--text-secondary);
 }
 
-.pill-button.active {
+.pill-button.aiab-active {
   background: var(--primary-color);
   border-color: var(--primary-color);
   color: var(--bg-white);
@@ -313,7 +313,7 @@ body {
   color: var(--text-secondary);
 }
 
-.indicator.active {
+.indicator.aiab-active {
   background: var(--success-light);
   color: var(--success-color);
 }
@@ -352,7 +352,7 @@ body {
   border-color: var(--text-secondary);
 }
 
-.sort-button.active {
+.sort-button.aiab-active {
   border-color: var(--primary-color);
   background: var(--primary-fade);
 }
@@ -364,7 +364,7 @@ body {
   transition: transform var(--transition-base);
 }
 
-.sort-button.active svg {
+.sort-button.aiab-active svg {
   transform: rotate(180deg);
 }
 
@@ -412,7 +412,7 @@ body {
   background: var(--bg-gray);
 }
 
-.sort-option.active {
+.sort-option.aiab-active {
   background: var(--success-light);
   color: var(--success-color);
   font-weight: 500;
@@ -538,7 +538,7 @@ body {
   color: var(--text-primary);
 }
 
-.drawer-option .badge {
+.drawer-option .aiab-badge {
   margin-left: auto;
   font-size: 0.75rem;
   color: var(--text-tertiary);

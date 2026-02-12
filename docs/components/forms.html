@@ -35,7 +35,7 @@
     }
 
     /* Container */
-    .container {
+    .aiab-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
@@ -190,13 +190,13 @@
     }
 
     /* Validation Demo Styling */
-    .validation-demo .form-group {
+    .validation-demo .aiab-form-group {
       margin-bottom: 1.5rem;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .container {
+      .aiab-container {
         padding: 0 1rem;
       }
 
@@ -217,7 +217,7 @@
 <body>
   <!-- Site Navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <ul class="horizontal branded">
       <li><a href="/" class="site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
@@ -266,7 +266,7 @@
 </nav>
 
   <header class="docs-header">
-    <div class="container">
+    <div class="aiab-container">
       <nav class="nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
@@ -278,7 +278,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="aiab-container">
     <!-- Overview -->
     <section class="section">
       <h2>Overview</h2>
@@ -320,52 +320,52 @@
       <div class="demo-section">
         <div class="demo-title">Text Input Types</div>
         <div class="form-demo">
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="text-input">Text Input</label>
-            <input type="text" id="text-input" class="form-control" placeholder="Enter text here">
+            <input type="text" id="text-input" class="aiab-form-control" placeholder="Enter text here">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="email-input">Email Input</label>
-            <input type="email" id="email-input" class="form-control" placeholder="user@example.com">
+            <input type="email" id="email-input" class="aiab-form-control" placeholder="user@example.com">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="password-input">Password Input</label>
-            <input type="password" id="password-input" class="form-control" placeholder="Enter password">
+            <input type="password" id="password-input" class="aiab-form-control" placeholder="Enter password">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="number-input">Number Input</label>
-            <input type="number" id="number-input" class="form-control" placeholder="123" min="0" max="100">
+            <input type="number" id="number-input" class="aiab-form-control" placeholder="123" min="0" max="100">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="search-input">Search Input</label>
-            <input type="search" id="search-input" class="form-control" placeholder="Search...">
+            <input type="search" id="search-input" class="aiab-form-control" placeholder="Search...">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="url-input">URL Input</label>
-            <input type="url" id="url-input" class="form-control" placeholder="https://example.com">
+            <input type="url" id="url-input" class="aiab-form-control" placeholder="https://example.com">
           </div>
         </div>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="form-group"&gt;
+        <pre><code>&lt;div class="aiab-form-group"&gt;
   &lt;label for="text-input"&gt;Text Input&lt;/label&gt;
-  &lt;input type="text" id="text-input" class="form-control" placeholder="Enter text here"&gt;
+  &lt;input type="text" id="text-input" class="aiab-form-control" placeholder="Enter text here"&gt;
 &lt;/div&gt;
 
-&lt;div class="form-group"&gt;
+&lt;div class="aiab-form-group"&gt;
   &lt;label for="email-input"&gt;Email Input&lt;/label&gt;
-  &lt;input type="email" id="email-input" class="form-control" placeholder="user@example.com"&gt;
+  &lt;input type="email" id="email-input" class="aiab-form-control" placeholder="user@example.com"&gt;
 &lt;/div&gt;
 
-&lt;div class="form-group"&gt;
+&lt;div class="aiab-form-group"&gt;
   &lt;label for="password-input"&gt;Password Input&lt;/label&gt;
-  &lt;input type="password" id="password-input" class="form-control" placeholder="Enter password"&gt;
+  &lt;input type="password" id="password-input" class="aiab-form-control" placeholder="Enter password"&gt;
 &lt;/div&gt;</code></pre>
       </div>
 
@@ -373,9 +373,9 @@
       <div class="demo-section">
         <div class="demo-title">Select Dropdown and Textarea</div>
         <div class="form-demo">
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="select-input">Select Dropdown</label>
-            <select id="select-input" class="form-control">
+            <select id="select-input" class="aiab-form-control">
               <option value="">Choose an option</option>
               <option value="option1">Option 1</option>
               <option value="option2">Option 2</option>
@@ -384,14 +384,14 @@
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="textarea-input">Textarea</label>
-            <textarea id="textarea-input" class="form-control" rows="4" placeholder="Enter your message here..."></textarea>
+            <textarea id="textarea-input" class="aiab-form-control" rows="4" placeholder="Enter your message here..."></textarea>
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="multiple-select">Multiple Select</label>
-            <select id="multiple-select" class="form-control" multiple size="4">
+            <select id="multiple-select" class="aiab-form-control" multiple size="4">
               <option value="apple">Apple</option>
               <option value="banana">Banana</option>
               <option value="orange">Orange</option>
@@ -403,18 +403,18 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="form-group"&gt;
+        <pre><code>&lt;div class="aiab-form-group"&gt;
   &lt;label for="select-input"&gt;Select Dropdown&lt;/label&gt;
-  &lt;select id="select-input" class="form-control"&gt;
+  &lt;select id="select-input" class="aiab-form-control"&gt;
     &lt;option value=""&gt;Choose an option&lt;/option&gt;
     &lt;option value="option1"&gt;Option 1&lt;/option&gt;
     &lt;option value="option2"&gt;Option 2&lt;/option&gt;
   &lt;/select&gt;
 &lt;/div&gt;
 
-&lt;div class="form-group"&gt;
+&lt;div class="aiab-form-group"&gt;
   &lt;label for="textarea-input"&gt;Textarea&lt;/label&gt;
-  &lt;textarea id="textarea-input" class="form-control" rows="4" placeholder="Enter your message..."&gt;&lt;/textarea&gt;
+  &lt;textarea id="textarea-input" class="aiab-form-control" rows="4" placeholder="Enter your message..."&gt;&lt;/textarea&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </section>
@@ -504,32 +504,32 @@
       <div class="demo-section">
         <div class="demo-title">Different Input Sizes</div>
         <div class="form-demo">
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="large-input">Large Input</label>
-            <input type="text" id="large-input" class="form-control form-control-lg" placeholder="Large input">
+            <input type="text" id="large-input" class="aiab-form-control form-control-lg" placeholder="Large input">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="default-input">Default Input</label>
-            <input type="text" id="default-input" class="form-control" placeholder="Default input">
+            <input type="text" id="default-input" class="aiab-form-control" placeholder="Default input">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="small-input">Small Input</label>
-            <input type="text" id="small-input" class="form-control form-control-sm" placeholder="Small input">
+            <input type="text" id="small-input" class="aiab-form-control form-control-sm" placeholder="Small input">
           </div>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Large Input --&gt;
-&lt;input type="text" class="form-control form-control-lg" placeholder="Large input"&gt;
+&lt;input type="text" class="aiab-form-control form-control-lg" placeholder="Large input"&gt;
 
 &lt;!-- Default Input --&gt;
-&lt;input type="text" class="form-control" placeholder="Default input"&gt;
+&lt;input type="text" class="aiab-form-control" placeholder="Default input"&gt;
 
 &lt;!-- Small Input --&gt;
-&lt;input type="text" class="form-control form-control-sm" placeholder="Small input"&gt;</code></pre>
+&lt;input type="text" class="aiab-form-control form-control-sm" placeholder="Small input"&gt;</code></pre>
       </div>
     </section>
 
@@ -541,17 +541,17 @@
         <div class="demo-title">Floating Label Inputs</div>
         <div class="form-demo">
           <div class="form-floating">
-            <input type="text" id="floating-text" class="form-control" placeholder="Name">
+            <input type="text" id="floating-text" class="aiab-form-control" placeholder="Name">
             <label for="floating-text">Full Name</label>
           </div>
 
           <div class="form-floating" style="margin-top: 1rem;">
-            <input type="email" id="floating-email" class="form-control" placeholder="name@example.com">
+            <input type="email" id="floating-email" class="aiab-form-control" placeholder="name@example.com">
             <label for="floating-email">Email address</label>
           </div>
 
           <div class="form-floating" style="margin-top: 1rem;">
-            <select id="floating-select" class="form-control">
+            <select id="floating-select" class="aiab-form-control">
               <option selected>Open this select menu</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -561,7 +561,7 @@
           </div>
 
           <div class="form-floating" style="margin-top: 1rem;">
-            <textarea id="floating-textarea" class="form-control" placeholder="Leave a comment here" style="height: 100px"></textarea>
+            <textarea id="floating-textarea" class="aiab-form-control" placeholder="Leave a comment here" style="height: 100px"></textarea>
             <label for="floating-textarea">Comments</label>
           </div>
         </div>
@@ -569,17 +569,17 @@
 
       <div class="code-block">
         <pre><code>&lt;div class="form-floating"&gt;
-  &lt;input type="text" id="floating-text" class="form-control" placeholder="Name"&gt;
+  &lt;input type="text" id="floating-text" class="aiab-form-control" placeholder="Name"&gt;
   &lt;label for="floating-text"&gt;Full Name&lt;/label&gt;
 &lt;/div&gt;
 
 &lt;div class="form-floating"&gt;
-  &lt;input type="email" id="floating-email" class="form-control" placeholder="name@example.com"&gt;
+  &lt;input type="email" id="floating-email" class="aiab-form-control" placeholder="name@example.com"&gt;
   &lt;label for="floating-email"&gt;Email address&lt;/label&gt;
 &lt;/div&gt;
 
 &lt;div class="form-floating"&gt;
-  &lt;select id="floating-select" class="form-control"&gt;
+  &lt;select id="floating-select" class="aiab-form-control"&gt;
     &lt;option selected&gt;Open this select menu&lt;/option&gt;
     &lt;option value="1"&gt;One&lt;/option&gt;
     &lt;option value="2"&gt;Two&lt;/option&gt;
@@ -596,25 +596,25 @@
       <div class="demo-section">
         <div class="demo-title">Validation States</div>
         <div class="form-demo validation-demo">
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="valid-input">Valid Input</label>
-            <input type="text" id="valid-input" class="form-control is-valid" value="This looks good!">
+            <input type="text" id="valid-input" class="aiab-form-control is-valid" value="This looks good!">
             <div class="valid-feedback">Great! This field is valid.</div>
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="invalid-input">Invalid Input</label>
-            <input type="text" id="invalid-input" class="form-control is-invalid" value="Invalid input">
+            <input type="text" id="invalid-input" class="aiab-form-control is-invalid" value="Invalid input">
             <div class="invalid-feedback">Please provide a valid input.</div>
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="help-input">Input with Help Text</label>
-            <input type="text" id="help-input" class="form-control">
+            <input type="text" id="help-input" class="aiab-form-control">
             <div class="form-text">This is some helpful text to guide the user.</div>
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label>Form Validation Example</label>
             <div class="form-check">
               <input type="checkbox" id="invalid-check" class="form-check-input is-invalid" required>
@@ -624,28 +624,28 @@
           </div>
         </div>
 
-        <button class="btn btn--primary" onclick="validateForm()">Validate Form</button>
+        <button class="aiab-btn btn--primary" onclick="validateForm()">Validate Form</button>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Valid Input --&gt;
-&lt;div class="form-group"&gt;
+&lt;div class="aiab-form-group"&gt;
   &lt;label for="valid-input"&gt;Valid Input&lt;/label&gt;
-  &lt;input type="text" id="valid-input" class="form-control is-valid" value="This looks good!"&gt;
+  &lt;input type="text" id="valid-input" class="aiab-form-control is-valid" value="This looks good!"&gt;
   &lt;div class="valid-feedback"&gt;Great! This field is valid.&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Invalid Input --&gt;
-&lt;div class="form-group"&gt;
+&lt;div class="aiab-form-group"&gt;
   &lt;label for="invalid-input"&gt;Invalid Input&lt;/label&gt;
-  &lt;input type="text" id="invalid-input" class="form-control is-invalid"&gt;
+  &lt;input type="text" id="invalid-input" class="aiab-form-control is-invalid"&gt;
   &lt;div class="invalid-feedback"&gt;Please provide a valid input.&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Help Text --&gt;
-&lt;div class="form-group"&gt;
+&lt;div class="aiab-form-group"&gt;
   &lt;label for="help-input"&gt;Input with Help Text&lt;/label&gt;
-  &lt;input type="text" id="help-input" class="form-control"&gt;
+  &lt;input type="text" id="help-input" class="aiab-form-control"&gt;
   &lt;div class="form-text"&gt;This is some helpful text.&lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -660,38 +660,38 @@
         <div class="demo-title">Form Grid System</div>
         <div class="form-demo">
           <div class="form-grid-2">
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="first-name">First Name</label>
-              <input type="text" id="first-name" class="form-control" placeholder="John">
+              <input type="text" id="first-name" class="aiab-form-control" placeholder="John">
             </div>
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="last-name">Last Name</label>
-              <input type="text" id="last-name" class="form-control" placeholder="Doe">
+              <input type="text" id="last-name" class="aiab-form-control" placeholder="Doe">
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="email-grid">Email</label>
-            <input type="email" id="email-grid" class="form-control" placeholder="john.doe@example.com">
+            <input type="email" id="email-grid" class="aiab-form-control" placeholder="john.doe@example.com">
           </div>
 
           <div class="form-grid-3">
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="city">City</label>
-              <input type="text" id="city" class="form-control" placeholder="New York">
+              <input type="text" id="city" class="aiab-form-control" placeholder="New York">
             </div>
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="state">State</label>
-              <select id="state" class="form-control">
+              <select id="state" class="aiab-form-control">
                 <option>Choose...</option>
                 <option>California</option>
                 <option>New York</option>
                 <option>Texas</option>
               </select>
             </div>
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="zip">Zip</label>
-              <input type="text" id="zip" class="form-control" placeholder="12345">
+              <input type="text" id="zip" class="aiab-form-control" placeholder="12345">
             </div>
           </div>
         </div>
@@ -700,29 +700,29 @@
       <div class="code-block">
         <pre><code>&lt;!-- Two Column Grid --&gt;
 &lt;div class="form-grid-2"&gt;
-  &lt;div class="form-group"&gt;
+  &lt;div class="aiab-form-group"&gt;
     &lt;label for="first-name"&gt;First Name&lt;/label&gt;
-    &lt;input type="text" id="first-name" class="form-control"&gt;
+    &lt;input type="text" id="first-name" class="aiab-form-control"&gt;
   &lt;/div&gt;
-  &lt;div class="form-group"&gt;
+  &lt;div class="aiab-form-group"&gt;
     &lt;label for="last-name"&gt;Last Name&lt;/label&gt;
-    &lt;input type="text" id="last-name" class="form-control"&gt;
+    &lt;input type="text" id="last-name" class="aiab-form-control"&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Three Column Grid --&gt;
 &lt;div class="form-grid-3"&gt;
-  &lt;div class="form-group"&gt;
+  &lt;div class="aiab-form-group"&gt;
     &lt;label for="city"&gt;City&lt;/label&gt;
-    &lt;input type="text" id="city" class="form-control"&gt;
+    &lt;input type="text" id="city" class="aiab-form-control"&gt;
   &lt;/div&gt;
-  &lt;div class="form-group"&gt;
+  &lt;div class="aiab-form-group"&gt;
     &lt;label for="state"&gt;State&lt;/label&gt;
-    &lt;select id="state" class="form-control"&gt;...&lt;/select&gt;
+    &lt;select id="state" class="aiab-form-control"&gt;...&lt;/select&gt;
   &lt;/div&gt;
-  &lt;div class="form-group"&gt;
+  &lt;div class="aiab-form-group"&gt;
     &lt;label for="zip"&gt;Zip&lt;/label&gt;
-    &lt;input type="text" id="zip" class="form-control"&gt;
+    &lt;input type="text" id="zip" class="aiab-form-control"&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -732,30 +732,30 @@
         <div class="demo-title">Inline Form Example</div>
         <div class="form-demo">
           <form class="form-inline">
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="inline-name">Name</label>
-              <input type="text" id="inline-name" class="form-control" placeholder="Jane Doe">
+              <input type="text" id="inline-name" class="aiab-form-control" placeholder="Jane Doe">
             </div>
-            <div class="form-group">
+            <div class="aiab-form-group">
               <label for="inline-email">Email</label>
-              <input type="email" id="inline-email" class="form-control" placeholder="jane@example.com">
+              <input type="email" id="inline-email" class="aiab-form-control" placeholder="jane@example.com">
             </div>
-            <button type="submit" class="btn btn--primary">Sign up</button>
+            <button type="submit" class="aiab-btn btn--primary">Sign up</button>
           </form>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;form class="form-inline"&gt;
-  &lt;div class="form-group"&gt;
+  &lt;div class="aiab-form-group"&gt;
     &lt;label for="inline-name"&gt;Name&lt;/label&gt;
-    &lt;input type="text" id="inline-name" class="form-control" placeholder="Jane Doe"&gt;
+    &lt;input type="text" id="inline-name" class="aiab-form-control" placeholder="Jane Doe"&gt;
   &lt;/div&gt;
-  &lt;div class="form-group"&gt;
+  &lt;div class="aiab-form-group"&gt;
     &lt;label for="inline-email"&gt;Email&lt;/label&gt;
-    &lt;input type="email" id="inline-email" class="form-control" placeholder="jane@example.com"&gt;
+    &lt;input type="email" id="inline-email" class="aiab-form-control" placeholder="jane@example.com"&gt;
   &lt;/div&gt;
-  &lt;button type="submit" class="btn btn--primary"&gt;Sign up&lt;/button&gt;
+  &lt;button type="submit" class="aiab-btn btn--primary"&gt;Sign up&lt;/button&gt;
 &lt;/form&gt;</code></pre>
       </div>
     </section>
@@ -767,31 +767,31 @@
       <div class="demo-section">
         <div class="demo-title">Range, File, and Search Inputs</div>
         <div class="form-demo">
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="range-input">Range Input</label>
-            <input type="range" id="range-input" class="form-control" min="0" max="100" value="50">
+            <input type="range" id="range-input" class="aiab-form-control" min="0" max="100" value="50">
             <div class="form-text">Current value: <span id="range-value">50</span></div>
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="file-input">File Input</label>
-            <input type="file" id="file-input" class="form-control">
+            <input type="file" id="file-input" class="aiab-form-control">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="color-input">Color Input</label>
-            <input type="color" id="color-input" class="form-control" value="#ED8B00" style="height: 3rem;">
+            <input type="color" id="color-input" class="aiab-form-control" value="#ED8B00" style="height: 3rem;">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label for="date-input">Date Input</label>
-            <input type="date" id="date-input" class="form-control">
+            <input type="date" id="date-input" class="aiab-form-control">
           </div>
 
-          <div class="form-group">
+          <div class="aiab-form-group">
             <label>Search Form</label>
             <div class="search-form">
-              <input type="search" class="form-control" placeholder="Search...">
+              <input type="search" class="aiab-form-control" placeholder="Search...">
               <button type="submit">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -804,20 +804,20 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Range Input --&gt;
-&lt;div class="form-group"&gt;
+&lt;div class="aiab-form-group"&gt;
   &lt;label for="range-input"&gt;Range Input&lt;/label&gt;
-  &lt;input type="range" id="range-input" class="form-control" min="0" max="100" value="50"&gt;
+  &lt;input type="range" id="range-input" class="aiab-form-control" min="0" max="100" value="50"&gt;
 &lt;/div&gt;
 
 &lt;!-- File Input --&gt;
-&lt;div class="form-group"&gt;
+&lt;div class="aiab-form-group"&gt;
   &lt;label for="file-input"&gt;File Input&lt;/label&gt;
-  &lt;input type="file" id="file-input" class="form-control"&gt;
+  &lt;input type="file" id="file-input" class="aiab-form-control"&gt;
 &lt;/div&gt;
 
 &lt;!-- Search Form --&gt;
 &lt;div class="search-form"&gt;
-  &lt;input type="search" class="form-control" placeholder="Search..."&gt;
+  &lt;input type="search" class="aiab-form-control" placeholder="Search..."&gt;
   &lt;button type="submit"&gt;🔍&lt;/button&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -835,32 +835,32 @@
               <legend>Contact Information</legend>
 
               <div class="form-grid-2">
-                <div class="form-group">
+                <div class="aiab-form-group">
                   <label for="contact-first-name">First Name *</label>
-                  <input type="text" id="contact-first-name" class="form-control" required>
+                  <input type="text" id="contact-first-name" class="aiab-form-control" required>
                   <div class="invalid-feedback">Please enter your first name.</div>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                   <label for="contact-last-name">Last Name *</label>
-                  <input type="text" id="contact-last-name" class="form-control" required>
+                  <input type="text" id="contact-last-name" class="aiab-form-control" required>
                   <div class="invalid-feedback">Please enter your last name.</div>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="contact-email">Email Address *</label>
-                <input type="email" id="contact-email" class="form-control" required>
+                <input type="email" id="contact-email" class="aiab-form-control" required>
                 <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
 
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="contact-phone">Phone Number</label>
-                <input type="tel" id="contact-phone" class="form-control">
+                <input type="tel" id="contact-phone" class="aiab-form-control">
               </div>
 
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="contact-subject">Subject *</label>
-                <select id="contact-subject" class="form-control" required>
+                <select id="contact-subject" class="aiab-form-control" required>
                   <option value="">Choose a subject</option>
                   <option value="general">General Inquiry</option>
                   <option value="support">Technical Support</option>
@@ -870,20 +870,20 @@
                 <div class="invalid-feedback">Please select a subject.</div>
               </div>
 
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <label for="contact-message">Message *</label>
-                <textarea id="contact-message" class="form-control" rows="4" required placeholder="Tell us how we can help you..."></textarea>
+                <textarea id="contact-message" class="aiab-form-control" rows="4" required placeholder="Tell us how we can help you..."></textarea>
                 <div class="invalid-feedback">Please enter your message.</div>
               </div>
 
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <div class="form-check">
                   <input type="checkbox" id="contact-newsletter" class="form-check-input">
                   <label for="contact-newsletter" class="form-check-label">Subscribe to our newsletter</label>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="aiab-form-group">
                 <div class="form-check">
                   <input type="checkbox" id="contact-terms" class="form-check-input" required>
                   <label for="contact-terms" class="form-check-label">I agree to the terms and conditions *</label>
@@ -891,9 +891,9 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <button type="submit" class="btn btn--primary">Send Message</button>
-                <button type="reset" class="btn btn--secondary">Clear Form</button>
+              <div class="aiab-form-group">
+                <button type="submit" class="aiab-btn btn--primary">Send Message</button>
+                <button type="reset" class="aiab-btn btn--secondary">Clear Form</button>
               </div>
             </fieldset>
           </form>
@@ -906,26 +906,26 @@
     &lt;legend&gt;Contact Information&lt;/legend&gt;
 
     &lt;div class="form-grid-2"&gt;
-      &lt;div class="form-group"&gt;
+      &lt;div class="aiab-form-group"&gt;
         &lt;label for="first-name"&gt;First Name *&lt;/label&gt;
-        &lt;input type="text" id="first-name" class="form-control" required&gt;
+        &lt;input type="text" id="first-name" class="aiab-form-control" required&gt;
         &lt;div class="invalid-feedback"&gt;Please enter your first name.&lt;/div&gt;
       &lt;/div&gt;
-      &lt;div class="form-group"&gt;
+      &lt;div class="aiab-form-group"&gt;
         &lt;label for="last-name"&gt;Last Name *&lt;/label&gt;
-        &lt;input type="text" id="last-name" class="form-control" required&gt;
+        &lt;input type="text" id="last-name" class="aiab-form-control" required&gt;
         &lt;div class="invalid-feedback"&gt;Please enter your last name.&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class="form-group"&gt;
+    &lt;div class="aiab-form-group"&gt;
       &lt;label for="email"&gt;Email Address *&lt;/label&gt;
-      &lt;input type="email" id="email" class="form-control" required&gt;
+      &lt;input type="email" id="email" class="aiab-form-control" required&gt;
       &lt;div class="invalid-feedback"&gt;Please enter a valid email address.&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class="form-group"&gt;
-      &lt;button type="submit" class="btn btn--primary"&gt;Send Message&lt;/button&gt;
+    &lt;div class="aiab-form-group"&gt;
+      &lt;button type="submit" class="aiab-btn btn--primary"&gt;Send Message&lt;/button&gt;
     &lt;/div&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
@@ -946,7 +946,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.form-control</code></td>
+            <td><code>.aiab-form-control</code></td>
             <td>Base form control styling</td>
           </tr>
           <tr>
@@ -958,7 +958,7 @@
             <td>Large form control</td>
           </tr>
           <tr>
-            <td><code>.form-group</code></td>
+            <td><code>.aiab-form-group</code></td>
             <td>Form field grouping container</td>
           </tr>
           <tr>
@@ -1101,14 +1101,14 @@
         <pre><code>// Form validation utility
 class FormValidator {
   constructor(form) {
-    this.form = form;
+    this.aiab-form = form;
     this.init();
   }
 
   init() {
-    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-    this.form.addEventListener('input', (e) => this.handleInput(e));
-    this.form.addEventListener('change', (e) => this.handleChange(e));
+    this.aiab-form.addEventListener('submit', (e) => this.handleSubmit(e));
+    this.aiab-form.addEventListener('input', (e) => this.handleInput(e));
+    this.aiab-form.addEventListener('change', (e) => this.handleChange(e));
   }
 
   handleSubmit(e) {
@@ -1133,7 +1133,7 @@ class FormValidator {
   }
 
   validateForm() {
-    const fields = this.form.querySelectorAll('input, select, textarea');
+    const fields = this.aiab-form.querySelectorAll('input, select, textarea');
     let isValid = true;
 
     fields.forEach(field => {
@@ -1142,7 +1142,7 @@ class FormValidator {
       }
     });
 
-    this.form.classList.add('was-validated');
+    this.aiab-form.classList.add('was-validated');
     return isValid;
   }
 
@@ -1223,7 +1223,7 @@ class FormValidator {
     console.log('Form has validation errors');
 
     // Focus first invalid field
-    const firstInvalid = this.form.querySelector('.is-invalid');
+    const firstInvalid = this.aiab-form.querySelector('.is-invalid');
     if (firstInvalid) {
       firstInvalid.focus();
     }
@@ -1237,18 +1237,18 @@ class FormValidator {
     alert.className = `alert alert--${type}`;
     alert.textContent = text;
 
-    this.form.insertBefore(alert, this.form.firstChild);
+    this.aiab-form.insertBefore(alert, this.aiab-form.firstChild);
 
     // Remove after 5 seconds
     setTimeout(() => alert.remove(), 5000);
   }
 
   reset() {
-    this.form.reset();
-    this.form.classList.remove('was-validated');
+    this.aiab-form.reset();
+    this.aiab-form.classList.remove('was-validated');
 
     // Clear all validation states
-    const fields = this.form.querySelectorAll('.is-valid, .is-invalid');
+    const fields = this.aiab-form.querySelectorAll('.is-valid, .is-invalid');
     fields.forEach(field => {
       field.classList.remove('is-valid', 'is-invalid');
     });
@@ -1351,7 +1351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </section>
   </main>
 
-  <footer class="container">
+  <footer class="aiab-container">
     <div class="section">
       <p>
         <a href="/examples/forms-demo.html">View Live Examples</a> |

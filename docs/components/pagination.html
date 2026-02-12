@@ -35,7 +35,7 @@
     }
 
     /* Container */
-    .container {
+    .aiab-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
@@ -201,7 +201,7 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .container {
+      .aiab-container {
         padding: 0 1rem;
       }
 
@@ -227,7 +227,7 @@
 <body>
   <!-- Site Navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <ul class="horizontal branded">
       <li><a href="/" class="site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
@@ -276,7 +276,7 @@
 </nav>
 
   <header class="docs-header">
-    <div class="container">
+    <div class="aiab-container">
       <nav class="nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
@@ -288,7 +288,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="aiab-container">
     <!-- Overview -->
     <section class="section">
       <h2>Overview</h2>
@@ -331,7 +331,7 @@
         <div class="demo-title">Standard Pagination Navigation</div>
         <div class="pagination-demo">
           <nav aria-label="Pagination Navigation" role="navigation">
-            <ul class="pagination">
+            <ul class="aiab-pagination">
               <li class="pagination__item pagination__item--nav">
                 <a href="#" class="pagination__link pagination__link--disabled" aria-label="Go to previous page">
                   <div class="pagination__nav">
@@ -380,7 +380,7 @@
 
       <div class="code-block">
         <pre><code>&lt;nav aria-label="Pagination Navigation" role="navigation"&gt;
-  &lt;ul class="pagination"&gt;
+  &lt;ul class="aiab-pagination"&gt;
     &lt;li class="pagination__item pagination__item--nav"&gt;
       &lt;a href="#" class="pagination__link pagination__link--disabled" aria-label="Go to previous page"&gt;
         &lt;div class="pagination__nav"&gt;
@@ -426,7 +426,7 @@
         <div class="demo-title">Simple Previous/Next Pagination</div>
         <div class="pagination-demo">
           <nav aria-label="Simple Pagination" role="navigation">
-            <ul class="pagination pagination--simple">
+            <ul class="aiab-pagination pagination--simple">
               <li class="pagination__item">
                 <a href="#" class="pagination__link" aria-label="Go to previous page">
                   <div class="pagination__nav">
@@ -454,7 +454,7 @@
 
       <div class="code-block">
         <pre><code>&lt;nav aria-label="Simple Pagination" role="navigation"&gt;
-  &lt;ul class="pagination pagination--simple"&gt;
+  &lt;ul class="aiab-pagination pagination--simple"&gt;
     &lt;li class="pagination__item"&gt;
       &lt;a href="#" class="pagination__link" aria-label="Go to previous page"&gt;
         &lt;div class="pagination__nav"&gt;
@@ -485,7 +485,7 @@
           <h3>Pills Pagination</h3>
           <div class="pagination-demo">
             <nav aria-label="Pills Pagination" role="navigation">
-              <ul class="pagination pagination--pills">
+              <ul class="aiab-pagination pagination--pills">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -513,7 +513,7 @@
           <h3>Rounded Pagination</h3>
           <div class="pagination-demo">
             <nav aria-label="Rounded Pagination" role="navigation">
-              <ul class="pagination pagination--rounded">
+              <ul class="aiab-pagination pagination--rounded">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -541,7 +541,7 @@
           <h3>Borderless Pagination</h3>
           <div class="pagination-demo">
             <nav aria-label="Borderless Pagination" role="navigation">
-              <ul class="pagination pagination--borderless">
+              <ul class="aiab-pagination pagination--borderless">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -569,7 +569,7 @@
           <h3>Outlined Pagination</h3>
           <div class="pagination-demo">
             <nav aria-label="Outlined Pagination" role="navigation">
-              <ul class="pagination pagination--outlined">
+              <ul class="aiab-pagination pagination--outlined">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -596,16 +596,16 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Pills Pagination --&gt;
-&lt;ul class="pagination pagination--pills"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination pagination--pills"&gt;...&lt;/ul&gt;
 
 &lt;!-- Rounded Pagination --&gt;
-&lt;ul class="pagination pagination--rounded"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination pagination--rounded"&gt;...&lt;/ul&gt;
 
 &lt;!-- Borderless Pagination --&gt;
-&lt;ul class="pagination pagination--borderless"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination pagination--borderless"&gt;...&lt;/ul&gt;
 
 &lt;!-- Outlined Pagination --&gt;
-&lt;ul class="pagination pagination--outlined"&gt;...&lt;/ul&gt;</code></pre>
+&lt;ul class="aiab-pagination pagination--outlined"&gt;...&lt;/ul&gt;</code></pre>
       </div>
     </section>
 
@@ -618,7 +618,7 @@
           <h3>Compact Pagination</h3>
           <div class="pagination-demo">
             <nav aria-label="Compact Pagination" role="navigation">
-              <ul class="pagination pagination--compact">
+              <ul class="aiab-pagination pagination--compact">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -646,7 +646,7 @@
           <h3>Default Pagination</h3>
           <div class="pagination-demo">
             <nav aria-label="Default Pagination" role="navigation">
-              <ul class="pagination">
+              <ul class="aiab-pagination">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -674,7 +674,7 @@
           <h3>Large Pagination</h3>
           <div class="pagination-demo">
             <nav aria-label="Large Pagination" role="navigation">
-              <ul class="pagination pagination--large">
+              <ul class="aiab-pagination pagination--large">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -701,13 +701,13 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Compact Pagination --&gt;
-&lt;ul class="pagination pagination--compact"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination pagination--compact"&gt;...&lt;/ul&gt;
 
 &lt;!-- Default Pagination --&gt;
-&lt;ul class="pagination"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination"&gt;...&lt;/ul&gt;
 
 &lt;!-- Large Pagination --&gt;
-&lt;ul class="pagination pagination--large"&gt;...&lt;/ul&gt;</code></pre>
+&lt;ul class="aiab-pagination pagination--large"&gt;...&lt;/ul&gt;</code></pre>
       </div>
     </section>
 
@@ -728,7 +728,7 @@
 
             <div class="pagination-container__center">
               <nav aria-label="Advanced Pagination" role="navigation">
-                <ul class="pagination">
+                <ul class="aiab-pagination">
                   <li class="pagination__item">
                     <a href="#" class="pagination__link pagination__link--disabled" aria-label="Go to previous page">‹</a>
                   </li>
@@ -787,7 +787,7 @@
 
   &lt;div class="pagination-container__center"&gt;
     &lt;nav aria-label="Pagination" role="navigation"&gt;
-      &lt;ul class="pagination"&gt;
+      &lt;ul class="aiab-pagination"&gt;
         &lt;!-- Pagination items... --&gt;
       &lt;/ul&gt;
     &lt;/nav&gt;
@@ -827,7 +827,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.pagination</code></td>
+            <td><code>.aiab-pagination</code></td>
             <td>Base pagination container</td>
           </tr>
           <tr>
@@ -1002,14 +1002,14 @@ class Pagination {
     this.showInfo = options.showInfo !== false;
     this.showJump = options.showJump || false;
     this.showPageSize = options.showPageSize || false;
-    this.container = options.container;
+    this.aiab-container = options.aiab-container;
     this.onChange = options.onChange || (() => {});
 
     this.init();
   }
 
   init() {
-    if (this.container) {
+    if (this.aiab-container) {
       this.render();
       this.attachEvents();
     }
@@ -1017,7 +1017,7 @@ class Pagination {
 
   render() {
     const paginationHTML = this.generateHTML();
-    this.container.innerHTML = paginationHTML;
+    this.aiab-container.innerHTML = paginationHTML;
   }
 
   generateHTML() {
@@ -1033,7 +1033,7 @@ class Pagination {
         &lt;/div&gt;
         &lt;div class="pagination-container__center"&gt;
           &lt;nav aria-label="Pagination Navigation" role="navigation"&gt;
-            &lt;ul class="pagination"&gt;
+            &lt;ul class="aiab-pagination"&gt;
               ${this.generatePrevButton()}
               ${pages.map(page =&gt; this.generatePageItem(page)).join('')}
               ${this.generateNextButton()}
@@ -1188,7 +1188,7 @@ class Pagination {
   }
 
   attachEvents() {
-    this.container.addEventListener('click', (e) =&gt; {
+    this.aiab-container.addEventListener('click', (e) =&gt; {
       e.preventDefault();
 
       const link = e.target.closest('.pagination__link:not(.pagination__link--disabled)');
@@ -1200,7 +1200,7 @@ class Pagination {
           this.goToPage(page);
         }
       } else if (jumpButton) {
-        const input = this.container.querySelector('.pagination__jump-input');
+        const input = this.aiab-container.querySelector('.pagination__jump-input');
         const page = parseInt(input.value);
         if (page &gt;= 1 && page &lt;= this.totalPages) {
           this.goToPage(page);
@@ -1208,7 +1208,7 @@ class Pagination {
       }
     });
 
-    this.container.addEventListener('change', (e) =&gt; {
+    this.aiab-container.addEventListener('change', (e) =&gt; {
       if (e.target.classList.contains('pagination__page-size-select')) {
         const newPageSize = parseInt(e.target.value);
         this.updatePageSize(newPageSize);
@@ -1216,7 +1216,7 @@ class Pagination {
     });
 
     // Keyboard navigation
-    this.container.addEventListener('keydown', (e) =&gt; {
+    this.aiab-container.addEventListener('keydown', (e) =&gt; {
       if (e.target.classList.contains('pagination__jump-input') && e.key === 'Enter') {
         const page = parseInt(e.target.value);
         if (page &gt;= 1 && page &lt;= this.totalPages) {
@@ -1315,7 +1315,7 @@ const pagination = new Pagination({
     </section>
   </main>
 
-  <footer class="container">
+  <footer class="aiab-container">
     <div class="section">
       <p>
         <a href="/examples/pagination-demo.html">View Live Examples</a> |
@@ -1340,7 +1340,7 @@ const pagination = new Pagination({
         link.addEventListener('click', (e) => {
           e.preventDefault();
 
-          const pagination = link.closest('.pagination');
+          const pagination = link.closest('.aiab-pagination');
           const currentPage = pagination.querySelector('.pagination__current');
           const pageNumber = link.textContent.trim();
 

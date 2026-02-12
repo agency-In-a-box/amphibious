@@ -111,7 +111,7 @@
             transition: all 0.2s;
         }
 
-        .filter-btn.active {
+        .filter-btn.aiab-active {
             background: #ED8B00;
             color: white;
             border-color: #ED8B00;
@@ -299,7 +299,7 @@
 <body>
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -355,7 +355,7 @@
 
     <!-- Header -->
     <header class="header">
-        <div class="container">
+        <div class="aiab-container">
             <h1>🎨 Icon System Showcase</h1>
             <p>1,641+ Lucide icons with smart integration and e-commerce focus</p>
 
@@ -394,7 +394,7 @@
             </div>
 
             <div class="filters">
-                <button class="filter-btn active" data-category="all">All Icons</button>
+                <button class="filter-btn aiab-active" data-category="all">All Icons</button>
                 <button class="filter-btn" data-category="e-commerce">E-commerce</button>
                 <button class="filter-btn" data-category="navigation">Navigation</button>
                 <button class="filter-btn" data-category="social">Social</button>
@@ -406,7 +406,7 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="aiab-container">
         <!-- Usage Examples -->
         <section class="demo-section">
             <h2 class="section-title">
@@ -720,8 +720,8 @@
 
             // Initialize Lucide icons in the new grid
             setTimeout(() => {
-                if (window.amp && window.amp.modules.icon) {
-                    window.amp.modules.icon.refresh();
+                if (window.amp && window.amp.modules.aiab-icon) {
+                    window.amp.modules.aiab-icon.refresh();
                 }
             }, 100);
         }

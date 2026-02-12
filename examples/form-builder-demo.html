@@ -62,7 +62,7 @@
       background: var(--apple-gray-100);
     }
 
-    .demo-tab.active {
+    .demo-tab.aiab-active {
       background: var(--apple-orange-500, #ED8B00);
       color: white;
     }
@@ -71,7 +71,7 @@
       display: none;
     }
 
-    .demo-content.active {
+    .demo-content.aiab-active {
       display: block;
     }
 
@@ -260,7 +260,7 @@
 </head>
 <body>
   <div class="demo-header">
-    <div class="container">
+    <div class="aiab-container">
       <h1>Form Builder
         <span class="demo-badge">INTERACTIVE</span>
       </h1>
@@ -268,22 +268,22 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="aiab-container">
     <!-- Tab Navigation -->
     <div class="demo-tabs">
-      <button class="demo-tab active" data-tab="builder">Builder</button>
+      <button class="demo-tab aiab-active" data-tab="builder">Builder</button>
       <button class="demo-tab" data-tab="templates">Templates</button>
       <button class="demo-tab" data-tab="features">Features</button>
       <button class="demo-tab" data-tab="integration">Integration</button>
     </div>
 
     <!-- Builder Tab -->
-    <div id="builder" class="demo-content active">
+    <div id="builder" class="demo-content aiab-active">
       <div class="action-buttons">
-        <button class="btn btn-primary" onclick="clearForm()">Clear Form</button>
-        <button class="btn btn-secondary" onclick="loadSample()">Load Sample</button>
-        <button class="btn btn-secondary" onclick="exportJSON()">Export JSON</button>
-        <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Import JSON</button>
+        <button class="aiab-btn btn-primary" onclick="clearForm()">Clear Form</button>
+        <button class="aiab-btn btn-secondary" onclick="loadSample()">Load Sample</button>
+        <button class="aiab-btn btn-secondary" onclick="exportJSON()">Export JSON</button>
+        <button class="aiab-btn btn-secondary" onclick="document.getElementById('importFile').click()">Import JSON</button>
         <input type="file" id="importFile" style="display:none" accept=".json" onchange="importJSON(event)">
       </div>
 
@@ -606,7 +606,7 @@ const complexCondition = {
     // Tab switching
     document.querySelectorAll('.demo-tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        const tabName = tab.dataset.tab;
+        const tabName = tab.dataset.aiab-tab;
 
         // Update active tab
         document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));

@@ -29,7 +29,7 @@
 </head>
 <body>
   <nav class="site-nav">
-    <div class="container">
+    <div class="aiab-container">
       <div class="nav-wrapper">
         <a href="#" class="site-logo">Amphibious</a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
@@ -40,7 +40,7 @@
           <ul class="nav-menu">
             <li><a href="index.html">Examples</a></li>
             <li><a href="../index.html">Home</a></li>
-            <li class="active"><a href="accordion-demo.html">Accordion</a></li>
+            <li class="aiab-active"><a href="accordion-demo.html">Accordion</a></li>
           </ul>
         </nav>
       </div>
@@ -48,20 +48,20 @@
   </nav>
 
   <header class="hero">
-    <div class="container">
+    <div class="aiab-container">
       <h1>Accordion Component</h1>
       <p class="lead">Expandable content sections with full accessibility support</p>
     </div>
   </header>
 
-  <main class="container" style="padding: 3rem 1rem;">
+  <main class="aiab-container" style="padding: 3rem 1rem;">
 
     <!-- Basic Accordion -->
     <section class="demo-section">
       <h2>Basic Accordion</h2>
 
-      <div class="accordion" data-auto-init="true">
-        <div class="accordion-item active">
+      <div class="aiab-accordion" data-auto-init="true">
+        <div class="accordion-item aiab-active">
           <button class="accordion-header">
             What is Amphibious?
           </button>
@@ -120,8 +120,8 @@
     <section class="demo-section">
       <h2>Multiple Items Open</h2>
 
-      <div class="accordion" data-auto-init="true" data-allow-multiple="true">
-        <div class="accordion-item active">
+      <div class="aiab-accordion" data-auto-init="true" data-allow-multiple="true">
+        <div class="accordion-item aiab-active">
           <button class="accordion-header">
             Performance Optimizations
           </button>
@@ -138,7 +138,7 @@
           </div>
         </div>
 
-        <div class="accordion-item active">
+        <div class="accordion-item aiab-active">
           <button class="accordion-header">
             Accessibility Features
           </button>
@@ -182,7 +182,7 @@
         <!-- Flush Accordion -->
         <div>
           <h3>Flush (No Borders)</h3>
-          <div class="accordion accordion--flush" data-auto-init="true">
+          <div class="aiab-accordion accordion--flush" data-auto-init="true">
             <div class="accordion-item">
               <button class="accordion-header">
                 Item One
@@ -209,7 +209,7 @@
         <!-- Separated Accordion -->
         <div>
           <h3>Separated Items</h3>
-          <div class="accordion accordion--separated" data-auto-init="true">
+          <div class="aiab-accordion accordion--separated" data-auto-init="true">
             <div class="accordion-item">
               <button class="accordion-header">
                 Separated Item One
@@ -241,7 +241,7 @@
 
       <div style="margin-bottom: 2rem;">
         <h3>Compact</h3>
-        <div class="accordion accordion--compact" data-auto-init="true">
+        <div class="aiab-accordion accordion--compact" data-auto-init="true">
           <div class="accordion-item">
             <button class="accordion-header">
               Compact Accordion Item
@@ -267,7 +267,7 @@
 
       <div>
         <h3>Large</h3>
-        <div class="accordion accordion--large" data-auto-init="true">
+        <div class="aiab-accordion accordion--large" data-auto-init="true">
           <div class="accordion-item">
             <button class="accordion-header">
               Large Accordion Item
@@ -298,7 +298,7 @@
 
       <div style="margin-bottom: 2rem;">
         <h3>Plus/Minus Icons</h3>
-        <div class="accordion accordion--plus-minus" data-auto-init="true">
+        <div class="aiab-accordion accordion--plus-minus" data-auto-init="true">
           <div class="accordion-item">
             <button class="accordion-header">
               Click to expand
@@ -330,7 +330,7 @@
       <div class="demo-grid">
         <div>
           <h3>Primary</h3>
-          <div class="accordion accordion--primary" data-auto-init="true">
+          <div class="aiab-accordion accordion--primary" data-auto-init="true">
             <div class="accordion-item">
               <button class="accordion-header">
                 Primary Colored
@@ -346,8 +346,8 @@
 
         <div>
           <h3>Success</h3>
-          <div class="accordion accordion--success" data-auto-init="true">
-            <div class="accordion-item active">
+          <div class="aiab-accordion accordion--success" data-auto-init="true">
+            <div class="accordion-item aiab-active">
               <button class="accordion-header">
                 Success State
               </button>
@@ -362,8 +362,8 @@
 
         <div>
           <h3>Info</h3>
-          <div class="accordion accordion--info" data-auto-init="true">
-            <div class="accordion-item active">
+          <div class="aiab-accordion accordion--info" data-auto-init="true">
+            <div class="accordion-item aiab-active">
               <button class="accordion-header">
                 Information
               </button>
@@ -378,8 +378,8 @@
 
         <div>
           <h3>Warning</h3>
-          <div class="accordion accordion--warning" data-auto-init="true">
-            <div class="accordion-item active">
+          <div class="aiab-accordion accordion--warning" data-auto-init="true">
+            <div class="accordion-item aiab-active">
               <button class="accordion-header">
                 Warning Message
               </button>
@@ -398,7 +398,7 @@
     <section class="demo-section">
       <h2>Nested Accordions</h2>
 
-      <div class="accordion" data-auto-init="true">
+      <div class="aiab-accordion" data-auto-init="true">
         <div class="accordion-item">
           <button class="accordion-header">
             Parent Level Item
@@ -407,7 +407,7 @@
             <div class="accordion-body">
               <p>This item contains a nested accordion:</p>
 
-              <div class="accordion" data-auto-init="true">
+              <div class="aiab-accordion" data-auto-init="true">
                 <div class="accordion-item">
                   <button class="accordion-header">
                     Nested Item 1
@@ -451,12 +451,12 @@
       <h2>JavaScript Controls</h2>
 
       <div style="margin-bottom: 1rem;">
-        <button class="button button--primary" onclick="accordionAPI.openAll()">Open All</button>
-        <button class="button button--secondary" onclick="accordionAPI.closeAll()">Close All</button>
-        <button class="button button--outline" onclick="accordionAPI.openItem(1)">Open Second Item</button>
+        <button class="aiab-button button--primary" onclick="accordionAPI.openAll()">Open All</button>
+        <button class="aiab-button button--secondary" onclick="accordionAPI.closeAll()">Close All</button>
+        <button class="aiab-button button--outline" onclick="accordionAPI.openItem(1)">Open Second Item</button>
       </div>
 
-      <div class="accordion" id="api-accordion">
+      <div class="aiab-accordion" id="api-accordion">
         <div class="accordion-item">
           <button class="accordion-header">
             First Item
@@ -493,7 +493,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container">
+    <div class="aiab-container">
       <p>&copy; 2024 Amphibious 2.0. Accordion component with full accessibility.</p>
     </div>
   </footer>

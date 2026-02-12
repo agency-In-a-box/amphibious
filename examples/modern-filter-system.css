@@ -331,7 +331,7 @@
   background: #fffbf8;
 }
 
-.filter-dropdown-trigger.active {
+.filter-dropdown-trigger.aiab-active {
   border-color: #ff6900;
   box-shadow: 0 0 0 3px rgba(255, 105, 0, 0.1);
 }

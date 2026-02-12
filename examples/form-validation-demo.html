@@ -33,7 +33,7 @@
 </head>
 <body>
   <nav class="site-nav">
-    <div class="container">
+    <div class="aiab-container">
       <div class="nav-wrapper">
         <a href="#" class="site-logo">Amphibious</a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
@@ -45,7 +45,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="foundation.html">Foundation</a></li>
             <li><a href="form.html">Form</a></li>
-            <li class="active"><a href="form-validation-demo.html">Validation</a></li>
+            <li class="aiab-active"><a href="form-validation-demo.html">Validation</a></li>
           </ul>
         </nav>
       </div>
@@ -53,13 +53,13 @@
   </nav>
 
   <header class="hero">
-    <div class="container">
+    <div class="aiab-container">
       <h1>Form Validation States</h1>
       <p class="lead">Comprehensive form validation patterns with accessibility</p>
     </div>
   </header>
 
-  <main class="container" style="padding: 3rem 1rem;">
+  <main class="aiab-container" style="padding: 3rem 1rem;">
 
     <!-- Required Fields Section -->
     <section class="demo-section">
@@ -67,19 +67,19 @@
       <div class="example-form">
         <div class="form-field">
           <label for="required1" class="required">Full Name</label>
-          <input type="text" id="required1" class="form-control" placeholder="Enter your full name">
+          <input type="text" id="required1" class="aiab-form-control" placeholder="Enter your full name">
           <span class="helper-text">This field is required</span>
         </div>
 
         <div class="form-field">
           <label for="optional1" class="optional">Company</label>
-          <input type="text" id="optional1" class="form-control" placeholder="Enter company name">
+          <input type="text" id="optional1" class="aiab-form-control" placeholder="Enter company name">
           <span class="helper-text">You can leave this field blank</span>
         </div>
 
         <div class="form-field--required">
           <label for="required2">Email Address</label>
-          <input type="email" id="required2" class="form-control" placeholder="name@example.com">
+          <input type="email" id="required2" class="aiab-form-control" placeholder="name@example.com">
         </div>
       </div>
     </section>
@@ -94,13 +94,13 @@
           <h3>Error State</h3>
           <div class="form-field error">
             <label for="error1">Email Address</label>
-            <input type="email" id="error1" class="form-control" value="invalid.email">
+            <input type="email" id="error1" class="aiab-form-control" value="invalid.email">
             <span class="error-message">Please enter a valid email address</span>
           </div>
 
           <div class="form-field">
             <label for="error2">Password</label>
-            <input type="password" id="error2" class="form-control error" value="123">
+            <input type="password" id="error2" class="aiab-form-control error" value="123">
             <span class="error-message">Password must be at least 8 characters</span>
           </div>
         </div>
@@ -108,15 +108,15 @@
         <!-- Success State -->
         <div class="example-form">
           <h3>Success State</h3>
-          <div class="form-field success">
+          <div class="form-field aiab-success">
             <label for="success1">Username</label>
-            <input type="text" id="success1" class="form-control" value="johndoe">
+            <input type="text" id="success1" class="aiab-form-control" value="johndoe">
             <span class="success-message">Username is available!</span>
           </div>
 
           <div class="form-field">
             <label for="success2">Email</label>
-            <input type="email" id="success2" class="form-control success" value="john@example.com">
+            <input type="email" id="success2" class="aiab-form-control aiab-success" value="john@example.com">
             <span class="success-message">Email format is valid</span>
           </div>
         </div>
@@ -124,15 +124,15 @@
         <!-- Warning State -->
         <div class="example-form">
           <h3>Warning State</h3>
-          <div class="form-field warning">
+          <div class="form-field aiab-warning">
             <label for="warning1">Username</label>
-            <input type="text" id="warning1" class="form-control" value="john">
+            <input type="text" id="warning1" class="aiab-form-control" value="john">
             <span class="warning-message">Username is very short</span>
           </div>
 
           <div class="form-field">
             <label for="warning2">Password</label>
-            <input type="password" id="warning2" class="form-control warning" value="password123">
+            <input type="password" id="warning2" class="aiab-form-control aiab-warning" value="password123">
             <span class="warning-message">Consider using a stronger password</span>
           </div>
         </div>
@@ -147,20 +147,20 @@
 
         <div class="form-field">
           <label for="helper1">API Key</label>
-          <input type="text" id="helper1" class="form-control" placeholder="sk-...">
+          <input type="text" id="helper1" class="aiab-form-control" placeholder="sk-...">
           <span class="helper-text">Your API key can be found in your account settings</span>
         </div>
 
         <div class="form-field">
           <label for="helper2">Bio</label>
-          <textarea id="helper2" class="form-control" rows="3" maxlength="200" placeholder="Tell us about yourself"></textarea>
+          <textarea id="helper2" class="aiab-form-control" rows="3" maxlength="200" placeholder="Tell us about yourself"></textarea>
           <span class="helper-text helper-text--icon">Keep it brief and professional</span>
           <span class="character-count">0 / 200</span>
         </div>
 
         <div class="form-field">
           <label for="helper3">Website URL</label>
-          <input type="url" id="helper3" class="form-control" placeholder="https://example.com">
+          <input type="url" id="helper3" class="aiab-form-control" placeholder="https://example.com">
           <span class="helper-text">Include the full URL with https://</span>
         </div>
 
@@ -175,15 +175,15 @@
         <div class="form-field">
           <label for="inline1">Email with Check</label>
           <div class="inline-validation">
-            <input type="email" id="inline1" class="form-control success" value="valid@email.com">
-            <span class="validation-indicator success">✓</span>
+            <input type="email" id="inline1" class="aiab-form-control aiab-success" value="valid@email.com">
+            <span class="validation-indicator aiab-success">✓</span>
           </div>
         </div>
 
         <div class="form-field">
           <label for="inline2">Invalid Entry</label>
           <div class="inline-validation">
-            <input type="text" id="inline2" class="form-control error" value="invalid">
+            <input type="text" id="inline2" class="aiab-form-control error" value="invalid">
             <span class="validation-indicator error">✗</span>
           </div>
         </div>
@@ -191,8 +191,8 @@
         <div class="form-field">
           <label for="inline3">Checking...</label>
           <div class="inline-validation">
-            <input type="text" id="inline3" class="form-control" value="checking">
-            <span class="validation-indicator loading"></span>
+            <input type="text" id="inline3" class="aiab-form-control" value="checking">
+            <span class="validation-indicator aiab-loading"></span>
           </div>
         </div>
 
@@ -213,7 +213,7 @@
           </ul>
         </div>
 
-        <div class="validation-summary warning" style="margin-top: 1rem;">
+        <div class="validation-summary aiab-warning" style="margin-top: 1rem;">
           <h3 class="validation-summary-title">Please review:</h3>
           <ul>
             <li>Your password could be stronger</li>
@@ -245,7 +245,7 @@
           <span class="error-message">Please select at least one interest</span>
         </div>
 
-        <div class="field-group success" style="margin-top: 1.5rem;">
+        <div class="field-group aiab-success" style="margin-top: 1.5rem;">
           <label>Preferred Contact Method</label>
           <div style="margin-top: 0.5rem;">
             <label style="display: block; margin-bottom: 0.5rem;">
@@ -271,25 +271,25 @@
 
         <div class="form-field">
           <label for="disabled1">Disabled Input</label>
-          <input type="text" id="disabled1" class="form-control" value="Cannot edit" disabled>
+          <input type="text" id="disabled1" class="aiab-form-control" value="Cannot edit" disabled>
           <span class="helper-text">This field is disabled</span>
         </div>
 
         <div class="form-field">
           <label for="readonly1">Read-only Input</label>
-          <input type="text" id="readonly1" class="form-control" value="Read only value" readonly>
+          <input type="text" id="readonly1" class="aiab-form-control" value="Read only value" readonly>
           <span class="helper-text">This field is read-only</span>
         </div>
 
         <div class="form-field">
           <label for="aria1">ARIA Invalid State</label>
-          <input type="email" id="aria1" class="form-control" value="invalid" aria-invalid="true" aria-describedby="aria1-error">
+          <input type="email" id="aria1" class="aiab-form-control" value="invalid" aria-invalid="true" aria-describedby="aria1-error">
           <span id="aria1-error" class="error-message">This field has an ARIA invalid state</span>
         </div>
 
         <div class="form-field">
           <label for="aria2">ARIA Valid State</label>
-          <input type="email" id="aria2" class="form-control" value="valid@example.com" aria-valid="true">
+          <input type="email" id="aria2" class="aiab-form-control" value="valid@example.com" aria-valid="true">
           <span class="success-message">This field has an ARIA valid state</span>
         </div>
 
@@ -299,7 +299,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container">
+    <div class="aiab-container">
       <p>&copy; 2024 Amphibious 2.0. Form validation patterns that work.</p>
     </div>
   </footer>

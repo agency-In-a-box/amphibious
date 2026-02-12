@@ -31,7 +31,7 @@
       margin-top: 1rem;
     }
 
-    .btn {
+    .aiab-btn {
       padding: 0.5rem 1rem;
       background: #3b82f6;
       color: white;
@@ -42,7 +42,7 @@
       transition: background-color 0.2s;
     }
 
-    .btn:hover {
+    .aiab-btn:hover {
       background: #2563eb;
     }
 
@@ -93,7 +93,7 @@
 <body>
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -155,10 +155,10 @@
     <h2>Basic Modals</h2>
     <p>Standard modal dialogs with different sizes</p>
     <div class="demo-buttons">
-      <button class="btn" onclick="openModal('basicModal')">Basic Modal</button>
-      <button class="btn" onclick="openModal('smallModal')">Small Modal</button>
-      <button class="btn" onclick="openModal('largeModal')">Large Modal</button>
-      <button class="btn" onclick="openModal('fullModal')">Full Screen</button>
+      <button class="aiab-btn" onclick="openModal('basicModal')">Basic Modal</button>
+      <button class="aiab-btn" onclick="openModal('smallModal')">Small Modal</button>
+      <button class="aiab-btn" onclick="openModal('largeModal')">Large Modal</button>
+      <button class="aiab-btn" onclick="openModal('fullModal')">Full Screen</button>
     </div>
   </div>
 
@@ -167,11 +167,11 @@
     <h2>Alert Modals</h2>
     <p>Alert-style modals for notifications and confirmations</p>
     <div class="demo-buttons">
-      <button class="btn btn--success" onclick="showAlert('success')">Success Alert</button>
-      <button class="btn btn--danger" onclick="showAlert('error')">Error Alert</button>
-      <button class="btn btn--secondary" onclick="showAlert('warning')">Warning Alert</button>
-      <button class="btn" onclick="showAlert('info')">Info Alert</button>
-      <button class="btn" onclick="showConfirm()">Confirm Dialog</button>
+      <button class="aiab-btn btn--success" onclick="showAlert('success')">Success Alert</button>
+      <button class="aiab-btn btn--danger" onclick="showAlert('error')">Error Alert</button>
+      <button class="aiab-btn btn--secondary" onclick="showAlert('warning')">Warning Alert</button>
+      <button class="aiab-btn" onclick="showAlert('info')">Info Alert</button>
+      <button class="aiab-btn" onclick="showConfirm()">Confirm Dialog</button>
     </div>
   </div>
 
@@ -180,10 +180,10 @@
     <h2>E-commerce Use Cases</h2>
     <p>Modals for product quick view, cart, and checkout</p>
     <div class="demo-buttons">
-      <button class="btn" onclick="openModal('productModal')">Product Quick View</button>
-      <button class="btn" onclick="openModal('cartModal')">Shopping Cart</button>
-      <button class="btn" onclick="openModal('checkoutModal')">Checkout Form</button>
-      <button class="btn" onclick="openModal('imageModal')">Image Gallery</button>
+      <button class="aiab-btn" onclick="openModal('productModal')">Product Quick View</button>
+      <button class="aiab-btn" onclick="openModal('cartModal')">Shopping Cart</button>
+      <button class="aiab-btn" onclick="openModal('checkoutModal')">Checkout Form</button>
+      <button class="aiab-btn" onclick="openModal('imageModal')">Image Gallery</button>
     </div>
   </div>
 
@@ -192,9 +192,9 @@
     <h2>Drawer & Bottom Sheet</h2>
     <p>Slide-in panels from different directions</p>
     <div class="demo-buttons">
-      <button class="btn" onclick="openDrawer('left')">Left Drawer</button>
-      <button class="btn" onclick="openDrawer('right')">Right Drawer</button>
-      <button class="btn" onclick="openBottomSheet()">Bottom Sheet</button>
+      <button class="aiab-btn" onclick="openDrawer('left')">Left Drawer</button>
+      <button class="aiab-btn" onclick="openDrawer('right')">Right Drawer</button>
+      <button class="aiab-btn" onclick="openBottomSheet()">Bottom Sheet</button>
     </div>
   </div>
 
@@ -203,15 +203,15 @@
     <h2>Form Modal</h2>
     <p>Modal with form validation</p>
     <div class="demo-buttons">
-      <button class="btn" onclick="openModal('formModal')">Open Form</button>
-      <button class="btn" onclick="openModal('loginModal')">Login Modal</button>
+      <button class="aiab-btn" onclick="openModal('formModal')">Open Form</button>
+      <button class="aiab-btn" onclick="openModal('loginModal')">Login Modal</button>
     </div>
   </div>
 
   <!-- Modal HTML Templates -->
 
   <!-- Basic Modal -->
-  <div id="basicModal" class="modal" aria-hidden="true">
+  <div id="basicModal" class="aiab-modal" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Basic Modal</h3>
@@ -222,14 +222,14 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
       <div class="modal__footer">
-        <button class="btn btn--secondary" data-modal-close>Cancel</button>
-        <button class="btn" data-modal-confirm>Save Changes</button>
+        <button class="aiab-btn btn--secondary" data-modal-close>Cancel</button>
+        <button class="aiab-btn" data-modal-confirm>Save Changes</button>
       </div>
     </div>
   </div>
 
   <!-- Small Modal -->
-  <div id="smallModal" class="modal modal--sm" aria-hidden="true">
+  <div id="smallModal" class="aiab-modal modal--sm" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Small Modal</h3>
@@ -239,13 +239,13 @@
         <p>This is a small modal, perfect for simple confirmations.</p>
       </div>
       <div class="modal__footer">
-        <button class="btn" data-modal-close>OK</button>
+        <button class="aiab-btn" data-modal-close>OK</button>
       </div>
     </div>
   </div>
 
   <!-- Large Modal -->
-  <div id="largeModal" class="modal modal--lg" aria-hidden="true">
+  <div id="largeModal" class="aiab-modal modal--lg" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Large Modal</h3>
@@ -258,13 +258,13 @@
         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
       <div class="modal__footer">
-        <button class="btn btn--secondary" data-modal-close>Close</button>
+        <button class="aiab-btn btn--secondary" data-modal-close>Close</button>
       </div>
     </div>
   </div>
 
   <!-- Full Screen Modal -->
-  <div id="fullModal" class="modal modal--full" aria-hidden="true">
+  <div id="fullModal" class="aiab-modal modal--full" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Full Screen Modal</h3>
@@ -275,13 +275,13 @@
         <p>This modal takes up the entire viewport, useful for immersive experiences or complex interfaces.</p>
       </div>
       <div class="modal__footer">
-        <button class="btn btn--secondary" data-modal-close>Close</button>
+        <button class="aiab-btn btn--secondary" data-modal-close>Close</button>
       </div>
     </div>
   </div>
 
   <!-- Product Quick View Modal -->
-  <div id="productModal" class="modal modal--lg" aria-hidden="true">
+  <div id="productModal" class="aiab-modal modal--lg" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Product Quick View</h3>
@@ -299,7 +299,7 @@
             <div style="margin-top: 1rem;">
               <label>Quantity:</label>
               <input type="number" value="1" min="1" style="width: 60px; margin: 0 0.5rem;">
-              <button class="btn">Add to Cart</button>
+              <button class="aiab-btn">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -308,7 +308,7 @@
   </div>
 
   <!-- Shopping Cart Modal -->
-  <div id="cartModal" class="modal modal--drawer-right" aria-hidden="true">
+  <div id="cartModal" class="aiab-modal modal--drawer-right" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Shopping Cart (3 items)</h3>
@@ -338,14 +338,14 @@
         </div>
       </div>
       <div class="modal__footer">
-        <button class="btn btn--secondary" data-modal-close>Continue Shopping</button>
-        <button class="btn">Checkout</button>
+        <button class="aiab-btn btn--secondary" data-modal-close>Continue Shopping</button>
+        <button class="aiab-btn">Checkout</button>
       </div>
     </div>
   </div>
 
   <!-- Form Modal -->
-  <div id="formModal" class="modal" aria-hidden="true">
+  <div id="formModal" class="aiab-modal" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Contact Form</h3>
@@ -368,14 +368,14 @@
         </form>
       </div>
       <div class="modal__footer">
-        <button class="btn btn--secondary" data-modal-close>Cancel</button>
-        <button class="btn" data-modal-confirm>Send Message</button>
+        <button class="aiab-btn btn--secondary" data-modal-close>Cancel</button>
+        <button class="aiab-btn" data-modal-confirm>Send Message</button>
       </div>
     </div>
   </div>
 
   <!-- Image Modal -->
-  <div id="imageModal" class="modal modal--image" aria-hidden="true">
+  <div id="imageModal" class="aiab-modal modal--image" aria-hidden="true">
     <div class="modal__dialog">
       <button class="modal__close" style="position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); color: white; width: 3rem; height: 3rem; border-radius: 50%;" aria-label="Close">&times;</button>
       <div class="modal__body">
@@ -385,7 +385,7 @@
   </div>
 
   <!-- Login Modal -->
-  <div id="loginModal" class="modal modal--sm" aria-hidden="true">
+  <div id="loginModal" class="aiab-modal modal--sm" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Sign In</h3>
@@ -399,14 +399,14 @@
           <div style="margin-bottom: 1rem;">
             <input type="password" placeholder="Password" style="width: 100%; padding: 0.75rem;">
           </div>
-          <button type="submit" class="btn" style="width: 100%;">Sign In</button>
+          <button type="submit" class="aiab-btn" style="width: 100%;">Sign In</button>
         </form>
       </div>
     </div>
   </div>
 
   <!-- Checkout Modal -->
-  <div id="checkoutModal" class="modal modal--xl" aria-hidden="true">
+  <div id="checkoutModal" class="aiab-modal modal--xl" aria-hidden="true">
     <div class="modal__dialog">
       <div class="modal__header">
         <h3 class="modal__title">Checkout</h3>
@@ -458,8 +458,8 @@
         </div>
       </div>
       <div class="modal__footer">
-        <button class="btn btn--secondary" data-modal-close>Back to Cart</button>
-        <button class="btn btn--success">Place Order</button>
+        <button class="aiab-btn btn--secondary" data-modal-close>Back to Cart</button>
+        <button class="aiab-btn btn--success">Place Order</button>
       </div>
     </div>
   </div>
@@ -507,7 +507,7 @@
         info: 'This is an informational message.'
       };
 
-      await amp.alert(messages[type], type);
+      await amp.aiab-alert(messages[type], type);
       console.log(`${type} alert closed`);
     };
 
@@ -515,7 +515,7 @@
       const result = await amp.confirm('Are you sure you want to proceed?', 'Yes, Continue', 'Cancel');
       console.log('Confirm result:', result);
       if (result) {
-        await amp.alert('Action confirmed!', 'success');
+        await amp.aiab-alert('Action confirmed!', 'success');
       }
     };
 
@@ -547,7 +547,7 @@
             <p>It slides in from the ${direction} side of the screen.</p>
           </div>
           <div class="modal__footer">
-            <button class="btn btn--secondary" data-modal-close>Close</button>
+            <button class="aiab-btn btn--secondary" data-modal-close>Close</button>
           </div>
         </div>
       `;
@@ -568,7 +568,7 @@
             <p>It slides up from the bottom of the screen.</p>
           </div>
           <div class="modal__footer">
-            <button class="btn" data-modal-close style="width: 100%;">Done</button>
+            <button class="aiab-btn" data-modal-close style="width: 100%;">Done</button>
           </div>
         </div>
       `;

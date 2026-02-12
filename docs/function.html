@@ -15,7 +15,7 @@
             margin-bottom: 2rem;
         }
 
-        .docs-nav .container {
+        .docs-nav .aiab-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -41,7 +41,7 @@
         }
 
         .docs-nav .nav-links a:hover,
-        .docs-nav .nav-links a.active {
+        .docs-nav .nav-links a.aiab-active {
             background: #fff;
             color: #007bff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -112,7 +112,7 @@
         }
 
         /* Navigation Examples */
-        .navbar {
+        .aiab-navbar {
             background: #f8f9fa;
             border: 1px solid #dee2e6;
             border-radius: 0.375rem;
@@ -238,7 +238,7 @@
         }
 
         /* Breadcrumbs */
-        .breadcrumb {
+        .aiab-breadcrumb {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -250,32 +250,32 @@
             padding: 0.75rem 1rem;
         }
 
-        .breadcrumb li {
+        .aiab-breadcrumb li {
             display: flex;
             align-items: center;
         }
 
-        .breadcrumb li + li::before {
+        .aiab-breadcrumb li + li::before {
             content: "/";
             margin: 0 0.5rem;
             color: #6c757d;
         }
 
-        .breadcrumb a {
+        .aiab-breadcrumb a {
             color: #007bff;
             text-decoration: none;
         }
 
-        .breadcrumb a:hover {
+        .aiab-breadcrumb a:hover {
             text-decoration: underline;
         }
 
-        .breadcrumb .active {
+        .aiab-breadcrumb .aiab-active {
             color: #6c757d;
         }
 
         /* Tabs */
-        .tabs {
+        .aiab-tabs {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -283,11 +283,11 @@
             border-bottom: 1px solid #dee2e6;
         }
 
-        .tabs li {
+        .aiab-tabs li {
             margin-bottom: -1px;
         }
 
-        .tabs li a {
+        .aiab-tabs li a {
             display: block;
             padding: 0.75rem 1rem;
             color: #495057;
@@ -298,12 +298,12 @@
             transition: all 0.2s ease;
         }
 
-        .tabs li a:hover {
+        .aiab-tabs li a:hover {
             background: #f8f9fa;
             border-color: #dee2e6;
         }
 
-        .tabs li a.active {
+        .aiab-tabs li a.aiab-active {
             background: #fff;
             border-color: #dee2e6;
             color: #007bff;
@@ -321,12 +321,12 @@
             padding: 1.5rem;
         }
 
-        .tabs-content > li.active {
+        .tabs-content > li.aiab-active {
             display: block;
         }
 
         /* Pagination */
-        .pagination {
+        .aiab-pagination {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -335,8 +335,8 @@
             gap: 0.25rem;
         }
 
-        .pagination li a,
-        .pagination li span {
+        .aiab-pagination li a,
+        .aiab-pagination li span {
             display: block;
             padding: 0.5rem 0.75rem;
             color: #007bff;
@@ -346,18 +346,18 @@
             transition: all 0.2s ease;
         }
 
-        .pagination li a:hover {
+        .aiab-pagination li a:hover {
             background: #e9ecef;
             border-color: #adb5bd;
         }
 
-        .pagination li.active span {
+        .aiab-pagination li.aiab-active span {
             background: #007bff;
             color: #fff;
             border-color: #007bff;
         }
 
-        .pagination li.disabled span {
+        .aiab-pagination li.aiab-disabled span {
             color: #6c757d;
             background: transparent;
             border-color: #dee2e6;
@@ -370,7 +370,7 @@
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
       <span class="sr-only">Toggle navigation</span>
@@ -450,18 +450,18 @@
   </div>
 </nav>
 <nav class="docs-nav">
-        <div class="container">
+        <div class="aiab-container">
             <h1>Amphibious 2.0 Documentation</h1>
             <div class="nav-links">
                 <a href="foundation.html">Foundation</a>
                 <a href="form.html">Form</a>
-                <a href="function.html" class="active">Function</a>
+                <a href="function.html" class="aiab-active">Function</a>
                 <a href="features.html">Features</a>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="aiab-container">
         <!-- Page Header -->
         <header class="docs-header">
             <h1>Function</h1>
@@ -478,7 +478,7 @@
 
             <div class="example">
                 <div class="example-title">Basic Horizontal Navigation</div>
-                <div class="navbar">
+                <div class="aiab-navbar">
                     <div class="navbar-inner">
                         <nav role="navigation">
                             <ul class="horizontal">
@@ -508,7 +508,7 @@
             </div>
 
             <div class="code-block">
-                <pre><code>&lt;div class="navbar"&gt;
+                <pre><code>&lt;div class="aiab-navbar"&gt;
   &lt;div class="navbar-inner"&gt;
     &lt;nav role="navigation"&gt;
       &lt;ul class="horizontal"&gt;
@@ -540,8 +540,8 @@
             <h3 id="vertical-nav">Vertical Navigation</h3>
             <p>Vertical navigation menus with collapsible submenus. Simply change the class from <code>horizontal</code> to <code>vertical</code>.</p>
 
-            <div class="row">
-                <div class="col-4">
+            <div class="aiab-row">
+                <div class="aiab-col-4">
                     <div class="example">
                         <div class="example-title">Vertical Menu</div>
                         <nav role="navigation">
@@ -561,7 +561,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="aiab-col-8">
                     <div class="code-block">
                         <pre><code>&lt;nav role="navigation"&gt;
   &lt;ul class="vertical"&gt;
@@ -591,22 +591,22 @@
             <div class="example">
                 <div class="example-title">Basic Breadcrumbs</div>
                 <nav role="navigation">
-                    <ul class="breadcrumb">
+                    <ul class="aiab-breadcrumb">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Documentation</a></li>
                         <li><a href="#">Function</a></li>
-                        <li class="active">Breadcrumbs</li>
+                        <li class="aiab-active">Breadcrumbs</li>
                     </ul>
                 </nav>
             </div>
 
             <div class="code-block">
                 <pre><code>&lt;nav role="navigation"&gt;
-  &lt;ul class="breadcrumb"&gt;
+  &lt;ul class="aiab-breadcrumb"&gt;
     &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Function&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;Breadcrumbs&lt;/li&gt;
+    &lt;li class="aiab-active"&gt;Breadcrumbs&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
             </div>
@@ -620,13 +620,13 @@
             <div class="example">
                 <div class="example-title">Interactive Tabs</div>
                 <menu>
-                    <ul class="tabs">
-                        <li><a href="javascript:;" class="active" data-tab="simple">Simple</a></li>
+                    <ul class="aiab-tabs">
+                        <li><a href="javascript:;" class="aiab-active" data-tab="simple">Simple</a></li>
                         <li><a href="javascript:;" data-tab="lightweight">Lightweight</a></li>
                         <li><a href="javascript:;" data-tab="mobile">Mobile Friendly</a></li>
                     </ul>
                     <ul class="tabs-content">
-                        <li id="simple" class="active">
+                        <li id="simple" class="aiab-active">
                             <p>The tabs are clean and simple unordered-list markup with basic CSS. They provide an intuitive way to organize content into logical sections.</p>
                         </li>
                         <li id="lightweight">
@@ -641,13 +641,13 @@
 
             <div class="code-block">
                 <pre><code>&lt;menu&gt;
-  &lt;ul class="tabs"&gt;
-    &lt;li&gt;&lt;a href="javascript:;" class="active" data-tab="simple"&gt;Simple&lt;/a&gt;&lt;/li&gt;
+  &lt;ul class="aiab-tabs"&gt;
+    &lt;li&gt;&lt;a href="javascript:;" class="aiab-active" data-tab="simple"&gt;Simple&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="javascript:;" data-tab="lightweight"&gt;Lightweight&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="javascript:;" data-tab="mobile"&gt;Mobile Friendly&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
   &lt;ul class="tabs-content"&gt;
-    &lt;li id="simple" class="active"&gt;
+    &lt;li id="simple" class="aiab-active"&gt;
       &lt;p&gt;The tabs are clean and simple...&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id="lightweight"&gt;
@@ -663,12 +663,12 @@
             <h4>JavaScript Implementation</h4>
             <div class="code-block">
                 <pre><code>// Tab switching functionality
-document.querySelectorAll('.tabs a').forEach(tab => {
+document.querySelectorAll('.aiab-tabs a').forEach(tab => {
   tab.addEventListener('click', function(e) {
     e.preventDefault();
 
     // Remove active class from all tabs and content
-    document.querySelectorAll('.tabs a').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.aiab-tabs a').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tabs-content li').forEach(content => {
       content.classList.remove('active');
     });
@@ -689,14 +689,14 @@ document.querySelectorAll('.tabs a').forEach(tab => {
             <h2>Pagination</h2>
             <p>Navigation components for multi-page content, including standard pagination, filter navigation, and button groups.</p>
 
-            <div class="row">
-                <div class="col-6">
+            <div class="aiab-row">
+                <div class="aiab-col-6">
                     <h4>Standard Pagination</h4>
                     <div class="example">
                         <nav role="navigation">
-                            <ul class="pagination">
+                            <ul class="aiab-pagination">
                                 <li><a href="#">‹ Prev</a></li>
-                                <li class="active"><span>1</span></li>
+                                <li class="aiab-active"><span>1</span></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
                                 <li><a href="#">4</a></li>
@@ -709,9 +709,9 @@ document.querySelectorAll('.tabs a').forEach(tab => {
 
                     <div class="code-block">
                         <pre><code>&lt;nav role="navigation"&gt;
-  &lt;ul class="pagination"&gt;
+  &lt;ul class="aiab-pagination"&gt;
     &lt;li&gt;&lt;a href="#"&gt;‹ Prev&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="aiab-active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
@@ -723,13 +723,13 @@ document.querySelectorAll('.tabs a').forEach(tab => {
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="aiab-col-6">
                     <h4>Filter Navigation</h4>
                     <div class="example">
                         <nav role="navigation">
-                            <ul class="pagination">
+                            <ul class="aiab-pagination">
                                 <li><strong>Filter by:</strong></li>
-                                <li class="active"><span>All</span></li>
+                                <li class="aiab-active"><span>All</span></li>
                                 <li><a href="#">Active</a></li>
                                 <li><a href="#">Completed</a></li>
                                 <li><a href="#">Archived</a></li>
@@ -739,9 +739,9 @@ document.querySelectorAll('.tabs a').forEach(tab => {
 
                     <div class="code-block">
                         <pre><code>&lt;nav role="navigation"&gt;
-  &lt;ul class="pagination"&gt;
+  &lt;ul class="aiab-pagination"&gt;
     &lt;li&gt;&lt;strong&gt;Filter by:&lt;/strong&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;&lt;span&gt;All&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="aiab-active"&gt;&lt;span&gt;All&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Active&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Completed&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Archived&lt;/a&gt;&lt;/li&gt;
@@ -754,7 +754,7 @@ document.querySelectorAll('.tabs a').forEach(tab => {
             <h4>Button Groups</h4>
             <div class="example">
                 <nav role="navigation">
-                    <ul class="pagination">
+                    <ul class="aiab-pagination">
                         <li><a href="#">← Previous</a></li>
                         <li><a href="#">Next →</a></li>
                     </ul>
@@ -763,7 +763,7 @@ document.querySelectorAll('.tabs a').forEach(tab => {
 
             <div class="code-block">
                 <pre><code>&lt;nav role="navigation"&gt;
-  &lt;ul class="pagination"&gt;
+  &lt;ul class="aiab-pagination"&gt;
     &lt;li&gt;&lt;a href="#"&gt;← Previous&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Next →&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
@@ -779,8 +779,8 @@ document.querySelectorAll('.tabs a').forEach(tab => {
             <div class="example">
                 <div class="example-title">Step Indicator</div>
                 <nav role="navigation">
-                    <ul class="pagination">
-                        <li class="active"><span>1. Account</span></li>
+                    <ul class="aiab-pagination">
+                        <li class="aiab-active"><span>1. Account</span></li>
                         <li><a href="#">2. Profile</a></li>
                         <li><a href="#">3. Preferences</a></li>
                         <li><a href="#">4. Complete</a></li>
@@ -790,8 +790,8 @@ document.querySelectorAll('.tabs a').forEach(tab => {
 
             <div class="code-block">
                 <pre><code>&lt;nav role="navigation"&gt;
-  &lt;ul class="pagination"&gt;
-    &lt;li class="active"&gt;&lt;span&gt;1. Account&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="aiab-pagination"&gt;
+    &lt;li class="aiab-active"&gt;&lt;span&gt;1. Account&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;2. Profile&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;3. Preferences&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;4. Complete&lt;/a&gt;&lt;/li&gt;
@@ -834,13 +834,13 @@ document.querySelectorAll('.tabs a').forEach(tab => {
     <!-- JavaScript for interactive demos -->
     <script>
         // Tab functionality
-        document.querySelectorAll('.tabs a').forEach(tab => {
+        document.querySelectorAll('.aiab-tabs a').forEach(tab => {
             tab.addEventListener('click', function(e) {
                 e.preventDefault();
 
                 // Remove active class from all tabs and content
                 const tabContainer = this.closest('menu');
-                tabContainer.querySelectorAll('.tabs a').forEach(t => t.classList.remove('active'));
+                tabContainer.querySelectorAll('.aiab-tabs a').forEach(t => t.classList.remove('active'));
                 tabContainer.querySelectorAll('.tabs-content li').forEach(content => {
                     content.classList.remove('active');
                 });

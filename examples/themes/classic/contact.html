@@ -95,7 +95,7 @@
 
                     // How you would like to style the map. 
                     // This is where you would paste any style found on Snazzy Maps.
-                    styles: [{"stylers":[{"visibility":"on"},{"saturation":-100},{"gamma":0.54}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#4d4946"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"gamma":0.48}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"gamma":7.18}]}]
+                    styles: [{"stylers":[{"visibility":"on"},{"saturation":-100},{"gamma":0.54}]},{"featureType":"road","elementType":"labels.aiab-icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#4d4946"}]},{"featureType":"poi","elementType":"labels.aiab-icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"gamma":0.48}]},{"featureType":"transit.station","elementType":"labels.aiab-icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"gamma":7.18}]}]
                 };
 
                 // Get the HTML DOM element that will contain your map 
@@ -120,7 +120,7 @@
 
      <!-- Add your site or application content here -->
         
-	<header id="amp_header" role="banner" class="row">
+	<header id="amp_header" role="banner" class="aiab-row">
 		<div id="nav_toggle" class="k_bg">
 			<div id="search_wrap" class="r hmr">
 				<form action="/" class="search">
@@ -133,19 +133,19 @@
 			<a href="#navbar"><span class="icon-menu-list"></span></a>
 			<a href="home.html"><img src="assets/theme_logo.png" class="logo left" loading="lazy"></a>
 		</div>
-		<div id="map" class="focus">
+		<div id="map" class="aiab-focus">
         </div>
 	</header>
-	<section id="amp_content" role="main" class="row">
+	<section id="amp_content" role="main" class="aiab-row">
 		<header class="banner t_bg">
-	        <div class="container focus">
+	        <div class="aiab-container aiab-focus">
 		        <div class="col sixteen last pl">
 		        	<h2 class="upper">Secondary Page Header and Attention Getter</h2>
 		        </div>
 	        </div>
 		</header>
 		<article class="w_bg">
-			<div class="container focus">
+			<div class="aiab-container aiab-focus">
 				<div class="col nine">
 					<div class="inset dpt">
 						<form>
@@ -183,7 +183,7 @@
 					</figure>
 					<button class="k_btn full modal_opener" amp-target="amp_overlay" type="button">Quick Quote</button>
 					
-					<div class="h-card row mt">
+					<div class="h-card aiab-row mt">
 					  <h5 class="p-name"><a class="u-url" href="#">Treefrog Inc</a></h5>
 					 
 					  <p class="h-adr">
@@ -201,7 +201,7 @@
 		</article>
 	</section>
 	<section class="mg_bg dpt">
-		<div class="container focus">
+		<div class="aiab-container aiab-focus">
 			<div class="col nine">
 				<h3>Check Out Our Services</h3>
 				<p>Venison pastrami pancetta pork chop, meatball pig t-bone chicken tail pork belly. Ham hock tenderloin beef ribs, corned beef ham frankfurter biltong pork t-bone pastrami ground round strip steak pork belly ball tip turkey.</p>
@@ -212,7 +212,7 @@
 				</ul>
 			</div>
 			<div class="col seven">
-				<div class="row">
+				<div class="aiab-row">
 					<figure class="col five push_one">
 						<img src="assets/old_castle.jpg" class="swg" loading="lazy">
 					</figure>
@@ -225,19 +225,19 @@
 		</div>
 	</section>
 	<section class="w_bg">
-		<div class="container focus ac">
+		<div class="aiab-container aiab-focus ac">
 			<figure class="col ten push_three pull_top">
 				<img src="assets/old_castle.jpg" class="swg" loading="lazy">
 			</figure>
 			<br class="clear">
-			<div class="row pt dpb">
+			<div class="aiab-row pt dpb">
 				<h3>Bacon ipsum dolor amet pancetta andouille fatback</h3>
 			</div>
 		</div>
 	</section>
 	<div id="navbar" class="k_bg">
-    	<div class="container focus">
-        	<div class="row">
+    	<div class="aiab-container aiab-focus">
+        	<div class="aiab-row">
 				<a href="home.html"><img src="assets/theme_logo.png" class="logo" loading="lazy"></a>
 				<nav>
 					<ul class="utility horizontal a r">
@@ -285,8 +285,8 @@
 	</div>
 
 
-	<footer id="amp_footer" class="row pt k_bg">
-        <div class="container focus">
+	<footer id="amp_footer" class="aiab-row pt k_bg">
+        <div class="aiab-container aiab-focus">
 	        <p class="attribution right"><a href="http://treefrog.ca" target="_blank">Design by Treefrog Inc.</a></p>
 	        <p class="colophony">&copy; <a href="http://lassosoft.com" target="_blank">LassoSoft Inc. 2014</a></p>
         </div>
@@ -300,9 +300,9 @@
 	
      <!-- Sample Modal Structure -->
 	<div id="amp_overlay" class="modal_overlay">
-		<div class="modal">
+		<div class="aiab-modal">
 			<header>
-				<span class="icon-cross-square large right rmr modal_kill" amp-target="amp_overlay"></span>
+				<span class="icon-cross-square aiab-large right rmr modal_kill" amp-target="amp_overlay"></span>
 				<h3>Modal Header</h3>
 			</header>
 			<section>
