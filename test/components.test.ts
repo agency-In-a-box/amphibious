@@ -3,9 +3,10 @@
  * Tests all CSS and JavaScript components for completeness and functionality
  */
 
-import { afterAll, beforeAll, describe, expect, test } from 'bun:test';
+import { describe, expect, test } from 'bun:test';
 import fs from 'node:fs';
 import path from 'node:path';
+
 // DOM setup is handled by test/setup.ts which uses happy-dom
 
 describe('Amphibious 2.0 Component Inventory', () => {
@@ -441,13 +442,13 @@ describe('Amphibious 2.0 Component Inventory', () => {
       };
 
       // This is a checklist - all should be true
-      Object.entries(essentialComponents).forEach(([component, expected]) => {
+      Object.entries(essentialComponents).forEach(([_component, expected]) => {
         expect(expected).toBe(true);
       });
     });
 
     test('E-commerce specific components', () => {
-      const ecommerceComponents = {
+      const _ecommerceComponents = {
         'Product Cards': true,
         'Shopping Cart': true,
         'Checkout Forms': true,
@@ -467,7 +468,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
     });
 
     test('Accessibility features', () => {
-      const accessibilityChecks = {
+      const _accessibilityChecks = {
         'ARIA attributes': true,
         'Keyboard navigation': true,
         'Focus states': true,

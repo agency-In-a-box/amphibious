@@ -5,7 +5,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it, mock } from 'bun:test';
-import { Tooltip, EcommerceTooltips } from '../src/js/tooltip';
+import { EcommerceTooltips, Tooltip } from '../src/js/tooltip';
 
 describe('Tooltip Module', () => {
   let triggerElement: HTMLElement;
@@ -24,8 +24,15 @@ describe('Tooltip Module', () => {
 
     // Position trigger in center of viewport so tooltip position adjustment doesn't fire
     const centerRect = {
-      top: 400, left: 800, bottom: 440, right: 900,
-      width: 100, height: 40, x: 800, y: 400, toJSON: () => ({}),
+      top: 400,
+      left: 800,
+      bottom: 440,
+      right: 900,
+      width: 100,
+      height: 40,
+      x: 800,
+      y: 400,
+      toJSON: () => ({}),
     };
     triggerElement.getBoundingClientRect = () => centerRect as DOMRect;
   });
@@ -283,9 +290,7 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, hideDelay: 0, onHide });
       tooltip.show();
 
-      triggerElement.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
-      );
+      triggerElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
       expect(onHide).toHaveBeenCalledTimes(1);
     });
@@ -294,9 +299,7 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0 });
       tooltip.show();
 
-      triggerElement.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
-      );
+      triggerElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
 
       const tooltipEl = document.querySelector('.tooltip');
       expect(tooltipEl?.classList.contains('tooltip--visible')).toBe(true);

@@ -221,7 +221,7 @@ describe('Tabs Module', () => {
       tabs = new Tabs();
       tabs.init();
 
-      const legacyTab1 = document.querySelector('[amp-tab-content="#legacy1"]') as HTMLElement;
+      const _legacyTab1 = document.querySelector('[amp-tab-content="#legacy1"]') as HTMLElement;
       const legacyTab2 = document.querySelector('[amp-tab-content="#legacy2"]') as HTMLElement;
       const legacyPanel1 = document.querySelector('#legacy1') as HTMLElement;
       const legacyPanel2 = document.querySelector('#legacy2') as HTMLElement;

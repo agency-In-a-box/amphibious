@@ -242,9 +242,7 @@ describe('Modal Module', () => {
       const modal = new Modal(modalElement);
       modal.open();
 
-      modalElement.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
-      );
+      modalElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
       expect(modal.isModalOpen()).toBe(false);
     });
@@ -253,9 +251,7 @@ describe('Modal Module', () => {
       const modal = new Modal(modalElement, { closeOnEscape: false });
       modal.open();
 
-      modalElement.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
-      );
+      modalElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
       expect(modal.isModalOpen()).toBe(true);
     });
@@ -372,9 +368,7 @@ describe('Modal Module', () => {
       modal.updateOptions({ closeOnEscape: false });
 
       modal.open();
-      modalElement.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
-      );
+      modalElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
       expect(modal.isModalOpen()).toBe(true);
     });

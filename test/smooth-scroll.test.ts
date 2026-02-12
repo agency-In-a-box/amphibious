@@ -8,7 +8,7 @@ import { SmoothScroll } from '../src/js/smooth-scroll';
 
 describe('SmoothScroll Module', () => {
   let smoothScroll: SmoothScroll;
-  let container: HTMLElement;
+  let _container: HTMLElement;
 
   beforeEach(() => {
     // Setup DOM structure
@@ -25,7 +25,7 @@ describe('SmoothScroll Module', () => {
       <div id="section3" style="margin-top: 1000px;">Section 3 Content</div>
     `;
 
-    container = document.body;
+    _container = document.body;
   });
 
   afterEach(() => {
