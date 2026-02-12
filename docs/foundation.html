@@ -14,13 +14,13 @@
   <style>
     /* Critical fixes for light mode */
     .aiab-breadcrumb {
-      background: transparent !important;
+      background: transparent;
     }
 
     .site-logo,
     .nav-link.site-logo,
     a.site-logo {
-      color: #ED8B00 !important;
+      color: #ED8B00;
     }
 
     /* Ensure text is dark in light mode */
@@ -239,6 +239,7 @@
           The core grid system, responsive columns, and layout fundamentals that power Amphibious 2.0.
           Built on a flexible 16-column system with semantic markup and modern CSS.
         </p>
+        </div>
       </div>
     </div>
   </header>
@@ -707,7 +708,6 @@
 
   <script type="module">
     import '../src/css/main.css';
-    import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
 

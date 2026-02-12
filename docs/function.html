@@ -241,7 +241,6 @@
         .aiab-breadcrumb {
             list-style: none;
             margin: 0;
-            padding: 0;
             display: flex;
             flex-wrap: wrap;
             background: #f8f9fa;
@@ -850,7 +849,7 @@ document.querySelectorAll('.aiab-tabs a').forEach(tab => {
 
                 // Show corresponding content
                 const targetId = this.getAttribute('data-tab');
-                tabContainer.querySelector('#' + targetId).classList.add('active');
+                tabContainer.querySelector(`#${targetId}`).classList.add('active');
             });
         });
 
@@ -883,7 +882,6 @@ document.querySelectorAll('.aiab-tabs a').forEach(tab => {
   
   <script type="module">
     import '../src/css/main.css';
-    import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
 </body>

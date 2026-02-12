@@ -1038,11 +1038,11 @@ function toggleMobileNav() {
 // Modern navigation with dropdown management
 class AmpNavigation {
   constructor(element) {
-    this.aiab-nav = element;
-    this.toggle = this.aiab-nav.querySelector('.amp-nav__toggle');
-    this.menu = this.aiab-nav.querySelector('.amp-nav__menu');
-    this.dropdowns = this.aiab-nav.querySelectorAll('.amp-nav__dropdown');
-    this.searchButton = this.aiab-nav.querySelector('.amp-nav__search');
+    this.nav = element;
+    this.toggle = this.nav.querySelector('.amp-nav__toggle');
+    this.menu = this.nav.querySelector('.amp-nav__menu');
+    this.dropdowns = this.nav.querySelectorAll('.amp-nav__dropdown');
+    this.searchButton = this.nav.querySelector('.amp-nav__search');
 
     this.init();
   }
@@ -1060,13 +1060,13 @@ class AmpNavigation {
 
     // Close mobile menu on outside click
     document.addEventListener('click', (e) => {
-      if (!this.aiab-nav.contains(e.target) && this.menu.classList.contains('amp-nav__menu--open')) {
+      if (!this.nav.contains(e.target) && this.menu.classList.contains('amp-nav__menu--open')) {
         this.closeMobile();
       }
     });
 
     // Keyboard navigation
-    this.aiab-nav.addEventListener('keydown', (e) => this.handleKeyboard(e));
+    this.nav.addEventListener('keydown', (e) => this.handleKeyboard(e));
 
     // Sticky navigation on scroll
     this.handleScroll();
@@ -1154,16 +1154,16 @@ class AmpNavigation {
     const scrollY = window.scrollY;
 
     if (scrollY > 100) {
-      this.aiab-nav.classList.add('amp-nav--sticky');
+      this.nav.classList.add('amp-nav--sticky');
     } else {
-      this.aiab-nav.classList.remove('amp-nav--sticky');
+      this.nav.classList.remove('amp-nav--sticky');
     }
 
     // Hide/show navigation based on scroll direction
     if (scrollY > this.lastScrollY && scrollY > 500) {
-      this.aiab-nav.classList.add('amp-nav--hidden');
+      this.nav.classList.add('amp-nav--hidden');
     } else {
-      this.aiab-nav.classList.remove('amp-nav--hidden');
+      this.nav.classList.remove('amp-nav--hidden');
     }
 
     this.lastScrollY = scrollY;
@@ -1241,7 +1241,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- Demo JavaScript -->
   <script>
     // Mobile navigation toggle function
-    function toggleMobileNav() {
+    function _toggleMobileNav() {
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.querySelector('.nav-mobile-hide');
       const isOpen = toggle.getAttribute('aria-expanded') === 'true';

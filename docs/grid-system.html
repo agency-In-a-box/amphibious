@@ -864,19 +864,18 @@
   <!-- Load Framework -->
     <script type="module">
     import '../src/css/main.css';
-    import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
 
   <!-- Documentation Scripts -->
   <script>
     // Responsive preview
-    function setDevicePreview(device) {
+    function _setDevicePreview(device) {
       const frame = document.getElementById('deviceFrame');
       const buttons = document.querySelectorAll('.demo-controls button');
 
       // Update frame class
-      frame.className = 'device-frame ' + device;
+      frame.className = `device-frame ${device}`;
 
       // Update label
       const labels = {
@@ -884,7 +883,7 @@
         tablet: 'Tablet (768px - 959px)',
         mobile: 'Mobile (<768px)'
       };
-      frame.querySelector('.device-label').textContent = 'Current View: ' + labels[device];
+      frame.querySelector('.device-label').textContent = `Current View: ${labels[device]}`;
 
       // Update active button
       buttons.forEach(btn => {
@@ -899,19 +898,19 @@
     // Interactive playground
     let columnCount = 2;
 
-    function addGridColumn(size) {
+    function _addGridColumn(size) {
       const row = document.getElementById('playgroundRow');
       columnCount++;
 
       const newCol = document.createElement('div');
-      newCol.className = 'col-' + size;
+      newCol.className = `col-${size}`;
       newCol.textContent = `Column ${columnCount} (${size})`;
       row.appendChild(newCol);
 
       updateGeneratedCode();
     }
 
-    function clearGrid() {
+    function _clearGrid() {
       const row = document.getElementById('playgroundRow');
       row.innerHTML = '';
       columnCount = 0;
