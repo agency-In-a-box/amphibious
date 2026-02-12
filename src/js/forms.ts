@@ -68,7 +68,7 @@ export class Forms {
 
     // Phone validation
     this.validationRules.set('phone', (value: string) => {
-      const phoneRegex = /^[\d\s\-\(\)\+]+$/;
+      const phoneRegex = /^[\d\s\-()+]+$/;
       return phoneRegex.test(value) && value.replace(/\D/g, '').length >= 10;
     });
 

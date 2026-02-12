@@ -19,10 +19,10 @@
      ========================================================================== */
 
   * {
-    background: transparent !important;
-    color: #000 !important; /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
+    background: transparent;
+    color: #000; /* Black prints faster */
+    box-shadow: none;
+    text-shadow: none;
   }
 
   /* Page Setup
@@ -113,7 +113,7 @@
      ========================================================================== */
 
   img {
-    max-width: 100% !important;
+    max-width: 100%;
     page-break-inside: avoid;
     display: block;
   }
@@ -129,7 +129,7 @@
   iframe,
   embed,
   object {
-    display: none !important;
+    display: none;
   }
 
   /* Tables
@@ -202,7 +202,7 @@
   textarea,
   select,
   button {
-    display: none !important;
+    display: none;
   }
 
   /* Grid System Adjustments
@@ -219,23 +219,23 @@
   }
 
   .col {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    float: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   /* Keep columns side-by-side if marked for print */
   .print-col-half {
-    width: 48% !important;
-    float: left !important;
-    margin-right: 2% !important;
+    width: 48%;
+    float: left;
+    margin-right: 2%;
   }
 
   .print-col-third {
-    width: 31% !important;
-    float: left !important;
-    margin-right: 2% !important;
+    width: 31%;
+    float: left;
+    margin-right: 2%;
   }
 
   /* Utility Classes for Print
@@ -256,14 +256,14 @@
   .comments,
   .footer-links,
   .back-to-top {
-    display: none !important;
+    display: none;
   }
 
   /* Show elements only in print */
   .print-only,
   .show-print,
   .show-on-print {
-    display: block !important;
+    display: block;
   }
 
   /* Force page breaks */
@@ -287,11 +287,11 @@
 
   /* Print-specific margins */
   .print-margin-top {
-    margin-top: 1cm !important;
+    margin-top: 1cm;
   }
 
   .print-margin-bottom {
-    margin-bottom: 1cm !important;
+    margin-bottom: 1cm;
   }
 
   /* Header/Footer for print
@@ -329,7 +329,7 @@
   .sr-only,
   .screen-reader-only,
   .assistive-text {
-    display: none !important;
+    display: none;
   }
 
   /* Background Images and Colors
@@ -337,17 +337,17 @@
 
   /* Override to show specific backgrounds if needed */
   .print-bg {
-    -webkit-print-color-adjust: exact !important;
-    color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   /* Ensure critical icons/logos print */
   .print-logo,
   .print-icon {
-    -webkit-print-color-adjust: exact !important;
-    color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   /* Modern CSS Features
@@ -357,21 +357,21 @@
   *,
   *:before,
   *:after {
-    animation-duration: 0s !important;
-    animation-delay: 0s !important;
-    transition-duration: 0s !important;
-    transition-delay: 0s !important;
+    animation-duration: 0s;
+    animation-delay: 0s;
+    transition-duration: 0s;
+    transition-delay: 0s;
   }
 
   /* Grid and Flexbox adjustments */
   .flex,
   .flex-row,
   .flex-column {
-    display: block !important;
+    display: block;
   }
 
   .aiab-grid {
-    display: block !important;
+    display: block;
   }
 
   /* Custom Properties (CSS Variables) for print */
@@ -391,11 +391,11 @@
   }
 
   .landscape-only {
-    display: block !important;
+    display: block;
   }
 
   .portrait-only {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -408,10 +408,10 @@
   }
 
   .portrait-only {
-    display: block !important;
+    display: block;
   }
 
   .landscape-only {
-    display: none !important;
+    display: none;
   }
 }

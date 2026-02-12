@@ -65,9 +65,9 @@ button,
 :root {
   /* Apple's signature easing curves */
   --ease-apple-default: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Standard ease */
-  --ease-apple-in: cubic-bezier(0.42, 0, 1.0, 1.0); /* Accelerate */
-  --ease-apple-out: cubic-bezier(0, 0, 0.58, 1.0); /* Decelerate */
-  --ease-apple-in-out: cubic-bezier(0.42, 0, 0.58, 1.0); /* Standard */
+  --ease-apple-in: cubic-bezier(0.42, 0, 1, 1); /* Accelerate */
+  --ease-apple-out: cubic-bezier(0, 0, 0.58, 1); /* Decelerate */
+  --ease-apple-in-out: cubic-bezier(0.42, 0, 0.58, 1); /* Standard */
   --ease-apple-bounce: cubic-bezier(0.19, 1, 0.22, 1); /* Signature bounce */
   --ease-apple-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Playful elastic */
   --ease-apple-smooth: cubic-bezier(0.4, 0, 0.2, 1); /* Material-like smooth */
@@ -109,17 +109,19 @@ button:active {
 
 /* Links with smooth Apple easing */
 a {
-  transition: color var(--duration-instant) var(--ease-apple-smooth), opacity
-    var(--duration-instant) var(--ease-apple-smooth);
+  transition:
+    color var(--duration-instant) var(--ease-apple-smooth),
+    opacity var(--duration-instant) var(--ease-apple-smooth);
 }
 
 /* Form inputs with refined focus transitions */
 input,
 textarea,
 select {
-  transition: border-color var(--duration-fast) var(--ease-apple-default), box-shadow
-    var(--duration-fast) var(--ease-apple-default), background-color var(--duration-fast)
-    var(--ease-apple-default);
+  transition:
+    border-color var(--duration-fast) var(--ease-apple-default),
+    box-shadow var(--duration-fast) var(--ease-apple-default),
+    background-color var(--duration-fast) var(--ease-apple-default);
 }
 
 input:focus,
@@ -231,7 +233,7 @@ select:focus {
 /* Pulse loading for buttons */
 .btn-loading {
   position: relative;
-  color: transparent !important;
+  color: transparent;
   pointer-events: none;
 }
 
@@ -267,7 +269,9 @@ select:focus {
 
 .aiab-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 12px 24px -6px rgba(0, 0, 0, 0.15),
+    0 0 1px rgba(0, 0, 0, 0.08);
 }
 
 /* Image hover with subtle zoom */
@@ -320,7 +324,9 @@ select:focus {
 
 button:focus-visible,
 .aiab-btn:focus-visible {
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 0 0 3px rgba(237, 139, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 input:focus,
@@ -338,16 +344,16 @@ select:focus {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
 
   /* Preserve essential animations at minimal duration */
   .aiab-spinner,
   .loading-indicator {
-    animation-duration: 1s !important;
+    animation-duration: 1s;
   }
 }
 

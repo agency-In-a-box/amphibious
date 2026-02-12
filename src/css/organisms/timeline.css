@@ -414,7 +414,7 @@
 }
 
 .filter-btn.aiab-active .filter-dot {
-  background: white !important;
+  background: white;
 }
 
 .filter-dot {

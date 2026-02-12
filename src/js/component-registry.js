@@ -412,10 +412,10 @@ class ComponentRegistry {
   /**
    * Logging helper
    */
-  log(message, level = 'info') {
+  log(_message, level = 'info') {
     if (!this.config.debug) return;
 
-    const prefix = '[Amphibious Registry]';
+    const _prefix = '[Amphibious Registry]';
 
     switch (level) {
       case 'error':

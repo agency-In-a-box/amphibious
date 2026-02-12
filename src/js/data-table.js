@@ -602,7 +602,7 @@ class DataTableComponent {
   updateInfo(startIndex, endIndex) {
     if (this.infoElement) {
       const total = this.filteredData.length;
-      const showing = Math.min(endIndex, total) - startIndex;
+      const _showing = Math.min(endIndex, total) - startIndex;
 
       if (total === 0) {
         this.infoElement.textContent = 'No entries to show';

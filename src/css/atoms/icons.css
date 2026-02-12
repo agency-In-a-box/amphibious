@@ -176,7 +176,7 @@
   53%,
   80%,
   100% {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1.0);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transform: translate3d(0, 0, 0);
   }
   40%,
@@ -203,7 +203,9 @@
   border: none;
   border-radius: var(--icon-button-radius);
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
   position: relative;
 }
 
@@ -405,7 +407,9 @@ figure.icon-badge {
   border-radius: 50%;
   background: var(--icon-color-muted);
   color: white;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .social-icon:hover {

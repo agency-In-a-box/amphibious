@@ -19,7 +19,7 @@ class DropdownEnhanced {
       searchable: options.searchable || element.dataset.searchable === 'true',
       multiple: options.multiple || element.dataset.multiple === 'true',
       placeholder: options.placeholder || element.dataset.placeholder || 'Select an option',
-      maxItems: options.maxItems || Number.parseInt(element.dataset.maxItems) || null,
+      maxItems: options.maxItems || Number.parseInt(element.dataset.maxItems, 10) || null,
 
       // Advanced options
       allowCreate: options.allowCreate || false,
@@ -146,7 +146,7 @@ class DropdownEnhanced {
       try {
         this.state.allItems = JSON.parse(optionsData);
         this.state.filteredItems = [...this.state.allItems];
-      } catch (e) {
+      } catch (_e) {
         this.state.allItems = [];
         this.state.filteredItems = [];
       }
@@ -646,7 +646,7 @@ class DropdownEnhanced {
 
       this.state.allItems = data;
       this.renderItems();
-    } catch (error) {
+    } catch (_error) {
       this.noResults.textContent = 'Error loading data';
       this.noResults.style.display = 'block';
     } finally {

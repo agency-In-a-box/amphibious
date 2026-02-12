@@ -497,7 +497,7 @@ class FileUploadEnhanced {
 
     // Duplicate check
     if (this.options.duplicateCheck) {
-      for (const [id, fileObj] of this.state.files) {
+      for (const [_id, fileObj] of this.state.files) {
         if (
           fileObj.file.name === file.name &&
           fileObj.file.size === file.size &&
@@ -1159,10 +1159,10 @@ class FileUploadEnhanced {
     try {
       const saved = localStorage.getItem('amphibious-uploads');
       if (saved) {
-        const uploads = JSON.parse(saved);
+        const _uploads = JSON.parse(saved);
         // Restore upload state
       }
-    } catch (e) {
+    } catch (_e) {
       // Ignore errors
     }
   }
@@ -1182,7 +1182,7 @@ class FileUploadEnhanced {
       }));
 
       localStorage.setItem('amphibious-uploads', JSON.stringify(uploads));
-    } catch (e) {
+    } catch (_e) {
       // Ignore errors
     }
   }
@@ -1233,7 +1233,7 @@ class FileUploadEnhanced {
 
       document.body.appendChild(modal);
       this.createdElements.add(modal);
-    } catch (error) {
+    } catch (_error) {
       this.showError('Camera access denied');
     }
   }

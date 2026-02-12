@@ -4,7 +4,7 @@
  * Replaces broken/outdated image references with modern placeholders
  */
 
-import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { extname, join } from 'node:path';
 
 interface ImageReplacement {
@@ -113,7 +113,7 @@ function findFiles(dir: string, extensions: string[], ignore: string[] = []): st
           }
         }
       }
-    } catch (error) {
+    } catch (_error) {
       // Skip directories we can't read
     }
   }

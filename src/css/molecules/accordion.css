@@ -145,7 +145,9 @@
   padding: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease;
 }
 
 .accordion-item.aiab-active .accordion-content,
@@ -194,7 +196,9 @@
 /* Shadow variant */
 .accordion--shadow {
   border: none;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .accordion--shadow .accordion-item {
@@ -347,9 +351,9 @@
 
 @media print {
   .accordion-item .accordion-content {
-    max-height: none !important;
-    padding: 1rem !important;
-    display: block !important;
+    max-height: none;
+    padding: 1rem;
+    display: block;
   }
 
   .accordion-header::after {

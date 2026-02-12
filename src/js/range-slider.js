@@ -417,7 +417,7 @@ class RangeSlider {
     });
   }
 
-  handleEnd(e) {
+  handleEnd(_e) {
     if (!this.state.isDragging) return;
 
     this.state.isDragging = false;

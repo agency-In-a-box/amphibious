@@ -11,11 +11,11 @@
   :root:not([data-theme="light"]) {
     /* Hero Stats */
     .hero .stats .stat-value {
-      color: #ffffff !important;
+      color: #ffffff;
     }
 
     .hero .stats .stat-label {
-      color: rgba(255, 255, 255, 0.9) !important;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     /* Stats Grid Cards */
@@ -35,19 +35,19 @@
     }
 
     .stat-card__number {
-      color: var(--color-text, #ffffff) !important;
+      color: var(--color-text, #ffffff);
       font-weight: 600;
     }
 
     .stat-card__label {
-      color: var(--color-text-secondary, #aeaeb2) !important;
+      color: var(--color-text-secondary, #aeaeb2);
     }
 
     /* Feature boxes in Key Features section */
     #features .feature-box,
     .key-features .feature-box,
     [class*="feature"] .box {
-      background: var(--color-surface-elevated, #2c2c2e) !important;
+      background: var(--color-surface-elevated, #2c2c2e);
       border: 1px solid var(--color-border, #3a3a3c);
     }
 
@@ -55,12 +55,12 @@
     #features h4,
     .feature-box h3,
     .feature-box h4 {
-      color: var(--color-text, #ffffff) !important;
+      color: var(--color-text, #ffffff);
     }
 
     #features p,
     .feature-box p {
-      color: var(--color-text-secondary, #aeaeb2) !important;
+      color: var(--color-text-secondary, #aeaeb2);
     }
 
     /* Icons - ensure they're visible */
@@ -77,17 +77,17 @@
     }
 
     .icon--warning {
-      color: var(--apple-warning, #ffd60a) !important;
-      stroke: var(--apple-warning, #ffd60a) !important;
+      color: var(--apple-warning, #ffd60a);
+      stroke: var(--apple-warning, #ffd60a);
     }
 
     .icon--filled.icon--warning {
-      fill: var(--apple-warning, #ffd60a) !important;
+      fill: var(--apple-warning, #ffd60a);
     }
 
     .icon--muted {
-      color: var(--color-text-quaternary, #636366) !important;
-      stroke: var(--color-text-quaternary, #636366) !important;
+      color: var(--color-text-quaternary, #636366);
+      stroke: var(--color-text-quaternary, #636366);
     }
 
     /* Icon buttons */
@@ -107,23 +107,23 @@
     #whats-new h3,
     #whats-new h4,
     .whats-new-title {
-      color: var(--color-text, #ffffff) !important;
+      color: var(--color-text, #ffffff);
     }
 
     #whats-new p,
     #whats-new .description {
-      color: var(--color-text-secondary, #aeaeb2) !important;
+      color: var(--color-text-secondary, #aeaeb2);
     }
 
     /* Recent Updates Section - Fix white text on light background */
     .updates-section h2,
     .updates-section h3,
     #updates-title {
-      color: var(--color-text, #ffffff) !important;
+      color: var(--color-text, #ffffff);
     }
 
     .updates-section p {
-      color: var(--color-text-secondary, #aeaeb2) !important;
+      color: var(--color-text-secondary, #aeaeb2);
     }
 
     /* Slats with images - ensure proper dark mode */
@@ -133,15 +133,15 @@
     }
 
     .slats--with-image h3 {
-      color: var(--color-text, #ffffff) !important;
+      color: var(--color-text, #ffffff);
     }
 
     .slats--with-image p {
-      color: var(--color-text-secondary, #aeaeb2) !important;
+      color: var(--color-text-secondary, #aeaeb2);
     }
 
     .slats--with-image .meta {
-      color: var(--color-text-tertiary, #8e8e93) !important;
+      color: var(--color-text-tertiary, #8e8e93);
     }
 
     .slats--with-image a {
@@ -154,25 +154,25 @@
 
     /* Component cards */
     .component-card {
-      background: var(--color-surface-elevated, #2c2c2e) !important;
+      background: var(--color-surface-elevated, #2c2c2e);
       border: 1px solid var(--color-border, #3a3a3c);
     }
 
     .component-card h3,
     .component-card h4 {
-      color: var(--color-text, #ffffff) !important;
+      color: var(--color-text, #ffffff);
     }
 
     .component-card p {
-      color: var(--color-text-secondary, #aeaeb2) !important;
+      color: var(--color-text-secondary, #aeaeb2);
     }
 
     /* Code blocks */
     code,
     pre,
     .code-snippet {
-      background: var(--color-surface, #1c1c1e) !important;
-      color: var(--color-text, #ffffff) !important;
+      background: var(--color-surface, #1c1c1e);
+      color: var(--color-text, #ffffff);
       border-color: var(--color-border, #3a3a3c);
     }
 
@@ -208,7 +208,7 @@
     /* Meta text */
     .meta,
     .text-muted {
-      color: var(--color-text-secondary, #aeaeb2) !important;
+      color: var(--color-text-secondary, #aeaeb2);
     }
 
     /* Links in dark mode */
@@ -245,7 +245,7 @@
     [style*="color:#ffffff"],
     [style*="color: #fff"],
     [style*="color: #ffffff"] {
-      color: var(--color-text, #ffffff) !important;
+      color: var(--color-text, #ffffff);
     }
 
     /* Ensure minimum contrast for all text */
@@ -264,7 +264,7 @@
     h4,
     h5,
     h6 {
-      color: var(--color-text, #ffffff) !important;
+      color: var(--color-text, #ffffff);
     }
   }
 }
@@ -273,11 +273,11 @@
 [data-theme="dark"] {
   /* Copy all the rules above for manual dark mode */
   .hero .stats .stat-value {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 
   .hero .stats .stat-label {
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .stats-grid .stat-card {
@@ -296,18 +296,18 @@
   }
 
   .stat-card__number {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
     font-weight: 600;
   }
 
   .stat-card__label {
-    color: var(--color-text-secondary, #aeaeb2) !important;
+    color: var(--color-text-secondary, #aeaeb2);
   }
 
   #features .feature-box,
   .key-features .feature-box,
   [class*="feature"] .box {
-    background: var(--color-surface-elevated, #2c2c2e) !important;
+    background: var(--color-surface-elevated, #2c2c2e);
     border: 1px solid var(--color-border, #3a3a3c);
   }
 
@@ -315,12 +315,12 @@
   #features h4,
   .feature-box h3,
   .feature-box h4 {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
   }
 
   #features p,
   .feature-box p {
-    color: var(--color-text-secondary, #aeaeb2) !important;
+    color: var(--color-text-secondary, #aeaeb2);
   }
 
   [data-lucide],
@@ -336,17 +336,17 @@
   }
 
   .icon--warning {
-    color: var(--apple-warning, #ffd60a) !important;
-    stroke: var(--apple-warning, #ffd60a) !important;
+    color: var(--apple-warning, #ffd60a);
+    stroke: var(--apple-warning, #ffd60a);
   }
 
   .icon--filled.icon--warning {
-    fill: var(--apple-warning, #ffd60a) !important;
+    fill: var(--apple-warning, #ffd60a);
   }
 
   .icon--muted {
-    color: var(--color-text-quaternary, #636366) !important;
-    stroke: var(--color-text-quaternary, #636366) !important;
+    color: var(--color-text-quaternary, #636366);
+    stroke: var(--color-text-quaternary, #636366);
   }
 
   .icon-button {
@@ -364,23 +364,23 @@
   #whats-new h3,
   #whats-new h4,
   .whats-new-title {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
   }
 
   #whats-new p,
   #whats-new .description {
-    color: var(--color-text-secondary, #aeaeb2) !important;
+    color: var(--color-text-secondary, #aeaeb2);
   }
 
   /* Recent Updates Section - Fix white text on light background */
   .updates-section h2,
   .updates-section h3,
   #updates-title {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
   }
 
   .updates-section p {
-    color: var(--color-text-secondary, #aeaeb2) !important;
+    color: var(--color-text-secondary, #aeaeb2);
   }
 
   /* Slats with images - ensure proper dark mode */
@@ -390,15 +390,15 @@
   }
 
   .slats--with-image h3 {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
   }
 
   .slats--with-image p {
-    color: var(--color-text-secondary, #aeaeb2) !important;
+    color: var(--color-text-secondary, #aeaeb2);
   }
 
   .slats--with-image .meta {
-    color: var(--color-text-tertiary, #8e8e93) !important;
+    color: var(--color-text-tertiary, #8e8e93);
   }
 
   .slats--with-image a {
@@ -410,24 +410,24 @@
   }
 
   .component-card {
-    background: var(--color-surface-elevated, #2c2c2e) !important;
+    background: var(--color-surface-elevated, #2c2c2e);
     border: 1px solid var(--color-border, #3a3a3c);
   }
 
   .component-card h3,
   .component-card h4 {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
   }
 
   .component-card p {
-    color: var(--color-text-secondary, #aeaeb2) !important;
+    color: var(--color-text-secondary, #aeaeb2);
   }
 
   code,
   pre,
   .code-snippet {
-    background: var(--color-surface, #1c1c1e) !important;
-    color: var(--color-text, #ffffff) !important;
+    background: var(--color-surface, #1c1c1e);
+    color: var(--color-text, #ffffff);
     border-color: var(--color-border, #3a3a3c);
   }
 
@@ -461,7 +461,7 @@
 
   .meta,
   .text-muted {
-    color: var(--color-text-secondary, #aeaeb2) !important;
+    color: var(--color-text-secondary, #aeaeb2);
   }
 
   a:not(.aiab-btn):not(.nav-link) {
@@ -494,7 +494,7 @@
   [style*="color:#ffffff"],
   [style*="color: #fff"],
   [style*="color: #ffffff"] {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
   }
 
   p,
@@ -512,7 +512,7 @@
   h4,
   h5,
   h6 {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
   }
 }
 
@@ -531,13 +531,13 @@
     .small-text,
     .caption,
     .footnote {
-      color: var(--apple-gray-600, #aeaeb2) !important;
+      color: var(--apple-gray-600, #aeaeb2);
     }
 
     /* Ensure focus indicators are highly visible */
     *:focus-visible {
-      outline: 3px solid var(--apple-orange-500, #ff9500) !important;
-      outline-offset: 2px !important;
+      outline: 3px solid var(--apple-orange-500, #ff9500);
+      outline-offset: 2px;
     }
   }
 }
@@ -546,11 +546,11 @@
   .small-text,
   .caption,
   .footnote {
-    color: var(--apple-gray-600, #aeaeb2) !important;
+    color: var(--apple-gray-600, #aeaeb2);
   }
 
   *:focus-visible {
-    outline: 3px solid var(--apple-orange-500, #ff9500) !important;
-    outline-offset: 2px !important;
+    outline: 3px solid var(--apple-orange-500, #ff9500);
+    outline-offset: 2px;
   }
 }

@@ -11,7 +11,7 @@ class Dropdown {
       searchable: options.searchable || element.dataset.searchable === 'true',
       multiple: options.multiple || element.dataset.multiple === 'true',
       placeholder: options.placeholder || element.dataset.placeholder || 'Select an option',
-      maxItems: options.maxItems || Number.parseInt(element.dataset.maxItems) || null,
+      maxItems: options.maxItems || Number.parseInt(element.dataset.maxItems, 10) || null,
       onChange: options.onChange || null,
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
@@ -237,7 +237,7 @@ class Dropdown {
 
   handleKeydown(e) {
     const items = Array.from(this.filteredItems);
-    const currentIndex = items.findIndex((item) => item === document.activeElement);
+    const currentIndex = items.indexOf(document.activeElement);
 
     switch (e.key) {
       case 'Enter':

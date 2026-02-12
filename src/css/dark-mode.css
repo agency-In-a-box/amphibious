@@ -21,8 +21,8 @@
   --color-mode: "light";
 
   /* Transition for smooth theme switching */
-  --theme-transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease,
-    box-shadow 200ms ease;
+  --theme-transition:
+    background-color 200ms ease, color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
 }
 
 /* Dark mode colors - activated by system preference or data attribute */
@@ -647,52 +647,52 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .bg-light {
-    background-color: var(--color-surface) !important;
+    background-color: var(--color-surface);
   }
 
   :root:not([data-theme="light"]) .bg-dark {
-    background-color: var(--color-background) !important;
+    background-color: var(--color-background);
   }
 
   :root:not([data-theme="light"]) .text-muted {
-    color: var(--color-text-secondary) !important;
+    color: var(--color-text-secondary);
   }
 
   :root:not([data-theme="light"]) .text-dark {
-    color: var(--color-text) !important;
+    color: var(--color-text);
   }
 
   :root:not([data-theme="light"]) .text-light {
-    color: var(--color-text-secondary) !important;
+    color: var(--color-text-secondary);
   }
 
   :root:not([data-theme="light"]) .border {
-    border-color: var(--color-border) !important;
+    border-color: var(--color-border);
   }
 }
 
 [data-theme="dark"] .bg-light {
-  background-color: var(--color-surface) !important;
+  background-color: var(--color-surface);
 }
 
 [data-theme="dark"] .bg-dark {
-  background-color: var(--color-background) !important;
+  background-color: var(--color-background);
 }
 
 [data-theme="dark"] .text-muted {
-  color: var(--color-text-secondary) !important;
+  color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .text-dark {
-  color: var(--color-text) !important;
+  color: var(--color-text);
 }
 
 [data-theme="dark"] .text-light {
-  color: var(--color-text-secondary) !important;
+  color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .border {
-  border-color: var(--color-border) !important;
+  border-color: var(--color-border);
 }
 
 /* ==========================================================================
@@ -700,13 +700,13 @@
    ========================================================================== */
 
 .theme-transition * {
-  transition: var(--theme-transition) !important;
+  transition: var(--theme-transition);
 }
 
 /* Disable transitions for instant feedback */
 @media (prefers-reduced-motion: reduce) {
   .theme-transition * {
-    transition: none !important;
+    transition: none;
   }
 }
 

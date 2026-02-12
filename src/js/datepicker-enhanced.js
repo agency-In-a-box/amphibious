@@ -269,7 +269,7 @@ class DatePickerEnhanced {
     // Input events
     this.addHandler(this.element, 'click', () => this.toggle());
     this.addHandler(this.element, 'focus', () => this.open());
-    this.addHandler(this.element, 'blur', (e) => {
+    this.addHandler(this.element, 'blur', (_e) => {
       // Close if focus moves outside datepicker
       const timer = setTimeout(() => {
         if (!this.wrapper.contains(document.activeElement)) {
@@ -495,7 +495,7 @@ class DatePickerEnhanced {
     // Bind month click events
     this.body.querySelectorAll('.datepicker-month').forEach((btn) => {
       const handler = () => {
-        this.state.viewDate.setMonth(Number.parseInt(btn.dataset.month));
+        this.state.viewDate.setMonth(Number.parseInt(btn.dataset.month, 10));
         this.state.viewMode = 'days';
         this.render();
       };
@@ -530,7 +530,7 @@ class DatePickerEnhanced {
     // Bind year click events
     this.body.querySelectorAll('.datepicker-year').forEach((btn) => {
       const handler = () => {
-        this.state.viewDate.setFullYear(Number.parseInt(btn.dataset.year));
+        this.state.viewDate.setFullYear(Number.parseInt(btn.dataset.year, 10));
         this.state.viewMode = 'months';
         this.render();
       };
@@ -802,7 +802,7 @@ class DatePickerEnhanced {
         this.state.selectedDates = [date];
         this.state.viewDate = new Date(date);
       }
-    } catch (e) {
+    } catch (_e) {
       // Invalid date, ignore
     }
   }

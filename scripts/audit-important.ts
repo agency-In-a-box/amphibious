@@ -4,7 +4,7 @@
  * Generates a report for systematic removal strategy
  */
 
-import { readFile, readdir } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 interface ImportantDeclaration {
@@ -98,7 +98,7 @@ async function analyzeFile(filePath: string): Promise<ImportantDeclaration[]> {
   const category = categorizeFile(filePath);
 
   let currentSelector = '';
-  let inRule = false;
+  let _inRule = false;
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -107,9 +107,9 @@ async function analyzeFile(filePath: string): Promise<ImportantDeclaration[]> {
     // Track current selector
     if (line.includes('{') && !line.includes('!important')) {
       currentSelector = line.split('{')[0].trim();
-      inRule = true;
+      _inRule = true;
     } else if (line.includes('}')) {
-      inRule = false;
+      _inRule = false;
       currentSelector = '';
     }
 
@@ -194,21 +194,21 @@ async function main() {
   // Print summary
   Object.entries(byCategory)
     .sort((a, b) => b[1] - a[1])
-    .forEach(([cat, count]) => {});
+    .forEach(([_cat, _count]) => {});
 
-  Object.entries(byJustification).forEach(([just, count]) => {
-    const emoji = just === 'needed' ? '✅' : just === 'questionable' ? '⚠️' : '❌';
+  Object.entries(byJustification).forEach(([just, _count]) => {
+    const _emoji = just === 'needed' ? '✅' : just === 'questionable' ? '⚠️' : '❌';
   });
 
   Object.entries(byFile)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
-    .forEach(([file, count]) => {});
+    .forEach(([_file, _count]) => {});
 
   // List removable declarations
   const removable = allDeclarations.filter((d) => d.justification === 'removable');
 
-  removable.slice(0, 20).forEach((d) => {});
+  removable.slice(0, 20).forEach((_d) => {});
 
   if (removable.length > 20) {
   }
@@ -216,7 +216,7 @@ async function main() {
   // List questionable declarations
   const questionable = allDeclarations.filter((d) => d.justification === 'questionable');
 
-  questionable.slice(0, 10).forEach((d) => {});
+  questionable.slice(0, 10).forEach((_d) => {});
 
   // Save detailed report
   const report = {

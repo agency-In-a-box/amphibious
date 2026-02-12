@@ -421,7 +421,7 @@ class Timeline {
     const list = document.createElement('div');
     list.className = 'timeline-list compact';
 
-    Object.entries(eventsByDate).forEach(([date, events]) => {
+    Object.entries(eventsByDate).forEach(([_date, events]) => {
       events.forEach((event) => {
         const eventEl = this.createEventElement(event, 'compact');
         list.appendChild(eventEl);

@@ -637,7 +637,7 @@ class SearchBarEnhanced {
       if (this.options.onSearch) {
         this.options.onSearch(query, results, this);
       }
-    } catch (error) {
+    } catch (_error) {
       this.showError();
     } finally {
       this.state.isLoading = false;
@@ -1072,7 +1072,7 @@ class SearchBarEnhanced {
       if (saved) {
         this.state.recentSearches = JSON.parse(saved);
       }
-    } catch (e) {
+    } catch (_e) {
       // Ignore errors
     }
   }
@@ -1082,7 +1082,7 @@ class SearchBarEnhanced {
 
     try {
       localStorage.setItem('amphibious-recent-searches', JSON.stringify(this.state.recentSearches));
-    } catch (e) {
+    } catch (_e) {
       // Ignore errors
     }
   }

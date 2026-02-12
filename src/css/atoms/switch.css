@@ -32,7 +32,9 @@
   bottom: 0;
   background-color: #cbd5e1;
   border-radius: 9999px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .switch-slider::before {
@@ -44,7 +46,9 @@
   bottom: 0.25rem;
   background-color: white;
   border-radius: 50%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -336,7 +340,9 @@
   width: 1.625rem;
   left: 0.0625rem;
   bottom: 0.0625rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 3px 1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.15),
+    0 3px 1px rgba(0, 0, 0, 0.06);
 }
 
 .switch--ios .switch-input:checked + .switch-slider {

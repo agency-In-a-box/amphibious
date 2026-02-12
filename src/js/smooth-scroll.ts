@@ -86,7 +86,7 @@ export class SmoothScroll {
     try {
       const hash = href.substring(href.indexOf('#'));
       return document.querySelector(hash);
-    } catch (error) {
+    } catch (_error) {
       return null;
     }
   }

@@ -280,7 +280,7 @@ class ToastComponent {
    */
   destroy() {
     // Clear all active toasts
-    this.toasts.forEach((config, id) => {
+    this.toasts.forEach((_config, id) => {
       this.hide(id);
     });
 

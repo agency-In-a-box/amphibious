@@ -5,8 +5,8 @@
  * Adds consistent navigation to all documentation pages
  */
 
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import { basename, join } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 const DOCS_DIR = '/Users/clivemoore/Documents/GitHub/AIAB/amphibious/docs';
 const BACKUP_DIR = join(DOCS_DIR, 'backups', `nav-fix-${Date.now()}`);
@@ -193,14 +193,14 @@ const FILES_TO_PROCESS = [
   'index.html',
 ];
 
-let processedCount = 0;
-let skippedCount = 0;
+let _processedCount = 0;
+let _skippedCount = 0;
 
 FILES_TO_PROCESS.forEach((filename) => {
   const filepath = join(DOCS_DIR, filename);
 
   if (!existsSync(filepath)) {
-    skippedCount++;
+    _skippedCount++;
     return;
   }
 
@@ -213,7 +213,7 @@ FILES_TO_PROCESS.forEach((filename) => {
 
   // Check if navigation already exists
   if (content.includes('site-nav')) {
-    skippedCount++;
+    _skippedCount++;
     return;
   }
 
@@ -263,7 +263,7 @@ FILES_TO_PROCESS.forEach((filename) => {
 
   // Write the updated file
   writeFileSync(filepath, content);
-  processedCount++;
+  _processedCount++;
 });
 
 // Also update the foundation.html that was already modified

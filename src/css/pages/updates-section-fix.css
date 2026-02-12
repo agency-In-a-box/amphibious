@@ -16,8 +16,8 @@
 
 /* Remove individual backgrounds from slat items in light mode */
 .slats--with-image li {
-  background: transparent !important;
-  border: none !important;
+  background: transparent;
+  border: none;
   padding: 24px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -37,7 +37,7 @@
 
 .slats--with-image a:hover {
   transform: translateX(4px);
-  background: transparent !important;
+  background: transparent;
 }
 
 /* Dark mode - section gets dark background */
@@ -49,20 +49,20 @@
   }
 
   :root:not([data-theme="light"]) .slats--with-image li {
-    background: transparent !important;
+    background: transparent;
     border-bottom: 1px solid var(--color-border, #3a3a3c);
   }
 
   :root:not([data-theme="light"]) .slats--with-image h3 {
-    color: var(--color-text, #ffffff) !important;
+    color: var(--color-text, #ffffff);
   }
 
   :root:not([data-theme="light"]) .slats--with-image p {
-    color: var(--color-text-secondary, #aeaeb2) !important;
+    color: var(--color-text-secondary, #aeaeb2);
   }
 
   :root:not([data-theme="light"]) .slats--with-image .meta {
-    color: var(--color-text-tertiary, #8e8e93) !important;
+    color: var(--color-text-tertiary, #8e8e93);
   }
 }
 
@@ -73,20 +73,20 @@
 }
 
 [data-theme="dark"] .slats--with-image li {
-  background: transparent !important;
+  background: transparent;
   border-bottom: 1px solid var(--color-border, #3a3a3c);
 }
 
 [data-theme="dark"] .slats--with-image h3 {
-  color: var(--color-text, #ffffff) !important;
+  color: var(--color-text, #ffffff);
 }
 
 [data-theme="dark"] .slats--with-image p {
-  color: var(--color-text-secondary, #aeaeb2) !important;
+  color: var(--color-text-secondary, #aeaeb2);
 }
 
 [data-theme="dark"] .slats--with-image .meta {
-  color: var(--color-text-tertiary, #8e8e93) !important;
+  color: var(--color-text-tertiary, #8e8e93);
 }
 
 /* Fix the colored boxes with icons */

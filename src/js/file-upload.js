@@ -439,28 +439,28 @@ class FileUpload {
   }
 
   getFileIcon(type) {
-    let icon = 'file';
+    let _icon = 'file';
     let className = '';
 
     if (type.startsWith('image/')) {
-      icon = 'photograph';
+      _icon = 'photograph';
     } else if (type.startsWith('video/')) {
-      icon = 'film';
+      _icon = 'film';
       className = 'file-type-video';
     } else if (type.startsWith('audio/')) {
-      icon = 'music-note';
+      _icon = 'music-note';
       className = 'file-type-audio';
     } else if (type === 'application/pdf') {
-      icon = 'document';
+      _icon = 'document';
       className = 'file-type-pdf';
     } else if (type.includes('zip') || type.includes('rar')) {
-      icon = 'archive';
+      _icon = 'archive';
       className = 'file-type-zip';
     } else if (type.includes('word') || type.includes('document')) {
-      icon = 'document-text';
+      _icon = 'document-text';
       className = 'file-type-doc';
     } else if (type.includes('sheet') || type.includes('excel')) {
-      icon = 'table';
+      _icon = 'table';
       className = 'file-type-xls';
     }
 
