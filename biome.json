@@ -1,44 +1,62 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
   "files": {
-    "ignore": [
-      "dist/**",
-      "node_modules/**",
-      "*.min.js",
-      "*.min.css",
-      "backup-*/**",
-      "backups/**",
-      ".claude/**",
-      "src/icomoon*/**",
-      "examples/**"
+    "includes": [
+      "**",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/*.min.js",
+      "!**/*.min.css",
+      "!**/backup-*",
+      "!**/backups",
+      "!**/.claude",
+      "!**/src/icomoon*",
+      "!**/examples",
+      "!**/demos",
+      "!**/docs/tests"
     ]
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
       "style": {
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "noDescendingSpecificity": "off"
       },
       "complexity": {
         "noForEach": "off",
         "noStaticOnlyClass": "off"
       },
       "suspicious": {
-        "noExplicitAny": "off"
+        "noExplicitAny": "off",
+        "useIterableCallbackReturn": "off",
+        "noAssignInExpressions": "off"
       }
     },
-    "ignore": ["dist/**", "node_modules/**", "backup-*/**", "backups/**", ".claude/**"]
+    "includes": [
+      "**",
+      "!**/dist/**",
+      "!**/node_modules/**",
+      "!**/backup-*/**",
+      "!**/backups/**",
+      "!**/.claude/**"
+    ]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100,
-    "ignore": ["dist/**", "node_modules/**", "backup-*/**", "backups/**", ".claude/**"]
+    "includes": [
+      "**",
+      "!**/dist/**",
+      "!**/node_modules/**",
+      "!**/backup-*/**",
+      "!**/backups/**",
+      "!**/.claude/**"
+    ]
   },
   "javascript": {
     "formatter": {

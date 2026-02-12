@@ -4,7 +4,7 @@
  */
 
 import { initializeIcons } from '../js/icons-lightweight';
-import { setInnerHTML, escapeHTML } from '../utils/sanitize';
+import { setInnerHTML } from '../utils/sanitize';
 
 export interface FooterOptions {
   newsletter?: boolean;
@@ -22,11 +22,6 @@ export class AmphibiousFooter {
   private element: HTMLElement;
   private options: FooterOptions;
   private backToTopVisible = false;
-  private eventListeners: Array<{
-    element: HTMLElement | Window | Document;
-    type: string;
-    handler: EventListener;
-  }> = [];
 
   constructor(selector: string | HTMLElement, options: FooterOptions = {}) {
     this.element =
@@ -70,7 +65,9 @@ export class AmphibiousFooter {
     footer.className = 'amp-footer';
     footer.setAttribute('role', 'contentinfo');
 
-    setInnerHTML(footer, `
+    setInnerHTML(
+      footer,
+      `
       <div class="amp-footer__main">
         <div class="aiab-container">
           <div class="aiab-row">
@@ -175,7 +172,8 @@ export class AmphibiousFooter {
       </div>
 
       ${this.options.backToTop ? this.renderBackToTop() : ''}
-    `;
+    `,
+    );
 
     // Replace existing element content
     setInnerHTML(this.element, '');
@@ -187,7 +185,9 @@ export class AmphibiousFooter {
     footer.className = 'amp-footer amp-footer--minimal';
     footer.setAttribute('role', 'contentinfo');
 
-    setInnerHTML(footer, `
+    setInnerHTML(
+      footer,
+      `
       <div class="aiab-container">
         <div class="amp-footer__minimal-content">
           <div class="amp-footer__brand">
@@ -209,7 +209,8 @@ export class AmphibiousFooter {
       </div>
 
       ${this.options.backToTop ? this.renderBackToTop() : ''}
-    `;
+    `,
+    );
 
     // Replace existing element content
     setInnerHTML(this.element, '');
@@ -416,12 +417,15 @@ export class AmphibiousFooter {
       const forms = this.element.querySelectorAll('[id^="newsletterForm"]');
       forms.forEach((form) => {
         const originalContent = form.innerHTML;
-        setInnerHTML(form, `
+        setInnerHTML(
+          form,
+          `
           <div class="amp-footer__newsletter-success">
             <i data-lucide="check-circle" class="icon--success"></i>
             <p>Thank you for subscribing!</p>
           </div>
-        `;
+        `,
+        );
 
         // Reset after 3 seconds
         setTimeout(() => {
