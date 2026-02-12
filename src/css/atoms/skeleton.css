@@ -8,7 +8,7 @@
    BASE SKELETON
    ======================================== */
 
-.skeleton {
+.aiab-skeleton {
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -16,7 +16,7 @@
   border-radius: 0.25rem;
 }
 
-.skeleton::after {
+.aiab-skeleton::after {
   content: "";
   position: absolute;
   top: 0;
@@ -453,7 +453,7 @@
    ======================================== */
 
 /* Screen reader text */
-.skeleton[aria-label]::before {
+.aiab-skeleton[aria-label]::before {
   content: attr(aria-label);
   position: absolute;
   width: 1px;
@@ -468,7 +468,7 @@
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .skeleton::after {
+  .aiab-skeleton::after {
     animation: none;
   }
 
@@ -483,11 +483,11 @@
    ======================================== */
 
 @media (prefers-color-scheme: dark) {
-  .skeleton {
+  .aiab-skeleton {
     background-color: #374151;
   }
 
-  .skeleton::after {
+  .aiab-skeleton::after {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
   }
 

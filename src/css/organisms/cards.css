@@ -24,7 +24,7 @@
 /* Base Card Styles
    ========================================================================== */
 
-.card {
+.aiab-card {
   background-color: var(--card-bg);
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow-sm);
@@ -38,24 +38,24 @@
 
 /* Card hover effects */
 .card-hoverable:hover,
-.card.hoverable:hover {
+.aiab-card.hoverable:hover {
   box-shadow: var(--card-shadow-md);
   transform: translateY(-2px);
 }
 
 .card-interactive,
-.card.interactive {
+.aiab-card.interactive {
   cursor: pointer;
 }
 
 .card-interactive:hover,
-.card.interactive:hover {
+.aiab-card.interactive:hover {
   box-shadow: var(--card-shadow-lg);
   transform: translateY(-4px);
 }
 
 .card-interactive:active,
-.card.interactive:active {
+.aiab-card.interactive:active {
   transform: translateY(-1px);
   box-shadow: var(--card-shadow-sm);
 }
@@ -159,7 +159,7 @@
 
 .card-media,
 .card__media,
-.card img:first-child {
+.aiab-card img:first-child {
   display: block;
   width: 100%;
   height: auto;
@@ -186,52 +186,52 @@
 /* Card Shadow Variants
    ========================================================================== */
 
-.card.shadow-none {
+.aiab-card.shadow-none {
   box-shadow: none;
   border: 1px solid var(--card-border);
 }
 
-.card.shadow-sm {
+.aiab-card.shadow-sm {
   box-shadow: var(--card-shadow-sm);
 }
 
-.card.shadow-md {
+.aiab-card.shadow-md {
   box-shadow: var(--card-shadow-md);
 }
 
-.card.shadow-lg {
+.aiab-card.shadow-lg {
   box-shadow: var(--card-shadow-lg);
 }
 
-.card.shadow-xl {
+.aiab-card.shadow-xl {
   box-shadow: var(--card-shadow-xl);
 }
 
 /* Card Size Variants
    ========================================================================== */
 
-.card.compact .card-header,
-.card.compact .card-body,
-.card.compact .card-content,
-.card.compact .card-footer {
+.aiab-card.compact .card-header,
+.aiab-card.compact .card-body,
+.aiab-card.compact .card-content,
+.aiab-card.compact .card-footer {
   padding: var(--card-spacing-sm);
 }
 
-.card.spacious .card-header,
-.card.spacious .card-body,
-.card.spacious .card-content,
-.card.spacious .card-footer {
+.aiab-card.spacious .card-header,
+.aiab-card.spacious .card-body,
+.aiab-card.spacious .card-content,
+.aiab-card.spacious .card-footer {
   padding: var(--card-spacing-lg);
 }
 
 /* Card Border Variants
    ========================================================================== */
 
-.card.borderless {
+.aiab-card.borderless {
   border: none;
 }
 
-.card.outlined {
+.aiab-card.outlined {
   border: 2px solid var(--card-border);
   box-shadow: none;
 }
@@ -240,31 +240,31 @@
    ========================================================================== */
 
 /* Horizontal card layout */
-.card.horizontal {
+.aiab-card.horizontal {
   flex-direction: row;
 }
 
-.card.horizontal .card-media,
-.card.horizontal .card__media,
-.card.horizontal img:first-child {
+.aiab-card.horizontal .card-media,
+.aiab-card.horizontal .card__media,
+.aiab-card.horizontal img:first-child {
   width: 200px;
   flex-shrink: 0;
 }
 
-.card.horizontal .card-content,
-.card.horizontal .card__content {
+.aiab-card.horizontal .card-content,
+.aiab-card.horizontal .card__content {
   display: flex;
   flex-direction: column;
 }
 
 @media (max-width: 640px) {
-  .card.horizontal {
+  .aiab-card.horizontal {
     flex-direction: column;
   }
 
-  .card.horizontal .card-media,
-  .card.horizontal .card__media,
-  .card.horizontal img:first-child {
+  .aiab-card.horizontal .card-media,
+  .aiab-card.horizontal .card__media,
+  .aiab-card.horizontal img:first-child {
     width: 100%;
   }
 }
@@ -303,34 +303,34 @@
    ========================================================================== */
 
 /* Product Card */
-.card.product .card-body,
-.card.product .card__body {
+.aiab-card.product .card-body,
+.aiab-card.product .card__body {
   text-align: center;
 }
 
-.card.product .card-title,
-.card.product .card__title {
+.aiab-card.product .card-title,
+.aiab-card.product .card__title {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
 }
 
-.card.product .price {
+.aiab-card.product .price {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-success, #059669);
   margin-bottom: 1rem;
 }
 
-.card.product .price.sale {
+.aiab-card.product .price.sale {
   color: var(--color-danger, #dc2626);
 }
 
 /* Profile Card */
-.card.profile {
+.aiab-card.profile {
   text-align: center;
 }
 
-.card.profile .avatar {
+.aiab-card.profile .aiab-avatar {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -338,23 +338,23 @@
   object-fit: cover;
 }
 
-.card.profile .card-title,
-.card.profile .card__title {
+.aiab-card.profile .card-title,
+.aiab-card.profile .card__title {
   margin-bottom: 0.25rem;
 }
 
-.card.profile .card-subtitle,
-.card.profile .card__subtitle {
+.aiab-card.profile .card-subtitle,
+.aiab-card.profile .card__subtitle {
   margin-bottom: 1rem;
 }
 
 /* Stat Card */
-.card.stat {
+.aiab-card.stat {
   text-align: center;
   padding: var(--card-spacing-lg);
 }
 
-.card.stat .number {
+.aiab-card.stat .number {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1;
@@ -362,7 +362,7 @@
   display: block;
 }
 
-.card.stat .label {
+.aiab-card.stat .label {
   font-size: 0.875rem;
   opacity: 0.75;
   text-transform: uppercase;
@@ -370,11 +370,11 @@
 }
 
 /* Feature Card */
-.card.feature {
+.aiab-card.feature {
   text-align: center;
 }
 
-.card.feature .icon {
+.aiab-card.feature .aiab-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   display: block;
@@ -409,12 +409,12 @@
 /* Loading State
    ========================================================================== */
 
-.card.loading {
+.aiab-card.aiab-loading {
   position: relative;
   overflow: hidden;
 }
 
-.card.loading::after {
+.aiab-card.aiab-loading::after {
   content: "";
   position: absolute;
   top: 0;
@@ -434,7 +434,7 @@
 /* Accessibility
    ========================================================================== */
 
-.card:focus-visible {
+.aiab-card:focus-visible {
   outline: 2px solid var(--color-primary, var(--color-primary));
   outline-offset: 2px;
 }
@@ -443,7 +443,7 @@
    ========================================================================== */
 
 @media print {
-  .card {
+  .aiab-card {
     box-shadow: none;
     border: 1px solid #000;
     break-inside: avoid;
@@ -451,9 +451,9 @@
   }
 
   .card-interactive:hover,
-  .card.interactive:hover,
+  .aiab-card.interactive:hover,
   .card-hoverable:hover,
-  .card.hoverable:hover {
+  .aiab-card.hoverable:hover {
     transform: none;
     box-shadow: none;
   }
@@ -463,11 +463,11 @@
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .card {
+  .aiab-card {
     transition: none;
   }
 
-  .card.loading::after {
+  .aiab-card.aiab-loading::after {
     animation: none;
   }
 }

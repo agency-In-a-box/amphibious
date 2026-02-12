@@ -15,23 +15,23 @@
  */
 .cf:before,
 .cf:after,
-.container:before,
-.container:after,
+.aiab-container:before,
+.aiab-container:after,
 .clearfix:before,
 .clearfix:after,
 .cfx:before,
 .cfx:after,
-.row:before,
-.row:after {
+.aiab-row:before,
+.aiab-row:after {
   content: " "; /* 1 */
   display: table; /* 2 */
 }
 
 .cf:after,
-.container:after,
+.aiab-container:after,
 .clearfix:after,
 .cfx:after,
-.row:after {
+.aiab-row:after {
   clear: both;
 }
 

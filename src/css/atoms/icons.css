@@ -43,7 +43,7 @@
 }
 
 /* Base Icon Styles */
-.icon {
+.aiab-icon {
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
@@ -338,7 +338,7 @@ figure.icon-badge {
   gap: 0.125rem;
 }
 
-.rating .icon {
+.rating .aiab-icon {
   width: 16px;
   height: 16px;
   fill: var(--icon-color-muted);
@@ -351,12 +351,12 @@ figure.icon-badge {
   fill: var(--icon-color-warning);
 }
 
-.rating .icon:hover {
+.rating .aiab-icon:hover {
   fill: var(--icon-color-warning);
 }
 
 /* Interactive rating */
-.rating--interactive .icon:hover ~ .icon {
+.rating--interactive .aiab-icon:hover ~ .aiab-icon {
   fill: var(--icon-color-muted);
 }
 
@@ -462,7 +462,7 @@ figure.icon-badge {
 
 /* High Contrast Mode */
 @media (prefers-contrast: high) {
-  .icon {
+  .aiab-icon {
     stroke-width: 3;
   }
 
@@ -473,7 +473,7 @@ figure.icon-badge {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .icon,
+  .aiab-icon,
   .icon-button {
     animation: none;
     transition: none;
@@ -488,7 +488,7 @@ figure.icon-badge {
 
 /* Print Styles */
 @media print {
-  .icon {
+  .aiab-icon {
     stroke: #000;
   }
 
@@ -517,7 +517,7 @@ figure.icon-badge {
 }
 
 /* Accessibility Enhancements */
-.icon[role="img"] {
+.aiab-icon[role="img"] {
   /* For decorative icons, use role="img" and provide alt text */
 }
 
@@ -526,6 +526,6 @@ figure.icon-badge {
   color: white;
 }
 
-.icon-button[aria-pressed="true"] .icon {
+.icon-button[aria-pressed="true"] .aiab-icon {
   stroke: currentColor;
 }

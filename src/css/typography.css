@@ -74,7 +74,7 @@ h6 {
 /* Text Utilities
    ========================================================================== */
 
-.large {
+.aiab-large {
   font-size: 2em;
 }
 
@@ -249,21 +249,21 @@ ul {
 /* Navigation lists */
 nav ul,
 nav ol,
-ul.inline,
-ol.inline {
+ul.aiab-inline,
+ol.aiab-inline {
   margin-left: 0;
   list-style: none;
   list-style-image: none;
 }
 
-ul.inline,
-ol.inline,
-ul.inline li,
-ol.inline li,
-.inline ul,
-.inline ul li,
-.inline ol,
-.inline ol li {
+ul.aiab-inline,
+ol.aiab-inline,
+ul.aiab-inline li,
+ol.aiab-inline li,
+.aiab-inline ul,
+.aiab-inline ul li,
+.aiab-inline ol,
+.aiab-inline ol li {
   display: inline-block;
   margin-left: 0;
 }

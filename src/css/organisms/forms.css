@@ -62,7 +62,7 @@ label {
 /* Form Controls
    ========================================================================== */
 
-.form-control,
+.aiab-form-control,
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -94,7 +94,7 @@ textarea {
   appearance: none;
 }
 
-.form-control:focus,
+.aiab-form-control:focus,
 input:focus,
 select:focus,
 textarea:focus {
@@ -105,15 +105,15 @@ textarea:focus {
   box-shadow: var(--form-focus-shadow);
 }
 
-.form-control::placeholder,
+.aiab-form-control::placeholder,
 input::placeholder,
 textarea::placeholder {
   color: var(--form-placeholder-color);
   opacity: 1;
 }
 
-.form-control:disabled,
-.form-control[readonly],
+.aiab-form-control:disabled,
+.aiab-form-control[readonly],
 input:disabled,
 input[readonly],
 select:disabled,
@@ -227,7 +227,7 @@ input[type="radio"]:focus {
 /* Form Groups
    ========================================================================== */
 
-.form-group {
+.aiab-form-group {
   margin-bottom: var(--form-group-margin-bottom);
 }
 
@@ -288,7 +288,7 @@ input[type="radio"]:focus {
 
 /* Valid */
 .is-valid,
-.was-validated .form-control:valid,
+.was-validated .aiab-form-control:valid,
 .was-validated input:valid,
 .was-validated select:valid,
 .was-validated textarea:valid {
@@ -296,7 +296,7 @@ input[type="radio"]:focus {
 }
 
 .is-valid:focus,
-.was-validated .form-control:valid:focus {
+.was-validated .aiab-form-control:valid:focus {
   border-color: var(--color-success, #198754);
   box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
 }
@@ -316,7 +316,7 @@ input[type="radio"]:focus {
 
 /* Invalid */
 .is-invalid,
-.was-validated .form-control:invalid,
+.was-validated .aiab-form-control:invalid,
 .was-validated input:invalid,
 .was-validated select:invalid,
 .was-validated textarea:invalid {
@@ -324,7 +324,7 @@ input[type="radio"]:focus {
 }
 
 .is-invalid:focus,
-.was-validated .form-control:invalid:focus {
+.was-validated .aiab-form-control:invalid:focus {
   border-color: var(--color-danger, #dc3545);
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
@@ -362,7 +362,7 @@ input[type="radio"]:focus {
   align-items: center;
 }
 
-.form-inline .form-control,
+.form-inline .aiab-form-control,
 .form-inline input,
 .form-inline select {
   display: inline-block;
@@ -370,7 +370,7 @@ input[type="radio"]:focus {
   vertical-align: middle;
 }
 
-.form-inline .form-group {
+.form-inline .aiab-form-group {
   display: flex;
   flex: 0 0 auto;
   flex-flow: row wrap;
@@ -391,7 +391,7 @@ input[type="radio"]:focus {
   position: relative;
 }
 
-.form-floating > .form-control,
+.form-floating > .aiab-form-control,
 .form-floating > select {
   height: calc(3.5rem + 2px);
   padding: 1rem 0.75rem;
@@ -409,18 +409,18 @@ input[type="radio"]:focus {
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
 }
 
-.form-floating > .form-control::placeholder {
+.form-floating > .aiab-form-control::placeholder {
   color: transparent;
 }
 
-.form-floating > .form-control:focus,
-.form-floating > .form-control:not(:placeholder-shown) {
+.form-floating > .aiab-form-control:focus,
+.form-floating > .aiab-form-control:not(:placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
 
-.form-floating > .form-control:focus ~ label,
-.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .aiab-form-control:focus ~ label,
+.form-floating > .aiab-form-control:not(:placeholder-shown) ~ label,
 .form-floating > select ~ label {
   opacity: 0.65;
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
@@ -512,7 +512,7 @@ input[type="file"]:hover:not(:disabled):not([readonly])::file-selector-button {
 /* Accessibility
    ========================================================================== */
 
-.form-control:focus-visible,
+.aiab-form-control:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
@@ -524,7 +524,7 @@ textarea:focus-visible {
    ========================================================================== */
 
 @media print {
-  .form-control,
+  .aiab-form-control,
   input,
   select,
   textarea {
@@ -537,7 +537,7 @@ textarea:focus-visible {
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .form-control,
+  .aiab-form-control,
   input,
   select,
   textarea,

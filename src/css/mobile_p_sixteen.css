@@ -3,47 +3,47 @@
    ========================================================================== */
 
 @media only screen and (min-width: 480px) and (max-width: 768px) {
-  .container {
+  .aiab-container {
     width: 94%;
     margin: 0 auto;
   }
 
-  .container .col {
+  .aiab-container .col {
     margin: 0;
   }
 
-  .container .one-fifth.col,
-  .container .one-quarter.col,
-  .container .one-third.col,
-  .container .one-half.col,
-  .container .two-thirds.col,
-  .container .one.col,
-  .container .two.col,
-  .container .three.col,
-  .container .four.col,
-  .container .five.col,
-  .container .six.col,
-  .container .seven.col,
-  .container .eight.col,
-  .container .nine.col,
-  .container .ten.col,
-  .container .eleven.col,
-  .container .twelve.col,
-  .container .thirteen.col,
-  .container .fourteen.col,
-  .container .fifteen.col,
-  .container .sixteen.col {
+  .aiab-container .one-fifth.col,
+  .aiab-container .one-quarter.col,
+  .aiab-container .one-third.col,
+  .aiab-container .one-half.col,
+  .aiab-container .two-thirds.col,
+  .aiab-container .one.col,
+  .aiab-container .two.col,
+  .aiab-container .three.col,
+  .aiab-container .four.col,
+  .aiab-container .five.col,
+  .aiab-container .six.col,
+  .aiab-container .seven.col,
+  .aiab-container .eight.col,
+  .aiab-container .nine.col,
+  .aiab-container .ten.col,
+  .aiab-container .eleven.col,
+  .aiab-container .twelve.col,
+  .aiab-container .thirteen.col,
+  .aiab-container .fourteen.col,
+  .aiab-container .fifteen.col,
+  .aiab-container .sixteen.col {
     width: 100%;
   }
 
-  .container .first.last,
-  .container .col.first.padded,
-  .container .col.last.padded,
-  .container .one-third.col.padded,
-  .container .two-thirds.col.padded,
-  .container .one-quarter.col.padded,
-  .container .half.col.padded,
-  .container .three-quarters.col.padded {
+  .aiab-container .first.last,
+  .aiab-container .col.first.padded,
+  .aiab-container .col.last.padded,
+  .aiab-container .one-third.col.padded,
+  .aiab-container .two-thirds.col.padded,
+  .aiab-container .one-quarter.col.padded,
+  .aiab-container .half.col.padded,
+  .aiab-container .three-quarters.col.padded {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 0;
@@ -53,7 +53,7 @@
     position: relative;
   }
 
-  .container .pager_nav .one.col {
+  .aiab-container .pager_nav .one.col {
     width: 28px;
   }
 }

@@ -90,7 +90,7 @@
 /* Container - Align with main content grid
    ========================================================================== */
 
-.site-nav .container {
+.site-nav .aiab-container {
   max-width: var(--container-width); /* Use design token for consistency */
   margin: 0 auto;
   padding: 0 var(--nav-padding-x);
@@ -199,7 +199,7 @@
 }
 
 /* Active States - Orange bottom border following SOP Design Excellence */
-.horizontal > li.active > a,
+.horizontal > li.aiab-active > a,
 .horizontal > li > a[aria-current="page"] {
   color: var(--nav-text-hover); /* Use brand orange text */
   background-color: transparent; /* Remove background */

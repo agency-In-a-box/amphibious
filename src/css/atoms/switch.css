@@ -8,7 +8,7 @@
    BASE SWITCH
    ======================================== */
 
-.switch {
+.aiab-switch {
   position: relative;
   display: inline-block;
   width: 3rem;
@@ -68,12 +68,12 @@
 }
 
 /* Hover state */
-.switch:hover .switch-slider::before {
+.aiab-switch:hover .switch-slider::before {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Active state */
-.switch:active .switch-slider::before {
+.aiab-switch:active .switch-slider::before {
   width: 1.5rem;
 }
 

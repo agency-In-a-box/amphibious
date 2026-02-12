@@ -3,58 +3,58 @@
    ========================================================================== */
 
 @media only screen and (max-width: 768px) {
-  .container {
+  .aiab-container {
     width: 94%;
     margin: 0 auto;
   }
 
-  .container .col {
+  .aiab-container .col {
     margin: 0;
   }
 
-  .container .col.first {
+  .aiab-container .col.first {
     margin-left: 0;
   }
 
-  .container .col.last {
+  .aiab-container .col.last {
     margin-right: 0;
   }
 
-  .container .one.col,
-  .container .two.col,
-  .container .three.col,
-  .container .four.col,
-  .container .five.col,
-  .container .six.col,
-  .container .seven.col,
-  .container .eight.col,
-  .container .nine.col,
-  .container .ten.col,
-  .container .eleven.col,
-  .container .twelve.col,
-  .container .thirteen.col,
-  .container .fourteen.col,
-  .container .fifteen.col,
-  .container .sixteen.col {
+  .aiab-container .one.col,
+  .aiab-container .two.col,
+  .aiab-container .three.col,
+  .aiab-container .four.col,
+  .aiab-container .five.col,
+  .aiab-container .six.col,
+  .aiab-container .seven.col,
+  .aiab-container .eight.col,
+  .aiab-container .nine.col,
+  .aiab-container .ten.col,
+  .aiab-container .eleven.col,
+  .aiab-container .twelve.col,
+  .aiab-container .thirteen.col,
+  .aiab-container .fourteen.col,
+  .aiab-container .fifteen.col,
+  .aiab-container .sixteen.col {
     width: 100%;
   }
 
   /* Offsets */
-  .container .push_one,
-  .container .push_two,
-  .container .push_three,
-  .container .push_four,
-  .container .push_five,
-  .container .push_six,
-  .container .push_seven,
-  .container .push_eight,
-  .container .push_nine,
-  .container .push_ten,
-  .container .push_eleven,
-  .container .push_twelve,
-  .container .push_thirteen,
-  .container .push_fourteen,
-  .container .push_fifteen {
+  .aiab-container .push_one,
+  .aiab-container .push_two,
+  .aiab-container .push_three,
+  .aiab-container .push_four,
+  .aiab-container .push_five,
+  .aiab-container .push_six,
+  .aiab-container .push_seven,
+  .aiab-container .push_eight,
+  .aiab-container .push_nine,
+  .aiab-container .push_ten,
+  .aiab-container .push_eleven,
+  .aiab-container .push_twelve,
+  .aiab-container .push_thirteen,
+  .aiab-container .push_fourteen,
+  .aiab-container .push_fifteen {
     padding-left: 0;
   }
 

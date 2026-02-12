@@ -49,12 +49,12 @@ p {
 }
 
 /* Premium feel for buttons and UI text */
-.btn,
+.aiab-btn,
 button,
 .nav-link,
 .tab-link,
 .form-label,
-.badge {
+.aiab-badge {
   letter-spacing: -0.01em;
 }
 
@@ -90,18 +90,18 @@ button,
 }
 
 /* Refined button transitions with Apple bounce */
-.btn,
+.aiab-btn,
 button {
   transition: all var(--duration-instant) var(--ease-apple-bounce);
 }
 
-.btn:hover,
+.aiab-btn:hover,
 button:hover {
   transform: translateY(-1px);
   transition: all var(--duration-fast) var(--ease-apple-bounce);
 }
 
-.btn:active,
+.aiab-btn:active,
 button:active {
   transform: translateY(0);
   transition: all var(--duration-instant) var(--ease-apple-in);
@@ -130,7 +130,7 @@ select:focus {
 }
 
 /* Modals and overlays with elegant entrance */
-.modal,
+.aiab-modal,
 .overlay,
 .drawer {
   animation-duration: var(--duration-slow);
@@ -216,8 +216,8 @@ select:focus {
   }
 }
 
-.skeleton,
-.loading {
+.aiab-skeleton,
+.aiab-loading {
   background: linear-gradient(
     90deg,
     var(--apple-gray-100) 25%,
@@ -261,11 +261,11 @@ select:focus {
    ========================================================================== */
 
 /* Card hover with elegant lift */
-.card {
+.aiab-card {
   transition: all var(--duration-fast) var(--ease-apple-smooth);
 }
 
-.card:hover {
+.aiab-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.08);
 }
@@ -319,7 +319,7 @@ select:focus {
 }
 
 button:focus-visible,
-.btn:focus-visible {
+.aiab-btn:focus-visible {
   box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -345,7 +345,7 @@ select:focus {
   }
 
   /* Preserve essential animations at minimal duration */
-  .spinner,
+  .aiab-spinner,
   .loading-indicator {
     animation-duration: 1s !important;
   }
@@ -389,9 +389,9 @@ html {
 /* High-resolution display optimizations */
 @media (min-resolution: 2dppx), (min-resolution: 192dpi) {
   /* Use thinner borders on retina displays */
-  .btn,
-  .card,
-  .form-control {
+  .aiab-btn,
+  .aiab-card,
+  .aiab-form-control {
     border-width: 0.5px;
   }
 }
@@ -401,18 +401,18 @@ html {
    ========================================================================== */
 
 /* Buttons with premium feel */
-.btn {
+.aiab-btn {
   font-weight: var(--font-weight-medium);
   letter-spacing: -0.01em;
   transition: all var(--duration-instant) var(--ease-apple-bounce);
 }
 
 /* Forms with Apple polish */
-.form-control {
+.aiab-form-control {
   transition: all var(--duration-fast) var(--ease-apple-smooth);
 }
 
-.form-control:hover {
+.aiab-form-control:hover {
   border-color: var(--apple-gray-400);
 }
 
@@ -422,11 +422,11 @@ html {
 }
 
 /* Badges with subtle animation */
-.badge {
+.aiab-badge {
   transition: all var(--duration-instant) var(--ease-apple-bounce);
 }
 
-.badge:hover {
+.aiab-badge:hover {
   transform: scale(1.05);
 }
 

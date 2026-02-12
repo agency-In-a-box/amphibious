@@ -177,7 +177,7 @@
     }
 
     /* Alerts in dark mode */
-    .alert {
+    .aiab-alert {
       border-color: var(--color-border, #3a3a3c);
     }
 
@@ -212,11 +212,11 @@
     }
 
     /* Links in dark mode */
-    a:not(.btn):not(.nav-link) {
+    a:not(.aiab-btn):not(.nav-link) {
       color: var(--apple-info, #0a84ff);
     }
 
-    a:not(.btn):not(.nav-link):hover {
+    a:not(.aiab-btn):not(.nav-link):hover {
       color: #409cff;
     }
 
@@ -431,7 +431,7 @@
     border-color: var(--color-border, #3a3a3c);
   }
 
-  .alert {
+  .aiab-alert {
     border-color: var(--color-border, #3a3a3c);
   }
 
@@ -464,11 +464,11 @@
     color: var(--color-text-secondary, #aeaeb2) !important;
   }
 
-  a:not(.btn):not(.nav-link) {
+  a:not(.aiab-btn):not(.nav-link) {
     color: var(--apple-info, #0a84ff);
   }
 
-  a:not(.btn):not(.nav-link):hover {
+  a:not(.aiab-btn):not(.nav-link):hover {
     color: #409cff;
   }
 

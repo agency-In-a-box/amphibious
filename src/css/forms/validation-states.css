@@ -86,7 +86,7 @@ label.optional::after,
 input:focus,
 textarea:focus,
 select:focus,
-.form-control:focus {
+.aiab-form-control:focus {
   outline: none;
   border-color: var(--validation-info);
   box-shadow: 0 0 0 3px var(--validation-focus-ring);
@@ -96,7 +96,7 @@ select:focus,
 input:disabled,
 textarea:disabled,
 select:disabled,
-.form-control:disabled {
+.aiab-form-control:disabled {
   background-color: #f3f4f6;
   color: #9ca3af;
   cursor: not-allowed;
@@ -106,7 +106,7 @@ select:disabled,
 /* Read-only state */
 input:read-only,
 textarea:read-only,
-.form-control:read-only {
+.aiab-form-control:read-only {
   background-color: #f9fafb;
   border-style: dashed;
   cursor: default;
@@ -120,11 +120,11 @@ textarea:read-only,
 .error input,
 .error textarea,
 .error select,
-.error .form-control,
+.error .aiab-form-control,
 input.error,
 textarea.error,
 select.error,
-.form-control.error,
+.aiab-form-control.error,
 input[aria-invalid="true"],
 textarea[aria-invalid="true"],
 select[aria-invalid="true"],
@@ -173,14 +173,14 @@ input.error {
    ======================================== */
 
 /* Success input styling */
-.success input,
-.success textarea,
-.success select,
-.success .form-control,
-input.success,
-textarea.success,
-select.success,
-.form-control.success,
+.aiab-success input,
+.aiab-success textarea,
+.aiab-success select,
+.aiab-success .aiab-form-control,
+input.aiab-success,
+textarea.aiab-success,
+select.aiab-success,
+.aiab-form-control.aiab-success,
 input[aria-valid="true"],
 .is-valid {
   border-color: var(--validation-success);
@@ -188,12 +188,12 @@ input[aria-valid="true"],
   color: #1f2937;
 }
 
-.success input:focus,
-.success textarea:focus,
-.success select:focus,
-input.success:focus,
-textarea.success:focus,
-select.success:focus,
+.aiab-success input:focus,
+.aiab-success textarea:focus,
+.aiab-success select:focus,
+input.aiab-success:focus,
+textarea.aiab-success:focus,
+select.aiab-success:focus,
 .is-valid:focus {
   border-color: var(--validation-success);
   box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
@@ -213,8 +213,8 @@ select.success:focus,
 }
 
 /* Success icon in input */
-.success input,
-input.success {
+.aiab-success input,
+input.aiab-success {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Ccircle cx='10' cy='10' r='9' stroke='%2316a34a' stroke-width='2'/%3E%3Cpath d='M6 10l3 3 5-6' stroke='%2316a34a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -227,25 +227,25 @@ input.success {
    ======================================== */
 
 /* Warning input styling */
-.warning input,
-.warning textarea,
-.warning select,
-.warning .form-control,
-input.warning,
-textarea.warning,
-select.warning,
-.form-control.warning {
+.aiab-warning input,
+.aiab-warning textarea,
+.aiab-warning select,
+.aiab-warning .aiab-form-control,
+input.aiab-warning,
+textarea.aiab-warning,
+select.aiab-warning,
+.aiab-form-control.aiab-warning {
   border-color: var(--validation-warning);
   background-color: #fff;
   color: #1f2937;
 }
 
-.warning input:focus,
-.warning textarea:focus,
-.warning select:focus,
-input.warning:focus,
-textarea.warning:focus,
-select.warning:focus {
+.aiab-warning input:focus,
+.aiab-warning textarea:focus,
+.aiab-warning select:focus,
+input.aiab-warning:focus,
+textarea.aiab-warning:focus,
+select.aiab-warning:focus {
   border-color: var(--validation-warning);
   box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
 }
@@ -263,8 +263,8 @@ select.warning:focus {
 }
 
 /* Warning icon in input */
-.warning input,
-input.warning {
+.aiab-warning input,
+input.aiab-warning {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M10 2L2 18h16L10 2z' stroke='%23d97706' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M10 8v4m0 4h.01' stroke='%23d97706' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -315,7 +315,7 @@ input.warning {
   margin-top: 0.25rem;
 }
 
-.character-count.warning {
+.character-count.aiab-warning {
   color: var(--validation-warning);
 }
 
@@ -335,7 +335,7 @@ input.warning {
 }
 
 .inline-validation input,
-.inline-validation .form-control {
+.inline-validation .aiab-form-control {
   flex: 1;
 }
 
@@ -350,7 +350,7 @@ input.warning {
   flex-shrink: 0;
 }
 
-.validation-indicator.success {
+.validation-indicator.aiab-success {
   background-color: var(--validation-success);
   color: white;
 }
@@ -360,7 +360,7 @@ input.warning {
   color: white;
 }
 
-.validation-indicator.loading {
+.validation-indicator.aiab-loading {
   border: 2px solid #e5e7eb;
   border-top-color: var(--validation-info);
   animation: spin 0.6s linear infinite;
@@ -389,7 +389,7 @@ input.warning {
   color: var(--validation-error);
 }
 
-.validation-summary.warning {
+.validation-summary.aiab-warning {
   background-color: var(--validation-warning-bg);
   border: 1px solid var(--validation-warning-border);
   color: var(--validation-warning);
@@ -425,7 +425,7 @@ input.warning {
   border-radius: 0.375rem;
 }
 
-.field-group.success {
+.field-group.aiab-success {
   padding: 0.75rem;
   background-color: var(--validation-success-bg);
   border: 1px solid var(--validation-success-border);
@@ -453,7 +453,7 @@ input.warning {
   color: var(--validation-error);
 }
 
-.floating-label.success label {
+.floating-label.aiab-success label {
   color: var(--validation-success);
 }
 
@@ -489,8 +489,8 @@ select:focus-visible {
     outline: 2px solid var(--validation-error);
   }
 
-  .success input,
-  input.success {
+  .aiab-success input,
+  input.aiab-success {
     outline: 2px solid var(--validation-success);
   }
 }

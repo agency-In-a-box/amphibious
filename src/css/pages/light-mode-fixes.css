@@ -20,7 +20,7 @@
 @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
   :root:not([data-theme="dark"]) {
     /* Breadcrumbs should have transparent background */
-    .breadcrumb {
+    .aiab-breadcrumb {
       background: transparent !important;
     }
 
@@ -112,7 +112,7 @@
     }
 
     /* Alerts in light mode */
-    .alert {
+    .aiab-alert {
       border: 1px solid;
     }
 
@@ -165,7 +165,7 @@
 /* Explicit light mode when manually set */
 [data-theme="light"] {
   /* Same rules as above for manual light mode */
-  .breadcrumb {
+  .aiab-breadcrumb {
     background: transparent !important;
   }
 

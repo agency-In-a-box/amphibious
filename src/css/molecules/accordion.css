@@ -8,7 +8,7 @@
    BASE ACCORDION STRUCTURE
    ======================================== */
 
-.accordion {
+.aiab-accordion {
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -43,7 +43,7 @@
   border-bottom: none;
 }
 
-.accordion-item.active .accordion-header {
+.accordion-item.aiab-active .accordion-header {
   background-color: #f9fafb;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -109,12 +109,12 @@
   color: #6b7280;
 }
 
-.accordion-item.active .accordion-header::after,
+.accordion-item.aiab-active .accordion-header::after,
 .accordion-header[aria-expanded="true"]::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
-.accordion-item.active .accordion-icon,
+.accordion-item.aiab-active .accordion-icon,
 .accordion-header[aria-expanded="true"] .accordion-icon {
   transform: rotate(180deg);
 }
@@ -131,7 +131,7 @@
   transform: translateY(-50%);
 }
 
-.accordion--plus-minus .accordion-item.active .accordion-header::after,
+.accordion--plus-minus .accordion-item.aiab-active .accordion-header::after,
 .accordion--plus-minus .accordion-header[aria-expanded="true"]::after {
   content: "−";
   transform: translateY(-50%);
@@ -148,7 +148,7 @@
   transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
-.accordion-item.active .accordion-content,
+.accordion-item.aiab-active .accordion-content,
 .accordion-content[aria-hidden="false"] {
   padding: 1.5rem;
   max-height: 100vh; /* Will be set dynamically via JS */
@@ -221,7 +221,7 @@
   font-size: 1.125rem;
 }
 
-.accordion--large .accordion-item.active .accordion-content {
+.accordion--large .accordion-item.aiab-active .accordion-content {
   padding: 2rem;
 }
 
@@ -239,31 +239,31 @@
   color: #a65e00;
 }
 
-.accordion--primary .accordion-item.active .accordion-header {
+.accordion--primary .accordion-item.aiab-active .accordion-header {
   background-color: #fff3e0;
   color: #a65e00;
 }
 
 /* Success */
-.accordion--success .accordion-item.active .accordion-header {
+.accordion--success .accordion-item.aiab-active .accordion-header {
   background-color: #dcfce7;
   color: #16a34a;
 }
 
 /* Info */
-.accordion--info .accordion-item.active .accordion-header {
+.accordion--info .accordion-item.aiab-active .accordion-header {
   background-color: #dbeafe;
   color: #2563eb;
 }
 
 /* Warning */
-.accordion--warning .accordion-item.active .accordion-header {
+.accordion--warning .accordion-item.aiab-active .accordion-header {
   background-color: #fef3c7;
   color: #d97706;
 }
 
 /* Danger */
-.accordion--danger .accordion-item.active .accordion-header {
+.accordion--danger .accordion-item.aiab-active .accordion-header {
   background-color: #fee2e2;
   color: #dc2626;
 }
@@ -272,17 +272,17 @@
    NESTED ACCORDIONS
    ======================================== */
 
-.accordion .accordion {
+.aiab-accordion .aiab-accordion {
   margin: 1rem 0;
   border-radius: 0.375rem;
 }
 
-.accordion .accordion .accordion-header {
+.aiab-accordion .aiab-accordion .accordion-header {
   padding-left: 1rem;
   font-size: 0.9375rem;
 }
 
-.accordion .accordion .accordion-content {
+.aiab-accordion .aiab-accordion .accordion-content {
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -313,7 +313,7 @@
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
-  .accordion {
+  .aiab-accordion {
     border: 2px solid;
   }
 
@@ -332,7 +332,7 @@
     font-size: 0.9375rem;
   }
 
-  .accordion-item.active .accordion-content {
+  .accordion-item.aiab-active .accordion-content {
     padding: 1rem;
   }
 
@@ -367,7 +367,7 @@
    ======================================== */
 
 @media (prefers-color-scheme: dark) {
-  .accordion {
+  .aiab-accordion {
     background: #1f2937;
     border-color: #374151;
   }
@@ -385,7 +385,7 @@
     background-color: #374151;
   }
 
-  .accordion-item.active .accordion-header {
+  .accordion-item.aiab-active .accordion-header {
     background-color: #374151;
     border-color: #4b5563;
   }

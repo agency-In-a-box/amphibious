@@ -18,16 +18,16 @@
   width: 100%;
 }
 
-.container .sitemap.col.one,
-.container .sitemap.col.two,
-.container .sitemap.col.three,
-.container .sitemap.col.four,
-.container .sitemap.col.five,
-.container .sitemap.col.six,
-.container .sitemap.col.seven,
-.container .sitemap.col.eight,
-.container .sitemap.col.nine,
-.container .sitemap.col.ten {
+.aiab-container .sitemap.col.one,
+.aiab-container .sitemap.col.two,
+.aiab-container .sitemap.col.three,
+.aiab-container .sitemap.col.four,
+.aiab-container .sitemap.col.five,
+.aiab-container .sitemap.col.six,
+.aiab-container .sitemap.col.seven,
+.aiab-container .sitemap.col.eight,
+.aiab-container .sitemap.col.nine,
+.aiab-container .sitemap.col.ten {
   width: 100%;
 }
 
@@ -78,7 +78,7 @@
   list-style: none;
 }
 
-.container .sitemap.col,
+.aiab-container .sitemap.col,
 .sitemap {
   margin: 1em 0 2em;
   float: left;

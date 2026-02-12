@@ -47,7 +47,7 @@
 }
 
 /* Base Toast Styles */
-.toast {
+.aiab-toast {
   display: flex;
   align-items: center;
   min-width: 250px;
@@ -194,8 +194,8 @@
   }
 }
 
-.toast-container--top-left .toast,
-.toast-container--bottom-left .toast {
+.toast-container--top-left .aiab-toast,
+.toast-container--bottom-left .aiab-toast {
   animation-name: slideInLeft;
 }
 
@@ -210,8 +210,8 @@
   }
 }
 
-.toast-container--top-center .toast,
-.toast-container--bottom-center .toast {
+.toast-container--top-center .aiab-toast,
+.toast-container--bottom-center .aiab-toast {
   animation-name: slideInUp;
 }
 
@@ -302,7 +302,7 @@
 }
 
 /* Stacking */
-.toast + .toast {
+.aiab-toast + .aiab-toast {
   margin-top: 0.5rem;
 }
 
@@ -321,14 +321,14 @@
     transform: none;
   }
 
-  .toast {
+  .aiab-toast {
     max-width: 100%;
     margin: 0.5rem;
   }
 }
 
 /* Accessibility */
-.toast:focus-within {
+.aiab-toast:focus-within {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
