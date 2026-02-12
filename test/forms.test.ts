@@ -362,7 +362,7 @@ describe('Forms Module', () => {
       forms.init();
 
       const emailField = document.querySelector('#email') as HTMLInputElement;
-      const passwordField = document.querySelector('#password') as HTMLInputElement;
+      const _passwordField = document.querySelector('#password') as HTMLInputElement;
 
       const event = new Event('submit', { cancelable: true });
       container.dispatchEvent(event);
