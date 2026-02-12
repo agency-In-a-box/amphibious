@@ -68,7 +68,7 @@
   z-index: var(--nav-z-index);
   /* Add padding-bottom to create space between nav items and border */
   padding-bottom: 4px; /* 1 grid unit following 4px baseline */
-  overflow: visible !important; /* Ensure dropdowns aren't clipped */
+  overflow: visible; /* Ensure dropdowns aren't clipped */
 }
 
 .site-nav * {

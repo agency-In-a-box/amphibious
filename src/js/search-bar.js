@@ -300,7 +300,7 @@ class SearchBar {
       if (this.options.onSearch) {
         this.options.onSearch(query, results, this);
       }
-    } catch (error) {
+    } catch (_error) {
       // Handle search error - console removed for production
       this.renderError();
     } finally {
@@ -338,7 +338,7 @@ class SearchBar {
       return;
     }
 
-    results.forEach((result, index) => {
+    results.forEach((result, _index) => {
       const item = this.createResultItem(result, query);
       this.resultsContainer.appendChild(item);
     });

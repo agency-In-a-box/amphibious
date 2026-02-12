@@ -24,7 +24,7 @@
 .doc-header,
 .demo-header {
   /* Darken the gradient for better contrast */
-  background: linear-gradient(135deg, #c97400 0%, #a65e00 100%) !important;
+  background: linear-gradient(135deg, #c97400 0%, #a65e00 100%);
   color: white;
 }
 
@@ -42,7 +42,7 @@
 .doc-header p,
 .demo-header h1,
 .demo-header p {
-  color: white !important;
+  color: white;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -102,7 +102,7 @@ button[type="submit"]:hover {
 
 /* Site logo and nav items with orange */
 .site-logo {
-  color: #a65e00 !important; /* Darker orange for better contrast */
+  color: #a65e00; /* Darker orange for better contrast */
 }
 
 .horizontal a:hover,
@@ -184,26 +184,26 @@ a:visited {
 
 /* Text color utilities with proper contrast */
 .text-primary {
-  color: #a65e00 !important; /* AA compliant */
+  color: #a65e00; /* AA compliant */
 }
 
 .text-primary-light {
-  color: #c97400 !important; /* Use sparingly */
+  color: #c97400; /* Use sparingly */
 }
 
 .bg-primary {
-  background-color: #c97400 !important;
-  color: white !important;
+  background-color: #c97400;
+  color: white;
 }
 
 .bg-primary-dark {
-  background-color: #a65e00 !important;
-  color: white !important;
+  background-color: #a65e00;
+  color: white;
 }
 
 /* Border utilities */
 .border-primary {
-  border-color: #c97400 !important;
+  border-color: #c97400;
 }
 
 /* ========================================
@@ -244,7 +244,7 @@ a:visited {
   .hero,
   .examples-header,
   .docs-header {
-    background: #8a4e00 !important;
+    background: #8a4e00;
   }
 
   a {
@@ -272,13 +272,13 @@ a:visited {
   }
 
   .text-primary {
-    color: #ff9500 !important;
+    color: #ff9500;
   }
 
   .hero,
   .examples-header,
   .docs-header {
-    background: linear-gradient(135deg, #a65e00 0%, #8a4e00 100%) !important;
+    background: linear-gradient(135deg, #a65e00 0%, #8a4e00 100%);
   }
 }
 
@@ -290,8 +290,8 @@ a:visited {
   .hero,
   .examples-header,
   .docs-header {
-    background: none !important;
-    color: black !important;
+    background: none;
+    color: black;
     border-bottom: 2px solid #c97400;
   }
 

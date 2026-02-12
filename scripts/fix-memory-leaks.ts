@@ -34,7 +34,7 @@ async function fixModalMemoryLeaks(): Promise<MemoryLeakFix> {
   let content = await readFile(filePath, 'utf-8');
 
   // Add event listener storage at class level
-  const classStart = content.indexOf('export class Modal {');
+  const _classStart = content.indexOf('export class Modal {');
   const firstProperty = content.indexOf('private element: HTMLElement;');
 
   content = `${content.slice(0, firstProperty)}private element: HTMLElement;
@@ -194,7 +194,7 @@ async function fixNavigationMemoryLeaks(): Promise<MemoryLeakFix> {
   let content = await readFile(filePath, 'utf-8');
 
   // Add event listener storage
-  const classStart = content.indexOf('export class Navigation {');
+  const _classStart = content.indexOf('export class Navigation {');
   const firstProperty = content.indexOf('  private navElement: HTMLElement | null;');
 
   content = `${content.slice(0, firstProperty)}  private navElement: HTMLElement | null;
@@ -314,7 +314,7 @@ async function fixFormsMemoryLeaks(): Promise<MemoryLeakFix> {
   let content = await readFile(filePath, 'utf-8');
 
   // Add event listener storage
-  const classStart = content.indexOf('export class Forms {');
+  const _classStart = content.indexOf('export class Forms {');
   const firstProperty = content.indexOf('  private forms: NodeListOf<HTMLFormElement>;');
 
   content = `${content.slice(0, firstProperty)}  private forms: NodeListOf<HTMLFormElement>;

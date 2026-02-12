@@ -560,8 +560,8 @@ class DatePicker {
 
   updateTime() {
     if (this.selectedDate && this.options.showTime) {
-      let hours = Number.parseInt(this.hourInput.value) || 12;
-      const minutes = Number.parseInt(this.minuteInput.value) || 0;
+      let hours = Number.parseInt(this.hourInput.value, 10) || 12;
+      const minutes = Number.parseInt(this.minuteInput.value, 10) || 0;
       const isPM = this.pmBtn.classList.contains('datepicker-time-period-btn--active');
 
       if (isPM && hours !== 12) hours += 12;

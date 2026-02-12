@@ -14,7 +14,10 @@
     "./css": "./dist/amphibious.css",
     "./theme": "./dist/theme.css"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dev": "vite --port 2960 --host",
     "build": "NODE_ENV=production vite build",
@@ -38,7 +41,15 @@
     "fix:images": "bun run scripts/update-image-placeholders.ts",
     "fix:docs": "bun run scripts/fix-docs.ts"
   },
-  "keywords": ["css", "framework", "responsive", "grid", "components", "boilerplate", "html5"],
+  "keywords": [
+    "css",
+    "framework",
+    "responsive",
+    "grid",
+    "components",
+    "boilerplate",
+    "html5"
+  ],
   "author": {
     "name": "Clive Moore",
     "url": "https://clivemoore.ca"

@@ -88,7 +88,6 @@ export interface IconOptions {
 
 export class Icon {
   private static initialized = false;
-  private static cache = new Map<string, string>();
 
   /**
    * Initialize the icon system

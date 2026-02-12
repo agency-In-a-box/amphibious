@@ -82,8 +82,8 @@
   :root:not([data-theme="light"]) [style*="background-color: white"],
   :root:not([data-theme="light"]) [style*="background-color:#fff"],
   :root:not([data-theme="light"]) [style*="background-color:#ffffff"] {
-    background: var(--color-surface-elevated, #2c2c2e) !important;
-    color: var(--color-text, #ffffff) !important;
+    background: var(--color-surface-elevated, #2c2c2e);
+    color: var(--color-text, #ffffff);
   }
 }
 
@@ -159,6 +159,6 @@
 [data-theme="dark"] [style*="background-color: white"],
 [data-theme="dark"] [style*="background-color:#fff"],
 [data-theme="dark"] [style*="background-color:#ffffff"] {
-  background: var(--color-surface-elevated, #2c2c2e) !important;
-  color: var(--color-text, #ffffff) !important;
+  background: var(--color-surface-elevated, #2c2c2e);
+  color: var(--color-text, #ffffff);
 }

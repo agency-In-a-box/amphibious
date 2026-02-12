@@ -8,8 +8,8 @@
    ========================================================================== */
 
 .aiab-breadcrumb {
-  margin-top: 0.5rem !important; /* Reduced from default */
-  margin-bottom: 1.5rem !important;
+  margin-top: 0.5rem; /* Reduced from default */
+  margin-bottom: 1.5rem;
   padding: 0.5rem 0;
 }
 
@@ -33,7 +33,7 @@
   #core p,
   #core li,
   #core span {
-    color: #212529 !important;
+    color: #212529;
   }
 
   /* All body text */
@@ -44,7 +44,7 @@
   article li,
   section p,
   section li {
-    color: #212529 !important;
+    color: #212529;
   }
 
   /* Headings */
@@ -54,7 +54,7 @@
   h4,
   h5,
   h6 {
-    color: #212529 !important;
+    color: #212529;
   }
 }
 
@@ -71,7 +71,7 @@
     #core h4,
     #core p,
     #core li {
-      color: #ffffff !important;
+      color: #ffffff;
     }
 
     main p,
@@ -81,7 +81,7 @@
     article li,
     section p,
     section li {
-      color: #ffffff !important;
+      color: #ffffff;
     }
 
     h1,
@@ -90,7 +90,7 @@
     h4,
     h5,
     h6 {
-      color: #ffffff !important;
+      color: #ffffff;
     }
   }
 }
@@ -106,7 +106,7 @@
   #core h4,
   #core p,
   #core li {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 
   main p,
@@ -116,7 +116,7 @@
   article li,
   section p,
   section li {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 
   h1,
@@ -125,7 +125,7 @@
   h4,
   h5,
   h6 {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 }
 
@@ -136,18 +136,18 @@
 .code-example,
 pre,
 code {
-  background: #2d2d2d !important;
-  color: #f8f8f2 !important;
-  border: 1px solid #666666 !important;
+  background: #2d2d2d;
+  color: #f8f8f2;
+  border: 1px solid #666666;
   border-radius: 0.375rem;
 }
 
 /* Inline code */
 code:not(pre code) {
   padding: 0.125rem 0.375rem;
-  background: #3a3a3a !important;
-  color: #f8f8f2 !important;
-  border: 1px solid #555555 !important;
+  background: #3a3a3a;
+  color: #f8f8f2;
+  border: 1px solid #555555;
 }
 
 /* Code blocks in light mode should also be dark */
@@ -155,14 +155,14 @@ code:not(pre code) {
 :root:not([data-theme="dark"]) pre,
 [data-theme="light"] .code-example,
 [data-theme="light"] pre {
-  background: #2d2d2d !important;
-  color: #f8f8f2 !important;
+  background: #2d2d2d;
+  color: #f8f8f2;
 }
 
 :root:not([data-theme="dark"]) code:not(pre code),
 [data-theme="light"] code:not(pre code) {
-  background: #3a3a3a !important;
-  color: #f8f8f2 !important;
+  background: #3a3a3a;
+  color: #f8f8f2;
 }
 
 /* ==========================================================================
@@ -174,7 +174,7 @@ code:not(pre code) {
 .demo-col,
 .golden-ratio-demo .demo-col,
 .push-pull-demo .demo-col {
-  background: transparent !important;
+  background: transparent;
   border: 2px solid #666666;
   color: inherit;
 }
@@ -182,29 +182,29 @@ code:not(pre code) {
 /* Ensure demo columns have proper text color */
 :root:not([data-theme="dark"]) .demo-col,
 [data-theme="light"] .demo-col {
-  color: #212529 !important;
+  color: #212529;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .demo-col {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 }
 
 [data-theme="dark"] .demo-col {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 /* Media query demo - remove orange */
 .media-query-demo {
-  background: transparent !important;
-  border: 2px solid #666666 !important;
+  background: transparent;
+  border: 2px solid #666666;
 }
 
 @media (max-width: 768px) {
   .media-query-demo {
-    background: transparent !important;
-    border-color: #999999 !important;
+    background: transparent;
+    border-color: #999999;
   }
 }
 
@@ -223,7 +223,7 @@ code:not(pre code) {
 .breakpoints-section p,
 .breakpoints-section li,
 .breakpoints-section code {
-  color: inherit !important;
+  color: inherit;
 }
 
 /* Table text in breakpoints */
@@ -233,7 +233,7 @@ code:not(pre code) {
 .breakpoints-section table,
 .breakpoints-section th,
 .breakpoints-section td {
-  color: inherit !important;
+  color: inherit;
 }
 
 /* Light mode specific */
@@ -241,37 +241,37 @@ code:not(pre code) {
 :root:not([data-theme="dark"]) .breakpoints-section,
 [data-theme="light"] #breakpoints,
 [data-theme="light"] .breakpoints-section {
-  color: #212529 !important;
+  color: #212529;
 }
 
 :root:not([data-theme="dark"]) #breakpoints *,
 :root:not([data-theme="dark"]) .breakpoints-section *,
 [data-theme="light"] #breakpoints *,
 [data-theme="light"] .breakpoints-section * {
-  color: #212529 !important;
+  color: #212529;
 }
 
 /* Dark mode specific */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) #breakpoints,
   :root:not([data-theme="light"]) .breakpoints-section {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 
   :root:not([data-theme="light"]) #breakpoints *,
   :root:not([data-theme="light"]) .breakpoints-section * {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 }
 
 [data-theme="dark"] #breakpoints,
 [data-theme="dark"] .breakpoints-section {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 [data-theme="dark"] #breakpoints *,
 [data-theme="dark"] .breakpoints-section * {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 /* ==========================================================================
@@ -313,7 +313,7 @@ dd {
 
 /* Ensure demo columns inside code examples maintain their styling */
 .code-example .demo-col {
-  background: #666666 !important;
-  color: white !important;
-  border: none !important;
+  background: #666666;
+  color: white;
+  border: none;
 }

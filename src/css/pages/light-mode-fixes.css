@@ -21,14 +21,14 @@
   :root:not([data-theme="dark"]) {
     /* Breadcrumbs should have transparent background */
     .aiab-breadcrumb {
-      background: transparent !important;
+      background: transparent;
     }
 
     /* Amphibious logo should always be brand orange */
     .site-logo,
     .nav-link.site-logo,
     a.site-logo {
-      color: var(--apple-orange-500, #ed8b00) !important;
+      color: var(--apple-orange-500, #ed8b00);
     }
 
     /* Ensure all text is dark in light mode */
@@ -38,7 +38,7 @@
     h4,
     h5,
     h6 {
-      color: #212529 !important;
+      color: #212529;
     }
 
     p,
@@ -56,7 +56,7 @@
     .feature-box h3,
     .feature-box h4,
     .feature-box p {
-      color: #212529 !important;
+      color: #212529;
     }
 
     /* Recent updates section */
@@ -64,28 +64,28 @@
     .updates-section h3,
     .updates-section p,
     #updates-title {
-      color: #212529 !important;
+      color: #212529;
     }
 
     .slats--with-image h3 {
-      color: #212529 !important;
+      color: #212529;
     }
 
     .slats--with-image p {
-      color: #6c757d !important;
+      color: #6c757d;
     }
 
     /* Code examples borders */
     pre,
     code,
     .code-example {
-      border-color: #666666 !important;
+      border-color: #666666;
     }
 
     /* Grid examples - change orange gradient to dark gray */
     .demo-grid {
-      background: #888888 !important;
-      color: white !important;
+      background: #888888;
+      color: white;
     }
 
     /* Navigation fixes */
@@ -106,8 +106,8 @@
     .component-card,
     .feature-card,
     .stat-card {
-      background: #ffffff !important;
-      color: #212529 !important;
+      background: #ffffff;
+      color: #212529;
       border: 1px solid #dedede;
     }
 
@@ -143,7 +143,7 @@
     /* Meta text should be gray */
     .meta,
     .text-muted {
-      color: #6c757d !important;
+      color: #6c757d;
     }
 
     /* Icons should be dark */
@@ -166,13 +166,13 @@
 [data-theme="light"] {
   /* Same rules as above for manual light mode */
   .aiab-breadcrumb {
-    background: transparent !important;
+    background: transparent;
   }
 
   .site-logo,
   .nav-link.site-logo,
   a.site-logo {
-    color: var(--apple-orange-500, #ed8b00) !important;
+    color: var(--apple-orange-500, #ed8b00);
   }
 
   h1,
@@ -181,7 +181,7 @@
   h4,
   h5,
   h6 {
-    color: #212529 !important;
+    color: #212529;
   }
 
   p,
@@ -198,33 +198,33 @@
   .feature-box h3,
   .feature-box h4,
   .feature-box p {
-    color: #212529 !important;
+    color: #212529;
   }
 
   .updates-section h2,
   .updates-section h3,
   .updates-section p,
   #updates-title {
-    color: #212529 !important;
+    color: #212529;
   }
 
   .slats--with-image h3 {
-    color: #212529 !important;
+    color: #212529;
   }
 
   .slats--with-image p {
-    color: #6c757d !important;
+    color: #6c757d;
   }
 
   pre,
   code,
   .code-example {
-    border-color: #666666 !important;
+    border-color: #666666;
   }
 
   .demo-grid {
-    background: #888888 !important;
-    color: white !important;
+    background: #888888;
+    color: white;
   }
 
   .site-nav {
@@ -243,8 +243,8 @@
   .component-card,
   .feature-card,
   .stat-card {
-    background: #ffffff !important;
-    color: #212529 !important;
+    background: #ffffff;
+    color: #212529;
     border: 1px solid #dedede;
   }
 
@@ -274,7 +274,7 @@
 
   .meta,
   .text-muted {
-    color: #6c757d !important;
+    color: #6c757d;
   }
 
   [data-lucide],

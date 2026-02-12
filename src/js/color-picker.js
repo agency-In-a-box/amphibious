@@ -585,9 +585,9 @@ class ColorPicker {
   }
 
   handleRGBInput() {
-    const r = Number.parseInt(this.picker.querySelector('.r-input').value) || 0;
-    const g = Number.parseInt(this.picker.querySelector('.g-input').value) || 0;
-    const b = Number.parseInt(this.picker.querySelector('.b-input').value) || 0;
+    const r = Number.parseInt(this.picker.querySelector('.r-input').value, 10) || 0;
+    const g = Number.parseInt(this.picker.querySelector('.g-input').value, 10) || 0;
+    const b = Number.parseInt(this.picker.querySelector('.b-input').value, 10) || 0;
     const a = this.options.alpha
       ? Number.parseFloat(this.picker.querySelector('.a-input').value) || 1
       : 1;
@@ -598,9 +598,9 @@ class ColorPicker {
   }
 
   handleHSLInput() {
-    const h = Number.parseInt(this.picker.querySelector('.h-input').value) || 0;
-    const s = Number.parseInt(this.picker.querySelector('.s-input').value) || 0;
-    const l = Number.parseInt(this.picker.querySelector('.l-input').value) || 0;
+    const h = Number.parseInt(this.picker.querySelector('.h-input').value, 10) || 0;
+    const s = Number.parseInt(this.picker.querySelector('.s-input').value, 10) || 0;
+    const l = Number.parseInt(this.picker.querySelector('.l-input').value, 10) || 0;
     const a = this.options.alpha
       ? Number.parseFloat(this.picker.querySelector('.a2-input').value) || 1
       : 1;
@@ -735,7 +735,7 @@ class ColorPicker {
       const eyeDropper = new EyeDropper();
       const result = await eyeDropper.open();
       this.selectColor(result.sRGBHex);
-    } catch (e) {
+    } catch (_e) {
       // User cancelled
     }
   }
@@ -772,9 +772,9 @@ class ColorPicker {
     // Try to parse as rgb/rgba
     const rgb = /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/.exec(color);
     if (rgb) {
-      const r = Number.parseInt(rgb[1]);
-      const g = Number.parseInt(rgb[2]);
-      const b = Number.parseInt(rgb[3]);
+      const r = Number.parseInt(rgb[1], 10);
+      const g = Number.parseInt(rgb[2], 10);
+      const b = Number.parseInt(rgb[3], 10);
       const a = rgb[4] ? Number.parseFloat(rgb[4]) : 1;
       return { ...this.rgbToHsv(r, g, b), a };
     }

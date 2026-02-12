@@ -1463,7 +1463,7 @@ class FormBuilder {
     return group;
   }
 
-  createConditionalSection(field) {
+  createConditionalSection(_field) {
     const section = document.createElement('div');
     section.className = 'property-section';
     section.innerHTML = `
@@ -1488,7 +1488,7 @@ class FormBuilder {
     } else if (
       ['min', 'max', 'step', 'rows', 'height', 'minLength', 'maxLength'].includes(property)
     ) {
-      value = value ? Number.parseInt(value) : null;
+      value = value ? Number.parseInt(value, 10) : null;
     }
 
     field[property] = value;
@@ -1912,7 +1912,7 @@ class FormBuilder {
         this.renderFields();
         this.saveHistory();
         alert('Form imported successfully!');
-      } catch (error) {
+      } catch (_error) {
         alert('Failed to import form. Invalid JSON file.');
       }
     };
@@ -1983,7 +1983,7 @@ class FormBuilder {
     console.log('Add step functionality to be implemented');
   }
 
-  validateStep(stepIndex) {
+  validateStep(_stepIndex) {
     // Basic validation - can be enhanced
     return true;
   }

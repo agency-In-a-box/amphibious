@@ -5,8 +5,8 @@
  * This script updates all JS/TS files to use DOMPurify sanitization
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 // Files to update (from our earlier search)
 const filesToUpdate = [
@@ -28,7 +28,7 @@ const filesToUpdate = [
   '../src/js/icons-lightweight.ts',
   '../src/js/toast.js',
   '../src/js/color-picker.js',
-  '../src/js/datepicker.js'
+  '../src/js/datepicker.js',
 ];
 
 function updateFile(filePath) {
@@ -66,55 +66,40 @@ function updateFile(filePath) {
       content = content.slice(0, insertPos) + importStatement + content.slice(insertPos);
     } else {
       // Add at the beginning of file
-      content = importStatement + '\n' + content;
+      content = `${importStatement}\n${content}`;
     }
   }
 
   // Replace innerHTML assignments
   // Pattern 1: element.innerHTML = 'string'
-  content = content.replace(
-    /(\w+)\.innerHTML\s*=\s*(['"`])/g,
-    'setInnerHTML($1, $2'
-  );
+  content = content.replace(/(\w+)\.innerHTML\s*=\s*(['"`])/g, 'setInnerHTML($1, $2');
 
   // Pattern 2: element.innerHTML = variable
-  content = content.replace(
-    /(\w+)\.innerHTML\s*=\s*([^'"`\s][^;]*)/g,
-    'setInnerHTML($1, $2)'
-  );
+  content = content.replace(/(\w+)\.innerHTML\s*=\s*([^'"`\s][^;]*)/g, 'setInnerHTML($1, $2)');
 
   // Pattern 3: this.element.innerHTML =
-  content = content.replace(
-    /this\.(\w+)\.innerHTML\s*=\s*(['"`])/g,
-    'setInnerHTML(this.$1, $2'
-  );
+  content = content.replace(/this\.(\w+)\.innerHTML\s*=\s*(['"`])/g, 'setInnerHTML(this.$1, $2');
 
   // Pattern 4: querySelector result
-  content = content.replace(
-    /\(([^)]+)\)\.innerHTML\s*=\s*/g,
-    'setInnerHTML($1, '
-  );
+  content = content.replace(/\(([^)]+)\)\.innerHTML\s*=\s*/g, 'setInnerHTML($1, ');
 
   // Special case for template literals with user data
   // Look for patterns like ${variable} and wrap with escapeHTML
-  content = content.replace(
-    /\$\{([^}]+)\}/g,
-    (match, variable) => {
-      // Skip if already wrapped with escapeHTML
-      if (variable.includes('escapeHTML')) {
-        return match;
-      }
-      // Skip if it's a template literal marker
-      if (variable.includes('`')) {
-        return match;
-      }
-      // Only wrap if it looks like a variable that could contain user data
-      if (variable.match(/^(query|search|input|value|text|name|email|message|data|user|comment)/i)) {
-        return '${escapeHTML(' + variable + ')}';
-      }
+  content = content.replace(/\$\{([^}]+)\}/g, (match, variable) => {
+    // Skip if already wrapped with escapeHTML
+    if (variable.includes('escapeHTML')) {
       return match;
     }
-  );
+    // Skip if it's a template literal marker
+    if (variable.includes('`')) {
+      return match;
+    }
+    // Only wrap if it looks like a variable that could contain user data
+    if (variable.match(/^(query|search|input|value|text|name|email|message|data|user|comment)/i)) {
+      return `\${escapeHTML(${variable})}`;
+    }
+    return match;
+  });
 
   if (content !== originalContent) {
     fs.writeFileSync(fullPath, content);

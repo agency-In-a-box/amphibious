@@ -291,7 +291,9 @@
 .avatar-group .aiab-avatar {
   margin-right: -0.5rem;
   border: 2px solid white;
-  transition: transform 0.2s ease, z-index 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    z-index 0.2s ease;
 }
 
 .avatar-group .aiab-avatar:hover {
@@ -387,12 +389,16 @@
 /* Clickable avatar */
 .avatar--clickable {
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .avatar--clickable:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .avatar--clickable:active {
