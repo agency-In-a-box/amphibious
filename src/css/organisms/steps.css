@@ -52,7 +52,7 @@
 }
 
 /* Base Step Navigation */
-.steps {
+.aiab-steps {
   display: flex;
   width: 100%;
   list-style: none;
@@ -398,7 +398,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .steps:not(.steps--vertical) {
+  .aiab-steps:not(.steps--vertical) {
     --step-size: 1.75rem;
     --step-font-size: 0.8125rem;
     --step-number-size: 0.75rem;
@@ -419,11 +419,11 @@
 }
 
 @media (max-width: 640px) {
-  .steps:not(.steps--vertical):not(.steps--minimal) .steps__description {
+  .aiab-steps:not(.steps--vertical):not(.steps--minimal) .steps__description {
     display: none;
   }
 
-  .steps:not(.steps--vertical) {
+  .aiab-steps:not(.steps--vertical) {
     --step-size: 1.5rem;
     --step-number-size: 0.75rem;
   }
@@ -456,9 +456,9 @@
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .steps *,
-  .steps *::before,
-  .steps *::after {
+  .aiab-steps *,
+  .aiab-steps *::before,
+  .aiab-steps *::after {
     animation: none;
     transition: none;
   }

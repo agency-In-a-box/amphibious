@@ -161,24 +161,24 @@ table tbody tr:last-child td {
 /* Semantic Row States
    ========================================================================== */
 
-tr.success,
+tr.aiab-success,
 .table-success {
   background: var(--table-success-bg);
 }
 
-tr.warning,
+tr.aiab-warning,
 .table-warning {
   background: var(--table-warning-bg);
 }
 
 tr.error,
-tr.danger,
+tr.aiab-danger,
 .table-error,
 .table-danger {
   background: var(--table-error-bg);
 }
 
-tr.info,
+tr.aiab-info,
 .table-info {
   background: var(--table-info-bg);
 }

@@ -380,13 +380,13 @@
    ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .btn {
+  :root:not([data-theme="light"]) .aiab-btn {
     background-color: var(--button-background);
     border-color: var(--button-border);
     color: var(--color-text);
   }
 
-  :root:not([data-theme="light"]) .btn:hover {
+  :root:not([data-theme="light"]) .aiab-btn:hover {
     background-color: var(--color-surface-overlay);
     border-color: var(--color-border-strong);
   }
@@ -421,13 +421,13 @@
   }
 }
 
-[data-theme="dark"] .btn {
+[data-theme="dark"] .aiab-btn {
   background-color: var(--button-background);
   border-color: var(--button-border);
   color: var(--color-text);
 }
 
-[data-theme="dark"] .btn:hover {
+[data-theme="dark"] .aiab-btn:hover {
   background-color: var(--color-surface-overlay);
   border-color: var(--color-border-strong);
 }
@@ -466,7 +466,7 @@
    ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .card {
+  :root:not([data-theme="light"]) .aiab-card {
     background-color: var(--card-background);
     border-color: var(--card-border);
     box-shadow: var(--shadow-md);
@@ -492,7 +492,7 @@
   }
 }
 
-[data-theme="dark"] .card {
+[data-theme="dark"] .aiab-card {
   background-color: var(--card-background);
   border-color: var(--card-border);
   box-shadow: var(--shadow-md);
@@ -522,8 +522,8 @@
    ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .nav,
-  :root:not([data-theme="light"]) .navbar {
+  :root:not([data-theme="light"]) .aiab-nav,
+  :root:not([data-theme="light"]) .aiab-navbar {
     background-color: var(--color-surface);
     border-color: var(--color-border);
   }
@@ -537,12 +537,12 @@
     background-color: var(--color-surface-elevated);
   }
 
-  :root:not([data-theme="light"]) .nav-link.active {
+  :root:not([data-theme="light"]) .nav-link.aiab-active {
     color: var(--color-primary);
     background-color: var(--color-surface-elevated);
   }
 
-  :root:not([data-theme="light"]) .breadcrumb {
+  :root:not([data-theme="light"]) .aiab-breadcrumb {
     background-color: var(--color-surface);
   }
 
@@ -550,13 +550,13 @@
     color: var(--color-text-secondary);
   }
 
-  :root:not([data-theme="light"]) .breadcrumb-item.active {
+  :root:not([data-theme="light"]) .breadcrumb-item.aiab-active {
     color: var(--color-text);
   }
 }
 
-[data-theme="dark"] .nav,
-[data-theme="dark"] .navbar {
+[data-theme="dark"] .aiab-nav,
+[data-theme="dark"] .aiab-navbar {
   background-color: var(--color-surface);
   border-color: var(--color-border);
 }
@@ -570,12 +570,12 @@
   background-color: var(--color-surface-elevated);
 }
 
-[data-theme="dark"] .nav-link.active {
+[data-theme="dark"] .nav-link.aiab-active {
   color: var(--color-primary);
   background-color: var(--color-surface-elevated);
 }
 
-[data-theme="dark"] .breadcrumb {
+[data-theme="dark"] .aiab-breadcrumb {
   background-color: var(--color-surface);
 }
 
@@ -583,7 +583,7 @@
   color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .breadcrumb-item.active {
+[data-theme="dark"] .breadcrumb-item.aiab-active {
   color: var(--color-text);
 }
 

@@ -8,7 +8,7 @@
    BASE DROPDOWN
    ======================================== */
 
-.dropdown {
+.aiab-dropdown {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -60,7 +60,7 @@
   transition: transform 0.2s ease;
 }
 
-.dropdown.open .dropdown-select::after {
+.aiab-dropdown.open .dropdown-select::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -97,7 +97,7 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.dropdown.open .dropdown-menu {
+.aiab-dropdown.open .dropdown-menu {
   display: block;
   animation: dropdownSlide 0.2s ease-out;
 }
@@ -138,14 +138,14 @@
   background-color: #e5e7eb;
 }
 
-.dropdown-item.active,
+.dropdown-item.aiab-active,
 .dropdown-item.selected {
   background-color: #eff6ff;
   color: #2563eb;
   font-weight: 500;
 }
 
-.dropdown-item.active::before {
+.dropdown-item.aiab-active::before {
   content: "✓";
   margin-right: 0.5rem;
   color: #2563eb;
@@ -153,14 +153,14 @@
 
 /* Disabled items */
 .dropdown-item:disabled,
-.dropdown-item.disabled {
+.dropdown-item.aiab-disabled {
   color: #9ca3af;
   cursor: not-allowed;
   opacity: 0.5;
 }
 
 .dropdown-item:disabled:hover,
-.dropdown-item.disabled:hover {
+.dropdown-item.aiab-disabled:hover {
   background-color: transparent;
 }
 
@@ -504,7 +504,7 @@
     background-color: #374151;
   }
 
-  .dropdown-item.active,
+  .dropdown-item.aiab-active,
   .dropdown-item.selected {
     background-color: #1e3a8a;
     color: #93c5fd;

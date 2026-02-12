@@ -47,18 +47,18 @@
 }
 
 /* Fix link contrast in orange sections */
-.hero a:not(.button),
-.docs-header a:not(.button),
-.examples-header a:not(.button) {
+.hero a:not(.aiab-button),
+.docs-header a:not(.aiab-button),
+.examples-header a:not(.aiab-button) {
   color: white;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
 
-.hero a:not(.button):hover,
-.docs-header a:not(.button):hover,
-.examples-header a:not(.button):hover {
+.hero a:not(.aiab-button):hover,
+.docs-header a:not(.aiab-button):hover,
+.examples-header a:not(.aiab-button):hover {
   color: #ffd700;
   text-decoration-thickness: 3px;
 }
@@ -110,7 +110,7 @@ button[type="submit"]:hover {
   color: #a65e00;
 }
 
-.horizontal .active > a {
+.horizontal .aiab-active > a {
   color: #a65e00;
   font-weight: 600;
 }

@@ -17,7 +17,7 @@
   padding: 0 24px;
 }
 
-.range-slider.disabled {
+.range-slider.aiab-disabled {
   opacity: 0.5;
   pointer-events: none;
 }
@@ -90,7 +90,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.range-slider-handle.active,
+.range-slider-handle.aiab-active,
 .range-slider-handle:active {
   cursor: grabbing;
   width: 24px;
@@ -146,7 +146,7 @@
 }
 
 .range-slider-handle:hover .range-slider-tooltip,
-.range-slider-handle.active .range-slider-tooltip {
+.range-slider-handle.aiab-active .range-slider-tooltip {
   opacity: 1;
 }
 

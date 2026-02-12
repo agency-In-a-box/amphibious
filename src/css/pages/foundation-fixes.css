@@ -7,7 +7,7 @@
    1. Breadcrumb Spacing - Reduce top margin
    ========================================================================== */
 
-.breadcrumb {
+.aiab-breadcrumb {
   margin-top: 0.5rem !important; /* Reduced from default */
   margin-bottom: 1.5rem !important;
   padding: 0.5rem 0;

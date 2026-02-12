@@ -32,7 +32,7 @@
 /* Base Progress Styles
    ========================================================================== */
 
-.progress {
+.aiab-progress {
   display: block;
   width: 100%;
   height: var(--progress-height);

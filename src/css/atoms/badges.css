@@ -48,7 +48,7 @@
 /* Base Badge Styles
    ========================================================================== */
 
-.badge {
+.aiab-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -179,7 +179,7 @@
 /* Badge with Icon
    ========================================================================== */
 
-.badge .icon {
+.aiab-badge .aiab-icon {
   width: 1em;
   height: 1em;
 }

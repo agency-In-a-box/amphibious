@@ -260,7 +260,7 @@ html {
 }
 
 .apple-nav-item:hover,
-.apple-nav-item.active {
+.apple-nav-item.aiab-active {
   color: var(--apple-orange);
 }
 

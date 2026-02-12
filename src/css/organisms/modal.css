@@ -71,7 +71,7 @@
   justify-content: center;
 }
 
-.modal_overlay.active {
+.modal_overlay.aiab-active {
   display: flex;
   opacity: 1;
 }
@@ -98,7 +98,7 @@
 }
 
 /* Modal Container */
-.modal {
+.aiab-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -116,8 +116,8 @@
   overflow-y: auto;
 }
 
-.modal_overlay.active .modal,
-.modal.is-visible {
+.modal_overlay.aiab-active .aiab-modal,
+.aiab-modal.is-visible {
   opacity: 1;
   visibility: visible;
 }
@@ -137,7 +137,7 @@
   flex-direction: column;
 }
 
-.modal.is-visible .modal__dialog {
+.aiab-modal.is-visible .modal__dialog {
   transform: translateY(0);
 }
 
@@ -403,7 +403,7 @@
 
 /* Responsive Design */
 @media (max-width: 576px) {
-  .modal {
+  .aiab-modal {
     padding: 0.5rem;
   }
 
@@ -438,7 +438,7 @@
 }
 
 /* Focus Trap */
-.modal:focus {
+.aiab-modal:focus {
   outline: none;
 }
 
@@ -472,11 +472,11 @@ body.modal-open {
 }
 
 /* Accessibility */
-.modal[aria-hidden="true"] {
+.aiab-modal[aria-hidden="true"] {
   pointer-events: none;
 }
 
-.modal[aria-hidden="false"] {
+.aiab-modal[aria-hidden="false"] {
   pointer-events: auto;
 }
 
@@ -493,7 +493,7 @@ body.modal-open {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .modal,
+  .aiab-modal,
   .modal-backdrop,
   .modal__dialog {
     transition: none;
@@ -503,7 +503,7 @@ body.modal-open {
 
 /* Print Styles */
 @media print {
-  .modal,
+  .aiab-modal,
   .modal-backdrop {
     display: none;
   }

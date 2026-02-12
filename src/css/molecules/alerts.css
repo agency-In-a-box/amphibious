@@ -63,7 +63,7 @@
 }
 
 /* Base Alert Styles */
-.alert {
+.aiab-alert {
   position: relative;
   padding: var(--alert-padding);
   border-radius: var(--alert-border-radius);
@@ -79,7 +79,7 @@
 }
 
 /* Hide empty alerts */
-.alert:empty {
+.aiab-alert:empty {
   display: none;
 }
 
@@ -219,7 +219,7 @@
 }
 
 .alert__dismiss svg,
-.alert__dismiss .icon {
+.alert__dismiss .aiab-icon {
   width: 1rem;
   height: 1rem;
 }
@@ -366,7 +366,7 @@
   transform: translateX(-50%);
 }
 
-.toast {
+.aiab-toast {
   pointer-events: auto;
   margin-bottom: 0.5rem;
   max-width: 400px;
@@ -401,8 +401,8 @@
 }
 
 /* Toast slide in from left */
-.toast-container--top-left .toast,
-.toast-container--bottom-left .toast {
+.toast-container--top-left .aiab-toast,
+.toast-container--bottom-left .aiab-toast {
   animation: slideInLeft 0.3s ease-out;
 }
 
@@ -520,14 +520,14 @@
     left: 1rem;
   }
 
-  .toast {
+  .aiab-toast {
     max-width: none;
   }
 }
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .alert {
+  .aiab-alert {
     border-width: 2px;
   }
 
@@ -538,7 +538,7 @@
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .toast,
+  .aiab-toast,
   .toast--dismissing {
     animation: none;
   }
@@ -550,7 +550,7 @@
 
 /* Print styles */
 @media print {
-  .alert {
+  .aiab-alert {
     border: 1px solid #000;
     background: none;
     color: #000;

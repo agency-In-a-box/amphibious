@@ -47,7 +47,7 @@
 }
 
 /* Base Tab Styles */
-.tabs {
+.aiab-tabs {
   width: 100%;
 }
 
@@ -369,7 +369,7 @@
 }
 
 @media (max-width: 640px) {
-  .tabs {
+  .aiab-tabs {
     --tab-padding: 0.5rem 0.75rem;
     --tab-font-size: 0.8125rem;
   }
@@ -412,9 +412,9 @@
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .tabs *,
-  .tabs *::before,
-  .tabs *::after {
+  .aiab-tabs *,
+  .aiab-tabs *::before,
+  .aiab-tabs *::after {
     animation: none;
     transition: none;
   }

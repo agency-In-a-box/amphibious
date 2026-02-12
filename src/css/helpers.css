@@ -22,7 +22,7 @@
   visibility: hidden;
 }
 
-.inline {
+.aiab-inline {
   display: inline;
 }
 
@@ -30,7 +30,7 @@
   display: inline-block;
 }
 
-.block {
+.aiab-block {
   display: block;
 }
 
@@ -473,7 +473,7 @@
   font-weight: normal;
 }
 
-.light {
+.aiab-light {
   font-weight: 300;
 }
 

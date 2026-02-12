@@ -51,7 +51,7 @@
 }
 
 /* Base Pagination Styles */
-.pagination {
+.aiab-pagination {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -352,7 +352,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .pagination {
+  .aiab-pagination {
     --pagination-padding: 0.375rem 0.5rem;
     --pagination-min-width: 2rem;
     --pagination-height: 2rem;
@@ -425,9 +425,9 @@
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .pagination *,
-  .pagination *::before,
-  .pagination *::after {
+  .aiab-pagination *,
+  .aiab-pagination *::before,
+  .aiab-pagination *::after {
     transition: none;
   }
 
@@ -438,7 +438,7 @@
 
 /* Print Styles */
 @media print {
-  .pagination,
+  .aiab-pagination,
   .pagination-container {
     display: none;
   }

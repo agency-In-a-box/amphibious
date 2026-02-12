@@ -46,13 +46,13 @@
   border-color: var(--apple-gray-400, #bdbdbd);
 }
 
-.toolbar-btn.primary {
+.toolbar-btn.aiab-primary {
   background: var(--apple-orange-500, #ed8b00);
   border-color: var(--apple-orange-500, #ed8b00);
   color: white;
 }
 
-.toolbar-btn.primary:hover {
+.toolbar-btn.aiab-primary:hover {
   background: var(--apple-orange-600, #d87a00);
   border-color: var(--apple-orange-600, #d87a00);
   transform: translateY(-1px);
@@ -191,7 +191,7 @@
   color: var(--apple-gray-900, #212121);
 }
 
-.tab-btn.active {
+.tab-btn.aiab-active {
   color: var(--apple-orange-500, #ed8b00);
   border-bottom-color: var(--apple-orange-500, #ed8b00);
 }
@@ -216,8 +216,8 @@
   overflow-x: hidden;
 }
 
-.form-builder-canvas.active,
-.form-builder-preview.active {
+.form-builder-canvas.aiab-active,
+.form-builder-preview.aiab-active {
   display: block;
 }
 
@@ -388,7 +388,7 @@
   cursor: pointer;
 }
 
-.switch {
+.aiab-switch {
   position: relative;
   width: 48px;
   height: 28px;
@@ -531,11 +531,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.form-group {
+.aiab-form-group {
   margin-bottom: 24px;
 }
 
-.form-group label {
+.aiab-form-group label {
   display: block;
   margin-bottom: 8px;
   font-size: 0.875rem;
@@ -543,13 +543,13 @@
   color: var(--apple-gray-700, #616161);
 }
 
-.form-group .required {
+.aiab-form-group .required {
   color: var(--apple-danger, #ff3b30);
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
+.aiab-form-group input,
+.aiab-form-group textarea,
+.aiab-form-group select {
   width: 100%;
   padding: 10px 14px;
   border: 1px solid var(--apple-gray-300, #e0e0e0);
@@ -558,9 +558,9 @@
   transition: all var(--duration-instant, 150ms) var(--ease-apple-smooth);
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
+.aiab-form-group input:focus,
+.aiab-form-group textarea:focus,
+.aiab-form-group select:focus {
   outline: none;
   border-color: var(--apple-orange-500, #ed8b00);
   box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);

@@ -17,7 +17,7 @@
 /* Base Spinner Styles
    ========================================================================== */
 
-.spinner {
+.aiab-spinner {
   display: inline-block;
   width: var(--spinner-size);
   height: var(--spinner-size);
@@ -175,7 +175,7 @@
   color: var(--spinner-color);
 }
 
-.spinner-with-text .spinner {
+.spinner-with-text .aiab-spinner {
   --spinner-size: 1rem;
   --spinner-border-width: 0.125rem;
 }
@@ -196,7 +196,7 @@
   z-index: 9999;
 }
 
-.spinner-overlay .spinner {
+.spinner-overlay .aiab-spinner {
   --spinner-size: 3rem;
   --spinner-border-width: 0.3rem;
 }
@@ -214,14 +214,116 @@
   }
 }
 
+/* Status Indicator with Pulse - Stays circular with proper clipping
+   ========================================================================== */
+
+.status-pulse {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--status-pulse-size, 12px);
+  height: var(--status-pulse-size, 12px);
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.status-pulse::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: currentColor;
+  animation: status-pulse-ring 2s ease-in-out infinite;
+}
+
+.status-pulse::after {
+  content: "";
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: currentColor;
+  z-index: 1;
+}
+
+@keyframes status-pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Health/Status indicator that maintains circle shape */
+.health-pulse {
+  position: relative;
+  width: var(--health-pulse-size, 8px);
+  height: var(--health-pulse-size, 8px);
+  min-width: var(--health-pulse-size, 8px);
+  min-height: var(--health-pulse-size, 8px);
+  border-radius: 50%;
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+.health-pulse::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+  animation: health-pulse-glow 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes health-pulse-glow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Clipped pulse container - keeps animation inside bounds */
+.pulse-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.pulse-container .health-pulse::before {
+  /* Animation stays within container bounds */
+}
+
 /* Reduced Motion Support
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .spinner,
+  .aiab-spinner,
   .spinner-dots,
   .spinner-pulse,
-  .spinner-wave {
+  .spinner-wave,
+  .status-pulse::before,
+  .health-pulse::before {
     animation-duration: 2s;
     animation-iteration-count: 1;
   }

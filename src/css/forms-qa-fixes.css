@@ -6,14 +6,14 @@
 /* Fix 1: Typography overflow - ensure paragraphs don't run off right side
    ========================================================================== */
 
-.container {
+.aiab-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   /* Removed overflow-x: hidden to prevent dropdown clipping */
 }
 
-.col-16,
+.aiab-col-16,
 .content {
   max-width: 100%;
   word-wrap: break-word;
@@ -29,15 +29,15 @@ p {
 /* Fix 2: Column width consistency for lists
    ========================================================================== */
 
-.row .col-4,
-.row .col-8,
-.row .col-12 {
+.aiab-row .aiab-col-4,
+.aiab-row .aiab-col-8,
+.aiab-row .aiab-col-12 {
   box-sizing: border-box;
   padding-right: 20px; /* Consistent gutter per SOP */
 }
 
 /* Ensure list columns have same width */
-.row > div[class*="col-"] {
+.aiab-row > div[class*="col-"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -48,7 +48,7 @@ p {
 button,
 input[type="submit"],
 input[type="button"],
-.button {
+.aiab-button {
   display: inline-block;
   padding: 12px !important; /* Force 12px all around */
   line-height: 1 !important;
@@ -66,8 +66,8 @@ input[type="button"],
 }
 
 /* Ensure consistent appearance */
-button:not(.icon),
-a.button {
+button:not(.aiab-icon),
+a.aiab-button {
   line-height: 1; /* Tight line height to prevent extra space */
 }
 
@@ -75,7 +75,7 @@ a.button {
    ========================================================================== */
 
 h4,
-.form h4,
+.aiab-form h4,
 #forms h4 {
   display: block !important;
   width: 100%;
@@ -98,7 +98,7 @@ form label {
 input.error,
 textarea.error,
 select.error,
-.form-control.error {
+.aiab-form-control.error {
   border: 2px solid #dc3545 !important;
   background-color: #fff5f5;
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
@@ -187,7 +187,7 @@ form.advanced {
   font-weight: 600;
 }
 
-.multi.beside .form-group {
+.multi.beside .aiab-form-group {
   flex: 1;
 }
 
@@ -227,21 +227,21 @@ pre.prettyprint {
    ========================================================================== */
 
 /* Ensure no floats are used in forms section only */
-#forms .container *,
-#forms .row *,
-#forms .col-16 * {
+#forms .aiab-container *,
+#forms .aiab-row *,
+#forms .aiab-col-16 * {
   float: none !important;
 }
 
 /* Use flexbox for layout instead */
-.row {
+.aiab-row {
   display: flex;
   flex-wrap: wrap;
   margin-left: -10px;
   margin-right: -10px;
 }
 
-.row > [class*="col-"] {
+.aiab-row > [class*="col-"] {
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
@@ -335,11 +335,11 @@ h4 {
 
 /* Responsive improvements */
 @media (max-width: 768px) {
-  .row {
+  .aiab-row {
     flex-direction: column;
   }
 
-  .row > [class*="col-"] {
+  .aiab-row > [class*="col-"] {
     width: 100%;
     max-width: 100%;
   }

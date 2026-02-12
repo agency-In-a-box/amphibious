@@ -40,7 +40,7 @@
 }
 
 /* Base Tooltip Styles */
-.tooltip {
+.aiab-tooltip {
   position: absolute;
   display: none;
   max-width: var(--tooltip-max-width);
@@ -76,14 +76,14 @@
 }
 
 /* Tooltip animations */
-.tooltip {
+.aiab-tooltip {
   transition: opacity var(--tooltip-transition-duration) var(--tooltip-transition-easing), transform
     var(--tooltip-transition-duration) var(--tooltip-transition-easing), left 0.1s ease-out, top
     0.1s ease-out;
 }
 
 /* Tooltip Arrow Base */
-.tooltip::before {
+.aiab-tooltip::before {
   content: "";
   position: absolute;
   width: 0;
@@ -404,26 +404,26 @@
 }
 
 /* Accessibility Enhancements */
-.tooltip[role="tooltip"] {
+.aiab-tooltip[role="tooltip"] {
   /* Screen reader accessible tooltip */
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tooltip {
+  .aiab-tooltip {
     transition: none;
   }
 }
 
 /* Print Styles */
 @media print {
-  .tooltip {
+  .aiab-tooltip {
     display: none;
   }
 }
 
 /* Mobile Adjustments */
 @media (max-width: 640px) {
-  .tooltip {
+  .aiab-tooltip {
     --tooltip-max-width: 250px;
     --tooltip-font-size: 0.8125rem;
     --tooltip-padding: 0.5rem;
@@ -440,12 +440,12 @@
 
 /* High Contrast Mode */
 @media (prefers-contrast: high) {
-  .tooltip {
+  .aiab-tooltip {
     border-width: 2px;
     border-color: currentColor;
   }
 
-  .tooltip::before {
+  .aiab-tooltip::before {
     border-width: 8px;
   }
 }
@@ -493,7 +493,7 @@
   outline-offset: 2px;
 }
 
-.tooltip-trigger:focus .tooltip {
+.tooltip-trigger:focus .aiab-tooltip {
   display: block;
   opacity: 1;
 }

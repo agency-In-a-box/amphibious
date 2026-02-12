@@ -208,13 +208,13 @@
   /* Grid System Adjustments
      ========================================================================== */
 
-  .container {
+  .aiab-container {
     width: 100%;
     margin: 0;
     padding: 0;
   }
 
-  .row {
+  .aiab-row {
     page-break-inside: avoid;
   }
 
@@ -247,8 +247,8 @@
   .hide-on-print,
   nav,
   .navigation,
-  .nav,
-  .sidebar,
+  .aiab-nav,
+  .aiab-sidebar,
   .ads,
   .advertisement,
   .social-media,
@@ -370,7 +370,7 @@
     display: block !important;
   }
 
-  .grid {
+  .aiab-grid {
     display: block !important;
   }
 

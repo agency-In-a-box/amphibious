@@ -17,7 +17,7 @@
 /* Container
    ========================================================================== */
 
-.container {
+.aiab-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 1rem; /* 16px base padding */
@@ -26,11 +26,11 @@
 }
 
 /* Special alignment for content that should align with navigation text */
-.container.align-with-nav {
+.aiab-container.align-with-nav {
   padding-left: 2rem; /* 32px = 16px container + 16px nav item padding */
 }
 
-.container-fluid {
+.aiab-container-fluid {
   width: 96%;
   max-width: none;
   margin: 0 auto;
@@ -40,7 +40,7 @@
 /* Modern CSS Grid Implementation
    ========================================================================== */
 
-.grid {
+.aiab-grid {
   display: grid;
   grid-template-columns: repeat(var(--grid-columns), 1fr);
   gap: var(--grid-gap);
@@ -48,59 +48,59 @@
 }
 
 /* Column spans for CSS Grid */
-.span-1 {
+.aiab-span-1 {
   grid-column: span 1;
 }
-.span-2 {
+.aiab-span-2 {
   grid-column: span 2;
 }
-.span-3 {
+.aiab-span-3 {
   grid-column: span 3;
 }
-.span-4 {
+.aiab-span-4 {
   grid-column: span 4;
 }
-.span-5 {
+.aiab-span-5 {
   grid-column: span 5;
 }
-.span-6 {
+.aiab-span-6 {
   grid-column: span 6;
 }
-.span-7 {
+.aiab-span-7 {
   grid-column: span 7;
 }
-.span-8 {
+.aiab-span-8 {
   grid-column: span 8;
 }
-.span-9 {
+.aiab-span-9 {
   grid-column: span 9;
 }
-.span-10 {
+.aiab-span-10 {
   grid-column: span 10;
 }
-.span-11 {
+.aiab-span-11 {
   grid-column: span 11;
 }
-.span-12 {
+.aiab-span-12 {
   grid-column: span 12;
 }
-.span-13 {
+.aiab-span-13 {
   grid-column: span 13;
 }
-.span-14 {
+.aiab-span-14 {
   grid-column: span 14;
 }
-.span-15 {
+.aiab-span-15 {
   grid-column: span 15;
 }
-.span-16 {
+.aiab-span-16 {
   grid-column: span 16;
 }
 
 /* Flexbox Row Implementation (Backward Compatible)
    ========================================================================== */
 
-.row {
+.aiab-row {
   display: flex;
   flex-wrap: wrap;
   margin-left: calc(var(--grid-gap) / -2);
@@ -109,14 +109,14 @@
 }
 
 /* Ensure nested rows also display as flex */
-[class*="col-"] .row {
+[class*="col-"] .aiab-row {
   margin-left: calc(var(--grid-gap) / -2);
   margin-right: calc(var(--grid-gap) / -2);
   display: flex;
   flex-wrap: wrap;
 }
 
-.row::after {
+.aiab-row::after {
   content: "";
   display: table;
   clear: both;
@@ -131,92 +131,92 @@
 }
 
 /* Ensure all direct children of rows have proper flex defaults */
-.row > * {
+.aiab-row > * {
   flex-shrink: 0; /* Prevent shrinking below specified size */
 }
 
 /* But columns that don't have explicit col- classes should expand */
-.row > div:not([class*="col-"]) {
+.aiab-row > div:not([class*="col-"]) {
   flex: 1 1 auto;
 }
 
 /* 16-column widths - using flexbox */
-.col-1 {
+.aiab-col-1 {
   width: auto;
   flex: 0 0 6.25%;
   max-width: 6.25%;
 }
-.col-2 {
+.aiab-col-2 {
   width: auto;
   flex: 0 0 12.5%;
   max-width: 12.5%;
 }
-.col-3 {
+.aiab-col-3 {
   width: auto;
   flex: 0 0 18.75%;
   max-width: 18.75%;
 }
-.col-4 {
+.aiab-col-4 {
   width: auto;
   flex: 0 0 25%;
   max-width: 25%;
 }
-.col-5 {
+.aiab-col-5 {
   width: auto;
   flex: 0 0 31.25%;
   max-width: 31.25%;
 }
-.col-6 {
+.aiab-col-6 {
   width: auto;
   flex: 0 0 37.5%;
   max-width: 37.5%;
 }
-.col-7 {
+.aiab-col-7 {
   width: auto;
   flex: 0 0 43.75%;
   max-width: 43.75%;
 }
-.col-8 {
+.aiab-col-8 {
   width: auto;
   flex: 0 0 50%;
   max-width: 50%;
 }
-.col-9 {
+.aiab-col-9 {
   width: auto;
   flex: 0 0 56.25%;
   max-width: 56.25%;
 }
-.col-10 {
+.aiab-col-10 {
   width: auto;
   flex: 0 0 62.5%;
   max-width: 62.5%;
 }
-.col-11 {
+.aiab-col-11 {
   width: auto;
   flex: 0 0 68.75%;
   max-width: 68.75%;
 }
-.col-12 {
+.aiab-col-12 {
   width: auto;
   flex: 0 0 75%;
   max-width: 75%;
 }
-.col-13 {
+.aiab-col-13 {
   width: auto;
   flex: 0 0 81.25%;
   max-width: 81.25%;
 }
-.col-14 {
+.aiab-col-14 {
   width: auto;
   flex: 0 0 87.5%;
   max-width: 87.5%;
 }
-.col-15 {
+.aiab-col-15 {
   width: auto;
   flex: 0 0 93.75%;
   max-width: 93.75%;
 }
-.col-16 {
+.aiab-col-16 {
   width: auto;
   flex: 0 0 100%;
   max-width: 100%;
@@ -229,124 +229,124 @@
 /* Padding is handled by the column base styles */
 
 /* For grid items, no padding adjustments needed due to gap */
-.grid > * {
+.aiab-grid > * {
   min-width: 0; /* Prevent overflow */
 }
 
 /* Offset classes
    ========================================================================== */
 
-.offset-1 {
+.aiab-offset-1 {
   margin-left: 6.25%;
 }
-.offset-2 {
+.aiab-offset-2 {
   margin-left: 12.5%;
 }
-.offset-3 {
+.aiab-offset-3 {
   margin-left: 18.75%;
 }
-.offset-4 {
+.aiab-offset-4 {
   margin-left: 25%;
 }
-.offset-5 {
+.aiab-offset-5 {
   margin-left: 31.25%;
 }
-.offset-6 {
+.aiab-offset-6 {
   margin-left: 37.5%;
 }
-.offset-7 {
+.aiab-offset-7 {
   margin-left: 43.75%;
 }
-.offset-8 {
+.aiab-offset-8 {
   margin-left: 50%;
 }
-.offset-9 {
+.aiab-offset-9 {
   margin-left: 56.25%;
 }
-.offset-10 {
+.aiab-offset-10 {
   margin-left: 62.5%;
 }
-.offset-11 {
+.aiab-offset-11 {
   margin-left: 68.75%;
 }
-.offset-12 {
+.aiab-offset-12 {
   margin-left: 75%;
 }
-.offset-13 {
+.aiab-offset-13 {
   margin-left: 81.25%;
 }
-.offset-14 {
+.aiab-offset-14 {
   margin-left: 87.5%;
 }
-.offset-15 {
+.aiab-offset-15 {
   margin-left: 93.75%;
 }
 
 /* Push/Pull for source ordering
    ========================================================================== */
 
-.push-1 {
+.aiab-push-1 {
   left: 6.25%;
   position: relative;
 }
-.push-2 {
+.aiab-push-2 {
   left: 12.5%;
   position: relative;
 }
-.push-3 {
+.aiab-push-3 {
   left: 18.75%;
   position: relative;
 }
-.push-4 {
+.aiab-push-4 {
   left: 25%;
   position: relative;
 }
-.push-5 {
+.aiab-push-5 {
   left: 31.25%;
   position: relative;
 }
-.push-6 {
+.aiab-push-6 {
   left: 37.5%;
   position: relative;
 }
-.push-7 {
+.aiab-push-7 {
   left: 43.75%;
   position: relative;
 }
-.push-8 {
+.aiab-push-8 {
   left: 50%;
   position: relative;
 }
 
-.pull-1 {
+.aiab-pull-1 {
   right: 6.25%;
   position: relative;
 }
-.pull-2 {
+.aiab-pull-2 {
   right: 12.5%;
   position: relative;
 }
-.pull-3 {
+.aiab-pull-3 {
   right: 18.75%;
   position: relative;
 }
-.pull-4 {
+.aiab-pull-4 {
   right: 25%;
   position: relative;
 }
-.pull-5 {
+.aiab-pull-5 {
   right: 31.25%;
   position: relative;
 }
-.pull-6 {
+.aiab-pull-6 {
   right: 37.5%;
   position: relative;
 }
-.pull-7 {
+.aiab-pull-7 {
   right: 43.75%;
   position: relative;
 }
-.pull-8 {
+.aiab-pull-8 {
   right: 50%;
   position: relative;
 }
@@ -356,7 +356,7 @@
 
 /* Tablet (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .container {
+  .aiab-container {
     max-width: 750px;
   }
   /* Regular column classes work on tablet, no need for tablet-specific classes */
@@ -369,12 +369,12 @@
     --grid-gap: 10px;
   }
 
-  .container {
+  .aiab-container {
     padding: 0 10px;
   }
 
   /* Stack all columns on mobile */
-  .row {
+  .aiab-row {
     margin-left: 0;
     margin-right: 0;
   }
@@ -418,7 +418,7 @@
   }
 
   /* CSS Grid becomes single column */
-  .grid {
+  .aiab-grid {
     grid-template-columns: 1fr;
   }
 
@@ -462,12 +462,12 @@
    ========================================================================== */
 
 @media print {
-  .container {
+  .aiab-container {
     width: 100%;
     max-width: none;
   }
 
-  .row,
+  .aiab-row,
   [class*="col-"] {
     page-break-inside: avoid;
   }
