@@ -898,17 +898,17 @@
 
   <!-- Scripts -->
   <script>
-    function toggleCode(button) {
+    function _toggleCode(button) {
       const codeExample = button.closest('.code-example');
       const codeBlock = codeExample.querySelector('.code-example-code');
       codeBlock.classList.toggle('show');
       button.textContent = codeBlock.classList.contains('show') ? 'Hide Code' : 'View Code';
     }
 
-    function simulateLoading(button) {
+    function _simulateLoading(button) {
       button.classList.add('button--loading');
       button.innerHTML = '<span class="aiab-spinner"></span> Loading...';
-      button.aiab-disabled = true;
+      button.disabled = true;
 
       setTimeout(() => {
         button.classList.remove('button--loading');
@@ -918,7 +918,7 @@
         setTimeout(() => {
           button.innerHTML = 'Click to Load';
           button.classList.remove('button--success');
-          button.aiab-disabled = false;
+          button.disabled = false;
         }, 2000);
       }, 3000);
     }

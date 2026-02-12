@@ -989,7 +989,7 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
 
   <!-- Toast Demo JavaScript -->
   <script>
-    function showToast(position) {
+    function _showToast(position) {
       // Create container if it doesn't exist
       let container = document.querySelector(`.toast-container--${position}`);
       if (!container) {
@@ -1029,7 +1029,7 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
       }, 4000);
     }
 
-    function showAutoDismissToast() {
+    function _showAutoDismissToast() {
       let container = document.querySelector('.toast-container--top-right');
       if (!container) {
         container = document.createElement('div');

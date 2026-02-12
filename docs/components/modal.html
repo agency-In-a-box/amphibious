@@ -762,7 +762,7 @@
         <pre><code>// Modal management utility
 class Modal {
   constructor(element) {
-    this.aiab-modal = element;
+    this.modal = element;
     this.backdrop = document.querySelector('.modal-backdrop');
     this.isVisible = false;
     this.init();
@@ -770,7 +770,7 @@ class Modal {
 
   init() {
     // Close button
-    const closeBtn = this.aiab-modal.querySelector('.modal__close');
+    const closeBtn = this.modal.querySelector('.modal__close');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.hide());
     }
@@ -796,11 +796,11 @@ class Modal {
       this.backdrop.classList.add('is-visible');
     }
 
-    this.aiab-modal.classList.add('is-visible');
-    this.aiab-modal.setAttribute('aria-hidden', 'false');
+    this.modal.classList.add('is-visible');
+    this.modal.setAttribute('aria-hidden', 'false');
 
     // Focus management
-    this.aiab-modal.focus();
+    this.modal.focus();
     this.trapFocus();
   }
 
@@ -812,12 +812,12 @@ class Modal {
       this.backdrop.classList.remove('is-visible');
     }
 
-    this.aiab-modal.classList.remove('is-visible');
-    this.aiab-modal.setAttribute('aria-hidden', 'true');
+    this.modal.classList.remove('is-visible');
+    this.modal.setAttribute('aria-hidden', 'true');
   }
 
   trapFocus() {
-    const focusableElements = this.aiab-modal.querySelectorAll(
+    const focusableElements = this.modal.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
 
@@ -826,7 +826,7 @@ class Modal {
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    this.aiab-modal.addEventListener('keydown', (e) => {
+    this.modal.addEventListener('keydown', (e) => {
       if (e.key === 'Tab') {
         if (e.shiftKey) {
           if (document.activeElement === firstElement) {
@@ -953,11 +953,11 @@ function showModal(modalId) {
     }
 
     // Demo functions
-    function showBasicModal() {
+    function _showBasicModal() {
       showModal('basic-modal');
     }
 
-    function showFormModal() {
+    function _showFormModal() {
       createDemoModal('form-modal', 'Contact Form', `
         <form>
           <div style="margin-bottom: 1rem;">
@@ -979,7 +979,7 @@ function showModal(modalId) {
       `);
     }
 
-    function showSizedModal(size) {
+    function _showSizedModal(size) {
       const sizeClass = size === 'default' ? '' : `modal--${size}`;
       const sizeLabel = size.charAt(0).toUpperCase() + size.slice(1);
 
@@ -998,7 +998,7 @@ function showModal(modalId) {
       `, sizeClass);
     }
 
-    function showAlertModal(type) {
+    function _showAlertModal(type) {
       const icons = {
         success: '<svg width="32" height="32" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>',
         error: '<svg width="32" height="32" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>',
@@ -1021,7 +1021,7 @@ function showModal(modalId) {
       `, `modal--alert modal--${type}`);
     }
 
-    function showImageModal() {
+    function _showImageModal() {
       createDemoModal('image-modal', '', `
         <div class="demo-modal-content">
           <h3 style="margin: 0 0 1rem 0;">Image Placeholder</h3>
@@ -1030,7 +1030,7 @@ function showModal(modalId) {
       `, '', 'modal--image');
     }
 
-    function showDrawerModal(side) {
+    function _showDrawerModal(side) {
       createDemoModal(`${side}-drawer-modal`, `${side.charAt(0).toUpperCase() + side.slice(1)} Navigation`, `
         <nav>
           <ul style="list-style: none; padding: 0; margin: 0;">
@@ -1044,7 +1044,7 @@ function showModal(modalId) {
       `, '', `modal--drawer-${side}`);
     }
 
-    function showBottomSheetModal() {
+    function _showBottomSheetModal() {
       createDemoModal('bottom-sheet-modal', 'Quick Actions', `
         <div style="display: flex; flex-direction: column; gap: 0.5rem;">
           <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">📤 Share</button>
@@ -1055,7 +1055,7 @@ function showModal(modalId) {
       `, '', 'modal--bottom-sheet');
     }
 
-    function showAnimatedModal(animation) {
+    function _showAnimatedModal(animation) {
       createDemoModal(`${animation}-modal`, `${animation.charAt(0).toUpperCase() + animation.slice(1).replace('-', ' ')} Animation`, `
         <p>This modal demonstrates the ${animation.replace('-', ' ')} animation effect.</p>
         <p>Animation enhances the user experience by providing visual feedback and smooth transitions.</p>
@@ -1064,7 +1064,7 @@ function showModal(modalId) {
       `, `modal--${animation}`);
     }
 
-    function showLoadingModal() {
+    function _showLoadingModal() {
       createDemoModal('loading-modal', 'Loading...', `
         <div class="modal__spinner"></div>
       `, '', 'modal--loading');

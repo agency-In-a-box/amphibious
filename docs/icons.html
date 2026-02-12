@@ -324,7 +324,7 @@
     }
 
     .hidden {
-      display: none !important;
+      display: none;
     }
   </style>
 </head>
@@ -524,7 +524,6 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
   <!-- Load Framework -->
   <script type="module">
     import '../src/css/main.css';
-    import amp from '../src/index.ts';
 
     // Initialize Amphibious when DOM is ready
     if (document.readyState === 'loading') {
@@ -831,7 +830,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
     const iconCategories = document.getElementById('iconCategories');
 
     // Initialize
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', () => {
       initializeFilters();
       renderIcons();
 
@@ -966,7 +965,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
     function generateIconItemHTML(icon) {
       const kebabName = icon.name;
       const displayName = kebabName.replace(/-/g, ' ');
-      const camelCaseName = kebabName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+      const _camelCaseName = kebabName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 
       return `
         <div class="icon-item" data-icon="${kebabName}" data-category="${icon.category}">
@@ -985,7 +984,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
 
       iconItems.forEach(item => {
         item.addEventListener('click', function() {
-          const iconName = this.dataset.aiab-icon;
+          const iconName = this.dataset.icon;
           copyIconCode(iconName, this);
         });
       });
@@ -1010,7 +1009,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
         const textArea = document.createElement('textarea');
         textArea.value = code;
         document.body.appendChild(textArea);
-        textArea.aiab-select();
+        textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
 
@@ -1024,7 +1023,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
 
     function updateResultsInfo() {
       const totalIcons = filteredIcons.length;
-      const totalAvailable = Object.keys(iconDatabase).reduce((total, category) => {
+      const _totalAvailable = Object.keys(iconDatabase).reduce((total, category) => {
         return total + iconDatabase[category].length;
       }, 0);
 
@@ -1063,8 +1062,8 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
 
     // Initialize icons after page load
     setTimeout(() => {
-      if (window.amp && window.amp.modules.aiab-icon && window.amp.modules.aiab-icon.init) {
-        window.amp.modules.aiab-icon.init();
+      if (window.amp?.modules.icon?.init) {
+        window.amp.modules.icon.init();
       }
     }, 100);
   </script>

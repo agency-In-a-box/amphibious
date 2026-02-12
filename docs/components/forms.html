@@ -1101,14 +1101,14 @@
         <pre><code>// Form validation utility
 class FormValidator {
   constructor(form) {
-    this.aiab-form = form;
+    this.form = form;
     this.init();
   }
 
   init() {
-    this.aiab-form.addEventListener('submit', (e) => this.handleSubmit(e));
-    this.aiab-form.addEventListener('input', (e) => this.handleInput(e));
-    this.aiab-form.addEventListener('change', (e) => this.handleChange(e));
+    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+    this.form.addEventListener('input', (e) => this.handleInput(e));
+    this.form.addEventListener('change', (e) => this.handleChange(e));
   }
 
   handleSubmit(e) {
@@ -1133,7 +1133,7 @@ class FormValidator {
   }
 
   validateForm() {
-    const fields = this.aiab-form.querySelectorAll('input, select, textarea');
+    const fields = this.form.querySelectorAll('input, select, textarea');
     let isValid = true;
 
     fields.forEach(field => {
@@ -1142,7 +1142,7 @@ class FormValidator {
       }
     });
 
-    this.aiab-form.classList.add('was-validated');
+    this.form.classList.add('was-validated');
     return isValid;
   }
 
@@ -1223,7 +1223,7 @@ class FormValidator {
     console.log('Form has validation errors');
 
     // Focus first invalid field
-    const firstInvalid = this.aiab-form.querySelector('.is-invalid');
+    const firstInvalid = this.form.querySelector('.is-invalid');
     if (firstInvalid) {
       firstInvalid.focus();
     }
@@ -1237,18 +1237,18 @@ class FormValidator {
     alert.className = `alert alert--${type}`;
     alert.textContent = text;
 
-    this.aiab-form.insertBefore(alert, this.aiab-form.firstChild);
+    this.form.insertBefore(alert, this.form.firstChild);
 
     // Remove after 5 seconds
     setTimeout(() => alert.remove(), 5000);
   }
 
   reset() {
-    this.aiab-form.reset();
-    this.aiab-form.classList.remove('was-validated');
+    this.form.reset();
+    this.form.classList.remove('was-validated');
 
     // Clear all validation states
-    const fields = this.aiab-form.querySelectorAll('.is-valid, .is-invalid');
+    const fields = this.form.querySelectorAll('.is-valid, .is-invalid');
     fields.forEach(field => {
       field.classList.remove('is-valid', 'is-invalid');
     });
@@ -1378,7 +1378,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Form validation demo
-    function validateForm() {
+    function _validateForm() {
       const form = document.querySelector('.validation-demo');
       const inputs = form.querySelectorAll('input, select, textarea');
 

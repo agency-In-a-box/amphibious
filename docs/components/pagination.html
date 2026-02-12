@@ -1002,14 +1002,14 @@ class Pagination {
     this.showInfo = options.showInfo !== false;
     this.showJump = options.showJump || false;
     this.showPageSize = options.showPageSize || false;
-    this.aiab-container = options.aiab-container;
+    this.container = options.container;
     this.onChange = options.onChange || (() => {});
 
     this.init();
   }
 
   init() {
-    if (this.aiab-container) {
+    if (this.container) {
       this.render();
       this.attachEvents();
     }
@@ -1017,7 +1017,7 @@ class Pagination {
 
   render() {
     const paginationHTML = this.generateHTML();
-    this.aiab-container.innerHTML = paginationHTML;
+    this.container.innerHTML = paginationHTML;
   }
 
   generateHTML() {
@@ -1188,7 +1188,7 @@ class Pagination {
   }
 
   attachEvents() {
-    this.aiab-container.addEventListener('click', (e) =&gt; {
+    this.container.addEventListener('click', (e) =&gt; {
       e.preventDefault();
 
       const link = e.target.closest('.pagination__link:not(.pagination__link--disabled)');
@@ -1200,7 +1200,7 @@ class Pagination {
           this.goToPage(page);
         }
       } else if (jumpButton) {
-        const input = this.aiab-container.querySelector('.pagination__jump-input');
+        const input = this.container.querySelector('.pagination__jump-input');
         const page = parseInt(input.value);
         if (page &gt;= 1 && page &lt;= this.totalPages) {
           this.goToPage(page);
@@ -1208,7 +1208,7 @@ class Pagination {
       }
     });
 
-    this.aiab-container.addEventListener('change', (e) =&gt; {
+    this.container.addEventListener('change', (e) =&gt; {
       if (e.target.classList.contains('pagination__page-size-select')) {
         const newPageSize = parseInt(e.target.value);
         this.updatePageSize(newPageSize);
@@ -1216,7 +1216,7 @@ class Pagination {
     });
 
     // Keyboard navigation
-    this.aiab-container.addEventListener('keydown', (e) =&gt; {
+    this.container.addEventListener('keydown', (e) =&gt; {
       if (e.target.classList.contains('pagination__jump-input') && e.key === 'Enter') {
         const page = parseInt(e.target.value);
         if (page &gt;= 1 && page &lt;= this.totalPages) {
@@ -1344,7 +1344,7 @@ const pagination = new Pagination({
           const currentPage = pagination.querySelector('.pagination__current');
           const pageNumber = link.textContent.trim();
 
-          if (pageNumber && !isNaN(pageNumber)) {
+          if (pageNumber && !Number.isNaN(pageNumber)) {
             // Update current page (demo only)
             if (currentPage) {
               currentPage.textContent = pageNumber;
@@ -1373,9 +1373,9 @@ const pagination = new Pagination({
       // Demo jump functionality
       const jumpButtons = document.querySelectorAll('.pagination__jump-button');
       jumpButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
+        button.addEventListener('click', (_e) => {
           const input = button.parentElement.querySelector('.pagination__jump-input');
-          const pageNumber = parseInt(input.value);
+          const pageNumber = parseInt(input.value, 10);
 
           if (pageNumber && pageNumber >= 1 && pageNumber <= 10) {
             console.log('Jumping to page:', pageNumber);

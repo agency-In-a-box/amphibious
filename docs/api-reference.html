@@ -976,7 +976,6 @@ setTimeout(() => modal.close(), 3000);</code></pre>
   <!-- Load Framework -->
     <script type="module">
     import '../src/css/main.css';
-    import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
 
@@ -988,7 +987,7 @@ setTimeout(() => modal.close(), 3000);</code></pre>
     const searchResultsList = document.getElementById('searchResultsList');
     const mainContent = document.querySelectorAll('section');
 
-    searchInput.addEventListener('input', function(e) {
+    searchInput.addEventListener('input', (e) => {
       const query = e.target.value.toLowerCase().trim();
 
       if (query.length < 2) {
@@ -1020,13 +1019,13 @@ setTimeout(() => modal.close(), 3000);</code></pre>
           </div>
         `).join('');
       } else {
-        searchResultsList.innerHTML = '<p>No results found for "' + query + '"</p>';
+        searchResultsList.innerHTML = `<p>No results found for "${query}"</p>`;
         searchResults.style.display = 'block';
         mainContent.forEach(section => section.style.display = 'none');
       }
     });
 
-    function showSection(id) {
+    function _showSection(id) {
       searchResults.style.display = 'none';
       mainContent.forEach(section => {
         section.style.display = section.getAttribute('aria-labelledby') === id ? 'block' : 'none';
@@ -1062,7 +1061,7 @@ setTimeout(() => modal.close(), 3000);</code></pre>
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+        const _sectionHeight = section.clientHeight;
         if (scrollY >= (sectionTop - 200)) {
           current = section.getAttribute('aria-labelledby');
         }
