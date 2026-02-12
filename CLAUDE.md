@@ -50,21 +50,47 @@ src/css/
 └── main.css            # Entry point with @import ordering
 ```
 
+### Namespace Isolation
+All CSS classes use `.aiab-` prefix to prevent conflicts with agency frameworks (Bootstrap, Tailwind, etc.):
+- `.container` → `.aiab-container`, `.btn` → `.aiab-btn`, `.col-N` → `.aiab-col-N`
+- Transformation script: `scripts/add-aiab-namespace.js`
+- **Important**: Never apply `.aiab-` prefix to JS DOM properties/methods (`.focus()`, `.disabled`, `.input`, etc.)
+
 ### Component System
-- **Grid**: 16-column flexbox system with `.col-N` classes
+- **Grid**: 16-column flexbox system with `.aiab-col-N` classes (defined in `grid-modern.css`)
 - **Responsive**: Mobile-first with tablet/desktop breakpoints
 - **Dark Mode**: CSS custom properties with localStorage persistence
 - **Icons**: Lucide icons via CDN with `data-lucide` attributes
 
-### JavaScript Modules
+### JavaScript/TypeScript Modules
 ```
 src/js/
 ├── navigation.ts       # Mobile nav and dropdowns
-├── modal.ts           # Modal dialogs
-├── tabs.ts            # Tab components
+├── modal.ts           # Modal dialogs with focus trapping
+├── tabs.ts            # Tab components with ARIA
 ├── carousel.ts        # Splide.js wrapper
 ├── smooth-scroll.ts   # Anchor scrolling
-└── forms.ts          # Form validation and file uploads
+├── forms.ts           # Form validation and file uploads
+├── tooltip.ts         # Tooltips with smart positioning
+├── accordion.js       # Accordion panels
+├── dropdown.js        # Dropdown menus
+├── dropdown-enhanced.js # Enhanced dropdowns with search
+├── toast.js           # Toast notifications
+├── color-picker.js    # Color picker component
+├── datepicker.js      # Date picker
+├── data-table.js      # Data tables with sorting/pagination
+├── file-upload.js     # File upload with progress
+├── search-bar.js      # Search with suggestions
+├── range-slider.js    # Range slider input
+├── timeline.js        # Timeline component
+└── form-builder.js    # Drag-and-drop form builder
+```
+
+### Utilities
+```
+src/utils/
+├── sanitize.ts        # DOMPurify wrapper for XSS prevention
+└── memory-leak-fixes.ts # Event listener cleanup helpers
 ```
 
 ## Build Configuration
@@ -123,15 +149,28 @@ GitHub Actions workflow runs on push/PR:
 
 ### Setup
 - Test runner: Bun with happy-dom
-- Setup file: `test/setup.ts` (DOM globals)
-- Pattern: `*.test.ts` files
+- Setup file: `test/setup.ts` (DOM globals, scroll mocks, getBoundingClientRect)
+- Pattern: `test/*.test.ts` files
+- Run: `bun test` (210 tests, 469 assertions)
 
-### Key Test Areas
-- Component mounting and interactions
-- Navigation mobile/desktop behavior
-- Form validation and file uploads
-- Smooth scroll calculations
-- Theme cascade and inheritance
+### Test Files (10 total)
+| File | Module | Tests |
+|------|--------|-------|
+| `components.test.ts` | CSS inventory + DOM structure | 58 |
+| `modal.test.ts` | Modal lifecycle, ARIA, focus trapping, ModalManager | 44 |
+| `tooltip.test.ts` | Tooltip triggers, positioning, keyboard, EcommerceTooltips | 42 |
+| `forms.test.ts` | Validation, ARIA, character counters | 29 |
+| `carousel.test.ts` | DOM scaffolding, Splide mock, data attributes | 24 |
+| `tabs.test.ts` | Tab switching, keyboard nav, ARIA | 20 |
+| `theme-cascade.test.ts` | Theme layer precedence | 16 |
+| `smooth-scroll.test.ts` | Anchor scrolling, hash nav | 15 |
+| `navigation.test.ts` | Mobile menu, dropdowns | 9 |
+| `cascade.test.ts` | CSS @layer ordering | 7 |
+
+### Untested JS Modules (coverage gaps)
+- accordion.js, dropdown.js, toast.js, color-picker.js
+- datepicker.js, data-table.js, file-upload.js, range-slider.js
+- search-bar.js, form-builder.js, timeline.js
 
 ## Component Development
 
@@ -143,7 +182,7 @@ GitHub Actions workflow runs on push/PR:
 5. Test in both light/dark modes
 
 ### Naming Conventions
-- CSS classes: `.component-name`, `.component-part`
+- CSS classes: `.aiab-component-name`, `.component-part` (internal parts don't need prefix)
 - CSS files: `atoms/component.css`
 - TypeScript: `src/js/component.ts`
 - Tests: `test/component.test.ts`
@@ -186,8 +225,14 @@ Extended documentation available at:
 
 ## Current Focus Areas
 
-1. Navigation and grid system verification
+1. Test coverage expansion for JS-only modules (accordion, dropdown, toast, etc.)
 2. Documentation consistency across pages
 3. Dark mode toggle deployment to all docs
-4. NPM package publication preparation
-5. Public open-source release readiness
+4. Build verification after namespace changes
+5. NPM package publication preparation
+6. Public open-source release readiness
+
+## Known Issues
+
+- **Tooltip position regex bug**: `updatePosition()` in `tooltip.ts` uses a regex that replaces ALL `tooltip--*` classes (including variant/size) when adjusting position — only position classes should be affected
+- **Grid file naming**: Grid CSS lives in `grid-modern.css` (not `grid.css`), navigation in `navigation-unified.css` (not `organisms/navigation.css`)
