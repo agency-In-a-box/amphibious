@@ -149,7 +149,7 @@
       cursor: pointer;
       border-radius: 4px;
     }
-    .view-toggles button.active {
+    .view-toggles button.aiab-active {
       background: #ED8B00;
       color: white;
       border-color: #ED8B00;
@@ -286,7 +286,7 @@
       align-items: center;
       gap: 0.25rem;
     }
-    .slat-meta .badge {
+    .slat-meta .aiab-badge {
       padding: 0.25rem 0.75rem;
       border-radius: 4px;
       font-size: 0.75rem;
@@ -305,7 +305,7 @@
       flex-direction: column;
       gap: 0.5rem;
     }
-    .btn {
+    .aiab-btn {
       padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 4px;
@@ -373,7 +373,7 @@
       flex-direction: column;
       gap: 0.25rem;
     }
-    .badge {
+    .aiab-badge {
       padding: 0.25rem 0.5rem;
       background: #dc3545;
       color: white;
@@ -381,9 +381,9 @@
       font-weight: 600;
       border-radius: 4px;
     }
-    .badge.new { background: #28a745; }
-    .badge.sale { background: #dc3545; }
-    .badge.limited { background: #ffc107; color: #000; }
+    .aiab-badge.new { background: #28a745; }
+    .aiab-badge.sale { background: #dc3545; }
+    .aiab-badge.limited { background: #ffc107; color: #000; }
     .product-actions {
       position: absolute;
       top: 0.5rem;
@@ -555,14 +555,14 @@
     }
 
     /* Pagination */
-    .pagination {
+    .aiab-pagination {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
       margin: 3rem 0;
     }
-    .pagination button {
+    .aiab-pagination button {
       padding: 0.5rem 1rem;
       border: 1px solid #dee2e6;
       background: white;
@@ -570,15 +570,15 @@
       border-radius: 4px;
       transition: all 0.2s;
     }
-    .pagination button:hover {
+    .aiab-pagination button:hover {
       background: #f8f9fa;
     }
-    .pagination button.active {
+    .aiab-pagination button.aiab-active {
       background: #ED8B00;
       color: white;
       border-color: #ED8B00;
     }
-    .pagination button:disabled {
+    .aiab-pagination button:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
@@ -638,7 +638,7 @@
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
       <span class="sr-only">Toggle navigation</span>
@@ -719,12 +719,12 @@
 </nav>
 <header class="header">
     <div class="header-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-8">
+      <div class="aiab-container">
+        <div class="aiab-row">
+          <div class="aiab-col-8">
             <i data-lucide="truck" class="icon--xs"></i> Free shipping on orders over $50
           </div>
-          <div class="col-8" style="text-align: right;">
+          <div class="aiab-col-8" style="text-align: right;">
             <i data-lucide="phone" class="icon--xs"></i> Support: 1-800-SHOP-NOW
           </div>
         </div>
@@ -732,12 +732,12 @@
     </div>
 
     <div class="header-main">
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
+      <div class="aiab-container">
+        <div class="aiab-row">
+          <div class="aiab-col-3">
             <a href="#" class="logo">SHOPIFY 2.0</a>
           </div>
-          <div class="col-8">
+          <div class="aiab-col-8">
             <div class="search-bar">
               <input type="text" placeholder="Search products...">
               <button>
@@ -746,7 +746,7 @@
               </button>
             </div>
           </div>
-          <div class="col-5">
+          <div class="aiab-col-5">
             <div class="header-icons" style="justify-content: flex-end;">
               <button class="icon-button" data-tooltip="My Account">
                 <i data-lucide="user"></i>
@@ -768,7 +768,7 @@
     </div>
 
     <nav class="nav-categories">
-      <div class="container">
+      <div class="aiab-container">
         <ul>
           <li><a href="#"><i data-lucide="package" class="icon--sm"></i> All Products</a></li>
           <li><a href="#"><i data-lucide="shirt" class="icon--sm"></i> Clothing</a></li>
@@ -783,7 +783,7 @@
   </header>
 
   <!-- Breadcrumbs -->
-  <div class="container">
+  <div class="aiab-container">
     <div class="breadcrumbs">
       <a href="#">Home</a>
       <span class="separator">/</span>
@@ -796,7 +796,7 @@
   </div>
 
   <!-- Featured Products Slat Pattern -->
-  <section class="container" style="margin: 2rem auto;">
+  <section class="aiab-container" style="margin: 2rem auto;">
     <h2>Featured Products</h2>
     <ul class="slats slats--products">
       <li>
@@ -820,8 +820,8 @@
             </article>
           </div>
           <div class="slat-actions">
-            <button class="btn btn--primary">Quick Shop</button>
-            <button class="btn btn--secondary" data-tooltip="Add to wishlist">
+            <button class="aiab-btn btn--primary">Quick Shop</button>
+            <button class="aiab-btn btn--secondary" data-tooltip="Add to wishlist">
               <i data-lucide="heart"></i>
             </button>
           </div>
@@ -837,12 +837,12 @@
             <p>Breathable 100% linen dress perfect for warm weather. Available in multiple patterns and sizes XS-XXL.</p>
             <div class="slat-meta">
               <span class="price">$79.00</span>
-              <span class="badge badge--sale">New Arrival</span>
+              <span class="aiab-badge badge--sale">New Arrival</span>
             </div>
           </div>
           <div class="slat-actions">
-            <button class="btn btn--primary">Quick Shop</button>
-            <button class="btn btn--secondary" data-tooltip="Add to wishlist">
+            <button class="aiab-btn btn--primary">Quick Shop</button>
+            <button class="aiab-btn btn--secondary" data-tooltip="Add to wishlist">
               <i data-lucide="heart"></i>
             </button>
           </div>
@@ -861,12 +861,12 @@
                 <span class="price-current">$99.00</span>
                 <span class="price-original">$149.00</span>
               </span>
-              <span class="badge badge--discount">-33% OFF</span>
+              <span class="aiab-badge badge--discount">-33% OFF</span>
             </div>
           </div>
           <div class="slat-actions">
-            <button class="btn btn--primary">Quick Shop</button>
-            <button class="btn btn--secondary" data-tooltip="Add to wishlist">
+            <button class="aiab-btn btn--primary">Quick Shop</button>
+            <button class="aiab-btn btn--secondary" data-tooltip="Add to wishlist">
               <i data-lucide="heart"></i>
             </button>
           </div>
@@ -876,7 +876,7 @@
   </section>
 
   <!-- Catalog Header -->
-  <div class="container">
+  <div class="aiab-container">
     <div class="catalog-header">
       <h1>Shop All Products</h1>
       <div class="catalog-controls">
@@ -894,7 +894,7 @@
             </select>
           </div>
           <div class="view-toggles">
-            <button class="active" data-tooltip="Grid View">
+            <button class="aiab-active" data-tooltip="Grid View">
               <i data-lucide="grid-3x3"></i>
             </button>
             <button data-tooltip="List View">
@@ -907,10 +907,10 @@
   </div>
 
   <!-- Main Content -->
-  <div class="container">
-    <div class="row">
+  <div class="aiab-container">
+    <div class="aiab-row">
       <!-- Filters Sidebar -->
-      <aside class="col-4">
+      <aside class="aiab-col-4">
         <section class="filters" aria-labelledby="filters-heading">
           <h2 class="sr-only" id="filters-heading">Product Filters</h2>
           <fieldset class="filter-section">
@@ -1061,16 +1061,16 @@
       </aside>
 
       <!-- Product Grid -->
-      <main class="col-12" role="main">
-        <div class="row">
+      <main class="aiab-col-12" role="main">
+        <div class="aiab-row">
           <!-- Product 1 -->
-          <div class="col-4">
+          <div class="aiab-col-4">
             <article class="product-card">
               <figure class="product-image">
                 <img src="https://placehold.co/400x400/667eea/ffffff?text=Product+1" alt="Product 1" loading="lazy">
                 <div class="product-badges">
-                  <span class="badge new">NEW</span>
-                  <span class="badge sale">-20%</span>
+                  <span class="aiab-badge new">NEW</span>
+                  <span class="aiab-badge sale">-20%</span>
                 </div>
                 <div class="product-actions">
                   <button data-tooltip="Quick View" onclick="openQuickView()">
@@ -1115,12 +1115,12 @@
           </div>
 
           <!-- Product 2 -->
-          <div class="col-4">
+          <div class="aiab-col-4">
             <article class="product-card">
               <figure class="product-image">
                 <img src="https://placehold.co/400x400/764ba2/ffffff?text=Product+2" alt="Product 2" loading="lazy">
                 <div class="product-badges">
-                  <span class="badge limited">LIMITED</span>
+                  <span class="aiab-badge limited">LIMITED</span>
                 </div>
                 <div class="product-actions">
                   <button data-tooltip="Quick View">
@@ -1163,12 +1163,12 @@
           </div>
 
           <!-- Product 3 -->
-          <div class="col-4">
+          <div class="aiab-col-4">
             <article class="product-card">
               <figure class="product-image">
                 <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Product+3" alt="Product 3" loading="lazy">
                 <div class="product-badges">
-                  <span class="badge sale">-30%</span>
+                  <span class="aiab-badge sale">-30%</span>
                 </div>
                 <div class="product-actions">
                   <button data-tooltip="Quick View">
@@ -1213,12 +1213,12 @@
           </div>
 
           <!-- Product 4 -->
-          <div class="col-4">
+          <div class="aiab-col-4">
             <article class="product-card">
               <figure class="product-image">
                 <img src="https://placehold.co/400x400/10b981/ffffff?text=Product+4" alt="Product 4" loading="lazy">
                 <div class="product-badges">
-                  <span class="badge new">NEW</span>
+                  <span class="aiab-badge new">NEW</span>
                 </div>
                 <div class="product-actions">
                   <button data-tooltip="Quick View">
@@ -1262,12 +1262,12 @@
 
           <!-- More products... -->
           <!-- Repeat similar structure for products 5-12 -->
-          <div class="col-4">
+          <div class="aiab-col-4">
             <article class="product-card">
               <figure class="product-image">
                 <img src="https://placehold.co/400x400/ef4444/ffffff?text=Product+5" alt="Product 5" loading="lazy">
                 <div class="product-badges">
-                  <span class="badge sale">-15%</span>
+                  <span class="aiab-badge sale">-15%</span>
                 </div>
                 <div class="product-actions">
                   <button data-tooltip="Quick View">
@@ -1310,12 +1310,12 @@
             </article>
           </div>
 
-          <div class="col-4">
+          <div class="aiab-col-4">
             <article class="product-card">
               <figure class="product-image">
                 <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Product+6" alt="Product 6" loading="lazy">
                 <div class="product-badges">
-                  <span class="badge limited">LAST CHANCE</span>
+                  <span class="aiab-badge limited">LAST CHANCE</span>
                 </div>
                 <div class="product-actions">
                   <button data-tooltip="Quick View">
@@ -1359,11 +1359,11 @@
         </div>
 
         <!-- Pagination -->
-        <div class="pagination">
+        <div class="aiab-pagination">
           <button disabled>
             <i data-lucide="chevron-left"></i>
           </button>
-          <button class="active">1</button>
+          <button class="aiab-active">1</button>
           <button>2</button>
           <button>3</button>
           <button>4</button>
@@ -1379,7 +1379,7 @@
   </div>
 
   <!-- Quick View Modal -->
-  <div id="quickViewModal" class="modal" aria-hidden="true">
+  <div id="quickViewModal" class="aiab-modal" aria-hidden="true">
     <div class="modal__dialog modal__dialog--lg">
       <div class="modal__header">
         <h3 class="modal__title">Quick View - Premium Cotton T-Shirt</h3>

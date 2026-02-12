@@ -126,14 +126,14 @@
   background: rgba(255, 105, 0, 0.05);
 }
 
-.view-toggles button.active {
+.view-toggles button.aiab-active {
   background: #ff6900;
   color: white;
   border-color: #ff6900;
 }
 
-.view-toggles button.active svg,
-.view-toggles button.active i {
+.view-toggles button.aiab-active svg,
+.view-toggles button.aiab-active i {
   stroke: white;
   color: white;
 }

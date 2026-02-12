@@ -82,7 +82,7 @@
       background: #f8f9fa;
       color: #ED8B00;
     }
-    .docs-nav a.active {
+    .docs-nav a.aiab-active {
       background: #f0f4ff;
       color: #ED8B00;
       font-weight: 500;
@@ -305,7 +305,7 @@
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
       <span class="sr-only">Toggle navigation</span>
@@ -385,21 +385,21 @@
   </div>
 </nav>
 <header class="docs-header">
-    <div class="container">
+    <div class="aiab-container">
       <h1>📖 API Reference</h1>
       <p>Complete reference for all CSS classes, JavaScript methods, and component APIs</p>
     </div>
   </header>
 
   <!-- Documentation Content -->
-  <div class="container">
+  <div class="aiab-container">
     <div class="docs-layout">
       <!-- Sidebar Navigation -->
       <aside class="docs-sidebar">
         <nav class="docs-nav" aria-label="API documentation navigation">
           <h3>CSS Framework</h3>
           <ul>
-            <li><a href="#grid-system" class="active">Grid System</a></li>
+            <li><a href="#grid-system" class="aiab-active">Grid System</a></li>
             <li><a href="#typography">Typography</a></li>
             <li><a href="#colors">Colors</a></li>
             <li><a href="#spacing">Spacing</a></li>
@@ -451,11 +451,11 @@
           <h3>Container Classes</h3>
           <div class="css-grid">
             <div class="css-class-card">
-              <h4>.container</h4>
+              <h4>.aiab-container</h4>
               <p>Fixed-width container with responsive breakpoints (max-width: 960px)</p>
             </div>
             <div class="css-class-card">
-              <h4>.container-fluid</h4>
+              <h4>.aiab-container-fluid</h4>
               <p>Full-width container that spans the entire viewport width</p>
             </div>
           </div>
@@ -463,12 +463,12 @@
           <h3>Grid Classes</h3>
           <div class="css-grid">
             <div class="css-class-card">
-              <h4>.row</h4>
+              <h4>.aiab-row</h4>
               <p>Creates a horizontal group of columns with negative margins</p>
             </div>
             <div class="css-class-card">
               <h4>.col-{1-16}</h4>
-              <p>Column width for desktop screens (e.g., .col-8 = 50% width)</p>
+              <p>Column width for desktop screens (e.g., .aiab-col-8 = 50% width)</p>
             </div>
             <div class="css-class-card">
               <h4>.col-tablet-{1-16}</h4>
@@ -483,12 +483,12 @@
           <div class="example-section">
             <h4>Example Usage</h4>
             <div class="code-block">
-              <pre><code>&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-8 col-tablet-16 col-mobile-16"&gt;
+              <pre><code>&lt;div class="aiab-container"&gt;
+  &lt;div class="aiab-row"&gt;
+    &lt;div class="aiab-col-8 aiab-col-tablet-16 aiab-col-mobile-16"&gt;
       Main content (50% on desktop, full width on tablet/mobile)
     &lt;/div&gt;
-    &lt;div class="col-8 col-tablet-16 col-mobile-16"&gt;
+    &lt;div class="aiab-col-8 aiab-col-tablet-16 aiab-col-mobile-16"&gt;
       Sidebar (50% on desktop, full width on tablet/mobile)
     &lt;/div&gt;
   &lt;/div&gt;
@@ -955,7 +955,7 @@ setTimeout(() => modal.close(), 3000);</code></pre>
         &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class="slat-actions"&gt;
-        &lt;button class="btn btn--primary"&gt;Add to Cart&lt;/button&gt;
+        &lt;button class="aiab-btn btn--primary"&gt;Add to Cart&lt;/button&gt;
       &lt;/div&gt;
     &lt;/article&gt;
   &lt;/li&gt;

@@ -44,14 +44,14 @@ a:hover,
 
 .btn--primary,
 .apple-button,
-button.primary {
+button.aiab-primary {
   background: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
 }
 
 .btn--primary:hover,
 .apple-button:hover,
-button.primary:hover {
+button.aiab-primary:hover {
   background: var(--primary-hover) !important;
   border-color: var(--primary-hover) !important;
 }
@@ -65,13 +65,13 @@ button.primary:hover {
   background: white;
 }
 
-.header-main .container {
+.header-main .aiab-container {
   display: flex;
   align-items: center; /* Perfect vertical center */
   gap: 2rem;
 }
 
-.header-main .row {
+.header-main .aiab-row {
   width: 100%;
   display: flex;
   align-items: center;
@@ -355,7 +355,7 @@ button.primary:hover {
   border-top: 1px solid var(--border-color);
 }
 
-.pagination {
+.aiab-pagination {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -363,8 +363,8 @@ button.primary:hover {
   margin: 1.5rem 0 3rem 0; /* Proper margin from content */
 }
 
-.pagination button,
-.pagination a {
+.aiab-pagination button,
+.aiab-pagination a {
   min-width: 32px;
   height: 32px;
   padding: 0 0.75rem;
@@ -383,20 +383,20 @@ button.primary:hover {
 }
 
 /* Arrow buttons - SAME spacing as numbers */
-.pagination button:first-child,
-.pagination button:last-child {
+.aiab-pagination button:first-child,
+.aiab-pagination button:last-child {
   padding: 0;
   min-width: 32px; /* Same width as number buttons */
 }
 
-.pagination button:hover,
-.pagination a:hover {
+.aiab-pagination button:hover,
+.aiab-pagination a:hover {
   background: var(--primary-fade);
   border-color: var(--primary-color);
   color: var(--primary-color);
 }
 
-.pagination .active {
+.aiab-pagination .aiab-active {
   background: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
@@ -483,7 +483,7 @@ button.primary:hover {
    ========================================================================== */
 
 /* Remove any unwanted gaps */
-.container > * + * {
+.aiab-container > * + * {
   margin-top: 0;
 }
 
@@ -494,18 +494,18 @@ button.primary:hover {
 }
 
 /* Fix any col-* issues */
-.col-3,
-.col-4,
-.col-6,
-.col-8,
-.col-9,
-.col-12 {
+.aiab-col-3,
+.aiab-col-4,
+.aiab-col-6,
+.aiab-col-8,
+.aiab-col-9,
+.aiab-col-12 {
   padding: 0 !important;
 }
 
 /* Global button color fix */
 button,
-.btn {
+.aiab-btn {
   transition: all 0.2s ease;
 }
 
@@ -532,7 +532,7 @@ button,
    ========================================================================== */
 
 @media (max-width: 992px) {
-  .header-main .container {
+  .header-main .aiab-container {
     flex-wrap: wrap;
   }
 
@@ -560,7 +560,7 @@ button,
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .pagination {
+  .aiab-pagination {
     flex-wrap: wrap;
   }
 }

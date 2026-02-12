@@ -102,7 +102,7 @@
       min-height: 400px;
     }
 
-    .vertical-nav-demo .sidebar {
+    .vertical-nav-demo .aiab-sidebar {
       background: white;
       border-right: 1px solid #dee2e6;
       padding: 1rem;
@@ -152,7 +152,7 @@
       background: #c97400;
     }
 
-    .controls button.active {
+    .controls button.aiab-active {
       background: #c97400;
     }
 
@@ -190,7 +190,7 @@
       display: none;
     }
 
-    .tab-pane.active {
+    .tab-pane.aiab-active {
       display: block;
     }
 
@@ -253,7 +253,7 @@
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
       <span class="sr-only">Toggle navigation</span>
@@ -333,13 +333,13 @@
   </div>
 </nav>
 <header class="demo-header">
-    <div class="container">
+    <div class="aiab-container">
       <h1>🧭 Navigation Component Showcase</h1>
       <p>Explore all navigation patterns, styles, and configurations in Amphibious 2.0</p>
     </div>
   </header>
 
-  <main class="container" role="main">
+  <main class="aiab-container" role="main">
     <!-- Introduction -->
     <section class="demo-section" aria-labelledby="nav-overview">
       <h2 id="nav-overview">Navigation Overview</h2>
@@ -360,7 +360,7 @@
         <div class="nav-demo-header">Basic Navigation</div>
         <nav aria-label="Basic navigation example" style="background: white; padding: 1rem;">
           <ul class="horizontal">
-            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#" class="aiab-active">Home</a></li>
             <li><a href="#">Products</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">About</a></li>
@@ -372,7 +372,7 @@
       <div class="code-example">
         <pre><code>&lt;nav&gt;
   &lt;ul class="horizontal"&gt;
-    &lt;li&gt;&lt;a href="#" class="active"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="aiab-active"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
@@ -464,7 +464,7 @@ const nav = amp.createNavigation('#nav-container', {
         <h4>Style 2: Minimal with Accent</h4>
         <nav class="nav-style-2" style="padding: 1rem;">
           <ul class="horizontal">
-            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#" class="aiab-active">Home</a></li>
             <li><a href="#">Features</a></li>
             <li><a href="#">Pricing</a></li>
             <li><a href="#">Blog</a></li>
@@ -491,10 +491,10 @@ const nav = amp.createNavigation('#nav-container', {
       <p>Ideal for sidebars, admin panels, and documentation sites.</p>
 
       <div class="vertical-nav-demo">
-        <aside class="sidebar" aria-label="Sidebar navigation">
+        <aside class="aiab-sidebar" aria-label="Sidebar navigation">
           <nav aria-label="Admin menu">
             <ul class="vertical">
-              <li><a href="#" class="active">Dashboard</a></li>
+              <li><a href="#" class="aiab-active">Dashboard</a></li>
               <li>
                 <a href="#">Products</a>
                 <ul>
@@ -527,7 +527,7 @@ const nav = amp.createNavigation('#nav-container', {
       <div class="code-example">
         <pre><code>&lt;nav&gt;
   &lt;ul class="vertical"&gt;
-    &lt;li&gt;&lt;a href="#" class="active"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="aiab-active"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;
       &lt;a href="#"&gt;Products&lt;/a&gt;
       &lt;ul&gt;
@@ -547,55 +547,55 @@ const nav = amp.createNavigation('#nav-container', {
 
       <h3>Default Breadcrumbs</h3>
       <nav aria-label="Breadcrumb navigation">
-        <ul class="breadcrumb">
+        <ul class="aiab-breadcrumb">
           <li><a href="#">Home</a></li>
           <li><a href="#">Products</a></li>
           <li><a href="#">Electronics</a></li>
-          <li><a href="#" class="active">Laptops</a></li>
+          <li><a href="#" class="aiab-active">Laptops</a></li>
         </ul>
       </nav>
 
       <h3>Alternative Separators</h3>
       <nav aria-label="Breadcrumb with slash separator">
-        <ul class="breadcrumb breadcrumb-slash">
+        <ul class="aiab-breadcrumb breadcrumb-slash">
           <li><a href="#">Home</a></li>
           <li><a href="#">Documentation</a></li>
           <li><a href="#">Components</a></li>
-          <li><a href="#" class="active">Navigation</a></li>
+          <li><a href="#" class="aiab-active">Navigation</a></li>
         </ul>
       </nav>
 
       <nav aria-label="Breadcrumb with arrow separator" style="margin-top: 1rem;">
-        <ul class="breadcrumb breadcrumb-arrow">
+        <ul class="aiab-breadcrumb breadcrumb-arrow">
           <li><a href="#">Store</a></li>
           <li><a href="#">Category</a></li>
           <li><a href="#">Subcategory</a></li>
-          <li><a href="#" class="active">Product</a></li>
+          <li><a href="#" class="aiab-active">Product</a></li>
         </ul>
       </nav>
 
       <nav aria-label="Breadcrumb with dot separator" style="margin-top: 1rem;">
-        <ul class="breadcrumb breadcrumb-dot">
+        <ul class="aiab-breadcrumb breadcrumb-dot">
           <li><a href="#">Level 1</a></li>
           <li><a href="#">Level 2</a></li>
           <li><a href="#">Level 3</a></li>
-          <li><a href="#" class="active">Current Page</a></li>
+          <li><a href="#" class="aiab-active">Current Page</a></li>
         </ul>
       </nav>
 
       <div class="code-example">
         <pre><code>&lt;nav&gt;
-  &lt;ul class="breadcrumb"&gt;
+  &lt;ul class="aiab-breadcrumb"&gt;
     &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#" class="active"&gt;Current Page&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="aiab-active"&gt;Current Page&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
 
 &lt;!-- Alternative separators --&gt;
-&lt;ul class="breadcrumb breadcrumb-slash"&gt;...&lt;/ul&gt;
-&lt;ul class="breadcrumb breadcrumb-arrow"&gt;...&lt;/ul&gt;
-&lt;ul class="breadcrumb breadcrumb-dot"&gt;...&lt;/ul&gt;</code></pre>
+&lt;ul class="aiab-breadcrumb breadcrumb-slash"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-breadcrumb breadcrumb-arrow"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-breadcrumb breadcrumb-dot"&gt;...&lt;/ul&gt;</code></pre>
       </div>
     </section>
 
@@ -607,14 +607,14 @@ const nav = amp.createNavigation('#nav-container', {
       <div class="tab-nav-demo">
         <nav role="tablist" aria-label="Tab navigation">
           <ul class="horizontal" style="border-bottom: 2px solid #dee2e6; margin: 0;">
-            <li><a href="#tab1" class="active" onclick="switchTab(event, 'tab1')">Overview</a></li>
+            <li><a href="#tab1" class="aiab-active" onclick="switchTab(event, 'tab1')">Overview</a></li>
             <li><a href="#tab2" onclick="switchTab(event, 'tab2')">Features</a></li>
             <li><a href="#tab3" onclick="switchTab(event, 'tab3')">Documentation</a></li>
             <li><a href="#tab4" onclick="switchTab(event, 'tab4')">Support</a></li>
           </ul>
         </nav>
         <div class="tab-content">
-          <div id="tab1" class="tab-pane active">
+          <div id="tab1" class="tab-pane aiab-active">
             <h3>Overview Tab</h3>
             <p>This is the overview content. Tab navigation is perfect for organizing related content into logical sections.</p>
           </div>
@@ -772,7 +772,7 @@ const nav = amp.createNavigation('#nav-container', {
       <nav aria-label="Filter navigation">
         <dl class="filter-nav" role="group" aria-label="Content filters">
           <dt>Filter:</dt>
-          <dd><a href="#" class="active">All</a></dd>
+          <dd><a href="#" class="aiab-active">All</a></dd>
           <dd><a href="#">Popular</a></dd>
           <dd><a href="#">Recent</a></dd>
           <dd><a href="#">Featured</a></dd>
@@ -784,7 +784,7 @@ const nav = amp.createNavigation('#nav-container', {
         <pre><code>&lt;nav&gt;
   &lt;dl class="filter-nav"&gt;
     &lt;dt&gt;Filter:&lt;/dt&gt;
-    &lt;dd&gt;&lt;a href="#" class="active"&gt;All&lt;/a&gt;&lt;/dd&gt;
+    &lt;dd&gt;&lt;a href="#" class="aiab-active"&gt;All&lt;/a&gt;&lt;/dd&gt;
     &lt;dd&gt;&lt;a href="#"&gt;Popular&lt;/a&gt;&lt;/dd&gt;
     &lt;dd&gt;&lt;a href="#"&gt;Recent&lt;/a&gt;&lt;/dd&gt;
   &lt;/dl&gt;

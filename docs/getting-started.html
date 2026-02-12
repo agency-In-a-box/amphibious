@@ -81,7 +81,7 @@
       background: #f8f9fa;
       color: #ED8B00;
     }
-    .docs-nav a.active {
+    .docs-nav a.aiab-active {
       background: #f0f4ff;
       color: #ED8B00;
       font-weight: 500;
@@ -256,7 +256,7 @@
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
       <span class="sr-only">Toggle navigation</span>
@@ -336,21 +336,21 @@
   </div>
 </nav>
 <header class="docs-header">
-    <div class="container">
+    <div class="aiab-container">
       <h1>🚀 Getting Started</h1>
       <p>Get up and running with Amphibious 2.0 in minutes</p>
     </div>
   </header>
 
   <!-- Documentation Content -->
-  <div class="container">
+  <div class="aiab-container">
     <div class="docs-layout">
       <!-- Sidebar Navigation -->
       <aside class="docs-sidebar">
         <nav class="docs-nav" aria-label="Documentation navigation">
           <h3>Getting Started</h3>
           <ul>
-            <li><a href="#installation" class="active">Installation</a></li>
+            <li><a href="#installation" class="aiab-active">Installation</a></li>
             <li><a href="#quick-start">Quick Start</a></li>
             <li><a href="#structure">Project Structure</a></li>
             <li><a href="#configuration">Configuration</a></li>
@@ -446,13 +446,13 @@ import { createNavigation, createModal } from '@amphibious/core';</code></pre>
 &lt;body&gt;
   &lt;header&gt;
     &lt;nav class="amp-nav" aria-label="Main navigation"&gt;
-      &lt;div class="container"&gt;
+      &lt;div class="aiab-container"&gt;
         &lt;!-- Navigation content --&gt;
       &lt;/div&gt;
     &lt;/nav&gt;
   &lt;/header&gt;
 
-  &lt;main class="container"&gt;
+  &lt;main class="aiab-container"&gt;
     &lt;section&gt;
       &lt;h1&gt;Welcome to Amphibious 2.0&lt;/h1&gt;
       &lt;p&gt;Start building amazing responsive layouts!&lt;/p&gt;
@@ -597,16 +597,16 @@ const modal = amp.createModal('#myModal', {
 
           <h3>Basic Grid</h3>
           <div class="code-block">
-            <pre><code>&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-8"&gt;Half width (8/16)&lt;/div&gt;
-    &lt;div class="col-8"&gt;Half width (8/16)&lt;/div&gt;
+            <pre><code>&lt;div class="aiab-container"&gt;
+  &lt;div class="aiab-row"&gt;
+    &lt;div class="aiab-col-8"&gt;Half width (8/16)&lt;/div&gt;
+    &lt;div class="aiab-col-8"&gt;Half width (8/16)&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-4"&gt;Quarter (4/16)&lt;/div&gt;
-    &lt;div class="col-4"&gt;Quarter (4/16)&lt;/div&gt;
-    &lt;div class="col-4"&gt;Quarter (4/16)&lt;/div&gt;
-    &lt;div class="col-4"&gt;Quarter (4/16)&lt;/div&gt;
+  &lt;div class="aiab-row"&gt;
+    &lt;div class="aiab-col-4"&gt;Quarter (4/16)&lt;/div&gt;
+    &lt;div class="aiab-col-4"&gt;Quarter (4/16)&lt;/div&gt;
+    &lt;div class="aiab-col-4"&gt;Quarter (4/16)&lt;/div&gt;
+    &lt;div class="aiab-col-4"&gt;Quarter (4/16)&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
@@ -615,8 +615,8 @@ const modal = amp.createModal('#myModal', {
           <p>Use responsive column classes for different screen sizes:</p>
 
           <div class="code-block">
-            <pre><code>&lt;div class="row"&gt;
-  &lt;div class="col-16 col-tablet-8 col-desktop-4"&gt;
+            <pre><code>&lt;div class="aiab-row"&gt;
+  &lt;div class="aiab-col-16 aiab-col-tablet-8 col-desktop-4"&gt;
     Full width on mobile, half on tablet, quarter on desktop
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -741,7 +741,7 @@ const modal = amp.createModal('#myModal', {
   &lt;fieldset&gt;
     &lt;legend&gt;Personal Information&lt;/legend&gt;
 
-    &lt;div class="form-group"&gt;
+    &lt;div class="aiab-form-group"&gt;
       &lt;label for="name"&gt;
         Name
         &lt;span aria-label="required"&gt;*&lt;/span&gt;
@@ -749,7 +749,7 @@ const modal = amp.createModal('#myModal', {
       &lt;input type="text" id="name" name="name" required aria-required="true"&gt;
     &lt;/div&gt;
 
-    &lt;div class="form-group"&gt;
+    &lt;div class="aiab-form-group"&gt;
       &lt;label for="email"&gt;
         Email
         &lt;span aria-label="required"&gt;*&lt;/span&gt;

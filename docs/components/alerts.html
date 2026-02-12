@@ -35,7 +35,7 @@
     }
 
     /* Container */
-    .container {
+    .aiab-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
@@ -204,7 +204,7 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .container {
+      .aiab-container {
         padding: 0 1rem;
       }
 
@@ -225,7 +225,7 @@
 <body>
   <!-- Site Navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <ul class="horizontal branded">
       <li><a href="/" class="site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
@@ -274,7 +274,7 @@
 </nav>
 
   <header class="docs-header">
-    <div class="container">
+    <div class="aiab-container">
       <nav class="nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
@@ -286,7 +286,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="aiab-container">
     <!-- Overview -->
     <section class="section">
       <h2>Overview</h2>
@@ -328,13 +328,13 @@
       <div class="demo-section">
         <div class="demo-title">Basic Alert Examples</div>
         <div class="demo-grid">
-          <div class="alert">
+          <div class="aiab-alert">
             <div class="alert__content">
               <div class="alert__message">This is a default alert message.</div>
             </div>
           </div>
 
-          <div class="alert alert--success">
+          <div class="aiab-alert alert--success">
             <div class="alert__icon">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -349,14 +349,14 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Basic Alert --&gt;
-&lt;div class="alert"&gt;
+&lt;div class="aiab-alert"&gt;
   &lt;div class="alert__content"&gt;
     &lt;div class="alert__message"&gt;This is a default alert message.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Success Alert with Icon --&gt;
-&lt;div class="alert alert--success"&gt;
+&lt;div class="aiab-alert alert--success"&gt;
   &lt;div class="alert__icon"&gt;
     &lt;svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"&gt;
       &lt;path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/&gt;
@@ -371,7 +371,7 @@
       <h3>Alert with Title and Actions</h3>
       <div class="demo-section">
         <div class="demo-title">Alert with Title and Action Buttons</div>
-        <div class="alert alert--warning">
+        <div class="aiab-alert alert--warning">
           <div class="alert__icon">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
@@ -389,7 +389,7 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="alert alert--warning"&gt;
+        <pre><code>&lt;div class="aiab-alert alert--warning"&gt;
   &lt;div class="alert__icon"&gt;
     &lt;!-- Warning icon SVG --&gt;
   &lt;/div&gt;
@@ -413,7 +413,7 @@
       <div class="demo-section">
         <div class="demo-title">Different Alert Types</div>
         <div class="demo-grid">
-          <div class="alert alert--success">
+          <div class="aiab-alert alert--success">
             <div class="alert__icon">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -425,7 +425,7 @@
             </div>
           </div>
 
-          <div class="alert alert--info">
+          <div class="aiab-alert alert--info">
             <div class="alert__icon">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
@@ -437,7 +437,7 @@
             </div>
           </div>
 
-          <div class="alert alert--warning">
+          <div class="aiab-alert alert--warning">
             <div class="alert__icon">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
@@ -449,7 +449,7 @@
             </div>
           </div>
 
-          <div class="alert alert--error">
+          <div class="aiab-alert alert--error">
             <div class="alert__icon">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
@@ -465,17 +465,17 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Success Alert --&gt;
-&lt;div class="alert alert--success"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--success"&gt;...&lt;/div&gt;
 
 &lt;!-- Info Alert --&gt;
-&lt;div class="alert alert--info"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--info"&gt;...&lt;/div&gt;
 
 &lt;!-- Warning Alert --&gt;
-&lt;div class="alert alert--warning"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--warning"&gt;...&lt;/div&gt;
 
 &lt;!-- Error Alert --&gt;
-&lt;div class="alert alert--error"&gt;...&lt;/div&gt;
-&lt;div class="alert alert--danger"&gt;...&lt;/div&gt;  &lt;!-- Alias --&gt;</code></pre>
+&lt;div class="aiab-alert alert--error"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--danger"&gt;...&lt;/div&gt;  &lt;!-- Alias --&gt;</code></pre>
       </div>
     </section>
 
@@ -488,7 +488,7 @@
         <div class="demo-title">Different Alert Styles</div>
         <div class="demo-grid">
           <!-- Default Style -->
-          <div class="alert alert--info">
+          <div class="aiab-alert alert--info">
             <div class="alert__content">
               <div class="alert__title">Default Style</div>
               <div class="alert__message">Subtle background with border.</div>
@@ -496,7 +496,7 @@
           </div>
 
           <!-- Solid Style -->
-          <div class="alert alert--solid alert--info">
+          <div class="aiab-alert alert--solid alert--info">
             <div class="alert__content">
               <div class="alert__title">Solid Style</div>
               <div class="alert__message">Strong background with white text.</div>
@@ -504,7 +504,7 @@
           </div>
 
           <!-- Outline Style -->
-          <div class="alert alert--outline alert--info">
+          <div class="aiab-alert alert--outline alert--info">
             <div class="alert__content">
               <div class="alert__title">Outline Style</div>
               <div class="alert__message">Transparent background with thick border.</div>
@@ -512,7 +512,7 @@
           </div>
 
           <!-- Minimal Style -->
-          <div class="alert alert--minimal alert--info">
+          <div class="aiab-alert alert--minimal alert--info">
             <div class="alert__content">
               <div class="alert__title">Minimal Style</div>
               <div class="alert__message">No background or border, text only.</div>
@@ -520,7 +520,7 @@
           </div>
 
           <!-- Accent Style -->
-          <div class="alert alert--accent alert--info">
+          <div class="aiab-alert alert--accent alert--info">
             <div class="alert__content">
               <div class="alert__title">Accent Style</div>
               <div class="alert__message">Left border accent with subtle background.</div>
@@ -531,19 +531,19 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Default Style --&gt;
-&lt;div class="alert alert--info"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--info"&gt;...&lt;/div&gt;
 
 &lt;!-- Solid Style --&gt;
-&lt;div class="alert alert--solid alert--info"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--solid alert--info"&gt;...&lt;/div&gt;
 
 &lt;!-- Outline Style --&gt;
-&lt;div class="alert alert--outline alert--info"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--outline alert--info"&gt;...&lt;/div&gt;
 
 &lt;!-- Minimal Style --&gt;
-&lt;div class="alert alert--minimal alert--info"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--minimal alert--info"&gt;...&lt;/div&gt;
 
 &lt;!-- Accent Style --&gt;
-&lt;div class="alert alert--accent alert--info"&gt;...&lt;/div&gt;</code></pre>
+&lt;div class="aiab-alert alert--accent alert--info"&gt;...&lt;/div&gt;</code></pre>
       </div>
     </section>
 
@@ -554,7 +554,7 @@
       <div class="demo-section">
         <div class="demo-title">Alerts with Dismiss Button</div>
         <div class="demo-grid">
-          <div class="alert alert--success alert--dismissible">
+          <div class="aiab-alert alert--success alert--dismissible">
             <div class="alert__icon">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -574,7 +574,7 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="alert alert--success alert--dismissible"&gt;
+        <pre><code>&lt;div class="aiab-alert alert--success alert--dismissible"&gt;
   &lt;div class="alert__icon"&gt;...&lt;/div&gt;
   &lt;div class="alert__content"&gt;
     &lt;div class="alert__title"&gt;Dismissible Alert&lt;/div&gt;
@@ -596,21 +596,21 @@
       <div class="demo-section">
         <div class="demo-title">Different Alert Sizes</div>
         <div class="demo-grid">
-          <div class="alert alert--small alert--info">
+          <div class="aiab-alert alert--small alert--info">
             <div class="alert__content">
               <div class="alert__title">Small Alert</div>
               <div class="alert__message">Compact size for inline notifications.</div>
             </div>
           </div>
 
-          <div class="alert alert--info">
+          <div class="aiab-alert alert--info">
             <div class="alert__content">
               <div class="alert__title">Default Alert</div>
               <div class="alert__message">Standard size for most use cases.</div>
             </div>
           </div>
 
-          <div class="alert alert--large alert--info">
+          <div class="aiab-alert alert--large alert--info">
             <div class="alert__content">
               <div class="alert__title">Large Alert</div>
               <div class="alert__message">Larger size for important notifications that need more attention.</div>
@@ -621,13 +621,13 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Small Alert --&gt;
-&lt;div class="alert alert--small alert--info"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--small alert--info"&gt;...&lt;/div&gt;
 
 &lt;!-- Default Alert --&gt;
-&lt;div class="alert alert--info"&gt;...&lt;/div&gt;
+&lt;div class="aiab-alert alert--info"&gt;...&lt;/div&gt;
 
 &lt;!-- Large Alert --&gt;
-&lt;div class="alert alert--large alert--info"&gt;...&lt;/div&gt;</code></pre>
+&lt;div class="aiab-alert alert--large alert--info"&gt;...&lt;/div&gt;</code></pre>
       </div>
     </section>
 
@@ -642,19 +642,19 @@
           <span>Click buttons below to show toast notifications</span>
         </div>
         <div class="toast-demo-controls">
-          <button class="btn btn--primary" onclick="showToast('top-right')">Top Right</button>
-          <button class="btn btn--primary" onclick="showToast('top-left')">Top Left</button>
-          <button class="btn btn--primary" onclick="showToast('bottom-right')">Bottom Right</button>
-          <button class="btn btn--primary" onclick="showToast('bottom-left')">Bottom Left</button>
-          <button class="btn btn--primary" onclick="showToast('top-center')">Top Center</button>
-          <button class="btn btn--primary" onclick="showToast('bottom-center')">Bottom Center</button>
+          <button class="aiab-btn btn--primary" onclick="showToast('top-right')">Top Right</button>
+          <button class="aiab-btn btn--primary" onclick="showToast('top-left')">Top Left</button>
+          <button class="aiab-btn btn--primary" onclick="showToast('bottom-right')">Bottom Right</button>
+          <button class="aiab-btn btn--primary" onclick="showToast('bottom-left')">Bottom Left</button>
+          <button class="aiab-btn btn--primary" onclick="showToast('top-center')">Top Center</button>
+          <button class="aiab-btn btn--primary" onclick="showToast('bottom-center')">Bottom Center</button>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Toast Container --&gt;
 &lt;div class="toast-container toast-container--top-right"&gt;
-  &lt;div class="alert toast alert--success alert--dismissible"&gt;
+  &lt;div class="aiab-alert aiab-toast alert--success alert--dismissible"&gt;
     &lt;div class="alert__icon"&gt;...&lt;/div&gt;
     &lt;div class="alert__content"&gt;
       &lt;div class="alert__title"&gt;Success!&lt;/div&gt;
@@ -676,11 +676,11 @@
       <h3>Auto-Dismiss Toast</h3>
       <div class="demo-section">
         <div class="demo-title">Auto-Dismiss with Progress Bar</div>
-        <button class="btn btn--primary" onclick="showAutoDismissToast()">Show Auto-Dismiss Toast</button>
+        <button class="aiab-btn btn--primary" onclick="showAutoDismissToast()">Show Auto-Dismiss Toast</button>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="alert toast toast--auto-dismiss alert--info" style="--dismiss-duration: 5s"&gt;
+        <pre><code>&lt;div class="aiab-alert aiab-toast toast--auto-dismiss alert--info" style="--dismiss-duration: 5s"&gt;
   &lt;div class="alert__content"&gt;
     &lt;div class="alert__title"&gt;Auto-Dismiss&lt;/div&gt;
     &lt;div class="alert__message"&gt;This toast will auto-dismiss in 5 seconds.&lt;/div&gt;
@@ -728,7 +728,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.alert</code></td>
+            <td><code>.aiab-alert</code></td>
             <td>Base alert container</td>
           </tr>
           <tr>
@@ -848,7 +848,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.toast</code></td>
+            <td><code>.aiab-toast</code></td>
             <td>Toast notification styling</td>
           </tr>
           <tr>
@@ -973,7 +973,7 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
     </section>
   </main>
 
-  <footer class="container">
+  <footer class="aiab-container">
     <div class="section">
       <p>
         <a href="/examples/alerts-demo.html">View Live Examples</a> |

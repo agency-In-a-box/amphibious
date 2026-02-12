@@ -121,7 +121,7 @@
       transition: all 0.2s;
     }
 
-    .progress-step.active .progress-step-icon {
+    .progress-step.aiab-active .progress-step-icon {
       background: #ED8B00;
       color: white;
       transform: scale(1.1);
@@ -137,7 +137,7 @@
       color: #6c757d;
     }
 
-    .progress-step.active .progress-step-label {
+    .progress-step.aiab-active .progress-step-label {
       color: #ED8B00;
       font-weight: 600;
     }
@@ -744,7 +744,7 @@
 <body>
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -800,7 +800,7 @@
 
   <!-- Cart Header -->
   <header class="cart-header">
-    <div class="container">
+    <div class="aiab-container">
       <nav class="cart-header-content" aria-label="Cart navigation">
         <section class="cart-title">
           <h1>Shopping Cart</h1>
@@ -815,11 +815,11 @@
   </header>
 
   <!-- Main Content -->
-  <main class="container">
+  <main class="aiab-container">
     <!-- Cart Progress Indicator -->
     <section class="cart-progress" aria-label="Checkout progress">
       <ol class="progress-steps">
-        <li class="progress-step active">
+        <li class="progress-step aiab-active">
           <span class="progress-step-icon">
             <i data-lucide="shopping-cart"></i>
           </span>
@@ -1070,7 +1070,7 @@
               <i data-lucide="check-circle" class="icon--xs"></i>
               In Stock
             </p>
-            <aside class="alert alert-success" style="margin: 0.5rem 0;">
+            <aside class="aiab-alert alert-success" style="margin: 0.5rem 0;">
               <i data-lucide="gift" class="icon--sm"></i>
               Buy 2 get 20% off! Add 1 more to qualify.
             </aside>
@@ -1102,10 +1102,10 @@
           <h2>Your cart is empty</h2>
           <p>Looks like you haven't added anything to your cart yet.</p>
           <nav class="empty-cart-actions" aria-label="Empty cart actions">
-            <a href="/examples/e-commerce-catalog.html" class="btn btn--primary">
+            <a href="/examples/e-commerce-catalog.html" class="aiab-btn btn--primary">
               Start Shopping
             </a>
-            <button class="btn btn--secondary" onclick="viewSavedItems()">
+            <button class="aiab-btn btn--secondary" onclick="viewSavedItems()">
               View Saved Items
             </button>
           </nav>
@@ -1210,8 +1210,8 @@
         <p class="saved-items-count">2 items saved</p>
       </header>
       <div style="padding: 1.5rem;">
-        <div class="row">
-          <article class="col-4">
+        <div class="aiab-row">
+          <article class="aiab-col-4">
             <figure class="product-card">
               <div class="product-image" style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
                 <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Saved+1" alt="Casual Polo Shirt" style="width: 100%; height: auto;" loading="lazy">
@@ -1219,13 +1219,13 @@
               <figcaption class="product-info" style="padding: 1rem;">
                 <h4>Casual Polo Shirt</h4>
                 <p class="price-current">$35.99</p>
-                <button class="btn btn--primary btn--sm" style="width: 100%; margin-top: 0.5rem;">
+                <button class="aiab-btn btn--primary btn--sm" style="width: 100%; margin-top: 0.5rem;">
                   Move to Cart
                 </button>
               </figcaption>
             </figure>
           </article>
-          <article class="col-4">
+          <article class="aiab-col-4">
             <figure class="product-card">
               <div class="product-image" style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
                 <img src="https://placehold.co/200x200/ec4899/ffffff?text=Saved+2" alt="Sports Watch" style="width: 100%; height: auto;" loading="lazy">
@@ -1233,7 +1233,7 @@
               <figcaption class="product-info" style="padding: 1rem;">
                 <h4>Sports Watch</h4>
                 <p class="price-current">$159.99</p>
-                <button class="btn btn--primary btn--sm" style="width: 100%; margin-top: 0.5rem;">
+                <button class="aiab-btn btn--primary btn--sm" style="width: 100%; margin-top: 0.5rem;">
                   Move to Cart
                 </button>
               </figcaption>
@@ -1293,7 +1293,7 @@
   </aside>
 
   <!-- Modals -->
-  <dialog id="removeModal" class="modal" aria-hidden="true" aria-labelledby="removeModalTitle">
+  <dialog id="removeModal" class="aiab-modal" aria-hidden="true" aria-labelledby="removeModalTitle">
     <article class="modal__dialog">
       <header class="modal__header">
         <h3 class="modal__title" id="removeModalTitle">Remove Item</h3>
@@ -1303,13 +1303,13 @@
         <p>Are you sure you want to remove this item from your cart?</p>
       </section>
       <footer class="modal__footer">
-        <button class="btn btn--secondary" data-modal-close>Cancel</button>
-        <button class="btn btn--danger" onclick="confirmRemove()">Remove Item</button>
+        <button class="aiab-btn btn--secondary" data-modal-close>Cancel</button>
+        <button class="aiab-btn btn--danger" onclick="confirmRemove()">Remove Item</button>
       </footer>
     </article>
   </dialog>
 
-  <dialog id="clearCartModal" class="modal" aria-hidden="true" aria-labelledby="clearCartModalTitle">
+  <dialog id="clearCartModal" class="aiab-modal" aria-hidden="true" aria-labelledby="clearCartModalTitle">
     <article class="modal__dialog">
       <header class="modal__header">
         <h3 class="modal__title" id="clearCartModalTitle">Clear Cart</h3>
@@ -1319,8 +1319,8 @@
         <p>Are you sure you want to remove all items from your cart? This action cannot be undone.</p>
       </section>
       <footer class="modal__footer">
-        <button class="btn btn--secondary" data-modal-close>Cancel</button>
-        <button class="btn btn--danger" onclick="confirmClear()">Clear All</button>
+        <button class="aiab-btn btn--secondary" data-modal-close>Cancel</button>
+        <button class="aiab-btn btn--danger" onclick="confirmClear()">Clear All</button>
       </footer>
     </article>
   </dialog>

@@ -7,7 +7,7 @@
    Layout Foundation - Better Proportions
    ========================================================================== */
 
-.container {
+.aiab-container {
   max-width: 1400px; /* Wider container for more breathing room */
   margin: 0 auto;
   padding: 0 1rem;
@@ -306,7 +306,7 @@
   z-index: 2;
 }
 
-.product-badges .badge {
+.product-badges .aiab-badge {
   padding: 0.25rem 0.5rem;
   font-size: 0.625rem;
   font-weight: 600;
@@ -316,15 +316,15 @@
   letter-spacing: 0.5px;
 }
 
-.badge.new {
+.aiab-badge.new {
   background: #28a745;
 }
 
-.badge.sale {
+.aiab-badge.sale {
   background: #dc3545;
 }
 
-.badge.limited {
+.aiab-badge.limited {
   background: #ffc107;
   color: #212529;
 }
@@ -631,16 +631,16 @@
    ========================================================================== */
 
 /* Remove any conflicting styles */
-.row {
+.aiab-row {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
 }
 
-.col-3,
-.col-4,
-.col-9,
-.col-12 {
+.aiab-col-3,
+.aiab-col-4,
+.aiab-col-9,
+.aiab-col-12 {
   width: auto !important;
   padding: 0 !important;
 }

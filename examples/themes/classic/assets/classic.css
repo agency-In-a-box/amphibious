@@ -6,12 +6,12 @@
   3. Navigation / #navbar
   4. Masthead / #slides
   5. Content Styles / #amp_content
-  6. Secondary Content Styles / .tabs
+  6. Secondary Content Styles / .aiab-tabs
   7. Shopping Cart Styles
   8. Buttons
   9. Form Elements
   10. Footer Content / #amp_footer
-  11. Modal Customizations / .overlay .modal
+  11. Modal Customizations / .overlay .aiab-modal
   12. @Media Styles high resolution screen devices
   13. @Media Styles (max-width: 767px)
   14. @Media Styles (min-width: 480px) and (max-width: 767px)
@@ -506,7 +506,7 @@ figure.pull_top {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
-ul.tabs li a {
+ul.aiab-tabs li a {
   position: relative;
   top: 2px;
   background-color: #f1f1f1;
@@ -514,14 +514,14 @@ ul.tabs li a {
   z-index: 1;
 }
 
-ul.tabs li a:hover,
-ul.tabs li a.active {
+ul.aiab-tabs li a:hover,
+ul.aiab-tabs li a.aiab-active {
   top: 0;
   background-color: #f8f8f8;
   border-bottom: 1px solid #f8f8f8;
   color: #11b1ad;
 }
-ul.tabs li a.active {
+ul.aiab-tabs li a.aiab-active {
   color: #4a697f;
   border: 1px solid #efefef;
   border-bottom: 1px solid #f8f8f8;
@@ -530,7 +530,7 @@ ul.tabs li a.active {
 ul.tabs-content > li {
 }
 
-ul.tabs-content > li.active {
+ul.tabs-content > li.aiab-active {
   background-color: #f8f8f8;
   z-index: 2;
 }
@@ -741,7 +741,7 @@ ul.cart_items li {
 
 */
 
-.button,
+.aiab-button,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -755,7 +755,7 @@ input[type="button"] {
 */
 }
 
-.button:hover,
+.aiab-button:hover,
 button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
@@ -764,8 +764,8 @@ input[type="button"]:hover {
   color: #252525;
   border-width: 3px;
 }
-.button:active,
-.button:focus,
+.aiab-button:active,
+.aiab-button:focus,
 button:active,
 button:focus,
 input[type="submit"]:active,
@@ -774,13 +774,13 @@ input[type="reset"]:active,
 input[type="reset"]:focus,
 input[type="button"]:active,
 input[type="button"]:focus,
-.pager_nav .active {
+.pager_nav .aiab-active {
   background-color: #11b1ad;
   border-width: 3px;
   color: #fff;
 }
 
-.button.k_btn,
+.aiab-button.k_btn,
 button.k_btn,
 input[type="submit"].k_btn,
 input[type="reset"].k_btn,
@@ -790,7 +790,7 @@ input[type="button"].k_btn {
   color: #fff;
 }
 
-.button.k_btn:hover,
+.aiab-button.k_btn:hover,
 button.k_btn:hover,
 input[type="submit"].k_btn:hover,
 input[type="reset"].k_btn:hover,
@@ -799,8 +799,8 @@ input[type="button"].k_btn:hover {
   /* 	border-color: #4c4b4b; */
 }
 
-.button.k_btn:active,
-.button.k_btn:focus,
+.aiab-button.k_btn:active,
+.aiab-button.k_btn:focus,
 button.k_btn:active,
 button.k_btn:focus,
 input[type="submit"].k_btn:active,
@@ -814,7 +814,7 @@ input[type="button"].k_btn:focus {
   border-color: #11b1ad;
 }
 
-.button.g_btn,
+.aiab-button.g_btn,
 button.g_btn,
 input[type="submit"].g_btn,
 input[type="reset"].g_btn,
@@ -824,7 +824,7 @@ input[type="button"].g_btn {
   color: #fff;
 }
 
-.button.g_btn:hover,
+.aiab-button.g_btn:hover,
 button.g_btn:hover,
 input[type="submit"].g_btn:hover,
 input[type="reset"].g_btn:hover,
@@ -832,8 +832,8 @@ input[type="button"].g_btn:hover {
   background-color: #d8d28e;
 }
 
-.button.g_btn:active,
-.button.g_btn:focus,
+.aiab-button.g_btn:active,
+.aiab-button.g_btn:focus,
 button.g_btn:active,
 button.g_btn:focus,
 input[type="submit"].g_btn:active,
@@ -918,7 +918,7 @@ ul.pager_nav li input[type="text"] {
 
 */
 
-.overlay .modal header {
+.overlay .aiab-modal header {
   color: #fff;
   background-color: #252525;
   background-image: none;

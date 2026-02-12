@@ -3,7 +3,7 @@
 
 ---
 
-## 🚀 AIAB Weekly Update: Amphibious 2.0 Reaches New Heights!
+## 🚀 AIAB Weekly Update: Amphibious 2.0.1 Reaches New Heights!
 
 This week, we've supercharged our open-source CSS framework with premium components and Apple-level design refinements. Here's what's new:
 

@@ -67,7 +67,7 @@
     }
 
     .docs-nav a:hover,
-    .docs-nav a.active {
+    .docs-nav a.aiab-active {
       background: #f8f9fa;
       color: #ED8B00;
     }
@@ -208,7 +208,7 @@
 <body>
   <!-- Site Navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <ul class="horizontal branded">
       <li><a href="/" class="site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
@@ -257,8 +257,8 @@
 </nav>
 
   <header class="docs-header">
-    <div class="container">
-      <nav class="breadcrumb">
+    <div class="aiab-container">
+      <nav class="aiab-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
         <span>Buttons</span>
@@ -268,13 +268,13 @@
     </div>
   </header>
 
-  <div class="container docs-layout">
+  <div class="aiab-container docs-layout">
     <!-- Sidebar Navigation -->
     <aside class="docs-sidebar">
       <nav class="docs-nav">
         <h3>On This Page</h3>
         <ul>
-          <li><a href="#overview" class="active">Overview</a></li>
+          <li><a href="#overview" class="aiab-active">Overview</a></li>
           <li><a href="#basic-usage">Basic Usage</a></li>
           <li><a href="#variants">Variants</a></li>
           <li><a href="#sizes">Sizes</a></li>
@@ -309,7 +309,7 @@
       <!-- Basic Usage -->
       <section id="basic-usage">
         <h2>Basic Usage</h2>
-        <p>Add the <code>.button</code> or <code>.btn</code> class to any <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+        <p>Add the <code>.aiab-button</code> or <code>.aiab-btn</code> class to any <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
 
         <div class="code-example">
           <div class="code-example-header">
@@ -320,17 +320,17 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button">Default Button</button>
-              <a href="#" class="button">Link Button</a>
-              <input type="submit" class="button" value="Input Button">
-              <button type="button" class="btn">Using .btn class</button>
+              <button class="aiab-button">Default Button</button>
+              <a href="#" class="aiab-button">Link Button</a>
+              <input type="submit" class="aiab-button" value="Input Button">
+              <button type="button" class="aiab-btn">Using .aiab-btn class</button>
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button"&gt;Default Button&lt;/button&gt;
-&lt;a href="#" class="button"&gt;Link Button&lt;/a&gt;
-&lt;input type="submit" class="button" value="Input Button"&gt;
-&lt;button type="button" class="btn"&gt;Using .btn class&lt;/button&gt;</code></pre>
+            <pre><code>&lt;button class="aiab-button"&gt;Default Button&lt;/button&gt;
+&lt;a href="#" class="aiab-button"&gt;Link Button&lt;/a&gt;
+&lt;input type="submit" class="aiab-button" value="Input Button"&gt;
+&lt;button type="button" class="aiab-btn"&gt;Using .aiab-btn class&lt;/button&gt;</code></pre>
           </div>
         </div>
       </section>
@@ -338,7 +338,7 @@
       <!-- Variants -->
       <section id="variants">
         <h2>Variants</h2>
-        <p>Use modifier classes to change the button's appearance. Combine with <code>.button</code> or use the shorthand <code>.btn-{variant}</code>.</p>
+        <p>Use modifier classes to change the button's appearance. Combine with <code>.aiab-button</code> or use the shorthand <code>.btn-{variant}</code>.</p>
 
         <div class="code-example">
           <div class="code-example-header">
@@ -349,25 +349,25 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--primary">Primary</button>
-              <button class="button button--secondary">Secondary</button>
-              <button class="button button--success">Success</button>
-              <button class="button button--danger">Danger</button>
-              <button class="button button--warning">Warning</button>
-              <button class="button button--info">Info</button>
-              <button class="button button--light">Light</button>
-              <button class="button button--dark">Dark</button>
+              <button class="aiab-button button--primary">Primary</button>
+              <button class="aiab-button button--secondary">Secondary</button>
+              <button class="aiab-button button--success">Success</button>
+              <button class="aiab-button button--danger">Danger</button>
+              <button class="aiab-button button--warning">Warning</button>
+              <button class="aiab-button button--info">Info</button>
+              <button class="aiab-button button--light">Light</button>
+              <button class="aiab-button button--dark">Dark</button>
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--primary"&gt;Primary&lt;/button&gt;
-&lt;button class="button button--secondary"&gt;Secondary&lt;/button&gt;
-&lt;button class="button button--success"&gt;Success&lt;/button&gt;
-&lt;button class="button button--danger"&gt;Danger&lt;/button&gt;
-&lt;button class="button button--warning"&gt;Warning&lt;/button&gt;
-&lt;button class="button button--info"&gt;Info&lt;/button&gt;
-&lt;button class="button button--light"&gt;Light&lt;/button&gt;
-&lt;button class="button button--dark"&gt;Dark&lt;/button&gt;</code></pre>
+            <pre><code>&lt;button class="aiab-button button--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="aiab-button button--secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="aiab-button button--success"&gt;Success&lt;/button&gt;
+&lt;button class="aiab-button button--danger"&gt;Danger&lt;/button&gt;
+&lt;button class="aiab-button button--warning"&gt;Warning&lt;/button&gt;
+&lt;button class="aiab-button button--info"&gt;Info&lt;/button&gt;
+&lt;button class="aiab-button button--light"&gt;Light&lt;/button&gt;
+&lt;button class="aiab-button button--dark"&gt;Dark&lt;/button&gt;</code></pre>
           </div>
         </div>
 
@@ -380,23 +380,23 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--outline-primary">Primary</button>
-              <button class="button button--outline-secondary">Secondary</button>
-              <button class="button button--outline-success">Success</button>
-              <button class="button button--outline-danger">Danger</button>
-              <button class="button button--outline-warning">Warning</button>
-              <button class="button button--outline-info">Info</button>
-              <button class="button button--outline-dark">Dark</button>
+              <button class="aiab-button button--outline-primary">Primary</button>
+              <button class="aiab-button button--outline-secondary">Secondary</button>
+              <button class="aiab-button button--outline-success">Success</button>
+              <button class="aiab-button button--outline-danger">Danger</button>
+              <button class="aiab-button button--outline-warning">Warning</button>
+              <button class="aiab-button button--outline-info">Info</button>
+              <button class="aiab-button button--outline-dark">Dark</button>
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--outline-primary"&gt;Primary&lt;/button&gt;
-&lt;button class="button button--outline-secondary"&gt;Secondary&lt;/button&gt;
-&lt;button class="button button--outline-success"&gt;Success&lt;/button&gt;
-&lt;button class="button button--outline-danger"&gt;Danger&lt;/button&gt;
-&lt;button class="button button--outline-warning"&gt;Warning&lt;/button&gt;
-&lt;button class="button button--outline-info"&gt;Info&lt;/button&gt;
-&lt;button class="button button--outline-dark"&gt;Dark&lt;/button&gt;</code></pre>
+            <pre><code>&lt;button class="aiab-button button--outline-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="aiab-button button--outline-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="aiab-button button--outline-success"&gt;Success&lt;/button&gt;
+&lt;button class="aiab-button button--outline-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="aiab-button button--outline-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="aiab-button button--outline-info"&gt;Info&lt;/button&gt;
+&lt;button class="aiab-button button--outline-dark"&gt;Dark&lt;/button&gt;</code></pre>
           </div>
         </div>
 
@@ -409,17 +409,17 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--ghost">Ghost Default</button>
-              <button class="button button--ghost-primary">Ghost Primary</button>
-              <button class="button button--ghost-danger">Ghost Danger</button>
-              <button class="button button--ghost-success">Ghost Success</button>
+              <button class="aiab-button button--ghost">Ghost Default</button>
+              <button class="aiab-button button--ghost-primary">Ghost Primary</button>
+              <button class="aiab-button button--ghost-danger">Ghost Danger</button>
+              <button class="aiab-button button--ghost-success">Ghost Success</button>
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--ghost"&gt;Ghost Default&lt;/button&gt;
-&lt;button class="button button--ghost-primary"&gt;Ghost Primary&lt;/button&gt;
-&lt;button class="button button--ghost-danger"&gt;Ghost Danger&lt;/button&gt;
-&lt;button class="button button--ghost-success"&gt;Ghost Success&lt;/button&gt;</code></pre>
+            <pre><code>&lt;button class="aiab-button button--ghost"&gt;Ghost Default&lt;/button&gt;
+&lt;button class="aiab-button button--ghost-primary"&gt;Ghost Primary&lt;/button&gt;
+&lt;button class="aiab-button button--ghost-danger"&gt;Ghost Danger&lt;/button&gt;
+&lt;button class="aiab-button button--ghost-success"&gt;Ghost Success&lt;/button&gt;</code></pre>
           </div>
         </div>
       </section>
@@ -438,17 +438,17 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--sm button--primary">Small</button>
-              <button class="button button--primary">Default</button>
-              <button class="button button--lg button--primary">Large</button>
-              <button class="button button--xl button--primary">Extra Large</button>
+              <button class="aiab-button button--sm button--primary">Small</button>
+              <button class="aiab-button button--primary">Default</button>
+              <button class="aiab-button button--lg button--primary">Large</button>
+              <button class="aiab-button button--xl button--primary">Extra Large</button>
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--sm button--primary"&gt;Small&lt;/button&gt;
-&lt;button class="button button--primary"&gt;Default&lt;/button&gt;
-&lt;button class="button button--lg button--primary"&gt;Large&lt;/button&gt;
-&lt;button class="button button--xl button--primary"&gt;Extra Large&lt;/button&gt;</code></pre>
+            <pre><code>&lt;button class="aiab-button button--sm button--primary"&gt;Small&lt;/button&gt;
+&lt;button class="aiab-button button--primary"&gt;Default&lt;/button&gt;
+&lt;button class="aiab-button button--lg button--primary"&gt;Large&lt;/button&gt;
+&lt;button class="aiab-button button--xl button--primary"&gt;Extra Large&lt;/button&gt;</code></pre>
           </div>
         </div>
 
@@ -460,12 +460,12 @@
             </div>
           </div>
           <div class="code-example-preview">
-            <button class="button button--block button--primary">Block Level Button</button>
-            <button class="button button--block button--lg button--secondary" style="margin-top: 1rem;">Large Block Button</button>
+            <button class="aiab-button button--block button--primary">Block Level Button</button>
+            <button class="aiab-button button--block button--lg button--secondary" style="margin-top: 1rem;">Large Block Button</button>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--block button--primary"&gt;Block Level Button&lt;/button&gt;
-&lt;button class="button button--block button--lg button--secondary"&gt;Large Block Button&lt;/button&gt;</code></pre>
+            <pre><code>&lt;button class="aiab-button button--block button--primary"&gt;Block Level Button&lt;/button&gt;
+&lt;button class="aiab-button button--block button--lg button--secondary"&gt;Large Block Button&lt;/button&gt;</code></pre>
           </div>
         </div>
       </section>
@@ -484,15 +484,15 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--primary" disabled>Disabled Button</button>
-              <button class="button button--secondary" disabled>Disabled Secondary</button>
-              <a href="#" class="button button--success disabled" aria-disabled="true">Disabled Link</a>
+              <button class="aiab-button button--primary" disabled>Disabled Button</button>
+              <button class="aiab-button button--secondary" disabled>Disabled Secondary</button>
+              <a href="#" class="aiab-button button--success aiab-disabled" aria-disabled="true">Disabled Link</a>
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--primary" disabled&gt;Disabled Button&lt;/button&gt;
-&lt;button class="button button--secondary" disabled&gt;Disabled Secondary&lt;/button&gt;
-&lt;a href="#" class="button button--success disabled" aria-disabled="true"&gt;Disabled Link&lt;/a&gt;</code></pre>
+            <pre><code>&lt;button class="aiab-button button--primary" disabled&gt;Disabled Button&lt;/button&gt;
+&lt;button class="aiab-button button--secondary" disabled&gt;Disabled Secondary&lt;/button&gt;
+&lt;a href="#" class="aiab-button button--success aiab-disabled" aria-disabled="true"&gt;Disabled Link&lt;/a&gt;</code></pre>
           </div>
         </div>
 
@@ -505,22 +505,22 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--primary button--loading">
-                <span class="spinner"></span>
+              <button class="aiab-button button--primary button--loading">
+                <span class="aiab-spinner"></span>
                 Loading...
               </button>
-              <button class="button button--secondary button--loading">
-                <span class="spinner"></span>
+              <button class="aiab-button button--secondary button--loading">
+                <span class="aiab-spinner"></span>
                 Processing
               </button>
-              <button class="button button--success" onclick="simulateLoading(this)">
+              <button class="aiab-button button--success" onclick="simulateLoading(this)">
                 Click to Load
               </button>
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--primary button--loading"&gt;
-  &lt;span class="spinner"&gt;&lt;/span&gt;
+            <pre><code>&lt;button class="aiab-button button--primary button--loading"&gt;
+  &lt;span class="aiab-spinner"&gt;&lt;/span&gt;
   Loading...
 &lt;/button&gt;</code></pre>
           </div>
@@ -541,19 +541,19 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--primary">
+              <button class="aiab-button button--primary">
                 <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
                 Download
               </button>
-              <button class="button button--success">
+              <button class="aiab-button button--success">
                 <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
                 Save Changes
               </button>
-              <button class="button button--danger">
+              <button class="aiab-button button--danger">
                 Delete
                 <svg class="button-icon button-icon--right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="3 6 5 6 21 6"></polyline>
@@ -563,12 +563,12 @@
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--primary"&gt;
+            <pre><code>&lt;button class="aiab-button button--primary"&gt;
   &lt;svg class="button-icon" width="16" height="16"&gt;...&lt;/svg&gt;
   Download
 &lt;/button&gt;
 
-&lt;button class="button button--danger"&gt;
+&lt;button class="aiab-button button--danger"&gt;
   Delete
   &lt;svg class="button-icon button-icon--right" width="16" height="16"&gt;...&lt;/svg&gt;
 &lt;/button&gt;</code></pre>
@@ -584,19 +584,19 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--icon button--primary" aria-label="Settings">
+              <button class="aiab-button button--icon button--primary" aria-label="Settings">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="3"></circle>
                   <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M18.36 18.36l4.24 4.24M1 12h6m6 0h6"></path>
                 </svg>
               </button>
-              <button class="button button--icon button--secondary" aria-label="Edit">
+              <button class="aiab-button button--icon button--secondary" aria-label="Edit">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                   <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                 </svg>
               </button>
-              <button class="button button--icon button--danger" aria-label="Delete">
+              <button class="aiab-button button--icon button--danger" aria-label="Delete">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -605,7 +605,7 @@
             </div>
           </div>
           <div class="code-example-code">
-            <pre><code>&lt;button class="button button--icon button--primary" aria-label="Settings"&gt;
+            <pre><code>&lt;button class="aiab-button button--icon button--primary" aria-label="Settings"&gt;
   &lt;svg width="20" height="20"&gt;...&lt;/svg&gt;
 &lt;/button&gt;</code></pre>
           </div>
@@ -626,16 +626,16 @@
           </div>
           <div class="code-example-preview">
             <div class="button-group">
-              <button class="button button--secondary">Left</button>
-              <button class="button button--secondary">Middle</button>
-              <button class="button button--secondary">Right</button>
+              <button class="aiab-button button--secondary">Left</button>
+              <button class="aiab-button button--secondary">Middle</button>
+              <button class="aiab-button button--secondary">Right</button>
             </div>
           </div>
           <div class="code-example-code">
             <pre><code>&lt;div class="button-group"&gt;
-  &lt;button class="button button--secondary"&gt;Left&lt;/button&gt;
-  &lt;button class="button button--secondary"&gt;Middle&lt;/button&gt;
-  &lt;button class="button button--secondary"&gt;Right&lt;/button&gt;
+  &lt;button class="aiab-button button--secondary"&gt;Left&lt;/button&gt;
+  &lt;button class="aiab-button button--secondary"&gt;Middle&lt;/button&gt;
+  &lt;button class="aiab-button button--secondary"&gt;Right&lt;/button&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </div>
@@ -650,31 +650,31 @@
           <div class="code-example-preview">
             <div class="button-toolbar">
               <div class="button-group">
-                <button class="button button--sm">Bold</button>
-                <button class="button button--sm">Italic</button>
-                <button class="button button--sm">Underline</button>
+                <button class="aiab-button button--sm">Bold</button>
+                <button class="aiab-button button--sm">Italic</button>
+                <button class="aiab-button button--sm">Underline</button>
               </div>
               <div class="button-group">
-                <button class="button button--sm">Left</button>
-                <button class="button button--sm">Center</button>
-                <button class="button button--sm">Right</button>
+                <button class="aiab-button button--sm">Left</button>
+                <button class="aiab-button button--sm">Center</button>
+                <button class="aiab-button button--sm">Right</button>
               </div>
               <div class="button-group">
-                <button class="button button--sm button--primary">Save</button>
+                <button class="aiab-button button--sm button--primary">Save</button>
               </div>
             </div>
           </div>
           <div class="code-example-code">
             <pre><code>&lt;div class="button-toolbar"&gt;
   &lt;div class="button-group"&gt;
-    &lt;button class="button button--sm"&gt;Bold&lt;/button&gt;
-    &lt;button class="button button--sm"&gt;Italic&lt;/button&gt;
-    &lt;button class="button button--sm"&gt;Underline&lt;/button&gt;
+    &lt;button class="aiab-button button--sm"&gt;Bold&lt;/button&gt;
+    &lt;button class="aiab-button button--sm"&gt;Italic&lt;/button&gt;
+    &lt;button class="aiab-button button--sm"&gt;Underline&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="button-group"&gt;
-    &lt;button class="button button--sm"&gt;Left&lt;/button&gt;
-    &lt;button class="button button--sm"&gt;Center&lt;/button&gt;
-    &lt;button class="button button--sm"&gt;Right&lt;/button&gt;
+    &lt;button class="aiab-button button--sm"&gt;Left&lt;/button&gt;
+    &lt;button class="aiab-button button--sm"&gt;Center&lt;/button&gt;
+    &lt;button class="aiab-button button--sm"&gt;Right&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
@@ -705,16 +705,16 @@
           </div>
           <div class="code-example-preview">
             <div class="button-grid">
-              <button class="button button--primary" aria-label="Save document">
+              <button class="aiab-button button--primary" aria-label="Save document">
                 Save
               </button>
-              <button class="button button--icon button--secondary" aria-label="Open settings menu">
+              <button class="aiab-button button--icon button--secondary" aria-label="Open settings menu">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="3"></circle>
                   <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M18.36 18.36l4.24 4.24M1 12h6m6 0h6"></path>
                 </svg>
               </button>
-              <button class="button button--danger" aria-describedby="delete-warning">
+              <button class="aiab-button button--danger" aria-describedby="delete-warning">
                 Delete Account
               </button>
               <span id="delete-warning" class="sr-only">This action cannot be undone</span>
@@ -722,12 +722,12 @@
           </div>
           <div class="code-example-code">
             <pre><code>&lt;!-- Icon-only button with aria-label --&gt;
-&lt;button class="button button--icon" aria-label="Open settings menu"&gt;
+&lt;button class="aiab-button button--icon" aria-label="Open settings menu"&gt;
   &lt;svg&gt;...&lt;/svg&gt;
 &lt;/button&gt;
 
 &lt;!-- Button with additional context --&gt;
-&lt;button class="button button--danger" aria-describedby="delete-warning"&gt;
+&lt;button class="aiab-button button--danger" aria-describedby="delete-warning"&gt;
   Delete Account
 &lt;/button&gt;
 &lt;span id="delete-warning" class="sr-only"&gt;This action cannot be undone&lt;/span&gt;</code></pre>
@@ -749,7 +749,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>.button</code>, <code>.btn</code></td>
+              <td><code>.aiab-button</code>, <code>.aiab-btn</code></td>
               <td>Base button class</td>
             </tr>
             <tr>
@@ -817,7 +817,7 @@
               <td>Loading state with spinner</td>
             </tr>
             <tr>
-              <td><code>.disabled</code></td>
+              <td><code>.aiab-disabled</code></td>
               <td>Disabled state for link buttons</td>
             </tr>
           </tbody>
@@ -887,7 +887,7 @@
     </main>
   </div>
 
-  <footer class="container">
+  <footer class="aiab-container">
     <div style="padding: 3rem 0; text-align: center; border-top: 1px solid #e9ecef; margin-top: 4rem;">
       <p>
         <a href="/docs/index.html">← Back to Documentation</a> |
@@ -907,8 +907,8 @@
 
     function simulateLoading(button) {
       button.classList.add('button--loading');
-      button.innerHTML = '<span class="spinner"></span> Loading...';
-      button.disabled = true;
+      button.innerHTML = '<span class="aiab-spinner"></span> Loading...';
+      button.aiab-disabled = true;
 
       setTimeout(() => {
         button.classList.remove('button--loading');
@@ -918,7 +918,7 @@
         setTimeout(() => {
           button.innerHTML = 'Click to Load';
           button.classList.remove('button--success');
-          button.disabled = false;
+          button.aiab-disabled = false;
         }, 2000);
       }, 3000);
     }

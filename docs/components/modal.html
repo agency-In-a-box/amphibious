@@ -35,7 +35,7 @@
     }
 
     /* Container */
-    .container {
+    .aiab-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
@@ -197,7 +197,7 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .container {
+      .aiab-container {
         padding: 0 1rem;
       }
 
@@ -218,7 +218,7 @@
 <body>
   <!-- Site Navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <ul class="horizontal branded">
       <li><a href="/" class="site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
@@ -267,7 +267,7 @@
 </nav>
 
   <header class="docs-header">
-    <div class="container">
+    <div class="aiab-container">
       <nav class="nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
@@ -279,7 +279,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="aiab-container">
     <!-- Overview -->
     <section class="section">
       <h2>Overview</h2>
@@ -321,14 +321,14 @@
       <div class="demo-section">
         <div class="demo-title">Basic Modal Example</div>
         <div class="demo-controls">
-          <button class="btn btn--primary" onclick="showBasicModal()">Open Basic Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showBasicModal()">Open Basic Modal</button>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Modal Structure --&gt;
 &lt;div class="modal-backdrop" id="modal-backdrop"&gt;&lt;/div&gt;
-&lt;div class="modal" id="basic-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title"&gt;
+&lt;div class="aiab-modal" id="basic-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title"&gt;
   &lt;div class="modal__dialog"&gt;
     &lt;div class="modal__header"&gt;
       &lt;h2 class="modal__title" id="modal-title"&gt;Modal Title&lt;/h2&gt;
@@ -342,8 +342,8 @@
       &lt;p&gt;This is the modal content. You can put any content here including forms, images, or other components.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="modal__footer"&gt;
-      &lt;button class="btn btn--secondary"&gt;Cancel&lt;/button&gt;
-      &lt;button class="btn btn--primary"&gt;Confirm&lt;/button&gt;
+      &lt;button class="aiab-btn btn--secondary"&gt;Cancel&lt;/button&gt;
+      &lt;button class="aiab-btn btn--primary"&gt;Confirm&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -353,12 +353,12 @@
       <div class="demo-section">
         <div class="demo-title">Modal containing a form</div>
         <div class="demo-controls">
-          <button class="btn btn--primary" onclick="showFormModal()">Open Form Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showFormModal()">Open Form Modal</button>
         </div>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="modal" id="form-modal"&gt;
+        <pre><code>&lt;div class="aiab-modal" id="form-modal"&gt;
   &lt;div class="modal__dialog"&gt;
     &lt;div class="modal__header"&gt;
       &lt;h2 class="modal__title"&gt;Contact Information&lt;/h2&gt;
@@ -366,23 +366,23 @@
     &lt;/div&gt;
     &lt;div class="modal__body"&gt;
       &lt;form&gt;
-        &lt;div class="form-group"&gt;
+        &lt;div class="aiab-form-group"&gt;
           &lt;label for="name"&gt;Name&lt;/label&gt;
-          &lt;input type="text" id="name" class="form-control" required&gt;
+          &lt;input type="text" id="name" class="aiab-form-control" required&gt;
         &lt;/div&gt;
-        &lt;div class="form-group"&gt;
+        &lt;div class="aiab-form-group"&gt;
           &lt;label for="email"&gt;Email&lt;/label&gt;
-          &lt;input type="email" id="email" class="form-control" required&gt;
+          &lt;input type="email" id="email" class="aiab-form-control" required&gt;
         &lt;/div&gt;
-        &lt;div class="form-group"&gt;
+        &lt;div class="aiab-form-group"&gt;
           &lt;label for="message"&gt;Message&lt;/label&gt;
-          &lt;textarea id="message" class="form-control" rows="4"&gt;&lt;/textarea&gt;
+          &lt;textarea id="message" class="aiab-form-control" rows="4"&gt;&lt;/textarea&gt;
         &lt;/div&gt;
       &lt;/form&gt;
     &lt;/div&gt;
     &lt;div class="modal__footer"&gt;
-      &lt;button class="btn btn--secondary"&gt;Cancel&lt;/button&gt;
-      &lt;button class="btn btn--primary"&gt;Send Message&lt;/button&gt;
+      &lt;button class="aiab-btn btn--secondary"&gt;Cancel&lt;/button&gt;
+      &lt;button class="aiab-btn btn--primary"&gt;Send Message&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -396,29 +396,29 @@
       <div class="demo-section">
         <div class="demo-title">Different Modal Sizes</div>
         <div class="demo-controls">
-          <button class="btn btn--primary" onclick="showSizedModal('sm')">Small Modal</button>
-          <button class="btn btn--primary" onclick="showSizedModal('default')">Default Modal</button>
-          <button class="btn btn--primary" onclick="showSizedModal('lg')">Large Modal</button>
-          <button class="btn btn--primary" onclick="showSizedModal('xl')">Extra Large Modal</button>
-          <button class="btn btn--primary" onclick="showSizedModal('full')">Full Screen Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showSizedModal('sm')">Small Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showSizedModal('default')">Default Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showSizedModal('lg')">Large Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showSizedModal('xl')">Extra Large Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showSizedModal('full')">Full Screen Modal</button>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Small Modal --&gt;
-&lt;div class="modal modal--sm"&gt;...&lt;/div&gt;
+&lt;div class="aiab-modal modal--sm"&gt;...&lt;/div&gt;
 
 &lt;!-- Default Modal --&gt;
-&lt;div class="modal"&gt;...&lt;/div&gt;
+&lt;div class="aiab-modal"&gt;...&lt;/div&gt;
 
 &lt;!-- Large Modal --&gt;
-&lt;div class="modal modal--lg"&gt;...&lt;/div&gt;
+&lt;div class="aiab-modal modal--lg"&gt;...&lt;/div&gt;
 
 &lt;!-- Extra Large Modal --&gt;
-&lt;div class="modal modal--xl"&gt;...&lt;/div&gt;
+&lt;div class="aiab-modal modal--xl"&gt;...&lt;/div&gt;
 
 &lt;!-- Full Screen Modal --&gt;
-&lt;div class="modal modal--full"&gt;...&lt;/div&gt;</code></pre>
+&lt;div class="aiab-modal modal--full"&gt;...&lt;/div&gt;</code></pre>
       </div>
     </section>
 
@@ -430,16 +430,16 @@
       <div class="demo-section">
         <div class="demo-title">Alert Style Modals</div>
         <div class="demo-controls">
-          <button class="btn btn--success" onclick="showAlertModal('success')">Success Alert</button>
-          <button class="btn btn--danger" onclick="showAlertModal('error')">Error Alert</button>
-          <button class="btn btn--warning" onclick="showAlertModal('warning')">Warning Alert</button>
-          <button class="btn btn--info" onclick="showAlertModal('info')">Info Alert</button>
+          <button class="aiab-btn btn--success" onclick="showAlertModal('success')">Success Alert</button>
+          <button class="aiab-btn btn--danger" onclick="showAlertModal('error')">Error Alert</button>
+          <button class="aiab-btn btn--warning" onclick="showAlertModal('warning')">Warning Alert</button>
+          <button class="aiab-btn btn--info" onclick="showAlertModal('info')">Info Alert</button>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Success Alert Modal --&gt;
-&lt;div class="modal modal--alert modal--success"&gt;
+&lt;div class="aiab-modal modal--alert modal--success"&gt;
   &lt;div class="modal__dialog"&gt;
     &lt;div class="modal__body"&gt;
       &lt;div class="modal__icon"&gt;
@@ -451,7 +451,7 @@
       &lt;p&gt;Your action was completed successfully.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="modal__footer modal__footer--center"&gt;
-      &lt;button class="btn btn--primary"&gt;OK&lt;/button&gt;
+      &lt;button class="aiab-btn btn--primary"&gt;OK&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -461,12 +461,12 @@
       <div class="demo-section">
         <div class="demo-title">Image Lightbox Modal</div>
         <div class="demo-controls">
-          <button class="btn btn--primary" onclick="showImageModal()">Open Image Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showImageModal()">Open Image Modal</button>
         </div>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="modal modal--image"&gt;
+        <pre><code>&lt;div class="aiab-modal modal--image"&gt;
   &lt;div class="modal__dialog"&gt;
     &lt;div class="modal__body"&gt;
       &lt;img src="https://picsum.photos/600/400" alt="Description" /&gt;
@@ -480,14 +480,14 @@
       <div class="demo-section">
         <div class="demo-title">Sidebar Drawer Modals</div>
         <div class="demo-controls">
-          <button class="btn btn--primary" onclick="showDrawerModal('left')">Left Drawer</button>
-          <button class="btn btn--primary" onclick="showDrawerModal('right')">Right Drawer</button>
+          <button class="aiab-btn btn--primary" onclick="showDrawerModal('left')">Left Drawer</button>
+          <button class="aiab-btn btn--primary" onclick="showDrawerModal('right')">Right Drawer</button>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Left Drawer --&gt;
-&lt;div class="modal modal--drawer-left"&gt;
+&lt;div class="aiab-modal modal--drawer-left"&gt;
   &lt;div class="modal__dialog"&gt;
     &lt;div class="modal__header"&gt;
       &lt;h2 class="modal__title"&gt;Navigation&lt;/h2&gt;
@@ -507,19 +507,19 @@
 &lt;/div&gt;
 
 &lt;!-- Right Drawer --&gt;
-&lt;div class="modal modal--drawer-right"&gt;...&lt;/div&gt;</code></pre>
+&lt;div class="aiab-modal modal--drawer-right"&gt;...&lt;/div&gt;</code></pre>
       </div>
 
       <h3>Bottom Sheet Modal</h3>
       <div class="demo-section">
         <div class="demo-title">Mobile-style Bottom Sheet</div>
         <div class="demo-controls">
-          <button class="btn btn--primary" onclick="showBottomSheetModal()">Open Bottom Sheet</button>
+          <button class="aiab-btn btn--primary" onclick="showBottomSheetModal()">Open Bottom Sheet</button>
         </div>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="modal modal--bottom-sheet"&gt;
+        <pre><code>&lt;div class="aiab-modal modal--bottom-sheet"&gt;
   &lt;div class="modal__dialog"&gt;
     &lt;div class="modal__header"&gt;
       &lt;h2 class="modal__title"&gt;Actions&lt;/h2&gt;
@@ -544,21 +544,21 @@
       <div class="demo-section">
         <div class="demo-title">Different Animation Styles</div>
         <div class="demo-controls">
-          <button class="btn btn--primary" onclick="showAnimatedModal('fade-in')">Fade In</button>
-          <button class="btn btn--primary" onclick="showAnimatedModal('slide-down')">Slide Down</button>
-          <button class="btn btn--primary" onclick="showAnimatedModal('zoom-in')">Zoom In</button>
+          <button class="aiab-btn btn--primary" onclick="showAnimatedModal('fade-in')">Fade In</button>
+          <button class="aiab-btn btn--primary" onclick="showAnimatedModal('slide-down')">Slide Down</button>
+          <button class="aiab-btn btn--primary" onclick="showAnimatedModal('zoom-in')">Zoom In</button>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Fade In Animation --&gt;
-&lt;div class="modal modal--fade-in"&gt;...&lt;/div&gt;
+&lt;div class="aiab-modal modal--fade-in"&gt;...&lt;/div&gt;
 
 &lt;!-- Slide Down Animation --&gt;
-&lt;div class="modal modal--slide-down"&gt;...&lt;/div&gt;
+&lt;div class="aiab-modal modal--slide-down"&gt;...&lt;/div&gt;
 
 &lt;!-- Zoom In Animation --&gt;
-&lt;div class="modal modal--zoom-in"&gt;...&lt;/div&gt;</code></pre>
+&lt;div class="aiab-modal modal--zoom-in"&gt;...&lt;/div&gt;</code></pre>
       </div>
     </section>
 
@@ -569,12 +569,12 @@
       <div class="demo-section">
         <div class="demo-title">Modal with Loading Spinner</div>
         <div class="demo-controls">
-          <button class="btn btn--primary" onclick="showLoadingModal()">Show Loading Modal</button>
+          <button class="aiab-btn btn--primary" onclick="showLoadingModal()">Show Loading Modal</button>
         </div>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="modal modal--loading"&gt;
+        <pre><code>&lt;div class="aiab-modal modal--loading"&gt;
   &lt;div class="modal__dialog"&gt;
     &lt;div class="modal__header"&gt;
       &lt;h2 class="modal__title"&gt;Loading...&lt;/h2&gt;
@@ -601,7 +601,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.modal</code></td>
+            <td><code>.aiab-modal</code></td>
             <td>Base modal container</td>
           </tr>
           <tr>
@@ -762,7 +762,7 @@
         <pre><code>// Modal management utility
 class Modal {
   constructor(element) {
-    this.modal = element;
+    this.aiab-modal = element;
     this.backdrop = document.querySelector('.modal-backdrop');
     this.isVisible = false;
     this.init();
@@ -770,7 +770,7 @@ class Modal {
 
   init() {
     // Close button
-    const closeBtn = this.modal.querySelector('.modal__close');
+    const closeBtn = this.aiab-modal.querySelector('.modal__close');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.hide());
     }
@@ -796,11 +796,11 @@ class Modal {
       this.backdrop.classList.add('is-visible');
     }
 
-    this.modal.classList.add('is-visible');
-    this.modal.setAttribute('aria-hidden', 'false');
+    this.aiab-modal.classList.add('is-visible');
+    this.aiab-modal.setAttribute('aria-hidden', 'false');
 
     // Focus management
-    this.modal.focus();
+    this.aiab-modal.focus();
     this.trapFocus();
   }
 
@@ -812,12 +812,12 @@ class Modal {
       this.backdrop.classList.remove('is-visible');
     }
 
-    this.modal.classList.remove('is-visible');
-    this.modal.setAttribute('aria-hidden', 'true');
+    this.aiab-modal.classList.remove('is-visible');
+    this.aiab-modal.setAttribute('aria-hidden', 'true');
   }
 
   trapFocus() {
-    const focusableElements = this.modal.querySelectorAll(
+    const focusableElements = this.aiab-modal.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
 
@@ -826,7 +826,7 @@ class Modal {
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    this.modal.addEventListener('keydown', (e) => {
+    this.aiab-modal.addEventListener('keydown', (e) => {
       if (e.key === 'Tab') {
         if (e.shiftKey) {
           if (document.activeElement === firstElement) {
@@ -887,7 +887,7 @@ function showModal(modalId) {
     </section>
   </main>
 
-  <footer class="container">
+  <footer class="aiab-container">
     <div class="section">
       <p>
         <a href="/examples/modal-demo.html">View Live Examples</a> |
@@ -902,7 +902,7 @@ function showModal(modalId) {
   <div class="modal-backdrop" id="demo-backdrop"></div>
 
   <!-- Basic Modal -->
-  <div class="modal" id="basic-modal" aria-hidden="true" role="dialog" aria-labelledby="basic-modal-title">
+  <div class="aiab-modal" id="basic-modal" aria-hidden="true" role="dialog" aria-labelledby="basic-modal-title">
     <div class="modal__dialog">
       <div class="modal__header">
         <h2 class="modal__title" id="basic-modal-title">Basic Modal</h2>
@@ -917,8 +917,8 @@ function showModal(modalId) {
         <p>The modal includes proper accessibility features like focus trapping and keyboard navigation.</p>
       </div>
       <div class="modal__footer">
-        <button class="btn btn--secondary" onclick="hideModal('basic-modal')">Cancel</button>
-        <button class="btn btn--primary" onclick="hideModal('basic-modal')">Confirm</button>
+        <button class="aiab-btn btn--secondary" onclick="hideModal('basic-modal')">Cancel</button>
+        <button class="aiab-btn btn--primary" onclick="hideModal('basic-modal')">Confirm</button>
       </div>
     </div>
   </div>
@@ -974,8 +974,8 @@ function showModal(modalId) {
           </div>
         </form>
       `, `
-        <button class="btn btn--secondary" onclick="hideModal('form-modal')">Cancel</button>
-        <button class="btn btn--primary" onclick="hideModal('form-modal')">Send Message</button>
+        <button class="aiab-btn btn--secondary" onclick="hideModal('form-modal')">Cancel</button>
+        <button class="aiab-btn btn--primary" onclick="hideModal('form-modal')">Send Message</button>
       `);
     }
 
@@ -994,7 +994,7 @@ function showModal(modalId) {
           <li><strong>Full Screen:</strong> Immersive experiences</li>
         </ul>
       `, `
-        <button class="btn btn--primary" onclick="hideModal('${size}-modal')">Close</button>
+        <button class="aiab-btn btn--primary" onclick="hideModal('${size}-modal')">Close</button>
       `, sizeClass);
     }
 
@@ -1017,7 +1017,7 @@ function showModal(modalId) {
         <div class="modal__icon">${icons[type]}</div>
         <p>${messages[type]}</p>
       `, `
-        <button class="btn btn--primary" onclick="hideModal('${type}-alert-modal')">OK</button>
+        <button class="aiab-btn btn--primary" onclick="hideModal('${type}-alert-modal')">OK</button>
       `, `modal--alert modal--${type}`);
     }
 
@@ -1060,7 +1060,7 @@ function showModal(modalId) {
         <p>This modal demonstrates the ${animation.replace('-', ' ')} animation effect.</p>
         <p>Animation enhances the user experience by providing visual feedback and smooth transitions.</p>
       `, `
-        <button class="btn btn--primary" onclick="hideModal('${animation}-modal')">Close</button>
+        <button class="aiab-btn btn--primary" onclick="hideModal('${animation}-modal')">Close</button>
       `, `modal--${animation}`);
     }
 
@@ -1116,7 +1116,7 @@ function showModal(modalId) {
 
     // Close modal on backdrop click
     document.getElementById('demo-backdrop').addEventListener('click', () => {
-      const visibleModal = document.querySelector('.modal.is-visible');
+      const visibleModal = document.querySelector('.aiab-modal.is-visible');
       if (visibleModal) {
         hideModal(visibleModal.id);
       }
@@ -1125,7 +1125,7 @@ function showModal(modalId) {
     // Close modal on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        const visibleModal = document.querySelector('.modal.is-visible');
+        const visibleModal = document.querySelector('.aiab-modal.is-visible');
         if (visibleModal) {
           hideModal(visibleModal.id);
         }

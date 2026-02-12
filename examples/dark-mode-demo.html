@@ -38,7 +38,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .theme-card.active {
+    .theme-card.aiab-active {
       border-color: var(--color-primary, #ED8B00);
       box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
     }
@@ -169,7 +169,7 @@
   </style>
 </head>
 <body data-dark-mode-toggle>
-  <div class="container">
+  <div class="aiab-container">
     <!-- Hero Section -->
     <section class="demo-section">
       <h1 class="display-massive">Dark Mode</h1>
@@ -248,11 +248,11 @@
         <div class="component-card">
           <h3>Buttons</h3>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <button class="btn btn-primary">Primary</button>
-            <button class="btn btn-secondary">Secondary</button>
-            <button class="btn btn-success">Success</button>
-            <button class="btn btn-danger">Danger</button>
-            <button class="btn" disabled>Disabled</button>
+            <button class="aiab-btn btn-primary">Primary</button>
+            <button class="aiab-btn btn-secondary">Secondary</button>
+            <button class="aiab-btn btn-success">Success</button>
+            <button class="aiab-btn btn-danger">Danger</button>
+            <button class="aiab-btn" disabled>Disabled</button>
           </div>
         </div>
 
@@ -284,39 +284,39 @@
         <div class="component-card">
           <h3>Card Component</h3>
           <p>Cards adapt their background and borders for perfect contrast in any theme.</p>
-          <button class="btn btn-primary" style="width: 100%;">Action</button>
+          <button class="aiab-btn btn-primary" style="width: 100%;">Action</button>
         </div>
 
         <!-- Alerts -->
         <div class="component-card">
           <h3>Alert Messages</h3>
-          <div class="alert alert-success" style="margin-bottom: 8px;">Success message</div>
-          <div class="alert alert-warning" style="margin-bottom: 8px;">Warning message</div>
-          <div class="alert alert-danger" style="margin-bottom: 8px;">Error message</div>
-          <div class="alert alert-info">Information message</div>
+          <div class="aiab-alert alert-success" style="margin-bottom: 8px;">Success message</div>
+          <div class="aiab-alert alert-warning" style="margin-bottom: 8px;">Warning message</div>
+          <div class="aiab-alert alert-danger" style="margin-bottom: 8px;">Error message</div>
+          <div class="aiab-alert alert-info">Information message</div>
         </div>
 
         <!-- Badges -->
         <div class="component-card">
           <h3>Badges & Tags</h3>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <span class="badge">Default</span>
-            <span class="badge badge-primary">Primary</span>
-            <span class="badge badge-success">Success</span>
-            <span class="badge badge-warning">Warning</span>
-            <span class="badge badge-danger">Danger</span>
-            <span class="badge badge-info">Info</span>
+            <span class="aiab-badge">Default</span>
+            <span class="aiab-badge badge-primary">Primary</span>
+            <span class="aiab-badge badge-success">Success</span>
+            <span class="aiab-badge badge-warning">Warning</span>
+            <span class="aiab-badge badge-danger">Danger</span>
+            <span class="aiab-badge badge-info">Info</span>
           </div>
         </div>
 
         <!-- Navigation -->
         <div class="component-card">
           <h3>Navigation</h3>
-          <nav class="nav" style="background: var(--color-surface); padding: 8px; border-radius: 8px;">
-            <a href="#" class="nav-link active">Active</a>
+          <nav class="aiab-nav" style="background: var(--color-surface); padding: 8px; border-radius: 8px;">
+            <a href="#" class="nav-link aiab-active">Active</a>
             <a href="#" class="nav-link">Link</a>
             <a href="#" class="nav-link">Another</a>
-            <a href="#" class="nav-link disabled">Disabled</a>
+            <a href="#" class="nav-link aiab-disabled">Disabled</a>
           </nav>
         </div>
       </div>
@@ -326,7 +326,7 @@
     <section class="demo-section">
       <h2>Data Display</h2>
       <div class="preview-section">
-        <table class="table">
+        <table class="aiab-table">
           <thead>
             <tr>
               <th>Feature</th>
@@ -340,25 +340,25 @@
               <td>Background</td>
               <td>#FFFFFF</td>
               <td>#000000</td>
-              <td><span class="badge badge-success">Optimized</span></td>
+              <td><span class="aiab-badge badge-success">Optimized</span></td>
             </tr>
             <tr>
               <td>Text Color</td>
               <td>#333333</td>
               <td>#FFFFFF</td>
-              <td><span class="badge badge-success">Optimized</span></td>
+              <td><span class="aiab-badge badge-success">Optimized</span></td>
             </tr>
             <tr>
               <td>Primary Color</td>
               <td>#ED8B00</td>
               <td>#FF9500</td>
-              <td><span class="badge badge-success">Optimized</span></td>
+              <td><span class="aiab-badge badge-success">Optimized</span></td>
             </tr>
             <tr>
               <td>Border Color</td>
               <td>#DEDEDE</td>
               <td>#3A3A3C</td>
-              <td><span class="badge badge-success">Optimized</span></td>
+              <td><span class="aiab-badge badge-success">Optimized</span></td>
             </tr>
           </tbody>
         </table>

@@ -16,7 +16,7 @@ body {
 }
 
 /* Container override for docs */
-.container {
+.aiab-container {
   max-width: 1200px;
   width: 96%;
   margin: 0 auto;
@@ -45,7 +45,7 @@ body {
   z-index: 1000;
 }
 
-.site-nav .container {
+.site-nav .aiab-container {
   position: relative;
 }
 
@@ -76,7 +76,7 @@ body {
 }
 
 .horizontal.branded a:hover,
-.horizontal.branded li.active > a {
+.horizontal.branded li.aiab-active > a {
   color: #667eea;
 }
 
@@ -124,7 +124,7 @@ body {
   margin-bottom: 2rem;
 }
 
-.docs-nav .container {
+.docs-nav .aiab-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -152,7 +152,7 @@ body {
 }
 
 .docs-nav .nav-links a:hover,
-.docs-nav .nav-links a.active {
+.docs-nav .nav-links a.aiab-active {
   background: #fff;
   color: #007bff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -292,7 +292,7 @@ a:hover {
    ============================================================================ */
 
 @media (max-width: 768px) {
-  .docs-nav .container {
+  .docs-nav .aiab-container {
     flex-direction: column;
     align-items: flex-start;
   }

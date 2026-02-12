@@ -264,7 +264,7 @@ p + h6 {
   margin-top: 2rem;
 }
 
-.row + .row {
+.aiab-row + .aiab-row {
   margin-top: 2rem;
 }
 
@@ -310,7 +310,7 @@ textarea:focus {
 }
 
 button,
-.button {
+.aiab-button {
   background: #1b378c;
   color: white;
   border: none;
@@ -324,7 +324,7 @@ button,
 }
 
 button:hover,
-.button:hover {
+.aiab-button:hover {
   background: #0f2a7a;
   text-decoration: none;
 }
@@ -345,7 +345,7 @@ aside .vcard address {
 
 /* Responsive improvements */
 @media (max-width: 768px) {
-  .col-8,
+  .aiab-col-8,
   .col.nine.last {
     width: 100%;
     margin: 0 0 2rem 0;
@@ -424,7 +424,7 @@ aside .vcard address {
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <button type="button" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
       <span class="sr-only">Toggle navigation</span>
@@ -509,9 +509,9 @@ aside .vcard address {
 <!-- IE6 warning removed - no longer supported -->
 
 
-<div id="main" class="container">
-	<div class="row">
-		<div id="maincontent" class="col-16 content">
+<div id="main" class="aiab-container">
+	<div class="aiab-row">
+		<div id="maincontent" class="aiab-col-16 content">
 		<header class="docs-header">
 			<h1>Form</h1>
 			<blockquote class="text-left">
@@ -521,15 +521,15 @@ aside .vcard address {
 		</header>
 
 
-		<section id="typography" class="row">
-			<div class="row">
+		<section id="typography" class="aiab-row">
+			<div class="aiab-row">
 				<h3>Typography</h3>
 
 				<p class="intro">The typography of A.mphibio.us is designed to create a strong visual hierarchy based on the golden ratio with basic styles, with h6, h3, and h1 as the proportional steps. The primary font is Lucida Grande, but the font stack can be easily changed with just a couple adjustments. Regular paragraphs are set at the equilvalent of 16px base with 22px line height.</p>
 				<p>Margins and line heights are set relative to the base for the most adaptive/scalable user experience indepentant of what device you are using</p>
 			</div>
-			<div class="row">
-				<div class="col-8 headings">
+			<div class="aiab-row">
+				<div class="aiab-col-8 headings">
 					<h1>Heading &lt;h1&gt;</h1>
 					<h2>Heading &lt;h2&gt;</h2>
 					<h3>Heading &lt;h3&gt;</h3>
@@ -605,7 +605,7 @@ Where else would you like it to work?&lt;/p&gt;
 
 				</div>
 
-				<div class="col-8">
+				<div class="aiab-col-8">
 
 					<h5>Standard Lists</h5>
 
@@ -753,23 +753,23 @@ Where else would you like it to work?&lt;/p&gt;
 
 
 		<section id="forms">
-			<div class="row">
+			<div class="aiab-row">
 				<h3>Buttons</h3>
 				<p>A.mphibio.us treats buttons as they are meant to be treated, giving them the right amount of weight and a powerful hover effect to make them irresistibly clickable. Calls to action have never been more apparent. Did I mention easy to use, just add a button or submit or even add the class <kbd>button</kbd> to a link</p>
-				<a class="button modal_opener" amp-target="amp_overlay">Click Me For Action</a>
+				<a class="aiab-button modal_opener" amp-target="amp_overlay">Click Me For Action</a>
 				<pre class="prettyprint linenums">
 &lt;a class=&quot;button modal_opener&quot; amp-target=&quot;amp_overlay&quot;&gt;Click Me For Action&lt;/a&gt;
 </pre>
 			</div>
-			<div class="row">
+			<div class="aiab-row">
 				<h3>Forms</h3>
 				<p><del>Web developers</del> <strong>I</strong> often fear the form itself. They are usually a pain in the neck to code. But with A.mphibio.us' versatile naming convention, basic syntactic structure, and time-saving style attributes, forms are a cinch to program and implement.</p>
 
 			</div>
-			<div class="row">
+			<div class="aiab-row">
 
 			<h4>Standard Fields</h4>
-				<div class="col-7">
+				<div class="aiab-col-7">
 
 					<form>
 						<fieldset>
@@ -804,7 +804,7 @@ Where else would you like it to work?&lt;/p&gt;
 					</form>
 				</div>
 
-				<div class="col-9">
+				<div class="aiab-col-9">
 <pre class="prettyprint linenums">
 &lt;form&gt;
 	&lt;fieldset&gt;
@@ -836,9 +836,9 @@ Where else would you like it to work?&lt;/p&gt;
 </pre>
 			</div>
 			</div><!-- close Standard Fields row -->
-			<div class="row">
+			<div class="aiab-row">
 
-				<div class="col-7">
+				<div class="aiab-col-7">
 				<h4>Search Field</h4>
 					<form action="/" class="search-form" role="search">
 						<fieldset class="search-input-wrapper">
@@ -849,7 +849,7 @@ Where else would you like it to work?&lt;/p&gt;
 						</fieldset>
 					</form>
 				</div>
-				<div class="col-9">
+				<div class="aiab-col-9">
 <pre class="prettyprint linenums">
 &lt;form action=&quot;/&quot; class=&quot;search-form&quot;&gt;
 	&lt;fieldset class=&quot;search-input-wrapper&quot;&gt;
@@ -860,12 +860,12 @@ Where else would you like it to work?&lt;/p&gt;
 </pre>
 			</div>
 			</div><!-- close Search Field row -->
-			<div class="row">
+			<div class="aiab-row">
 
-				<div class="col-7">
+				<div class="aiab-col-7">
 				<h4>Advanced Search Field</h4>
 
-				  <div id="search_form" class="inline search">
+				  <div id="search_form" class="aiab-inline search">
 					<form class="search_form" action="/search-results" role="search">
 						<fieldset>
 							<legend class="sr-only">Advanced Search</legend>
@@ -881,7 +881,7 @@ Where else would you like it to work?&lt;/p&gt;
 				</div>
 
 				</div>
-				<div class="col-9">
+				<div class="aiab-col-9">
 <pre class="prettyprint linenums">
 &lt;div id=&quot;search_form&quot; class=&quot;inline search&quot;&gt;
 	&lt;form class=&quot;search_form&quot; action=&quot;/search-results&quot;&gt;
@@ -1039,12 +1039,12 @@ Where else would you like it to work?&lt;/p&gt;
 		</section>
 
 		<section>
-			<div id="append_prepend_icons" class="col-16">
+			<div id="append_prepend_icons" class="aiab-col-16">
 				<h3>Append and Prepend Icons</h3>
 				<p>Like fancy form layouts we do to, that's we've added the prepend and append icon classes to form elements.</p>
 
-				<div class="row">
-					<div class="col-8">
+				<div class="aiab-row">
+					<div class="aiab-col-8">
 						<form>
 							<fieldset>
 								<legend class="sr-only">Username with prepend icon</legend>
@@ -1062,7 +1062,7 @@ Where else would you like it to work?&lt;/p&gt;
 						</form>
 
 					</div>
-					<div class="col-8">
+					<div class="aiab-col-8">
 						<form>
 							<fieldset>
 								<legend class="sr-only">Username with append icon</legend>
@@ -1114,7 +1114,7 @@ Where else would you like it to work?&lt;/p&gt;
 &lt;/div&gt;
 </pre>
 
-				<div class="row mt">
+				<div class="aiab-row mt">
 					<form class="multi beside">
 						<fieldset>
 							<legend class="sr-only">Username</legend>
@@ -1147,7 +1147,7 @@ Where else would you like it to work?&lt;/p&gt;
 &lt;/form&gt;
 </pre>
 
-				<div class="row mt">
+				<div class="aiab-row mt">
 					<form class="multi beside">
 						<fieldset>
 							<legend class="sr-only">Username</legend>
@@ -1370,7 +1370,7 @@ they inherit different properties the result is
 postion:fixed;top:0;left:0;right:0;
 
 //-->
-	<div class="container">
+	<div class="aiab-container">
 		<nav aria-label="Secondary navigation">
 			<ul id="horizontal" class="horizontal branded">
 				<li><a href="/index.html#intro" class="hpl">a.mphibio.us</a>
@@ -1395,7 +1395,7 @@ postion:fixed;top:0;left:0;right:0;
 						<li><a href="./foundation.html#mediaQueries">Media Queries</a></li>
 					</ul>
 				</li>
-				<li class="active"><a href="./form.html">Form</a>
+				<li class="aiab-active"><a href="./form.html">Form</a>
 					<ul>
 
 						<li><a href="./form.html#typography">Typography <sub>and the golden ratio</sub></a></li>
@@ -1435,10 +1435,10 @@ postion:fixed;top:0;left:0;right:0;
 <!-- Nav toggle removed - not functional -->
 
 <div id="amp_overlay" class="modal_overlay">
-	<div class="modal mt">
+	<div class="aiab-modal mt">
 		<section>
-			<div class="row">
-				<button type="button" class="modal_kill" amp-target="amp_overlay" aria-label="Close modal"><span class="icon-cross-round large right rmr" aria-hidden="true"></span></button>
+			<div class="aiab-row">
+				<button type="button" class="modal_kill" amp-target="amp_overlay" aria-label="Close modal"><span class="icon-cross-round aiab-large right rmr" aria-hidden="true"></span></button>
 			</div>
 			<!-- Comments section removed - Disqus no longer supported -->
 		</section>

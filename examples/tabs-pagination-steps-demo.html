@@ -85,20 +85,20 @@
             border-radius: 0.375rem;
             margin: 1rem 0;
         }
-        .form-step.active {
+        .form-step.aiab-active {
             display: block;
         }
-        .form-group {
+        .aiab-form-group {
             margin-bottom: 1rem;
         }
-        .form-group label {
+        .aiab-form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .aiab-form-group input,
+        .aiab-form-group select,
+        .aiab-form-group textarea {
             width: 100%;
             padding: 0.5rem;
             border: 1px solid #d1d5db;
@@ -110,7 +110,7 @@
             justify-content: space-between;
             margin-top: 2rem;
         }
-        .btn {
+        .aiab-btn {
             padding: 0.5rem 1rem;
             border: 1px solid #d1d5db;
             border-radius: 0.375rem;
@@ -126,7 +126,7 @@
         .btn-primary:hover {
             background: #2563eb;
         }
-        .btn:disabled {
+        .aiab-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
@@ -136,7 +136,7 @@
 <body>
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -200,7 +200,7 @@
         <h2>Tabs Component</h2>
         
         <h3>Default Underlined Tabs</h3>
-        <div class="tabs tabs--underlined">
+        <div class="aiab-tabs tabs--underlined">
             <ul class="tabs__list" role="tablist">
                 <li class="tabs__item">
                     <button class="tabs__button" role="tab" aria-selected="true">
@@ -275,7 +275,7 @@
         <div class="demo-grid">
             <div class="demo-card">
                 <h4>Boxed Tabs</h4>
-                <div class="tabs tabs--boxed">
+                <div class="aiab-tabs tabs--boxed">
                     <ul class="tabs__list" role="tablist">
                         <li class="tabs__item">
                             <button class="tabs__button" role="tab" aria-selected="true">Tab 1</button>
@@ -303,7 +303,7 @@
             
             <div class="demo-card">
                 <h4>Pills Tabs</h4>
-                <div class="tabs tabs--pills">
+                <div class="aiab-tabs tabs--pills">
                     <ul class="tabs__list" role="tablist">
                         <li class="tabs__item">
                             <button class="tabs__button" role="tab" aria-selected="true">
@@ -340,7 +340,7 @@
         </div>
 
         <h3>Vertical Tabs</h3>
-        <div class="tabs tabs--vertical tabs--underlined">
+        <div class="aiab-tabs tabs--vertical tabs--underlined">
             <ul class="tabs__list" role="tablist">
                 <li class="tabs__item">
                     <button class="tabs__button" role="tab" aria-selected="true">General</button>
@@ -381,7 +381,7 @@
         <h2>Pagination Component</h2>
         
         <h3>Standard Pagination</h3>
-        <nav aria-label="Pagination Navigation" class="pagination">
+        <nav aria-label="Pagination Navigation" class="aiab-pagination">
             <a href="#" class="pagination__link pagination__link--prev">
                 <span class="pagination__nav">
                     <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -415,7 +415,7 @@
                 </div>
             </div>
             <div class="pagination-container__center">
-                <nav aria-label="Data pagination" class="pagination">
+                <nav aria-label="Data pagination" class="aiab-pagination">
                     <a href="#" class="pagination__link pagination__link--prev pagination__link--disabled">
                         <span class="pagination__nav">
                             <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -456,7 +456,7 @@
         <div class="demo-grid">
             <div class="demo-card">
                 <h4>Compact Pagination</h4>
-                <nav aria-label="Compact pagination" class="pagination pagination--compact">
+                <nav aria-label="Compact pagination" class="aiab-pagination pagination--compact">
                     <a href="#" class="pagination__link pagination__link--prev">‹</a>
                     <a href="#" class="pagination__link">1</a>
                     <span class="pagination__current">2</span>
@@ -467,7 +467,7 @@
             
             <div class="demo-card">
                 <h4>Pills Pagination</h4>
-                <nav aria-label="Pills pagination" class="pagination pagination--pills">
+                <nav aria-label="Pills pagination" class="aiab-pagination pagination--pills">
                     <a href="#" class="pagination__link pagination__link--prev">Prev</a>
                     <a href="#" class="pagination__link">1</a>
                     <span class="pagination__current">2</span>
@@ -478,7 +478,7 @@
             
             <div class="demo-card">
                 <h4>Simple Pagination</h4>
-                <nav aria-label="Simple pagination" class="pagination pagination--simple">
+                <nav aria-label="Simple pagination" class="aiab-pagination pagination--simple">
                     <a href="#" class="pagination__link pagination__link--prev">
                         <span class="pagination__nav">← Previous</span>
                     </a>
@@ -496,7 +496,7 @@
         
         <h3>Multi-Step Form Example</h3>
         <div class="steps-demo">
-            <ol class="steps steps--interactive" id="form-steps">
+            <ol class="aiab-steps steps--interactive" id="form-steps">
                 <li class="steps__item steps__item--complete">
                     <div class="steps__circle">
                         <span class="steps__number">1</span>
@@ -538,31 +538,31 @@
             <!-- Form Steps -->
             <div id="step-1" class="form-step">
                 <h4>Step 1: Account Information</h4>
-                <div class="form-group">
+                <div class="aiab-form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
             </div>
 
-            <div id="step-2" class="form-step active">
+            <div id="step-2" class="form-step aiab-active">
                 <h4>Step 2: Personal Information</h4>
-                <div class="form-group">
+                <div class="aiab-form-group">
                     <label for="firstname">First Name</label>
                     <input type="text" id="firstname" name="firstname" required>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                     <label for="lastname">Last Name</label>
                     <input type="text" id="lastname" name="lastname" required>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                     <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" name="phone">
                 </div>
@@ -570,7 +570,7 @@
 
             <div id="step-3" class="form-step">
                 <h4>Step 3: Preferences</h4>
-                <div class="form-group">
+                <div class="aiab-form-group">
                     <label for="language">Preferred Language</label>
                     <select id="language" name="language">
                         <option value="en">English</option>
@@ -578,7 +578,7 @@
                         <option value="fr">Français</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                     <label for="timezone">Timezone</label>
                     <select id="timezone" name="timezone">
                         <option value="UTC">UTC</option>
@@ -601,8 +601,8 @@
             </div>
 
             <div class="form-actions">
-                <button type="button" id="prev-step" class="btn">Previous</button>
-                <button type="button" id="next-step" class="btn btn-primary">Next</button>
+                <button type="button" id="prev-step" class="aiab-btn">Previous</button>
+                <button type="button" id="next-step" class="aiab-btn btn-primary">Next</button>
             </div>
         </div>
 
@@ -610,7 +610,7 @@
         <div class="demo-grid">
             <div class="demo-card">
                 <h4>Vertical Steps</h4>
-                <ol class="steps steps--vertical">
+                <ol class="aiab-steps steps--vertical">
                     <li class="steps__item steps__item--complete">
                         <div class="steps__circle">
                             <span class="steps__number">1</span>
@@ -643,7 +643,7 @@
             
             <div class="demo-card">
                 <h4>Minimal Steps</h4>
-                <ol class="steps steps--minimal">
+                <ol class="aiab-steps steps--minimal">
                     <li class="steps__item steps__item--complete">
                         <div class="steps__circle">
                             <span class="steps__number">1</span>
@@ -669,7 +669,7 @@
             
             <div class="demo-card">
                 <h4>Dots Steps</h4>
-                <ol class="steps steps--dots">
+                <ol class="aiab-steps steps--dots">
                     <li class="steps__item steps__item--complete">
                         <div class="steps__circle"></div>
                     </li>
@@ -724,7 +724,7 @@
                 }
                 
                 // Update navigation buttons
-                prevBtn.disabled = step === 1;
+                prevBtn.aiab-disabled = step === 1;
                 nextBtn.textContent = step === totalSteps ? 'Submit' : 'Next';
                 
                 // Update review step

@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Checkout Buttons
-  document.querySelector('.btn-checkout.primary')?.addEventListener('click', function () {
+  document.querySelector('.btn-checkout.aiab-primary')?.addEventListener('click', function () {
     alert('Proceeding to checkout with ' + cartState.items.length + ' items');
   });
 

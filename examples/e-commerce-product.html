@@ -67,7 +67,7 @@
       position: relative;
       padding-bottom: 100%;
     }
-    .thumbnail.active {
+    .thumbnail.aiab-active {
       border-color: #ED8B00;
     }
     .thumbnail img {
@@ -399,7 +399,7 @@
     .tab-button:hover {
       color: #2c3e50;
     }
-    .tab-button.active {
+    .tab-button.aiab-active {
       color: #ED8B00;
       border-bottom-color: #ED8B00;
     }
@@ -409,7 +409,7 @@
     .tab-pane {
       display: none;
     }
-    .tab-pane.active {
+    .tab-pane.aiab-active {
       display: block;
     }
 
@@ -621,7 +621,7 @@
 <body>
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -676,7 +676,7 @@
 
 
   <!-- Breadcrumb -->
-  <div class="container" style="padding: 1rem 0;">
+  <div class="aiab-container" style="padding: 1rem 0;">
     <div class="product-breadcrumb">
       <a href="#">Home</a> /
       <a href="#">Clothing</a> /
@@ -687,10 +687,10 @@
 
   <!-- Product Detail -->
   <main class="product-detail" role="main">
-    <div class="container">
-      <div class="row">
+    <div class="aiab-container">
+      <div class="aiab-row">
         <!-- Image Gallery -->
-        <section class="col-7" aria-label="Product Images">
+        <section class="aiab-col-7" aria-label="Product Images">
           <figure class="product-gallery">
             <div class="main-image">
               <img src="https://placehold.co/600x600/667eea/ffffff?text=Main+Image" alt="Product" id="mainImage" loading="lazy">
@@ -699,7 +699,7 @@
               </button>
             </div>
             <div class="thumbnail-list">
-              <div class="thumbnail active" onclick="changeImage(1)">
+              <div class="thumbnail aiab-active" onclick="changeImage(1)">
                 <img src="https://placehold.co/150x150/667eea/ffffff?text=View+1" alt="View 1" loading="lazy">
               </div>
               <div class="thumbnail" onclick="changeImage(2)">
@@ -716,7 +716,7 @@
         </section>
 
         <!-- Product Info -->
-        <section class="col-9" aria-label="Product Information">
+        <section class="aiab-col-9" aria-label="Product Information">
           <div class="product-info">
             <h1 class="product-title">Premium Cotton T-Shirt</h1>
 
@@ -852,9 +852,9 @@
   </main>
 
   <!-- Aside: Customer Testimonials and Trust Signals -->
-  <aside class="container" style="margin: 2rem auto;">
-    <div class="row">
-      <div class="col-8">
+  <aside class="aiab-container" style="margin: 2rem auto;">
+    <div class="aiab-row">
+      <div class="aiab-col-8">
         <h3>Customer Testimonials</h3>
         <ul class="slats slats--testimonials">
           <li>
@@ -889,7 +889,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-8">
+      <div class="aiab-col-8">
         <h3>Why Shop With Us</h3>
         <div class="aside-content" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
           <ul class="stats stats--vertical">
@@ -926,9 +926,9 @@
 
   <!-- Product Tabs -->
   <section class="product-tabs">
-    <div class="container">
+    <div class="aiab-container">
       <div class="tab-nav">
-        <button class="tab-button active" onclick="switchTab('description')">Description</button>
+        <button class="tab-button aiab-active" onclick="switchTab('description')">Description</button>
         <button class="tab-button" onclick="switchTab('details')">Details & Care</button>
         <button class="tab-button" onclick="switchTab('reviews')" id="reviewsTab">Reviews (124)</button>
         <button class="tab-button" onclick="switchTab('shipping')">Shipping & Returns</button>
@@ -936,9 +936,9 @@
 
       <div class="tab-content">
         <!-- Description Tab -->
-        <div class="tab-pane active" id="description">
-          <div class="row">
-            <div class="col-10">
+        <div class="tab-pane aiab-active" id="description">
+          <div class="aiab-row">
+            <div class="aiab-col-10">
               <h3>Product Description</h3>
               <p>Experience ultimate comfort with our Premium Cotton T-Shirt, crafted from 100% organic cotton for superior breathability and softness that lasts. This versatile essential features a classic fit that works perfectly on its own or layered under your favorite jacket.</p>
 
@@ -954,7 +954,7 @@
 
               <p>Whether you're heading to work, meeting friends, or just relaxing at home, this t-shirt delivers all-day comfort and effortless style. The premium cotton fabric is pre-shrunk and colorfast, ensuring your shirt looks great wear after wear.</p>
             </div>
-            <aside class="col-6">
+            <aside class="aiab-col-6">
               <div class="aside-highlight" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
                 <h4>Why Choose Our T-Shirt?</h4>
                 <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
@@ -982,8 +982,8 @@
 
         <!-- Details Tab -->
         <div class="tab-pane" id="details">
-          <div class="row">
-            <div class="col-8">
+          <div class="aiab-row">
+            <div class="aiab-col-8">
               <h3>Product Details</h3>
               <table style="width: 100%; margin: 1rem 0;">
                 <tr>
@@ -1012,7 +1012,7 @@
                 </tr>
               </table>
             </div>
-            <div class="col-8">
+            <div class="aiab-col-8">
               <h3>Care Instructions</h3>
               <div style="display: flex; flex-direction: column; gap: 1rem;">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -1166,8 +1166,8 @@
 
         <!-- Shipping Tab -->
         <div class="tab-pane" id="shipping">
-          <div class="row">
-            <div class="col-8">
+          <div class="aiab-row">
+            <div class="aiab-col-8">
               <h3>Shipping Information</h3>
               <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                 <h4>Shipping Options</h4>
@@ -1190,7 +1190,7 @@
                 </table>
               </div>
             </div>
-            <div class="col-8">
+            <div class="aiab-col-8">
               <h3>Return Policy</h3>
               <div style="display: flex; flex-direction: column; gap: 1rem;">
                 <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
@@ -1224,7 +1224,7 @@
 
   <!-- Related Products -->
   <section class="related-products">
-    <div class="container">
+    <div class="aiab-container">
       <div class="section-header">
         <h2>You May Also Like</h2>
         <button class="btn-secondary" style="width: auto; padding: 0.75rem 1.5rem;">

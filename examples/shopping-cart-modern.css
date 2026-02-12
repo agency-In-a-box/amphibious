@@ -138,7 +138,7 @@ body {
   font-weight: 500;
 }
 
-.step.active {
+.step.aiab-active {
   color: var(--primary-color);
 }
 
@@ -153,7 +153,7 @@ body {
   transition: all 0.2s ease;
 }
 
-.step.active .step-icon {
+.step.aiab-active .step-icon {
   background: var(--primary-light);
   color: var(--primary-color);
 }
@@ -535,7 +535,7 @@ body {
   background: rgba(239, 68, 68, 0.05);
 }
 
-.tooltip {
+.aiab-tooltip {
   position: absolute;
   right: calc(100% + 0.5rem);
   top: 50%;
@@ -551,7 +551,7 @@ body {
   transition: opacity 0.2s ease;
 }
 
-.action-btn:hover .tooltip {
+.action-btn:hover .aiab-tooltip {
   opacity: 1;
 }
 
@@ -681,12 +681,12 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.btn-checkout.primary {
+.btn-checkout.aiab-primary {
   background: var(--primary-color);
   color: white;
 }
 
-.btn-checkout.primary:hover {
+.btn-checkout.aiab-primary:hover {
   background: var(--primary-hover);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);

@@ -116,7 +116,7 @@
       background: #f8f9fa;
       color: #ED8B00;
     }
-    .nav-section a.active {
+    .nav-section a.aiab-active {
       background: #f0f4ff;
       color: #ED8B00;
       font-weight: 500;
@@ -187,10 +187,10 @@
       justify-content: center;
       font-size: 1.5rem;
     }
-    .stat-icon.primary { background: #e3f2fd; color: #1976d2; }
-    .stat-icon.success { background: #e8f5e9; color: #388e3c; }
-    .stat-icon.warning { background: #fff3e0; color: #f57c00; }
-    .stat-icon.danger { background: #ffebee; color: #d32f2f; }
+    .stat-icon.aiab-primary { background: #e3f2fd; color: #1976d2; }
+    .stat-icon.aiab-success { background: #e8f5e9; color: #388e3c; }
+    .stat-icon.aiab-warning { background: #fff3e0; color: #f57c00; }
+    .stat-icon.aiab-danger { background: #ffebee; color: #d32f2f; }
     .stat-content h3 {
       margin: 0;
       font-size: 1.75rem;
@@ -318,7 +318,7 @@
       font-size: 0.75rem;
       font-weight: 500;
     }
-    .status-badge.active { background: #d4edda; color: #155724; }
+    .status-badge.aiab-active { background: #d4edda; color: #155724; }
     .status-badge.pending { background: #fff3cd; color: #856404; }
     .status-badge.cancelled { background: #f8d7da; color: #721c24; }
 
@@ -328,18 +328,18 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
     }
-    .form-group {
+    .aiab-form-group {
       margin-bottom: 1rem;
     }
-    .form-group label {
+    .aiab-form-group label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 500;
       color: #495057;
     }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .aiab-form-group input,
+    .aiab-form-group select,
+    .aiab-form-group textarea {
       width: 100%;
       padding: 0.75rem;
       border: 1px solid #ced4da;
@@ -347,9 +347,9 @@
       font-size: 1rem;
       transition: border-color 0.15s;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
+    .aiab-form-group input:focus,
+    .aiab-form-group select:focus,
+    .aiab-form-group textarea:focus {
       outline: none;
       border-color: #ED8B00;
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -361,7 +361,7 @@
     }
 
     /* Action Buttons */
-    .btn {
+    .aiab-btn {
       padding: 0.5rem 1rem;
       border: none;
       border-radius: 4px;
@@ -428,7 +428,7 @@
 <body>
   <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle-icon" aria-hidden="true"></span>
         <span class="sr-only">Toggle navigation</span>
@@ -484,7 +484,7 @@
 
   <!-- Dashboard Header -->
   <header class="dashboard-header">
-    <div class="container">
+    <div class="aiab-container">
       <div class="header-content">
         <div class="user-info">
           <div class="user-avatar">JD</div>
@@ -494,14 +494,14 @@
           </div>
         </div>
         <div class="header-actions">
-          <button class="btn btn-outline btn-sm" data-tooltip="Notifications">
+          <button class="aiab-btn btn-outline btn-sm" data-tooltip="Notifications">
             <i data-lucide="bell"></i>
             <span class="nav-badge">3</span>
           </button>
-          <button class="btn btn-outline btn-sm" data-tooltip="Settings">
+          <button class="aiab-btn btn-outline btn-sm" data-tooltip="Settings">
             <i data-lucide="settings"></i>
           </button>
-          <button class="btn btn-secondary btn-sm">
+          <button class="aiab-btn btn-secondary btn-sm">
             <i data-lucide="log-out"></i>
             Sign Out
           </button>
@@ -511,7 +511,7 @@
   </header>
 
   <!-- Main Dashboard Layout -->
-  <div class="container">
+  <div class="aiab-container">
     <div class="dashboard-layout">
       <!-- Sidebar Navigation -->
       <aside class="dashboard-sidebar" aria-label="Dashboard navigation">
@@ -519,7 +519,7 @@
           <div class="nav-section">
             <h3>Overview</h3>
             <ul>
-              <li><a href="#dashboard" class="active">
+              <li><a href="#dashboard" class="aiab-active">
                 <i data-lucide="layout-dashboard"></i>
                 Dashboard
               </a></li>
@@ -585,7 +585,7 @@
           <h2 id="stats-heading" class="sr-only">Account Statistics</h2>
           <div class="stats-grid">
             <article class="stat-card">
-              <div class="stat-icon primary">
+              <div class="stat-icon aiab-primary">
                 <i data-lucide="shopping-cart"></i>
               </div>
               <div class="stat-content">
@@ -599,7 +599,7 @@
             </article>
 
             <article class="stat-card">
-              <div class="stat-icon success">
+              <div class="stat-icon aiab-success">
                 <i data-lucide="dollar-sign"></i>
               </div>
               <div class="stat-content">
@@ -613,7 +613,7 @@
             </article>
 
             <article class="stat-card">
-              <div class="stat-icon warning">
+              <div class="stat-icon aiab-warning">
                 <i data-lucide="download"></i>
               </div>
               <div class="stat-content">
@@ -627,7 +627,7 @@
             </article>
 
             <article class="stat-card">
-              <div class="stat-icon danger">
+              <div class="stat-icon aiab-danger">
                 <i data-lucide="heart"></i>
               </div>
               <div class="stat-content">
@@ -647,11 +647,11 @@
           <div class="card-header">
             <h2 id="activity-heading" class="card-title">Recent Activity</h2>
             <div class="card-actions">
-              <button class="btn btn-outline btn-sm">
+              <button class="aiab-btn btn-outline btn-sm">
                 <i data-lucide="filter"></i>
                 Filter
               </button>
-              <button class="btn btn-primary btn-sm">
+              <button class="aiab-btn btn-primary btn-sm">
                 <i data-lucide="download"></i>
                 Export
               </button>
@@ -660,7 +660,7 @@
 
           <ul class="activity-feed">
             <li class="activity-item">
-              <div class="activity-icon success">
+              <div class="activity-icon aiab-success">
                 <i data-lucide="check"></i>
               </div>
               <div class="activity-content">
@@ -671,7 +671,7 @@
             </li>
 
             <li class="activity-item">
-              <div class="activity-icon primary">
+              <div class="activity-icon aiab-primary">
                 <i data-lucide="download"></i>
               </div>
               <div class="activity-content">
@@ -682,7 +682,7 @@
             </li>
 
             <li class="activity-item">
-              <div class="activity-icon warning">
+              <div class="activity-icon aiab-warning">
                 <i data-lucide="credit-card"></i>
               </div>
               <div class="activity-content">
@@ -693,7 +693,7 @@
             </li>
 
             <li class="activity-item">
-              <div class="activity-icon success">
+              <div class="activity-icon aiab-success">
                 <i data-lucide="user-plus"></i>
               </div>
               <div class="activity-content">
@@ -704,7 +704,7 @@
             </li>
 
             <li class="activity-item">
-              <div class="activity-icon primary">
+              <div class="activity-icon aiab-primary">
                 <i data-lucide="shopping-bag"></i>
               </div>
               <div class="activity-content">
@@ -720,7 +720,7 @@
         <section class="dashboard-card" aria-labelledby="progress-heading">
           <div class="card-header">
             <h2 id="progress-heading" class="card-title">Account Progress</h2>
-            <button class="btn btn-outline btn-sm">View Details</button>
+            <button class="aiab-btn btn-outline btn-sm">View Details</button>
           </div>
 
           <div class="progress-item">
@@ -768,7 +768,7 @@
         <section class="dashboard-card" aria-labelledby="orders-heading">
           <div class="card-header">
             <h2 id="orders-heading" class="card-title">Recent Orders</h2>
-            <a href="/orders" class="btn btn-outline btn-sm">View All Orders</a>
+            <a href="/orders" class="aiab-btn btn-outline btn-sm">View All Orders</a>
           </div>
 
           <div style="overflow-x: auto;">
@@ -789,9 +789,9 @@
                   <td>Jan 15, 2024</td>
                   <td>2 items</td>
                   <td>$79.98</td>
-                  <td><span class="status-badge active">Shipped</span></td>
+                  <td><span class="status-badge aiab-active">Shipped</span></td>
                   <td>
-                    <button class="btn btn-outline btn-sm">Track</button>
+                    <button class="aiab-btn btn-outline btn-sm">Track</button>
                   </td>
                 </tr>
                 <tr>
@@ -799,9 +799,9 @@
                   <td>Jan 13, 2024</td>
                   <td>1 item</td>
                   <td>$199.99</td>
-                  <td><span class="status-badge active">Delivered</span></td>
+                  <td><span class="status-badge aiab-active">Delivered</span></td>
                   <td>
-                    <button class="btn btn-outline btn-sm">Review</button>
+                    <button class="aiab-btn btn-outline btn-sm">Review</button>
                   </td>
                 </tr>
                 <tr>
@@ -811,7 +811,7 @@
                   <td>$156.50</td>
                   <td><span class="status-badge pending">Processing</span></td>
                   <td>
-                    <button class="btn btn-outline btn-sm">Cancel</button>
+                    <button class="aiab-btn btn-outline btn-sm">Cancel</button>
                   </td>
                 </tr>
                 <tr>
@@ -821,7 +821,7 @@
                   <td>$45.00</td>
                   <td><span class="status-badge cancelled">Cancelled</span></td>
                   <td>
-                    <button class="btn btn-outline btn-sm">Reorder</button>
+                    <button class="aiab-btn btn-outline btn-sm">Reorder</button>
                   </td>
                 </tr>
               </tbody>
@@ -839,16 +839,16 @@
             <div>
               <h3>Update Profile</h3>
               <form>
-                <div class="form-group">
+                <div class="aiab-form-group">
                   <label for="displayName">Display Name</label>
                   <input type="text" id="displayName" name="displayName" value="John Doe">
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                   <label for="email">Email Address</label>
                   <input type="email" id="email" name="email" value="john.doe@example.com">
                   <div class="form-help">This email is used for account notifications</div>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="aiab-btn btn-primary">
                   <i data-lucide="save"></i>
                   Save Changes
                 </button>
@@ -858,27 +858,27 @@
             <div>
               <h3>Notification Preferences</h3>
               <form>
-                <div class="form-group">
+                <div class="aiab-form-group">
                   <label>
                     <input type="checkbox" checked> Email notifications
                   </label>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                   <label>
                     <input type="checkbox" checked> Order updates
                   </label>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                   <label>
                     <input type="checkbox"> Marketing emails
                   </label>
                 </div>
-                <div class="form-group">
+                <div class="aiab-form-group">
                   <label>
                     <input type="checkbox" checked> Security alerts
                   </label>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="aiab-btn btn-primary">
                   <i data-lucide="bell"></i>
                   Update Preferences
                 </button>
@@ -915,14 +915,14 @@
           const originalText = submitBtn.innerHTML;
 
           submitBtn.innerHTML = '<i data-lucide="loader-2"></i> Saving...';
-          submitBtn.disabled = true;
+          submitBtn.aiab-disabled = true;
 
           // Simulate API call
           setTimeout(() => {
             submitBtn.innerHTML = '<i data-lucide="check"></i> Saved!';
             setTimeout(() => {
               submitBtn.innerHTML = originalText;
-              submitBtn.disabled = false;
+              submitBtn.aiab-disabled = false;
             }, 1500);
           }, 2000);
         });

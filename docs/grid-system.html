@@ -96,10 +96,10 @@
       border-radius: 8px;
       border: 2px solid #e9ecef;
     }
-    .grid-example .row {
+    .grid-example .aiab-row {
       margin-bottom: 1rem;
     }
-    .grid-example .row:last-child {
+    .grid-example .aiab-row:last-child {
       margin-bottom: 0;
     }
     .grid-example [class*="col-"] {
@@ -148,7 +148,7 @@
     .demo-controls button:hover {
       background: #c97400;
     }
-    .demo-controls button.active {
+    .demo-controls button.aiab-active {
       background: #c97400;
     }
 
@@ -196,7 +196,7 @@
     }
 
     /* Alert Boxes */
-    .alert {
+    .aiab-alert {
       padding: 1rem;
       border-radius: 4px;
       margin: 1rem 0;
@@ -218,7 +218,7 @@
     }
 
     /* Badge */
-    .badge {
+    .aiab-badge {
       display: inline-block;
       padding: 0.25rem 0.5rem;
       background: #ED8B00;
@@ -228,8 +228,8 @@
       font-weight: 600;
       margin-left: 0.5rem;
     }
-    .badge.new { background: #4caf50; }
-    .badge.legacy { background: #ff9800; }
+    .aiab-badge.new { background: #4caf50; }
+    .aiab-badge.legacy { background: #ff9800; }
   </style>
 </head>
 <body>
@@ -238,7 +238,7 @@
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
 <nav class="site-nav" aria-label="Main navigation">
-  <div class="container">
+  <div class="aiab-container">
     <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
       <span class="sr-only">Toggle navigation</span>
@@ -318,7 +318,7 @@
   </div>
 </nav>
 <header class="doc-header">
-    <div class="container">
+    <div class="aiab-container">
       <h1>Grid System Documentation</h1>
       <p>Master the flexible 16-column responsive grid system</p>
     </div>
@@ -326,7 +326,7 @@
 
   <!-- Navigation -->
   <nav class="doc-nav">
-    <div class="container">
+    <div class="aiab-container">
       <ul>
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#basics">Basic Grid</a></li>
@@ -339,14 +339,14 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div class="aiab-container">
     <!-- Introduction Section -->
     <section id="introduction" class="doc-section">
       <h2>Introduction to the Grid System</h2>
 
       <p>Amphibious uses a powerful 16-column grid system based on the proven 960 Grid System principles. The grid provides maximum flexibility for layouts while maintaining simplicity and consistency.</p>
 
-      <div class="alert alert-info">
+      <div class="aiab-alert alert-info">
         <strong>Key Features:</strong> 16 columns • Responsive breakpoints • Fluid and fixed options • Nestable • Golden ratio support
       </div>
 
@@ -363,17 +363,17 @@
           <tr>
             <td><strong>Container</strong></td>
             <td>Wraps the grid system, 960px fixed or 96% fluid</td>
-            <td><code>&lt;div class="container"&gt;</code></td>
+            <td><code>&lt;div class="aiab-container"&gt;</code></td>
           </tr>
           <tr>
             <td><strong>Row</strong></td>
             <td>Horizontal group of columns</td>
-            <td><code>&lt;div class="row"&gt;</code></td>
+            <td><code>&lt;div class="aiab-row"&gt;</code></td>
           </tr>
           <tr>
             <td><strong>Column</strong></td>
             <td>Vertical divisions, 1-16 units wide</td>
-            <td><code>&lt;div class="col-8"&gt;</code></td>
+            <td><code>&lt;div class="aiab-col-8"&gt;</code></td>
           </tr>
           <tr>
             <td><strong>Gutter</strong></td>
@@ -390,74 +390,74 @@
 
       <h3>Simple Two-Column Layout</h3>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-8">8 Columns (50%)</div>
-          <div class="col-8">8 Columns (50%)</div>
+        <div class="aiab-row">
+          <div class="aiab-col-8">8 Columns (50%)</div>
+          <div class="aiab-col-8">8 Columns (50%)</div>
         </div>
       </div>
 
-      <pre><code>&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-8"&gt;8 Columns (50%)&lt;/div&gt;
-    &lt;div class="col-8"&gt;8 Columns (50%)&lt;/div&gt;
+      <pre><code>&lt;div class="aiab-container"&gt;
+  &lt;div class="aiab-row"&gt;
+    &lt;div class="aiab-col-8"&gt;8 Columns (50%)&lt;/div&gt;
+    &lt;div class="aiab-col-8"&gt;8 Columns (50%)&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
       <h3>Three-Column Layout</h3>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-5">5 Columns</div>
-          <div class="col-6">6 Columns</div>
-          <div class="col-5">5 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-5">5 Columns</div>
+          <div class="aiab-col-6">6 Columns</div>
+          <div class="aiab-col-5">5 Columns</div>
         </div>
       </div>
 
       <h3>Four-Column Layout</h3>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-4">4 Columns</div>
-          <div class="col-4">4 Columns</div>
-          <div class="col-4">4 Columns</div>
-          <div class="col-4">4 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-4">4 Columns</div>
+          <div class="aiab-col-4">4 Columns</div>
+          <div class="aiab-col-4">4 Columns</div>
+          <div class="aiab-col-4">4 Columns</div>
         </div>
       </div>
 
       <h3>All Column Sizes</h3>
       <div class="grid-example grid-example-light">
-        <div class="row">
-          <div class="col-1">1</div>
-          <div class="col-15">15 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-1">1</div>
+          <div class="aiab-col-15">15 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-2">2</div>
-          <div class="col-14">14 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-2">2</div>
+          <div class="aiab-col-14">14 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-3">3</div>
-          <div class="col-13">13 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-3">3</div>
+          <div class="aiab-col-13">13 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-4">4</div>
-          <div class="col-12">12 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-4">4</div>
+          <div class="aiab-col-12">12 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-5">5</div>
-          <div class="col-11">11 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-5">5</div>
+          <div class="aiab-col-11">11 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-6">6</div>
-          <div class="col-10">10 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-6">6</div>
+          <div class="aiab-col-10">10 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-7">7</div>
-          <div class="col-9">9 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-7">7</div>
+          <div class="aiab-col-9">9 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-8">8</div>
-          <div class="col-8">8 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-8">8</div>
+          <div class="aiab-col-8">8 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-16">16 Columns (Full Width)</div>
+        <div class="aiab-row">
+          <div class="aiab-col-16">16 Columns (Full Width)</div>
         </div>
       </div>
     </section>
@@ -500,28 +500,28 @@
         </tbody>
       </table>
 
-      <div class="alert alert-tip">
+      <div class="aiab-alert alert-tip">
         <strong>Mobile First:</strong> Start with mobile layout and enhance for larger screens using responsive classes.
       </div>
 
       <h3>Responsive Example</h3>
       <div class="responsive-preview">
         <div class="demo-controls">
-          <button onclick="setDevicePreview('desktop')" class="active">Desktop View</button>
+          <button onclick="setDevicePreview('desktop')" class="aiab-active">Desktop View</button>
           <button onclick="setDevicePreview('tablet')">Tablet View</button>
           <button onclick="setDevicePreview('mobile')">Mobile View</button>
         </div>
         <div id="deviceFrame" class="device-frame desktop">
           <div class="device-label">Current View: Desktop (960px+)</div>
           <div class="grid-example">
-            <div class="row">
-              <div class="col-4 col-tablet-8 col-mobile-16">
+            <div class="aiab-row">
+              <div class="aiab-col-4 aiab-col-tablet-8 aiab-col-mobile-16">
                 Sidebar
               </div>
-              <div class="col-8 col-tablet-8 col-mobile-16">
+              <div class="aiab-col-8 aiab-col-tablet-8 aiab-col-mobile-16">
                 Main Content
               </div>
-              <div class="col-4 col-tablet-16 col-mobile-16">
+              <div class="aiab-col-4 aiab-col-tablet-16 aiab-col-mobile-16">
                 Aside
               </div>
             </div>
@@ -529,10 +529,10 @@
         </div>
       </div>
 
-      <pre><code>&lt;div class="row"&gt;
-  &lt;div class="col-4 col-tablet-8 col-mobile-16"&gt;Sidebar&lt;/div&gt;
-  &lt;div class="col-8 col-tablet-8 col-mobile-16"&gt;Main Content&lt;/div&gt;
-  &lt;div class="col-4 col-tablet-16 col-mobile-16"&gt;Aside&lt;/div&gt;
+      <pre><code>&lt;div class="aiab-row"&gt;
+  &lt;div class="aiab-col-4 aiab-col-tablet-8 aiab-col-mobile-16"&gt;Sidebar&lt;/div&gt;
+  &lt;div class="aiab-col-8 aiab-col-tablet-8 aiab-col-mobile-16"&gt;Main Content&lt;/div&gt;
+  &lt;div class="aiab-col-4 aiab-col-tablet-16 aiab-col-mobile-16"&gt;Aside&lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </section>
 
@@ -544,46 +544,46 @@
 
       <h3>Basic Nesting</h3>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-10" style="background: #e9ecef; color: #2c3e50;">
+        <div class="aiab-row">
+          <div class="aiab-col-10" style="background: #e9ecef; color: #2c3e50;">
             <div style="padding: 1rem;">
               <strong>10 Column Parent</strong>
-              <div class="row" style="margin-top: 1rem;">
-                <div class="col-6 first" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); color: white;">
+              <div class="aiab-row" style="margin-top: 1rem;">
+                <div class="aiab-col-6 first" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); color: white;">
                   6 Nested
                 </div>
-                <div class="col-4 last" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); color: white;">
+                <div class="aiab-col-4 last" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); color: white;">
                   4 Nested
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-6">6 Column Sidebar</div>
+          <div class="aiab-col-6">6 Column Sidebar</div>
         </div>
       </div>
 
-      <pre><code>&lt;div class="row"&gt;
-  &lt;div class="col-10"&gt;
+      <pre><code>&lt;div class="aiab-row"&gt;
+  &lt;div class="aiab-col-10"&gt;
     10 Column Parent
-    &lt;div class="row"&gt;
-      &lt;div class="col-6 first"&gt;6 Nested&lt;/div&gt;
-      &lt;div class="col-4 last"&gt;4 Nested&lt;/div&gt;
+    &lt;div class="aiab-row"&gt;
+      &lt;div class="aiab-col-6 first"&gt;6 Nested&lt;/div&gt;
+      &lt;div class="aiab-col-4 last"&gt;4 Nested&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="col-6"&gt;6 Column Sidebar&lt;/div&gt;
+  &lt;div class="aiab-col-6"&gt;6 Column Sidebar&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
-      <h3>Golden Ratio Layout <span class="badge new">Popular</span></h3>
+      <h3>Golden Ratio Layout <span class="aiab-badge new">Popular</span></h3>
       <p>Create aesthetically pleasing layouts using the golden ratio (1.618:1). The 16-column grid makes this easy with 10:6 column splits.</p>
 
       <div class="grid-example">
-        <div class="row">
-          <div class="col-10">Main Content (Golden)</div>
-          <div class="col-6">Sidebar (Ratio)</div>
+        <div class="aiab-row">
+          <div class="aiab-col-10">Main Content (Golden)</div>
+          <div class="aiab-col-6">Sidebar (Ratio)</div>
         </div>
       </div>
 
-      <div class="alert alert-tip">
+      <div class="aiab-alert alert-tip">
         <strong>Golden Ratio Combinations:</strong> 10:6, 6:4, and nested 6:4 within 10 columns all approximate the golden ratio.
       </div>
     </section>
@@ -595,44 +595,44 @@
       <h3>Offset Classes</h3>
       <p>Push columns to the right using offset classes:</p>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-4 offset-4">4 Columns with 4 Offset</div>
-          <div class="col-4">4 Columns</div>
+        <div class="aiab-row">
+          <div class="aiab-col-4 aiab-offset-4">4 Columns with 4 Offset</div>
+          <div class="aiab-col-4">4 Columns</div>
         </div>
-        <div class="row">
-          <div class="col-8 offset-8">8 Columns Centered</div>
+        <div class="aiab-row">
+          <div class="aiab-col-8 aiab-offset-8">8 Columns Centered</div>
         </div>
       </div>
 
       <h3>Push and Pull (Source Ordering)</h3>
       <p>Change the visual order of columns for SEO optimization:</p>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-6 push-10">First in source, appears right</div>
-          <div class="col-10 pull-6">Second in source, appears left</div>
+        <div class="aiab-row">
+          <div class="aiab-col-6 push-10">First in source, appears right</div>
+          <div class="aiab-col-10 aiab-pull-6">Second in source, appears left</div>
         </div>
       </div>
 
       <pre><code>&lt;!-- SEO-friendly: Main content first in source --&gt;
-&lt;div class="row"&gt;
-  &lt;div class="col-10 push-6"&gt;Main Content (First in HTML)&lt;/div&gt;
-  &lt;div class="col-6 pull-10"&gt;Sidebar (Second in HTML)&lt;/div&gt;
+&lt;div class="aiab-row"&gt;
+  &lt;div class="aiab-col-10 aiab-push-6"&gt;Main Content (First in HTML)&lt;/div&gt;
+  &lt;div class="aiab-col-6 pull-10"&gt;Sidebar (Second in HTML)&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
       <h3>Fluid Columns</h3>
       <p>Use fluid percentage-based columns for flexible layouts:</p>
       <div class="grid-example">
-        <div class="row">
+        <div class="aiab-row">
           <div class="one-third col">One Third</div>
           <div class="one-third col">One Third</div>
           <div class="one-third col">One Third</div>
         </div>
-        <div class="row">
+        <div class="aiab-row">
           <div class="one-quarter col">1/4</div>
           <div class="half col">Half (1/2)</div>
           <div class="one-quarter col">1/4</div>
         </div>
-        <div class="row">
+        <div class="aiab-row">
           <div class="three-quarters col">Three Quarters (3/4)</div>
           <div class="one-quarter col">1/4</div>
         </div>
@@ -682,8 +682,8 @@
 
       <h3>E-commerce Product Grid</h3>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-4">
+        <div class="aiab-row">
+          <div class="aiab-col-4">
             <div style="background: white; color: #2c3e50; padding: 1rem; border-radius: 4px;">
               <strong>Filters</strong>
               <ul style="list-style: none; padding: 0; margin: 0.5rem 0;">
@@ -693,14 +693,14 @@
               </ul>
             </div>
           </div>
-          <div class="col-12">
-            <div class="row">
-              <div class="col-4">Product 1</div>
-              <div class="col-4">Product 2</div>
-              <div class="col-4">Product 3</div>
-              <div class="col-4">Product 4</div>
-              <div class="col-4">Product 5</div>
-              <div class="col-4">Product 6</div>
+          <div class="aiab-col-12">
+            <div class="aiab-row">
+              <div class="aiab-col-4">Product 1</div>
+              <div class="aiab-col-4">Product 2</div>
+              <div class="aiab-col-4">Product 3</div>
+              <div class="aiab-col-4">Product 4</div>
+              <div class="aiab-col-4">Product 5</div>
+              <div class="aiab-col-4">Product 6</div>
             </div>
           </div>
         </div>
@@ -708,28 +708,28 @@
 
       <h3>Blog Layout with Sidebar</h3>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-16">Header Navigation</div>
+        <div class="aiab-row">
+          <div class="aiab-col-16">Header Navigation</div>
         </div>
-        <div class="row">
-          <div class="col-10">
+        <div class="aiab-row">
+          <div class="aiab-col-10">
             <div style="min-height: 150px;">Blog Post Content</div>
           </div>
-          <div class="col-6">
+          <div class="aiab-col-6">
             <div>Recent Posts</div>
             <div style="margin-top: 1rem;">Categories</div>
             <div style="margin-top: 1rem;">Tags</div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-16">Footer</div>
+        <div class="aiab-row">
+          <div class="aiab-col-16">Footer</div>
         </div>
       </div>
 
       <h3>Dashboard Layout</h3>
       <div class="grid-example">
-        <div class="row">
-          <div class="col-3">
+        <div class="aiab-row">
+          <div class="aiab-col-3">
             <div style="min-height: 300px;">
               <strong>Navigation</strong>
               <ul style="list-style: none; padding: 0;">
@@ -740,15 +740,15 @@
               </ul>
             </div>
           </div>
-          <div class="col-13">
-            <div class="row">
-              <div class="col-4">Metric 1</div>
-              <div class="col-4">Metric 2</div>
-              <div class="col-5">Metric 3</div>
+          <div class="aiab-col-13">
+            <div class="aiab-row">
+              <div class="aiab-col-4">Metric 1</div>
+              <div class="aiab-col-4">Metric 2</div>
+              <div class="aiab-col-5">Metric 3</div>
             </div>
-            <div class="row" style="margin-top: 1rem;">
-              <div class="col-8">Chart Area</div>
-              <div class="col-5">Activity Feed</div>
+            <div class="aiab-row" style="margin-top: 1rem;">
+              <div class="aiab-col-8">Chart Area</div>
+              <div class="aiab-col-5">Activity Feed</div>
             </div>
           </div>
         </div>
@@ -771,17 +771,17 @@
         </div>
 
         <div id="gridPlayground" class="grid-example">
-          <div class="row" id="playgroundRow">
-            <div class="col-8">Sample Column 1</div>
-            <div class="col-8">Sample Column 2</div>
+          <div class="aiab-row" id="playgroundRow">
+            <div class="aiab-col-8">Sample Column 1</div>
+            <div class="aiab-col-8">Sample Column 2</div>
           </div>
         </div>
 
         <div style="margin-top: 1rem;">
           <strong>Generated Code:</strong>
-          <pre id="generatedCode"><code>&lt;div class="row"&gt;
-  &lt;div class="col-8"&gt;Sample Column 1&lt;/div&gt;
-  &lt;div class="col-8"&gt;Sample Column 2&lt;/div&gt;
+          <pre id="generatedCode"><code>&lt;div class="aiab-row"&gt;
+  &lt;div class="aiab-col-8"&gt;Sample Column 1&lt;/div&gt;
+  &lt;div class="aiab-col-8"&gt;Sample Column 2&lt;/div&gt;
 &lt;/div&gt;</code></pre>
         </div>
       </div>
@@ -791,10 +791,10 @@
     <section class="doc-section">
       <h2>Best Practices</h2>
 
-      <div class="alert alert-tip">
+      <div class="aiab-alert alert-tip">
         <h4>Do's:</h4>
         <ul>
-          <li>✓ Always wrap columns in a <code>.row</code></li>
+          <li>✓ Always wrap columns in a <code>.aiab-row</code></li>
           <li>✓ Ensure column widths add up to 16 or less</li>
           <li>✓ Use responsive classes for mobile optimization</li>
           <li>✓ Nest grids when needed for complex layouts</li>
@@ -802,7 +802,7 @@
         </ul>
       </div>
 
-      <div class="alert alert-warning">
+      <div class="aiab-alert alert-warning">
         <h4>Don'ts:</h4>
         <ul>
           <li>✗ Don't exceed 16 columns in a row</li>
@@ -829,22 +829,22 @@
         <tbody>
           <tr>
             <td><code>.col-md-6</code></td>
-            <td><code>.col-8</code></td>
+            <td><code>.aiab-col-8</code></td>
             <td>50% width</td>
           </tr>
           <tr>
             <td><code>.col-md-4</code></td>
-            <td><code>.col-5</code></td>
+            <td><code>.aiab-col-5</code></td>
             <td>~33% width</td>
           </tr>
           <tr>
             <td><code>.col-md-3</code></td>
-            <td><code>.col-4</code></td>
+            <td><code>.aiab-col-4</code></td>
             <td>25% width</td>
           </tr>
           <tr>
             <td><code>.col-md-8</code></td>
-            <td><code>.col-11</code></td>
+            <td><code>.aiab-col-11</code></td>
             <td>~66% width</td>
           </tr>
         </tbody>
@@ -922,7 +922,7 @@
       const row = document.getElementById('playgroundRow');
       const columns = row.querySelectorAll('[class*="col-"]');
 
-      let code = '<div class="row">\n';
+      let code = '<div class="aiab-row">\n';
       columns.forEach(col => {
         const classes = col.className;
         const content = col.textContent;
