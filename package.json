@@ -31,7 +31,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
-    "format:check": "biome check . --linter-enabled=false --organize-imports-enabled=false",
+    "format:check": "biome check . --linter-enabled=false --assist-enabled=false",
     "typecheck": "tsc --noEmit",
     "test": "bun test --preload ./test/setup.ts",
     "test:watch": "bun test --watch",
