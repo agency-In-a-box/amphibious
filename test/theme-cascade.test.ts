@@ -17,7 +17,7 @@ describe('Theme Layer Override Tests', () => {
 
       /* Component layer - base button */
       @layer components {
-        .button {
+        .aiab-button {
           padding: 8px 16px;
           background: #e0e0e0;
           color: #333;
@@ -25,7 +25,7 @@ describe('Theme Layer Override Tests', () => {
           border-radius: 4px;
         }
 
-        .card {
+        .aiab-card {
           padding: 16px;
           background: white;
           border: 1px solid #ddd;

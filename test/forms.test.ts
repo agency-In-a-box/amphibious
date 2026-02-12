@@ -14,36 +14,36 @@ describe('Forms Module', () => {
     // Setup DOM structure
     document.body.innerHTML = `
       <form class="form-validate" id="testForm">
-        <div class="form-group">
+        <div class="aiab-form-group">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" required>
           <div class="invalid-feedback"></div>
         </div>
 
-        <div class="form-group">
+        <div class="aiab-form-group">
           <label for="phone">Phone</label>
           <input type="tel" id="phone" name="phone" data-validate="phone">
           <div class="invalid-feedback"></div>
         </div>
 
-        <div class="form-group">
+        <div class="aiab-form-group">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required minlength="8">
           <div class="invalid-feedback"></div>
         </div>
 
-        <div class="form-group">
+        <div class="aiab-form-group">
           <label for="message">Message</label>
           <textarea id="message" name="message" maxlength="100" data-char-counter></textarea>
         </div>
 
-        <div class="form-group">
+        <div class="aiab-form-group">
           <label for="age">Age</label>
           <input type="number" id="age" name="age" min="18" max="120">
           <div class="invalid-feedback"></div>
         </div>
 
-        <div class="form-group">
+        <div class="aiab-form-group">
           <label for="website">Website</label>
           <input type="url" id="website" name="website" pattern="https://.*">
           <div class="invalid-feedback"></div>
