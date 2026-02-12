@@ -179,14 +179,14 @@ class ColorPicker {
             ? `
           <div class="color-inputs">
             <div class="input-tabs">
-              <button type="button" class="tab-btn active" data-format="hex">HEX</button>
+              <button type="button" class="tab-btn aiab-active" data-format="hex">HEX</button>
               <button type="button" class="tab-btn" data-format="rgb">RGB</button>
               <button type="button" class="tab-btn" data-format="hsl">HSL</button>
             </div>
 
             <div class="input-fields">
               <!-- HEX input -->
-              <div class="input-group active" data-format="hex">
+              <div class="input-group aiab-active" data-format="hex">
                 <input type="text" class="hex-input" placeholder="#000000">
               </div>
 

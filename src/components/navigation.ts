@@ -4,6 +4,7 @@
  */
 
 import { initializeIcons } from '../js/icons-lightweight';
+import { setInnerHTML, sanitizeAttribute, escapeHTML } from '../utils/sanitize';
 
 export interface NavigationOptions {
   sticky?: boolean;
@@ -66,8 +67,8 @@ export class AmphibiousNavigation {
       nav.classList.add('amp-nav--transparent');
     }
 
-    nav.innerHTML = `
-      <div class="container">
+    setInnerHTML(nav, `
+      <div class="aiab-container">
         <div class="amp-nav__wrapper">
           <div class="amp-nav__brand">
             <a href="/" class="amp-nav__logo">
@@ -172,7 +173,7 @@ export class AmphibiousNavigation {
     `;
 
     // Replace existing element content
-    this.element.innerHTML = '';
+    setInnerHTML(this.element, '');
     this.element.appendChild(nav);
   }
 
@@ -393,7 +394,7 @@ export class AmphibiousNavigation {
     if (!resultsContainer) return;
 
     if (query.length < 2) {
-      resultsContainer.innerHTML = '';
+      setInnerHTML(resultsContainer, '');
       return;
     }
 
@@ -406,13 +407,13 @@ export class AmphibiousNavigation {
     ].filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
 
     if (mockResults.length === 0) {
-      resultsContainer.innerHTML = `
+      setInnerHTML(resultsContainer, `
         <div class="amp-nav__search-empty">
-          No results found for "${query}"
+          No results found for "${escapeHTML(query)}"
         </div>
       `;
     } else {
-      resultsContainer.innerHTML = mockResults
+      setInnerHTML(resultsContainer, mockResults
         .map(
           (result) => `
         <a href="${result.path}" class="amp-nav__search-result">
@@ -432,7 +433,7 @@ export class AmphibiousNavigation {
   }
 
   public destroy(): void {
-    this.element.innerHTML = '';
+    setInnerHTML(this.element, '');
   }
 }
 

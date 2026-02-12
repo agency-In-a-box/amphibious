@@ -18,7 +18,7 @@ export class Navigation {
   private isOpen = false;
 
   constructor() {
-    this.navElement = document.querySelector('.nav, .navigation, nav');
+    this.navElement = document.querySelector('.aiab-nav, .navigation, nav');
     this.toggleButton = document.querySelector('#nav_toggle, .nav__toggle, .nav-toggle');
   }
 
@@ -162,7 +162,7 @@ export class Navigation {
    * Setup dropdown menus
    */
   private setupDropdowns(): void {
-    const dropdowns = document.querySelectorAll('.nav__dropdown, .dropdown');
+    const dropdowns = document.querySelectorAll('.nav__dropdown, .aiab-dropdown');
 
     dropdowns.forEach((dropdown) => {
       const trigger = dropdown.querySelector('a, button');

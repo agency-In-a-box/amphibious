@@ -7,7 +7,7 @@ export class Tabs {
   private containers: NodeListOf<HTMLElement>;
 
   constructor() {
-    this.containers = document.querySelectorAll('.tabs, [data-tabs]');
+    this.containers = document.querySelectorAll('.aiab-tabs, [data-tabs]');
   }
 
   /**

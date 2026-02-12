@@ -19,7 +19,7 @@ if (!existsSync(BACKUP_DIR)) {
 // Navigation HTML to inject
 const NAVIGATION_HTML = `  <!-- Site Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
+    <div class="aiab-container">
       <ul class="horizontal branded">
         <li><a href="/" class="site-logo">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waves">
@@ -112,7 +112,7 @@ const NAVIGATION_STYLES = `    /* Navigation styles */
     }
 
     .horizontal.branded > li:hover > a,
-    .horizontal.branded > li.active > a {
+    .horizontal.branded > li.aiab-active > a {
       background-color: #667eea;
       color: white;
       border-bottom-color: #4c63d2;
@@ -127,7 +127,7 @@ const NAVIGATION_STYLES = `    /* Navigation styles */
       gap: 0.5rem;
     }
 
-    .horizontal.branded > li.active > a.site-logo {
+    .horizontal.branded > li.aiab-active > a.site-logo {
       color: white !important;
     }
 
@@ -220,13 +220,13 @@ FILES_TO_PROCESS.forEach((filename) => {
   // Determine active state
   let navHtml = NAVIGATION_HTML;
   if (filename === 'foundation.html') {
-    navHtml = navHtml.replace('{{FOUNDATION_ACTIVE}}', ' class="active"');
+    navHtml = navHtml.replace('{{FOUNDATION_ACTIVE}}', ' class="aiab-active"');
   } else if (filename === 'form.html') {
-    navHtml = navHtml.replace('{{FORM_ACTIVE}}', ' class="active"');
+    navHtml = navHtml.replace('{{FORM_ACTIVE}}', ' class="aiab-active"');
   } else if (filename === 'function.html') {
-    navHtml = navHtml.replace('{{FUNCTION_ACTIVE}}', ' class="active"');
+    navHtml = navHtml.replace('{{FUNCTION_ACTIVE}}', ' class="aiab-active"');
   } else if (filename === 'features.html') {
-    navHtml = navHtml.replace('{{FEATURES_ACTIVE}}', ' class="active"');
+    navHtml = navHtml.replace('{{FEATURES_ACTIVE}}', ' class="aiab-active"');
   }
 
   // Clean up placeholders
@@ -247,7 +247,7 @@ FILES_TO_PROCESS.forEach((filename) => {
 
   // Fix semantic structure - wrap content in proper sections
   // Look for main content areas and ensure they use semantic tags
-  content = content.replace(/<div class="container">/g, '<div class="container">');
+  content = content.replace(/<div class="aiab-container">/g, '<div class="aiab-container">');
 
   // If there's no main tag, add one
   if (!content.includes('<main')) {
