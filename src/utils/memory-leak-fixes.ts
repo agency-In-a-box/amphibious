@@ -21,7 +21,7 @@ export abstract class ComponentWithCleanup {
     element: HTMLElement | Window | Document,
     type: string,
     handler: EventListener,
-    options?: AddEventListenerOptions
+    options?: AddEventListenerOptions,
   ): void {
     element.addEventListener(type, handler, options);
     this.eventListeners.push({ element, type, handler });
@@ -46,7 +46,7 @@ export function createCleanupableEventListener(
   element: HTMLElement | Window | Document,
   type: string,
   handler: EventListener,
-  options?: AddEventListenerOptions
+  options?: AddEventListenerOptions,
 ): () => void {
   element.addEventListener(type, handler, options);
 
@@ -66,11 +66,11 @@ export class EventListenerManager {
     element: HTMLElement | Window | Document,
     type: string,
     handler: EventListener,
-    options?: AddEventListenerOptions
+    options?: AddEventListenerOptions,
   ): void {
     const mergedOptions = {
       ...options,
-      signal: this.controller.signal
+      signal: this.controller.signal,
     };
 
     element.addEventListener(type, handler, mergedOptions);
@@ -170,12 +170,12 @@ export class ManualCleanupComponent {
 
     this.cleanupFunctions.push(
       () => window.removeEventListener('resize', resizeHandler),
-      () => this.element.removeEventListener('click', clickHandler)
+      () => this.element.removeEventListener('click', clickHandler),
     );
   }
 
   public destroy(): void {
-    this.cleanupFunctions.forEach(cleanup => cleanup());
+    this.cleanupFunctions.forEach((cleanup) => cleanup());
     this.cleanupFunctions = [];
   }
 }
@@ -185,7 +185,7 @@ export class ManualCleanupComponent {
  */
 
 // ❌ WRONG - No cleanup
-class BadComponent {
+class _BadComponent {
   constructor(element: HTMLElement) {
     // Memory leak: these listeners are never removed
     window.addEventListener('scroll', () => {
@@ -201,7 +201,7 @@ class BadComponent {
 }
 
 // ❌ WRONG - Timer without cleanup
-class BadTimerComponent {
+class _BadTimerComponent {
   constructor() {
     // Memory leak: interval never cleared
     setInterval(() => {

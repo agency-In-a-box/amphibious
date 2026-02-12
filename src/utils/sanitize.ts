@@ -3,31 +3,102 @@
  * Prevents XSS attacks by sanitizing HTML content before rendering
  */
 
-import DOMPurify from 'dompurify';
+import DOMPurify, { type Config } from 'dompurify';
 
 // Configure DOMPurify with safe defaults
-const purifyConfig: DOMPurify.Config = {
+const purifyConfig: Config = {
   // Allow common HTML tags
   ALLOWED_TAGS: [
-    'div', 'span', 'p', 'a', 'button', 'img', 'svg', 'path',
-    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-    'ul', 'ol', 'li', 'nav', 'section', 'header', 'footer',
-    'form', 'input', 'label', 'select', 'option', 'textarea',
-    'i', 'em', 'strong', 'b', 'u', 'br', 'hr',
-    'table', 'tbody', 'thead', 'tr', 'td', 'th',
-    'article', 'aside', 'main', 'figure', 'figcaption',
-    'blockquote', 'pre', 'code', 'time', 'mark'
+    'div',
+    'span',
+    'p',
+    'a',
+    'button',
+    'img',
+    'svg',
+    'path',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'ul',
+    'ol',
+    'li',
+    'nav',
+    'section',
+    'header',
+    'footer',
+    'form',
+    'input',
+    'label',
+    'select',
+    'option',
+    'textarea',
+    'i',
+    'em',
+    'strong',
+    'b',
+    'u',
+    'br',
+    'hr',
+    'table',
+    'tbody',
+    'thead',
+    'tr',
+    'td',
+    'th',
+    'article',
+    'aside',
+    'main',
+    'figure',
+    'figcaption',
+    'blockquote',
+    'pre',
+    'code',
+    'time',
+    'mark',
   ],
 
   // Allow common attributes
   ALLOWED_ATTR: [
-    'class', 'id', 'href', 'src', 'alt', 'title', 'role',
-    'aria-label', 'aria-hidden', 'aria-expanded', 'aria-controls',
-    'data-lucide', 'data-theme', 'data-bs-toggle', 'data-bs-target',
-    'type', 'name', 'value', 'placeholder', 'required', 'disabled',
-    'for', 'action', 'method', 'target', 'rel', 'style',
-    'width', 'height', 'viewBox', 'fill', 'stroke', 'd',
-    'colspan', 'rowspan', 'datetime'
+    'class',
+    'id',
+    'href',
+    'src',
+    'alt',
+    'title',
+    'role',
+    'aria-label',
+    'aria-hidden',
+    'aria-expanded',
+    'aria-controls',
+    'data-lucide',
+    'data-theme',
+    'data-bs-toggle',
+    'data-bs-target',
+    'type',
+    'name',
+    'value',
+    'placeholder',
+    'required',
+    'disabled',
+    'for',
+    'action',
+    'method',
+    'target',
+    'rel',
+    'style',
+    'width',
+    'height',
+    'viewBox',
+    'fill',
+    'stroke',
+    'd',
+    'colspan',
+    'rowspan',
+    'datetime',
   ],
 
   // Allow data: URIs for images (base64 encoded)
@@ -41,7 +112,7 @@ const purifyConfig: DOMPurify.Config = {
 
   // Don't allow script tags or event handlers
   FORBID_TAGS: ['script', 'style'],
-  FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onfocus', 'onblur']
+  FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onfocus', 'onblur'],
 };
 
 /**
@@ -50,9 +121,9 @@ const purifyConfig: DOMPurify.Config = {
  * @param config - Optional custom DOMPurify configuration
  * @returns Sanitized HTML string safe for innerHTML
  */
-export function sanitizeHTML(dirty: string, config?: Partial<DOMPurify.Config>): string {
+export function sanitizeHTML(dirty: string, config?: Partial<Config>): string {
   const finalConfig = config ? { ...purifyConfig, ...config } : purifyConfig;
-  return DOMPurify.sanitize(dirty, finalConfig);
+  return DOMPurify.sanitize(dirty, finalConfig) as unknown as string;
 }
 
 /**
@@ -62,9 +133,9 @@ export function sanitizeHTML(dirty: string, config?: Partial<DOMPurify.Config>):
  * @param config - Optional custom DOMPurify configuration
  */
 export function setInnerHTML(
-  element: HTMLElement,
+  element: Element | HTMLElement,
   html: string,
-  config?: Partial<DOMPurify.Config>
+  config?: Partial<Config>,
 ): void {
   element.innerHTML = sanitizeHTML(html, config);
 }
@@ -75,10 +146,7 @@ export function setInnerHTML(
  * @param config - Optional custom DOMPurify configuration
  * @returns DocumentFragment with sanitized content
  */
-export function createSafeElement(
-  html: string,
-  config?: Partial<DOMPurify.Config>
-): DocumentFragment {
+export function createSafeElement(html: string, config?: Partial<Config>): DocumentFragment {
   const template = document.createElement('template');
   template.innerHTML = sanitizeHTML(html, config);
   return template.content;

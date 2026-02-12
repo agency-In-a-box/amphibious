@@ -164,7 +164,9 @@ async function main() {
   }
 
   // Print summary
-  results.sort((a, b) => b.removals - a.removals).forEach(({ file, removals }) => {});
+  results
+    .sort((a, b) => b.removals - a.removals)
+    .forEach(({ file: _file, removals: _removals }) => {});
 
   // Save removal log
   const log = {

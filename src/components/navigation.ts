@@ -4,7 +4,7 @@
  */
 
 import { initializeIcons } from '../js/icons-lightweight';
-import { setInnerHTML, sanitizeAttribute, escapeHTML } from '../utils/sanitize';
+import { escapeHTML, setInnerHTML } from '../utils/sanitize';
 
 export interface NavigationOptions {
   sticky?: boolean;
@@ -67,7 +67,9 @@ export class AmphibiousNavigation {
       nav.classList.add('amp-nav--transparent');
     }
 
-    setInnerHTML(nav, `
+    setInnerHTML(
+      nav,
+      `
       <div class="aiab-container">
         <div class="amp-nav__wrapper">
           <div class="amp-nav__brand">
@@ -170,7 +172,8 @@ export class AmphibiousNavigation {
       `
           : ''
       }
-    `;
+    `,
+    );
 
     // Replace existing element content
     setInnerHTML(this.element, '');
@@ -407,22 +410,28 @@ export class AmphibiousNavigation {
     ].filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
 
     if (mockResults.length === 0) {
-      setInnerHTML(resultsContainer, `
+      setInnerHTML(
+        resultsContainer,
+        `
         <div class="amp-nav__search-empty">
           No results found for "${escapeHTML(query)}"
         </div>
-      `;
+      `,
+      );
     } else {
-      setInnerHTML(resultsContainer, mockResults
-        .map(
-          (result) => `
+      setInnerHTML(
+        resultsContainer,
+        mockResults
+          .map(
+            (result) => `
         <a href="${result.path}" class="amp-nav__search-result">
           <span class="amp-nav__search-result-title">${result.title}</span>
           <span class="amp-nav__search-result-category">${result.category}</span>
         </a>
       `,
-        )
-        .join('');
+          )
+          .join(''),
+      );
     }
   }
 
