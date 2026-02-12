@@ -276,7 +276,7 @@ export class Forms {
     field.classList.add('is-invalid');
 
     // Find or create error message element
-    const formGroup = field.closest('.form-group');
+    const formGroup = field.closest('.aiab-form-group');
     let errorElement = formGroup?.querySelector('.invalid-feedback') as HTMLElement;
 
     if (!errorElement) {
@@ -304,7 +304,7 @@ export class Forms {
     field.classList.add('is-valid');
 
     // Hide error message
-    const formGroup = field.closest('.form-group');
+    const formGroup = field.closest('.aiab-form-group');
     const errorElement = formGroup?.querySelector('.invalid-feedback') as HTMLElement;
     if (errorElement) {
       errorElement.style.display = 'none';
@@ -326,7 +326,7 @@ export class Forms {
   private clearFieldError(field: HTMLInputElement): void {
     field.classList.remove('is-invalid', 'is-valid');
 
-    const formGroup = field.closest('.form-group');
+    const formGroup = field.closest('.aiab-form-group');
     const errorElement = formGroup?.querySelector('.invalid-feedback') as HTMLElement;
     const successElement = formGroup?.querySelector('.valid-feedback') as HTMLElement;
 

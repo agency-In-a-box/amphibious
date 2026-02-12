@@ -771,10 +771,10 @@ class FormBuilder {
     if (toolbar) {
       const undoBtn = toolbar.querySelector('.toolbar-btn[title="Undo"]');
       const redoBtn = toolbar.querySelector('.toolbar-btn[title="Redo"]');
-      const clearBtn = toolbar.querySelector('.toolbar-btn:not(.primary)');
+      const clearBtn = toolbar.querySelector('.toolbar-btn:not(.aiab-primary)');
       const importBtn = toolbar.querySelectorAll('.toolbar-btn')[3];
       const exportBtn = toolbar.querySelectorAll('.toolbar-btn')[4];
-      const saveBtn = toolbar.querySelector('.toolbar-btn.primary');
+      const saveBtn = toolbar.querySelector('.toolbar-btn.aiab-primary');
 
       if (undoBtn) {
         const undoHandler = () => this.undo();
@@ -1209,7 +1209,7 @@ class FormBuilder {
 
       case 'switch':
         return `<label class="switch-label">
-          <span class="switch">
+          <span class="aiab-switch">
             <span class="switch-slider"></span>
           </span>
           <span>${field.label}</span>

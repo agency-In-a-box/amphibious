@@ -18,19 +18,19 @@ const GRID_CSS = `/* ===========================================================
 /* Container
    ========================================================================== */
 
-.container {
+.aiab-container {
   width: min(960px, 96%);
   margin: 0 auto;
   padding: 0;
   position: relative;
 }
 
-.container.fluid {
+.aiab-container.fluid {
   width: 96%;
   max-width: none;
 }
 
-.container.fluid.bleed {
+.aiab-container.fluid.bleed {
   width: 100%;
   padding: 0;
 }
@@ -38,7 +38,7 @@ const GRID_CSS = `/* ===========================================================
 /* Row - Flexbox Container
    ========================================================================== */
 
-.row {
+.aiab-row {
   display: flex;
   flex-wrap: wrap;
   margin-left: -10px;
@@ -48,8 +48,8 @@ const GRID_CSS = `/* ===========================================================
 /* Base Column Styles
    ========================================================================== */
 
-.row > [class*="col"],
-.row > [class*="col-"] {
+.aiab-row > [class*="col"],
+.aiab-row > [class*="col-"] {
   box-sizing: border-box;
   padding-left: 10px;
   padding-right: 10px;
@@ -61,57 +61,57 @@ const GRID_CSS = `/* ===========================================================
    Each column is 6.25% (100% / 16)
    ========================================================================== */
 
-/* Modern naming: .col-1 through .col-16 */
-.col-1,
-.container .one.col  { width: 6.25%; }
+/* Modern naming: .aiab-col-1 through .aiab-col-16 */
+.aiab-col-1,
+.aiab-container .one.col  { width: 6.25%; }
 
-.col-2,
-.container .two.col  { width: 12.5%; }
+.aiab-col-2,
+.aiab-container .two.col  { width: 12.5%; }
 
-.col-3,
-.container .three.col  { width: 18.75%; }
+.aiab-col-3,
+.aiab-container .three.col  { width: 18.75%; }
 
-.col-4,
-.container .four.col,
-.container .one-quarter.col  { width: 25%; }
+.aiab-col-4,
+.aiab-container .four.col,
+.aiab-container .one-quarter.col  { width: 25%; }
 
-.col-5,
-.container .five.col  { width: 31.25%; }
+.aiab-col-5,
+.aiab-container .five.col  { width: 31.25%; }
 
-.col-6,
-.container .six.col  { width: 37.5%; }
+.aiab-col-6,
+.aiab-container .six.col  { width: 37.5%; }
 
-.col-7,
-.container .seven.col  { width: 43.75%; }
+.aiab-col-7,
+.aiab-container .seven.col  { width: 43.75%; }
 
-.col-8,
-.container .eight.col,
-.container .half.col  { width: 50%; }
+.aiab-col-8,
+.aiab-container .eight.col,
+.aiab-container .half.col  { width: 50%; }
 
-.col-9,
-.container .nine.col  { width: 56.25%; }
+.aiab-col-9,
+.aiab-container .nine.col  { width: 56.25%; }
 
-.col-10,
-.container .ten.col  { width: 62.5%; }
+.aiab-col-10,
+.aiab-container .ten.col  { width: 62.5%; }
 
-.col-11,
-.container .eleven.col  { width: 68.75%; }
+.aiab-col-11,
+.aiab-container .eleven.col  { width: 68.75%; }
 
-.col-12,
-.container .twelve.col,
-.container .three-quarters.col  { width: 75%; }
+.aiab-col-12,
+.aiab-container .twelve.col,
+.aiab-container .three-quarters.col  { width: 75%; }
 
-.col-13,
-.container .thirteen.col  { width: 81.25%; }
+.aiab-col-13,
+.aiab-container .thirteen.col  { width: 81.25%; }
 
-.col-14,
-.container .fourteen.col  { width: 87.5%; }
+.aiab-col-14,
+.aiab-container .fourteen.col  { width: 87.5%; }
 
-.col-15,
-.container .fifteen.col  { width: 93.75%; }
+.aiab-col-15,
+.aiab-container .fifteen.col  { width: 93.75%; }
 
-.col-16,
-.container .sixteen.col  { width: 100%; }
+.aiab-col-16,
+.aiab-container .sixteen.col  { width: 100%; }
 
 /* Fractional Columns (Common Patterns)
    ========================================================================== */
@@ -130,37 +130,37 @@ const GRID_CSS = `/* ===========================================================
    Creates left margin to push columns right
    ========================================================================== */
 
-.push-1,
+.aiab-push-1,
 .push_one,
-.offset-1 { margin-left: calc(6.25% + 10px); }
+.aiab-offset-1 { margin-left: calc(6.25% + 10px); }
 
-.push-2,
+.aiab-push-2,
 .push_two,
-.offset-2 { margin-left: calc(12.5% + 10px); }
+.aiab-offset-2 { margin-left: calc(12.5% + 10px); }
 
-.push-3,
+.aiab-push-3,
 .push_three,
-.offset-3 { margin-left: calc(18.75% + 10px); }
+.aiab-offset-3 { margin-left: calc(18.75% + 10px); }
 
-.push-4,
+.aiab-push-4,
 .push_four,
-.offset-4 { margin-left: calc(25% + 10px); }
+.aiab-offset-4 { margin-left: calc(25% + 10px); }
 
-.push-5,
+.aiab-push-5,
 .push_five,
-.offset-5 { margin-left: calc(31.25% + 10px); }
+.aiab-offset-5 { margin-left: calc(31.25% + 10px); }
 
-.push-6,
+.aiab-push-6,
 .push_six,
-.offset-6 { margin-left: calc(37.5% + 10px); }
+.aiab-offset-6 { margin-left: calc(37.5% + 10px); }
 
-.push-7,
+.aiab-push-7,
 .push_seven,
-.offset-7 { margin-left: calc(43.75% + 10px); }
+.aiab-offset-7 { margin-left: calc(43.75% + 10px); }
 
-.push-8,
+.aiab-push-8,
 .push_eight,
-.offset-8 { margin-left: calc(50% + 10px); }
+.aiab-offset-8 { margin-left: calc(50% + 10px); }
 
 /* Utility Classes
    ========================================================================== */
@@ -189,42 +189,42 @@ const GRID_CSS = `/* ===========================================================
 /* Vertical Alignment Options
    ========================================================================== */
 
-.row.align-top {
+.aiab-row.align-top {
   align-items: flex-start;
 }
 
-.row.align-middle {
+.aiab-row.align-middle {
   align-items: center;
 }
 
-.row.align-bottom {
+.aiab-row.align-bottom {
   align-items: flex-end;
 }
 
-.row.align-stretch {
+.aiab-row.align-stretch {
   align-items: stretch;
 }
 
 /* Horizontal Alignment Options
    ========================================================================== */
 
-.row.justify-start {
+.aiab-row.justify-start {
   justify-content: flex-start;
 }
 
-.row.justify-center {
+.aiab-row.justify-center {
   justify-content: center;
 }
 
-.row.justify-end {
+.aiab-row.justify-end {
   justify-content: flex-end;
 }
 
-.row.justify-between {
+.aiab-row.justify-between {
   justify-content: space-between;
 }
 
-.row.justify-around {
+.aiab-row.justify-around {
   justify-content: space-around;
 }
 
@@ -242,12 +242,12 @@ const GRID_CSS = `/* ===========================================================
 /* No Gutters Option
    ========================================================================== */
 
-.row.no-gutters {
+.aiab-row.no-gutters {
   margin-left: 0;
   margin-right: 0;
 }
 
-.row.no-gutters > [class*="col"] {
+.aiab-row.no-gutters > [class*="col"] {
   padding-left: 0;
   padding-right: 0;
 }
@@ -257,26 +257,26 @@ const GRID_CSS = `/* ===========================================================
 
 /* Tablet (768px to 960px) */
 @media (max-width: 960px) and (min-width: 769px) {
-  .container {
+  .aiab-container {
     width: 96%;
   }
   
   /* Optional: Keep layout on tablet */
-  .tablet-keep-cols .row > [class*="col"] {
+  .tablet-keep-cols .aiab-row > [class*="col"] {
     /* Columns maintain their width on tablet */
   }
 }
 
 /* Mobile (max 768px) - Stack all columns */
 @media (max-width: 768px) {
-  .row > [class*="col"],
-  .row > [class*="col-"] {
+  .aiab-row > [class*="col"],
+  .aiab-row > [class*="col-"] {
     width: 100% !important;
     margin-bottom: 1rem;
     margin-left: 0 !important; /* Reset push/offset */
   }
   
-  .row.mobile-keep-cols > [class*="col"] {
+  .aiab-row.mobile-keep-cols > [class*="col"] {
     width: auto !important;
     flex: 1 1 0;
   }
@@ -297,17 +297,17 @@ const GRID_CSS = `/* ===========================================================
 
 /* Extra Small Mobile (max 480px) */
 @media (max-width: 480px) {
-  .container {
+  .aiab-container {
     width: 100%;
     padding: 0 10px;
   }
   
-  .row {
+  .aiab-row {
     margin-left: -5px;
     margin-right: -5px;
   }
   
-  .row > [class*="col"] {
+  .aiab-row > [class*="col"] {
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -317,11 +317,11 @@ const GRID_CSS = `/* ===========================================================
    ========================================================================== */
 
 @media print {
-  .container {
+  .aiab-container {
     width: 100%;
   }
   
-  .row > [class*="col"] {
+  .aiab-row > [class*="col"] {
     page-break-inside: avoid;
   }
 }
@@ -331,19 +331,19 @@ const GRID_CSS = `/* ===========================================================
    ========================================================================== */
 
 /*
-.row.legacy {
+.aiab-row.legacy {
   display: block;
   margin-left: 0;
   margin-right: 0;
 }
 
-.row.legacy:after {
+.aiab-row.legacy:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.row.legacy > [class*="col"] {
+.aiab-row.legacy > [class*="col"] {
   float: left;
   display: inline;
 }

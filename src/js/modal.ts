@@ -3,6 +3,8 @@
  * Accessible modal dialogs with focus management and animations
  */
 
+import { setInnerHTML } from '../utils/sanitize';
+
 export interface ModalOptions {
   size?: 'sm' | 'default' | 'lg' | 'xl' | 'full';
   variant?: 'default' | 'alert' | 'image' | 'drawer-left' | 'drawer-right' | 'bottom-sheet';
@@ -379,9 +381,9 @@ export class Modal {
 
     if (targetElement) {
       if (typeof content === 'string') {
-        targetElement.innerHTML = content;
+        setInnerHTML(targetElement, content);
       } else {
-        targetElement.innerHTML = '';
+        setInnerHTML(targetElement, '');
         targetElement.appendChild(content);
       }
     }
@@ -520,13 +522,13 @@ export class ModalManager {
           <div class="modal__body">
             <div class="modal__icon">${ModalManager.getIcon(type)}</div>
             <p>${message}</p>
-            <button class="btn btn--primary" data-modal-close>OK</button>
+            <button class="aiab-btn btn--primary" data-modal-close>OK</button>
           </div>
         </div>
       `;
 
       const modalElement = document.createElement('div');
-      modalElement.innerHTML = modalHtml;
+      setInnerHTML(modalElement, modalHtml);
       document.body.appendChild(modalElement);
 
       const modal = new Modal(modalElement, {
@@ -558,14 +560,14 @@ export class ModalManager {
             <p>${message}</p>
           </div>
           <div class="modal__footer">
-            <button class="btn btn--secondary" data-modal-cancel>${cancelText}</button>
-            <button class="btn btn--primary" data-modal-confirm>${confirmText}</button>
+            <button class="aiab-btn btn--secondary" data-modal-cancel>${cancelText}</button>
+            <button class="aiab-btn btn--primary" data-modal-confirm>${confirmText}</button>
           </div>
         </div>
       `;
 
       const modalElement = document.createElement('div');
-      modalElement.innerHTML = modalHtml;
+      setInnerHTML(modalElement, modalHtml);
       document.body.appendChild(modalElement);
 
       const modal = new Modal(modalElement, {

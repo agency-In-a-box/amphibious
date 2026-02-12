@@ -4,6 +4,7 @@
  */
 
 import { initializeIcons } from '../js/icons-lightweight';
+import { setInnerHTML, escapeHTML } from '../utils/sanitize';
 
 export interface FooterOptions {
   newsletter?: boolean;
@@ -21,6 +22,11 @@ export class AmphibiousFooter {
   private element: HTMLElement;
   private options: FooterOptions;
   private backToTopVisible = false;
+  private eventListeners: Array<{
+    element: HTMLElement | Window | Document;
+    type: string;
+    handler: EventListener;
+  }> = [];
 
   constructor(selector: string | HTMLElement, options: FooterOptions = {}) {
     this.element =
@@ -64,12 +70,12 @@ export class AmphibiousFooter {
     footer.className = 'amp-footer';
     footer.setAttribute('role', 'contentinfo');
 
-    footer.innerHTML = `
+    setInnerHTML(footer, `
       <div class="amp-footer__main">
-        <div class="container">
-          <div class="row">
+        <div class="aiab-container">
+          <div class="aiab-row">
             <!-- Product Column -->
-            <div class="col-4 col-tablet-8 col-mobile-16">
+            <div class="aiab-col-4 aiab-col-tablet-8 aiab-col-mobile-16">
               <div class="amp-footer__section">
                 <h4 class="amp-footer__title">Product</h4>
                 <ul class="amp-footer__links">
@@ -84,7 +90,7 @@ export class AmphibiousFooter {
             </div>
 
             <!-- Resources Column -->
-            <div class="col-4 col-tablet-8 col-mobile-16">
+            <div class="aiab-col-4 aiab-col-tablet-8 aiab-col-mobile-16">
               <div class="amp-footer__section">
                 <h4 class="amp-footer__title">Resources</h4>
                 <ul class="amp-footer__links">
@@ -99,7 +105,7 @@ export class AmphibiousFooter {
             </div>
 
             <!-- Community Column -->
-            <div class="col-4 col-tablet-8 col-mobile-16">
+            <div class="aiab-col-4 aiab-col-tablet-8 aiab-col-mobile-16">
               <div class="amp-footer__section">
                 <h4 class="amp-footer__title">Community</h4>
                 <ul class="amp-footer__links">
@@ -133,7 +139,7 @@ export class AmphibiousFooter {
             </div>
 
             <!-- Newsletter Column -->
-            <div class="col-4 col-tablet-8 col-mobile-16">
+            <div class="aiab-col-4 aiab-col-tablet-8 aiab-col-mobile-16">
               <div class="amp-footer__section">
                 ${this.options.newsletter ? this.renderNewsletter() : this.renderCompany()}
               </div>
@@ -145,7 +151,7 @@ export class AmphibiousFooter {
       </div>
 
       <div class="amp-footer__bottom">
-        <div class="container">
+        <div class="aiab-container">
           <div class="amp-footer__bottom-content">
             <div class="amp-footer__copyright">
               <p>© ${this.options.currentYear} ${this.options.companyName}. All rights reserved.</p>
@@ -172,7 +178,7 @@ export class AmphibiousFooter {
     `;
 
     // Replace existing element content
-    this.element.innerHTML = '';
+    setInnerHTML(this.element, '');
     this.element.appendChild(footer);
   }
 
@@ -181,8 +187,8 @@ export class AmphibiousFooter {
     footer.className = 'amp-footer amp-footer--minimal';
     footer.setAttribute('role', 'contentinfo');
 
-    footer.innerHTML = `
-      <div class="container">
+    setInnerHTML(footer, `
+      <div class="aiab-container">
         <div class="amp-footer__minimal-content">
           <div class="amp-footer__brand">
             <a href="/" class="amp-footer__logo">
@@ -206,7 +212,7 @@ export class AmphibiousFooter {
     `;
 
     // Replace existing element content
-    this.element.innerHTML = '';
+    setInnerHTML(this.element, '');
     this.element.appendChild(footer);
   }
 
@@ -243,8 +249,8 @@ export class AmphibiousFooter {
 
     return `
       <div class="amp-footer__newsletter-row">
-        <div class="row">
-          <div class="col-16">
+        <div class="aiab-row">
+          <div class="aiab-col-16">
             <div class="amp-footer__newsletter-horizontal">
               <div class="amp-footer__newsletter-content">
                 <h3>Subscribe to our newsletter</h3>
@@ -410,7 +416,7 @@ export class AmphibiousFooter {
       const forms = this.element.querySelectorAll('[id^="newsletterForm"]');
       forms.forEach((form) => {
         const originalContent = form.innerHTML;
-        form.innerHTML = `
+        setInnerHTML(form, `
           <div class="amp-footer__newsletter-success">
             <i data-lucide="check-circle" class="icon--success"></i>
             <p>Thank you for subscribing!</p>
@@ -419,7 +425,7 @@ export class AmphibiousFooter {
 
         // Reset after 3 seconds
         setTimeout(() => {
-          form.innerHTML = originalContent;
+          setInnerHTML(form, originalContent);
           this.initializeIcons();
         }, 3000);
       });
@@ -446,7 +452,7 @@ export class AmphibiousFooter {
   }
 
   public destroy(): void {
-    this.element.innerHTML = '';
+    setInnerHTML(this.element, '');
   }
 }
 

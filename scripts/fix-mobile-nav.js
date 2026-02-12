@@ -52,7 +52,7 @@ function fixFile(filename) {
     return false;
   }
 
-  // Add mobile toggle button after <div class="container"> in nav
+  // Add mobile toggle button after <div class="aiab-container"> in nav
   const navPattern =
     /<nav[^>]*class="[^"]*site-nav[^"]*"[^>]*>[\s\S]*?<div[^>]*class="[^"]*container[^"]*"[^>]*>/;
   if (navPattern.test(content)) {

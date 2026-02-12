@@ -190,7 +190,7 @@ class Dropdown {
       }
     });
 
-    this.filteredItems = this.itemsContainer.querySelectorAll('.dropdown-item:not(.disabled)');
+    this.filteredItems = this.itemsContainer.querySelectorAll('.dropdown-item:not(.aiab-disabled)');
   }
 
   bindEvents() {
