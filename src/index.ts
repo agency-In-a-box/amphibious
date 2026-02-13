@@ -9,6 +9,9 @@ import './css/main.css';
 // Navigation component and JavaScript
 import './js/navigation.js';
 
+// Dark mode toggle
+import './js/dark-mode-toggle.js';
+
 // Export version and initialization
 export const VERSION = '2.0.0';
 
@@ -32,11 +35,8 @@ export function init() {
     document.documentElement.classList.add('reduced-motion');
   }
 
-  // Check for dark mode preference
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (prefersDark) {
-    document.documentElement.classList.add('dark-mode');
-  }
+  // Dark mode is handled by dark-mode-toggle.js via data-theme attribute
+  // and @media (prefers-color-scheme: dark) in CSS
 
   console.info(`Amphibious ${VERSION} initialized`);
 }

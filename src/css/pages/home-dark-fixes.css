@@ -234,10 +234,7 @@
       color: var(--apple-orange-500, #ff9500);
     }
 
-    /* Ensure all text is readable - fallback */
-    body * {
-      color: inherit;
-    }
+    /* Text readability handled by CSS custom properties */
 
     /* Specific white text fixes */
     [style*="color: white"],
@@ -485,9 +482,7 @@
     color: var(--apple-orange-500, #ff9500);
   }
 
-  body * {
-    color: inherit;
-  }
+  /* Text readability handled by CSS custom properties */
 
   [style*="color: white"],
   [style*="color:#fff"],
