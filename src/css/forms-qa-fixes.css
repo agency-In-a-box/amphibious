@@ -289,26 +289,8 @@ h4 {
   margin-bottom: 12px;
 }
 
-/* Ensure Pantone 144 is used consistently */
-:root {
-  --color-primary: #ed8b00; /* Pantone 144 */
-  --color-primary-hover: #d67d00; /* 8% darker */
-  --color-primary-active: #bf7000; /* 15% darker */
-}
-
-/* Motion timing per SOP */
-* {
-  transition-duration: 200ms; /* Micro-interactions */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Ensure 4px grid adherence */
-* {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
+/* Note: --color-primary (#ed8b00) and --color-primary-hover are defined in design-tokens.css
+   Do not redefine here to maintain single source of truth */
 
 .mt {
   margin-top: 16px;
@@ -323,16 +305,7 @@ h4 {
   padding-bottom: 16px;
 }
 
-/* Focus states per SOP */
-:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Dark mode support placeholder */
-@media (prefers-color-scheme: dark) {
-  /* Intentionally left for future dark mode implementation */
-}
+/* Focus states handled by dark-mode.css and contrast-fixes.css */
 
 /* Responsive improvements */
 @media (max-width: 768px) {

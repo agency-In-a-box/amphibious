@@ -1,28 +1,16 @@
 /**
- * Comprehensive Dark Mode Fixes for Homepage
- * Fixes all contrast, visibility, and accessibility issues
+ * Homepage Dark Mode Fixes
+ * Page-specific component overrides for elements with hardcoded colors.
+ * General dark mode variables and base element colors are handled by dark-mode.css.
  */
 
-/* ==========================================================================
-   Key Features Section - Fix invisible text
-   ========================================================================== */
-
+/* System preference dark mode */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    /* Hero Stats */
-    .hero .stats .stat-value {
-      color: #ffffff;
-    }
-
-    .hero .stats .stat-label {
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    /* Stats Grid Cards */
+    /* Stats grid cards — hardcoded backgrounds in home.css */
     .stats-grid .stat-card {
       background: var(--color-surface-elevated, #2c2c2e);
       border: 1px solid var(--color-border, #3a3a3c);
-      color: var(--color-text, #ffffff);
     }
 
     .stat-card__icon {
@@ -34,153 +22,45 @@
       stroke: var(--apple-orange-500, #ff9500);
     }
 
-    .stat-card__number {
-      color: var(--color-text, #ffffff);
-      font-weight: 600;
-    }
-
-    .stat-card__label {
-      color: var(--color-text-secondary, #aeaeb2);
-    }
-
-    /* Feature boxes in Key Features section */
-    #features .feature-box,
-    .key-features .feature-box,
-    [class*="feature"] .box {
+    /* Feature boxes — hardcoded backgrounds in home.css */
+    .feature-box,
+    .key-features-grid .feature-box {
       background: var(--color-surface-elevated, #2c2c2e);
       border: 1px solid var(--color-border, #3a3a3c);
     }
 
-    #features h3,
-    #features h4,
-    .feature-box h3,
-    .feature-box h4 {
-      color: var(--color-text, #ffffff);
-    }
-
-    #features p,
-    .feature-box p {
-      color: var(--color-text-secondary, #aeaeb2);
-    }
-
-    /* Icons - ensure they're visible */
-    [data-lucide],
-    .lucide,
-    .icon--sm,
-    .icon--lg,
-    .icon--filled,
-    .icon--muted,
-    i[class*="icon"] {
-      color: var(--color-text, #ffffff);
-      stroke: var(--color-text, #ffffff);
-      fill: none;
-    }
-
-    .icon--warning {
-      color: var(--apple-warning, #ffd60a);
-      stroke: var(--apple-warning, #ffd60a);
-    }
-
-    .icon--filled.icon--warning {
-      fill: var(--apple-warning, #ffd60a);
-    }
-
-    .icon--muted {
-      color: var(--color-text-quaternary, #636366);
-      stroke: var(--color-text-quaternary, #636366);
-    }
-
-    /* Icon buttons */
-    .icon-button {
-      background: var(--color-surface-elevated, #2c2c2e);
-      border-color: var(--color-border, #3a3a3c);
-      color: var(--color-text, #ffffff);
-    }
-
-    .icon-button:hover {
-      background: var(--color-surface-overlay, #3a3a3c);
-      border-color: var(--apple-orange-500, #ff9500);
-    }
-
-    /* What's New section */
-    #whats-new h2,
-    #whats-new h3,
-    #whats-new h4,
-    .whats-new-title {
-      color: var(--color-text, #ffffff);
-    }
-
-    #whats-new p,
-    #whats-new .description {
-      color: var(--color-text-secondary, #aeaeb2);
-    }
-
-    /* Recent Updates Section - Fix white text on light background */
-    .updates-section h2,
-    .updates-section h3,
-    #updates-title {
-      color: var(--color-text, #ffffff);
-    }
-
-    .updates-section p {
-      color: var(--color-text-secondary, #aeaeb2);
-    }
-
-    /* Slats with images - ensure proper dark mode */
-    .slats--with-image li {
-      background: var(--color-surface-elevated, #2c2c2e);
-      border: 1px solid var(--color-border, #3a3a3c);
-    }
-
-    .slats--with-image h3 {
-      color: var(--color-text, #ffffff);
-    }
-
-    .slats--with-image p {
-      color: var(--color-text-secondary, #aeaeb2);
-    }
-
-    .slats--with-image .meta {
-      color: var(--color-text-tertiary, #8e8e93);
-    }
-
-    .slats--with-image a {
-      color: inherit;
-    }
-
-    .slats--with-image a:hover {
-      background: var(--color-surface-overlay, #3a3a3c);
-    }
-
-    /* Component cards */
+    /* Component cards — hardcoded backgrounds */
     .component-card {
       background: var(--color-surface-elevated, #2c2c2e);
       border: 1px solid var(--color-border, #3a3a3c);
     }
 
-    .component-card h3,
-    .component-card h4 {
-      color: var(--color-text, #ffffff);
+    /* Feature cards */
+    .feature-card {
+      background: var(--color-surface-elevated, #2c2c2e);
+      border-color: var(--color-border, #3a3a3c);
     }
 
-    .component-card p {
-      color: var(--color-text-secondary, #aeaeb2);
+    /* Demo section borders */
+    .demo-section {
+      border-bottom-color: var(--color-border, #3a3a3c);
     }
 
-    /* Code blocks */
-    code,
-    pre,
-    .code-snippet {
+    .feature-grid {
+      background: var(--color-surface-elevated, #2c2c2e);
+    }
+
+    /* Navigation site-specific overrides */
+    .site-nav {
       background: var(--color-surface, #1c1c1e);
-      color: var(--color-text, #ffffff);
-      border-color: var(--color-border, #3a3a3c);
+      border-bottom: 1px solid var(--color-border, #3a3a3c);
     }
 
-    /* Alerts in dark mode */
-    .aiab-alert {
-      border-color: var(--color-border, #3a3a3c);
+    .site-nav a:hover {
+      color: var(--apple-orange-500, #ff9500);
     }
 
+    /* Alerts — hardcoded backgrounds */
     .alert-success {
       background: rgba(48, 209, 88, 0.1);
       color: var(--apple-success, #30d158);
@@ -204,83 +84,14 @@
       color: var(--apple-danger, #ff453a);
       border-color: rgba(255, 69, 58, 0.3);
     }
-
-    /* Meta text */
-    .meta,
-    .text-muted {
-      color: var(--color-text-secondary, #aeaeb2);
-    }
-
-    /* Links in dark mode */
-    a:not(.aiab-btn):not(.nav-link) {
-      color: var(--apple-info, #0a84ff);
-    }
-
-    a:not(.aiab-btn):not(.nav-link):hover {
-      color: #409cff;
-    }
-
-    /* Navigation fixes */
-    .site-nav {
-      background: var(--color-surface, #1c1c1e);
-      border-bottom: 1px solid var(--color-border, #3a3a3c);
-    }
-
-    .site-nav a {
-      color: var(--color-text, #ffffff);
-    }
-
-    .site-nav a:hover {
-      color: var(--apple-orange-500, #ff9500);
-    }
-
-    /* Text readability handled by CSS custom properties */
-
-    /* Specific white text fixes */
-    [style*="color: white"],
-    [style*="color:#fff"],
-    [style*="color:#ffffff"],
-    [style*="color: #fff"],
-    [style*="color: #ffffff"] {
-      color: var(--color-text, #ffffff);
-    }
-
-    /* Ensure minimum contrast for all text */
-    p,
-    span,
-    div,
-    li,
-    td,
-    th {
-      color: var(--color-text, #ffffff);
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: var(--color-text, #ffffff);
-    }
   }
 }
 
-/* Manual dark mode - same rules */
+/* Manual dark mode — same overrides */
 [data-theme="dark"] {
-  /* Copy all the rules above for manual dark mode */
-  .hero .stats .stat-value {
-    color: #ffffff;
-  }
-
-  .hero .stats .stat-label {
-    color: rgba(255, 255, 255, 0.9);
-  }
-
   .stats-grid .stat-card {
     background: var(--color-surface-elevated, #2c2c2e);
     border: 1px solid var(--color-border, #3a3a3c);
-    color: var(--color-text, #ffffff);
   }
 
   .stat-card__icon {
@@ -292,118 +103,10 @@
     stroke: var(--apple-orange-500, #ff9500);
   }
 
-  .stat-card__number {
-    color: var(--color-text, #ffffff);
-    font-weight: 600;
-  }
-
-  .stat-card__label {
-    color: var(--color-text-secondary, #aeaeb2);
-  }
-
-  #features .feature-box,
-  .key-features .feature-box,
-  [class*="feature"] .box {
+  .feature-box,
+  .key-features-grid .feature-box {
     background: var(--color-surface-elevated, #2c2c2e);
     border: 1px solid var(--color-border, #3a3a3c);
-  }
-
-  #features h3,
-  #features h4,
-  .feature-box h3,
-  .feature-box h4 {
-    color: var(--color-text, #ffffff);
-  }
-
-  #features p,
-  .feature-box p {
-    color: var(--color-text-secondary, #aeaeb2);
-  }
-
-  [data-lucide],
-  .lucide,
-  .icon--sm,
-  .icon--lg,
-  .icon--filled,
-  .icon--muted,
-  i[class*="icon"] {
-    color: var(--color-text, #ffffff);
-    stroke: var(--color-text, #ffffff);
-    fill: none;
-  }
-
-  .icon--warning {
-    color: var(--apple-warning, #ffd60a);
-    stroke: var(--apple-warning, #ffd60a);
-  }
-
-  .icon--filled.icon--warning {
-    fill: var(--apple-warning, #ffd60a);
-  }
-
-  .icon--muted {
-    color: var(--color-text-quaternary, #636366);
-    stroke: var(--color-text-quaternary, #636366);
-  }
-
-  .icon-button {
-    background: var(--color-surface-elevated, #2c2c2e);
-    border-color: var(--color-border, #3a3a3c);
-    color: var(--color-text, #ffffff);
-  }
-
-  .icon-button:hover {
-    background: var(--color-surface-overlay, #3a3a3c);
-    border-color: var(--apple-orange-500, #ff9500);
-  }
-
-  #whats-new h2,
-  #whats-new h3,
-  #whats-new h4,
-  .whats-new-title {
-    color: var(--color-text, #ffffff);
-  }
-
-  #whats-new p,
-  #whats-new .description {
-    color: var(--color-text-secondary, #aeaeb2);
-  }
-
-  /* Recent Updates Section - Fix white text on light background */
-  .updates-section h2,
-  .updates-section h3,
-  #updates-title {
-    color: var(--color-text, #ffffff);
-  }
-
-  .updates-section p {
-    color: var(--color-text-secondary, #aeaeb2);
-  }
-
-  /* Slats with images - ensure proper dark mode */
-  .slats--with-image li {
-    background: var(--color-surface-elevated, #2c2c2e);
-    border: 1px solid var(--color-border, #3a3a3c);
-  }
-
-  .slats--with-image h3 {
-    color: var(--color-text, #ffffff);
-  }
-
-  .slats--with-image p {
-    color: var(--color-text-secondary, #aeaeb2);
-  }
-
-  .slats--with-image .meta {
-    color: var(--color-text-tertiary, #8e8e93);
-  }
-
-  .slats--with-image a {
-    color: inherit;
-  }
-
-  .slats--with-image a:hover {
-    background: var(--color-surface-overlay, #3a3a3c);
   }
 
   .component-card {
@@ -411,25 +114,26 @@
     border: 1px solid var(--color-border, #3a3a3c);
   }
 
-  .component-card h3,
-  .component-card h4 {
-    color: var(--color-text, #ffffff);
+  .feature-card {
+    background: var(--color-surface-elevated, #2c2c2e);
+    border-color: var(--color-border, #3a3a3c);
   }
 
-  .component-card p {
-    color: var(--color-text-secondary, #aeaeb2);
+  .demo-section {
+    border-bottom-color: var(--color-border, #3a3a3c);
   }
 
-  code,
-  pre,
-  .code-snippet {
+  .feature-grid {
+    background: var(--color-surface-elevated, #2c2c2e);
+  }
+
+  .site-nav {
     background: var(--color-surface, #1c1c1e);
-    color: var(--color-text, #ffffff);
-    border-color: var(--color-border, #3a3a3c);
+    border-bottom: 1px solid var(--color-border, #3a3a3c);
   }
 
-  .aiab-alert {
-    border-color: var(--color-border, #3a3a3c);
+  .site-nav a:hover {
+    color: var(--apple-orange-500, #ff9500);
   }
 
   .alert-success {
@@ -454,98 +158,5 @@
     background: rgba(255, 69, 58, 0.1);
     color: var(--apple-danger, #ff453a);
     border-color: rgba(255, 69, 58, 0.3);
-  }
-
-  .meta,
-  .text-muted {
-    color: var(--color-text-secondary, #aeaeb2);
-  }
-
-  a:not(.aiab-btn):not(.nav-link) {
-    color: var(--apple-info, #0a84ff);
-  }
-
-  a:not(.aiab-btn):not(.nav-link):hover {
-    color: #409cff;
-  }
-
-  .site-nav {
-    background: var(--color-surface, #1c1c1e);
-    border-bottom: 1px solid var(--color-border, #3a3a3c);
-  }
-
-  .site-nav a {
-    color: var(--color-text, #ffffff);
-  }
-
-  .site-nav a:hover {
-    color: var(--apple-orange-500, #ff9500);
-  }
-
-  /* Text readability handled by CSS custom properties */
-
-  [style*="color: white"],
-  [style*="color:#fff"],
-  [style*="color:#ffffff"],
-  [style*="color: #fff"],
-  [style*="color: #ffffff"] {
-    color: var(--color-text, #ffffff);
-  }
-
-  p,
-  span,
-  div,
-  li,
-  td,
-  th {
-    color: var(--color-text, #ffffff);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--color-text, #ffffff);
-  }
-}
-
-/* ==========================================================================
-   Accessibility Fixes - Ensure WCAG AAA Compliance
-   ========================================================================== */
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    /* Ensure minimum contrast ratio of 7:1 for normal text */
-    /* and 4.5:1 for large text (WCAG AAA) */
-
-    /* Normal text should be at least #aeaeb2 on #1c1c1e background */
-    /* Large text can be #8e8e93 on #1c1c1e background */
-
-    .small-text,
-    .caption,
-    .footnote {
-      color: var(--apple-gray-600, #aeaeb2);
-    }
-
-    /* Ensure focus indicators are highly visible */
-    *:focus-visible {
-      outline: 3px solid var(--apple-orange-500, #ff9500);
-      outline-offset: 2px;
-    }
-  }
-}
-
-[data-theme="dark"] {
-  .small-text,
-  .caption,
-  .footnote {
-    color: var(--apple-gray-600, #aeaeb2);
-  }
-
-  *:focus-visible {
-    outline: 3px solid var(--apple-orange-500, #ff9500);
-    outline-offset: 2px;
   }
 }

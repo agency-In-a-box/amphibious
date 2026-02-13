@@ -324,7 +324,7 @@ html {
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-ink: #f0f0f0;
     --color-ink-light: #b0b0b0;
     --color-canvas: #0a0a0a;

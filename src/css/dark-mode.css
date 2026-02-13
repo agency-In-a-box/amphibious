@@ -351,15 +351,68 @@
     background-color: var(--color-primary-hover);
     border-color: var(--color-primary-hover);
   }
-  :root:not([data-theme="light"]) .btn-danger {
-    background-color: var(--apple-danger);
-    border-color: var(--apple-danger);
+  :root:not([data-theme="light"]) .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
     color: #ffffff;
+  }
+  :root:not([data-theme="light"]) .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
   }
   :root:not([data-theme="light"]) .btn-success {
     background-color: var(--apple-success);
     border-color: var(--apple-success);
     color: #ffffff;
+  }
+  :root:not([data-theme="light"]) .btn-success:hover {
+    background-color: #28b94e;
+    border-color: #28b94e;
+  }
+  :root:not([data-theme="light"]) .btn-danger {
+    background-color: var(--apple-danger);
+    border-color: var(--apple-danger);
+    color: #ffffff;
+  }
+  :root:not([data-theme="light"]) .btn-danger:hover {
+    background-color: #e63b30;
+    border-color: #e63b30;
+  }
+  :root:not([data-theme="light"]) .btn-warning {
+    background-color: var(--apple-warning);
+    border-color: var(--apple-warning);
+    color: #000000;
+  }
+  :root:not([data-theme="light"]) .btn-warning:hover {
+    background-color: #e6c009;
+    border-color: #e6c009;
+  }
+  :root:not([data-theme="light"]) .btn-info {
+    background-color: var(--apple-info);
+    border-color: var(--apple-info);
+    color: #ffffff;
+  }
+  :root:not([data-theme="light"]) .btn-info:hover {
+    background-color: #0977e6;
+    border-color: #0977e6;
+  }
+  :root:not([data-theme="light"]) .btn-light {
+    background-color: var(--color-surface-elevated);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+  :root:not([data-theme="light"]) .btn-light:hover {
+    background-color: var(--color-surface-overlay);
+    border-color: var(--color-border-strong);
+  }
+  :root:not([data-theme="light"]) .btn-dark {
+    background-color: #e5e5ea;
+    border-color: #e5e5ea;
+    color: #000000;
+  }
+  :root:not([data-theme="light"]) .btn-dark:hover {
+    background-color: #d1d1d6;
+    border-color: #d1d1d6;
   }
 }
 
@@ -372,15 +425,68 @@
   background-color: var(--color-primary-hover);
   border-color: var(--color-primary-hover);
 }
-[data-theme="dark"] .btn-danger {
-  background-color: var(--apple-danger);
-  border-color: var(--apple-danger);
+[data-theme="dark"] .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
   color: #ffffff;
+}
+[data-theme="dark"] .btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
 }
 [data-theme="dark"] .btn-success {
   background-color: var(--apple-success);
   border-color: var(--apple-success);
   color: #ffffff;
+}
+[data-theme="dark"] .btn-success:hover {
+  background-color: #28b94e;
+  border-color: #28b94e;
+}
+[data-theme="dark"] .btn-danger {
+  background-color: var(--apple-danger);
+  border-color: var(--apple-danger);
+  color: #ffffff;
+}
+[data-theme="dark"] .btn-danger:hover {
+  background-color: #e63b30;
+  border-color: #e63b30;
+}
+[data-theme="dark"] .btn-warning {
+  background-color: var(--apple-warning);
+  border-color: var(--apple-warning);
+  color: #000000;
+}
+[data-theme="dark"] .btn-warning:hover {
+  background-color: #e6c009;
+  border-color: #e6c009;
+}
+[data-theme="dark"] .btn-info {
+  background-color: var(--apple-info);
+  border-color: var(--apple-info);
+  color: #ffffff;
+}
+[data-theme="dark"] .btn-info:hover {
+  background-color: #0977e6;
+  border-color: #0977e6;
+}
+[data-theme="dark"] .btn-light {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+[data-theme="dark"] .btn-light:hover {
+  background-color: var(--color-surface-overlay);
+  border-color: var(--color-border-strong);
+}
+[data-theme="dark"] .btn-dark {
+  background-color: #e5e5ea;
+  border-color: #e5e5ea;
+  color: #000000;
+}
+[data-theme="dark"] .btn-dark:hover {
+  background-color: #d1d1d6;
+  border-color: #d1d1d6;
 }
 
 /* ==========================================================================
