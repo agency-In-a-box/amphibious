@@ -38,6 +38,28 @@
 
   --color-background: #fff;
 
+  /* Surface colors - Light mode defaults */
+  --color-surface: #f8f9fa;
+  --color-surface-elevated: #ffffff;
+  --color-surface-overlay: #e9ecef;
+
+  /* Extended text colors */
+  --color-text-tertiary: #868e96;
+  --color-text-quaternary: #adb5bd;
+  --color-text-disabled: #ced4da;
+
+  /* Extended border colors */
+  --color-border-light: #e9ecef;
+  --color-border-strong: #adb5bd;
+
+  /* Component tokens - Light mode defaults */
+  --card-background: #ffffff;
+  --card-border: #dee2e6;
+  --input-background: #ffffff;
+  --input-border: #ced4da;
+  --button-background: #ffffff;
+  --button-border: #dee2e6;
+
   /* Component colors */
   --color-code-bg: #fafafa;
   --color-border: #dedede;

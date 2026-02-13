@@ -90,5 +90,10 @@
 @import "./pages/examples.css";
 @import "./pages/docs.css";
 
+/* Page-specific dark/light mode overrides */
+@import "./pages/home-dark-mode.css";
+@import "./pages/home-dark-fixes.css";
+@import "./pages/light-mode-fixes.css";
+
 /* Print styles */
 @import "./print.css";
