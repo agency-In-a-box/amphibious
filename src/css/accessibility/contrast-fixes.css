@@ -263,21 +263,21 @@ a:visited {
    ======================================== */
 
 @media (prefers-color-scheme: dark) {
-  a {
+  :root:not([data-theme="light"]) a {
     color: #ff9500; /* Lighter orange in dark mode */
   }
 
-  a:hover {
+  :root:not([data-theme="light"]) a:hover {
     color: #ffb143;
   }
 
-  .text-primary {
+  :root:not([data-theme="light"]) .text-primary {
     color: #ff9500;
   }
 
-  .hero,
-  .examples-header,
-  .docs-header {
+  :root:not([data-theme="light"]) .hero,
+  :root:not([data-theme="light"]) .examples-header,
+  :root:not([data-theme="light"]) .docs-header {
     background: linear-gradient(135deg, #a65e00 0%, #8a4e00 100%);
   }
 }

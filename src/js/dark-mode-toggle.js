@@ -9,13 +9,12 @@
 class DarkModeToggle {
   constructor(options = {}) {
     this.options = {
-      // Default options
-      storageKey: options.storageKey || 'amphibious-theme',
-      defaultTheme: options.defaultTheme || 'system', // 'light', 'dark', 'system'
-      showToggle: options.showToggle !== false,
-      togglePosition: options.togglePosition || 'bottom-right', // 'bottom-right', 'bottom-left', 'top-right', 'top-left'
-      transitionDuration: options.transitionDuration || 200,
-      onChange: options.onChange || null,
+      storageKey: 'amphibious-theme',
+      defaultTheme: 'system',
+      showToggle: true,
+      togglePosition: 'bottom-right',
+      transitionDuration: 200,
+      onChange: null,
       ...options,
     };
 
