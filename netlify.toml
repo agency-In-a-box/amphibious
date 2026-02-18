@@ -1,5 +1,5 @@
 [build]
-  command = "bun install && bun run build"
+  command = "bun install && vite build --config vite.config.app.js"
   publish = "dist"
 
 # Redirects for directory indexes
