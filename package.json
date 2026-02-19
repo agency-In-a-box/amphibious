@@ -3,16 +3,16 @@
   "version": "2.0.0",
   "description": "Modern responsive CSS framework and component library - the evolution of A.mphibio.us",
   "type": "module",
-  "main": "./dist/amphibious.js",
-  "module": "./dist/amphibious.js",
+  "main": "./dist/amphibious.umd.js",
+  "module": "./dist/amphibious.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/amphibious.js",
+      "import": "./dist/amphibious.es.js",
+      "require": "./dist/amphibious.umd.js",
       "types": "./dist/index.d.ts"
     },
-    "./css": "./dist/amphibious.css",
-    "./theme": "./dist/theme.css"
+    "./css": "./dist/amphibious.css"
   },
   "files": [
     "dist",
@@ -22,12 +22,11 @@
     "dev": "vite --port 2960 --host",
     "build": "NODE_ENV=production vite build",
     "build:lib": "NODE_ENV=production vite build",
-    "build:site": "NODE_ENV=production vite build --config vite.config.prod.js && node scripts/build-site.js",
+    "build:site": "NODE_ENV=production vite build --config vite.config.docs.js && node scripts/build-site.js",
     "build:ts": "vite build && tsc --emitDeclarationOnly",
-    "build:analyze": "ANALYZE=true NODE_ENV=production vite build --config vite.config.prod.js",
-    "build:watch": "NODE_ENV=production vite build --config vite.config.prod.js --watch",
+    "build:analyze": "ANALYZE=true NODE_ENV=production vite build",
+    "build:watch": "NODE_ENV=production vite build --watch",
     "preview": "vite preview",
-    "preview:prod": "vite preview --config vite.config.prod.js",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
@@ -63,6 +62,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.3.11",
     "@fullhuman/postcss-purgecss": "^7.0.2",
+    "@types/dompurify": "^3.2.0",
     "@types/node": "^25.0.2",
     "autoprefixer": "^10.4.23",
     "cssnano": "^7.1.2",
@@ -85,7 +85,6 @@
   },
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
-    "@types/dompurify": "^3.2.0",
     "dompurify": "^3.3.1"
   }
 }
