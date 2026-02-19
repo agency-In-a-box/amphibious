@@ -25,6 +25,14 @@ class Dropdown {
     this.init();
   }
 
+  /** Escape HTML entities to prevent XSS */
+  _escapeHTML(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   init() {
     this.createDropdown();
     this.bindEvents();
@@ -349,8 +357,8 @@ class Dropdown {
           const tag = document.createElement('span');
           tag.className = 'dropdown-tag';
           tag.innerHTML = `
-            ${item.text}
-            <span class="dropdown-tag-remove" data-value="${value}">×</span>
+            ${this._escapeHTML(item.text)}
+            <span class="dropdown-tag-remove" data-value="${this._escapeHTML(value)}">×</span>
           `;
           this.valueSpan.appendChild(tag);
         }

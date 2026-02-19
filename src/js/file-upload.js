@@ -28,6 +28,14 @@ class FileUpload {
     this.uploadQueue = [];
     this.isUploading = false;
 
+    /** Escape HTML entities to prevent XSS */
+    this._escapeHTML = (str) => {
+      if (typeof str !== 'string') return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    };
+
     this.init();
   }
 
@@ -244,7 +252,7 @@ class FileUpload {
     const info = document.createElement('div');
     info.className = 'file-upload-info';
     info.innerHTML = `
-      <div class="file-upload-name">${fileObj.name}</div>
+      <div class="file-upload-name">${this._escapeHTML(fileObj.name)}</div>
       <div class="file-upload-meta">
         <span class="file-upload-size">${this.formatSize(fileObj.size)}</span>
         <span class="file-upload-status file-upload-status--${fileObj.status}">

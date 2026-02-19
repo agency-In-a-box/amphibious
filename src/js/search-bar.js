@@ -38,6 +38,14 @@ class SearchBar {
     this.init();
   }
 
+  /** Escape HTML entities to prevent XSS */
+  _escapeHTML(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   init() {
     this.createSearchBar();
     this.bindEvents();
@@ -399,11 +407,13 @@ class SearchBar {
 
   highlightMatch(text, query) {
     if (!this.options.highlightMatches || !query) {
-      return text;
+      return this._escapeHTML(text);
     }
 
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-    return text.replace(regex, '<mark>$1</mark>');
+    const escaped = this._escapeHTML(text);
+    const escapedQuery = this._escapeHTML(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedQuery})`, 'gi');
+    return escaped.replace(regex, '<mark>$1</mark>');
   }
 
   showRecentSearches() {
@@ -442,7 +452,7 @@ class SearchBar {
           </svg>
         </span>
         <div class="search-bar-item-content">
-          <div class="search-bar-item-title">${search}</div>
+          <div class="search-bar-item-title">${this._escapeHTML(search)}</div>
         </div>
       `;
 

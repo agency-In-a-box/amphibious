@@ -117,6 +117,30 @@ class FormBuilder {
     this.init();
   }
 
+  /** Escape HTML entities to prevent XSS */
+  _escapeHTML(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  /** Sanitize user-provided HTML (strip scripts/events, allow safe tags) */
+  _sanitizeHTML(html) {
+    if (typeof html !== 'string') return '';
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    // Remove all script tags
+    div.querySelectorAll('script').forEach((el) => el.remove());
+    // Remove event handler attributes
+    div.querySelectorAll('*').forEach((el) => {
+      for (const attr of [...el.attributes]) {
+        if (attr.name.startsWith('on')) el.removeAttribute(attr.name);
+      }
+    });
+    return div.innerHTML;
+  }
+
   getFieldDefinitions() {
     return {
       // Input fields
@@ -721,7 +745,7 @@ class FormBuilder {
       templateEl.dataset.templateId = template.id;
       templateEl.innerHTML = `
         <span class="template-icon">📋</span>
-        <span class="template-name">${template.name}</span>
+        <span class="template-name">${this._escapeHTML(template.name)}</span>
       `;
       templateList.appendChild(templateEl);
     });
@@ -1633,7 +1657,7 @@ class FormBuilder {
         break;
 
       case 'html':
-        wrapper.innerHTML = field.content || '';
+        wrapper.innerHTML = this._sanitizeHTML(field.content || '');
         break;
 
       default: {
