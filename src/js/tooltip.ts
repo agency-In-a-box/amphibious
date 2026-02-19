@@ -3,6 +3,8 @@
  * Accessible, customizable tooltips with smart positioning
  */
 
+import { sanitizeHTML } from '../utils/sanitize';
+
 export interface TooltipOptions {
   content?: string;
   html?: string;
@@ -44,6 +46,9 @@ export class Tooltip {
   private showTimeout: ReturnType<typeof setTimeout> | null = null;
   private hideTimeout: ReturnType<typeof setTimeout> | null = null;
   private resizeObserver: ResizeObserver | null = null;
+
+  // Store bound handlers for proper removeEventListener
+  private boundHandlers: Record<string, EventListener> = {};
 
   private static instances = new Map<HTMLElement, Tooltip>();
 
@@ -103,21 +108,34 @@ export class Tooltip {
   private setupEventListeners(): void {
     const { trigger } = this.options;
 
+    // Store bound handlers so removeEventListener can match them
+    this.boundHandlers = {
+      mouseenter: this.handleMouseEnter.bind(this),
+      mouseleave: this.handleMouseLeave.bind(this),
+      focus: this.handleFocus.bind(this),
+      blur: this.handleBlur.bind(this),
+      click: this.handleClick.bind(this),
+      documentClick: this.handleDocumentClick.bind(this),
+      keydown: this.handleKeydown.bind(this),
+      resize: this.handleWindowResize.bind(this),
+      scroll: this.handleWindowScroll.bind(this),
+    };
+
     if (trigger === 'hover') {
-      this.element.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
-      this.element.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
-      this.element.addEventListener('focus', this.handleFocus.bind(this));
-      this.element.addEventListener('blur', this.handleBlur.bind(this));
+      this.element.addEventListener('mouseenter', this.boundHandlers.mouseenter);
+      this.element.addEventListener('mouseleave', this.boundHandlers.mouseleave);
+      this.element.addEventListener('focus', this.boundHandlers.focus);
+      this.element.addEventListener('blur', this.boundHandlers.blur);
     } else if (trigger === 'click') {
-      this.element.addEventListener('click', this.handleClick.bind(this));
-      document.addEventListener('click', this.handleDocumentClick.bind(this));
+      this.element.addEventListener('click', this.boundHandlers.click);
+      document.addEventListener('click', this.boundHandlers.documentClick);
     } else if (trigger === 'focus') {
-      this.element.addEventListener('focus', this.handleFocus.bind(this));
-      this.element.addEventListener('blur', this.handleBlur.bind(this));
+      this.element.addEventListener('focus', this.boundHandlers.focus);
+      this.element.addEventListener('blur', this.boundHandlers.blur);
     }
 
     // Keyboard support
-    this.element.addEventListener('keydown', this.handleKeydown.bind(this));
+    this.element.addEventListener('keydown', this.boundHandlers.keydown);
   }
 
   private setupResizeObserver(): void {
@@ -171,7 +189,8 @@ export class Tooltip {
     }
   }
 
-  private handleKeydown(event: KeyboardEvent): void {
+  private handleKeydown(event: Event): void {
+    if (!(event instanceof KeyboardEvent)) return;
     if (event.key === 'Escape' && this.isVisible) {
       this.hide();
       this.element.focus();
@@ -187,7 +206,7 @@ export class Tooltip {
     // Set content
     const content = this.options.html || this.options.content;
     if (this.options.allowHTML && this.options.html) {
-      tooltip.innerHTML = content;
+      tooltip.innerHTML = sanitizeHTML(content || '');
     } else {
       tooltip.textContent = content;
     }
@@ -432,8 +451,8 @@ export class Tooltip {
       this.options.onShow();
 
       // Set up window resize listener
-      window.addEventListener('resize', this.handleWindowResize.bind(this));
-      window.addEventListener('scroll', this.handleWindowScroll.bind(this));
+      window.addEventListener('resize', this.boundHandlers.resize);
+      window.addEventListener('scroll', this.boundHandlers.scroll);
     };
 
     if (this.options.delay > 0) {
@@ -470,8 +489,8 @@ export class Tooltip {
       this.options.onHide();
 
       // Remove window listeners
-      window.removeEventListener('resize', this.handleWindowResize.bind(this));
-      window.removeEventListener('scroll', this.handleWindowScroll.bind(this));
+      window.removeEventListener('resize', this.boundHandlers.resize);
+      window.removeEventListener('scroll', this.boundHandlers.scroll);
     };
 
     if (this.options.hideDelay > 0) {
@@ -506,7 +525,7 @@ export class Tooltip {
     if (this.tooltipElement) {
       const newContent = this.options.html || this.options.content;
       if (this.options.allowHTML && this.options.html) {
-        this.tooltipElement.innerHTML = newContent;
+        this.tooltipElement.innerHTML = sanitizeHTML(newContent || '');
       } else {
         this.tooltipElement.textContent = newContent;
       }
@@ -543,14 +562,16 @@ export class Tooltip {
   destroy(): void {
     this.hide();
 
-    // Remove event listeners
-    this.element.removeEventListener('mouseenter', this.handleMouseEnter.bind(this));
-    this.element.removeEventListener('mouseleave', this.handleMouseLeave.bind(this));
-    this.element.removeEventListener('focus', this.handleFocus.bind(this));
-    this.element.removeEventListener('blur', this.handleBlur.bind(this));
-    this.element.removeEventListener('click', this.handleClick.bind(this));
-    this.element.removeEventListener('keydown', this.handleKeydown.bind(this));
-    document.removeEventListener('click', this.handleDocumentClick.bind(this));
+    // Remove event listeners using stored bound references
+    this.element.removeEventListener('mouseenter', this.boundHandlers.mouseenter);
+    this.element.removeEventListener('mouseleave', this.boundHandlers.mouseleave);
+    this.element.removeEventListener('focus', this.boundHandlers.focus);
+    this.element.removeEventListener('blur', this.boundHandlers.blur);
+    this.element.removeEventListener('click', this.boundHandlers.click);
+    this.element.removeEventListener('keydown', this.boundHandlers.keydown);
+    document.removeEventListener('click', this.boundHandlers.documentClick);
+    window.removeEventListener('resize', this.boundHandlers.resize);
+    window.removeEventListener('scroll', this.boundHandlers.scroll);
 
     // Disconnect resize observer
     if (this.resizeObserver) {

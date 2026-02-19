@@ -5,9 +5,11 @@
 
 export class Tabs {
   private containers: NodeListOf<HTMLElement>;
+  private abortController: AbortController;
 
   constructor() {
     this.containers = document.querySelectorAll('.aiab-tabs, [data-tabs]');
+    this.abortController = new AbortController();
   }
 
   /**
@@ -65,15 +67,23 @@ export class Tabs {
       }
 
       // Add click handler
-      tabElement.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.selectTab(container, tabElement, panel);
-      });
+      tabElement.addEventListener(
+        'click',
+        (e) => {
+          e.preventDefault();
+          this.selectTab(container, tabElement, panel);
+        },
+        { signal: this.abortController.signal },
+      );
 
       // Add keyboard navigation
-      tabElement.addEventListener('keydown', (e) => {
-        this.handleKeyboardNav(e, container, tabs, index);
-      });
+      tabElement.addEventListener(
+        'keydown',
+        (e) => {
+          this.handleKeyboardNav(e, container, tabs, index);
+        },
+        { signal: this.abortController.signal },
+      );
     });
 
     // Ensure tablist has proper role
@@ -186,29 +196,33 @@ export class Tabs {
       panel.style.display = 'none';
 
       // Add click handler
-      tabElement.addEventListener('click', (e) => {
-        e.preventDefault();
+      tabElement.addEventListener(
+        'click',
+        (e) => {
+          e.preventDefault();
 
-        // Hide all panels with same group
-        const group = tabElement.getAttribute('amp-tab-group') || 'default';
-        const groupTabs = document.querySelectorAll(`[amp-tab-group="${group}"]`);
+          // Hide all panels with same group
+          const group = tabElement.getAttribute('amp-tab-group') || 'default';
+          const groupTabs = document.querySelectorAll(`[amp-tab-group="${group}"]`);
 
-        groupTabs.forEach((t) => {
-          const tElement = t as HTMLElement;
-          const tContentId = tElement.getAttribute('amp-tab-content');
-          if (tContentId) {
-            const tPanel = document.querySelector(tContentId) as HTMLElement;
-            if (tPanel) {
-              tPanel.style.display = 'none';
-              tElement.classList.remove('active', 'is-active');
+          groupTabs.forEach((t) => {
+            const tElement = t as HTMLElement;
+            const tContentId = tElement.getAttribute('amp-tab-content');
+            if (tContentId) {
+              const tPanel = document.querySelector(tContentId) as HTMLElement;
+              if (tPanel) {
+                tPanel.style.display = 'none';
+                tElement.classList.remove('active', 'is-active');
+              }
             }
-          }
-        });
+          });
 
-        // Show selected panel
-        panel.style.display = 'block';
-        tabElement.classList.add('active', 'is-active');
-      });
+          // Show selected panel
+          panel.style.display = 'block';
+          tabElement.classList.add('active', 'is-active');
+        },
+        { signal: this.abortController.signal },
+      );
 
       // Activate first tab in group
       const group = tabElement.getAttribute('amp-tab-group') || 'default';
@@ -243,6 +257,12 @@ export class Tabs {
     if (!container) return null;
 
     return container.querySelector('.is-active[role="tab"], .tabs__tab--active');
+  }
+  /**
+   * Destroy tabs and remove all event listeners
+   */
+  public destroy(): void {
+    this.abortController.abort();
   }
 }
 
