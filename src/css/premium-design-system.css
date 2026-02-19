@@ -28,9 +28,10 @@
   --space-xxxl: calc(var(--space-unit) * 24); /* 96px - stage */
 
   /* Color Philosophy - Restraint with Purpose */
-  --color-primary: #1863dc; /* Goose Digital Blue - confidence without arrogance */
-  --color-primary-hover: #1454bf; /* 8% darker - subtle acknowledgment */
-  --color-primary-active: #0f3d8a; /* 15% darker - commitment */
+  /* NOTE: Do NOT override --color-primary here — canonical value lives in design-tokens.css */
+  --premium-color-primary: #1863dc; /* Goose Digital Blue - confidence without arrogance */
+  --premium-color-primary-hover: #1454bf; /* 8% darker - subtle acknowledgment */
+  --premium-color-primary-active: #0f3d8a; /* 15% darker - commitment */
 
   --color-ink: #0a0a0a; /* Not quite black - softer on screens */
   --color-ink-light: #404040; /* Secondary text */
@@ -98,7 +99,7 @@
 
   /* Appearance */
   color: var(--color-canvas);
-  background: var(--color-primary);
+  background: var(--premium-color-primary);
   border: none;
   border-radius: var(--radius-md);
 
@@ -115,13 +116,13 @@
 }
 
 .btn-premium:hover {
-  background: var(--color-primary-hover);
+  background: var(--premium-color-primary-hover);
   transform: translateY(-1px);
   box-shadow: var(--shadow-large);
 }
 
 .btn-premium:active {
-  background: var(--color-primary-active);
+  background: var(--premium-color-primary-active);
   transform: translateY(0);
   box-shadow: var(--shadow-subtle);
   transition-duration: 100ms; /* Faster feedback on press */
@@ -250,7 +251,7 @@
 /* Link hover with underline animation */
 .link-animated {
   position: relative;
-  color: var(--color-primary);
+  color: var(--premium-color-primary);
   text-decoration: none;
   transition: color var(--motion-sharp);
 }
@@ -275,7 +276,7 @@
 
 /* Focus states that respect accessibility */
 *:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--premium-color-primary);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
@@ -287,7 +288,7 @@ html {
 
 /* Selection color */
 ::selection {
-  background: var(--color-primary);
+  background: var(--premium-color-primary);
   color: var(--color-canvas);
 }
 
