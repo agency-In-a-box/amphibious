@@ -9,14 +9,14 @@
     "checkJs": false,
     "jsx": "preserve",
 
-    // Type checking
+    // Type checking - incrementally enabling strict mode
     "strict": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
-    "strictFunctionTypes": false,
-    "strictBindCallApply": false,
-    "noImplicitThis": false,
-    "alwaysStrict": false,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
 
     // Module resolution
     "baseUrl": ".",
