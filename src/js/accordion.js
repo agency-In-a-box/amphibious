@@ -17,6 +17,7 @@ class Accordion {
     };
 
     this.items = Array.from(this.accordion.querySelectorAll('.accordion-item'));
+    this._abortController = new AbortController();
     this.init();
   }
 
@@ -43,9 +44,13 @@ class Accordion {
 
       this.setItemState(item, header, content, isOpen);
 
-      // Add event listeners
-      header.addEventListener('click', (e) => this.toggle(item, e));
-      header.addEventListener('keydown', (e) => this.handleKeydown(e, item, index));
+      // Add event listeners (use AbortController for cleanup)
+      header.addEventListener('click', (e) => this.toggle(item, e), {
+        signal: this._abortController.signal,
+      });
+      header.addEventListener('keydown', (e) => this.handleKeydown(e, item, index), {
+        signal: this._abortController.signal,
+      });
     });
 
     // Set up keyboard navigation
@@ -216,11 +221,7 @@ class Accordion {
   }
 
   destroy() {
-    this.items.forEach((item) => {
-      const header = item.querySelector('.accordion-header');
-      header.removeEventListener('click', this.toggle);
-      header.removeEventListener('keydown', this.handleKeydown);
-    });
+    this._abortController.abort();
   }
 }
 
