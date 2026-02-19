@@ -27,6 +27,14 @@ class DataTableComponent {
     this.searchTerm = '';
     this.filters = {};
 
+    /** Escape HTML entities to prevent XSS */
+    this._escapeHTML = (str) => {
+      if (typeof str !== 'string') return String(str ?? '');
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    };
+
     this.init();
   }
 

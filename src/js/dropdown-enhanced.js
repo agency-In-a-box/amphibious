@@ -80,6 +80,14 @@ class DropdownEnhanced {
     this.init();
   }
 
+  /** Escape HTML entities to prevent XSS */
+  _escapeHTML(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   init() {
     this.parseNativeSelect();
     this.createDropdown();
@@ -715,8 +723,9 @@ class DropdownEnhanced {
   }
 
   highlightSearchTerm(element, term) {
-    const text = element.textContent;
-    const regex = new RegExp(`(${term})`, 'gi');
+    const text = this._escapeHTML(element.textContent);
+    const escapedTerm = this._escapeHTML(term).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedTerm})`, 'gi');
     const highlighted = text.replace(regex, '<mark>$1</mark>');
     element.innerHTML = highlighted;
   }

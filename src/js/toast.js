@@ -17,6 +17,14 @@ class ToastComponent {
     this.init();
   }
 
+  /** Escape HTML entities to prevent XSS */
+  _escapeHTML(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   /**
    * Initialize toast container
    */
@@ -108,10 +116,10 @@ class ToastComponent {
     // Add content
     html += '<div class="toast__content">';
     if (config.title) {
-      html += `<h4 class="toast__title">${config.title}</h4>`;
+      html += `<h4 class="toast__title">${this._escapeHTML(config.title)}</h4>`;
     }
     if (config.message) {
-      html += `<p class="toast__message">${config.message}</p>`;
+      html += `<p class="toast__message">${this._escapeHTML(config.message)}</p>`;
     }
 
     // Add action buttons
@@ -119,7 +127,7 @@ class ToastComponent {
       html += '<div class="toast__actions">';
       config.actions.forEach((action) => {
         const primary = action.primary ? 'toast__action--primary' : '';
-        html += `<button class="toast__action ${primary}" data-action="${action.name}">${action.label}</button>`;
+        html += `<button class="toast__action ${primary}" data-action="${this._escapeHTML(action.name)}">${this._escapeHTML(action.label)}</button>`;
       });
       html += '</div>';
     }

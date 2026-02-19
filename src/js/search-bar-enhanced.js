@@ -106,6 +106,14 @@ class SearchBarEnhanced {
     this.init();
   }
 
+  /** Escape HTML entities to prevent XSS */
+  _escapeHTML(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   init() {
     this.loadRecentSearches();
     this.createSearchBar();
@@ -837,11 +845,11 @@ class SearchBarEnhanced {
       const text = typeof item === 'string' ? item : item.text || item.label || item.title || '';
       const displayText = this.options.highlight
         ? this.highlightQuery(text, this.state.query)
-        : text;
+        : this._escapeHTML(text);
 
       resultEl.innerHTML = `
         <div class="search-bar-result-text">${displayText}</div>
-        ${item.description ? `<div class="search-bar-result-description">${item.description}</div>` : ''}
+        ${item.description ? `<div class="search-bar-result-description">${this._escapeHTML(item.description)}</div>` : ''}
       `;
     }
 
@@ -856,10 +864,12 @@ class SearchBarEnhanced {
   }
 
   highlightQuery(text, query) {
-    if (!query) return text;
+    const escaped = this._escapeHTML(text);
+    if (!query) return escaped;
 
-    const regex = new RegExp(`(${this.escapeRegex(query)})`, 'gi');
-    return text.replace(regex, '<mark>$1</mark>');
+    const escapedQuery = this._escapeHTML(query);
+    const regex = new RegExp(`(${this.escapeRegex(escapedQuery)})`, 'gi');
+    return escaped.replace(regex, '<mark>$1</mark>');
   }
 
   escapeRegex(str) {
@@ -924,8 +934,8 @@ class SearchBarEnhanced {
       const item = document.createElement('div');
       item.className = 'search-bar-recent-item';
       item.innerHTML = `
-        <span class="search-bar-recent-text">🕐 ${search}</span>
-        <button type="button" class="search-bar-recent-remove" data-search="${search}">×</button>
+        <span class="search-bar-recent-text">🕐 ${this._escapeHTML(search)}</span>
+        <button type="button" class="search-bar-recent-remove" data-search="${this._escapeHTML(search)}">×</button>
       `;
 
       this.addHandler(item.querySelector('.search-bar-recent-text'), 'click', () => {
