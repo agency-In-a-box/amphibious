@@ -164,14 +164,14 @@ class DropdownEnhanced {
   createDropdown() {
     // Create wrapper
     const wrapper = document.createElement('div');
-    wrapper.className = 'dropdown-enhanced';
+    wrapper.className = 'aiab-dropdown-enhanced';
     if (this.options.multiple) {
-      wrapper.classList.add('dropdown-enhanced--multi');
+      wrapper.classList.add('aiab-dropdown-enhanced--multi');
     }
 
     // Create select button
     const selectBtn = document.createElement('div');
-    selectBtn.className = 'dropdown-select';
+    selectBtn.className = 'aiab-dropdown-select';
     selectBtn.setAttribute('role', 'combobox');
     selectBtn.setAttribute('aria-expanded', 'false');
     selectBtn.setAttribute('aria-haspopup', 'listbox');
@@ -179,18 +179,18 @@ class DropdownEnhanced {
 
     // Value display
     const valueDisplay = document.createElement('div');
-    valueDisplay.className = 'dropdown-value';
+    valueDisplay.className = 'aiab-dropdown-value';
 
     if (this.options.searchable && !this.options.multiple) {
       const searchInput = document.createElement('input');
       searchInput.type = 'text';
-      searchInput.className = 'dropdown-search-inline';
+      searchInput.className = 'aiab-dropdown-search-inline';
       searchInput.placeholder = this.options.placeholder;
       valueDisplay.appendChild(searchInput);
       this.searchInput = searchInput;
     } else {
       const valueText = document.createElement('span');
-      valueText.className = 'dropdown-value-text dropdown-placeholder';
+      valueText.className = 'aiab-dropdown-value-text aiab-dropdown-placeholder';
       valueText.textContent = this.options.placeholder;
       valueDisplay.appendChild(valueText);
       this.valueText = valueText;
@@ -198,12 +198,12 @@ class DropdownEnhanced {
 
     // Icons container
     const icons = document.createElement('div');
-    icons.className = 'dropdown-icons';
+    icons.className = 'aiab-dropdown-icons';
 
     // Clear button
     if (this.options.clearable) {
       const clearBtn = document.createElement('button');
-      clearBtn.className = 'dropdown-clear';
+      clearBtn.className = 'aiab-dropdown-clear';
       clearBtn.type = 'button';
       clearBtn.innerHTML = '×';
       clearBtn.style.display = 'none';
@@ -213,7 +213,7 @@ class DropdownEnhanced {
 
     // Dropdown arrow
     const arrow = document.createElement('span');
-    arrow.className = 'dropdown-arrow';
+    arrow.className = 'aiab-dropdown-arrow';
     arrow.innerHTML = '▼';
     icons.appendChild(arrow);
 
@@ -222,18 +222,18 @@ class DropdownEnhanced {
 
     // Create menu
     const menu = document.createElement('div');
-    menu.className = 'dropdown-menu';
+    menu.className = 'aiab-dropdown-menu';
     menu.setAttribute('role', 'listbox');
     menu.setAttribute('aria-hidden', 'true');
 
     // Search box (for multiple or when searchable)
     if (this.options.searchable && this.options.multiple) {
       const searchContainer = document.createElement('div');
-      searchContainer.className = 'dropdown-search';
+      searchContainer.className = 'aiab-dropdown-search';
 
       const searchInput = document.createElement('input');
       searchInput.type = 'text';
-      searchInput.className = 'dropdown-search-input';
+      searchInput.className = 'aiab-dropdown-search-input';
       searchInput.placeholder = 'Search...';
       searchInput.setAttribute('aria-label', 'Search options');
 
@@ -244,10 +244,10 @@ class DropdownEnhanced {
 
     // Options container
     const itemsContainer = document.createElement('div');
-    itemsContainer.className = 'dropdown-items';
+    itemsContainer.className = 'aiab-dropdown-items';
 
     if (this.options.virtualScroll) {
-      itemsContainer.classList.add('dropdown-items--virtual');
+      itemsContainer.classList.add('aiab-dropdown-items--virtual');
       this.setupVirtualScroll(itemsContainer);
     }
 
@@ -255,14 +255,14 @@ class DropdownEnhanced {
 
     // No results message
     const noResults = document.createElement('div');
-    noResults.className = 'dropdown-no-results';
+    noResults.className = 'aiab-dropdown-no-results';
     noResults.textContent = 'No results found';
     noResults.style.display = 'none';
     menu.appendChild(noResults);
 
     // Loading indicator
     const loading = document.createElement('div');
-    loading.className = 'dropdown-loading';
+    loading.className = 'aiab-dropdown-loading';
     loading.innerHTML = '<span class="dropdown-spinner"></span> Loading...';
     loading.style.display = 'none';
     menu.appendChild(loading);
@@ -292,11 +292,11 @@ class DropdownEnhanced {
   setupVirtualScroll(container) {
     // Create viewport
     const viewport = document.createElement('div');
-    viewport.className = 'dropdown-viewport';
+    viewport.className = 'aiab-dropdown-viewport';
 
     // Create spacer for scrollbar
     const spacer = document.createElement('div');
-    spacer.className = 'dropdown-spacer';
+    spacer.className = 'aiab-dropdown-spacer';
 
     container.appendChild(spacer);
     container.appendChild(viewport);
@@ -352,7 +352,7 @@ class DropdownEnhanced {
       // Render group header
       if (item.group && item.group !== currentGroup) {
         const groupHeader = document.createElement('div');
-        groupHeader.className = 'dropdown-group-header';
+        groupHeader.className = 'aiab-dropdown-group-header';
         groupHeader.textContent = item.group;
         this.itemsContainer.appendChild(groupHeader);
         currentGroup = item.group;
@@ -394,23 +394,23 @@ class DropdownEnhanced {
 
   createItemElement(item, index) {
     const itemEl = document.createElement('div');
-    itemEl.className = 'dropdown-item';
+    itemEl.className = 'aiab-dropdown-item';
     itemEl.setAttribute('role', 'option');
     itemEl.dataset.value = item.value;
     itemEl.dataset.index = index;
 
     if (item.disabled) {
-      itemEl.classList.add('dropdown-item--disabled');
+      itemEl.classList.add('aiab-dropdown-item--disabled');
       itemEl.setAttribute('aria-disabled', 'true');
     }
 
     if (this.isSelected(item.value)) {
-      itemEl.classList.add('dropdown-item--selected');
+      itemEl.classList.add('aiab-dropdown-item--selected');
       itemEl.setAttribute('aria-selected', 'true');
     }
 
     if (index === this.state.highlightedIndex) {
-      itemEl.classList.add('dropdown-item--highlighted');
+      itemEl.classList.add('aiab-dropdown-item--highlighted');
     }
 
     // Custom renderer or default
@@ -421,7 +421,7 @@ class DropdownEnhanced {
       if (this.options.multiple) {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.className = 'dropdown-checkbox';
+        checkbox.className = 'aiab-dropdown-checkbox';
         checkbox.checked = this.isSelected(item.value);
         checkbox.onclick = (e) => e.stopPropagation();
         itemEl.appendChild(checkbox);
@@ -429,7 +429,7 @@ class DropdownEnhanced {
 
       // Text
       const text = document.createElement('span');
-      text.className = 'dropdown-item-text';
+      text.className = 'aiab-dropdown-item-text';
       text.textContent = item.text;
       itemEl.appendChild(text);
 
@@ -779,7 +779,7 @@ class DropdownEnhanced {
   updateDisplay() {
     if (this.state.selectedItems.length === 0) {
       if (this.valueText) {
-        this.valueText.className = 'dropdown-value-text dropdown-placeholder';
+        this.valueText.className = 'aiab-dropdown-value-text aiab-dropdown-placeholder';
         this.valueText.textContent = this.options.placeholder;
       }
 
@@ -789,18 +789,18 @@ class DropdownEnhanced {
     } else {
       if (this.options.multiple && this.valueText) {
         // Multi-select display
-        this.valueText.className = 'dropdown-value-text';
+        this.valueText.className = 'aiab-dropdown-value-text';
         this.valueText.innerHTML = '';
 
         this.state.selectedItems.forEach((item) => {
           const tag = document.createElement('span');
-          tag.className = 'dropdown-tag';
+          tag.className = 'aiab-dropdown-tag';
 
           const tagText = document.createElement('span');
           tagText.textContent = item.text;
 
           const removeBtn = document.createElement('button');
-          removeBtn.className = 'dropdown-tag-remove';
+          removeBtn.className = 'aiab-dropdown-tag-remove';
           removeBtn.innerHTML = '×';
           removeBtn.onclick = (e) => {
             e.stopPropagation();
@@ -818,7 +818,7 @@ class DropdownEnhanced {
         if (this.options.selectedRenderer) {
           this.valueText.innerHTML = this.options.selectedRenderer(item, this);
         } else {
-          this.valueText.className = 'dropdown-value-text';
+          this.valueText.className = 'aiab-dropdown-value-text';
           this.valueText.textContent = item.text;
         }
       } else if (this.searchInput && !this.options.multiple) {
@@ -845,17 +845,17 @@ class DropdownEnhanced {
   }
 
   updateHighlight() {
-    this.itemsContainer.querySelectorAll('.dropdown-item').forEach((item, index) => {
+    this.itemsContainer.querySelectorAll('.aiab-dropdown-item').forEach((item, index) => {
       if (index === this.state.highlightedIndex) {
-        item.classList.add('dropdown-item--highlighted');
+        item.classList.add('aiab-dropdown-item--highlighted');
       } else {
-        item.classList.remove('dropdown-item--highlighted');
+        item.classList.remove('aiab-dropdown-item--highlighted');
       }
     });
   }
 
   scrollToHighlighted() {
-    const highlighted = this.itemsContainer.querySelector('.dropdown-item--highlighted');
+    const highlighted = this.itemsContainer.querySelector('.aiab-dropdown-item--highlighted');
     if (highlighted) {
       highlighted.scrollIntoView({ block: 'nearest' });
     }
@@ -869,12 +869,12 @@ class DropdownEnhanced {
     const spaceBelow = window.innerHeight - rect.bottom;
     const spaceAbove = rect.top;
 
-    this.menu.classList.remove('dropdown-menu--top', 'dropdown-menu--bottom');
+    this.menu.classList.remove('aiab-dropdown-menu--top', 'aiab-dropdown-menu--bottom');
 
     if (spaceBelow < menuHeight && spaceAbove > spaceBelow) {
-      this.menu.classList.add('dropdown-menu--top');
+      this.menu.classList.add('aiab-dropdown-menu--top');
     } else {
-      this.menu.classList.add('dropdown-menu--bottom');
+      this.menu.classList.add('aiab-dropdown-menu--bottom');
     }
   }
 
@@ -929,7 +929,7 @@ class DropdownEnhanced {
     if (this.state.isOpen || this.options.disabled) return;
 
     this.state.isOpen = true;
-    this.wrapper.classList.add('dropdown-enhanced--open');
+    this.wrapper.classList.add('aiab-dropdown-enhanced--open');
     this.selectBtn.setAttribute('aria-expanded', 'true');
     this.menu.setAttribute('aria-hidden', 'false');
 
@@ -959,7 +959,7 @@ class DropdownEnhanced {
     if (!this.state.isOpen) return;
 
     this.state.isOpen = false;
-    this.wrapper.classList.remove('dropdown-enhanced--open');
+    this.wrapper.classList.remove('aiab-dropdown-enhanced--open');
     this.selectBtn.setAttribute('aria-expanded', 'false');
     this.menu.setAttribute('aria-hidden', 'true');
 
@@ -1000,7 +1000,7 @@ class DropdownEnhanced {
 
   disable() {
     this.options.disabled = true;
-    this.wrapper.classList.add('dropdown-enhanced--disabled');
+    this.wrapper.classList.add('aiab-dropdown-enhanced--disabled');
     this.selectBtn.setAttribute('aria-disabled', 'true');
     this.selectBtn.setAttribute('tabindex', '-1');
     this.close();
@@ -1008,7 +1008,7 @@ class DropdownEnhanced {
 
   enable() {
     this.options.disabled = false;
-    this.wrapper.classList.remove('dropdown-enhanced--disabled');
+    this.wrapper.classList.remove('aiab-dropdown-enhanced--disabled');
     this.selectBtn.setAttribute('aria-disabled', 'false');
     this.selectBtn.setAttribute('tabindex', '0');
   }

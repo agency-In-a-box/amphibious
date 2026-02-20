@@ -103,24 +103,24 @@ class RangeSlider {
 
     // Create wrapper
     this.wrapper = document.createElement('div');
-    this.wrapper.className = `range-slider ${this.options.orientation}`;
+    this.wrapper.className = `aiab-range-slider ${this.options.orientation}`;
     if (this.options.dual) {
       this.wrapper.classList.add('dual');
     }
 
     // Create container
     this.container = document.createElement('div');
-    this.container.className = 'range-slider-container';
+    this.container.className = 'aiab-range-slider-container';
 
     // Create track
     this.track = document.createElement('div');
-    this.track.className = 'range-slider-track';
+    this.track.className = 'aiab-range-slider-track';
     this.track.style.background = this.options.trackColor;
 
     // Create fill
     if (this.options.showFill) {
       this.fill = document.createElement('div');
-      this.fill.className = 'range-slider-fill';
+      this.fill.className = 'aiab-range-slider-fill';
       this.fill.style.background = this.options.fillColor;
       this.track.appendChild(this.fill);
     }
@@ -162,7 +162,7 @@ class RangeSlider {
     // Create value display
     if (!this.options.dual && this.options.showValue !== false) {
       this.valueDisplay = document.createElement('div');
-      this.valueDisplay.className = 'range-slider-value';
+      this.valueDisplay.className = 'aiab-range-slider-value';
       this.wrapper.appendChild(this.valueDisplay);
       this.createdElements.add(this.valueDisplay);
     }
@@ -174,7 +174,7 @@ class RangeSlider {
 
   createHandle(type) {
     const handle = document.createElement('div');
-    handle.className = `range-slider-handle ${type}`;
+    handle.className = `aiab-range-slider-handle ${type}`;
     handle.setAttribute('role', 'slider');
     handle.setAttribute('tabindex', '0');
     handle.setAttribute('aria-valuemin', this.options.min);
@@ -183,7 +183,7 @@ class RangeSlider {
 
     if (this.options.showTooltip) {
       const tooltip = document.createElement('div');
-      tooltip.className = 'range-slider-tooltip';
+      tooltip.className = 'aiab-range-slider-tooltip';
       handle.appendChild(tooltip);
     }
 
@@ -193,14 +193,14 @@ class RangeSlider {
 
   createTicks() {
     const tickContainer = document.createElement('div');
-    tickContainer.className = 'range-slider-ticks';
+    tickContainer.className = 'aiab-range-slider-ticks';
 
     const range = this.options.max - this.options.min;
     const tickCount = Math.floor(range / this.options.tickSteps) + 1;
 
     for (let i = 0; i < tickCount; i++) {
       const tick = document.createElement('div');
-      tick.className = 'range-slider-tick';
+      tick.className = 'aiab-range-slider-tick';
 
       const value = this.options.min + i * this.options.tickSteps;
       const percent = ((value - this.options.min) / range) * 100;
@@ -220,7 +220,7 @@ class RangeSlider {
 
   createScale() {
     const scale = document.createElement('div');
-    scale.className = 'range-slider-scale';
+    scale.className = 'aiab-range-slider-scale';
 
     const range = this.options.max - this.options.min;
     const stepSize = range / this.options.scaleSteps;
@@ -228,7 +228,7 @@ class RangeSlider {
     for (let i = 0; i <= this.options.scaleSteps; i++) {
       const value = this.options.min + i * stepSize;
       const label = document.createElement('div');
-      label.className = 'range-slider-scale-label';
+      label.className = 'aiab-range-slider-scale-label';
 
       // Format the label
       const formattedValue = this.formatValue(value);
@@ -251,14 +251,14 @@ class RangeSlider {
 
   createLabels() {
     const labels = document.createElement('div');
-    labels.className = 'range-slider-labels';
+    labels.className = 'aiab-range-slider-labels';
 
     const minLabel = document.createElement('div');
-    minLabel.className = 'range-slider-label min';
+    minLabel.className = 'aiab-range-slider-label min';
     minLabel.textContent = this.options.labels.min || this.formatValue(this.options.min);
 
     const maxLabel = document.createElement('div');
-    maxLabel.className = 'range-slider-label max';
+    maxLabel.className = 'aiab-range-slider-label max';
     maxLabel.textContent = this.options.labels.max || this.formatValue(this.options.max);
 
     labels.appendChild(minLabel);
@@ -459,7 +459,7 @@ class RangeSlider {
 
   handleTrackClick(e) {
     if (this.state.isDragging) return;
-    if (e.target.classList.contains('range-slider-handle')) return;
+    if (e.target.classList.contains('aiab-range-slider-handle')) return;
 
     const rect = this.track.getBoundingClientRect();
     let percent;
@@ -507,7 +507,7 @@ class RangeSlider {
 
   handleKeyboard(e) {
     const handle = e.target;
-    if (!handle.classList.contains('range-slider-handle')) return;
+    if (!handle.classList.contains('aiab-range-slider-handle')) return;
 
     let value;
     const step = e.shiftKey ? this.options.step * 10 : this.options.step;
@@ -649,8 +649,8 @@ class RangeSlider {
 
       // Update tooltips
       if (this.options.showTooltip) {
-        const minTooltip = this.handleMin.querySelector('.range-slider-tooltip');
-        const maxTooltip = this.handleMax.querySelector('.range-slider-tooltip');
+        const minTooltip = this.handleMin.querySelector('.aiab-range-slider-tooltip');
+        const maxTooltip = this.handleMax.querySelector('.aiab-range-slider-tooltip');
         if (minTooltip) minTooltip.textContent = this.formatValue(this.state.values[0]);
         if (maxTooltip) maxTooltip.textContent = this.formatValue(this.state.values[1]);
       }
@@ -679,7 +679,7 @@ class RangeSlider {
 
       // Update tooltip
       if (this.options.showTooltip) {
-        const tooltip = this.handle.querySelector('.range-slider-tooltip');
+        const tooltip = this.handle.querySelector('.aiab-range-slider-tooltip');
         if (tooltip) tooltip.textContent = this.formatValue(this.state.value);
       }
 
@@ -868,7 +868,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('range-slider', RangeSlider);
+  window.AmphibiousRegistry.registerComponent('aiab-range-slider', RangeSlider);
 }
 
 // Export

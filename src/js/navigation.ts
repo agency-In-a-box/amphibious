@@ -19,7 +19,7 @@ export class Navigation {
 
   constructor() {
     this.navElement = document.querySelector('.aiab-nav, .navigation, nav');
-    this.toggleButton = document.querySelector('#nav_toggle, .nav__toggle, .nav-toggle');
+    this.toggleButton = document.querySelector('#nav_toggle, .nav__toggle, .aiab-nav-toggle');
   }
 
   /**
@@ -117,18 +117,18 @@ export class Navigation {
 
     if (this.navElement) {
       this.navElement.classList.toggle('is-open');
-      this.navElement.classList.toggle('nav--open');
+      this.navElement.classList.toggle('aiab-nav--open');
     }
 
     if (this.toggleButton) {
-      this.toggleButton.classList.toggle('is-active');
+      this.toggleButton.classList.toggle('aiab-is-active');
       this.toggleButton.setAttribute('aria-expanded', String(this.isOpen));
     }
 
     // Animate hamburger icon
-    const hamburger = this.toggleButton?.querySelector('.nav__hamburger, .hamburger');
+    const hamburger = this.toggleButton?.querySelector('.aiab-nav__hamburger, .hamburger');
     if (hamburger) {
-      hamburger.classList.toggle('is-active');
+      hamburger.classList.toggle('aiab-is-active');
     }
 
     // Manage focus trap for accessibility
@@ -144,17 +144,17 @@ export class Navigation {
     this.isOpen = false;
 
     if (this.navElement) {
-      this.navElement.classList.remove('is-open', 'nav--open');
+      this.navElement.classList.remove('is-open', 'aiab-nav--open');
     }
 
     if (this.toggleButton) {
-      this.toggleButton.classList.remove('is-active');
+      this.toggleButton.classList.remove('aiab-is-active');
       this.toggleButton.setAttribute('aria-expanded', 'false');
     }
 
-    const hamburger = this.toggleButton?.querySelector('.nav__hamburger, .hamburger');
+    const hamburger = this.toggleButton?.querySelector('.aiab-nav__hamburger, .hamburger');
     if (hamburger) {
-      hamburger.classList.remove('is-active');
+      hamburger.classList.remove('aiab-is-active');
     }
   }
 
@@ -162,7 +162,7 @@ export class Navigation {
    * Setup dropdown menus
    */
   private setupDropdowns(): void {
-    const dropdowns = document.querySelectorAll('.nav__dropdown, .aiab-dropdown');
+    const dropdowns = document.querySelectorAll('.aiab-nav__dropdown, .aiab-dropdown');
 
     dropdowns.forEach((dropdown) => {
       const trigger = dropdown.querySelector('a, button');

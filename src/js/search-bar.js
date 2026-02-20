@@ -34,6 +34,7 @@ class SearchBar {
     this.results = [];
     this.debounceTimer = null;
     this.recentSearches = this.loadRecentSearches();
+    this._abortController = new AbortController();
 
     this.init();
   }
@@ -58,15 +59,15 @@ class SearchBar {
   createSearchBar() {
     // Create wrapper
     const wrapper = document.createElement('div');
-    wrapper.className = 'search-bar';
+    wrapper.className = 'aiab-search-bar';
 
     // Create input wrapper
     const inputWrapper = document.createElement('div');
-    inputWrapper.className = 'search-bar-wrapper';
+    inputWrapper.className = 'aiab-search-bar-wrapper';
 
     // Create search icon
     const icon = document.createElement('span');
-    icon.className = 'search-bar-icon';
+    icon.className = 'aiab-search-bar-icon';
     icon.innerHTML = `
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -77,7 +78,7 @@ class SearchBar {
     // Create input
     const input = document.createElement('input');
     input.type = 'text';
-    input.className = 'search-bar-input';
+    input.className = 'aiab-search-bar-input';
     input.placeholder = this.options.placeholder;
     input.setAttribute('role', 'combobox');
     input.setAttribute('aria-autocomplete', 'list');
@@ -86,7 +87,7 @@ class SearchBar {
     // Create clear button
     const clearBtn = document.createElement('button');
     clearBtn.type = 'button';
-    clearBtn.className = 'search-bar-clear';
+    clearBtn.className = 'aiab-search-bar-clear';
     clearBtn.innerHTML = `
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -96,11 +97,11 @@ class SearchBar {
 
     // Create spinner
     const spinner = document.createElement('div');
-    spinner.className = 'search-bar-spinner';
+    spinner.className = 'aiab-search-bar-spinner';
 
     // Create dropdown
     const dropdown = document.createElement('div');
-    dropdown.className = 'search-bar-dropdown';
+    dropdown.className = 'aiab-search-bar-dropdown';
     dropdown.setAttribute('role', 'listbox');
 
     // Add categories if provided
@@ -111,7 +112,7 @@ class SearchBar {
 
     // Create results container
     const results = document.createElement('div');
-    results.className = 'search-bar-results';
+    results.className = 'aiab-search-bar-results';
     dropdown.appendChild(results);
 
     // Assemble
@@ -136,12 +137,12 @@ class SearchBar {
 
   createCategories() {
     const categoriesDiv = document.createElement('div');
-    categoriesDiv.className = 'search-bar-categories';
+    categoriesDiv.className = 'aiab-search-bar-categories';
 
     this.options.categories.forEach((category) => {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'search-bar-category';
+      btn.className = 'aiab-search-bar-category';
       btn.textContent = category.label;
       btn.dataset.category = category.value;
 
@@ -156,23 +157,29 @@ class SearchBar {
   }
 
   bindEvents() {
+    const signal = this._abortController.signal;
+
     // Input events
-    this.input.addEventListener('input', () => this.handleInput());
-    this.input.addEventListener('focus', () => this.handleFocus());
-    this.input.addEventListener('blur', () => this.handleBlur());
+    this.input.addEventListener('input', () => this.handleInput(), { signal });
+    this.input.addEventListener('focus', () => this.handleFocus(), { signal });
+    this.input.addEventListener('blur', () => this.handleBlur(), { signal });
 
     // Keyboard navigation
-    this.input.addEventListener('keydown', (e) => this.handleKeydown(e));
+    this.input.addEventListener('keydown', (e) => this.handleKeydown(e), { signal });
 
     // Clear button
-    this.clearBtn.addEventListener('click', () => this.clear());
+    this.clearBtn.addEventListener('click', () => this.clear(), { signal });
 
     // Click outside to close
-    document.addEventListener('click', (e) => {
-      if (!this.wrapper.contains(e.target)) {
-        this.close();
-      }
-    });
+    document.addEventListener(
+      'click',
+      (e) => {
+        if (!this.wrapper.contains(e.target)) {
+          this.close();
+        }
+      },
+      { signal },
+    );
   }
 
   handleInput() {
@@ -180,9 +187,9 @@ class SearchBar {
 
     // Update UI state
     if (value) {
-      this.wrapper.classList.add('search-bar--has-value');
+      this.wrapper.classList.add('aiab-search-bar--has-value');
     } else {
-      this.wrapper.classList.remove('search-bar--has-value');
+      this.wrapper.classList.remove('aiab-search-bar--has-value');
     }
 
     // Clear previous timer
@@ -190,7 +197,7 @@ class SearchBar {
 
     // Handle search
     if (value.length >= this.options.minChars) {
-      this.wrapper.classList.add('search-bar--loading');
+      this.wrapper.classList.add('aiab-search-bar--loading');
 
       this.debounceTimer = setTimeout(() => {
         this.search(value);
@@ -231,7 +238,7 @@ class SearchBar {
   }
 
   handleKeydown(e) {
-    const items = this.resultsContainer.querySelectorAll('.search-bar-item');
+    const items = this.resultsContainer.querySelectorAll('.aiab-search-bar-item');
 
     switch (e.key) {
       case 'ArrowDown':
@@ -271,10 +278,10 @@ class SearchBar {
   highlightItem(items) {
     items.forEach((item, index) => {
       if (index === this.currentFocus) {
-        item.classList.add('search-bar-item--active');
+        item.classList.add('aiab-search-bar-item--active');
         item.scrollIntoView({ block: 'nearest' });
       } else {
-        item.classList.remove('search-bar-item--active');
+        item.classList.remove('aiab-search-bar-item--active');
       }
     });
   }
@@ -312,7 +319,7 @@ class SearchBar {
       // Handle search error - console removed for production
       this.renderError();
     } finally {
-      this.wrapper.classList.remove('search-bar--loading');
+      this.wrapper.classList.remove('aiab-search-bar--loading');
     }
   }
 
@@ -358,7 +365,7 @@ class SearchBar {
   createResultItem(result, query) {
     const item = document.createElement('button');
     item.type = 'button';
-    item.className = 'search-bar-item';
+    item.className = 'aiab-search-bar-item';
     item.setAttribute('role', 'option');
 
     if (this.options.renderItem) {
@@ -367,8 +374,8 @@ class SearchBar {
     } else if (typeof result === 'string') {
       // Simple string result
       item.innerHTML = `
-        <div class="search-bar-item-content">
-          <div class="search-bar-item-title">
+        <div class="aiab-search-bar-item-content">
+          <div class="aiab-search-bar-item-title">
             ${this.highlightMatch(result, query)}
           </div>
         </div>
@@ -380,15 +387,15 @@ class SearchBar {
       const icon = result.icon || '';
 
       item.innerHTML = `
-        ${icon ? `<span class="search-bar-item-icon">${icon}</span>` : ''}
-        <div class="search-bar-item-content">
-          <div class="search-bar-item-title">
+        ${icon ? `<span class="aiab-search-bar-item-icon">${this._escapeHTML(icon)}</span>` : ''}
+        <div class="aiab-search-bar-item-content">
+          <div class="aiab-search-bar-item-title">
             ${this.highlightMatch(title, query)}
           </div>
           ${
             subtitle
               ? `
-            <div class="search-bar-item-subtitle">
+            <div class="aiab-search-bar-item-subtitle">
               ${this.highlightMatch(subtitle, query)}
             </div>
           `
@@ -425,13 +432,13 @@ class SearchBar {
 
     // Create header
     const header = document.createElement('div');
-    header.className = 'search-bar-recent-header';
+    header.className = 'aiab-search-bar-recent-header';
     header.innerHTML = `
       <span>Recent Searches</span>
-      <button type="button" class="search-bar-recent-clear">Clear</button>
+      <button type="button" class="aiab-search-bar-recent-clear">Clear</button>
     `;
 
-    header.querySelector('.search-bar-recent-clear').addEventListener('click', () => {
+    header.querySelector('.aiab-search-bar-recent-clear').addEventListener('click', () => {
       this.clearRecentSearches();
     });
 
@@ -439,20 +446,20 @@ class SearchBar {
 
     // Add recent items
     const recentDiv = document.createElement('div');
-    recentDiv.className = 'search-bar-recent';
+    recentDiv.className = 'aiab-search-bar-recent';
 
     this.recentSearches.forEach((search) => {
       const item = document.createElement('button');
       item.type = 'button';
-      item.className = 'search-bar-item';
+      item.className = 'aiab-search-bar-item';
       item.innerHTML = `
-        <span class="search-bar-item-icon">
+        <span class="aiab-search-bar-item-icon">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </span>
-        <div class="search-bar-item-content">
-          <div class="search-bar-item-title">${this._escapeHTML(search)}</div>
+        <div class="aiab-search-bar-item-content">
+          <div class="aiab-search-bar-item-title">${this._escapeHTML(search)}</div>
         </div>
       `;
 
@@ -470,20 +477,20 @@ class SearchBar {
 
   renderEmpty() {
     this.resultsContainer.innerHTML = `
-      <div class="search-bar-empty">
-        <svg class="search-bar-empty-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div class="aiab-search-bar-empty">
+        <svg class="aiab-search-bar-empty-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <div class="search-bar-empty-text">${this.options.noResultsText}</div>
+        <div class="aiab-search-bar-empty-text">${this.options.noResultsText}</div>
       </div>
     `;
   }
 
   renderError() {
     this.resultsContainer.innerHTML = `
-      <div class="search-bar-empty">
-        <div class="search-bar-empty-text">Search error. Please try again.</div>
+      <div class="aiab-search-bar-empty">
+        <div class="aiab-search-bar-empty-text">Search error. Please try again.</div>
       </div>
     `;
   }
@@ -512,9 +519,9 @@ class SearchBar {
 
   selectCategory(category) {
     // Update UI
-    const buttons = this.wrapper.querySelectorAll('.search-bar-category');
+    const buttons = this.wrapper.querySelectorAll('.aiab-search-bar-category');
     buttons.forEach((btn) => {
-      btn.classList.toggle('search-bar-category--active', btn.dataset.category === category);
+      btn.classList.toggle('aiab-search-bar-category--active', btn.dataset.category === category);
     });
 
     // Re-search with category
@@ -527,7 +534,7 @@ class SearchBar {
   open() {
     if (!this.isOpen) {
       this.isOpen = true;
-      this.wrapper.classList.add('search-bar--open');
+      this.wrapper.classList.add('aiab-search-bar--open');
       this.input.setAttribute('aria-expanded', 'true');
     }
   }
@@ -535,7 +542,7 @@ class SearchBar {
   close() {
     if (this.isOpen) {
       this.isOpen = false;
-      this.wrapper.classList.remove('search-bar--open');
+      this.wrapper.classList.remove('aiab-search-bar--open');
       this.input.setAttribute('aria-expanded', 'false');
       this.currentFocus = -1;
     }
@@ -543,7 +550,7 @@ class SearchBar {
 
   clear() {
     this.input.value = '';
-    this.wrapper.classList.remove('search-bar--has-value');
+    this.wrapper.classList.remove('aiab-search-bar--has-value');
     this.close();
     this.input.focus();
 
@@ -556,7 +563,7 @@ class SearchBar {
   loadRecentSearches() {
     if (!this.options.recentSearches) return [];
 
-    const stored = localStorage.getItem('search-bar-recent');
+    const stored = localStorage.getItem('aiab-search-bar-recent');
     return stored ? JSON.parse(stored) : [];
   }
 
@@ -574,12 +581,12 @@ class SearchBar {
       this.recentSearches = this.recentSearches.slice(0, this.options.maxRecent);
     }
 
-    localStorage.setItem('search-bar-recent', JSON.stringify(this.recentSearches));
+    localStorage.setItem('aiab-search-bar-recent', JSON.stringify(this.recentSearches));
   }
 
   clearRecentSearches() {
     this.recentSearches = [];
-    localStorage.removeItem('search-bar-recent');
+    localStorage.removeItem('aiab-search-bar-recent');
     this.close();
   }
 
@@ -598,7 +605,8 @@ class SearchBar {
   }
 
   destroy() {
-    // Remove event listeners and clean up
+    this._abortController.abort();
+    if (this.debounceTimer) clearTimeout(this.debounceTimer);
     this.wrapper.replaceWith(this.element);
   }
 }

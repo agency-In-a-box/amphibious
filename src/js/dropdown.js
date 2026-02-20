@@ -21,6 +21,7 @@ class Dropdown {
     this.isOpen = false;
     this.selectedValues = [];
     this.filteredItems = [];
+    this._abortController = new AbortController();
 
     this.init();
   }
@@ -52,34 +53,34 @@ class Dropdown {
     const dropdown = document.createElement('div');
     dropdown.className = 'dropdown';
     if (this.options.multiple) {
-      dropdown.classList.add('dropdown--multi');
+      dropdown.classList.add('aiab-dropdown--multi');
     }
 
     // Create select button
     const selectBtn = document.createElement('button');
-    selectBtn.className = 'dropdown-select';
+    selectBtn.className = 'aiab-dropdown-select';
     selectBtn.setAttribute('type', 'button');
     selectBtn.setAttribute('aria-expanded', 'false');
     selectBtn.setAttribute('aria-haspopup', 'listbox');
 
     const valueSpan = document.createElement('span');
-    valueSpan.className = 'dropdown-value dropdown-placeholder';
+    valueSpan.className = 'aiab-dropdown-value aiab-dropdown-placeholder';
     valueSpan.textContent = this.options.placeholder;
     selectBtn.appendChild(valueSpan);
 
     // Create dropdown menu
     const menu = document.createElement('div');
-    menu.className = 'dropdown-menu';
+    menu.className = 'aiab-dropdown-menu';
     menu.setAttribute('role', 'listbox');
 
     // Add search if enabled
     if (this.options.searchable) {
       const searchContainer = document.createElement('div');
-      searchContainer.className = 'dropdown-search';
+      searchContainer.className = 'aiab-dropdown-search';
 
       const searchInput = document.createElement('input');
       searchInput.type = 'text';
-      searchInput.className = 'dropdown-search-input';
+      searchInput.className = 'aiab-dropdown-search-input';
       searchInput.placeholder = 'Search...';
       searchInput.setAttribute('aria-label', 'Search options');
 
@@ -91,7 +92,7 @@ class Dropdown {
 
     // Add items container
     const itemsContainer = document.createElement('div');
-    itemsContainer.className = 'dropdown-items';
+    itemsContainer.className = 'aiab-dropdown-items';
     menu.appendChild(itemsContainer);
 
     dropdown.appendChild(selectBtn);
@@ -164,17 +165,17 @@ class Dropdown {
     itemsToRender.forEach((item) => {
       if (item.type === 'group') {
         currentGroup = document.createElement('div');
-        currentGroup.className = 'dropdown-group';
+        currentGroup.className = 'aiab-dropdown-group';
 
         const label = document.createElement('div');
-        label.className = 'dropdown-group-label';
+        label.className = 'aiab-dropdown-group-label';
         label.textContent = item.label;
 
         currentGroup.appendChild(label);
         this.itemsContainer.appendChild(currentGroup);
       } else {
         const button = document.createElement('button');
-        button.className = 'dropdown-item';
+        button.className = 'aiab-dropdown-item';
         button.setAttribute('type', 'button');
         button.setAttribute('role', 'option');
         button.dataset.value = item.value;
@@ -198,49 +199,62 @@ class Dropdown {
       }
     });
 
-    this.filteredItems = this.itemsContainer.querySelectorAll('.dropdown-item:not(.aiab-disabled)');
+    this.filteredItems = this.itemsContainer.querySelectorAll(
+      '.aiab-dropdown-item:not(.aiab-disabled)',
+    );
   }
 
   bindEvents() {
+    const signal = this._abortController.signal;
+
     // Toggle dropdown
-    this.selectBtn.addEventListener('click', () => this.toggle());
+    this.selectBtn.addEventListener('click', () => this.toggle(), { signal });
 
     // Handle item selection
-    this.itemsContainer.addEventListener('click', (e) => {
-      if (e.target.classList.contains('dropdown-item') && !e.target.disabled) {
-        this.selectItem(e.target);
-      }
-    });
+    this.itemsContainer.addEventListener(
+      'click',
+      (e) => {
+        if (e.target.classList.contains('aiab-dropdown-item') && !e.target.disabled) {
+          this.selectItem(e.target);
+        }
+      },
+      { signal },
+    );
 
     // Search functionality
     if (this.searchInput) {
-      this.searchInput.addEventListener('input', (e) => {
-        this.renderItems(e.target.value);
+      this.searchInput.addEventListener('input', (e) => this.renderItems(e.target.value), {
+        signal,
       });
-
-      this.searchInput.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
+      this.searchInput.addEventListener('click', (e) => e.stopPropagation(), { signal });
     }
 
     // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!this.dropdown.contains(e.target) && this.isOpen) {
-        this.close();
-      }
-    });
+    document.addEventListener(
+      'click',
+      (e) => {
+        if (!this.dropdown.contains(e.target) && this.isOpen) {
+          this.close();
+        }
+      },
+      { signal },
+    );
 
     // Keyboard navigation
-    this.selectBtn.addEventListener('keydown', (e) => this.handleKeydown(e));
-    this.menu.addEventListener('keydown', (e) => this.handleKeydown(e));
+    this.selectBtn.addEventListener('keydown', (e) => this.handleKeydown(e), { signal });
+    this.menu.addEventListener('keydown', (e) => this.handleKeydown(e), { signal });
 
     // Handle ESC key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.isOpen) {
-        this.close();
-        this.selectBtn.focus();
-      }
-    });
+    document.addEventListener(
+      'keydown',
+      (e) => {
+        if (e.key === 'Escape' && this.isOpen) {
+          this.close();
+          this.selectBtn.focus();
+        }
+      },
+      { signal },
+    );
   }
 
   handleKeydown(e) {
@@ -253,7 +267,7 @@ class Dropdown {
         if (e.target === this.selectBtn) {
           e.preventDefault();
           this.toggle();
-        } else if (e.target.classList.contains('dropdown-item')) {
+        } else if (e.target.classList.contains('aiab-dropdown-item')) {
           e.preventDefault();
           this.selectItem(e.target);
         }
@@ -345,27 +359,27 @@ class Dropdown {
 
   updateDisplay() {
     if (this.selectedValues.length === 0) {
-      this.valueSpan.className = 'dropdown-value dropdown-placeholder';
+      this.valueSpan.className = 'aiab-dropdown-value aiab-dropdown-placeholder';
       this.valueSpan.textContent = this.options.placeholder;
     } else if (this.options.multiple) {
-      this.valueSpan.className = 'dropdown-value';
+      this.valueSpan.className = 'aiab-dropdown-value';
       this.valueSpan.innerHTML = '';
 
       this.selectedValues.forEach((value) => {
         const item = this.items.find((i) => i.value === value);
         if (item) {
           const tag = document.createElement('span');
-          tag.className = 'dropdown-tag';
+          tag.className = 'aiab-dropdown-tag';
           tag.innerHTML = `
             ${this._escapeHTML(item.text)}
-            <span class="dropdown-tag-remove" data-value="${this._escapeHTML(value)}">×</span>
+            <span class="aiab-dropdown-tag-remove" data-value="${this._escapeHTML(value)}">×</span>
           `;
           this.valueSpan.appendChild(tag);
         }
       });
 
       // Handle tag removal
-      this.valueSpan.querySelectorAll('.dropdown-tag-remove').forEach((btn) => {
+      this.valueSpan.querySelectorAll('.aiab-dropdown-tag-remove').forEach((btn) => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           const value = btn.dataset.value;
@@ -383,7 +397,7 @@ class Dropdown {
       });
     } else {
       const item = this.items.find((i) => i.value === this.selectedValues[0]);
-      this.valueSpan.className = 'dropdown-value';
+      this.valueSpan.className = 'aiab-dropdown-value';
       this.valueSpan.textContent = item ? item.text : '';
     }
   }
@@ -460,6 +474,7 @@ class Dropdown {
   }
 
   destroy() {
+    this._abortController.abort();
     this.dropdown.remove();
     if (this.nativeSelect) {
       this.nativeSelect.style.display = '';

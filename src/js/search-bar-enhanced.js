@@ -132,19 +132,19 @@ class SearchBarEnhanced {
   createSearchBar() {
     // Create wrapper
     const wrapper = document.createElement('div');
-    wrapper.className = 'search-bar-enhanced';
+    wrapper.className = 'aiab-search-bar-enhanced';
     if (this.options.theme) {
-      wrapper.classList.add(`search-bar-theme-${this.options.theme}`);
+      wrapper.classList.add(`aiab-search-bar-theme-${this.options.theme}`);
     }
 
     // Create input container
     const inputContainer = document.createElement('div');
-    inputContainer.className = 'search-bar-input-container';
+    inputContainer.className = 'aiab-search-bar-input-container';
 
     // Search icon
     if (this.options.showIcon) {
       const icon = document.createElement('span');
-      icon.className = 'search-bar-icon';
+      icon.className = 'aiab-search-bar-icon';
       icon.innerHTML = `
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <circle cx="11" cy="11" r="8"/>
@@ -157,7 +157,7 @@ class SearchBarEnhanced {
     // Search input
     const input = document.createElement('input');
     input.type = 'search';
-    input.className = 'search-bar-input';
+    input.className = 'aiab-search-bar-input';
     input.placeholder = this.options.placeholder;
     input.autocomplete = 'off';
     input.spellcheck = false;
@@ -170,7 +170,7 @@ class SearchBarEnhanced {
     if (this.options.voice && this.hasVoiceSupport()) {
       const voiceBtn = document.createElement('button');
       voiceBtn.type = 'button';
-      voiceBtn.className = 'search-bar-voice';
+      voiceBtn.className = 'aiab-search-bar-voice';
       voiceBtn.innerHTML = '🎤';
       voiceBtn.setAttribute('aria-label', 'Voice search');
       inputContainer.appendChild(voiceBtn);
@@ -181,7 +181,7 @@ class SearchBarEnhanced {
     if (this.options.showClear) {
       const clearBtn = document.createElement('button');
       clearBtn.type = 'button';
-      clearBtn.className = 'search-bar-clear';
+      clearBtn.className = 'aiab-search-bar-clear';
       clearBtn.innerHTML = '×';
       clearBtn.style.display = 'none';
       clearBtn.setAttribute('aria-label', 'Clear search');
@@ -193,7 +193,7 @@ class SearchBarEnhanced {
     if (this.options.showSubmit) {
       const submitBtn = document.createElement('button');
       submitBtn.type = 'button';
-      submitBtn.className = 'search-bar-submit';
+      submitBtn.className = 'aiab-search-bar-submit';
       submitBtn.innerHTML = 'Search';
       inputContainer.appendChild(submitBtn);
       this.submitBtn = submitBtn;
@@ -203,30 +203,30 @@ class SearchBarEnhanced {
 
     // Create results container
     const resultsContainer = document.createElement('div');
-    resultsContainer.className = 'search-bar-results';
+    resultsContainer.className = 'aiab-search-bar-results';
     resultsContainer.id = 'search-results';
     resultsContainer.setAttribute('role', 'listbox');
     resultsContainer.style.display = 'none';
 
     // Sections
     const sectionsContainer = document.createElement('div');
-    sectionsContainer.className = 'search-bar-sections';
+    sectionsContainer.className = 'aiab-search-bar-sections';
 
     // Recent searches section
     if (this.options.recentSearches) {
       const recentSection = document.createElement('div');
-      recentSection.className = 'search-bar-section search-bar-recent';
+      recentSection.className = 'aiab-search-bar-section aiab-search-bar-recent';
       recentSection.style.display = 'none';
 
       const recentHeader = document.createElement('div');
-      recentHeader.className = 'search-bar-section-header';
+      recentHeader.className = 'aiab-search-bar-section-header';
       recentHeader.innerHTML = `
         <span>Recent Searches</span>
-        <button type="button" class="search-bar-clear-recent">Clear</button>
+        <button type="button" class="aiab-search-bar-clear-recent">Clear</button>
       `;
 
       const recentList = document.createElement('div');
-      recentList.className = 'search-bar-recent-list';
+      recentList.className = 'aiab-search-bar-recent-list';
 
       recentSection.appendChild(recentHeader);
       recentSection.appendChild(recentList);
@@ -239,18 +239,18 @@ class SearchBarEnhanced {
     // Popular searches section
     if (this.options.popularSearches) {
       const popularSection = document.createElement('div');
-      popularSection.className = 'search-bar-section search-bar-popular';
+      popularSection.className = 'aiab-search-bar-section aiab-search-bar-popular';
 
       const popularHeader = document.createElement('div');
-      popularHeader.className = 'search-bar-section-header';
+      popularHeader.className = 'aiab-search-bar-section-header';
       popularHeader.textContent = 'Popular Searches';
 
       const popularList = document.createElement('div');
-      popularList.className = 'search-bar-popular-list';
+      popularList.className = 'aiab-search-bar-popular-list';
 
       this.options.popularSearches.forEach((term) => {
         const item = document.createElement('div');
-        item.className = 'search-bar-popular-item';
+        item.className = 'aiab-search-bar-popular-item';
         item.textContent = term;
         popularList.appendChild(item);
       });
@@ -264,26 +264,26 @@ class SearchBarEnhanced {
 
     // Results list
     const resultsList = document.createElement('div');
-    resultsList.className = 'search-bar-results-list';
+    resultsList.className = 'aiab-search-bar-results-list';
 
     // No results message
     const noResults = document.createElement('div');
-    noResults.className = 'search-bar-no-results';
+    noResults.className = 'aiab-search-bar-no-results';
     noResults.textContent = this.options.noResultsText;
     noResults.style.display = 'none';
 
     // Loading indicator
     const loading = document.createElement('div');
-    loading.className = 'search-bar-loading';
+    loading.className = 'aiab-search-bar-loading';
     loading.innerHTML = `
-      <span class="search-bar-spinner"></span>
+      <span class="aiab-search-bar-spinner"></span>
       ${this.options.loadingText}
     `;
     loading.style.display = 'none';
 
     // Error message
     const error = document.createElement('div');
-    error.className = 'search-bar-error';
+    error.className = 'aiab-search-bar-error';
     error.textContent = this.options.errorText;
     error.style.display = 'none';
 
@@ -314,20 +314,20 @@ class SearchBarEnhanced {
 
   createFilters() {
     const filtersContainer = document.createElement('div');
-    filtersContainer.className = 'search-bar-filters';
+    filtersContainer.className = 'aiab-search-bar-filters';
 
     const filtersToggle = document.createElement('button');
     filtersToggle.type = 'button';
-    filtersToggle.className = 'search-bar-filters-toggle';
+    filtersToggle.className = 'aiab-search-bar-filters-toggle';
     filtersToggle.innerHTML = '⚙️ Filters';
 
     const filtersPanel = document.createElement('div');
-    filtersPanel.className = 'search-bar-filters-panel';
+    filtersPanel.className = 'aiab-search-bar-filters-panel';
     filtersPanel.style.display = 'none';
 
     this.options.filters.forEach((filter) => {
       const filterGroup = document.createElement('div');
-      filterGroup.className = 'search-bar-filter-group';
+      filterGroup.className = 'aiab-search-bar-filter-group';
 
       const label = document.createElement('label');
       label.textContent = filter.label;
@@ -460,7 +460,7 @@ class SearchBarEnhanced {
 
     // Recent searches
     if (this.recentSection) {
-      const clearRecentBtn = this.recentSection.querySelector('.search-bar-clear-recent');
+      const clearRecentBtn = this.recentSection.querySelector('.aiab-search-bar-clear-recent');
       this.addHandler(clearRecentBtn, 'click', () => this.clearRecentSearches());
     }
 
@@ -489,7 +489,7 @@ class SearchBarEnhanced {
   setupAccessibility() {
     // ARIA live region for announcements
     const liveRegion = document.createElement('div');
-    liveRegion.className = 'sr-only';
+    liveRegion.className = 'aiab-sr-only';
     liveRegion.setAttribute('aria-live', 'polite');
     liveRegion.setAttribute('aria-atomic', 'true');
     this.wrapper.appendChild(liveRegion);
@@ -586,12 +586,12 @@ class SearchBarEnhanced {
   }
 
   updateHighlight() {
-    this.resultsContainer.querySelectorAll('.search-bar-result').forEach((el, index) => {
+    this.resultsContainer.querySelectorAll('.aiab-search-bar-result').forEach((el, index) => {
       if (index === this.state.highlightedIndex) {
-        el.classList.add('search-bar-result--highlighted');
+        el.classList.add('aiab-search-bar-result--highlighted');
         el.scrollIntoView({ block: 'nearest' });
       } else {
-        el.classList.remove('search-bar-result--highlighted');
+        el.classList.remove('aiab-search-bar-result--highlighted');
       }
     });
   }
@@ -821,7 +821,7 @@ class SearchBarEnhanced {
     this.state.filteredResults.forEach((item, index) => {
       if (item.type === 'group') {
         const groupHeader = document.createElement('div');
-        groupHeader.className = 'search-bar-group-header';
+        groupHeader.className = 'aiab-search-bar-group-header';
         groupHeader.textContent = item.name;
         this.resultsList.appendChild(groupHeader);
       } else {
@@ -835,7 +835,7 @@ class SearchBarEnhanced {
 
   createResultElement(item, index) {
     const resultEl = document.createElement('div');
-    resultEl.className = 'search-bar-result';
+    resultEl.className = 'aiab-search-bar-result';
     resultEl.setAttribute('role', 'option');
     resultEl.dataset.index = index;
 
@@ -848,8 +848,8 @@ class SearchBarEnhanced {
         : this._escapeHTML(text);
 
       resultEl.innerHTML = `
-        <div class="search-bar-result-text">${displayText}</div>
-        ${item.description ? `<div class="search-bar-result-description">${this._escapeHTML(item.description)}</div>` : ''}
+        <div class="aiab-search-bar-result-text">${displayText}</div>
+        ${item.description ? `<div class="aiab-search-bar-result-description">${this._escapeHTML(item.description)}</div>` : ''}
       `;
     }
 
@@ -932,19 +932,19 @@ class SearchBarEnhanced {
 
     this.state.recentSearches.forEach((search) => {
       const item = document.createElement('div');
-      item.className = 'search-bar-recent-item';
+      item.className = 'aiab-search-bar-recent-item';
       item.innerHTML = `
-        <span class="search-bar-recent-text">🕐 ${this._escapeHTML(search)}</span>
-        <button type="button" class="search-bar-recent-remove" data-search="${this._escapeHTML(search)}">×</button>
+        <span class="aiab-search-bar-recent-text">🕐 ${this._escapeHTML(search)}</span>
+        <button type="button" class="aiab-search-bar-recent-remove" data-search="${this._escapeHTML(search)}">×</button>
       `;
 
-      this.addHandler(item.querySelector('.search-bar-recent-text'), 'click', () => {
+      this.addHandler(item.querySelector('.aiab-search-bar-recent-text'), 'click', () => {
         this.input.value = search;
         this.state.query = search;
         this.search(search);
       });
 
-      this.addHandler(item.querySelector('.search-bar-recent-remove'), 'click', (e) => {
+      this.addHandler(item.querySelector('.aiab-search-bar-recent-remove'), 'click', (e) => {
         e.stopPropagation();
         this.removeRecentSearch(search);
       });
@@ -1022,14 +1022,14 @@ class SearchBarEnhanced {
       const spaceAbove = rect.top;
 
       this.resultsContainer.classList.remove(
-        'search-bar-results--top',
-        'search-bar-results--bottom',
+        'aiab-search-bar-results--top',
+        'aiab-search-bar-results--bottom',
       );
 
       if (spaceBelow < this.options.maxHeight && spaceAbove > spaceBelow) {
-        this.resultsContainer.classList.add('search-bar-results--top');
+        this.resultsContainer.classList.add('aiab-search-bar-results--top');
       } else {
-        this.resultsContainer.classList.add('search-bar-results--bottom');
+        this.resultsContainer.classList.add('aiab-search-bar-results--bottom');
       }
     }
   }
@@ -1062,10 +1062,10 @@ class SearchBarEnhanced {
   startVoiceSearch() {
     if (this.recognition) {
       this.recognition.start();
-      this.voiceBtn.classList.add('search-bar-voice--active');
+      this.voiceBtn.classList.add('aiab-search-bar-voice--active');
 
       this.recognition.onend = () => {
-        this.voiceBtn.classList.remove('search-bar-voice--active');
+        this.voiceBtn.classList.remove('aiab-search-bar-voice--active');
       };
     }
   }
@@ -1227,7 +1227,7 @@ class SearchBarEnhanced {
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('search-bar', SearchBarEnhanced, {
+  window.AmphibiousRegistry.registerComponent('aiab-search-bar', SearchBarEnhanced, {
     selector: '[data-search-bar]',
     autoInit: true,
   });

@@ -28,9 +28,9 @@ export class Tabs {
    * Setup tabs for a container
    */
   private setupTabs(container: HTMLElement): void {
-    const tabList = container.querySelector('.tabs__list, [role="tablist"]') as HTMLElement;
-    const tabs = container.querySelectorAll('.tabs__tab, [role="tab"]');
-    const panels = container.querySelectorAll('.tabs__panel, [role="tabpanel"]');
+    const tabList = container.querySelector('.aiab-tabs__list, [role="tablist"]') as HTMLElement;
+    const tabs = container.querySelectorAll('.aiab-tabs__tab, [role="tab"]');
+    const panels = container.querySelectorAll('.aiab-tabs__panel, [role="tabpanel"]');
 
     if (!tabList || tabs.length === 0 || panels.length === 0) return;
 
@@ -59,10 +59,10 @@ export class Tabs {
 
       // Set initial state
       if (index === 0) {
-        tabElement.classList.add('is-active', 'tabs__tab--active');
-        panel.classList.add('is-active', 'tabs__panel--active');
+        tabElement.classList.add('aiab-is-active', 'aiab-tabs__tab--active');
+        panel.classList.add('aiab-is-active', 'aiab-tabs__panel--active');
       } else {
-        panel.classList.remove('is-active', 'tabs__panel--active');
+        panel.classList.remove('aiab-is-active', 'aiab-tabs__panel--active');
         panel.style.display = 'none';
       }
 
@@ -95,29 +95,29 @@ export class Tabs {
    */
   private selectTab(container: HTMLElement, tab: HTMLElement, panel: HTMLElement): void {
     // Deactivate all tabs and panels
-    const allTabs = container.querySelectorAll('[role="tab"], .tabs__tab');
-    const allPanels = container.querySelectorAll('[role="tabpanel"], .tabs__panel');
+    const allTabs = container.querySelectorAll('[role="tab"], .aiab-tabs__tab');
+    const allPanels = container.querySelectorAll('[role="tabpanel"], .aiab-tabs__panel');
 
     allTabs.forEach((t) => {
       const tabEl = t as HTMLElement;
-      tabEl.classList.remove('is-active', 'tabs__tab--active');
+      tabEl.classList.remove('aiab-is-active', 'aiab-tabs__tab--active');
       tabEl.setAttribute('aria-selected', 'false');
       tabEl.setAttribute('tabindex', '-1');
     });
 
     allPanels.forEach((p) => {
       const panelEl = p as HTMLElement;
-      panelEl.classList.remove('is-active', 'tabs__panel--active');
+      panelEl.classList.remove('aiab-is-active', 'aiab-tabs__panel--active');
       panelEl.style.display = 'none';
     });
 
     // Activate selected tab and panel
-    tab.classList.add('is-active', 'tabs__tab--active');
+    tab.classList.add('aiab-is-active', 'aiab-tabs__tab--active');
     tab.setAttribute('aria-selected', 'true');
     tab.setAttribute('tabindex', '0');
     tab.focus();
 
-    panel.classList.add('is-active', 'tabs__panel--active');
+    panel.classList.add('aiab-is-active', 'aiab-tabs__panel--active');
     panel.style.display = 'block';
 
     // Dispatch custom event
@@ -212,14 +212,14 @@ export class Tabs {
               const tPanel = document.querySelector(tContentId) as HTMLElement;
               if (tPanel) {
                 tPanel.style.display = 'none';
-                tElement.classList.remove('active', 'is-active');
+                tElement.classList.remove('active', 'aiab-is-active');
               }
             }
           });
 
           // Show selected panel
           panel.style.display = 'block';
-          tabElement.classList.add('active', 'is-active');
+          tabElement.classList.add('active', 'aiab-is-active');
         },
         { signal: this.abortController.signal },
       );
@@ -229,7 +229,7 @@ export class Tabs {
       const isFirst = tabElement === document.querySelector(`[amp-tab-group="${group}"]`);
       if (isFirst) {
         panel.style.display = 'block';
-        tabElement.classList.add('active', 'is-active');
+        tabElement.classList.add('active', 'aiab-is-active');
       }
     });
   }
@@ -241,8 +241,8 @@ export class Tabs {
     const container = document.querySelector(containerSelector) as HTMLElement;
     if (!container) return;
 
-    const tabs = container.querySelectorAll('[role="tab"], .tabs__tab');
-    const panels = container.querySelectorAll('[role="tabpanel"], .tabs__panel');
+    const tabs = container.querySelectorAll('[role="tab"], .aiab-tabs__tab');
+    const panels = container.querySelectorAll('[role="tabpanel"], .aiab-tabs__panel');
 
     if (index >= 0 && index < tabs.length) {
       this.selectTab(container, tabs[index] as HTMLElement, panels[index] as HTMLElement);
@@ -256,7 +256,7 @@ export class Tabs {
     const container = document.querySelector(containerSelector);
     if (!container) return null;
 
-    return container.querySelector('.is-active[role="tab"], .tabs__tab--active');
+    return container.querySelector('.aiab-is-active[role="tab"], .aiab-tabs__tab--active');
   }
   /**
    * Destroy tabs and remove all event listeners

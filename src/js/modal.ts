@@ -122,7 +122,7 @@ export class Modal {
    */
   private createBackdrop(): void {
     this.backdrop = document.createElement('div');
-    this.backdrop.className = 'modal-backdrop';
+    this.backdrop.className = 'aiab-modal-backdrop';
     document.body.appendChild(this.backdrop);
 
     if (this.options.closeOnBackdrop && this.options.backdrop !== 'static') {
@@ -173,7 +173,7 @@ export class Modal {
     }
 
     // Prevent closing when clicking inside modal
-    const dialog = this.element.querySelector('.modal__dialog');
+    const dialog = this.element.querySelector('.aiab-modal__dialog');
     if (dialog) {
       const stopHandler = (e: Event) => e.stopPropagation();
       this.addEventListener(dialog, 'click', stopHandler);
@@ -265,7 +265,7 @@ export class Modal {
     this.lastFocusedElement = document.activeElement as HTMLElement;
 
     // Prevent body scroll
-    document.body.classList.add('modal-open');
+    document.body.classList.add('aiab-modal-open');
     document.body.style.setProperty('--scrollbar-width', `${this.scrollbarWidth}px`);
 
     // Show backdrop
@@ -323,7 +323,7 @@ export class Modal {
 
     // Restore body scroll
     setTimeout(() => {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove('aiab-modal-open');
       document.body.style.removeProperty('--scrollbar-width');
     }, 300);
 
@@ -369,13 +369,13 @@ export class Modal {
 
     switch (target) {
       case 'body':
-        targetElement = this.element.querySelector('.modal__body');
+        targetElement = this.element.querySelector('.aiab-modal__body');
         break;
       case 'header':
-        targetElement = this.element.querySelector('.modal__header');
+        targetElement = this.element.querySelector('.aiab-modal__header');
         break;
       case 'footer':
-        targetElement = this.element.querySelector('.modal__footer');
+        targetElement = this.element.querySelector('.aiab-modal__footer');
         break;
     }
 
@@ -393,7 +393,7 @@ export class Modal {
    * Update modal title
    */
   public setTitle(title: string): void {
-    const titleElement = this.element.querySelector('.modal__title');
+    const titleElement = this.element.querySelector('.aiab-modal__title');
     if (titleElement) {
       titleElement.textContent = title;
     }
@@ -518,8 +518,8 @@ export class ModalManager {
   ): Promise<void> {
     return new Promise((resolve) => {
       const modalHtml = `
-        <div class="modal__dialog">
-          <div class="modal__body">
+        <div class="aiab-modal__dialog">
+          <div class="aiab-modal__body">
             <div class="modal__icon">${ModalManager.getIcon(type)}</div>
             <p>${message}</p>
             <button class="aiab-btn btn--primary" data-modal-close>OK</button>
@@ -555,11 +555,11 @@ export class ModalManager {
   ): Promise<boolean> {
     return new Promise((resolve) => {
       const modalHtml = `
-        <div class="modal__dialog">
-          <div class="modal__body">
+        <div class="aiab-modal__dialog">
+          <div class="aiab-modal__body">
             <p>${message}</p>
           </div>
-          <div class="modal__footer">
+          <div class="aiab-modal__footer">
             <button class="aiab-btn btn--secondary" data-modal-cancel>${cancelText}</button>
             <button class="aiab-btn btn--primary" data-modal-confirm>${confirmText}</button>
           </div>

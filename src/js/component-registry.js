@@ -83,14 +83,14 @@ class ComponentRegistry {
     // Import and register each component
     const components = [
       { type: 'accordion', ComponentClass: window.Accordion },
-      { type: 'datepicker', ComponentClass: window.DatePicker },
+      { type: 'aiab-datepicker', ComponentClass: window.DatePicker },
       { type: 'dropdown', ComponentClass: window.Dropdown },
       { type: 'file-upload', ComponentClass: window.FileUpload },
       { type: 'modal', ComponentClass: window.ModalComponent },
       { type: 'navigation', ComponentClass: window.NavigationComponent },
-      { type: 'search-bar', ComponentClass: window.SearchBar },
+      { type: 'aiab-search-bar', ComponentClass: window.SearchBar },
       { type: 'toast', ComponentClass: window.ToastComponent },
-      { type: 'data-table', ComponentClass: window.DataTableComponent },
+      { type: 'aiab-data-table', ComponentClass: window.DataTableComponent },
     ];
 
     components.forEach(({ type, ComponentClass }) => {

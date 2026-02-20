@@ -28,6 +28,7 @@ class DatePicker {
     this.selectedDate = null;
     this.viewDate = new Date();
     this.viewMode = 'days'; // days, months, years
+    this._abortController = new AbortController();
 
     this.init();
   }
@@ -44,9 +45,9 @@ class DatePicker {
   createDatePicker() {
     // Create wrapper
     const wrapper = document.createElement('div');
-    wrapper.className = 'datepicker';
+    wrapper.className = 'aiab-datepicker';
     if (this.options.inline) {
-      wrapper.classList.add('datepicker--inline');
+      wrapper.classList.add('aiab-datepicker--inline');
     }
 
     // Wrap original input
@@ -54,12 +55,12 @@ class DatePicker {
     wrapper.appendChild(this.element);
 
     // Add class to input
-    this.element.classList.add('datepicker-input');
+    this.element.classList.add('aiab-datepicker-input');
     this.element.setAttribute('readonly', 'readonly');
 
     // Add calendar icon
     const icon = document.createElement('span');
-    icon.className = 'datepicker-icon';
+    icon.className = 'aiab-datepicker-icon';
     icon.innerHTML = `
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -70,7 +71,7 @@ class DatePicker {
 
     // Create dropdown
     const dropdown = document.createElement('div');
-    dropdown.className = 'datepicker-dropdown';
+    dropdown.className = 'aiab-datepicker-dropdown';
 
     // Create header
     const header = this.createHeader();
@@ -78,7 +79,7 @@ class DatePicker {
 
     // Create body
     const body = document.createElement('div');
-    body.className = 'datepicker-body';
+    body.className = 'aiab-datepicker-body';
     dropdown.appendChild(body);
 
     // Create time picker if enabled
@@ -103,11 +104,11 @@ class DatePicker {
 
   createHeader() {
     const header = document.createElement('div');
-    header.className = 'datepicker-header';
+    header.className = 'aiab-datepicker-header';
 
     // Previous button
     const prevBtn = document.createElement('button');
-    prevBtn.className = 'datepicker-nav-button datepicker-prev';
+    prevBtn.className = 'aiab-datepicker-nav-button aiab-datepicker-prev';
     prevBtn.type = 'button';
     prevBtn.innerHTML = `
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -117,20 +118,20 @@ class DatePicker {
 
     // Month/Year display
     const monthYear = document.createElement('div');
-    monthYear.className = 'datepicker-month-year';
+    monthYear.className = 'aiab-datepicker-month-year';
 
     const monthSelect = document.createElement('span');
-    monthSelect.className = 'datepicker-month-text';
+    monthSelect.className = 'aiab-datepicker-month-text';
 
     const yearSelect = document.createElement('span');
-    yearSelect.className = 'datepicker-year-text';
+    yearSelect.className = 'aiab-datepicker-year-text';
 
     monthYear.appendChild(monthSelect);
     monthYear.appendChild(yearSelect);
 
     // Next button
     const nextBtn = document.createElement('button');
-    nextBtn.className = 'datepicker-nav-button datepicker-next';
+    nextBtn.className = 'aiab-datepicker-nav-button aiab-datepicker-next';
     nextBtn.type = 'button';
     nextBtn.innerHTML = `
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -152,37 +153,37 @@ class DatePicker {
 
   createTimePicker() {
     const timePicker = document.createElement('div');
-    timePicker.className = 'datepicker-time';
+    timePicker.className = 'aiab-datepicker-time';
 
     const hourInput = document.createElement('input');
     hourInput.type = 'number';
-    hourInput.className = 'datepicker-time-input datepicker-hour';
+    hourInput.className = 'aiab-datepicker-time-input aiab-datepicker-hour';
     hourInput.min = '1';
     hourInput.max = '12';
     hourInput.value = '12';
 
     const separator = document.createElement('span');
-    separator.className = 'datepicker-time-separator';
+    separator.className = 'aiab-datepicker-time-separator';
     separator.textContent = ':';
 
     const minuteInput = document.createElement('input');
     minuteInput.type = 'number';
-    minuteInput.className = 'datepicker-time-input datepicker-minute';
+    minuteInput.className = 'aiab-datepicker-time-input aiab-datepicker-minute';
     minuteInput.min = '0';
     minuteInput.max = '59';
     minuteInput.value = '00';
 
     const periodDiv = document.createElement('div');
-    periodDiv.className = 'datepicker-time-period';
+    periodDiv.className = 'aiab-datepicker-time-period';
 
     const amBtn = document.createElement('button');
     amBtn.type = 'button';
-    amBtn.className = 'datepicker-time-period-btn datepicker-time-period-btn--active';
+    amBtn.className = 'aiab-datepicker-time-period-btn aiab-datepicker-time-period-btn--active';
     amBtn.textContent = 'AM';
 
     const pmBtn = document.createElement('button');
     pmBtn.type = 'button';
-    pmBtn.className = 'datepicker-time-period-btn';
+    pmBtn.className = 'aiab-datepicker-time-period-btn';
     pmBtn.textContent = 'PM';
 
     periodDiv.appendChild(amBtn);
@@ -203,16 +204,16 @@ class DatePicker {
 
   createFooter() {
     const footer = document.createElement('div');
-    footer.className = 'datepicker-footer';
+    footer.className = 'aiab-datepicker-footer';
 
     const todayBtn = document.createElement('button');
     todayBtn.type = 'button';
-    todayBtn.className = 'datepicker-today-btn';
+    todayBtn.className = 'aiab-datepicker-today-btn';
     todayBtn.textContent = 'Today';
 
     const clearBtn = document.createElement('button');
     clearBtn.type = 'button';
-    clearBtn.className = 'datepicker-clear-btn';
+    clearBtn.className = 'aiab-datepicker-clear-btn';
     clearBtn.textContent = 'Clear';
 
     footer.appendChild(todayBtn);
@@ -225,40 +226,46 @@ class DatePicker {
   }
 
   bindEvents() {
+    const signal = this._abortController.signal;
+
     // Toggle calendar
-    this.element.addEventListener('click', () => this.toggle());
-    this.element.addEventListener('focus', () => this.open());
+    this.element.addEventListener('click', () => this.toggle(), { signal });
+    this.element.addEventListener('focus', () => this.open(), { signal });
 
     // Navigation
-    this.prevBtn.addEventListener('click', () => this.navigate(-1));
-    this.nextBtn.addEventListener('click', () => this.navigate(1));
+    this.prevBtn.addEventListener('click', () => this.navigate(-1), { signal });
+    this.nextBtn.addEventListener('click', () => this.navigate(1), { signal });
 
     // Month/Year click
-    this.monthText.addEventListener('click', () => this.showMonths());
-    this.yearText.addEventListener('click', () => this.showYears());
+    this.monthText.addEventListener('click', () => this.showMonths(), { signal });
+    this.yearText.addEventListener('click', () => this.showYears(), { signal });
 
     // Footer buttons
-    this.todayBtn.addEventListener('click', () => this.selectToday());
-    this.clearBtn.addEventListener('click', () => this.clear());
+    this.todayBtn.addEventListener('click', () => this.selectToday(), { signal });
+    this.clearBtn.addEventListener('click', () => this.clear(), { signal });
 
     // Time picker events
     if (this.options.showTime) {
-      this.amBtn.addEventListener('click', () => this.setPeriod('AM'));
-      this.pmBtn.addEventListener('click', () => this.setPeriod('PM'));
+      this.amBtn.addEventListener('click', () => this.setPeriod('AM'), { signal });
+      this.pmBtn.addEventListener('click', () => this.setPeriod('PM'), { signal });
 
-      this.hourInput.addEventListener('change', () => this.updateTime());
-      this.minuteInput.addEventListener('change', () => this.updateTime());
+      this.hourInput.addEventListener('change', () => this.updateTime(), { signal });
+      this.minuteInput.addEventListener('change', () => this.updateTime(), { signal });
     }
 
     // Click outside to close
-    document.addEventListener('click', (e) => {
-      if (!this.wrapper.contains(e.target) && this.isOpen) {
-        this.close();
-      }
-    });
+    document.addEventListener(
+      'click',
+      (e) => {
+        if (!this.wrapper.contains(e.target) && this.isOpen) {
+          this.close();
+        }
+      },
+      { signal },
+    );
 
     // Keyboard navigation
-    this.element.addEventListener('keydown', (e) => this.handleKeydown(e));
+    this.element.addEventListener('keydown', (e) => this.handleKeydown(e), { signal });
   }
 
   render() {
@@ -302,11 +309,11 @@ class DatePicker {
 
     // Weekdays
     const weekdays = document.createElement('div');
-    weekdays.className = 'datepicker-weekdays';
+    weekdays.className = 'aiab-datepicker-weekdays';
     const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     dayNames.forEach((day) => {
       const weekday = document.createElement('div');
-      weekday.className = 'datepicker-weekday';
+      weekday.className = 'aiab-datepicker-weekday';
       weekday.textContent = day;
       weekdays.appendChild(weekday);
     });
@@ -314,7 +321,7 @@ class DatePicker {
 
     // Days grid
     const daysGrid = document.createElement('div');
-    daysGrid.className = 'datepicker-days';
+    daysGrid.className = 'aiab-datepicker-days';
 
     // Get first day of month
     const firstDay = new Date(year, month, 1);
@@ -349,27 +356,27 @@ class DatePicker {
   createDayButton(date, type = '') {
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'datepicker-day';
+    button.className = 'aiab-datepicker-day';
     button.textContent = date.getDate();
     button.dataset.date = date.toISOString();
 
     if (type === 'other-month') {
-      button.classList.add('datepicker-day--other-month');
+      button.classList.add('aiab-datepicker-day--other-month');
     }
 
     // Check if today
     if (this.isToday(date)) {
-      button.classList.add('datepicker-day--today');
+      button.classList.add('aiab-datepicker-day--today');
     }
 
     // Check if selected
     if (this.selectedDate && this.isSameDay(date, this.selectedDate)) {
-      button.classList.add('datepicker-day--selected');
+      button.classList.add('aiab-datepicker-day--selected');
     }
 
     // Check if disabled
     if (this.isDisabled(date)) {
-      button.classList.add('datepicker-day--disabled');
+      button.classList.add('aiab-datepicker-day--disabled');
       button.disabled = true;
     }
 
@@ -390,7 +397,7 @@ class DatePicker {
     this.body.innerHTML = '';
 
     const monthsGrid = document.createElement('div');
-    monthsGrid.className = 'datepicker-months';
+    monthsGrid.className = 'aiab-datepicker-months';
 
     const monthNames = [
       'Jan',
@@ -410,11 +417,11 @@ class DatePicker {
     monthNames.forEach((name, index) => {
       const monthBtn = document.createElement('button');
       monthBtn.type = 'button';
-      monthBtn.className = 'datepicker-month-option';
+      monthBtn.className = 'aiab-datepicker-month-option';
       monthBtn.textContent = name;
 
       if (index === this.currentDate.getMonth() && year === this.currentDate.getFullYear()) {
-        monthBtn.classList.add('datepicker-month-option--current');
+        monthBtn.classList.add('aiab-datepicker-month-option--current');
       }
 
       if (
@@ -422,7 +429,7 @@ class DatePicker {
         index === this.selectedDate.getMonth() &&
         year === this.selectedDate.getFullYear()
       ) {
-        monthBtn.classList.add('datepicker-month-option--selected');
+        monthBtn.classList.add('aiab-datepicker-month-option--selected');
       }
 
       monthBtn.addEventListener('click', () => {
@@ -449,21 +456,21 @@ class DatePicker {
     this.body.innerHTML = '';
 
     const yearsGrid = document.createElement('div');
-    yearsGrid.className = 'datepicker-years';
+    yearsGrid.className = 'aiab-datepicker-years';
 
     for (let i = 0; i < 12; i++) {
       const year = startYear - 1 + i;
       const yearBtn = document.createElement('button');
       yearBtn.type = 'button';
-      yearBtn.className = 'datepicker-year-option';
+      yearBtn.className = 'aiab-datepicker-year-option';
       yearBtn.textContent = year;
 
       if (year === this.currentDate.getFullYear()) {
-        yearBtn.classList.add('datepicker-year-option--current');
+        yearBtn.classList.add('aiab-datepicker-year-option--current');
       }
 
       if (this.selectedDate && year === this.selectedDate.getFullYear()) {
-        yearBtn.classList.add('datepicker-year-option--selected');
+        yearBtn.classList.add('aiab-datepicker-year-option--selected');
       }
 
       yearBtn.addEventListener('click', () => {
@@ -553,8 +560,8 @@ class DatePicker {
 
   // Time methods
   setPeriod(period) {
-    this.amBtn.classList.toggle('datepicker-time-period-btn--active', period === 'AM');
-    this.pmBtn.classList.toggle('datepicker-time-period-btn--active', period === 'PM');
+    this.amBtn.classList.toggle('aiab-datepicker-time-period-btn--active', period === 'AM');
+    this.pmBtn.classList.toggle('aiab-datepicker-time-period-btn--active', period === 'PM');
     this.updateTime();
   }
 
@@ -562,7 +569,7 @@ class DatePicker {
     if (this.selectedDate && this.options.showTime) {
       let hours = Number.parseInt(this.hourInput.value, 10) || 12;
       const minutes = Number.parseInt(this.minuteInput.value, 10) || 0;
-      const isPM = this.pmBtn.classList.contains('datepicker-time-period-btn--active');
+      const isPM = this.pmBtn.classList.contains('aiab-datepicker-time-period-btn--active');
 
       if (isPM && hours !== 12) hours += 12;
       if (!isPM && hours === 12) hours = 0;
@@ -682,9 +689,9 @@ class DatePicker {
 
   // Public API
   destroy() {
-    // Remove event listeners and DOM elements
+    this._abortController.abort();
     this.wrapper.replaceWith(this.element);
-    this.element.classList.remove('datepicker-input');
+    this.element.classList.remove('aiab-datepicker-input');
     this.element.removeAttribute('readonly');
   }
 }

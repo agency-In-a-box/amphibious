@@ -1,11 +1,11 @@
 /**
  * Timeline Component
- * Interactive timeline for displaying chronological events
+ * Interactive aiab-timeline for displaying chronological events
  * Part of Amphibious 2.0 Component Library
  *
  * Features:
  * - Horizontal and vertical layouts
- * - Multiple timeline styles (default, centered, branching)
+ * - Multiple aiab-timeline styles (default, centered, branching)
  * - Interactive events with details
  * - Filtering and grouping
  * - Zoom and pan controls
@@ -107,6 +107,16 @@ class Timeline {
     this.init();
   }
 
+  /** Validate that a URL uses a safe protocol (not javascript:, data:, etc.) */
+  _isSafeURL(url) {
+    try {
+      const parsed = new URL(url, window.location.href);
+      return ['http:', 'https:', 'mailto:', 'tel:'].includes(parsed.protocol);
+    } catch {
+      return false;
+    }
+  }
+
   init() {
     this.processEvents();
     this.setupDOM();
@@ -142,13 +152,13 @@ class Timeline {
     this.element.innerHTML = '';
 
     // Add classes
-    this.element.classList.add('timeline');
-    this.element.classList.add(`timeline-${this.options.orientation}`);
-    this.element.classList.add(`timeline-${this.options.layout}`);
+    this.element.classList.add('aiab-timeline');
+    this.element.classList.add(`aiab-timeline-${this.options.orientation}`);
+    this.element.classList.add(`aiab-timeline-${this.options.layout}`);
 
     // Create container
     this.container = document.createElement('div');
-    this.container.className = 'timeline-container';
+    this.container.className = 'aiab-timeline-container';
 
     // Create controls
     if (this.options.showFilters || this.options.showZoom) {
@@ -156,18 +166,18 @@ class Timeline {
       this.element.appendChild(this.controls);
     }
 
-    // Create timeline wrapper for scroll/zoom
+    // Create aiab-timeline wrapper for scroll/zoom
     this.wrapper = document.createElement('div');
-    this.wrapper.className = 'timeline-wrapper';
+    this.wrapper.className = 'aiab-timeline-wrapper';
 
-    // Create timeline track
+    // Create aiab-timeline track
     this.track = document.createElement('div');
-    this.track.className = 'timeline-track';
+    this.track.className = 'aiab-timeline-track';
 
     // Create connector line
     if (this.options.showConnectors) {
       this.connector = document.createElement('div');
-      this.connector.className = 'timeline-connector';
+      this.connector.className = 'aiab-timeline-connector';
       this.connector.style.background = this.options.colors.connector;
       this.track.appendChild(this.connector);
     }
@@ -180,7 +190,7 @@ class Timeline {
 
     // Create events container
     this.eventsContainer = document.createElement('div');
-    this.eventsContainer.className = 'timeline-events';
+    this.eventsContainer.className = 'aiab-timeline-events';
 
     this.track.appendChild(this.eventsContainer);
     this.wrapper.appendChild(this.track);
@@ -196,15 +206,15 @@ class Timeline {
 
   createControls() {
     const controls = document.createElement('div');
-    controls.className = 'timeline-controls';
+    controls.className = 'aiab-timeline-controls';
 
     // Filter controls
     if (this.options.showFilters && this.options.groups.length) {
       const filters = document.createElement('div');
-      filters.className = 'timeline-filters';
+      filters.className = 'aiab-timeline-filters';
 
       const filterLabel = document.createElement('span');
-      filterLabel.className = 'filter-label';
+      filterLabel.className = 'aiab-filter-label';
       filterLabel.textContent = 'Filter: ';
       filters.appendChild(filterLabel);
 
@@ -225,7 +235,7 @@ class Timeline {
     // Zoom controls
     if (this.options.showZoom) {
       const zoomControls = document.createElement('div');
-      zoomControls.className = 'timeline-zoom';
+      zoomControls.className = 'aiab-timeline-zoom';
 
       const zoomOut = document.createElement('button');
       zoomOut.className = 'zoom-btn zoom-out';
@@ -263,14 +273,14 @@ class Timeline {
 
   createTodayMarker() {
     const marker = document.createElement('div');
-    marker.className = 'timeline-today';
+    marker.className = 'aiab-timeline-today';
 
     const line = document.createElement('div');
-    line.className = 'today-line';
+    line.className = 'aiab-today-line';
     line.style.background = this.options.colors.today;
 
     const label = document.createElement('div');
-    label.className = 'today-label';
+    label.className = 'aiab-today-label';
     label.textContent = this.options.labels.today;
     label.style.background = this.options.colors.today;
 
@@ -322,12 +332,12 @@ class Timeline {
 
     Object.entries(eventsByDate).forEach(([date, events]) => {
       const group = document.createElement('div');
-      group.className = 'timeline-group';
+      group.className = 'aiab-timeline-group';
 
       // Date marker
       if (this.options.showDates) {
         const dateMarker = document.createElement('div');
-        dateMarker.className = 'timeline-date';
+        dateMarker.className = 'aiab-timeline-date';
         dateMarker.textContent = this.formatDate(date);
         group.appendChild(dateMarker);
       }
@@ -360,7 +370,7 @@ class Timeline {
 
     Object.entries(eventsByDate).forEach(([date, events]) => {
       const group = document.createElement('div');
-      group.className = 'timeline-group centered';
+      group.className = 'aiab-timeline-group centered';
 
       events.forEach((event) => {
         const side = index % 2 === 0 ? 'left' : 'right';
@@ -383,20 +393,20 @@ class Timeline {
   renderBranchingLayout(eventsByDate) {
     Object.entries(eventsByDate).forEach(([date, events]) => {
       const branch = document.createElement('div');
-      branch.className = 'timeline-branch';
+      branch.className = 'aiab-timeline-branch';
 
       // Main node
       const node = document.createElement('div');
-      node.className = 'branch-node';
+      node.className = 'aiab-branch-node';
 
       const nodeDate = document.createElement('div');
-      nodeDate.className = 'node-date';
+      nodeDate.className = 'aiab-node-date';
       nodeDate.textContent = this.formatDate(date);
       node.appendChild(nodeDate);
 
       // Branch events
       const branchEvents = document.createElement('div');
-      branchEvents.className = 'branch-events';
+      branchEvents.className = 'aiab-branch-events';
 
       events.forEach((event) => {
         const eventEl = this.createEventElement(event, 'branch');
@@ -419,7 +429,7 @@ class Timeline {
 
   renderCompactLayout(eventsByDate) {
     const list = document.createElement('div');
-    list.className = 'timeline-list compact';
+    list.className = 'aiab-timeline-list compact';
 
     Object.entries(eventsByDate).forEach(([_date, events]) => {
       events.forEach((event) => {
@@ -433,7 +443,7 @@ class Timeline {
 
   createEventElement(event, side) {
     const eventEl = document.createElement('div');
-    eventEl.className = `timeline-event ${side}`;
+    eventEl.className = `aiab-timeline-event ${side}`;
     eventEl.dataset.eventId = event.id;
 
     if (event.milestone) {
@@ -450,7 +460,7 @@ class Timeline {
 
     // Event dot
     const dot = document.createElement('div');
-    dot.className = 'event-dot';
+    dot.className = 'aiab-event-dot';
     const dotColor = event.milestone
       ? this.options.colors.milestone
       : event.color || this.getGroupColor(event.group) || this.options.colors.default;
@@ -458,18 +468,18 @@ class Timeline {
 
     // Event content
     const content = document.createElement('div');
-    content.className = 'event-content';
+    content.className = 'aiab-event-content';
 
     // Event header
     const header = document.createElement('div');
-    header.className = 'event-header';
+    header.className = 'aiab-event-header';
 
     const title = document.createElement('h4');
-    title.className = 'event-title';
+    title.className = 'aiab-event-title';
     title.textContent = event.title;
 
     const time = document.createElement('span');
-    time.className = 'event-time';
+    time.className = 'aiab-event-time';
     time.textContent = this.formatTime(event.date);
 
     header.appendChild(title);
@@ -478,35 +488,42 @@ class Timeline {
     // Event body (expandable)
     if (event.description || event.details) {
       const body = document.createElement('div');
-      body.className = 'event-body';
+      body.className = 'aiab-event-body';
 
       if (event.description) {
         const desc = document.createElement('p');
-        desc.className = 'event-description';
+        desc.className = 'aiab-event-description';
         desc.textContent = event.description;
         body.appendChild(desc);
       }
 
       if (event.details) {
         const details = document.createElement('div');
-        details.className = 'event-details';
+        details.className = 'aiab-event-details';
 
         if (event.details.image) {
           const img = document.createElement('img');
-          img.src = event.details.image;
+          // Validate image URL — only allow http(s) protocols
+          if (this._isSafeURL(event.details.image)) {
+            img.src = event.details.image;
+          }
           img.alt = event.title;
           details.appendChild(img);
         }
 
         if (event.details.links) {
           const links = document.createElement('div');
-          links.className = 'event-links';
+          links.className = 'aiab-event-links';
 
           event.details.links.forEach((link) => {
             const a = document.createElement('a');
-            a.href = link.url;
+            // Validate link URL — block javascript: protocol
+            if (this._isSafeURL(link.url)) {
+              a.href = link.url;
+            }
             a.textContent = link.text;
             a.target = '_blank';
+            a.rel = 'noopener noreferrer';
             links.appendChild(a);
           });
 
@@ -522,11 +539,11 @@ class Timeline {
     // Event actions
     if (this.options.interactive) {
       const actions = document.createElement('div');
-      actions.className = 'event-actions';
+      actions.className = 'aiab-event-actions';
 
       if (this.options.expandable && (event.description || event.details)) {
         const expandBtn = document.createElement('button');
-        expandBtn.className = 'expand-btn';
+        expandBtn.className = 'aiab-expand-btn';
         expandBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path d="M6 9l6 6 6-6"/>
         </svg>`;
@@ -548,7 +565,7 @@ class Timeline {
 
   renderEmptyState() {
     const empty = document.createElement('div');
-    empty.className = 'timeline-empty';
+    empty.className = 'aiab-timeline-empty';
     empty.textContent = this.options.labels.noEvents;
     this.eventsContainer.appendChild(empty);
   }
@@ -556,13 +573,13 @@ class Timeline {
   attachEvents() {
     // Event clicks
     const eventHandler = (e) => {
-      const eventEl = e.target.closest('.timeline-event');
+      const eventEl = e.target.closest('.aiab-timeline-event');
       if (!eventEl) return;
 
       const eventId = eventEl.dataset.eventId;
       const event = this.state.events.find((e) => e.id === eventId);
 
-      if (e.target.closest('.expand-btn')) {
+      if (e.target.closest('.aiab-expand-btn')) {
         this.toggleExpand(eventId);
       } else {
         this.handleEventClick(event);
@@ -716,7 +733,7 @@ class Timeline {
     this.state.selectedEvent = eventId;
 
     // Update UI
-    this.element.querySelectorAll('.timeline-event').forEach((el) => {
+    this.element.querySelectorAll('.aiab-timeline-event').forEach((el) => {
       el.classList.toggle('selected', el.dataset.eventId === eventId);
     });
 
@@ -739,7 +756,7 @@ class Timeline {
       eventEl.classList.toggle('expanded');
 
       // Animate expansion
-      const body = eventEl.querySelector('.event-body');
+      const body = eventEl.querySelector('.aiab-event-body');
       if (body) {
         if (eventEl.classList.contains('expanded')) {
           body.style.maxHeight = `${body.scrollHeight}px`;
@@ -821,7 +838,7 @@ class Timeline {
   }
 
   handleKeyboard(e) {
-    const selectedEl = this.element.querySelector('.timeline-event.selected');
+    const selectedEl = this.element.querySelector('.aiab-timeline-event.selected');
     if (!selectedEl) return;
 
     switch (e.key) {
@@ -850,7 +867,7 @@ class Timeline {
   }
 
   navigateEvents(direction) {
-    const events = Array.from(this.element.querySelectorAll('.timeline-event'));
+    const events = Array.from(this.element.querySelectorAll('.aiab-timeline-event'));
     const currentIndex = events.findIndex((el) => el.classList.contains('selected'));
 
     let nextIndex;
@@ -871,7 +888,7 @@ class Timeline {
     if (this.state.isAnimating) return;
     this.state.isAnimating = true;
 
-    const events = this.element.querySelectorAll('.timeline-event');
+    const events = this.element.querySelectorAll('.aiab-timeline-event');
 
     events.forEach((event, index) => {
       event.style.opacity = '0';
@@ -1043,7 +1060,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('timeline', Timeline);
+  window.AmphibiousRegistry.registerComponent('aiab-timeline', Timeline);
 }
 
 // Export

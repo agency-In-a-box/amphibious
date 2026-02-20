@@ -29,7 +29,7 @@ class ModalComponent {
    * Initialize modal opener buttons
    */
   initModalOpeners() {
-    document.querySelectorAll('.modal_opener').forEach((opener) => {
+    document.querySelectorAll('.aiab-modal_opener').forEach((opener) => {
       opener.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = opener.getAttribute('amp-target');
@@ -44,7 +44,7 @@ class ModalComponent {
    * Initialize modal close buttons
    */
   initModalClosers() {
-    document.querySelectorAll('.modal_kill').forEach((closer) => {
+    document.querySelectorAll('.aiab-modal_kill').forEach((closer) => {
       closer.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = closer.getAttribute('amp-target');
@@ -59,7 +59,7 @@ class ModalComponent {
    * Close modal when clicking overlay background
    */
   initOverlayClick() {
-    document.querySelectorAll('.modal_overlay').forEach((overlay) => {
+    document.querySelectorAll('.aiab-modal_overlay').forEach((overlay) => {
       overlay.addEventListener('click', (e) => {
         // Only close if clicking the overlay itself, not modal content
         if (e.target === overlay) {
@@ -135,7 +135,7 @@ class ModalComponent {
     modal.setAttribute('aria-hidden', 'true');
 
     // Return focus to opener if possible
-    const opener = document.querySelector(`.modal_opener[amp-target="${modalId}"]`);
+    const opener = document.querySelector(`.aiab-modal_opener[amp-target="${modalId}"]`);
     if (opener) {
       opener.focus();
     }
@@ -146,7 +146,7 @@ class ModalComponent {
    */
   destroy() {
     // Remove all event listeners by replacing elements
-    const openers = document.querySelectorAll('.modal_opener');
+    const openers = document.querySelectorAll('.aiab-modal_opener');
     openers.forEach((opener) => {
       const clone = opener.cloneNode(true);
       opener.parentNode.replaceChild(clone, opener);

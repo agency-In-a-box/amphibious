@@ -16,7 +16,7 @@ class Accordion {
       ...options,
     };
 
-    this.items = Array.from(this.accordion.querySelectorAll('.accordion-item'));
+    this.items = Array.from(this.accordion.querySelectorAll('.aiab-accordion-item'));
     this._abortController = new AbortController();
     this.init();
   }
@@ -26,9 +26,9 @@ class Accordion {
     this.accordion.setAttribute('role', 'presentation');
 
     this.items.forEach((item, index) => {
-      const header = item.querySelector('.accordion-header');
-      const content = item.querySelector('.accordion-content');
-      const itemId = `accordion-item-${Date.now()}-${index}`;
+      const header = item.querySelector('.aiab-accordion-header');
+      const content = item.querySelector('.aiab-accordion-content');
+      const itemId = `aiab-accordion-item-${Date.now()}-${index}`;
 
       // Set IDs and ARIA attributes
       header.setAttribute('id', `${itemId}-header`);
@@ -60,8 +60,8 @@ class Accordion {
   toggle(item, event) {
     event.preventDefault();
 
-    const header = item.querySelector('.accordion-header');
-    const content = item.querySelector('.accordion-content');
+    const header = item.querySelector('.aiab-accordion-header');
+    const content = item.querySelector('.aiab-accordion-content');
     const isOpen = header.getAttribute('aria-expanded') === 'true';
 
     if (!isOpen) {
@@ -70,8 +70,8 @@ class Accordion {
         // Close other items
         this.items.forEach((otherItem) => {
           if (otherItem !== item) {
-            const otherHeader = otherItem.querySelector('.accordion-header');
-            const otherContent = otherItem.querySelector('.accordion-content');
+            const otherHeader = otherItem.querySelector('.aiab-accordion-header');
+            const otherContent = otherItem.querySelector('.aiab-accordion-content');
             this.setItemState(otherItem, otherHeader, otherContent, false);
           }
         });
@@ -156,7 +156,7 @@ class Accordion {
   setupKeyboardNavigation() {
     // Make headers focusable
     this.items.forEach((item) => {
-      const header = item.querySelector('.accordion-header');
+      const header = item.querySelector('.aiab-accordion-header');
       if (!header.hasAttribute('tabindex')) {
         header.setAttribute('tabindex', '0');
       }
@@ -165,39 +165,39 @@ class Accordion {
 
   focusNextItem(currentIndex) {
     const nextIndex = (currentIndex + 1) % this.items.length;
-    const nextHeader = this.items[nextIndex].querySelector('.accordion-header');
+    const nextHeader = this.items[nextIndex].querySelector('.aiab-accordion-header');
     nextHeader.focus();
   }
 
   focusPreviousItem(currentIndex) {
     const prevIndex = (currentIndex - 1 + this.items.length) % this.items.length;
-    const prevHeader = this.items[prevIndex].querySelector('.accordion-header');
+    const prevHeader = this.items[prevIndex].querySelector('.aiab-accordion-header');
     prevHeader.focus();
   }
 
   focusFirstItem() {
-    const firstHeader = this.items[0].querySelector('.accordion-header');
+    const firstHeader = this.items[0].querySelector('.aiab-accordion-header');
     firstHeader.focus();
   }
 
   focusLastItem() {
-    const lastHeader = this.items[this.items.length - 1].querySelector('.accordion-header');
+    const lastHeader = this.items[this.items.length - 1].querySelector('.aiab-accordion-header');
     lastHeader.focus();
   }
 
   // Public methods
   openAll() {
     this.items.forEach((item) => {
-      const header = item.querySelector('.accordion-header');
-      const content = item.querySelector('.accordion-content');
+      const header = item.querySelector('.aiab-accordion-header');
+      const content = item.querySelector('.aiab-accordion-content');
       this.setItemState(item, header, content, true);
     });
   }
 
   closeAll() {
     this.items.forEach((item) => {
-      const header = item.querySelector('.accordion-header');
-      const content = item.querySelector('.accordion-content');
+      const header = item.querySelector('.aiab-accordion-header');
+      const content = item.querySelector('.aiab-accordion-content');
       this.setItemState(item, header, content, false);
     });
   }
@@ -205,8 +205,8 @@ class Accordion {
   openItem(index) {
     if (index >= 0 && index < this.items.length) {
       const item = this.items[index];
-      const header = item.querySelector('.accordion-header');
-      const content = item.querySelector('.accordion-content');
+      const header = item.querySelector('.aiab-accordion-header');
+      const content = item.querySelector('.aiab-accordion-content');
       this.setItemState(item, header, content, true);
     }
   }
@@ -214,8 +214,8 @@ class Accordion {
   closeItem(index) {
     if (index >= 0 && index < this.items.length) {
       const item = this.items[index];
-      const header = item.querySelector('.accordion-header');
-      const content = item.querySelector('.accordion-content');
+      const header = item.querySelector('.aiab-accordion-header');
+      const content = item.querySelector('.aiab-accordion-content');
       this.setItemState(item, header, content, false);
     }
   }
