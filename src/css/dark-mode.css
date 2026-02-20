@@ -494,11 +494,11 @@
    ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) :is(.aiab-modal-backdrop, .overlay) {
+  :root:not([data-theme="light"]) :is(.aiab-modal-backdrop, .aiab-overlay) {
     background-color: rgba(0, 0, 0, 0.85);
   }
 }
-[data-theme="dark"] :is(.aiab-modal-backdrop, .overlay) {
+[data-theme="dark"] :is(.aiab-modal-backdrop, .aiab-overlay) {
   background-color: rgba(0, 0, 0, 0.85);
 }
 

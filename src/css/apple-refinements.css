@@ -16,17 +16,17 @@
 
 /* Apple's signature tight letter-spacing — scoped to AIAB components only */
 .aiab-heading,
-.apple-hero,
-.apple-headline,
-.apple-title,
-.apple-subtitle {
+.aiab-apple-hero,
+.aiab-apple-headline,
+.aiab-apple-title,
+.aiab-apple-subtitle {
   letter-spacing: -0.02em;
   font-feature-settings: "kern" 1;
 }
 
 /* Tighter spacing for hero/display text */
-.apple-hero,
-.apple-hero-title {
+.aiab-apple-hero,
+.aiab-apple-hero-title {
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
@@ -93,8 +93,8 @@
 
 /* Modals and overlays with elegant entrance */
 .aiab-modal,
-.overlay,
-.drawer {
+.aiab-overlay,
+.aiab-drawer {
   animation-duration: var(--duration-slow);
   animation-timing-function: var(--ease-apple-smooth);
 }
