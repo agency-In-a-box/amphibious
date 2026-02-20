@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./docs.css">
     <style>
     /* Navigation styles */
-    .site-nav {
+    .aiab-site-nav {
       background: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       padding: 1rem 0;
@@ -50,7 +50,7 @@
       border-bottom-color: #4c63d2;
     }
 
-    .site-logo {
+    .aiab-site-logo {
       font-size: 1.25rem;
       font-weight: 700;
       color: #667eea;
@@ -59,7 +59,7 @@
       gap: 0.5rem;
     }
 
-    .horizontal.branded > li.aiab-active > a.site-logo {
+    .horizontal.branded > li.aiab-active > a.aiab-site-logo {
       color: white;
     }
 
@@ -131,12 +131,12 @@
             color: #343a40;
         }
 
-        .docs-nav .nav-links {
+        .docs-nav .aiab-nav-links {
             display: flex;
             gap: 1rem;
         }
 
-        .docs-nav .nav-links a {
+        .docs-nav .aiab-nav-links a {
             color: #6c757d;
             text-decoration: none;
             padding: 0.5rem 1rem;
@@ -144,8 +144,8 @@
             transition: all 0.2s ease;
         }
 
-        .docs-nav .nav-links a:hover,
-        .docs-nav .nav-links a.aiab-active {
+        .docs-nav .aiab-nav-links a:hover,
+        .docs-nav .aiab-nav-links a.aiab-active {
             background: #fff;
             color: #007bff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -309,8 +309,8 @@
 
         /* Helper Classes Demo */
         .helper-demo {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: aiab-grid;
+            aiab-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
             margin: 1rem 0;
         }
@@ -396,14 +396,14 @@
         .pr-5 { padding-right: 3rem; }
 
         /* Text Utilities */
-        .text-left { text-align: left; }
-        .text-center { text-align: center; }
-        .text-right { text-align: right; }
-        .text-justify { text-align: justify; }
+        .aiab-text-left { text-align: left; }
+        .aiab-text-center { text-align: center; }
+        .aiab-text-right { text-align: right; }
+        .aiab-text-justify { text-align: justify; }
 
-        .text-uppercase { text-transform: uppercase; }
-        .text-lowercase { text-transform: lowercase; }
-        .text-capitalize { text-transform: capitalize; }
+        .aiab-text-uppercase { text-transform: uppercase; }
+        .aiab-text-lowercase { text-transform: lowercase; }
+        .aiab-text-capitalize { text-transform: capitalize; }
 
         .text-bold { font-weight: bold; }
         .text-light { font-weight: 300; }
@@ -415,10 +415,10 @@
         .d-inline { display: inline; }
         .d-inline-block { display: inline-block; }
         .d-flex { display: flex; }
-        .d-grid { display: grid; }
+        .d-grid { display: aiab-grid; }
 
         /* Flexbox Utilities */
-        .flex-row { flex-direction: row; }
+        .flex-row { flex-direction: aiab-row; }
         .flex-column { flex-direction: column; }
         .flex-wrap { flex-wrap: wrap; }
         .flex-nowrap { flex-wrap: nowrap; }
@@ -470,15 +470,15 @@
         .shadow-none { box-shadow: none; }
 
         /* Color Utilities */
-        .text-primary { color: #007bff; }
+        .aiab-text-primary { color: #007bff; }
         .text-secondary { color: #6c757d; }
-        .text-success { color: #28a745; }
-        .text-danger { color: #dc3545; }
-        .text-warning { color: #ffc107; }
-        .text-info { color: #17a2b8; }
+        .aiab-text-success { color: #28a745; }
+        .aiab-text-danger { color: #dc3545; }
+        .aiab-text-warning { color: #ffc107; }
+        .aiab-text-info { color: #17a2b8; }
         .text-light { color: #f8f9fa; }
         .text-dark { color: #343a40; }
-        .text-muted { color: #6c757d; }
+        .aiab-text-muted { color: #6c757d; }
         .text-white { color: #fff; }
 
         .bg-primary { background-color: #007bff; }
@@ -530,8 +530,8 @@
 
         /* Component Gallery */
         .component-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: aiab-grid;
+            aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -560,10 +560,10 @@
 </head>
 <body>
   <!-- Site Navigation -->
-  <nav class="site-nav" aria-label="Main navigation">
+  <nav class="aiab-site-nav" aria-label="Main navigation">
     <div class="aiab-container">
       <ul class="horizontal branded">
-        <li><a href="/" class="site-logo">
+        <li><a href="/" class="aiab-site-logo">
           Amphibious
         </a></li>
         <li><a href="./foundation.html">Foundation</a>
@@ -595,7 +595,7 @@
             <li><a href="./function.html#vertical-nav">Vertical Nav</a></li>
             <li><a href="./function.html#breadcrumbs">Breadcrumbs</a></li>
             <li><a href="./function.html#tabs">Tabs</a></li>
-            <li><a href="./function.html#pagination">Pagination nav</a></li>
+            <li><a href="./function.html#pagination">Pagination aiab-nav</a></li>
           </ul>
         </li>
         <li class="aiab-active"><a href="./features.html">Features</a>
@@ -615,7 +615,7 @@
     <nav class="docs-nav">
         <div class="aiab-container">
             <h1>Amphibious 2.0 Documentation</h1>
-            <div class="nav-links">
+            <div class="aiab-nav-links">
                 <a href="foundation.html">Foundation</a>
                 <a href="form.html">Form</a>
                 <a href="function.html">Function</a>
@@ -763,19 +763,19 @@ function showSlide(n) {
 
                 <div class="helper-item">
                     <h5>Text Alignment</h5>
-                    <div class="demo text-center">Centered Text</div>
-                    <code>.text-left</code><br>
-                    <code>.text-center</code><br>
-                    <code>.text-right</code><br>
-                    <code>.text-justify</code>
+                    <div class="demo aiab-text-center">Centered Text</div>
+                    <code>.aiab-text-left</code><br>
+                    <code>.aiab-text-center</code><br>
+                    <code>.aiab-text-right</code><br>
+                    <code>.aiab-text-justify</code>
                 </div>
 
                 <div class="helper-item">
                     <h5>Text Transform</h5>
-                    <div class="demo text-uppercase">uppercase text</div>
-                    <code>.text-uppercase</code><br>
-                    <code>.text-lowercase</code><br>
-                    <code>.text-capitalize</code>
+                    <div class="demo aiab-text-uppercase">uppercase text</div>
+                    <code>.aiab-text-uppercase</code><br>
+                    <code>.aiab-text-lowercase</code><br>
+                    <code>.aiab-text-capitalize</code>
                 </div>
             </div>
 
@@ -839,11 +839,11 @@ function showSlide(n) {
 &lt;/div&gt;
 
 &lt;!-- Text Utilities --&gt;
-&lt;p class="text-center text-uppercase text-bold"&gt;Centered, uppercase, bold text&lt;/p&gt;
+&lt;p class="aiab-text-center aiab-text-uppercase text-bold"&gt;Centered, uppercase, bold text&lt;/p&gt;
 
 &lt;!-- Visual Styling --&gt;
 &lt;div class="border rounded shadow-md bg-light p-3"&gt;
-  Styled container with border, rounded corners, shadow, and padding
+  Styled aiab-container with border, rounded corners, shadow, and padding
 &lt;/div&gt;</code></pre>
             </div>
         </section>
@@ -857,16 +857,16 @@ function showSlide(n) {
                 <div class="component-card">
                     <h4>Alert Messages</h4>
                     <div class="component-preview">
-                        <div class="aiab-alert alert-success" style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 0.75rem; border-radius: 0.25rem; margin-bottom: 0.5rem;">
+                        <div class="aiab-alert aiab-alert-success" style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 0.75rem; border-radius: 0.25rem; margin-bottom: 0.5rem;">
                             <strong>Success!</strong> Your action was completed successfully.
                         </div>
-                        <div class="aiab-alert alert-warning" style="background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 0.75rem; border-radius: 0.25rem;">
+                        <div class="aiab-alert aiab-alert-warning" style="background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 0.75rem; border-radius: 0.25rem;">
                             <strong>Warning!</strong> Please check your input.
                         </div>
                     </div>
-                    <code>.aiab-alert .alert-success</code><br>
-                    <code>.aiab-alert .alert-warning</code><br>
-                    <code>.aiab-alert .alert-danger</code>
+                    <code>.aiab-alert .aiab-alert-success</code><br>
+                    <code>.aiab-alert .aiab-alert-warning</code><br>
+                    <code>.aiab-alert .aiab-alert-danger</code>
                 </div>
 
                 <div class="component-card">
@@ -885,9 +885,9 @@ function showSlide(n) {
                         </div>
                     </div>
                     <code>.aiab-card</code><br>
-                    <code>.card-header</code><br>
-                    <code>.card-body</code><br>
-                    <code>.card-footer</code>
+                    <code>.aiab-card-header</code><br>
+                    <code>.aiab-card-body</code><br>
+                    <code>.aiab-card-footer</code>
                 </div>
 
                 <div class="component-card">
@@ -897,9 +897,9 @@ function showSlide(n) {
                         <span style="background: #28a745; color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem; margin-right: 0.5rem;">Success</span>
                         <span style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem;">Danger</span>
                     </div>
-                    <code>.aiab-badge .badge-primary</code><br>
-                    <code>.aiab-badge .badge-success</code><br>
-                    <code>.aiab-badge .badge-danger</code>
+                    <code>.aiab-badge .aiab-badge-primary</code><br>
+                    <code>.aiab-badge .aiab-badge-success</code><br>
+                    <code>.aiab-badge .aiab-badge-danger</code>
                 </div>
 
                 <div class="component-card">
@@ -913,36 +913,36 @@ function showSlide(n) {
                         </div>
                     </div>
                     <code>.aiab-progress</code><br>
-                    <code>.progress-bar</code>
+                    <code>.aiab-progress-bar</code>
                 </div>
             </div>
 
             <div class="code-block">
                 <pre><code>&lt;!-- Alert Component --&gt;
-&lt;div class="aiab-alert alert-success"&gt;
+&lt;div class="aiab-alert aiab-alert-success"&gt;
   &lt;strong&gt;Success!&lt;/strong&gt; Your action was completed.
 &lt;/div&gt;
 
 &lt;!-- Card Component --&gt;
 &lt;div class="aiab-card"&gt;
-  &lt;div class="card-header"&gt;
+  &lt;div class="aiab-card-header"&gt;
     &lt;h5&gt;Card Title&lt;/h5&gt;
   &lt;/div&gt;
-  &lt;div class="card-body"&gt;
+  &lt;div class="aiab-card-body"&gt;
     &lt;p&gt;Card content goes here.&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div class="card-footer"&gt;
-    &lt;button class="aiab-btn btn-primary"&gt;Action&lt;/button&gt;
+  &lt;div class="aiab-card-footer"&gt;
+    &lt;button class="aiab-btn aiab-btn-primary"&gt;Action&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Badges --&gt;
-&lt;span class="aiab-badge badge-primary"&gt;Primary&lt;/span&gt;
-&lt;span class="aiab-badge badge-success"&gt;Success&lt;/span&gt;
+&lt;span class="aiab-badge aiab-badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="aiab-badge aiab-badge-success"&gt;Success&lt;/span&gt;
 
 &lt;!-- Progress Bar --&gt;
 &lt;div class="aiab-progress"&gt;
-  &lt;div class="progress-bar" style="width: 60%"&gt;&lt;/div&gt;
+  &lt;div class="aiab-progress-bar" style="width: 60%"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
             </div>
         </section>
@@ -1011,7 +1011,7 @@ function showSlide(n) {
                             <div style="width:80px; height:80px; background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius:8px; flex-shrink:0;"></div>
                             <div style="flex:1;">
                                 <h4 style="margin:0 0 0.5rem 0; line-height:1.3; color:#2c3e50;">Advanced Grid Techniques</h4>
-                                <p style="margin:0; color:#4b5563; line-height:1.6; font-size:0.875rem;">Master the semantic grid system with responsive columns and golden ratio layouts.</p>
+                                <p style="margin:0; color:#4b5563; line-height:1.6; font-size:0.875rem;">Master the semantic aiab-grid system with responsive columns and golden ratio layouts.</p>
                                 <span style="display:block; margin-top:0.5rem; font-size:0.75rem; color:#6c757d;">8 min read • Nov 2025</span>
                             </div>
                         </a>
@@ -1080,7 +1080,7 @@ function showSlide(n) {
 
             <div class="example">
                 <div class="example-title">Common Icons</div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="display: aiab-grid; aiab-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <svg class="aiab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
                         <span>Check Circle</span>
@@ -1143,10 +1143,10 @@ function showSlide(n) {
             <div class="example">
                 <div class="example-title">Icon Colors</div>
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                    <svg class="aiab-icon text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
-                    <svg class="aiab-icon text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
-                    <svg class="aiab-icon text-danger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-                    <svg class="aiab-icon text-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <svg class="aiab-icon aiab-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                    <svg class="aiab-icon aiab-text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                    <svg class="aiab-icon aiab-text-danger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                    <svg class="aiab-icon aiab-text-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                     <svg class="aiab-icon text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                 </div>
             </div>
@@ -1164,12 +1164,12 @@ function showSlide(n) {
 &lt;svg class="aiab-icon icon-xl" viewBox="..."&gt;...&lt;/svg&gt;
 
 &lt;!-- Colored Icons --&gt;
-&lt;svg class="aiab-icon text-primary" viewBox="..."&gt;...&lt;/svg&gt;
-&lt;svg class="aiab-icon text-success" viewBox="..."&gt;...&lt;/svg&gt;
-&lt;svg class="aiab-icon text-danger" viewBox="..."&gt;...&lt;/svg&gt;
+&lt;svg class="aiab-icon aiab-text-primary" viewBox="..."&gt;...&lt;/svg&gt;
+&lt;svg class="aiab-icon aiab-text-success" viewBox="..."&gt;...&lt;/svg&gt;
+&lt;svg class="aiab-icon aiab-text-danger" viewBox="..."&gt;...&lt;/svg&gt;
 
 &lt;!-- Icons in Buttons --&gt;
-&lt;button class="aiab-btn btn-primary"&gt;
+&lt;button class="aiab-btn aiab-btn-primary"&gt;
   &lt;svg class="aiab-icon icon-sm"&gt;...&lt;/svg&gt;
   Save Changes
 &lt;/button&gt;</code></pre>
@@ -1264,13 +1264,13 @@ lucide.createIcons();</code></pre>
         let startX = 0;
         let endX = 0;
 
-        const container = document.querySelector('.slideshow-container');
+        const aiab-container = document.querySelector('.slideshow-container');
         if (container) {
-            container.addEventListener('touchstart', (e) => {
+            aiab-container.addEventListener('touchstart', (e) => {
                 startX = e.changedTouches[0].screenX;
             });
 
-            container.addEventListener('touchend', (e) => {
+            aiab-container.addEventListener('touchend', (e) => {
                 endX = e.changedTouches[0].screenX;
                 handleSwipe();
             });

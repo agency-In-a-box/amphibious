@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grid System - Amphibious 2.0 Documentation</title>
-  <meta name="description" content="Comprehensive guide to the Amphibious 16-column responsive grid system">
+  <meta name="description" content="Comprehensive guide to the Amphibious 16-column responsive aiab-grid system">
   <style>
     /* Documentation Styles */
     body {
@@ -89,20 +89,20 @@
     }
 
     /* Grid Examples */
-    .grid-example {
+    .aiab-grid-example {
       margin: 2rem 0;
       padding: 1rem;
       background: #f8f9fa;
       border-radius: 8px;
       border: 2px solid #e9ecef;
     }
-    .grid-example .aiab-row {
+    .aiab-grid-example .aiab-row {
       margin-bottom: 1rem;
     }
-    .grid-example .aiab-row:last-child {
+    .aiab-grid-example .aiab-row:last-child {
       margin-bottom: 0;
     }
-    .grid-example [class*="col-"] {
+    .aiab-grid-example [class*="col-"] {
       background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
       color: white;
       padding: 1rem;
@@ -115,7 +115,7 @@
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
-    .grid-example-light [class*="col-"] {
+    .aiab-grid-example-light [class*="col-"] {
       background: #e9ecef;
       color: #2c3e50;
       border: 1px solid #dee2e6;
@@ -201,17 +201,17 @@
       border-radius: 4px;
       margin: 1rem 0;
     }
-    .alert-info {
+    .aiab-alert-info {
       background: #e3f2fd;
       border-left: 4px solid #2196f3;
       color: #1565c0;
     }
-    .alert-tip {
+    .aiab-alert-tip {
       background: #e8f5e9;
       border-left: 4px solid #4caf50;
       color: #2e7d32;
     }
-    .alert-warning {
+    .aiab-alert-warning {
       background: #fff3e0;
       border-left: 4px solid #ff9800;
       color: #e65100;
@@ -237,16 +237,16 @@
     <!-- Navigation Include -->
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
-    <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="nav-toggle-icon" aria-hidden="true"></span>
-      <span class="sr-only">Toggle navigation</span>
+    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
+      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
+      <span class="aiab-sr-only">Toggle navigation</span>
     </button>
 
     <ul id="main-nav" class="horizontal">
       <li>
-        <a href="/" class="site-logo">Amphibious</a>
+        <a href="/" class="aiab-site-logo">Amphibious</a>
         <ul>
           <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
           <li><a href="/#how_its_made">What is it made of?</a></li>
@@ -287,7 +287,7 @@
           <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
           <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
           <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
         </ul>
       </li>
       <li>
@@ -320,7 +320,7 @@
 <header class="doc-header">
     <div class="aiab-container">
       <h1>Grid System Documentation</h1>
-      <p>Master the flexible 16-column responsive grid system</p>
+      <p>Master the flexible 16-column responsive aiab-grid system</p>
     </div>
   </header>
 
@@ -344,9 +344,9 @@
     <section id="introduction" class="doc-section">
       <h2>Introduction to the Grid System</h2>
 
-      <p>Amphibious uses a powerful 16-column grid system based on the proven 960 Grid System principles. The grid provides maximum flexibility for layouts while maintaining simplicity and consistency.</p>
+      <p>Amphibious uses a powerful 16-column aiab-grid system based on the proven 960 Grid System principles. The aiab-grid provides maximum flexibility for layouts while maintaining simplicity and consistency.</p>
 
-      <div class="aiab-alert alert-info">
+      <div class="aiab-alert aiab-alert-info">
         <strong>Key Features:</strong> 16 columns • Responsive breakpoints • Fluid and fixed options • Nestable • Golden ratio support
       </div>
 
@@ -362,7 +362,7 @@
         <tbody>
           <tr>
             <td><strong>Container</strong></td>
-            <td>Wraps the grid system, 960px fixed or 96% fluid</td>
+            <td>Wraps the aiab-grid system, 960px fixed or 96% fluid</td>
             <td><code>&lt;div class="aiab-container"&gt;</code></td>
           </tr>
           <tr>
@@ -389,7 +389,7 @@
       <h2>Basic Grid Structure</h2>
 
       <h3>Simple Two-Column Layout</h3>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-8">8 Columns (50%)</div>
           <div class="aiab-col-8">8 Columns (50%)</div>
@@ -404,7 +404,7 @@
 &lt;/div&gt;</code></pre>
 
       <h3>Three-Column Layout</h3>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-5">5 Columns</div>
           <div class="aiab-col-6">6 Columns</div>
@@ -413,7 +413,7 @@
       </div>
 
       <h3>Four-Column Layout</h3>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-4">4 Columns</div>
           <div class="aiab-col-4">4 Columns</div>
@@ -423,7 +423,7 @@
       </div>
 
       <h3>All Column Sizes</h3>
-      <div class="grid-example grid-example-light">
+      <div class="aiab-grid-example aiab-grid-example-light">
         <div class="aiab-row">
           <div class="aiab-col-1">1</div>
           <div class="aiab-col-15">15 Columns</div>
@@ -466,7 +466,7 @@
     <section id="responsive" class="doc-section">
       <h2>Responsive Grid</h2>
 
-      <p>The grid system includes responsive classes that adapt to different screen sizes. Columns automatically stack on mobile devices and expand on larger screens.</p>
+      <p>The aiab-grid system includes responsive classes that adapt to different screen sizes. Columns automatically stack on mobile devices and expand on larger screens.</p>
 
       <h3>Responsive Breakpoints</h3>
       <table>
@@ -500,7 +500,7 @@
         </tbody>
       </table>
 
-      <div class="aiab-alert alert-tip">
+      <div class="aiab-alert aiab-alert-tip">
         <strong>Mobile First:</strong> Start with mobile layout and enhance for larger screens using responsive classes.
       </div>
 
@@ -513,7 +513,7 @@
         </div>
         <div id="deviceFrame" class="device-frame desktop">
           <div class="device-label">Current View: Desktop (960px+)</div>
-          <div class="grid-example">
+          <div class="aiab-grid-example">
             <div class="aiab-row">
               <div class="aiab-col-4 aiab-col-tablet-8 aiab-col-mobile-16">
                 Sidebar
@@ -543,7 +543,7 @@
       <p>Columns can be nested within other columns to create complex layouts. Use <code>.first</code> and <code>.last</code> classes to remove margins on nested columns.</p>
 
       <h3>Basic Nesting</h3>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-10" style="background: #e9ecef; color: #2c3e50;">
             <div style="padding: 1rem;">
@@ -574,16 +574,16 @@
 &lt;/div&gt;</code></pre>
 
       <h3>Golden Ratio Layout <span class="aiab-badge new">Popular</span></h3>
-      <p>Create aesthetically pleasing layouts using the golden ratio (1.618:1). The 16-column grid makes this easy with 10:6 column splits.</p>
+      <p>Create aesthetically pleasing layouts using the golden ratio (1.618:1). The 16-column aiab-grid makes this easy with 10:6 column splits.</p>
 
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-10">Main Content (Golden)</div>
           <div class="aiab-col-6">Sidebar (Ratio)</div>
         </div>
       </div>
 
-      <div class="aiab-alert alert-tip">
+      <div class="aiab-alert aiab-alert-tip">
         <strong>Golden Ratio Combinations:</strong> 10:6, 6:4, and nested 6:4 within 10 columns all approximate the golden ratio.
       </div>
     </section>
@@ -594,7 +594,7 @@
 
       <h3>Offset Classes</h3>
       <p>Push columns to the right using offset classes:</p>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-4 aiab-offset-4">4 Columns with 4 Offset</div>
           <div class="aiab-col-4">4 Columns</div>
@@ -606,7 +606,7 @@
 
       <h3>Push and Pull (Source Ordering)</h3>
       <p>Change the visual order of columns for SEO optimization:</p>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-6 push-10">First in source, appears right</div>
           <div class="aiab-col-10 aiab-pull-6">Second in source, appears left</div>
@@ -621,7 +621,7 @@
 
       <h3>Fluid Columns</h3>
       <p>Use fluid percentage-based columns for flexible layouts:</p>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="one-third col">One Third</div>
           <div class="one-third col">One Third</div>
@@ -650,7 +650,7 @@
           <tr>
             <td><code>.one-quarter</code></td>
             <td>25%</td>
-            <td>Small sidebars, card layouts</td>
+            <td>Small sidebars, aiab-card layouts</td>
           </tr>
           <tr>
             <td><code>.one-third</code></td>
@@ -665,7 +665,7 @@
           <tr>
             <td><code>.two-thirds</code></td>
             <td>66.66%</td>
-            <td>Main content with sidebar</td>
+            <td>Main content with aiab-sidebar</td>
           </tr>
           <tr>
             <td><code>.three-quarters</code></td>
@@ -681,7 +681,7 @@
       <h2>Real-World Examples</h2>
 
       <h3>E-commerce Product Grid</h3>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-4">
             <div style="background: white; color: #2c3e50; padding: 1rem; border-radius: 4px;">
@@ -707,7 +707,7 @@
       </div>
 
       <h3>Blog Layout with Sidebar</h3>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-16">Header Navigation</div>
         </div>
@@ -727,7 +727,7 @@
       </div>
 
       <h3>Dashboard Layout</h3>
-      <div class="grid-example">
+      <div class="aiab-grid-example">
         <div class="aiab-row">
           <div class="aiab-col-3">
             <div style="min-height: 300px;">
@@ -770,7 +770,7 @@
           <button onclick="clearGrid()">Clear Grid</button>
         </div>
 
-        <div id="gridPlayground" class="grid-example">
+        <div id="gridPlayground" class="aiab-grid-example">
           <div class="aiab-row" id="playgroundRow">
             <div class="aiab-col-8">Sample Column 1</div>
             <div class="aiab-col-8">Sample Column 2</div>
@@ -791,24 +791,24 @@
     <section class="doc-section">
       <h2>Best Practices</h2>
 
-      <div class="aiab-alert alert-tip">
+      <div class="aiab-alert aiab-alert-tip">
         <h4>Do's:</h4>
         <ul>
           <li>✓ Always wrap columns in a <code>.aiab-row</code></li>
           <li>✓ Ensure column widths add up to 16 or less</li>
           <li>✓ Use responsive classes for mobile optimization</li>
           <li>✓ Nest grids when needed for complex layouts</li>
-          <li>✓ Use semantic HTML within grid columns</li>
+          <li>✓ Use semantic HTML within aiab-grid columns</li>
         </ul>
       </div>
 
-      <div class="aiab-alert alert-warning">
+      <div class="aiab-alert aiab-alert-warning">
         <h4>Don'ts:</h4>
         <ul>
-          <li>✗ Don't exceed 16 columns in a row</li>
+          <li>✗ Don't exceed 16 columns in a aiab-row</li>
           <li>✗ Don't forget <code>.first</code> and <code>.last</code> on nested columns</li>
-          <li>✗ Don't use the grid for micro-layouts (use flexbox instead)</li>
-          <li>✗ Don't mix fluid and fixed columns in the same row</li>
+          <li>✗ Don't use the aiab-grid for micro-layouts (use flexbox instead)</li>
+          <li>✗ Don't mix fluid and fixed columns in the same aiab-row</li>
         </ul>
       </div>
     </section>
@@ -851,7 +851,7 @@
       </table>
 
       <h3>From CSS Grid</h3>
-      <p>While CSS Grid is more powerful for complex layouts, Amphibious grid provides:</p>
+      <p>While CSS Grid is more powerful for complex layouts, Amphibious aiab-grid provides:</p>
       <ul>
         <li>Better browser compatibility (IE11+)</li>
         <li>Simpler syntax for common layouts</li>
@@ -888,9 +888,9 @@
       // Update active button
       buttons.forEach(btn => {
         if (btn.textContent.toLowerCase().includes(device)) {
-          btn.classList.add('active');
+          aiab-btn.classList.add('active');
         } else {
-          btn.classList.remove('active');
+          aiab-btn.classList.remove('active');
         }
       });
     }
@@ -899,27 +899,27 @@
     let columnCount = 2;
 
     function _addGridColumn(size) {
-      const row = document.getElementById('playgroundRow');
+      const aiab-row = document.getElementById('playgroundRow');
       columnCount++;
 
       const newCol = document.createElement('div');
       newCol.className = `col-${size}`;
       newCol.textContent = `Column ${columnCount} (${size})`;
-      row.appendChild(newCol);
+      aiab-row.appendChild(newCol);
 
       updateGeneratedCode();
     }
 
     function _clearGrid() {
-      const row = document.getElementById('playgroundRow');
-      row.innerHTML = '';
+      const aiab-row = document.getElementById('playgroundRow');
+      aiab-row.innerHTML = '';
       columnCount = 0;
       updateGeneratedCode();
     }
 
     function updateGeneratedCode() {
-      const row = document.getElementById('playgroundRow');
-      const columns = row.querySelectorAll('[class*="col-"]');
+      const aiab-row = document.getElementById('playgroundRow');
+      const columns = aiab-row.querySelectorAll('[class*="col-"]');
 
       let code = '<div class="aiab-row">\n';
       columns.forEach(col => {

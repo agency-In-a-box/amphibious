@@ -49,7 +49,7 @@ describe('Forms Module', () => {
           <div class="invalid-feedback"></div>
         </div>
 
-        <div class="form-floating">
+        <div class="aiab-form-floating">
           <input type="text" id="floating" placeholder="Name">
           <label for="floating">Name</label>
         </div>
@@ -111,7 +111,7 @@ describe('Forms Module', () => {
       container.dispatchEvent(event);
 
       expect(event.defaultPrevented).toBe(true);
-      expect(emailField.classList.contains('is-invalid')).toBe(true);
+      expect(emailField.classList.contains('aiab-is-invalid')).toBe(true);
     });
 
     it('should validate email format', () => {
@@ -123,12 +123,12 @@ describe('Forms Module', () => {
       // Invalid email
       emailField.value = 'invalid-email';
       emailField.dispatchEvent(new Event('blur'));
-      expect(emailField.classList.contains('is-invalid')).toBe(true);
+      expect(emailField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Valid email
       emailField.value = 'test@example.com';
       emailField.dispatchEvent(new Event('blur'));
-      expect(emailField.classList.contains('is-valid')).toBe(true);
+      expect(emailField.classList.contains('aiab-is-valid')).toBe(true);
     });
 
     it('should validate phone number', () => {
@@ -140,12 +140,12 @@ describe('Forms Module', () => {
       // Invalid phone
       phoneField.value = '123';
       phoneField.dispatchEvent(new Event('blur'));
-      expect(phoneField.classList.contains('is-invalid')).toBe(true);
+      expect(phoneField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Valid phone
       phoneField.value = '1234567890';
       phoneField.dispatchEvent(new Event('blur'));
-      expect(phoneField.classList.contains('is-valid')).toBe(true);
+      expect(phoneField.classList.contains('aiab-is-valid')).toBe(true);
     });
 
     it('should validate URL format', () => {
@@ -157,17 +157,17 @@ describe('Forms Module', () => {
       // Invalid URL
       urlField.value = 'not-a-url';
       urlField.dispatchEvent(new Event('blur'));
-      expect(urlField.classList.contains('is-invalid')).toBe(true);
+      expect(urlField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Valid URL but wrong pattern
       urlField.value = 'http://example.com';
       urlField.dispatchEvent(new Event('blur'));
-      expect(urlField.classList.contains('is-invalid')).toBe(true);
+      expect(urlField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Valid URL with correct pattern
       urlField.value = 'https://example.com';
       urlField.dispatchEvent(new Event('blur'));
-      expect(urlField.classList.contains('is-valid')).toBe(true);
+      expect(urlField.classList.contains('aiab-is-valid')).toBe(true);
     });
 
     it('should validate min/max length', () => {
@@ -179,12 +179,12 @@ describe('Forms Module', () => {
       // Too short
       passwordField.value = '1234567';
       passwordField.dispatchEvent(new Event('blur'));
-      expect(passwordField.classList.contains('is-invalid')).toBe(true);
+      expect(passwordField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Valid length
       passwordField.value = '12345678';
       passwordField.dispatchEvent(new Event('blur'));
-      expect(passwordField.classList.contains('is-valid')).toBe(true);
+      expect(passwordField.classList.contains('aiab-is-valid')).toBe(true);
     });
 
     it('should validate number min/max', () => {
@@ -196,17 +196,17 @@ describe('Forms Module', () => {
       // Too low
       ageField.value = '10';
       ageField.dispatchEvent(new Event('blur'));
-      expect(ageField.classList.contains('is-invalid')).toBe(true);
+      expect(ageField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Too high
       ageField.value = '150';
       ageField.dispatchEvent(new Event('blur'));
-      expect(ageField.classList.contains('is-invalid')).toBe(true);
+      expect(ageField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Valid
       ageField.value = '25';
       ageField.dispatchEvent(new Event('blur'));
-      expect(ageField.classList.contains('is-valid')).toBe(true);
+      expect(ageField.classList.contains('aiab-is-valid')).toBe(true);
     });
 
     it('should clear error on input', () => {
@@ -217,11 +217,11 @@ describe('Forms Module', () => {
 
       // Create error
       emailField.dispatchEvent(new Event('blur'));
-      expect(emailField.classList.contains('is-invalid')).toBe(true);
+      expect(emailField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Start typing
       emailField.dispatchEvent(new Event('input'));
-      expect(emailField.classList.contains('is-invalid')).toBe(false);
+      expect(emailField.classList.contains('aiab-is-invalid')).toBe(false);
     });
   });
 
@@ -246,12 +246,12 @@ describe('Forms Module', () => {
 
       // Test invalid value
       field.dispatchEvent(new Event('blur'));
-      expect(field.classList.contains('is-invalid')).toBe(true);
+      expect(field.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Test valid value
       field.value = 'valid';
       field.dispatchEvent(new Event('blur'));
-      expect(field.classList.contains('is-valid')).toBe(true);
+      expect(field.classList.contains('aiab-is-valid')).toBe(true);
     });
   });
 
@@ -397,12 +397,12 @@ describe('Forms Module', () => {
       // Create validation states
       const emailField = document.querySelector('#email') as HTMLInputElement;
       emailField.dispatchEvent(new Event('blur'));
-      expect(emailField.classList.contains('is-invalid')).toBe(true);
+      expect(emailField.classList.contains('aiab-is-invalid')).toBe(true);
 
       // Reset
       forms.reset('#testForm');
 
-      expect(emailField.classList.contains('is-invalid')).toBe(false);
+      expect(emailField.classList.contains('aiab-is-invalid')).toBe(false);
       expect(emailField.value).toBe('');
     });
   });

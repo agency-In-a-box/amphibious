@@ -92,8 +92,8 @@ describe('Amphibious 2.0 Component Inventory', () => {
         expect(content).toContain(`.aiab-col-${i}`);
       }
 
-      // Check for responsive classes
-      expect(content).toContain('.col-mobile-');
+      // Check for responsive classes (namespaced)
+      expect(content).toContain('.aiab-col-mobile-');
     });
 
     test('Typography system exists', () => {
@@ -119,10 +119,10 @@ describe('Amphibious 2.0 Component Inventory', () => {
 
       const content = fs.readFileSync(helperFile, 'utf-8');
 
-      // Check for common utility classes
-      expect(content).toContain('.text-center');
-      expect(content).toContain('.text-left');
-      expect(content).toContain('.text-right');
+      // Check for common utility classes (namespaced)
+      expect(content).toContain('.aiab-text-center');
+      expect(content).toContain('.aiab-text-left');
+      expect(content).toContain('.aiab-text-right');
       expect(content).toContain('.float-left');
       expect(content).toContain('.float-right');
       expect(content).toContain('.hidden');
@@ -132,7 +132,7 @@ describe('Amphibious 2.0 Component Inventory', () => {
       const clearingFile = path.join(cssBasePath, 'clearing.css');
       if (fs.existsSync(clearingFile)) {
         const clearingContent = fs.readFileSync(clearingFile, 'utf-8');
-        expect(clearingContent).toContain('.clearfix');
+        expect(clearingContent).toContain('.aiab-clearfix');
       }
     });
   });

@@ -140,8 +140,8 @@
 
     /* Icon Grid */
     .icon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1rem;
     }
 
@@ -279,7 +279,7 @@
       }
 
       .icon-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        aiab-grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         gap: 0.75rem;
       }
 
@@ -295,7 +295,7 @@
 
     @media (max-width: 480px) {
       .icon-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        aiab-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       }
 
       .filter-tags {
@@ -330,10 +330,10 @@
 </head>
 <body>
   <!-- Site Navigation -->
-  <nav class="site-nav" aria-label="Main navigation">
+  <nav class="aiab-site-nav" aria-label="Main navigation">
     <div class="aiab-container">
       <ul class="horizontal branded">
-        <li><a href="/" class="site-logo">Amphibious</a></li>
+        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
         <li><a href="./foundation.html">Foundation</a>
           <ul>
             <li><a href="./foundation.html#core">Core</a></li>
@@ -363,7 +363,7 @@
             <li><a href="./function.html#vertical-nav">Vertical Nav</a></li>
             <li><a href="./function.html#breadcrumbs">Breadcrumbs</a></li>
             <li><a href="./function.html#tabs">Tabs</a></li>
-            <li><a href="./function.html#pagination">Pagination nav</a></li>
+            <li><a href="./function.html#pagination">Pagination aiab-nav</a></li>
           </ul>
         </li>
         <li><a href="./features.html">Features</a>
@@ -613,7 +613,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
         'activity', 'bar-chart', 'bar-chart-2', 'bar-chart-3', 'bar-chart-4', 'line-chart',
         'pie-chart', 'trending-up', 'trending-down', 'trending-up-down', 'analytics',
         'package', 'package-2', 'package-check', 'package-minus', 'package-open', 'package-plus',
-        'package-search', 'package-x', 'box', 'boxes', 'container', 'docker', 'kubernetes'
+        'package-search', 'package-x', 'box', 'boxes', 'aiab-container', 'docker', 'kubernetes'
       ],
       devices: [
         'smartphone', 'tablet', 'laptop', 'laptop-2', 'monitor', 'monitor-off', 'tv', 'tv-2',
@@ -663,10 +663,10 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
       ],
       layout: [
         'layout', 'layout-dashboard', 'layout-grid', 'layout-list', 'layout-template',
-        'sidebar', 'sidebar-open', 'sidebar-close', 'panel-left', 'panel-left-close',
+        'aiab-sidebar', 'aiab-sidebar-open', 'aiab-sidebar-close', 'panel-left', 'panel-left-close',
         'panel-left-open', 'panel-right', 'panel-right-close', 'panel-right-open',
         'panel-top', 'panel-top-close', 'panel-top-open', 'panel-bottom', 'panel-bottom-close',
-        'panel-bottom-open', 'columns', 'rows', 'grid-3x3', 'grid-2x2', 'rectangle',
+        'panel-bottom-open', 'columns', 'rows', 'aiab-grid-3x3', 'aiab-grid-2x2', 'rectangle',
         'rectangle-horizontal', 'rectangle-vertical', 'square', 'circle', 'triangle',
         'diamond', 'hexagon', 'octagon', 'pentagon', 'star', 'heart', 'plus', 'minus',
         'x', 'check', 'maximize', 'minimize', 'maximize-2', 'minimize-2', 'expand',
@@ -735,7 +735,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
         'shield', 'shield-alert', 'shield-check', 'shield-close', 'shield-off',
         'shield-question', 'shield-x', 'lock', 'lock-open', 'unlock', 'key',
         'key-round', 'key-square', 'fingerprint', 'scan-face', 'scan-eye', 'eye',
-        'eye-off', 'user-check', 'user-x', 'users-2', 'crown', 'badge', 'award',
+        'eye-off', 'user-check', 'user-x', 'users-2', 'crown', 'aiab-badge', 'award',
         'verified', 'certificate', 'diploma', 'id-card', 'passport', 'ticket',
         'qr-code', 'barcode', 'scan', 'search', 'zoom-in', 'zoom-out', 'focus',
         'crosshair', 'target', 'radar', 'activity', 'pulse', 'heart-pulse',
@@ -767,7 +767,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
         'toggle-right', 'power', 'power-off', 'restart', 'shut-down', 'log-out',
         'log-in', 'user-check', 'user-x', 'shield', 'shield-check', 'shield-alert',
         'shield-x', 'lock', 'unlock', 'key', 'scan', 'search', 'filter', 'sort-asc',
-        'sort-desc', 'list', 'grid', 'layout', 'maximize', 'minimize', 'expand',
+        'sort-desc', 'list', 'aiab-grid', 'layout', 'maximize', 'minimize', 'expand',
         'shrink', 'fullscreen', 'window', 'monitor', 'cpu', 'hard-drive', 'server',
         'database', 'cloud', 'wifi', 'bluetooth', 'battery', 'zap', 'activity',
         'pulse', 'heart-pulse', 'trending-up', 'trending-down', 'bar-chart', 'pie-chart'
@@ -791,7 +791,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
         'square', 'compass', 'protractor', 'magnifying-glass', 'flashlight',
         'candle', 'flame', 'fire', 'smoke', 'droplets', 'spray', 'brush',
         'paintbrush', 'palette', 'bucket', 'mop', 'broom', 'vacuum', 'toolbox',
-        'briefcase', 'suitcase', 'backpack', 'bag', 'box', 'container', 'barrel'
+        'briefcase', 'suitcase', 'backpack', 'bag', 'box', 'aiab-container', 'barrel'
       ],
       transport: [
         'car', 'car-front', 'car-taxi', 'truck', 'van', 'bus', 'ambulance',
@@ -848,7 +848,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
       filterButtons.forEach(button => {
         button.addEventListener('click', function() {
           // Remove active class from all buttons
-          filterButtons.forEach(btn => btn.classList.remove('active'));
+          filterButtons.forEach(btn => aiab-btn.classList.remove('active'));
 
           // Add active class to clicked button
           this.classList.add('active');

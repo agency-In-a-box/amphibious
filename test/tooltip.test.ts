@@ -96,7 +96,7 @@ describe('Tooltip Module', () => {
 
       const tooltipEl = document.querySelector('.tooltip');
       expect(tooltipEl).toBeTruthy();
-      expect(tooltipEl?.classList.contains('tooltip--visible')).toBe(true);
+      expect(tooltipEl?.classList.contains('aiab-tooltip--visible')).toBe(true);
       expect(tooltipEl?.getAttribute('aria-hidden')).toBe('false');
     });
 
@@ -114,7 +114,7 @@ describe('Tooltip Module', () => {
       tooltip.hide();
 
       const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--hidden')).toBe(true);
+      expect(tooltipEl?.classList.contains('aiab-tooltip--hidden')).toBe(true);
       expect(tooltipEl?.getAttribute('aria-hidden')).toBe('true');
     });
 
@@ -137,10 +137,10 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, hideDelay: 0 });
 
       tooltip.toggle();
-      expect(document.querySelector('.tooltip--visible')).toBeTruthy();
+      expect(document.querySelector('.aiab-tooltip--visible')).toBeTruthy();
 
       tooltip.toggle();
-      expect(document.querySelector('.tooltip--hidden')).toBeTruthy();
+      expect(document.querySelector('.aiab-tooltip--hidden')).toBeTruthy();
     });
 
     it('should call onShow callback', () => {
@@ -243,7 +243,7 @@ describe('Tooltip Module', () => {
       triggerElement.dispatchEvent(new MouseEvent('mouseleave'));
 
       const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--hidden')).toBe(true);
+      expect(tooltipEl?.classList.contains('aiab-tooltip--hidden')).toBe(true);
     });
 
     it('should show on focus for hover trigger', () => {
@@ -280,7 +280,7 @@ describe('Tooltip Module', () => {
       triggerElement.dispatchEvent(new Event('blur'));
 
       const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--hidden')).toBe(true);
+      expect(tooltipEl?.classList.contains('aiab-tooltip--hidden')).toBe(true);
     });
   });
 
@@ -302,7 +302,7 @@ describe('Tooltip Module', () => {
       triggerElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
 
       const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--visible')).toBe(true);
+      expect(tooltipEl?.classList.contains('aiab-tooltip--visible')).toBe(true);
     });
   });
 

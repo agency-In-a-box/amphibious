@@ -139,44 +139,44 @@
 
     /* Feature List */
     .feature-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
 
-    .feature-card {
+    .aiab-feature-card {
       background: #f8f9fa;
       padding: 1.5rem;
       border-radius: 0.5rem;
       border-left: 4px solid #ED8B00;
     }
 
-    .feature-card h4 {
+    .aiab-feature-card h4 {
       margin-top: 0;
       color: #2c3e50;
     }
 
     /* Navigation */
-    .nav-breadcrumb {
+    .aiab-nav-breadcrumb {
       background: rgba(255, 255, 255, 0.9);
       padding: 1rem 0;
       margin-bottom: 1rem;
     }
 
-    .nav-breadcrumb a {
+    .aiab-nav-breadcrumb a {
       color: #ED8B00;
       text-decoration: none;
     }
 
-    .nav-breadcrumb a:hover {
+    .aiab-nav-breadcrumb a:hover {
       text-decoration: underline;
     }
 
     /* Demo Cards Grid */
     .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -196,17 +196,17 @@
       }
 
       .demo-grid {
-        grid-template-columns: 1fr;
+        aiab-grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
   <!-- Site Navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
     <ul class="horizontal branded">
-      <li><a href="/" class="site-logo">Amphibious</a></li>
+      <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
         <ul>
           <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -236,7 +236,7 @@
           <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
           <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
           <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
         </ul>
       </li>
       <li><a href="/docs/features.html">Features</a>
@@ -254,7 +254,7 @@
 
   <header class="docs-header">
     <div class="aiab-container">
-      <nav class="nav-breadcrumb">
+      <nav class="aiab-nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
         <a href="/docs/components/">Components</a> ›
@@ -272,27 +272,27 @@
       <p>The Cards component provides flexible content containers that can display various types of information in an organized, visually appealing manner. Cards are perfect for product listings, user profiles, articles, statistics, and more.</p>
 
       <div class="feature-list">
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🎨 Multiple Variants</h4>
           <p>Product cards, profile cards, stat cards, feature cards, and more specialized layouts.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>📱 Responsive Design</h4>
-          <p>Automatically adapts to different screen sizes with responsive grid systems.</p>
+          <p>Automatically adapts to different screen sizes with responsive aiab-grid systems.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>⚡ Interactive States</h4>
           <p>Hover effects, active states, and focus management for enhanced user experience.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🔧 Flexible Layout</h4>
-          <p>Horizontal and vertical layouts, custom spacing, and grid system integration.</p>
+          <p>Horizontal and vertical layouts, custom spacing, and aiab-grid system integration.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>♿ Accessibility</h4>
           <p>Focus indicators, screen reader support, and reduced motion preferences.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🎭 Shadow Variants</h4>
           <p>Multiple shadow depths from subtle to prominent for visual hierarchy.</p>
         </div>
@@ -307,32 +307,32 @@
       <div class="demo-section">
         <div class="demo-title">Basic Card Example</div>
         <div class="aiab-card" style="max-width: 400px;">
-          <div class="card-header">
-            <h3 class="card-title">Card Title</h3>
-            <p class="card-subtitle">Optional subtitle</p>
+          <div class="aiab-card-header">
+            <h3 class="aiab-card-title">Card Title</h3>
+            <p class="aiab-card-subtitle">Optional subtitle</p>
           </div>
-          <div class="card-body">
-            <p class="card-text">This is the main content area of the card. You can put any content here including text, images, buttons, and more.</p>
+          <div class="aiab-card-body">
+            <p class="aiab-card-text">This is the main content area of the aiab-card. You can put any content here including text, images, buttons, and more.</p>
           </div>
-          <div class="card-footer center">
-            <button class="aiab-btn btn--primary">Action</button>
-            <button class="aiab-btn btn--secondary">Secondary</button>
+          <div class="aiab-card-footer center">
+            <button class="aiab-btn aiab-btn--primary">Action</button>
+            <button class="aiab-btn aiab-btn--secondary">Secondary</button>
           </div>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;div class="aiab-card"&gt;
-  &lt;div class="card-header"&gt;
-    &lt;h3 class="card-title"&gt;Card Title&lt;/h3&gt;
-    &lt;p class="card-subtitle"&gt;Optional subtitle&lt;/p&gt;
+  &lt;div class="aiab-card-header"&gt;
+    &lt;h3 class="aiab-card-title"&gt;Card Title&lt;/h3&gt;
+    &lt;p class="aiab-card-subtitle"&gt;Optional subtitle&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div class="card-body"&gt;
-    &lt;p class="card-text"&gt;Main content goes here...&lt;/p&gt;
+  &lt;div class="aiab-card-body"&gt;
+    &lt;p class="aiab-card-text"&gt;Main content goes here...&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div class="card-footer center"&gt;
-    &lt;button class="aiab-btn btn--primary"&gt;Action&lt;/button&gt;
-    &lt;button class="aiab-btn btn--secondary"&gt;Secondary&lt;/button&gt;
+  &lt;div class="aiab-card-footer center"&gt;
+    &lt;button class="aiab-btn aiab-btn--primary"&gt;Action&lt;/button&gt;
+    &lt;button class="aiab-btn aiab-btn--secondary"&gt;Secondary&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -341,22 +341,22 @@
       <div class="demo-section">
         <div class="demo-title">Card with Media</div>
         <div class="aiab-card" style="max-width: 400px;">
-          <div class="card-media aspect-video" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
+          <div class="aiab-card-media aspect-video" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
             Image Placeholder
           </div>
-          <div class="card-body">
-            <h3 class="card-title">Card with Image</h3>
-            <p class="card-text">This card includes a media element at the top, perfect for featured images or videos.</p>
+          <div class="aiab-card-body">
+            <h3 class="aiab-card-title">Card with Image</h3>
+            <p class="aiab-card-text">This aiab-card includes a media element at the top, perfect for featured images or videos.</p>
           </div>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;div class="aiab-card"&gt;
-  &lt;img src="https://picsum.photos/600/400" alt="Description" class="card-media"&gt;
-  &lt;div class="card-body"&gt;
-    &lt;h3 class="card-title"&gt;Card with Image&lt;/h3&gt;
-    &lt;p class="card-text"&gt;Content with image...&lt;/p&gt;
+  &lt;img src="https://picsum.photos/600/400" alt="Description" class="aiab-card-media"&gt;
+  &lt;div class="aiab-card-body"&gt;
+    &lt;h3 class="aiab-card-title"&gt;Card with Image&lt;/h3&gt;
+    &lt;p class="aiab-card-text"&gt;Content with image...&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -371,29 +371,29 @@
       <div class="demo-grid">
         <!-- Product Card -->
         <div class="aiab-card product">
-          <div class="card-media aspect-square" style="background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">
+          <div class="aiab-card-media aspect-square" style="background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">
             Product Image
           </div>
-          <div class="card-body">
-            <h3 class="card-title">Premium Headphones</h3>
+          <div class="aiab-card-body">
+            <h3 class="aiab-card-title">Premium Headphones</h3>
             <div class="price">$199.99</div>
-            <div class="card-actions center">
-              <button class="aiab-btn btn--primary">Add to Cart</button>
+            <div class="aiab-card-actions center">
+              <button class="aiab-btn aiab-btn--primary">Add to Cart</button>
             </div>
           </div>
         </div>
 
         <!-- Profile Card -->
         <div class="aiab-card profile">
-          <div class="card-body">
+          <div class="aiab-card-body">
             <div class="aiab-avatar" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
               JD
             </div>
-            <h3 class="card-title">John Doe</h3>
-            <p class="card-subtitle">Senior Developer</p>
-            <div class="card-actions center">
-              <button class="aiab-btn btn--primary btn--sm">Follow</button>
-              <button class="aiab-btn btn--secondary btn--sm">Message</button>
+            <h3 class="aiab-card-title">John Doe</h3>
+            <p class="aiab-card-subtitle">Senior Developer</p>
+            <div class="aiab-card-actions center">
+              <button class="aiab-btn aiab-btn--primary aiab-btn--sm">Follow</button>
+              <button class="aiab-btn aiab-btn--secondary aiab-btn--sm">Message</button>
             </div>
           </div>
         </div>
@@ -406,12 +406,12 @@
 
         <!-- Feature Card -->
         <div class="aiab-card feature">
-          <div class="card-body">
+          <div class="aiab-card-body">
             <div class="aiab-icon" style="color: #ED8B00;">
               <i data-lucide="zap"></i>
             </div>
-            <h3 class="card-title">Fast Performance</h3>
-            <p class="card-text">Lightning-fast loading times and smooth interactions.</p>
+            <h3 class="aiab-card-title">Fast Performance</h3>
+            <p class="aiab-card-text">Lightning-fast loading times and smooth interactions.</p>
           </div>
         </div>
       </div>
@@ -419,24 +419,24 @@
       <div class="code-block">
         <pre><code>&lt;!-- Product Card --&gt;
 &lt;div class="aiab-card product"&gt;
-  &lt;img src="product.jpg" alt="Product" class="card-media"&gt;
-  &lt;div class="card-body"&gt;
-    &lt;h3 class="card-title"&gt;Product Name&lt;/h3&gt;
+  &lt;img src="product.jpg" alt="Product" class="aiab-card-media"&gt;
+  &lt;div class="aiab-card-body"&gt;
+    &lt;h3 class="aiab-card-title"&gt;Product Name&lt;/h3&gt;
     &lt;div class="price"&gt;$199.99&lt;/div&gt;
-    &lt;div class="card-actions center"&gt;
-      &lt;button class="aiab-btn btn--primary"&gt;Add to Cart&lt;/button&gt;
+    &lt;div class="aiab-card-actions center"&gt;
+      &lt;button class="aiab-btn aiab-btn--primary"&gt;Add to Cart&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Profile Card --&gt;
 &lt;div class="aiab-card profile"&gt;
-  &lt;div class="card-body"&gt;
+  &lt;div class="aiab-card-body"&gt;
     &lt;img src="https://placehold.co/200x200/764ba2/FFF?text=User" alt="John Doe" class="aiab-avatar"&gt;
-    &lt;h3 class="card-title"&gt;John Doe&lt;/h3&gt;
-    &lt;p class="card-subtitle"&gt;Senior Developer&lt;/p&gt;
-    &lt;div class="card-actions center"&gt;
-      &lt;button class="aiab-btn btn--primary"&gt;Follow&lt;/button&gt;
+    &lt;h3 class="aiab-card-title"&gt;John Doe&lt;/h3&gt;
+    &lt;p class="aiab-card-subtitle"&gt;Senior Developer&lt;/p&gt;
+    &lt;div class="aiab-card-actions center"&gt;
+      &lt;button class="aiab-btn aiab-btn--primary"&gt;Follow&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -449,10 +449,10 @@
 
 &lt;!-- Feature Card --&gt;
 &lt;div class="aiab-card feature"&gt;
-  &lt;div class="card-body"&gt;
+  &lt;div class="aiab-card-body"&gt;
     &lt;div class="aiab-icon"&gt;&lt;i data-lucide="zap"&gt;&lt;/i&gt;&lt;/div&gt;
-    &lt;h3 class="card-title"&gt;Feature Title&lt;/h3&gt;
-    &lt;p class="card-text"&gt;Feature description...&lt;/p&gt;
+    &lt;h3 class="aiab-card-title"&gt;Feature Title&lt;/h3&gt;
+    &lt;p class="aiab-card-text"&gt;Feature description...&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -465,18 +465,18 @@
       <h3>Hover and Click Effects</h3>
       <div class="demo-section">
         <div class="demo-title">Interactive Cards (hover over them)</div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div style="display: aiab-grid; aiab-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
           <div class="aiab-card hoverable">
-            <div class="card-body">
-              <h4 class="card-title">Hoverable</h4>
-              <p class="card-text">Subtle hover effect</p>
+            <div class="aiab-card-body">
+              <h4 class="aiab-card-title">Hoverable</h4>
+              <p class="aiab-card-text">Subtle hover effect</p>
             </div>
           </div>
 
           <div class="aiab-card interactive">
-            <div class="card-body">
-              <h4 class="card-title">Interactive</h4>
-              <p class="card-text">Strong hover effect</p>
+            <div class="aiab-card-body">
+              <h4 class="aiab-card-title">Interactive</h4>
+              <p class="aiab-card-text">Strong hover effect</p>
             </div>
           </div>
         </div>
@@ -485,17 +485,17 @@
       <div class="code-block">
         <pre><code>&lt;!-- Subtle hover effect --&gt;
 &lt;div class="aiab-card hoverable"&gt;
-  &lt;div class="card-body"&gt;
-    &lt;h4 class="card-title"&gt;Hoverable Card&lt;/h4&gt;
-    &lt;p class="card-text"&gt;Slight elevation on hover&lt;/p&gt;
+  &lt;div class="aiab-card-body"&gt;
+    &lt;h4 class="aiab-card-title"&gt;Hoverable Card&lt;/h4&gt;
+    &lt;p class="aiab-card-text"&gt;Slight elevation on hover&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Strong interactive effect --&gt;
 &lt;div class="aiab-card interactive"&gt;
-  &lt;div class="card-body"&gt;
-    &lt;h4 class="card-title"&gt;Interactive Card&lt;/h4&gt;
-    &lt;p class="card-text"&gt;Pronounced elevation on hover&lt;/p&gt;
+  &lt;div class="aiab-card-body"&gt;
+    &lt;h4 class="aiab-card-title"&gt;Interactive Card&lt;/h4&gt;
+    &lt;p class="aiab-card-text"&gt;Pronounced elevation on hover&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -507,33 +507,33 @@
 
       <div class="demo-section">
         <div class="demo-title">Different Shadow Depths</div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+        <div style="display: aiab-grid; aiab-grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
           <div class="aiab-card shadow-none">
-            <div class="card-body">
+            <div class="aiab-card-body">
               <h5>No Shadow</h5>
             </div>
           </div>
 
           <div class="aiab-card shadow-sm">
-            <div class="card-body">
+            <div class="aiab-card-body">
               <h5>Small</h5>
             </div>
           </div>
 
           <div class="aiab-card shadow-md">
-            <div class="card-body">
+            <div class="aiab-card-body">
               <h5>Medium</h5>
             </div>
           </div>
 
           <div class="aiab-card shadow-lg">
-            <div class="card-body">
+            <div class="aiab-card-body">
               <h5>Large</h5>
             </div>
           </div>
 
           <div class="aiab-card shadow-xl">
-            <div class="card-body">
+            <div class="aiab-card-body">
               <h5>X-Large</h5>
             </div>
           </div>
@@ -557,16 +557,16 @@
       <div class="demo-section">
         <div class="demo-title">Horizontal Card Layout</div>
         <div class="aiab-card horizontal" style="max-width: 600px;">
-          <div class="card-media" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+          <div class="aiab-card-media" style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
             Image
           </div>
-          <div class="card-content">
-            <div class="card-body">
-              <h3 class="card-title">Horizontal Card</h3>
-              <p class="card-text">This card uses a horizontal layout with the image on the left and content on the right. It automatically stacks vertically on mobile.</p>
+          <div class="aiab-card-content">
+            <div class="aiab-card-body">
+              <h3 class="aiab-card-title">Horizontal Card</h3>
+              <p class="aiab-card-text">This aiab-card uses a horizontal layout with the image on the left and content on the right. It automatically stacks vertically on mobile.</p>
             </div>
-            <div class="card-footer">
-              <button class="aiab-btn btn--primary">Learn More</button>
+            <div class="aiab-card-footer">
+              <button class="aiab-btn aiab-btn--primary">Learn More</button>
             </div>
           </div>
         </div>
@@ -574,14 +574,14 @@
 
       <div class="code-block">
         <pre><code>&lt;div class="aiab-card horizontal"&gt;
-  &lt;img src="https://picsum.photos/600/400" alt="Description" class="card-media"&gt;
-  &lt;div class="card-content"&gt;
-    &lt;div class="card-body"&gt;
-      &lt;h3 class="card-title"&gt;Horizontal Card&lt;/h3&gt;
-      &lt;p class="card-text"&gt;Content goes here...&lt;/p&gt;
+  &lt;img src="https://picsum.photos/600/400" alt="Description" class="aiab-card-media"&gt;
+  &lt;div class="aiab-card-content"&gt;
+    &lt;div class="aiab-card-body"&gt;
+      &lt;h3 class="aiab-card-title"&gt;Horizontal Card&lt;/h3&gt;
+      &lt;p class="aiab-card-text"&gt;Content goes here...&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class="card-footer"&gt;
-      &lt;button class="aiab-btn btn--primary"&gt;Action&lt;/button&gt;
+    &lt;div class="aiab-card-footer"&gt;
+      &lt;button class="aiab-btn aiab-btn--primary"&gt;Action&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -590,40 +590,40 @@
       <h3>Card Grid System</h3>
       <div class="demo-section">
         <div class="demo-title">Responsive Card Grid</div>
-        <div class="card-grid cols-3">
+        <div class="aiab-card-grid cols-3">
           <div class="aiab-card">
-            <div class="card-body">
-              <h4 class="card-title">Card 1</h4>
-              <p class="card-text">Grid item content</p>
+            <div class="aiab-card-body">
+              <h4 class="aiab-card-title">Card 1</h4>
+              <p class="aiab-card-text">Grid item content</p>
             </div>
           </div>
           <div class="aiab-card">
-            <div class="card-body">
-              <h4 class="card-title">Card 2</h4>
-              <p class="card-text">Grid item content</p>
+            <div class="aiab-card-body">
+              <h4 class="aiab-card-title">Card 2</h4>
+              <p class="aiab-card-text">Grid item content</p>
             </div>
           </div>
           <div class="aiab-card">
-            <div class="card-body">
-              <h4 class="card-title">Card 3</h4>
-              <p class="card-text">Grid item content</p>
+            <div class="aiab-card-body">
+              <h4 class="aiab-card-title">Card 3</h4>
+              <p class="aiab-card-text">Grid item content</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="card-grid cols-3"&gt;
+        <pre><code>&lt;div class="aiab-card-grid cols-3"&gt;
   &lt;div class="aiab-card"&gt;...&lt;/div&gt;
   &lt;div class="aiab-card"&gt;...&lt;/div&gt;
   &lt;div class="aiab-card"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- Available grid classes --&gt;
-&lt;div class="card-grid"&gt;        &lt;!-- Auto-fit, min 300px --&gt;
-&lt;div class="card-grid cols-2"&gt;  &lt;!-- 2 columns --&gt;
-&lt;div class="card-grid cols-3"&gt;  &lt;!-- 3 columns --&gt;
-&lt;div class="card-grid cols-4"&gt;  &lt;!-- 4 columns --&gt;</code></pre>
+&lt;!-- Available aiab-grid classes --&gt;
+&lt;div class="aiab-card-grid"&gt;        &lt;!-- Auto-fit, min 300px --&gt;
+&lt;div class="aiab-card-grid cols-2"&gt;  &lt;!-- 2 columns --&gt;
+&lt;div class="aiab-card-grid cols-3"&gt;  &lt;!-- 3 columns --&gt;
+&lt;div class="aiab-card-grid cols-4"&gt;  &lt;!-- 4 columns --&gt;</code></pre>
       </div>
     </section>
 
@@ -642,39 +642,39 @@
         <tbody>
           <tr>
             <td><code>.aiab-card</code></td>
-            <td>Base card container</td>
+            <td>Base aiab-card aiab-container</td>
           </tr>
           <tr>
-            <td><code>.card-header</code></td>
+            <td><code>.aiab-card-header</code></td>
             <td>Card header section</td>
           </tr>
           <tr>
-            <td><code>.card-body</code></td>
+            <td><code>.aiab-card-body</code></td>
             <td>Main content area</td>
           </tr>
           <tr>
-            <td><code>.card-footer</code></td>
+            <td><code>.aiab-card-footer</code></td>
             <td>Footer section</td>
           </tr>
           <tr>
-            <td><code>.card-media</code></td>
+            <td><code>.aiab-card-media</code></td>
             <td>Image or media element</td>
           </tr>
           <tr>
-            <td><code>.card-title</code></td>
+            <td><code>.aiab-card-title</code></td>
             <td>Card title styling</td>
           </tr>
           <tr>
-            <td><code>.card-subtitle</code></td>
+            <td><code>.aiab-card-subtitle</code></td>
             <td>Card subtitle styling</td>
           </tr>
           <tr>
-            <td><code>.card-text</code></td>
+            <td><code>.aiab-card-text</code></td>
             <td>Body text styling</td>
           </tr>
           <tr>
-            <td><code>.card-actions</code></td>
-            <td>Action buttons container</td>
+            <td><code>.aiab-card-actions</code></td>
+            <td>Action buttons aiab-container</td>
           </tr>
         </tbody>
       </table>
@@ -766,19 +766,19 @@
         <tbody>
           <tr>
             <td><code>.product</code></td>
-            <td>Product card styling</td>
+            <td>Product aiab-card styling</td>
           </tr>
           <tr>
             <td><code>.profile</code></td>
-            <td>User profile card</td>
+            <td>User profile aiab-card</td>
           </tr>
           <tr>
             <td><code>.stat</code></td>
-            <td>Statistics display card</td>
+            <td>Statistics display aiab-card</td>
           </tr>
           <tr>
             <td><code>.feature</code></td>
-            <td>Feature highlight card</td>
+            <td>Feature highlight aiab-card</td>
           </tr>
         </tbody>
       </table>
@@ -791,14 +791,14 @@
       <h3>Content Guidelines</h3>
       <ul>
         <li><strong>Keep titles concise:</strong> Card titles should be short and descriptive</li>
-        <li><strong>Use appropriate hierarchy:</strong> Use card-title for main headings, card-subtitle for secondary info</li>
+        <li><strong>Use appropriate hierarchy:</strong> Use aiab-card-title for main headings, aiab-card-subtitle for secondary info</li>
         <li><strong>Limit content:</strong> Cards work best with focused, scannable content</li>
-        <li><strong>Consistent imagery:</strong> Use consistent aspect ratios for card images</li>
+        <li><strong>Consistent imagery:</strong> Use consistent aspect ratios for aiab-card images</li>
       </ul>
 
       <h3>Layout Considerations</h3>
       <ul>
-        <li><strong>Grid consistency:</strong> Use the card-grid system for uniform layouts</li>
+        <li><strong>Grid consistency:</strong> Use the aiab-card-grid system for uniform layouts</li>
         <li><strong>Mobile first:</strong> Consider how cards stack on smaller screens</li>
         <li><strong>Loading states:</strong> Use the loading class for async content</li>
         <li><strong>Action placement:</strong> Place primary actions in the footer or prominently in the body</li>
@@ -808,7 +808,7 @@
       <ul>
         <li><strong>Focus indicators:</strong> Interactive cards have focus styles built-in</li>
         <li><strong>Semantic markup:</strong> Use proper heading hierarchy within cards</li>
-        <li><strong>Alt text:</strong> Always provide alt text for card images</li>
+        <li><strong>Alt text:</strong> Always provide alt text for aiab-card images</li>
         <li><strong>Keyboard navigation:</strong> Ensure all interactive elements are keyboard accessible</li>
       </ul>
     </section>
@@ -820,16 +820,16 @@
       <h3>E-commerce Product Card</h3>
       <div class="demo-section">
         <div class="aiab-card product hoverable" style="max-width: 300px;">
-          <div class="card-media aspect-square" style="background: linear-gradient(45deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
+          <div class="aiab-card-media aspect-square" style="background: linear-gradient(45deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
             Product Image
           </div>
-          <div class="card-body">
-            <h3 class="card-title">Wireless Headphones</h3>
+          <div class="aiab-card-body">
+            <h3 class="aiab-card-title">Wireless Headphones</h3>
             <div class="price">$149.99</div>
-            <p class="card-text">Premium sound quality with active noise cancellation.</p>
-            <div class="card-actions">
-              <button class="aiab-btn btn--primary" style="flex: 1;">Add to Cart</button>
-              <button class="aiab-btn btn--secondary" style="aspect-ratio: 1; padding: 0.5rem;">
+            <p class="aiab-card-text">Premium sound quality with active noise cancellation.</p>
+            <div class="aiab-card-actions">
+              <button class="aiab-btn aiab-btn--primary" style="flex: 1;">Add to Cart</button>
+              <button class="aiab-btn aiab-btn--secondary" style="aspect-ratio: 1; padding: 0.5rem;">
                 <i data-lucide="heart"></i>
               </button>
             </div>
@@ -840,19 +840,19 @@
       <h3>Team Member Card</h3>
       <div class="demo-section">
         <div class="aiab-card profile" style="max-width: 280px;">
-          <div class="card-body">
+          <div class="aiab-card-body">
             <div class="aiab-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem;">
               SK
             </div>
-            <h3 class="card-title">Sarah Kim</h3>
-            <p class="card-subtitle">Lead Designer</p>
-            <p class="card-text">Passionate about creating intuitive user experiences and beautiful interfaces.</p>
-            <div class="card-actions center">
-              <button class="aiab-btn btn--primary btn--sm">
+            <h3 class="aiab-card-title">Sarah Kim</h3>
+            <p class="aiab-card-subtitle">Lead Designer</p>
+            <p class="aiab-card-text">Passionate about creating intuitive user experiences and beautiful interfaces.</p>
+            <div class="aiab-card-actions center">
+              <button class="aiab-btn aiab-btn--primary aiab-btn--sm">
                 <i data-lucide="mail"></i>
                 Contact
               </button>
-              <button class="aiab-btn btn--secondary btn--sm">
+              <button class="aiab-btn aiab-btn--secondary aiab-btn--sm">
                 <i data-lucide="linkedin"></i>
                 LinkedIn
               </button>

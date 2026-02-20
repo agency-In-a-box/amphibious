@@ -27,12 +27,12 @@
             color: #343a40;
         }
 
-        .docs-nav .nav-links {
+        .docs-nav .aiab-nav-links {
             display: flex;
             gap: 1rem;
         }
 
-        .docs-nav .nav-links a {
+        .docs-nav .aiab-nav-links a {
             color: #6c757d;
             text-decoration: none;
             padding: 0.5rem 1rem;
@@ -40,8 +40,8 @@
             transition: all 0.2s ease;
         }
 
-        .docs-nav .nav-links a:hover,
-        .docs-nav .nav-links a.aiab-active {
+        .docs-nav .aiab-nav-links a:hover,
+        .docs-nav .aiab-nav-links a.aiab-active {
             background: #fff;
             color: #007bff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -308,19 +308,19 @@
             color: #007bff;
         }
 
-        .tabs-content {
+        .aiab-tabs-content {
             border: 1px solid #dee2e6;
             border-top: none;
             border-radius: 0 0 0.375rem 0.375rem;
             background: #fff;
         }
 
-        .tabs-content > li {
+        .aiab-tabs-content > li {
             display: none;
             padding: 1.5rem;
         }
 
-        .tabs-content > li.aiab-active {
+        .aiab-tabs-content > li.aiab-active {
             display: block;
         }
 
@@ -368,16 +368,16 @@
     <!-- Navigation Include -->
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
-    <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="nav-toggle-icon" aria-hidden="true"></span>
-      <span class="sr-only">Toggle navigation</span>
+    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
+      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
+      <span class="aiab-sr-only">Toggle navigation</span>
     </button>
 
     <ul id="main-nav" class="horizontal">
       <li>
-        <a href="/" class="site-logo">Amphibious</a>
+        <a href="/" class="aiab-site-logo">Amphibious</a>
         <ul>
           <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
           <li><a href="/#how_its_made">What is it made of?</a></li>
@@ -418,7 +418,7 @@
           <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
           <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
           <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
         </ul>
       </li>
       <li>
@@ -451,7 +451,7 @@
 <nav class="docs-nav">
         <div class="aiab-container">
             <h1>Amphibious 2.0 Documentation</h1>
-            <div class="nav-links">
+            <div class="aiab-nav-links">
                 <a href="foundation.html">Foundation</a>
                 <a href="form.html">Form</a>
                 <a href="function.html" class="aiab-active">Function</a>
@@ -464,16 +464,16 @@
         <!-- Page Header -->
         <header class="docs-header">
             <h1>Function</h1>
-            <p class="lead">Navigation, breadcrumbs, tabs, pagination, and interactive UI components for creating functional user interfaces.</p>
+            <p class="lead">Navigation, breadcrumbs, aiab-tabs, aiab-pagination, and interactive UI components for creating functional user interfaces.</p>
         </header>
 
         <!-- Navigation Section -->
         <section id="navigation" class="section">
             <h2>Navigation</h2>
-            <p>Create sleek, clean navigation bars and menu lists. Simple JavaScript is used to link tabs and buttons to destination content. Create calls to action that are clearly defined and easy to identify.</p>
+            <p>Create sleek, clean navigation bars and menu lists. Simple JavaScript is used to link aiab-tabs and buttons to destination content. Create calls to action that are clearly defined and easy to identify.</p>
 
             <h3 id="horizontal-nav">Horizontal Navigation</h3>
-            <p>Horizontal navigation bars with dropdown support and tertiary menus.</p>
+            <p>Horizontal navigation bars with aiab-dropdown support and tertiary menus.</p>
 
             <div class="example">
                 <div class="example-title">Basic Horizontal Navigation</div>
@@ -612,7 +612,7 @@
         </section>
 
         <!-- Tabs Section -->
-        <section id="tabs" class="section">
+        <section id="aiab-tabs" class="section">
             <h2>Tabs</h2>
             <p>Simple, clean tab interface with JavaScript integration for switching between content panels.</p>
 
@@ -624,15 +624,15 @@
                         <li><a href="javascript:;" data-tab="lightweight">Lightweight</a></li>
                         <li><a href="javascript:;" data-tab="mobile">Mobile Friendly</a></li>
                     </ul>
-                    <ul class="tabs-content">
+                    <ul class="aiab-tabs-content">
                         <li id="simple" class="aiab-active">
-                            <p>The tabs are clean and simple unordered-list markup with basic CSS. They provide an intuitive way to organize content into logical sections.</p>
+                            <p>The aiab-tabs are clean and simple unordered-list markup with basic CSS. They provide an intuitive way to organize content into logical sections.</p>
                         </li>
                         <li id="lightweight">
-                            <p>The tabs are cross-browser compatible and don't require heavy JavaScript frameworks. The implementation is lightweight and performant.</p>
+                            <p>The aiab-tabs are cross-browser compatible and don't require heavy JavaScript frameworks. The implementation is lightweight and performant.</p>
                         </li>
                         <li id="mobile">
-                            <p>The tabs work seamlessly on mobile devices. On smaller screens, they stack gracefully while maintaining full functionality.</p>
+                            <p>The aiab-tabs work seamlessly on mobile devices. On smaller screens, they stack gracefully while maintaining full functionality.</p>
                         </li>
                     </ul>
                 </menu>
@@ -645,15 +645,15 @@
     &lt;li&gt;&lt;a href="javascript:;" data-tab="lightweight"&gt;Lightweight&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="javascript:;" data-tab="mobile"&gt;Mobile Friendly&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-  &lt;ul class="tabs-content"&gt;
+  &lt;ul class="aiab-tabs-content"&gt;
     &lt;li id="simple" class="aiab-active"&gt;
-      &lt;p&gt;The tabs are clean and simple...&lt;/p&gt;
+      &lt;p&gt;The aiab-tabs are clean and simple...&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id="lightweight"&gt;
-      &lt;p&gt;The tabs are cross-browser compatible...&lt;/p&gt;
+      &lt;p&gt;The aiab-tabs are cross-browser compatible...&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id="mobile"&gt;
-      &lt;p&gt;The tabs work seamlessly on mobile devices...&lt;/p&gt;
+      &lt;p&gt;The aiab-tabs work seamlessly on mobile devices...&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/menu&gt;</code></pre>
@@ -666,9 +666,9 @@ document.querySelectorAll('.aiab-tabs a').forEach(tab => {
   tab.addEventListener('click', function(e) {
     e.preventDefault();
 
-    // Remove active class from all tabs and content
+    // Remove active class from all aiab-tabs and content
     document.querySelectorAll('.aiab-tabs a').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tabs-content li').forEach(content => {
+    document.querySelectorAll('.aiab-tabs-content li').forEach(content => {
       content.classList.remove('active');
     });
 
@@ -684,9 +684,9 @@ document.querySelectorAll('.aiab-tabs a').forEach(tab => {
         </section>
 
         <!-- Pagination Section -->
-        <section id="pagination" class="section">
+        <section id="aiab-pagination" class="section">
             <h2>Pagination</h2>
-            <p>Navigation components for multi-page content, including standard pagination, filter navigation, and button groups.</p>
+            <p>Navigation components for multi-page content, including standard aiab-pagination, filter navigation, and button groups.</p>
 
             <div class="aiab-row">
                 <div class="aiab-col-6">
@@ -771,9 +771,9 @@ document.querySelectorAll('.aiab-tabs a').forEach(tab => {
         </section>
 
         <!-- Steps Section -->
-        <section id="steps" class="section">
+        <section id="aiab-steps" class="section">
             <h2>Steps & Progress</h2>
-            <p>Step indicators and progress navigation for multi-step processes and workflows.</p>
+            <p>Step indicators and aiab-progress navigation for multi-step processes and workflows.</p>
 
             <div class="example">
                 <div class="example-title">Step Indicator</div>
@@ -824,8 +824,8 @@ document.querySelectorAll('.aiab-tabs a').forEach(tab => {
             <ul>
                 <li>Use CSS transitions instead of JavaScript animations where possible</li>
                 <li>Minimize DOM manipulation in tab switching</li>
-                <li>Consider lazy loading for content-heavy tabs</li>
-                <li>Use event delegation for large pagination sets</li>
+                <li>Consider lazy loading for content-heavy aiab-tabs</li>
+                <li>Use event delegation for large aiab-pagination sets</li>
             </ul>
         </section>
     </div>
@@ -837,10 +837,10 @@ document.querySelectorAll('.aiab-tabs a').forEach(tab => {
             tab.addEventListener('click', function(e) {
                 e.preventDefault();
 
-                // Remove active class from all tabs and content
+                // Remove active class from all aiab-tabs and content
                 const tabContainer = this.closest('menu');
                 tabContainer.querySelectorAll('.aiab-tabs a').forEach(t => t.classList.remove('active'));
-                tabContainer.querySelectorAll('.tabs-content li').forEach(content => {
+                tabContainer.querySelectorAll('.aiab-tabs-content li').forEach(content => {
                     content.classList.remove('active');
                 });
 
