@@ -21,7 +21,7 @@ export const VERSION = '2.0.0';
 // Extend window interface for global utilities
 declare global {
   interface Window {
-    amphibiousNav?: any;
+    amphibiousNav?: { initMobileDropdowns?: () => void };
     __amphibiousSanitizeHTML?: (html: string) => string;
   }
 }

@@ -7,7 +7,7 @@
 // This file provides TypeScript types for development
 
 // Mock types for lucide icons
-const createIcons = (options?: any) => {
+const createIcons = (options?: Record<string, unknown>) => {
   console.log('Icons initialized', options);
 };
 
