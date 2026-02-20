@@ -30,7 +30,7 @@
         "noStaticOnlyClass": "off"
       },
       "suspicious": {
-        "noExplicitAny": "off",
+        "noExplicitAny": "warn",
         "useIterableCallbackReturn": "off",
         "noAssignInExpressions": "off"
       }
