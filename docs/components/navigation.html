@@ -961,7 +961,7 @@
             <td>Hidden on mobile by default</td>
           </tr>
           <tr>
-            <td><code>.is-open</code></td>
+            <td><code>.aiab-is-open</code></td>
             <td>Mobile menu open state</td>
           </tr>
         </tbody>
@@ -1032,7 +1032,7 @@ function toggleMobileNav() {
   const isOpen = toggle.getAttribute('aria-expanded') === 'true';
 
   toggle.setAttribute('aria-expanded', !isOpen);
-  nav.classList.toggle('is-open');
+  nav.classList.toggle('aiab-is-open');
 }
 
 // Modern navigation with aiab-dropdown management
@@ -1247,7 +1247,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = toggle.getAttribute('aria-expanded') === 'true';
 
       toggle.setAttribute('aria-expanded', !isOpen);
-      nav.classList.toggle('is-open');
+      nav.classList.toggle('aiab-is-open');
     }
 
     // Initialize demo interactions

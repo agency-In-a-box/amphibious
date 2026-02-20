@@ -459,7 +459,7 @@ export class Forms {
       const toggleHandler = () => {
         const type = input.type === 'password' ? 'text' : 'password';
         input.type = type;
-        toggle.classList.toggle('is-visible');
+        toggle.classList.toggle('aiab-is-visible');
         toggle.innerHTML =
           type === 'password'
             ? '<span class="password-toggle__icon">👁</span>'

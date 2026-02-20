@@ -323,7 +323,7 @@
   transition: var(--sidebar-transition);
 }
 
-.aiab-sidebar__item--dropdown.is-open .aiab-sidebar__link::after {
+.aiab-sidebar__item--dropdown.aiab-is-open .aiab-sidebar__link::after {
   transform: rotate(-135deg);
 }
 
@@ -336,7 +336,7 @@
   transition: max-height 0.3s ease;
 }
 
-.aiab-sidebar__item--dropdown.is-open .aiab-sidebar__submenu {
+.aiab-sidebar__item--dropdown.aiab-is-open .aiab-sidebar__submenu {
   max-height: 300px;
 }
 
@@ -457,7 +457,7 @@
   z-index: var(--sidebar-overlay-z-index);
 }
 
-.aiab-sidebar__overlay.is-open {
+.aiab-sidebar__overlay.aiab-is-open {
   opacity: 1;
   visibility: visible;
 }

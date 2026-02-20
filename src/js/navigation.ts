@@ -116,7 +116,7 @@ export class Navigation {
     this.isOpen = !this.isOpen;
 
     if (this.navElement) {
-      this.navElement.classList.toggle('is-open');
+      this.navElement.classList.toggle('aiab-is-open');
       this.navElement.classList.toggle('aiab-nav--open');
     }
 
@@ -144,7 +144,7 @@ export class Navigation {
     this.isOpen = false;
 
     if (this.navElement) {
-      this.navElement.classList.remove('is-open', 'aiab-nav--open');
+      this.navElement.classList.remove('aiab-is-open', 'aiab-nav--open');
     }
 
     if (this.toggleButton) {
@@ -170,11 +170,11 @@ export class Navigation {
 
       // Mouse interactions
       dropdown.addEventListener('mouseenter', () => {
-        dropdown.classList.add('is-open');
+        dropdown.classList.add('aiab-is-open');
       });
 
       dropdown.addEventListener('mouseleave', () => {
-        dropdown.classList.remove('is-open');
+        dropdown.classList.remove('aiab-is-open');
       });
 
       // Keyboard interactions
@@ -182,7 +182,7 @@ export class Navigation {
         const isMobile = window.innerWidth < this.mobileBreakpoint;
         if (isMobile) {
           e.preventDefault();
-          dropdown.classList.toggle('is-open');
+          dropdown.classList.toggle('aiab-is-open');
         }
       });
     });
