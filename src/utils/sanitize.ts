@@ -89,7 +89,6 @@ const purifyConfig: Config = {
     'method',
     'target',
     'rel',
-    'style',
     'width',
     'height',
     'viewBox',
@@ -101,8 +100,8 @@ const purifyConfig: Config = {
     'datetime',
   ],
 
-  // Allow data: URIs for images (base64 encoded)
-  ALLOW_DATA_ATTR: true,
+  // Only allow explicitly listed data-* attributes above, not all data-* attrs
+  ALLOW_DATA_ATTR: false,
 
   // Keep classes and IDs (needed for styling)
   KEEP_CONTENT: true,
@@ -110,9 +109,8 @@ const purifyConfig: Config = {
   // Allow external links with rel="noopener noreferrer"
   ADD_ATTR: ['target', 'rel'],
 
-  // Don't allow script tags or event handlers
+  // Don't allow script/style tags — DOMPurify strips all on* event handlers by default
   FORBID_TAGS: ['script', 'style'],
-  FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onfocus', 'onblur'],
 };
 
 /**
@@ -184,10 +182,14 @@ export function isSafeURL(url: string): boolean {
  * @returns Sanitized string safe for attribute values
  */
 export function sanitizeAttribute(input: string): string {
-  return input
-    .replace(/[<>"']/g, '') // Remove potential HTML breaking chars
-    .replace(/javascript:/gi, '') // Remove javascript: protocol
-    .trim();
+  let result = input.replace(/[<>"']/g, '').trim();
+  // Loop until stable to prevent bypass via nested patterns like "javasjavascript:cript:"
+  let prev = '';
+  while (prev !== result) {
+    prev = result;
+    result = result.replace(/javascript\s*:/gi, '');
+  }
+  return result;
 }
 
 // Export configured DOMPurify instance for advanced usage

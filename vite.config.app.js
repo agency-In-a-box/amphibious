@@ -61,7 +61,7 @@ export default defineConfig({
   ].filter(Boolean),
 
   build: {
-    outDir: 'dist',
+    outDir: 'dist-site',
     assetsDir: 'assets',
     emptyOutDir: true,
 
@@ -150,7 +150,7 @@ export default defineConfig({
 
       // Tree shaking
       treeshake: {
-        moduleSideEffects: false,
+        moduleSideEffects: true,
         propertyReadSideEffects: false,
         tryCatchDeoptimization: false,
       },
