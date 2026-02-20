@@ -62,13 +62,13 @@
 }
 
 /* Tooltip visibility states */
-.tooltip--visible {
+.aiab-tooltip--visible {
   display: block;
   opacity: 1;
   transform: scale(1);
 }
 
-.tooltip--hidden {
+.aiab-tooltip--hidden {
   display: block;
   opacity: 0;
   transform: scale(0.95);
@@ -108,11 +108,11 @@
 }
 
 /* Tooltip Positioning - Top Start */
-.tooltip--top-start {
+.aiab-tooltip--top-start {
   margin-bottom: var(--tooltip-arrow-size);
 }
 
-.tooltip--top-start::before {
+.aiab-tooltip--top-start::before {
   top: 100%;
   left: var(--tooltip-arrow-offset);
   border-top-color: var(--tooltip-bg);
@@ -120,11 +120,11 @@
 }
 
 /* Tooltip Positioning - Top End */
-.tooltip--top-end {
+.aiab-tooltip--top-end {
   margin-bottom: var(--tooltip-arrow-size);
 }
 
-.tooltip--top-end::before {
+.aiab-tooltip--top-end::before {
   top: 100%;
   right: var(--tooltip-arrow-offset);
   border-top-color: var(--tooltip-bg);
@@ -145,11 +145,11 @@
 }
 
 /* Tooltip Positioning - Bottom Start */
-.tooltip--bottom-start {
+.aiab-tooltip--bottom-start {
   margin-top: var(--tooltip-arrow-size);
 }
 
-.tooltip--bottom-start::before {
+.aiab-tooltip--bottom-start::before {
   bottom: 100%;
   left: var(--tooltip-arrow-offset);
   border-bottom-color: var(--tooltip-bg);
@@ -157,11 +157,11 @@
 }
 
 /* Tooltip Positioning - Bottom End */
-.tooltip--bottom-end {
+.aiab-tooltip--bottom-end {
   margin-top: var(--tooltip-arrow-size);
 }
 
-.tooltip--bottom-end::before {
+.aiab-tooltip--bottom-end::before {
   bottom: 100%;
   right: var(--tooltip-arrow-offset);
   border-bottom-color: var(--tooltip-bg);
@@ -182,11 +182,11 @@
 }
 
 /* Tooltip Positioning - Left Start */
-.tooltip--left-start {
+.aiab-tooltip--left-start {
   margin-right: var(--tooltip-arrow-size);
 }
 
-.tooltip--left-start::before {
+.aiab-tooltip--left-start::before {
   top: var(--tooltip-arrow-offset);
   left: 100%;
   border-left-color: var(--tooltip-bg);
@@ -194,11 +194,11 @@
 }
 
 /* Tooltip Positioning - Left End */
-.tooltip--left-end {
+.aiab-tooltip--left-end {
   margin-right: var(--tooltip-arrow-size);
 }
 
-.tooltip--left-end::before {
+.aiab-tooltip--left-end::before {
   bottom: var(--tooltip-arrow-offset);
   left: 100%;
   border-left-color: var(--tooltip-bg);
@@ -219,11 +219,11 @@
 }
 
 /* Tooltip Positioning - Right Start */
-.tooltip--right-start {
+.aiab-tooltip--right-start {
   margin-left: var(--tooltip-arrow-size);
 }
 
-.tooltip--right-start::before {
+.aiab-tooltip--right-start::before {
   top: var(--tooltip-arrow-offset);
   right: 100%;
   border-right-color: var(--tooltip-bg);
@@ -231,11 +231,11 @@
 }
 
 /* Tooltip Positioning - Right End */
-.tooltip--right-end {
+.aiab-tooltip--right-end {
   margin-left: var(--tooltip-arrow-size);
 }
 
-.tooltip--right-end::before {
+.aiab-tooltip--right-end::before {
   bottom: var(--tooltip-arrow-offset);
   right: 100%;
   border-right-color: var(--tooltip-bg);
@@ -243,7 +243,7 @@
 }
 
 /* Tooltip Variants */
-.tooltip--primary {
+.aiab-tooltip--primary {
   --tooltip-bg: var(--color-primary, var(--color-primary));
   --tooltip-color: #ffffff;
 }
@@ -258,7 +258,7 @@
   --tooltip-color: #1f2937;
 }
 
-.tooltip--danger {
+.aiab-tooltip--danger {
   --tooltip-bg: var(--color-danger, #ef4444);
   --tooltip-color: #ffffff;
 }
@@ -294,104 +294,104 @@
 }
 
 /* Tooltip Content Styling */
-.tooltip__title {
+.aiab-tooltip__title {
   font-weight: 600;
   margin-bottom: 0.25rem;
   font-size: 0.875rem;
 }
 
-.tooltip__content {
+.aiab-tooltip__content {
   font-weight: 400;
 }
 
-.tooltip__content:last-child {
+.aiab-tooltip__content:last-child {
   margin-bottom: 0;
 }
 
 /* Rich Content Tooltips */
-.tooltip--rich {
+.aiab-tooltip--rich {
   text-align: left;
   padding: 1rem;
   max-width: 300px;
 }
 
-.tooltip--rich .tooltip__title {
+.aiab-tooltip--rich .aiab-tooltip__title {
   font-size: 1rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 0.25rem;
 }
 
-.tooltip--rich .tooltip__content {
+.aiab-tooltip--rich .aiab-tooltip__content {
   line-height: 1.5;
 }
 
 /* Interactive Tooltips */
-.tooltip--interactive {
+.aiab-tooltip--interactive {
   pointer-events: auto;
   cursor: default;
 }
 
-.tooltip--interactive:hover {
+.aiab-tooltip--interactive:hover {
   opacity: 1;
 }
 
 /* Tooltip with Icon */
-.tooltip--with-icon {
+.aiab-tooltip--with-icon {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
   padding: 0.75rem;
 }
 
-.tooltip--with-icon .tooltip__icon {
+.aiab-tooltip--with-icon .aiab-tooltip__icon {
   flex-shrink: 0;
   width: 1rem;
   height: 1rem;
   margin-top: 0.125rem;
 }
 
-.tooltip--with-icon .tooltip__content {
+.aiab-tooltip--with-icon .aiab-tooltip__content {
   flex: 1;
 }
 
 /* E-commerce Specific Tooltips */
-.tooltip--product-info {
+.aiab-tooltip--product-info {
   max-width: 280px;
   padding: 1rem;
   text-align: left;
 }
 
-.tooltip--product-info .product-name {
+.aiab-tooltip--product-info .product-name {
   font-weight: 600;
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
 }
 
-.tooltip--product-info .product-price {
+.aiab-tooltip--product-info .product-price {
   color: var(--color-success, #10b981);
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
-.tooltip--product-info .product-description {
+.aiab-tooltip--product-info .product-description {
   font-size: 0.75rem;
   line-height: 1.4;
   opacity: 0.9;
 }
 
 /* Tooltip Trigger Indicators */
-.tooltip-trigger {
+.aiab-tooltip-trigger {
   position: relative;
   cursor: help;
 }
 
-.tooltip-trigger:hover {
+.aiab-tooltip-trigger:hover {
   text-decoration: underline;
   text-decoration-style: dotted;
 }
 
-.tooltip-trigger[data-tooltip]:hover::after {
+.aiab-tooltip-trigger[data-tooltip]:hover::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -477,25 +477,25 @@
   border-left-color: var(--tooltip-bg);
 }
 
-[dir="rtl"] .tooltip--top-start::before,
-[dir="rtl"] .tooltip--bottom-start::before {
+[dir="rtl"] .aiab-tooltip--top-start::before,
+[dir="rtl"] .aiab-tooltip--bottom-start::before {
   left: auto;
   right: var(--tooltip-arrow-offset);
 }
 
-[dir="rtl"] .tooltip--top-end::before,
-[dir="rtl"] .tooltip--bottom-end::before {
+[dir="rtl"] .aiab-tooltip--top-end::before,
+[dir="rtl"] .aiab-tooltip--bottom-end::before {
   right: auto;
   left: var(--tooltip-arrow-offset);
 }
 
 /* Focus Management */
-.tooltip-trigger:focus {
+.aiab-tooltip-trigger:focus {
   outline: 2px solid var(--color-primary, var(--color-primary));
   outline-offset: 2px;
 }
 
-.tooltip-trigger:focus .aiab-tooltip {
+.aiab-tooltip-trigger:focus .aiab-tooltip {
   display: block;
   opacity: 1;
 }

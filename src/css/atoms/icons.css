@@ -358,7 +358,7 @@ figure.aiab-icon-badge {
 }
 
 /* Interactive rating */
-.rating--interactive .aiab-icon:hover ~ .aiab-icon {
+.aiab-rating--interactive .aiab-icon:hover ~ .aiab-icon {
   fill: var(--icon-color-muted);
 }
 
@@ -440,11 +440,11 @@ figure.aiab-icon-badge {
 }
 
 /* Loading Icon */
-.icon--loading {
+.aiab-icon--loading {
   opacity: 0.6;
 }
 
-.icon--loading.aiab-icon--spin {
+.aiab-icon--loading.aiab-icon--spin {
   animation-duration: 1s;
 }
 

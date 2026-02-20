@@ -125,7 +125,7 @@
 }
 
 /* Modal Dialog */
-.modal__dialog {
+.aiab-modal__dialog {
   position: relative;
   width: 100%;
   max-width: var(--modal-width-default);
@@ -139,31 +139,31 @@
   flex-direction: column;
 }
 
-.aiab-modal.is-visible .modal__dialog {
+.aiab-modal.is-visible .aiab-modal__dialog {
   transform: translateY(0);
 }
 
 /* Modal Sizes */
-.modal--sm .modal__dialog {
+.aiab-modal--sm .aiab-modal__dialog {
   max-width: var(--modal-width-sm);
 }
 
-.modal--lg .modal__dialog {
+.aiab-modal--lg .aiab-modal__dialog {
   max-width: var(--modal-width-lg);
 }
 
-.modal--xl .modal__dialog {
+.aiab-modal--xl .aiab-modal__dialog {
   max-width: var(--modal-width-xl);
 }
 
-.modal--full .modal__dialog {
+.aiab-modal--full .aiab-modal__dialog {
   max-width: var(--modal-width-full);
   height: 95vh;
   margin: 2.5vh auto;
 }
 
 /* Modal Header */
-.modal__header {
+.aiab-modal__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -174,7 +174,7 @@
   flex-shrink: 0;
 }
 
-.modal__title {
+.aiab-modal__title {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 500;
@@ -182,7 +182,7 @@
 }
 
 /* Modal Close Button */
-.modal__close {
+.aiab-modal__close {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -201,25 +201,25 @@
   border-radius: 0.25rem;
 }
 
-.modal__close:hover {
+.aiab-modal__close:hover {
   color: var(--modal-close-hover);
   transform: scale(1.1);
 }
 
-.modal__close:focus {
+.aiab-modal__close:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 /* Modal Body */
-.modal__body {
+.aiab-modal__body {
   flex: 1 1 auto;
   padding: var(--modal-body-padding);
   overflow-y: auto;
 }
 
 /* Modal Footer */
-.modal__footer {
+.aiab-modal__footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -231,27 +231,27 @@
   flex-shrink: 0;
 }
 
-.modal__footer--center {
+.aiab-modal__footer--center {
   justify-content: center;
 }
 
-.modal__footer--space-between {
+.aiab-modal__footer--space-between {
   justify-content: space-between;
 }
 
 /* Modal Variants */
 
 /* Alert Modal */
-.modal--alert .modal__dialog {
+.aiab-modal--alert .aiab-modal__dialog {
   max-width: 400px;
 }
 
-.modal--alert .modal__body {
+.aiab-modal--alert .aiab-modal__body {
   text-align: center;
   padding: 2rem;
 }
 
-.modal--alert .modal__icon {
+.aiab-modal--alert .aiab-modal__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -262,46 +262,46 @@
   font-size: 2rem;
 }
 
-.modal--alert.modal--success .modal__icon {
+.aiab-modal--alert.aiab-modal--success .aiab-modal__icon {
   background-color: rgba(16, 185, 129, 0.1);
   color: #10b981;
 }
 
-.modal--alert.modal--error .modal__icon {
+.aiab-modal--alert.aiab-modal--error .aiab-modal__icon {
   background-color: rgba(239, 68, 68, 0.1);
   color: #ef4444;
 }
 
-.modal--alert.modal--warning .modal__icon {
+.aiab-modal--alert.aiab-modal--warning .aiab-modal__icon {
   background-color: rgba(245, 158, 11, 0.1);
   color: #f59e0b;
 }
 
-.modal--alert.modal--info .modal__icon {
+.aiab-modal--alert.aiab-modal--info .aiab-modal__icon {
   background-color: rgba(237, 139, 0, 0.1);
   color: var(--color-primary);
 }
 
 /* Image Modal */
-.modal--image .modal__dialog {
+.aiab-modal--image .aiab-modal__dialog {
   max-width: 90vw;
   background: transparent;
   box-shadow: none;
 }
 
-.modal--image .modal__body {
+.aiab-modal--image .aiab-modal__body {
   padding: 0;
 }
 
-.modal--image img {
+.aiab-modal--image img {
   width: 100%;
   height: auto;
   border-radius: var(--modal-border-radius);
 }
 
 /* Drawer Modal (Sidebar) */
-.modal--drawer-left .modal__dialog,
-.modal--drawer-right .modal__dialog {
+.aiab-modal--drawer-left .aiab-modal__dialog,
+.aiab-modal--drawer-right .aiab-modal__dialog {
   position: fixed;
   height: 100%;
   max-height: 100%;
@@ -309,28 +309,28 @@
   border-radius: 0;
 }
 
-.modal--drawer-left .modal__dialog {
+.aiab-modal--drawer-left .aiab-modal__dialog {
   left: 0;
   transform: translateX(-100%);
 }
 
-.modal--drawer-right .modal__dialog {
+.aiab-modal--drawer-right .aiab-modal__dialog {
   right: 0;
   left: auto;
   transform: translateX(100%);
 }
 
-.modal--drawer-left.is-visible .modal__dialog,
-.modal--drawer-right.is-visible .modal__dialog {
+.aiab-modal--drawer-left.is-visible .aiab-modal__dialog,
+.aiab-modal--drawer-right.is-visible .aiab-modal__dialog {
   transform: translateX(0);
 }
 
 /* Bottom Sheet Modal */
-.modal--bottom-sheet {
+.aiab-modal--bottom-sheet {
   align-items: flex-end;
 }
 
-.modal--bottom-sheet .modal__dialog {
+.aiab-modal--bottom-sheet .aiab-modal__dialog {
   max-width: 100%;
   width: 100%;
   margin: 0;
@@ -338,20 +338,20 @@
   transform: translateY(100%);
 }
 
-.modal--bottom-sheet.is-visible .modal__dialog {
+.aiab-modal--bottom-sheet.is-visible .aiab-modal__dialog {
   transform: translateY(0);
 }
 
 /* Animations */
-.modal--fade-in .modal__dialog {
+.aiab-modal--fade-in .aiab-modal__dialog {
   animation: modalFadeIn var(--modal-transition-duration) var(--modal-transition-easing);
 }
 
-.modal--slide-down .modal__dialog {
+.aiab-modal--slide-down .aiab-modal__dialog {
   animation: modalSlideDown var(--modal-transition-duration) var(--modal-transition-easing);
 }
 
-.modal--zoom-in .modal__dialog {
+.aiab-modal--zoom-in .aiab-modal__dialog {
   animation: modalZoomIn var(--modal-transition-duration) var(--modal-transition-easing);
 }
 
@@ -387,21 +387,21 @@
 }
 
 /* Scrollbar Styles */
-.modal__body::-webkit-scrollbar {
+.aiab-modal__body::-webkit-scrollbar {
   width: 8px;
 }
 
-.modal__body::-webkit-scrollbar-track {
+.aiab-modal__body::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 
-.modal__body::-webkit-scrollbar-thumb {
+.aiab-modal__body::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
 }
 
-.modal__body::-webkit-scrollbar-thumb:hover {
+.aiab-modal__body::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -411,32 +411,32 @@
     padding: 0.5rem;
   }
 
-  .modal__dialog {
+  .aiab-modal__dialog {
     max-width: 100%;
     margin: 0.5rem;
   }
 
-  .modal--full .modal__dialog {
+  .aiab-modal--full .aiab-modal__dialog {
     height: 100vh;
     margin: 0;
     border-radius: 0;
   }
 
-  .modal__header {
+  .aiab-modal__header {
     padding: 1rem;
   }
 
-  .modal__body {
+  .aiab-modal__body {
     padding: 1rem;
   }
 
-  .modal__footer {
+  .aiab-modal__footer {
     padding: 1rem;
     flex-direction: column;
     gap: 0.75rem;
   }
 
-  .modal__footer button {
+  .aiab-modal__footer button {
     width: 100%;
   }
 }
@@ -447,20 +447,20 @@
 }
 
 /* Prevent Body Scroll */
-body.modal-open {
+body.aiab-modal-open {
   overflow: hidden;
   padding-right: var(--scrollbar-width, 0);
 }
 
 /* Loading State */
-.modal--loading .modal__body {
+.aiab-modal--loading .aiab-modal__body {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 200px;
 }
 
-.modal__spinner {
+.aiab-modal__spinner {
   width: 3rem;
   height: 3rem;
   border: 3px solid rgba(0, 0, 0, 0.1);
@@ -486,11 +486,11 @@ body.modal-open {
 
 /* High Contrast Mode */
 @media (prefers-contrast: high) {
-  .modal__dialog {
+  .aiab-modal__dialog {
     border: 2px solid var(--modal-border-color);
   }
 
-  .modal__close:focus {
+  .aiab-modal__close:focus {
     outline-width: 3px;
   }
 }
@@ -499,7 +499,7 @@ body.modal-open {
 @media (prefers-reduced-motion: reduce) {
   .aiab-modal,
   .aiab-modal-backdrop,
-  .modal__dialog {
+  .aiab-modal__dialog {
     transition: none;
     animation: none;
   }
@@ -514,24 +514,24 @@ body.modal-open {
 }
 
 /* RTL Support */
-[dir="rtl"] .modal__close {
+[dir="rtl"] .aiab-modal__close {
   margin-left: 0;
   margin-right: auto;
 }
 
-[dir="rtl"] .modal--drawer-left .modal__dialog {
+[dir="rtl"] .aiab-modal--drawer-left .aiab-modal__dialog {
   left: auto;
   right: 0;
   transform: translateX(100%);
 }
 
-[dir="rtl"] .modal--drawer-right .modal__dialog {
+[dir="rtl"] .aiab-modal--drawer-right .aiab-modal__dialog {
   right: auto;
   left: 0;
   transform: translateX(-100%);
 }
 
-[dir="rtl"] .modal--drawer-left.is-visible .modal__dialog,
-[dir="rtl"] .modal--drawer-right.is-visible .modal__dialog {
+[dir="rtl"] .aiab-modal--drawer-left.is-visible .aiab-modal__dialog,
+[dir="rtl"] .aiab-modal--drawer-right.is-visible .aiab-modal__dialog {
   transform: translateX(0);
 }
