@@ -5,12 +5,12 @@
   "type": "module",
   "main": "./dist/amphibious.umd.js",
   "module": "./dist/amphibious.es.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/src/index.d.ts",
       "import": "./dist/amphibious.es.js",
-      "require": "./dist/amphibious.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/amphibious.umd.js"
     },
     "./css": "./dist/amphibious.css"
   },
@@ -19,11 +19,9 @@
     "src"
   ],
   "scripts": {
-    "dev": "vite --port 2960 --host",
-    "build": "NODE_ENV=production vite build",
-    "build:lib": "NODE_ENV=production vite build",
+    "dev": "vite --config vite.config.app.js --port 2960 --host",
+    "build": "NODE_ENV=production vite build && tsc --emitDeclarationOnly --outDir dist",
     "build:site": "NODE_ENV=production vite build --config vite.config.docs.js && node scripts/build-site.js",
-    "build:ts": "vite build && tsc --emitDeclarationOnly",
     "build:analyze": "ANALYZE=true NODE_ENV=production vite build",
     "build:watch": "NODE_ENV=production vite build --watch",
     "preview": "vite preview",
@@ -33,7 +31,7 @@
     "format:check": "biome check . --linter-enabled=false --assist-enabled=false",
     "typecheck": "tsc --noEmit",
     "test": "bun test --preload ./test/setup.ts",
-    "test:watch": "bun test --watch",
+    "test:watch": "bun test --watch --preload ./test/setup.ts",
     "clean": "rm -rf dist",
     "clean:all": "rm -rf dist node_modules bun.lockb",
     "fix:grid": "bun run scripts/fix-grid.ts",

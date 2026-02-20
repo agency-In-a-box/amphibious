@@ -30,7 +30,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
-    sourcemap: false,
+    sourcemap: 'hidden',
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -53,6 +53,7 @@ export default defineConfig({
     rollupOptions: {
       external: [],
       output: {
+        exports: 'named',
         globals: {},
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'style.css' || assetInfo.name?.endsWith('.css')) {
@@ -70,6 +71,6 @@ export default defineConfig({
   },
   css: {
     devSourcemap: true,
-    postcss: {},
+    postcss: './postcss.config.js',
   },
 });

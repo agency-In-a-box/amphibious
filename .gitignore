@@ -4,6 +4,8 @@ bun.lockb
 
 # Build outputs
 dist/
+dist-site/
+dist-docs/
 *.log
 
 # IDE
