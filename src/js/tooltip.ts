@@ -290,7 +290,7 @@ export class Tooltip {
     // Update classes if position changed
     if (position !== this.options.position) {
       this.tooltipElement.className = this.tooltipElement.className.replace(
-        /tooltip--\w+(-\w+)?/g,
+        /tooltip--(top|bottom|left|right)/g,
         `tooltip--${position}`,
       );
     }
