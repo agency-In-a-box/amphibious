@@ -104,7 +104,7 @@ class ColorPicker {
 
     // Create wrapper
     this.wrapper = document.createElement('div');
-    this.wrapper.className = 'color-picker-wrapper';
+    this.wrapper.className = 'aiab-color-picker-wrapper';
     if (this.options.inline) {
       this.wrapper.classList.add('inline');
     }
@@ -112,7 +112,7 @@ class ColorPicker {
     // Create trigger button (for non-inline mode)
     if (!this.options.inline) {
       this.trigger = document.createElement('button');
-      this.trigger.className = 'color-picker-trigger';
+      this.trigger.className = 'aiab-color-picker-trigger';
       this.trigger.type = 'button';
       this.trigger.innerHTML = `
         <span class="color-preview"></span>
@@ -124,14 +124,14 @@ class ColorPicker {
 
     // Create picker container
     this.picker = document.createElement('div');
-    this.picker.className = 'color-picker';
+    this.picker.className = 'aiab-color-picker';
     if (!this.options.inline) {
       this.picker.classList.add('dropdown');
     }
 
     // Build picker UI
     this.picker.innerHTML = `
-      <div class="color-picker-header">
+      <div class="aiab-color-picker-header">
         ${
           this.options.eyeDropper
             ? `
@@ -145,7 +145,7 @@ class ColorPicker {
         }
       </div>
 
-      <div class="color-picker-body">
+      <div class="aiab-color-picker-body">
         <!-- Color spectrum -->
         <div class="color-spectrum-wrapper">
           <div class="color-spectrum">
@@ -292,9 +292,9 @@ class ColorPicker {
       ${
         this.options.showButtons && !this.options.inline
           ? `
-        <div class="color-picker-footer">
-          <button type="button" class="btn-cancel">${this.options.labels.cancel}</button>
-          <button type="button" class="btn-save">${this.options.labels.save}</button>
+        <div class="aiab-color-picker-footer">
+          <button type="button" class="aiab-btn-cancel">${this.options.labels.cancel}</button>
+          <button type="button" class="aiab-btn-save">${this.options.labels.save}</button>
         </div>
       `
           : ''
@@ -415,14 +415,14 @@ class ColorPicker {
     }
 
     // Buttons
-    const cancelBtn = this.picker.querySelector('.btn-cancel');
+    const cancelBtn = this.picker.querySelector('.aiab-btn-cancel');
     if (cancelBtn) {
       const cancelHandler = () => this.cancel();
       cancelBtn.addEventListener('click', cancelHandler);
       this.handlers.set('cancel', { element: cancelBtn, type: 'click', handler: cancelHandler });
     }
 
-    const saveBtn = this.picker.querySelector('.btn-save');
+    const saveBtn = this.picker.querySelector('.aiab-btn-save');
     if (saveBtn) {
       const saveHandler = () => this.save();
       saveBtn.addEventListener('click', saveHandler);
@@ -988,7 +988,7 @@ class ColorPicker {
   // Recent colors management
   loadRecentColors() {
     try {
-      const stored = localStorage.getItem('color-picker-recent');
+      const stored = localStorage.getItem('aiab-color-picker-recent');
       return stored ? JSON.parse(stored) : [];
     } catch {
       return [];
@@ -1001,7 +1001,7 @@ class ColorPicker {
     this.state.recentColors = recent.slice(0, this.options.maxRecent);
 
     try {
-      localStorage.setItem('color-picker-recent', JSON.stringify(this.state.recentColors));
+      localStorage.setItem('aiab-color-picker-recent', JSON.stringify(this.state.recentColors));
     } catch {
       // Ignore storage errors
     }
@@ -1130,7 +1130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('color-picker', ColorPicker);
+  window.AmphibiousRegistry.registerComponent('aiab-color-picker', ColorPicker);
 }
 
 // Export

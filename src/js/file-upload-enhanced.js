@@ -119,21 +119,21 @@ class FileUploadEnhanced {
   createUploadZone() {
     // Create main wrapper
     const wrapper = document.createElement('div');
-    wrapper.className = 'file-upload-enhanced';
+    wrapper.className = 'aiab-file-upload-enhanced';
     if (this.options.theme) {
       wrapper.classList.add(`file-upload-theme-${this.options.theme}`);
     }
 
     // Create drop zone
     const zone = document.createElement('div');
-    zone.className = 'file-upload-zone';
+    zone.className = 'aiab-file-upload-zone';
     zone.setAttribute('role', 'button');
     zone.setAttribute('tabindex', '0');
     zone.setAttribute('aria-label', 'File upload area');
 
     // Icon
     const icon = document.createElement('div');
-    icon.className = 'file-upload-icon';
+    icon.className = 'aiab-file-upload-icon';
     icon.innerHTML = `
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
@@ -143,18 +143,18 @@ class FileUploadEnhanced {
 
     // Text
     const label = document.createElement('div');
-    label.className = 'file-upload-label';
+    label.className = 'aiab-file-upload-label';
     label.textContent = 'Drop files here or click to browse';
 
     // Description
     const description = document.createElement('div');
-    description.className = 'file-upload-description';
+    description.className = 'aiab-file-upload-description';
     description.textContent = this.getAcceptText();
 
     // Input
     const input = document.createElement('input');
     input.type = 'file';
-    input.className = 'file-upload-input';
+    input.className = 'aiab-file-upload-input';
     input.multiple = this.options.multiple;
     if (this.options.accept !== '*') {
       input.accept = this.options.accept;
@@ -165,19 +165,19 @@ class FileUploadEnhanced {
 
     // Buttons container
     const buttons = document.createElement('div');
-    buttons.className = 'file-upload-buttons';
+    buttons.className = 'aiab-file-upload-buttons';
 
     // Browse button
     const browseBtn = document.createElement('button');
     browseBtn.type = 'button';
-    browseBtn.className = 'file-upload-browse';
+    browseBtn.className = 'aiab-file-upload-browse';
     browseBtn.textContent = 'Choose Files';
 
     // Camera button
     if (this.options.camera && this.hasCamera()) {
       const cameraBtn = document.createElement('button');
       cameraBtn.type = 'button';
-      cameraBtn.className = 'file-upload-camera';
+      cameraBtn.className = 'aiab-file-upload-camera';
       cameraBtn.innerHTML = '📷 Take Photo';
       buttons.appendChild(cameraBtn);
       this.cameraBtn = cameraBtn;
@@ -194,33 +194,33 @@ class FileUploadEnhanced {
 
     // File list container
     const fileList = document.createElement('div');
-    fileList.className = 'file-upload-list';
+    fileList.className = 'aiab-file-upload-list';
     if (!this.options.showFileList) {
       fileList.style.display = 'none';
     }
 
     // Stats bar
     const statsBar = document.createElement('div');
-    statsBar.className = 'file-upload-stats';
+    statsBar.className = 'aiab-file-upload-stats';
     statsBar.style.display = 'none';
 
     const statsText = document.createElement('div');
-    statsText.className = 'file-upload-stats-text';
+    statsText.className = 'aiab-file-upload-stats-text';
 
     const statsActions = document.createElement('div');
-    statsActions.className = 'file-upload-stats-actions';
+    statsActions.className = 'aiab-file-upload-stats-actions';
 
     // Upload all button
     const uploadAllBtn = document.createElement('button');
     uploadAllBtn.type = 'button';
-    uploadAllBtn.className = 'file-upload-all';
+    uploadAllBtn.className = 'aiab-file-upload-all';
     uploadAllBtn.textContent = 'Upload All';
     uploadAllBtn.style.display = 'none';
 
     // Clear all button
     const clearAllBtn = document.createElement('button');
     clearAllBtn.type = 'button';
-    clearAllBtn.className = 'file-upload-clear';
+    clearAllBtn.className = 'aiab-file-upload-clear';
     clearAllBtn.textContent = 'Clear All';
     clearAllBtn.style.display = 'none';
 
@@ -265,7 +265,10 @@ class FileUploadEnhanced {
 
     // Zone click
     this.addHandler(this.zone, 'click', (e) => {
-      if (e.target === this.zone || e.target.closest('.file-upload-icon, .file-upload-label')) {
+      if (
+        e.target === this.zone ||
+        e.target.closest('.aiab-file-upload-icon, .aiab-file-upload-label')
+      ) {
         this.input.click();
       }
     });
@@ -314,7 +317,7 @@ class FileUploadEnhanced {
       dragCounter++;
       if (dragCounter === 1) {
         this.state.isDragging = true;
-        this.zone.classList.add('file-upload-zone--drag-active');
+        this.zone.classList.add('aiab-file-upload-zone--drag-active');
       }
     };
 
@@ -323,7 +326,7 @@ class FileUploadEnhanced {
       dragCounter--;
       if (dragCounter === 0) {
         this.state.isDragging = false;
-        this.zone.classList.remove('file-upload-zone--drag-active');
+        this.zone.classList.remove('aiab-file-upload-zone--drag-active');
       }
     };
 
@@ -336,7 +339,7 @@ class FileUploadEnhanced {
       e.preventDefault();
       dragCounter = 0;
       this.state.isDragging = false;
-      this.zone.classList.remove('file-upload-zone--drag-active');
+      this.zone.classList.remove('aiab-file-upload-zone--drag-active');
 
       const items = e.dataTransfer.items;
       if (items) {
@@ -655,12 +658,12 @@ class FileUploadEnhanced {
 
   renderFileItem(fileObj) {
     const item = document.createElement('div');
-    item.className = 'file-upload-item';
+    item.className = 'aiab-file-upload-item';
     item.dataset.fileId = fileObj.id;
 
     // Preview
     const preview = document.createElement('div');
-    preview.className = 'file-upload-preview';
+    preview.className = 'aiab-file-upload-preview';
 
     if (fileObj.thumbnail) {
       const img = document.createElement('img');
@@ -673,26 +676,26 @@ class FileUploadEnhanced {
 
     // Info
     const info = document.createElement('div');
-    info.className = 'file-upload-info';
+    info.className = 'aiab-file-upload-info';
 
     const name = document.createElement('div');
-    name.className = 'file-upload-name';
+    name.className = 'aiab-file-upload-name';
     name.textContent = fileObj.name;
     name.title = fileObj.name;
 
     const meta = document.createElement('div');
-    meta.className = 'file-upload-meta';
+    meta.className = 'aiab-file-upload-meta';
 
     const size = document.createElement('span');
-    size.className = 'file-upload-size';
+    size.className = 'aiab-file-upload-size';
     size.textContent = this.formatSize(fileObj.size);
 
     const status = document.createElement('span');
-    status.className = `file-upload-status file-upload-status--${fileObj.status}`;
+    status.className = `aiab-file-upload-status aiab-file-upload-status--${fileObj.status}`;
     status.textContent = this.getStatusText(fileObj.status);
 
     const speed = document.createElement('span');
-    speed.className = 'file-upload-speed';
+    speed.className = 'aiab-file-upload-speed';
     speed.style.display = 'none';
 
     meta.appendChild(size);
@@ -704,18 +707,18 @@ class FileUploadEnhanced {
 
     // Actions
     const actions = document.createElement('div');
-    actions.className = 'file-upload-actions';
+    actions.className = 'aiab-file-upload-actions';
 
     // Upload button
     const uploadBtn = document.createElement('button');
-    uploadBtn.className = 'file-upload-upload';
+    uploadBtn.className = 'aiab-file-upload-upload';
     uploadBtn.type = 'button';
     uploadBtn.innerHTML = '⬆';
     uploadBtn.title = 'Upload';
 
     // Pause button
     const pauseBtn = document.createElement('button');
-    pauseBtn.className = 'file-upload-pause';
+    pauseBtn.className = 'aiab-file-upload-pause';
     pauseBtn.type = 'button';
     pauseBtn.innerHTML = '⏸';
     pauseBtn.title = 'Pause';
@@ -723,7 +726,7 @@ class FileUploadEnhanced {
 
     // Retry button
     const retryBtn = document.createElement('button');
-    retryBtn.className = 'file-upload-retry';
+    retryBtn.className = 'aiab-file-upload-retry';
     retryBtn.type = 'button';
     retryBtn.innerHTML = '↻';
     retryBtn.title = 'Retry';
@@ -731,7 +734,7 @@ class FileUploadEnhanced {
 
     // Remove button
     const removeBtn = document.createElement('button');
-    removeBtn.className = 'file-upload-remove';
+    removeBtn.className = 'aiab-file-upload-remove';
     removeBtn.type = 'button';
     removeBtn.innerHTML = '×';
     removeBtn.title = 'Remove';
@@ -743,9 +746,9 @@ class FileUploadEnhanced {
 
     // Progress bar
     const progress = document.createElement('div');
-    progress.className = 'file-upload-progress';
+    progress.className = 'aiab-file-upload-progress';
     const progressBar = document.createElement('div');
-    progressBar.className = 'file-upload-progress-bar';
+    progressBar.className = 'aiab-file-upload-progress-bar';
     progress.appendChild(progressBar);
 
     // Assemble item
@@ -986,12 +989,12 @@ class FileUploadEnhanced {
     // Update UI
     const item = this.fileList.querySelector(`[data-file-id="${fileObj.id}"]`);
     if (item) {
-      const bar = item.querySelector('.file-upload-progress-bar');
+      const bar = item.querySelector('.aiab-file-upload-progress-bar');
       if (bar) {
         bar.style.width = `${percent}%`;
       }
 
-      const speed = item.querySelector('.file-upload-speed');
+      const speed = item.querySelector('.aiab-file-upload-speed');
       if (speed) {
         speed.style.display = 'inline';
         speed.textContent = `${this.formatSize(fileObj.speed)}/s`;
@@ -1010,16 +1013,16 @@ class FileUploadEnhanced {
     const item = this.fileList.querySelector(`[data-file-id="${fileObj.id}"]`);
     if (!item) return;
 
-    const status = item.querySelector('.file-upload-status');
+    const status = item.querySelector('.aiab-file-upload-status');
     if (status) {
-      status.className = `file-upload-status file-upload-status--${fileObj.status}`;
+      status.className = `aiab-file-upload-status aiab-file-upload-status--${fileObj.status}`;
       status.textContent = this.getStatusText(fileObj.status);
     }
 
     // Update action buttons
-    const uploadBtn = item.querySelector('.file-upload-upload');
-    const pauseBtn = item.querySelector('.file-upload-pause');
-    const retryBtn = item.querySelector('.file-upload-retry');
+    const uploadBtn = item.querySelector('.aiab-file-upload-upload');
+    const pauseBtn = item.querySelector('.aiab-file-upload-pause');
+    const retryBtn = item.querySelector('.aiab-file-upload-retry');
 
     uploadBtn.style.display = fileObj.status === 'pending' ? 'block' : 'none';
     pauseBtn.style.display = fileObj.status === 'uploading' ? 'block' : 'none';
@@ -1027,7 +1030,7 @@ class FileUploadEnhanced {
 
     // Hide progress on success/error
     if (fileObj.status === 'success' || fileObj.status === 'error') {
-      const progress = item.querySelector('.file-upload-progress');
+      const progress = item.querySelector('.aiab-file-upload-progress');
       if (progress) {
         progress.style.display = 'none';
       }
@@ -1197,7 +1200,7 @@ class FileUploadEnhanced {
 
       // Create camera modal
       const modal = document.createElement('div');
-      modal.className = 'file-upload-camera-modal';
+      modal.className = 'aiab-file-upload-camera-modal';
 
       const video = document.createElement('video');
       video.autoplay = true;
@@ -1251,11 +1254,11 @@ class FileUploadEnhanced {
 
     for (const key in icons) {
       if (type.startsWith(key)) {
-        return `<span class="file-upload-icon-emoji">${icons[key]}</span>`;
+        return `<span class="aiab-file-upload-icon-emoji">${icons[key]}</span>`;
       }
     }
 
-    return `<span class="file-upload-icon-emoji">📎</span>`;
+    return `<span class="aiab-file-upload-icon-emoji">📎</span>`;
   }
 
   getStatusText(status) {

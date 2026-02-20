@@ -443,8 +443,8 @@ export class Tooltip {
       this.updatePosition();
 
       // Show tooltip
-      this.tooltipElement.classList.remove('tooltip--hidden');
-      this.tooltipElement.classList.add('tooltip--visible');
+      this.tooltipElement.classList.remove('aiab-tooltip--hidden');
+      this.tooltipElement.classList.add('aiab-tooltip--visible');
       this.tooltipElement.setAttribute('aria-hidden', 'false');
 
       this.isVisible = true;
@@ -472,8 +472,8 @@ export class Tooltip {
 
     const hideTooltip = () => {
       if (this.tooltipElement) {
-        this.tooltipElement.classList.remove('tooltip--visible');
-        this.tooltipElement.classList.add('tooltip--hidden');
+        this.tooltipElement.classList.remove('aiab-tooltip--visible');
+        this.tooltipElement.classList.add('aiab-tooltip--hidden');
         this.tooltipElement.setAttribute('aria-hidden', 'true');
 
         // Remove from DOM after animation

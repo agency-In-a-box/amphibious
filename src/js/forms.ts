@@ -133,7 +133,7 @@ export class Forms {
 
     // Clear error on input
     const inputHandler = () => {
-      if (field.classList.contains('is-invalid')) {
+      if (field.classList.contains('aiab-is-invalid')) {
         this.clearFieldError(field);
       }
 
@@ -272,8 +272,8 @@ export class Forms {
    * Show field error
    */
   private showFieldError(field: HTMLInputElement, message: string): void {
-    field.classList.remove('is-valid');
-    field.classList.add('is-invalid');
+    field.classList.remove('aiab-is-valid');
+    field.classList.add('aiab-is-invalid');
 
     // Find or create error message element
     const formGroup = field.closest('.aiab-form-group');
@@ -300,8 +300,8 @@ export class Forms {
    * Show field success
    */
   private showFieldSuccess(field: HTMLInputElement): void {
-    field.classList.remove('is-invalid');
-    field.classList.add('is-valid');
+    field.classList.remove('aiab-is-invalid');
+    field.classList.add('aiab-is-valid');
 
     // Hide error message
     const formGroup = field.closest('.aiab-form-group');
@@ -324,7 +324,7 @@ export class Forms {
    * Clear field error
    */
   private clearFieldError(field: HTMLInputElement): void {
-    field.classList.remove('is-invalid', 'is-valid');
+    field.classList.remove('aiab-is-invalid', 'aiab-is-valid');
 
     const formGroup = field.closest('.aiab-form-group');
     const errorElement = formGroup?.querySelector('.invalid-feedback') as HTMLElement;
@@ -345,7 +345,7 @@ export class Forms {
    * Focus first error field
    */
   private focusFirstError(form: HTMLFormElement): void {
-    const firstError = form.querySelector('.is-invalid') as HTMLElement;
+    const firstError = form.querySelector('.aiab-is-invalid') as HTMLElement;
     if (firstError) {
       firstError.focus();
       firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -357,7 +357,7 @@ export class Forms {
    */
   private setupFloatingLabels(): void {
     const floatingInputs = document.querySelectorAll(
-      '.form-floating input, .form-floating select, .form-floating textarea',
+      '.aiab-form-floating input, .aiab-form-floating select, .aiab-form-floating textarea',
     );
 
     floatingInputs.forEach((input) => {
@@ -496,7 +496,7 @@ export class Forms {
     form.reset();
     form.classList.remove('was-validated');
 
-    const fields = form.querySelectorAll('.is-valid, .is-invalid');
+    const fields = form.querySelectorAll('.aiab-is-valid, .aiab-is-invalid');
     fields.forEach((field) => {
       this.clearFieldError(field as HTMLInputElement);
     });

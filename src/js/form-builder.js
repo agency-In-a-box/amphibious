@@ -125,19 +125,15 @@ class FormBuilder {
     return div.innerHTML;
   }
 
-  /** Sanitize user-provided HTML (strip scripts/events, allow safe tags) */
+  /** Sanitize user-provided HTML using DOMPurify via sanitize utility */
   _sanitizeHTML(html) {
     if (typeof html !== 'string') return '';
+    if (typeof window.__amphibiousSanitizeHTML === 'function') {
+      return window.__amphibiousSanitizeHTML(html);
+    }
+    // Fallback: strip all HTML tags if DOMPurify is not available
     const div = document.createElement('div');
-    div.innerHTML = html;
-    // Remove all script tags
-    div.querySelectorAll('script').forEach((el) => el.remove());
-    // Remove event handler attributes
-    div.querySelectorAll('*').forEach((el) => {
-      for (const attr of [...el.attributes]) {
-        if (attr.name.startsWith('on')) el.removeAttribute(attr.name);
-      }
-    });
+    div.textContent = html;
     return div.innerHTML;
   }
 
@@ -445,11 +441,11 @@ class FormBuilder {
   setupDOM() {
     // Clear element
     this.element.innerHTML = '';
-    this.element.classList.add('form-builder');
+    this.element.classList.add('aiab-form-builder');
 
     // Create main layout
     const layout = document.createElement('div');
-    layout.className = 'form-builder-layout';
+    layout.className = 'aiab-form-builder-layout';
 
     // Create toolbox
     if (this.options.showToolbox) {
@@ -479,7 +475,7 @@ class FormBuilder {
 
   createToolbox() {
     const toolbox = document.createElement('div');
-    toolbox.className = 'form-builder-toolbox';
+    toolbox.className = 'aiab-form-builder-toolbox';
 
     const header = document.createElement('div');
     header.className = 'toolbox-header';
@@ -539,7 +535,7 @@ class FormBuilder {
 
   createCanvasArea() {
     const area = document.createElement('div');
-    area.className = 'form-builder-canvas-area';
+    area.className = 'aiab-form-builder-canvas-area';
 
     // Canvas header with tabs
     const header = document.createElement('div');
@@ -572,7 +568,7 @@ class FormBuilder {
 
     // Build canvas
     this.canvas = document.createElement('div');
-    this.canvas.className = 'form-builder-canvas active';
+    this.canvas.className = 'aiab-form-builder-canvas active';
     this.canvas.dataset.tab = 'build';
 
     // Empty state
@@ -590,7 +586,7 @@ class FormBuilder {
     // Preview canvas
     if (this.options.showPreview) {
       this.preview = document.createElement('div');
-      this.preview.className = 'form-builder-preview';
+      this.preview.className = 'aiab-form-builder-preview';
       this.preview.dataset.tab = 'preview';
       container.appendChild(this.preview);
     }
@@ -610,7 +606,7 @@ class FormBuilder {
 
   createPropertiesPanel() {
     const panel = document.createElement('div');
-    panel.className = 'form-builder-properties';
+    panel.className = 'aiab-form-builder-properties';
 
     const header = document.createElement('div');
     header.className = 'properties-header';
@@ -632,7 +628,7 @@ class FormBuilder {
 
   createToolbar() {
     const toolbar = document.createElement('div');
-    toolbar.className = 'form-builder-toolbar';
+    toolbar.className = 'aiab-form-builder-toolbar';
 
     const leftActions = document.createElement('div');
     leftActions.className = 'toolbar-actions left';
@@ -700,7 +696,7 @@ class FormBuilder {
 
   createStepNavigation() {
     const nav = document.createElement('div');
-    nav.className = 'form-builder-steps';
+    nav.className = 'aiab-form-builder-steps';
 
     const prevBtn = document.createElement('button');
     prevBtn.className = 'step-btn prev';
@@ -791,7 +787,7 @@ class FormBuilder {
     });
 
     // Toolbar actions
-    const toolbar = this.element.querySelector('.form-builder-toolbar');
+    const toolbar = this.element.querySelector('.aiab-form-builder-toolbar');
     if (toolbar) {
       const undoBtn = toolbar.querySelector('.toolbar-btn[title="Undo"]');
       const redoBtn = toolbar.querySelector('.toolbar-btn[title="Redo"]');
@@ -959,7 +955,7 @@ class FormBuilder {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
 
-    const target = e.target.closest('.form-field, .form-builder-canvas');
+    const target = e.target.closest('.aiab-form-field, .aiab-form-builder-canvas');
     if (!target) return;
 
     // Remove previous indicators
@@ -967,7 +963,7 @@ class FormBuilder {
       el.classList.remove('drag-over', 'drag-before', 'drag-after');
     });
 
-    if (target.classList.contains('form-builder-canvas')) {
+    if (target.classList.contains('aiab-form-builder-canvas')) {
       target.classList.add('drag-over');
       this.state.dropTarget = { element: target, position: 'append' };
     } else {
@@ -982,7 +978,7 @@ class FormBuilder {
   }
 
   handleDragLeave(e) {
-    const target = e.target.closest('.form-field, .form-builder-canvas');
+    const target = e.target.closest('.aiab-form-field, .aiab-form-builder-canvas');
     if (target) {
       target.classList.remove('drag-over', 'drag-before', 'drag-after');
     }
@@ -1021,7 +1017,7 @@ class FormBuilder {
 
   addField(field, targetElement, position) {
     // Add to state
-    if (position === 'append' || targetElement.classList.contains('form-builder-canvas')) {
+    if (position === 'append' || targetElement.classList.contains('aiab-form-builder-canvas')) {
       this.state.fields.push(field);
     } else {
       const targetId = targetElement.dataset.fieldId;
@@ -1055,7 +1051,7 @@ class FormBuilder {
     const field = this.state.fields.splice(fieldIndex, 1)[0];
 
     // Insert at new position
-    if (position === 'append' || targetElement.classList.contains('form-builder-canvas')) {
+    if (position === 'append' || targetElement.classList.contains('aiab-form-builder-canvas')) {
       this.state.fields.push(field);
     } else {
       const targetId = targetElement.dataset.fieldId;
@@ -1100,7 +1096,7 @@ class FormBuilder {
 
   renderField(field) {
     const fieldEl = document.createElement('div');
-    fieldEl.className = 'form-field';
+    fieldEl.className = 'aiab-form-field';
     fieldEl.dataset.fieldId = field.id;
     fieldEl.dataset.fieldType = field.type;
     fieldEl.draggable = true;
@@ -1190,6 +1186,22 @@ class FormBuilder {
   }
 
   getFieldPreview(field) {
+    const e = (str) => this._escapeHTML(str);
+    const allowedTypes = [
+      'text',
+      'email',
+      'password',
+      'number',
+      'tel',
+      'url',
+      'date',
+      'time',
+      'datetime-local',
+      'color',
+    ];
+    const allowedLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    const allowedStyles = ['solid', 'dashed', 'dotted', 'double'];
+
     switch (field.type) {
       case 'text':
       case 'email':
@@ -1200,15 +1212,17 @@ class FormBuilder {
       case 'date':
       case 'time':
       case 'datetime-local':
-      case 'color':
-        return `<input type="${field.type}" placeholder="${field.placeholder || ''}" disabled />`;
+      case 'color': {
+        const safeType = allowedTypes.includes(field.type) ? field.type : 'text';
+        return `<input type="${safeType}" placeholder="${e(field.placeholder || '')}" disabled />`;
+      }
 
       case 'textarea':
-        return `<textarea placeholder="${field.placeholder || ''}" rows="${field.rows || 3}" disabled></textarea>`;
+        return `<textarea placeholder="${e(field.placeholder || '')}" rows="${Number.parseInt(field.rows, 10) || 3}" disabled></textarea>`;
 
       case 'select':
         return `<select disabled>
-          ${field.options?.map((opt) => `<option>${opt.label}</option>`).join('') || '<option>Option</option>'}
+          ${field.options?.map((opt) => `<option>${e(opt.label)}</option>`).join('') || '<option>Option</option>'}
         </select>`;
 
       case 'radio':
@@ -1217,8 +1231,8 @@ class FormBuilder {
             ?.map(
               (opt) => `
           <label class="radio-label">
-            <input type="radio" name="${field.name}" disabled />
-            <span>${opt.label}</span>
+            <input type="radio" name="${e(field.name)}" disabled />
+            <span>${e(opt.label)}</span>
           </label>
         `,
             )
@@ -1228,19 +1242,23 @@ class FormBuilder {
       case 'checkbox':
         return `<label class="checkbox-label">
           <input type="checkbox" disabled />
-          <span>${field.label}</span>
+          <span>${e(field.label)}</span>
         </label>`;
 
       case 'switch':
-        return `<label class="switch-label">
+        return `<label class="aiab-switch-label">
           <span class="aiab-switch">
-            <span class="switch-slider"></span>
+            <span class="aiab-switch-slider"></span>
           </span>
-          <span>${field.label}</span>
+          <span>${e(field.label)}</span>
         </label>`;
 
-      case 'range':
-        return `<input type="range" min="${field.min}" max="${field.max}" value="${field.value}" disabled />`;
+      case 'range': {
+        const min = Number.parseFloat(field.min) || 0;
+        const max = Number.parseFloat(field.max) || 100;
+        const val = Number.parseFloat(field.value) || 50;
+        return `<input type="range" min="${min}" max="${max}" value="${val}" disabled />`;
+      }
 
       case 'file':
         return `<div class="file-upload">
@@ -1248,23 +1266,27 @@ class FormBuilder {
           <span>No file chosen</span>
         </div>`;
 
-      case 'heading':
-        return `<${field.level || 'h3'}>${field.text}</${field.level || 'h3'}>`;
+      case 'heading': {
+        const level = allowedLevels.includes(field.level) ? field.level : 'h3';
+        return `<${level}>${e(field.text)}</${level}>`;
+      }
 
       case 'paragraph':
-        return `<p>${field.text}</p>`;
+        return `<p>${e(field.text)}</p>`;
 
-      case 'divider':
-        return `<hr style="border-style: ${field.style || 'solid'}" />`;
+      case 'divider': {
+        const style = allowedStyles.includes(field.style) ? field.style : 'solid';
+        return `<hr style="border-style: ${style}" />`;
+      }
 
       case 'spacer':
-        return `<div style="height: ${field.height || 24}px"></div>`;
+        return `<div style="height: ${Number.parseInt(field.height, 10) || 24}px"></div>`;
 
       case 'html':
-        return field.content || '<div>HTML Content</div>';
+        return this._sanitizeHTML(field.content || '') || '<div>HTML Content</div>';
 
       default:
-        return `<div>${field.type}</div>`;
+        return `<div>${e(field.type)}</div>`;
     }
   }
 
@@ -1272,7 +1294,7 @@ class FormBuilder {
     this.state.selectedField = fieldId;
 
     // Update UI
-    this.canvas.querySelectorAll('.form-field').forEach((el) => {
+    this.canvas.querySelectorAll('.aiab-form-field').forEach((el) => {
       el.classList.toggle('selected', el.dataset.fieldId === fieldId);
     });
 
@@ -1611,7 +1633,7 @@ class FormBuilder {
     // Add submit button
     const submitBtn = document.createElement('button');
     submitBtn.type = 'submit';
-    submitBtn.className = 'btn btn-primary';
+    submitBtn.className = 'btn aiab-btn-primary';
     submitBtn.textContent = 'Submit';
 
     form.appendChild(submitBtn);
@@ -1629,7 +1651,7 @@ class FormBuilder {
 
   createPreviewField(field) {
     const wrapper = document.createElement('div');
-    wrapper.className = 'form-group';
+    wrapper.className = 'aiab-form-group';
 
     switch (field.type) {
       case 'heading': {
@@ -1756,7 +1778,7 @@ class FormBuilder {
 
       case 'switch': {
         input = document.createElement('label');
-        input.className = 'switch-label';
+        input.className = 'aiab-switch-label';
 
         const switchInput = document.createElement('input');
         switchInput.type = 'checkbox';
@@ -1766,7 +1788,7 @@ class FormBuilder {
         const switchEl = document.createElement('span');
         switchEl.className = 'switch';
         const slider = document.createElement('span');
-        slider.className = 'switch-slider';
+        slider.className = 'aiab-switch-slider';
         switchEl.appendChild(slider);
 
         const text = document.createElement('span');
@@ -1896,7 +1918,7 @@ class FormBuilder {
     };
 
     // Save to localStorage
-    localStorage.setItem('form-builder-data', JSON.stringify(formData));
+    localStorage.setItem('aiab-form-builder-data', JSON.stringify(formData));
 
     // Trigger callback
     if (this.options.onSave) {
@@ -1908,7 +1930,7 @@ class FormBuilder {
 
   loadFromStorage() {
     try {
-      const stored = localStorage.getItem('form-builder-data');
+      const stored = localStorage.getItem('aiab-form-builder-data');
       if (stored) {
         const data = JSON.parse(stored);
         this.state.fields = data.fields || [];
@@ -2111,7 +2133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('form-builder', FormBuilder);
+  window.AmphibiousRegistry.registerComponent('aiab-form-builder', FormBuilder);
 }
 
 // Export

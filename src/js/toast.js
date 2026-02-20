@@ -45,7 +45,7 @@ class ToastComponent {
     }
 
     this.container = document.createElement('div');
-    this.container.className = `toast-container toast-container--${position}`;
+    this.container.className = `aiab-toast-container aiab-toast-container--${position}`;
     this.container.setAttribute('role', 'region');
     this.container.setAttribute('aria-live', 'polite');
     this.container.setAttribute('aria-label', 'Notifications');
@@ -64,7 +64,8 @@ class ToastComponent {
     // Ensure container exists with correct position
     if (
       !this.container ||
-      (config.position && !this.container.classList.contains(`toast-container--${config.position}`))
+      (config.position &&
+        !this.container.classList.contains(`aiab-toast-container--${config.position}`))
     ) {
       this.createContainer(config.position);
     }
@@ -88,7 +89,7 @@ class ToastComponent {
 
     // Add progress bar animation
     if (config.progress && config.duration > 0) {
-      const progressBar = toast.querySelector('.toast__progress');
+      const progressBar = toast.querySelector('.aiab-toast__progress');
       if (progressBar) {
         progressBar.style.animationDuration = `${config.duration}ms`;
       }
@@ -102,7 +103,7 @@ class ToastComponent {
    */
   createToastElement(id, config) {
     const toast = document.createElement('div');
-    toast.className = `toast ${config.type ? `toast--${config.type}` : ''} ${config.dark ? 'toast--dark' : ''}`;
+    toast.className = `toast ${config.type ? `toast--${config.type}` : ''} ${config.dark ? 'aiab-toast--dark' : ''}`;
     toast.id = id;
     toast.setAttribute('role', 'alert');
 
@@ -126,8 +127,8 @@ class ToastComponent {
     if (config.actions && config.actions.length > 0) {
       html += '<div class="toast__actions">';
       config.actions.forEach((action) => {
-        const primary = action.primary ? 'toast__action--primary' : '';
-        html += `<button class="toast__action ${primary}" data-action="${this._escapeHTML(action.name)}">${this._escapeHTML(action.label)}</button>`;
+        const primary = action.primary ? 'aiab-toast__action--primary' : '';
+        html += `<button class="aiab-toast__action ${primary}" data-action="${this._escapeHTML(action.name)}">${this._escapeHTML(action.label)}</button>`;
       });
       html += '</div>';
     }
@@ -137,7 +138,7 @@ class ToastComponent {
     // Add close button
     if (config.closable) {
       html += `
-        <button class="toast__close" aria-label="Close notification">
+        <button class="aiab-toast__close" aria-label="Close notification">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
             <path d="M13.7 0.3a1 1 0 0 1 0 1.4L8.4 7l5.3 5.3a1 1 0 0 1-1.4 1.4L7 8.4l-5.3 5.3a1 1 0 0 1-1.4-1.4L5.6 7 .3 1.7A1 1 0 0 1 1.7.3L7 5.6 12.3.3a1 1 0 0 1 1.4 0z"/>
           </svg>
@@ -147,7 +148,7 @@ class ToastComponent {
 
     // Add progress bar
     if (config.progress && config.duration > 0) {
-      html += '<div class="toast__progress"></div>';
+      html += '<div class="aiab-toast__progress"></div>';
     }
 
     toast.innerHTML = html;
@@ -163,13 +164,13 @@ class ToastComponent {
    */
   attachEventListeners(toast, id, config) {
     // Close button
-    const closeBtn = toast.querySelector('.toast__close');
+    const closeBtn = toast.querySelector('.aiab-toast__close');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.hide(id));
     }
 
     // Action buttons
-    const actionBtns = toast.querySelectorAll('.toast__action');
+    const actionBtns = toast.querySelectorAll('.aiab-toast__action');
     actionBtns.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         const actionName = e.target.dataset.action;
@@ -189,7 +190,7 @@ class ToastComponent {
         const toastData = this.toasts.get(id);
         if (toastData?.timeout) {
           clearTimeout(toastData.timeout);
-          const progressBar = toast.querySelector('.toast__progress');
+          const progressBar = toast.querySelector('.aiab-toast__progress');
           if (progressBar) {
             progressBar.style.animationPlayState = 'paused';
           }
@@ -202,7 +203,7 @@ class ToastComponent {
           toastData.timeout = setTimeout(() => {
             this.hide(id);
           }, config.duration);
-          const progressBar = toast.querySelector('.toast__progress');
+          const progressBar = toast.querySelector('.aiab-toast__progress');
           if (progressBar) {
             progressBar.style.animationPlayState = 'running';
           }
@@ -226,7 +227,7 @@ class ToastComponent {
     }
 
     // Add exit animation
-    element.classList.add('toast--exiting');
+    element.classList.add('aiab-toast--exiting');
 
     // Remove after animation
     setTimeout(() => {

@@ -77,9 +77,9 @@ class NavigationComponent {
    * Initialize mobile navigation toggle
    */
   initMobileToggle() {
-    const toggle = document.querySelector('.nav-toggle');
+    const toggle = document.querySelector('.aiab-nav-toggle');
     const nav = document.getElementById('main-nav');
-    const siteNav = document.querySelector('.site-nav');
+    const siteNav = document.querySelector('.aiab-site-nav');
 
     if (toggle && nav) {
       // Toggle button click handler
@@ -130,7 +130,7 @@ class NavigationComponent {
    */
   openMobileMenu(toggle, nav, siteNav) {
     toggle.setAttribute('aria-expanded', 'true');
-    nav.classList.add('is-active');
+    nav.classList.add('aiab-is-active');
     if (siteNav) {
       siteNav.classList.add('menu-open');
     }
@@ -143,7 +143,7 @@ class NavigationComponent {
    */
   closeMobileMenu(toggle, nav, siteNav) {
     toggle.setAttribute('aria-expanded', 'false');
-    nav.classList.remove('is-active');
+    nav.classList.remove('aiab-is-active');
     if (siteNav) {
       siteNav.classList.remove('menu-open');
     }
@@ -169,7 +169,7 @@ class NavigationComponent {
       link.addEventListener('click', (e) => {
         if (window.innerWidth < 960) {
           e.preventDefault();
-          li.classList.toggle('is-expanded');
+          li.classList.toggle('aiab-is-expanded');
         }
       });
     });
@@ -180,7 +180,7 @@ class NavigationComponent {
    */
   destroy() {
     // Remove all event listeners from toggles
-    const toggles = document.querySelectorAll('.nav-toggle');
+    const toggles = document.querySelectorAll('.aiab-nav-toggle');
     toggles.forEach((toggle) => {
       const clone = toggle.cloneNode(true);
       toggle.parentNode.replaceChild(clone, toggle);

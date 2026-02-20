@@ -27,6 +27,7 @@ class FileUpload {
     this.files = [];
     this.uploadQueue = [];
     this.isUploading = false;
+    this._abortController = new AbortController();
 
     /** Escape HTML entities to prevent XSS */
     this._escapeHTML = (str) => {
@@ -46,21 +47,21 @@ class FileUpload {
 
   createUploadZone() {
     // Find or create upload zone
-    let zone = this.element.querySelector('.file-upload-zone');
+    let zone = this.element.querySelector('.aiab-file-upload-zone');
     if (!zone) {
       zone = document.createElement('div');
-      zone.className = 'file-upload-zone';
+      zone.className = 'aiab-file-upload-zone';
       zone.innerHTML = `
-        <svg class="file-upload-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="aiab-file-upload-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
-        <div class="file-upload-label">Drop files here or click to browse</div>
-        <div class="file-upload-description">
+        <div class="aiab-file-upload-label">Drop files here or click to browse</div>
+        <div class="aiab-file-upload-description">
           ${this.getAcceptText()}
         </div>
-        <button type="button" class="file-upload-button">Choose Files</button>
-        <div class="file-upload-formats">Maximum file size: ${this.formatSize(this.options.maxSize)}</div>
+        <button type="button" class="aiab-file-upload-button">Choose Files</button>
+        <div class="aiab-file-upload-formats">Maximum file size: ${this.formatSize(this.options.maxSize)}</div>
       `;
       this.element.appendChild(zone);
     }
@@ -68,7 +69,7 @@ class FileUpload {
     // Create hidden input
     const input = document.createElement('input');
     input.type = 'file';
-    input.className = 'file-upload-input';
+    input.className = 'aiab-file-upload-input';
     input.multiple = this.options.multiple;
     if (this.options.accept !== '*') {
       input.accept = this.options.accept;
@@ -76,66 +77,81 @@ class FileUpload {
     zone.appendChild(input);
 
     // Create file list container
-    let list = this.element.querySelector('.file-upload-list');
+    let list = this.element.querySelector('.aiab-file-upload-list');
     if (!list) {
       list = document.createElement('div');
-      list.className = 'file-upload-list';
+      list.className = 'aiab-file-upload-list';
       this.element.appendChild(list);
     }
 
     this.zone = zone;
     this.input = input;
     this.list = list;
-    this.button = zone.querySelector('.file-upload-button');
+    this.button = zone.querySelector('.aiab-file-upload-button');
   }
 
   bindEvents() {
+    const signal = this._abortController.signal;
+
     // File input change
-    this.input.addEventListener('change', (e) => {
-      this.handleFiles(e.target.files);
-    });
+    this.input.addEventListener('change', (e) => this.handleFiles(e.target.files), { signal });
 
     // Click to open file dialog
-    this.zone.addEventListener('click', (e) => {
-      if (e.target === this.button || e.target === this.zone) {
-        this.input.click();
-      }
-    });
+    this.zone.addEventListener(
+      'click',
+      (e) => {
+        if (e.target === this.button || e.target === this.zone) {
+          this.input.click();
+        }
+      },
+      { signal },
+    );
 
     // Drag and drop events
-    this.zone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      this.zone.classList.add('file-upload-zone--drag-active');
-    });
+    this.zone.addEventListener(
+      'dragover',
+      (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.zone.classList.add('aiab-file-upload-zone--drag-active');
+      },
+      { signal },
+    );
 
-    this.zone.addEventListener('dragleave', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (e.target === this.zone) {
-        this.zone.classList.remove('file-upload-zone--drag-active');
-      }
-    });
+    this.zone.addEventListener(
+      'dragleave',
+      (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.target === this.zone) {
+          this.zone.classList.remove('aiab-file-upload-zone--drag-active');
+        }
+      },
+      { signal },
+    );
 
-    this.zone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      this.zone.classList.remove('file-upload-zone--drag-active');
-
-      const files = e.dataTransfer.files;
-      this.handleFiles(files);
-    });
+    this.zone.addEventListener(
+      'drop',
+      (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.zone.classList.remove('aiab-file-upload-zone--drag-active');
+        this.handleFiles(e.dataTransfer.files);
+      },
+      { signal },
+    );
 
     // Prevent default drag over page
-    document.addEventListener('dragover', (e) => {
-      e.preventDefault();
-    });
-
-    document.addEventListener('drop', (e) => {
-      if (!this.zone.contains(e.target)) {
-        e.preventDefault();
-      }
-    });
+    document.addEventListener('dragover', (e) => e.preventDefault(), { signal });
+    document.addEventListener(
+      'drop',
+      (e) => {
+        if (!this.zone.contains(e.target)) {
+          e.preventDefault();
+        }
+      },
+      { signal },
+    );
   }
 
   handleFiles(fileList) {
@@ -226,12 +242,12 @@ class FileUpload {
 
   renderFileItem(fileObj) {
     const item = document.createElement('div');
-    item.className = 'file-upload-item';
+    item.className = 'aiab-file-upload-item';
     item.dataset.fileId = fileObj.id;
 
     // Create preview
     const preview = document.createElement('div');
-    preview.className = 'file-upload-preview';
+    preview.className = 'aiab-file-upload-preview';
 
     if (this.options.preview && fileObj.type.startsWith('image/')) {
       const img = document.createElement('img');
@@ -250,12 +266,12 @@ class FileUpload {
 
     // Create info
     const info = document.createElement('div');
-    info.className = 'file-upload-info';
+    info.className = 'aiab-file-upload-info';
     info.innerHTML = `
-      <div class="file-upload-name">${this._escapeHTML(fileObj.name)}</div>
-      <div class="file-upload-meta">
-        <span class="file-upload-size">${this.formatSize(fileObj.size)}</span>
-        <span class="file-upload-status file-upload-status--${fileObj.status}">
+      <div class="aiab-file-upload-name">${this._escapeHTML(fileObj.name)}</div>
+      <div class="aiab-file-upload-meta">
+        <span class="aiab-file-upload-size">${this.formatSize(fileObj.size)}</span>
+        <span class="aiab-file-upload-status aiab-file-upload-status--${fileObj.status}">
           ${this.getStatusText(fileObj.status)}
         </span>
       </div>
@@ -263,7 +279,7 @@ class FileUpload {
 
     // Create remove button
     const removeBtn = document.createElement('button');
-    removeBtn.className = 'file-upload-remove';
+    removeBtn.className = 'aiab-file-upload-remove';
     removeBtn.type = 'button';
     removeBtn.innerHTML = `
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -274,8 +290,8 @@ class FileUpload {
 
     // Create progress bar
     const progress = document.createElement('div');
-    progress.className = 'file-upload-progress';
-    progress.innerHTML = '<div class="file-upload-progress-bar" style="width: 0%"></div>';
+    progress.className = 'aiab-file-upload-progress';
+    progress.innerHTML = '<div class="aiab-file-upload-progress-bar" style="width: 0%"></div>';
 
     item.appendChild(preview);
     item.appendChild(info);
@@ -376,7 +392,7 @@ class FileUpload {
 
     const item = this.list.querySelector(`[data-file-id="${fileObj.id}"]`);
     if (item) {
-      const bar = item.querySelector('.file-upload-progress-bar');
+      const bar = item.querySelector('.aiab-file-upload-progress-bar');
       if (bar) {
         bar.style.width = `${percent}%`;
       }
@@ -390,15 +406,15 @@ class FileUpload {
   updateFileStatus(fileObj) {
     const item = this.list.querySelector(`[data-file-id="${fileObj.id}"]`);
     if (item) {
-      const status = item.querySelector('.file-upload-status');
+      const status = item.querySelector('.aiab-file-upload-status');
       if (status) {
-        status.className = `file-upload-status file-upload-status--${fileObj.status}`;
+        status.className = `aiab-file-upload-status aiab-file-upload-status--${fileObj.status}`;
         status.textContent = this.getStatusText(fileObj.status);
       }
 
       // Hide progress bar when done
       if (fileObj.status === 'success' || fileObj.status === 'error') {
-        const progress = item.querySelector('.file-upload-progress');
+        const progress = item.querySelector('.aiab-file-upload-progress');
         if (progress) {
           progress.style.display = 'none';
         }
@@ -454,26 +470,26 @@ class FileUpload {
       _icon = 'photograph';
     } else if (type.startsWith('video/')) {
       _icon = 'film';
-      className = 'file-type-video';
+      className = 'aiab-file-type-video';
     } else if (type.startsWith('audio/')) {
       _icon = 'music-note';
-      className = 'file-type-audio';
+      className = 'aiab-file-type-audio';
     } else if (type === 'application/pdf') {
       _icon = 'document';
-      className = 'file-type-pdf';
+      className = 'aiab-file-type-pdf';
     } else if (type.includes('zip') || type.includes('rar')) {
       _icon = 'archive';
-      className = 'file-type-zip';
+      className = 'aiab-file-type-zip';
     } else if (type.includes('word') || type.includes('document')) {
       _icon = 'document-text';
-      className = 'file-type-doc';
+      className = 'aiab-file-type-doc';
     } else if (type.includes('sheet') || type.includes('excel')) {
       _icon = 'table';
-      className = 'file-type-xls';
+      className = 'aiab-file-type-xls';
     }
 
     return `
-      <svg class="file-upload-preview-icon ${className}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg class="aiab-file-upload-preview-icon ${className}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
@@ -515,7 +531,7 @@ class FileUpload {
   }
 
   destroy() {
-    // Remove event listeners and clean up
+    this._abortController.abort();
     this.clearFiles();
     this.element.innerHTML = '';
   }

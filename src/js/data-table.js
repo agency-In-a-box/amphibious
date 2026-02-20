@@ -110,16 +110,16 @@ class DataTableComponent {
    */
   buildTableStructure() {
     // Wrap table if needed
-    if (!this.element.classList.contains('data-table-container')) {
+    if (!this.element.classList.contains('aiab-data-table-container')) {
       const container = document.createElement('div');
-      container.className = 'data-table-container';
+      container.className = 'aiab-data-table-container';
       this.table.parentNode.insertBefore(container, this.table);
       container.appendChild(this.table);
       this.element = container;
     }
 
     // Add table class
-    this.table.classList.add('data-table');
+    this.table.classList.add('aiab-data-table');
 
     // Create header controls
     this.createHeaderControls();
@@ -129,7 +129,7 @@ class DataTableComponent {
 
     // Wrap table for responsive scrolling
     const wrapper = document.createElement('div');
-    wrapper.className = 'data-table-wrapper';
+    wrapper.className = 'aiab-data-table-wrapper';
     this.table.parentNode.insertBefore(wrapper, this.table);
     wrapper.appendChild(this.table);
   }
@@ -139,22 +139,22 @@ class DataTableComponent {
    */
   createHeaderControls() {
     const header = document.createElement('div');
-    header.className = 'data-table-header';
+    header.className = 'aiab-data-table-header';
 
     const headerTop = document.createElement('div');
-    headerTop.className = 'data-table-header__top';
+    headerTop.className = 'aiab-data-table-header__top';
 
     // Title
     if (this.config.title) {
       const title = document.createElement('h3');
-      title.className = 'data-table-header__title';
+      title.className = 'aiab-data-table-header__title';
       title.textContent = this.config.title;
       headerTop.appendChild(title);
     }
 
     // Actions container
     const actions = document.createElement('div');
-    actions.className = 'data-table-header__actions';
+    actions.className = 'aiab-data-table-header__actions';
 
     // Search box
     if (this.config.searchable) {
@@ -185,15 +185,15 @@ class DataTableComponent {
    */
   createSearchBox() {
     const container = document.createElement('div');
-    container.className = 'data-table-search';
+    container.className = 'aiab-data-table-search';
 
     const icon = document.createElement('span');
-    icon.className = 'data-table-search__icon';
+    icon.className = 'aiab-data-table-search__icon';
     icon.innerHTML =
       '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="5"/><path d="m15 15-4.35-4.35"/></svg>';
 
     const input = document.createElement('input');
-    input.className = 'data-table-search__input';
+    input.className = 'aiab-data-table-search__input';
     input.type = 'text';
     input.placeholder = this.config.searchPlaceholder || 'Search...';
 
@@ -209,11 +209,11 @@ class DataTableComponent {
    */
   createFilters() {
     const container = document.createElement('div');
-    container.className = 'data-table-filters';
+    container.className = 'aiab-data-table-filters';
 
     this.config.filters.forEach((filter) => {
       const button = document.createElement('button');
-      button.className = 'data-table-filter';
+      button.className = 'aiab-data-table-filter';
       button.dataset.filterKey = filter.key;
       button.dataset.filterValue = filter.value;
 
@@ -223,7 +223,7 @@ class DataTableComponent {
 
       if (filter.count !== undefined) {
         const badge = document.createElement('span');
-        badge.className = 'data-table-filter__badge';
+        badge.className = 'aiab-data-table-filter__badge';
         badge.textContent = filter.count;
         button.appendChild(badge);
       }
@@ -239,11 +239,11 @@ class DataTableComponent {
    */
   createFooterControls() {
     const footer = document.createElement('div');
-    footer.className = 'data-table-footer';
+    footer.className = 'aiab-data-table-footer';
 
     // Info
     const info = document.createElement('div');
-    info.className = 'data-table-info';
+    info.className = 'aiab-data-table-info';
     footer.appendChild(info);
     this.infoElement = info;
 
@@ -262,24 +262,24 @@ class DataTableComponent {
    */
   createPagination() {
     const container = document.createElement('div');
-    container.className = 'data-table-pagination';
+    container.className = 'aiab-data-table-pagination';
 
     // Previous button
     const prevBtn = document.createElement('button');
-    prevBtn.className = 'data-table-pagination__button';
+    prevBtn.className = 'aiab-data-table-pagination__button';
     prevBtn.innerHTML = '← Previous';
     container.appendChild(prevBtn);
     this.prevButton = prevBtn;
 
     // Page numbers
     const pages = document.createElement('div');
-    pages.className = 'data-table-pagination__pages';
+    pages.className = 'aiab-data-table-pagination__pages';
     container.appendChild(pages);
     this.pagesElement = pages;
 
     // Next button
     const nextBtn = document.createElement('button');
-    nextBtn.className = 'data-table-pagination__button';
+    nextBtn.className = 'aiab-data-table-pagination__button';
     nextBtn.innerHTML = 'Next →';
     container.appendChild(nextBtn);
     this.nextButton = nextBtn;
@@ -325,24 +325,24 @@ class DataTableComponent {
    * Initialize filter functionality
    */
   initializeFilters() {
-    const filterButtons = this.element.querySelectorAll('.data-table-filter');
+    const filterButtons = this.element.querySelectorAll('.aiab-data-table-filter');
 
     filterButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const key = button.dataset.filterKey;
         const value = button.dataset.filterValue;
 
-        if (button.classList.contains('data-table-filter--active')) {
-          button.classList.remove('data-table-filter--active');
+        if (button.classList.contains('aiab-data-table-filter--active')) {
+          button.classList.remove('aiab-data-table-filter--active');
           delete this.filters[key];
         } else {
           // Remove active from other filters in same group
           filterButtons.forEach((btn) => {
             if (btn.dataset.filterKey === key) {
-              btn.classList.remove('data-table-filter--active');
+              btn.classList.remove('aiab-data-table-filter--active');
             }
           });
-          button.classList.add('data-table-filter--active');
+          button.classList.add('aiab-data-table-filter--active');
           this.filters[key] = value;
         }
 
@@ -512,11 +512,11 @@ class DataTableComponent {
       const row = document.createElement('tr');
       const cell = document.createElement('td');
       cell.colSpan = this.config.columns?.length || 1;
-      cell.className = 'data-table-empty';
+      cell.className = 'aiab-data-table-empty';
       cell.innerHTML = `
-        <div class="data-table-empty__icon">📊</div>
-        <div class="data-table-empty__title">No data available</div>
-        <div class="data-table-empty__message">Try adjusting your filters or search term</div>
+        <div class="aiab-data-table-empty__icon">📊</div>
+        <div class="aiab-data-table-empty__title">No data available</div>
+        <div class="aiab-data-table-empty__message">Try adjusting your filters or search term</div>
       `;
       row.appendChild(cell);
       tbody.appendChild(row);
@@ -587,11 +587,11 @@ class DataTableComponent {
       // Create page buttons
       for (let i = startPage; i <= endPage; i++) {
         const button = document.createElement('button');
-        button.className = 'data-table-pagination__button';
+        button.className = 'aiab-data-table-pagination__button';
         button.textContent = i;
 
         if (i === this.currentPage) {
-          button.classList.add('data-table-pagination__button--active');
+          button.classList.add('aiab-data-table-pagination__button--active');
         }
 
         button.addEventListener('click', () => {
@@ -739,7 +739,7 @@ class DataTableComponent {
   }
 }
 
-// Auto-initialize tables with data-table attribute
+// Auto-initialize tables with aiab-data-table attribute
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-table]').forEach((element) => {
     const options = element.dataset.table ? JSON.parse(element.dataset.table) : {};
