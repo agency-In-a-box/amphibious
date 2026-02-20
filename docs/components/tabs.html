@@ -139,8 +139,8 @@
 
     /* Feature List */
     .feature-list {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -891,7 +891,7 @@
     &lt;li class="aiab-tabs__item"&gt;
       &lt;button class="aiab-tabs__button" role="tab"&gt;Analytics&lt;/button&gt;
     &lt;/li&gt;
-    &lt;!-- More aiab-tabs... --&gt;
+    &lt;!-- More tabs... --&gt;
   &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -1050,9 +1050,9 @@
         <pre><code>// Tabs component class
 class Tabs {
   constructor(element) {
-    this.aiab-container = element;
+    this.container = element;
     this.tabList = element.querySelector('.aiab-tabs__list');
-    this.aiab-tabs = element.querySelectorAll('[role="tab"]');
+    this.tabs = element.querySelectorAll('[role="tab"]');
     this.panels = element.querySelectorAll('[role="tabpanel"]');
 
     this.init();
@@ -1069,9 +1069,9 @@ class Tabs {
 
   setInitialState() {
     // Find active tab or default to first
-    let activeTab = this.aiab-container.querySelector('[aria-selected="true"]');
+    let activeTab = this.container.querySelector('[aria-selected="true"]');
     if (!activeTab) {
-      activeTab = this.aiab-tabs[0];
+      activeTab = this.tabs[0];
     }
 
     this.activateTab(activeTab);
@@ -1088,30 +1088,30 @@ class Tabs {
     const tab = e.target;
     if (tab.getAttribute('role') !== 'tab') return;
 
-    const currentIndex = Array.from(this.aiab-tabs).indexOf(tab);
+    const currentIndex = Array.from(this.tabs).indexOf(tab);
     let targetIndex;
 
     aiab-switch (e.key) {
       case 'ArrowLeft':
         e.preventDefault();
-        targetIndex = currentIndex > 0 ? currentIndex - 1 : this.aiab-tabs.length - 1;
-        this.focusTab(this.aiab-tabs[targetIndex]);
+        targetIndex = currentIndex > 0 ? currentIndex - 1 : this.tabs.length - 1;
+        this.focusTab(this.tabs[targetIndex]);
         break;
 
       case 'ArrowRight':
         e.preventDefault();
-        targetIndex = currentIndex < this.aiab-tabs.length - 1 ? currentIndex + 1 : 0;
-        this.focusTab(this.aiab-tabs[targetIndex]);
+        targetIndex = currentIndex < this.tabs.length - 1 ? currentIndex + 1 : 0;
+        this.focusTab(this.tabs[targetIndex]);
         break;
 
       case 'Home':
         e.preventDefault();
-        this.focusTab(this.aiab-tabs[0]);
+        this.focusTab(this.tabs[0]);
         break;
 
       case 'End':
         e.preventDefault();
-        this.focusTab(this.aiab-tabs[this.aiab-tabs.length - 1]);
+        this.focusTab(this.tabs[this.tabs.length - 1]);
         break;
 
       case 'Enter':
@@ -1126,7 +1126,7 @@ class Tabs {
     if (!newTab) return;
 
     // Deactivate all aiab-tabs and panels
-    this.aiab-tabs.forEach(tab => {
+    this.tabs.forEach(tab => {
       tab.setAttribute('aria-selected', 'false');
       tab.setAttribute('tabindex', '-1');
     });
@@ -1145,7 +1145,7 @@ class Tabs {
     }
 
     // Trigger custom event
-    this.aiab-container.dispatchEvent(new CustomEvent('tabchange', {
+    this.container.dispatchEvent(new CustomEvent('tabchange', {
       detail: {
         tab: newTab,
         panel: targetPanel
@@ -1161,7 +1161,7 @@ class Tabs {
 
   // Public methods
   getActiveTab() {
-    return this.aiab-container.querySelector('[aria-selected="true"]');
+    return this.container.querySelector('[aria-selected="true"]');
   }
 
   getActivePanel() {
@@ -1173,8 +1173,8 @@ class Tabs {
   }
 
   activateTabByIndex(index) {
-    if (index >= 0 && index < this.aiab-tabs.length) {
-      this.activateTab(this.aiab-tabs[index]);
+    if (index >= 0 && index < this.tabs.length) {
+      this.activateTab(this.tabs[index]);
     }
   }
 
@@ -1302,15 +1302,15 @@ function createTab(label, content, options = {}) {
     // Simple tab functionality for demos
     class SimpleTab {
       constructor(container) {
-        this.aiab-container = aiab-container;
-        this.aiab-tabs = aiab-container.querySelectorAll('[role="tab"]');
-        this.panels = aiab-container.querySelectorAll('[role="tabpanel"]');
+        this.container = container;
+        this.tabs = container.querySelectorAll('[role="tab"]');
+        this.panels = container.querySelectorAll('[role="tabpanel"]');
 
         this.init();
       }
 
       init() {
-        this.aiab-container.addEventListener('click', (e) => {
+        this.container.addEventListener('click', (e) => {
           const tab = e.target.closest('[role="tab"]');
           if (tab) {
             this.activateTab(tab);
@@ -1318,22 +1318,22 @@ function createTab(label, content, options = {}) {
         });
 
         // Keyboard navigation
-        this.aiab-container.addEventListener('keydown', (e) => {
+        this.container.addEventListener('keydown', (e) => {
           if (e.target.getAttribute('role') !== 'tab') return;
 
-          const currentIndex = Array.from(this.aiab-tabs).indexOf(e.target);
+          const currentIndex = Array.from(this.tabs).indexOf(e.target);
           let targetIndex;
 
           aiab-switch (e.key) {
             case 'ArrowLeft':
               e.preventDefault();
-              targetIndex = currentIndex > 0 ? currentIndex - 1 : this.aiab-tabs.length - 1;
-              this.aiab-tabs[targetIndex].focus();
+              targetIndex = currentIndex > 0 ? currentIndex - 1 : this.tabs.length - 1;
+              this.tabs[targetIndex].focus();
               break;
             case 'ArrowRight':
               e.preventDefault();
-              targetIndex = currentIndex < this.aiab-tabs.length - 1 ? currentIndex + 1 : 0;
-              this.aiab-tabs[targetIndex].focus();
+              targetIndex = currentIndex < this.tabs.length - 1 ? currentIndex + 1 : 0;
+              this.tabs[targetIndex].focus();
               break;
             case 'Enter':
             case ' ':
@@ -1346,7 +1346,7 @@ function createTab(label, content, options = {}) {
 
       activateTab(newTab) {
         // Deactivate all aiab-tabs and panels
-        this.aiab-tabs.forEach(tab => {
+        this.tabs.forEach(tab => {
           tab.setAttribute('aria-selected', 'false');
         });
 

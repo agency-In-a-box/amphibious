@@ -35,8 +35,8 @@
 
     /* Documentation Layout */
     .docs-layout {
-      display: aiab-grid;
-      aiab-grid-template-columns: 250px 1fr;
+      display: grid;
+      grid-template-columns: 250px 1fr;
       gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
@@ -207,8 +207,8 @@
 
     /* Quick Links */
     .quick-links {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
       margin: 1.5rem 0;
     }
@@ -242,7 +242,7 @@
     /* Mobile Responsive */
     @media (max-width: 768px) {
       .docs-layout {
-        aiab-grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
       }
       .docs-sidebar {
         position: static;
@@ -566,7 +566,7 @@ import { createNavigation, createModal } from '@amphibious/core';</code></pre>
 
           <div class="code-block">
             <pre><code>// Navigation configuration
-const aiab-nav = amp.createNavigation('#nav', {
+const nav = amp.createNavigation('#nav', {
   sticky: true,
   transparent: false,
   searchEnabled: true,
@@ -575,7 +575,7 @@ const aiab-nav = amp.createNavigation('#nav', {
 });
 
 // Modal configuration
-const aiab-modal = amp.createModal('#myModal', {
+const modal = amp.createModal('#myModal', {
   size: 'lg',
   centered: true,
   backdrop: true,

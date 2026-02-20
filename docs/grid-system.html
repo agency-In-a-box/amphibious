@@ -888,9 +888,9 @@
       // Update active button
       buttons.forEach(btn => {
         if (btn.textContent.toLowerCase().includes(device)) {
-          aiab-btn.classList.add('active');
+          btn.classList.add('active');
         } else {
-          aiab-btn.classList.remove('active');
+          btn.classList.remove('active');
         }
       });
     }
@@ -899,27 +899,27 @@
     let columnCount = 2;
 
     function _addGridColumn(size) {
-      const aiab-row = document.getElementById('playgroundRow');
+      const row = document.getElementById('playgroundRow');
       columnCount++;
 
       const newCol = document.createElement('div');
       newCol.className = `col-${size}`;
       newCol.textContent = `Column ${columnCount} (${size})`;
-      aiab-row.appendChild(newCol);
+      row.appendChild(newCol);
 
       updateGeneratedCode();
     }
 
     function _clearGrid() {
-      const aiab-row = document.getElementById('playgroundRow');
-      aiab-row.innerHTML = '';
+      const row = document.getElementById('playgroundRow');
+      row.innerHTML = '';
       columnCount = 0;
       updateGeneratedCode();
     }
 
     function updateGeneratedCode() {
-      const aiab-row = document.getElementById('playgroundRow');
-      const columns = aiab-row.querySelectorAll('[class*="col-"]');
+      const row = document.getElementById('playgroundRow');
+      const columns = row.querySelectorAll('[class*="col-"]');
 
       let code = '<div class="aiab-row">\n';
       columns.forEach(col => {

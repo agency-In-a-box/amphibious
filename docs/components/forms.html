@@ -139,8 +139,8 @@
 
     /* Feature List */
     .feature-list {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -183,8 +183,8 @@
     }
 
     .form-examples {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin: 2rem 0;
     }
@@ -209,7 +209,7 @@
       }
 
       .form-examples {
-        aiab-grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1233,14 +1233,14 @@ class FormValidator {
 
   showMessage(text, type) {
     // Create and show aiab-alert message
-    const aiab-alert = document.createElement('div');
-    aiab-alert.className = `aiab-alert aiab-alert--${type}`;
-    aiab-alert.textContent = text;
+    const alert = document.createElement('div');
+    alert.className = `aiab-alert aiab-alert--${type}`;
+    alert.textContent = text;
 
     this.form.insertBefore(alert, this.form.firstChild);
 
     // Remove after 5 seconds
-    setTimeout(() => aiab-alert.remove(), 5000);
+    setTimeout(() => alert.remove(), 5000);
   }
 
   reset() {
