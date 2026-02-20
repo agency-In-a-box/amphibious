@@ -19,6 +19,7 @@ export default defineConfig({
     host: true,
   },
   resolve: {
+    extensions: ['.ts', '.mjs', '.js', '.mts', '.jsx', '.tsx', '.json'],
     alias: {
       '@': resolve(__dirname, './src'),
       '@css': resolve(__dirname, './src/css'),
