@@ -255,9 +255,12 @@ export class AmphibiousCarousel {
       if (dataset.carouselType) options.type = dataset.carouselType as SplideOptions['type'];
       if (dataset.carouselPerPage) options.perPage = Number.parseInt(dataset.carouselPerPage, 10);
       if (dataset.carouselGap) options.gap = dataset.carouselGap;
-      if (dataset.carouselVariant) options.variant = dataset.carouselVariant as AmphibiousCarouselOptions['variant'];
-      if (dataset.carouselSize) options.size = dataset.carouselSize as AmphibiousCarouselOptions['size'];
-      if (dataset.carouselPagination) options.pagination = dataset.carouselPagination as AmphibiousCarouselOptions['pagination'];
+      if (dataset.carouselVariant)
+        options.variant = dataset.carouselVariant as AmphibiousCarouselOptions['variant'];
+      if (dataset.carouselSize)
+        options.size = dataset.carouselSize as AmphibiousCarouselOptions['size'];
+      if (dataset.carouselPagination)
+        options.pagination = dataset.carouselPagination as AmphibiousCarouselOptions['pagination'];
       if (dataset.carouselArrows) options.arrows = dataset.carouselArrows === 'true';
       if (dataset.carouselAutoplay) options.autoplay = dataset.carouselAutoplay === 'true';
       if (dataset.carouselInterval)
