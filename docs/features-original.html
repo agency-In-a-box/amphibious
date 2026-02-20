@@ -309,8 +309,8 @@
 
         /* Helper Classes Demo */
         .helper-demo {
-            display: aiab-grid;
-            aiab-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
             margin: 1rem 0;
         }
@@ -415,7 +415,7 @@
         .d-inline { display: inline; }
         .d-inline-block { display: inline-block; }
         .d-flex { display: flex; }
-        .d-grid { display: aiab-grid; }
+        .aiab-d-grid { display: grid; }
 
         /* Flexbox Utilities */
         .flex-row { flex-direction: aiab-row; }
@@ -530,8 +530,8 @@
 
         /* Component Gallery */
         .component-gallery {
-            display: aiab-grid;
-            aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -783,48 +783,48 @@ function showSlide(n) {
             <div class="helper-demo">
                 <div class="helper-item">
                     <h5>Display</h5>
-                    <div class="demo d-flex justify-center">
+                    <div class="demo aiab-d-flex aiab-justify-center">
                         <span>Flex Container</span>
                     </div>
-                    <code>.d-none</code><br>
-                    <code>.d-block</code><br>
-                    <code>.d-inline</code><br>
-                    <code>.d-flex</code><br>
-                    <code>.d-grid</code>
+                    <code>.aiab-d-none</code><br>
+                    <code>.aiab-d-block</code><br>
+                    <code>.aiab-d-inline</code><br>
+                    <code>.aiab-d-flex</code><br>
+                    <code>.aiab-d-grid</code>
                 </div>
 
                 <div class="helper-item">
                     <h5>Flexbox</h5>
-                    <div class="demo d-flex justify-between">
+                    <div class="demo aiab-d-flex aiab-justify-between">
                         <span>Left</span>
                         <span>Right</span>
                     </div>
-                    <code>.justify-start</code><br>
-                    <code>.justify-center</code><br>
-                    <code>.justify-end</code><br>
-                    <code>.justify-between</code>
+                    <code>.aiab-justify-start</code><br>
+                    <code>.aiab-justify-center</code><br>
+                    <code>.aiab-justify-end</code><br>
+                    <code>.aiab-justify-between</code>
                 </div>
 
                 <div class="helper-item">
                     <h5>Alignment</h5>
-                    <div class="demo d-flex align-center" style="height: 60px;">
+                    <div class="demo aiab-d-flex aiab-align-center" style="height: 60px;">
                         <span>Centered</span>
                     </div>
-                    <code>.align-start</code><br>
-                    <code>.align-center</code><br>
-                    <code>.align-end</code><br>
-                    <code>.align-stretch</code>
+                    <code>.aiab-align-start</code><br>
+                    <code>.aiab-align-center</code><br>
+                    <code>.aiab-align-end</code><br>
+                    <code>.aiab-align-stretch</code>
                 </div>
 
                 <div class="helper-item">
                     <h5>Borders & Shadows</h5>
-                    <div class="demo border rounded shadow">
+                    <div class="demo aiab-border aiab-rounded aiab-shadow">
                         Styled Box
                     </div>
-                    <code>.border</code><br>
-                    <code>.rounded</code><br>
-                    <code>.shadow</code><br>
-                    <code>.shadow-lg</code>
+                    <code>.aiab-border</code><br>
+                    <code>.aiab-rounded</code><br>
+                    <code>.aiab-shadow</code><br>
+                    <code>.aiab-shadow-lg</code>
                 </div>
             </div>
 
@@ -833,17 +833,17 @@ function showSlide(n) {
 &lt;div class="mt-3 mb-4 pl-2"&gt;Margin top 3, bottom 4, padding left 2&lt;/div&gt;
 
 &lt;!-- Flexbox Layout --&gt;
-&lt;div class="d-flex justify-between align-center"&gt;
+&lt;div class="aiab-d-flex aiab-justify-between aiab-align-center"&gt;
   &lt;span&gt;Left side&lt;/span&gt;
   &lt;span&gt;Right side&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;!-- Text Utilities --&gt;
-&lt;p class="aiab-text-center aiab-text-uppercase text-bold"&gt;Centered, uppercase, bold text&lt;/p&gt;
+&lt;p class="aiab-text-center aiab-text-uppercase aiab-text-bold"&gt;Centered, uppercase, bold text&lt;/p&gt;
 
 &lt;!-- Visual Styling --&gt;
-&lt;div class="border rounded shadow-md bg-light p-3"&gt;
-  Styled aiab-container with border, rounded corners, shadow, and padding
+&lt;div class="aiab-border aiab-rounded aiab-shadow-md aiab-bg-light aiab-p-3"&gt;
+  Styled container with border, rounded corners, shadow, and padding
 &lt;/div&gt;</code></pre>
             </div>
         </section>
@@ -1080,7 +1080,7 @@ function showSlide(n) {
 
             <div class="example">
                 <div class="example-title">Common Icons</div>
-                <div style="display: aiab-grid; aiab-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <svg class="aiab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
                         <span>Check Circle</span>
@@ -1264,13 +1264,13 @@ lucide.createIcons();</code></pre>
         let startX = 0;
         let endX = 0;
 
-        const aiab-container = document.querySelector('.slideshow-container');
+        const container = document.querySelector('.slideshow-container');
         if (container) {
-            aiab-container.addEventListener('touchstart', (e) => {
+            container.addEventListener('touchstart', (e) => {
                 startX = e.changedTouches[0].screenX;
             });
 
-            aiab-container.addEventListener('touchend', (e) => {
+            container.addEventListener('touchend', (e) => {
                 endX = e.changedTouches[0].screenX;
                 handleSwipe();
             });

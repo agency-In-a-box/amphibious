@@ -140,8 +140,8 @@
 
     /* Icon Grid */
     .icon-grid {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1rem;
     }
 
@@ -279,7 +279,7 @@
       }
 
       .icon-grid {
-        aiab-grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         gap: 0.75rem;
       }
 
@@ -295,7 +295,7 @@
 
     @media (max-width: 480px) {
       .icon-grid {
-        aiab-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       }
 
       .filter-tags {
@@ -442,14 +442,14 @@
     </div>
 
     <!-- No Results State -->
-    <div class="no-results-state hidden" id="noResultsState">
+    <div class="no-results-state aiab-hidden" id="noResultsState">
       <div class="aiab-icon">🔍</div>
       <h3>No Icons Found</h3>
       <p>Try adjusting your search terms or selecting a different category</p>
     </div>
 
     <!-- Icon Categories Container -->
-    <div id="iconCategories" class="hidden">
+    <div id="iconCategories" class="aiab-hidden">
       <!-- Categories will be dynamically generated here -->
     </div>
 
@@ -848,7 +848,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
       filterButtons.forEach(button => {
         button.addEventListener('click', function() {
           // Remove active class from all buttons
-          filterButtons.forEach(btn => aiab-btn.classList.remove('active'));
+          filterButtons.forEach(btn => btn.classList.remove('active'));
 
           // Add active class to clicked button
           this.classList.add('active');

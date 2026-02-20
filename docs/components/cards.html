@@ -139,8 +139,8 @@
 
     /* Feature List */
     .feature-list {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -175,8 +175,8 @@
 
     /* Demo Cards Grid */
     .demo-grid {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -196,7 +196,7 @@
       }
 
       .demo-grid {
-        aiab-grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -465,7 +465,7 @@
       <h3>Hover and Click Effects</h3>
       <div class="demo-section">
         <div class="demo-title">Interactive Cards (hover over them)</div>
-        <div style="display: aiab-grid; aiab-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
           <div class="aiab-card hoverable">
             <div class="aiab-card-body">
               <h4 class="aiab-card-title">Hoverable</h4>
@@ -507,32 +507,32 @@
 
       <div class="demo-section">
         <div class="demo-title">Different Shadow Depths</div>
-        <div style="display: aiab-grid; aiab-grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
-          <div class="aiab-card shadow-none">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+          <div class="aiab-card aiab-shadow-none">
             <div class="aiab-card-body">
               <h5>No Shadow</h5>
             </div>
           </div>
 
-          <div class="aiab-card shadow-sm">
+          <div class="aiab-card aiab-shadow-sm">
             <div class="aiab-card-body">
               <h5>Small</h5>
             </div>
           </div>
 
-          <div class="aiab-card shadow-md">
+          <div class="aiab-card aiab-shadow-md">
             <div class="aiab-card-body">
               <h5>Medium</h5>
             </div>
           </div>
 
-          <div class="aiab-card shadow-lg">
+          <div class="aiab-card aiab-shadow-lg">
             <div class="aiab-card-body">
               <h5>Large</h5>
             </div>
           </div>
 
-          <div class="aiab-card shadow-xl">
+          <div class="aiab-card aiab-shadow-xl">
             <div class="aiab-card-body">
               <h5>X-Large</h5>
             </div>
@@ -541,11 +541,11 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="aiab-card shadow-none"&gt;...&lt;/div&gt;
-&lt;div class="aiab-card shadow-sm"&gt;...&lt;/div&gt;
-&lt;div class="aiab-card shadow-md"&gt;...&lt;/div&gt;  &lt;!-- Default --&gt;
-&lt;div class="aiab-card shadow-lg"&gt;...&lt;/div&gt;
-&lt;div class="aiab-card shadow-xl"&gt;...&lt;/div&gt;</code></pre>
+        <pre><code>&lt;div class="aiab-card aiab-shadow-none"&gt;...&lt;/div&gt;
+&lt;div class="aiab-card aiab-shadow-sm"&gt;...&lt;/div&gt;
+&lt;div class="aiab-card aiab-shadow-md"&gt;...&lt;/div&gt;  &lt;!-- Default --&gt;
+&lt;div class="aiab-card aiab-shadow-lg"&gt;...&lt;/div&gt;
+&lt;div class="aiab-card aiab-shadow-xl"&gt;...&lt;/div&gt;</code></pre>
       </div>
     </section>
 
@@ -733,23 +733,23 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.shadow-none</code></td>
+            <td><code>.aiab-shadow-none</code></td>
             <td>No shadow</td>
           </tr>
           <tr>
-            <td><code>.shadow-sm</code></td>
+            <td><code>.aiab-shadow-sm</code></td>
             <td>Small shadow</td>
           </tr>
           <tr>
-            <td><code>.shadow-md</code></td>
+            <td><code>.aiab-shadow-md</code></td>
             <td>Medium shadow (default)</td>
           </tr>
           <tr>
-            <td><code>.shadow-lg</code></td>
+            <td><code>.aiab-shadow-lg</code></td>
             <td>Large shadow</td>
           </tr>
           <tr>
-            <td><code>.shadow-xl</code></td>
+            <td><code>.aiab-shadow-xl</code></td>
             <td>Extra large shadow</td>
           </tr>
         </tbody>
