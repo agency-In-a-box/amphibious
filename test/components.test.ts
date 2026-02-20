@@ -123,10 +123,10 @@ describe('Amphibious 2.0 Component Inventory', () => {
       expect(content).toContain('.aiab-text-center');
       expect(content).toContain('.aiab-text-left');
       expect(content).toContain('.aiab-text-right');
-      expect(content).toContain('.float-left');
-      expect(content).toContain('.float-right');
-      expect(content).toContain('.hidden');
-      expect(content).toContain('.visible');
+      expect(content).toContain('.aiab-float-left');
+      expect(content).toContain('.aiab-float-right');
+      expect(content).toContain('.aiab-hidden');
+      expect(content).toContain('.aiab-visible');
 
       // Check that clearfix exists in clearing.css
       const clearingFile = path.join(cssBasePath, 'clearing.css');
