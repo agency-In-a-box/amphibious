@@ -6,16 +6,40 @@
 // Core CSS imports - main.css includes all components
 import './css/main.css';
 
-// Navigation component and JavaScript
+// Side-effect imports (auto-initialize on load)
 import './js/navigation.js';
-
-// Dark mode toggle
 import './js/dark-mode-toggle.js';
 
-// Register sanitizeHTML globally for plain JS components
-import { sanitizeHTML } from './utils/sanitize';
+export type { AmphibiousCarouselOptions } from './js/carousel';
+export { AmphibiousCarousel } from './js/carousel';
+export { Forms } from './js/forms';
+export type { IconOptions } from './js/icons';
+export { EcommerceIcons, Icon } from './js/icons';
+export {
+  createIcon,
+  getAvailableIcons,
+  hasIcon,
+  initializeIcons,
+} from './js/icons-lightweight';
+export type { ModalOptions } from './js/modal';
+export { Modal, ModalManager } from './js/modal';
+export { Navigation } from './js/navigation';
+export { SmoothScroll } from './js/smooth-scroll';
+export { Tabs } from './js/tabs';
+export type { TooltipOptions } from './js/tooltip';
+export { EcommerceTooltips, Tooltip } from './js/tooltip';
 
-// Export version and initialization
+// Utility exports
+export {
+  createSafeElement,
+  escapeHTML,
+  isSafeURL,
+  sanitizeAttribute,
+  sanitizeHTML,
+  setInnerHTML,
+} from './utils/sanitize';
+
+// Version
 export const VERSION = '2.0.0';
 
 // Extend window interface for global utilities
@@ -27,23 +51,17 @@ declare global {
 }
 
 // Make sanitizeHTML available to plain JS components via window
-window.__amphibiousSanitizeHTML = sanitizeHTML;
+import { sanitizeHTML as _sanitize } from './utils/sanitize';
+
+window.__amphibiousSanitizeHTML = _sanitize;
 
 export function init() {
-  // Initialize navigation if not already done
-  // Navigation component is loaded via script tag
-
-  // Add data attribute for CSS feature detection
   document.documentElement.setAttribute('data-amphibious', VERSION);
 
-  // Check for reduced motion preference
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) {
     document.documentElement.classList.add('reduced-motion');
   }
-
-  // Dark mode is handled by dark-mode-toggle.js via data-theme attribute
-  // and @media (prefers-color-scheme: dark) in CSS
 
   console.info(`Amphibious ${VERSION} initialized`);
 }
@@ -55,5 +73,4 @@ if (document.readyState === 'loading') {
   init();
 }
 
-// Export for manual initialization
 export default { VERSION, init };
