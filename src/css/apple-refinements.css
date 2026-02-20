@@ -14,46 +14,25 @@
    1. Typography Excellence - Apple's Signature Letter-Spacing
    ========================================================================== */
 
-/* Apply Apple's signature tight letter-spacing to all headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.headline,
-.title,
-.display {
-  letter-spacing: -0.02em; /* Apple's signature: Creates premium, tight feel */
-  font-feature-settings: "kern" 1; /* Enable kerning for optimal spacing */
+/* Apple's signature tight letter-spacing — scoped to AIAB components only */
+.aiab-heading,
+.apple-hero,
+.apple-headline,
+.apple-title,
+.apple-subtitle {
+  letter-spacing: -0.02em;
+  font-feature-settings: "kern" 1;
 }
 
 /* Tighter spacing for hero/display text */
-h1,
-.display-1,
-.hero-title {
-  letter-spacing: -0.03em; /* Even tighter for large sizes */
-  line-height: 1.05; /* Tighter line-height for impact */
-}
-
-/* Ultra-tight for massive display text */
-.display-massive {
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-}
-
-/* Refined paragraph spacing for optimal reading */
-p {
-  letter-spacing: -0.003em; /* Subtle tightening for body text */
-  word-spacing: 0.05em; /* Slightly increase word spacing */
+.apple-hero,
+.apple-hero-title {
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 /* Premium feel for buttons and UI text */
 .aiab-btn,
-button,
-.nav-link,
-.tab-link,
-.form-label,
 .aiab-badge {
   letter-spacing: -0.01em;
 }
@@ -82,51 +61,32 @@ button,
   --transition-timing: var(--ease-apple-default);
 }
 
-/* Apply signature easing to all transitions */
-*,
-*::before,
-*::after {
-  transition-timing-function: var(--ease-apple-default);
-}
+/* Universal transition-timing-function removed — too destructive, forces transitions on all elements */
 
-/* Refined button transitions with Apple bounce */
-.aiab-btn,
-button {
+/* Refined button transitions with Apple bounce — scoped to AIAB only */
+.aiab-btn {
   transition: all var(--duration-instant) var(--ease-apple-bounce);
 }
 
-.aiab-btn:hover,
-button:hover {
+.aiab-btn:hover {
   transform: translateY(-1px);
   transition: all var(--duration-fast) var(--ease-apple-bounce);
 }
 
-.aiab-btn:active,
-button:active {
+.aiab-btn:active {
   transform: translateY(0);
   transition: all var(--duration-instant) var(--ease-apple-in);
 }
 
-/* Links with smooth Apple easing */
-a {
-  transition:
-    color var(--duration-instant) var(--ease-apple-smooth),
-    opacity var(--duration-instant) var(--ease-apple-smooth);
-}
-
-/* Form inputs with refined focus transitions */
-input,
-textarea,
-select {
+/* Form input transitions — scoped to AIAB only */
+.aiab-form-control {
   transition:
     border-color var(--duration-fast) var(--ease-apple-default),
     box-shadow var(--duration-fast) var(--ease-apple-default),
     background-color var(--duration-fast) var(--ease-apple-default);
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+.aiab-form-control:focus {
   transition-duration: var(--duration-instant);
   transition-timing-function: var(--ease-apple-bounce);
 }
@@ -140,7 +100,7 @@ select:focus {
 }
 
 /* Dropdowns with bouncy appearance */
-.dropdown-menu {
+.aiab-dropdown-menu {
   animation: dropdownAppear var(--duration-fast) var(--ease-apple-bounce);
 }
 
@@ -179,29 +139,13 @@ select:focus {
   --color-primary-light: var(--apple-orange-300);
   --color-primary-dark: var(--apple-orange-700);
 
-  /* Systematic gray scale */
-  --apple-gray-50: #fafafa;
-  --apple-gray-100: #f5f5f5;
-  --apple-gray-200: #eeeeee;
-  --apple-gray-300: #e0e0e0;
-  --apple-gray-400: #bdbdbd;
-  --apple-gray-500: #9e9e9e;
-  --apple-gray-600: #757575;
-  --apple-gray-700: #616161;
-  --apple-gray-800: #424242;
-  --apple-gray-900: #212121;
+  /* Gray scale defined in apple-design-system.css — not overridden here */
 
   /* Semantic colors that harmonize with orange */
   --apple-success: #34c759; /* Apple's green */
   --apple-warning: #ff9500; /* Complementary orange */
   --apple-danger: #ff3b30; /* Apple's red */
   --apple-info: #007aff; /* Apple's blue */
-
-  /* Update link colors for consistency */
-  --color-link: var(--apple-orange-500);
-  --color-link-hover: var(--apple-orange-600);
-  --color-link-active: var(--apple-orange-700);
-  --color-link-visited: var(--apple-orange-600);
 }
 
 /* ==========================================================================
@@ -231,13 +175,13 @@ select:focus {
 }
 
 /* Pulse loading for buttons */
-.btn-loading {
+.aiab-btn-loading {
   position: relative;
   color: transparent;
   pointer-events: none;
 }
 
-.btn-loading::after {
+.aiab-btn-loading::after {
   content: "";
   position: absolute;
   width: 16px;
@@ -275,63 +219,36 @@ select:focus {
 }
 
 /* Image hover with subtle zoom */
-.img-hover,
-.gallery-item {
+.aiab-img-hover,
+.aiab-gallery-item {
   overflow: hidden;
 }
 
-.img-hover img,
-.gallery-item img {
+.aiab-img-hover img,
+.aiab-gallery-item img {
   transition: transform var(--duration-slow) var(--ease-apple-smooth);
 }
 
-.img-hover:hover img,
-.gallery-item:hover img {
+.aiab-img-hover:hover img,
+.aiab-gallery-item:hover img {
   transform: scale(1.05);
 }
 
-/* Text link underline animation */
-.link-animated {
-  position: relative;
-  text-decoration: none;
-}
-
-.link-animated::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--apple-orange-500);
-  transition: width var(--duration-fast) var(--ease-apple-bounce);
-}
-
-.link-animated:hover::after {
-  width: 100%;
-}
+/* .aiab-link-animated defined in premium-design-system.css — not duplicated here */
 
 /* ==========================================================================
    6. Focus States - Accessibility with Style
    ========================================================================== */
 
-/* Premium focus rings */
-:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.25);
-  transition: box-shadow var(--duration-instant) var(--ease-apple-bounce);
-}
-
-button:focus-visible,
+/* Focus rings — scoped to AIAB components only */
 .aiab-btn:focus-visible {
+  outline: none;
   box-shadow:
     0 0 0 3px rgba(237, 139, 0, 0.25),
     0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+.aiab-form-control:focus {
   border-color: var(--apple-orange-500);
   box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
 }
@@ -352,7 +269,7 @@ select:focus {
 
   /* Preserve essential animations at minimal duration */
   .aiab-spinner,
-  .loading-indicator {
+  .aiab-loading-indicator {
     animation-duration: 1s;
   }
 }
@@ -423,7 +340,7 @@ html {
 }
 
 /* Navigation with smooth transitions */
-.nav-link {
+.aiab-nav-link {
   transition: all var(--duration-instant) var(--ease-apple-smooth);
 }
 
@@ -436,14 +353,4 @@ html {
   transform: scale(1.05);
 }
 
-/* ==========================================================================
-   10. Dark Mode Refinements (if applicable)
-   ========================================================================== */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --apple-orange-500: #ff9500; /* Brighter orange for dark mode */
-    --apple-orange-600: #ff8800;
-    --apple-orange-700: #ff7700;
-  }
-}
+/* Dark mode orange overrides moved to dark-mode.css for single-source management */

@@ -9,12 +9,12 @@
    ========================================================================== */
 
 :root {
-  /* Primary Palette - Pantone 144 Orange */
-  --apple-orange: #ff6900;
-  --apple-orange-light: #ff8533;
-  --apple-orange-dark: #e65100;
-  --apple-orange-subtle: rgba(255, 105, 0, 0.08);
-  --apple-orange-fade: rgba(255, 105, 0, 0.04);
+  /* Primary Palette - Pantone 144 Orange (canonical: #ed8b00) */
+  --apple-orange: #ed8b00;
+  --apple-orange-light: #ff9f1c;
+  --apple-orange-dark: #d87a00;
+  --apple-orange-subtle: rgba(237, 139, 0, 0.08);
+  --apple-orange-fade: rgba(237, 139, 0, 0.04);
 
   /* Grayscale - Apple's Precise Grays */
   --apple-black: #1d1d1f;
@@ -86,11 +86,8 @@
   --radius-2xl: 1.25rem; /* 20px */
   --radius-full: 9999px;
 
-  /* Shadows - Subtle Depth */
+  /* Extended shadows — base --shadow-sm/md/lg defined in design-tokens.css */
   --shadow-xs: 0 0 0 1px rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 12px 24px 0 rgba(0, 0, 0, 0.12);
   --shadow-2xl: 0 20px 40px 0 rgba(0, 0, 0, 0.15);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
@@ -105,26 +102,7 @@
   --duration-slower: 500ms;
 }
 
-/* ==========================================================================
-   Base Reset - Apple Clean Slate
-   ========================================================================== */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-family: var(--font-text);
-  font-size: 100%;
-  line-height: var(--leading-normal);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  color: var(--apple-black);
-  background-color: var(--apple-white);
-}
+/* Base reset removed — normalize.css handles resets, design-tokens.css sets base typography */
 
 /* ==========================================================================
    Typography - Apple's Perfect Type
