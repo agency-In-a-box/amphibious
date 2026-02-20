@@ -19,7 +19,7 @@ describe('Navigation Module', () => {
         </button>
         <ul class="nav__list">
           <li><a href="#home">Home</a></li>
-          <li class="nav__dropdown">
+          <li class="aiab-nav__dropdown">
             <a href="#services">Services</a>
             <ul class="nav__dropdown-menu">
               <li><a href="#web">Web Design</a></li>
@@ -96,7 +96,7 @@ describe('Navigation Module', () => {
   describe('Dropdown Menus', () => {
     it('should open dropdown on hover', () => {
       navigation.init();
-      const dropdown = document.querySelector('.nav__dropdown') as HTMLElement;
+      const dropdown = document.querySelector('.aiab-nav__dropdown') as HTMLElement;
 
       // Initially closed
       expect(dropdown.classList.contains('is-open')).toBe(false);
@@ -110,7 +110,7 @@ describe('Navigation Module', () => {
 
     it('should close dropdown on mouse leave', () => {
       navigation.init();
-      const dropdown = document.querySelector('.nav__dropdown') as HTMLElement;
+      const dropdown = document.querySelector('.aiab-nav__dropdown') as HTMLElement;
 
       // Open dropdown
       const mouseEnterEvent = new MouseEvent('mouseenter');

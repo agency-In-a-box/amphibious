@@ -139,37 +139,37 @@
 
     /* Feature List */
     .feature-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
 
-    .feature-card {
+    .aiab-feature-card {
       background: #f8f9fa;
       padding: 1.5rem;
       border-radius: 0.5rem;
       border-left: 4px solid #ED8B00;
     }
 
-    .feature-card h4 {
+    .aiab-feature-card h4 {
       margin-top: 0;
       color: #2c3e50;
     }
 
     /* Navigation */
-    .nav-breadcrumb {
+    .aiab-nav-breadcrumb {
       background: rgba(255, 255, 255, 0.9);
       padding: 1rem 0;
       margin-bottom: 1rem;
     }
 
-    .nav-breadcrumb a {
+    .aiab-nav-breadcrumb a {
       color: #ED8B00;
       text-decoration: none;
     }
 
-    .nav-breadcrumb a:hover {
+    .aiab-nav-breadcrumb a:hover {
       text-decoration: underline;
     }
 
@@ -208,10 +208,10 @@
 </head>
 <body>
   <!-- Site Navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
     <ul class="horizontal branded">
-      <li><a href="/" class="site-logo">Amphibious</a></li>
+      <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
         <ul>
           <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -241,7 +241,7 @@
           <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
           <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
           <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
         </ul>
       </li>
       <li><a href="/docs/features.html">Features</a>
@@ -259,7 +259,7 @@
 
   <header class="docs-header">
     <div class="aiab-container">
-      <nav class="nav-breadcrumb">
+      <nav class="aiab-nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
         <a href="/docs/components/">Components</a> ›
@@ -274,30 +274,30 @@
     <!-- Overview -->
     <section class="section">
       <h2>Overview</h2>
-      <p>The Tabs component provides accessible and flexible tab navigation for organizing content into sections. It supports multiple styles, orientations, and interactive states while maintaining ARIA compliance and keyboard navigation. The component includes horizontal and vertical layouts, scrollable tabs, and various visual styles.</p>
+      <p>The Tabs component provides accessible and flexible tab navigation for organizing content into sections. It supports multiple styles, orientations, and interactive states while maintaining ARIA compliance and keyboard navigation. The component includes horizontal and vertical layouts, scrollable aiab-tabs, and various visual styles.</p>
 
       <div class="feature-list">
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🎨 Multiple Styles</h4>
           <p>Underlined, boxed, pills, bordered, and custom tab styles for different design needs.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>📐 Flexible Layouts</h4>
           <p>Horizontal, vertical, centered, full-width, and scrollable tab arrangements.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>♿ Full Accessibility</h4>
           <p>ARIA attributes, keyboard navigation, focus management, and screen reader support.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>📱 Responsive Design</h4>
           <p>Adaptive layouts that work on all screen sizes with touch-friendly interactions.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🔧 Interactive Features</h4>
-          <p>Icons, badges, loading states, disabled tabs, and smooth animations.</p>
+          <p>Icons, badges, loading states, disabled aiab-tabs, and smooth animations.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🎯 Easy Integration</h4>
           <p>Simple HTML structure with JavaScript enhancement for dynamic behavior.</p>
         </div>
@@ -312,36 +312,36 @@
       <div class="demo-section">
         <div class="demo-title">Basic Tab Navigation</div>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--underlined" id="basic-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1">
+          <div class="aiab-tabs aiab-tabs--underlined" id="basic-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1">
                   Overview
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">
                   Features
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3">
                   Documentation
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="panel-4" id="tab-4">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="panel-4" id="tab-4">
                   Support
                 </button>
               </li>
             </ul>
             <div class="tabs__panels">
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="tab-1" id="panel-1" aria-hidden="false">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-1" id="panel-1" aria-hidden="false">
                 <h3>Overview</h3>
                 <p>This is the overview section of our product. Here you'll find general information about what we offer and how it can benefit you.</p>
                 <p>Our solution provides comprehensive tools for modern web development with a focus on accessibility and user experience.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="tab-2" id="panel-2" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-2" id="panel-2" aria-hidden="true">
                 <h3>Features</h3>
                 <ul>
                   <li>Modern component library</li>
@@ -351,12 +351,12 @@
                   <li>Developer-friendly API</li>
                 </ul>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="tab-3" id="panel-3" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-3" id="panel-3" aria-hidden="true">
                 <h3>Documentation</h3>
                 <p>Comprehensive documentation is available to help you get started quickly. Our guides cover everything from basic usage to advanced customization.</p>
                 <p>Visit our documentation site for detailed examples, API references, and best practices.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="tab-4" id="panel-4" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-4" id="panel-4" aria-hidden="true">
                 <h3>Support</h3>
                 <p>We provide multiple support channels to help you succeed:</p>
                 <ul>
@@ -372,34 +372,34 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="aiab-tabs tabs--underlined"&gt;
-  &lt;ul class="tabs__list" role="tablist"&gt;
-    &lt;li class="tabs__item" role="presentation"&gt;
-      &lt;button class="tabs__button" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1"&gt;
+        <pre><code>&lt;div class="aiab-tabs aiab-tabs--underlined"&gt;
+  &lt;ul class="aiab-tabs__list" role="tablist"&gt;
+    &lt;li class="aiab-tabs__item" role="presentation"&gt;
+      &lt;button class="aiab-tabs__button" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1"&gt;
         Overview
       &lt;/button&gt;
     &lt;/li&gt;
-    &lt;li class="tabs__item" role="presentation"&gt;
-      &lt;button class="tabs__button" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2"&gt;
+    &lt;li class="aiab-tabs__item" role="presentation"&gt;
+      &lt;button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2"&gt;
         Features
       &lt;/button&gt;
     &lt;/li&gt;
-    &lt;li class="tabs__item" role="presentation"&gt;
-      &lt;button class="tabs__button" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3"&gt;
+    &lt;li class="aiab-tabs__item" role="presentation"&gt;
+      &lt;button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3"&gt;
         Documentation
       &lt;/button&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
   &lt;div class="tabs__panels"&gt;
-    &lt;div class="tabs__panel" role="tabpanel" aria-labelledby="tab-1" id="panel-1" aria-hidden="false"&gt;
+    &lt;div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-1" id="panel-1" aria-hidden="false"&gt;
       &lt;h3&gt;Overview&lt;/h3&gt;
       &lt;p&gt;Content for the overview tab...&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class="tabs__panel" role="tabpanel" aria-labelledby="tab-2" id="panel-2" aria-hidden="true"&gt;
+    &lt;div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-2" id="panel-2" aria-hidden="true"&gt;
       &lt;h3&gt;Features&lt;/h3&gt;
       &lt;p&gt;Content for the features tab...&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class="tabs__panel" role="tabpanel" aria-labelledby="tab-3" id="panel-3" aria-hidden="true"&gt;
+    &lt;div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-3" id="panel-3" aria-hidden="true"&gt;
       &lt;h3&gt;Documentation&lt;/h3&gt;
       &lt;p&gt;Content for the documentation tab...&lt;/p&gt;
     &lt;/div&gt;
@@ -416,34 +416,34 @@
       <div class="demo-section">
         <div class="demo-title">Boxed Tab Style</div>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--boxed" id="boxed-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true" aria-controls="boxed-panel-1" id="boxed-tab-1">
+          <div class="aiab-tabs aiab-tabs--boxed" id="boxed-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true" aria-controls="boxed-panel-1" id="boxed-tab-1">
                   Dashboard
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="boxed-panel-2" id="boxed-tab-2">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="boxed-panel-2" id="boxed-tab-2">
                   Analytics
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="boxed-panel-3" id="boxed-tab-3">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="boxed-panel-3" id="boxed-tab-3">
                   Settings
                 </button>
               </li>
             </ul>
             <div class="tabs__panels">
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="boxed-tab-1" id="boxed-panel-1" aria-hidden="false">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="boxed-tab-1" id="boxed-panel-1" aria-hidden="false">
                 <h3>Dashboard</h3>
                 <p>Your main dashboard with key metrics and recent activity.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="boxed-tab-2" id="boxed-panel-2" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="boxed-tab-2" id="boxed-panel-2" aria-hidden="true">
                 <h3>Analytics</h3>
                 <p>Detailed analytics and reporting for your account.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="boxed-tab-3" id="boxed-panel-3" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="boxed-tab-3" id="boxed-panel-3" aria-hidden="true">
                 <h3>Settings</h3>
                 <p>Configure your account preferences and options.</p>
               </div>
@@ -456,43 +456,43 @@
       <div class="demo-section">
         <div class="demo-title">Pill-style Tabs</div>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--pills" id="pills-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true" aria-controls="pills-panel-1" id="pills-tab-1">
+          <div class="aiab-tabs aiab-tabs--pills" id="pills-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true" aria-controls="pills-panel-1" id="pills-tab-1">
                   All
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="pills-panel-2" id="pills-tab-2">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="pills-panel-2" id="pills-tab-2">
                   Active
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="pills-panel-3" id="pills-tab-3">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="pills-panel-3" id="pills-tab-3">
                   Completed
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="pills-panel-4" id="pills-tab-4">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="pills-panel-4" id="pills-tab-4">
                   Archived
                 </button>
               </li>
             </ul>
             <div class="tabs__panels">
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="pills-tab-1" id="pills-panel-1" aria-hidden="false">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="pills-tab-1" id="pills-panel-1" aria-hidden="false">
                 <h3>All Items</h3>
                 <p>View all items in your collection regardless of status.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="pills-tab-2" id="pills-panel-2" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="pills-tab-2" id="pills-panel-2" aria-hidden="true">
                 <h3>Active Items</h3>
                 <p>Currently active and in-progress items.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="pills-tab-3" id="pills-panel-3" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="pills-tab-3" id="pills-panel-3" aria-hidden="true">
                 <h3>Completed Items</h3>
                 <p>Items that have been marked as completed.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="pills-tab-4" id="pills-panel-4" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="pills-tab-4" id="pills-panel-4" aria-hidden="true">
                 <h3>Archived Items</h3>
                 <p>Items that have been archived for future reference.</p>
               </div>
@@ -505,34 +505,34 @@
       <div class="demo-section">
         <div class="demo-title">Bordered Tab Style</div>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--bordered" id="bordered-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true" aria-controls="bordered-panel-1" id="bordered-tab-1">
+          <div class="aiab-tabs aiab-tabs--bordered" id="bordered-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true" aria-controls="bordered-panel-1" id="bordered-tab-1">
                   Profile
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="bordered-panel-2" id="bordered-tab-2">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="bordered-panel-2" id="bordered-tab-2">
                   Account
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="bordered-panel-3" id="bordered-tab-3">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="bordered-panel-3" id="bordered-tab-3">
                   Security
                 </button>
               </li>
             </ul>
             <div class="tabs__panels">
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="bordered-tab-1" id="bordered-panel-1" aria-hidden="false">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="bordered-tab-1" id="bordered-panel-1" aria-hidden="false">
                 <h3>Profile Information</h3>
                 <p>Manage your personal profile information and public details.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="bordered-tab-2" id="bordered-panel-2" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="bordered-tab-2" id="bordered-panel-2" aria-hidden="true">
                 <h3>Account Settings</h3>
                 <p>Configure your account preferences and billing information.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="bordered-tab-3" id="bordered-panel-3" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="bordered-tab-3" id="bordered-panel-3" aria-hidden="true">
                 <h3>Security Options</h3>
                 <p>Manage passwords, two-factor authentication, and security settings.</p>
               </div>
@@ -543,13 +543,13 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Boxed Tabs --&gt;
-&lt;div class="aiab-tabs tabs--boxed"&gt;...&lt;/div&gt;
+&lt;div class="aiab-tabs aiab-tabs--boxed"&gt;...&lt;/div&gt;
 
 &lt;!-- Pills Tabs --&gt;
-&lt;div class="aiab-tabs tabs--pills"&gt;...&lt;/div&gt;
+&lt;div class="aiab-tabs aiab-tabs--pills"&gt;...&lt;/div&gt;
 
 &lt;!-- Bordered Tabs --&gt;
-&lt;div class="aiab-tabs tabs--bordered"&gt;...&lt;/div&gt;</code></pre>
+&lt;div class="aiab-tabs aiab-tabs--bordered"&gt;...&lt;/div&gt;</code></pre>
       </div>
     </section>
 
@@ -560,18 +560,18 @@
       <div class="demo-section">
         <div class="demo-title">Enhanced Tabs with Icons and Notification Badges</div>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--underlined" id="icon-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button tabs__button--icon" role="tab" aria-selected="true" aria-controls="icon-panel-1" id="icon-tab-1">
+          <div class="aiab-tabs aiab-tabs--underlined" id="icon-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button aiab-tabs__button--icon" role="tab" aria-selected="true" aria-controls="icon-panel-1" id="icon-tab-1">
                   <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
                   </svg>
                   Dashboard
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button tabs__button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-2" id="icon-tab-2">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button aiab-tabs__button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-2" id="icon-tab-2">
                   <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
@@ -579,16 +579,16 @@
                   <span class="tabs__badge">3</span>
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button tabs__button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-3" id="icon-tab-3">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button aiab-tabs__button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-3" id="icon-tab-3">
                   <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
                   </svg>
                   Profile
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button tabs__button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-4" id="icon-tab-4">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button aiab-tabs__button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-4" id="icon-tab-4">
                   <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
                   </svg>
@@ -597,19 +597,19 @@
               </li>
             </ul>
             <div class="tabs__panels">
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="icon-tab-1" id="icon-panel-1" aria-hidden="false">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="icon-tab-1" id="icon-panel-1" aria-hidden="false">
                 <h3>Dashboard Overview</h3>
                 <p>Welcome to your dashboard. Here you can see an overview of your account activity and key metrics.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="icon-tab-2" id="icon-panel-2" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="icon-tab-2" id="icon-panel-2" aria-hidden="true">
                 <h3>Messages</h3>
                 <p>You have 3 unread messages. Click to view your conversations and replies.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="icon-tab-3" id="icon-panel-3" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="icon-tab-3" id="icon-panel-3" aria-hidden="true">
                 <h3>Your Profile</h3>
                 <p>Manage your profile information, avatar, and public details.</p>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="icon-tab-4" id="icon-panel-4" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="icon-tab-4" id="icon-panel-4" aria-hidden="true">
                 <h3>Account Settings</h3>
                 <p>Configure your account preferences, privacy settings, and notifications.</p>
               </div>
@@ -619,7 +619,7 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;button class="tabs__button tabs__button--icon" role="tab"&gt;
+        <pre><code>&lt;button class="aiab-tabs__button aiab-tabs__button--icon" role="tab"&gt;
   &lt;svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20"&gt;
     &lt;path d="..."&gt;&lt;/path&gt;
   &lt;/svg&gt;
@@ -636,36 +636,36 @@
       <div class="demo-section">
         <div class="demo-title">Vertical Tab Layout</div>
         <div class="tab-demo-container tab-demo-vertical">
-          <div class="aiab-tabs tabs--vertical tabs--underlined" id="vertical-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true" aria-controls="vertical-panel-1" id="vertical-tab-1">
+          <div class="aiab-tabs aiab-tabs--vertical aiab-tabs--underlined" id="vertical-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true" aria-controls="vertical-panel-1" id="vertical-tab-1">
                   General
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="vertical-panel-2" id="vertical-tab-2">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="vertical-panel-2" id="vertical-tab-2">
                   Privacy
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="vertical-panel-3" id="vertical-tab-3">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="vertical-panel-3" id="vertical-tab-3">
                   Notifications
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="vertical-panel-4" id="vertical-tab-4">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="vertical-panel-4" id="vertical-tab-4">
                   Appearance
                 </button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false" aria-controls="vertical-panel-5" id="vertical-tab-5">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false" aria-controls="vertical-panel-5" id="vertical-tab-5">
                   Advanced
                 </button>
               </li>
             </ul>
             <div class="tabs__panels">
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-1" id="vertical-panel-1" aria-hidden="false">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-1" id="vertical-panel-1" aria-hidden="false">
                 <h3>General Settings</h3>
                 <p>Configure basic application settings and preferences.</p>
                 <ul>
@@ -675,7 +675,7 @@
                   <li>Startup behavior</li>
                 </ul>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-2" id="vertical-panel-2" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-2" id="vertical-panel-2" aria-hidden="true">
                 <h3>Privacy Settings</h3>
                 <p>Manage your privacy and data sharing preferences.</p>
                 <ul>
@@ -685,7 +685,7 @@
                   <li>Account visibility</li>
                 </ul>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-3" id="vertical-panel-3" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-3" id="vertical-panel-3" aria-hidden="true">
                 <h3>Notification Settings</h3>
                 <p>Control how and when you receive notifications.</p>
                 <ul>
@@ -695,7 +695,7 @@
                   <li>Desktop notifications</li>
                 </ul>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-4" id="vertical-panel-4" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-4" id="vertical-panel-4" aria-hidden="true">
                 <h3>Appearance Settings</h3>
                 <p>Customize the look and feel of the application.</p>
                 <ul>
@@ -705,7 +705,7 @@
                   <li>Layout density</li>
                 </ul>
               </div>
-              <div class="tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-5" id="vertical-panel-5" aria-hidden="true">
+              <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-5" id="vertical-panel-5" aria-hidden="true">
                 <h3>Advanced Settings</h3>
                 <p>Advanced configuration options for power users.</p>
                 <ul>
@@ -721,21 +721,21 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="aiab-tabs tabs--vertical tabs--underlined"&gt;
-  &lt;ul class="tabs__list" role="tablist"&gt;
-    &lt;li class="tabs__item" role="presentation"&gt;
-      &lt;button class="tabs__button" role="tab" aria-selected="true"&gt;
+        <pre><code>&lt;div class="aiab-tabs aiab-tabs--vertical aiab-tabs--underlined"&gt;
+  &lt;ul class="aiab-tabs__list" role="tablist"&gt;
+    &lt;li class="aiab-tabs__item" role="presentation"&gt;
+      &lt;button class="aiab-tabs__button" role="tab" aria-selected="true"&gt;
         General
       &lt;/button&gt;
     &lt;/li&gt;
-    &lt;li class="tabs__item" role="presentation"&gt;
-      &lt;button class="tabs__button" role="tab" aria-selected="false"&gt;
+    &lt;li class="aiab-tabs__item" role="presentation"&gt;
+      &lt;button class="aiab-tabs__button" role="tab" aria-selected="false"&gt;
         Privacy
       &lt;/button&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
   &lt;div class="tabs__panels"&gt;
-    &lt;div class="tabs__panel" role="tabpanel" aria-hidden="false"&gt;
+    &lt;div class="aiab-tabs__panel" role="tabpanel" aria-hidden="false"&gt;
       &lt;h3&gt;General Settings&lt;/h3&gt;
       &lt;p&gt;Configure basic application settings...&lt;/p&gt;
     &lt;/div&gt;
@@ -754,16 +754,16 @@
 
         <h4>Small Tabs</h4>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--underlined tabs--small" id="small-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true">Small</button>
+          <div class="aiab-tabs aiab-tabs--underlined aiab-tabs--small" id="small-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true">Small</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Compact</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Compact</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Minimal</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Minimal</button>
               </li>
             </ul>
           </div>
@@ -771,16 +771,16 @@
 
         <h4>Large Tabs</h4>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--underlined tabs--large" id="large-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true">Large</button>
+          <div class="aiab-tabs aiab-tabs--underlined aiab-tabs--large" id="large-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true">Large</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Spacious</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Spacious</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Prominent</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Prominent</button>
               </li>
             </ul>
           </div>
@@ -793,16 +793,16 @@
 
         <h4>Centered Tabs</h4>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--underlined tabs--centered" id="centered-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true">Home</button>
+          <div class="aiab-tabs aiab-tabs--underlined aiab-tabs--centered" id="centered-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true">Home</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">About</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">About</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Contact</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Contact</button>
               </li>
             </ul>
           </div>
@@ -810,16 +810,16 @@
 
         <h4>Full Width Tabs</h4>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--underlined tabs--full-width" id="full-width-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true">Tab One</button>
+          <div class="aiab-tabs aiab-tabs--underlined aiab-tabs--full-width" id="full-width-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true">Tab One</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Tab Two</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Tab Two</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Tab Three</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Tab Three</button>
               </li>
             </ul>
           </div>
@@ -828,16 +828,16 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Small Tabs --&gt;
-&lt;div class="aiab-tabs tabs--underlined tabs--small"&gt;...&lt;/div&gt;
+&lt;div class="aiab-tabs aiab-tabs--underlined aiab-tabs--small"&gt;...&lt;/div&gt;
 
 &lt;!-- Large Tabs --&gt;
-&lt;div class="aiab-tabs tabs--underlined tabs--large"&gt;...&lt;/div&gt;
+&lt;div class="aiab-tabs aiab-tabs--underlined aiab-tabs--large"&gt;...&lt;/div&gt;
 
 &lt;!-- Centered Tabs --&gt;
-&lt;div class="aiab-tabs tabs--underlined tabs--centered"&gt;...&lt;/div&gt;
+&lt;div class="aiab-tabs aiab-tabs--underlined aiab-tabs--centered"&gt;...&lt;/div&gt;
 
 &lt;!-- Full Width Tabs --&gt;
-&lt;div class="aiab-tabs tabs--underlined tabs--full-width"&gt;...&lt;/div&gt;</code></pre>
+&lt;div class="aiab-tabs aiab-tabs--underlined aiab-tabs--full-width"&gt;...&lt;/div&gt;</code></pre>
       </div>
     </section>
 
@@ -848,34 +848,34 @@
       <div class="demo-section">
         <div class="demo-title">Scrollable Tab Navigation (try scrolling horizontally)</div>
         <div class="tab-demo-container">
-          <div class="aiab-tabs tabs--underlined tabs--scrollable" id="scrollable-tabs">
-            <ul class="tabs__list" role="tablist">
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="true">Dashboard</button>
+          <div class="aiab-tabs aiab-tabs--underlined aiab-tabs--scrollable" id="scrollable-tabs">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true">Dashboard</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Analytics</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Analytics</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">User Management</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">User Management</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Content Management</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Content Management</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Security Settings</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Security Settings</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">API Configuration</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">API Configuration</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Backup & Recovery</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Backup & Recovery</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">System Monitoring</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">System Monitoring</button>
               </li>
-              <li class="tabs__item" role="presentation">
-                <button class="tabs__button" role="tab" aria-selected="false">Performance Metrics</button>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Performance Metrics</button>
               </li>
             </ul>
           </div>
@@ -883,15 +883,15 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="aiab-tabs tabs--underlined tabs--scrollable"&gt;
-  &lt;ul class="tabs__list" role="tablist"&gt;
-    &lt;li class="tabs__item"&gt;
-      &lt;button class="tabs__button" role="tab"&gt;Dashboard&lt;/button&gt;
+        <pre><code>&lt;div class="aiab-tabs aiab-tabs--underlined aiab-tabs--scrollable"&gt;
+  &lt;ul class="aiab-tabs__list" role="tablist"&gt;
+    &lt;li class="aiab-tabs__item"&gt;
+      &lt;button class="aiab-tabs__button" role="tab"&gt;Dashboard&lt;/button&gt;
     &lt;/li&gt;
-    &lt;li class="tabs__item"&gt;
-      &lt;button class="tabs__button" role="tab"&gt;Analytics&lt;/button&gt;
+    &lt;li class="aiab-tabs__item"&gt;
+      &lt;button class="aiab-tabs__button" role="tab"&gt;Analytics&lt;/button&gt;
     &lt;/li&gt;
-    &lt;!-- More tabs... --&gt;
+    &lt;!-- More aiab-tabs... --&gt;
   &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -912,26 +912,26 @@
         <tbody>
           <tr>
             <td><code>.aiab-tabs</code></td>
-            <td>Base tabs container</td>
+            <td>Base aiab-tabs aiab-container</td>
           </tr>
           <tr>
-            <td><code>.tabs__list</code></td>
+            <td><code>.aiab-tabs__list</code></td>
             <td>Tab navigation list</td>
           </tr>
           <tr>
-            <td><code>.tabs__item</code></td>
+            <td><code>.aiab-tabs__item</code></td>
             <td>Individual tab item</td>
           </tr>
           <tr>
-            <td><code>.tabs__button</code></td>
+            <td><code>.aiab-tabs__button</code></td>
             <td>Tab button/link</td>
           </tr>
           <tr>
             <td><code>.tabs__panels</code></td>
-            <td>Tab panels container</td>
+            <td>Tab panels aiab-container</td>
           </tr>
           <tr>
-            <td><code>.tabs__panel</code></td>
+            <td><code>.aiab-tabs__panel</code></td>
             <td>Individual tab panel</td>
           </tr>
         </tbody>
@@ -947,19 +947,19 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.tabs--underlined</code></td>
+            <td><code>.aiab-tabs--underlined</code></td>
             <td>Underlined tab style (default)</td>
           </tr>
           <tr>
-            <td><code>.tabs--boxed</code></td>
+            <td><code>.aiab-tabs--boxed</code></td>
             <td>Boxed tab style</td>
           </tr>
           <tr>
-            <td><code>.tabs--pills</code></td>
+            <td><code>.aiab-tabs--pills</code></td>
             <td>Pill-shaped tab style</td>
           </tr>
           <tr>
-            <td><code>.tabs--bordered</code></td>
+            <td><code>.aiab-tabs--bordered</code></td>
             <td>Bordered tab style</td>
           </tr>
         </tbody>
@@ -975,19 +975,19 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.tabs--vertical</code></td>
+            <td><code>.aiab-tabs--vertical</code></td>
             <td>Vertical tab layout</td>
           </tr>
           <tr>
-            <td><code>.tabs--centered</code></td>
-            <td>Center-aligned tabs</td>
+            <td><code>.aiab-tabs--centered</code></td>
+            <td>Center-aligned aiab-tabs</td>
           </tr>
           <tr>
-            <td><code>.tabs--full-width</code></td>
-            <td>Full-width tabs</td>
+            <td><code>.aiab-tabs--full-width</code></td>
+            <td>Full-width aiab-tabs</td>
           </tr>
           <tr>
-            <td><code>.tabs--scrollable</code></td>
+            <td><code>.aiab-tabs--scrollable</code></td>
             <td>Scrollable tab navigation</td>
           </tr>
         </tbody>
@@ -1003,11 +1003,11 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.tabs--small</code></td>
+            <td><code>.aiab-tabs--small</code></td>
             <td>Small tab size</td>
           </tr>
           <tr>
-            <td><code>.tabs--large</code></td>
+            <td><code>.aiab-tabs--large</code></td>
             <td>Large tab size</td>
           </tr>
         </tbody>
@@ -1023,7 +1023,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.tabs__button--icon</code></td>
+            <td><code>.aiab-tabs__button--icon</code></td>
             <td>Tab button with icon</td>
           </tr>
           <tr>
@@ -1032,10 +1032,10 @@
           </tr>
           <tr>
             <td><code>.tabs__badge</code></td>
-            <td>Tab notification badge</td>
+            <td>Tab notification aiab-badge</td>
           </tr>
           <tr>
-            <td><code>.tabs__button--loading</code></td>
+            <td><code>.aiab-tabs__button--loading</code></td>
             <td>Loading state for tab</td>
           </tr>
         </tbody>
@@ -1050,9 +1050,9 @@
         <pre><code>// Tabs component class
 class Tabs {
   constructor(element) {
-    this.container = element;
-    this.tabList = element.querySelector('.tabs__list');
-    this.tabs = element.querySelectorAll('[role="tab"]');
+    this.aiab-container = element;
+    this.tabList = element.querySelector('.aiab-tabs__list');
+    this.aiab-tabs = element.querySelectorAll('[role="tab"]');
     this.panels = element.querySelectorAll('[role="tabpanel"]');
 
     this.init();
@@ -1069,9 +1069,9 @@ class Tabs {
 
   setInitialState() {
     // Find active tab or default to first
-    let activeTab = this.container.querySelector('[aria-selected="true"]');
+    let activeTab = this.aiab-container.querySelector('[aria-selected="true"]');
     if (!activeTab) {
-      activeTab = this.tabs[0];
+      activeTab = this.aiab-tabs[0];
     }
 
     this.activateTab(activeTab);
@@ -1088,30 +1088,30 @@ class Tabs {
     const tab = e.target;
     if (tab.getAttribute('role') !== 'tab') return;
 
-    const currentIndex = Array.from(this.tabs).indexOf(tab);
+    const currentIndex = Array.from(this.aiab-tabs).indexOf(tab);
     let targetIndex;
 
-    switch (e.key) {
+    aiab-switch (e.key) {
       case 'ArrowLeft':
         e.preventDefault();
-        targetIndex = currentIndex > 0 ? currentIndex - 1 : this.tabs.length - 1;
-        this.focusTab(this.tabs[targetIndex]);
+        targetIndex = currentIndex > 0 ? currentIndex - 1 : this.aiab-tabs.length - 1;
+        this.focusTab(this.aiab-tabs[targetIndex]);
         break;
 
       case 'ArrowRight':
         e.preventDefault();
-        targetIndex = currentIndex < this.tabs.length - 1 ? currentIndex + 1 : 0;
-        this.focusTab(this.tabs[targetIndex]);
+        targetIndex = currentIndex < this.aiab-tabs.length - 1 ? currentIndex + 1 : 0;
+        this.focusTab(this.aiab-tabs[targetIndex]);
         break;
 
       case 'Home':
         e.preventDefault();
-        this.focusTab(this.tabs[0]);
+        this.focusTab(this.aiab-tabs[0]);
         break;
 
       case 'End':
         e.preventDefault();
-        this.focusTab(this.tabs[this.tabs.length - 1]);
+        this.focusTab(this.aiab-tabs[this.aiab-tabs.length - 1]);
         break;
 
       case 'Enter':
@@ -1125,8 +1125,8 @@ class Tabs {
   activateTab(newTab) {
     if (!newTab) return;
 
-    // Deactivate all tabs and panels
-    this.tabs.forEach(tab => {
+    // Deactivate all aiab-tabs and panels
+    this.aiab-tabs.forEach(tab => {
       tab.setAttribute('aria-selected', 'false');
       tab.setAttribute('tabindex', '-1');
     });
@@ -1145,7 +1145,7 @@ class Tabs {
     }
 
     // Trigger custom event
-    this.container.dispatchEvent(new CustomEvent('tabchange', {
+    this.aiab-container.dispatchEvent(new CustomEvent('tabchange', {
       detail: {
         tab: newTab,
         panel: targetPanel
@@ -1161,7 +1161,7 @@ class Tabs {
 
   // Public methods
   getActiveTab() {
-    return this.container.querySelector('[aria-selected="true"]');
+    return this.aiab-container.querySelector('[aria-selected="true"]');
   }
 
   getActivePanel() {
@@ -1173,8 +1173,8 @@ class Tabs {
   }
 
   activateTabByIndex(index) {
-    if (index >= 0 && index < this.tabs.length) {
-      this.activateTab(this.tabs[index]);
+    if (index >= 0 && index < this.aiab-tabs.length) {
+      this.activateTab(this.aiab-tabs[index]);
     }
   }
 
@@ -1206,7 +1206,7 @@ class Tabs {
   }
 }
 
-// Auto-initialize tabs
+// Auto-initialize aiab-tabs
 document.addEventListener('DOMContentLoaded', () => {
   const tabContainers = document.querySelectorAll('.aiab-tabs');
   tabContainers.forEach(container => {
@@ -1221,9 +1221,9 @@ function createTab(label, content, options = {}) {
 
   return {
     tab: `
-      &lt;li class="tabs__item" role="presentation"&gt;
+      &lt;li class="aiab-tabs__item" role="presentation"&gt;
         &lt;button
-          class="tabs__button ${options.icon ? 'tabs__button--icon' : ''}"
+          class="aiab-tabs__button ${options.icon ? 'aiab-tabs__button--icon' : ''}"
           role="tab"
           aria-selected="false"
           aria-controls="${panelId}"
@@ -1231,12 +1231,12 @@ function createTab(label, content, options = {}) {
         &gt;
           ${options.icon ? `&lt;svg class="tabs__icon"&gt;${options.icon}&lt;/svg&gt;` : ''}
           ${label}
-          ${options.badge ? `&lt;span class="tabs__badge"&gt;${options.badge}&lt;/span&gt;` : ''}
+          ${options.aiab-badge ? `&lt;span class="tabs__badge"&gt;${options.aiab-badge}&lt;/span&gt;` : ''}
         &lt;/button&gt;
       &lt;/li&gt;
     `,
     panel: `
-      &lt;div class="tabs__panel" role="tabpanel" aria-labelledby="${id}" id="${panelId}" aria-hidden="true"&gt;
+      &lt;div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="${id}" id="${panelId}" aria-hidden="true"&gt;
         ${content}
       &lt;/div&gt;
     `
@@ -1259,18 +1259,18 @@ function createTab(label, content, options = {}) {
 
       <h3>Content Organization</h3>
       <ul>
-        <li><strong>Logical grouping:</strong> Group related content together in tabs</li>
+        <li><strong>Logical grouping:</strong> Group related content together in aiab-tabs</li>
         <li><strong>Clear labels:</strong> Use descriptive tab labels that clearly indicate content</li>
-        <li><strong>Consistent structure:</strong> Maintain similar content organization across tabs</li>
-        <li><strong>Progressive disclosure:</strong> Use tabs to reveal information progressively</li>
+        <li><strong>Consistent structure:</strong> Maintain similar content organization across aiab-tabs</li>
+        <li><strong>Progressive disclosure:</strong> Use aiab-tabs to reveal information progressively</li>
       </ul>
 
       <h3>Design Considerations</h3>
       <ul>
-        <li><strong>Tab count:</strong> Limit to 5-7 tabs for optimal usability</li>
-        <li><strong>Mobile adaptation:</strong> Consider scrollable or collapsing tabs on small screens</li>
+        <li><strong>Tab count:</strong> Limit to 5-7 aiab-tabs for optimal usability</li>
+        <li><strong>Mobile adaptation:</strong> Consider scrollable or collapsing aiab-tabs on small screens</li>
         <li><strong>Visual hierarchy:</strong> Make active tab state clearly distinguishable</li>
-        <li><strong>Touch targets:</strong> Ensure tabs are large enough for touch interaction (44px minimum)</li>
+        <li><strong>Touch targets:</strong> Ensure aiab-tabs are large enough for touch interaction (44px minimum)</li>
       </ul>
 
       <h3>Performance Tips</h3>
@@ -1278,7 +1278,7 @@ function createTab(label, content, options = {}) {
         <li><strong>Lazy loading:</strong> Load tab content only when needed for large datasets</li>
         <li><strong>Efficient selectors:</strong> Use efficient CSS selectors for tab styling</li>
         <li><strong>Debounced interactions:</strong> Avoid excessive event handling during rapid navigation</li>
-        <li><strong>Memory management:</strong> Clean up event listeners when tabs are destroyed</li>
+        <li><strong>Memory management:</strong> Clean up event listeners when aiab-tabs are destroyed</li>
       </ul>
     </section>
   </main>
@@ -1302,15 +1302,15 @@ function createTab(label, content, options = {}) {
     // Simple tab functionality for demos
     class SimpleTab {
       constructor(container) {
-        this.container = container;
-        this.tabs = container.querySelectorAll('[role="tab"]');
-        this.panels = container.querySelectorAll('[role="tabpanel"]');
+        this.aiab-container = aiab-container;
+        this.aiab-tabs = aiab-container.querySelectorAll('[role="tab"]');
+        this.panels = aiab-container.querySelectorAll('[role="tabpanel"]');
 
         this.init();
       }
 
       init() {
-        this.container.addEventListener('click', (e) => {
+        this.aiab-container.addEventListener('click', (e) => {
           const tab = e.target.closest('[role="tab"]');
           if (tab) {
             this.activateTab(tab);
@@ -1318,22 +1318,22 @@ function createTab(label, content, options = {}) {
         });
 
         // Keyboard navigation
-        this.container.addEventListener('keydown', (e) => {
+        this.aiab-container.addEventListener('keydown', (e) => {
           if (e.target.getAttribute('role') !== 'tab') return;
 
-          const currentIndex = Array.from(this.tabs).indexOf(e.target);
+          const currentIndex = Array.from(this.aiab-tabs).indexOf(e.target);
           let targetIndex;
 
-          switch (e.key) {
+          aiab-switch (e.key) {
             case 'ArrowLeft':
               e.preventDefault();
-              targetIndex = currentIndex > 0 ? currentIndex - 1 : this.tabs.length - 1;
-              this.tabs[targetIndex].focus();
+              targetIndex = currentIndex > 0 ? currentIndex - 1 : this.aiab-tabs.length - 1;
+              this.aiab-tabs[targetIndex].focus();
               break;
             case 'ArrowRight':
               e.preventDefault();
-              targetIndex = currentIndex < this.tabs.length - 1 ? currentIndex + 1 : 0;
-              this.tabs[targetIndex].focus();
+              targetIndex = currentIndex < this.aiab-tabs.length - 1 ? currentIndex + 1 : 0;
+              this.aiab-tabs[targetIndex].focus();
               break;
             case 'Enter':
             case ' ':
@@ -1345,8 +1345,8 @@ function createTab(label, content, options = {}) {
       }
 
       activateTab(newTab) {
-        // Deactivate all tabs and panels
-        this.tabs.forEach(tab => {
+        // Deactivate all aiab-tabs and panels
+        this.aiab-tabs.forEach(tab => {
           tab.setAttribute('aria-selected', 'false');
         });
 

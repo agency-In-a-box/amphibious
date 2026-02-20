@@ -139,37 +139,37 @@
 
     /* Feature List */
     .feature-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
 
-    .feature-card {
+    .aiab-feature-card {
       background: #f8f9fa;
       padding: 1.5rem;
       border-radius: 0.5rem;
       border-left: 4px solid #ED8B00;
     }
 
-    .feature-card h4 {
+    .aiab-feature-card h4 {
       margin-top: 0;
       color: #2c3e50;
     }
 
     /* Navigation */
-    .nav-breadcrumb {
+    .aiab-nav-breadcrumb {
       background: rgba(255, 255, 255, 0.9);
       padding: 1rem 0;
       margin-bottom: 1rem;
     }
 
-    .nav-breadcrumb a {
+    .aiab-nav-breadcrumb a {
       color: #ED8B00;
       text-decoration: none;
     }
 
-    .nav-breadcrumb a:hover {
+    .aiab-nav-breadcrumb a:hover {
       text-decoration: underline;
     }
 
@@ -183,8 +183,8 @@
     }
 
     .form-examples {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin: 2rem 0;
     }
@@ -209,17 +209,17 @@
       }
 
       .form-examples {
-        grid-template-columns: 1fr;
+        aiab-grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
   <!-- Site Navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
     <ul class="horizontal branded">
-      <li><a href="/" class="site-logo">Amphibious</a></li>
+      <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
         <ul>
           <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -249,7 +249,7 @@
           <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
           <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
           <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
         </ul>
       </li>
       <li><a href="/docs/features.html">Features</a>
@@ -267,7 +267,7 @@
 
   <header class="docs-header">
     <div class="aiab-container">
-      <nav class="nav-breadcrumb">
+      <nav class="aiab-nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
         <a href="/docs/components/">Components</a> ›
@@ -285,27 +285,27 @@
       <p>The Forms component provides a comprehensive styling system for all form elements. It includes modern form controls, validation states, floating labels, inline forms, responsive layouts, and accessibility features. The component maintains consistency across all input types while providing flexibility for different use cases.</p>
 
       <div class="feature-list">
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>📝 Complete Form Controls</h4>
           <p>Styling for all input types, select, textarea, checkboxes, radios, and file inputs.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>✅ Validation States</h4>
           <p>Built-in validation styling with success, error states, and feedback messages.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🏷️ Floating Labels</h4>
           <p>Modern floating label inputs for improved user experience and space efficiency.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>📐 Flexible Layouts</h4>
-          <p>Inline forms, grid layouts, responsive designs, and form grouping options.</p>
+          <p>Inline forms, aiab-grid layouts, responsive designs, and form grouping options.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>♿ Full Accessibility</h4>
           <p>Proper focus management, ARIA attributes, and screen reader support.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🎨 Customizable Styling</h4>
           <p>CSS variables for easy theming and consistent design across all form elements.</p>
         </div>
@@ -428,71 +428,71 @@
         <div class="form-examples">
           <div>
             <h4>Checkboxes</h4>
-            <div class="form-check">
-              <input type="checkbox" id="check1" class="form-check-input">
-              <label for="check1" class="form-check-label">Default checkbox</label>
+            <div class="aiab-form-check">
+              <input type="checkbox" id="check1" class="aiab-form-check-input">
+              <label for="check1" class="aiab-form-check-label">Default checkbox</label>
             </div>
-            <div class="form-check">
-              <input type="checkbox" id="check2" class="form-check-input" checked>
-              <label for="check2" class="form-check-label">Checked checkbox</label>
+            <div class="aiab-form-check">
+              <input type="checkbox" id="check2" class="aiab-form-check-input" checked>
+              <label for="check2" class="aiab-form-check-label">Checked checkbox</label>
             </div>
-            <div class="form-check">
-              <input type="checkbox" id="check3" class="form-check-input" disabled>
-              <label for="check3" class="form-check-label">Disabled checkbox</label>
+            <div class="aiab-form-check">
+              <input type="checkbox" id="check3" class="aiab-form-check-input" disabled>
+              <label for="check3" class="aiab-form-check-label">Disabled checkbox</label>
             </div>
           </div>
 
           <div>
             <h4>Radio Buttons</h4>
-            <div class="form-check">
-              <input type="radio" id="radio1" name="radioGroup" class="form-check-input">
-              <label for="radio1" class="form-check-label">First radio</label>
+            <div class="aiab-form-check">
+              <input type="radio" id="radio1" name="radioGroup" class="aiab-form-check-input">
+              <label for="radio1" class="aiab-form-check-label">First radio</label>
             </div>
-            <div class="form-check">
-              <input type="radio" id="radio2" name="radioGroup" class="form-check-input" checked>
-              <label for="radio2" class="form-check-label">Second radio (checked)</label>
+            <div class="aiab-form-check">
+              <input type="radio" id="radio2" name="radioGroup" class="aiab-form-check-input" checked>
+              <label for="radio2" class="aiab-form-check-label">Second radio (checked)</label>
             </div>
-            <div class="form-check">
-              <input type="radio" id="radio3" name="radioGroup" class="form-check-input" disabled>
-              <label for="radio3" class="form-check-label">Disabled radio</label>
+            <div class="aiab-form-check">
+              <input type="radio" id="radio3" name="radioGroup" class="aiab-form-check-input" disabled>
+              <label for="radio3" class="aiab-form-check-label">Disabled radio</label>
             </div>
           </div>
         </div>
 
         <h4>Inline Checkboxes and Radios</h4>
         <div style="margin-top: 1.5rem;">
-          <div class="form-check form-check-inline">
-            <input type="checkbox" id="inline-check1" class="form-check-input">
-            <label for="inline-check1" class="form-check-label">Inline 1</label>
+          <div class="aiab-form-check aiab-form-check-inline">
+            <input type="checkbox" id="inline-check1" class="aiab-form-check-input">
+            <label for="inline-check1" class="aiab-form-check-label">Inline 1</label>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="checkbox" id="inline-check2" class="form-check-input">
-            <label for="inline-check2" class="form-check-label">Inline 2</label>
+          <div class="aiab-form-check aiab-form-check-inline">
+            <input type="checkbox" id="inline-check2" class="aiab-form-check-input">
+            <label for="inline-check2" class="aiab-form-check-label">Inline 2</label>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="checkbox" id="inline-check3" class="form-check-input">
-            <label for="inline-check3" class="form-check-label">Inline 3</label>
+          <div class="aiab-form-check aiab-form-check-inline">
+            <input type="checkbox" id="inline-check3" class="aiab-form-check-input">
+            <label for="inline-check3" class="aiab-form-check-label">Inline 3</label>
           </div>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Standard Checkboxes --&gt;
-&lt;div class="form-check"&gt;
-  &lt;input type="checkbox" id="check1" class="form-check-input"&gt;
-  &lt;label for="check1" class="form-check-label"&gt;Default checkbox&lt;/label&gt;
+&lt;div class="aiab-form-check"&gt;
+  &lt;input type="checkbox" id="check1" class="aiab-form-check-input"&gt;
+  &lt;label for="check1" class="aiab-form-check-label"&gt;Default checkbox&lt;/label&gt;
 &lt;/div&gt;
 
 &lt;!-- Radio Buttons --&gt;
-&lt;div class="form-check"&gt;
-  &lt;input type="radio" id="radio1" name="radioGroup" class="form-check-input"&gt;
-  &lt;label for="radio1" class="form-check-label"&gt;First radio&lt;/label&gt;
+&lt;div class="aiab-form-check"&gt;
+  &lt;input type="radio" id="radio1" name="radioGroup" class="aiab-form-check-input"&gt;
+  &lt;label for="radio1" class="aiab-form-check-label"&gt;First radio&lt;/label&gt;
 &lt;/div&gt;
 
 &lt;!-- Inline Checkboxes --&gt;
-&lt;div class="form-check form-check-inline"&gt;
-  &lt;input type="checkbox" id="inline-check1" class="form-check-input"&gt;
-  &lt;label for="inline-check1" class="form-check-label"&gt;Inline 1&lt;/label&gt;
+&lt;div class="aiab-form-check aiab-form-check-inline"&gt;
+  &lt;input type="checkbox" id="inline-check1" class="aiab-form-check-input"&gt;
+  &lt;label for="inline-check1" class="aiab-form-check-label"&gt;Inline 1&lt;/label&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </section>
@@ -506,7 +506,7 @@
         <div class="form-demo">
           <div class="aiab-form-group">
             <label for="large-input">Large Input</label>
-            <input type="text" id="large-input" class="aiab-form-control form-control-lg" placeholder="Large input">
+            <input type="text" id="large-input" class="aiab-form-control aiab-form-control-lg" placeholder="Large input">
           </div>
 
           <div class="aiab-form-group">
@@ -516,20 +516,20 @@
 
           <div class="aiab-form-group">
             <label for="small-input">Small Input</label>
-            <input type="text" id="small-input" class="aiab-form-control form-control-sm" placeholder="Small input">
+            <input type="text" id="small-input" class="aiab-form-control aiab-form-control-sm" placeholder="Small input">
           </div>
         </div>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Large Input --&gt;
-&lt;input type="text" class="aiab-form-control form-control-lg" placeholder="Large input"&gt;
+&lt;input type="text" class="aiab-form-control aiab-form-control-lg" placeholder="Large input"&gt;
 
 &lt;!-- Default Input --&gt;
 &lt;input type="text" class="aiab-form-control" placeholder="Default input"&gt;
 
 &lt;!-- Small Input --&gt;
-&lt;input type="text" class="aiab-form-control form-control-sm" placeholder="Small input"&gt;</code></pre>
+&lt;input type="text" class="aiab-form-control aiab-form-control-sm" placeholder="Small input"&gt;</code></pre>
       </div>
     </section>
 
@@ -540,17 +540,17 @@
       <div class="demo-section">
         <div class="demo-title">Floating Label Inputs</div>
         <div class="form-demo">
-          <div class="form-floating">
+          <div class="aiab-form-floating">
             <input type="text" id="floating-text" class="aiab-form-control" placeholder="Name">
             <label for="floating-text">Full Name</label>
           </div>
 
-          <div class="form-floating" style="margin-top: 1rem;">
+          <div class="aiab-form-floating" style="margin-top: 1rem;">
             <input type="email" id="floating-email" class="aiab-form-control" placeholder="name@example.com">
             <label for="floating-email">Email address</label>
           </div>
 
-          <div class="form-floating" style="margin-top: 1rem;">
+          <div class="aiab-form-floating" style="margin-top: 1rem;">
             <select id="floating-select" class="aiab-form-control">
               <option selected>Open this select menu</option>
               <option value="1">One</option>
@@ -560,7 +560,7 @@
             <label for="floating-select">Works with selects</label>
           </div>
 
-          <div class="form-floating" style="margin-top: 1rem;">
+          <div class="aiab-form-floating" style="margin-top: 1rem;">
             <textarea id="floating-textarea" class="aiab-form-control" placeholder="Leave a comment here" style="height: 100px"></textarea>
             <label for="floating-textarea">Comments</label>
           </div>
@@ -568,17 +568,17 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="form-floating"&gt;
+        <pre><code>&lt;div class="aiab-form-floating"&gt;
   &lt;input type="text" id="floating-text" class="aiab-form-control" placeholder="Name"&gt;
   &lt;label for="floating-text"&gt;Full Name&lt;/label&gt;
 &lt;/div&gt;
 
-&lt;div class="form-floating"&gt;
+&lt;div class="aiab-form-floating"&gt;
   &lt;input type="email" id="floating-email" class="aiab-form-control" placeholder="name@example.com"&gt;
   &lt;label for="floating-email"&gt;Email address&lt;/label&gt;
 &lt;/div&gt;
 
-&lt;div class="form-floating"&gt;
+&lt;div class="aiab-form-floating"&gt;
   &lt;select id="floating-select" class="aiab-form-control"&gt;
     &lt;option selected&gt;Open this select menu&lt;/option&gt;
     &lt;option value="1"&gt;One&lt;/option&gt;
@@ -598,47 +598,47 @@
         <div class="form-demo validation-demo">
           <div class="aiab-form-group">
             <label for="valid-input">Valid Input</label>
-            <input type="text" id="valid-input" class="aiab-form-control is-valid" value="This looks good!">
+            <input type="text" id="valid-input" class="aiab-form-control aiab-is-valid" value="This looks good!">
             <div class="valid-feedback">Great! This field is valid.</div>
           </div>
 
           <div class="aiab-form-group">
             <label for="invalid-input">Invalid Input</label>
-            <input type="text" id="invalid-input" class="aiab-form-control is-invalid" value="Invalid input">
+            <input type="text" id="invalid-input" class="aiab-form-control aiab-is-invalid" value="Invalid input">
             <div class="invalid-feedback">Please provide a valid input.</div>
           </div>
 
           <div class="aiab-form-group">
             <label for="help-input">Input with Help Text</label>
             <input type="text" id="help-input" class="aiab-form-control">
-            <div class="form-text">This is some helpful text to guide the user.</div>
+            <div class="aiab-form-text">This is some helpful text to guide the user.</div>
           </div>
 
           <div class="aiab-form-group">
             <label>Form Validation Example</label>
-            <div class="form-check">
-              <input type="checkbox" id="invalid-check" class="form-check-input is-invalid" required>
-              <label for="invalid-check" class="form-check-label">Agree to terms and conditions</label>
+            <div class="aiab-form-check">
+              <input type="checkbox" id="invalid-check" class="aiab-form-check-input aiab-is-invalid" required>
+              <label for="invalid-check" class="aiab-form-check-label">Agree to terms and conditions</label>
               <div class="invalid-feedback">You must agree before submitting.</div>
             </div>
           </div>
         </div>
 
-        <button class="aiab-btn btn--primary" onclick="validateForm()">Validate Form</button>
+        <button class="aiab-btn aiab-btn--primary" onclick="validateForm()">Validate Form</button>
       </div>
 
       <div class="code-block">
         <pre><code>&lt;!-- Valid Input --&gt;
 &lt;div class="aiab-form-group"&gt;
   &lt;label for="valid-input"&gt;Valid Input&lt;/label&gt;
-  &lt;input type="text" id="valid-input" class="aiab-form-control is-valid" value="This looks good!"&gt;
+  &lt;input type="text" id="valid-input" class="aiab-form-control aiab-is-valid" value="This looks good!"&gt;
   &lt;div class="valid-feedback"&gt;Great! This field is valid.&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Invalid Input --&gt;
 &lt;div class="aiab-form-group"&gt;
   &lt;label for="invalid-input"&gt;Invalid Input&lt;/label&gt;
-  &lt;input type="text" id="invalid-input" class="aiab-form-control is-invalid"&gt;
+  &lt;input type="text" id="invalid-input" class="aiab-form-control aiab-is-invalid"&gt;
   &lt;div class="invalid-feedback"&gt;Please provide a valid input.&lt;/div&gt;
 &lt;/div&gt;
 
@@ -646,7 +646,7 @@
 &lt;div class="aiab-form-group"&gt;
   &lt;label for="help-input"&gt;Input with Help Text&lt;/label&gt;
   &lt;input type="text" id="help-input" class="aiab-form-control"&gt;
-  &lt;div class="form-text"&gt;This is some helpful text.&lt;/div&gt;
+  &lt;div class="aiab-form-text"&gt;This is some helpful text.&lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </section>
@@ -659,7 +659,7 @@
       <div class="demo-section">
         <div class="demo-title">Form Grid System</div>
         <div class="form-demo">
-          <div class="form-grid-2">
+          <div class="aiab-form-grid-2">
             <div class="aiab-form-group">
               <label for="first-name">First Name</label>
               <input type="text" id="first-name" class="aiab-form-control" placeholder="John">
@@ -675,7 +675,7 @@
             <input type="email" id="email-grid" class="aiab-form-control" placeholder="john.doe@example.com">
           </div>
 
-          <div class="form-grid-3">
+          <div class="aiab-form-grid-3">
             <div class="aiab-form-group">
               <label for="city">City</label>
               <input type="text" id="city" class="aiab-form-control" placeholder="New York">
@@ -699,7 +699,7 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Two Column Grid --&gt;
-&lt;div class="form-grid-2"&gt;
+&lt;div class="aiab-form-grid-2"&gt;
   &lt;div class="aiab-form-group"&gt;
     &lt;label for="first-name"&gt;First Name&lt;/label&gt;
     &lt;input type="text" id="first-name" class="aiab-form-control"&gt;
@@ -711,7 +711,7 @@
 &lt;/div&gt;
 
 &lt;!-- Three Column Grid --&gt;
-&lt;div class="form-grid-3"&gt;
+&lt;div class="aiab-form-grid-3"&gt;
   &lt;div class="aiab-form-group"&gt;
     &lt;label for="city"&gt;City&lt;/label&gt;
     &lt;input type="text" id="city" class="aiab-form-control"&gt;
@@ -731,7 +731,7 @@
       <div class="demo-section">
         <div class="demo-title">Inline Form Example</div>
         <div class="form-demo">
-          <form class="form-inline">
+          <form class="aiab-form-inline">
             <div class="aiab-form-group">
               <label for="inline-name">Name</label>
               <input type="text" id="inline-name" class="aiab-form-control" placeholder="Jane Doe">
@@ -740,13 +740,13 @@
               <label for="inline-email">Email</label>
               <input type="email" id="inline-email" class="aiab-form-control" placeholder="jane@example.com">
             </div>
-            <button type="submit" class="aiab-btn btn--primary">Sign up</button>
+            <button type="submit" class="aiab-btn aiab-btn--primary">Sign up</button>
           </form>
         </div>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;form class="form-inline"&gt;
+        <pre><code>&lt;form class="aiab-form-inline"&gt;
   &lt;div class="aiab-form-group"&gt;
     &lt;label for="inline-name"&gt;Name&lt;/label&gt;
     &lt;input type="text" id="inline-name" class="aiab-form-control" placeholder="Jane Doe"&gt;
@@ -755,7 +755,7 @@
     &lt;label for="inline-email"&gt;Email&lt;/label&gt;
     &lt;input type="email" id="inline-email" class="aiab-form-control" placeholder="jane@example.com"&gt;
   &lt;/div&gt;
-  &lt;button type="submit" class="aiab-btn btn--primary"&gt;Sign up&lt;/button&gt;
+  &lt;button type="submit" class="aiab-btn aiab-btn--primary"&gt;Sign up&lt;/button&gt;
 &lt;/form&gt;</code></pre>
       </div>
     </section>
@@ -770,7 +770,7 @@
           <div class="aiab-form-group">
             <label for="range-input">Range Input</label>
             <input type="range" id="range-input" class="aiab-form-control" min="0" max="100" value="50">
-            <div class="form-text">Current value: <span id="range-value">50</span></div>
+            <div class="aiab-form-text">Current value: <span id="range-value">50</span></div>
           </div>
 
           <div class="aiab-form-group">
@@ -834,7 +834,7 @@
             <fieldset>
               <legend>Contact Information</legend>
 
-              <div class="form-grid-2">
+              <div class="aiab-form-grid-2">
                 <div class="aiab-form-group">
                   <label for="contact-first-name">First Name *</label>
                   <input type="text" id="contact-first-name" class="aiab-form-control" required>
@@ -877,23 +877,23 @@
               </div>
 
               <div class="aiab-form-group">
-                <div class="form-check">
-                  <input type="checkbox" id="contact-newsletter" class="form-check-input">
-                  <label for="contact-newsletter" class="form-check-label">Subscribe to our newsletter</label>
+                <div class="aiab-form-check">
+                  <input type="checkbox" id="contact-newsletter" class="aiab-form-check-input">
+                  <label for="contact-newsletter" class="aiab-form-check-label">Subscribe to our newsletter</label>
                 </div>
               </div>
 
               <div class="aiab-form-group">
-                <div class="form-check">
-                  <input type="checkbox" id="contact-terms" class="form-check-input" required>
-                  <label for="contact-terms" class="form-check-label">I agree to the terms and conditions *</label>
+                <div class="aiab-form-check">
+                  <input type="checkbox" id="contact-terms" class="aiab-form-check-input" required>
+                  <label for="contact-terms" class="aiab-form-check-label">I agree to the terms and conditions *</label>
                   <div class="invalid-feedback">You must agree to the terms and conditions.</div>
                 </div>
               </div>
 
               <div class="aiab-form-group">
-                <button type="submit" class="aiab-btn btn--primary">Send Message</button>
-                <button type="reset" class="aiab-btn btn--secondary">Clear Form</button>
+                <button type="submit" class="aiab-btn aiab-btn--primary">Send Message</button>
+                <button type="reset" class="aiab-btn aiab-btn--secondary">Clear Form</button>
               </div>
             </fieldset>
           </form>
@@ -905,7 +905,7 @@
   &lt;fieldset&gt;
     &lt;legend&gt;Contact Information&lt;/legend&gt;
 
-    &lt;div class="form-grid-2"&gt;
+    &lt;div class="aiab-form-grid-2"&gt;
       &lt;div class="aiab-form-group"&gt;
         &lt;label for="first-name"&gt;First Name *&lt;/label&gt;
         &lt;input type="text" id="first-name" class="aiab-form-control" required&gt;
@@ -925,7 +925,7 @@
     &lt;/div&gt;
 
     &lt;div class="aiab-form-group"&gt;
-      &lt;button type="submit" class="aiab-btn btn--primary"&gt;Send Message&lt;/button&gt;
+      &lt;button type="submit" class="aiab-btn aiab-btn--primary"&gt;Send Message&lt;/button&gt;
     &lt;/div&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
@@ -950,19 +950,19 @@
             <td>Base form control styling</td>
           </tr>
           <tr>
-            <td><code>.form-control-sm</code></td>
+            <td><code>.aiab-form-control-sm</code></td>
             <td>Small form control</td>
           </tr>
           <tr>
-            <td><code>.form-control-lg</code></td>
+            <td><code>.aiab-form-control-lg</code></td>
             <td>Large form control</td>
           </tr>
           <tr>
             <td><code>.aiab-form-group</code></td>
-            <td>Form field grouping container</td>
+            <td>Form field grouping aiab-container</td>
           </tr>
           <tr>
-            <td><code>.form-text</code> / <code>.help-text</code></td>
+            <td><code>.aiab-form-text</code> / <code>.help-text</code></td>
             <td>Helper text for form fields</td>
           </tr>
         </tbody>
@@ -978,24 +978,24 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.form-inline</code></td>
+            <td><code>.aiab-form-inline</code></td>
             <td>Inline form layout</td>
           </tr>
           <tr>
-            <td><code>.form-grid</code></td>
-            <td>Auto-fit grid layout</td>
+            <td><code>.aiab-form-grid</code></td>
+            <td>Auto-fit aiab-grid layout</td>
           </tr>
           <tr>
-            <td><code>.form-grid-2</code></td>
-            <td>Two-column grid layout</td>
+            <td><code>.aiab-form-grid-2</code></td>
+            <td>Two-column aiab-grid layout</td>
           </tr>
           <tr>
-            <td><code>.form-grid-3</code></td>
-            <td>Three-column grid layout</td>
+            <td><code>.aiab-form-grid-3</code></td>
+            <td>Three-column aiab-grid layout</td>
           </tr>
           <tr>
-            <td><code>.form-row</code></td>
-            <td>Flex row for form fields</td>
+            <td><code>.aiab-form-row</code></td>
+            <td>Flex aiab-row for form fields</td>
           </tr>
         </tbody>
       </table>
@@ -1010,19 +1010,19 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.form-check</code></td>
+            <td><code>.aiab-form-check</code></td>
             <td>Checkbox/radio wrapper</td>
           </tr>
           <tr>
-            <td><code>.form-check-input</code></td>
+            <td><code>.aiab-form-check-input</code></td>
             <td>Checkbox/radio input</td>
           </tr>
           <tr>
-            <td><code>.form-check-label</code></td>
+            <td><code>.aiab-form-check-label</code></td>
             <td>Checkbox/radio label</td>
           </tr>
           <tr>
-            <td><code>.form-check-inline</code></td>
+            <td><code>.aiab-form-check-inline</code></td>
             <td>Inline checkbox/radio</td>
           </tr>
         </tbody>
@@ -1038,8 +1038,8 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.form-floating</code></td>
-            <td>Floating label container</td>
+            <td><code>.aiab-form-floating</code></td>
+            <td>Floating label aiab-container</td>
           </tr>
         </tbody>
       </table>
@@ -1054,11 +1054,11 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.is-valid</code></td>
+            <td><code>.aiab-is-valid</code></td>
             <td>Valid form control state</td>
           </tr>
           <tr>
-            <td><code>.is-invalid</code></td>
+            <td><code>.aiab-is-invalid</code></td>
             <td>Invalid form control state</td>
           </tr>
           <tr>
@@ -1123,7 +1123,7 @@ class FormValidator {
 
   handleInput(e) {
     const field = e.target;
-    if (field.classList.contains('is-invalid') || field.classList.contains('is-valid')) {
+    if (field.classList.contains('aiab-is-invalid') || field.classList.contains('aiab-is-valid')) {
       this.validateField(field);
     }
   }
@@ -1169,7 +1169,7 @@ class FormValidator {
 
     if (!value) return true; // Empty values are handled by required check
 
-    switch (type) {
+    aiab-switch (type) {
       case 'email':
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
       case 'url':
@@ -1187,8 +1187,8 @@ class FormValidator {
   }
 
   updateFieldState(field, isValid) {
-    field.classList.remove('is-valid', 'is-invalid');
-    field.classList.add(isValid ? 'is-valid' : 'is-invalid');
+    field.classList.remove('aiab-is-valid', 'aiab-is-invalid');
+    field.classList.add(isValid ? 'aiab-is-valid' : 'aiab-is-invalid');
 
     // Update feedback messages
     const feedback = field.parentNode.querySelector(
@@ -1223,7 +1223,7 @@ class FormValidator {
     console.log('Form has validation errors');
 
     // Focus first invalid field
-    const firstInvalid = this.form.querySelector('.is-invalid');
+    const firstInvalid = this.form.querySelector('.aiab-is-invalid');
     if (firstInvalid) {
       firstInvalid.focus();
     }
@@ -1232,15 +1232,15 @@ class FormValidator {
   }
 
   showMessage(text, type) {
-    // Create and show alert message
-    const alert = document.createElement('div');
-    alert.className = `alert alert--${type}`;
-    alert.textContent = text;
+    // Create and show aiab-alert message
+    const aiab-alert = document.createElement('div');
+    aiab-alert.className = `aiab-alert aiab-alert--${type}`;
+    aiab-alert.textContent = text;
 
     this.form.insertBefore(alert, this.form.firstChild);
 
     // Remove after 5 seconds
-    setTimeout(() => alert.remove(), 5000);
+    setTimeout(() => aiab-alert.remove(), 5000);
   }
 
   reset() {
@@ -1248,9 +1248,9 @@ class FormValidator {
     this.form.classList.remove('was-validated');
 
     // Clear all validation states
-    const fields = this.form.querySelectorAll('.is-valid, .is-invalid');
+    const fields = this.form.querySelectorAll('.aiab-is-valid, .aiab-is-invalid');
     fields.forEach(field => {
-      field.classList.remove('is-valid', 'is-invalid');
+      field.classList.remove('aiab-is-valid', 'aiab-is-invalid');
     });
   }
 }
@@ -1386,8 +1386,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Simulate validation
         const isValid = Math.random() > 0.5; // Random validation for demo
 
-        input.classList.remove('is-valid', 'is-invalid');
-        input.classList.add(isValid ? 'is-valid' : 'is-invalid');
+        input.classList.remove('aiab-is-valid', 'aiab-is-invalid');
+        input.classList.add(isValid ? 'aiab-is-valid' : 'aiab-is-invalid');
       });
     }
 
@@ -1402,18 +1402,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         requiredFields.forEach(field => {
           if (!field.value.trim()) {
-            field.classList.add('is-invalid');
+            field.classList.add('aiab-is-invalid');
             isValid = false;
           } else {
-            field.classList.remove('is-invalid');
-            field.classList.add('is-valid');
+            field.classList.remove('aiab-is-invalid');
+            field.classList.add('aiab-is-valid');
           }
         });
 
         if (isValid) {
-          alert('Form submitted successfully! (This is just a demo)');
+          aiab-alert('Form submitted successfully! (This is just a demo)');
         } else {
-          alert('Please fill in all required fields.');
+          aiab-alert('Please fill in all required fields.');
         }
       });
 
@@ -1422,11 +1422,11 @@ document.addEventListener('DOMContentLoaded', () => {
       requiredFields.forEach(field => {
         field.addEventListener('blur', () => {
           if (field.value.trim()) {
-            field.classList.remove('is-invalid');
-            field.classList.add('is-valid');
+            field.classList.remove('aiab-is-invalid');
+            field.classList.add('aiab-is-valid');
           } else {
-            field.classList.remove('is-valid');
-            field.classList.add('is-invalid');
+            field.classList.remove('aiab-is-valid');
+            field.classList.add('aiab-is-invalid');
           }
         });
       });

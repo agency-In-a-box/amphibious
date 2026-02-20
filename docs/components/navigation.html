@@ -139,37 +139,37 @@
 
     /* Feature List */
     .feature-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
 
-    .feature-card {
+    .aiab-feature-card {
       background: #f8f9fa;
       padding: 1.5rem;
       border-radius: 0.5rem;
       border-left: 4px solid #ED8B00;
     }
 
-    .feature-card h4 {
+    .aiab-feature-card h4 {
       margin-top: 0;
       color: #2c3e50;
     }
 
     /* Navigation */
-    .nav-breadcrumb {
+    .aiab-nav-breadcrumb {
       background: rgba(255, 255, 255, 0.9);
       padding: 1rem 0;
       margin-bottom: 1rem;
     }
 
-    .nav-breadcrumb a {
+    .aiab-nav-breadcrumb a {
       color: #ED8B00;
       text-decoration: none;
     }
 
-    .nav-breadcrumb a:hover {
+    .aiab-nav-breadcrumb a:hover {
       text-decoration: underline;
     }
 
@@ -204,7 +204,7 @@
       color: #2c3e50;
     }
 
-    /* Demo responsive container */
+    /* Demo responsive aiab-container */
     .demo-responsive {
       background: #f8f9fa;
       border: 1px solid #dee2e6;
@@ -212,7 +212,7 @@
       overflow: hidden;
     }
 
-    /* Breadcrumb demo container */
+    /* Breadcrumb demo aiab-container */
     .demo-breadcrumb-container {
       background: white;
       padding: 1rem;
@@ -250,10 +250,10 @@
 </head>
 <body>
   <!-- Site Navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
     <ul class="horizontal branded">
-      <li><a href="/" class="site-logo">Amphibious</a></li>
+      <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
         <ul>
           <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -283,7 +283,7 @@
           <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
           <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
           <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
         </ul>
       </li>
       <li><a href="/docs/features.html">Features</a>
@@ -301,7 +301,7 @@
 
   <header class="docs-header">
     <div class="aiab-container">
-      <nav class="nav-breadcrumb">
+      <nav class="aiab-nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
         <a href="/docs/components/">Components</a> ›
@@ -319,27 +319,27 @@
       <p>The Navigation component provides comprehensive navigation solutions for websites and applications. It includes horizontal and vertical navigation, multi-level dropdowns, breadcrumbs, filter navigation, and responsive mobile menus. The component maintains the original A.mphibio.us design patterns while adding modern accessibility features and responsive behavior.</p>
 
       <div class="feature-list">
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🧭 Multiple Layouts</h4>
-          <p>Horizontal, vertical, and modern navigation layouts with full dropdown support.</p>
+          <p>Horizontal, vertical, and modern navigation layouts with full aiab-dropdown support.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>📱 Responsive Design</h4>
           <p>Automatic mobile adaptation with hamburger menus and touch-friendly interactions.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🏗️ Dropdown Menus</h4>
           <p>Multi-level dropdowns with hover and click interactions for complex navigation structures.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🍞 Breadcrumb Navigation</h4>
-          <p>Multiple breadcrumb styles with customizable separators for hierarchy display.</p>
+          <p>Multiple aiab-breadcrumb styles with customizable separators for hierarchy display.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>♿ Full Accessibility</h4>
           <p>Keyboard navigation, focus management, ARIA attributes, and screen reader support.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🎨 Flexible Styling</h4>
           <p>CSS variables for easy theming, transparent navigation, and sticky positioning.</p>
         </div>
@@ -650,7 +650,7 @@
 
         <div class="demo-breadcrumb-container">
           <h4>Slash Separator</h4>
-          <ul class="aiab-breadcrumb breadcrumb-slash">
+          <ul class="aiab-breadcrumb aiab-breadcrumb-slash">
             <li><a href="#home">Home</a></li>
             <li><a href="#products">Products</a></li>
             <li><a href="#electronics">Electronics</a></li>
@@ -660,7 +660,7 @@
 
         <div class="demo-breadcrumb-container">
           <h4>Arrow Separator</h4>
-          <ul class="aiab-breadcrumb breadcrumb-arrow">
+          <ul class="aiab-breadcrumb aiab-breadcrumb-arrow">
             <li><a href="#home">Home</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#2024">2024</a></li>
@@ -670,7 +670,7 @@
 
         <div class="demo-breadcrumb-container">
           <h4>Dot Separator</h4>
-          <ul class="aiab-breadcrumb breadcrumb-dot">
+          <ul class="aiab-breadcrumb aiab-breadcrumb-dot">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li class="aiab-active"><a href="#web-design">Web Design</a></li>
@@ -688,21 +688,21 @@
 &lt;/ul&gt;
 
 &lt;!-- Slash Separator --&gt;
-&lt;ul class="aiab-breadcrumb breadcrumb-slash"&gt;
+&lt;ul class="aiab-breadcrumb aiab-breadcrumb-slash"&gt;
   &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#products"&gt;Products&lt;/a&gt;&lt;/li&gt;
   &lt;li class="aiab-active"&gt;&lt;a href="#electronics"&gt;Electronics&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- Arrow Separator --&gt;
-&lt;ul class="aiab-breadcrumb breadcrumb-arrow"&gt;
+&lt;ul class="aiab-breadcrumb aiab-breadcrumb-arrow"&gt;
   &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
   &lt;li class="aiab-active"&gt;&lt;a href="#2024"&gt;2024&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- Dot Separator --&gt;
-&lt;ul class="aiab-breadcrumb breadcrumb-dot"&gt;
+&lt;ul class="aiab-breadcrumb aiab-breadcrumb-dot"&gt;
   &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#services"&gt;Services&lt;/a&gt;&lt;/li&gt;
   &lt;li class="aiab-active"&gt;&lt;a href="#web-design"&gt;Web Design&lt;/a&gt;&lt;/li&gt;
@@ -752,11 +752,11 @@
               <div>
                 <strong>Your Brand</strong>
               </div>
-              <button class="nav-toggle" onclick="toggleMobileNav()" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="nav-toggle-icon"></span>
+              <button class="aiab-nav-toggle" onclick="toggleMobileNav()" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="aiab-nav-toggle-icon"></span>
               </button>
             </div>
-            <div class="nav-mobile-hide" id="mobile-nav">
+            <div class="aiab-nav-mobile-hide" id="mobile-nav">
               <ul class="horizontal" style="margin-top: 1rem;">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -772,11 +772,11 @@
         <pre><code>&lt;nav&gt;
   &lt;div&gt;
     &lt;div&gt;Your Brand&lt;/div&gt;
-    &lt;button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"&gt;
-      &lt;span class="nav-toggle-icon"&gt;&lt;/span&gt;
+    &lt;button class="aiab-nav-toggle" aria-expanded="false" aria-label="Toggle navigation"&gt;
+      &lt;span class="aiab-nav-toggle-icon"&gt;&lt;/span&gt;
     &lt;/button&gt;
   &lt;/div&gt;
-  &lt;div class="nav-mobile-hide" id="mobile-nav"&gt;
+  &lt;div class="aiab-nav-mobile-hide" id="mobile-nav"&gt;
     &lt;ul class="horizontal"&gt;
       &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
@@ -797,7 +797,7 @@
 
         <h4>Sticky Navigation</h4>
         <div style="background: #ED8B00; color: white; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
-          <nav class="nav-sticky">
+          <nav class="aiab-nav-sticky">
             <ul class="horizontal">
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About</a></li>
@@ -809,7 +809,7 @@
 
         <h4>Transparent Navigation</h4>
         <div style="background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%); color: white; padding: 2rem; border-radius: 0.5rem;">
-          <nav class="nav-transparent">
+          <nav class="aiab-nav-transparent">
             <ul class="horizontal">
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About</a></li>
@@ -826,7 +826,7 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Sticky Navigation --&gt;
-&lt;nav class="nav-sticky"&gt;
+&lt;nav class="aiab-nav-sticky"&gt;
   &lt;ul class="horizontal"&gt;
     &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
@@ -836,10 +836,10 @@
 &lt;/nav&gt;
 
 &lt;!-- Fixed Navigation --&gt;
-&lt;nav class="nav-fixed"&gt;...&lt;/nav&gt;
+&lt;nav class="aiab-nav-fixed"&gt;...&lt;/nav&gt;
 
 &lt;!-- Transparent Navigation --&gt;
-&lt;nav class="nav-transparent"&gt;...&lt;/nav&gt;</code></pre>
+&lt;nav class="aiab-nav-transparent"&gt;...&lt;/nav&gt;</code></pre>
       </div>
     </section>
 
@@ -857,16 +857,16 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.horizontal</code> / <code>.nav-horizontal</code></td>
+            <td><code>.horizontal</code> / <code>.aiab-nav-horizontal</code></td>
             <td>Horizontal navigation layout</td>
           </tr>
           <tr>
-            <td><code>.vertical</code> / <code>.nav-vertical</code></td>
+            <td><code>.vertical</code> / <code>.aiab-nav-vertical</code></td>
             <td>Vertical navigation layout</td>
           </tr>
           <tr>
             <td><code>.aiab-nav</code></td>
-            <td>Generic navigation container</td>
+            <td>Generic navigation aiab-container</td>
           </tr>
           <tr>
             <td><code>.aiab-active</code></td>
@@ -886,7 +886,7 @@
         <tbody>
           <tr>
             <td><code>.amp-nav</code></td>
-            <td>Modern navigation container</td>
+            <td>Modern navigation aiab-container</td>
           </tr>
           <tr>
             <td><code>.amp-nav__wrapper</code></td>
@@ -894,7 +894,7 @@
           </tr>
           <tr>
             <td><code>.amp-nav__brand</code></td>
-            <td>Brand/logo container</td>
+            <td>Brand/logo aiab-container</td>
           </tr>
           <tr>
             <td><code>.amp-nav__logo</code></td>
@@ -918,7 +918,7 @@
           </tr>
           <tr>
             <td><code>.amp-nav__dropdown</code></td>
-            <td>Dropdown menu container</td>
+            <td>Dropdown menu aiab-container</td>
           </tr>
           <tr>
             <td><code>.amp-nav__dropdown-link</code></td>
@@ -926,7 +926,7 @@
           </tr>
           <tr>
             <td><code>.amp-nav__actions</code></td>
-            <td>Action buttons container</td>
+            <td>Action buttons aiab-container</td>
           </tr>
           <tr>
             <td><code>.amp-nav__toggle</code></td>
@@ -945,19 +945,19 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.nav-sticky</code></td>
+            <td><code>.aiab-nav-sticky</code></td>
             <td>Sticky positioned navigation</td>
           </tr>
           <tr>
-            <td><code>.nav-fixed</code></td>
+            <td><code>.aiab-nav-fixed</code></td>
             <td>Fixed positioned navigation</td>
           </tr>
           <tr>
-            <td><code>.nav-transparent</code></td>
+            <td><code>.aiab-nav-transparent</code></td>
             <td>Transparent navigation</td>
           </tr>
           <tr>
-            <td><code>.nav-mobile-hide</code></td>
+            <td><code>.aiab-nav-mobile-hide</code></td>
             <td>Hidden on mobile by default</td>
           </tr>
           <tr>
@@ -978,18 +978,18 @@
         <tbody>
           <tr>
             <td><code>.aiab-breadcrumb</code></td>
-            <td>Base breadcrumb container</td>
+            <td>Base aiab-breadcrumb aiab-container</td>
           </tr>
           <tr>
-            <td><code>.breadcrumb-slash</code></td>
+            <td><code>.aiab-breadcrumb-slash</code></td>
             <td>Slash separator style</td>
           </tr>
           <tr>
-            <td><code>.breadcrumb-arrow</code></td>
+            <td><code>.aiab-breadcrumb-arrow</code></td>
             <td>Arrow separator style</td>
           </tr>
           <tr>
-            <td><code>.breadcrumb-dot</code></td>
+            <td><code>.aiab-breadcrumb-dot</code></td>
             <td>Dot separator style</td>
           </tr>
         </tbody>
@@ -1005,11 +1005,11 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.nav-toggle</code></td>
+            <td><code>.aiab-nav-toggle</code></td>
             <td>Mobile menu toggle button</td>
           </tr>
           <tr>
-            <td><code>.nav-toggle-icon</code></td>
+            <td><code>.aiab-nav-toggle-icon</code></td>
             <td>Hamburger icon</td>
           </tr>
           <tr>
@@ -1027,22 +1027,22 @@
       <div class="code-block">
         <pre><code>// Mobile navigation toggle
 function toggleMobileNav() {
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.nav-mobile-hide');
+  const toggle = document.querySelector('.aiab-nav-toggle');
+  const aiab-nav = document.querySelector('.aiab-nav-mobile-hide');
   const isOpen = toggle.getAttribute('aria-expanded') === 'true';
 
   toggle.setAttribute('aria-expanded', !isOpen);
-  nav.classList.toggle('is-open');
+  aiab-nav.classList.toggle('is-open');
 }
 
-// Modern navigation with dropdown management
+// Modern navigation with aiab-dropdown management
 class AmpNavigation {
   constructor(element) {
-    this.nav = element;
-    this.toggle = this.nav.querySelector('.amp-nav__toggle');
-    this.menu = this.nav.querySelector('.amp-nav__menu');
-    this.dropdowns = this.nav.querySelectorAll('.amp-nav__dropdown');
-    this.searchButton = this.nav.querySelector('.amp-nav__search');
+    this.aiab-nav = element;
+    this.toggle = this.aiab-nav.querySelector('.amp-nav__toggle');
+    this.menu = this.aiab-nav.querySelector('.amp-nav__menu');
+    this.dropdowns = this.aiab-nav.querySelectorAll('.amp-nav__dropdown');
+    this.searchButton = this.aiab-nav.querySelector('.amp-nav__search');
 
     this.init();
   }
@@ -1060,13 +1060,13 @@ class AmpNavigation {
 
     // Close mobile menu on outside click
     document.addEventListener('click', (e) => {
-      if (!this.nav.contains(e.target) && this.menu.classList.contains('amp-nav__menu--open')) {
+      if (!this.aiab-nav.contains(e.target) && this.menu.classList.contains('amp-nav__menu--open')) {
         this.closeMobile();
       }
     });
 
     // Keyboard navigation
-    this.nav.addEventListener('keydown', (e) => this.handleKeyboard(e));
+    this.aiab-nav.addEventListener('keydown', (e) => this.handleKeyboard(e));
 
     // Sticky navigation on scroll
     this.handleScroll();
@@ -1106,7 +1106,7 @@ class AmpNavigation {
   }
 
   toggleSearch() {
-    // Create search modal
+    // Create search aiab-modal
     const searchModal = document.createElement('div');
     searchModal.className = 'amp-nav__search-modal amp-nav__search-modal--open';
 
@@ -1145,7 +1145,7 @@ class AmpNavigation {
     if (e.key === 'Escape') {
       // Close any open dropdowns
       this.dropdowns.forEach(dropdown => {
-        dropdown.classList.remove('amp-nav__dropdown--open');
+        aiab-dropdown.classList.remove('amp-nav__dropdown--open');
       });
     }
   }
@@ -1154,16 +1154,16 @@ class AmpNavigation {
     const scrollY = window.scrollY;
 
     if (scrollY > 100) {
-      this.nav.classList.add('amp-nav--sticky');
+      this.aiab-nav.classList.add('amp-nav--sticky');
     } else {
-      this.nav.classList.remove('amp-nav--sticky');
+      this.aiab-nav.classList.remove('amp-nav--sticky');
     }
 
     // Hide/show navigation based on scroll direction
     if (scrollY > this.lastScrollY && scrollY > 500) {
-      this.nav.classList.add('amp-nav--hidden');
+      this.aiab-nav.classList.add('amp-nav--hidden');
     } else {
-      this.nav.classList.remove('amp-nav--hidden');
+      this.aiab-nav.classList.remove('amp-nav--hidden');
     }
 
     this.lastScrollY = scrollY;
@@ -1178,7 +1178,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Legacy navigation toggle
-  const navToggle = document.querySelector('.nav-toggle');
+  const navToggle = document.querySelector('.aiab-nav-toggle');
   if (navToggle) {
     navToggle.addEventListener('click', toggleMobileNav);
   }
@@ -1217,7 +1217,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <h3>Performance</h3>
       <ul>
         <li><strong>Minimal JavaScript:</strong> Use CSS for hover effects and basic interactions</li>
-        <li><strong>Lazy loading:</strong> Load dropdown content only when needed for large menus</li>
+        <li><strong>Lazy loading:</strong> Load aiab-dropdown content only when needed for large menus</li>
         <li><strong>Optimize images:</strong> Use SVG icons and optimize any logo images</li>
         <li><strong>CSS efficiency:</strong> Use CSS variables for easy theming and maintenance</li>
       </ul>
@@ -1242,12 +1242,12 @@ document.addEventListener('DOMContentLoaded', () => {
   <script>
     // Mobile navigation toggle function
     function _toggleMobileNav() {
-      const toggle = document.querySelector('.nav-toggle');
-      const nav = document.querySelector('.nav-mobile-hide');
+      const toggle = document.querySelector('.aiab-nav-toggle');
+      const aiab-nav = document.querySelector('.aiab-nav-mobile-hide');
       const isOpen = toggle.getAttribute('aria-expanded') === 'true';
 
       toggle.setAttribute('aria-expanded', !isOpen);
-      nav.classList.toggle('is-open');
+      aiab-nav.classList.toggle('is-open');
     }
 
     // Initialize demo interactions
@@ -1266,17 +1266,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      // Simple dropdown toggle for modern nav demo
+      // Simple aiab-dropdown toggle for modern aiab-nav demo
       const dropdownTriggers = document.querySelectorAll('.amp-nav__item');
       dropdownTriggers.forEach(item => {
-        const dropdown = item.querySelector('.amp-nav__dropdown');
+        const aiab-dropdown = item.querySelector('.amp-nav__dropdown');
         if (dropdown) {
           item.addEventListener('mouseenter', () => {
-            dropdown.classList.add('amp-nav__dropdown--open');
+            aiab-dropdown.classList.add('amp-nav__dropdown--open');
           });
 
           item.addEventListener('mouseleave', () => {
-            dropdown.classList.remove('amp-nav__dropdown--open');
+            aiab-dropdown.classList.remove('amp-nav__dropdown--open');
           });
         }
       });

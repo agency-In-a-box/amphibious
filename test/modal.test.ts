@@ -13,17 +13,17 @@ describe('Modal Module', () => {
   beforeEach(() => {
     document.body.innerHTML = `
       <div id="test-modal">
-        <div class="modal__dialog">
-          <div class="modal__header">
-            <h2 class="modal__title">Test Modal</h2>
+        <div class="aiab-modal__dialog">
+          <div class="aiab-modal__header">
+            <h2 class="aiab-modal__title">Test Modal</h2>
             <button class="modal__close" aria-label="Close">&times;</button>
           </div>
-          <div class="modal__body">
+          <div class="aiab-modal__body">
             <p>Modal body content</p>
             <a href="#">Link</a>
             <button>Focusable button</button>
           </div>
-          <div class="modal__footer">
+          <div class="aiab-modal__footer">
             <button data-modal-cancel>Cancel</button>
             <button data-modal-confirm>Confirm</button>
           </div>
@@ -84,13 +84,13 @@ describe('Modal Module', () => {
 
     it('should create backdrop by default', () => {
       new Modal(modalElement);
-      const backdrop = document.querySelector('.modal-backdrop');
+      const backdrop = document.querySelector('.aiab-modal-backdrop');
       expect(backdrop).toBeTruthy();
     });
 
     it('should not create backdrop when disabled', () => {
       new Modal(modalElement, { backdrop: false });
-      const backdrop = document.querySelector('.modal-backdrop');
+      const backdrop = document.querySelector('.aiab-modal-backdrop');
       expect(backdrop).toBeNull();
     });
   });
@@ -109,14 +109,14 @@ describe('Modal Module', () => {
       const modal = new Modal(modalElement);
       modal.open();
 
-      expect(document.body.classList.contains('modal-open')).toBe(true);
+      expect(document.body.classList.contains('aiab-modal-open')).toBe(true);
     });
 
     it('should show backdrop on open', () => {
       const modal = new Modal(modalElement);
       modal.open();
 
-      const backdrop = document.querySelector('.modal-backdrop');
+      const backdrop = document.querySelector('.aiab-modal-backdrop');
       expect(backdrop?.classList.contains('is-visible')).toBe(true);
     });
 
@@ -135,7 +135,7 @@ describe('Modal Module', () => {
       modal.open();
       modal.close();
 
-      const backdrop = document.querySelector('.modal-backdrop');
+      const backdrop = document.querySelector('.aiab-modal-backdrop');
       expect(backdrop?.classList.contains('is-visible')).toBe(false);
     });
 
@@ -312,7 +312,7 @@ describe('Modal Module', () => {
       const modal = new Modal(modalElement);
       modal.setTitle('New Title');
 
-      const title = modalElement.querySelector('.modal__title');
+      const title = modalElement.querySelector('.aiab-modal__title');
       expect(title?.textContent).toBe('New Title');
     });
 
@@ -322,7 +322,7 @@ describe('Modal Module', () => {
       newContent.textContent = 'New content';
       modal.setContent(newContent, 'body');
 
-      const body = modalElement.querySelector('.modal__body');
+      const body = modalElement.querySelector('.aiab-modal__body');
       expect(body?.textContent).toContain('New content');
     });
   });
@@ -349,7 +349,7 @@ describe('Modal Module', () => {
       const modal = new Modal(modalElement);
       modal.destroy();
 
-      const backdrop = document.querySelector('.modal-backdrop');
+      const backdrop = document.querySelector('.aiab-modal-backdrop');
       expect(backdrop).toBeNull();
     });
 

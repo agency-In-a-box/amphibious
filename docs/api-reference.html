@@ -35,8 +35,8 @@
 
     /* Documentation Layout */
     .docs-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
+      display: aiab-grid;
+      aiab-grid-template-columns: 280px 1fr;
       gap: 2rem;
       max-width: 1400px;
       margin: 0 auto;
@@ -203,8 +203,8 @@
 
     /* CSS Class Grid */
     .css-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1rem;
       margin: 1.5rem 0;
     }
@@ -288,7 +288,7 @@
     /* Mobile Responsive */
     @media (max-width: 768px) {
       .docs-layout {
-        grid-template-columns: 1fr;
+        aiab-grid-template-columns: 1fr;
       }
       .docs-sidebar {
         position: static;
@@ -304,16 +304,16 @@
     <!-- Navigation Include -->
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
-    <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="nav-toggle-icon" aria-hidden="true"></span>
-      <span class="sr-only">Toggle navigation</span>
+    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
+      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
+      <span class="aiab-sr-only">Toggle navigation</span>
     </button>
 
     <ul id="main-nav" class="horizontal">
       <li>
-        <a href="/" class="site-logo">Amphibious</a>
+        <a href="/" class="aiab-site-logo">Amphibious</a>
         <ul>
           <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
           <li><a href="/#how_its_made">What is it made of?</a></li>
@@ -354,7 +354,7 @@
           <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
           <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
           <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
         </ul>
       </li>
       <li>
@@ -443,20 +443,20 @@
         </div>
 
         <!-- Grid System -->
-        <section aria-labelledby="grid-system">
-          <h2 id="grid-system">Grid System <span class="version-badge">v2.0.0</span></h2>
+        <section aria-labelledby="aiab-grid-system">
+          <h2 id="aiab-grid-system">Grid System <span class="version-badge">v2.0.0</span></h2>
 
-          <p>Amphibious uses a 16-column responsive grid system based on flexbox.</p>
+          <p>Amphibious uses a 16-column responsive aiab-grid system based on flexbox.</p>
 
           <h3>Container Classes</h3>
           <div class="css-grid">
             <div class="css-class-card">
               <h4>.aiab-container</h4>
-              <p>Fixed-width container with responsive breakpoints (max-width: 960px)</p>
+              <p>Fixed-width aiab-container with responsive breakpoints (max-width: 960px)</p>
             </div>
             <div class="css-class-card">
               <h4>.aiab-container-fluid</h4>
-              <p>Full-width container that spans the entire viewport width</p>
+              <p>Full-width aiab-container that spans the entire viewport width</p>
             </div>
           </div>
 
@@ -554,27 +554,27 @@
           <h3>Text Utilities</h3>
           <div class="css-grid">
             <div class="css-class-card">
-              <h4>.text-left</h4>
+              <h4>.aiab-text-left</h4>
               <p>Left-align text content</p>
             </div>
             <div class="css-class-card">
-              <h4>.text-center</h4>
+              <h4>.aiab-text-center</h4>
               <p>Center-align text content</p>
             </div>
             <div class="css-class-card">
-              <h4>.text-right</h4>
+              <h4>.aiab-text-right</h4>
               <p>Right-align text content</p>
             </div>
             <div class="css-class-card">
-              <h4>.text-muted</h4>
+              <h4>.aiab-text-muted</h4>
               <p>Muted text color (#6c757d)</p>
             </div>
             <div class="css-class-card">
-              <h4>.text-primary</h4>
+              <h4>.aiab-text-primary</h4>
               <p>Primary brand color text</p>
             </div>
             <div class="css-class-card">
-              <h4>.text-success</h4>
+              <h4>.aiab-text-success</h4>
               <p>Success state text color</p>
             </div>
           </div>
@@ -656,7 +656,7 @@
                 <td><code>searchEnabled</code></td>
                 <td><span class="type-badge boolean">boolean</span></td>
                 <td><code>true</code></td>
-                <td>Show search button and modal</td>
+                <td>Show search button and aiab-modal</td>
               </tr>
               <tr>
                 <td><code>themeToggle</code></td>
@@ -693,10 +693,10 @@
             <h4>Example Usage</h4>
             <div class="code-block">
               <pre><code>// Basic navigation
-const nav = amp.createNavigation('#navbar');
+const aiab-nav = amp.createNavigation('#navbar');
 
 // Advanced configuration
-const nav = amp.createNavigation('#navbar', {
+const aiab-nav = amp.createNavigation('#navbar', {
   sticky: true,
   transparent: false,
   searchEnabled: true,
@@ -721,9 +721,9 @@ const nav = amp.createNavigation('#navbar', {
           <div class="example-section">
             <h4>Example Usage</h4>
             <div class="code-block">
-              <pre><code>const nav = amp.createNavigation('#navbar');
+              <pre><code>const aiab-nav = amp.createNavigation('#navbar');
 // Later...
-nav.destroy();</code></pre>
+aiab-nav.destroy();</code></pre>
             </div>
           </div>
         </section>
@@ -737,7 +737,7 @@ nav.destroy();</code></pre>
             amp.createModal(id: string, selector: string | HTMLElement, options?: ModalOptions): AmphibiousModal
           </div>
 
-          <p>Creates a new modal dialog with customizable options and event handling.</p>
+          <p>Creates a new aiab-modal dialog with customizable options and event handling.</p>
 
           <h4>Parameters</h4>
           <table class="params-table">
@@ -754,19 +754,19 @@ nav.destroy();</code></pre>
                 <td><code>id</code></td>
                 <td><span class="type-badge string">string</span></td>
                 <td>Yes</td>
-                <td>Unique identifier for the modal</td>
+                <td>Unique identifier for the aiab-modal</td>
               </tr>
               <tr>
                 <td><code>selector</code></td>
                 <td><span class="type-badge string">string</span> | <span class="type-badge object">HTMLElement</span></td>
                 <td>Yes</td>
-                <td>CSS selector or DOM element for the modal content</td>
+                <td>CSS selector or DOM element for the aiab-modal content</td>
               </tr>
               <tr>
                 <td><code>options</code></td>
                 <td><span class="type-badge object">ModalOptions</span></td>
                 <td>No</td>
-                <td>Configuration options for the modal</td>
+                <td>Configuration options for the aiab-modal</td>
               </tr>
             </tbody>
           </table>
@@ -792,7 +792,7 @@ nav.destroy();</code></pre>
                 <td><code>centered</code></td>
                 <td><span class="type-badge boolean">boolean</span></td>
                 <td><code>false</code></td>
-                <td>Vertically center the modal</td>
+                <td>Vertically center the aiab-modal</td>
               </tr>
               <tr>
                 <td><code>backdrop</code></td>
@@ -804,7 +804,7 @@ nav.destroy();</code></pre>
                 <td><code>keyboard</code></td>
                 <td><span class="type-badge boolean">boolean</span></td>
                 <td><code>true</code></td>
-                <td>Close modal on Escape key</td>
+                <td>Close aiab-modal on Escape key</td>
               </tr>
               <tr>
                 <td><code>animation</code></td>
@@ -819,37 +819,37 @@ nav.destroy();</code></pre>
 
           <h4>open()</h4>
           <div class="api-signature">
-            modal.open(): Promise&lt;void&gt;
+            aiab-modal.open(): Promise&lt;void&gt;
           </div>
-          <p>Opens the modal with animation.</p>
+          <p>Opens the aiab-modal with animation.</p>
 
           <h4>close()</h4>
           <div class="api-signature">
-            modal.close(): Promise&lt;void&gt;
+            aiab-modal.close(): Promise&lt;void&gt;
           </div>
-          <p>Closes the modal with animation.</p>
+          <p>Closes the aiab-modal with animation.</p>
 
           <h4>toggle()</h4>
           <div class="api-signature">
-            modal.toggle(): Promise&lt;void&gt;
+            aiab-modal.toggle(): Promise&lt;void&gt;
           </div>
-          <p>Toggles the modal open/closed state.</p>
+          <p>Toggles the aiab-modal open/closed state.</p>
 
           <div class="example-section">
             <h4>Example Usage</h4>
             <div class="code-block">
-              <pre><code>// Create a modal
-const modal = amp.createModal('myModal', '#modalContent', {
+              <pre><code>// Create a aiab-modal
+const aiab-modal = amp.createModal('myModal', '#modalContent', {
   size: 'lg',
   centered: true,
   animation: 'fade'
 });
 
-// Open the modal
-await modal.open();
+// Open the aiab-modal
+await aiab-modal.open();
 
 // Close after 3 seconds
-setTimeout(() => modal.close(), 3000);</code></pre>
+setTimeout(() => aiab-modal.close(), 3000);</code></pre>
             </div>
           </div>
         </section>
@@ -955,7 +955,7 @@ setTimeout(() => modal.close(), 3000);</code></pre>
         &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class="slat-actions"&gt;
-        &lt;button class="aiab-btn btn--primary"&gt;Add to Cart&lt;/button&gt;
+        &lt;button class="aiab-btn aiab-btn--primary"&gt;Add to Cart&lt;/button&gt;
       &lt;/div&gt;
     &lt;/article&gt;
   &lt;/li&gt;
@@ -1044,7 +1044,7 @@ setTimeout(() => modal.close(), 3000);</code></pre>
             block: 'start'
           });
 
-          // Update active nav item
+          // Update active aiab-nav item
           document.querySelectorAll('.docs-nav a').forEach(link => {
             link.classList.remove('active');
           });
@@ -1053,7 +1053,7 @@ setTimeout(() => modal.close(), 3000);</code></pre>
       });
     });
 
-    // Highlight current section in nav on scroll
+    // Highlight current section in aiab-nav on scroll
     const sections = document.querySelectorAll('section[aria-labelledby]');
     const navLinks = document.querySelectorAll('.docs-nav a[href^="#"]');
 

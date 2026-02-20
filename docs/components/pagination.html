@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pagination Component - Amphibious 2.0 Documentation</title>
-  <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Pagination component - modern pagination with accessibility, multiple variants, and responsive design">
+  <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Pagination component - modern aiab-pagination with accessibility, multiple variants, and responsive design">
   <link rel="stylesheet" href="/src/css/main.css">
   <style>
     /* Documentation Styles */
@@ -139,42 +139,42 @@
 
     /* Feature List */
     .feature-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: aiab-grid;
+      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
 
-    .feature-card {
+    .aiab-feature-card {
       background: #f8f9fa;
       padding: 1.5rem;
       border-radius: 0.5rem;
       border-left: 4px solid #ED8B00;
     }
 
-    .feature-card h4 {
+    .aiab-feature-card h4 {
       margin-top: 0;
       color: #2c3e50;
     }
 
     /* Navigation */
-    .nav-breadcrumb {
+    .aiab-nav-breadcrumb {
       background: rgba(255, 255, 255, 0.9);
       padding: 1rem 0;
       margin-bottom: 1rem;
     }
 
-    .nav-breadcrumb a {
+    .aiab-nav-breadcrumb a {
       color: #ED8B00;
       text-decoration: none;
     }
 
-    .nav-breadcrumb a:hover {
+    .aiab-nav-breadcrumb a:hover {
       text-decoration: underline;
     }
 
     /* Pagination Demo Containers */
-    .pagination-demo {
+    .aiab-pagination-demo {
       background: white;
       padding: 2rem;
       border: 1px solid #dee2e6;
@@ -187,14 +187,14 @@
       gap: 1rem;
     }
 
-    .pagination-demo--full {
+    .aiab-pagination-demo--full {
       justify-content: space-between;
       align-items: center;
     }
 
     .demo-examples {
-      display: grid;
-      grid-template-columns: 1fr;
+      display: aiab-grid;
+      aiab-grid-template-columns: 1fr;
       gap: 2rem;
       margin: 2rem 0;
     }
@@ -213,11 +213,11 @@
         padding: 1.5rem;
       }
 
-      .pagination-demo {
+      .aiab-pagination-demo {
         padding: 1rem;
       }
 
-      .pagination-demo--full {
+      .aiab-pagination-demo--full {
         flex-direction: column;
         gap: 1rem;
       }
@@ -226,10 +226,10 @@
 </head>
 <body>
   <!-- Site Navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
     <ul class="horizontal branded">
-      <li><a href="/" class="site-logo">Amphibious</a></li>
+      <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
         <ul>
           <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -259,7 +259,7 @@
           <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
           <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
           <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
+          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
         </ul>
       </li>
       <li><a href="/docs/features.html">Features</a>
@@ -277,14 +277,14 @@
 
   <header class="docs-header">
     <div class="aiab-container">
-      <nav class="nav-breadcrumb">
+      <nav class="aiab-nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
         <a href="/docs/components/">Components</a> ›
         <span>Pagination</span>
       </nav>
       <h1>Pagination Component</h1>
-      <p>Modern pagination with accessibility, multiple variants, and responsive design</p>
+      <p>Modern aiab-pagination with accessibility, multiple variants, and responsive design</p>
     </div>
   </header>
 
@@ -295,27 +295,27 @@
       <p>The Pagination component provides accessible navigation through large sets of content. It supports multiple styles, sizes, and advanced features like page jumping, page size selection, and information display. The component is fully responsive and includes keyboard navigation and screen reader support.</p>
 
       <div class="feature-list">
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🎨 Multiple Styles</h4>
-          <p>Default, pills, rounded, borderless, outlined, and compact pagination variants.</p>
+          <p>Default, pills, rounded, borderless, outlined, and compact aiab-pagination variants.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>📏 Flexible Sizing</h4>
-          <p>Compact, default, and large pagination sizes for different interface densities.</p>
+          <p>Compact, default, and large aiab-pagination sizes for different interface densities.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>♿ Full Accessibility</h4>
           <p>ARIA labels, keyboard navigation, focus management, and screen reader support.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>📱 Responsive Design</h4>
           <p>Adaptive layouts that work on all screen sizes with smart content hiding.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>🔧 Advanced Features</h4>
           <p>Page jumping, page size selection, info display, and loading states.</p>
         </div>
-        <div class="feature-card">
+        <div class="aiab-feature-card">
           <h4>⚡ Performance Optimized</h4>
           <p>Efficient rendering and smooth interactions with minimal DOM manipulation.</p>
         </div>
@@ -329,7 +329,7 @@
       <h3>Default Pagination</h3>
       <div class="demo-section">
         <div class="demo-title">Standard Pagination Navigation</div>
-        <div class="pagination-demo">
+        <div class="aiab-pagination-demo">
           <nav aria-label="Pagination Navigation" role="navigation">
             <ul class="aiab-pagination">
               <li class="pagination__item pagination__item--nav">
@@ -424,9 +424,9 @@
       <h3>Simple Pagination</h3>
       <div class="demo-section">
         <div class="demo-title">Simple Previous/Next Pagination</div>
-        <div class="pagination-demo">
+        <div class="aiab-pagination-demo">
           <nav aria-label="Simple Pagination" role="navigation">
-            <ul class="aiab-pagination pagination--simple">
+            <ul class="aiab-pagination aiab-pagination--simple">
               <li class="pagination__item">
                 <a href="#" class="pagination__link" aria-label="Go to previous page">
                   <div class="pagination__nav">
@@ -454,7 +454,7 @@
 
       <div class="code-block">
         <pre><code>&lt;nav aria-label="Simple Pagination" role="navigation"&gt;
-  &lt;ul class="aiab-pagination pagination--simple"&gt;
+  &lt;ul class="aiab-pagination aiab-pagination--simple"&gt;
     &lt;li class="pagination__item"&gt;
       &lt;a href="#" class="pagination__link" aria-label="Go to previous page"&gt;
         &lt;div class="pagination__nav"&gt;
@@ -483,9 +483,9 @@
       <div class="demo-examples">
         <div>
           <h3>Pills Pagination</h3>
-          <div class="pagination-demo">
+          <div class="aiab-pagination-demo">
             <nav aria-label="Pills Pagination" role="navigation">
-              <ul class="aiab-pagination pagination--pills">
+              <ul class="aiab-pagination aiab-pagination--pills">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -511,9 +511,9 @@
 
         <div>
           <h3>Rounded Pagination</h3>
-          <div class="pagination-demo">
+          <div class="aiab-pagination-demo">
             <nav aria-label="Rounded Pagination" role="navigation">
-              <ul class="aiab-pagination pagination--rounded">
+              <ul class="aiab-pagination aiab-pagination--rounded">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -539,9 +539,9 @@
 
         <div>
           <h3>Borderless Pagination</h3>
-          <div class="pagination-demo">
+          <div class="aiab-pagination-demo">
             <nav aria-label="Borderless Pagination" role="navigation">
-              <ul class="aiab-pagination pagination--borderless">
+              <ul class="aiab-pagination aiab-pagination--borderless">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -567,9 +567,9 @@
 
         <div>
           <h3>Outlined Pagination</h3>
-          <div class="pagination-demo">
+          <div class="aiab-pagination-demo">
             <nav aria-label="Outlined Pagination" role="navigation">
-              <ul class="aiab-pagination pagination--outlined">
+              <ul class="aiab-pagination aiab-pagination--outlined">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -596,16 +596,16 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Pills Pagination --&gt;
-&lt;ul class="aiab-pagination pagination--pills"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination aiab-pagination--pills"&gt;...&lt;/ul&gt;
 
 &lt;!-- Rounded Pagination --&gt;
-&lt;ul class="aiab-pagination pagination--rounded"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination aiab-pagination--rounded"&gt;...&lt;/ul&gt;
 
 &lt;!-- Borderless Pagination --&gt;
-&lt;ul class="aiab-pagination pagination--borderless"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination aiab-pagination--borderless"&gt;...&lt;/ul&gt;
 
 &lt;!-- Outlined Pagination --&gt;
-&lt;ul class="aiab-pagination pagination--outlined"&gt;...&lt;/ul&gt;</code></pre>
+&lt;ul class="aiab-pagination aiab-pagination--outlined"&gt;...&lt;/ul&gt;</code></pre>
       </div>
     </section>
 
@@ -616,9 +616,9 @@
       <div class="demo-examples">
         <div>
           <h3>Compact Pagination</h3>
-          <div class="pagination-demo">
+          <div class="aiab-pagination-demo">
             <nav aria-label="Compact Pagination" role="navigation">
-              <ul class="aiab-pagination pagination--compact">
+              <ul class="aiab-pagination aiab-pagination--compact">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -644,7 +644,7 @@
 
         <div>
           <h3>Default Pagination</h3>
-          <div class="pagination-demo">
+          <div class="aiab-pagination-demo">
             <nav aria-label="Default Pagination" role="navigation">
               <ul class="aiab-pagination">
                 <li class="pagination__item">
@@ -672,9 +672,9 @@
 
         <div>
           <h3>Large Pagination</h3>
-          <div class="pagination-demo">
+          <div class="aiab-pagination-demo">
             <nav aria-label="Large Pagination" role="navigation">
-              <ul class="aiab-pagination pagination--large">
+              <ul class="aiab-pagination aiab-pagination--large">
                 <li class="pagination__item">
                   <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
@@ -701,13 +701,13 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Compact Pagination --&gt;
-&lt;ul class="aiab-pagination pagination--compact"&gt;...&lt;/ul&gt;
+&lt;ul class="aiab-pagination aiab-pagination--compact"&gt;...&lt;/ul&gt;
 
 &lt;!-- Default Pagination --&gt;
 &lt;ul class="aiab-pagination"&gt;...&lt;/ul&gt;
 
 &lt;!-- Large Pagination --&gt;
-&lt;ul class="aiab-pagination pagination--large"&gt;...&lt;/ul&gt;</code></pre>
+&lt;ul class="aiab-pagination aiab-pagination--large"&gt;...&lt;/ul&gt;</code></pre>
       </div>
     </section>
 
@@ -718,15 +718,15 @@
       <h3>Complete Pagination with Controls</h3>
       <div class="demo-section">
         <div class="demo-title">Full-Featured Pagination Component</div>
-        <div class="pagination-demo pagination-demo--full">
-          <div class="pagination-container">
-            <div class="pagination-container__left">
+        <div class="aiab-pagination-demo aiab-pagination-demo--full">
+          <div class="aiab-pagination-container">
+            <div class="aiab-pagination-container__left">
               <div class="pagination__info">
                 Showing <span class="pagination__info-highlight">1</span> to <span class="pagination__info-highlight">10</span> of <span class="pagination__info-highlight">97</span> results
               </div>
             </div>
 
-            <div class="pagination-container__center">
+            <div class="aiab-pagination-container__center">
               <nav aria-label="Advanced Pagination" role="navigation">
                 <ul class="aiab-pagination">
                   <li class="pagination__item">
@@ -754,7 +754,7 @@
               </nav>
             </div>
 
-            <div class="pagination-container__right">
+            <div class="aiab-pagination-container__right">
               <div class="pagination__page-size">
                 <label for="page-size">Show:</label>
                 <select id="page-size" class="pagination__page-size-select">
@@ -776,8 +776,8 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="pagination-container"&gt;
-  &lt;div class="pagination-container__left"&gt;
+        <pre><code>&lt;div class="aiab-pagination-container"&gt;
+  &lt;div class="aiab-pagination-container__left"&gt;
     &lt;div class="pagination__info"&gt;
       Showing &lt;span class="pagination__info-highlight"&gt;1&lt;/span&gt; to
       &lt;span class="pagination__info-highlight"&gt;10&lt;/span&gt; of
@@ -785,7 +785,7 @@
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div class="pagination-container__center"&gt;
+  &lt;div class="aiab-pagination-container__center"&gt;
     &lt;nav aria-label="Pagination" role="navigation"&gt;
       &lt;ul class="aiab-pagination"&gt;
         &lt;!-- Pagination items... --&gt;
@@ -793,7 +793,7 @@
     &lt;/nav&gt;
   &lt;/div&gt;
 
-  &lt;div class="pagination-container__right"&gt;
+  &lt;div class="aiab-pagination-container__right"&gt;
     &lt;div class="pagination__page-size"&gt;
       &lt;label for="page-size"&gt;Show:&lt;/label&gt;
       &lt;select id="page-size" class="pagination__page-size-select"&gt;
@@ -828,11 +828,11 @@
         <tbody>
           <tr>
             <td><code>.aiab-pagination</code></td>
-            <td>Base pagination container</td>
+            <td>Base aiab-pagination aiab-container</td>
           </tr>
           <tr>
             <td><code>.pagination__item</code></td>
-            <td>Individual pagination item</td>
+            <td>Individual aiab-pagination item</td>
           </tr>
           <tr>
             <td><code>.pagination__link</code></td>
@@ -848,7 +848,7 @@
           </tr>
           <tr>
             <td><code>.pagination__nav</code></td>
-            <td>Navigation link container</td>
+            <td>Navigation link aiab-container</td>
           </tr>
           <tr>
             <td><code>.pagination__nav-icon</code></td>
@@ -871,24 +871,24 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.pagination--simple</code></td>
-            <td>Simple previous/next pagination</td>
+            <td><code>.aiab-pagination--simple</code></td>
+            <td>Simple previous/next aiab-pagination</td>
           </tr>
           <tr>
-            <td><code>.pagination--pills</code></td>
-            <td>Pill-shaped pagination buttons</td>
+            <td><code>.aiab-pagination--pills</code></td>
+            <td>Pill-shaped aiab-pagination buttons</td>
           </tr>
           <tr>
-            <td><code>.pagination--rounded</code></td>
-            <td>Circular pagination buttons</td>
+            <td><code>.aiab-pagination--rounded</code></td>
+            <td>Circular aiab-pagination buttons</td>
           </tr>
           <tr>
-            <td><code>.pagination--borderless</code></td>
+            <td><code>.aiab-pagination--borderless</code></td>
             <td>Pagination without borders</td>
           </tr>
           <tr>
-            <td><code>.pagination--outlined</code></td>
-            <td>Outlined pagination style</td>
+            <td><code>.aiab-pagination--outlined</code></td>
+            <td>Outlined aiab-pagination style</td>
           </tr>
         </tbody>
       </table>
@@ -903,12 +903,12 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.pagination--compact</code></td>
-            <td>Compact pagination size</td>
+            <td><code>.aiab-pagination--compact</code></td>
+            <td>Compact aiab-pagination size</td>
           </tr>
           <tr>
-            <td><code>.pagination--large</code></td>
-            <td>Large pagination size</td>
+            <td><code>.aiab-pagination--large</code></td>
+            <td>Large aiab-pagination size</td>
           </tr>
         </tbody>
       </table>
@@ -924,11 +924,11 @@
         <tbody>
           <tr>
             <td><code>.pagination__link--disabled</code></td>
-            <td>Disabled pagination link</td>
+            <td>Disabled aiab-pagination link</td>
           </tr>
           <tr>
-            <td><code>.pagination--loading</code></td>
-            <td>Loading state pagination</td>
+            <td><code>.aiab-pagination--loading</code></td>
+            <td>Loading state aiab-pagination</td>
           </tr>
           <tr>
             <td><code>.pagination__item--nav</code></td>
@@ -951,8 +951,8 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.pagination-container</code></td>
-            <td>Full pagination container with controls</td>
+            <td><code>.aiab-pagination-container</code></td>
+            <td>Full aiab-pagination aiab-container with controls</td>
           </tr>
           <tr>
             <td><code>.pagination__info</code></td>
@@ -964,15 +964,15 @@
           </tr>
           <tr>
             <td><code>.pagination__page-size</code></td>
-            <td>Page size selector container</td>
+            <td>Page size selector aiab-container</td>
           </tr>
           <tr>
             <td><code>.pagination__page-size-select</code></td>
-            <td>Page size dropdown</td>
+            <td>Page size aiab-dropdown</td>
           </tr>
           <tr>
             <td><code>.pagination__jump</code></td>
-            <td>Page jump container</td>
+            <td>Page jump aiab-container</td>
           </tr>
           <tr>
             <td><code>.pagination__jump-input</code></td>
@@ -1002,14 +1002,14 @@ class Pagination {
     this.showInfo = options.showInfo !== false;
     this.showJump = options.showJump || false;
     this.showPageSize = options.showPageSize || false;
-    this.container = options.container;
+    this.aiab-container = options.aiab-container;
     this.onChange = options.onChange || (() => {});
 
     this.init();
   }
 
   init() {
-    if (this.container) {
+    if (this.aiab-container) {
       this.render();
       this.attachEvents();
     }
@@ -1017,7 +1017,7 @@ class Pagination {
 
   render() {
     const paginationHTML = this.generateHTML();
-    this.container.innerHTML = paginationHTML;
+    this.aiab-container.innerHTML = paginationHTML;
   }
 
   generateHTML() {
@@ -1027,11 +1027,11 @@ class Pagination {
     const jump = this.showJump ? this.generateJump() : '';
 
     return `
-      &lt;div class="pagination-container"&gt;
-        &lt;div class="pagination-container__left"&gt;
+      &lt;div class="aiab-pagination-container"&gt;
+        &lt;div class="aiab-pagination-container__left"&gt;
           ${info}
         &lt;/div&gt;
-        &lt;div class="pagination-container__center"&gt;
+        &lt;div class="aiab-pagination-container__center"&gt;
           &lt;nav aria-label="Pagination Navigation" role="navigation"&gt;
             &lt;ul class="aiab-pagination"&gt;
               ${this.generatePrevButton()}
@@ -1040,7 +1040,7 @@ class Pagination {
             &lt;/ul&gt;
           &lt;/nav&gt;
         &lt;/div&gt;
-        &lt;div class="pagination-container__right"&gt;
+        &lt;div class="aiab-pagination-container__right"&gt;
           ${pageSize}
           ${jump}
         &lt;/div&gt;
@@ -1188,7 +1188,7 @@ class Pagination {
   }
 
   attachEvents() {
-    this.container.addEventListener('click', (e) =&gt; {
+    this.aiab-container.addEventListener('click', (e) =&gt; {
       e.preventDefault();
 
       const link = e.target.closest('.pagination__link:not(.pagination__link--disabled)');
@@ -1200,7 +1200,7 @@ class Pagination {
           this.goToPage(page);
         }
       } else if (jumpButton) {
-        const input = this.container.querySelector('.pagination__jump-input');
+        const input = this.aiab-container.querySelector('.pagination__jump-input');
         const page = parseInt(input.value);
         if (page &gt;= 1 && page &lt;= this.totalPages) {
           this.goToPage(page);
@@ -1208,7 +1208,7 @@ class Pagination {
       }
     });
 
-    this.container.addEventListener('change', (e) =&gt; {
+    this.aiab-container.addEventListener('change', (e) =&gt; {
       if (e.target.classList.contains('pagination__page-size-select')) {
         const newPageSize = parseInt(e.target.value);
         this.updatePageSize(newPageSize);
@@ -1216,7 +1216,7 @@ class Pagination {
     });
 
     // Keyboard navigation
-    this.container.addEventListener('keydown', (e) =&gt; {
+    this.aiab-container.addEventListener('keydown', (e) =&gt; {
       if (e.target.classList.contains('pagination__jump-input') && e.key === 'Enter') {
         const page = parseInt(e.target.value);
         if (page &gt;= 1 && page &lt;= this.totalPages) {
@@ -1260,8 +1260,8 @@ class Pagination {
 }
 
 // Usage example
-const pagination = new Pagination({
-  container: document.getElementById('pagination-container'),
+const aiab-pagination = new Pagination({
+  aiab-container: document.getElementById('aiab-pagination-container'),
   currentPage: 1,
   totalItems: 97,
   pageSize: 10,
@@ -1301,15 +1301,15 @@ const pagination = new Pagination({
       <ul>
         <li><strong>Efficient rendering:</strong> Only re-render when necessary</li>
         <li><strong>Debounced inputs:</strong> Debounce page jump input handling</li>
-        <li><strong>URL synchronization:</strong> Keep pagination state in sync with URL</li>
-        <li><strong>Server-side pagination:</strong> Don't load all data at once for large datasets</li>
+        <li><strong>URL synchronization:</strong> Keep aiab-pagination state in sync with URL</li>
+        <li><strong>Server-side aiab-pagination:</strong> Don't load all data at once for large datasets</li>
       </ul>
 
       <h3>Implementation Notes</h3>
       <ul>
         <li><strong>Semantic HTML:</strong> Use proper navigation and list elements</li>
-        <li><strong>Responsive design:</strong> Adapt pagination for different screen sizes</li>
-        <li><strong>State management:</strong> Keep pagination state consistent across components</li>
+        <li><strong>Responsive design:</strong> Adapt aiab-pagination for different screen sizes</li>
+        <li><strong>State management:</strong> Keep aiab-pagination state consistent across components</li>
         <li><strong>Error handling:</strong> Gracefully handle invalid page numbers and network errors</li>
       </ul>
     </section>
@@ -1322,7 +1322,7 @@ const pagination = new Pagination({
         <a href="/docs/components/">All Components</a> |
         <a href="/docs/index.html">Documentation Home</a>
       </p>
-      <p>&copy; 2024 Amphibious 2.0. Modern pagination for efficient content navigation.</p>
+      <p>&copy; 2024 Amphibious 2.0. Modern aiab-pagination for efficient content navigation.</p>
     </div>
   </footer>
 
@@ -1331,17 +1331,17 @@ const pagination = new Pagination({
 
   <!-- Demo JavaScript -->
   <script>
-    // Simple pagination demo functionality
+    // Simple aiab-pagination demo functionality
     document.addEventListener('DOMContentLoaded', () => {
-      // Add click handlers for demo pagination links
+      // Add click handlers for demo aiab-pagination links
       const paginationLinks = document.querySelectorAll('.pagination__link:not(.pagination__link--disabled)');
 
       paginationLinks.forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
 
-          const pagination = link.closest('.aiab-pagination');
-          const currentPage = pagination.querySelector('.pagination__current');
+          const aiab-pagination = link.closest('.aiab-pagination');
+          const currentPage = aiab-pagination.querySelector('.pagination__current');
           const pageNumber = link.textContent.trim();
 
           if (pageNumber && !Number.isNaN(pageNumber)) {
@@ -1390,7 +1390,7 @@ const pagination = new Pagination({
             // Clear input
             input.value = '';
           } else {
-            alert('Please enter a valid page number (1-10)');
+            aiab-alert('Please enter a valid page number (1-10)');
           }
         });
       });
