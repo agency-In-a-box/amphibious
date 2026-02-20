@@ -35,8 +35,8 @@
 
     /* Documentation Layout */
     .docs-layout {
-      display: aiab-grid;
-      aiab-grid-template-columns: 280px 1fr;
+      display: grid;
+      grid-template-columns: 280px 1fr;
       gap: 2rem;
       max-width: 1400px;
       margin: 0 auto;
@@ -203,8 +203,8 @@
 
     /* CSS Class Grid */
     .css-grid {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1rem;
       margin: 1.5rem 0;
     }
@@ -288,7 +288,7 @@
     /* Mobile Responsive */
     @media (max-width: 768px) {
       .docs-layout {
-        aiab-grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
       }
       .docs-sidebar {
         position: static;
@@ -693,10 +693,10 @@
             <h4>Example Usage</h4>
             <div class="code-block">
               <pre><code>// Basic navigation
-const aiab-nav = amp.createNavigation('#navbar');
+const nav = amp.createNavigation('#navbar');
 
 // Advanced configuration
-const aiab-nav = amp.createNavigation('#navbar', {
+const nav = amp.createNavigation('#navbar', {
   sticky: true,
   transparent: false,
   searchEnabled: true,
@@ -721,9 +721,9 @@ const aiab-nav = amp.createNavigation('#navbar', {
           <div class="example-section">
             <h4>Example Usage</h4>
             <div class="code-block">
-              <pre><code>const aiab-nav = amp.createNavigation('#navbar');
+              <pre><code>const nav = amp.createNavigation('#navbar');
 // Later...
-aiab-nav.destroy();</code></pre>
+nav.destroy();</code></pre>
             </div>
           </div>
         </section>
@@ -819,19 +819,19 @@ aiab-nav.destroy();</code></pre>
 
           <h4>open()</h4>
           <div class="api-signature">
-            aiab-modal.open(): Promise&lt;void&gt;
+            modal.open(): Promise&lt;void&gt;
           </div>
           <p>Opens the aiab-modal with animation.</p>
 
           <h4>close()</h4>
           <div class="api-signature">
-            aiab-modal.close(): Promise&lt;void&gt;
+            modal.close(): Promise&lt;void&gt;
           </div>
           <p>Closes the aiab-modal with animation.</p>
 
           <h4>toggle()</h4>
           <div class="api-signature">
-            aiab-modal.toggle(): Promise&lt;void&gt;
+            modal.toggle(): Promise&lt;void&gt;
           </div>
           <p>Toggles the aiab-modal open/closed state.</p>
 
@@ -839,17 +839,17 @@ aiab-nav.destroy();</code></pre>
             <h4>Example Usage</h4>
             <div class="code-block">
               <pre><code>// Create a aiab-modal
-const aiab-modal = amp.createModal('myModal', '#modalContent', {
+const modal = amp.createModal('myModal', '#modalContent', {
   size: 'lg',
   centered: true,
   animation: 'fade'
 });
 
 // Open the aiab-modal
-await aiab-modal.open();
+await modal.open();
 
 // Close after 3 seconds
-setTimeout(() => aiab-modal.close(), 3000);</code></pre>
+setTimeout(() => modal.close(), 3000);</code></pre>
             </div>
           </div>
         </section>

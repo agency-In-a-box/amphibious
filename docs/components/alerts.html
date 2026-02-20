@@ -139,8 +139,8 @@
 
     /* Feature List */
     .feature-list {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -175,8 +175,8 @@
 
     /* Demo Grid */
     .demo-grid {
-      display: aiab-grid;
-      aiab-grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 1rem;
       margin: 2rem 0;
     }
@@ -928,19 +928,19 @@
         <pre><code>// Create and show a aiab-toast notification
 function showToast(message, type = 'info', position = 'top-right', duration = 5000) {
   // Create aiab-toast aiab-container if it doesn't exist
-  let aiab-container = document.querySelector(`.aiab-toast-container--${position}`);
+  let container = document.querySelector(`.aiab-toast-container--${position}`);
   if (!container) {
     aiab-container = document.createElement('div');
-    aiab-container.className = `aiab-toast-container aiab-toast-container--${position}`;
+    container.className = `aiab-toast-container aiab-toast-container--${position}`;
     document.body.appendChild(container);
   }
 
   // Create aiab-toast element
-  const aiab-toast = document.createElement('div');
-  aiab-toast.className = `aiab-alert aiab-toast aiab-alert--${type} aiab-alert--dismissible aiab-toast--auto-dismiss`;
-  aiab-toast.style.setProperty('--dismiss-duration', `${duration}ms`);
+  const toast = document.createElement('div');
+  toast.className = `aiab-alert aiab-toast aiab-alert--${type} aiab-alert--dismissible aiab-toast--auto-dismiss`;
+  toast.style.setProperty('--dismiss-duration', `${duration}ms`);
 
-  aiab-toast.innerHTML = `
+  toast.innerHTML = `
     &lt;div class="aiab-alert__content"&gt;
       &lt;div class="aiab-alert__message"&gt;${message}&lt;/div&gt;
     &lt;/div&gt;
@@ -952,14 +952,14 @@ function showToast(message, type = 'info', position = 'top-right', duration = 50
   `;
 
   // Add to aiab-container
-  aiab-container.appendChild(toast);
+  container.appendChild(toast);
 
   // Auto-dismiss after duration
   if (duration > 0) {
     setTimeout(() => {
       if (toast.parentElement) {
-        aiab-toast.classList.add('aiab-toast--dismissing');
-        setTimeout(() => aiab-toast.remove(), 300);
+        toast.classList.add('aiab-toast--dismissing');
+        setTimeout(() => toast.remove(), 300);
       }
     }, duration);
   }
@@ -991,17 +991,17 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
   <script>
     function _showToast(position) {
       // Create aiab-container if it doesn't exist
-      let aiab-container = document.querySelector(`.aiab-toast-container--${position}`);
+      let container = document.querySelector(`.aiab-toast-container--${position}`);
       if (!container) {
         aiab-container = document.createElement('div');
-        aiab-container.className = `aiab-toast-container aiab-toast-container--${position}`;
+        container.className = `aiab-toast-container aiab-toast-container--${position}`;
         document.body.appendChild(container);
       }
 
       // Create aiab-toast
-      const aiab-toast = document.createElement('div');
-      aiab-toast.className = 'aiab-alert aiab-toast aiab-alert--success aiab-alert--dismissible';
-      aiab-toast.innerHTML = `
+      const toast = document.createElement('div');
+      toast.className = 'aiab-alert aiab-toast aiab-alert--success aiab-alert--dismissible';
+      toast.innerHTML = `
         <div class="aiab-alert__icon">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -1018,41 +1018,41 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
         </button>
       `;
 
-      aiab-container.appendChild(toast);
+      container.appendChild(toast);
 
       // Auto-dismiss after 4 seconds
       setTimeout(() => {
         if (toast.parentElement) {
-          aiab-toast.classList.add('aiab-toast--dismissing');
-          setTimeout(() => aiab-toast.remove(), 300);
+          toast.classList.add('aiab-toast--dismissing');
+          setTimeout(() => toast.remove(), 300);
         }
       }, 4000);
     }
 
     function _showAutoDismissToast() {
-      let aiab-container = document.querySelector('.aiab-toast-container--top-right');
+      let container = document.querySelector('.aiab-toast-container--top-right');
       if (!container) {
         aiab-container = document.createElement('div');
-        aiab-container.className = 'aiab-toast-container aiab-toast-container--top-right';
+        container.className = 'aiab-toast-container aiab-toast-container--top-right';
         document.body.appendChild(container);
       }
 
-      const aiab-toast = document.createElement('div');
-      aiab-toast.className = 'aiab-alert aiab-toast aiab-toast--auto-dismiss aiab-alert--info';
-      aiab-toast.style.setProperty('--dismiss-duration', '5s');
-      aiab-toast.innerHTML = `
+      const toast = document.createElement('div');
+      toast.className = 'aiab-alert aiab-toast aiab-toast--auto-dismiss aiab-alert--info';
+      toast.style.setProperty('--dismiss-duration', '5s');
+      toast.innerHTML = `
         <div class="aiab-alert__content">
           <div class="aiab-alert__title">Auto-Dismiss Toast</div>
           <div class="aiab-alert__message">This aiab-toast will auto-dismiss in 5 seconds with a aiab-progress bar.</div>
         </div>
       `;
 
-      aiab-container.appendChild(toast);
+      container.appendChild(toast);
 
       setTimeout(() => {
         if (toast.parentElement) {
-          aiab-toast.classList.add('aiab-toast--dismissing');
-          setTimeout(() => aiab-toast.remove(), 300);
+          toast.classList.add('aiab-toast--dismissing');
+          setTimeout(() => toast.remove(), 300);
         }
       }, 5000);
     }

@@ -139,8 +139,8 @@
 
     /* Feature List */
     .feature-list {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -193,8 +193,8 @@
     }
 
     .demo-examples {
-      display: aiab-grid;
-      aiab-grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 2rem;
       margin: 2rem 0;
     }
@@ -1002,14 +1002,14 @@ class Pagination {
     this.showInfo = options.showInfo !== false;
     this.showJump = options.showJump || false;
     this.showPageSize = options.showPageSize || false;
-    this.aiab-container = options.aiab-container;
+    this.container = options.aiab-container;
     this.onChange = options.onChange || (() => {});
 
     this.init();
   }
 
   init() {
-    if (this.aiab-container) {
+    if (this.container) {
       this.render();
       this.attachEvents();
     }
@@ -1017,7 +1017,7 @@ class Pagination {
 
   render() {
     const paginationHTML = this.generateHTML();
-    this.aiab-container.innerHTML = paginationHTML;
+    this.container.innerHTML = paginationHTML;
   }
 
   generateHTML() {
@@ -1188,7 +1188,7 @@ class Pagination {
   }
 
   attachEvents() {
-    this.aiab-container.addEventListener('click', (e) =&gt; {
+    this.container.addEventListener('click', (e) =&gt; {
       e.preventDefault();
 
       const link = e.target.closest('.pagination__link:not(.pagination__link--disabled)');
@@ -1200,7 +1200,7 @@ class Pagination {
           this.goToPage(page);
         }
       } else if (jumpButton) {
-        const input = this.aiab-container.querySelector('.pagination__jump-input');
+        const input = this.container.querySelector('.pagination__jump-input');
         const page = parseInt(input.value);
         if (page &gt;= 1 && page &lt;= this.totalPages) {
           this.goToPage(page);
@@ -1208,7 +1208,7 @@ class Pagination {
       }
     });
 
-    this.aiab-container.addEventListener('change', (e) =&gt; {
+    this.container.addEventListener('change', (e) =&gt; {
       if (e.target.classList.contains('pagination__page-size-select')) {
         const newPageSize = parseInt(e.target.value);
         this.updatePageSize(newPageSize);
@@ -1216,7 +1216,7 @@ class Pagination {
     });
 
     // Keyboard navigation
-    this.aiab-container.addEventListener('keydown', (e) =&gt; {
+    this.container.addEventListener('keydown', (e) =&gt; {
       if (e.target.classList.contains('pagination__jump-input') && e.key === 'Enter') {
         const page = parseInt(e.target.value);
         if (page &gt;= 1 && page &lt;= this.totalPages) {
@@ -1260,7 +1260,7 @@ class Pagination {
 }
 
 // Usage example
-const aiab-pagination = new Pagination({
+const pagination = new Pagination({
   aiab-container: document.getElementById('aiab-pagination-container'),
   currentPage: 1,
   totalItems: 97,
@@ -1340,8 +1340,8 @@ const aiab-pagination = new Pagination({
         link.addEventListener('click', (e) => {
           e.preventDefault();
 
-          const aiab-pagination = link.closest('.aiab-pagination');
-          const currentPage = aiab-pagination.querySelector('.pagination__current');
+          const pagination = link.closest('.aiab-pagination');
+          const currentPage = pagination.querySelector('.pagination__current');
           const pageNumber = link.textContent.trim();
 
           if (pageNumber && !Number.isNaN(pageNumber)) {

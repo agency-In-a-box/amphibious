@@ -139,8 +139,8 @@
 
     /* Feature List */
     .feature-list {
-      display: aiab-grid;
-      aiab-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -762,7 +762,7 @@
         <pre><code>// Modal management utility
 class Modal {
   constructor(element) {
-    this.aiab-modal = element;
+    this.modal = element;
     this.backdrop = document.querySelector('.aiab-modal-backdrop');
     this.isVisible = false;
     this.init();
@@ -770,7 +770,7 @@ class Modal {
 
   init() {
     // Close button
-    const closeBtn = this.aiab-modal.querySelector('.modal__close');
+    const closeBtn = this.modal.querySelector('.modal__close');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.hide());
     }
@@ -796,11 +796,11 @@ class Modal {
       this.backdrop.classList.add('is-visible');
     }
 
-    this.aiab-modal.classList.add('is-visible');
-    this.aiab-modal.setAttribute('aria-hidden', 'false');
+    this.modal.classList.add('is-visible');
+    this.modal.setAttribute('aria-hidden', 'false');
 
     // Focus management
-    this.aiab-modal.focus();
+    this.modal.focus();
     this.trapFocus();
   }
 
@@ -812,12 +812,12 @@ class Modal {
       this.backdrop.classList.remove('is-visible');
     }
 
-    this.aiab-modal.classList.remove('is-visible');
-    this.aiab-modal.setAttribute('aria-hidden', 'true');
+    this.modal.classList.remove('is-visible');
+    this.modal.setAttribute('aria-hidden', 'true');
   }
 
   trapFocus() {
-    const focusableElements = this.aiab-modal.querySelectorAll(
+    const focusableElements = this.modal.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
 
@@ -826,7 +826,7 @@ class Modal {
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    this.aiab-modal.addEventListener('keydown', (e) => {
+    this.modal.addEventListener('keydown', (e) => {
       if (e.key === 'Tab') {
         if (e.shiftKey) {
           if (document.activeElement === firstElement) {
@@ -845,14 +845,14 @@ class Modal {
 }
 
 // Usage
-const aiab-modal = new Modal(document.getElementById('my-modal'));
-aiab-modal.show(); // Open aiab-modal
-aiab-modal.hide(); // Close aiab-modal
+const modal = new Modal(document.getElementById('my-modal'));
+modal.show(); // Open aiab-modal
+modal.hide(); // Close aiab-modal
 
 // Quick show function
 function showModal(modalId) {
-  const aiab-modal = new Modal(document.getElementById(modalId));
-  aiab-modal.show();
+  const modal = new Modal(document.getElementById(modalId));
+  modal.show();
 }</code></pre>
       </div>
     </section>
@@ -930,26 +930,26 @@ function showModal(modalId) {
   <script>
     // Modal utility functions
     function showModal(modalId) {
-      const aiab-modal = document.getElementById(modalId);
+      const modal = document.getElementById(modalId);
       const backdrop = document.getElementById('demo-backdrop');
 
       if (!modal) return;
 
       document.body.classList.add('aiab-modal-open');
       backdrop.classList.add('is-visible');
-      aiab-modal.classList.add('is-visible');
-      aiab-modal.setAttribute('aria-hidden', 'false');
-      aiab-modal.focus();
+      modal.classList.add('is-visible');
+      modal.setAttribute('aria-hidden', 'false');
+      modal.focus();
     }
 
     function hideModal(modalId) {
-      const aiab-modal = document.getElementById(modalId || 'basic-modal');
+      const modal = document.getElementById(modalId || 'basic-modal');
       const backdrop = document.getElementById('demo-backdrop');
 
       document.body.classList.remove('aiab-modal-open');
       backdrop.classList.remove('is-visible');
-      aiab-modal.classList.remove('is-visible');
-      aiab-modal.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('is-visible');
+      modal.setAttribute('aria-hidden', 'true');
     }
 
     // Demo functions
@@ -1081,13 +1081,13 @@ function showModal(modalId) {
       const existing = document.getElementById(id);
       if (existing) existing.remove();
 
-      const aiab-modal = document.createElement('div');
-      aiab-modal.id = id;
-      aiab-modal.className = `aiab-modal ${extraClasses}`.trim();
-      aiab-modal.setAttribute('aria-hidden', 'true');
-      aiab-modal.setAttribute('role', 'dialog');
+      const modal = document.createElement('div');
+      modal.id = id;
+      modal.className = `aiab-modal ${extraClasses}`.trim();
+      modal.setAttribute('aria-hidden', 'true');
+      modal.setAttribute('role', 'dialog');
 
-      aiab-modal.innerHTML = `
+      modal.innerHTML = `
         <div class="aiab-modal__dialog">
           ${title ? `
             <div class="aiab-modal__header">
@@ -1116,7 +1116,7 @@ function showModal(modalId) {
 
     // Close aiab-modal on backdrop click
     document.getElementById('demo-backdrop').addEventListener('click', () => {
-      const visibleModal = document.querySelector('.aiab-modal.is-visible');
+      const visibleModal = document.querySelector('.modal.is-visible');
       if (visibleModal) {
         hideModal(visibleModal.id);
       }
@@ -1125,7 +1125,7 @@ function showModal(modalId) {
     // Close aiab-modal on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        const visibleModal = document.querySelector('.aiab-modal.is-visible');
+        const visibleModal = document.querySelector('.modal.is-visible');
         if (visibleModal) {
           hideModal(visibleModal.id);
         }
