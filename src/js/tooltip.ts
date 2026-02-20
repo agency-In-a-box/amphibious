@@ -289,10 +289,10 @@ export class Tooltip {
 
     // Update classes if position changed
     if (position !== this.options.position) {
-      this.tooltipElement.className = this.tooltipElement.className.replace(
-        /aiab-tooltip--(top|bottom|left|right)/g,
-        `aiab-tooltip--${position}`,
-      );
+      if (this.options.position) {
+        this.tooltipElement.classList.remove(`aiab-tooltip--${this.options.position}`);
+      }
+      this.tooltipElement.classList.add(`aiab-tooltip--${position}`);
     }
   }
 
