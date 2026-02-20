@@ -112,8 +112,8 @@ select.error:focus {
 }
 
 /* Error message styling */
-.error-message,
-.form-error {
+.aiab-error-message,
+.aiab-form-error {
   color: #dc3545;
   font-size: 0.875rem;
   margin-top: 4px; /* Per SOP: 1 grid unit */
@@ -162,13 +162,13 @@ form.advanced {
   margin-bottom: 16px; /* Per SOP: 4 grid units */
 }
 
-.advanced-search .form-row {
+.advanced-search .aiab-form-row {
   display: flex;
   gap: 16px; /* Per SOP: 4 grid units */
   margin-bottom: 16px;
 }
 
-.advanced-search .form-row > * {
+.advanced-search .aiab-form-row > * {
   flex: 1;
 }
 
@@ -193,8 +193,8 @@ form.advanced {
 
 /* Help text styling */
 .help-text,
-.form-text,
-.form-help {
+.aiab-form-text,
+.aiab-form-help {
   display: block;
   margin-top: 4px; /* Per SOP: 1 grid unit */
   font-size: 0.875rem;

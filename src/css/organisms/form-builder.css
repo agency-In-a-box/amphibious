@@ -5,7 +5,7 @@
  */
 
 /* Main container */
-.form-builder {
+.aiab-form-builder {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -15,7 +15,7 @@
 }
 
 /* Toolbar */
-.form-builder-toolbar {
+.aiab-form-builder-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,7 +65,7 @@
 }
 
 /* Layout */
-.form-builder-layout {
+.aiab-form-builder-layout {
   flex: 1;
   display: grid;
   grid-template-columns: 280px 1fr 320px;
@@ -73,12 +73,12 @@
   overflow: hidden;
 }
 
-.form-builder.compact .form-builder-layout {
+.aiab-form-builder.compact .aiab-form-builder-layout {
   grid-template-columns: 240px 1fr 280px;
 }
 
 /* Toolbox */
-.form-builder-toolbox {
+.aiab-form-builder-toolbox {
   background: white;
   border-right: 1px solid var(--apple-gray-200, #e0e0e0);
   overflow-y: auto;
@@ -157,7 +157,7 @@
 }
 
 /* Canvas Area */
-.form-builder-canvas-area {
+.aiab-form-builder-canvas-area {
   display: flex;
   flex-direction: column;
   background: var(--apple-gray-50, #fafafa);
@@ -203,8 +203,8 @@
 }
 
 /* Form Builder Canvas */
-.form-builder-canvas,
-.form-builder-preview {
+.aiab-form-builder-canvas,
+.aiab-form-builder-preview {
   display: none;
   position: absolute;
   top: 0;
@@ -216,12 +216,12 @@
   overflow-x: hidden;
 }
 
-.form-builder-canvas.aiab-active,
-.form-builder-preview.aiab-active {
+.aiab-form-builder-canvas.aiab-active,
+.aiab-form-builder-preview.aiab-active {
   display: block;
 }
 
-.form-builder-canvas {
+.aiab-form-builder-canvas {
   background: white;
   margin: 32px;
   border-radius: 8px;
@@ -229,7 +229,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.form-builder-canvas.drag-over {
+.aiab-form-builder-canvas.drag-over {
   background: var(--apple-info, #007aff);
   background: linear-gradient(135deg, rgba(0, 122, 255, 0.05) 0%, rgba(0, 122, 255, 0.02) 100%);
   border: 2px dashed var(--apple-info, #007aff);
@@ -257,7 +257,7 @@
 }
 
 /* Form Fields */
-.form-field {
+.aiab-form-field {
   position: relative;
   margin: 16px;
   padding: 16px;
@@ -268,23 +268,23 @@
   cursor: move;
 }
 
-.form-field:hover {
+.aiab-form-field:hover {
   border-color: var(--apple-gray-300, #e0e0e0);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.form-field.selected {
+.aiab-form-field.selected {
   border-color: var(--apple-orange-500, #ed8b00);
   box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.1);
 }
 
-.form-field.dragging {
+.aiab-form-field.dragging {
   opacity: 0.5;
   cursor: grabbing;
 }
 
-.form-field.drag-before::before,
-.form-field.drag-after::after {
+.aiab-form-field.drag-before::before,
+.aiab-form-field.drag-after::after {
   content: "";
   position: absolute;
   left: 0;
@@ -294,11 +294,11 @@
   z-index: 10;
 }
 
-.form-field.drag-before::before {
+.aiab-form-field.drag-before::before {
   top: -2px;
 }
 
-.form-field.drag-after::after {
+.aiab-form-field.drag-after::after {
   bottom: -2px;
 }
 
@@ -329,7 +329,7 @@
   transition: opacity var(--duration-instant, 150ms) var(--ease-apple-smooth);
 }
 
-.form-field:hover .field-actions {
+.aiab-form-field:hover .field-actions {
   opacity: 1;
 }
 
@@ -381,7 +381,7 @@
   cursor: pointer;
 }
 
-.field-preview .switch-label {
+.field-preview .aiab-switch-label {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -397,7 +397,7 @@
   transition: background var(--duration-instant, 150ms) var(--ease-apple-smooth);
 }
 
-.switch-slider {
+.aiab-switch-slider {
   position: absolute;
   top: 2px;
   left: 2px;
@@ -424,7 +424,7 @@
 }
 
 /* Properties Panel */
-.form-builder-properties {
+.aiab-form-builder-properties {
   background: white;
   border-left: 1px solid var(--apple-gray-200, #e0e0e0);
   overflow-y: auto;
@@ -543,7 +543,7 @@
   color: var(--apple-gray-700, #616161);
 }
 
-.aiab-form-group .required {
+.aiab-form-group .aiab-required {
   color: var(--apple-danger, #ff3b30);
 }
 
@@ -573,7 +573,7 @@
 }
 
 /* Step Navigation */
-.form-builder-steps {
+.aiab-form-builder-steps {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -648,25 +648,25 @@
 
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
-  .form-builder {
+  .aiab-form-builder {
     background: var(--apple-gray-900, #212121);
   }
 
-  .form-builder-toolbar,
-  .form-builder-toolbox,
-  .form-builder-properties,
+  .aiab-form-builder-toolbar,
+  .aiab-form-builder-toolbox,
+  .aiab-form-builder-properties,
   .canvas-header,
-  .form-builder-steps {
+  .aiab-form-builder-steps {
     background: var(--apple-gray-800, #424242);
     border-color: var(--apple-gray-700, #616161);
   }
 
-  .form-builder-canvas {
+  .aiab-form-builder-canvas {
     background: var(--apple-gray-800, #424242);
   }
 
   .toolbox-field,
-  .form-field,
+  .aiab-form-field,
   .toolbar-btn,
   .step-btn {
     background: var(--apple-gray-700, #616161);
@@ -689,18 +689,18 @@
 
 /* Mobile Responsive */
 @media (max-width: 1024px) {
-  .form-builder-layout {
+  .aiab-form-builder-layout {
     grid-template-columns: 1fr;
   }
 
-  .form-builder-toolbox,
-  .form-builder-properties {
+  .aiab-form-builder-toolbox,
+  .aiab-form-builder-properties {
     display: none;
   }
 
   /* Show as modals on mobile */
-  .form-builder-toolbox.mobile-visible,
-  .form-builder-properties.mobile-visible {
+  .aiab-form-builder-toolbox.mobile-visible,
+  .aiab-form-builder-properties.mobile-visible {
     display: block;
     position: fixed;
     top: 0;
@@ -711,11 +711,11 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
 
-  .form-builder-toolbox.mobile-visible {
+  .aiab-form-builder-toolbox.mobile-visible {
     left: 0;
   }
 
-  .form-builder-properties.mobile-visible {
+  .aiab-form-builder-properties.mobile-visible {
     right: 0;
   }
 }
@@ -723,7 +723,7 @@
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .toolbox-field,
-  .form-field,
+  .aiab-form-field,
   .toolbar-btn,
   .field-action,
   .property-input {

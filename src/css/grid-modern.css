@@ -394,13 +394,13 @@
   }
 
   /* Mobile-specific columns */
-  .col-mobile-half {
+  .aiab-col-mobile-half {
     width: 50%;
   }
-  .col-mobile-third {
+  .aiab-col-mobile-third {
     width: 33.333%;
   }
-  .col-mobile-quarter {
+  .aiab-col-mobile-quarter {
     width: 25%;
   }
 
@@ -430,29 +430,29 @@
 /* Utility Classes
    ========================================================================== */
 
-.text-left {
+.aiab-text-left {
   text-align: left;
 }
-.text-center {
+.aiab-text-center {
   text-align: center;
 }
-.text-right {
+.aiab-text-right {
   text-align: right;
 }
 
-.hide-mobile {
+.aiab-hide-mobile {
   display: none;
 }
 @media (min-width: 768px) {
-  .hide-mobile {
+  .aiab-hide-mobile {
     display: block;
   }
-  .hide-desktop {
+  .aiab-hide-desktop {
     display: none;
   }
 }
 
-.clearfix::after {
+.aiab-clearfix::after {
   content: "";
   display: table;
   clear: both;

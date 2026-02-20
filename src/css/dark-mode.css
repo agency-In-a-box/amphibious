@@ -342,149 +342,149 @@
    ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .btn-primary {
+  :root:not([data-theme="light"]) .aiab-btn-primary {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
     color: #000000;
   }
-  :root:not([data-theme="light"]) .btn-primary:hover {
+  :root:not([data-theme="light"]) .aiab-btn-primary:hover {
     background-color: var(--color-primary-hover);
     border-color: var(--color-primary-hover);
   }
-  :root:not([data-theme="light"]) .btn-secondary {
+  :root:not([data-theme="light"]) .aiab-btn-secondary {
     background-color: #6c757d;
     border-color: #6c757d;
     color: #ffffff;
   }
-  :root:not([data-theme="light"]) .btn-secondary:hover {
+  :root:not([data-theme="light"]) .aiab-btn-secondary:hover {
     background-color: #5a6268;
     border-color: #545b62;
   }
-  :root:not([data-theme="light"]) .btn-success {
+  :root:not([data-theme="light"]) .aiab-btn-success {
     background-color: var(--apple-success);
     border-color: var(--apple-success);
     color: #ffffff;
   }
-  :root:not([data-theme="light"]) .btn-success:hover {
+  :root:not([data-theme="light"]) .aiab-btn-success:hover {
     background-color: #28b94e;
     border-color: #28b94e;
   }
-  :root:not([data-theme="light"]) .btn-danger {
+  :root:not([data-theme="light"]) .aiab-btn-danger {
     background-color: var(--apple-danger);
     border-color: var(--apple-danger);
     color: #ffffff;
   }
-  :root:not([data-theme="light"]) .btn-danger:hover {
+  :root:not([data-theme="light"]) .aiab-btn-danger:hover {
     background-color: #e63b30;
     border-color: #e63b30;
   }
-  :root:not([data-theme="light"]) .btn-warning {
+  :root:not([data-theme="light"]) .aiab-btn-warning {
     background-color: var(--apple-warning);
     border-color: var(--apple-warning);
     color: #000000;
   }
-  :root:not([data-theme="light"]) .btn-warning:hover {
+  :root:not([data-theme="light"]) .aiab-btn-warning:hover {
     background-color: #e6c009;
     border-color: #e6c009;
   }
-  :root:not([data-theme="light"]) .btn-info {
+  :root:not([data-theme="light"]) .aiab-btn-info {
     background-color: var(--apple-info);
     border-color: var(--apple-info);
     color: #ffffff;
   }
-  :root:not([data-theme="light"]) .btn-info:hover {
+  :root:not([data-theme="light"]) .aiab-btn-info:hover {
     background-color: #0977e6;
     border-color: #0977e6;
   }
-  :root:not([data-theme="light"]) .btn-light {
+  :root:not([data-theme="light"]) .aiab-btn-light {
     background-color: var(--color-surface-elevated);
     border-color: var(--color-border);
     color: var(--color-text);
   }
-  :root:not([data-theme="light"]) .btn-light:hover {
+  :root:not([data-theme="light"]) .aiab-btn-light:hover {
     background-color: var(--color-surface-overlay);
     border-color: var(--color-border-strong);
   }
-  :root:not([data-theme="light"]) .btn-dark {
+  :root:not([data-theme="light"]) .aiab-btn-dark {
     background-color: #e5e5ea;
     border-color: #e5e5ea;
     color: #000000;
   }
-  :root:not([data-theme="light"]) .btn-dark:hover {
+  :root:not([data-theme="light"]) .aiab-btn-dark:hover {
     background-color: #d1d1d6;
     border-color: #d1d1d6;
   }
 }
 
-[data-theme="dark"] .btn-primary {
+[data-theme="dark"] .aiab-btn-primary {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: #000000;
 }
-[data-theme="dark"] .btn-primary:hover {
+[data-theme="dark"] .aiab-btn-primary:hover {
   background-color: var(--color-primary-hover);
   border-color: var(--color-primary-hover);
 }
-[data-theme="dark"] .btn-secondary {
+[data-theme="dark"] .aiab-btn-secondary {
   background-color: #6c757d;
   border-color: #6c757d;
   color: #ffffff;
 }
-[data-theme="dark"] .btn-secondary:hover {
+[data-theme="dark"] .aiab-btn-secondary:hover {
   background-color: #5a6268;
   border-color: #545b62;
 }
-[data-theme="dark"] .btn-success {
+[data-theme="dark"] .aiab-btn-success {
   background-color: var(--apple-success);
   border-color: var(--apple-success);
   color: #ffffff;
 }
-[data-theme="dark"] .btn-success:hover {
+[data-theme="dark"] .aiab-btn-success:hover {
   background-color: #28b94e;
   border-color: #28b94e;
 }
-[data-theme="dark"] .btn-danger {
+[data-theme="dark"] .aiab-btn-danger {
   background-color: var(--apple-danger);
   border-color: var(--apple-danger);
   color: #ffffff;
 }
-[data-theme="dark"] .btn-danger:hover {
+[data-theme="dark"] .aiab-btn-danger:hover {
   background-color: #e63b30;
   border-color: #e63b30;
 }
-[data-theme="dark"] .btn-warning {
+[data-theme="dark"] .aiab-btn-warning {
   background-color: var(--apple-warning);
   border-color: var(--apple-warning);
   color: #000000;
 }
-[data-theme="dark"] .btn-warning:hover {
+[data-theme="dark"] .aiab-btn-warning:hover {
   background-color: #e6c009;
   border-color: #e6c009;
 }
-[data-theme="dark"] .btn-info {
+[data-theme="dark"] .aiab-btn-info {
   background-color: var(--apple-info);
   border-color: var(--apple-info);
   color: #ffffff;
 }
-[data-theme="dark"] .btn-info:hover {
+[data-theme="dark"] .aiab-btn-info:hover {
   background-color: #0977e6;
   border-color: #0977e6;
 }
-[data-theme="dark"] .btn-light {
+[data-theme="dark"] .aiab-btn-light {
   background-color: var(--color-surface-elevated);
   border-color: var(--color-border);
   color: var(--color-text);
 }
-[data-theme="dark"] .btn-light:hover {
+[data-theme="dark"] .aiab-btn-light:hover {
   background-color: var(--color-surface-overlay);
   border-color: var(--color-border-strong);
 }
-[data-theme="dark"] .btn-dark {
+[data-theme="dark"] .aiab-btn-dark {
   background-color: #e5e5ea;
   border-color: #e5e5ea;
   color: #000000;
 }
-[data-theme="dark"] .btn-dark:hover {
+[data-theme="dark"] .aiab-btn-dark:hover {
   background-color: #d1d1d6;
   border-color: #d1d1d6;
 }
@@ -494,11 +494,11 @@
    ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) :is(.modal-backdrop, .overlay) {
+  :root:not([data-theme="light"]) :is(.aiab-modal-backdrop, .overlay) {
     background-color: rgba(0, 0, 0, 0.85);
   }
 }
-[data-theme="dark"] :is(.modal-backdrop, .overlay) {
+[data-theme="dark"] :is(.aiab-modal-backdrop, .overlay) {
   background-color: rgba(0, 0, 0, 0.85);
 }
 

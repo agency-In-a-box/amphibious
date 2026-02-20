@@ -135,21 +135,21 @@ input[type="button"]:disabled {
    ========================================================================== */
 
 /* Primary */
-.btn-primary,
+.aiab-btn-primary,
 .aiab-btn.aiab-primary {
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-bg);
   border-color: var(--btn-primary-border);
 }
 
-.btn-primary:hover,
+.aiab-btn-primary:hover,
 .aiab-btn.aiab-primary:hover {
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-hover-bg);
   border-color: var(--btn-primary-hover-border);
 }
 
-.btn-primary:focus,
+.aiab-btn-primary:focus,
 .aiab-btn.aiab-primary:focus {
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-hover-bg);
@@ -158,14 +158,14 @@ input[type="button"]:disabled {
 }
 
 /* Secondary */
-.btn-secondary,
+.aiab-btn-secondary,
 .aiab-btn.aiab-secondary {
   color: var(--btn-secondary-color);
   background-color: var(--btn-secondary-bg);
   border-color: var(--btn-secondary-border);
 }
 
-.btn-secondary:hover,
+.aiab-btn-secondary:hover,
 .aiab-btn.aiab-secondary:hover {
   color: var(--btn-secondary-color);
   background-color: var(--btn-secondary-hover-bg);
@@ -173,14 +173,14 @@ input[type="button"]:disabled {
 }
 
 /* Success */
-.btn-success,
+.aiab-btn-success,
 .aiab-btn.aiab-success {
   color: var(--btn-success-color);
   background-color: var(--btn-success-bg);
   border-color: var(--btn-success-border);
 }
 
-.btn-success:hover,
+.aiab-btn-success:hover,
 .aiab-btn.aiab-success:hover {
   color: var(--btn-success-color);
   background-color: var(--btn-success-hover-bg);
@@ -188,14 +188,14 @@ input[type="button"]:disabled {
 }
 
 /* Danger */
-.btn-danger,
+.aiab-btn-danger,
 .aiab-btn.aiab-danger {
   color: var(--btn-danger-color);
   background-color: var(--btn-danger-bg);
   border-color: var(--btn-danger-border);
 }
 
-.btn-danger:hover,
+.aiab-btn-danger:hover,
 .aiab-btn.aiab-danger:hover {
   color: var(--btn-danger-color);
   background-color: var(--btn-danger-hover-bg);
@@ -203,14 +203,14 @@ input[type="button"]:disabled {
 }
 
 /* Warning */
-.btn-warning,
+.aiab-btn-warning,
 .aiab-btn.aiab-warning {
   color: var(--btn-warning-color);
   background-color: var(--btn-warning-bg);
   border-color: var(--btn-warning-border);
 }
 
-.btn-warning:hover,
+.aiab-btn-warning:hover,
 .aiab-btn.aiab-warning:hover {
   color: var(--btn-warning-color);
   background-color: var(--btn-warning-hover-bg);
@@ -218,14 +218,14 @@ input[type="button"]:disabled {
 }
 
 /* Info */
-.btn-info,
+.aiab-btn-info,
 .aiab-btn.aiab-info {
   color: var(--btn-info-color);
   background-color: var(--btn-info-bg);
   border-color: var(--btn-info-border);
 }
 
-.btn-info:hover,
+.aiab-btn-info:hover,
 .aiab-btn.aiab-info:hover {
   color: var(--btn-info-color);
   background-color: var(--btn-info-hover-bg);
@@ -233,14 +233,14 @@ input[type="button"]:disabled {
 }
 
 /* Light */
-.btn-light,
+.aiab-btn-light,
 .aiab-btn.aiab-light {
   color: var(--btn-light-color);
   background-color: var(--btn-light-bg);
   border-color: var(--btn-light-border);
 }
 
-.btn-light:hover,
+.aiab-btn-light:hover,
 .aiab-btn.aiab-light:hover {
   color: var(--btn-light-color);
   background-color: var(--btn-light-hover-bg);
@@ -248,14 +248,14 @@ input[type="button"]:disabled {
 }
 
 /* Dark */
-.btn-dark,
+.aiab-btn-dark,
 .aiab-btn.aiab-dark {
   color: var(--btn-dark-color);
   background-color: var(--btn-dark-bg);
   border-color: var(--btn-dark-border);
 }
 
-.btn-dark:hover,
+.aiab-btn-dark:hover,
 .aiab-btn.aiab-dark:hover {
   color: var(--btn-dark-color);
   background-color: var(--btn-dark-hover-bg);
@@ -263,7 +263,7 @@ input[type="button"]:disabled {
 }
 
 /* Link Button */
-.btn-link,
+.aiab-btn-link,
 .aiab-btn.link {
   font-weight: 400;
   color: var(--btn-primary-bg);
@@ -272,7 +272,7 @@ input[type="button"]:disabled {
   border: none;
 }
 
-.btn-link:hover,
+.aiab-btn-link:hover,
 .aiab-btn.link:hover {
   color: var(--btn-primary-hover-bg);
   text-decoration: none;
@@ -405,49 +405,49 @@ input[type="button"]:disabled {
 /* Outline Variants
    ========================================================================== */
 
-.btn-outline-primary {
+.aiab-btn-outline-primary {
   color: var(--btn-primary-bg);
   border-color: var(--btn-primary-bg);
   background-color: transparent;
 }
 
-.btn-outline-primary:hover {
+.aiab-btn-outline-primary:hover {
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-bg);
   border-color: var(--btn-primary-bg);
 }
 
-.btn-outline-secondary {
+.aiab-btn-outline-secondary {
   color: var(--btn-secondary-bg);
   border-color: var(--btn-secondary-bg);
   background-color: transparent;
 }
 
-.btn-outline-secondary:hover {
+.aiab-btn-outline-secondary:hover {
   color: var(--btn-secondary-color);
   background-color: var(--btn-secondary-bg);
   border-color: var(--btn-secondary-bg);
 }
 
-.btn-outline-success {
+.aiab-btn-outline-success {
   color: var(--btn-success-bg);
   border-color: var(--btn-success-bg);
   background-color: transparent;
 }
 
-.btn-outline-success:hover {
+.aiab-btn-outline-success:hover {
   color: var(--btn-success-color);
   background-color: var(--btn-success-bg);
   border-color: var(--btn-success-bg);
 }
 
-.btn-outline-danger {
+.aiab-btn-outline-danger {
   color: var(--btn-danger-bg);
   border-color: var(--btn-danger-bg);
   background-color: transparent;
 }
 
-.btn-outline-danger:hover {
+.aiab-btn-outline-danger:hover {
   color: var(--btn-danger-color);
   background-color: var(--btn-danger-bg);
   border-color: var(--btn-danger-bg);
@@ -456,21 +456,21 @@ input[type="button"]:disabled {
 /* Button Sizes
    ========================================================================== */
 
-.btn-lg,
+.aiab-btn-lg,
 .aiab-btn.aiab-large {
   padding: var(--btn-padding-y-lg) var(--btn-padding-x-lg);
   font-size: 1.25rem;
   border-radius: 0.5rem;
 }
 
-.btn-sm,
+.aiab-btn-sm,
 .aiab-btn.aiab-small {
   padding: var(--btn-padding-y-sm) var(--btn-padding-x-sm);
   font-size: 0.875rem;
   border-radius: 0.25rem;
 }
 
-.btn-xs,
+.aiab-btn-xs,
 .aiab-btn.tiny {
   padding: 0.125rem 0.25rem;
   font-size: 0.75rem;
@@ -480,13 +480,13 @@ input[type="button"]:disabled {
 /* Block Button
    ========================================================================== */
 
-.btn-block,
+.aiab-btn-block,
 .aiab-btn.aiab-block {
   display: block;
   width: 100%;
 }
 
-.btn-block + .btn-block {
+.aiab-btn-block + .aiab-btn-block {
   margin-top: 0.5rem;
 }
 
@@ -494,25 +494,25 @@ input[type="button"]:disabled {
    ========================================================================== */
 
 /* Ghost Button - Transparent with subtle hover */
-.btn-ghost {
+.aiab-btn-ghost {
   color: var(--btn-ghost-color, var(--color-text, #333));
   background-color: transparent;
   border-color: var(--btn-ghost-border, currentColor);
 }
 
-.btn-ghost:hover {
+.aiab-btn-ghost:hover {
   color: var(--btn-ghost-hover-color, var(--color-primary, #ed8b00));
   background-color: var(--btn-ghost-hover-bg, rgba(237, 139, 0, 0.1));
   border-color: var(--btn-ghost-hover-border, var(--color-primary, #ed8b00));
 }
 
 /* Pill Button */
-.btn-pill {
+.aiab-btn-pill {
   border-radius: 50rem;
 }
 
 /* Icon Button */
-.btn-icon {
+.aiab-btn-icon {
   padding: var(--btn-padding-y);
   width: calc(var(--btn-font-size) * var(--btn-line-height) + var(--btn-padding-y) * 2 + 2px);
   height: calc(var(--btn-font-size) * var(--btn-line-height) + var(--btn-padding-y) * 2 + 2px);
@@ -522,7 +522,7 @@ input[type="button"]:disabled {
 }
 
 /* Floating Action Button */
-.btn-fab,
+.aiab-btn-fab,
 .fab {
   position: fixed;
   bottom: 1.5rem;
@@ -541,7 +541,7 @@ input[type="button"]:disabled {
   z-index: 1000;
 }
 
-.btn-fab:hover,
+.aiab-btn-fab:hover,
 .fab:hover {
   box-shadow:
     0 5px 5px -3px rgba(0, 0, 0, 0.2),
@@ -552,53 +552,53 @@ input[type="button"]:disabled {
 /* Button Groups
    ========================================================================== */
 
-.btn-group {
+.aiab-btn-group {
   position: relative;
   display: inline-flex;
   vertical-align: middle;
 }
 
-.btn-group > .aiab-btn {
+.aiab-btn-group > .aiab-btn {
   position: relative;
   flex: 1 1 auto;
 }
 
-.btn-group > .aiab-btn:not(:first-child) {
+.aiab-btn-group > .aiab-btn:not(:first-child) {
   margin-left: -1px;
 }
 
-.btn-group > .aiab-btn:not(:last-child):not(.dropdown-toggle) {
+.aiab-btn-group > .aiab-btn:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.btn-group > .aiab-btn:not(:first-child) {
+.aiab-btn-group > .aiab-btn:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
 /* Vertical Button Group */
-.btn-group-vertical {
+.aiab-btn-group-vertical {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
 
-.btn-group-vertical > .aiab-btn {
+.aiab-btn-group-vertical > .aiab-btn {
   width: 100%;
 }
 
-.btn-group-vertical > .aiab-btn:not(:first-child) {
+.aiab-btn-group-vertical > .aiab-btn:not(:first-child) {
   margin-top: -1px;
   margin-left: 0;
 }
 
-.btn-group-vertical > .aiab-btn:not(:last-child):not(.dropdown-toggle) {
+.aiab-btn-group-vertical > .aiab-btn:not(:last-child):not(.dropdown-toggle) {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.btn-group-vertical > .aiab-btn:not(:first-child) {
+.aiab-btn-group-vertical > .aiab-btn:not(:first-child) {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -606,13 +606,13 @@ input[type="button"]:disabled {
 /* Loading State
    ========================================================================== */
 
-.btn-loading {
+.aiab-btn-loading {
   position: relative;
   color: transparent;
   pointer-events: none;
 }
 
-.btn-loading::after {
+.aiab-btn-loading::after {
   content: "";
   position: absolute;
   width: 1rem;
@@ -674,25 +674,25 @@ button:focus-visible {
    ========================================================================== */
 
 @media (max-width: 576px) {
-  .btn-group-responsive {
+  .aiab-btn-group-responsive {
     flex-direction: column;
     width: 100%;
   }
 
-  .btn-group-responsive > .aiab-btn {
+  .aiab-btn-group-responsive > .aiab-btn {
     width: 100%;
     margin-left: 0;
     margin-top: -1px;
     border-radius: 0;
   }
 
-  .btn-group-responsive > .aiab-btn:first-child {
+  .aiab-btn-group-responsive > .aiab-btn:first-child {
     margin-top: 0;
     border-top-left-radius: var(--btn-border-radius);
     border-top-right-radius: var(--btn-border-radius);
   }
 
-  .btn-group-responsive > .aiab-btn:last-child {
+  .aiab-btn-group-responsive > .aiab-btn:last-child {
     border-bottom-left-radius: var(--btn-border-radius);
     border-bottom-right-radius: var(--btn-border-radius);
   }
@@ -706,7 +706,7 @@ button:focus-visible {
     transition: none;
   }
 
-  .btn-loading::after {
+  .aiab-btn-loading::after {
     animation: none;
   }
 }

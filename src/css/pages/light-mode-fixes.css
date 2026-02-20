@@ -18,9 +18,9 @@
 /* Page-specific light mode overrides for homepage components */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    .site-logo,
-    .nav-link.site-logo,
-    a.site-logo {
+    .aiab-site-logo,
+    .aiab-nav-link.aiab-site-logo,
+    a.aiab-site-logo {
       color: var(--apple-orange-500, #ed8b00);
     }
 
@@ -28,16 +28,16 @@
       background: transparent;
     }
 
-    .site-nav {
+    .aiab-site-nav {
       background: transparent;
       border-bottom: 1px solid var(--color-border, #dedede);
     }
 
-    .site-nav a:not(.site-logo) {
+    .aiab-site-nav a:not(.aiab-site-logo) {
       color: var(--color-text, #212529);
     }
 
-    .site-nav a:hover {
+    .aiab-site-nav a:hover {
       color: var(--apple-orange-500, #ed8b00);
     }
 
@@ -57,9 +57,9 @@
 
 /* Manual light mode — same rules for system-dark users who toggle light */
 [data-theme="light"] {
-  .site-logo,
-  .nav-link.site-logo,
-  a.site-logo {
+  .aiab-site-logo,
+  .aiab-nav-link.aiab-site-logo,
+  a.aiab-site-logo {
     color: var(--apple-orange-500, #ed8b00);
   }
 
@@ -67,16 +67,16 @@
     background: transparent;
   }
 
-  .site-nav {
+  .aiab-site-nav {
     background: transparent;
     border-bottom: 1px solid var(--color-border, #dedede);
   }
 
-  .site-nav a:not(.site-logo) {
+  .aiab-site-nav a:not(.aiab-site-logo) {
     color: var(--color-text, #212529);
   }
 
-  .site-nav a:hover {
+  .aiab-site-nav a:hover {
     color: var(--apple-orange-500, #ed8b00);
   }
 

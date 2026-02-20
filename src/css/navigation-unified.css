@@ -58,7 +58,7 @@
 /* Reset & Base Styles
    ========================================================================== */
 
-.site-nav {
+.aiab-site-nav {
   position: relative;
   background: var(--nav-bg);
   border-bottom: 1px solid var(--nav-border);
@@ -71,17 +71,17 @@
   overflow: visible; /* Ensure dropdowns aren't clipped */
 }
 
-.site-nav * {
+.aiab-site-nav * {
   box-sizing: border-box;
 }
 
-.site-nav ul {
+.aiab-site-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.site-nav a {
+.aiab-site-nav a {
   color: inherit;
   text-decoration: none;
   transition: all var(--nav-transition);
@@ -90,7 +90,7 @@
 /* Container - Align with main content grid
    ========================================================================== */
 
-.site-nav .aiab-container {
+.aiab-site-nav .aiab-container {
   max-width: var(--container-width); /* Use design token for consistency */
   margin: 0 auto;
   padding: 0 var(--nav-padding-x);
@@ -100,7 +100,7 @@
 /* Mobile Toggle Button
    ========================================================================== */
 
-.nav-toggle {
+.aiab-nav-toggle {
   display: none;
   position: relative;
   width: 44px;
@@ -112,7 +112,7 @@
   z-index: var(--nav-mobile-z-index);
 }
 
-.nav-toggle-icon {
+.aiab-nav-toggle-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -123,8 +123,8 @@
   transition: all var(--nav-transition);
 }
 
-.nav-toggle-icon::before,
-.nav-toggle-icon::after {
+.aiab-nav-toggle-icon::before,
+.aiab-nav-toggle-icon::after {
   content: "";
   position: absolute;
   left: 0;
@@ -134,25 +134,25 @@
   transition: all var(--nav-transition);
 }
 
-.nav-toggle-icon::before {
+.aiab-nav-toggle-icon::before {
   top: -8px;
 }
 
-.nav-toggle-icon::after {
+.aiab-nav-toggle-icon::after {
   top: 8px;
 }
 
 /* Toggle Active State */
-.nav-toggle[aria-expanded="true"] .nav-toggle-icon {
+.aiab-nav-toggle[aria-expanded="true"] .aiab-nav-toggle-icon {
   background: transparent;
 }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle-icon::before {
+.aiab-nav-toggle[aria-expanded="true"] .aiab-nav-toggle-icon::before {
   top: 0;
   transform: rotate(45deg);
 }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
+.aiab-nav-toggle[aria-expanded="true"] .aiab-nav-toggle-icon::after {
   top: 0;
   transform: rotate(-45deg);
 }
@@ -208,8 +208,8 @@
 }
 
 /* Site Logo Special Styling - Aligned with navigation baseline */
-.site-nav .site-logo,
-.site-nav a.site-logo {
+.aiab-site-nav .aiab-site-logo,
+.aiab-site-nav a.aiab-site-logo {
   font-family: var(--nav-font-family);
   font-weight: var(--font-weight-semibold); /* 600 for emphasis */
   font-size: var(--nav-font-size); /* Same as navigation: 1rem */
@@ -219,8 +219,8 @@
 }
 
 /* Logo hover state - same as other nav items */
-.site-nav .site-logo:hover,
-.site-nav a.site-logo:hover {
+.aiab-site-nav .aiab-site-logo:hover,
+.aiab-site-nav a.aiab-site-logo:hover {
   color: var(--nav-text-hover); /* Orange on hover like other nav items */
 }
 
@@ -389,7 +389,7 @@
 
 @media (max-width: 767px) {
   /* Show mobile toggle */
-  .nav-toggle {
+  .aiab-nav-toggle {
     display: block;
     position: absolute;
     top: 0.5rem;
@@ -397,7 +397,7 @@
   }
 
   /* Hide desktop utility */
-  .hide-mobile {
+  .aiab-hide-mobile {
     display: none;
   }
 
@@ -419,17 +419,17 @@
   }
 
   /* Show mobile menu when active */
-  .nav-toggle[aria-expanded="true"] ~ .horizontal,
-  .nav-toggle[aria-expanded="true"] ~ #main-nav,
-  .horizontal.is-active,
-  #main-nav.is-active,
-  .site-nav.menu-open .horizontal,
-  .site-nav.menu-open #main-nav {
+  .aiab-nav-toggle[aria-expanded="true"] ~ .horizontal,
+  .aiab-nav-toggle[aria-expanded="true"] ~ #main-nav,
+  .horizontal.aiab-is-active,
+  #main-nav.aiab-is-active,
+  .aiab-site-nav.menu-open .horizontal,
+  .aiab-site-nav.menu-open #main-nav {
     transform: translateX(0);
   }
 
   /* Mobile overlay */
-  .site-nav::after {
+  .aiab-site-nav::after {
     content: "";
     position: fixed;
     top: 0;
@@ -444,8 +444,8 @@
     pointer-events: none;
   }
 
-  .nav-toggle[aria-expanded="true"] ~ .site-nav::after,
-  .site-nav.menu-open::after {
+  .aiab-nav-toggle[aria-expanded="true"] ~ .aiab-site-nav::after,
+  .aiab-site-nav.menu-open::after {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -477,8 +477,8 @@
   }
 
   /* Show dropdown when parent is active */
-  .horizontal > li.is-expanded > ul,
-  .horizontal ul > li.is-expanded > ul {
+  .horizontal > li.aiab-is-expanded > ul,
+  .horizontal ul > li.aiab-is-expanded > ul {
     display: block;
   }
 
@@ -488,7 +488,7 @@
     transition: transform var(--nav-transition);
   }
 
-  .horizontal li.is-expanded > a::after {
+  .horizontal li.aiab-is-expanded > a::after {
     transform: rotate(180deg);
   }
 
@@ -523,7 +523,7 @@
     font-size: 0.9375rem;
   }
 
-  .site-logo {
+  .aiab-site-logo {
     font-size: 1rem;
   }
 }
@@ -532,7 +532,7 @@
    ========================================================================== */
 
 @media (min-width: 768px) {
-  .hide-desktop {
+  .aiab-hide-desktop {
     display: none;
   }
 
@@ -554,7 +554,7 @@
    ========================================================================== */
 
 /* Screen reader only text */
-.sr-only {
+.aiab-sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -567,18 +567,18 @@
 }
 
 /* Focus styles */
-.site-nav a:focus {
+.aiab-site-nav a:focus {
   outline: 2px solid var(--nav-primary);
   outline-offset: 2px;
 }
 
-.nav-toggle:focus {
+.aiab-nav-toggle:focus {
   outline: 2px solid var(--nav-primary);
   outline-offset: 2px;
 }
 
 /* Skip to main content link */
-.skip-link {
+.aiab-skip-link {
   position: absolute;
   top: -40px;
   left: 0;
@@ -589,7 +589,7 @@
   z-index: 10000;
 }
 
-.skip-link:focus {
+.aiab-skip-link:focus {
   top: 0;
 }
 
@@ -597,8 +597,8 @@
    ========================================================================== */
 
 @media print {
-  .site-nav,
-  .nav-toggle {
+  .aiab-site-nav,
+  .aiab-nav-toggle {
     display: none;
   }
 }
@@ -610,13 +610,13 @@
 /* The CSS automatically detects structure through :has() or ARIA attributes */
 /* No need for .has-dropdown or .has-submenu classes - structure is semantic */
 
-.is-active {
+.aiab-is-active {
   /* Mobile menu is open */
 }
-.is-expanded {
+.aiab-is-expanded {
   /* Mobile dropdown is expanded */
 }
-.is-closing {
+.aiab-is-closing {
   /* Animation out state */
 }
 
@@ -628,7 +628,7 @@
     transition: max-height var(--nav-transition-slow);
   }
 
-  .horizontal li.is-expanded > ul {
+  .horizontal li.aiab-is-expanded > ul {
     max-height: 500px; /* Adjust based on content */
   }
 }

@@ -13,7 +13,7 @@
   width: 100%;
 }
 
-.file-upload-zone {
+.aiab-file-upload-zone {
   position: relative;
   padding: 3rem 2rem;
   background: white;
@@ -30,19 +30,19 @@
   gap: 1rem;
 }
 
-.file-upload-zone:hover {
+.aiab-file-upload-zone:hover {
   border-color: #9ca3af;
   background: #f9fafb;
 }
 
 /* Drag active state */
-.file-upload-zone--drag-active {
+.aiab-file-upload-zone--drag-active {
   border-color: #2563eb;
   background: #eff6ff;
   transform: scale(1.01);
 }
 
-.file-upload-zone--drag-active .file-upload-icon {
+.aiab-file-upload-zone--drag-active .aiab-file-upload-icon {
   color: #2563eb;
   animation: bounce 0.5s infinite;
 }
@@ -58,7 +58,7 @@
 }
 
 /* Hidden input */
-.file-upload-input {
+.aiab-file-upload-input {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -69,27 +69,27 @@
    UPLOAD ZONE CONTENT
    ======================================== */
 
-.file-upload-icon {
+.aiab-file-upload-icon {
   width: 3rem;
   height: 3rem;
   color: #9ca3af;
   transition: all 0.3s ease;
 }
 
-.file-upload-label {
+.aiab-file-upload-label {
   font-size: 1.125rem;
   font-weight: 600;
   color: #374151;
   margin-bottom: 0.25rem;
 }
 
-.file-upload-description {
+.aiab-file-upload-description {
   font-size: 0.875rem;
   color: #6b7280;
   margin-bottom: 1rem;
 }
 
-.file-upload-button {
+.aiab-file-upload-button {
   padding: 0.5rem 1rem;
   background: #2563eb;
   color: white;
@@ -101,17 +101,17 @@
   transition: all 0.2s ease;
 }
 
-.file-upload-button:hover {
+.aiab-file-upload-button:hover {
   background: #1d4ed8;
   transform: translateY(-1px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.file-upload-button:active {
+.aiab-file-upload-button:active {
   transform: translateY(0);
 }
 
-.file-upload-formats {
+.aiab-file-upload-formats {
   font-size: 0.75rem;
   color: #9ca3af;
   margin-top: 0.5rem;
@@ -121,14 +121,14 @@
    FILE LIST
    ======================================== */
 
-.file-upload-list {
+.aiab-file-upload-list {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.file-upload-item {
+.aiab-file-upload-item {
   display: flex;
   align-items: center;
   padding: 0.75rem;
@@ -140,12 +140,12 @@
   overflow: hidden;
 }
 
-.file-upload-item:hover {
+.aiab-file-upload-item:hover {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* File preview */
-.file-upload-preview {
+.aiab-file-upload-preview {
   width: 3rem;
   height: 3rem;
   border-radius: 0.25rem;
@@ -157,26 +157,26 @@
   justify-content: center;
 }
 
-.file-upload-preview img {
+.aiab-file-upload-preview img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.file-upload-preview-icon {
+.aiab-file-upload-preview-icon {
   width: 1.5rem;
   height: 1.5rem;
   color: #6b7280;
 }
 
 /* File info */
-.file-upload-info {
+.aiab-file-upload-info {
   flex: 1;
   margin-left: 1rem;
   min-width: 0;
 }
 
-.file-upload-name {
+.aiab-file-upload-name {
   font-size: 0.875rem;
   font-weight: 500;
   color: #1f2937;
@@ -185,39 +185,39 @@
   white-space: nowrap;
 }
 
-.file-upload-meta {
+.aiab-file-upload-meta {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.25rem;
 }
 
-.file-upload-size {
+.aiab-file-upload-size {
   font-size: 0.75rem;
   color: #6b7280;
 }
 
-.file-upload-status {
+.aiab-file-upload-status {
   font-size: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
-.file-upload-status--success {
+.aiab-file-upload-status--success {
   color: #16a34a;
 }
 
-.file-upload-status--error {
+.aiab-file-upload-status--error {
   color: #dc2626;
 }
 
-.file-upload-status--uploading {
+.aiab-file-upload-status--uploading {
   color: #2563eb;
 }
 
 /* Progress bar */
-.file-upload-progress {
+.aiab-file-upload-progress {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -227,14 +227,14 @@
   overflow: hidden;
 }
 
-.file-upload-progress-bar {
+.aiab-file-upload-progress-bar {
   height: 100%;
   background: #2563eb;
   transition: width 0.3s ease;
   position: relative;
 }
 
-.file-upload-progress-bar::after {
+.aiab-file-upload-progress-bar::after {
   content: "";
   position: absolute;
   top: 0;
@@ -255,7 +255,7 @@
 }
 
 /* Remove button */
-.file-upload-remove {
+.aiab-file-upload-remove {
   width: 2rem;
   height: 2rem;
   display: flex;
@@ -270,13 +270,13 @@
   flex-shrink: 0;
 }
 
-.file-upload-remove:hover {
+.aiab-file-upload-remove:hover {
   background: #fee2e2;
   border-color: #fca5a5;
   color: #dc2626;
 }
 
-.file-upload-remove svg {
+.aiab-file-upload-remove svg {
   width: 1rem;
   height: 1rem;
 }
@@ -286,37 +286,37 @@
    ======================================== */
 
 /* Compact */
-.file-upload--compact .file-upload-zone {
+.file-upload--compact .aiab-file-upload-zone {
   padding: 1.5rem 1rem;
   min-height: 120px;
 }
 
-.file-upload--compact .file-upload-icon {
+.file-upload--compact .aiab-file-upload-icon {
   width: 2rem;
   height: 2rem;
 }
 
-.file-upload--compact .file-upload-label {
+.file-upload--compact .aiab-file-upload-label {
   font-size: 1rem;
 }
 
 /* Large */
-.file-upload--large .file-upload-zone {
+.file-upload--large .aiab-file-upload-zone {
   padding: 4rem 3rem;
   min-height: 300px;
 }
 
-.file-upload--large .file-upload-icon {
+.file-upload--large .aiab-file-upload-icon {
   width: 4rem;
   height: 4rem;
 }
 
-.file-upload--large .file-upload-label {
+.file-upload--large .aiab-file-upload-label {
   font-size: 1.25rem;
 }
 
 /* Circular */
-.file-upload--circular .file-upload-zone {
+.file-upload--circular .aiab-file-upload-zone {
   border-radius: 50%;
   aspect-ratio: 1;
   max-width: 200px;
@@ -324,24 +324,24 @@
 }
 
 /* Grid preview */
-.file-upload--grid .file-upload-list {
+.file-upload--grid .aiab-file-upload-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1rem;
 }
 
-.file-upload--grid .file-upload-item {
+.file-upload--grid .aiab-file-upload-item {
   flex-direction: column;
   padding: 1rem;
 }
 
-.file-upload--grid .file-upload-preview {
+.file-upload--grid .aiab-file-upload-preview {
   width: 100%;
   height: 100px;
   margin-bottom: 0.5rem;
 }
 
-.file-upload--grid .file-upload-info {
+.file-upload--grid .aiab-file-upload-info {
   margin-left: 0;
   text-align: center;
 }
@@ -351,35 +351,35 @@
    ======================================== */
 
 /* Disabled */
-.file-upload--disabled .file-upload-zone {
+.file-upload--disabled .aiab-file-upload-zone {
   background: #f3f4f6;
   border-color: #e5e7eb;
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.file-upload--disabled .file-upload-button {
+.file-upload--disabled .aiab-file-upload-button {
   pointer-events: none;
   opacity: 0.5;
 }
 
 /* Error state */
-.file-upload--error .file-upload-zone {
+.file-upload--error .aiab-file-upload-zone {
   border-color: #dc2626;
   background: #fef2f2;
 }
 
-.file-upload--error .file-upload-icon {
+.file-upload--error .aiab-file-upload-icon {
   color: #dc2626;
 }
 
 /* Success state */
-.file-upload--success .file-upload-zone {
+.file-upload--success .aiab-file-upload-zone {
   border-color: #16a34a;
   background: #f0fdf4;
 }
 
-.file-upload--success .file-upload-icon {
+.file-upload--success .aiab-file-upload-icon {
   color: #16a34a;
 }
 
@@ -387,22 +387,22 @@
    FILE TYPE ICONS
    ======================================== */
 
-.file-type-pdf {
+.aiab-file-type-pdf {
   color: #dc2626;
 }
-.file-type-doc {
+.aiab-file-type-doc {
   color: #2563eb;
 }
-.file-type-xls {
+.aiab-file-type-xls {
   color: #16a34a;
 }
-.file-type-zip {
+.aiab-file-type-zip {
   color: #f59e0b;
 }
-.file-type-video {
+.aiab-file-type-video {
   color: #8b5cf6;
 }
-.file-type-audio {
+.aiab-file-type-audio {
   color: #ec4899;
 }
 .file-type-code {
@@ -414,15 +414,15 @@
    ======================================== */
 
 @media (max-width: 640px) {
-  .file-upload-zone {
+  .aiab-file-upload-zone {
     padding: 2rem 1rem;
   }
 
-  .file-upload-label {
+  .aiab-file-upload-label {
     font-size: 1rem;
   }
 
-  .file-upload-description {
+  .aiab-file-upload-description {
     font-size: 0.8125rem;
   }
 
@@ -435,12 +435,12 @@
    ACCESSIBILITY
    ======================================== */
 
-.file-upload-zone:focus-within {
+.aiab-file-upload-zone:focus-within {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-.file-upload-input:focus + .file-upload-zone {
+.aiab-file-upload-input:focus + .aiab-file-upload-zone {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
@@ -463,56 +463,56 @@
    ======================================== */
 
 @media (prefers-color-scheme: dark) {
-  .file-upload-zone {
+  .aiab-file-upload-zone {
     background: #1f2937;
     border-color: #374151;
   }
 
-  .file-upload-zone:hover {
+  .aiab-file-upload-zone:hover {
     background: #111827;
     border-color: #4b5563;
   }
 
-  .file-upload-zone--drag-active {
+  .aiab-file-upload-zone--drag-active {
     background: #1e3a8a;
     border-color: #3b82f6;
   }
 
-  .file-upload-label {
+  .aiab-file-upload-label {
     color: #f3f4f6;
   }
 
-  .file-upload-description {
+  .aiab-file-upload-description {
     color: #9ca3af;
   }
 
-  .file-upload-item {
+  .aiab-file-upload-item {
     background: #1f2937;
     border-color: #374151;
   }
 
-  .file-upload-preview {
+  .aiab-file-upload-preview {
     background: #374151;
   }
 
-  .file-upload-name {
+  .aiab-file-upload-name {
     color: #f3f4f6;
   }
 
-  .file-upload-size {
+  .aiab-file-upload-size {
     color: #9ca3af;
   }
 
-  .file-upload-progress {
+  .aiab-file-upload-progress {
     background: #374151;
   }
 
-  .file-upload-remove {
+  .aiab-file-upload-remove {
     border-color: #374151;
     color: #9ca3af;
   }
 
-  .file-upload-remove:hover {
+  .aiab-file-upload-remove:hover {
     background: #7f1d1d;
     border-color: #991b1b;
   }

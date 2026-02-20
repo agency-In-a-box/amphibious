@@ -243,8 +243,8 @@
 
   /* Hide elements in print */
   .no-print,
-  .hide-print,
-  .hide-on-print,
+  .aiab-hide-print,
+  .aiab-hide-on-print,
   nav,
   .navigation,
   .aiab-nav,
@@ -261,8 +261,8 @@
 
   /* Show elements only in print */
   .print-only,
-  .show-print,
-  .show-on-print {
+  .aiab-show-print,
+  .aiab-show-on-print {
     display: block;
   }
 
@@ -326,7 +326,7 @@
      ========================================================================== */
 
   /* Ensure screen reader text is hidden */
-  .sr-only,
+  .aiab-sr-only,
   .screen-reader-only,
   .assistive-text {
     display: none;

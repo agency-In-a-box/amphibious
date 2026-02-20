@@ -61,7 +61,7 @@ h4 {
 }
 
 h5,
-.intro {
+.aiab-intro {
   /* Often used for call-out text */
   font-size: var(--font-size-h5, 1.2em);
 }
@@ -78,13 +78,13 @@ h6 {
   font-size: 2em;
 }
 
-.lead {
+.aiab-lead {
   font-size: 1.5em;
   line-height: 1.6;
   color: var(--color-muted, #777);
 }
 
-.subheader {
+.aiab-subheader {
   color: var(--color-muted, #777);
 }
 
@@ -104,7 +104,7 @@ img {
   height: auto;
 }
 
-p.lead {
+p.aiab-lead {
   font-size: 1.5em;
   line-height: 1.6;
   color: var(--color-muted, #777);
