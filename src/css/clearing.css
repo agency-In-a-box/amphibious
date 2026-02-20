@@ -17,8 +17,8 @@
 .cf:after,
 .aiab-container:before,
 .aiab-container:after,
-.clearfix:before,
-.clearfix:after,
+.aiab-clearfix:before,
+.aiab-clearfix:after,
 .cfx:before,
 .cfx:after,
 .aiab-row:before,
@@ -29,7 +29,7 @@
 
 .cf:after,
 .aiab-container:after,
-.clearfix:after,
+.aiab-clearfix:after,
 .cfx:after,
 .aiab-row:after {
   clear: both;
@@ -42,7 +42,7 @@
 
 /* You can also use a <br(or <hr>) class="clear"> to clear columns */
 
-.clear {
+.aiab-clear {
   clear: both;
   display: block;
   overflow: hidden;

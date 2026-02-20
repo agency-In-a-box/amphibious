@@ -33,7 +33,7 @@
 .hero h2,
 .hero h3,
 .hero p,
-.hero .lead,
+.hero .aiab-lead,
 .examples-header h1,
 .examples-header p,
 .docs-header h1,
@@ -69,7 +69,7 @@
 
 /* Primary orange buttons need darker background */
 .button--primary,
-.btn-primary,
+.aiab-btn-primary,
 button[type="submit"] {
   background: #c97400;
   color: white;
@@ -77,7 +77,7 @@ button[type="submit"] {
 }
 
 .button--primary:hover,
-.btn-primary:hover,
+.aiab-btn-primary:hover,
 button[type="submit"]:hover {
   background: #a65e00;
   border-color: #a65e00;
@@ -85,13 +85,13 @@ button[type="submit"]:hover {
 
 /* Outline orange buttons need darker color */
 .button--outline-primary,
-.btn-outline-primary {
+.aiab-btn-outline-primary {
   color: #a65e00;
   border-color: #c97400;
 }
 
 .button--outline-primary:hover,
-.btn-outline-primary:hover {
+.aiab-btn-outline-primary:hover {
   background: #c97400;
   color: white;
 }
@@ -101,7 +101,7 @@ button[type="submit"]:hover {
    ======================================== */
 
 /* Site logo and nav items with orange */
-.site-logo {
+.aiab-site-logo {
   color: #a65e00; /* Darker orange for better contrast */
 }
 
@@ -137,9 +137,9 @@ a:visited {
    ======================================== */
 
 /* Warning/Orange states need darker colors */
-.text-warning,
-.alert-warning,
-.badge-warning {
+.aiab-text-warning,
+.aiab-alert-warning,
+.aiab-badge-warning {
   color: #856404; /* Dark amber for text */
   background-color: #fff3cd; /* Light amber background */
   border-color: #ffeebb;
@@ -183,20 +183,20 @@ a:visited {
    ======================================== */
 
 /* Text color utilities with proper contrast */
-.text-primary {
+.aiab-text-primary {
   color: #a65e00; /* AA compliant */
 }
 
-.text-primary-light {
+.aiab-text-primary-light {
   color: #c97400; /* Use sparingly */
 }
 
-.bg-primary {
+.aiab-bg-primary {
   background-color: #c97400;
   color: white;
 }
 
-.bg-primary-dark {
+.aiab-bg-primary-dark {
   background-color: #a65e00;
   color: white;
 }
@@ -271,7 +271,7 @@ a:visited {
     color: #ffb143;
   }
 
-  :root:not([data-theme="light"]) .text-primary {
+  :root:not([data-theme="light"]) .aiab-text-primary {
     color: #ff9500;
   }
 

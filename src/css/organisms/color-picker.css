@@ -64,7 +64,7 @@
 }
 
 /* Main picker container */
-.color-picker {
+.aiab-color-picker {
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
@@ -78,11 +78,11 @@
     var(--ease-apple-bounce, cubic-bezier(0.19, 1, 0.22, 1));
 }
 
-.color-picker.aiab-dropdown.open {
+.aiab-color-picker.aiab-dropdown.open {
   display: block;
 }
 
-.color-picker-wrapper.aiab-inline .color-picker {
+.color-picker-wrapper.aiab-inline .aiab-color-picker {
   position: static;
   display: block;
   box-shadow: none;
@@ -371,8 +371,8 @@
   gap: 8px;
 }
 
-.btn-cancel,
-.btn-save {
+.aiab-btn-cancel,
+.aiab-btn-save {
   padding: 6px 16px;
   border-radius: 4px;
   font-size: 0.875rem;
@@ -381,23 +381,23 @@
   transition: all var(--duration-instant, 150ms) var(--ease-apple-bounce);
 }
 
-.btn-cancel {
+.aiab-btn-cancel {
   background: transparent;
   border: 1px solid var(--color-border, #dedede);
   color: var(--color-text-secondary, #666);
 }
 
-.btn-cancel:hover {
+.aiab-btn-cancel:hover {
   background: var(--apple-gray-50, #fafafa);
 }
 
-.btn-save {
+.aiab-btn-save {
   background: var(--apple-orange-500, var(--color-primary));
   border: 1px solid var(--apple-orange-500, var(--color-primary));
   color: white;
 }
 
-.btn-save:hover {
+.aiab-btn-save:hover {
   background: var(--apple-orange-600, var(--color-primary-hover));
   border-color: var(--apple-orange-600, var(--color-primary-hover));
   transform: translateY(-1px);
@@ -406,7 +406,7 @@
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  .color-picker,
+  .aiab-color-picker,
   .color-picker-trigger {
     background: var(--color-background-dark, #1a1a1a);
     border-color: var(--color-border-dark, #333);
@@ -420,14 +420,14 @@
 
   .eyedropper-btn,
   .input-group input,
-  .btn-cancel {
+  .aiab-btn-cancel {
     background: var(--color-background-dark, #1a1a1a);
     border-color: var(--color-border-dark, #333);
     color: var(--color-text-dark, #fff);
   }
 
   .eyedropper-btn:hover,
-  .btn-cancel:hover {
+  .aiab-btn-cancel:hover {
     background: var(--color-background-dark-hover, #2a2a2a);
   }
 
@@ -442,18 +442,18 @@
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .color-picker,
+  .aiab-color-picker,
   .color-picker-trigger,
   .color-swatch,
-  .btn-save,
-  .btn-cancel {
+  .aiab-btn-save,
+  .aiab-btn-cancel {
     transition: none;
   }
 }
 
 /* Mobile responsive */
 @media (max-width: 480px) {
-  .color-picker {
+  .aiab-color-picker {
     width: calc(100vw - 32px);
     max-width: 280px;
   }

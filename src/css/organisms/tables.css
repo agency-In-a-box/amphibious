@@ -52,13 +52,13 @@ table {
 }
 
 /* Table wrapper for responsive behavior */
-.table-wrapper {
+.aiab-table-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 1.5rem 0;
 }
 
-.table-wrapper table {
+.aiab-table-wrapper table {
   margin: 0;
 }
 
@@ -107,54 +107,54 @@ table tbody tr:last-child td {
    ========================================================================== */
 
 /* Striped Rows - Using modern CSS, no jQuery needed */
-.table-striped tbody tr:nth-child(odd),
+.aiab-table-striped tbody tr:nth-child(odd),
 .amp.striped tbody tr:nth-child(odd),
 .amp.stripped tbody tr:nth-child(odd) {
   background: var(--table-row-striped);
 }
 
 /* Hover Rows */
-.table-hover tbody tr:hover {
+.aiab-table-hover tbody tr:hover {
   background: var(--table-row-hover);
   cursor: pointer;
 }
 
 /* Bordered */
-.table-bordered {
+.aiab-table-bordered {
   border: var(--table-border-width) solid var(--table-border);
 }
 
-.table-bordered th,
-.table-bordered td {
+.aiab-table-bordered th,
+.aiab-table-bordered td {
   border: var(--table-border-width) solid var(--table-border);
 }
 
 /* Borderless */
-.table-borderless th,
-.table-borderless td,
-.table-borderless thead th,
-.table-borderless tbody + tbody {
+.aiab-table-borderless th,
+.aiab-table-borderless td,
+.aiab-table-borderless thead th,
+.aiab-table-borderless tbody + tbody {
   border: 0;
 }
 
 /* Compact */
-.table-compact th,
-.table-compact td {
+.aiab-table-compact th,
+.aiab-table-compact td {
   padding: var(--table-compact-padding);
 }
 
 /* Rounded */
-.table-rounded {
+.aiab-table-rounded {
   border-radius: var(--table-border-radius);
   overflow: hidden;
   border: var(--table-border-width) solid var(--table-border);
 }
 
-.table-rounded thead tr:first-child th:first-child {
+.aiab-table-rounded thead tr:first-child th:first-child {
   border-top-left-radius: var(--table-border-radius);
 }
 
-.table-rounded thead tr:first-child th:last-child {
+.aiab-table-rounded thead tr:first-child th:last-child {
   border-top-right-radius: var(--table-border-radius);
 }
 
@@ -162,38 +162,38 @@ table tbody tr:last-child td {
    ========================================================================== */
 
 tr.aiab-success,
-.table-success {
+.aiab-table-success {
   background: var(--table-success-bg);
 }
 
 tr.aiab-warning,
-.table-warning {
+.aiab-table-warning {
   background: var(--table-warning-bg);
 }
 
 tr.error,
 tr.aiab-danger,
-.table-error,
-.table-danger {
+.aiab-table-error,
+.aiab-table-danger {
   background: var(--table-error-bg);
 }
 
 tr.aiab-info,
-.table-info {
+.aiab-table-info {
   background: var(--table-info-bg);
 }
 
 /* Sortable Tables
    ========================================================================== */
 
-.table-sortable th {
+.aiab-table-sortable th {
   cursor: pointer;
   user-select: none;
   position: relative;
   padding-right: 2rem;
 }
 
-.table-sortable th::after {
+.aiab-table-sortable th::after {
   content: "↕";
   position: absolute;
   right: var(--table-padding-x);
@@ -201,16 +201,16 @@ tr.aiab-info,
   transition: opacity 200ms;
 }
 
-.table-sortable th:hover::after {
+.aiab-table-sortable th:hover::after {
   opacity: 0.6;
 }
 
-.table-sortable th.sort-asc::after {
+.aiab-table-sortable th.sort-asc::after {
   content: "↑";
   opacity: 1;
 }
 
-.table-sortable th.sort-desc::after {
+.aiab-table-sortable th.sort-desc::after {
   content: "↓";
   opacity: 1;
 }
@@ -220,23 +220,23 @@ tr.aiab-info,
 
 /* Method 1: Horizontal Scroll (default) */
 @media (max-width: 767px) {
-  .table-wrapper {
+  .aiab-table-wrapper {
     border: var(--table-border-width) solid var(--table-border);
     border-radius: var(--table-border-radius);
   }
 
-  .table-wrapper table {
+  .aiab-table-wrapper table {
     min-width: 500px; /* Prevent columns from getting too narrow */
   }
 }
 
 /* Method 2: Stack Layout */
 @media (max-width: 767px) {
-  .table-responsive thead {
+  .aiab-table-responsive thead {
     display: none;
   }
 
-  .table-responsive tr {
+  .aiab-table-responsive tr {
     display: block;
     border: var(--table-border-width) solid var(--table-border);
     border-radius: var(--table-border-radius);
@@ -244,7 +244,7 @@ tr.aiab-info,
     padding: var(--table-padding-y);
   }
 
-  .table-responsive td {
+  .aiab-table-responsive td {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -253,7 +253,7 @@ tr.aiab-info,
     text-align: right;
   }
 
-  .table-responsive td::before {
+  .aiab-table-responsive td::before {
     content: attr(data-label);
     font-weight: var(--table-header-font-weight);
     text-align: left;
@@ -261,29 +261,29 @@ tr.aiab-info,
     padding-right: 1rem;
   }
 
-  .table-responsive tbody tr {
+  .aiab-table-responsive tbody tr {
     background: var(--table-bg);
   }
 
   /* Maintain striping on mobile */
-  .table-responsive.table-striped tbody tr:nth-child(odd) {
+  .aiab-table-responsive.aiab-table-striped tbody tr:nth-child(odd) {
     background: var(--table-row-striped);
   }
 }
 
 /* Method 3: Scrollable with Fixed First Column */
-.table-fixed-column {
+.aiab-table-fixed-column {
   position: relative;
   overflow-x: auto;
 }
 
 @media (max-width: 767px) {
-  .table-fixed-column table {
+  .aiab-table-fixed-column table {
     margin-left: 120px;
   }
 
-  .table-fixed-column thead th:first-child,
-  .table-fixed-column tbody td:first-child {
+  .aiab-table-fixed-column thead th:first-child,
+  .aiab-table-fixed-column tbody td:first-child {
     position: absolute;
     left: 0;
     width: 120px;
@@ -291,7 +291,7 @@ tr.aiab-info,
     border-right: 2px solid var(--table-border);
   }
 
-  .table-fixed-column thead th:first-child {
+  .aiab-table-fixed-column thead th:first-child {
     background: var(--table-header-bg);
   }
 }
@@ -300,31 +300,31 @@ tr.aiab-info,
    ========================================================================== */
 
 /* Text Alignment */
-.text-left {
+.aiab-text-left {
   text-align: left;
 }
-.text-center {
+.aiab-text-center {
   text-align: center;
 }
-.text-right {
+.aiab-text-right {
   text-align: right;
 }
 
 /* Column Width Control */
-.col-auto {
+.aiab-col-auto {
   width: auto;
 }
-.col-min {
+.aiab-col-min {
   width: 1%;
   white-space: nowrap;
 }
-.col-25 {
+.aiab-col-25 {
   width: 25%;
 }
-.col-50 {
+.aiab-col-50 {
   width: 50%;
 }
-.col-75 {
+.aiab-col-75 {
   width: 75%;
 }
 
@@ -343,7 +343,7 @@ tr.aiab-info,
    ========================================================================== */
 
 /* Screen reader only headers */
-.sr-only {
+.aiab-sr-only {
   position: absolute;
   width: 1px;
   height: 1px;

@@ -37,24 +37,24 @@
 }
 
 /* Card hover effects */
-.card-hoverable:hover,
+.aiab-card-hoverable:hover,
 .aiab-card.hoverable:hover {
   box-shadow: var(--card-shadow-md);
   transform: translateY(-2px);
 }
 
-.card-interactive,
+.aiab-card-interactive,
 .aiab-card.interactive {
   cursor: pointer;
 }
 
-.card-interactive:hover,
+.aiab-card-interactive:hover,
 .aiab-card.interactive:hover {
   box-shadow: var(--card-shadow-lg);
   transform: translateY(-4px);
 }
 
-.card-interactive:active,
+.aiab-card-interactive:active,
 .aiab-card.interactive:active {
   transform: translateY(-1px);
   box-shadow: var(--card-shadow-sm);
@@ -63,7 +63,7 @@
 /* Card Header
    ========================================================================== */
 
-.card-header,
+.aiab-card-header,
 .card__header {
   padding: var(--card-spacing);
   border-bottom: 1px solid var(--card-border);
@@ -71,12 +71,12 @@
   font-weight: 600;
 }
 
-.card-header:empty,
+.aiab-card-header:empty,
 .card__header:empty {
   display: none;
 }
 
-.card-title,
+.aiab-card-title,
 .card__title {
   margin: 0;
   font-size: 1.25rem;
@@ -84,7 +84,7 @@
   line-height: 1.4;
 }
 
-.card-subtitle,
+.aiab-card-subtitle,
 .card__subtitle {
   margin: 0.5rem 0 0 0;
   font-size: 0.875rem;
@@ -95,28 +95,28 @@
 /* Card Body/Content
    ========================================================================== */
 
-.card-body,
+.aiab-card-body,
 .card__body,
-.card-content,
+.aiab-card-content,
 .card__content {
   padding: var(--card-spacing);
   flex: 1;
 }
 
-.card-body:empty,
+.aiab-card-body:empty,
 .card__body:empty,
-.card-content:empty,
+.aiab-card-content:empty,
 .card__content:empty {
   display: none;
 }
 
-.card-text,
+.aiab-card-text,
 .card__text {
   margin: 0;
   line-height: 1.6;
 }
 
-.card-text:not(:last-child),
+.aiab-card-text:not(:last-child),
 .card__text:not(:last-child) {
   margin-bottom: 1rem;
 }
@@ -124,7 +124,7 @@
 /* Card Footer
    ========================================================================== */
 
-.card-footer,
+.aiab-card-footer,
 .card__footer {
   padding: var(--card-spacing);
   border-top: 1px solid var(--card-border);
@@ -134,22 +134,22 @@
   gap: 1rem;
 }
 
-.card-footer:empty,
+.aiab-card-footer:empty,
 .card__footer:empty {
   display: none;
 }
 
-.card-footer.center,
+.aiab-card-footer.center,
 .card__footer.center {
   justify-content: center;
 }
 
-.card-footer.end,
+.aiab-card-footer.end,
 .card__footer.end {
   justify-content: flex-end;
 }
 
-.card-footer.between,
+.aiab-card-footer.between,
 .card__footer.between {
   justify-content: space-between;
 }
@@ -157,7 +157,7 @@
 /* Card Media
    ========================================================================== */
 
-.card-media,
+.aiab-card-media,
 .card__media,
 .aiab-card img:first-child {
   display: block;
@@ -166,17 +166,17 @@
   object-fit: cover;
 }
 
-.card-media.aspect-video,
+.aiab-card-media.aspect-video,
 .card__media.aspect-video {
   aspect-ratio: 16 / 9;
 }
 
-.card-media.aspect-square,
+.aiab-card-media.aspect-square,
 .card__media.aspect-square {
   aspect-ratio: 1 / 1;
 }
 
-.card-media.rounded,
+.aiab-card-media.rounded,
 .card__media.rounded {
   border-radius: var(--card-border-radius);
   margin: var(--card-spacing);
@@ -210,17 +210,17 @@
 /* Card Size Variants
    ========================================================================== */
 
-.aiab-card.compact .card-header,
-.aiab-card.compact .card-body,
-.aiab-card.compact .card-content,
-.aiab-card.compact .card-footer {
+.aiab-card.compact .aiab-card-header,
+.aiab-card.compact .aiab-card-body,
+.aiab-card.compact .aiab-card-content,
+.aiab-card.compact .aiab-card-footer {
   padding: var(--card-spacing-sm);
 }
 
-.aiab-card.spacious .card-header,
-.aiab-card.spacious .card-body,
-.aiab-card.spacious .card-content,
-.aiab-card.spacious .card-footer {
+.aiab-card.spacious .aiab-card-header,
+.aiab-card.spacious .aiab-card-body,
+.aiab-card.spacious .aiab-card-content,
+.aiab-card.spacious .aiab-card-footer {
   padding: var(--card-spacing-lg);
 }
 
@@ -244,14 +244,14 @@
   flex-direction: row;
 }
 
-.aiab-card.horizontal .card-media,
+.aiab-card.horizontal .aiab-card-media,
 .aiab-card.horizontal .card__media,
 .aiab-card.horizontal img:first-child {
   width: 200px;
   flex-shrink: 0;
 }
 
-.aiab-card.horizontal .card-content,
+.aiab-card.horizontal .aiab-card-content,
 .aiab-card.horizontal .card__content {
   display: flex;
   flex-direction: column;
@@ -262,7 +262,7 @@
     flex-direction: column;
   }
 
-  .aiab-card.horizontal .card-media,
+  .aiab-card.horizontal .aiab-card-media,
   .aiab-card.horizontal .card__media,
   .aiab-card.horizontal img:first-child {
     width: 100%;
@@ -272,29 +272,29 @@
 /* Card Grid System
    ========================================================================== */
 
-.card-grid {
+.aiab-card-grid {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-.card-grid.cols-2 {
+.aiab-card-grid.cols-2 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.card-grid.cols-3 {
+.aiab-card-grid.cols-3 {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.card-grid.cols-4 {
+.aiab-card-grid.cols-4 {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 @media (max-width: 768px) {
-  .card-grid,
-  .card-grid.cols-2,
-  .card-grid.cols-3,
-  .card-grid.cols-4 {
+  .aiab-card-grid,
+  .aiab-card-grid.cols-2,
+  .aiab-card-grid.cols-3,
+  .aiab-card-grid.cols-4 {
     grid-template-columns: 1fr;
   }
 }
@@ -303,12 +303,12 @@
    ========================================================================== */
 
 /* Product Card */
-.aiab-card.product .card-body,
+.aiab-card.product .aiab-card-body,
 .aiab-card.product .card__body {
   text-align: center;
 }
 
-.aiab-card.product .card-title,
+.aiab-card.product .aiab-card-title,
 .aiab-card.product .card__title {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
@@ -338,12 +338,12 @@
   object-fit: cover;
 }
 
-.aiab-card.profile .card-title,
+.aiab-card.profile .aiab-card-title,
 .aiab-card.profile .card__title {
   margin-bottom: 0.25rem;
 }
 
-.aiab-card.profile .card-subtitle,
+.aiab-card.profile .aiab-card-subtitle,
 .aiab-card.profile .card__subtitle {
   margin-bottom: 1rem;
 }
@@ -384,24 +384,24 @@
 /* Card Actions
    ========================================================================== */
 
-.card-actions,
+.aiab-card-actions,
 .card__actions {
   display: flex;
   gap: 0.5rem;
   margin-top: 1rem;
 }
 
-.card-actions.vertical,
+.aiab-card-actions.vertical,
 .card__actions.vertical {
   flex-direction: column;
 }
 
-.card-actions.center,
+.aiab-card-actions.center,
 .card__actions.center {
   justify-content: center;
 }
 
-.card-actions.end,
+.aiab-card-actions.end,
 .card__actions.end {
   justify-content: flex-end;
 }
@@ -450,9 +450,9 @@
     margin-bottom: 1rem;
   }
 
-  .card-interactive:hover,
+  .aiab-card-interactive:hover,
   .aiab-card.interactive:hover,
-  .card-hoverable:hover,
+  .aiab-card-hoverable:hover,
   .aiab-card.hoverable:hover {
     transform: none;
     box-shadow: none;

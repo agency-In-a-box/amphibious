@@ -39,22 +39,22 @@
 /* Spinner Sizes
    ========================================================================== */
 
-.spinner-small {
+.aiab-spinner-small {
   --spinner-size: 1rem;
   --spinner-border-width: 0.125rem;
 }
 
-.spinner-medium {
+.aiab-spinner-medium {
   --spinner-size: 1.5rem;
   --spinner-border-width: 0.15rem;
 }
 
-.spinner-large {
+.aiab-spinner-large {
   --spinner-size: 2.5rem;
   --spinner-border-width: 0.25rem;
 }
 
-.spinner-xl {
+.aiab-spinner-xl {
   --spinner-size: 3rem;
   --spinner-border-width: 0.3rem;
 }
@@ -62,27 +62,27 @@
 /* Spinner Colors
    ========================================================================== */
 
-.spinner-primary {
+.aiab-spinner-primary {
   --spinner-color: var(--color-primary);
 }
 
-.spinner-secondary {
+.aiab-spinner-secondary {
   --spinner-color: #6b7280;
 }
 
-.spinner-success {
+.aiab-spinner-success {
   --spinner-color: #10b981;
 }
 
-.spinner-danger {
+.aiab-spinner-danger {
   --spinner-color: #ef4444;
 }
 
-.spinner-warning {
+.aiab-spinner-warning {
   --spinner-color: #f59e0b;
 }
 
-.spinner-info {
+.aiab-spinner-info {
   --spinner-color: #06b6d4;
 }
 
@@ -90,14 +90,14 @@
    ========================================================================== */
 
 /* Dots Spinner */
-.spinner-dots {
+.aiab-spinner-dots {
   display: inline-flex;
   gap: 0.25rem;
 }
 
-.spinner-dots::before,
-.spinner-dots::after,
-.spinner-dots {
+.aiab-spinner-dots::before,
+.aiab-spinner-dots::after,
+.aiab-spinner-dots {
   content: "";
   width: 0.5rem;
   height: 0.5rem;
@@ -107,11 +107,11 @@
   animation-fill-mode: both;
 }
 
-.spinner-dots::before {
+.aiab-spinner-dots::before {
   animation-delay: -0.32s;
 }
 
-.spinner-dots::after {
+.aiab-spinner-dots::after {
   animation-delay: -0.16s;
 }
 
@@ -127,7 +127,7 @@
 }
 
 /* Pulse Spinner */
-.spinner-pulse {
+.aiab-spinner-pulse {
   border: none;
   background-color: var(--spinner-color);
   animation: spinner-pulse 1s infinite ease-in-out;
@@ -146,7 +146,7 @@
 }
 
 /* Wave Spinner */
-.spinner-wave {
+.aiab-spinner-wave {
   width: calc(var(--spinner-size) * 2);
   height: calc(var(--spinner-size) / 2);
   border: none;
@@ -167,7 +167,7 @@
 /* Loading Text
    ========================================================================== */
 
-.spinner-with-text {
+.aiab-spinner-with-text {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -175,7 +175,7 @@
   color: var(--spinner-color);
 }
 
-.spinner-with-text .aiab-spinner {
+.aiab-spinner-with-text .aiab-spinner {
   --spinner-size: 1rem;
   --spinner-border-width: 0.125rem;
 }
@@ -183,7 +183,7 @@
 /* Overlay Spinner
    ========================================================================== */
 
-.spinner-overlay {
+.aiab-spinner-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -196,7 +196,7 @@
   z-index: 9999;
 }
 
-.spinner-overlay .aiab-spinner {
+.aiab-spinner-overlay .aiab-spinner {
   --spinner-size: 3rem;
   --spinner-border-width: 0.3rem;
 }
@@ -209,7 +209,7 @@
     --spinner-track-color: #374151;
   }
 
-  .spinner-overlay {
+  .aiab-spinner-overlay {
     background-color: rgba(0, 0, 0, 0.8);
   }
 }
@@ -217,7 +217,7 @@
 /* Status Indicator with Pulse - Stays circular with proper clipping
    ========================================================================== */
 
-.status-pulse {
+.aiab-status-pulse {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -228,7 +228,7 @@
   overflow: visible;
 }
 
-.status-pulse::before {
+.aiab-status-pulse::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -238,7 +238,7 @@
   animation: status-pulse-ring 2s ease-in-out infinite;
 }
 
-.status-pulse::after {
+.aiab-status-pulse::after {
   content: "";
   position: relative;
   width: 100%;
@@ -264,7 +264,7 @@
 }
 
 /* Health/Status indicator that maintains circle shape */
-.health-pulse {
+.aiab-health-pulse {
   position: relative;
   width: var(--health-pulse-size, 8px);
   height: var(--health-pulse-size, 8px);
@@ -275,7 +275,7 @@
   flex-shrink: 0;
 }
 
-.health-pulse::before {
+.aiab-health-pulse::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -302,7 +302,7 @@
 }
 
 /* Clipped pulse container - keeps animation inside bounds */
-.pulse-container {
+.aiab-pulse-container {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -311,7 +311,7 @@
   border-radius: 50%;
 }
 
-.pulse-container .health-pulse::before {
+.aiab-pulse-container .aiab-health-pulse::before {
   /* Animation stays within container bounds */
 }
 
@@ -320,11 +320,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .aiab-spinner,
-  .spinner-dots,
-  .spinner-pulse,
-  .spinner-wave,
-  .status-pulse::before,
-  .health-pulse::before {
+  .aiab-spinner-dots,
+  .aiab-spinner-pulse,
+  .aiab-spinner-wave,
+  .aiab-status-pulse::before,
+  .aiab-health-pulse::before {
     animation-duration: 2s;
     animation-iteration-count: 1;
   }

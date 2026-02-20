@@ -55,7 +55,7 @@
 }
 
 /* Modal Overlay (Amphibious naming convention) */
-.modal_overlay {
+.aiab-modal_overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -71,13 +71,13 @@
   justify-content: center;
 }
 
-.modal_overlay.aiab-active {
+.aiab-modal_overlay.aiab-active {
   display: flex;
   opacity: 1;
 }
 
 /* Modal Backdrop */
-.modal-backdrop {
+.aiab-modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -93,7 +93,7 @@
   backdrop-filter: blur(4px);
 }
 
-.modal-backdrop.is-visible {
+.aiab-modal-backdrop.is-visible {
   opacity: 1;
   visibility: visible;
 }
@@ -118,7 +118,7 @@
   overflow-y: auto;
 }
 
-.modal_overlay.aiab-active .aiab-modal,
+.aiab-modal_overlay.aiab-active .aiab-modal,
 .aiab-modal.is-visible {
   opacity: 1;
   visibility: visible;
@@ -498,7 +498,7 @@ body.modal-open {
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .aiab-modal,
-  .modal-backdrop,
+  .aiab-modal-backdrop,
   .modal__dialog {
     transition: none;
     animation: none;
@@ -508,7 +508,7 @@ body.modal-open {
 /* Print Styles */
 @media print {
   .aiab-modal,
-  .modal-backdrop {
+  .aiab-modal-backdrop {
     display: none;
   }
 }

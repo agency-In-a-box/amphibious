@@ -203,19 +203,19 @@
 }
 
 /* 4. Vertical Steps */
-.steps--vertical {
+.aiab-steps--vertical {
   flex-direction: column;
   align-items: stretch;
 }
 
-.steps--vertical .steps__item {
+.aiab-steps--vertical .steps__item {
   flex-direction: row;
   align-items: flex-start;
   text-align: left;
   padding: 1rem 0;
 }
 
-.steps--vertical .steps__item:not(:last-child)::after {
+.aiab-steps--vertical .steps__item:not(:last-child)::after {
   content: "";
   position: absolute;
   top: calc(var(--step-size) + 1rem);
@@ -227,19 +227,19 @@
   background-color: var(--step-line);
 }
 
-.steps--vertical .steps__circle {
+.aiab-steps--vertical .steps__circle {
   margin-bottom: 0;
   margin-right: 1rem;
   flex-shrink: 0;
 }
 
-.steps--vertical .steps__content {
+.aiab-steps--vertical .steps__content {
   align-items: flex-start;
   flex: 1;
   gap: 0.375rem;
 }
 
-.steps--vertical .steps__description {
+.aiab-steps--vertical .steps__description {
   max-width: none;
 }
 
@@ -398,7 +398,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .aiab-steps:not(.steps--vertical) {
+  .aiab-steps:not(.aiab-steps--vertical) {
     --step-size: 1.75rem;
     --step-font-size: 0.8125rem;
     --step-number-size: 0.75rem;
@@ -409,21 +409,21 @@
     max-width: 100px;
   }
 
-  .steps--vertical {
+  .aiab-steps--vertical {
     --step-size: 1.5rem;
   }
 
-  .steps--vertical .steps__circle {
+  .aiab-steps--vertical .steps__circle {
     margin-right: 0.75rem;
   }
 }
 
 @media (max-width: 640px) {
-  .aiab-steps:not(.steps--vertical):not(.steps--minimal) .steps__description {
+  .aiab-steps:not(.aiab-steps--vertical):not(.steps--minimal) .steps__description {
     display: none;
   }
 
-  .aiab-steps:not(.steps--vertical) {
+  .aiab-steps:not(.aiab-steps--vertical) {
     --step-size: 1.5rem;
     --step-number-size: 0.75rem;
   }
@@ -488,12 +488,12 @@
 }
 
 /* RTL Support */
-[dir="rtl"] .steps--vertical .steps__circle {
+[dir="rtl"] .aiab-steps--vertical .steps__circle {
   margin-right: 0;
   margin-left: 1rem;
 }
 
-[dir="rtl"] .steps--vertical .steps__item:not(:last-child)::after {
+[dir="rtl"] .aiab-steps--vertical .steps__item:not(:last-child)::after {
   left: auto;
   right: calc(var(--step-size) / 2);
 }

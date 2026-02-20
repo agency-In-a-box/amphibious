@@ -161,12 +161,12 @@
   transform: translateY(-2px);
 }
 
-.btn-primary {
+.aiab-btn-primary {
   background: white;
   color: #ed8b00;
 }
 
-.btn-secondary {
+.aiab-btn-secondary {
   background: transparent;
   border: 2px solid white;
   color: white;

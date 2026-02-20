@@ -6,14 +6,14 @@
 /* Display Utilities
    ========================================================================== */
 
-.hide,
+.aiab-hide,
 .hidden,
 .print-only,
 .assistive-text {
   display: none;
 }
 
-.show,
+.aiab-show,
 .visible {
   display: block;
 }
@@ -42,7 +42,7 @@
   position: absolute;
 }
 
-.fixed,
+.aiab-fixed,
 .f {
   position: fixed;
 }
@@ -58,14 +58,14 @@
 /* Position Helpers - Use with absolute/fixed positioning */
 .absolute.top,
 .a.t,
-.fixed.top,
+.aiab-fixed.top,
 .f.t {
   top: 0;
 }
 
 .absolute.right,
 .a.r,
-.fixed.right,
+.aiab-fixed.right,
 .f.r {
   right: 0;
   float: none;
@@ -73,14 +73,14 @@
 
 .absolute.bottom,
 .a.b,
-.fixed.bottom,
+.aiab-fixed.bottom,
 .f.b {
   bottom: 0;
 }
 
 .absolute.left,
 .a.l,
-.fixed.left,
+.aiab-fixed.left,
 .f.l {
   left: 0;
   float: none;
@@ -108,28 +108,28 @@
 /* Text Alignment
    ========================================================================== */
 
-.text-left,
+.aiab-text-left,
 .align-left,
 .align_left,
 .al {
   text-align: left;
 }
 
-.text-center,
+.aiab-text-center,
 .align-center,
 .align_center,
 .ac {
   text-align: center;
 }
 
-.text-right,
+.aiab-text-right,
 .align-right,
 .align_right,
 .ar {
   text-align: right;
 }
 
-.text-justify,
+.aiab-text-justify,
 .align-justify,
 .align_just,
 .aj {
@@ -501,51 +501,51 @@
   color: var(--color-muted, #a9a9a9);
 }
 
-.text-primary {
+.aiab-text-primary {
   color: var(--color-primary);
 }
 
-.text-secondary {
+.aiab-text-secondary {
   color: var(--color-secondary);
 }
 
-.text-success {
+.aiab-text-success {
   color: var(--color-success);
 }
 
-.text-danger {
+.aiab-text-danger {
   color: var(--color-danger);
 }
 
-.text-warning {
+.aiab-text-warning {
   color: var(--color-warning);
 }
 
-.text-info {
+.aiab-text-info {
   color: var(--color-info);
 }
 
-.bg-primary {
+.aiab-bg-primary {
   background-color: var(--color-primary);
 }
 
-.bg-secondary {
+.aiab-bg-secondary {
   background-color: var(--color-secondary);
 }
 
-.bg-success {
+.aiab-bg-success {
   background-color: var(--color-success);
 }
 
-.bg-danger {
+.aiab-bg-danger {
   background-color: var(--color-danger);
 }
 
-.bg-warning {
+.aiab-bg-warning {
   background-color: var(--color-warning);
 }
 
-.bg-info {
+.aiab-bg-info {
   background-color: var(--color-info);
 }
 
@@ -720,7 +720,7 @@
 /* Accessibility Utilities
    ========================================================================== */
 
-.sr-only,
+.aiab-sr-only,
 .screen-reader-only {
   position: absolute;
   width: 1px;
@@ -733,7 +733,7 @@
   border: 0;
 }
 
-.sr-only-focusable:focus {
+.aiab-sr-only-focusable:focus {
   position: static;
   width: auto;
   height: auto;
@@ -748,12 +748,12 @@
    ========================================================================== */
 
 @media print {
-  .hide-print,
+  .aiab-hide-print,
   .no-print {
     display: none;
   }
 
-  .show-print,
+  .aiab-show-print,
   .print-only {
     display: block;
   }

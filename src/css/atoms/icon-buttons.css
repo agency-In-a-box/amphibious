@@ -50,7 +50,7 @@
 /* Base Icon Button Styles
    ========================================================================== */
 
-.icon-button {
+.aiab-icon-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -67,21 +67,21 @@
   text-decoration: none;
 }
 
-.icon-button:hover {
+.aiab-icon-button:hover {
   background-color: var(--icon-button-hover-bg);
   color: var(--icon-button-hover-color);
 }
 
-.icon-button:active {
+.aiab-icon-button:active {
   background-color: var(--icon-button-active-bg);
 }
 
-.icon-button:focus-visible {
+.aiab-icon-button:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-.icon-button:disabled {
+.aiab-icon-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
@@ -207,8 +207,8 @@
 }
 
 /* Icon inside button */
-.icon-button .aiab-icon,
-.icon-button svg {
+.aiab-icon-button .aiab-icon,
+.aiab-icon-button svg {
   width: 1.25rem;
   height: 1.25rem;
   pointer-events: none;
@@ -245,11 +245,11 @@
 }
 
 /* ==========================================================================
-   .btn-icon Alias (for compatibility with .aiab-btn naming convention)
+   .aiab-btn-icon Alias (for compatibility with .aiab-btn naming convention)
    ========================================================================== */
 
-/* Base .btn-icon mirrors .icon-button styles */
-.btn-icon {
+/* Base .aiab-btn-icon mirrors .aiab-icon-button styles */
+.aiab-btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -266,28 +266,28 @@
   text-decoration: none;
 }
 
-.btn-icon:hover {
+.aiab-btn-icon:hover {
   background-color: var(--icon-button-hover-bg);
   color: var(--icon-button-hover-color);
 }
 
-.btn-icon:active {
+.aiab-btn-icon:active {
   background-color: var(--icon-button-active-bg);
 }
 
-.btn-icon:focus-visible {
+.aiab-btn-icon:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-.btn-icon:disabled {
+.aiab-btn-icon:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.btn-icon .aiab-icon,
-.btn-icon svg {
+.aiab-btn-icon .aiab-icon,
+.aiab-btn-icon svg {
   width: 1rem;
   height: 1rem;
   pointer-events: none;

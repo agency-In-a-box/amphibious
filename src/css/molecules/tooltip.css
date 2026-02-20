@@ -95,11 +95,11 @@
 }
 
 /* Tooltip Positioning - Top */
-.tooltip--top {
+.aiab-tooltip--top {
   margin-bottom: var(--tooltip-arrow-size);
 }
 
-.tooltip--top::before {
+.aiab-tooltip--top::before {
   top: 100%;
   left: 50%;
   margin-left: calc(-1 * var(--tooltip-arrow-size));
@@ -132,11 +132,11 @@
 }
 
 /* Tooltip Positioning - Bottom */
-.tooltip--bottom {
+.aiab-tooltip--bottom {
   margin-top: var(--tooltip-arrow-size);
 }
 
-.tooltip--bottom::before {
+.aiab-tooltip--bottom::before {
   bottom: 100%;
   left: 50%;
   margin-left: calc(-1 * var(--tooltip-arrow-size));
@@ -169,11 +169,11 @@
 }
 
 /* Tooltip Positioning - Left */
-.tooltip--left {
+.aiab-tooltip--left {
   margin-right: var(--tooltip-arrow-size);
 }
 
-.tooltip--left::before {
+.aiab-tooltip--left::before {
   top: 50%;
   left: 100%;
   margin-top: calc(-1 * var(--tooltip-arrow-size));
@@ -206,11 +206,11 @@
 }
 
 /* Tooltip Positioning - Right */
-.tooltip--right {
+.aiab-tooltip--right {
   margin-left: var(--tooltip-arrow-size);
 }
 
-.tooltip--right::before {
+.aiab-tooltip--right::before {
   top: 50%;
   right: 100%;
   margin-top: calc(-1 * var(--tooltip-arrow-size));
@@ -248,12 +248,12 @@
   --tooltip-color: #ffffff;
 }
 
-.tooltip--success {
+.aiab-tooltip--success {
   --tooltip-bg: var(--color-success, #10b981);
   --tooltip-color: #ffffff;
 }
 
-.tooltip--warning {
+.aiab-tooltip--warning {
   --tooltip-bg: var(--color-warning, #f59e0b);
   --tooltip-color: #1f2937;
 }
@@ -263,19 +263,19 @@
   --tooltip-color: #ffffff;
 }
 
-.tooltip--info {
+.aiab-tooltip--info {
   --tooltip-bg: var(--color-info, var(--color-primary));
   --tooltip-color: #ffffff;
 }
 
-.tooltip--light {
+.aiab-tooltip--light {
   --tooltip-bg: #f9fafb;
   --tooltip-color: #1f2937;
   --tooltip-border-color: #e5e7eb;
 }
 
 /* Tooltip Sizes */
-.tooltip--sm {
+.aiab-tooltip--sm {
   --tooltip-max-width: 200px;
   --tooltip-padding: 0.25rem 0.5rem;
   --tooltip-font-size: 0.75rem;
@@ -284,7 +284,7 @@
   --tooltip-arrow-offset: 8px;
 }
 
-.tooltip--lg {
+.aiab-tooltip--lg {
   --tooltip-max-width: 400px;
   --tooltip-padding: 0.75rem 1rem;
   --tooltip-font-size: 1rem;
@@ -431,11 +431,11 @@
     --tooltip-padding: 0.5rem;
   }
 
-  .tooltip--lg {
+  .aiab-tooltip--lg {
     --tooltip-max-width: 280px;
   }
 
-  .tooltip--sm {
+  .aiab-tooltip--sm {
     --tooltip-max-width: 180px;
   }
 }
@@ -453,24 +453,24 @@
 }
 
 /* RTL Support */
-[dir="rtl"] .tooltip--left {
+[dir="rtl"] .aiab-tooltip--left {
   margin-right: 0;
   margin-left: var(--tooltip-arrow-size);
 }
 
-[dir="rtl"] .tooltip--left::before {
+[dir="rtl"] .aiab-tooltip--left::before {
   left: auto;
   right: 100%;
   border-left-color: transparent;
   border-right-color: var(--tooltip-bg);
 }
 
-[dir="rtl"] .tooltip--right {
+[dir="rtl"] .aiab-tooltip--right {
   margin-left: 0;
   margin-right: var(--tooltip-arrow-size);
 }
 
-[dir="rtl"] .tooltip--right::before {
+[dir="rtl"] .aiab-tooltip--right::before {
   right: auto;
   left: 100%;
   border-right-color: transparent;

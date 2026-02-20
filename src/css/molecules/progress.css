@@ -43,7 +43,7 @@
   margin-bottom: 1rem;
 }
 
-.progress-bar {
+.aiab-progress-bar {
   height: 100%;
   background-color: var(--progress-bar-bg);
   transition: var(--progress-bar-transition);
@@ -98,7 +98,7 @@
   margin-bottom: 1rem;
 }
 
-.progress-label {
+.aiab-progress-label {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -108,7 +108,7 @@
   font-weight: 500;
 }
 
-.progress-label .progress-percentage {
+.aiab-progress-label .progress-percentage {
   font-weight: 600;
   color: var(--progress-bar-bg);
 }
@@ -228,7 +228,7 @@
   color: #9ca3af;
 }
 
-.progress-step.is-active .progress-step-circle {
+.progress-step.aiab-is-active .progress-step-circle {
   background-color: var(--progress-primary);
   border-color: var(--progress-primary);
   color: white;
@@ -248,7 +248,7 @@
   font-weight: 500;
 }
 
-.progress-step.is-active .progress-step-label {
+.progress-step.aiab-is-active .progress-step-label {
   color: var(--progress-primary);
   font-weight: 600;
 }
