@@ -60,7 +60,7 @@ describe('Tooltip Module', () => {
     it('should read content from title attribute', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0 });
       tooltip.show();
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.textContent).toBe('Tooltip text');
     });
 
@@ -73,7 +73,7 @@ describe('Tooltip Module', () => {
       const el = document.getElementById('trigger2') as HTMLElement;
       const tooltip = new Tooltip(el, { delay: 0 });
       tooltip.show();
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.textContent).toBe('Data tooltip');
     });
 
@@ -94,7 +94,7 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0 });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl).toBeTruthy();
       expect(tooltipEl?.classList.contains('aiab-tooltip--visible')).toBe(true);
       expect(tooltipEl?.getAttribute('aria-hidden')).toBe('false');
@@ -104,7 +104,7 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0 });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.getAttribute('role')).toBe('tooltip');
     });
 
@@ -113,7 +113,7 @@ describe('Tooltip Module', () => {
       tooltip.show();
       tooltip.hide();
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.classList.contains('aiab-tooltip--hidden')).toBe(true);
       expect(tooltipEl?.getAttribute('aria-hidden')).toBe('true');
     });
@@ -163,7 +163,7 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(el, { delay: 0, content: '' });
       tooltip.show();
       // Tooltip element should not be created for empty content
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl).toBeNull();
     });
   });
@@ -173,39 +173,39 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, position: 'bottom' });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--bottom')).toBe(true);
+      const tooltipEl = document.querySelector('.aiab-tooltip');
+      expect(tooltipEl?.classList.contains('aiab-tooltip--bottom')).toBe(true);
     });
 
     it('should add variant class', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, variant: 'danger' });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--danger')).toBe(true);
+      const tooltipEl = document.querySelector('.aiab-tooltip');
+      expect(tooltipEl?.classList.contains('aiab-tooltip--danger')).toBe(true);
     });
 
     it('should add size class', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, size: 'lg' });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--lg')).toBe(true);
+      const tooltipEl = document.querySelector('.aiab-tooltip');
+      expect(tooltipEl?.classList.contains('aiab-tooltip--lg')).toBe(true);
     });
 
     it('should add interactive class', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, interactive: true });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--interactive')).toBe(true);
+      const tooltipEl = document.querySelector('.aiab-tooltip');
+      expect(tooltipEl?.classList.contains('aiab-tooltip--interactive')).toBe(true);
     });
 
     it('should add custom className', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, className: 'my-custom-class' });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.classList.contains('my-custom-class')).toBe(true);
     });
   });
@@ -215,7 +215,7 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, maxWidth: 200 });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip') as HTMLElement;
+      const tooltipEl = document.querySelector('.aiab-tooltip') as HTMLElement;
       expect(tooltipEl?.style.maxWidth).toBe('200px');
     });
 
@@ -223,7 +223,7 @@ describe('Tooltip Module', () => {
       const tooltip = new Tooltip(triggerElement, { delay: 0, zIndex: 9999 });
       tooltip.show();
 
-      const tooltipEl = document.querySelector('.tooltip') as HTMLElement;
+      const tooltipEl = document.querySelector('.aiab-tooltip') as HTMLElement;
       expect(tooltipEl?.style.zIndex).toBe('9999');
     });
   });
@@ -233,7 +233,7 @@ describe('Tooltip Module', () => {
       new Tooltip(triggerElement, { delay: 0 });
       triggerElement.dispatchEvent(new MouseEvent('mouseenter'));
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl).toBeTruthy();
     });
 
@@ -242,7 +242,7 @@ describe('Tooltip Module', () => {
       tooltip.show();
       triggerElement.dispatchEvent(new MouseEvent('mouseleave'));
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.classList.contains('aiab-tooltip--hidden')).toBe(true);
     });
 
@@ -250,7 +250,7 @@ describe('Tooltip Module', () => {
       new Tooltip(triggerElement, { delay: 0 });
       triggerElement.dispatchEvent(new Event('focus'));
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl).toBeTruthy();
     });
 
@@ -258,7 +258,7 @@ describe('Tooltip Module', () => {
       new Tooltip(triggerElement, { trigger: 'click', delay: 0 });
       triggerElement.dispatchEvent(new MouseEvent('click'));
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl).toBeTruthy();
     });
 
@@ -266,7 +266,7 @@ describe('Tooltip Module', () => {
       new Tooltip(triggerElement, { trigger: 'focus', delay: 0 });
       triggerElement.dispatchEvent(new Event('focus'));
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl).toBeTruthy();
     });
 
@@ -279,7 +279,7 @@ describe('Tooltip Module', () => {
       tooltip.show();
       triggerElement.dispatchEvent(new Event('blur'));
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.classList.contains('aiab-tooltip--hidden')).toBe(true);
     });
   });
@@ -301,7 +301,7 @@ describe('Tooltip Module', () => {
 
       triggerElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.classList.contains('aiab-tooltip--visible')).toBe(true);
     });
   });
@@ -312,7 +312,7 @@ describe('Tooltip Module', () => {
       tooltip.show();
       tooltip.updateContent('New text');
 
-      const tooltipEl = document.querySelector('.tooltip');
+      const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.textContent).toBe('New text');
     });
 
@@ -321,8 +321,8 @@ describe('Tooltip Module', () => {
       tooltip.show();
       tooltip.updateOptions({ variant: 'success' });
 
-      const tooltipEl = document.querySelector('.tooltip');
-      expect(tooltipEl?.classList.contains('tooltip--success')).toBe(true);
+      const tooltipEl = document.querySelector('.aiab-tooltip');
+      expect(tooltipEl?.classList.contains('aiab-tooltip--success')).toBe(true);
     });
   });
 
