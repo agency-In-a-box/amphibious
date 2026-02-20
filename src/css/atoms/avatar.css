@@ -34,13 +34,13 @@
 }
 
 /* Avatar initials */
-.avatar-initials {
+.aiab-avatar-initials {
   text-transform: uppercase;
   font-weight: 600;
 }
 
 /* Avatar icon */
-.avatar-icon {
+.aiab-avatar-icon {
   width: 60%;
   height: 60%;
   fill: currentColor;
@@ -51,49 +51,49 @@
    ======================================== */
 
 /* Extra Small - 24px */
-.avatar--xs {
+.aiab-avatar--xs {
   width: 1.5rem;
   height: 1.5rem;
   font-size: 0.625rem;
 }
 
 /* Small - 32px */
-.avatar--sm {
+.aiab-avatar--sm {
   width: 2rem;
   height: 2rem;
   font-size: 0.75rem;
 }
 
 /* Medium - 40px (default) */
-.avatar--md {
+.aiab-avatar--md {
   width: 2.5rem;
   height: 2.5rem;
   font-size: 1rem;
 }
 
 /* Large - 48px */
-.avatar--lg {
+.aiab-avatar--lg {
   width: 3rem;
   height: 3rem;
   font-size: 1.125rem;
 }
 
 /* Extra Large - 64px */
-.avatar--xl {
+.aiab-avatar--xl {
   width: 4rem;
   height: 4rem;
   font-size: 1.5rem;
 }
 
 /* XXL - 96px */
-.avatar--2xl {
+.aiab-avatar--2xl {
   width: 6rem;
   height: 6rem;
   font-size: 2rem;
 }
 
 /* XXXL - 128px */
-.avatar--3xl {
+.aiab-avatar--3xl {
   width: 8rem;
   height: 8rem;
   font-size: 2.5rem;
@@ -103,11 +103,11 @@
    AVATAR SHAPES
    ======================================== */
 
-.avatar--rounded {
+.aiab-avatar--rounded {
   border-radius: 0.5rem;
 }
 
-.avatar--square {
+.aiab-avatar--square {
   border-radius: 0;
 }
 
@@ -116,49 +116,49 @@
    ======================================== */
 
 /* Primary */
-.avatar--primary {
+.aiab-avatar--primary {
   background-color: #fff3e0;
   color: #a65e00;
 }
 
 /* Secondary */
-.avatar--secondary {
+.aiab-avatar--secondary {
   background-color: #f3f4f6;
   color: #4b5563;
 }
 
 /* Success */
-.avatar--success {
+.aiab-avatar--success {
   background-color: #dcfce7;
   color: #16a34a;
 }
 
 /* Danger */
-.avatar--danger {
+.aiab-avatar--danger {
   background-color: #fee2e2;
   color: #dc2626;
 }
 
 /* Warning */
-.avatar--warning {
+.aiab-avatar--warning {
   background-color: #fef3c7;
   color: #d97706;
 }
 
 /* Info */
-.avatar--info {
+.aiab-avatar--info {
   background-color: #dbeafe;
   color: #2563eb;
 }
 
 /* Dark */
-.avatar--dark {
+.aiab-avatar--dark {
   background-color: #1f2937;
   color: #f3f4f6;
 }
 
 /* Light */
-.avatar--light {
+.aiab-avatar--light {
   background-color: #f9fafb;
   color: #374151;
 }
@@ -167,11 +167,11 @@
    AVATAR STATUS INDICATOR
    ======================================== */
 
-.avatar--status {
+.aiab-avatar--status {
   position: relative;
 }
 
-.avatar-status {
+.aiab-avatar-status {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -186,52 +186,52 @@
 }
 
 /* Status colors */
-.avatar-status--online {
+.aiab-avatar-status--online {
   background-color: #10b981;
 }
 
-.avatar-status--offline {
+.aiab-avatar-status--offline {
   background-color: #6b7280;
 }
 
-.avatar-status--busy {
+.aiab-avatar-status--busy {
   background-color: #dc2626;
 }
 
-.avatar-status--away {
+.aiab-avatar-status--away {
   background-color: #f59e0b;
 }
 
 /* Status position for square avatars */
-.avatar--square .avatar-status,
-.avatar--rounded .avatar-status {
+.aiab-avatar--square .aiab-avatar-status,
+.aiab-avatar--rounded .aiab-avatar-status {
   border-radius: 50%;
 }
 
 /* Adjust status size for different avatar sizes */
-.avatar--xs .avatar-status {
+.aiab-avatar--xs .aiab-avatar-status {
   width: 6px;
   height: 6px;
   border-width: 1px;
 }
 
-.avatar--sm .avatar-status {
+.aiab-avatar--sm .aiab-avatar-status {
   width: 8px;
   height: 8px;
   border-width: 1.5px;
 }
 
-.avatar--lg .avatar-status {
+.aiab-avatar--lg .aiab-avatar-status {
   width: 14px;
   height: 14px;
 }
 
-.avatar--xl .avatar-status {
+.aiab-avatar--xl .aiab-avatar-status {
   width: 18px;
   height: 18px;
 }
 
-.avatar--2xl .avatar-status {
+.aiab-avatar--2xl .aiab-avatar-status {
   width: 24px;
   height: 24px;
   border-width: 3px;
@@ -241,11 +241,11 @@
    AVATAR WITH BADGE
    ======================================== */
 
-.avatar--badge {
+.aiab-avatar--badge {
   position: relative;
 }
 
-.avatar-badge {
+.aiab-avatar-badge {
   position: absolute;
   top: -4px;
   right: -4px;
@@ -265,13 +265,13 @@
 }
 
 /* Badge adjustments for sizes */
-.avatar--lg .avatar-badge {
+.aiab-avatar--lg .aiab-avatar-badge {
   min-width: 20px;
   height: 20px;
   font-size: 0.75rem;
 }
 
-.avatar--xl .avatar-badge {
+.aiab-avatar--xl .aiab-avatar-badge {
   min-width: 24px;
   height: 24px;
   font-size: 0.875rem;
@@ -283,12 +283,12 @@
    AVATAR GROUP
    ======================================== */
 
-.avatar-group {
+.aiab-avatar-group {
   display: inline-flex;
   align-items: center;
 }
 
-.avatar-group .aiab-avatar {
+.aiab-avatar-group .aiab-avatar {
   margin-right: -0.5rem;
   border: 2px solid white;
   transition:
@@ -296,31 +296,31 @@
     z-index 0.2s ease;
 }
 
-.avatar-group .aiab-avatar:hover {
+.aiab-avatar-group .aiab-avatar:hover {
   transform: scale(1.1);
   z-index: 1;
 }
 
-.avatar-group .aiab-avatar:last-child {
+.aiab-avatar-group .aiab-avatar:last-child {
   margin-right: 0;
 }
 
 /* Stacked variant */
-.avatar-group--stacked {
+.aiab-avatar-group--stacked {
   flex-direction: row-reverse;
 }
 
-.avatar-group--stacked .aiab-avatar {
+.aiab-avatar-group--stacked .aiab-avatar {
   margin-right: 0;
   margin-left: -0.5rem;
 }
 
-.avatar-group--stacked .aiab-avatar:last-child {
+.aiab-avatar-group--stacked .aiab-avatar:last-child {
   margin-left: 0;
 }
 
 /* Group counter */
-.avatar-group-counter {
+.aiab-avatar-group-counter {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -339,25 +339,25 @@
    AVATAR WITH TEXT
    ======================================== */
 
-.avatar-with-text {
+.aiab-avatar-with-text {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-.avatar-text {
+.aiab-avatar-text {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
 }
 
-.avatar-name {
+.aiab-avatar-name {
   font-weight: 600;
   color: #1f2937;
   font-size: 0.875rem;
 }
 
-.avatar-description {
+.aiab-avatar-description {
   color: #6b7280;
   font-size: 0.75rem;
   margin-top: 0.125rem;
@@ -367,7 +367,7 @@
    AVATAR PLACEHOLDER
    ======================================== */
 
-.avatar--placeholder {
+.aiab-avatar--placeholder {
   background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
@@ -387,26 +387,26 @@
    ======================================== */
 
 /* Clickable avatar */
-.avatar--clickable {
+.aiab-avatar--clickable {
   cursor: pointer;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-.avatar--clickable:hover {
+.aiab-avatar--clickable:hover {
   transform: scale(1.05);
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.avatar--clickable:active {
+.aiab-avatar--clickable:active {
   transform: scale(0.95);
 }
 
 /* Bordered avatar */
-.avatar--bordered {
+.aiab-avatar--bordered {
   border: 2px solid white;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
@@ -416,11 +416,11 @@
    ======================================== */
 
 @media (max-width: 640px) {
-  .avatar-group .aiab-avatar {
+  .aiab-avatar-group .aiab-avatar {
     margin-right: -0.75rem;
   }
 
-  .avatar-with-text {
+  .aiab-avatar-with-text {
     gap: 0.5rem;
   }
 }
@@ -444,7 +444,7 @@
     border: 1px solid currentColor;
   }
 
-  .avatar-status {
+  .aiab-avatar-status {
     border-width: 3px;
   }
 }
@@ -459,28 +459,28 @@
     color: #d1d5db;
   }
 
-  .avatar--light {
+  .aiab-avatar--light {
     background-color: #4b5563;
     color: #e5e7eb;
   }
 
-  .avatar-status {
+  .aiab-avatar-status {
     border-color: #1f2937;
   }
 
-  .avatar-group .aiab-avatar {
+  .aiab-avatar-group .aiab-avatar {
     border-color: #1f2937;
   }
 
-  .avatar-name {
+  .aiab-avatar-name {
     color: #f3f4f6;
   }
 
-  .avatar-description {
+  .aiab-avatar-description {
     color: #9ca3af;
   }
 
-  .avatar--bordered {
+  .aiab-avatar--bordered {
     border-color: #374151;
   }
 }
