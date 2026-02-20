@@ -16,7 +16,7 @@ describe('Modal Module', () => {
         <div class="aiab-modal__dialog">
           <div class="aiab-modal__header">
             <h2 class="aiab-modal__title">Test Modal</h2>
-            <button class="modal__close" aria-label="Close">&times;</button>
+            <button class="aiab-modal__close" aria-label="Close">&times;</button>
           </div>
           <div class="aiab-modal__body">
             <p>Modal body content</p>
@@ -56,22 +56,22 @@ describe('Modal Module', () => {
 
     it('should add modal class to element', () => {
       new Modal(modalElement);
-      expect(modalElement.classList.contains('modal')).toBe(true);
+      expect(modalElement.classList.contains('aiab-modal')).toBe(true);
     });
 
     it('should add size class when specified', () => {
       new Modal(modalElement, { size: 'lg' });
-      expect(modalElement.classList.contains('modal--lg')).toBe(true);
+      expect(modalElement.classList.contains('aiab-modal--lg')).toBe(true);
     });
 
     it('should add variant class when specified', () => {
       new Modal(modalElement, { variant: 'drawer-left' });
-      expect(modalElement.classList.contains('modal--drawer-left')).toBe(true);
+      expect(modalElement.classList.contains('aiab-modal--drawer-left')).toBe(true);
     });
 
     it('should add animation class', () => {
       new Modal(modalElement, { animation: 'slide-down' });
-      expect(modalElement.classList.contains('modal--slide-down')).toBe(true);
+      expect(modalElement.classList.contains('aiab-modal--slide-down')).toBe(true);
     });
 
     it('should set ARIA attributes', () => {
@@ -232,7 +232,7 @@ describe('Modal Module', () => {
       const modal = new Modal(modalElement);
       modal.open();
 
-      const closeBtn = modalElement.querySelector('.modal__close') as HTMLElement;
+      const closeBtn = modalElement.querySelector('.aiab-modal__close') as HTMLElement;
       closeBtn.click();
 
       expect(modal.isModalOpen()).toBe(false);
@@ -342,7 +342,7 @@ describe('Modal Module', () => {
       const modal = new Modal(modalElement);
       modal.destroy();
 
-      expect(modalElement.classList.contains('modal')).toBe(false);
+      expect(modalElement.classList.contains('aiab-modal')).toBe(false);
     });
 
     it('should remove backdrop on destroy', () => {
