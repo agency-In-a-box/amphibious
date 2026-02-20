@@ -108,7 +108,7 @@
    Typography - Apple's Perfect Type
    ========================================================================== */
 
-.apple-hero {
+.aiab-apple-hero {
   font-family: var(--font-display);
   font-size: var(--text-6xl);
   font-weight: var(--weight-semibold);
@@ -118,7 +118,7 @@
   margin: 0;
 }
 
-.apple-headline {
+.aiab-apple-headline {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
   font-weight: var(--weight-semibold);
@@ -128,7 +128,7 @@
   margin: 0;
 }
 
-.apple-title {
+.aiab-apple-title {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: var(--weight-medium);
@@ -138,7 +138,7 @@
   margin: 0;
 }
 
-.apple-subtitle {
+.aiab-apple-subtitle {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--weight-regular);
@@ -148,7 +148,7 @@
   margin: 0;
 }
 
-.apple-body {
+.aiab-apple-body {
   font-family: var(--font-text);
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
@@ -156,7 +156,7 @@
   color: var(--apple-gray-900);
 }
 
-.apple-body-large {
+.aiab-apple-body-large {
   font-family: var(--font-text);
   font-size: var(--text-lg);
   font-weight: var(--weight-regular);
@@ -164,7 +164,7 @@
   color: var(--apple-gray-700);
 }
 
-.apple-caption {
+.aiab-apple-caption {
   font-family: var(--font-text);
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
@@ -172,13 +172,13 @@
   color: var(--apple-gray-500);
 }
 
-.apple-link {
+.aiab-apple-link {
   color: var(--apple-orange);
   text-decoration: none;
   transition: opacity var(--duration-fast) var(--ease-in-out);
 }
 
-.apple-link:hover {
+.aiab-apple-link:hover {
   opacity: 0.8;
 }
 
@@ -186,7 +186,7 @@
    Navigation - Apple's Minimal Nav Bar
    ========================================================================== */
 
-.apple-nav {
+.aiab-apple-nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -199,7 +199,7 @@
   z-index: 9999;
 }
 
-.apple-nav-container {
+.aiab-apple-nav-container {
   max-width: 1024px;
   margin: 0 auto;
   height: 100%;
@@ -209,7 +209,7 @@
   justify-content: space-between;
 }
 
-.apple-nav-logo {
+.aiab-apple-nav-logo {
   font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
   color: var(--apple-black);
@@ -217,11 +217,11 @@
   transition: color var(--duration-fast) var(--ease-in-out);
 }
 
-.apple-nav-logo:hover {
+.aiab-apple-nav-logo:hover {
   color: var(--apple-orange);
 }
 
-.apple-nav-menu {
+.aiab-apple-nav-menu {
   display: flex;
   gap: var(--space-6);
   list-style: none;
@@ -229,7 +229,7 @@
   padding: 0;
 }
 
-.apple-nav-item {
+.aiab-apple-nav-item {
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
   color: var(--apple-gray-700);
@@ -239,8 +239,8 @@
   margin: 0;
 }
 
-.apple-nav-item:hover,
-.apple-nav-item.aiab-active {
+.aiab-apple-nav-item:hover,
+.aiab-apple-nav-item.aiab-active {
   color: var(--apple-orange);
 }
 
@@ -248,7 +248,7 @@
    Hero Section - Apple's Stunning Headers
    ========================================================================== */
 
-.apple-hero-section {
+.aiab-apple-hero-section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -259,7 +259,7 @@
   background: linear-gradient(180deg, var(--apple-white) 0%, var(--apple-gray-100) 100%);
 }
 
-.apple-hero-badge {
+.aiab-apple-hero-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -272,7 +272,7 @@
   margin-bottom: var(--space-5);
 }
 
-.apple-hero-title {
+.aiab-apple-hero-title {
   font-size: clamp(var(--text-4xl), 8vw, var(--text-6xl));
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
@@ -284,7 +284,7 @@
   background-clip: text;
 }
 
-.apple-hero-subtitle {
+.aiab-apple-hero-subtitle {
   font-size: clamp(var(--text-lg), 3vw, var(--text-2xl));
   font-weight: var(--weight-regular);
   line-height: var(--leading-snug);
@@ -297,7 +297,7 @@
    Buttons - Apple's Iconic CTAs
    ========================================================================== */
 
-.apple-button {
+.aiab-apple-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -317,33 +317,33 @@
   text-decoration: none;
 }
 
-.apple-button:hover {
+.aiab-apple-button:hover {
   background: var(--apple-orange-dark);
   transform: scale(1.02);
 }
 
-.apple-button:active {
+.aiab-apple-button:active {
   transform: scale(0.98);
 }
 
-.apple-button-outline {
+.aiab-apple-button-outline {
   color: var(--apple-orange);
   background: transparent;
   border: 1px solid var(--apple-orange);
 }
 
-.apple-button-outline:hover {
+.aiab-apple-button-outline:hover {
   color: var(--apple-white);
   background: var(--apple-orange);
 }
 
-.apple-button-ghost {
+.aiab-apple-button-ghost {
   color: var(--apple-orange);
   background: transparent;
   padding: var(--space-2) var(--space-4);
 }
 
-.apple-button-ghost:hover {
+.aiab-apple-button-ghost:hover {
   background: var(--apple-orange-subtle);
 }
 
@@ -351,7 +351,7 @@
    Cards - Apple's Content Containers
    ========================================================================== */
 
-.apple-card {
+.aiab-apple-card {
   background: var(--apple-white);
   border-radius: var(--radius-xl);
   padding: var(--space-8);
@@ -359,19 +359,19 @@
   transition: all var(--duration-base) var(--ease-out);
 }
 
-.apple-card:hover {
+.aiab-apple-card:hover {
   box-shadow: var(--shadow-xl);
   transform: translateY(-2px);
 }
 
-.apple-card-media {
+.aiab-apple-card-media {
   width: 100%;
   height: auto;
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-5);
 }
 
-.apple-card-title {
+.aiab-apple-card-title {
   font-size: var(--text-2xl);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
@@ -379,7 +379,7 @@
   margin-bottom: var(--space-3);
 }
 
-.apple-card-description {
+.aiab-apple-card-description {
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   color: var(--apple-gray-700);
@@ -390,30 +390,30 @@
    Grid System - Apple's Flexible Layout
    ========================================================================== */
 
-.apple-container {
+.aiab-apple-container {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 var(--space-5);
 }
 
-.apple-container-wide {
+.aiab-apple-container-wide {
   max-width: 1280px;
 }
 
-.apple-grid {
+.aiab-apple-grid {
   display: grid;
   gap: var(--space-6);
 }
 
-.apple-grid-2 {
+.aiab-apple-grid-2 {
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-.apple-grid-3 {
+.aiab-apple-grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.apple-grid-4 {
+.aiab-apple-grid-4 {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
@@ -421,15 +421,15 @@
    Section Spacing - Apple's Generous Whitespace
    ========================================================================== */
 
-.apple-section {
+.aiab-apple-section {
   padding: var(--space-11) 0;
 }
 
-.apple-section-sm {
+.aiab-apple-section-sm {
   padding: var(--space-9) 0;
 }
 
-.apple-section-lg {
+.aiab-apple-section-lg {
   padding: var(--space-12) 0;
 }
 
@@ -437,7 +437,7 @@
    Feature Blocks - Apple's Product Showcases
    ========================================================================== */
 
-.apple-feature {
+.aiab-apple-feature {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -445,7 +445,7 @@
   padding: var(--space-8);
 }
 
-.apple-feature-icon {
+.aiab-apple-feature-icon {
   width: 64px;
   height: 64px;
   display: flex;
@@ -457,7 +457,7 @@
   color: var(--apple-orange);
 }
 
-.apple-feature-icon svg {
+.aiab-apple-feature-icon svg {
   width: 32px;
   height: 32px;
   stroke: currentColor;
@@ -465,14 +465,14 @@
   fill: none;
 }
 
-.apple-feature-title {
+.aiab-apple-feature-title {
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
   color: var(--apple-black);
   margin-bottom: var(--space-3);
 }
 
-.apple-feature-description {
+.aiab-apple-feature-description {
   font-size: var(--text-base);
   color: var(--apple-gray-700);
   line-height: var(--leading-relaxed);
@@ -483,7 +483,7 @@
    Code Blocks - Apple's Developer Style
    ========================================================================== */
 
-.apple-code {
+.aiab-apple-code {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   padding: var(--space-1) var(--space-2);
@@ -492,7 +492,7 @@
   color: var(--apple-orange);
 }
 
-.apple-code-block {
+.aiab-apple-code-block {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
@@ -503,16 +503,16 @@
   color: var(--apple-black);
 }
 
-.apple-code-block .comment {
+.aiab-apple-code-block .comment {
   color: var(--apple-gray-500);
 }
 
-.apple-code-block .keyword {
+.aiab-apple-code-block .keyword {
   color: var(--apple-orange);
   font-weight: var(--weight-medium);
 }
 
-.apple-code-block .string {
+.aiab-apple-code-block .string {
   color: var(--apple-orange-dark);
 }
 
@@ -520,7 +520,7 @@
    Forms - Apple's Minimal Inputs
    ========================================================================== */
 
-.apple-input {
+.aiab-apple-input {
   width: 100%;
   padding: var(--space-3) var(--space-4);
   font-family: var(--font-text);
@@ -532,14 +532,14 @@
   transition: all var(--duration-fast) var(--ease-in-out);
 }
 
-.apple-input:focus {
+.aiab-apple-input:focus {
   outline: none;
   background: var(--apple-white);
   border-color: var(--apple-orange);
   box-shadow: 0 0 0 4px var(--apple-orange-subtle);
 }
 
-.apple-label {
+.aiab-apple-label {
   display: block;
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
@@ -551,7 +551,7 @@
    Alerts - Apple's Subtle Notifications
    ========================================================================== */
 
-.apple-alert {
+.aiab-apple-alert {
   padding: var(--space-4) var(--space-5);
   background: var(--apple-gray-100);
   border-radius: var(--radius-lg);
@@ -561,17 +561,17 @@
   margin-bottom: var(--space-4);
 }
 
-.apple-alert-success {
+.aiab-apple-alert-success {
   background: rgba(52, 199, 89, 0.1);
   color: rgb(52, 199, 89);
 }
 
-.apple-alert-warning {
+.aiab-apple-alert-warning {
   background: var(--apple-orange-subtle);
   color: var(--apple-orange);
 }
 
-.apple-alert-error {
+.aiab-apple-alert-error {
   background: rgba(255, 59, 48, 0.1);
   color: rgb(255, 59, 48);
 }
@@ -581,21 +581,21 @@
    ========================================================================== */
 
 @media (max-width: 768px) {
-  .apple-nav-menu {
+  .aiab-apple-nav-menu {
     gap: var(--space-4);
   }
 
-  .apple-grid-2,
-  .apple-grid-3,
-  .apple-grid-4 {
+  .aiab-apple-grid-2,
+  .aiab-apple-grid-3,
+  .aiab-apple-grid-4 {
     grid-template-columns: 1fr;
   }
 
-  .apple-hero-section {
+  .aiab-apple-hero-section {
     padding: var(--space-8) var(--space-4);
   }
 
-  .apple-section {
+  .aiab-apple-section {
     padding: var(--space-9) 0;
   }
 }
