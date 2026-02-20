@@ -225,22 +225,22 @@ export class Tooltip {
   }
 
   private getTooltipClasses(): string {
-    const classes = ['tooltip'];
+    const classes = ['aiab-tooltip'];
 
     if (this.options.position) {
-      classes.push(`tooltip--${this.options.position}`);
+      classes.push(`aiab-tooltip--${this.options.position}`);
     }
 
     if (this.options.variant !== 'default') {
-      classes.push(`tooltip--${this.options.variant}`);
+      classes.push(`aiab-tooltip--${this.options.variant}`);
     }
 
     if (this.options.size !== 'default') {
-      classes.push(`tooltip--${this.options.size}`);
+      classes.push(`aiab-tooltip--${this.options.size}`);
     }
 
     if (this.options.interactive) {
-      classes.push('tooltip--interactive');
+      classes.push('aiab-tooltip--interactive');
     }
 
     if (this.options.className) {
@@ -290,8 +290,8 @@ export class Tooltip {
     // Update classes if position changed
     if (position !== this.options.position) {
       this.tooltipElement.className = this.tooltipElement.className.replace(
-        /tooltip--(top|bottom|left|right)/g,
-        `tooltip--${position}`,
+        /aiab-tooltip--(top|bottom|left|right)/g,
+        `aiab-tooltip--${position}`,
       );
     }
   }
@@ -633,7 +633,7 @@ export class EcommerceTooltips {
     },
   ): Tooltip {
     const content = `
-      <div class="tooltip--product-info">
+      <div class="aiab-tooltip--product-info">
         <div class="product-name">${productData.name}</div>
         <div class="product-price">${productData.price}</div>
         ${productData.description ? `<div class="product-description">${productData.description}</div>` : ''}
@@ -645,7 +645,7 @@ export class EcommerceTooltips {
       allowHTML: true,
       position: 'right',
       size: 'lg',
-      className: 'tooltip--product-info',
+      className: 'aiab-tooltip--product-info',
       interactive: true,
     });
   }
@@ -662,10 +662,10 @@ export class EcommerceTooltips {
     },
   ): Tooltip {
     const content = `
-      <div class="tooltip--with-icon">
-        <i data-lucide="truck" class="tooltip__icon"></i>
-        <div class="tooltip__content">
-          <div class="tooltip__title">${shippingData.method}</div>
+      <div class="aiab-tooltip--with-icon">
+        <i data-lucide="truck" class="aiab-tooltip__icon"></i>
+        <div class="aiab-tooltip__content">
+          <div class="aiab-tooltip__title">${shippingData.method}</div>
           <div>Cost: ${shippingData.cost}</div>
           <div>Delivery: ${shippingData.time}</div>
         </div>
@@ -677,7 +677,7 @@ export class EcommerceTooltips {
       allowHTML: true,
       position: 'top',
       variant: 'info',
-      className: 'tooltip--with-icon',
+      className: 'aiab-tooltip--with-icon',
     });
   }
 

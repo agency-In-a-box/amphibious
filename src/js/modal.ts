@@ -88,15 +88,15 @@ export class Modal {
 
   private init(): void {
     // Add modal classes
-    this.element.classList.add('modal');
+    this.element.classList.add('aiab-modal');
     if (this.options.size && this.options.size !== 'default') {
-      this.element.classList.add(`modal--${this.options.size}`);
+      this.element.classList.add(`aiab-modal--${this.options.size}`);
     }
     if (this.options.variant && this.options.variant !== 'default') {
-      this.element.classList.add(`modal--${this.options.variant}`);
+      this.element.classList.add(`aiab-modal--${this.options.variant}`);
     }
     if (this.options.animation) {
-      this.element.classList.add(`modal--${this.options.animation}`);
+      this.element.classList.add(`aiab-modal--${this.options.animation}`);
     }
 
     // Set ARIA attributes
@@ -136,7 +136,7 @@ export class Modal {
    */
   private setupEventHandlers(): void {
     // Close button
-    const closeButtons = this.element.querySelectorAll('[data-modal-close], .modal__close');
+    const closeButtons = this.element.querySelectorAll('[data-modal-close], .aiab-modal__close');
     closeButtons.forEach((button) => {
       const handler = () => this.close();
       this.addEventListener(button, 'click', handler);
@@ -416,9 +416,9 @@ export class Modal {
 
     // Reset element
     this.element.classList.remove(
-      'modal',
-      `modal--${this.options.size}`,
-      `modal--${this.options.variant}`,
+      'aiab-modal',
+      `aiab-modal--${this.options.size}`,
+      `aiab-modal--${this.options.variant}`,
     );
     this.element.removeAttribute('role');
     this.element.removeAttribute('aria-modal');
@@ -520,7 +520,7 @@ export class ModalManager {
       const modalHtml = `
         <div class="aiab-modal__dialog">
           <div class="aiab-modal__body">
-            <div class="modal__icon">${ModalManager.getIcon(type)}</div>
+            <div class="aiab-modal__icon">${ModalManager.getIcon(type)}</div>
             <p>${message}</p>
             <button class="aiab-btn btn--primary" data-modal-close>OK</button>
           </div>
@@ -540,7 +540,7 @@ export class ModalManager {
         },
       });
 
-      modalElement.classList.add(`modal--${type}`);
+      modalElement.classList.add(`aiab-modal--${type}`);
       modal.open();
     });
   }
