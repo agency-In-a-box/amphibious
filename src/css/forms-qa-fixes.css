@@ -1,6 +1,6 @@
 /* ==========================================================================
    Form Page QA Fixes - Design Excellence Audit
-   Addressing all identified issues per SOP
+   Scoped to .aiab- containers to prevent global style bleed
    ========================================================================== */
 
 /* Fix 1: Typography overflow - ensure paragraphs don't run off right side
@@ -10,20 +10,19 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  /* Removed overflow-x: hidden to prevent dropdown clipping */
 }
 
 .aiab-col-16,
-.content {
+.aiab-content {
   max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-p {
+.aiab-container p {
   max-width: 100%;
   margin-bottom: 1.5rem;
-  line-height: 1.625; /* Per SOP: relaxed line height */
+  line-height: 1.625;
 }
 
 /* Fix 2: Column width consistency for lists
@@ -33,61 +32,55 @@ p {
 .aiab-row .aiab-col-8,
 .aiab-row .aiab-col-12 {
   box-sizing: border-box;
-  padding-right: 20px; /* Consistent gutter per SOP */
+  padding-right: 20px;
 }
 
-/* Ensure list columns have same width */
-.aiab-row > div[class*="col-"] {
+.aiab-row > div[class*="aiab-col-"] {
   display: inline-block;
   vertical-align: top;
 }
 
-/* Fix 3: Button height consistency
+/* Fix 3: Button height consistency (scoped to .aiab-btn)
    ========================================================================== */
 
-button,
-input[type="submit"],
-input[type="button"],
+.aiab-btn,
 .aiab-button {
   display: inline-block;
-  padding: 12px; /* Force 12px all around */
+  padding: 12px;
   line-height: 1;
   height: auto;
   min-height: unset;
-  border-radius: 6px; /* Per SOP: standard radius */
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1); /* Per SOP timing */
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   vertical-align: middle;
-  box-sizing: border-box; /* Include padding and border in height */
+  box-sizing: border-box;
   text-decoration: none;
 }
 
-/* Ensure consistent appearance */
-button:not(.aiab-icon),
+.aiab-btn:not(.aiab-icon),
 a.aiab-button {
-  line-height: 1; /* Tight line height to prevent extra space */
+  line-height: 1;
 }
 
-/* Fix 4: Standard Fields heading - block level
+/* Fix 4: Heading styles scoped to forms page
    ========================================================================== */
 
-h4,
 .aiab-form h4,
 #forms h4 {
   display: block;
   width: 100%;
   clear: both;
-  margin-top: 32px; /* Per SOP: 8 grid units */
-  margin-bottom: 16px; /* Per SOP: 4 grid units */
+  margin-top: 32px;
+  margin-bottom: 16px;
 }
 
-/* Ensure labels are block level */
-form label {
+.aiab-form label {
   display: block;
-  margin-bottom: 8px; /* Per SOP: 2 grid units */
+  margin-bottom: 8px;
   font-weight: 500;
   color: var(--color-text);
 }
@@ -111,106 +104,100 @@ select.error:focus {
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
 }
 
-/* Error message styling */
 .aiab-error-message,
 .aiab-form-error {
   color: #dc3545;
   font-size: 0.875rem;
-  margin-top: 4px; /* Per SOP: 1 grid unit */
+  margin-top: 4px;
   display: block;
 }
 
-/* Fix 6 & 8: Search field icon visibility and white rounded corners
+/* Fix 6 & 8: Search field styling (scoped to .aiab-form)
    ========================================================================== */
 
-input[type="search"] {
-  padding-left: 40px; /* Make room for icon */
+.aiab-form input[type="search"] {
+  padding-left: 40px;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3ccircle cx='11' cy='11' r='8'%3e%3c/circle%3e%3cpath d='m21 21-4.35-4.35'%3e%3c/path%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: 12px center;
   background-size: 20px 20px;
-  background-color: white; /* Fix white corners */
-  border-radius: 24px; /* Full pill for search */
+  background-color: white;
+  border-radius: 24px;
   border: 2px solid #e5e5e5;
 }
 
-/* Fix white rounded corners on all inputs */
-input,
-textarea,
-select {
+.aiab-form input,
+.aiab-form textarea,
+.aiab-form select {
   background-color: white;
-  background-clip: padding-box; /* Prevents background bleeding */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  background-clip: padding-box;
 }
 
 /* Fix 7: Advanced search field formatting
    ========================================================================== */
 
-.advanced-search,
-form.advanced {
+.aiab-advanced-search,
+.aiab-form.advanced {
   background: #f8f9fa;
-  padding: 24px; /* Per SOP: 6 grid units */
-  border-radius: 8px; /* Per SOP: 2 grid units */
+  padding: 24px;
+  border-radius: 8px;
   margin: 24px 0;
 }
 
-.advanced-search fieldset {
+.aiab-advanced-search fieldset {
   border: none;
   padding: 0;
-  margin-bottom: 16px; /* Per SOP: 4 grid units */
-}
-
-.advanced-search .aiab-form-row {
-  display: flex;
-  gap: 16px; /* Per SOP: 4 grid units */
   margin-bottom: 16px;
 }
 
-.advanced-search .aiab-form-row > * {
+.aiab-advanced-search .aiab-form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.aiab-advanced-search .aiab-form-row > * {
   flex: 1;
 }
 
 /* Fix 9: Multi-select label and help text positioning
    ========================================================================== */
 
-.multi.beside fieldset {
+.aiab-multi.aiab-beside fieldset {
   display: flex;
   align-items: flex-start;
-  gap: 16px; /* Per SOP: 4 grid units */
+  gap: 16px;
 }
 
-.multi.beside label {
+.aiab-multi.aiab-beside label {
   min-width: 120px;
-  margin-top: 8px; /* Align with input */
+  margin-top: 8px;
   font-weight: 600;
 }
 
-.multi.beside .aiab-form-group {
+.aiab-multi.aiab-beside .aiab-form-group {
   flex: 1;
 }
 
-/* Help text styling */
-.help-text,
+.aiab-help-text,
 .aiab-form-text,
 .aiab-form-help {
   display: block;
-  margin-top: 4px; /* Per SOP: 1 grid unit */
+  margin-top: 4px;
   font-size: 0.875rem;
   color: #6c757d;
   background: #f8f9fa;
-  padding: 8px 12px; /* Per SOP: 2-3 grid units */
-  border-radius: 4px; /* Per SOP: 1 grid unit */
+  padding: 8px 12px;
+  border-radius: 4px;
   border-left: 3px solid var(--color-primary, #ed8b00);
 }
 
-/* Fix 10: Code sample organization - move closer to relevant content
+/* Fix 10: Code sample organization
    ========================================================================== */
 
 pre.prettyprint {
-  margin-top: 16px; /* Per SOP: 4 grid units */
-  margin-bottom: 32px; /* Per SOP: 8 grid units */
+  margin-top: 16px;
+  margin-bottom: 32px;
   padding: 16px;
   background: #f8f9fa;
   border-radius: 8px;
@@ -218,94 +205,30 @@ pre.prettyprint {
   max-width: 100%;
 }
 
-/* Group related content */
-.list-example + pre {
-  margin-top: 8px; /* Closer to example */
+.aiab-list-example + pre {
+  margin-top: 8px;
 }
 
-/* Additional fixes per SOP Design Excellence
+/* Forms page-specific overrides (scoped to #forms)
    ========================================================================== */
 
-/* Ensure no floats are used in forms section only */
 #forms .aiab-container *,
 #forms .aiab-row *,
 #forms .aiab-col-16 * {
   float: none;
 }
 
-/* Use flexbox for layout instead */
-.aiab-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -10px;
-  margin-right: -10px;
-}
-
-.aiab-row > [class*="col-"] {
-  padding-left: 10px;
-  padding-right: 10px;
-  box-sizing: border-box;
-}
-
-/* Typography adjustments per SOP */
-body {
-  font-family:
-    "Avenir Next", "Futura PT", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 16px; /* Per SOP: base font size */
-  line-height: 1.5; /* Per SOP: base line height */
-}
-
-/* Heading adjustments for better hierarchy */
-h1 {
-  font-size: 3rem;
-  line-height: 1.25;
-  letter-spacing: -0.02em; /* Per SOP: tighter for headlines */
-  font-weight: 300; /* Per SOP: Light weight */
-}
-
-h2 {
-  font-size: 2.25rem;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  font-weight: 400; /* Per SOP: Regular weight */
-}
-
-h3 {
+/* Forms page heading style */
+#forms h3 {
   font-size: 1.75rem;
   line-height: 1.3;
-  font-weight: 500; /* Per SOP: Medium weight */
-  color: #2c5f2d; /* Green accent for h3 */
+  font-weight: 500;
+  color: #2c5f2d;
   border-bottom: 2px solid #97bc62;
   padding-bottom: 8px;
   margin-top: 32px;
   margin-bottom: 16px;
 }
-
-h4 {
-  font-size: 1.25rem;
-  line-height: 1.4;
-  font-weight: 600; /* Per SOP: Demi Bold */
-  margin-top: 24px;
-  margin-bottom: 12px;
-}
-
-/* Note: --color-primary (#ed8b00) and --color-primary-hover are defined in design-tokens.css
-   Do not redefine here to maintain single source of truth */
-
-.mt {
-  margin-top: 16px;
-}
-.mb {
-  margin-bottom: 16px;
-}
-.pt {
-  padding-top: 16px;
-}
-.pb {
-  padding-bottom: 16px;
-}
-
-/* Focus states handled by dark-mode.css and contrast-fixes.css */
 
 /* Responsive improvements */
 @media (max-width: 768px) {
@@ -313,18 +236,8 @@ h4 {
     flex-direction: column;
   }
 
-  .aiab-row > [class*="col-"] {
+  .aiab-row > [class*="aiab-col-"] {
     width: 100%;
     max-width: 100%;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.75rem;
-  }
-  h3 {
-    font-size: 1.5rem;
   }
 }
