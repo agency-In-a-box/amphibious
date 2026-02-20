@@ -601,9 +601,13 @@ export class Tooltip {
       if (!Tooltip.instances.has(element as HTMLElement)) {
         new Tooltip(element as HTMLElement, {
           content: element.getAttribute('data-tooltip') || '',
-          position: (element.getAttribute('data-tooltip-position') as TooltipOptions['position']) || 'top',
-          variant: (element.getAttribute('data-tooltip-variant') as TooltipOptions['variant']) || 'default',
-          trigger: (element.getAttribute('data-tooltip-trigger') as TooltipOptions['trigger']) || 'hover',
+          position:
+            (element.getAttribute('data-tooltip-position') as TooltipOptions['position']) || 'top',
+          variant:
+            (element.getAttribute('data-tooltip-variant') as TooltipOptions['variant']) ||
+            'default',
+          trigger:
+            (element.getAttribute('data-tooltip-trigger') as TooltipOptions['trigger']) || 'hover',
         });
       }
     });
