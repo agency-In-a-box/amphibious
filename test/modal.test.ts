@@ -101,7 +101,7 @@ describe('Modal Module', () => {
       modal.open();
 
       expect(modal.isModalOpen()).toBe(true);
-      expect(modalElement.classList.contains('is-visible')).toBe(true);
+      expect(modalElement.classList.contains('aiab-is-visible')).toBe(true);
       expect(modalElement.getAttribute('aria-hidden')).toBe('false');
     });
 
@@ -117,7 +117,7 @@ describe('Modal Module', () => {
       modal.open();
 
       const backdrop = document.querySelector('.aiab-modal-backdrop');
-      expect(backdrop?.classList.contains('is-visible')).toBe(true);
+      expect(backdrop?.classList.contains('aiab-is-visible')).toBe(true);
     });
 
     it('should close modal', () => {
@@ -126,7 +126,7 @@ describe('Modal Module', () => {
       modal.close();
 
       expect(modal.isModalOpen()).toBe(false);
-      expect(modalElement.classList.contains('is-visible')).toBe(false);
+      expect(modalElement.classList.contains('aiab-is-visible')).toBe(false);
       expect(modalElement.getAttribute('aria-hidden')).toBe('true');
     });
 
@@ -136,7 +136,7 @@ describe('Modal Module', () => {
       modal.close();
 
       const backdrop = document.querySelector('.aiab-modal-backdrop');
-      expect(backdrop?.classList.contains('is-visible')).toBe(false);
+      expect(backdrop?.classList.contains('aiab-is-visible')).toBe(false);
     });
 
     it('should not re-open if already open', () => {

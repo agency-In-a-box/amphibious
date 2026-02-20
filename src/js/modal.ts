@@ -270,11 +270,11 @@ export class Modal {
 
     // Show backdrop
     if (this.backdrop) {
-      this.backdrop.classList.add('is-visible');
+      this.backdrop.classList.add('aiab-is-visible');
     }
 
     // Show modal
-    this.element.classList.add('is-visible');
+    this.element.classList.add('aiab-is-visible');
     this.element.setAttribute('aria-hidden', 'false');
 
     // Get focusable elements
@@ -313,12 +313,12 @@ export class Modal {
     if (!this.isOpen) return;
 
     // Hide modal
-    this.element.classList.remove('is-visible');
+    this.element.classList.remove('aiab-is-visible');
     this.element.setAttribute('aria-hidden', 'true');
 
     // Hide backdrop
     if (this.backdrop) {
-      this.backdrop.classList.remove('is-visible');
+      this.backdrop.classList.remove('aiab-is-visible');
     }
 
     // Restore body scroll

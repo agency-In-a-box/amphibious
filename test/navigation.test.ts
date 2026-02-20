@@ -50,15 +50,15 @@ describe('Navigation Module', () => {
       const toggleButton = document.querySelector('#nav_toggle') as HTMLElement;
 
       // Initially closed
-      expect(container.classList.contains('is-open')).toBe(false);
+      expect(container.classList.contains('aiab-is-open')).toBe(false);
 
       // Click to open
       toggleButton.click();
-      expect(container.classList.contains('is-open')).toBe(true);
+      expect(container.classList.contains('aiab-is-open')).toBe(true);
 
       // Click to close
       toggleButton.click();
-      expect(container.classList.contains('is-open')).toBe(false);
+      expect(container.classList.contains('aiab-is-open')).toBe(false);
     });
 
     it('should close menu on Escape key', () => {
@@ -67,13 +67,13 @@ describe('Navigation Module', () => {
 
       // Open menu
       toggleButton.click();
-      expect(container.classList.contains('is-open')).toBe(true);
+      expect(container.classList.contains('aiab-is-open')).toBe(true);
 
       // Press Escape
       const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
       document.dispatchEvent(escapeEvent);
 
-      expect(container.classList.contains('is-open')).toBe(false);
+      expect(container.classList.contains('aiab-is-open')).toBe(false);
     });
 
     it('should set correct ARIA attributes', () => {
@@ -99,13 +99,13 @@ describe('Navigation Module', () => {
       const dropdown = document.querySelector('.aiab-nav__dropdown') as HTMLElement;
 
       // Initially closed
-      expect(dropdown.classList.contains('is-open')).toBe(false);
+      expect(dropdown.classList.contains('aiab-is-open')).toBe(false);
 
       // Trigger mouseenter
       const mouseEnterEvent = new MouseEvent('mouseenter');
       dropdown.dispatchEvent(mouseEnterEvent);
 
-      expect(dropdown.classList.contains('is-open')).toBe(true);
+      expect(dropdown.classList.contains('aiab-is-open')).toBe(true);
     });
 
     it('should close dropdown on mouse leave', () => {
@@ -115,12 +115,12 @@ describe('Navigation Module', () => {
       // Open dropdown
       const mouseEnterEvent = new MouseEvent('mouseenter');
       dropdown.dispatchEvent(mouseEnterEvent);
-      expect(dropdown.classList.contains('is-open')).toBe(true);
+      expect(dropdown.classList.contains('aiab-is-open')).toBe(true);
 
       // Close dropdown
       const mouseLeaveEvent = new MouseEvent('mouseleave');
       dropdown.dispatchEvent(mouseLeaveEvent);
-      expect(dropdown.classList.contains('is-open')).toBe(false);
+      expect(dropdown.classList.contains('aiab-is-open')).toBe(false);
     });
   });
 
@@ -165,7 +165,7 @@ describe('Navigation Module', () => {
       // Open menu in mobile view
       Object.defineProperty(window, 'innerWidth', { value: 500, writable: true });
       toggleButton.click();
-      expect(container.classList.contains('is-open')).toBe(true);
+      expect(container.classList.contains('aiab-is-open')).toBe(true);
 
       // Resize to desktop
       Object.defineProperty(window, 'innerWidth', { value: 1024, writable: true });
@@ -173,7 +173,7 @@ describe('Navigation Module', () => {
 
       // Wait for debounced resize handler
       setTimeout(() => {
-        expect(container.classList.contains('is-open')).toBe(false);
+        expect(container.classList.contains('aiab-is-open')).toBe(false);
       }, 300);
     });
   });

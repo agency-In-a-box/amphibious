@@ -743,7 +743,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.is-visible</code></td>
+            <td><code>.aiab-is-visible</code></td>
             <td>Shows the aiab-modal</td>
           </tr>
           <tr>
@@ -793,10 +793,10 @@ class Modal {
     document.body.classList.add('aiab-modal-open');
 
     if (this.backdrop) {
-      this.backdrop.classList.add('is-visible');
+      this.backdrop.classList.add('aiab-is-visible');
     }
 
-    this.modal.classList.add('is-visible');
+    this.modal.classList.add('aiab-is-visible');
     this.modal.setAttribute('aria-hidden', 'false');
 
     // Focus management
@@ -809,10 +809,10 @@ class Modal {
     document.body.classList.remove('aiab-modal-open');
 
     if (this.backdrop) {
-      this.backdrop.classList.remove('is-visible');
+      this.backdrop.classList.remove('aiab-is-visible');
     }
 
-    this.modal.classList.remove('is-visible');
+    this.modal.classList.remove('aiab-is-visible');
     this.modal.setAttribute('aria-hidden', 'true');
   }
 
@@ -936,8 +936,8 @@ function showModal(modalId) {
       if (!modal) return;
 
       document.body.classList.add('aiab-modal-open');
-      backdrop.classList.add('is-visible');
-      modal.classList.add('is-visible');
+      backdrop.classList.add('aiab-is-visible');
+      modal.classList.add('aiab-is-visible');
       modal.setAttribute('aria-hidden', 'false');
       modal.focus();
     }
@@ -947,8 +947,8 @@ function showModal(modalId) {
       const backdrop = document.getElementById('demo-backdrop');
 
       document.body.classList.remove('aiab-modal-open');
-      backdrop.classList.remove('is-visible');
-      modal.classList.remove('is-visible');
+      backdrop.classList.remove('aiab-is-visible');
+      modal.classList.remove('aiab-is-visible');
       modal.setAttribute('aria-hidden', 'true');
     }
 
@@ -1116,7 +1116,7 @@ function showModal(modalId) {
 
     // Close aiab-modal on backdrop click
     document.getElementById('demo-backdrop').addEventListener('click', () => {
-      const visibleModal = document.querySelector('.modal.is-visible');
+      const visibleModal = document.querySelector('.modal.aiab-is-visible');
       if (visibleModal) {
         hideModal(visibleModal.id);
       }
@@ -1125,7 +1125,7 @@ function showModal(modalId) {
     // Close aiab-modal on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        const visibleModal = document.querySelector('.modal.is-visible');
+        const visibleModal = document.querySelector('.modal.aiab-is-visible');
         if (visibleModal) {
           hideModal(visibleModal.id);
         }
