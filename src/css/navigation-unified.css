@@ -160,7 +160,7 @@
 /* Main Navigation List
    ========================================================================== */
 
-.horizontal {
+.aiab-horizontal {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -169,12 +169,12 @@
 }
 
 /* First Level Items */
-.horizontal > li {
+.aiab-horizontal > li {
   position: relative;
   margin: 0;
 }
 
-.horizontal > li > a {
+.aiab-horizontal > li > a {
   display: block;
   padding: var(--nav-padding-y) var(--nav-padding-x);
   color: var(--nav-text);
@@ -190,8 +190,8 @@
 }
 
 /* Hover States - Underline effect following SOP Design Excellence */
-.horizontal > li > a:hover,
-.horizontal > li > a:focus {
+.aiab-horizontal > li > a:hover,
+.aiab-horizontal > li > a:focus {
   color: var(--nav-text-hover);
   background-color: transparent;
   /* Orange underline on hover - just change color */
@@ -199,8 +199,8 @@
 }
 
 /* Active States - Orange bottom border following SOP Design Excellence */
-.horizontal > li.aiab-active > a,
-.horizontal > li > a[aria-current="page"] {
+.aiab-horizontal > li.aiab-active > a,
+.aiab-horizontal > li > a[aria-current="page"] {
   color: var(--nav-text-hover); /* Use brand orange text */
   background-color: transparent; /* Remove background */
   /* Orange bottom border for active state - just change color */
@@ -228,7 +228,7 @@
    ========================================================================== */
 
 /* Automatically detect dropdowns by presence of nested ul */
-.horizontal > li:has(> ul) > a::after {
+.aiab-horizontal > li:has(> ul) > a::after {
   content: "";
   display: inline-block;
   width: 0;
@@ -243,13 +243,13 @@
 }
 
 /* Rotate on hover */
-.horizontal > li:has(> ul):hover > a::after {
+.aiab-horizontal > li:has(> ul):hover > a::after {
   transform: rotate(180deg);
 }
 
 /* For browsers that don't support :has(), use attribute selector as fallback */
 @supports not selector(:has(*)) {
-  .horizontal > li[aria-haspopup="true"] > a::after {
+  .aiab-horizontal > li[aria-haspopup="true"] > a::after {
     content: "";
     display: inline-block;
     width: 0;
@@ -263,7 +263,7 @@
     transition: transform var(--nav-transition);
   }
 
-  .horizontal > li[aria-haspopup="true"]:hover > a::after {
+  .aiab-horizontal > li[aria-haspopup="true"]:hover > a::after {
     transform: rotate(180deg);
   }
 }
@@ -271,7 +271,7 @@
 /* Dropdown Menus - Level 1
    ========================================================================== */
 
-.horizontal ul {
+.aiab-horizontal ul {
   position: absolute;
   top: 100%;
   left: 0;
@@ -288,16 +288,16 @@
 }
 
 /* Show on hover/focus */
-.horizontal > li:hover > ul,
-.horizontal > li:focus-within > ul,
-.horizontal > li > a:focus + ul {
+.aiab-horizontal > li:hover > ul,
+.aiab-horizontal > li:focus-within > ul,
+.aiab-horizontal > li > a:focus + ul {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
 /* Invisible bridge to prevent dropdown from closing */
-.horizontal > li > ul::before {
+.aiab-horizontal > li > ul::before {
   content: "";
   position: absolute;
   top: -10px;
@@ -308,11 +308,11 @@
 }
 
 /* Dropdown Items */
-.horizontal ul li {
+.aiab-horizontal ul li {
   position: relative;
 }
 
-.horizontal ul a {
+.aiab-horizontal ul a {
   display: block;
   padding: 0.5rem 1rem;
   color: var(--nav-dropdown-text);
@@ -321,8 +321,8 @@
   white-space: nowrap;
 }
 
-.horizontal ul a:hover,
-.horizontal ul a:focus {
+.aiab-horizontal ul a:hover,
+.aiab-horizontal ul a:focus {
   background-color: var(--nav-dropdown-hover-bg);
   color: var(--nav-dropdown-hover-text);
 }
@@ -330,23 +330,23 @@
 /* Dropdown Menus - Level 2 (Third Level)
    ========================================================================== */
 
-.horizontal ul ul {
+.aiab-horizontal ul ul {
   top: 0;
   left: 100%;
   margin-left: -1px;
 }
 
 /* Show third level on hover */
-.horizontal ul > li:hover > ul,
-.horizontal ul > li:focus-within > ul,
-.horizontal ul > li > a:focus + ul {
+.aiab-horizontal ul > li:hover > ul,
+.aiab-horizontal ul > li:focus-within > ul,
+.aiab-horizontal ul > li > a:focus + ul {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
 /* Third level indicator - Semantic detection */
-.horizontal ul li:has(> ul) > a::after {
+.aiab-horizontal ul li:has(> ul) > a::after {
   content: "";
   float: right;
   width: 0;
@@ -361,7 +361,7 @@
 
 /* Fallback for browsers without :has() */
 @supports not selector(:has(*)) {
-  .horizontal ul li[aria-haspopup="true"] > a::after {
+  .aiab-horizontal ul li[aria-haspopup="true"] > a::after {
     content: "";
     float: right;
     width: 0;
@@ -378,7 +378,7 @@
 /* Dropdown Menus - Level 3
    ========================================================================== */
 
-.horizontal ul ul ul {
+.aiab-horizontal ul ul ul {
   /* Same positioning as level 2 */
   top: 0;
   left: 100%;
@@ -402,7 +402,7 @@
   }
 
   /* Mobile menu container */
-  .horizontal {
+  .aiab-horizontal {
     position: fixed;
     top: 60px;
     left: 0;
@@ -419,11 +419,11 @@
   }
 
   /* Show mobile menu when active */
-  .aiab-nav-toggle[aria-expanded="true"] ~ .horizontal,
+  .aiab-nav-toggle[aria-expanded="true"] ~ .aiab-horizontal,
   .aiab-nav-toggle[aria-expanded="true"] ~ #main-nav,
-  .horizontal.aiab-is-active,
+  .aiab-horizontal.aiab-is-active,
   #main-nav.aiab-is-active,
-  .aiab-site-nav.menu-open .horizontal,
+  .aiab-site-nav.menu-open .aiab-horizontal,
   .aiab-site-nav.menu-open #main-nav {
     transform: translateX(0);
   }
@@ -452,17 +452,17 @@
   }
 
   /* Mobile menu items */
-  .horizontal > li {
+  .aiab-horizontal > li {
     border-bottom: 1px solid var(--nav-mobile-border);
   }
 
-  .horizontal > li > a {
+  .aiab-horizontal > li > a {
     padding: 1rem 0;
     font-size: 1.125rem;
   }
 
   /* Mobile dropdowns - static positioning */
-  .horizontal ul {
+  .aiab-horizontal ul {
     position: static;
     opacity: 1;
     visibility: visible;
@@ -477,37 +477,37 @@
   }
 
   /* Show dropdown when parent is active */
-  .horizontal > li.aiab-is-expanded > ul,
-  .horizontal ul > li.aiab-is-expanded > ul {
+  .aiab-horizontal > li.aiab-is-expanded > ul,
+  .aiab-horizontal ul > li.aiab-is-expanded > ul {
     display: block;
   }
 
   /* Mobile dropdown toggle - Semantic detection */
-  .horizontal li:has(> ul) > a::after {
+  .aiab-horizontal li:has(> ul) > a::after {
     float: right;
     transition: transform var(--nav-transition);
   }
 
-  .horizontal li.aiab-is-expanded > a::after {
+  .aiab-horizontal li.aiab-is-expanded > a::after {
     transform: rotate(180deg);
   }
 
   /* Fallback for browsers without :has() */
   @supports not selector(:has(*)) {
-    .horizontal li[aria-haspopup="true"] > a::after {
+    .aiab-horizontal li[aria-haspopup="true"] > a::after {
       float: right;
       transition: transform var(--nav-transition);
     }
   }
 
   /* Mobile dropdown items */
-  .horizontal ul a {
+  .aiab-horizontal ul a {
     padding: 0.75rem 0;
     font-size: 1rem;
   }
 
   /* Third level mobile */
-  .horizontal ul ul {
+  .aiab-horizontal ul ul {
     position: static;
     left: auto;
     padding-left: 1rem;
@@ -518,7 +518,7 @@
    ========================================================================== */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .horizontal > li > a {
+  .aiab-horizontal > li > a {
     padding: var(--nav-padding-y) 0.75rem;
     font-size: 0.9375rem;
   }
@@ -537,14 +537,14 @@
   }
 
   /* Ensure dropdowns don't go off-screen */
-  .horizontal > li:last-child ul,
-  .horizontal > li:nth-last-child(2) ul {
+  .aiab-horizontal > li:last-child ul,
+  .aiab-horizontal > li:nth-last-child(2) ul {
     left: auto;
     right: 0;
   }
 
-  .horizontal ul > li:last-child ul,
-  .horizontal ul > li:nth-last-child(2) ul {
+  .aiab-horizontal ul > li:last-child ul,
+  .aiab-horizontal ul > li:nth-last-child(2) ul {
     left: auto;
     right: 100%;
   }
@@ -622,13 +622,13 @@
 
 /* Smooth Height Transitions for Mobile */
 @media (max-width: 767px) {
-  .horizontal ul {
+  .aiab-horizontal ul {
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--nav-transition-slow);
   }
 
-  .horizontal li.aiab-is-expanded > ul {
+  .aiab-horizontal li.aiab-is-expanded > ul {
     max-height: 500px; /* Adjust based on content */
   }
 }

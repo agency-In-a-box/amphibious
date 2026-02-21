@@ -27,16 +27,16 @@ class NavigationComponent {
     const currentHash = window.location.hash;
 
     // Remove all active classes and aria-current
-    document.querySelectorAll('.horizontal li').forEach((li) => {
+    document.querySelectorAll('.aiab-horizontal li').forEach((li) => {
       li.classList.remove('active');
     });
 
-    document.querySelectorAll('.horizontal a').forEach((link) => {
+    document.querySelectorAll('.aiab-horizontal a').forEach((link) => {
       link.removeAttribute('aria-current');
     });
 
     // Find and set the active navigation item
-    document.querySelectorAll('.horizontal a').forEach((link) => {
+    document.querySelectorAll('.aiab-horizontal a').forEach((link) => {
       const href = link.getAttribute('href');
 
       // Skip if no href
@@ -52,7 +52,7 @@ class NavigationComponent {
 
       // Set active state for exact matches or parent matches
       if (isExactMatch || isParentMatch || isHome) {
-        const parentLi = link.closest('.horizontal > li');
+        const parentLi = link.closest('.aiab-horizontal > li');
 
         // Only set active on top-level items
         if (parentLi) {
@@ -158,7 +158,7 @@ class NavigationComponent {
     // Only apply to mobile view
     if (window.innerWidth >= 960) return;
 
-    document.querySelectorAll('.horizontal > li').forEach((li) => {
+    document.querySelectorAll('.aiab-horizontal > li').forEach((li) => {
       const hasDropdown = li.querySelector('ul');
       if (!hasDropdown) return;
 

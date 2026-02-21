@@ -123,7 +123,7 @@
             padding: 0.5rem 1rem;
         }
 
-        .horizontal {
+        .aiab-horizontal {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -131,11 +131,11 @@
             flex-wrap: wrap;
         }
 
-        .horizontal > li {
+        .aiab-horizontal > li {
             position: relative;
         }
 
-        .horizontal > li > a {
+        .aiab-horizontal > li > a {
             display: block;
             padding: 0.75rem 1rem;
             color: #495057;
@@ -144,12 +144,12 @@
             transition: all 0.2s ease;
         }
 
-        .horizontal > li > a:hover {
+        .aiab-horizontal > li > a:hover {
             background: #e9ecef;
             color: #007bff;
         }
 
-        .horizontal > li > ul {
+        .aiab-horizontal > li > ul {
             position: absolute;
             top: 100%;
             left: 0;
@@ -165,11 +165,11 @@
             z-index: 1000;
         }
 
-        .horizontal > li:hover > ul {
+        .aiab-horizontal > li:hover > ul {
             display: block;
         }
 
-        .horizontal > li > ul > li > a {
+        .aiab-horizontal > li > ul > li > a {
             display: block;
             padding: 0.5rem 1rem;
             color: #495057;
@@ -177,7 +177,7 @@
             white-space: nowrap;
         }
 
-        .horizontal > li > ul > li > a:hover {
+        .aiab-horizontal > li > ul > li > a:hover {
             background: #f8f9fa;
             color: #007bff;
         }
@@ -375,7 +375,7 @@
       <span class="aiab-sr-only">Toggle navigation</span>
     </button>
 
-    <ul id="main-nav" class="horizontal">
+    <ul id="main-nav" class="aiab-horizontal">
       <li>
         <a href="/" class="aiab-site-logo">Amphibious</a>
         <ul>
@@ -480,7 +480,7 @@
                 <div class="aiab-navbar">
                     <div class="navbar-inner">
                         <nav role="navigation">
-                            <ul class="horizontal">
+                            <ul class="aiab-horizontal">
                                 <li>
                                     <a href="#">Products</a>
                                     <ul>
@@ -510,7 +510,7 @@
                 <pre><code>&lt;div class="aiab-navbar"&gt;
   &lt;div class="navbar-inner"&gt;
     &lt;nav role="navigation"&gt;
-      &lt;ul class="horizontal"&gt;
+      &lt;ul class="aiab-horizontal"&gt;
         &lt;li&gt;
           &lt;a href="#"&gt;Products&lt;/a&gt;
           &lt;ul&gt;
@@ -537,7 +537,7 @@
             </div>
 
             <h3 id="vertical-nav">Vertical Navigation</h3>
-            <p>Vertical navigation menus with collapsible submenus. Simply change the class from <code>horizontal</code> to <code>vertical</code>.</p>
+            <p>Vertical navigation menus with collapsible submenus. Simply change the class from <code>aiab-horizontal</code> to <code>vertical</code>.</p>
 
             <div class="aiab-row">
                 <div class="aiab-col-4">
@@ -854,7 +854,7 @@ document.querySelectorAll('.aiab-tabs a').forEach(tab => {
         });
 
         // Enhanced navigation dropdowns
-        document.querySelectorAll('.horizontal > li').forEach(item => {
+        document.querySelectorAll('.aiab-horizontal > li').forEach(item => {
             const submenu = item.querySelector('ul');
             if (submenu) {
                 item.addEventListener('mouseenter', () => {
