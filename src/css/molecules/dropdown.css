@@ -312,7 +312,7 @@
    MULTI-SELECT DROPDOWN
    ======================================== */
 
-.dropdown--multi .aiab-dropdown-value {
+.aiab-dropdown--multi .aiab-dropdown-value {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
@@ -340,11 +340,11 @@
   opacity: 1;
 }
 
-.dropdown--multi .aiab-dropdown-item.selected {
+.aiab-dropdown--multi .aiab-dropdown-item.selected {
   background-color: #eff6ff;
 }
 
-.dropdown--multi .aiab-dropdown-item.selected::before {
+.aiab-dropdown--multi .aiab-dropdown-item.selected::before {
   content: "☑";
   margin-right: 0.5rem;
   color: #2563eb;

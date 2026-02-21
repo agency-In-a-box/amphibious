@@ -423,8 +423,8 @@
   .aiab-nav-toggle[aria-expanded="true"] ~ #main-nav,
   .aiab-horizontal.aiab-is-active,
   #main-nav.aiab-is-active,
-  .aiab-site-nav.menu-open .aiab-horizontal,
-  .aiab-site-nav.menu-open #main-nav {
+  .aiab-site-nav.aiab-menu-open .aiab-horizontal,
+  .aiab-site-nav.aiab-menu-open #main-nav {
     transform: translateX(0);
   }
 
@@ -445,7 +445,7 @@
   }
 
   .aiab-nav-toggle[aria-expanded="true"] ~ .aiab-site-nav::after,
-  .aiab-site-nav.menu-open::after {
+  .aiab-site-nav.aiab-menu-open::after {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;

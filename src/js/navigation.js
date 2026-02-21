@@ -28,7 +28,7 @@ class NavigationComponent {
 
     // Remove all active classes and aria-current
     document.querySelectorAll('.aiab-horizontal li').forEach((li) => {
-      li.classList.remove('active');
+      li.classList.remove('aiab-active');
     });
 
     document.querySelectorAll('.aiab-horizontal a').forEach((link) => {
@@ -56,7 +56,7 @@ class NavigationComponent {
 
         // Only set active on top-level items
         if (parentLi) {
-          parentLi.classList.add('active');
+          parentLi.classList.add('aiab-active');
 
           // Find the top-level link
           const topLevelLink = parentLi.querySelector(':scope > a');
@@ -68,7 +68,7 @@ class NavigationComponent {
 
       // Check for hash matches in sub-navigation
       if (currentHash && href.includes(currentHash)) {
-        link.classList.add('active');
+        link.classList.add('aiab-active');
       }
     });
   }
@@ -132,7 +132,7 @@ class NavigationComponent {
     toggle.setAttribute('aria-expanded', 'true');
     nav.classList.add('aiab-is-active');
     if (siteNav) {
-      siteNav.classList.add('menu-open');
+      siteNav.classList.add('aiab-menu-open');
     }
     // Prevent body scroll when menu is open
     document.body.style.overflow = 'hidden';
@@ -145,7 +145,7 @@ class NavigationComponent {
     toggle.setAttribute('aria-expanded', 'false');
     nav.classList.remove('aiab-is-active');
     if (siteNav) {
-      siteNav.classList.remove('menu-open');
+      siteNav.classList.remove('aiab-menu-open');
     }
     // Restore body scroll
     document.body.style.overflow = '';

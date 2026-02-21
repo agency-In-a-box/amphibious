@@ -51,7 +51,7 @@ class Dropdown {
 
     // Create dropdown structure
     const dropdown = document.createElement('div');
-    dropdown.className = 'dropdown';
+    dropdown.className = 'aiab-dropdown';
     if (this.options.multiple) {
       dropdown.classList.add('aiab-dropdown--multi');
     }
