@@ -79,7 +79,7 @@ class DarkModeToggle {
     const body = document.body;
 
     // Add transition class for smooth switching
-    body.classList.add('theme-transition');
+    body.classList.add('aiab-theme-transition');
 
     // Determine effective theme
     const effectiveTheme = theme === 'system' ? this.systemPreference : theme;
@@ -109,7 +109,7 @@ class DarkModeToggle {
 
     // Remove transition class after animation
     setTimeout(() => {
-      body.classList.remove('theme-transition');
+      body.classList.remove('aiab-theme-transition');
     }, this.options.transitionDuration);
 
     // Trigger callback
@@ -150,14 +150,14 @@ class DarkModeToggle {
 
   createToggleButton() {
     // Remove existing toggle if present
-    const existing = document.querySelector('.dark-mode-toggle');
+    const existing = document.querySelector('.aiab-dark-mode-toggle');
     if (existing) {
       existing.remove();
     }
 
     // Create toggle button
     const button = document.createElement('button');
-    button.className = 'dark-mode-toggle';
+    button.className = 'aiab-dark-mode-toggle';
     button.setAttribute('aria-label', 'Toggle dark mode');
     button.setAttribute('title', 'Toggle dark mode (⌘+Shift+D)');
 

@@ -507,42 +507,42 @@
    ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bg-light {
+  :root:not([data-theme="light"]) .aiab-bg-light {
     background-color: var(--color-surface);
   }
-  :root:not([data-theme="light"]) .bg-dark {
+  :root:not([data-theme="light"]) .aiab-bg-dark {
     background-color: var(--color-background);
   }
-  :root:not([data-theme="light"]) .text-muted {
+  :root:not([data-theme="light"]) .aiab-text-muted {
     color: var(--color-text-secondary);
   }
-  :root:not([data-theme="light"]) .text-dark {
+  :root:not([data-theme="light"]) .aiab-text-dark {
     color: var(--color-text);
   }
-  :root:not([data-theme="light"]) .text-light {
+  :root:not([data-theme="light"]) .aiab-text-light {
     color: var(--color-text-secondary);
   }
-  :root:not([data-theme="light"]) .border {
+  :root:not([data-theme="light"]) .aiab-border {
     border-color: var(--color-border);
   }
 }
 
-[data-theme="dark"] .bg-light {
+[data-theme="dark"] .aiab-bg-light {
   background-color: var(--color-surface);
 }
-[data-theme="dark"] .bg-dark {
+[data-theme="dark"] .aiab-bg-dark {
   background-color: var(--color-background);
 }
-[data-theme="dark"] .text-muted {
+[data-theme="dark"] .aiab-text-muted {
   color: var(--color-text-secondary);
 }
-[data-theme="dark"] .text-dark {
+[data-theme="dark"] .aiab-text-dark {
   color: var(--color-text);
 }
-[data-theme="dark"] .text-light {
+[data-theme="dark"] .aiab-text-light {
   color: var(--color-text-secondary);
 }
-[data-theme="dark"] .border {
+[data-theme="dark"] .aiab-border {
   border-color: var(--color-border);
 }
 
@@ -550,12 +550,12 @@
    Smooth Theme Transition
    ========================================================================== */
 
-.theme-transition * {
+.aiab-theme-transition * {
   transition: var(--theme-transition);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-transition * {
+  .aiab-theme-transition * {
     transition: none;
   }
 }
@@ -564,7 +564,7 @@
    Dark Mode Toggle Component
    ========================================================================== */
 
-.dark-mode-toggle {
+.aiab-dark-mode-toggle {
   position: fixed;
   bottom: 24px;
   right: 24px;
@@ -582,23 +582,23 @@
   z-index: 9999;
 }
 
-.dark-mode-toggle:hover {
+.aiab-dark-mode-toggle:hover {
   transform: scale(1.1);
   box-shadow: var(--shadow-xl);
 }
 
-.dark-mode-toggle:active {
+.aiab-dark-mode-toggle:active {
   transform: scale(0.95);
 }
 
-.dark-mode-toggle svg {
+.aiab-dark-mode-toggle svg {
   width: 24px;
   height: 24px;
   color: var(--color-text);
   transition: transform 200ms ease;
 }
 
-.dark-mode-toggle:hover svg {
+.aiab-dark-mode-toggle:hover svg {
   transform: rotate(20deg);
 }
 
@@ -607,35 +607,35 @@
    Dark mode = show sun icon (click to go light) */
 
 /* Light mode default: show moon, hide sun */
-.dark-mode-toggle .sun-icon {
+.aiab-dark-mode-toggle .sun-icon {
   display: none;
 }
-.dark-mode-toggle .moon-icon {
+.aiab-dark-mode-toggle .moon-icon {
   display: block;
 }
 
 /* Dark mode: show sun, hide moon */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .dark-mode-toggle .sun-icon {
+  :root:not([data-theme="light"]) .aiab-dark-mode-toggle .sun-icon {
     display: block;
   }
-  :root:not([data-theme="light"]) .dark-mode-toggle .moon-icon {
+  :root:not([data-theme="light"]) .aiab-dark-mode-toggle .moon-icon {
     display: none;
   }
 }
 
-[data-theme="dark"] .dark-mode-toggle .sun-icon {
+[data-theme="dark"] .aiab-dark-mode-toggle .sun-icon {
   display: block;
 }
-[data-theme="dark"] .dark-mode-toggle .moon-icon {
+[data-theme="dark"] .aiab-dark-mode-toggle .moon-icon {
   display: none;
 }
 
 /* Explicit light override (user chose light while system is dark) */
-[data-theme="light"] .dark-mode-toggle .sun-icon {
+[data-theme="light"] .aiab-dark-mode-toggle .sun-icon {
   display: none;
 }
-[data-theme="light"] .dark-mode-toggle .moon-icon {
+[data-theme="light"] .aiab-dark-mode-toggle .moon-icon {
   display: block;
 }
 
