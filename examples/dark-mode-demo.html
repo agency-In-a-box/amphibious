@@ -115,14 +115,14 @@
       margin: 32px 0;
     }
 
-    .stats-row {
+    .aiab-stats-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 24px;
       margin: 32px 0;
     }
 
-    .stat-card {
+    .aiab-stat-card {
       text-align: center;
       padding: 24px;
       background: var(--color-surface-elevated, white);
@@ -130,7 +130,7 @@
       border: 1px solid var(--color-border, #dedede);
     }
 
-    .stat-value {
+    .aiab-stat-value {
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--color-primary, #ED8B00);
@@ -138,7 +138,7 @@
       margin-bottom: 8px;
     }
 
-    .stat-label {
+    .aiab-stat-label {
       font-size: 0.875rem;
       color: var(--color-text-secondary, #666);
       text-transform: uppercase;
@@ -369,22 +369,22 @@
     <section class="demo-section">
       <h2>Dark Mode Features</h2>
 
-      <div class="stats-row">
-        <div class="stat-card">
-          <div class="stat-value">3</div>
-          <div class="stat-label">Theme Modes</div>
+      <div class="aiab-stats-row">
+        <div class="aiab-stat-card">
+          <div class="aiab-stat-value">3</div>
+          <div class="aiab-stat-label">Theme Modes</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">100%</div>
-          <div class="stat-label">Coverage</div>
+        <div class="aiab-stat-card">
+          <div class="aiab-stat-value">100%</div>
+          <div class="aiab-stat-label">Coverage</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">AAA</div>
-          <div class="stat-label">WCAG Rating</div>
+        <div class="aiab-stat-card">
+          <div class="aiab-stat-value">AAA</div>
+          <div class="aiab-stat-label">WCAG Rating</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">200ms</div>
-          <div class="stat-label">Transition</div>
+        <div class="aiab-stat-card">
+          <div class="aiab-stat-value">200ms</div>
+          <div class="aiab-stat-label">Transition</div>
         </div>
       </div>
 
@@ -569,7 +569,7 @@ darkMode.getEffectiveThemeValue(); // Get actual theme in use</code></pre>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const statValues = entry.target.querySelectorAll('.stat-value');
+          const statValues = entry.target.querySelectorAll('.aiab-stat-value');
           statValues.forEach(stat => {
             stat.style.animation = 'pulse 0.5s ease';
           });
@@ -577,7 +577,7 @@ darkMode.getEffectiveThemeValue(); // Get actual theme in use</code></pre>
       });
     }, observerOptions);
 
-    document.querySelectorAll('.stats-row').forEach(row => {
+    document.querySelectorAll('.aiab-stats-row').forEach(row => {
       observer.observe(row);
     });
 
