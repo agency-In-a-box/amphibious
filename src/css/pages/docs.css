@@ -4,24 +4,24 @@
  */
 
 /* Documentation Header */
-.docs-header,
-.doc-header {
+.aiab-docs-header,
+.aiab-doc-header {
   background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
   color: white;
   padding: 3rem 0;
   margin-bottom: 3rem;
 }
 
-.docs-header h1,
-.doc-header h1 {
+.aiab-docs-header h1,
+.aiab-doc-header h1 {
   margin: 0;
   font-size: 2.5rem;
   font-weight: 300;
   color: white;
 }
 
-.docs-header p,
-.doc-header p {
+.aiab-docs-header p,
+.aiab-doc-header p {
   margin: 1rem 0 0 0;
   font-size: 1.25rem;
   opacity: 0.9;
@@ -29,21 +29,21 @@
 }
 
 /* Demo Header (for demo pages) */
-.demo-header {
+.aiab-demo-header {
   background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
   color: white;
   padding: 3rem 0;
   margin-bottom: 3rem;
 }
 
-.demo-header h1 {
+.aiab-demo-header h1 {
   margin: 0;
   font-size: 2.5rem;
   font-weight: 300;
   color: white;
 }
 
-.demo-header p {
+.aiab-demo-header p {
   margin: 1rem 0 0 0;
   font-size: 1.25rem;
   opacity: 0.9;
