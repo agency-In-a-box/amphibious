@@ -49,11 +49,21 @@
 - [x] Fixed navigation.js 'active' → 'aiab-active', 'menu-open' → 'aiab-menu-open'
 - [x] Prefixed page-demo CSS classes (home.css, docs.css)
 
+### P5 Fixes
+- [x] Added missing CSS imports to main.css (foundation-fixes.css, updates-section-fix.css)
+- [x] Fixed .updates-section namespace mismatch in updates-section-fix.css
+- [x] Removed dead layers.css (abandoned @layer architecture)
+- [x] Prefixed all pears.css component classes (.stats, .slats, .stat-card, .review-slats, etc.)
+- [x] Updated 33 HTML files with prefixed pears class attributes and inline styles
+- [x] Fixed print.css .col selector to target [class*="aiab-col-"]
+- [x] Updated test assertions for prefixed class names
+
 ## Remaining Work
 
 ### Known Namespace Gaps (Low Risk)
 - Plain JS component state classes (`open`, `selected`, `disabled`, `active`, `focused`, `expanded`) are unprefixed but used as compound selectors (e.g., `.aiab-dropdown.open`) — collision risk is low
 - Affected files: accordion.js, color-picker.js, data-table.js, datepicker.js, dropdown.js, file-upload.js, form-builder.js, range-slider.js, search-bar.js, timeline.js, toast.js
+- Page-demo classes in foundation-fixes.css (`.demo-col`, `.code-example`, `.doc-section`) remain unprefixed — consistent in both CSS and HTML, low collision risk
 
 ### High Priority
 1. **Test coverage for JS modules** - 12+ modules without tests

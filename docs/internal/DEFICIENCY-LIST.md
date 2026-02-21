@@ -60,6 +60,9 @@ This document tracks known issues, missing features, and areas for improvement.
 - [x] **CI Pipeline** - Fixed npm audit for Bun project
 - [x] **Library Exports** - All TypeScript components exported from entry point
 - [x] **JS/CSS Mismatches** - Fixed dropdown base class, navigation active/menu-open
+- [x] **Pears Component Prefixing** - All pears.css classes (.stats, .slats, .stat-card, etc.) prefixed with .aiab-
+- [x] **Missing CSS Imports** - Added foundation-fixes.css and updates-section-fix.css to main.css
+- [x] **Print CSS** - Fixed .col selector to target [class*="aiab-col-"]
 
 ### Remaining
 - [ ] **Test Coverage** - 12+ JS modules untested (accordion, dropdown, toast, etc.)
@@ -98,7 +101,7 @@ This document tracks known issues, missing features, and areas for improvement.
 ## 4. Build & Distribution
 
 ### Current
-- **CSS**: 379 KB (61 KB gzip)
+- **CSS**: 389 KB (62 KB gzip)
 - **JS**: 114 KB ES module (36 KB gzip) — includes all component exports
 - **CI/CD**: GitHub Actions with lint, typecheck, test, build, security scan
 - **Bundle limit**: 2 MB
