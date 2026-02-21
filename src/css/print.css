@@ -218,7 +218,7 @@
     page-break-inside: avoid;
   }
 
-  .col {
+  [class*="aiab-col-"] {
     float: none;
     width: 100%;
     margin: 0;
