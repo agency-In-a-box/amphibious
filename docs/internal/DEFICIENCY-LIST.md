@@ -49,18 +49,22 @@ This document tracks known issues, missing features, and areas for improvement.
 ## 2. Code Quality
 
 ### Resolved
-- [x] **Namespace Isolation** - All CSS uses `.aiab-` prefix (319 files updated)
+- [x] **Namespace Isolation** - All CSS classes use `.aiab-` prefix across CSS, JS, and HTML
 - [x] **TypeScript Strict Mode** - `strict: true` enabled in tsconfig.json
 - [x] **No `any` Types** - All replaced with proper union types
 - [x] **Biome Linting** - `noExplicitAny` rule enabled
 - [x] **XSS Protection** - DOMPurify sanitization throughout
 - [x] **Tooltip Regex Bug** - Fixed to use classList.remove/add instead of regex
 - [x] **Event Listener Cleanup** - Core modules use AbortController or tracking patterns
+- [x] **Dead CSS Removal** - 13 legacy CSS files removed (2,033 lines)
+- [x] **CI Pipeline** - Fixed npm audit for Bun project
+- [x] **Library Exports** - All TypeScript components exported from entry point
+- [x] **JS/CSS Mismatches** - Fixed dropdown base class, navigation active/menu-open
 
 ### Remaining
 - [ ] **Test Coverage** - 12+ JS modules untested (accordion, dropdown, toast, etc.)
 - [ ] **JSDoc Comments** - Public APIs lack documentation comments
-- [ ] **CSS Dead Code** - Some legacy CSS files may be unused
+- [ ] **State Class Prefixing** - Plain JS components use unprefixed state classes (open, selected, etc.) in compound selectors — low collision risk
 
 ## 3. Testing
 
@@ -94,8 +98,8 @@ This document tracks known issues, missing features, and areas for improvement.
 ## 4. Build & Distribution
 
 ### Current
-- **CSS**: 378 KB (61 KB gzip)
-- **JS**: 31.5 KB ES module (11 KB gzip)
+- **CSS**: 379 KB (61 KB gzip)
+- **JS**: 114 KB ES module (36 KB gzip) — includes all component exports
 - **CI/CD**: GitHub Actions with lint, typecheck, test, build, security scan
 - **Bundle limit**: 2 MB
 
@@ -124,8 +128,11 @@ This document tracks known issues, missing features, and areas for improvement.
 1. ~~Modal/Dialog component~~ ✅
 2. ~~Tooltip component~~ ✅
 3. ~~Icon System migration~~ ✅
-4. ~~Namespace isolation~~ ✅
+4. ~~Namespace isolation~~ ✅ (P0-P4 complete)
 5. ~~TypeScript strict mode~~ ✅
+6. ~~Library exports~~ ✅
+7. ~~Dead code removal~~ ✅
+8. ~~CI/CD fixes~~ ✅
 
 ### Next Up
 1. **Test coverage** - Add tests for untested JS modules
