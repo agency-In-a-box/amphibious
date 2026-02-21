@@ -463,8 +463,8 @@ describe('Amphibious 2.0 Component Inventory', () => {
       const pearsFile = path.join(process.cwd(), 'src/css/molecules/pears.css');
       const content = fs.readFileSync(pearsFile, 'utf-8');
 
-      expect(content).toContain('.stats'); // For product stats
-      expect(content).toContain('.slat'); // For product listings
+      expect(content).toContain('.aiab-stats'); // For product stats
+      expect(content).toContain('.aiab-slat'); // For product listings
     });
 
     test('Accessibility features', () => {
