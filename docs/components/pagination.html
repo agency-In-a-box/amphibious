@@ -228,7 +228,7 @@
   <!-- Site Navigation -->
 <nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
-    <ul class="aiab-horizontal branded">
+    <ul class="aiab-horizontal aiab-branded">
       <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
       <li><a href="/docs/foundation.html">Foundation</a>
         <ul>
@@ -1002,7 +1002,7 @@ class Pagination {
     this.showInfo = options.showInfo !== false;
     this.showJump = options.showJump || false;
     this.showPageSize = options.showPageSize || false;
-    this.container = options.aiab-container;
+    this.container = options.container;
     this.onChange = options.onChange || (() => {});
 
     this.init();

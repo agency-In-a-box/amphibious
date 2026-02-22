@@ -63,10 +63,10 @@
 </head>
 <body>
   <!-- Site Navigation -->
-  <nav class="site-nav" aria-label="Main navigation">
+  <nav class="aiab-site-nav" aria-label="Main navigation">
     <div class="aiab-container">
-      <ul class="horizontal branded">
-        <li><a href="/" class="site-logo">Amphibious</a></li>
+      <ul class="aiab-horizontal aiab-branded">
+        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
           <ul>
             <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -119,7 +119,7 @@
   <!-- Horizontal Navigation Example -->
   <div class="aiab-demo-section">
     <nav>
-      <ul class="horizontal">
+      <ul class="aiab-horizontal">
         <li><a href="#" class="aiab-active">Home</a></li>
         <li>
           <a href="#">Products</a>
@@ -284,20 +284,20 @@
     <section>
       <h2 class="demo-title">Mobile Navigation Toggle</h2>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-demo">
-        <span class="nav-toggle-icon"></span>
-        <span class="sr-only">Toggle Navigation</span>
+      <button class="aiab-nav-toggle" aria-expanded="false" aria-controls="mobile-nav-demo">
+        <span class="aiab-nav-toggle-icon"></span>
+        <span class="aiab-sr-only">Toggle Navigation</span>
       </button>
 
-      <button class="nav-toggle" aria-expanded="true" aria-controls="mobile-nav-demo" style="margin-left: 1em;">
-        <span class="nav-toggle-icon"></span>
-        <span class="sr-only">Close Navigation</span>
+      <button class="aiab-nav-toggle" aria-expanded="true" aria-controls="mobile-nav-demo" style="margin-left: 1em;">
+        <span class="aiab-nav-toggle-icon"></span>
+        <span class="aiab-sr-only">Close Navigation</span>
       </button>
 
       <div class="demo-code">
-        <pre><code>&lt;button class="nav-toggle" aria-expanded="false"&gt;
-  &lt;span class="nav-toggle-icon"&gt;&lt;/span&gt;
-  &lt;span class="sr-only"&gt;Toggle Navigation&lt;/span&gt;
+        <pre><code>&lt;button class="aiab-nav-toggle" aria-expanded="false"&gt;
+  &lt;span class="aiab-nav-toggle-icon"&gt;&lt;/span&gt;
+  &lt;span class="aiab-sr-only"&gt;Toggle Navigation&lt;/span&gt;
 &lt;/button&gt;</code></pre>
       </div>
     </section>
@@ -337,9 +337,9 @@
       <p>To hide navigation on mobile and show toggle button:</p>
 
       <div class="demo-code">
-        <pre><code>&lt;button class="nav-toggle"&gt;...&lt;/button&gt;
+        <pre><code>&lt;button class="aiab-nav-toggle"&gt;...&lt;/button&gt;
 &lt;nav class="nav-mobile-hide"&gt;
-  &lt;ul class="horizontal"&gt;...&lt;/ul&gt;
+  &lt;ul class="aiab-horizontal"&gt;...&lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
       </div>
     </section>
@@ -365,7 +365,7 @@
 &lt;nav aria-label="Main navigation"&gt;...&lt;/nav&gt;
 
 &lt;!-- Screen reader text --&gt;
-&lt;span class="sr-only"&gt;Current page&lt;/span&gt;</code></pre>
+&lt;span class="aiab-sr-only"&gt;Current page&lt;/span&gt;</code></pre>
       </div>
     </section>
   </main>

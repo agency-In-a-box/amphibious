@@ -415,15 +415,15 @@
 </head>
 <body>
   <!-- Site Navigation -->
-  <nav class="site-nav" aria-label="Main navigation">
+  <nav class="aiab-site-nav" aria-label="Main navigation">
     <div class="aiab-container">
-      <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="nav-toggle-icon" aria-hidden="true"></span>
-        <span class="sr-only">Toggle navigation</span>
+      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
+        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
+        <span class="aiab-sr-only">Toggle navigation</span>
       </button>
 
-      <ul id="main-nav" class="horizontal branded">
-        <li><a href="/" class="site-logo">Amphibious</a></li>
+      <ul id="main-nav" class="aiab-horizontal aiab-branded">
+        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
           <ul>
             <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -1070,7 +1070,7 @@ modal.<span class="string">toggle</span>();
             );
 
             if (confirmed) {
-                await amp.aiab-alert('Item removed from cart', 'success');
+                await amp.alert('Item removed from cart', 'success');
             }
         };
 
@@ -1080,11 +1080,11 @@ modal.<span class="string">toggle</span>();
             if (size === 'sm') modalId = '#sizeModalSm';
             if (size === 'lg') modalId = '#sizeModalLg';
             if (size === 'xl') {
-                amp.aiab-alert('Extra Large Modal - 1140px width', 'info');
+                amp.alert('Extra Large Modal - 1140px width', 'info');
                 return;
             }
             if (size === 'full') {
-                amp.aiab-alert('Full Screen Modal - Takes entire viewport', 'info');
+                amp.alert('Full Screen Modal - Takes entire viewport', 'info');
                 return;
             }
 
@@ -1098,12 +1098,12 @@ modal.<span class="string">toggle</span>();
                 success: 'Order placed successfully!',
                 error: 'Payment failed. Please try again.'
             };
-            amp.aiab-alert(messages[type] || 'Alert message', type);
+            amp.alert(messages[type] || 'Alert message', type);
         };
 
         // Image Modal
         window.openImageModal = function() {
-            amp.aiab-alert('Image gallery modal would display here', 'info');
+            amp.alert('Image gallery modal would display here', 'info');
         };
 
         // Drawer Examples
@@ -1112,18 +1112,18 @@ modal.<span class="string">toggle</span>();
                 const modal = amp.createModal('cart', '#cartModal');
                 modal.open();
             } else {
-                amp.aiab-alert(`${direction} drawer would open here`, 'info');
+                amp.alert(`${direction} drawer would open here`, 'info');
             }
         };
 
         // Bottom Sheet
         window.openBottomSheet = function() {
-            amp.aiab-alert('Bottom sheet modal - Perfect for mobile actions', 'info');
+            amp.alert('Bottom sheet modal - Perfect for mobile actions', 'info');
         };
 
         // Size Guide
         window.openSizeGuide = function() {
-            amp.aiab-alert('Size guide modal would display here', 'info');
+            amp.alert('Size guide modal would display here', 'info');
         };
 
         // Mobile Modals
@@ -1133,7 +1133,7 @@ modal.<span class="string">toggle</span>();
                 'fullscreen': 'Full screen search modal',
                 'drawer': 'Shopping cart drawer'
             };
-            amp.aiab-alert(messages[type] || 'Mobile modal', 'info');
+            amp.alert(messages[type] || 'Mobile modal', 'info');
         };
     </script>
   <script type="module">
