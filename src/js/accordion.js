@@ -38,7 +38,7 @@ class Accordion {
 
       // Set initial state
       const isOpen =
-        item.classList.contains('active') ||
+        item.classList.contains('aiab-active') ||
         this.options.defaultOpen === index ||
         this.options.defaultOpen === 'all';
 
@@ -96,7 +96,7 @@ class Accordion {
 
   setItemState(item, header, content, isOpen) {
     if (isOpen) {
-      item.classList.add('active');
+      item.classList.add('aiab-active');
       header.setAttribute('aria-expanded', 'true');
       content.setAttribute('aria-hidden', 'false');
 
@@ -106,7 +106,7 @@ class Accordion {
         content.style.maxHeight = `${scrollHeight}px`;
       }
     } else {
-      item.classList.remove('active');
+      item.classList.remove('aiab-active');
       header.setAttribute('aria-expanded', 'false');
       content.setAttribute('aria-hidden', 'true');
 
