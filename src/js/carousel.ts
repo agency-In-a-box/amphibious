@@ -83,21 +83,21 @@ export class AmphibiousCarousel {
 
   private setupElement(): void {
     // Add base carousel class
-    this.element.classList.add('amp-carousel');
+    this.element.classList.add('aiab-carousel');
 
     // Add variant class
     if (this.options.variant && this.options.variant !== 'default') {
-      this.element.classList.add(`amp-carousel--${this.options.variant}`);
+      this.element.classList.add(`aiab-carousel--${this.options.variant}`);
     }
 
     // Add size class
     if (this.options.size) {
-      this.element.classList.add(`amp-carousel--${this.options.size}`);
+      this.element.classList.add(`aiab-carousel--${this.options.size}`);
     }
 
     // Add pagination variant class
     if (this.options.pagination === 'progress') {
-      this.element.classList.add('amp-carousel--progress');
+      this.element.classList.add('aiab-carousel--progress');
     }
 
     // Ensure proper structure
@@ -242,7 +242,7 @@ export class AmphibiousCarousel {
   }
 
   // Static method for auto-initialization
-  static autoInit(selector = '.amp-carousel[data-carousel]'): AmphibiousCarousel[] {
+  static autoInit(selector = '.aiab-carousel[data-carousel]'): AmphibiousCarousel[] {
     const elements = document.querySelectorAll<HTMLElement>(selector);
     const carousels: AmphibiousCarousel[] = [];
 
