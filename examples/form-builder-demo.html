@@ -75,21 +75,21 @@
       display: block;
     }
 
-    .feature-grid {
+    .aiab-feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 24px;
       margin-bottom: 48px;
     }
 
-    .feature-card {
+    .aiab-feature-card {
       background: white;
       padding: 24px;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    .feature-card h3 {
+    .aiab-feature-card h3 {
       margin-top: 0;
       margin-bottom: 16px;
       font-size: 1.125rem;
@@ -118,11 +118,11 @@
       font-weight: bold;
     }
 
-    .demo-section {
+    .aiab-demo-section {
       margin-bottom: 48px;
     }
 
-    .demo-section h2 {
+    .aiab-demo-section h2 {
       margin-bottom: 24px;
       font-size: 1.5rem;
       color: var(--apple-gray-900);
@@ -302,7 +302,7 @@
 
     <!-- Templates Tab -->
     <div id="templates" class="demo-content">
-      <div class="demo-section">
+      <div class="aiab-demo-section">
         <h2>Quick Start Templates</h2>
         <div class="template-grid">
           <button class="template-btn" onclick="loadTemplate('contact')">
@@ -335,11 +335,11 @@
 
     <!-- Features Tab -->
     <div id="features" class="demo-content">
-      <div class="demo-section">
+      <div class="aiab-demo-section">
         <h2>Comprehensive Feature Set</h2>
 
-        <div class="feature-grid">
-          <div class="feature-card">
+        <div class="aiab-feature-grid">
+          <div class="aiab-feature-card">
             <h3>Field Types</h3>
             <ul class="feature-list">
               <li>Text, Email, Password</li>
@@ -357,7 +357,7 @@
             </ul>
           </div>
 
-          <div class="feature-card">
+          <div class="aiab-feature-card">
             <h3>Validation</h3>
             <ul class="feature-list">
               <li>Required fields</li>
@@ -374,7 +374,7 @@
             </ul>
           </div>
 
-          <div class="feature-card">
+          <div class="aiab-feature-card">
             <h3>Logic & Conditions</h3>
             <ul class="feature-list">
               <li>Show/hide fields</li>
@@ -390,7 +390,7 @@
             </ul>
           </div>
 
-          <div class="feature-card">
+          <div class="aiab-feature-card">
             <h3>User Experience</h3>
             <ul class="feature-list">
               <li>Drag & drop interface</li>
@@ -406,7 +406,7 @@
             </ul>
           </div>
 
-          <div class="feature-card">
+          <div class="aiab-feature-card">
             <h3>Developer Features</h3>
             <ul class="feature-list">
               <li>JSON import/export</li>
@@ -422,7 +422,7 @@
             </ul>
           </div>
 
-          <div class="feature-card">
+          <div class="aiab-feature-card">
             <h3>Performance</h3>
             <ul class="feature-list">
               <li>~45KB minified</li>
@@ -440,7 +440,7 @@
         </div>
       </div>
 
-      <div class="demo-section">
+      <div class="aiab-demo-section">
         <h2>Statistics</h2>
         <div class="aiab-stats-grid">
           <div class="aiab-stat-card">
@@ -465,7 +465,7 @@
 
     <!-- Integration Tab -->
     <div id="integration" class="demo-content">
-      <div class="demo-section">
+      <div class="aiab-demo-section">
         <h2>Quick Start</h2>
         <div class="code-block">
 <span class="code-comment">// Initialize the form builder</span>
@@ -498,7 +498,7 @@ builder.addFieldType({
         </div>
       </div>
 
-      <div class="demo-section">
+      <div class="aiab-demo-section">
         <h2>Event Handling</h2>
         <div class="code-block">
 builder.on('field-add', (field) => {
@@ -523,7 +523,7 @@ builder.on('validation-error', (errors) => {
         </div>
       </div>
 
-      <div class="demo-section">
+      <div class="aiab-demo-section">
         <h2>Form Submission</h2>
         <div class="code-block">
 <span class="code-comment">// Handle form submission in preview mode</span>
@@ -553,7 +553,7 @@ if (isValid) {
         </div>
       </div>
 
-      <div class="demo-section">
+      <div class="aiab-demo-section">
         <h2>Conditional Logic</h2>
         <div class="code-block">
 <span class="code-comment">// Add conditional logic to fields</span>
