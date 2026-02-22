@@ -390,7 +390,7 @@
   color: var(--color-text-secondary, #666);
 }
 
-.filter-btn {
+.aiab-filter-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -403,37 +403,37 @@
   transition: all var(--duration-instant, 150ms) var(--ease-apple-bounce);
 }
 
-.filter-btn:hover {
+.aiab-filter-btn:hover {
   border-color: var(--apple-orange-500, var(--color-primary));
 }
 
-.filter-btn.aiab-active {
+.aiab-filter-btn.aiab-active {
   background: var(--apple-orange-500, var(--color-primary));
   border-color: var(--apple-orange-500, var(--color-primary));
   color: white;
 }
 
-.filter-btn.aiab-active .filter-dot {
+.aiab-filter-btn.aiab-active .aiab-filter-dot {
   background: white;
 }
 
-.filter-dot {
+.aiab-filter-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
 
-.filter-text {
+.aiab-filter-text {
   font-weight: 500;
 }
 
 /* Zoom controls */
-.timeline-zoom {
+.aiab-timeline-zoom {
   display: flex;
   gap: 4px;
 }
 
-.zoom-btn {
+.aiab-zoom-btn {
   width: 32px;
   height: 32px;
   display: flex;
@@ -446,7 +446,7 @@
   transition: all var(--duration-instant, 150ms) var(--ease-apple-bounce);
 }
 
-.zoom-btn:hover {
+.aiab-zoom-btn:hover {
   background: var(--apple-orange-500, var(--color-primary));
   border-color: var(--apple-orange-500, var(--color-primary));
   color: white;
@@ -484,8 +484,8 @@
     background: var(--apple-gray-900, #212121);
   }
 
-  .filter-btn,
-  .zoom-btn {
+  .aiab-filter-btn,
+  .aiab-zoom-btn {
     background: var(--apple-gray-800, #424242);
     border-color: var(--apple-gray-700, #616161);
     color: var(--apple-gray-200, #e0e0e0);

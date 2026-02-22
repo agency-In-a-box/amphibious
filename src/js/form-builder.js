@@ -478,7 +478,7 @@ class FormBuilder {
     toolbox.className = 'aiab-form-builder-toolbox';
 
     const header = document.createElement('div');
-    header.className = 'toolbox-header';
+    header.className = 'aiab-toolbox-header';
     header.innerHTML = `<h3>${this.options.labels.toolbox}</h3>`;
     toolbox.appendChild(header);
 
@@ -497,24 +497,24 @@ class FormBuilder {
     // Create category sections
     Object.entries(categories).forEach(([category, fields]) => {
       const section = document.createElement('div');
-      section.className = 'toolbox-section';
+      section.className = 'aiab-toolbox-section';
 
       const categoryTitle = document.createElement('div');
-      categoryTitle.className = 'toolbox-category';
+      categoryTitle.className = 'aiab-toolbox-category';
       categoryTitle.textContent = this.formatCategory(category);
       section.appendChild(categoryTitle);
 
       const fieldList = document.createElement('div');
-      fieldList.className = 'toolbox-fields';
+      fieldList.className = 'aiab-toolbox-fields';
 
       fields.forEach((field) => {
         const fieldEl = document.createElement('div');
-        fieldEl.className = 'toolbox-field';
+        fieldEl.className = 'aiab-toolbox-field';
         fieldEl.draggable = true;
         fieldEl.dataset.fieldType = field.type;
         fieldEl.innerHTML = `
-          <span class="field-icon">${field.icon}</span>
-          <span class="field-label">${field.label}</span>
+          <span class="aiab-field-icon">${field.icon}</span>
+          <span class="aiab-field-label">${field.label}</span>
         `;
         fieldList.appendChild(fieldEl);
       });
@@ -539,18 +539,18 @@ class FormBuilder {
 
     // Canvas header with tabs
     const header = document.createElement('div');
-    header.className = 'canvas-header';
+    header.className = 'aiab-canvas-header';
 
     const tabs = document.createElement('div');
-    tabs.className = 'canvas-tabs';
+    tabs.className = 'aiab-canvas-tabs';
 
     const buildTab = document.createElement('button');
-    buildTab.className = 'tab-btn active';
+    buildTab.className = 'aiab-tab-btn active';
     buildTab.textContent = 'Build';
     buildTab.dataset.tab = 'build';
 
     const previewTab = document.createElement('button');
-    previewTab.className = 'tab-btn';
+    previewTab.className = 'aiab-tab-btn';
     previewTab.textContent = this.options.labels.preview;
     previewTab.dataset.tab = 'preview';
 
@@ -564,7 +564,7 @@ class FormBuilder {
 
     // Canvas container
     const container = document.createElement('div');
-    container.className = 'canvas-container';
+    container.className = 'aiab-canvas-container';
 
     // Build canvas
     this.canvas = document.createElement('div');
@@ -573,7 +573,7 @@ class FormBuilder {
 
     // Empty state
     const emptyState = document.createElement('div');
-    emptyState.className = 'canvas-empty';
+    emptyState.className = 'aiab-canvas-empty';
     emptyState.innerHTML = `
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -631,11 +631,11 @@ class FormBuilder {
     toolbar.className = 'aiab-form-builder-toolbar';
 
     const leftActions = document.createElement('div');
-    leftActions.className = 'toolbar-actions left';
+    leftActions.className = 'aiab-toolbar-actions left';
 
     // Undo/Redo buttons
     const undoBtn = document.createElement('button');
-    undoBtn.className = 'toolbar-btn';
+    undoBtn.className = 'aiab-toolbar-btn';
     undoBtn.title = 'Undo';
     undoBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M3 7h12a4 4 0 014 4v6a4 4 0 01-4 4H5"/>
@@ -643,7 +643,7 @@ class FormBuilder {
     </svg>`;
 
     const redoBtn = document.createElement('button');
-    redoBtn.className = 'toolbar-btn';
+    redoBtn.className = 'aiab-toolbar-btn';
     redoBtn.title = 'Redo';
     redoBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path d="M21 7H9a4 4 0 00-4 4v6a4 4 0 004 4h10"/>
@@ -654,25 +654,25 @@ class FormBuilder {
     leftActions.appendChild(redoBtn);
 
     const rightActions = document.createElement('div');
-    rightActions.className = 'toolbar-actions right';
+    rightActions.className = 'aiab-toolbar-actions right';
 
     // Clear button
     const clearBtn = document.createElement('button');
-    clearBtn.className = 'toolbar-btn';
+    clearBtn.className = 'aiab-toolbar-btn';
     clearBtn.textContent = this.options.labels.clear;
 
     // Import/Export buttons
     const importBtn = document.createElement('button');
-    importBtn.className = 'toolbar-btn';
+    importBtn.className = 'aiab-toolbar-btn';
     importBtn.textContent = this.options.labels.import;
 
     const exportBtn = document.createElement('button');
-    exportBtn.className = 'toolbar-btn';
+    exportBtn.className = 'aiab-toolbar-btn';
     exportBtn.textContent = this.options.labels.export;
 
     // Save button
     const saveBtn = document.createElement('button');
-    saveBtn.className = 'toolbar-btn primary';
+    saveBtn.className = 'aiab-toolbar-btn primary';
     saveBtn.textContent = this.options.labels.save;
 
     rightActions.appendChild(clearBtn);
@@ -725,10 +725,10 @@ class FormBuilder {
 
   createTemplatesSection() {
     const section = document.createElement('div');
-    section.className = 'toolbox-section templates';
+    section.className = 'aiab-toolbox-section templates';
 
     const title = document.createElement('div');
-    title.className = 'toolbox-category';
+    title.className = 'aiab-toolbox-category';
     title.textContent = 'Templates';
     section.appendChild(title);
 
@@ -753,7 +753,7 @@ class FormBuilder {
   attachEvents() {
     // Toolbox drag events
     if (this.toolbox) {
-      const fieldEls = this.toolbox.querySelectorAll('.toolbox-field');
+      const fieldEls = this.toolbox.querySelectorAll('.aiab-toolbox-field');
       fieldEls.forEach((field) => {
         this.attachDragEvents(field, 'new');
       });
@@ -775,7 +775,7 @@ class FormBuilder {
     this.attachDropEvents(this.canvas);
 
     // Tab switching
-    const tabs = this.element.querySelectorAll('.tab-btn');
+    const tabs = this.element.querySelectorAll('.aiab-tab-btn');
     tabs.forEach((tab) => {
       const handler = () => this.switchTab(tab.dataset.tab);
       tab.addEventListener('click', handler);
@@ -789,12 +789,12 @@ class FormBuilder {
     // Toolbar actions
     const toolbar = this.element.querySelector('.aiab-form-builder-toolbar');
     if (toolbar) {
-      const undoBtn = toolbar.querySelector('.toolbar-btn[title="Undo"]');
-      const redoBtn = toolbar.querySelector('.toolbar-btn[title="Redo"]');
-      const clearBtn = toolbar.querySelector('.toolbar-btn:not(.aiab-primary)');
-      const importBtn = toolbar.querySelectorAll('.toolbar-btn')[3];
-      const exportBtn = toolbar.querySelectorAll('.toolbar-btn')[4];
-      const saveBtn = toolbar.querySelector('.toolbar-btn.aiab-primary');
+      const undoBtn = toolbar.querySelector('.aiab-toolbar-btn[title="Undo"]');
+      const redoBtn = toolbar.querySelector('.aiab-toolbar-btn[title="Redo"]');
+      const clearBtn = toolbar.querySelector('.aiab-toolbar-btn:not(.aiab-primary)');
+      const importBtn = toolbar.querySelectorAll('.aiab-toolbar-btn')[3];
+      const exportBtn = toolbar.querySelectorAll('.aiab-toolbar-btn')[4];
+      const saveBtn = toolbar.querySelector('.aiab-toolbar-btn.aiab-primary');
 
       if (undoBtn) {
         const undoHandler = () => this.undo();
@@ -1075,7 +1075,7 @@ class FormBuilder {
     if (this.state.fields.length === 0) {
       // Show empty state
       const emptyState = document.createElement('div');
-      emptyState.className = 'canvas-empty';
+      emptyState.className = 'aiab-canvas-empty';
       emptyState.innerHTML = `
         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -1107,26 +1107,26 @@ class FormBuilder {
 
     // Field header
     const header = document.createElement('div');
-    header.className = 'field-header';
+    header.className = 'aiab-field-header';
 
     const handle = document.createElement('span');
-    handle.className = 'field-handle';
+    handle.className = 'aiab-field-handle';
     handle.innerHTML = '⋮⋮';
 
     const label = document.createElement('span');
-    label.className = 'field-label';
+    label.className = 'aiab-field-label';
     label.textContent = field.label || field.type;
 
     const actions = document.createElement('div');
-    actions.className = 'field-actions';
+    actions.className = 'aiab-field-actions';
 
     const duplicateBtn = document.createElement('button');
-    duplicateBtn.className = 'field-action';
+    duplicateBtn.className = 'aiab-field-action';
     duplicateBtn.title = 'Duplicate';
     duplicateBtn.innerHTML = '📋';
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'field-action delete';
+    deleteBtn.className = 'aiab-field-action delete';
     deleteBtn.title = 'Delete';
     deleteBtn.innerHTML = '🗑️';
 
@@ -1139,7 +1139,7 @@ class FormBuilder {
 
     // Field preview
     const preview = document.createElement('div');
-    preview.className = 'field-preview';
+    preview.className = 'aiab-field-preview';
     preview.innerHTML = this.getFieldPreview(field);
 
     fieldEl.appendChild(header);
@@ -1149,7 +1149,7 @@ class FormBuilder {
     this.attachDragEvents(fieldEl, 'move');
 
     const clickHandler = (e) => {
-      if (!e.target.closest('.field-action')) {
+      if (!e.target.closest('.aiab-field-action')) {
         this.selectField(field.id);
       }
     };
@@ -1600,7 +1600,7 @@ class FormBuilder {
 
   switchTab(tab) {
     // Update tab buttons
-    this.element.querySelectorAll('.tab-btn').forEach((btn) => {
+    this.element.querySelectorAll('.aiab-tab-btn').forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.tab === tab);
     });
 

@@ -220,7 +220,7 @@ class Timeline {
 
       this.options.groups.forEach((group) => {
         const filterBtn = document.createElement('button');
-        filterBtn.className = 'filter-btn';
+        filterBtn.className = 'aiab-filter-btn';
         filterBtn.dataset.group = group.id;
         filterBtn.innerHTML = `
           <span class="filter-dot" style="background: ${group.color}"></span>
@@ -238,7 +238,7 @@ class Timeline {
       zoomControls.className = 'aiab-timeline-zoom';
 
       const zoomOut = document.createElement('button');
-      zoomOut.className = 'zoom-btn zoom-out';
+      zoomOut.className = 'aiab-zoom-btn zoom-out';
       zoomOut.title = this.options.labels.zoomOut;
       zoomOut.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <circle cx="11" cy="11" r="8"/>
@@ -246,7 +246,7 @@ class Timeline {
       </svg>`;
 
       const zoomIn = document.createElement('button');
-      zoomIn.className = 'zoom-btn zoom-in';
+      zoomIn.className = 'aiab-zoom-btn zoom-in';
       zoomIn.title = this.options.labels.zoomIn;
       zoomIn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <circle cx="11" cy="11" r="8"/>
@@ -254,7 +254,7 @@ class Timeline {
       </svg>`;
 
       const reset = document.createElement('button');
-      reset.className = 'zoom-btn zoom-reset';
+      reset.className = 'aiab-zoom-btn zoom-reset';
       reset.title = this.options.labels.reset;
       reset.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path d="M1 1l22 22M9 9v6h6"/>
@@ -595,7 +595,7 @@ class Timeline {
 
     // Filter buttons
     if (this.options.showFilters) {
-      const filterBtns = this.element.querySelectorAll('.filter-btn');
+      const filterBtns = this.element.querySelectorAll('.aiab-filter-btn');
       filterBtns.forEach((btn, index) => {
         const filterHandler = () => this.toggleFilter(btn.dataset.group);
         btn.addEventListener('click', filterHandler);
