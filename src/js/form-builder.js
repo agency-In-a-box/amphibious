@@ -609,12 +609,12 @@ class FormBuilder {
     panel.className = 'aiab-form-builder-properties';
 
     const header = document.createElement('div');
-    header.className = 'properties-header';
+    header.className = 'aiab-properties-header';
     header.innerHTML = `<h3>${this.options.labels.properties}</h3>`;
     panel.appendChild(header);
 
     this.propertiesContent = document.createElement('div');
-    this.propertiesContent.className = 'properties-content';
+    this.propertiesContent.className = 'aiab-properties-content';
     this.propertiesContent.innerHTML = `
       <div class="properties-empty">
         <p>Select a field to edit its properties</p>
@@ -703,7 +703,7 @@ class FormBuilder {
     prevBtn.textContent = 'Previous';
 
     const indicator = document.createElement('div');
-    indicator.className = 'step-indicator';
+    indicator.className = 'aiab-step-indicator';
     indicator.textContent = 'Step 1 of 1';
 
     const nextBtn = document.createElement('button');
@@ -733,11 +733,11 @@ class FormBuilder {
     section.appendChild(title);
 
     const templateList = document.createElement('div');
-    templateList.className = 'template-list';
+    templateList.className = 'aiab-template-list';
 
     this.options.templates.forEach((template) => {
       const templateEl = document.createElement('div');
-      templateEl.className = 'template-item';
+      templateEl.className = 'aiab-template-item';
       templateEl.dataset.templateId = template.id;
       templateEl.innerHTML = `
         <span class="template-icon">📋</span>
@@ -759,7 +759,7 @@ class FormBuilder {
       });
 
       // Template clicks
-      const templates = this.toolbox.querySelectorAll('.template-item');
+      const templates = this.toolbox.querySelectorAll('.aiab-template-item');
       templates.forEach((template) => {
         const handler = () => this.loadTemplate(template.dataset.templateId);
         template.addEventListener('click', handler);
@@ -1317,11 +1317,11 @@ class FormBuilder {
 
     // Create property form
     const form = document.createElement('form');
-    form.className = 'properties-form';
+    form.className = 'aiab-properties-form';
 
     // Basic properties
     const basicSection = document.createElement('div');
-    basicSection.className = 'property-section';
+    basicSection.className = 'aiab-property-section';
     basicSection.innerHTML = '<h4>Basic</h4>';
 
     // Field-specific properties
@@ -1329,7 +1329,7 @@ class FormBuilder {
 
     properties.forEach((prop) => {
       const group = document.createElement('div');
-      group.className = 'property-group';
+      group.className = 'aiab-property-group';
 
       const label = document.createElement('label');
       label.textContent = prop.label;
@@ -1429,7 +1429,7 @@ class FormBuilder {
     switch (prop.type) {
       case 'select':
         input = document.createElement('select');
-        input.className = 'property-input';
+        input.className = 'aiab-property-input';
         prop.options.forEach((opt) => {
           const option = document.createElement('option');
           option.value = opt;
@@ -1442,13 +1442,13 @@ class FormBuilder {
       case 'checkbox':
         input = document.createElement('input');
         input.type = 'checkbox';
-        input.className = 'property-checkbox';
+        input.className = 'aiab-property-checkbox';
         input.checked = field[prop.name] || false;
         break;
 
       case 'textarea':
         input = document.createElement('textarea');
-        input.className = 'property-input';
+        input.className = 'aiab-property-input';
         input.rows = 3;
         input.value = field[prop.name] || '';
         break;
@@ -1456,7 +1456,7 @@ class FormBuilder {
       default:
         input = document.createElement('input');
         input.type = prop.type || 'text';
-        input.className = 'property-input';
+        input.className = 'aiab-property-input';
         input.value = field[prop.name] || '';
         break;
     }
@@ -1466,11 +1466,11 @@ class FormBuilder {
 
   createValidationSection(field) {
     const section = document.createElement('div');
-    section.className = 'property-section';
+    section.className = 'aiab-property-section';
     section.innerHTML = '<h4>Validation</h4>';
 
     const required = document.createElement('div');
-    required.className = 'property-group';
+    required.className = 'aiab-property-group';
     required.innerHTML = `
       <label>
         <input type="checkbox" ${field.required ? 'checked' : ''} />
@@ -1493,14 +1493,14 @@ class FormBuilder {
 
   createValidationInput(label, name, type, field) {
     const group = document.createElement('div');
-    group.className = 'property-group';
+    group.className = 'aiab-property-group';
 
     const labelEl = document.createElement('label');
     labelEl.textContent = label;
 
     const input = document.createElement('input');
     input.type = type;
-    input.className = 'property-input';
+    input.className = 'aiab-property-input';
     input.value = field[name] || '';
 
     group.appendChild(labelEl);
@@ -1511,7 +1511,7 @@ class FormBuilder {
 
   createConditionalSection(_field) {
     const section = document.createElement('div');
-    section.className = 'property-section';
+    section.className = 'aiab-property-section';
     section.innerHTML = `
       <h4>Conditional Logic</h4>
       <button class="add-condition-btn">+ Add Condition</button>
@@ -1623,7 +1623,7 @@ class FormBuilder {
     if (!this.preview) return;
 
     const form = document.createElement('form');
-    form.className = 'preview-form';
+    form.className = 'aiab-preview-form';
 
     this.state.fields.forEach((field) => {
       const fieldEl = this.createPreviewField(field);
@@ -1738,7 +1738,7 @@ class FormBuilder {
 
       case 'radio':
         input = document.createElement('div');
-        input.className = 'radio-group';
+        input.className = 'aiab-radio-group';
         field.options?.forEach((opt, index) => {
           const label = document.createElement('label');
           label.className = 'radio-label';
@@ -2037,7 +2037,7 @@ class FormBuilder {
   updateStepDisplay() {
     if (!this.stepNav) return;
 
-    const indicator = this.stepNav.querySelector('.step-indicator');
+    const indicator = this.stepNav.querySelector('.aiab-step-indicator');
     indicator.textContent = `Step ${this.state.currentStep + 1} of ${this.getTotalSteps()}`;
 
     const prevBtn = this.stepNav.querySelector('.prev');
