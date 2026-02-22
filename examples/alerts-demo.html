@@ -301,7 +301,7 @@
     </div>
 
     <!-- Toast Container -->
-    <div class="toast-container toast-container--top-right" id="toast-container"></div>
+    <div class="aiab-toast-container aiab-toast-container--top-right" id="aiab-toast-container"></div>
 
     <script>
         // Alert dismiss functionality
@@ -341,7 +341,7 @@
                 info: '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>'
             };
 
-            const toastClasses = `toast alert alert--${type} alert--dismissible ${autoDismiss ? 'toast--auto-dismiss' : ''}`;
+            const toastClasses = `toast alert alert--${type} alert--dismissible ${autoDismiss ? 'aiab-toast--auto-dismiss' : ''}`;
             const style = autoDismiss ? 'style="--dismiss-duration: 5s"' : '';
 
             return `
@@ -363,11 +363,11 @@
         }
 
         function showToastElement(toastHTML) {
-            const container = document.getElementById('toast-container');
+            const container = document.getElementById('aiab-toast-container');
             container.insertAdjacentHTML('afterbegin', toastHTML);
             
             // Auto-dismiss after 5 seconds for auto-dismiss toasts
-            const toast = container.querySelector('.toast--auto-dismiss');
+            const toast = container.querySelector('.aiab-toast--auto-dismiss');
             if (toast) {
                 setTimeout(() => {
                     dismissToast(toast.id);
@@ -378,7 +378,7 @@
         function dismissToast(toastId) {
             const toast = document.getElementById(toastId);
             if (toast) {
-                toast.classList.add('toast--dismissing');
+                toast.classList.add('aiab-toast--dismissing');
                 setTimeout(() => {
                     toast.remove();
                 }, 300);
