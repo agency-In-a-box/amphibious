@@ -57,7 +57,7 @@
 /* Base Tag Styles
    ========================================================================== */
 
-.tag {
+.aiab-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -79,83 +79,83 @@
   border-color: var(--tag-secondary-border);
 }
 
-.tag:hover {
+.aiab-tag:hover {
   background-color: var(--tag-secondary-hover-bg);
 }
 
 /* Tag Variants
    ========================================================================== */
 
-.tag-primary {
+.aiab-tag-primary {
   background-color: var(--tag-primary-bg);
   color: var(--tag-primary-color);
   border-color: var(--tag-primary-border);
 }
 
-.tag-primary:hover {
+.aiab-tag-primary:hover {
   background-color: var(--tag-primary-hover-bg);
 }
 
-.tag-secondary {
+.aiab-tag-secondary {
   background-color: var(--tag-secondary-bg);
   color: var(--tag-secondary-color);
   border-color: var(--tag-secondary-border);
 }
 
-.tag-secondary:hover {
+.aiab-tag-secondary:hover {
   background-color: var(--tag-secondary-hover-bg);
 }
 
-.tag-success {
+.aiab-tag-success {
   background-color: var(--tag-success-bg);
   color: var(--tag-success-color);
   border-color: var(--tag-success-border);
 }
 
-.tag-success:hover {
+.aiab-tag-success:hover {
   background-color: var(--tag-success-hover-bg);
 }
 
-.tag-danger {
+.aiab-tag-danger {
   background-color: var(--tag-danger-bg);
   color: var(--tag-danger-color);
   border-color: var(--tag-danger-border);
 }
 
-.tag-danger:hover {
+.aiab-tag-danger:hover {
   background-color: var(--tag-danger-hover-bg);
 }
 
-.tag-warning {
+.aiab-tag-warning {
   background-color: var(--tag-warning-bg);
   color: var(--tag-warning-color);
   border-color: var(--tag-warning-border);
 }
 
-.tag-warning:hover {
+.aiab-tag-warning:hover {
   background-color: var(--tag-warning-hover-bg);
 }
 
-.tag-info {
+.aiab-tag-info {
   background-color: var(--tag-info-bg);
   color: var(--tag-info-color);
   border-color: var(--tag-info-border);
 }
 
-.tag-info:hover {
+.aiab-tag-info:hover {
   background-color: var(--tag-info-hover-bg);
 }
 
 /* Tag Sizes
    ========================================================================== */
 
-.tag-sm {
+.aiab-tag-sm {
   --tag-font-size: 0.625rem;
   --tag-padding-x: 0.5rem;
   --tag-padding-y: 0.25rem;
 }
 
-.tag-lg {
+.aiab-tag-lg {
   --tag-font-size: 0.875rem;
   --tag-padding-x: 1rem;
   --tag-padding-y: 0.5rem;
@@ -164,45 +164,45 @@
 /* Solid/Filled Tags
    ========================================================================== */
 
-.tag-solid {
+.aiab-tag-solid {
   color: white;
   border-color: transparent;
 }
 
-.tag-solid.tag-primary {
+.aiab-tag-solid.aiab-tag-primary {
   background-color: #2563eb;
 }
 
-.tag-solid.tag-secondary {
+.aiab-tag-solid.aiab-tag-secondary {
   background-color: #6b7280;
 }
 
-.tag-solid.tag-success {
+.aiab-tag-solid.aiab-tag-success {
   background-color: #16a34a;
 }
 
-.tag-solid.tag-danger {
+.aiab-tag-solid.aiab-tag-danger {
   background-color: #dc2626;
 }
 
-.tag-solid.tag-warning {
+.aiab-tag-solid.aiab-tag-warning {
   background-color: #d97706;
   color: white;
 }
 
-.tag-solid.tag-info {
+.aiab-tag-solid.aiab-tag-info {
   background-color: #0891b2;
 }
 
 /* Tag with Remove Button
    ========================================================================== */
 
-.tag-removable {
+.aiab-tag-removable {
   cursor: pointer;
   padding-right: 0.375rem;
 }
 
-.tag-remove {
+.aiab-tag-remove {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -219,19 +219,19 @@
   flex-shrink: 0;
 }
 
-.tag-remove:hover {
+.aiab-tag-remove:hover {
   background-color: var(--tag-remove-hover-bg);
   color: var(--tag-remove-hover-color);
   transform: scale(1.1);
 }
 
-.tag-remove:focus {
+.aiab-tag-remove:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(237, 139, 0, 0.3);
 }
 
 /* Remove icon (using CSS) */
-.tag-remove::before {
+.aiab-tag-remove::before {
   content: "×";
   font-size: 0.875rem;
   font-weight: bold;
@@ -241,14 +241,14 @@
 /* Tag Groups
    ========================================================================== */
 
-.tag-group {
+.aiab-tag-group {
   display: flex;
   flex-wrap: wrap;
   gap: var(--tag-gap);
   align-items: flex-start;
 }
 
-.tag-group-inline {
+.aiab-tag-group-inline {
   display: inline-flex;
   align-items: center;
   gap: var(--tag-gap);
@@ -257,30 +257,30 @@
 /* Interactive Tags (clickable)
    ========================================================================== */
 
-.tag-interactive {
+.aiab-tag-interactive {
   cursor: pointer;
   user-select: none;
 }
 
-.tag-interactive:hover {
+.aiab-tag-interactive:hover {
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.tag-interactive:active {
+.aiab-tag-interactive:active {
   transform: translateY(0);
 }
 
 /* Selected State
    ========================================================================== */
 
-.tag-selected {
+.aiab-tag-selected {
   background-color: #2563eb;
   color: white;
   border-color: #2563eb;
 }
 
-.tag-selected:hover {
+.aiab-tag-selected:hover {
   background-color: #1d4ed8;
   border-color: #1d4ed8;
 }
@@ -288,18 +288,18 @@
 /* Tag with Icon
    ========================================================================== */
 
-.tag-icon {
+.aiab-tag-icon {
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
 }
 
-.tag-sm .tag-icon {
+.aiab-tag-sm .aiab-tag-icon {
   width: 0.75rem;
   height: 0.75rem;
 }
 
-.tag-lg .tag-icon {
+.aiab-tag-lg .aiab-tag-icon {
   width: 1.25rem;
   height: 1.25rem;
 }
@@ -307,7 +307,7 @@
 /* Disabled State
    ========================================================================== */
 
-.tag-disabled {
+.aiab-tag-disabled {
   opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none;
@@ -316,7 +316,7 @@
 /* Tag Input (for adding new tags)
    ========================================================================== */
 
-.tag-input-container {
+.aiab-tag-input-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -328,12 +328,12 @@
   min-height: 2.5rem;
 }
 
-.tag-input-container:focus-within {
+.aiab-tag-input-container:focus-within {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 1px var(--color-primary);
 }
 
-.tag-input {
+.aiab-tag-input {
   border: none;
   outline: none;
   background: transparent;
@@ -343,7 +343,7 @@
   padding: 0.25rem;
 }
 
-.tag-input::placeholder {
+.aiab-tag-input::placeholder {
   color: #9ca3af;
 }
 
@@ -388,11 +388,11 @@
    ========================================================================== */
 
 @media (max-width: 480px) {
-  .tag-group {
+  .aiab-tag-group {
     gap: 0.25rem;
   }
 
-  .tag {
+  .aiab-tag {
     font-size: 0.625rem;
     --tag-padding-x: 0.5rem;
     --tag-padding-y: 0.25rem;

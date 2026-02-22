@@ -73,16 +73,16 @@
 }
 
 /* Navigation Breadcrumb */
-.nav-breadcrumb {
+.aiab-nav-breadcrumb {
   margin-bottom: 2rem;
 }
 
-.nav-breadcrumb a {
+.aiab-nav-breadcrumb a {
   color: #6c757d;
   text-decoration: none;
 }
 
-.nav-breadcrumb a:hover {
+.aiab-nav-breadcrumb a:hover {
   color: #ed8b00;
 }
 

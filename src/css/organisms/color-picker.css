@@ -238,7 +238,7 @@
   margin-bottom: 16px;
 }
 
-.input-tabs {
+.aiab-input-tabs {
   display: flex;
   gap: 4px;
   margin-bottom: 12px;
@@ -270,20 +270,20 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.input-fields {
+.aiab-input-fields {
   position: relative;
 }
 
-.input-group {
+.aiab-input-group {
   display: none;
 }
 
-.input-group.aiab-active {
+.aiab-input-group.aiab-active {
   display: flex;
   gap: 8px;
 }
 
-.input-group input {
+.aiab-input-group input {
   width: 100%;
   padding: 6px 8px;
   border: 1px solid var(--color-border, #dedede);
@@ -293,20 +293,20 @@
   transition: all var(--duration-instant, 150ms) var(--ease-apple-smooth);
 }
 
-.input-group input:focus {
+.aiab-input-group input:focus {
   outline: none;
   border-color: var(--apple-orange-500, var(--color-primary));
   box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
 }
 
-.input-group .field {
+.aiab-input-group .aiab-field {
   display: flex;
   flex-direction: column;
   flex: 1;
   gap: 4px;
 }
 
-.input-group .field label {
+.aiab-input-group .aiab-field label {
   font-size: 0.625rem;
   font-weight: 500;
   color: var(--color-text-secondary, #666);
@@ -419,7 +419,7 @@
   }
 
   .eyedropper-btn,
-  .input-group input,
+  .aiab-input-group input,
   .aiab-btn-cancel {
     background: var(--color-background-dark, #1a1a1a);
     border-color: var(--color-border-dark, #333);
@@ -431,7 +431,7 @@
     background: var(--color-background-dark-hover, #2a2a2a);
   }
 
-  .input-tabs {
+  .aiab-input-tabs {
     background: var(--color-background-dark-hover, #2a2a2a);
   }
 

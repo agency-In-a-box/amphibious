@@ -56,45 +56,45 @@
 /* Progress Sizes
    ========================================================================== */
 
-.progress-sm {
+.aiab-progress-sm {
   height: var(--progress-height-sm);
 }
 
-.progress-lg {
+.aiab-progress-lg {
   height: var(--progress-height-lg);
 }
 
 /* Progress Colors
    ========================================================================== */
 
-.progress-bar-primary {
+.aiab-progress-bar-primary {
   background-color: var(--progress-primary);
 }
 
-.progress-bar-secondary {
+.aiab-progress-bar-secondary {
   background-color: var(--progress-secondary);
 }
 
-.progress-bar-success {
+.aiab-progress-bar-success {
   background-color: var(--progress-success);
 }
 
-.progress-bar-danger {
+.aiab-progress-bar-danger {
   background-color: var(--progress-danger);
 }
 
-.progress-bar-warning {
+.aiab-progress-bar-warning {
   background-color: var(--progress-warning);
 }
 
-.progress-bar-info {
+.aiab-progress-bar-info {
   background-color: var(--progress-info);
 }
 
 /* Progress with Label
    ========================================================================== */
 
-.progress-group {
+.aiab-progress-group {
   margin-bottom: 1rem;
 }
 
@@ -116,7 +116,7 @@
 /* Striped Progress
    ========================================================================== */
 
-.progress-bar-striped {
+.aiab-progress-bar-striped {
   background-image: linear-gradient(
     45deg,
     rgba(255, 255, 255, 0.15) 25%,
@@ -133,7 +133,7 @@
 /* Animated Progress
    ========================================================================== */
 
-.progress-bar-animated {
+.aiab-progress-bar-animated {
   animation: progress-bar-stripes 1s linear infinite;
 }
 
@@ -149,7 +149,7 @@
 /* Circular Progress
    ========================================================================== */
 
-.progress-circular {
+.aiab-progress-circular {
   display: inline-block;
   width: 3rem;
   height: 3rem;
@@ -158,7 +158,7 @@
   position: relative;
 }
 
-.progress-circular::before {
+.aiab-progress-circular::before {
   content: "";
   position: absolute;
   top: 0.25rem;
@@ -169,12 +169,12 @@
   background: var(--color-background, #ffffff);
 }
 
-.progress-circular-sm {
+.aiab-progress-circular-sm {
   width: 2rem;
   height: 2rem;
 }
 
-.progress-circular-lg {
+.aiab-progress-circular-lg {
   width: 4rem;
   height: 4rem;
 }
@@ -182,14 +182,14 @@
 /* Progress with Steps
    ========================================================================== */
 
-.progress-steps {
+.aiab-progress-steps {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
 }
 
-.progress-step {
+.aiab-progress-step {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,7 +197,7 @@
   flex: 1;
 }
 
-.progress-step:not(:last-child)::after {
+.aiab-progress-step:not(:last-child)::after {
   content: "";
   position: absolute;
   top: 1rem;
@@ -208,11 +208,11 @@
   z-index: 1;
 }
 
-.progress-step.is-completed:not(:last-child)::after {
+.aiab-progress-step.is-completed:not(:last-child)::after {
   background-color: var(--progress-success);
 }
 
-.progress-step-circle {
+.aiab-progress-step-circle {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -228,19 +228,19 @@
   color: #9ca3af;
 }
 
-.progress-step.aiab-is-active .progress-step-circle {
+.aiab-progress-step.aiab-is-active .aiab-progress-step-circle {
   background-color: var(--progress-primary);
   border-color: var(--progress-primary);
   color: white;
 }
 
-.progress-step.is-completed .progress-step-circle {
+.aiab-progress-step.is-completed .aiab-progress-step-circle {
   background-color: var(--progress-success);
   border-color: var(--progress-success);
   color: white;
 }
 
-.progress-step-label {
+.aiab-progress-step-label {
   margin-top: 0.5rem;
   font-size: 0.75rem;
   color: var(--progress-text-color);
@@ -248,12 +248,12 @@
   font-weight: 500;
 }
 
-.progress-step.aiab-is-active .progress-step-label {
+.aiab-progress-step.aiab-is-active .aiab-progress-step-label {
   color: var(--progress-primary);
   font-weight: 600;
 }
 
-.progress-step.is-completed .progress-step-label {
+.aiab-progress-step.is-completed .aiab-progress-step-label {
   color: var(--progress-success);
 }
 
@@ -271,16 +271,16 @@
    ========================================================================== */
 
 @media (max-width: 768px) {
-  .progress-steps {
+  .aiab-progress-steps {
     flex-direction: column;
     gap: 1rem;
   }
 
-  .progress-step:not(:last-child)::after {
+  .aiab-progress-step:not(:last-child)::after {
     display: none;
   }
 
-  .progress-step-label {
+  .aiab-progress-step-label {
     margin-top: 0.25rem;
   }
 }

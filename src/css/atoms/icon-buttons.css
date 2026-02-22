@@ -90,23 +90,23 @@
 /* Icon Button Sizes
    ========================================================================== */
 
-.icon-button-xs {
+.aiab-icon-button-xs {
   width: var(--icon-button-size-xs);
   height: var(--icon-button-size-xs);
 }
 
-.icon-button-small {
+.aiab-icon-button-small {
   width: var(--icon-button-size-small);
   height: var(--icon-button-size-small);
 }
 
-.icon-button-large {
+.aiab-icon-button-large {
   width: var(--icon-button-size-large);
   height: var(--icon-button-size-large);
 }
 
 /* Inline icon button - matches line height of adjacent text/tags */
-.icon-button-inline {
+.aiab-icon-button-inline {
   width: auto;
   height: auto;
   min-width: 1.5em;
@@ -118,64 +118,64 @@
 /* Icon Button Variants
    ========================================================================== */
 
-.icon-button-primary {
+.aiab-icon-button-primary {
   background-color: var(--icon-button-primary-bg);
   color: var(--icon-button-primary-color);
 }
 
-.icon-button-primary:hover {
+.aiab-icon-button-primary:hover {
   background-color: var(--icon-button-primary-hover-bg);
 }
 
-.icon-button-secondary {
+.aiab-icon-button-secondary {
   background-color: var(--icon-button-secondary-bg);
   color: var(--icon-button-secondary-color);
 }
 
-.icon-button-secondary:hover {
+.aiab-icon-button-secondary:hover {
   background-color: var(--icon-button-secondary-hover-bg);
 }
 
-.icon-button-success {
+.aiab-icon-button-success {
   background-color: var(--icon-button-success-bg);
   color: var(--icon-button-success-color);
 }
 
-.icon-button-success:hover {
+.aiab-icon-button-success:hover {
   background-color: var(--icon-button-success-hover-bg);
 }
 
-.icon-button-danger {
+.aiab-icon-button-danger {
   background-color: var(--icon-button-danger-bg);
   color: var(--icon-button-danger-color);
 }
 
-.icon-button-danger:hover {
+.aiab-icon-button-danger:hover {
   background-color: var(--icon-button-danger-hover-bg);
 }
 
-.icon-button-warning {
+.aiab-icon-button-warning {
   background-color: var(--icon-button-warning-bg);
   color: var(--icon-button-warning-color);
 }
 
-.icon-button-warning:hover {
+.aiab-icon-button-warning:hover {
   background-color: var(--icon-button-warning-hover-bg);
 }
 
 /* Ghost icon button - transparent with border */
-.icon-button-ghost {
+.aiab-icon-button-ghost {
   background-color: transparent;
   border: 1px solid var(--icon-button-color);
 }
 
-.icon-button-ghost:hover {
+.aiab-icon-button-ghost:hover {
   background-color: var(--icon-button-hover-bg);
   border-color: var(--icon-button-hover-color);
 }
 
 /* Icon Button Circle - Force true circle with equal width/height */
-.icon-button-circle {
+.aiab-icon-button-circle {
   border-radius: 50%;
   aspect-ratio: 1 / 1;
   min-width: var(--icon-button-size);
@@ -185,21 +185,21 @@
   padding: 0;
 }
 
-.icon-button-circle.icon-button-small {
+.aiab-icon-button-circle.aiab-icon-button-small {
   min-width: var(--icon-button-size-small);
   min-height: var(--icon-button-size-small);
   max-width: var(--icon-button-size-small);
   max-height: var(--icon-button-size-small);
 }
 
-.icon-button-circle.icon-button-xs {
+.aiab-icon-button-circle.aiab-icon-button-xs {
   min-width: var(--icon-button-size-xs);
   min-height: var(--icon-button-size-xs);
   max-width: var(--icon-button-size-xs);
   max-height: var(--icon-button-size-xs);
 }
 
-.icon-button-circle.icon-button-large {
+.aiab-icon-button-circle.aiab-icon-button-large {
   min-width: var(--icon-button-size-large);
   min-height: var(--icon-button-size-large);
   max-width: var(--icon-button-size-large);
@@ -214,20 +214,20 @@
   pointer-events: none;
 }
 
-.icon-button-xs .aiab-icon,
-.icon-button-xs svg {
+.aiab-icon-button-xs .aiab-icon,
+.aiab-icon-button-xs svg {
   width: 0.875rem;
   height: 0.875rem;
 }
 
-.icon-button-small .aiab-icon,
-.icon-button-small svg {
+.aiab-icon-button-small .aiab-icon,
+.aiab-icon-button-small svg {
   width: 1rem;
   height: 1rem;
 }
 
-.icon-button-large .aiab-icon,
-.icon-button-large svg {
+.aiab-icon-button-large .aiab-icon,
+.aiab-icon-button-large svg {
   width: 1.5rem;
   height: 1.5rem;
 }
