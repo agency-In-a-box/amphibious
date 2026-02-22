@@ -150,13 +150,13 @@ a:visited {
    ======================================== */
 
 .aiab-badge--primary,
-.tag--primary {
+.aiab-tag--primary {
   background: #c97400;
   color: white;
 }
 
 .aiab-badge--primary-light,
-.tag--primary-light {
+.aiab-tag--primary-light {
   background: #fff3e0;
   color: #a65e00;
   border: 1px solid #ffcc80;
@@ -166,15 +166,15 @@ a:visited {
    FOOTER CONTRAST FIXES
    ======================================== */
 
-.footer a {
+.aiab-footer a {
   color: #6c757d;
 }
 
-.footer a:hover {
+.aiab-footer a:hover {
   color: #a65e00; /* Darker orange for better contrast */
 }
 
-.footer__brand {
+.aiab-footer__brand {
   color: #a65e00;
 }
 
@@ -202,7 +202,7 @@ a:visited {
 }
 
 /* Border utilities */
-.border-primary {
+.aiab-border-primary {
   border-color: #c97400;
 }
 
