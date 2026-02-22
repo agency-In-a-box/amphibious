@@ -790,7 +790,7 @@
 
           <div class="aiab-form-group">
             <label>Search Form</label>
-            <div class="search-form">
+            <div class="aiab-search-form">
               <input type="search" class="aiab-form-control" placeholder="Search...">
               <button type="submit">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -816,7 +816,7 @@
 &lt;/div&gt;
 
 &lt;!-- Search Form --&gt;
-&lt;div class="search-form"&gt;
+&lt;div class="aiab-search-form"&gt;
   &lt;input type="search" class="aiab-form-control" placeholder="Search..."&gt;
   &lt;button type="submit"&gt;🔍&lt;/button&gt;
 &lt;/div&gt;</code></pre>
@@ -962,7 +962,7 @@
             <td>Form field grouping aiab-container</td>
           </tr>
           <tr>
-            <td><code>.aiab-form-text</code> / <code>.help-text</code></td>
+            <td><code>.aiab-form-text</code> / <code>.aiab-help-text</code></td>
             <td>Helper text for form fields</td>
           </tr>
         </tbody>
@@ -1086,7 +1086,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.search-form</code></td>
+            <td><code>.aiab-search-form</code></td>
             <td>Search input with button</td>
           </tr>
         </tbody>
@@ -1268,7 +1268,7 @@ function updateRangeValue(input, displayElement) {
 
 // Search form enhancement
 function enhanceSearchForms() {
-  const searchForms = document.querySelectorAll('.search-form');
+  const searchForms = document.querySelectorAll('.aiab-search-form');
 
   searchForms.forEach(form => {
     const input = form.querySelector('input[type="search"]');

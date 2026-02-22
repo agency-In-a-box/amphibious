@@ -102,7 +102,7 @@
             justify-content: center;
         }
 
-        .filter-btn {
+        .aiab-filter-btn {
             padding: 0.5rem 1rem;
             border: 2px solid #e1e5e9;
             background: white;
@@ -111,13 +111,13 @@
             transition: all 0.2s;
         }
 
-        .filter-btn.aiab-active {
+        .aiab-filter-btn.aiab-active {
             background: #ED8B00;
             color: white;
             border-color: #ED8B00;
         }
 
-        .filter-btn:hover {
+        .aiab-filter-btn:hover {
             border-color: #ED8B00;
         }
 
@@ -394,14 +394,14 @@
             </div>
 
             <div class="filters">
-                <button class="filter-btn aiab-active" data-category="all">All Icons</button>
-                <button class="filter-btn" data-category="e-commerce">E-commerce</button>
-                <button class="filter-btn" data-category="navigation">Navigation</button>
-                <button class="filter-btn" data-category="social">Social</button>
-                <button class="filter-btn" data-category="media">Media</button>
-                <button class="filter-btn" data-category="ui">UI Elements</button>
-                <button class="filter-btn" data-category="arrows">Arrows</button>
-                <button class="filter-btn" data-category="files">Files</button>
+                <button class="aiab-filter-btn aiab-active" data-category="all">All Icons</button>
+                <button class="aiab-filter-btn" data-category="e-commerce">E-commerce</button>
+                <button class="aiab-filter-btn" data-category="navigation">Navigation</button>
+                <button class="aiab-filter-btn" data-category="social">Social</button>
+                <button class="aiab-filter-btn" data-category="media">Media</button>
+                <button class="aiab-filter-btn" data-category="ui">UI Elements</button>
+                <button class="aiab-filter-btn" data-category="arrows">Arrows</button>
+                <button class="aiab-filter-btn" data-category="files">Files</button>
             </div>
         </div>
     </section>
@@ -601,7 +601,7 @@
             searchInput.addEventListener('input', handleSearch);
 
             // Filter buttons
-            const filterBtns = document.querySelectorAll('.filter-btn');
+            const filterBtns = document.querySelectorAll('.aiab-filter-btn');
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     filterBtns.forEach(b => b.classList.remove('active'));
