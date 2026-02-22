@@ -178,36 +178,36 @@ class ColorPicker {
           this.options.showInput
             ? `
           <div class="color-inputs">
-            <div class="input-tabs">
+            <div class="aiab-input-tabs">
               <button type="button" class="aiab-tab-btn aiab-active" data-format="hex">HEX</button>
               <button type="button" class="aiab-tab-btn" data-format="rgb">RGB</button>
               <button type="button" class="aiab-tab-btn" data-format="hsl">HSL</button>
             </div>
 
-            <div class="input-fields">
+            <div class="aiab-input-fields">
               <!-- HEX input -->
-              <div class="input-group aiab-active" data-format="hex">
+              <div class="aiab-input-group aiab-active" data-format="hex">
                 <input type="text" class="hex-input" placeholder="#000000">
               </div>
 
               <!-- RGB inputs -->
-              <div class="input-group" data-format="rgb">
-                <div class="field">
+              <div class="aiab-input-group" data-format="rgb">
+                <div class="aiab-field">
                   <label>R</label>
                   <input type="number" class="r-input" min="0" max="255">
                 </div>
-                <div class="field">
+                <div class="aiab-field">
                   <label>G</label>
                   <input type="number" class="g-input" min="0" max="255">
                 </div>
-                <div class="field">
+                <div class="aiab-field">
                   <label>B</label>
                   <input type="number" class="b-input" min="0" max="255">
                 </div>
                 ${
                   this.options.alpha
                     ? `
-                  <div class="field">
+                  <div class="aiab-field">
                     <label>A</label>
                     <input type="number" class="a-input" min="0" max="1" step="0.01">
                   </div>
@@ -217,23 +217,23 @@ class ColorPicker {
               </div>
 
               <!-- HSL inputs -->
-              <div class="input-group" data-format="hsl">
-                <div class="field">
+              <div class="aiab-input-group" data-format="hsl">
+                <div class="aiab-field">
                   <label>H</label>
                   <input type="number" class="h-input" min="0" max="360">
                 </div>
-                <div class="field">
+                <div class="aiab-field">
                   <label>S</label>
                   <input type="number" class="s-input" min="0" max="100">
                 </div>
-                <div class="field">
+                <div class="aiab-field">
                   <label>L</label>
                   <input type="number" class="l-input" min="0" max="100">
                 </div>
                 ${
                   this.options.alpha
                     ? `
-                  <div class="field">
+                  <div class="aiab-field">
                     <label>A</label>
                     <input type="number" class="a2-input" min="0" max="1" step="0.01">
                   </div>
@@ -746,12 +746,12 @@ class ColorPicker {
 
     // Update tabs
     this.picker.querySelectorAll('.aiab-tab-btn').forEach((btn) => {
-      btn.classList.toggle('active', btn.dataset.format === format);
+      btn.classList.toggle('aiab-active', btn.dataset.format === format);
     });
 
     // Update input groups
-    this.picker.querySelectorAll('.input-group').forEach((group) => {
-      group.classList.toggle('active', group.dataset.format === format);
+    this.picker.querySelectorAll('.aiab-input-group').forEach((group) => {
+      group.classList.toggle('aiab-active', group.dataset.format === format);
     });
   }
 
