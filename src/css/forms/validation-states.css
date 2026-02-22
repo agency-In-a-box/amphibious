@@ -70,7 +70,7 @@ label.aiab-optional::after,
 }
 
 /* Required field group */
-.form-field--required label::after,
+.aiab-form-field--required label::after,
 .aiab-input-group--required label::after {
   content: " *";
   color: var(--validation-error);
@@ -117,14 +117,14 @@ textarea:read-only,
    ======================================== */
 
 /* Error input styling */
-.error input,
-.error textarea,
-.error select,
-.error .aiab-form-control,
-input.error,
-textarea.error,
-select.error,
-.aiab-form-control.error,
+.aiab-error input,
+.aiab-error textarea,
+.aiab-error select,
+.aiab-error .aiab-form-control,
+input.aiab-error,
+textarea.aiab-error,
+select.aiab-error,
+.aiab-form-control.aiab-error,
 input[aria-invalid="true"],
 textarea[aria-invalid="true"],
 select[aria-invalid="true"],
@@ -134,12 +134,12 @@ select[aria-invalid="true"],
   color: #1f2937;
 }
 
-.error input:focus,
-.error textarea:focus,
-.error select:focus,
-input.error:focus,
-textarea.error:focus,
-select.error:focus,
+.aiab-error input:focus,
+.aiab-error textarea:focus,
+.aiab-error select:focus,
+input.aiab-error:focus,
+textarea.aiab-error:focus,
+select.aiab-error:focus,
 .aiab-is-invalid:focus {
   border-color: var(--validation-error);
   box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
@@ -159,8 +159,8 @@ select.error:focus,
 }
 
 /* Error icon in input */
-.error input,
-input.error {
+.aiab-error input,
+input.aiab-error {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Ccircle cx='10' cy='10' r='9' stroke='%23dc2626' stroke-width='2'/%3E%3Cpath d='M10 6v4m0 4h.01' stroke='%23dc2626' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
