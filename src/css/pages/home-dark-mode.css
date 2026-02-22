@@ -6,36 +6,36 @@
 
 /* System preference dark mode */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .hero {
+  :root:not([data-theme="light"]) .aiab-hero {
     background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
   }
 
-  :root:not([data-theme="light"]) .demo-grid {
+  :root:not([data-theme="light"]) .aiab-demo-grid {
     background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
   }
 
-  :root:not([data-theme="light"]) .cta-section {
+  :root:not([data-theme="light"]) .aiab-cta-section {
     background: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
   }
 
-  :root:not([data-theme="light"]) .feature-card:hover {
+  :root:not([data-theme="light"]) .aiab-feature-card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   }
 }
 
 /* Manual dark mode toggle */
-[data-theme="dark"] .hero {
+[data-theme="dark"] .aiab-hero {
   background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
 }
 
-[data-theme="dark"] .demo-grid {
+[data-theme="dark"] .aiab-demo-grid {
   background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
 }
 
-[data-theme="dark"] .cta-section {
+[data-theme="dark"] .aiab-cta-section {
   background: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
 }
 
-[data-theme="dark"] .feature-card:hover {
+[data-theme="dark"] .aiab-feature-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
