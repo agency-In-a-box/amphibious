@@ -101,7 +101,7 @@
   color: var(--apple-gray-900, #212121);
 }
 
-.toolbox-section {
+.aiab-toolbox-section {
   padding: 16px;
   border-bottom: 1px solid var(--apple-gray-100, #f5f5f5);
 }
@@ -146,7 +146,7 @@
   opacity: 0.5;
 }
 
-.field-icon {
+.aiab-field-icon {
   font-size: 1.5rem;
 }
 
@@ -164,7 +164,7 @@
   overflow: hidden;
 }
 
-.canvas-header {
+.aiab-canvas-header {
   background: white;
   border-bottom: 1px solid var(--apple-gray-200, #e0e0e0);
   padding: 0 20px;
@@ -196,7 +196,7 @@
   border-bottom-color: var(--apple-orange-500, #ed8b00);
 }
 
-.canvas-container {
+.aiab-canvas-container {
   flex: 1;
   position: relative;
   overflow: hidden;
@@ -303,14 +303,14 @@
 }
 
 /* Field Header */
-.field-header {
+.aiab-field-header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-.field-handle {
+.aiab-field-handle {
   color: var(--apple-gray-400, #bdbdbd);
   cursor: grab;
   user-select: none;
@@ -333,7 +333,7 @@
   opacity: 1;
 }
 
-.field-action {
+.aiab-field-action {
   width: 28px;
   height: 28px;
   display: flex;
@@ -347,24 +347,24 @@
   transition: all var(--duration-instant, 150ms) var(--ease-apple-bounce);
 }
 
-.field-action:hover {
+.aiab-field-action:hover {
   background: var(--apple-gray-50, #fafafa);
   border-color: var(--apple-gray-400, #bdbdbd);
 }
 
-.field-action.delete:hover {
+.aiab-field-action.delete:hover {
   background: var(--apple-danger, #ff3b30);
   border-color: var(--apple-danger, #ff3b30);
 }
 
 /* Field Preview */
-.field-preview {
+.aiab-field-preview {
   pointer-events: none;
 }
 
-.field-preview input,
-.field-preview textarea,
-.field-preview select {
+.aiab-field-preview input,
+.aiab-field-preview textarea,
+.aiab-field-preview select {
   width: 100%;
   padding: 8px 12px;
   border: 1px solid var(--apple-gray-300, #e0e0e0);
@@ -372,8 +372,8 @@
   font-size: 0.875rem;
 }
 
-.field-preview .radio-label,
-.field-preview .checkbox-label {
+.aiab-field-preview .aiab-radio-label,
+.aiab-field-preview .aiab-checkbox-label {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -381,7 +381,7 @@
   cursor: pointer;
 }
 
-.field-preview .aiab-switch-label {
+.aiab-field-preview .aiab-switch-label {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -655,7 +655,7 @@
   .aiab-form-builder-toolbar,
   .aiab-form-builder-toolbox,
   .aiab-form-builder-properties,
-  .canvas-header,
+  .aiab-canvas-header,
   .aiab-form-builder-steps {
     background: var(--apple-gray-800, #424242);
     border-color: var(--apple-gray-700, #616161);
@@ -725,7 +725,7 @@
   .aiab-toolbox-field,
   .aiab-form-field,
   .aiab-toolbar-btn,
-  .field-action,
+  .aiab-field-action,
   .property-input {
     transition: none;
   }

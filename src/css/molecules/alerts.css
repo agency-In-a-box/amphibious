@@ -334,33 +334,33 @@
   pointer-events: none;
 }
 
-.toast-container--top-right {
+.aiab-toast-container--top-right {
   top: 1rem;
   right: 1rem;
 }
 
-.toast-container--top-left {
+.aiab-toast-container--top-left {
   top: 1rem;
   left: 1rem;
 }
 
-.toast-container--bottom-right {
+.aiab-toast-container--bottom-right {
   bottom: 1rem;
   right: 1rem;
 }
 
-.toast-container--bottom-left {
+.aiab-toast-container--bottom-left {
   bottom: 1rem;
   left: 1rem;
 }
 
-.toast-container--top-center {
+.aiab-toast-container--top-center {
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.toast-container--bottom-center {
+.aiab-toast-container--bottom-center {
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
@@ -376,7 +376,7 @@
   animation: slideIn 0.3s ease-out;
 }
 
-.toast--dismissing {
+.aiab-toast--dismissing {
   animation: slideOut 0.3s ease-in;
 }
 
@@ -403,13 +403,13 @@
 }
 
 /* Toast slide in from left */
-.toast-container--top-left .aiab-toast,
-.toast-container--bottom-left .aiab-toast {
+.aiab-toast-container--top-left .aiab-toast,
+.aiab-toast-container--bottom-left .aiab-toast {
   animation: slideInLeft 0.3s ease-out;
 }
 
-.toast-container--top-left .toast--dismissing,
-.toast-container--bottom-left .toast--dismissing {
+.aiab-toast-container--top-left .aiab-toast--dismissing,
+.aiab-toast-container--bottom-left .aiab-toast--dismissing {
   animation: slideOutLeft 0.3s ease-in;
 }
 
@@ -436,12 +436,12 @@
 }
 
 /* Auto-dismiss progress bar */
-.toast--auto-dismiss {
+.aiab-toast--auto-dismiss {
   position: relative;
   overflow: hidden;
 }
 
-.toast--auto-dismiss::after {
+.aiab-toast--auto-dismiss::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -516,8 +516,8 @@
     right: 1rem;
   }
 
-  .toast-container--top-center,
-  .toast-container--bottom-center {
+  .aiab-toast-container--top-center,
+  .aiab-toast-container--bottom-center {
     transform: none;
     left: 1rem;
   }
@@ -541,11 +541,11 @@
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .aiab-toast,
-  .toast--dismissing {
+  .aiab-toast--dismissing {
     animation: none;
   }
 
-  .toast--auto-dismiss::after {
+  .aiab-toast--auto-dismiss::after {
     animation: none;
   }
 }

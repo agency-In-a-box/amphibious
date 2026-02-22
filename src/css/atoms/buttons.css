@@ -283,14 +283,14 @@ input[type="button"]:disabled {
    ========================================================================== */
 
 /* Primary - Default for .aiab-button */
-.button-primary,
+.aiab-button-primary,
 .aiab-button.aiab-primary {
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-bg);
   border-color: var(--btn-primary-border);
 }
 
-.button-primary:hover,
+.aiab-button-primary:hover,
 .aiab-button.aiab-primary:hover {
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-hover-bg);
@@ -298,14 +298,14 @@ input[type="button"]:disabled {
 }
 
 /* Secondary */
-.button-secondary,
+.aiab-button-secondary,
 .aiab-button.aiab-secondary {
   color: var(--btn-secondary-color);
   background-color: var(--btn-secondary-bg);
   border-color: var(--btn-secondary-border);
 }
 
-.button-secondary:hover,
+.aiab-button-secondary:hover,
 .aiab-button.aiab-secondary:hover {
   color: var(--btn-secondary-color);
   background-color: var(--btn-secondary-hover-bg);
@@ -313,14 +313,14 @@ input[type="button"]:disabled {
 }
 
 /* Success */
-.button-success,
+.aiab-button-success,
 .aiab-button.aiab-success {
   color: var(--btn-success-color);
   background-color: var(--btn-success-bg);
   border-color: var(--btn-success-border);
 }
 
-.button-success:hover,
+.aiab-button-success:hover,
 .aiab-button.aiab-success:hover {
   color: var(--btn-success-color);
   background-color: var(--btn-success-hover-bg);
@@ -328,14 +328,14 @@ input[type="button"]:disabled {
 }
 
 /* Danger */
-.button-danger,
+.aiab-button-danger,
 .aiab-button.aiab-danger {
   color: var(--btn-danger-color);
   background-color: var(--btn-danger-bg);
   border-color: var(--btn-danger-border);
 }
 
-.button-danger:hover,
+.aiab-button-danger:hover,
 .aiab-button.aiab-danger:hover {
   color: var(--btn-danger-color);
   background-color: var(--btn-danger-hover-bg);
@@ -343,14 +343,14 @@ input[type="button"]:disabled {
 }
 
 /* Warning */
-.button-warning,
+.aiab-button-warning,
 .aiab-button.aiab-warning {
   color: var(--btn-warning-color);
   background-color: var(--btn-warning-bg);
   border-color: var(--btn-warning-border);
 }
 
-.button-warning:hover,
+.aiab-button-warning:hover,
 .aiab-button.aiab-warning:hover {
   color: var(--btn-warning-color);
   background-color: var(--btn-warning-hover-bg);
@@ -358,14 +358,14 @@ input[type="button"]:disabled {
 }
 
 /* Info */
-.button-info,
+.aiab-button-info,
 .aiab-button.aiab-info {
   color: var(--btn-info-color);
   background-color: var(--btn-info-bg);
   border-color: var(--btn-info-border);
 }
 
-.button-info:hover,
+.aiab-button-info:hover,
 .aiab-button.aiab-info:hover {
   color: var(--btn-info-color);
   background-color: var(--btn-info-hover-bg);
@@ -373,14 +373,14 @@ input[type="button"]:disabled {
 }
 
 /* Light */
-.button-light,
+.aiab-button-light,
 .aiab-button.aiab-light {
   color: var(--btn-light-color);
   background-color: var(--btn-light-bg);
   border-color: var(--btn-light-border);
 }
 
-.button-light:hover,
+.aiab-button-light:hover,
 .aiab-button.aiab-light:hover {
   color: var(--btn-light-color);
   background-color: var(--btn-light-hover-bg);
@@ -388,14 +388,14 @@ input[type="button"]:disabled {
 }
 
 /* Dark */
-.button-dark,
+.aiab-button-dark,
 .aiab-button.aiab-dark {
   color: var(--btn-dark-color);
   background-color: var(--btn-dark-bg);
   border-color: var(--btn-dark-border);
 }
 
-.button-dark:hover,
+.aiab-button-dark:hover,
 .aiab-button.aiab-dark:hover {
   color: var(--btn-dark-color);
   background-color: var(--btn-dark-hover-bg);

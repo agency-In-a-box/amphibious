@@ -9,13 +9,13 @@
    ======================================== */
 
 .aiab-form-field,
-.input-group {
+.aiab-input-group {
   position: relative;
   margin-bottom: 1.5rem;
 }
 
 .aiab-form-field:last-child,
-.input-group:last-child {
+.aiab-input-group:last-child {
   margin-bottom: 0;
 }
 
@@ -71,7 +71,7 @@ label.aiab-optional::after,
 
 /* Required field group */
 .form-field--required label::after,
-.input-group--required label::after {
+.aiab-input-group--required label::after {
   content: " *";
   color: var(--validation-error);
   font-weight: 700;
@@ -279,8 +279,8 @@ input.aiab-warning {
 /* Helper text (neutral) */
 .aiab-helper-text,
 .aiab-form-text,
-.field-description,
-.input-hint {
+.aiab-field-description,
+.aiab-input-hint {
   display: block;
   color: var(--validation-neutral);
   font-size: 0.875rem;
@@ -418,14 +418,14 @@ input.aiab-warning {
    ======================================== */
 
 /* Radio/Checkbox group validation */
-.field-group.error {
+.aiab-field-group.error {
   padding: 0.75rem;
   background-color: var(--validation-error-bg);
   border: 1px solid var(--validation-error-border);
   border-radius: 0.375rem;
 }
 
-.field-group.aiab-success {
+.aiab-field-group.aiab-success {
   padding: 0.75rem;
   background-color: var(--validation-success-bg);
   border: 1px solid var(--validation-success-border);
