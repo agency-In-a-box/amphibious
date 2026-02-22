@@ -383,21 +383,21 @@ class DataTableComponent {
     // Add checkbox column header
     const thead = this.table.querySelector('thead tr');
     const checkAllTh = document.createElement('th');
-    checkAllTh.innerHTML = '<input type="checkbox" class="data-table__checkbox" data-check-all>';
+    checkAllTh.innerHTML = '<input type="checkbox" class="aiab-data-table__checkbox" data-check-all>';
     thead.insertBefore(checkAllTh, thead.firstChild);
 
     // Add checkbox to each row
     const tbody = this.table.querySelector('tbody');
     tbody.querySelectorAll('tr').forEach((row) => {
       const checkTd = document.createElement('td');
-      checkTd.innerHTML = '<input type="checkbox" class="data-table__checkbox">';
+      checkTd.innerHTML = '<input type="checkbox" class="aiab-data-table__checkbox">';
       row.insertBefore(checkTd, row.firstChild);
     });
 
     // Handle check all
     const checkAll = this.table.querySelector('[data-check-all]');
     checkAll?.addEventListener('change', (e) => {
-      const checkboxes = this.table.querySelectorAll('tbody .data-table__checkbox');
+      const checkboxes = this.table.querySelectorAll('tbody .aiab-data-table__checkbox');
       checkboxes.forEach((cb) => {
         cb.checked = e.target.checked;
       });
@@ -530,7 +530,7 @@ class DataTableComponent {
       // Add checkbox if selectable
       if (this.config.selectable) {
         const checkTd = document.createElement('td');
-        checkTd.innerHTML = '<input type="checkbox" class="data-table__checkbox">';
+        checkTd.innerHTML = '<input type="checkbox" class="aiab-data-table__checkbox">';
         row.appendChild(checkTd);
       }
 
@@ -548,7 +548,7 @@ class DataTableComponent {
 
         // Apply cell classes
         if (column.type === 'numeric' || column.type === 'currency') {
-          cell.classList.add('data-table__cell--numeric');
+          cell.classList.add('aiab-data-table__cell--numeric');
         }
 
         row.appendChild(cell);
@@ -666,7 +666,7 @@ class DataTableComponent {
    * Get selected rows
    */
   getSelected() {
-    const checkboxes = this.table.querySelectorAll('tbody .data-table__checkbox:checked');
+    const checkboxes = this.table.querySelectorAll('tbody .aiab-data-table__checkbox:checked');
     const indices = Array.from(checkboxes).map((cb) => {
       const row = cb.closest('tr');
       return Array.from(row.parentNode.children).indexOf(row);
