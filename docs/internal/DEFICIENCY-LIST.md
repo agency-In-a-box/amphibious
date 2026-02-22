@@ -63,6 +63,11 @@ This document tracks known issues, missing features, and areas for improvement.
 - [x] **Pears Component Prefixing** - All pears.css classes (.stats, .slats, .stat-card, etc.) prefixed with .aiab-
 - [x] **Missing CSS Imports** - Added foundation-fixes.css and updates-section-fix.css to main.css
 - [x] **Print CSS** - Fixed .col selector to target [class*="aiab-col-"]
+- [x] **Footer Namespace** - Renamed .amp-footer → .aiab-footer (wrong prefix)
+- [x] **BEM Modifiers** - Prefixed switch--*, dropdown--*, file-upload--*, timeline filter/zoom
+- [x] **Form Builder** - Prefixed toolbar/toolbox/canvas/field classes (41 selectors)
+- [x] **Utility Classes** - Prefixed help-text, search-form, no-wrap, truncate
+- [x] **Accordion JS** - Fixed 'active' → 'aiab-active' class mismatch
 
 ### Remaining
 - [ ] **Test Coverage** - 12+ JS modules untested (accordion, dropdown, toast, etc.)
@@ -101,7 +106,7 @@ This document tracks known issues, missing features, and areas for improvement.
 ## 4. Build & Distribution
 
 ### Current
-- **CSS**: 389 KB (62 KB gzip)
+- **CSS**: 390 KB (62 KB gzip)
 - **JS**: 114 KB ES module (36 KB gzip) — includes all component exports
 - **CI/CD**: GitHub Actions with lint, typecheck, test, build, security scan
 - **Bundle limit**: 2 MB
