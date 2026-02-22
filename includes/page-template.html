@@ -20,7 +20,7 @@
   <!-- Option 1: Static include (server-side includes or build tool) -->
   <!--#include virtual="/includes/navigation.html" -->
 
-  <!-- Option 2: Dynamic JavaScript loader -->
+  <!-- Option 2: Dynamic JavaScript loader (only used if SSI is not active) -->
   <div id="navigation-include"></div>
 
   <!-- Main Content -->
@@ -57,6 +57,9 @@
     // This can be removed in production if using SSI or a build tool
 
     async function loadIncludes() {
+      // Skip if SSI already injected navigation (check for existing nav)
+      if (document.querySelector('.aiab-site-nav')) return;
+
       // Load navigation
       const navPlaceholder = document.getElementById('navigation-include');
       if (navPlaceholder) {
