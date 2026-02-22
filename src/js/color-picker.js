@@ -115,8 +115,8 @@ class ColorPicker {
       this.trigger.className = 'aiab-color-picker-trigger';
       this.trigger.type = 'button';
       this.trigger.innerHTML = `
-        <span class="color-preview"></span>
-        <span class="color-value">${this.formatColor(this.state.color)}</span>
+        <span class="aiab-color-preview"></span>
+        <span class="aiab-color-value">${this.formatColor(this.state.color)}</span>
       `;
       this.wrapper.appendChild(this.trigger);
       this.createdElements.add(this.trigger);
@@ -135,7 +135,7 @@ class ColorPicker {
         ${
           this.options.eyeDropper
             ? `
-          <button type="button" class="eyedropper-btn" title="${this.options.labels.eyeDropper}">
+          <button type="button" class="aiab-eyedropper-btn" title="${this.options.labels.eyeDropper}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M15 15l-2 5L9 9l11 4-5 2z"/>
             </svg>
@@ -147,16 +147,16 @@ class ColorPicker {
 
       <div class="aiab-color-picker-body">
         <!-- Color spectrum -->
-        <div class="color-spectrum-wrapper">
-          <div class="color-spectrum">
-            <div class="spectrum-cursor"></div>
+        <div class="aiab-color-spectrum-wrapper">
+          <div class="aiab-color-spectrum">
+            <div class="aiab-spectrum-cursor"></div>
           </div>
         </div>
 
         <!-- Hue slider -->
-        <div class="hue-slider-wrapper">
-          <div class="hue-slider">
-            <div class="hue-cursor"></div>
+        <div class="aiab-hue-slider-wrapper">
+          <div class="aiab-hue-slider">
+            <div class="aiab-hue-cursor"></div>
           </div>
         </div>
 
@@ -164,9 +164,9 @@ class ColorPicker {
           this.options.alpha
             ? `
           <!-- Alpha slider -->
-          <div class="alpha-slider-wrapper">
-            <div class="alpha-slider">
-              <div class="alpha-cursor"></div>
+          <div class="aiab-alpha-slider-wrapper">
+            <div class="aiab-alpha-slider">
+              <div class="aiab-alpha-cursor"></div>
             </div>
           </div>
         `
@@ -177,7 +177,7 @@ class ColorPicker {
         ${
           this.options.showInput
             ? `
-          <div class="color-inputs">
+          <div class="aiab-color-inputs">
             <div class="aiab-input-tabs">
               <button type="button" class="aiab-tab-btn aiab-active" data-format="hex">HEX</button>
               <button type="button" class="aiab-tab-btn" data-format="rgb">RGB</button>
@@ -251,13 +251,13 @@ class ColorPicker {
         ${
           this.options.showPresets
             ? `
-          <div class="color-presets">
-            <div class="preset-label">Presets</div>
-            <div class="preset-colors">
+          <div class="aiab-color-presets">
+            <div class="aiab-preset-label">Presets</div>
+            <div class="aiab-preset-colors">
               ${this.options.presets
                 .map(
                   (color) => `
-                <button type="button" class="color-swatch" data-color="${color}" style="background: ${color}"></button>
+                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}"></button>
               `,
                 )
                 .join('')}
@@ -271,13 +271,13 @@ class ColorPicker {
         ${
           this.options.showRecent && this.state.recentColors.length > 0
             ? `
-          <div class="color-recent">
-            <div class="recent-label">Recent</div>
-            <div class="recent-colors">
+          <div class="aiab-color-recent">
+            <div class="aiab-recent-label">Recent</div>
+            <div class="aiab-recent-colors">
               ${this.state.recentColors
                 .map(
                   (color) => `
-                <button type="button" class="color-swatch" data-color="${color}" style="background: ${color}"></button>
+                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}"></button>
               `,
                 )
                 .join('')}
@@ -305,14 +305,14 @@ class ColorPicker {
     this.createdElements.add(this.picker);
 
     // Get references to elements
-    this.spectrum = this.picker.querySelector('.color-spectrum');
-    this.spectrumCursor = this.picker.querySelector('.spectrum-cursor');
-    this.hueSlider = this.picker.querySelector('.hue-slider');
-    this.hueCursor = this.picker.querySelector('.hue-cursor');
+    this.spectrum = this.picker.querySelector('.aiab-color-spectrum');
+    this.spectrumCursor = this.picker.querySelector('.aiab-spectrum-cursor');
+    this.hueSlider = this.picker.querySelector('.aiab-hue-slider');
+    this.hueCursor = this.picker.querySelector('.aiab-hue-cursor');
 
     if (this.options.alpha) {
-      this.alphaSlider = this.picker.querySelector('.alpha-slider');
-      this.alphaCursor = this.picker.querySelector('.alpha-cursor');
+      this.alphaSlider = this.picker.querySelector('.aiab-alpha-slider');
+      this.alphaCursor = this.picker.querySelector('.aiab-alpha-cursor');
     }
 
     // Insert into DOM
@@ -379,7 +379,7 @@ class ColorPicker {
     this.attachInputEvents();
 
     // Preset swatches
-    const presetSwatches = this.picker.querySelectorAll('.preset-colors .color-swatch');
+    const presetSwatches = this.picker.querySelectorAll('.aiab-preset-colors .aiab-color-swatch');
     presetSwatches.forEach((swatch, index) => {
       const swatchHandler = () => this.selectColor(swatch.dataset.color);
       swatch.addEventListener('click', swatchHandler);
@@ -391,7 +391,7 @@ class ColorPicker {
     });
 
     // Recent swatches
-    const recentSwatches = this.picker.querySelectorAll('.recent-colors .color-swatch');
+    const recentSwatches = this.picker.querySelectorAll('.aiab-recent-colors .aiab-color-swatch');
     recentSwatches.forEach((swatch, index) => {
       const swatchHandler = () => this.selectColor(swatch.dataset.color);
       swatch.addEventListener('click', swatchHandler);
@@ -403,7 +403,7 @@ class ColorPicker {
     });
 
     // Eyedropper
-    const eyedropperBtn = this.picker.querySelector('.eyedropper-btn');
+    const eyedropperBtn = this.picker.querySelector('.aiab-eyedropper-btn');
     if (eyedropperBtn) {
       const eyedropperHandler = () => this.pickFromScreen();
       eyedropperBtn.addEventListener('click', eyedropperHandler);
@@ -659,8 +659,8 @@ class ColorPicker {
 
     // Update trigger preview
     if (this.trigger) {
-      const preview = this.trigger.querySelector('.color-preview');
-      const value = this.trigger.querySelector('.color-value');
+      const preview = this.trigger.querySelector('.aiab-color-preview');
+      const value = this.trigger.querySelector('.aiab-color-value');
       preview.style.background = this.formatColor(this.state.color);
       value.textContent = this.formatColor(this.state.color);
     }
