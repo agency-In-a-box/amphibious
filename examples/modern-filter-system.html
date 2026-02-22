@@ -307,14 +307,14 @@ function toggleColor(button) {
   button.classList.toggle('selected');
 }
 
-// Add active filter tag
+// Add active filter aiab-tag
 function addActiveFilter(text, type) {
   const activeFilters = document.getElementById('activeFilters');
   const filterTags = document.getElementById('filterTags');
 
   activeFilters.classList.add('has-filters');
 
-  const tag = document.createElement('span');
+  const aiab-tag = document.createElement('span');
   tag.className = 'filter-tag';
   tag.dataset.type = type;
   tag.innerHTML = `
@@ -330,9 +330,9 @@ function addActiveFilter(text, type) {
   filterTags.appendChild(tag);
 }
 
-// Remove filter tag
+// Remove filter aiab-tag
 function removeFilter(button) {
-  const tag = button.parentElement;
+  const aiab-tag = button.parentElement;
   tag.remove();
 
   const filterTags = document.getElementById('filterTags');
