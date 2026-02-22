@@ -88,18 +88,18 @@ a.aiab-button {
 /* Fix 5: Error field styling
    ========================================================================== */
 
-input.error,
-textarea.error,
-select.error,
-.aiab-form-control.error {
+input.aiab-error,
+textarea.aiab-error,
+select.aiab-error,
+.aiab-form-control.aiab-error {
   border: 2px solid #dc3545;
   background-color: #fff5f5;
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
 }
 
-input.error:focus,
-textarea.error:focus,
-select.error:focus {
+input.aiab-error:focus,
+textarea.aiab-error:focus,
+select.aiab-error:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
 }
@@ -195,7 +195,7 @@ select.error:focus {
 /* Fix 10: Code sample organization
    ========================================================================== */
 
-pre.prettyprint {
+pre.aiab-prettyprint {
   margin-top: 16px;
   margin-bottom: 32px;
   padding: 16px;
