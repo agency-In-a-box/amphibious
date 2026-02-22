@@ -475,7 +475,7 @@
         document.querySelectorAll('.btn-copy').forEach(btn => {
             btn.addEventListener('click', () => {
                 const input = btn.parentElement.querySelector('input');
-                input.aiab-select();
+                input.select();
                 document.execCommand('copy');
                 
                 const originalText = btn.textContent;

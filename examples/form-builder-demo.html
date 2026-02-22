@@ -606,7 +606,7 @@ const complexCondition = {
     // Tab switching
     document.querySelectorAll('.demo-tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        const tabName = tab.dataset.aiab-tab;
+        const tabName = tab.dataset.tab;
 
         // Update active tab
         document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
