@@ -83,7 +83,7 @@ describe('Forms Module', () => {
       forms.init();
 
       const messageField = document.querySelector('#message') as HTMLElement;
-      const counter = messageField.parentElement?.querySelector('.char-counter');
+      const counter = messageField.parentElement?.querySelector('.aiab-char-counter');
 
       expect(counter).toBeTruthy();
       expect(counter?.textContent).toBe('0 / 100');
@@ -94,7 +94,7 @@ describe('Forms Module', () => {
       forms.init();
 
       const passwordField = document.querySelector('#password') as HTMLElement;
-      const toggle = passwordField.parentElement?.querySelector('.password-toggle');
+      const toggle = passwordField.parentElement?.querySelector('.aiab-password-toggle');
 
       expect(toggle).toBeTruthy();
     });
@@ -261,7 +261,7 @@ describe('Forms Module', () => {
       forms.init();
 
       const messageField = document.querySelector('#message') as HTMLInputElement;
-      const counter = messageField.parentElement?.querySelector('.char-counter');
+      const counter = messageField.parentElement?.querySelector('.aiab-char-counter');
 
       messageField.value = 'Hello World';
       messageField.dispatchEvent(new Event('input'));
@@ -274,13 +274,13 @@ describe('Forms Module', () => {
       forms.init();
 
       const messageField = document.querySelector('#message') as HTMLInputElement;
-      const counter = messageField.parentElement?.querySelector('.char-counter');
+      const counter = messageField.parentElement?.querySelector('.aiab-char-counter');
 
       // Set value to 95 characters (> 90% of 100)
       messageField.value = 'a'.repeat(95);
       messageField.dispatchEvent(new Event('input'));
 
-      expect(counter?.classList.contains('char-counter--warning')).toBe(true);
+      expect(counter?.classList.contains('aiab-char-counter--warning')).toBe(true);
     });
   });
 
@@ -291,7 +291,7 @@ describe('Forms Module', () => {
 
       const passwordField = document.querySelector('#password') as HTMLInputElement;
       const toggle = passwordField.parentElement?.querySelector(
-        '.password-toggle',
+        '.aiab-password-toggle',
       ) as HTMLButtonElement;
 
       expect(passwordField.type).toBe('password');
@@ -314,12 +314,12 @@ describe('Forms Module', () => {
       floatingField.value = 'Test';
       floatingField.dispatchEvent(new Event('input'));
 
-      expect(floatingField.classList.contains('filled')).toBe(true);
+      expect(floatingField.classList.contains('aiab-filled')).toBe(true);
 
       floatingField.value = '';
       floatingField.dispatchEvent(new Event('input'));
 
-      expect(floatingField.classList.contains('filled')).toBe(false);
+      expect(floatingField.classList.contains('aiab-filled')).toBe(false);
     });
   });
 
@@ -354,7 +354,7 @@ describe('Forms Module', () => {
 
       // When form is valid, it should not prevent default and should add was-validated class
       expect(event.defaultPrevented).toBe(false);
-      expect(container.classList.contains('was-validated')).toBe(true);
+      expect(container.classList.contains('aiab-was-validated')).toBe(true);
     });
 
     it('should focus first error field', () => {

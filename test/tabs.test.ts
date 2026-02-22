@@ -235,7 +235,7 @@ describe('Tabs Module', () => {
 
       expect(legacyPanel1.style.display).toBe('none');
       expect(legacyPanel2.style.display).toBe('block');
-      expect(legacyTab2.classList.contains('active')).toBe(true);
+      expect(legacyTab2.classList.contains('aiab-active')).toBe(true);
     });
 
     it('should respect amp-tab-group attribute', () => {
@@ -250,8 +250,8 @@ describe('Tabs Module', () => {
       const tab2 = legacyTabs[1] as HTMLElement;
 
       tab2.click();
-      expect(tab1.classList.contains('active')).toBe(false);
-      expect(tab2.classList.contains('active')).toBe(true);
+      expect(tab1.classList.contains('aiab-active')).toBe(false);
+      expect(tab2.classList.contains('aiab-active')).toBe(true);
     });
   });
 

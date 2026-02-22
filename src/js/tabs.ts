@@ -212,14 +212,14 @@ export class Tabs {
               const tPanel = document.querySelector(tContentId) as HTMLElement;
               if (tPanel) {
                 tPanel.style.display = 'none';
-                tElement.classList.remove('active', 'aiab-is-active');
+                tElement.classList.remove('aiab-active', 'aiab-is-active');
               }
             }
           });
 
           // Show selected panel
           panel.style.display = 'block';
-          tabElement.classList.add('active', 'aiab-is-active');
+          tabElement.classList.add('aiab-active', 'aiab-is-active');
         },
         { signal: this.abortController.signal },
       );
@@ -229,7 +229,7 @@ export class Tabs {
       const isFirst = tabElement === document.querySelector(`[amp-tab-group="${group}"]`);
       if (isFirst) {
         panel.style.display = 'block';
-        tabElement.classList.add('active', 'aiab-is-active');
+        tabElement.classList.add('aiab-active', 'aiab-is-active');
       }
     });
   }

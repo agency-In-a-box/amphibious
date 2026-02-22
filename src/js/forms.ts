@@ -34,8 +34,8 @@ export class Forms {
     this.eventListeners = [];
 
     // Clean up any created elements
-    document.querySelectorAll('.char-counter').forEach((el) => el.remove());
-    document.querySelectorAll('.password-toggle').forEach((el) => el.remove());
+    document.querySelectorAll('.aiab-char-counter').forEach((el) => el.remove());
+    document.querySelectorAll('.aiab-password-toggle').forEach((el) => el.remove());
   }
 
   /**
@@ -169,7 +169,7 @@ export class Forms {
     });
 
     // Always add was-validated to indicate validation has been performed
-    form.classList.add('was-validated');
+    form.classList.add('aiab-was-validated');
 
     return isValid;
   }
@@ -365,15 +365,15 @@ export class Forms {
 
       // Check initial state
       if (field.value) {
-        field.classList.add('filled');
+        field.classList.add('aiab-filled');
       }
 
       // Update on input
       const floatHandler = () => {
         if (field.value) {
-          field.classList.add('filled');
+          field.classList.add('aiab-filled');
         } else {
-          field.classList.remove('filled');
+          field.classList.remove('aiab-filled');
         }
       };
       this.addEventListener(field, 'input', floatHandler);
@@ -394,7 +394,7 @@ export class Forms {
 
       // Create counter element
       const counter = document.createElement('div');
-      counter.className = 'char-counter';
+      counter.className = 'aiab-char-counter';
       counter.textContent = `0 / ${maxLength}`;
       input.parentElement?.appendChild(counter);
 
@@ -416,7 +416,7 @@ export class Forms {
     const maxLength = field.getAttribute('maxlength');
     if (!maxLength) return;
 
-    const counter = field.parentElement?.querySelector('.char-counter');
+    const counter = field.parentElement?.querySelector('.aiab-char-counter');
     if (counter) {
       const current = field.value.length;
       const max = Number(maxLength);
@@ -424,9 +424,9 @@ export class Forms {
 
       // Add warning class when near limit
       if (current > max * 0.9) {
-        counter.classList.add('char-counter--warning');
+        counter.classList.add('aiab-char-counter--warning');
       } else {
-        counter.classList.remove('char-counter--warning');
+        counter.classList.remove('aiab-char-counter--warning');
       }
     }
   }
@@ -442,13 +442,13 @@ export class Forms {
       const wrapper = input.parentElement;
 
       // Skip if toggle already exists
-      if (wrapper?.querySelector('.password-toggle')) return;
+      if (wrapper?.querySelector('.aiab-password-toggle')) return;
 
       // Create toggle button
       const toggle = document.createElement('button');
       toggle.type = 'button';
-      toggle.className = 'password-toggle';
-      toggle.innerHTML = '<span class="password-toggle__icon">👁</span>';
+      toggle.className = 'aiab-password-toggle';
+      toggle.innerHTML = '<span class="aiab-password-toggle__icon">👁</span>';
       toggle.setAttribute('aria-label', 'Toggle password visibility');
 
       // Add toggle to wrapper
@@ -462,8 +462,8 @@ export class Forms {
         toggle.classList.toggle('aiab-is-visible');
         toggle.innerHTML =
           type === 'password'
-            ? '<span class="password-toggle__icon">👁</span>'
-            : '<span class="password-toggle__icon">👁‍🗨</span>';
+            ? '<span class="aiab-password-toggle__icon">👁</span>'
+            : '<span class="aiab-password-toggle__icon">👁‍🗨</span>';
       };
       this.addEventListener(toggle, 'click', toggleHandler);
     });
@@ -494,7 +494,7 @@ export class Forms {
     if (!form) return;
 
     form.reset();
-    form.classList.remove('was-validated');
+    form.classList.remove('aiab-was-validated');
 
     const fields = form.querySelectorAll('.aiab-is-valid, .aiab-is-invalid');
     fields.forEach((field) => {

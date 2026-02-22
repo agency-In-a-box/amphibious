@@ -288,15 +288,15 @@ input[type="radio"]:focus {
 
 /* Valid */
 .aiab-is-valid,
-.was-validated .aiab-form-control:valid,
-.was-validated input:valid,
-.was-validated select:valid,
-.was-validated textarea:valid {
+.aiab-was-validated .aiab-form-control:valid,
+.aiab-was-validated input:valid,
+.aiab-was-validated select:valid,
+.aiab-was-validated textarea:valid {
   border-color: var(--color-success, #198754);
 }
 
 .aiab-is-valid:focus,
-.was-validated .aiab-form-control:valid:focus {
+.aiab-was-validated .aiab-form-control:valid:focus {
   border-color: var(--color-success, #198754);
   box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
 }
@@ -310,21 +310,21 @@ input[type="radio"]:focus {
 }
 
 .aiab-is-valid ~ .aiab-valid-feedback,
-.was-validated :valid ~ .aiab-valid-feedback {
+.aiab-was-validated :valid ~ .aiab-valid-feedback {
   display: block;
 }
 
 /* Invalid */
 .aiab-is-invalid,
-.was-validated .aiab-form-control:invalid,
-.was-validated input:invalid,
-.was-validated select:invalid,
-.was-validated textarea:invalid {
+.aiab-was-validated .aiab-form-control:invalid,
+.aiab-was-validated input:invalid,
+.aiab-was-validated select:invalid,
+.aiab-was-validated textarea:invalid {
   border-color: var(--color-danger, #dc3545);
 }
 
 .aiab-is-invalid:focus,
-.was-validated .aiab-form-control:invalid:focus {
+.aiab-was-validated .aiab-form-control:invalid:focus {
   border-color: var(--color-danger, #dc3545);
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
@@ -338,7 +338,7 @@ input[type="radio"]:focus {
 }
 
 .aiab-is-invalid ~ .aiab-invalid-feedback,
-.was-validated :invalid ~ .aiab-invalid-feedback {
+.aiab-was-validated :invalid ~ .aiab-invalid-feedback {
   display: block;
 }
 
