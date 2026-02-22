@@ -226,13 +226,13 @@
   }
 
   /* Keep columns side-by-side if marked for print */
-  .print-col-half {
+  .aiab-print-col-half {
     width: 48%;
     float: left;
     margin-right: 2%;
   }
 
-  .print-col-third {
+  .aiab-print-col-third {
     width: 31%;
     float: left;
     margin-right: 2%;
@@ -242,62 +242,62 @@
      ========================================================================== */
 
   /* Hide elements in print */
-  .no-print,
+  .aiab-no-print,
   .aiab-hide-print,
   .aiab-hide-on-print,
   nav,
-  .navigation,
+  .aiab-navigation,
   .aiab-nav,
   .aiab-sidebar,
-  .ads,
-  .advertisement,
-  .social-media,
-  .share-buttons,
-  .comments,
-  .footer-links,
-  .back-to-top {
+  .aiab-ads,
+  .aiab-advertisement,
+  .aiab-social-media,
+  .aiab-share-buttons,
+  .aiab-comments,
+  .aiab-footer-links,
+  .aiab-back-to-top {
     display: none;
   }
 
   /* Show elements only in print */
-  .print-only,
+  .aiab-print-only,
   .aiab-show-print,
   .aiab-show-on-print {
     display: block;
   }
 
   /* Force page breaks */
-  .page-break,
-  .page-break-before,
-  .print-page-break-before {
+  .aiab-page-break,
+  .aiab-page-break-before,
+  .aiab-print-page-break-before {
     page-break-before: always;
   }
 
-  .page-break-after,
-  .print-page-break-after {
+  .aiab-page-break-after,
+  .aiab-print-page-break-after {
     page-break-after: always;
   }
 
   /* Avoid page breaks */
-  .avoid-break,
-  .keep-together,
-  .no-break {
+  .aiab-avoid-break,
+  .aiab-keep-together,
+  .aiab-no-break {
     page-break-inside: avoid;
   }
 
   /* Print-specific margins */
-  .print-margin-top {
+  .aiab-print-margin-top {
     margin-top: 1cm;
   }
 
-  .print-margin-bottom {
+  .aiab-print-margin-bottom {
     margin-bottom: 1cm;
   }
 
   /* Header/Footer for print
      ========================================================================== */
 
-  .print-header {
+  .aiab-print-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -307,7 +307,7 @@
     font-size: 10pt;
   }
 
-  .print-footer {
+  .aiab-print-footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -318,7 +318,7 @@
   }
 
   /* Page numbers (if supported by browser) */
-  .page-number:after {
+  .aiab-page-number:after {
     content: counter(page);
   }
 
@@ -327,8 +327,8 @@
 
   /* Ensure screen reader text is hidden */
   .aiab-sr-only,
-  .screen-reader-only,
-  .assistive-text {
+  .aiab-screen-reader-only,
+  .aiab-assistive-text {
     display: none;
   }
 
@@ -336,15 +336,15 @@
      ========================================================================== */
 
   /* Override to show specific backgrounds if needed */
-  .print-bg {
+  .aiab-print-bg {
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
     print-color-adjust: exact;
   }
 
   /* Ensure critical icons/logos print */
-  .print-logo,
-  .print-icon {
+  .aiab-print-logo,
+  .aiab-print-icon {
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
     print-color-adjust: exact;
@@ -364,9 +364,9 @@
   }
 
   /* Grid and Flexbox adjustments */
-  .flex,
-  .flex-row,
-  .flex-column {
+  .aiab-flex,
+  .aiab-flex-row,
+  .aiab-flex-column {
     display: block;
   }
 
@@ -390,11 +390,11 @@
     size: landscape;
   }
 
-  .landscape-only {
+  .aiab-landscape-only {
     display: block;
   }
 
-  .portrait-only {
+  .aiab-portrait-only {
     display: none;
   }
 }
@@ -407,11 +407,11 @@
     size: portrait;
   }
 
-  .portrait-only {
+  .aiab-portrait-only {
     display: block;
   }
 
-  .landscape-only {
+  .aiab-landscape-only {
     display: none;
   }
 }
