@@ -8,45 +8,45 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     /* Stats grid cards — hardcoded backgrounds in home.css */
-    .stats-grid .stat-card {
+    .aiab-stats-grid .aiab-stat-card {
       background: var(--color-surface-elevated, #2c2c2e);
       border: 1px solid var(--color-border, #3a3a3c);
     }
 
-    .stat-card__icon {
+    .aiab-stat-card__icon {
       color: var(--apple-orange-500, #ff9500);
       opacity: 1;
     }
 
-    .stat-card__icon svg {
+    .aiab-stat-card__icon svg {
       stroke: var(--apple-orange-500, #ff9500);
     }
 
     /* Feature boxes — hardcoded backgrounds in home.css */
-    .feature-box,
-    .key-features-grid .feature-box {
+    .aiab-feature-box,
+    .aiab-key-features-grid .aiab-feature-box {
       background: var(--color-surface-elevated, #2c2c2e);
       border: 1px solid var(--color-border, #3a3a3c);
     }
 
     /* Component cards — hardcoded backgrounds */
-    .component-card {
+    .aiab-component-card {
       background: var(--color-surface-elevated, #2c2c2e);
       border: 1px solid var(--color-border, #3a3a3c);
     }
 
     /* Feature cards */
-    .feature-card {
+    .aiab-feature-card {
       background: var(--color-surface-elevated, #2c2c2e);
       border-color: var(--color-border, #3a3a3c);
     }
 
     /* Demo section borders */
-    .demo-section {
+    .aiab-demo-section {
       border-bottom-color: var(--color-border, #3a3a3c);
     }
 
-    .feature-grid {
+    .aiab-feature-grid {
       background: var(--color-surface-elevated, #2c2c2e);
     }
 
@@ -89,41 +89,41 @@
 
 /* Manual dark mode — same overrides */
 [data-theme="dark"] {
-  .stats-grid .stat-card {
+  .aiab-stats-grid .aiab-stat-card {
     background: var(--color-surface-elevated, #2c2c2e);
     border: 1px solid var(--color-border, #3a3a3c);
   }
 
-  .stat-card__icon {
+  .aiab-stat-card__icon {
     color: var(--apple-orange-500, #ff9500);
     opacity: 1;
   }
 
-  .stat-card__icon svg {
+  .aiab-stat-card__icon svg {
     stroke: var(--apple-orange-500, #ff9500);
   }
 
-  .feature-box,
-  .key-features-grid .feature-box {
+  .aiab-feature-box,
+  .aiab-key-features-grid .aiab-feature-box {
     background: var(--color-surface-elevated, #2c2c2e);
     border: 1px solid var(--color-border, #3a3a3c);
   }
 
-  .component-card {
+  .aiab-component-card {
     background: var(--color-surface-elevated, #2c2c2e);
     border: 1px solid var(--color-border, #3a3a3c);
   }
 
-  .feature-card {
+  .aiab-feature-card {
     background: var(--color-surface-elevated, #2c2c2e);
     border-color: var(--color-border, #3a3a3c);
   }
 
-  .demo-section {
+  .aiab-demo-section {
     border-bottom-color: var(--color-border, #3a3a3c);
   }
 
-  .feature-grid {
+  .aiab-feature-grid {
     background: var(--color-surface-elevated, #2c2c2e);
   }
 

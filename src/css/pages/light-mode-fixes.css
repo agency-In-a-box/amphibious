@@ -42,14 +42,14 @@
     }
 
     /* Cards should have light backgrounds */
-    .component-card,
-    .feature-card,
-    .stat-card {
+    .aiab-component-card,
+    .aiab-feature-card,
+    .aiab-stat-card {
       background: #ffffff;
       border: 1px solid var(--color-border, #dedede);
     }
 
-    .stat-card__icon svg {
+    .aiab-stat-card__icon svg {
       stroke: var(--apple-orange-500, #ed8b00);
     }
   }
@@ -80,14 +80,14 @@
     color: var(--apple-orange-500, #ed8b00);
   }
 
-  .component-card,
-  .feature-card,
-  .stat-card {
+  .aiab-component-card,
+  .aiab-feature-card,
+  .aiab-stat-card {
     background: #ffffff;
     border: 1px solid var(--color-border, #dedede);
   }
 
-  .stat-card__icon svg {
+  .aiab-stat-card__icon svg {
     stroke: var(--apple-orange-500, #ed8b00);
   }
 }
