@@ -179,9 +179,9 @@ class ColorPicker {
             ? `
           <div class="color-inputs">
             <div class="input-tabs">
-              <button type="button" class="tab-btn aiab-active" data-format="hex">HEX</button>
-              <button type="button" class="tab-btn" data-format="rgb">RGB</button>
-              <button type="button" class="tab-btn" data-format="hsl">HSL</button>
+              <button type="button" class="aiab-tab-btn aiab-active" data-format="hex">HEX</button>
+              <button type="button" class="aiab-tab-btn" data-format="rgb">RGB</button>
+              <button type="button" class="aiab-tab-btn" data-format="hsl">HSL</button>
             </div>
 
             <div class="input-fields">
@@ -368,7 +368,7 @@ class ColorPicker {
     }
 
     // Input tabs
-    const tabBtns = this.picker.querySelectorAll('.tab-btn');
+    const tabBtns = this.picker.querySelectorAll('.aiab-tab-btn');
     tabBtns.forEach((btn, index) => {
       const tabHandler = () => this.switchInputMode(btn.dataset.format);
       btn.addEventListener('click', tabHandler);
@@ -745,7 +745,7 @@ class ColorPicker {
     this.state.activeInput = format;
 
     // Update tabs
-    this.picker.querySelectorAll('.tab-btn').forEach((btn) => {
+    this.picker.querySelectorAll('.aiab-tab-btn').forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.format === format);
     });
 

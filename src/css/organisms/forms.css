@@ -346,7 +346,7 @@ input[type="radio"]:focus {
    ========================================================================== */
 
 .aiab-form-text,
-.help-text {
+.aiab-help-text {
   display: block;
   margin-top: 0.25rem;
   font-size: 0.875em;
@@ -492,15 +492,15 @@ input[type="file"]:hover:not(:disabled):not([readonly])::file-selector-button {
 /* Search Form
    ========================================================================== */
 
-.search-form {
+.aiab-search-form {
   position: relative;
 }
 
-.search-form input[type="search"] {
+.aiab-search-form input[type="search"] {
   padding-right: 2.5rem;
 }
 
-.search-form button {
+.aiab-search-form button {
   position: absolute;
   right: 0;
   top: 0;

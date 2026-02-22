@@ -329,10 +329,10 @@ tr.aiab-info,
 }
 
 /* Cell Utilities */
-.no-wrap {
+.aiab-no-wrap {
   white-space: nowrap;
 }
-.truncate {
+.aiab-truncate {
   max-width: 200px;
   white-space: nowrap;
   overflow: hidden;

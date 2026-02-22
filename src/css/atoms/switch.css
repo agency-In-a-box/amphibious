@@ -177,7 +177,7 @@
 }
 
 /* Dark */
-.switch--dark .aiab-switch-input:checked + .aiab-switch-slider {
+.aiab-switch--dark .aiab-switch-input:checked + .aiab-switch-slider {
   background-color: #1f2937;
 }
 
@@ -229,21 +229,21 @@
 }
 
 /* Icons in switch */
-.switch--icons .aiab-switch-slider {
+.aiab-switch--icons .aiab-switch-slider {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 0.375rem;
 }
 
-.switch--icons .aiab-switch-slider::after {
+.aiab-switch--icons .aiab-switch-slider::after {
   content: "✕";
   color: #94a3b8;
   font-size: 0.75rem;
   transition: opacity 0.3s;
 }
 
-.switch--icons .aiab-switch-input:checked + .aiab-switch-slider::after {
+.aiab-switch--icons .aiab-switch-input:checked + .aiab-switch-slider::after {
   content: "✓";
   color: white;
   opacity: 1;
@@ -278,7 +278,7 @@
 }
 
 /* Loading state */
-.switch--loading .aiab-switch-slider::before {
+.aiab-switch--loading .aiab-switch-slider::before {
   animation: pulse 1.5s infinite;
 }
 
@@ -297,30 +297,30 @@
    ======================================== */
 
 /* Square variant */
-.switch--square .aiab-switch-slider {
+.aiab-switch--square .aiab-switch-slider {
   border-radius: 0.375rem;
 }
 
-.switch--square .aiab-switch-slider::before {
+.aiab-switch--square .aiab-switch-slider::before {
   border-radius: 0.25rem;
 }
 
 /* Outline variant */
-.switch--outline .aiab-switch-slider {
+.aiab-switch--outline .aiab-switch-slider {
   background-color: transparent;
   border: 2px solid #cbd5e1;
 }
 
-.switch--outline .aiab-switch-slider::before {
+.aiab-switch--outline .aiab-switch-slider::before {
   background-color: #cbd5e1;
 }
 
-.switch--outline .aiab-switch-input:checked + .aiab-switch-slider {
+.aiab-switch--outline .aiab-switch-input:checked + .aiab-switch-slider {
   background-color: transparent;
   border-color: #2563eb;
 }
 
-.switch--outline .aiab-switch-input:checked + .aiab-switch-slider::before {
+.aiab-switch--outline .aiab-switch-input:checked + .aiab-switch-slider::before {
   background-color: #2563eb;
 }
 
@@ -441,11 +441,11 @@
     color: #d1d5db;
   }
 
-  .switch--outline .aiab-switch-slider {
+  .aiab-switch--outline .aiab-switch-slider {
     border-color: #4b5563;
   }
 
-  .switch--outline .aiab-switch-slider::before {
+  .aiab-switch--outline .aiab-switch-slider::before {
     background-color: #6b7280;
   }
 

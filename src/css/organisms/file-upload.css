@@ -8,7 +8,7 @@
    BASE FILE UPLOAD
    ======================================== */
 
-.file-upload {
+.aiab-file-upload {
   position: relative;
   width: 100%;
 }
@@ -286,37 +286,37 @@
    ======================================== */
 
 /* Compact */
-.file-upload--compact .aiab-file-upload-zone {
+.aiab-file-upload--compact .aiab-file-upload-zone {
   padding: 1.5rem 1rem;
   min-height: 120px;
 }
 
-.file-upload--compact .aiab-file-upload-icon {
+.aiab-file-upload--compact .aiab-file-upload-icon {
   width: 2rem;
   height: 2rem;
 }
 
-.file-upload--compact .aiab-file-upload-label {
+.aiab-file-upload--compact .aiab-file-upload-label {
   font-size: 1rem;
 }
 
 /* Large */
-.file-upload--large .aiab-file-upload-zone {
+.aiab-file-upload--large .aiab-file-upload-zone {
   padding: 4rem 3rem;
   min-height: 300px;
 }
 
-.file-upload--large .aiab-file-upload-icon {
+.aiab-file-upload--large .aiab-file-upload-icon {
   width: 4rem;
   height: 4rem;
 }
 
-.file-upload--large .aiab-file-upload-label {
+.aiab-file-upload--large .aiab-file-upload-label {
   font-size: 1.25rem;
 }
 
 /* Circular */
-.file-upload--circular .aiab-file-upload-zone {
+.aiab-file-upload--circular .aiab-file-upload-zone {
   border-radius: 50%;
   aspect-ratio: 1;
   max-width: 200px;
@@ -324,24 +324,24 @@
 }
 
 /* Grid preview */
-.file-upload--grid .aiab-file-upload-list {
+.aiab-file-upload--grid .aiab-file-upload-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1rem;
 }
 
-.file-upload--grid .aiab-file-upload-item {
+.aiab-file-upload--grid .aiab-file-upload-item {
   flex-direction: column;
   padding: 1rem;
 }
 
-.file-upload--grid .aiab-file-upload-preview {
+.aiab-file-upload--grid .aiab-file-upload-preview {
   width: 100%;
   height: 100px;
   margin-bottom: 0.5rem;
 }
 
-.file-upload--grid .aiab-file-upload-info {
+.aiab-file-upload--grid .aiab-file-upload-info {
   margin-left: 0;
   text-align: center;
 }
@@ -351,35 +351,35 @@
    ======================================== */
 
 /* Disabled */
-.file-upload--disabled .aiab-file-upload-zone {
+.aiab-file-upload--disabled .aiab-file-upload-zone {
   background: #f3f4f6;
   border-color: #e5e7eb;
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.file-upload--disabled .aiab-file-upload-button {
+.aiab-file-upload--disabled .aiab-file-upload-button {
   pointer-events: none;
   opacity: 0.5;
 }
 
 /* Error state */
-.file-upload--error .aiab-file-upload-zone {
+.aiab-file-upload--error .aiab-file-upload-zone {
   border-color: #dc2626;
   background: #fef2f2;
 }
 
-.file-upload--error .aiab-file-upload-icon {
+.aiab-file-upload--error .aiab-file-upload-icon {
   color: #dc2626;
 }
 
 /* Success state */
-.file-upload--success .aiab-file-upload-zone {
+.aiab-file-upload--success .aiab-file-upload-zone {
   border-color: #16a34a;
   background: #f0fdf4;
 }
 
-.file-upload--success .aiab-file-upload-icon {
+.aiab-file-upload--success .aiab-file-upload-icon {
   color: #16a34a;
 }
 
@@ -405,7 +405,7 @@
 .aiab-file-type-audio {
   color: #ec4899;
 }
-.file-type-code {
+.aiab-file-type-code {
   color: #6b7280;
 }
 
@@ -426,7 +426,7 @@
     font-size: 0.8125rem;
   }
 
-  .file-upload--grid {
+  .aiab-file-upload--grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
 }
@@ -446,7 +446,7 @@
 }
 
 /* Screen reader text */
-.file-upload-sr-only {
+.aiab-file-upload-sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
