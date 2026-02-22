@@ -36,7 +36,7 @@ body {
    ============================================================================ */
 
 /* Site Navigation */
-.site-nav {
+.aiab-site-nav {
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
@@ -45,12 +45,12 @@ body {
   z-index: 1000;
 }
 
-.site-nav .aiab-container {
+.aiab-site-nav .aiab-container {
   position: relative;
 }
 
 /* Horizontal Navigation */
-.horizontal.branded {
+.aiab-horizontal.aiab-branded {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -60,11 +60,11 @@ body {
   flex-wrap: wrap;
 }
 
-.horizontal.branded > li {
+.aiab-horizontal.aiab-branded > li {
   position: relative;
 }
 
-.horizontal.branded a {
+.aiab-horizontal.aiab-branded a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
@@ -75,19 +75,19 @@ body {
   transition: color 0.2s;
 }
 
-.horizontal.branded a:hover,
-.horizontal.branded li.aiab-active > a {
+.aiab-horizontal.aiab-branded a:hover,
+.aiab-horizontal.aiab-branded li.aiab-active > a {
   color: #667eea;
 }
 
-.site-logo {
+.aiab-site-logo {
   font-size: 1.25rem;
   font-weight: 600;
   color: #667eea;
 }
 
 /* Dropdown menus */
-.horizontal.branded ul {
+.aiab-horizontal.aiab-branded ul {
   display: none;
   position: absolute;
   top: 100%;
@@ -102,18 +102,18 @@ body {
   z-index: 1000;
 }
 
-.horizontal.branded li:hover > ul {
+.aiab-horizontal.aiab-branded li:hover > ul {
   display: block;
 }
 
-.horizontal.branded ul a {
+.aiab-horizontal.aiab-branded ul a {
   padding: 0.5rem 1rem;
   display: block;
   font-weight: normal;
   font-size: 0.925rem;
 }
 
-.horizontal.branded ul a:hover {
+.aiab-horizontal.aiab-branded ul a:hover {
   background: #f8f9fa;
 }
 
@@ -323,7 +323,7 @@ a:hover {
    ============================================================================ */
 
 @media print {
-  .site-nav,
+  .aiab-site-nav,
   .docs-nav {
     display: none;
   }

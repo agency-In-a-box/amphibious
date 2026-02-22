@@ -427,15 +427,15 @@
 </head>
 <body>
   <!-- Site Navigation -->
-  <nav class="site-nav" aria-label="Main navigation">
+  <nav class="aiab-site-nav" aria-label="Main navigation">
     <div class="aiab-container">
-      <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="nav-toggle-icon" aria-hidden="true"></span>
-        <span class="sr-only">Toggle navigation</span>
+      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
+        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
+        <span class="aiab-sr-only">Toggle navigation</span>
       </button>
 
-      <ul id="main-nav" class="horizontal branded">
-        <li><a href="/" class="site-logo">Amphibious</a></li>
+      <ul id="main-nav" class="aiab-horizontal aiab-branded">
+        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
           <ul>
             <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -582,7 +582,7 @@
       <main class="dashboard-main" role="main">
         <!-- Stats Overview -->
         <section aria-labelledby="stats-heading">
-          <h2 id="stats-heading" class="sr-only">Account Statistics</h2>
+          <h2 id="stats-heading" class="aiab-sr-only">Account Statistics</h2>
           <div class="aiab-stats-grid">
             <article class="aiab-stat-card">
               <div class="stat-icon aiab-primary">
@@ -915,14 +915,14 @@
           const originalText = submitBtn.innerHTML;
 
           submitBtn.innerHTML = '<i data-lucide="loader-2"></i> Saving...';
-          submitBtn.aiab-disabled = true;
+          submitBtn.disabled = true;
 
           // Simulate API call
           setTimeout(() => {
             submitBtn.innerHTML = '<i data-lucide="check"></i> Saved!';
             setTimeout(() => {
               submitBtn.innerHTML = originalText;
-              submitBtn.aiab-disabled = false;
+              submitBtn.disabled = false;
             }, 1500);
           }, 2000);
         });

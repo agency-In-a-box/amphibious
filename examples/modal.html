@@ -92,15 +92,15 @@
 </head>
 <body>
   <!-- Site Navigation -->
-  <nav class="site-nav" aria-label="Main navigation">
+  <nav class="aiab-site-nav" aria-label="Main navigation">
     <div class="aiab-container">
-      <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="nav-toggle-icon" aria-hidden="true"></span>
-        <span class="sr-only">Toggle navigation</span>
+      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
+        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
+        <span class="aiab-sr-only">Toggle navigation</span>
       </button>
 
-      <ul id="main-nav" class="horizontal branded">
-        <li><a href="/" class="site-logo">Amphibious</a></li>
+      <ul id="main-nav" class="aiab-horizontal aiab-branded">
+        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
         <li><a href="/docs/foundation.html">Foundation</a>
           <ul>
             <li><a href="/docs/foundation.html#core">Core</a></li>
@@ -507,7 +507,7 @@
         info: 'This is an informational message.'
       };
 
-      await amp.aiab-alert(messages[type], type);
+      await amp.alert(messages[type], type);
       console.log(`${type} alert closed`);
     };
 
@@ -515,7 +515,7 @@
       const result = await amp.confirm('Are you sure you want to proceed?', 'Yes, Continue', 'Cancel');
       console.log('Confirm result:', result);
       if (result) {
-        await amp.aiab-alert('Action confirmed!', 'success');
+        await amp.alert('Action confirmed!', 'success');
       }
     };
 

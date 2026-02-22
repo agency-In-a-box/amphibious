@@ -252,16 +252,16 @@
     <!-- Navigation Include -->
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
-    <button class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="nav-toggle-icon" aria-hidden="true"></span>
-      <span class="sr-only">Toggle navigation</span>
+    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
+      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
+      <span class="aiab-sr-only">Toggle navigation</span>
     </button>
 
-    <ul id="main-nav" class="horizontal">
+    <ul id="main-nav" class="aiab-horizontal">
       <li>
-        <a href="/" class="site-logo">Amphibious</a>
+        <a href="/" class="aiab-site-logo">Amphibious</a>
         <ul>
           <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
           <li><a href="/#how_its_made">What is it made of?</a></li>
@@ -359,7 +359,7 @@
       <div class="nav-demo-container">
         <div class="nav-demo-header">Basic Navigation</div>
         <nav aria-label="Basic navigation example" style="background: white; padding: 1rem;">
-          <ul class="horizontal">
+          <ul class="aiab-horizontal">
             <li><a href="#" class="aiab-active">Home</a></li>
             <li><a href="#">Products</a></li>
             <li><a href="#">Services</a></li>
@@ -371,7 +371,7 @@
 
       <div class="code-example">
         <pre><code>&lt;nav&gt;
-  &lt;ul class="horizontal"&gt;
+  &lt;ul class="aiab-horizontal"&gt;
     &lt;li&gt;&lt;a href="#" class="aiab-active"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
@@ -385,7 +385,7 @@
       <div class="nav-demo-container">
         <div class="nav-demo-header">Navigation with Dropdown Menus</div>
         <nav aria-label="Navigation with dropdowns" style="background: #2c3e50; padding: 0;">
-          <ul class="horizontal" style="margin: 0;">
+          <ul class="aiab-horizontal" style="margin: 0;">
             <li><a href="#" style="color: white;">Home</a></li>
             <li>
               <a href="#" style="color: white;">Products ▼</a>
@@ -451,7 +451,7 @@ const nav = amp.createNavigation('#nav-container', {
       <div class="demo-box">
         <h4>Style 1: Gradient Navigation</h4>
         <nav class="nav-style-1" style="padding: 1rem;">
-          <ul class="horizontal">
+          <ul class="aiab-horizontal">
             <li><a href="#" style="color: white;">Home</a></li>
             <li><a href="#" style="color: white;">Features</a></li>
             <li><a href="#" style="color: white;">Pricing</a></li>
@@ -463,7 +463,7 @@ const nav = amp.createNavigation('#nav-container', {
       <div class="demo-box">
         <h4>Style 2: Minimal with Accent</h4>
         <nav class="nav-style-2" style="padding: 1rem;">
-          <ul class="horizontal">
+          <ul class="aiab-horizontal">
             <li><a href="#" class="aiab-active">Home</a></li>
             <li><a href="#">Features</a></li>
             <li><a href="#">Pricing</a></li>
@@ -475,7 +475,7 @@ const nav = amp.createNavigation('#nav-container', {
       <div class="demo-box">
         <h4>Style 3: Dark Navigation</h4>
         <nav class="nav-style-3" style="padding: 1rem;">
-          <ul class="horizontal">
+          <ul class="aiab-horizontal">
             <li><a href="#" style="color: #adb5bd;">Home</a></li>
             <li><a href="#" style="color: #adb5bd;">Features</a></li>
             <li><a href="#" style="color: #adb5bd;">Pricing</a></li>
@@ -606,7 +606,7 @@ const nav = amp.createNavigation('#nav-container', {
 
       <div class="tab-nav-demo">
         <nav role="tablist" aria-label="Tab navigation">
-          <ul class="horizontal" style="border-bottom: 2px solid #dee2e6; margin: 0;">
+          <ul class="aiab-horizontal" style="border-bottom: 2px solid #dee2e6; margin: 0;">
             <li><a href="#tab1" class="aiab-active" onclick="switchTab(event, 'tab1')">Overview</a></li>
             <li><a href="#tab2" onclick="switchTab(event, 'tab2')">Features</a></li>
             <li><a href="#tab3" onclick="switchTab(event, 'tab3')">Documentation</a></li>
@@ -645,8 +645,8 @@ const nav = amp.createNavigation('#nav-container', {
         <nav aria-label="Mobile navigation demo" style="background: white; padding: 1rem; border-bottom: 1px solid #dee2e6;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span style="font-weight: 600;">Logo</span>
-            <button class="nav-toggle" onclick="toggleMobileMenu()">
-              <span class="nav-toggle-icon"></span>
+            <button class="aiab-nav-toggle" onclick="toggleMobileMenu()">
+              <span class="aiab-nav-toggle-icon"></span>
             </button>
           </div>
           <ul class="vertical nav-mobile-hide" id="mobileMenu" style="margin-top: 1rem;">
@@ -675,7 +675,7 @@ const nav = amp.createNavigation('#nav-container', {
       <div class="nav-demo-container">
         <div class="nav-demo-header">Mega Menu Navigation</div>
         <nav aria-label="Mega menu navigation" style="background: white; padding: 1rem; position: relative;">
-          <ul class="horizontal">
+          <ul class="aiab-horizontal">
             <li><a href="#">Home</a></li>
             <li>
               <a href="#" onclick="toggleMegaMenu(event)">Products ▼</a>
@@ -735,7 +735,7 @@ const nav = amp.createNavigation('#nav-container', {
 
       <div class="demo-box" style="height: 400px; overflow-y: auto; position: relative;">
         <nav class="nav-sticky" aria-label="Sticky navigation example" style="background: white; border-bottom: 1px solid #dee2e6; padding: 1rem;">
-          <ul class="horizontal">
+          <ul class="aiab-horizontal">
             <li><a href="#">Sticky Nav Item 1</a></li>
             <li><a href="#">Sticky Nav Item 2</a></li>
             <li><a href="#">Sticky Nav Item 3</a></li>
@@ -756,7 +756,7 @@ const nav = amp.createNavigation('#nav-container', {
 
       <div class="code-example">
         <pre><code>&lt;nav class="nav-sticky"&gt;
-  &lt;ul class="horizontal"&gt;
+  &lt;ul class="aiab-horizontal"&gt;
     &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
