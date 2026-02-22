@@ -77,7 +77,7 @@
           <span class="helper-text">You can leave this field blank</span>
         </div>
 
-        <div class="form-field--required">
+        <div class="aiab-form-field--required">
           <label for="required2">Email Address</label>
           <input type="email" id="required2" class="aiab-form-control" placeholder="name@example.com">
         </div>
@@ -92,7 +92,7 @@
         <!-- Error State -->
         <div class="example-form">
           <h3>Error State</h3>
-          <div class="form-field error">
+          <div class="form-field aiab-error">
             <label for="error1">Email Address</label>
             <input type="email" id="error1" class="aiab-form-control" value="invalid.email">
             <span class="error-message">Please enter a valid email address</span>
@@ -100,7 +100,7 @@
 
           <div class="form-field">
             <label for="error2">Password</label>
-            <input type="password" id="error2" class="aiab-form-control error" value="123">
+            <input type="password" id="error2" class="aiab-form-control aiab-error" value="123">
             <span class="error-message">Password must be at least 8 characters</span>
           </div>
         </div>
@@ -183,8 +183,8 @@
         <div class="form-field">
           <label for="inline2">Invalid Entry</label>
           <div class="inline-validation">
-            <input type="text" id="inline2" class="aiab-form-control error" value="invalid">
-            <span class="validation-indicator error">✗</span>
+            <input type="text" id="inline2" class="aiab-form-control aiab-error" value="invalid">
+            <span class="validation-indicator aiab-error">✗</span>
           </div>
         </div>
 
@@ -204,7 +204,7 @@
       <h2>Validation Summary</h2>
       <div class="example-form">
 
-        <div class="validation-summary error">
+        <div class="validation-summary aiab-error">
           <h3 class="validation-summary-title">Please correct the following errors:</h3>
           <ul>
             <li>Email address is required</li>
@@ -229,7 +229,7 @@
       <h2>Field Group Validation</h2>
       <div class="example-form">
 
-        <div class="aiab-field-group error">
+        <div class="aiab-field-group aiab-error">
           <label>Select your interests (at least one required)</label>
           <div style="margin-top: 0.5rem;">
             <label style="display: block; margin-bottom: 0.5rem;">
