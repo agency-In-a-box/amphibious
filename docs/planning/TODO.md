@@ -58,6 +58,16 @@
 - [x] Fixed print.css .col selector to target [class*="aiab-col-"]
 - [x] Updated test assertions for prefixed class names
 
+### P6 Fixes
+- [x] Fixed accordion.js 'active' → 'aiab-active' class mismatch with CSS
+- [x] Renamed footer .amp-footer → .aiab-footer (wrong namespace prefix, 85 selectors)
+- [x] Prefixed file-upload.css base class and modifiers with .aiab-
+- [x] Prefixed switch--*, dropdown--* BEM modifiers
+- [x] Prefixed timeline filter/zoom, forms help-text/search-form, tables no-wrap/truncate
+- [x] Prefixed form-builder toolbar/toolbox/canvas/field classes (41 selectors)
+- [x] Updated JS class references in timeline.js, color-picker.js, form-builder.js
+- [x] Updated 4 HTML files with P6 class attribute and inline style fixes
+
 ## Remaining Work
 
 ### Known Namespace Gaps (Low Risk)
