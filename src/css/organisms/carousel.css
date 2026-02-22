@@ -8,24 +8,24 @@
 @import "@splidejs/splide/dist/css/splide.min.css";
 
 /* Amphibious Carousel Integration */
-.amp-carousel {
+.aiab-carousel {
   margin: 0 0 2rem 0;
   position: relative;
 }
 
-.amp-carousel .splide__track {
+.aiab-carousel .splide__track {
   overflow: hidden;
   border-radius: var(--border-radius, 0.375rem);
 }
 
-.amp-carousel .splide__list {
+.aiab-carousel .splide__list {
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
 }
 
-.amp-carousel .splide__slide {
+.aiab-carousel .splide__slide {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +34,7 @@
 }
 
 /* Card-style slides */
-.amp-carousel--cards .splide__slide {
+.aiab-carousel--cards .splide__slide {
   background: var(--card-background, #ffffff);
   border: 1px solid var(--border-color, #e5e7eb);
   border-radius: var(--border-radius, 0.375rem);
@@ -46,13 +46,13 @@
     box-shadow 0.2s ease;
 }
 
-.amp-carousel--cards .splide__slide:hover {
+.aiab-carousel--cards .splide__slide:hover {
   transform: translateY(-2px);
   box-shadow: var(--card-shadow-hover, 0 4px 12px rgba(0, 0, 0, 0.15));
 }
 
 /* Image carousel */
-.amp-carousel--images .splide__slide img {
+.aiab-carousel--images .splide__slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -60,7 +60,7 @@
 }
 
 /* Navigation arrows */
-.amp-carousel .splide__arrows {
+.aiab-carousel .splide__arrows {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -69,7 +69,7 @@
   z-index: 2;
 }
 
-.amp-carousel .splide__arrow {
+.aiab-carousel .splide__arrow {
   position: absolute;
   background: var(--carousel-arrow-bg, rgba(255, 255, 255, 0.9));
   border: 1px solid var(--border-color, #e5e7eb);
@@ -86,34 +86,34 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.amp-carousel .splide__arrow:hover {
+.aiab-carousel .splide__arrow:hover {
   background: var(--carousel-arrow-hover-bg, #ffffff);
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.amp-carousel .splide__arrow:disabled {
+.aiab-carousel .splide__arrow:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
 }
 
-.amp-carousel .splide__arrow--prev {
+.aiab-carousel .splide__arrow--prev {
   left: -1.25rem;
 }
 
-.amp-carousel .splide__arrow--next {
+.aiab-carousel .splide__arrow--next {
   right: -1.25rem;
 }
 
-.amp-carousel .splide__arrow svg {
+.aiab-carousel .splide__arrow svg {
   width: 1rem;
   height: 1rem;
   fill: currentColor;
 }
 
 /* Pagination dots */
-.amp-carousel .splide__pagination {
+.aiab-carousel .splide__pagination {
   margin-top: 1rem;
   padding: 0;
   list-style: none;
@@ -122,7 +122,7 @@
   gap: 0.5rem;
 }
 
-.amp-carousel .splide__pagination__page {
+.aiab-carousel .splide__pagination__page {
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 50%;
@@ -133,18 +133,18 @@
   position: relative;
 }
 
-.amp-carousel .splide__pagination__page:hover {
+.aiab-carousel .splide__pagination__page:hover {
   background: var(--carousel-dot-hover-bg, #9ca3af);
   transform: scale(1.2);
 }
 
-.amp-carousel .splide__pagination__page.aiab-is-active {
+.aiab-carousel .splide__pagination__page.aiab-is-active {
   background: var(--primary-color, var(--color-primary));
   transform: scale(1.3);
 }
 
 /* Progress bar variant */
-.amp-carousel--progress .splide__pagination {
+.aiab-carousel--progress .splide__pagination {
   margin-top: 1rem;
   height: 0.25rem;
   background: var(--carousel-progress-bg, #e5e7eb);
@@ -153,7 +153,7 @@
   position: relative;
 }
 
-.amp-carousel--progress .splide__pagination__page {
+.aiab-carousel--progress .splide__pagination__page {
   position: absolute;
   top: 0;
   left: 0;
@@ -166,113 +166,113 @@
   transition: transform 0.3s ease;
 }
 
-.amp-carousel--progress .splide__pagination__page.aiab-is-active {
+.aiab-carousel--progress .splide__pagination__page.aiab-is-active {
   transform: scaleX(1);
 }
 
 /* Carousel sizes */
-.amp-carousel--sm {
+.aiab-carousel--sm {
   max-height: 200px;
 }
 
-.amp-carousel--md {
+.aiab-carousel--md {
   max-height: 300px;
 }
 
-.amp-carousel--lg {
+.aiab-carousel--lg {
   max-height: 400px;
 }
 
-.amp-carousel--xl {
+.aiab-carousel--xl {
   max-height: 500px;
 }
 
 /* Thumbnail carousel */
-.amp-carousel--thumbnails {
+.aiab-carousel--thumbnails {
   margin-bottom: 1rem;
 }
 
-.amp-carousel--thumbnails .splide__slide {
+.aiab-carousel--thumbnails .splide__slide {
   cursor: pointer;
   opacity: 0.6;
   transition: opacity 0.2s ease;
 }
 
-.amp-carousel--thumbnails .splide__slide.aiab-is-active,
-.amp-carousel--thumbnails .splide__slide:hover {
+.aiab-carousel--thumbnails .splide__slide.aiab-is-active,
+.aiab-carousel--thumbnails .splide__slide:hover {
   opacity: 1;
 }
 
-.amp-carousel--thumbnails .splide__slide img {
+.aiab-carousel--thumbnails .splide__slide img {
   border-radius: var(--border-radius, 0.375rem);
   border: 2px solid transparent;
   transition: border-color 0.2s ease;
 }
 
-.amp-carousel--thumbnails .splide__slide.aiab-is-active img {
+.aiab-carousel--thumbnails .splide__slide.aiab-is-active img {
   border-color: var(--primary-color, var(--color-primary));
 }
 
 /* Testimonial carousel */
-.amp-carousel--testimonials .splide__slide {
+.aiab-carousel--testimonials .splide__slide {
   text-align: center;
   padding: 2rem;
 }
 
-.amp-carousel--testimonials blockquote {
+.aiab-carousel--testimonials blockquote {
   margin: 0 0 1rem 0;
   font-size: 1.125rem;
   font-style: italic;
   color: var(--text-muted, #6b7280);
 }
 
-.amp-carousel--testimonials cite {
+.aiab-carousel--testimonials cite {
   font-weight: 600;
   color: var(--text-color, #374151);
   font-style: normal;
 }
 
 /* Auto-height carousel */
-.amp-carousel--auto-height .splide__slide {
+.aiab-carousel--auto-height .splide__slide {
   height: auto;
 }
 
 /* Responsive behavior */
 @media (max-width: 768px) {
-  .amp-carousel .splide__arrow {
+  .aiab-carousel .splide__arrow {
     width: 2rem;
     height: 2rem;
   }
 
-  .amp-carousel .splide__arrow--prev {
+  .aiab-carousel .splide__arrow--prev {
     left: -1rem;
   }
 
-  .amp-carousel .splide__arrow--next {
+  .aiab-carousel .splide__arrow--next {
     right: -1rem;
   }
 
-  .amp-carousel--cards .splide__slide {
+  .aiab-carousel--cards .splide__slide {
     margin: 0 0.25rem;
     padding: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .amp-carousel .splide__arrow {
+  .aiab-carousel .splide__arrow {
     position: relative;
     margin: 1rem 0.5rem 0 0.5rem;
   }
 
-  .amp-carousel .splide__arrow--prev {
+  .aiab-carousel .splide__arrow--prev {
     left: auto;
   }
 
-  .amp-carousel .splide__arrow--next {
+  .aiab-carousel .splide__arrow--next {
     right: auto;
   }
 
-  .amp-carousel .splide__arrows {
+  .aiab-carousel .splide__arrows {
     position: relative;
     top: auto;
     transform: none;
@@ -284,47 +284,47 @@
 }
 
 /* Accessibility */
-.amp-carousel .splide__slide:focus {
+.aiab-carousel .splide__slide:focus {
   outline: 2px solid var(--focus-color, var(--color-primary));
   outline-offset: 2px;
 }
 
-.amp-carousel .splide__arrow:focus {
+.aiab-carousel .splide__arrow:focus {
   outline: 2px solid var(--focus-color, var(--color-primary));
   outline-offset: 2px;
 }
 
-.amp-carousel .splide__pagination__page:focus {
+.aiab-carousel .splide__pagination__page:focus {
   outline: 2px solid var(--focus-color, var(--color-primary));
   outline-offset: 2px;
 }
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
-  .amp-carousel .splide__arrow {
+  .aiab-carousel .splide__arrow {
     background: #ffffff;
     border: 2px solid #000000;
     color: #000000;
   }
 
-  .amp-carousel .splide__pagination__page {
+  .aiab-carousel .splide__pagination__page {
     border: 1px solid #000000;
   }
 
-  .amp-carousel .splide__pagination__page.aiab-is-active {
+  .aiab-carousel .splide__pagination__page.aiab-is-active {
     background: #000000;
   }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .amp-carousel .splide__slide,
-  .amp-carousel .splide__arrow,
-  .amp-carousel .splide__pagination__page {
+  .aiab-carousel .splide__slide,
+  .aiab-carousel .splide__arrow,
+  .aiab-carousel .splide__pagination__page {
     transition: none;
   }
 
-  .amp-carousel--cards .splide__slide:hover {
+  .aiab-carousel--cards .splide__slide:hover {
     transform: none;
   }
 }

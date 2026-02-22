@@ -316,7 +316,7 @@
       <h3>Basic HTML Structure</h3>
       <div class="code-block">
         <pre><code>&lt;!-- Auto-initialized carousel --&gt;
-&lt;div class="amp-carousel amp-carousel--cards"
+&lt;div class="aiab-carousel aiab-carousel--cards"
      data-carousel
      data-carousel-per-page="3"
      data-carousel-autoplay="true"
@@ -510,7 +510,7 @@ const carousel = amp.createCarousel('#my-carousel', {
         </thead>
         <tbody>
           <tr>
-            <td><code>.amp-carousel</code></td>
+            <td><code>.aiab-carousel</code></td>
             <td>Base carousel aiab-container class</td>
           </tr>
         </tbody>
@@ -526,23 +526,23 @@ const carousel = amp.createCarousel('#my-carousel', {
         </thead>
         <tbody>
           <tr>
-            <td><code>.amp-carousel--cards</code></td>
+            <td><code>.aiab-carousel--cards</code></td>
             <td>Card-style carousel with hover effects</td>
           </tr>
           <tr>
-            <td><code>.amp-carousel--images</code></td>
+            <td><code>.aiab-carousel--images</code></td>
             <td>Image gallery carousel</td>
           </tr>
           <tr>
-            <td><code>.amp-carousel--testimonials</code></td>
+            <td><code>.aiab-carousel--testimonials</code></td>
             <td>Testimonial carousel with centered text</td>
           </tr>
           <tr>
-            <td><code>.amp-carousel--thumbnails</code></td>
+            <td><code>.aiab-carousel--thumbnails</code></td>
             <td>Thumbnail navigation carousel</td>
           </tr>
           <tr>
-            <td><code>.amp-carousel--progress</code></td>
+            <td><code>.aiab-carousel--progress</code></td>
             <td>Progress bar aiab-pagination style</td>
           </tr>
         </tbody>
@@ -559,22 +559,22 @@ const carousel = amp.createCarousel('#my-carousel', {
         </thead>
         <tbody>
           <tr>
-            <td><code>.amp-carousel--sm</code></td>
+            <td><code>.aiab-carousel--sm</code></td>
             <td>200px</td>
             <td>Small carousel size</td>
           </tr>
           <tr>
-            <td><code>.amp-carousel--md</code></td>
+            <td><code>.aiab-carousel--md</code></td>
             <td>300px</td>
             <td>Medium carousel size</td>
           </tr>
           <tr>
-            <td><code>.amp-carousel--lg</code></td>
+            <td><code>.aiab-carousel--lg</code></td>
             <td>400px</td>
             <td>Large carousel size</td>
           </tr>
           <tr>
-            <td><code>.amp-carousel--xl</code></td>
+            <td><code>.aiab-carousel--xl</code></td>
             <td>500px</td>
             <td>Extra large carousel size</td>
           </tr>
@@ -681,7 +681,7 @@ carousel.refresh(); // Useful after dynamic content changes</code></pre>
       <div class="example">
         <div class="example-title">Image Gallery Carousel</div>
         <div class="code-block">
-          <pre><code>&lt;div class="amp-carousel amp-carousel--images amp-carousel--lg"
+          <pre><code>&lt;div class="aiab-carousel aiab-carousel--images aiab-carousel--lg"
      data-carousel
      data-carousel-type="slide"
      data-carousel-per-page="1"
@@ -696,7 +696,7 @@ carousel.refresh(); // Useful after dynamic content changes</code></pre>
       <div class="example">
         <div class="example-title">Product Cards Carousel</div>
         <div class="code-block">
-          <pre><code>&lt;div class="amp-carousel amp-carousel--cards"
+          <pre><code>&lt;div class="aiab-carousel aiab-carousel--cards"
      data-carousel
      data-carousel-per-page="3"
      data-carousel-gap="2rem"
@@ -715,7 +715,7 @@ carousel.refresh(); // Useful after dynamic content changes</code></pre>
       <div class="example">
         <div class="example-title">Testimonials Carousel</div>
         <div class="code-block">
-          <pre><code>&lt;div class="amp-carousel amp-carousel--testimonials"
+          <pre><code>&lt;div class="aiab-carousel aiab-carousel--testimonials"
      data-carousel
      data-carousel-per-page="1"
      data-carousel-autoplay="true"
@@ -734,14 +734,14 @@ carousel.refresh(); // Useful after dynamic content changes</code></pre>
         <div class="example-title">Synced Carousels (Main + Thumbnails)</div>
         <div class="code-block">
           <pre><code>&lt;!-- Main carousel --&gt;
-&lt;div id="main-carousel" class="amp-carousel amp-carousel--images"&gt;
+&lt;div id="main-carousel" class="aiab-carousel aiab-carousel--images"&gt;
   &lt;img src="main1.jpg" alt="Main view 1"&gt;
   &lt;img src="main2.jpg" alt="Main view 2"&gt;
   &lt;img src="main3.jpg" alt="Main view 3"&gt;
 &lt;/div&gt;
 
 &lt;!-- Thumbnail carousel --&gt;
-&lt;div id="thumb-carousel" class="amp-carousel amp-carousel--thumbnails"
+&lt;div id="thumb-carousel" class="aiab-carousel aiab-carousel--thumbnails"
      data-carousel-arrows="false"
      data-carousel-pagination="none"&gt;
   &lt;img src="https://picsum.photos/300/200?random=1" alt="Thumbnail 1"&gt;

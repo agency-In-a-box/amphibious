@@ -90,9 +90,9 @@ describe('Carousel Module', () => {
   });
 
   describe('DOM Structure Setup', () => {
-    it('should add amp-carousel class', () => {
+    it('should add aiab-carousel class', () => {
       new AmphibiousCarousel(carouselElement);
-      expect(carouselElement.classList.contains('amp-carousel')).toBe(true);
+      expect(carouselElement.classList.contains('aiab-carousel')).toBe(true);
     });
 
     it('should add splide class', () => {
@@ -141,22 +141,22 @@ describe('Carousel Module', () => {
   describe('CSS Classes', () => {
     it('should add variant class', () => {
       new AmphibiousCarousel(carouselElement, { variant: 'cards' });
-      expect(carouselElement.classList.contains('amp-carousel--cards')).toBe(true);
+      expect(carouselElement.classList.contains('aiab-carousel--cards')).toBe(true);
     });
 
     it('should not add default variant class', () => {
       new AmphibiousCarousel(carouselElement, { variant: 'default' });
-      expect(carouselElement.classList.contains('amp-carousel--default')).toBe(false);
+      expect(carouselElement.classList.contains('aiab-carousel--default')).toBe(false);
     });
 
     it('should add size class', () => {
       new AmphibiousCarousel(carouselElement, { size: 'lg' });
-      expect(carouselElement.classList.contains('amp-carousel--lg')).toBe(true);
+      expect(carouselElement.classList.contains('aiab-carousel--lg')).toBe(true);
     });
 
     it('should add progress class for progress pagination', () => {
       new AmphibiousCarousel(carouselElement, { pagination: 'progress' });
-      expect(carouselElement.classList.contains('amp-carousel--progress')).toBe(true);
+      expect(carouselElement.classList.contains('aiab-carousel--progress')).toBe(true);
     });
   });
 
@@ -195,11 +195,11 @@ describe('Carousel Module', () => {
   describe('Static autoInit', () => {
     it('should auto-initialize carousels with data-carousel attribute', () => {
       document.body.innerHTML = `
-        <div class="amp-carousel" data-carousel>
+        <div class="aiab-carousel" data-carousel>
           <div>Slide A</div>
           <div>Slide B</div>
         </div>
-        <div class="amp-carousel" data-carousel>
+        <div class="aiab-carousel" data-carousel>
           <div>Slide C</div>
           <div>Slide D</div>
         </div>
@@ -211,7 +211,7 @@ describe('Carousel Module', () => {
 
     it('should parse data attributes for options', () => {
       document.body.innerHTML = `
-        <div class="amp-carousel" data-carousel
+        <div class="aiab-carousel" data-carousel
              data-carousel-variant="testimonials"
              data-carousel-size="xl"
              data-carousel-per-page="4"
@@ -223,9 +223,9 @@ describe('Carousel Module', () => {
       const carousels = AmphibiousCarousel.autoInit();
       expect(carousels.length).toBe(1);
 
-      const el = document.querySelector('.amp-carousel') as HTMLElement;
-      expect(el.classList.contains('amp-carousel--testimonials')).toBe(true);
-      expect(el.classList.contains('amp-carousel--xl')).toBe(true);
+      const el = document.querySelector('.aiab-carousel') as HTMLElement;
+      expect(el.classList.contains('aiab-carousel--testimonials')).toBe(true);
+      expect(el.classList.contains('aiab-carousel--xl')).toBe(true);
     });
 
     it('should handle initialization errors gracefully', () => {
