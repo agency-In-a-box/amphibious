@@ -7,7 +7,7 @@
 /*
  * Color Contrast Analysis:
  * - #ED8B00 (primary orange) with white: 2.95:1 ❌ FAIL (needs 4.5:1)
- * - #c97400 (dark orange) with white: 3.8:1 ❌ FAIL for small text
+ * - var(--color-primary-dark) (dark orange) with white: 3.8:1 ❌ FAIL for small text
  * - #ED8B00 with black: 7.1:1 ✅ PASS
  *
  * Solution: Use darker backgrounds or darker text
@@ -24,7 +24,7 @@
 .doc-header,
 .demo-header {
   /* Darken the gradient for better contrast */
-  background: linear-gradient(135deg, #c97400 0%, #a65e00 100%);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, #a65e00 100%);
   color: white;
 }
 
@@ -71,9 +71,9 @@
 .aiab-button--primary,
 .aiab-btn-primary,
 button[type="submit"] {
-  background: #c97400;
+  background: var(--color-primary-dark);
   color: white;
-  border-color: #c97400;
+  border-color: var(--color-primary-dark);
 }
 
 .aiab-button--primary:hover,
@@ -87,12 +87,12 @@ button[type="submit"]:hover {
 .aiab-button--outline-primary,
 .aiab-btn-outline-primary {
   color: #a65e00;
-  border-color: #c97400;
+  border-color: var(--color-primary-dark);
 }
 
 .aiab-button--outline-primary:hover,
 .aiab-btn-outline-primary:hover {
-  background: #c97400;
+  background: var(--color-primary-dark);
   color: white;
 }
 
@@ -125,7 +125,7 @@ a {
 }
 
 a:hover {
-  color: #c97400;
+  color: var(--color-primary-dark);
 }
 
 a:visited {
@@ -151,7 +151,7 @@ a:visited {
 
 .aiab-badge--primary,
 .aiab-tag--primary {
-  background: #c97400;
+  background: var(--color-primary-dark);
   color: white;
 }
 
@@ -188,11 +188,11 @@ a:visited {
 }
 
 .aiab-text-primary-light {
-  color: #c97400; /* Use sparingly */
+  color: var(--color-primary-dark); /* Use sparingly */
 }
 
 .aiab-bg-primary {
-  background-color: #c97400;
+  background-color: var(--color-primary-dark);
   color: white;
 }
 
@@ -203,7 +203,7 @@ a:visited {
 
 /* Border utilities */
 .aiab-border-primary {
-  border-color: #c97400;
+  border-color: var(--color-primary-dark);
 }
 
 /* ========================================
@@ -227,12 +227,12 @@ a:visited {
 
 /* Selection colors */
 ::selection {
-  background: #c97400;
+  background: var(--color-primary-dark);
   color: white;
 }
 
 ::-moz-selection {
-  background: #c97400;
+  background: var(--color-primary-dark);
   color: white;
 }
 
@@ -264,7 +264,7 @@ a:visited {
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) a {
-    color: #ff9500; /* Lighter orange in dark mode */
+    color: var(--color-primary-hover); /* Lighter orange in dark mode */
   }
 
   :root:not([data-theme="light"]) a:hover {
@@ -272,7 +272,7 @@ a:visited {
   }
 
   :root:not([data-theme="light"]) .aiab-text-primary {
-    color: #ff9500;
+    color: var(--color-primary-hover);
   }
 
   :root:not([data-theme="light"]) .hero,
@@ -292,7 +292,7 @@ a:visited {
   .docs-header {
     background: none;
     color: black;
-    border-bottom: 2px solid #c97400;
+    border-bottom: 2px solid var(--color-primary-dark);
   }
 
   a {

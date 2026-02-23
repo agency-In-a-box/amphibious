@@ -53,8 +53,8 @@
 }
 
 .aiab-toolbar-btn.aiab-primary:hover {
-  background: var(--apple-orange-600, #d87a00);
-  border-color: var(--apple-orange-600, #d87a00);
+  background: var(--color-primary-active);
+  border-color: var(--color-primary-active);
   transform: translateY(-1px);
   box-shadow: 0 2px 8px var(--color-primary-alpha-30);
 }

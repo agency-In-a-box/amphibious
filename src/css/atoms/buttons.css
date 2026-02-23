@@ -18,8 +18,8 @@
   --btn-primary-bg: var(--color-primary);
   --btn-primary-border: var(--color-primary);
   --btn-primary-color: #fff;
-  --btn-primary-hover-bg: var(--color-primary-hover, #ff9500);
-  --btn-primary-hover-border: var(--color-primary-active, #d87a00);
+  --btn-primary-hover-bg: var(--color-primary-hover);
+  --btn-primary-hover-border: var(--color-primary-active);
 
   --btn-secondary-bg: #6c757d;
   --btn-secondary-border: #6c757d;

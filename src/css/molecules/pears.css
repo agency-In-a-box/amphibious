@@ -49,7 +49,7 @@ ul.aiab-stats li .aiab-stat-value {
 }
 
 ul.aiab-stats li a:hover {
-  color: var(--primary-hover, #c97400);
+  color: var(--color-primary-dark);
 }
 
 ul.aiab-stats li span,
