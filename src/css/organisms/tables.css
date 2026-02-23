@@ -11,7 +11,7 @@
   /* Table Colors */
   --table-bg: #ffffff;
   --table-text: #333333;
-  --table-border: #e5e7eb;
+  --table-border: var(--color-gray-300);
   --table-header-bg: #f9fafb;
   --table-header-text: #111827;
   --table-row-hover: #f3f4f6;

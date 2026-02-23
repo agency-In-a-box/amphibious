@@ -8,7 +8,7 @@
 :root {
   /* Pagination Colors */
   --pagination-bg: #ffffff;
-  --pagination-border: #e5e7eb;
+  --pagination-border: var(--color-gray-300);
   --pagination-text: #374151;
   --pagination-text-hover: #1f2937;
   --pagination-text-disabled: #9ca3af;

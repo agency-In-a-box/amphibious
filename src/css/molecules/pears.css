@@ -166,7 +166,7 @@ ol.aiab-slats li,
 ul.aiab-slats li {
   margin: 0 0 1.5rem 0;
   padding: 0 0 1.5rem 0;
-  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  border-bottom: 1px solid var(--border-color, var(--color-gray-300));
 }
 
 ol.aiab-slats li:last-child,
@@ -227,7 +227,7 @@ ul.aiab-slats li:last-child {
   height: 80px;
   object-fit: cover;
   border-radius: 8px;
-  border: 1px solid var(--border-color, #e5e7eb);
+  border: 1px solid var(--border-color, var(--color-gray-300));
   flex-shrink: 0;
   transition: transform 0.2s;
 }
@@ -261,8 +261,8 @@ ol.aiab-slats.aiab-slats--cards li,
   background: white;
   border-radius: 8px;
   padding: 1.5rem;
-  border: 1px solid var(--border-color, #e5e7eb);
-  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  border: 1px solid var(--border-color, var(--color-gray-300));
+  border-bottom: 1px solid var(--border-color, var(--color-gray-300));
   margin: 0;
   transition: box-shadow 0.2s;
 }
@@ -385,8 +385,8 @@ article.aside > .aiab-main-content:not([class*="col-"]) {
   display: flex;
   justify-content: space-around;
   padding: 1.5rem 0;
-  border-top: 1px solid var(--border-color, #e5e7eb);
-  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  border-top: 1px solid var(--border-color, var(--color-gray-300));
+  border-bottom: 1px solid var(--border-color, var(--color-gray-300));
   margin: 1.5rem 0;
 }
 
@@ -418,7 +418,7 @@ article.aside > .aiab-main-content:not([class*="col-"]) {
 
 .aiab-review-slats li {
   padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  border-bottom: 1px solid var(--border-color, var(--color-gray-300));
 }
 
 .aiab-review-slats .aiab-review-header {

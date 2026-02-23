@@ -15,7 +15,7 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: #e5e7eb;
+  background-color: var(--color-gray-300);
   color: #6b7280;
   font-weight: 500;
   font-size: 1rem;
@@ -327,7 +327,7 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: #e5e7eb;
+  background-color: var(--color-gray-300);
   color: #4b5563;
   font-weight: 600;
   font-size: 0.875rem;
@@ -368,7 +368,7 @@
    ======================================== */
 
 .aiab-avatar--placeholder {
-  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background: linear-gradient(90deg, #f3f4f6 25%, var(--color-gray-300) 50%, #f3f4f6 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
 }
@@ -461,7 +461,7 @@
 
   .aiab-avatar--light {
     background-color: #4b5563;
-    color: #e5e7eb;
+    color: var(--color-gray-300);
   }
 
   .aiab-avatar-status {

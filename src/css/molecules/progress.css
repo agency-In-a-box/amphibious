@@ -10,7 +10,7 @@
   --progress-height: 0.5rem;
   --progress-height-sm: 0.25rem;
   --progress-height-lg: 1rem;
-  --progress-bg: #e5e7eb;
+  --progress-bg: var(--color-gray-300);
   --progress-border-radius: 0.25rem;
   --progress-bar-bg: var(--color-primary);
   --progress-bar-transition: width 0.6s ease;
