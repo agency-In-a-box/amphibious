@@ -9,7 +9,7 @@
    ======================================== */
 
 .aiab-accordion {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-gray-300);
   border-radius: 0.5rem;
   overflow: hidden;
   background: white;
@@ -22,7 +22,7 @@
 
 .aiab-accordion--separated .aiab-accordion-item {
   margin-bottom: 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-gray-300);
   border-radius: 0.5rem;
 }
 
@@ -35,7 +35,7 @@
    ======================================== */
 
 .aiab-accordion-item {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-gray-300);
   background: white;
 }
 
@@ -45,7 +45,7 @@
 
 .aiab-accordion-item.aiab-active .aiab-accordion-header {
   background-color: #f9fafb;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-gray-300);
 }
 
 /* ========================================
@@ -186,11 +186,11 @@
 
 /* Bordered variant */
 .aiab-accordion--bordered {
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--color-gray-300);
 }
 
 .aiab-accordion--bordered .aiab-accordion-item {
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid var(--color-gray-300);
 }
 
 /* Shadow variant */

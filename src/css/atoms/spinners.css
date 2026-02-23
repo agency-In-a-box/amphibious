@@ -10,7 +10,7 @@
   --spinner-size: 2rem;
   --spinner-border-width: 0.2rem;
   --spinner-color: var(--color-primary);
-  --spinner-track-color: #e5e7eb;
+  --spinner-track-color: var(--color-gray-300);
   --spinner-speed: 1s;
 }
 

@@ -261,7 +261,7 @@
 
 .aiab-switch--disabled .aiab-switch-slider {
   cursor: not-allowed;
-  background-color: #e5e7eb;
+  background-color: var(--color-gray-300);
 }
 
 .aiab-switch--disabled .aiab-switch-input:checked + .aiab-switch-slider {
@@ -331,8 +331,8 @@
 }
 
 .aiab-switch--ios .aiab-switch-slider {
-  background-color: #e5e7eb;
-  border: 2px solid #e5e7eb;
+  background-color: var(--color-gray-300);
+  border: 2px solid var(--color-gray-300);
 }
 
 .aiab-switch--ios .aiab-switch-slider::before {

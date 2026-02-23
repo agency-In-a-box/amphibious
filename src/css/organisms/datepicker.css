@@ -63,7 +63,7 @@
   z-index: 1000;
   display: none;
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-gray-300);
   border-radius: 0.5rem;
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -97,7 +97,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-gray-300);
   background: #f9fafb;
   border-radius: 0.5rem 0.5rem 0 0;
 }
@@ -270,7 +270,7 @@
 
 /* Disabled days */
 .aiab-datepicker-day--disabled {
-  color: #e5e7eb;
+  color: var(--color-gray-300);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -343,7 +343,7 @@
    ======================================== */
 
 .aiab-datepicker-time {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-gray-300);
   padding: 0.75rem;
   display: flex;
   align-items: center;
@@ -408,7 +408,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-gray-300);
   background: #f9fafb;
   border-radius: 0 0 0.5rem 0.5rem;
 }

@@ -28,6 +28,7 @@
 @import "./atoms/avatar.css";
 @import "./atoms/switch.css";
 @import "./atoms/skeleton.css";
+@import "./atoms/framework-banner.css";
 
 /* Molecules - Simple component combinations */
 @import "./molecules/alerts.css";

@@ -14,7 +14,7 @@
   --breadcrumb-separator: #9ca3af;
   --breadcrumb-bg: transparent;
   --breadcrumb-bg-hover: var(--color-primary-alpha-8); /* Subtle brand orange background */
-  --breadcrumb-border: #e5e7eb;
+  --breadcrumb-border: var(--color-gray-300);
 
   /* Breadcrumb Spacing and Sizing - 4px grid aligned */
   --breadcrumb-padding: 0.5rem 0.75rem; /* 8px 12px = 2×4px 3×4px */

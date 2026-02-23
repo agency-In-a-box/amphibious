@@ -26,7 +26,7 @@
   --alert-error-icon: #ef4444;
 
   --alert-neutral-bg: #f9fafb;
-  --alert-neutral-border: #e5e7eb;
+  --alert-neutral-border: var(--color-gray-300);
   --alert-neutral-text: #374151;
   --alert-neutral-icon: #6b7280;
 

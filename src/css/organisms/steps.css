@@ -10,7 +10,7 @@
   --step-bg: #f3f4f6;
   --step-bg-active: var(--color-primary, var(--color-primary));
   --step-bg-complete: #10b981;
-  --step-border: #e5e7eb;
+  --step-border: var(--color-gray-300);
   --step-border-active: var(--color-primary, var(--color-primary));
   --step-border-complete: #10b981;
   --step-text: #6b7280;
@@ -22,7 +22,7 @@
   --step-description: #9ca3af;
 
   /* Connection Line */
-  --step-line: #e5e7eb;
+  --step-line: var(--color-gray-300);
   --step-line-complete: #10b981;
 
   /* Step Sizing */

@@ -9,7 +9,7 @@
   /* Tab Colors */
   --tab-bg: transparent;
   --tab-bg-active: #ffffff;
-  --tab-border: #e5e7eb;
+  --tab-border: var(--color-gray-300);
   --tab-border-active: var(--color-primary, var(--color-primary));
   --tab-text: #6b7280;
   --tab-text-hover: #374151;
@@ -19,7 +19,7 @@
 
   /* Tab Panel Colors */
   --tab-panel-bg: #ffffff;
-  --tab-panel-border: #e5e7eb;
+  --tab-panel-border: var(--color-gray-300);
 
   /* Tab Spacing and Sizing */
   --tab-padding: 0.75rem 1rem;

@@ -100,7 +100,7 @@
   width: 1.25rem;
   height: 1.25rem;
   display: none;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--color-gray-300);
   border-top-color: #2563eb;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
@@ -132,7 +132,7 @@
   z-index: 1000;
   display: none;
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-gray-300);
   border-radius: 0.5rem;
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -180,7 +180,7 @@
 
 .aiab-search-bar-item:focus {
   outline: none;
-  background-color: #e5e7eb;
+  background-color: var(--color-gray-300);
 }
 
 .aiab-search-bar-item--active {
@@ -339,7 +339,7 @@
   display: flex;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-gray-300);
   overflow-x: auto;
 }
 
@@ -375,7 +375,7 @@
 }
 
 .aiab-search-bar-group + .aiab-search-bar-group {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-gray-300);
 }
 
 .aiab-search-bar-group-label {
@@ -436,7 +436,7 @@
 .aiab-search-bar--inline .aiab-search-bar-dropdown {
   position: static;
   border: none;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-gray-300);
   border-radius: 0 0 0.5rem 0.5rem;
   box-shadow: none;
   max-height: 15rem;

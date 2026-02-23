@@ -271,7 +271,7 @@
 .aiab-tooltip--light {
   --tooltip-bg: #f9fafb;
   --tooltip-color: #1f2937;
-  --tooltip-border-color: #e5e7eb;
+  --tooltip-border-color: var(--color-gray-300);
 }
 
 /* Tooltip Sizes */
