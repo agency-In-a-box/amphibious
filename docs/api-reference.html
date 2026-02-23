@@ -17,7 +17,7 @@
 
     /* Documentation Header */
     .docs-header {
-      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
+      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, #c97400 100%);
       color: white;
       padding: 3rem 0;
       margin-bottom: 3rem;
@@ -80,11 +80,11 @@
     }
     .docs-nav a:hover {
       background: #f8f9fa;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
     }
     .docs-nav a.aiab-active {
       background: #f0f4ff;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
       font-weight: 500;
     }
     .docs-nav ul ul {
@@ -122,7 +122,7 @@
     /* API Method/Class Signatures */
     .api-signature {
       background: #f8f9fa;
-      border-left: 4px solid #ED8B00;
+      border-left: 4px solid var(--color-primary, #ed8b00);
       padding: 1rem 1.25rem;
       margin: 1rem 0;
       border-radius: 4px;
@@ -216,7 +216,7 @@
     }
     .css-class-card h4 {
       margin: 0 0 0.5rem 0;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
       font-family: 'Courier New', Courier, monospace;
     }
     .css-class-card p {
@@ -281,7 +281,7 @@
     }
     .search-input:focus {
       outline: none;
-      border-color: #ED8B00;
+      border-color: var(--color-primary, #ed8b00);
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
