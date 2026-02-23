@@ -344,7 +344,7 @@ class FormBuilder {
           type: 'color',
           label: 'Choose Color',
           name: '',
-          value: '#ED8B00',
+          value: '#ed8b00',
         },
       },
       range: {

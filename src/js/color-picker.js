@@ -18,7 +18,7 @@ class ColorPicker {
     this.element = element;
     this.options = {
       // Basic options
-      value: options.value || element.value || '#ED8B00',
+      value: options.value || element.value || '#ed8b00',
       format: options.format || 'hex', // hex, rgb, hsl
       alpha: options.alpha !== false,
       inline: options.inline || false,

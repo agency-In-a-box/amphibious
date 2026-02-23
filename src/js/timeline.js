@@ -58,7 +58,7 @@ class Timeline {
 
       // Colors
       colors: options.colors || {
-        default: 'var(--apple-orange-500, #ed8b00)',
+        default: 'var(--color-primary, #ed8b00)',
         milestone: 'var(--apple-success, #34c759)',
         today: 'var(--apple-info, #007aff)',
         connector: 'var(--apple-gray-300, #e0e0e0)',
