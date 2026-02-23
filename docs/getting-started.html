@@ -17,7 +17,7 @@
 
     /* Documentation Header */
     .docs-header {
-      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, #c97400 100%);
+      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, var(--color-primary-dark, #c97400) 100%);
       color: white;
       padding: 3rem 0;
       margin-bottom: 3rem;
@@ -532,7 +532,7 @@ import { createNavigation, createModal } from '@amphibious/core';</code></pre>
             <pre><code>:root {
   /* Colors */
   --color-primary: #ED8B00;
-  --color-secondary: #c97400;
+  --color-secondary: var(--color-primary-dark, #c97400);
   --color-success: #48bb78;
   --color-danger: #f56565;
   --color-warning: #ed8936;
