@@ -12,7 +12,7 @@
   /* Primary Palette - Pantone 144 Orange (canonical: #ed8b00) */
   --apple-orange: var(--color-primary);
   --apple-orange-light: #ff9f1c;
-  --apple-orange-dark: #d87a00;
+  --apple-orange-dark: var(--color-primary-active);
   --apple-orange-subtle: var(--color-primary-alpha-8);
   --apple-orange-fade: var(--color-primary-alpha-4);
 

@@ -132,18 +132,13 @@
   --apple-orange-800: #a85900;
   --apple-orange-900: #7a4100;
 
-  /* Consolidate all orange variations */
-  --color-primary: var(--apple-orange-500);
-  --color-primary-hover: var(--apple-orange-600);
-  --color-primary-active: var(--apple-orange-700);
-  --color-primary-light: var(--apple-orange-300);
-  --color-primary-dark: var(--apple-orange-700);
+  /* Primary color variants now defined in design-tokens.css — single source of truth */
 
   /* Gray scale defined in apple-design-system.css — not overridden here */
 
   /* Semantic colors that harmonize with orange */
   --apple-success: #34c759; /* Apple's green */
-  --apple-warning: #ff9500; /* Complementary orange */
+  --apple-warning: var(--color-primary-hover); /* Complementary orange */
   --apple-danger: #ff3b30; /* Apple's red */
   --apple-info: #007aff; /* Apple's blue */
 }
