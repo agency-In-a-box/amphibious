@@ -13,7 +13,7 @@
     }
 
     .docs-header {
-      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, var(--color-primary-dark, #c97400) 100%);
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
       color: white;
       padding: 4rem 0 3rem;
       margin-bottom: 0;
@@ -64,7 +64,7 @@
 
     .search-input:focus {
       outline: none;
-      border-color: var(--color-primary, #ed8b00);
+      border-color: var(--color-primary);
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
@@ -93,9 +93,9 @@
     }
 
     .filter-tag.aiab-active {
-      background: var(--color-primary, #ed8b00);
+      background: var(--color-primary);
       color: white;
-      border-color: var(--color-primary-dark, #c97400);
+      border-color: var(--color-primary-dark);
     }
 
     .results-info {
@@ -130,7 +130,7 @@
     }
 
     .category-count {
-      background: var(--color-primary, #ed8b00);
+      background: var(--color-primary);
       color: white;
       padding: 0.25rem 0.75rem;
       border-radius: 12px;
@@ -157,7 +157,7 @@
     }
 
     .icon-item:hover {
-      border-color: var(--color-primary, #ed8b00);
+      border-color: var(--color-primary);
       background: white;
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -183,7 +183,7 @@
     }
 
     .icon-item:hover .icon-display i {
-      color: var(--color-primary, #ed8b00);
+      color: var(--color-primary);
     }
 
     .icon-name {
@@ -250,7 +250,7 @@
       position: absolute;
       top: 8px;
       right: 8px;
-      background: var(--color-primary, #ed8b00);
+      background: var(--color-primary);
       color: white;
       border: none;
       padding: 0.25rem 0.5rem;
@@ -261,7 +261,7 @@
     }
 
     .copy-button:hover {
-      background: var(--color-primary-dark, #c97400);
+      background: var(--color-primary-dark);
     }
 
     /* Responsive Design */
@@ -487,7 +487,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
 .icon--xl  { width: 32px; height: 32px; }
 
 /* Color variations */
-.icon--primary   { color: #ED8B00; }
+.icon--primary   { color: var(--color-primary); }
 .icon--secondary { color: #6c757d; }
 .icon--success   { color: #28a745; }
 .icon--danger    { color: #dc3545; }
@@ -1050,7 +1050,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
 
         setTimeout(() => {
           button.textContent = originalText;
-          button.style.background = '#ED8B00';
+          button.style.background = 'var(--color-primary)';
         }, 2000);
       }).catch(err => {
         console.error('Failed to copy: ', err);
