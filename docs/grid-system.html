@@ -16,7 +16,7 @@
       background: #f8f9fa;
     }
     .doc-header {
-      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, #c97400 100%);
+      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, var(--color-primary-dark, #c97400) 100%);
       color: white;
       padding: 3rem 0;
       margin-bottom: 3rem;
@@ -103,7 +103,7 @@
       margin-bottom: 0;
     }
     .aiab-grid-example [class*="col-"] {
-      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, #c97400 100%);
+      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, var(--color-primary-dark, #c97400) 100%);
       color: white;
       padding: 1rem;
       text-align: center;
@@ -146,10 +146,10 @@
       transition: background 0.2s;
     }
     .demo-controls button:hover {
-      background: #c97400;
+      background: var(--color-primary-dark, #c97400);
     }
     .demo-controls button.aiab-active {
-      background: #c97400;
+      background: var(--color-primary-dark, #c97400);
     }
 
     /* Responsive Preview */
@@ -549,10 +549,10 @@
             <div style="padding: 1rem;">
               <strong>10 Column Parent</strong>
               <div class="aiab-row" style="margin-top: 1rem;">
-                <div class="aiab-col-6 first" style="background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, #c97400 100%); color: white;">
+                <div class="aiab-col-6 first" style="background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, var(--color-primary-dark, #c97400) 100%); color: white;">
                   6 Nested
                 </div>
-                <div class="aiab-col-4 last" style="background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, #c97400 100%); color: white;">
+                <div class="aiab-col-4 last" style="background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, var(--color-primary-dark, #c97400) 100%); color: white;">
                   4 Nested
                 </div>
               </div>
