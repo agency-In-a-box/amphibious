@@ -5,729 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart - Amphibious 2.0 E-commerce</title>
   <meta name="description" content="Full-featured shopping cart with product management, pricing calculations, and checkout integration">
-  <style>
-    /* Base Styles */
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-      color: #2c3e50;
-      margin: 0;
-      background: #f8f9fa;
-    }
-
-    /* Header */
-    .cart-header {
-      background: white;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 1rem 0;
-      margin-bottom: 2rem;
-    }
-
-    .cart-header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cart-title {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .cart-title h1 {
-      margin: 0;
-      font-size: 1.75rem;
-      font-weight: 600;
-    }
-
-    .cart-count {
-      background: var(--color-primary, #ed8b00);
-      color: white;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.875rem;
-      font-weight: 600;
-    }
-
-    .continue-shopping {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--color-primary, #ed8b00);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .continue-shopping:hover {
-      color: var(--color-primary-dark, #c97400);
-    }
-
-    /* Cart Progress */
-    .cart-progress {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-
-    .progress-steps {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .progress-step {
-      flex: 1;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .progress-step::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      left: -50%;
-      right: 50%;
-      height: 2px;
-      background: #dee2e6;
-      z-index: -1;
-    }
-
-    .progress-step:first-child::before {
-      display: none;
-    }
-
-    .progress-step.completed::before {
-      background: #28a745;
-    }
-
-    .progress-step-icon {
-      width: 40px;
-      height: 40px;
-      background: #dee2e6;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 0.5rem;
-      color: #6c757d;
-      transition: all 0.2s;
-    }
-
-    .progress-step.aiab-active .progress-step-icon {
-      background: var(--color-primary, #ed8b00);
-      color: white;
-      transform: scale(1.1);
-    }
-
-    .progress-step.completed .progress-step-icon {
-      background: #28a745;
-      color: white;
-    }
-
-    .progress-step-label {
-      font-size: 0.875rem;
-      color: #6c757d;
-    }
-
-    .progress-step.aiab-active .progress-step-label {
-      color: var(--color-primary, #ed8b00);
-      font-weight: 600;
-    }
-
-    /* Cart Items */
-    .cart-items {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-
-    .cart-items-header {
-      padding: 1.5rem;
-      border-bottom: 1px solid #dee2e6;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .select-all {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
-
-    .select-all input {
-      cursor: pointer;
-    }
-
-    .clear-cart {
-      color: #dc3545;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 0.875rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: opacity 0.2s;
-    }
-
-    .clear-cart:hover {
-      opacity: 0.8;
-    }
-
-    /* Cart Item */
-    .cart-item {
-      padding: 1.5rem;
-      border-bottom: 1px solid #f0f0f0;
-      display: flex;
-      gap: 1rem;
-      transition: background 0.2s;
-    }
-
-    .cart-item:hover {
-      background: #f8f9fa;
-    }
-
-    .cart-item:last-child {
-      border-bottom: none;
-    }
-
-    .cart-item-checkbox {
-      padding-top: 2rem;
-    }
-
-    .cart-item-image {
-      width: 120px;
-      height: 120px;
-      background: #f8f9fa;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .cart-item-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .cart-item-details {
-      flex: 1;
-    }
-
-    .cart-item-name {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: #2c3e50;
-      margin: 0 0 0.5rem 0;
-      text-decoration: none;
-      display: block;
-      transition: color 0.2s;
-    }
-
-    .cart-item-name:hover {
-      color: var(--color-primary, #ed8b00);
-    }
-
-    .cart-item-variants {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.875rem;
-      color: #6c757d;
-    }
-
-    .cart-item-variant {
-      display: flex;
-      gap: 0.25rem;
-    }
-
-    .cart-item-stock {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      margin-bottom: 1rem;
-    }
-
-    .in-stock {
-      color: #28a745;
-    }
-
-    .low-stock {
-      color: #ffc107;
-    }
-
-    .out-of-stock {
-      color: #dc3545;
-    }
-
-    .cart-item-actions {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .quantity-selector {
-      display: flex;
-      align-items: center;
-      border: 1px solid #dee2e6;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .quantity-selector button {
-      width: 36px;
-      height: 36px;
-      border: none;
-      background: white;
-      cursor: pointer;
-      font-size: 1.125rem;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .quantity-selector button:hover {
-      background: #f8f9fa;
-    }
-
-    .quantity-selector button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .quantity-selector input {
-      width: 50px;
-      text-align: center;
-      border: none;
-      border-left: 1px solid #dee2e6;
-      border-right: 1px solid #dee2e6;
-      height: 36px;
-      font-size: 1rem;
-    }
-
-    .cart-item-price {
-      text-align: right;
-      min-width: 120px;
-    }
-
-    .price-current {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #2c3e50;
-    }
-
-    .price-original {
-      font-size: 0.875rem;
-      color: #6c757d;
-      text-decoration: line-through;
-    }
-
-    .price-savings {
-      font-size: 0.75rem;
-      color: #28a745;
-      margin-top: 0.25rem;
-    }
-
-    .cart-item-remove {
-      background: none;
-      border: none;
-      color: #6c757d;
-      cursor: pointer;
-      padding: 0.5rem;
-      transition: color 0.2s;
-    }
-
-    .cart-item-remove:hover {
-      color: #dc3545;
-    }
-
-    .save-for-later {
-      background: none;
-      border: none;
-      color: var(--color-primary, #ed8b00);
-      cursor: pointer;
-      font-size: 0.875rem;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      transition: opacity 0.2s;
-    }
-
-    .save-for-later:hover {
-      opacity: 0.8;
-    }
-
-    /* Empty Cart */
-    .empty-cart {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .empty-cart-icon {
-      font-size: 4rem;
-      color: #dee2e6;
-      margin-bottom: 1rem;
-    }
-
-    .empty-cart h2 {
-      color: #6c757d;
-      margin-bottom: 0.5rem;
-    }
-
-    .empty-cart p {
-      color: #6c757d;
-      margin-bottom: 2rem;
-    }
-
-    .empty-cart-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    /* Cart Summary */
-    .cart-sidebar {
-      position: sticky;
-      top: 100px;
-    }
-
-    .cart-summary {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .cart-summary h2 {
-      margin: 0 0 1.5rem 0;
-      font-size: 1.25rem;
-      color: #2c3e50;
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      font-size: 0.9375rem;
-    }
-
-    .summary-row.total {
-      padding-top: 1rem;
-      border-top: 2px solid #dee2e6;
-      margin-bottom: 1.5rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
-
-    .summary-label {
-      color: #6c757d;
-    }
-
-    .total .summary-label {
-      color: #2c3e50;
-    }
-
-    .summary-value {
-      color: #2c3e50;
-      font-weight: 500;
-    }
-
-    .savings-value {
-      color: #28a745;
-    }
-
-    .checkout-button {
-      width: 100%;
-      padding: 1rem;
-      background: var(--color-primary, #ed8b00);
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 1.125rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .checkout-button:hover {
-      background: var(--color-primary-dark, #c97400);
-    }
-
-    .paypal-button {
-      width: 100%;
-      padding: 1rem;
-      background: #ffc439;
-      color: #111;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 0.75rem;
-      transition: background 0.2s;
-    }
-
-    .paypal-button:hover {
-      background: #f0b929;
-    }
-
-    /* Promo Code */
-    .promo-code {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .promo-code h3 {
-      margin: 0 0 1rem 0;
-      font-size: 1rem;
-      color: #2c3e50;
-    }
-
-    .promo-form {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .promo-input {
-      flex: 1;
-      padding: 0.75rem;
-      border: 1px solid #dee2e6;
-      border-radius: 4px;
-      font-size: 0.875rem;
-    }
-
-    .promo-button {
-      padding: 0.75rem 1.5rem;
-      background: white;
-      color: var(--color-primary, #ed8b00);
-      border: 2px solid var(--color-primary, #ed8b00);
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .promo-button:hover {
-      background: var(--color-primary, #ed8b00);
-      color: white;
-    }
-
-    .promo-applied {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem;
-      background: #e8f5e9;
-      border-radius: 4px;
-      margin-top: 1rem;
-    }
-
-    .promo-applied-code {
-      font-weight: 600;
-      color: #2e7d32;
-    }
-
-    .promo-remove {
-      background: none;
-      border: none;
-      color: #dc3545;
-      cursor: pointer;
-      font-size: 0.875rem;
-    }
-
-    /* Security Features */
-    .security-features {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-    }
-
-    .security-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      font-size: 0.875rem;
-      color: #6c757d;
-    }
-
-    .security-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .security-item i {
-      color: #28a745;
-    }
-
-    /* Recently Viewed */
-    .recently-viewed {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .recently-viewed h2 {
-      margin: 0 0 1.5rem 0;
-      font-size: 1.25rem;
-      color: #2c3e50;
-    }
-
-    .recently-viewed-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .recently-item {
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s;
-    }
-
-    .recently-item:hover {
-      transform: translateY(-2px);
-    }
-
-    .recently-item-image {
-      width: 100%;
-      padding-bottom: 100%;
-      background: #f8f9fa;
-      border-radius: 8px;
-      margin-bottom: 0.75rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .recently-item-image img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .recently-item-name {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #2c3e50;
-      margin-bottom: 0.25rem;
-    }
-
-    .recently-item-price {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--color-primary, #ed8b00);
-    }
-
-    /* Saved Items */
-    .saved-items {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      margin-top: 2rem;
-    }
-
-    .saved-items-header {
-      padding: 1.5rem;
-      border-bottom: 1px solid #dee2e6;
-    }
-
-    .saved-items-header h2 {
-      margin: 0;
-      font-size: 1.25rem;
-      color: #2c3e50;
-    }
-
-    .saved-items-count {
-      color: #6c757d;
-      font-size: 0.875rem;
-      margin-top: 0.25rem;
-    }
-
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .cart-sidebar {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: white;
-        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-        padding: 1rem;
-        z-index: 100;
-      }
-
-      .cart-summary {
-        display: none;
-      }
-
-      .mobile-summary {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .mobile-total {
-        font-size: 1.25rem;
-        font-weight: 600;
-      }
-
-      .cart-item {
-        flex-direction: column;
-      }
-
-      .cart-item-image {
-        width: 100%;
-        height: 200px;
-      }
-
-      .progress-step-label {
-        display: none;
-      }
-
-      .recently-viewed-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="e-commerce-cart.css">
     <!-- CSS loaded via JavaScript module -->
 </head>
 <body>
@@ -788,14 +66,14 @@
 
 
   <!-- Cart Header -->
-  <header class="cart-header">
+  <header class="aiab-cart-header">
     <div class="aiab-container">
-      <nav class="cart-header-content" aria-label="Cart navigation">
-        <section class="cart-title">
+      <nav class="aiab-cart-header-content" aria-label="Cart navigation">
+        <section class="aiab-cart-title">
           <h1>Shopping Cart</h1>
-          <span class="cart-count">5 items</span>
+          <span class="aiab-cart-count">5 items</span>
         </section>
-        <a href="/examples/e-commerce-catalog.html" class="continue-shopping">
+        <a href="/examples/e-commerce-catalog.html" class="aiab-cart-continue-shopping">
           <i data-lucide="arrow-left"></i>
           Continue Shopping
         </a>
@@ -806,31 +84,31 @@
   <!-- Main Content -->
   <main class="aiab-container">
     <!-- Cart Progress Indicator -->
-    <section class="cart-progress" aria-label="Checkout progress">
-      <ol class="progress-steps">
-        <li class="progress-step aiab-active">
-          <span class="progress-step-icon">
+    <section class="aiab-cart-progress" aria-label="Checkout progress">
+      <ol class="aiab-cart-progress-steps">
+        <li class="aiab-cart-progress-step aiab-active">
+          <span class="aiab-cart-progress-step-icon">
             <i data-lucide="shopping-cart"></i>
           </span>
-          <span class="progress-step-label">Shopping Cart</span>
+          <span class="aiab-cart-progress-step-label">Shopping Cart</span>
         </li>
-        <li class="progress-step">
-          <span class="progress-step-icon">
+        <li class="aiab-cart-progress-step">
+          <span class="aiab-cart-progress-step-icon">
             <i data-lucide="truck"></i>
           </span>
-          <span class="progress-step-label">Shipping</span>
+          <span class="aiab-cart-progress-step-label">Shipping</span>
         </li>
-        <li class="progress-step">
-          <span class="progress-step-icon">
+        <li class="aiab-cart-progress-step">
+          <span class="aiab-cart-progress-step-icon">
             <i data-lucide="credit-card"></i>
           </span>
-          <span class="progress-step-label">Payment</span>
+          <span class="aiab-cart-progress-step-label">Payment</span>
         </li>
-        <li class="progress-step">
-          <span class="progress-step-icon">
+        <li class="aiab-cart-progress-step">
+          <span class="aiab-cart-progress-step-icon">
             <i data-lucide="check-circle"></i>
           </span>
-          <span class="progress-step-label">Confirmation</span>
+          <span class="aiab-cart-progress-step-label">Confirmation</span>
         </li>
       </ol>
     </section>
@@ -839,263 +117,263 @@
     <div class="aiab-row">
       <!-- Cart Items Section -->
       <div class="aiab-col-10">
-      <section class="cart-items" aria-label="Cart items">
-        <header class="cart-items-header">
-          <label class="select-all">
+      <section class="aiab-cart-items" aria-label="Cart items">
+        <header class="aiab-cart-items-header">
+          <label class="aiab-cart-select-all">
             <input type="checkbox" checked id="selectAll" aria-label="Select all items">
             <span>Select All Items</span>
           </label>
-          <button class="clear-cart" onclick="clearCart()" aria-label="Clear all items from cart">
+          <button class="aiab-cart-clear" onclick="clearCart()" aria-label="Clear all items from cart">
             <i data-lucide="trash-2"></i>
             Clear Cart
           </button>
         </header>
 
         <!-- Cart Item 1 -->
-        <article class="cart-item" data-item-id="1">
-          <label class="cart-item-checkbox">
-            <input type="checkbox" checked class="item-checkbox" aria-label="Select Premium Cotton T-Shirt">
-            <span class="visually-hidden">Select item</span>
+        <article class="aiab-cart-item" data-item-id="1">
+          <label class="aiab-cart-item-checkbox">
+            <input type="checkbox" checked class="aiab-cart-item-checkbox-input" aria-label="Select Premium Cotton T-Shirt">
+            <span class="aiab-sr-only">Select item</span>
           </label>
-          <figure class="cart-item-image">
+          <figure class="aiab-cart-item-image">
             <img src="https://placehold.co/120x120/667eea/ffffff?text=Product+1" alt="Premium Cotton T-Shirt" loading="lazy">
           </figure>
-          <section class="cart-item-details">
-            <a href="/examples/e-commerce-product.html" class="cart-item-name">Premium Cotton T-Shirt</a>
-            <dl class="cart-item-variants">
-              <div class="cart-item-variant">
+          <section class="aiab-cart-item-details">
+            <a href="/examples/e-commerce-product.html" class="aiab-cart-item-name">Premium Cotton T-Shirt</a>
+            <dl class="aiab-cart-item-variants">
+              <div class="aiab-cart-item-variant">
                 <dt>Color:</dt>
                 <dd><strong>Black</strong></dd>
               </div>
-              <div class="cart-item-variant">
+              <div class="aiab-cart-item-variant">
                 <dt>Size:</dt>
                 <dd><strong>M</strong></dd>
               </div>
             </dl>
-            <p class="cart-item-stock in-stock">
-              <i data-lucide="check-circle" class="icon--xs"></i>
+            <p class="aiab-cart-item-stock aiab-cart-in-stock">
+              <i data-lucide="check-circle" class="aiab-icon-xs"></i>
               In Stock
             </p>
-            <form class="cart-item-actions" onsubmit="return false;">
-              <fieldset class="quantity-selector">
-                <legend class="visually-hidden">Quantity selector</legend>
+            <form class="aiab-cart-item-actions" onsubmit="return false;">
+              <fieldset class="aiab-cart-quantity-selector">
+                <legend class="aiab-sr-only">Quantity selector</legend>
                 <button type="button" onclick="updateQuantity(1, -1)" aria-label="Decrease quantity">−</button>
-                <label for="qty-1" class="visually-hidden">Quantity</label>
+                <label for="qty-1" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="2" min="1" max="10" id="qty-1" aria-label="Item quantity">
                 <button type="button" onclick="updateQuantity(1, 1)" aria-label="Increase quantity">+</button>
               </fieldset>
-              <button type="button" class="save-for-later" data-tooltip="Save for later">
-                <i data-lucide="heart" class="icon--xs"></i>
+              <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
+                <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
             </form>
           </section>
-          <section class="cart-item-price" aria-label="Item pricing">
-            <p class="price-current">$79.98</p>
-            <p class="price-original">$99.98</p>
-            <p class="price-savings">Save $20</p>
+          <section class="aiab-cart-item-price" aria-label="Item pricing">
+            <p class="aiab-cart-price-current">$79.98</p>
+            <p class="aiab-cart-price-original">$99.98</p>
+            <p class="aiab-cart-price-savings">Save $20</p>
           </section>
-          <button class="cart-item-remove" onclick="removeItem(1)" aria-label="Remove Premium Cotton T-Shirt from cart">
+          <button class="aiab-cart-item-remove" onclick="removeItem(1)" aria-label="Remove Premium Cotton T-Shirt from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
 
         <!-- Cart Item 2 -->
-        <article class="cart-item" data-item-id="2">
-          <label class="cart-item-checkbox">
-            <input type="checkbox" checked class="item-checkbox" aria-label="Select Slim Fit Denim Jeans">
-            <span class="visually-hidden">Select item</span>
+        <article class="aiab-cart-item" data-item-id="2">
+          <label class="aiab-cart-item-checkbox">
+            <input type="checkbox" checked class="aiab-cart-item-checkbox-input" aria-label="Select Slim Fit Denim Jeans">
+            <span class="aiab-sr-only">Select item</span>
           </label>
-          <figure class="cart-item-image">
+          <figure class="aiab-cart-item-image">
             <img src="https://placehold.co/120x120/764ba2/ffffff?text=Product+2" alt="Slim Fit Denim Jeans" loading="lazy">
           </figure>
-          <section class="cart-item-details">
-            <a href="#" class="cart-item-name">Slim Fit Denim Jeans</a>
-            <dl class="cart-item-variants">
-              <div class="cart-item-variant">
+          <section class="aiab-cart-item-details">
+            <a href="#" class="aiab-cart-item-name">Slim Fit Denim Jeans</a>
+            <dl class="aiab-cart-item-variants">
+              <div class="aiab-cart-item-variant">
                 <dt>Color:</dt>
                 <dd><strong>Blue</strong></dd>
               </div>
-              <div class="cart-item-variant">
+              <div class="aiab-cart-item-variant">
                 <dt>Size:</dt>
                 <dd><strong>32x32</strong></dd>
               </div>
             </dl>
-            <p class="cart-item-stock in-stock">
-              <i data-lucide="check-circle" class="icon--xs"></i>
+            <p class="aiab-cart-item-stock aiab-cart-in-stock">
+              <i data-lucide="check-circle" class="aiab-icon-xs"></i>
               In Stock
             </p>
-            <form class="cart-item-actions" onsubmit="return false;">
-              <fieldset class="quantity-selector">
-                <legend class="visually-hidden">Quantity selector</legend>
+            <form class="aiab-cart-item-actions" onsubmit="return false;">
+              <fieldset class="aiab-cart-quantity-selector">
+                <legend class="aiab-sr-only">Quantity selector</legend>
                 <button type="button" onclick="updateQuantity(2, -1)" aria-label="Decrease quantity">−</button>
-                <label for="qty-2" class="visually-hidden">Quantity</label>
+                <label for="qty-2" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="1" min="1" max="10" id="qty-2" aria-label="Item quantity">
                 <button type="button" onclick="updateQuantity(2, 1)" aria-label="Increase quantity">+</button>
               </fieldset>
-              <button type="button" class="save-for-later" data-tooltip="Save for later">
-                <i data-lucide="heart" class="icon--xs"></i>
+              <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
+                <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
             </form>
           </section>
-          <section class="cart-item-price" aria-label="Item pricing">
-            <p class="price-current">$89.99</p>
+          <section class="aiab-cart-item-price" aria-label="Item pricing">
+            <p class="aiab-cart-price-current">$89.99</p>
           </section>
-          <button class="cart-item-remove" onclick="removeItem(2)" aria-label="Remove Slim Fit Denim Jeans from cart">
+          <button class="aiab-cart-item-remove" onclick="removeItem(2)" aria-label="Remove Slim Fit Denim Jeans from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
 
         <!-- Cart Item 3 -->
-        <article class="cart-item" data-item-id="3">
-          <label class="cart-item-checkbox">
-            <input type="checkbox" checked class="item-checkbox" aria-label="Select Wireless Headphones Pro">
-            <span class="visually-hidden">Select item</span>
+        <article class="aiab-cart-item" data-item-id="3">
+          <label class="aiab-cart-item-checkbox">
+            <input type="checkbox" checked class="aiab-cart-item-checkbox-input" aria-label="Select Wireless Headphones Pro">
+            <span class="aiab-sr-only">Select item</span>
           </label>
-          <figure class="cart-item-image">
+          <figure class="aiab-cart-item-image">
             <img src="https://placehold.co/120x120/f59e0b/ffffff?text=Product+3" alt="Wireless Headphones" loading="lazy">
           </figure>
-          <section class="cart-item-details">
-            <a href="#" class="cart-item-name">Wireless Headphones Pro</a>
-            <dl class="cart-item-variants">
-              <div class="cart-item-variant">
+          <section class="aiab-cart-item-details">
+            <a href="#" class="aiab-cart-item-name">Wireless Headphones Pro</a>
+            <dl class="aiab-cart-item-variants">
+              <div class="aiab-cart-item-variant">
                 <dt>Color:</dt>
                 <dd><strong>Matte Black</strong></dd>
               </div>
             </dl>
-            <p class="cart-item-stock low-stock">
-              <i data-lucide="alert-triangle" class="icon--xs"></i>
+            <p class="aiab-cart-item-stock aiab-cart-low-stock">
+              <i data-lucide="alert-triangle" class="aiab-icon-xs"></i>
               Only 3 left in stock
             </p>
-            <form class="cart-item-actions" onsubmit="return false;">
-              <fieldset class="quantity-selector">
-                <legend class="visually-hidden">Quantity selector</legend>
+            <form class="aiab-cart-item-actions" onsubmit="return false;">
+              <fieldset class="aiab-cart-quantity-selector">
+                <legend class="aiab-sr-only">Quantity selector</legend>
                 <button type="button" onclick="updateQuantity(3, -1)" aria-label="Decrease quantity">−</button>
-                <label for="qty-3" class="visually-hidden">Quantity</label>
+                <label for="qty-3" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="1" min="1" max="3" id="qty-3" aria-label="Item quantity">
                 <button type="button" onclick="updateQuantity(3, 1)" aria-label="Increase quantity">+</button>
               </fieldset>
-              <button type="button" class="save-for-later" data-tooltip="Save for later">
-                <i data-lucide="heart" class="icon--xs"></i>
+              <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
+                <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
             </form>
           </section>
-          <section class="cart-item-price" aria-label="Item pricing">
-            <p class="price-current">$199.99</p>
-            <p class="price-original">$249.99</p>
-            <p class="price-savings">Save $50</p>
+          <section class="aiab-cart-item-price" aria-label="Item pricing">
+            <p class="aiab-cart-price-current">$199.99</p>
+            <p class="aiab-cart-price-original">$249.99</p>
+            <p class="aiab-cart-price-savings">Save $50</p>
           </section>
-          <button class="cart-item-remove" onclick="removeItem(3)" aria-label="Remove Wireless Headphones Pro from cart">
+          <button class="aiab-cart-item-remove" onclick="removeItem(3)" aria-label="Remove Wireless Headphones Pro from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
 
         <!-- Cart Item 4 -->
-        <article class="cart-item" data-item-id="4">
-          <label class="cart-item-checkbox">
-            <input type="checkbox" checked class="item-checkbox" aria-label="Select Running Sneakers Pro">
-            <span class="visually-hidden">Select item</span>
+        <article class="aiab-cart-item" data-item-id="4">
+          <label class="aiab-cart-item-checkbox">
+            <input type="checkbox" checked class="aiab-cart-item-checkbox-input" aria-label="Select Running Sneakers Pro">
+            <span class="aiab-sr-only">Select item</span>
           </label>
-          <figure class="cart-item-image">
+          <figure class="aiab-cart-item-image">
             <img src="https://placehold.co/120x120/10b981/ffffff?text=Product+4" alt="Running Sneakers" loading="lazy">
           </figure>
-          <section class="cart-item-details">
-            <a href="#" class="cart-item-name">Running Sneakers Pro</a>
-            <dl class="cart-item-variants">
-              <div class="cart-item-variant">
+          <section class="aiab-cart-item-details">
+            <a href="#" class="aiab-cart-item-name">Running Sneakers Pro</a>
+            <dl class="aiab-cart-item-variants">
+              <div class="aiab-cart-item-variant">
                 <dt>Color:</dt>
                 <dd><strong>White/Blue</strong></dd>
               </div>
-              <div class="cart-item-variant">
+              <div class="aiab-cart-item-variant">
                 <dt>Size:</dt>
                 <dd><strong>US 10</strong></dd>
               </div>
             </dl>
-            <p class="cart-item-stock in-stock">
-              <i data-lucide="check-circle" class="icon--xs"></i>
+            <p class="aiab-cart-item-stock aiab-cart-in-stock">
+              <i data-lucide="check-circle" class="aiab-icon-xs"></i>
               In Stock
             </p>
-            <form class="cart-item-actions" onsubmit="return false;">
-              <fieldset class="quantity-selector">
-                <legend class="visually-hidden">Quantity selector</legend>
+            <form class="aiab-cart-item-actions" onsubmit="return false;">
+              <fieldset class="aiab-cart-quantity-selector">
+                <legend class="aiab-sr-only">Quantity selector</legend>
                 <button type="button" onclick="updateQuantity(4, -1)" aria-label="Decrease quantity">−</button>
-                <label for="qty-4" class="visually-hidden">Quantity</label>
+                <label for="qty-4" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="1" min="1" max="10" id="qty-4" aria-label="Item quantity">
                 <button type="button" onclick="updateQuantity(4, 1)" aria-label="Increase quantity">+</button>
               </fieldset>
-              <button type="button" class="save-for-later" data-tooltip="Save for later">
-                <i data-lucide="heart" class="icon--xs"></i>
+              <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
+                <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
             </form>
           </section>
-          <section class="cart-item-price" aria-label="Item pricing">
-            <p class="price-current">$129.99</p>
+          <section class="aiab-cart-item-price" aria-label="Item pricing">
+            <p class="aiab-cart-price-current">$129.99</p>
           </section>
-          <button class="cart-item-remove" onclick="removeItem(4)" aria-label="Remove Running Sneakers Pro from cart">
+          <button class="aiab-cart-item-remove" onclick="removeItem(4)" aria-label="Remove Running Sneakers Pro from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
 
         <!-- Cart Item 5 with Special Offer -->
-        <article class="cart-item" data-item-id="5">
-          <label class="cart-item-checkbox">
-            <input type="checkbox" checked class="item-checkbox" aria-label="Select Premium Leather Wallet">
-            <span class="visually-hidden">Select item</span>
+        <article class="aiab-cart-item" data-item-id="5">
+          <label class="aiab-cart-item-checkbox">
+            <input type="checkbox" checked class="aiab-cart-item-checkbox-input" aria-label="Select Premium Leather Wallet">
+            <span class="aiab-sr-only">Select item</span>
           </label>
-          <figure class="cart-item-image">
+          <figure class="aiab-cart-item-image">
             <img src="https://placehold.co/120x120/ef4444/ffffff?text=Product+5" alt="Leather Wallet" loading="lazy">
           </figure>
-          <section class="cart-item-details">
-            <a href="#" class="cart-item-name">Premium Leather Wallet</a>
-            <dl class="cart-item-variants">
-              <div class="cart-item-variant">
+          <section class="aiab-cart-item-details">
+            <a href="#" class="aiab-cart-item-name">Premium Leather Wallet</a>
+            <dl class="aiab-cart-item-variants">
+              <div class="aiab-cart-item-variant">
                 <dt>Color:</dt>
                 <dd><strong>Brown</strong></dd>
               </div>
             </dl>
-            <p class="cart-item-stock in-stock">
-              <i data-lucide="check-circle" class="icon--xs"></i>
+            <p class="aiab-cart-item-stock aiab-cart-in-stock">
+              <i data-lucide="check-circle" class="aiab-icon-xs"></i>
               In Stock
             </p>
-            <aside class="aiab-alert alert-success" style="margin: 0.5rem 0;">
-              <i data-lucide="gift" class="icon--sm"></i>
+            <aside class="aiab-alert aiab-alert-success aiab-cart-alert-promo">
+              <i data-lucide="gift" class="aiab-icon-sm"></i>
               Buy 2 get 20% off! Add 1 more to qualify.
             </aside>
-            <form class="cart-item-actions" onsubmit="return false;">
-              <fieldset class="quantity-selector">
-                <legend class="visually-hidden">Quantity selector</legend>
+            <form class="aiab-cart-item-actions" onsubmit="return false;">
+              <fieldset class="aiab-cart-quantity-selector">
+                <legend class="aiab-sr-only">Quantity selector</legend>
                 <button type="button" onclick="updateQuantity(5, -1)" aria-label="Decrease quantity">−</button>
-                <label for="qty-5" class="visually-hidden">Quantity</label>
+                <label for="qty-5" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="1" min="1" max="10" id="qty-5" aria-label="Item quantity">
                 <button type="button" onclick="updateQuantity(5, 1)" aria-label="Increase quantity">+</button>
               </fieldset>
-              <button type="button" class="save-for-later" data-tooltip="Save for later">
-                <i data-lucide="heart" class="icon--xs"></i>
+              <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
+                <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
             </form>
           </section>
-          <section class="cart-item-price" aria-label="Item pricing">
-            <p class="price-current">$49.99</p>
+          <section class="aiab-cart-item-price" aria-label="Item pricing">
+            <p class="aiab-cart-price-current">$49.99</p>
           </section>
-          <button class="cart-item-remove" onclick="removeItem(5)" aria-label="Remove Premium Leather Wallet from cart">
+          <button class="aiab-cart-item-remove" onclick="removeItem(5)" aria-label="Remove Premium Leather Wallet from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
 
         <!-- Empty Cart State (hidden by default) -->
-        <section class="empty-cart" style="display: none;" id="emptyCart" aria-label="Empty cart">
-          <p class="empty-cart-icon" aria-hidden="true">🛒</p>
+        <section class="aiab-cart-empty" style="display: none;" id="emptyCart" aria-label="Empty cart">
+          <p class="aiab-cart-empty-icon" aria-hidden="true">🛒</p>
           <h2>Your cart is empty</h2>
           <p>Looks like you haven't added anything to your cart yet.</p>
-          <nav class="empty-cart-actions" aria-label="Empty cart actions">
-            <a href="/examples/e-commerce-catalog.html" class="aiab-btn btn--primary">
+          <nav class="aiab-cart-empty-actions" aria-label="Empty cart actions">
+            <a href="/examples/e-commerce-catalog.html" class="aiab-btn aiab-btn-primary">
               Start Shopping
             </a>
-            <button class="aiab-btn btn--secondary" onclick="viewSavedItems()">
+            <button class="aiab-btn aiab-btn-secondary" onclick="viewSavedItems()">
               View Saved Items
             </button>
           </nav>
@@ -1106,88 +384,88 @@
 
       <!-- Cart Sidebar -->
       <div class="aiab-col-6">
-      <aside class="cart-sidebar" aria-label="Order summary and checkout">
+      <aside class="aiab-cart-sidebar" aria-label="Order summary and checkout">
         <!-- Promo Code Form -->
-        <section class="promo-code" aria-label="Promo code">
+        <section class="aiab-cart-promo-code" aria-label="Promo code">
           <h3>Promo Code</h3>
-          <form class="promo-form" onsubmit="applyPromo(); return false;">
-            <label for="promoCode" class="visually-hidden">Enter promo code</label>
-            <input type="text" class="promo-input" placeholder="Enter code" id="promoCode" aria-label="Promo code input">
-            <button type="submit" class="promo-button">Apply</button>
+          <form class="aiab-cart-promo-form" onsubmit="applyPromo(); return false;">
+            <label for="promoCode" class="aiab-sr-only">Enter promo code</label>
+            <input type="text" class="aiab-cart-promo-input" placeholder="Enter code" id="promoCode" aria-label="Promo code input">
+            <button type="submit" class="aiab-cart-promo-button">Apply</button>
           </form>
-          <output class="promo-applied" id="promoApplied" style="display: none;" aria-live="polite">
+          <output class="aiab-cart-promo-applied" id="promoApplied" style="display: none;" aria-live="polite">
             <span>
-              <span class="promo-applied-code">SAVE20</span>
+              <span class="aiab-cart-promo-applied-code">SAVE20</span>
               <span> - 20% off</span>
             </span>
-            <button type="button" class="promo-remove" onclick="removePromo()" aria-label="Remove promo code">Remove</button>
+            <button type="button" class="aiab-cart-promo-remove" onclick="removePromo()" aria-label="Remove promo code">Remove</button>
           </output>
         </section>
 
         <!-- Cart Summary -->
-        <section class="cart-summary" aria-label="Order summary">
+        <section class="aiab-cart-summary" aria-label="Order summary">
           <h2>Order Summary</h2>
 
-          <dl class="summary-row">
-            <dt class="summary-label">Subtotal (5 items)</dt>
-            <dd class="summary-value">$549.94</dd>
+          <dl class="aiab-cart-summary-row">
+            <dt class="aiab-cart-summary-label">Subtotal (5 items)</dt>
+            <dd class="aiab-cart-summary-value">$549.94</dd>
           </dl>
 
-          <dl class="summary-row">
-            <dt class="summary-label">Shipping</dt>
-            <dd class="summary-value">FREE</dd>
+          <dl class="aiab-cart-summary-row">
+            <dt class="aiab-cart-summary-label">Shipping</dt>
+            <dd class="aiab-cart-summary-value">FREE</dd>
           </dl>
 
-          <dl class="summary-row">
-            <dt class="summary-label">Tax (estimated)</dt>
-            <dd class="summary-value">$45.50</dd>
+          <dl class="aiab-cart-summary-row">
+            <dt class="aiab-cart-summary-label">Tax (estimated)</dt>
+            <dd class="aiab-cart-summary-value">$45.50</dd>
           </dl>
 
-          <dl class="summary-row" id="promoDiscount" style="display: none;">
-            <dt class="summary-label">Promo Discount</dt>
-            <dd class="savings-value">-$109.99</dd>
+          <dl class="aiab-cart-summary-row" id="promoDiscount" style="display: none;">
+            <dt class="aiab-cart-summary-label">Promo Discount</dt>
+            <dd class="aiab-cart-savings-value">-$109.99</dd>
           </dl>
 
-          <dl class="summary-row">
-            <dt class="summary-label">Total Savings</dt>
-            <dd class="savings-value">-$70.00</dd>
+          <dl class="aiab-cart-summary-row">
+            <dt class="aiab-cart-summary-label">Total Savings</dt>
+            <dd class="aiab-cart-savings-value">-$70.00</dd>
           </dl>
 
-          <dl class="summary-row total">
-            <dt class="summary-label">Order Total</dt>
-            <dd class="summary-value" id="orderTotal">$595.44</dd>
+          <dl class="aiab-cart-summary-row aiab-cart-total">
+            <dt class="aiab-cart-summary-label">Order Total</dt>
+            <dd class="aiab-cart-summary-value" id="orderTotal">$595.44</dd>
           </dl>
 
-          <button class="checkout-button" onclick="proceedToCheckout()" aria-label="Proceed to secure checkout">
+          <button class="aiab-cart-checkout-btn" onclick="proceedToCheckout()" aria-label="Proceed to secure checkout">
             <i data-lucide="lock"></i>
             Proceed to Checkout
           </button>
 
-          <button class="paypal-button" onclick="paypalCheckout()" aria-label="Checkout with PayPal">
+          <button class="aiab-cart-paypal-btn" onclick="paypalCheckout()" aria-label="Checkout with PayPal">
             <strong>PayPal</strong> Checkout
           </button>
 
-          <p style="text-align: center; margin-top: 1rem; font-size: 0.875rem; color: #6c757d;">
-            or <a href="#" style="color: var(--color-primary, #ed8b00); text-decoration: none;">Pay in 4 interest-free payments</a>
+          <p class="aiab-cart-pay-installments">
+            or <a href="#">Pay in 4 interest-free payments</a>
           </p>
         </section>
 
         <!-- Security Features -->
-        <section class="security-features" aria-label="Security features">
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li class="security-item">
+        <section class="aiab-cart-security-features" aria-label="Security features">
+          <ul class="aiab-cart-security-list">
+            <li class="aiab-cart-security-item">
               <i data-lucide="shield-check" aria-hidden="true"></i>
               <span>Secure SSL Encryption</span>
             </li>
-            <li class="security-item">
+            <li class="aiab-cart-security-item">
               <i data-lucide="credit-card" aria-hidden="true"></i>
               <span>Safe & Secure Payments</span>
             </li>
-            <li class="security-item">
+            <li class="aiab-cart-security-item">
               <i data-lucide="rotate-ccw" aria-hidden="true"></i>
               <span>30-Day Return Policy</span>
             </li>
-            <li class="security-item">
+            <li class="aiab-cart-security-item">
               <i data-lucide="headphones" aria-hidden="true"></i>
               <span>24/7 Customer Support</span>
             </li>
@@ -1198,36 +476,36 @@
     </div>
 
     <!-- Saved Items Section -->
-    <section class="saved-items" id="savedItems" style="display: none;" aria-label="Saved for later">
-      <header class="saved-items-header">
+    <section class="aiab-cart-saved-items" id="savedItems" style="display: none;" aria-label="Saved for later">
+      <header class="aiab-cart-saved-items-header">
         <h2>Saved for Later</h2>
-        <p class="saved-items-count">2 items saved</p>
+        <p class="aiab-cart-saved-items-count">2 items saved</p>
       </header>
-      <div style="padding: 1.5rem;">
+      <div class="aiab-cart-saved-items-padding">
         <div class="aiab-row">
           <article class="aiab-col-4">
-            <figure class="product-card">
-              <div class="product-image" style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
-                <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Saved+1" alt="Casual Polo Shirt" style="width: 100%; height: auto;" loading="lazy">
+            <figure class="aiab-cart-product-card">
+              <div class="aiab-cart-product-image aiab-cart-product-image-wrapper">
+                <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Saved+1" alt="Casual Polo Shirt" loading="lazy">
               </div>
-              <figcaption class="product-info" style="padding: 1rem;">
+              <figcaption class="aiab-cart-product-info aiab-cart-product-info-inner">
                 <h4>Casual Polo Shirt</h4>
-                <p class="price-current">$35.99</p>
-                <button class="aiab-btn btn--primary btn--sm" style="width: 100%; margin-top: 0.5rem;">
+                <p class="aiab-cart-price-current">$35.99</p>
+                <button class="aiab-btn aiab-btn-primary aiab-btn-sm aiab-cart-move-to-cart">
                   Move to Cart
                 </button>
               </figcaption>
             </figure>
           </article>
           <article class="aiab-col-4">
-            <figure class="product-card">
-              <div class="product-image" style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
-                <img src="https://placehold.co/200x200/ec4899/ffffff?text=Saved+2" alt="Sports Watch" style="width: 100%; height: auto;" loading="lazy">
+            <figure class="aiab-cart-product-card">
+              <div class="aiab-cart-product-image aiab-cart-product-image-wrapper">
+                <img src="https://placehold.co/200x200/ec4899/ffffff?text=Saved+2" alt="Sports Watch" loading="lazy">
               </div>
-              <figcaption class="product-info" style="padding: 1rem;">
+              <figcaption class="aiab-cart-product-info aiab-cart-product-info-inner">
                 <h4>Sports Watch</h4>
-                <p class="price-current">$159.99</p>
-                <button class="aiab-btn btn--primary btn--sm" style="width: 100%; margin-top: 0.5rem;">
+                <p class="aiab-cart-price-current">$159.99</p>
+                <button class="aiab-btn aiab-btn-primary aiab-btn-sm aiab-cart-move-to-cart">
                   Move to Cart
                 </button>
               </figcaption>
@@ -1238,49 +516,49 @@
     </section>
 
     <!-- Recently Viewed -->
-    <section class="recently-viewed" aria-label="Recently viewed products">
+    <section class="aiab-cart-recently-viewed" aria-label="Recently viewed products">
       <h2>Recently Viewed</h2>
-      <nav class="recently-viewed-grid" aria-label="Recently viewed items">
-        <a href="#" class="recently-item">
-          <figure class="recently-item-image">
+      <nav class="aiab-cart-recently-viewed-grid" aria-label="Recently viewed items">
+        <a href="#" class="aiab-cart-recently-item">
+          <figure class="aiab-cart-recently-item-image">
             <img src="https://placehold.co/200x200/667eea/ffffff?text=Recent+1" alt="Classic White Shirt" loading="lazy">
           </figure>
-          <h3 class="recently-item-name">Classic White Shirt</h3>
-          <p class="recently-item-price">$45.99</p>
+          <h3 class="aiab-cart-recently-item-name">Classic White Shirt</h3>
+          <p class="aiab-cart-recently-item-price">$45.99</p>
         </a>
-        <a href="#" class="recently-item">
-          <figure class="recently-item-image">
+        <a href="#" class="aiab-cart-recently-item">
+          <figure class="aiab-cart-recently-item-image">
             <img src="https://placehold.co/200x200/764ba2/ffffff?text=Recent+2" alt="Canvas Backpack" loading="lazy">
           </figure>
-          <h3 class="recently-item-name">Canvas Backpack</h3>
-          <p class="recently-item-price">$79.99</p>
+          <h3 class="aiab-cart-recently-item-name">Canvas Backpack</h3>
+          <p class="aiab-cart-recently-item-price">$79.99</p>
         </a>
-        <a href="#" class="recently-item">
-          <figure class="recently-item-image">
+        <a href="#" class="aiab-cart-recently-item">
+          <figure class="aiab-cart-recently-item-image">
             <img src="https://placehold.co/200x200/f59e0b/ffffff?text=Recent+3" alt="Sunglasses" loading="lazy">
           </figure>
-          <h3 class="recently-item-name">Sunglasses</h3>
-          <p class="recently-item-price">$129.99</p>
+          <h3 class="aiab-cart-recently-item-name">Sunglasses</h3>
+          <p class="aiab-cart-recently-item-price">$129.99</p>
         </a>
-        <a href="#" class="recently-item">
-          <figure class="recently-item-image">
+        <a href="#" class="aiab-cart-recently-item">
+          <figure class="aiab-cart-recently-item-image">
             <img src="https://placehold.co/200x200/10b981/ffffff?text=Recent+4" alt="Smart Watch" loading="lazy">
           </figure>
-          <h3 class="recently-item-name">Smart Watch</h3>
-          <p class="recently-item-price">$299.99</p>
+          <h3 class="aiab-cart-recently-item-name">Smart Watch</h3>
+          <p class="aiab-cart-recently-item-price">$299.99</p>
         </a>
       </nav>
     </section>
   </main>
 
   <!-- Mobile Summary (Fixed Bottom) -->
-  <aside class="cart-sidebar mobile-only" style="display: none;" aria-label="Mobile checkout summary">
-    <section class="mobile-summary">
+  <aside class="aiab-cart-sidebar aiab-cart-mobile-only" style="display: none;" aria-label="Mobile checkout summary">
+    <section class="aiab-cart-mobile-summary">
       <div>
-        <p class="mobile-total">$595.44</p>
-        <p style="font-size: 0.875rem; color: #6c757d;">5 items</p>
+        <p class="aiab-cart-mobile-total">$595.44</p>
+        <p class="aiab-cart-mobile-item-count">5 items</p>
       </div>
-      <button class="checkout-button" style="width: auto; padding: 0.75rem 2rem;">
+      <button class="aiab-cart-checkout-btn aiab-cart-mobile-checkout-btn">
         Checkout
       </button>
     </section>
@@ -1288,33 +566,33 @@
 
   <!-- Modals -->
   <dialog id="removeModal" class="aiab-modal" aria-hidden="true" aria-labelledby="removeModalTitle">
-    <article class="modal__dialog">
-      <header class="modal__header">
-        <h3 class="modal__title" id="removeModalTitle">Remove Item</h3>
-        <button class="modal__close" aria-label="Close">&times;</button>
+    <article class="aiab-modal-dialog">
+      <header class="aiab-modal-header">
+        <h3 class="aiab-modal-title" id="removeModalTitle">Remove Item</h3>
+        <button class="aiab-modal-close" aria-label="Close">&times;</button>
       </header>
-      <section class="modal__body">
+      <section class="aiab-modal-body">
         <p>Are you sure you want to remove this item from your cart?</p>
       </section>
-      <footer class="modal__footer">
-        <button class="aiab-btn btn--secondary" data-modal-close>Cancel</button>
-        <button class="aiab-btn btn--danger" onclick="confirmRemove()">Remove Item</button>
+      <footer class="aiab-modal-footer">
+        <button class="aiab-btn aiab-btn-secondary" data-modal-close>Cancel</button>
+        <button class="aiab-btn aiab-btn-danger" onclick="confirmRemove()">Remove Item</button>
       </footer>
     </article>
   </dialog>
 
   <dialog id="clearCartModal" class="aiab-modal" aria-hidden="true" aria-labelledby="clearCartModalTitle">
-    <article class="modal__dialog">
-      <header class="modal__header">
-        <h3 class="modal__title" id="clearCartModalTitle">Clear Cart</h3>
-        <button class="modal__close" aria-label="Close">&times;</button>
+    <article class="aiab-modal-dialog">
+      <header class="aiab-modal-header">
+        <h3 class="aiab-modal-title" id="clearCartModalTitle">Clear Cart</h3>
+        <button class="aiab-modal-close" aria-label="Close">&times;</button>
       </header>
-      <section class="modal__body">
+      <section class="aiab-modal-body">
         <p>Are you sure you want to remove all items from your cart? This action cannot be undone.</p>
       </section>
-      <footer class="modal__footer">
-        <button class="aiab-btn btn--secondary" data-modal-close>Cancel</button>
-        <button class="aiab-btn btn--danger" onclick="confirmClear()">Clear All</button>
+      <footer class="aiab-modal-footer">
+        <button class="aiab-btn aiab-btn-secondary" data-modal-close>Cancel</button>
+        <button class="aiab-btn aiab-btn-danger" onclick="confirmClear()">Clear All</button>
       </footer>
     </article>
   </dialog>
@@ -1389,7 +667,7 @@
     }
 
     function confirmClear() {
-      const items = document.querySelectorAll('.cart-item');
+      const items = document.querySelectorAll('.aiab-cart-item');
       items.forEach((item, index) => {
         setTimeout(() => {
           item.style.transition = 'all 0.3s';
@@ -1464,7 +742,7 @@
 
     // Check empty cart
     function checkEmptyCart() {
-      const items = document.querySelectorAll('.cart-item');
+      const items = document.querySelectorAll('.aiab-cart-item');
       if (items.length === 0) {
         document.getElementById('emptyCart').style.display = 'block';
       }
@@ -1491,7 +769,7 @@
     // Select all functionality
     document.addEventListener('DOMContentLoaded', () => {
       const selectAll = document.getElementById('selectAll');
-      const itemCheckboxes = document.querySelectorAll('.item-checkbox');
+      const itemCheckboxes = document.querySelectorAll('.aiab-cart-item-checkbox-input');
 
       selectAll.addEventListener('change', () => {
         itemCheckboxes.forEach(checkbox => {
