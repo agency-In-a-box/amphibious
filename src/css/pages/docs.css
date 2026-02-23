@@ -6,7 +6,7 @@
 /* Documentation Header */
 .aiab-docs-header,
 .aiab-doc-header {
-  background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #c97400 100%);
   color: white;
   padding: 3rem 0;
   margin-bottom: 3rem;
@@ -30,7 +30,7 @@
 
 /* Demo Header (for demo pages) */
 .aiab-demo-header {
-  background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #c97400 100%);
   color: white;
   padding: 3rem 0;
   margin-bottom: 3rem;

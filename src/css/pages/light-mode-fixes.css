@@ -21,7 +21,7 @@
     .aiab-site-logo,
     .aiab-nav-link.aiab-site-logo,
     a.aiab-site-logo {
-      color: var(--apple-orange-500, #ed8b00);
+      color: var(--color-primary);
     }
 
     .aiab-breadcrumb {
@@ -38,7 +38,7 @@
     }
 
     .aiab-site-nav a:hover {
-      color: var(--apple-orange-500, #ed8b00);
+      color: var(--color-primary);
     }
 
     /* Cards should have light backgrounds */
@@ -50,7 +50,7 @@
     }
 
     .aiab-stat-card__icon svg {
-      stroke: var(--apple-orange-500, #ed8b00);
+      stroke: var(--color-primary);
     }
   }
 }
@@ -60,7 +60,7 @@
   .aiab-site-logo,
   .aiab-nav-link.aiab-site-logo,
   a.aiab-site-logo {
-    color: var(--apple-orange-500, #ed8b00);
+    color: var(--color-primary);
   }
 
   .aiab-breadcrumb {
@@ -77,7 +77,7 @@
   }
 
   .aiab-site-nav a:hover {
-    color: var(--apple-orange-500, #ed8b00);
+    color: var(--color-primary);
   }
 
   .aiab-component-card,
@@ -88,6 +88,6 @@
   }
 
   .aiab-stat-card__icon svg {
-    stroke: var(--apple-orange-500, #ed8b00);
+    stroke: var(--color-primary);
   }
 }

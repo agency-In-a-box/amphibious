@@ -47,8 +47,8 @@
 }
 
 .aiab-toolbar-btn.aiab-primary {
-  background: var(--apple-orange-500, #ed8b00);
-  border-color: var(--apple-orange-500, #ed8b00);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
   color: white;
 }
 
@@ -56,7 +56,7 @@
   background: var(--apple-orange-600, #d87a00);
   border-color: var(--apple-orange-600, #d87a00);
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(237, 139, 0, 0.3);
+  box-shadow: 0 2px 8px var(--color-primary-alpha-30);
 }
 
 .aiab-toolbar-btn svg {
@@ -137,7 +137,7 @@
 
 .aiab-toolbox-field:hover {
   background: white;
-  border-color: var(--apple-orange-500, #ed8b00);
+  border-color: var(--color-primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -192,8 +192,8 @@
 }
 
 .aiab-tab-btn.aiab-active {
-  color: var(--apple-orange-500, #ed8b00);
-  border-bottom-color: var(--apple-orange-500, #ed8b00);
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
 .aiab-canvas-container {
@@ -274,8 +274,8 @@
 }
 
 .aiab-form-field.selected {
-  border-color: var(--apple-orange-500, #ed8b00);
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.1);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-10);
 }
 
 .aiab-form-field.dragging {
@@ -497,8 +497,8 @@
 
 .aiab-property-input:focus {
   outline: none;
-  border-color: var(--apple-orange-500, #ed8b00);
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-15);
 }
 
 .aiab-property-checkbox {
@@ -517,8 +517,8 @@
 }
 
 .aiab-add-condition-btn:hover {
-  border-color: var(--apple-orange-500, #ed8b00);
-  color: var(--apple-orange-500, #ed8b00);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 /* Preview Form */
@@ -562,8 +562,8 @@
 .aiab-form-group textarea:focus,
 .aiab-form-group select:focus {
   outline: none;
-  border-color: var(--apple-orange-500, #ed8b00);
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-15);
 }
 
 .aiab-radio-group {
@@ -634,7 +634,7 @@
 
 .aiab-template-item:hover {
   background: var(--apple-orange-50, #fff4e6);
-  border-color: var(--apple-orange-500, #ed8b00);
+  border-color: var(--color-primary);
 }
 
 .aiab-template-icon {

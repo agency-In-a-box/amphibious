@@ -92,13 +92,13 @@
 
 .aiab-footer__newsletter-input:focus {
   outline: none;
-  border-color: #ed8b00;
+  border-color: var(--color-primary);
   background: #212a3a;
 }
 
 .aiab-footer__newsletter-button {
   padding: 0.75rem 1.5rem;
-  background: #ed8b00;
+  background: var(--color-primary);
   color: white;
   border: none;
   border-radius: 4px;
@@ -196,7 +196,7 @@
 }
 
 .aiab-footer__built a {
-  color: #ed8b00;
+  color: var(--color-primary);
 }
 
 .aiab-footer__built a:hover {
@@ -233,7 +233,7 @@
 }
 
 .aiab-footer__social-link:hover {
-  background: #ed8b00;
+  background: var(--color-primary);
   color: white;
   transform: translateY(-2px);
 }
@@ -245,7 +245,7 @@
   right: 2rem;
   width: 48px;
   height: 48px;
-  background: #ed8b00;
+  background: var(--color-primary);
   color: white;
   border: none;
   border-radius: 50%;
@@ -303,7 +303,7 @@
 }
 
 .aiab-footer__logo:hover {
-  color: #ed8b00;
+  color: var(--color-primary);
 }
 
 .aiab-footer__brand p {
@@ -405,7 +405,7 @@
 }
 
 [data-theme="light"] .aiab-footer a:hover {
-  color: #ed8b00;
+  color: var(--color-primary);
 }
 
 [data-theme="light"] .aiab-footer__newsletter-input {
@@ -416,7 +416,7 @@
 
 [data-theme="light"] .aiab-footer__newsletter-input:focus {
   background: white;
-  border-color: #ed8b00;
+  border-color: var(--color-primary);
 }
 
 [data-theme="light"] .aiab-footer__newsletter-note {
@@ -448,7 +448,7 @@
 }
 
 [data-theme="light"] .aiab-footer__social-link:hover {
-  background: #ed8b00;
+  background: var(--color-primary);
   color: white;
 }
 

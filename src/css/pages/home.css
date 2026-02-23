@@ -39,7 +39,7 @@
 
 /* Demo Grid */
 .aiab-demo-grid {
-  background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #c97400 100%);
   color: white;
   padding: 1rem;
   text-align: center;
@@ -49,7 +49,7 @@
 
 /* Hero Section */
 .aiab-hero {
-  background: linear-gradient(135deg, #ed8b00 0%, #c97400 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #c97400 100%);
   color: white;
   padding: 5rem 0;
   text-align: center;
@@ -123,7 +123,7 @@
 
 /* CTA Section */
 .aiab-cta-section {
-  background: linear-gradient(135deg, #c97400 0%, #ed8b00 100%);
+  background: linear-gradient(135deg, #c97400 0%, var(--color-primary) 100%);
   color: white;
   padding: 4rem 0;
   text-align: center;
@@ -163,7 +163,7 @@
 
 .aiab-btn-primary {
   background: white;
-  color: #ed8b00;
+  color: var(--color-primary);
 }
 
 .aiab-btn-secondary {
