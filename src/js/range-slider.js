@@ -50,7 +50,7 @@ class RangeSlider {
       suffix: options.suffix || '',
 
       // Colors
-      fillColor: options.fillColor || 'var(--apple-orange-500, #ed8b00)',
+      fillColor: options.fillColor || 'var(--color-primary, #ed8b00)',
       trackColor: options.trackColor || 'var(--apple-gray-200, #e0e0e0)',
 
       // Labels
