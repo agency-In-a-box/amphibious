@@ -80,24 +80,24 @@ function updateSummary() {
   const totals = calculateTotals();
 
   // Update cart count
-  document.querySelector('.cart-count').textContent = `${totals.itemCount} items`;
+  document.querySelector('.aiab-cart-count').textContent = `${totals.itemCount} items`;
 
   // Update summary lines
-  document.querySelector('.summary-line:nth-child(1) span:last-child').textContent = formatCurrency(
+  document.querySelector('.aiab-cart-summary-line:nth-child(1) span:last-child').textContent = formatCurrency(
     totals.subtotal,
   );
-  document.querySelector('.summary-line:nth-child(2) span:last-child').textContent =
+  document.querySelector('.aiab-cart-summary-line:nth-child(2) span:last-child').textContent =
     totals.shipping === 0 ? 'FREE' : formatCurrency(totals.shipping);
-  document.querySelector('.summary-line:nth-child(3) span:last-child').textContent = formatCurrency(
+  document.querySelector('.aiab-cart-summary-line:nth-child(3) span:last-child').textContent = formatCurrency(
     totals.tax,
   );
 
   if (totals.savings > 0) {
-    document.querySelector('.summary-line.savings span:last-child').textContent =
+    document.querySelector('.aiab-cart-summary-line.aiab-cart-savings span:last-child').textContent =
       `-${formatCurrency(totals.savings)}`;
   }
 
-  document.querySelector('.summary-total span:last-child').textContent = formatCurrency(
+  document.querySelector('.aiab-cart-summary-total span:last-child').textContent = formatCurrency(
     totals.total,
   );
 }
@@ -116,16 +116,16 @@ function handleQuantityChange(itemId, change) {
   item.quantity = newQty;
 
   // Update UI - find the correct item element by data attribute or ID
-  const itemElement = document.querySelector(`.cart-item[data-item-id="${itemId}"]`);
+  const itemElement = document.querySelector(`.aiab-cart-item[data-item-id="${itemId}"]`);
   if (itemElement) {
-    itemElement.querySelector('.qty-input').value = newQty;
+    itemElement.querySelector('.aiab-cart-qty-input').value = newQty;
 
     const itemTotal = item.price * newQty;
-    itemElement.querySelector('.total-price').textContent = formatCurrency(itemTotal);
+    itemElement.querySelector('.aiab-cart-total-price').textContent = formatCurrency(itemTotal);
 
     if (item.originalPrice) {
       const itemSavings = (item.originalPrice - item.price) * newQty;
-      const savingsElement = itemElement.querySelector('.savings');
+      const savingsElement = itemElement.querySelector('.aiab-cart-savings');
       if (savingsElement) {
         savingsElement.textContent = `Save ${formatCurrency(itemSavings)}`;
       }
@@ -151,7 +151,7 @@ function handleSelectAll(selected) {
   });
 
   // Update all checkboxes
-  document.querySelectorAll('.cart-item input[type="checkbox"]').forEach((checkbox) => {
+  document.querySelectorAll('.aiab-cart-item input[type="checkbox"]').forEach((checkbox) => {
     checkbox.checked = selected;
   });
 
@@ -165,7 +165,7 @@ function removeItem(itemId) {
     cartState.items.splice(index, 1);
 
     // Remove from DOM
-    const itemElement = document.querySelector(`.cart-item:nth-child(${itemId + 1})`);
+    const itemElement = document.querySelector(`.aiab-cart-item:nth-child(${itemId + 1})`);
     if (itemElement) {
       itemElement.style.opacity = '0';
       itemElement.style.transform = 'translateX(-20px)';
@@ -190,7 +190,7 @@ function saveForLater(itemId) {
 function clearCart() {
   if (confirm('Are you sure you want to clear your cart?')) {
     cartState.items = [];
-    document.querySelector('.cart-items').innerHTML =
+    document.querySelector('.aiab-cart-items').innerHTML =
       '<p style="text-align: center; padding: 3rem; color: #6b7280;">Your cart is empty</p>';
     updateSummary();
   }
@@ -198,7 +198,7 @@ function clearCart() {
 
 // Apply Promo Code
 function applyPromo() {
-  const promoInput = document.querySelector('.promo-input');
+  const promoInput = document.querySelector('.aiab-cart-promo-input');
   const code = promoInput.value.trim().toUpperCase();
 
   if (code === 'SAVE10') {
@@ -221,10 +221,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Clear Cart Button
-  document.querySelector('.clear-cart')?.addEventListener('click', clearCart);
+  document.querySelector('.aiab-cart-clear')?.addEventListener('click', clearCart);
 
   // Item Checkboxes
-  document.querySelectorAll('.cart-item').forEach((cartItem, index) => {
+  document.querySelectorAll('.aiab-cart-item').forEach((cartItem, index) => {
     const checkbox = cartItem.querySelector('input[type="checkbox"]');
     if (checkbox) {
       checkbox.addEventListener('change', function () {
@@ -242,14 +242,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Quantity Buttons
-  document.querySelectorAll('.cart-item').forEach((cartItem, index) => {
+  document.querySelectorAll('.aiab-cart-item').forEach((cartItem, index) => {
     const itemId = parseInt(cartItem.dataset.itemId) || index + 1;
 
-    const minusBtn = cartItem.querySelector('.qty-btn.minus');
-    const plusBtn = cartItem.querySelector('.qty-btn.plus');
-    const qtyInput = cartItem.querySelector('.qty-input');
-    const removeBtn = cartItem.querySelector('.action-btn.remove');
-    const saveBtn = cartItem.querySelector('.action-btn.save');
+    const minusBtn = cartItem.querySelector('.aiab-cart-qty-btn.aiab-cart-minus');
+    const plusBtn = cartItem.querySelector('.aiab-cart-qty-btn.aiab-cart-plus');
+    const qtyInput = cartItem.querySelector('.aiab-cart-qty-input');
+    const removeBtn = cartItem.querySelector('.aiab-cart-action-btn.aiab-cart-remove');
+    const saveBtn = cartItem.querySelector('.aiab-cart-action-btn.aiab-cart-save');
 
     if (minusBtn) {
       minusBtn.addEventListener('click', () => handleQuantityChange(itemId, -1));
@@ -282,26 +282,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Promo Code Apply Button
-  document.querySelector('.promo-apply')?.addEventListener('click', applyPromo);
+  document.querySelector('.aiab-cart-promo-apply')?.addEventListener('click', applyPromo);
 
   // Promo Code Input - Enter Key
-  document.querySelector('.promo-input')?.addEventListener('keypress', function (e) {
+  document.querySelector('.aiab-cart-promo-input')?.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       applyPromo();
     }
   });
 
   // Checkout Buttons
-  document.querySelector('.btn-checkout.aiab-primary')?.addEventListener('click', function () {
+  document.querySelector('.aiab-cart-btn-checkout.aiab-primary')?.addEventListener('click', function () {
     alert('Proceeding to checkout with ' + cartState.items.length + ' items');
   });
 
-  document.querySelector('.btn-paypal')?.addEventListener('click', function () {
+  document.querySelector('.aiab-cart-btn-paypal')?.addEventListener('click', function () {
     alert('Redirecting to PayPal checkout...');
   });
 
   // Recently Viewed Items
-  document.querySelectorAll('.recent-item').forEach((item) => {
+  document.querySelectorAll('.aiab-cart-recent-item').forEach((item) => {
     item.addEventListener('click', function () {
       const productName = this.querySelector('h4').textContent;
     });
