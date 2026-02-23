@@ -24,7 +24,7 @@
   /* Icon Button Primary */
   --icon-button-primary-bg: var(--color-primary);
   --icon-button-primary-color: #ffffff;
-  --icon-button-primary-hover-bg: var(--color-primary-hover, #ff9500);
+  --icon-button-primary-hover-bg: var(--color-primary-hover);
 
   /* Icon Button Secondary */
   --icon-button-secondary-bg: #6b7280;

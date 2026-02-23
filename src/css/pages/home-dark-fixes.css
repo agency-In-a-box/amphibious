@@ -14,12 +14,12 @@
     }
 
     .aiab-stat-card__icon {
-      color: var(--apple-orange-500, #ff9500);
+      color: var(--color-primary-hover);
       opacity: 1;
     }
 
     .aiab-stat-card__icon svg {
-      stroke: var(--apple-orange-500, #ff9500);
+      stroke: var(--color-primary-hover);
     }
 
     /* Feature boxes — hardcoded backgrounds in home.css */
@@ -57,7 +57,7 @@
     }
 
     .aiab-site-nav a:hover {
-      color: var(--apple-orange-500, #ff9500);
+      color: var(--color-primary-hover);
     }
 
     /* Alerts — hardcoded backgrounds */
@@ -95,12 +95,12 @@
   }
 
   .aiab-stat-card__icon {
-    color: var(--apple-orange-500, #ff9500);
+    color: var(--color-primary-hover);
     opacity: 1;
   }
 
   .aiab-stat-card__icon svg {
-    stroke: var(--apple-orange-500, #ff9500);
+    stroke: var(--color-primary-hover);
   }
 
   .aiab-feature-box,
@@ -133,7 +133,7 @@
   }
 
   .aiab-site-nav a:hover {
-    color: var(--apple-orange-500, #ff9500);
+    color: var(--color-primary-hover);
   }
 
   .aiab-alert-success {

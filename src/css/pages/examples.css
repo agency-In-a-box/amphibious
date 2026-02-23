@@ -5,7 +5,7 @@
 
 /* Examples Header */
 .aiab-examples-header {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #c97400 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: white;
   padding: 3rem 0;
   margin-bottom: 3rem;
@@ -69,7 +69,7 @@
 }
 
 .aiab-example-card a:hover {
-  background: #c97400;
+  background: var(--color-primary-dark);
 }
 
 /* Navigation Breadcrumb */
