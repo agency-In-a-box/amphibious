@@ -45,7 +45,7 @@
     }
 
     .cart-count {
-      background: #ED8B00;
+      background: var(--color-primary, #ed8b00);
       color: white;
       padding: 0.25rem 0.75rem;
       border-radius: 20px;
@@ -57,7 +57,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
@@ -122,7 +122,7 @@
     }
 
     .progress-step.aiab-active .progress-step-icon {
-      background: #ED8B00;
+      background: var(--color-primary, #ed8b00);
       color: white;
       transform: scale(1.1);
     }
@@ -138,15 +138,8 @@
     }
 
     .progress-step.aiab-active .progress-step-label {
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
       font-weight: 600;
-    }
-
-    /* Cart Content */
-    .cart-content {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 2rem;
     }
 
     /* Cart Items */
@@ -243,7 +236,7 @@
     }
 
     .cart-item-name:hover {
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
     }
 
     .cart-item-variants {
@@ -364,7 +357,7 @@
     .save-for-later {
       background: none;
       border: none;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
       cursor: pointer;
       font-size: 0.875rem;
       display: flex;
@@ -460,7 +453,7 @@
     .checkout-button {
       width: 100%;
       padding: 1rem;
-      background: #ED8B00;
+      background: var(--color-primary, #ed8b00);
       color: white;
       border: none;
       border-radius: 4px;
@@ -527,8 +520,8 @@
     .promo-button {
       padding: 0.75rem 1.5rem;
       background: white;
-      color: #ED8B00;
-      border: 2px solid #ED8B00;
+      color: var(--color-primary, #ed8b00);
+      border: 2px solid var(--color-primary, #ed8b00);
       border-radius: 4px;
       cursor: pointer;
       font-weight: 500;
@@ -536,7 +529,7 @@
     }
 
     .promo-button:hover {
-      background: #ED8B00;
+      background: var(--color-primary, #ed8b00);
       color: white;
     }
 
@@ -648,7 +641,7 @@
     .recently-item-price {
       font-size: 1rem;
       font-weight: 600;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
     }
 
     /* Saved Items */
@@ -690,10 +683,6 @@
 
     /* Mobile Styles */
     @media (max-width: 768px) {
-      .cart-content {
-        grid-template-columns: 1fr;
-      }
-
       .cart-sidebar {
         position: fixed;
         bottom: 0;
@@ -847,8 +836,9 @@
     </section>
 
     <!-- Cart Content Grid -->
-    <div class="cart-content">
+    <div class="aiab-row">
       <!-- Cart Items Section -->
+      <div class="aiab-col-10">
       <section class="cart-items" aria-label="Cart items">
         <header class="cart-items-header">
           <label class="select-all">
@@ -1112,7 +1102,10 @@
         </section>
       </section>
 
+      </div>
+
       <!-- Cart Sidebar -->
+      <div class="aiab-col-6">
       <aside class="cart-sidebar" aria-label="Order summary and checkout">
         <!-- Promo Code Form -->
         <section class="promo-code" aria-label="Promo code">
@@ -1175,7 +1168,7 @@
           </button>
 
           <p style="text-align: center; margin-top: 1rem; font-size: 0.875rem; color: #6c757d;">
-            or <a href="#" style="color: #ED8B00; text-decoration: none;">Pay in 4 interest-free payments</a>
+            or <a href="#" style="color: var(--color-primary, #ed8b00); text-decoration: none;">Pay in 4 interest-free payments</a>
           </p>
         </section>
 
@@ -1201,6 +1194,7 @@
           </ul>
         </section>
       </aside>
+      </div>
     </div>
 
     <!-- Saved Items Section -->

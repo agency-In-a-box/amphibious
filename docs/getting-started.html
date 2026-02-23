@@ -17,7 +17,7 @@
 
     /* Documentation Header */
     .docs-header {
-      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
+      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, #c97400 100%);
       color: white;
       padding: 3rem 0;
       margin-bottom: 3rem;
@@ -79,11 +79,11 @@
     }
     .docs-nav a:hover {
       background: #f8f9fa;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
     }
     .docs-nav a.aiab-active {
       background: #f0f4ff;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
       font-weight: 500;
     }
     .docs-nav ul ul {
@@ -222,13 +222,13 @@
       border: 2px solid transparent;
     }
     .quick-link:hover {
-      border-color: #ED8B00;
+      border-color: var(--color-primary, #ed8b00);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .quick-link h4 {
       margin: 0 0 0.5rem 0;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
       display: flex;
       align-items: center;
       gap: 0.5rem;

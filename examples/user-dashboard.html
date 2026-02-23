@@ -38,7 +38,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ED8B00 0%, #c97400 100%);
+      background: linear-gradient(135deg, var(--color-primary, #ed8b00) 0%, #c97400 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -114,11 +114,11 @@
     }
     .nav-section a:hover {
       background: #f8f9fa;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
     }
     .nav-section a.aiab-active {
       background: #f0f4ff;
-      color: #ED8B00;
+      color: var(--color-primary, #ed8b00);
       font-weight: 500;
     }
     .nav-badge {
@@ -285,7 +285,7 @@
     }
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #ED8B00 0%, #c97400 100%);
+      background: linear-gradient(90deg, var(--color-primary, #ed8b00) 0%, #c97400 100%);
       border-radius: 4px;
       transition: width 0.3s ease;
     }
@@ -351,7 +351,7 @@
     .aiab-form-group select:focus,
     .aiab-form-group textarea:focus {
       outline: none;
-      border-color: #ED8B00;
+      border-color: var(--color-primary, #ed8b00);
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
     .form-help {
@@ -375,7 +375,7 @@
       font-size: 0.875rem;
     }
     .btn-primary {
-      background: #ED8B00;
+      background: var(--color-primary, #ed8b00);
       color: white;
     }
     .btn-primary:hover {
@@ -390,11 +390,11 @@
     }
     .btn-outline {
       background: transparent;
-      color: #ED8B00;
-      border: 1px solid #ED8B00;
+      color: var(--color-primary, #ed8b00);
+      border: 1px solid var(--color-primary, #ed8b00);
     }
     .btn-outline:hover {
-      background: #ED8B00;
+      background: var(--color-primary, #ed8b00);
       color: white;
     }
     .btn-sm {
