@@ -35,7 +35,7 @@
 
 .aiab-color-picker-trigger:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.25);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-25);
 }
 
 .aiab-color-preview {
@@ -296,7 +296,7 @@
 .aiab-input-group input:focus {
   outline: none;
   border-color: var(--apple-orange-500, var(--color-primary));
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-15);
 }
 
 .aiab-input-group .aiab-field {
@@ -401,7 +401,7 @@
   background: var(--apple-orange-600, var(--color-primary-hover));
   border-color: var(--apple-orange-600, var(--color-primary-hover));
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(237, 139, 0, 0.3);
+  box-shadow: 0 2px 8px var(--color-primary-alpha-30);
 }
 
 /* Dark mode support */

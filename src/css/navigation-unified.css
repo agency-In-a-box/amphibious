@@ -9,7 +9,7 @@
 
 :root {
   /* Core Colors - Using Pantone 144 as primary */
-  --nav-primary: #ed8b00;
+  --nav-primary: var(--color-primary);
   --nav-primary-hover: #ff9500;
   --nav-primary-active: #d87a00;
 

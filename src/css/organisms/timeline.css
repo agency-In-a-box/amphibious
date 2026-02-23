@@ -117,7 +117,7 @@
 }
 
 .aiab-timeline-event.selected {
-  box-shadow: 0 0 0 2px var(--apple-orange-500, #ed8b00);
+  box-shadow: 0 0 0 2px var(--color-primary);
 }
 
 .aiab-timeline-event.expanded .aiab-event-body {
@@ -154,7 +154,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--apple-orange-500, #ed8b00);
+  background: var(--color-primary);
   border: 3px solid white;
   box-shadow: 0 0 0 1px var(--apple-gray-200, #e0e0e0);
   z-index: 3;
@@ -337,7 +337,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--apple-orange-500, #ed8b00);
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;

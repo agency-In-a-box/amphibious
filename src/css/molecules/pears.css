@@ -43,7 +43,7 @@ ul.aiab-stats li .aiab-stat-value {
   font-size: 1.75rem;
   font-weight: 700;
   text-decoration: none;
-  color: var(--primary-color, #ed8b00);
+  color: var(--color-primary);
   line-height: 1.2;
   transition: color 0.2s ease;
 }
@@ -77,7 +77,7 @@ ul.aiab-stats li .aiab-stat-label {
 
 /* Colored Stats Variant */
 .aiab-stats.aiab-stats--colored li:nth-child(1) a {
-  color: #ed8b00;
+  color: var(--color-primary);
 }
 .aiab-stats.aiab-stats--colored li:nth-child(2) a {
   color: #10b981;
@@ -122,7 +122,7 @@ ul.aiab-stats li .aiab-stat-label {
 .aiab-stat-card__number {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-color, #ed8b00);
+  color: var(--color-primary);
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -197,7 +197,7 @@ ul.aiab-slats li:last-child {
 
 .aiab-slats li a:hover h3,
 .aiab-slats li a:hover h4 {
-  color: var(--primary-color, #ed8b00);
+  color: var(--color-primary);
 }
 
 .aiab-slats li p {
@@ -353,13 +353,13 @@ article.aside > .aiab-main-content:not([class*="col-"]) {
 }
 
 .aiab-content-with-aside aside a:hover {
-  color: var(--primary-color, #ed8b00);
+  color: var(--color-primary);
 }
 
 /* Aside Callout Box */
 .aiab-aside-callout {
   background: var(--bg-light, #f8f9fa);
-  border-left: 4px solid var(--primary-color, #ed8b00);
+  border-left: 4px solid var(--color-primary);
   padding: 1rem;
   margin: 1.5rem 0;
   border-radius: 0 4px 4px 0;
@@ -367,7 +367,7 @@ article.aside > .aiab-main-content:not([class*="col-"]) {
 
 .aiab-aside-callout h4 {
   margin: 0 0 0.5rem 0;
-  color: var(--primary-color, #ed8b00);
+  color: var(--color-primary);
 }
 
 .aiab-aside-callout p {
@@ -398,7 +398,7 @@ article.aside > .aiab-main-content:not([class*="col-"]) {
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-color, #ed8b00);
+  color: var(--color-primary);
   margin-bottom: 0.25rem;
 }
 
@@ -443,7 +443,7 @@ article.aside > .aiab-main-content:not([class*="col-"]) {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: var(--primary-color, #ed8b00);
+  color: var(--color-primary);
 }
 
 .aiab-review-slats .aiab-reviewer-name {

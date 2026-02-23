@@ -348,7 +348,7 @@
 }
 
 .aiab-skeleton--primary::after {
-  background: linear-gradient(90deg, transparent, rgba(237, 139, 0, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-primary-alpha-10), transparent);
 }
 
 /* ========================================

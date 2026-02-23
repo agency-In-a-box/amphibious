@@ -244,13 +244,13 @@
 .aiab-btn:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 3px rgba(237, 139, 0, 0.25),
+    0 0 0 3px var(--color-primary-alpha-25),
     0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .aiab-form-control:focus {
   border-color: var(--apple-orange-500);
-  box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-15);
 }
 
 /* ==========================================================================
@@ -280,7 +280,7 @@
 
 /* Selection color with brand */
 ::selection {
-  background-color: rgba(237, 139, 0, 0.2);
+  background-color: var(--color-primary-alpha-20);
   color: var(--apple-gray-900);
 }
 

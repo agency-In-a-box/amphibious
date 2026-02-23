@@ -23,7 +23,7 @@
   --pagination-hover-border: #d1d5db;
 
   /* Focus State */
-  --pagination-focus-ring: rgba(237, 139, 0, 0.2);
+  --pagination-focus-ring: var(--color-primary-alpha-20);
 
   /* Pagination Spacing */
   --pagination-padding: 0.5rem 0.75rem;

@@ -15,7 +15,7 @@
   --tab-text-hover: #374151;
   --tab-text-active: #1f2937;
   --tab-indicator: var(--color-primary, var(--color-primary));
-  --tab-focus: rgba(237, 139, 0, 0.2);
+  --tab-focus: var(--color-primary-alpha-20);
 
   /* Tab Panel Colors */
   --tab-panel-bg: #ffffff;

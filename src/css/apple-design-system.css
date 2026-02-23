@@ -10,11 +10,11 @@
 
 :root {
   /* Primary Palette - Pantone 144 Orange (canonical: #ed8b00) */
-  --apple-orange: #ed8b00;
+  --apple-orange: var(--color-primary);
   --apple-orange-light: #ff9f1c;
   --apple-orange-dark: #d87a00;
-  --apple-orange-subtle: rgba(237, 139, 0, 0.08);
-  --apple-orange-fade: rgba(237, 139, 0, 0.04);
+  --apple-orange-subtle: var(--color-primary-alpha-8);
+  --apple-orange-fade: var(--color-primary-alpha-4);
 
   /* Grayscale - Apple's Precise Grays */
   --apple-black: #1d1d1f;

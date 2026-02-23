@@ -13,7 +13,7 @@
   --breadcrumb-text-focus: var(--color-link-focus); /* Use global focus color */
   --breadcrumb-separator: #9ca3af;
   --breadcrumb-bg: transparent;
-  --breadcrumb-bg-hover: rgba(237, 139, 0, 0.08); /* Subtle brand orange background */
+  --breadcrumb-bg-hover: var(--color-primary-alpha-8); /* Subtle brand orange background */
   --breadcrumb-border: #e5e7eb;
 
   /* Breadcrumb Spacing and Sizing - 4px grid aligned */
@@ -78,7 +78,7 @@
 }
 
 .aiab-breadcrumb .aiab-breadcrumb__link:focus-visible {
-  outline: 2px solid var(--color-primary, #ed8b00);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 

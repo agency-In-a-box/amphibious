@@ -278,7 +278,7 @@
 }
 
 .aiab-modal--alert.aiab-modal--info .aiab-modal__icon {
-  background-color: rgba(237, 139, 0, 0.1);
+  background-color: var(--color-primary-alpha-10);
   color: var(--color-primary);
 }
 
