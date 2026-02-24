@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tooltip System - Amphibious 2.0 Showcase</title>
-    <link rel="stylesheet" href="/dist/amphibious.css">
+    <title>Enhanced Tooltips — Amphibious 2.0</title>
+    <meta name="description" content="Enhanced tooltips with rich content, interactive elements, and smart positioning.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="module">import '/src/css/main.css';</script>
     <style>
         body {
             margin: 0;
@@ -370,7 +373,6 @@
             border: 1px solid #3b82f6;
         }
     </style>
-    <!-- CSS loaded via JavaScript module -->
 </head>
 <body>
   <!-- Site Navigation -->
@@ -874,7 +876,6 @@ tooltip.<span class="string">updateContent</span>(<span class="string">'New cont
         </section>
     </div>
 
-    <script type="module" src="../dist/amphibious.js"></script>
     <script type="module">
         // Initialize e-commerce tooltips
         document.addEventListener('DOMContentLoaded', () => {
@@ -939,13 +940,7 @@ tooltip.<span class="string">updateContent</span>(<span class="string">'New cont
         });
     </script>
   <script type="module">
-    import '../src/css/main.css';
     import amp from '../src/index.ts';
-    // Amphibious auto-initializes when the module loads
   </script>
-
-    <!-- Import main JavaScript for navigation -->
-    <script type="module" src="../src/js/index.js"></script>
-
 </body>
 </html>

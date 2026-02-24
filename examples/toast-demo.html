@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toast Notifications - Amphibious 2.0</title>
-  <meta name="description" content="Interactive toast notification examples for the Amphibious CSS framework">
-
+  <title>Toast Notifications — Amphibious 2.0</title>
+  <meta name="description" content="Toast notification examples with auto-dismiss, stacking, and contextual styles.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="module">import '/src/css/main.css';</script>
   <style>
     body {
       padding: 2rem;
@@ -359,9 +361,6 @@ Toast.hideAll();</code></pre>
     </div>
   </div>
 
-  <!-- Load Amphibious JS -->
-  <script type="module" src="../src/js/index.js"></script>
-
   <!-- Demo Scripts -->
   <script>
     let currentPosition = 'top-right';
@@ -481,6 +480,9 @@ Toast.hideAll();</code></pre>
         icon: !!type
       });
     }
+  </script>
+  <script type="module">
+    import amp from '../src/index.ts';
   </script>
 </body>
 </html>

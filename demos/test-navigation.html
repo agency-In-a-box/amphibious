@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navigation Test - Amphibious</title>
+  <title>Navigation Test — Amphibious 2.0</title>
+  <meta name="description" content="Navigation component test page with multiple menu configurations and responsive behavior.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
     /* Temporary inline styles to verify the navigation works */
     .horizontal {
@@ -118,23 +121,23 @@
   </div>
 
   <script type="module">
-    import './src/css/main.css';
-    import amp from './src/index.ts';
+    import '/src/css/main.css';
 
     console.log('CSS module imported');
-    console.log('Amp initialized:', amp);
 
     // Check if navigation styles are applied
     setTimeout(() => {
       const nav = document.querySelector('.horizontal');
-      const computed = window.getComputedStyle(nav);
-      console.log('Navigation display:', computed.display);
-      console.log('Navigation flex-wrap:', computed.flexWrap);
+      if (nav) {
+        const computed = window.getComputedStyle(nav);
+        console.log('Navigation display:', computed.display);
+        console.log('Navigation flex-wrap:', computed.flexWrap);
 
-      if (computed.display !== 'flex') {
-        console.error('Navigation CSS not applied! Display is:', computed.display);
-      } else {
-        console.log('Navigation CSS successfully applied!');
+        if (computed.display !== 'flex') {
+          console.error('Navigation CSS not applied! Display is:', computed.display);
+        } else {
+          console.log('Navigation CSS successfully applied!');
+        }
       }
     }, 1000);
   </script>

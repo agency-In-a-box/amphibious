@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-commerce Product Catalog - Amphibious 2.0</title>
-  <meta name="description" content="Complete e-commerce product catalog demonstration with icons, tooltips, and modals">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>E-commerce Catalog — Amphibious 2.0</title>
+  <meta name="description" content="Product catalog with filtering, sorting, grid and list views, and product quick-view modals">
+  <script type="module">
+    import '/src/css/main.css';
+  </script>
   <style>
     /* E-commerce Styles */
     body {
@@ -630,7 +635,6 @@
       }
     }
   </style>
-    <!-- CSS loaded via JavaScript module -->
 </head>
 <body>
   <!-- Site Navigation -->
@@ -1519,10 +1523,5 @@
   </script>
 
   
-  <script type="module">
-    import '../src/css/main.css';
-    import amp from '../src/index.ts';
-    // Amphibious auto-initializes when the module loads
-  </script>
 </body>
 </html>

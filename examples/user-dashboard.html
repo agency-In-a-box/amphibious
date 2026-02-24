@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Dashboard - Amphibious 2.0</title>
-  <meta name="description" content="Complete user account dashboard with analytics, settings, and profile management">
+  <title>User Dashboard — Amphibious 2.0</title>
+  <meta name="description" content="User dashboard layout with profile cards, activity feeds, and data visualization widgets.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="module">import '/src/css/main.css';</script>
   <style>
     /* Dashboard Styles */
     body {
@@ -423,7 +426,6 @@
       }
     }
   </style>
-    <!-- CSS loaded via JavaScript module -->
 </head>
 <body>
   <!-- Site Navigation -->
@@ -890,9 +892,6 @@
     </div>
   </div>
 
-  <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
-
   <!-- Dashboard Scripts -->
   <script>
     // Dashboard functionality
@@ -958,9 +957,7 @@
     });
   </script>
   <script type="module">
-    import '../src/css/main.css';
     import amp from '../src/index.ts';
-    // Amphibious auto-initializes when the module loads
   </script>
 </body>
 </html>

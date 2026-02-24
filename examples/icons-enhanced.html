@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Icon System - Amphibious 2.0 Showcase</title>
-    <link rel="stylesheet" href="/dist/amphibious.css">
+    <title>Enhanced Icons — Amphibious 2.0</title>
+    <meta name="description" content="Enhanced icon components with sizes, colors, animations, and interactive features.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
         body {
             margin: 0;
@@ -294,7 +296,7 @@
             .icon-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
         }
     </style>
-    <!-- CSS loaded via JavaScript module -->
+    <script type="module">import '/src/css/main.css';</script>
 </head>
 <body>
   <!-- Site Navigation -->
@@ -541,7 +543,6 @@
         <i data-lucide="arrow-up"></i>
     </button>
 
-    <script type="module" src="../dist/amphibious.js"></script>
     <script>
         // Icon database organized by category
         const iconDatabase = {
@@ -763,7 +764,6 @@
         }
     </script>
   <script type="module">
-    import '../src/css/main.css';
     import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
