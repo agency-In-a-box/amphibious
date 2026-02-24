@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navigation Showcase - Amphibious 2.0</title>
-  <meta name="description" content="Complete navigation component demonstrations including horizontal, vertical, breadcrumbs, and mobile patterns">
+  <title>Navigation Showcase — Amphibious 2.0</title>
+  <meta name="description" content="Comprehensive navigation patterns including sidebars, breadcrumbs, and tab navigation.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
     /* Demo Styles */
     body {
@@ -245,7 +247,7 @@
       color: var(--color-primary);
     }
   </style>
-    <!-- CSS loaded via JavaScript module -->
+
 </head>
 <body>
   <!-- Site Navigation -->
@@ -831,9 +833,6 @@ const nav = amp.createNavigation('#nav-container', {
     </section>
   </main>
 
-  <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
-
   <!-- Demo Scripts -->
   <script>
     // Modern navigation demo
@@ -924,8 +923,8 @@ const nav = amp.createNavigation('#nav-container', {
 
   
   <script type="module">
-    import '../src/css/main.css';
-    import amp from '../src/index.ts';
+    import '/src/css/main.css';
+    import amp from '/src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
 </body>

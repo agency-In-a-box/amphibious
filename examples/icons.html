@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Icons - Amphibious 2.0</title>
-    <link rel="stylesheet" href="/dist/amphibious.css">
+    <title>Icons — Amphibious 2.0</title>
+    <meta name="description" content="Icon library showcase with Lucide icons, search, and copy-to-clipboard in Amphibious 2.0.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
         .aiab-demo-section {
             margin: 2rem 0;
@@ -40,7 +42,7 @@
             border-radius: 4px;
         }
     </style>
-    <!-- CSS loaded via JavaScript module -->
+    <script type="module">import '/src/css/main.css';</script>
 </head>
 <body>
   <!-- Site Navigation -->
@@ -413,7 +415,6 @@
         </section>
     </div>
 
-    <script type="module" src="../dist/amphibious.js"></script>
     <script type="module">
         // Wait for Amphibious to load
         window.addEventListener('load', () => {
@@ -503,7 +504,6 @@
         };
     </script>
   <script type="module">
-    import '../src/css/main.css';
     import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>

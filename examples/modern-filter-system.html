@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter System — Amphibious 2.0</title>
+  <meta name="description" content="Modern filtering system with multi-criteria search, tag filters, and dynamic result updates.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="module">import '/src/css/main.css';</script>
+</head>
+<body>
+
 <!-- Modern Filter System HTML -->
 <aside class="catalog-sidebar">
   <div class="filters-modern" id="filtersPanel">
@@ -307,14 +320,14 @@ function toggleColor(button) {
   button.classList.toggle('selected');
 }
 
-// Add active filter aiab-tag
+// Add active filter tag
 function addActiveFilter(text, type) {
   const activeFilters = document.getElementById('activeFilters');
   const filterTags = document.getElementById('filterTags');
 
   activeFilters.classList.add('has-filters');
 
-  const aiab-tag = document.createElement('span');
+  const tag = document.createElement('span');
   tag.className = 'filter-tag';
   tag.dataset.type = type;
   tag.innerHTML = `
@@ -330,9 +343,9 @@ function addActiveFilter(text, type) {
   filterTags.appendChild(tag);
 }
 
-// Remove filter aiab-tag
+// Remove filter tag
 function removeFilter(button) {
-  const aiab-tag = button.parentElement;
+  const tag = button.parentElement;
   tag.remove();
 
   const filterTags = document.getElementById('filterTags');
@@ -414,3 +427,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+</body>
+</html>

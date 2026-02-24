@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toast Components - Live Preview</title>
+  <title>Toast Preview — Amphibious 2.0</title>
+  <meta name="description" content="Toast notification component preview with auto-dismiss, positioning, and style variants.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="module">
+    import '/src/css/main.css';
+  </script>
   <style>
     body {
       font-family: -apple-system, system-ui, sans-serif;
@@ -140,16 +146,16 @@
 
   <div class="button-grid">
     <button class="trigger-btn btn-success" onclick="showToast('success')">
-      ✅ Success Toast
+      Success Toast
     </button>
     <button class="trigger-btn btn-error" onclick="showToast('error')">
-      ❌ Error Toast
+      Error Toast
     </button>
     <button class="trigger-btn btn-warning" onclick="showToast('warning')">
-      ⚠️ Warning Toast
+      Warning Toast
     </button>
     <button class="trigger-btn btn-info" onclick="showToast('info')">
-      ℹ️ Info Toast
+      Info Toast
     </button>
   </div>
 
@@ -195,7 +201,6 @@
       const toast = document.createElement('div');
       toast.className = `toast-preview toast-${type}`;
       toast.innerHTML = `
-        <span style="font-size: 1.5rem">${type === 'success' ? '✅' : type === 'error' ? '❌' : type === 'warning' ? '⚠️' : 'ℹ️'}</span>
         <div>
           <strong style="display: block; margin-bottom: 4px;">${type.charAt(0).toUpperCase() + type.slice(1)}</strong>
           <span style="color: #666; font-size: 0.875rem;">${messages[type]}</span>

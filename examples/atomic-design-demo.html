@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amphibious 2.0 - Atomic Design System Demo</title>
-    <link rel="stylesheet" href="src/css/main-atomic.css">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Atomic Design System — Amphibious 2.0</title>
+    <meta name="description" content="Atomic Design methodology demo with tokens, atoms, molecules, and organisms hierarchy">
+    <script type="module">
+      import '/src/css/main.css';
+    </script>
     <style>
         .aiab-demo-section {
             margin: 3rem 0;
@@ -37,7 +42,6 @@
             align-items: center;
         }
     </style>
-    <!-- CSS loaded via JavaScript module -->
 </head>
 <body>
   <!-- Site Navigation -->
@@ -358,10 +362,5 @@
   <div id="footer-include"></div>
 
   
-  <script type="module">
-    import '../src/css/main.css';
-    import amp from '../src/index.ts';
-    // Amphibious auto-initializes when the module loads
-  </script>
 </body>
 </html>

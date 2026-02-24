@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modal System - Amphibious 2.0 Showcase</title>
-    <link rel="stylesheet" href="/dist/amphibious.css">
+    <title>Enhanced Modal — Amphibious 2.0</title>
+    <meta name="description" content="Enhanced modal with advanced features, custom animations, and accessibility patterns.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
         body {
             margin: 0;
@@ -411,7 +413,7 @@
             color: #718096;
         }
     </style>
-    <!-- CSS loaded via JavaScript module -->
+    <script type="module">import '/src/css/main.css';</script>
 </head>
 <body>
   <!-- Site Navigation -->
@@ -1039,7 +1041,6 @@ modal.<span class="string">toggle</span>();
         </div>
     </div>
 
-    <script type="module" src="../dist/amphibious.js"></script>
     <script type="module">
         console.log('🎭 Modal showcase initialized');
 
@@ -1137,7 +1138,6 @@ modal.<span class="string">toggle</span>();
         };
     </script>
   <script type="module">
-    import '../src/css/main.css';
     import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
