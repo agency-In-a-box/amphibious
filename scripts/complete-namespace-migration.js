@@ -692,7 +692,7 @@ const SORTED_CLASSES = [...new Set(CLASSES_TO_PREFIX)].sort((a, b) => b.length -
 // TRANSFORMATION ENGINE
 // ============================================================================
 
-function transformCSSContent(content, filePath) {
+function transformCSSContent(content, _filePath) {
   let transformed = content;
   let changeCount = 0;
 

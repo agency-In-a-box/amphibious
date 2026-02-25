@@ -1148,7 +1148,7 @@ function createTab(label, content, options = {}) {
           const currentIndex = Array.from(this.tabs).indexOf(e.target);
           let targetIndex;
 
-          aiab-switch (e.key) {
+          switch (e.key) {
             case 'ArrowLeft':
               e.preventDefault();
               targetIndex = currentIndex > 0 ? currentIndex - 1 : this.tabs.length - 1;
