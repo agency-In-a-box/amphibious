@@ -1,0 +1,166 @@
+    /* Documentation specific styles */
+    body {
+      background: #f8f9fa;
+    }
+
+    .docs-header {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .aiab-component-card {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .aiab-component-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .aiab-component-card h3 {
+      color: #2c3e50;
+      margin: 0 0 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .aiab-component-card .aiab-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+    }
+
+    .aiab-component-card p {
+      color: #6c757d;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.6;
+    }
+
+    .aiab-component-card .aiab-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid #e9ecef;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .aiab-component-card .aiab-stat {
+      flex: 1;
+      text-align: center;
+    }
+
+    .aiab-component-card .aiab-stat-value {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .aiab-component-card .aiab-stat-label {
+      display: block;
+      font-size: 0.75rem;
+      color: #6c757d;
+      text-transform: uppercase;
+    }
+
+    .aiab-component-card .links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .aiab-component-card .links a {
+      flex: 1;
+      padding: 0.5rem;
+      text-align: center;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .aiab-component-card .links a.aiab-primary {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .aiab-component-card .links a.aiab-primary:hover {
+      background: var(--color-primary-dark);
+      text-decoration: none;
+    }
+
+    .aiab-component-card .links a.aiab-secondary {
+      background: #e9ecef;
+      color: #2c3e50;
+    }
+
+    .aiab-component-card .links a.aiab-secondary:hover {
+      background: #dee2e6;
+      text-decoration: none;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    .status-badge.complete {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .status-badge.beta {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .status-badge.new {
+      background: #cce5ff;
+      color: #004085;
+    }
+
+    .quick-links {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .quick-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .quick-links li a {
+      display: block;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .quick-links li a:hover {
+      background: #e9ecef;
+      text-decoration: none;
+    }

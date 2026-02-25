@@ -1,0 +1,242 @@
+    /* Documentation Styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      margin: 0;
+      background: #f8f9fa;
+    }
+
+    /* Documentation Header */
+    .docs-header {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .docs-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .docs-header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Documentation Layout */
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar Navigation */
+    .docs-sidebar {
+      position: sticky;
+      top: 1rem;
+      height: fit-content;
+    }
+    .docs-nav {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .docs-nav h3 {
+      margin: 0 0 1rem 0;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6c757d;
+    }
+    .docs-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .docs-nav li {
+      margin-bottom: 0.5rem;
+    }
+    .docs-nav a {
+      color: #495057;
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .docs-nav a:hover {
+      background: #f8f9fa;
+      color: var(--color-primary);
+    }
+    .docs-nav a.aiab-active {
+      background: #f0f4ff;
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+    .docs-nav ul ul {
+      margin-left: 1rem;
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+      border-left: 2px solid #f0f0f0;
+    }
+
+    /* Main Content */
+    .docs-content {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .docs-content h2 {
+      margin: 2rem 0 1rem 0;
+      color: #2c3e50;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+    .docs-content h2:first-child {
+      margin-top: 0;
+    }
+    .docs-content h3 {
+      margin: 1.5rem 0 0.75rem 0;
+      color: #495057;
+    }
+    .docs-content h4 {
+      margin: 1rem 0 0.5rem 0;
+      color: #6c757d;
+    }
+
+    /* Code Examples */
+    .code-block {
+      background: #f4f4f4;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .code-block pre {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 0.125rem 0.25rem;
+      border-radius: 3px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+      color: #e83e8c;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      border-left: 4px solid;
+    }
+    .callout-info {
+      background: #e3f2fd;
+      border-color: #2196f3;
+    }
+    .callout-success {
+      background: #e8f5e9;
+      border-color: #4caf50;
+    }
+    .callout-warning {
+      background: #fff3e0;
+      border-color: #ff9800;
+    }
+    .callout-danger {
+      background: #ffebee;
+      border-color: #f44336;
+    }
+    .callout h4 {
+      margin: 0 0 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Tables */
+    .docs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    .docs-table th,
+    .docs-table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .docs-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #495057;
+    }
+    .docs-table tbody tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* Version Badge */
+    .version-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background: #28a745;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    /* Quick Links */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .quick-link {
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .quick-link:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .quick-link h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .quick-link p {
+      margin: 0;
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+      }
+      .docs-sidebar {
+        position: static;
+      }
+    }
