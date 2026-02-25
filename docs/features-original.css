@@ -1,0 +1,103 @@
+/**
+ * Features Original Page Styles
+ * Page-specific navigation overrides for features-original.html
+ * Shared feature styles are in features.css, shared docs styles in docs.css
+ */
+
+/* Navigation override - adds bottom margin */
+.aiab-site-nav {
+    margin-bottom: 2rem;
+}
+
+/* Classic horizontal branded navigation */
+.horizontal.branded {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+.horizontal.branded > li {
+    position: relative;
+}
+
+.horizontal.branded > li > a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    display: block;
+    transition: background-color 0.2s, color 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+.horizontal.branded > li:hover > a,
+.horizontal.branded > li.aiab-active > a {
+    background-color: #667eea;
+    color: white;
+    border-bottom-color: #4c63d2;
+}
+
+.aiab-site-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #667eea;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.horizontal.branded > li.aiab-active > a.aiab-site-logo {
+    color: white;
+}
+
+/* Dropdown Menus */
+.horizontal.branded ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 0 0 8px 8px;
+    min-width: 280px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1001;
+}
+
+.horizontal.branded li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.horizontal.branded ul li {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.horizontal.branded ul li:last-child {
+    border-bottom: none;
+}
+
+.horizontal.branded ul a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: #2c3e50;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
+}
+
+.horizontal.branded ul a:hover {
+    background-color: #f8f9fa;
+    color: #667eea;
+}

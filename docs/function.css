@@ -1,0 +1,256 @@
+/**
+ * Function Page Styles
+ * Page-specific styles for function.html
+ * Shared docs styles are in docs.css
+ */
+
+/* Navigation Examples */
+.aiab-navbar {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    margin: 1rem 0;
+}
+
+.navbar-inner {
+    padding: 0.5rem 1rem;
+}
+
+.aiab-horizontal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.aiab-horizontal > li {
+    position: relative;
+}
+
+.aiab-horizontal > li > a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+}
+
+.aiab-horizontal > li > a:hover {
+    background: #e9ecef;
+    color: #007bff;
+}
+
+.aiab-horizontal > li > ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    min-width: 200px;
+    display: none;
+    z-index: 1000;
+}
+
+.aiab-horizontal > li:hover > ul {
+    display: block;
+}
+
+.aiab-horizontal > li > ul > li > a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #495057;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.aiab-horizontal > li > ul > li > a:hover {
+    background: #f8f9fa;
+    color: #007bff;
+}
+
+/* Vertical Navigation */
+.vertical {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.vertical > li {
+    position: relative;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.vertical > li:last-child {
+    border-bottom: none;
+}
+
+.vertical > li > a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #495057;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.vertical > li > a:hover {
+    background: #f8f9fa;
+    color: #007bff;
+}
+
+.vertical > li > ul {
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.vertical > li:hover > ul {
+    display: block;
+}
+
+.vertical > li > ul > li > a {
+    display: block;
+    padding: 0.5rem 1rem 0.5rem 2rem;
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.vertical > li > ul > li > a:hover {
+    background: #e9ecef;
+    color: #007bff;
+}
+
+/* Breadcrumbs */
+.aiab-breadcrumb {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+}
+
+.aiab-breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+
+.aiab-breadcrumb li + li::before {
+    content: "/";
+    margin: 0 0.5rem;
+    color: #6c757d;
+}
+
+.aiab-breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.aiab-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.aiab-breadcrumb .aiab-active {
+    color: #6c757d;
+}
+
+/* Tabs */
+.aiab-tabs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.aiab-tabs li {
+    margin-bottom: -1px;
+}
+
+.aiab-tabs li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #495057;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 0.375rem 0.375rem 0 0;
+    transition: all 0.2s ease;
+}
+
+.aiab-tabs li a:hover {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.aiab-tabs li a.aiab-active {
+    background: #fff;
+    border-color: #dee2e6;
+    color: #007bff;
+}
+
+.aiab-tabs-content {
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 0.375rem 0.375rem;
+    background: #fff;
+}
+
+.aiab-tabs-content > li {
+    display: none;
+    padding: 1.5rem;
+}
+
+.aiab-tabs-content > li.aiab-active {
+    display: block;
+}
+
+/* Pagination */
+.aiab-pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.aiab-pagination li a,
+.aiab-pagination li span {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+}
+
+.aiab-pagination li a:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.aiab-pagination li.aiab-active span {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.aiab-pagination li.aiab-disabled span {
+    color: #6c757d;
+    background: transparent;
+    border-color: #dee2e6;
+}

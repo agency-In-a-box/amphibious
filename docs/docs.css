@@ -137,13 +137,15 @@ body {
   color: #343a40;
 }
 
-.docs-nav .nav-links {
+.docs-nav .nav-links,
+.docs-nav .aiab-nav-links {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.docs-nav .nav-links a {
+.docs-nav .nav-links a,
+.docs-nav .aiab-nav-links a {
   color: #6c757d;
   text-decoration: none;
   padding: 0.5rem 1rem;
@@ -152,7 +154,9 @@ body {
 }
 
 .docs-nav .nav-links a:hover,
-.docs-nav .nav-links a.aiab-active {
+.docs-nav .nav-links a.aiab-active,
+.docs-nav .aiab-nav-links a:hover,
+.docs-nav .aiab-nav-links a.aiab-active {
   background: #fff;
   color: #007bff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
