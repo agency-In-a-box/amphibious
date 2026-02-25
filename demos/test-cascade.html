@@ -7,6 +7,7 @@
   <meta name="description" content="CSS cascade and layer ordering test for verifying Amphibious 2.0 style specificity.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="module">import '/src/css/main.css';</script>
   <style>
     /* Test conflicting styles to verify layer precedence */
 
@@ -183,9 +184,6 @@
 
       console.log('Cascade test complete. Check visual output above.');
     });
-  </script>
-  <script type="module">
-    import '/src/css/main.css';
   </script>
 </body>
 </html>

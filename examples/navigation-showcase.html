@@ -7,6 +7,9 @@
   <meta name="description" content="Comprehensive navigation patterns including sidebars, breadcrumbs, and tab navigation.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="module">
+    import '/src/css/main.css';
+  </script>
   <link rel="stylesheet" href="navigation-showcase.css">
 
 </head>
@@ -682,11 +685,9 @@ const nav = amp.createNavigation('#nav-container', {
     console.log('Navigation Showcase Loaded');
   </script>
 
-  
+
   <script type="module">
-    import '/src/css/main.css';
     import amp from '/src/index.ts';
-    // Amphibious auto-initializes when the module loads
   </script>
 </body>
 </html>
