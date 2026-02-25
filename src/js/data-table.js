@@ -383,7 +383,8 @@ class DataTableComponent {
     // Add checkbox column header
     const thead = this.table.querySelector('thead tr');
     const checkAllTh = document.createElement('th');
-    checkAllTh.innerHTML = '<input type="checkbox" class="aiab-data-table__checkbox" data-check-all>';
+    checkAllTh.innerHTML =
+      '<input type="checkbox" class="aiab-data-table__checkbox" data-check-all>';
     thead.insertBefore(checkAllTh, thead.firstChild);
 
     // Add checkbox to each row
