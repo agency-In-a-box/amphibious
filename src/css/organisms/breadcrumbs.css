@@ -218,7 +218,9 @@
 }
 
 .aiab-breadcrumb--ellipsis
-  .aiab-breadcrumb__item:not(:first-child):not(:last-child):not(.aiab-breadcrumb__item--always-show) {
+  .aiab-breadcrumb__item:not(:first-child):not(:last-child):not(
+    .aiab-breadcrumb__item--always-show
+  ) {
   display: none;
 }
 
@@ -435,7 +437,9 @@
   outline: none; /* Remove browser default blue outline */
 }
 
-.aiab-breadcrumb .aiab-breadcrumb__item--current .aiab-breadcrumb__link[aria-current="page"]:focus-visible {
+.aiab-breadcrumb
+  .aiab-breadcrumb__item--current
+  .aiab-breadcrumb__link[aria-current="page"]:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
