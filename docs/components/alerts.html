@@ -815,9 +815,9 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
   <script>
     function _showToast(position) {
       // Create aiab-container if it doesn't exist
-      const container = document.querySelector(`.aiab-toast-container--${position}`);
+      let container = document.querySelector(`.aiab-toast-container--${position}`);
       if (!container) {
-        aiab-container = document.createElement('div');
+        container = document.createElement('div');
         container.className = `aiab-toast-container aiab-toast-container--${position}`;
         document.body.appendChild(container);
       }
@@ -854,9 +854,9 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
     }
 
     function _showAutoDismissToast() {
-      const container = document.querySelector('.aiab-toast-container--top-right');
+      let container = document.querySelector('.aiab-toast-container--top-right');
       if (!container) {
-        aiab-container = document.createElement('div');
+        container = document.createElement('div');
         container.className = 'aiab-toast-container aiab-toast-container--top-right';
         document.body.appendChild(container);
       }
