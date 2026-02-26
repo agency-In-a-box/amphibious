@@ -1287,7 +1287,7 @@ class FileUploadEnhanced {
   }
 
   generateId() {
-    return `file-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    return `file-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
   }
 
   showError(message) {

@@ -54,7 +54,6 @@ table {
 /* Table wrapper for responsive behavior */
 .aiab-table-wrapper {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   margin: 1.5rem 0;
 }
 

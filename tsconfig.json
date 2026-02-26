@@ -53,7 +53,7 @@
     "src/**/*.ts",
     "src/**/*.js",
     "src/**/*.d.ts",
-    "vite.config.*.ts",
+    "vite.config.*.js",
     "postcss.config.js"
   ],
 

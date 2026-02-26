@@ -438,7 +438,6 @@
 
   .aiab-data-table-wrapper {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .aiab-data-table {
@@ -459,7 +458,6 @@
 
   .aiab-data-table-filters {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     padding-bottom: 0.5rem;
   }
 

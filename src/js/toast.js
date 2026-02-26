@@ -62,7 +62,7 @@ class ToastComponent {
    */
   show(options = {}) {
     const config = { ...this.defaults, ...options };
-    const id = `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const id = `toast-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
 
     // Ensure container exists with correct position
     if (

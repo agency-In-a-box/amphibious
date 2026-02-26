@@ -372,7 +372,7 @@ class ComponentRegistry {
    * Generate unique component ID
    */
   generateId(type) {
-    return `${this.config.namespace}-${type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    return `${this.config.namespace}-${type}-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
   }
 
   /**
