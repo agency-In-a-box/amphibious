@@ -157,7 +157,7 @@
   &lt;div class="aiab-modal__dialog"&gt;
     &lt;div class="aiab-modal__header"&gt;
       &lt;h2 class="aiab-modal__title" id="aiab-modal-title"&gt;Modal Title&lt;/h2&gt;
-      &lt;button class="modal__close" aria-label="Close aiab-modal"&gt;
+      &lt;button class="aiab-modal__close" aria-label="Close aiab-modal"&gt;
         &lt;svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"&gt;
           &lt;path d="M18 6L6 18M6 6l12 12"/&gt;
         &lt;/svg&gt;
@@ -187,7 +187,7 @@
   &lt;div class="aiab-modal__dialog"&gt;
     &lt;div class="aiab-modal__header"&gt;
       &lt;h2 class="aiab-modal__title"&gt;Contact Information&lt;/h2&gt;
-      &lt;button class="modal__close"&gt;×&lt;/button&gt;
+      &lt;button class="aiab-modal__close"&gt;×&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="aiab-modal__body"&gt;
       &lt;form&gt;
@@ -267,7 +267,7 @@
 &lt;div class="aiab-modal aiab-modal--alert aiab-modal--success"&gt;
   &lt;div class="aiab-modal__dialog"&gt;
     &lt;div class="aiab-modal__body"&gt;
-      &lt;div class="modal__icon"&gt;
+      &lt;div class="aiab-modal__icon"&gt;
         &lt;svg width="32" height="32" fill="currentColor" viewBox="0 0 20 20"&gt;
           &lt;path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/&gt;
         &lt;/svg&gt;
@@ -296,7 +296,7 @@
     &lt;div class="aiab-modal__body"&gt;
       &lt;img src="https://picsum.photos/600/400" alt="Description" /&gt;
     &lt;/div&gt;
-    &lt;button class="modal__close"&gt;×&lt;/button&gt;
+    &lt;button class="aiab-modal__close"&gt;×&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -316,7 +316,7 @@
   &lt;div class="aiab-modal__dialog"&gt;
     &lt;div class="aiab-modal__header"&gt;
       &lt;h2 class="aiab-modal__title"&gt;Navigation&lt;/h2&gt;
-      &lt;button class="modal__close"&gt;×&lt;/button&gt;
+      &lt;button class="aiab-modal__close"&gt;×&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="aiab-modal__body"&gt;
       &lt;nav&gt;
@@ -348,7 +348,7 @@
   &lt;div class="aiab-modal__dialog"&gt;
     &lt;div class="aiab-modal__header"&gt;
       &lt;h2 class="aiab-modal__title"&gt;Actions&lt;/h2&gt;
-      &lt;button class="modal__close"&gt;×&lt;/button&gt;
+      &lt;button class="aiab-modal__close"&gt;×&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="aiab-modal__body"&gt;
       &lt;div class="list-group"&gt;
@@ -405,7 +405,7 @@
       &lt;h2 class="aiab-modal__title"&gt;Loading...&lt;/h2&gt;
     &lt;/div&gt;
     &lt;div class="aiab-modal__body"&gt;
-      &lt;div class="modal__spinner"&gt;&lt;/div&gt;
+      &lt;div class="aiab-modal__spinner"&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -446,7 +446,7 @@
             <td>Modal title</td>
           </tr>
           <tr>
-            <td><code>.modal__close</code></td>
+            <td><code>.aiab-modal__close</code></td>
             <td>Close button</td>
           </tr>
           <tr>
@@ -595,7 +595,7 @@ class Modal {
 
   init() {
     // Close button
-    const closeBtn = this.modal.querySelector('.modal__close');
+    const closeBtn = this.modal.querySelector('.aiab-modal__close');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.hide());
     }
@@ -731,7 +731,7 @@ function showModal(modalId) {
     <div class="aiab-modal__dialog">
       <div class="aiab-modal__header">
         <h2 class="aiab-modal__title" id="basic-modal-title">Basic Modal</h2>
-        <button class="modal__close" aria-label="Close aiab-modal">
+        <button class="aiab-modal__close" aria-label="Close aiab-modal">
           <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -839,7 +839,7 @@ function showModal(modalId) {
       };
 
       createDemoModal(`${type}-alert-modal`, type.charAt(0).toUpperCase() + type.slice(1), `
-        <div class="modal__icon">${icons[type]}</div>
+        <div class="aiab-modal__icon">${icons[type]}</div>
         <p>${messages[type]}</p>
       `, `
         <button class="aiab-btn aiab-btn--primary" onclick="hideModal('${type}-alert-modal')">OK</button>
@@ -891,7 +891,7 @@ function showModal(modalId) {
 
     function _showLoadingModal() {
       createDemoModal('loading-modal', 'Loading...', `
-        <div class="modal__spinner"></div>
+        <div class="aiab-modal__spinner"></div>
       `, '', 'aiab-modal--loading');
 
       // Simulate loading completion
@@ -917,7 +917,7 @@ function showModal(modalId) {
           ${title ? `
             <div class="aiab-modal__header">
               <h2 class="aiab-modal__title">${title}</h2>
-              <button class="modal__close" onclick="hideModal('${id}')" aria-label="Close aiab-modal">
+              <button class="aiab-modal__close" onclick="hideModal('${id}')" aria-label="Close aiab-modal">
                 <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
