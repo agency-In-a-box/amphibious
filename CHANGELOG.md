@@ -5,6 +5,38 @@ All notable changes to Amphibious will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-02-25
+
+### Added
+
+- **Test coverage expansion**: 482 tests across 18 files (up from 210 across 10), covering Accordion, Dropdown, Toast, Datepicker, Data Table, Range Slider, Search Bar, and File Upload
+- **JSDoc documentation**: Comprehensive API docs on all 9 TypeScript modules — classes, interfaces, public methods, `@param`/`@returns`/`@throws`/`@fires`/`@example` tags
+- **Browser targets**: `.browserslistrc` with modern ES2020+ targets
+- **Skip-navigation links**: Accessible skip-to-content pattern across documentation and example pages
+- **`prefers-reduced-motion` support**: JS components (Modal, Tooltip, Carousel, Smooth Scroll, Toast) respect the user's motion preference
+
+### Fixed
+
+- **WCAG AA contrast**: Added `--color-primary-text` token (`#a65e00`, 7.6:1 ratio) and `contrast-fixes.css` for text on white backgrounds
+- **Memory leaks**: Added `AbortController`-based cleanup to Navigation, consolidated `removeEventListener` patterns, fixed detached DOM references in Tooltip and Modal
+- **BEM namespace consistency**: Fixed unprefixed `modal__*` and `sidebar__*` classes in 5 HTML files to use `aiab-modal__*` and `aiab-sidebar__*`
+- **Carousel keyboard accessibility**: Added arrow key navigation and proper ARIA attributes
+- **HTML accessibility**: Lang attributes, meta descriptions, and heading hierarchy across docs/examples pages
+- **Deprecated API removal**: Replaced `.substr()` with `.substring()` in 7 files, removed `-webkit-overflow-scrolling: touch` from 3 CSS locations
+
+### Changed
+
+- **Shared utilities**: Extracted `escapeHTML()` into `src/utils/sanitize.ts`, removed 6 duplicate inline implementations
+- **Removed duplicate modules**: Consolidated `dropdown.js`/`dropdown-enhanced.js` and `file-upload.js`/`file-upload-enhanced.js`
+- **TypeScript target**: Updated from ES2015 to ES2020 to match browserslist
+- **Dependencies**: Removed unused `@fullhuman/postcss-purgecss` and `autoprefixer` devDependencies
+
+### Security
+
+- Resolved 3 npm audit vulnerabilities (rollup, nanoid, vite)
+- Disabled source maps in production build
+- Removed `console.log` debug statements from production code
+
 ## [2.0.0] - 2026-02-25
 
 ### Added
@@ -22,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Atomic Design CSS architecture**: Tokens, Atoms, Molecules, Organisms, Pages layers
 - **Multiple Vite build configs**: Library (ES/UMD), Application dev server, Documentation site
 - **CI/CD pipeline**: Lint, typecheck, test, build, security scan via GitHub Actions
-- **Test suite**: 210+ tests with happy-dom covering Modal, Tooltip, Forms, Carousel, Tabs, Navigation, Smooth Scroll, Theme Cascade, and CSS architecture
+- **Test suite**: Tests with happy-dom covering Modal, Tooltip, Forms, Carousel, Tabs, Navigation, Smooth Scroll, Theme Cascade, and CSS architecture
 
 ### Changed
 
