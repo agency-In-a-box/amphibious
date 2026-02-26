@@ -5,6 +5,22 @@
 
 import { setInnerHTML } from '../utils/sanitize';
 
+/**
+ * Configuration options for the Modal component.
+ *
+ * @property size - Modal size variant. Defaults to `'default'`.
+ * @property variant - Visual variant: standard dialog, alert, image lightbox, drawer, or bottom sheet.
+ * @property animation - Entry animation style. Defaults to `'fade-in'`.
+ * @property closeOnBackdrop - Whether clicking the backdrop closes the modal. Defaults to `true`.
+ * @property closeOnEscape - Whether pressing Escape closes the modal. Defaults to `true`.
+ * @property keyboard - Enable keyboard event handling (Escape, Tab trap). Defaults to `true`.
+ * @property focus - Manage focus on open/close (auto-focus first element, restore on close). Defaults to `true`.
+ * @property backdrop - Show a backdrop overlay. Use `'static'` to prevent backdrop click closing.
+ * @property onOpen - Callback fired after the modal opens.
+ * @property onClose - Callback fired after the modal closes.
+ * @property onConfirm - Callback fired when a `[data-modal-confirm]` button is clicked.
+ * @property onCancel - Callback fired when a `[data-modal-cancel]` button is clicked.
+ */
 export interface ModalOptions {
   size?: 'sm' | 'default' | 'lg' | 'xl' | 'full';
   variant?: 'default' | 'alert' | 'image' | 'drawer-left' | 'drawer-right' | 'bottom-sheet';
@@ -20,6 +36,26 @@ export interface ModalOptions {
   onCancel?: () => void;
 }
 
+/**
+ * Accessible modal dialog with focus trapping, backdrop management, and animations.
+ *
+ * Supports multiple variants (alert, drawer, bottom sheet, image lightbox),
+ * keyboard dismissal (Escape), configurable backdrop behavior, and
+ * automatic focus management with Tab trapping.
+ *
+ * @fires modal:open - CustomEvent dispatched on the modal element when opened.
+ * @fires modal:close - CustomEvent dispatched on the modal element when closed.
+ *
+ * @example
+ * ```ts
+ * const modal = new Modal('#my-dialog', {
+ *   size: 'lg',
+ *   animation: 'slide-down',
+ *   onClose: () => console.log('closed'),
+ * });
+ * modal.open();
+ * ```
+ */
 export class Modal {
   private element: HTMLElement;
   private eventListeners: Array<{
@@ -36,6 +72,11 @@ export class Modal {
   private scrollbarWidth = 0;
   private prefersReducedMotion = false;
 
+  /**
+   * @param element - CSS selector string or HTMLElement for the modal container.
+   * @param options - Configuration options merged with sensible defaults.
+   * @throws {Error} If the element selector does not match any DOM element.
+   */
   constructor(element: string | HTMLElement, options: ModalOptions = {}) {
     // Get modal element
     if (typeof element === 'string') {
@@ -65,10 +106,7 @@ export class Modal {
   }
 
   /**
-   * Initialize modal
-   */
-  /**
-   * Add event listener with cleanup tracking
+   * Add event listener with cleanup tracking.
    */
   private addEventListener(
     element: Element | Document | Window,
@@ -259,7 +297,11 @@ export class Modal {
   }
 
   /**
-   * Open modal
+   * Open the modal dialog.
+   * Stores the currently focused element, prevents body scrolling,
+   * shows the backdrop, sets ARIA attributes, and moves focus into the modal.
+   * Dispatches a `modal:open` CustomEvent and invokes the `onOpen` callback.
+   * No-ops if the modal is already open.
    */
   public open(): void {
     if (this.isOpen) return;
@@ -311,7 +353,11 @@ export class Modal {
   }
 
   /**
-   * Close modal
+   * Close the modal dialog.
+   * Hides the modal and backdrop, restores body scrolling after the
+   * animation completes, and returns focus to the previously focused element.
+   * Dispatches a `modal:close` CustomEvent and invokes the `onClose` callback.
+   * No-ops if the modal is already closed.
    */
   public close(): void {
     if (!this.isOpen) return;
@@ -353,7 +399,7 @@ export class Modal {
   }
 
   /**
-   * Toggle modal
+   * Toggle the modal between open and closed states.
    */
   public toggle(): void {
     if (this.isOpen) {
@@ -364,7 +410,11 @@ export class Modal {
   }
 
   /**
-   * Update modal content
+   * Update the content of a specific modal section. HTML strings are sanitized
+   * via {@link setInnerHTML} before insertion to prevent XSS.
+   *
+   * @param content - HTML string or HTMLElement to insert.
+   * @param target - Which modal section to update: `'body'`, `'header'`, or `'footer'`.
    */
   public setContent(
     content: string | HTMLElement,
@@ -395,7 +445,8 @@ export class Modal {
   }
 
   /**
-   * Update modal title
+   * Update the modal title text.
+   * @param title - New title text (set via `textContent`, not parsed as HTML).
    */
   public setTitle(title: string): void {
     const titleElement = this.element.querySelector('.aiab-modal__title');
@@ -405,7 +456,9 @@ export class Modal {
   }
 
   /**
-   * Destroy modal
+   * Fully tear down the modal: close it, remove all event listeners,
+   * remove the backdrop element, and strip all modal-related classes and ARIA attributes
+   * from the original element.
    */
   public destroy(): void {
     this.close();
@@ -432,14 +485,17 @@ export class Modal {
   }
 
   /**
-   * Check if modal is open
+   * Check whether the modal is currently open.
+   * @returns `true` if the modal is visible.
    */
   public isModalOpen(): boolean {
     return this.isOpen;
   }
 
   /**
-   * Update options
+   * Merge new options into the current configuration.
+   * Does not re-initialize the modal; changes take effect on next open/close cycle.
+   * @param options - Partial options to merge.
    */
   public updateOptions(options: Partial<ModalOptions>): void {
     this.options = { ...this.options, ...options };
@@ -447,13 +503,29 @@ export class Modal {
 }
 
 /**
- * Static modal methods
+ * Registry and factory for managing multiple Modal instances by string ID.
+ * Provides static convenience methods for creating, opening, closing,
+ * and destroying modals, plus promise-based alert/confirm dialogs.
+ *
+ * @example
+ * ```ts
+ * ModalManager.create('settings', '#settings-modal', { size: 'lg' });
+ * ModalManager.open('settings');
+ * ModalManager.close('settings');
+ *
+ * // Promise-based confirm
+ * const confirmed = await ModalManager.confirm('Delete this item?');
+ * ```
  */
 export class ModalManager {
   private static modals: Map<string, Modal> = new Map();
 
   /**
-   * Create and register a modal
+   * Create a new Modal and register it under the given ID.
+   * @param id - Unique identifier for later retrieval.
+   * @param element - CSS selector or HTMLElement for the modal container.
+   * @param options - Modal configuration options.
+   * @returns The created Modal instance.
    */
   static create(id: string, element: string | HTMLElement, options: ModalOptions = {}): Modal {
     const modal = new Modal(element, options);
@@ -462,14 +534,17 @@ export class ModalManager {
   }
 
   /**
-   * Get modal by ID
+   * Retrieve a registered Modal instance by its ID.
+   * @param id - The modal identifier.
+   * @returns The Modal instance, or `undefined` if not found.
    */
   static get(id: string): Modal | undefined {
     return ModalManager.modals.get(id);
   }
 
   /**
-   * Open modal by ID
+   * Open a registered modal by its ID. No-ops if the ID is not found.
+   * @param id - The modal identifier.
    */
   static open(id: string): void {
     const modal = ModalManager.modals.get(id);
@@ -479,7 +554,8 @@ export class ModalManager {
   }
 
   /**
-   * Close modal by ID
+   * Close a registered modal by its ID. No-ops if the ID is not found.
+   * @param id - The modal identifier.
    */
   static close(id: string): void {
     const modal = ModalManager.modals.get(id);
@@ -489,14 +565,15 @@ export class ModalManager {
   }
 
   /**
-   * Close all modals
+   * Close every registered modal.
    */
   static closeAll(): void {
     ModalManager.modals.forEach((modal) => modal.close());
   }
 
   /**
-   * Destroy modal by ID
+   * Destroy a registered modal and remove it from the registry.
+   * @param id - The modal identifier.
    */
   static destroy(id: string): void {
     const modal = ModalManager.modals.get(id);
@@ -507,7 +584,7 @@ export class ModalManager {
   }
 
   /**
-   * Destroy all modals
+   * Destroy every registered modal and clear the registry.
    */
   static destroyAll(): void {
     ModalManager.modals.forEach((modal) => modal.destroy());
@@ -515,7 +592,17 @@ export class ModalManager {
   }
 
   /**
-   * Create alert modal
+   * Display a promise-based alert dialog with an OK button.
+   * The modal is auto-created, appended to `<body>`, and removed when dismissed.
+   *
+   * @param message - The message to display.
+   * @param type - Visual style: `'success'`, `'error'`, `'warning'`, or `'info'`.
+   * @returns A Promise that resolves when the user dismisses the alert.
+   *
+   * @example
+   * ```ts
+   * await ModalManager.alert('Changes saved!', 'success');
+   * ```
    */
   static alert(
     message: string,
@@ -551,7 +638,20 @@ export class ModalManager {
   }
 
   /**
-   * Create confirm modal
+   * Display a promise-based confirmation dialog with Confirm/Cancel buttons.
+   * The modal is auto-created, appended to `<body>`, and removed when dismissed.
+   *
+   * @param message - The question or message to display.
+   * @param confirmText - Label for the confirm button. Defaults to `'Confirm'`.
+   * @param cancelText - Label for the cancel button. Defaults to `'Cancel'`.
+   * @returns A Promise that resolves to `true` if confirmed, `false` if cancelled or closed.
+   *
+   * @example
+   * ```ts
+   * if (await ModalManager.confirm('Delete this item?', 'Delete', 'Keep')) {
+   *   deleteItem();
+   * }
+   * ```
    */
   static confirm(
     message: string,
@@ -596,7 +696,9 @@ export class ModalManager {
   }
 
   /**
-   * Get icon for alert type
+   * Return a simple text icon character for the given alert type.
+   * @param type - Alert type name.
+   * @returns A single-character icon string.
    */
   private static getIcon(type: string): string {
     switch (type) {

@@ -16,6 +16,18 @@ const DEFAULT_ICONS = {
   </svg>`,
 };
 
+/**
+ * Extended carousel options combining Splide.js configuration with
+ * Amphibious-specific settings for variants, sizing, and custom icons.
+ *
+ * @property selector - CSS selector used for auto-initialization (internal use).
+ * @property autoInit - Whether to auto-mount Splide on construction. Defaults to `true`.
+ * @property variant - Visual preset: `'cards'`, `'images'`, `'testimonials'`, `'thumbnails'`, or `'default'`.
+ * @property size - Size modifier applied as a CSS class.
+ * @property pagination - Pagination style: `'dots'`, `'progress'`, `'none'`, or a boolean.
+ * @property navigation - Whether to show arrow navigation.
+ * @property customIcons - Custom SVG strings for prev/next arrow buttons.
+ */
 export interface AmphibiousCarouselOptions extends Omit<Partial<SplideOptions>, 'pagination'> {
   selector?: string;
   autoInit?: boolean;
@@ -29,12 +41,37 @@ export interface AmphibiousCarouselOptions extends Omit<Partial<SplideOptions>, 
   };
 }
 
+/**
+ * Carousel component built on Splide.js with Amphibious framework integration.
+ *
+ * Handles DOM scaffolding (auto-creates `.splide__track` and `.splide__list`
+ * if missing), responsive breakpoints, accessibility attributes, custom arrow
+ * icons, and respects `prefers-reduced-motion`.
+ *
+ * @example
+ * ```ts
+ * // Programmatic creation
+ * const carousel = new AmphibiousCarousel('#hero-slider', {
+ *   variant: 'images',
+ *   perPage: 1,
+ *   autoplay: true,
+ * });
+ *
+ * // Auto-init from data attributes
+ * AmphibiousCarousel.autoInit();
+ * ```
+ */
 export class AmphibiousCarousel {
   private splide!: Splide;
   private element: HTMLElement;
   private options: AmphibiousCarouselOptions;
   private prefersReducedMotion = false;
 
+  /**
+   * @param selector - CSS selector string or HTMLElement for the carousel container.
+   * @param options - Carousel configuration merged with defaults.
+   * @throws {Error} If the element is not found in the DOM.
+   */
   constructor(selector: string | HTMLElement, options: AmphibiousCarouselOptions = {}) {
     this.element =
       typeof selector === 'string' ? (document.querySelector(selector) as HTMLElement) : selector;
@@ -230,37 +267,81 @@ export class AmphibiousCarousel {
     });
   }
 
+  /**
+   * Mount the Splide instance, rendering the carousel into the DOM.
+   * Called automatically unless `autoInit` is set to `false`.
+   * @returns The mounted Splide instance.
+   */
   public mount(): Splide {
     return this.splide.mount();
   }
 
+  /**
+   * Destroy the Splide instance and clean up all carousel event listeners.
+   */
   public destroy(): void {
     if (this.splide) {
       this.splide.destroy();
     }
   }
 
+  /**
+   * Navigate to a specific slide.
+   * @param control - Slide index (number) or Splide control string (e.g. `'+1'`, `'-1'`, `'>'`, `'<'`).
+   */
   public go(control: number | string): void {
     this.splide.go(control);
   }
 
+  /**
+   * Start autoplay. Requires `autoplay: true` in options.
+   */
   public play(): void {
     this.splide.Components.Autoplay?.play();
   }
 
+  /**
+   * Pause autoplay.
+   */
   public pause(): void {
     this.splide.Components.Autoplay?.pause();
   }
 
+  /**
+   * Refresh the carousel, recalculating layout and slide positions.
+   * Useful after dynamically adding or removing slides.
+   */
   public refresh(): void {
     this.splide.refresh();
   }
 
+  /**
+   * Get the underlying Splide instance for advanced configuration.
+   * @returns The Splide instance.
+   */
   public getSplide(): Splide {
     return this.splide;
   }
 
-  // Static method for auto-initialization
+  /**
+   * Auto-initialize carousels from DOM elements matching the selector.
+   * Reads configuration from `data-carousel-*` attributes on each element.
+   *
+   * @param selector - CSS selector to find carousel elements. Defaults to `'.aiab-carousel[data-carousel]'`.
+   * @returns Array of created AmphibiousCarousel instances.
+   *
+   * @example
+   * ```html
+   * <div class="aiab-carousel" data-carousel
+   *      data-carousel-per-page="2" data-carousel-variant="cards">
+   *   <div>Slide 1</div>
+   *   <div>Slide 2</div>
+   * </div>
+   * ```
+   * ```ts
+   * const carousels = AmphibiousCarousel.autoInit();
+   * ```
+   */
   static autoInit(selector = '.aiab-carousel[data-carousel]'): AmphibiousCarousel[] {
     const elements = document.querySelectorAll<HTMLElement>(selector);
     const carousels: AmphibiousCarousel[] = [];

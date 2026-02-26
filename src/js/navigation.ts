@@ -3,6 +3,23 @@
  * Handles navigation interactions including mobile menu toggle
  */
 
+/**
+ * Responsive navigation component with mobile menu, dropdown support,
+ * keyboard navigation, and focus trapping for accessibility.
+ *
+ * Automatically discovers nav and toggle elements in the DOM using
+ * standard Amphibious selectors. Supports both desktop dropdowns
+ * (hover-based) and mobile expand/collapse (click-based).
+ *
+ * @example
+ * ```ts
+ * const nav = new Navigation();
+ * nav.init();
+ *
+ * // Clean up when no longer needed
+ * nav.destroy();
+ * ```
+ */
 export class Navigation {
   private navElement: HTMLElement | null;
   private eventListeners: Array<{
@@ -35,7 +52,8 @@ export class Navigation {
   }
 
   /**
-   * Clean up all event listeners
+   * Remove all tracked event listeners, close the menu, and clean up timers.
+   * Call this before discarding the Navigation instance to prevent memory leaks.
    */
   public destroy(): void {
     // Clear resize timer
@@ -61,7 +79,9 @@ export class Navigation {
   }
 
   /**
-   * Initialize navigation functionality
+   * Initialize all navigation functionality: active states, mobile toggle,
+   * dropdowns, keyboard navigation, mobile dropdowns, and resize handling.
+   * Must be called after construction to attach event listeners.
    */
   init(): void {
     this.setActiveStates();
@@ -73,7 +93,10 @@ export class Navigation {
   }
 
   /**
-   * Set active states based on current page URL
+   * Set active navigation states based on the current page URL.
+   * Compares link href values against `window.location.pathname` and
+   * `window.location.hash`, adding `.aiab-active` and `aria-current="page"`
+   * to matching items within `.aiab-horizontal` lists.
    */
   setActiveStates(): void {
     const currentPath = window.location.pathname;
@@ -116,7 +139,10 @@ export class Navigation {
   }
 
   /**
-   * Initialize mobile dropdown expand/collapse behavior
+   * Initialize mobile dropdown expand/collapse behavior.
+   * On viewports narrower than 960px, top-level links with nested `<ul>`
+   * elements toggle `.aiab-is-expanded` on click instead of navigating.
+   * No-ops on wider viewports.
    */
   initMobileDropdowns(): void {
     if (window.innerWidth >= 960) return;
@@ -306,7 +332,9 @@ export class Navigation {
   }
 
   /**
-   * Trap focus within mobile menu for accessibility
+   * Trap focus within the mobile menu for accessibility.
+   * Cycles Tab/Shift+Tab between the first and last focusable elements
+   * inside the navigation element, preventing focus from escaping.
    */
   private trapFocus(): void {
     if (!this.navElement) return;
@@ -346,7 +374,11 @@ export class Navigation {
   }
 }
 
-// Auto-initialize navigation when DOM is ready
+/**
+ * Auto-initialize navigation when DOM is ready.
+ * Creates a Navigation instance, calls {@link Navigation.init}, and
+ * exposes `window.amphibiousNav` for external access to mobile dropdown re-init.
+ */
 function initNavigation() {
   const nav = new Navigation();
   nav.init();

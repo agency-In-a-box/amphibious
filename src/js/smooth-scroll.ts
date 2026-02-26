@@ -3,11 +3,33 @@
  * Provides smooth scrolling to anchors and page sections
  */
 
+/**
+ * Smooth scrolling utility for anchor links and programmatic scroll control.
+ * Uses `requestAnimationFrame` with an ease-in-out cubic easing function
+ * for fluid animations. Supports configurable duration, fixed offset
+ * (e.g., for sticky headers), and hash-based navigation.
+ *
+ * @example
+ * ```ts
+ * const scroller = new SmoothScroll({ duration: 600, offset: 64 });
+ * scroller.init();
+ *
+ * // Programmatic scroll
+ * scroller.scrollToElement(document.getElementById('section-2')!);
+ * scroller.scrollToTop();
+ * ```
+ */
 export class SmoothScroll {
   private duration: number;
   private offset: number;
   private selector: string;
 
+  /**
+   * @param options - Configuration for scroll behavior.
+   * @param options.duration - Animation duration in milliseconds. Defaults to `800`. Use `0` for instant scrolling.
+   * @param options.offset - Pixel offset from the target (useful for fixed headers). Defaults to `0`.
+   * @param options.selector - CSS selector for anchor links to enhance. Defaults to `'a[href*="#"]:not([href="#"])'`.
+   */
   constructor(
     options: {
       duration?: number;
@@ -21,7 +43,8 @@ export class SmoothScroll {
   }
 
   /**
-   * Initialize smooth scroll functionality
+   * Initialize smooth scroll by attaching click handlers to matching anchor links
+   * and handling initial hash navigation on page load.
    */
   init(): void {
     this.setupScrollLinks();
@@ -77,7 +100,9 @@ export class SmoothScroll {
   }
 
   /**
-   * Get target element from anchor link
+   * Resolve the target element from an anchor link's `href` hash fragment.
+   * @param link - The anchor element to extract the target from.
+   * @returns The matching DOM element, or `null` if not found or invalid.
    */
   private getTargetElement(link: HTMLAnchorElement): HTMLElement | null {
     const href = link.getAttribute('href');
@@ -92,7 +117,11 @@ export class SmoothScroll {
   }
 
   /**
-   * Scroll to element with easing
+   * Smoothly scroll to the given element using ease-in-out cubic easing.
+   * After scrolling completes, the target element receives focus for accessibility.
+   *
+   * @param target - The DOM element to scroll into view.
+   * @param duration - Override animation duration in ms. Pass `0` for instant scroll.
    */
   public scrollToElement(target: HTMLElement, duration: number = this.duration): void {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY;
@@ -141,14 +170,17 @@ export class SmoothScroll {
   }
 
   /**
-   * Easing function for smooth animation
+   * Ease-in-out cubic easing function.
+   * @param t - Progress value between 0 and 1.
+   * @returns Eased value between 0 and 1.
    */
   private easeInOutCubic(t: number): number {
     return t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
   }
 
   /**
-   * Scroll to top of page
+   * Smoothly scroll to the top of the page.
+   * @param duration - Override animation duration in ms. Defaults to the instance duration. Pass `0` for instant scroll.
    */
   public scrollToTop(duration?: number): void {
     const startPosition = window.scrollY;
@@ -179,7 +211,9 @@ export class SmoothScroll {
   }
 
   /**
-   * Check if element is in viewport
+   * Check whether an element is fully visible within the current viewport.
+   * @param element - The DOM element to check.
+   * @returns `true` if the entire element bounding rect is within the viewport.
    */
   public isInViewport(element: HTMLElement): boolean {
     const rect = element.getBoundingClientRect();
