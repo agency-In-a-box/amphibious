@@ -7,7 +7,7 @@
 import './css/main.css';
 
 // Side-effect imports (auto-initialize on load)
-import './js/navigation.js';
+import './js/navigation';
 import './js/dark-mode-toggle.js';
 
 export type { AmphibiousCarouselOptions } from './js/carousel';
@@ -46,13 +46,15 @@ export const VERSION = '2.0.0';
 declare global {
   interface Window {
     amphibiousNav?: { initMobileDropdowns?: () => void };
+    __amphibiousEscapeHTML?: (str: string) => string;
     __amphibiousSanitizeHTML?: (html: string) => string;
   }
 }
 
-// Make sanitizeHTML available to plain JS components via window
-import { sanitizeHTML as _sanitize } from './utils/sanitize';
+// Make sanitizeHTML and escapeHTML available to plain JS components via window
+import { escapeHTML as _escape, sanitizeHTML as _sanitize } from './utils/sanitize';
 
+window.__amphibiousEscapeHTML = _escape;
 window.__amphibiousSanitizeHTML = _sanitize;
 
 export function init() {

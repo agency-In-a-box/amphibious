@@ -26,16 +26,42 @@ class DataTableComponent {
     this.sortDirection = null;
     this.searchTerm = '';
     this.filters = {};
+    this._eventListeners = [];
+    this._searchTimeout = null;
 
-    /** Escape HTML entities to prevent XSS */
+    /** Escape HTML entities to prevent XSS — delegates to shared utility */
     this._escapeHTML = (str) => {
-      if (typeof str !== 'string') return String(str ?? '');
+      if (typeof window.__amphibiousEscapeHTML === 'function') {
+        return window.__amphibiousEscapeHTML(str);
+      }
+      if (typeof str !== 'string') return '';
       const div = document.createElement('div');
       div.textContent = str;
       return div.innerHTML;
     };
 
     this.init();
+  }
+
+  /**
+   * Add event listener with cleanup tracking
+   */
+  _addEventListener(element, type, handler) {
+    element.addEventListener(type, handler);
+    this._eventListeners.push({ element, type, handler });
+  }
+
+  /**
+   * Remove tracked listeners for dynamically created page buttons
+   */
+  _removePageButtonListeners() {
+    this._eventListeners = this._eventListeners.filter((entry) => {
+      if (entry.element._isPageButton) {
+        entry.element.removeEventListener(entry.type, entry.handler);
+        return false;
+      }
+      return true;
+    });
   }
 
   /**
@@ -297,7 +323,7 @@ class DataTableComponent {
       const column = this.config.columns?.[index];
       if (column?.sortable !== false) {
         header.classList.add('sortable', 'sortable--both');
-        header.addEventListener('click', () => {
+        this._addEventListener(header, 'click', () => {
           this.sortBy(column?.key || index);
         });
       }
@@ -309,10 +335,9 @@ class DataTableComponent {
    */
   initializeSearch() {
     if (this.searchInput) {
-      let searchTimeout;
-      this.searchInput.addEventListener('input', (e) => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
+      this._addEventListener(this.searchInput, 'input', (e) => {
+        clearTimeout(this._searchTimeout);
+        this._searchTimeout = setTimeout(() => {
           this.searchTerm = e.target.value.toLowerCase();
           this.currentPage = 1;
           this.update();
@@ -328,7 +353,7 @@ class DataTableComponent {
     const filterButtons = this.element.querySelectorAll('.aiab-data-table-filter');
 
     filterButtons.forEach((button) => {
-      button.addEventListener('click', () => {
+      this._addEventListener(button, 'click', () => {
         const key = button.dataset.filterKey;
         const value = button.dataset.filterValue;
 
@@ -357,7 +382,7 @@ class DataTableComponent {
    */
   initializePagination() {
     if (this.prevButton) {
-      this.prevButton.addEventListener('click', () => {
+      this._addEventListener(this.prevButton, 'click', () => {
         if (this.currentPage > 1) {
           this.currentPage--;
           this.update();
@@ -366,7 +391,7 @@ class DataTableComponent {
     }
 
     if (this.nextButton) {
-      this.nextButton.addEventListener('click', () => {
+      this._addEventListener(this.nextButton, 'click', () => {
         const totalPages = Math.ceil(this.filteredData.length / this.config.pageSize);
         if (this.currentPage < totalPages) {
           this.currentPage++;
@@ -397,12 +422,14 @@ class DataTableComponent {
 
     // Handle check all
     const checkAll = this.table.querySelector('[data-check-all]');
-    checkAll?.addEventListener('change', (e) => {
-      const checkboxes = this.table.querySelectorAll('tbody .aiab-data-table__checkbox');
-      checkboxes.forEach((cb) => {
-        cb.checked = e.target.checked;
+    if (checkAll) {
+      this._addEventListener(checkAll, 'change', (e) => {
+        const checkboxes = this.table.querySelectorAll('tbody .aiab-data-table__checkbox');
+        checkboxes.forEach((cb) => {
+          cb.checked = e.target.checked;
+        });
       });
-    });
+    }
   }
 
   /**
@@ -574,6 +601,8 @@ class DataTableComponent {
 
     // Update page numbers
     if (this.pagesElement) {
+      // Remove tracked listeners for old page buttons before clearing
+      this._removePageButtonListeners();
       this.pagesElement.innerHTML = '';
 
       // Calculate page range
@@ -595,10 +624,11 @@ class DataTableComponent {
           button.classList.add('aiab-data-table-pagination__button--active');
         }
 
-        button.addEventListener('click', () => {
+        this._addEventListener(button, 'click', () => {
           this.currentPage = i;
           this.update();
         });
+        button._isPageButton = true;
 
         this.pagesElement.appendChild(button);
       }
@@ -702,36 +732,17 @@ class DataTableComponent {
    * Clean up and destroy the component
    */
   destroy() {
-    // Remove all event listeners
-    const headers = this.table.querySelectorAll('[data-sortable]');
-    headers.forEach((header) => {
-      header.replaceWith(header.cloneNode(true));
+    // Clear search debounce timeout
+    if (this._searchTimeout) {
+      clearTimeout(this._searchTimeout);
+      this._searchTimeout = null;
+    }
+
+    // Remove all tracked event listeners
+    this._eventListeners.forEach(({ element, type, handler }) => {
+      element.removeEventListener(type, handler);
     });
-
-    // Remove pagination event listeners
-    if (this.prevButton) {
-      this.prevButton.replaceWith(this.prevButton.cloneNode(true));
-    }
-    if (this.nextButton) {
-      this.nextButton.replaceWith(this.nextButton.cloneNode(true));
-    }
-
-    // Remove search event listener
-    if (this.searchInput) {
-      this.searchInput.replaceWith(this.searchInput.cloneNode(true));
-    }
-
-    // Remove filter event listeners
-    const filters = this.table.querySelectorAll('[data-filter]');
-    filters.forEach((filter) => {
-      filter.replaceWith(filter.cloneNode(true));
-    });
-
-    // Remove check all listener
-    const checkAll = this.table.querySelector('[data-check-all]');
-    if (checkAll) {
-      checkAll.replaceWith(checkAll.cloneNode(true));
-    }
+    this._eventListeners = [];
 
     // Clear data references
     this.data = null;

@@ -106,8 +106,11 @@ class SearchBarEnhanced {
     this.init();
   }
 
-  /** Escape HTML entities to prevent XSS */
+  /** Escape HTML entities to prevent XSS — delegates to shared utility */
   _escapeHTML(str) {
+    if (typeof window.__amphibiousEscapeHTML === 'function') {
+      return window.__amphibiousEscapeHTML(str);
+    }
     if (typeof str !== 'string') return '';
     const div = document.createElement('div');
     div.textContent = str;

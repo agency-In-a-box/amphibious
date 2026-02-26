@@ -64,10 +64,78 @@ export class Navigation {
    * Initialize navigation functionality
    */
   init(): void {
+    this.setActiveStates();
     this.setupMobileToggle();
     this.setupDropdowns();
     this.setupKeyboardNav();
+    this.initMobileDropdowns();
     this.handleResize();
+  }
+
+  /**
+   * Set active states based on current page URL
+   */
+  setActiveStates(): void {
+    const currentPath = window.location.pathname;
+    const currentHash = window.location.hash;
+
+    // Remove all active classes and aria-current
+    document.querySelectorAll('.aiab-horizontal li').forEach((li) => {
+      li.classList.remove('aiab-active');
+    });
+    document.querySelectorAll('.aiab-horizontal a').forEach((link) => {
+      link.removeAttribute('aria-current');
+    });
+
+    // Find and set the active navigation item
+    document.querySelectorAll('.aiab-horizontal a').forEach((link) => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      const linkPath = href.split('#')[0];
+      const isExactMatch = linkPath === currentPath;
+      const isParentMatch = currentPath.startsWith(linkPath) && linkPath !== '/';
+      const isHome = currentPath === '/' && (linkPath === '/' || linkPath === '/index.html');
+
+      if (isExactMatch || isParentMatch || isHome) {
+        const parentLi = link.closest('.aiab-horizontal > li');
+        if (parentLi) {
+          parentLi.classList.add('aiab-active');
+          const topLevelLink = parentLi.querySelector(':scope > a');
+          if (topLevelLink) {
+            topLevelLink.setAttribute('aria-current', 'page');
+          }
+        }
+      }
+
+      // Check for hash matches in sub-navigation
+      if (currentHash && href.includes(currentHash)) {
+        link.classList.add('aiab-active');
+      }
+    });
+  }
+
+  /**
+   * Initialize mobile dropdown expand/collapse behavior
+   */
+  initMobileDropdowns(): void {
+    if (window.innerWidth >= 960) return;
+
+    document.querySelectorAll('.aiab-horizontal > li').forEach((li) => {
+      const hasDropdown = li.querySelector('ul');
+      if (!hasDropdown) return;
+
+      const link = li.querySelector(':scope > a');
+      if (!link) return;
+
+      const handler = (e: Event) => {
+        if (window.innerWidth < 960) {
+          e.preventDefault();
+          li.classList.toggle('aiab-is-expanded');
+        }
+      };
+      this.addEventListener(link, 'click', handler);
+    });
   }
 
   /**
@@ -169,16 +237,16 @@ export class Navigation {
       if (!trigger) return;
 
       // Mouse interactions
-      dropdown.addEventListener('mouseenter', () => {
+      this.addEventListener(dropdown, 'mouseenter', () => {
         dropdown.classList.add('aiab-is-open');
       });
 
-      dropdown.addEventListener('mouseleave', () => {
+      this.addEventListener(dropdown, 'mouseleave', () => {
         dropdown.classList.remove('aiab-is-open');
       });
 
       // Keyboard interactions
-      trigger.addEventListener('click', (e) => {
+      this.addEventListener(trigger, 'click', (e) => {
         const isMobile = window.innerWidth < this.mobileBreakpoint;
         if (isMobile) {
           e.preventDefault();
@@ -197,7 +265,7 @@ export class Navigation {
     const links = this.navElement.querySelectorAll('a, button');
 
     links.forEach((link, index) => {
-      link.addEventListener('keydown', (e) => {
+      this.addEventListener(link, 'keydown', (e) => {
         const key = (e as KeyboardEvent).key;
 
         switch (key) {
@@ -249,6 +317,11 @@ export class Navigation {
 
     if (focusableElements.length === 0) return;
 
+    // Remove previous tab key handler if it exists to prevent leaks on repeated opens
+    if (this.tabKeyHandler) {
+      document.removeEventListener('keydown', this.tabKeyHandler);
+    }
+
     const firstElement = focusableElements[0] as HTMLElement;
     const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
 
@@ -272,5 +345,29 @@ export class Navigation {
     document.addEventListener('keydown', this.tabKeyHandler);
   }
 }
+
+// Auto-initialize navigation when DOM is ready
+function initNavigation() {
+  const nav = new Navigation();
+  nav.init();
+  window.amphibiousNav = { initMobileDropdowns: () => nav.initMobileDropdowns() };
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initNavigation);
+} else {
+  initNavigation();
+}
+
+// Re-initialize mobile dropdowns on resize
+let _navResizeTimer: ReturnType<typeof setTimeout>;
+window.addEventListener('resize', () => {
+  clearTimeout(_navResizeTimer);
+  _navResizeTimer = setTimeout(() => {
+    if (window.amphibiousNav?.initMobileDropdowns) {
+      window.amphibiousNav.initMobileDropdowns();
+    }
+  }, 250);
+});
 
 export default Navigation;
