@@ -1,0 +1,8 @@
+# Browsers that we support
+# https://browsersl.ist
+
+defaults
+not dead
+not op_mini all
+>= 0.5%
+last 2 versions

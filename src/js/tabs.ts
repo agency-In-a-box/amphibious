@@ -3,6 +3,29 @@
  * Interactive tab switching functionality
  */
 
+/**
+ * Accessible tab component with ARIA roles, keyboard navigation,
+ * and support for both modern `.aiab-tabs` markup and legacy
+ * `[amp-tab-content]` data-attribute patterns.
+ *
+ * Automatically discovers all `.aiab-tabs` and `[data-tabs]` containers
+ * in the DOM at construction time.
+ *
+ * @fires tab:change - CustomEvent dispatched on the container when a tab is selected.
+ *                     Detail contains `{ tab: HTMLElement, panel: HTMLElement }`.
+ *
+ * @example
+ * ```ts
+ * const tabs = new Tabs();
+ * tabs.init();
+ *
+ * // Programmatic selection
+ * tabs.selectTabByIndex('.aiab-tabs', 2);
+ *
+ * // Clean up
+ * tabs.destroy();
+ * ```
+ */
 export class Tabs {
   private containers: NodeListOf<HTMLElement>;
   private abortController: AbortController;
@@ -13,7 +36,8 @@ export class Tabs {
   }
 
   /**
-   * Initialize tabs functionality
+   * Initialize all tab containers and legacy tab patterns.
+   * Sets ARIA attributes, click handlers, and keyboard navigation on each container.
    */
   init(): void {
     this.containers.forEach((container) => {
@@ -25,7 +49,9 @@ export class Tabs {
   }
 
   /**
-   * Setup tabs for a container
+   * Wire up a single tab container: assign ARIA roles/attributes to tabs and
+   * panels, set the first tab as active, and attach click and keyboard handlers.
+   * @param container - The `.aiab-tabs` or `[data-tabs]` wrapper element.
    */
   private setupTabs(container: HTMLElement): void {
     const tabList = container.querySelector('.aiab-tabs__list, [role="tablist"]') as HTMLElement;
@@ -41,10 +67,10 @@ export class Tabs {
 
       // Set IDs if not present
       if (!tabElement.id) {
-        tabElement.id = `tab-${Math.random().toString(36).substr(2, 9)}`;
+        tabElement.id = `tab-${Math.random().toString(36).substring(2, 11)}`;
       }
       if (!panel.id) {
-        panel.id = `panel-${Math.random().toString(36).substr(2, 9)}`;
+        panel.id = `panel-${Math.random().toString(36).substring(2, 11)}`;
       }
 
       // Set ARIA attributes
@@ -91,7 +117,11 @@ export class Tabs {
   }
 
   /**
-   * Select a tab and show its panel
+   * Activate the given tab and its associated panel, deactivating all others
+   * within the same container. Dispatches a `tab:change` CustomEvent.
+   * @param container - Parent tab container element.
+   * @param tab - The tab element to activate.
+   * @param panel - The panel element to reveal.
    */
   private selectTab(container: HTMLElement, tab: HTMLElement, panel: HTMLElement): void {
     // Deactivate all tabs and panels
@@ -129,7 +159,12 @@ export class Tabs {
   }
 
   /**
-   * Handle keyboard navigation
+   * Handle arrow key, Home, and End keyboard navigation between tabs.
+   * Wraps around at boundaries (last to first and vice versa).
+   * @param e - The keyboard event.
+   * @param container - Parent tab container.
+   * @param tabs - NodeList of all tab elements in the container.
+   * @param currentIndex - Zero-based index of the currently focused tab.
    */
   private handleKeyboardNav(
     e: KeyboardEvent,
@@ -178,7 +213,9 @@ export class Tabs {
   }
 
   /**
-   * Setup legacy tabs using data attributes
+   * Initialize tabs that use the legacy `[amp-tab-content]` / `[amp-tab-group]`
+   * data-attribute pattern from Amphibious 1.x. Groups are identified by the
+   * `amp-tab-group` attribute; the first tab in each group is auto-activated.
    */
   private setupLegacyTabs(): void {
     // Support for amp-tab-content attributes from original
@@ -235,7 +272,15 @@ export class Tabs {
   }
 
   /**
-   * Programmatically select a tab
+   * Programmatically select a tab by its zero-based index within a container.
+   *
+   * @param containerSelector - CSS selector for the tab container.
+   * @param index - Zero-based index of the tab to activate.
+   *
+   * @example
+   * ```ts
+   * tabs.selectTabByIndex('#my-tabs', 2); // Activate the third tab
+   * ```
    */
   public selectTabByIndex(containerSelector: string, index: number): void {
     const container = document.querySelector(containerSelector) as HTMLElement;
@@ -250,7 +295,10 @@ export class Tabs {
   }
 
   /**
-   * Get currently active tab
+   * Get the currently active tab element within a container.
+   *
+   * @param containerSelector - CSS selector for the tab container.
+   * @returns The active tab HTMLElement, or `null` if not found.
    */
   public getActiveTab(containerSelector: string): HTMLElement | null {
     const container = document.querySelector(containerSelector);
@@ -259,7 +307,9 @@ export class Tabs {
     return container.querySelector('.aiab-is-active[role="tab"], .aiab-tabs__tab--active');
   }
   /**
-   * Destroy tabs and remove all event listeners
+   * Abort all event listeners attached via this Tabs instance.
+   * Uses the internal AbortController signal, so all listeners are
+   * cleaned up in a single call.
    */
   public destroy(): void {
     this.abortController.abort();

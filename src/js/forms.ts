@@ -3,6 +3,31 @@
  * Form validation and enhancement functionality
  */
 
+/**
+ * Form validation and enhancement component.
+ *
+ * Provides client-side validation with built-in rules (email, phone, URL, number,
+ * alpha, alphanumeric), custom validation rules via {@link Forms.addRule},
+ * floating labels, character counters, password visibility toggles, and
+ * accessible ARIA error messaging.
+ *
+ * Automatically discovers forms with `[data-validate]` or `.form-validate`.
+ *
+ * @example
+ * ```ts
+ * const forms = new Forms();
+ * forms.init();
+ *
+ * // Add a custom rule
+ * forms.addRule('username', (value) => /^[a-z0-9_]{3,20}$/.test(value));
+ *
+ * // Programmatic validation
+ * const isValid = forms.validate('#signup-form');
+ *
+ * // Clean up
+ * forms.destroy();
+ * ```
+ */
 export class Forms {
   private forms: NodeListOf<HTMLFormElement>;
   private eventListeners: Array<{ element: Element; type: string; handler: EventListener }> = [];
@@ -24,7 +49,9 @@ export class Forms {
   }
 
   /**
-   * Clean up all event listeners
+   * Remove all tracked event listeners and clean up dynamically created
+   * DOM elements (character counters, password toggles). Call before
+   * discarding the Forms instance to prevent memory leaks.
    */
   public destroy(): void {
     // Remove all tracked event listeners
@@ -39,7 +66,8 @@ export class Forms {
   }
 
   /**
-   * Initialize forms functionality
+   * Initialize form validation, floating labels, character counters,
+   * and password visibility toggles on all discovered forms and inputs.
    */
   init(): void {
     this.forms.forEach((form) => {
@@ -292,7 +320,7 @@ export class Forms {
     field.setAttribute('aria-invalid', 'true');
     field.setAttribute(
       'aria-describedby',
-      errorElement.id || `error-${Math.random().toString(36).substr(2, 9)}`,
+      errorElement.id || `error-${Math.random().toString(36).substring(2, 11)}`,
     );
   }
 
@@ -470,14 +498,29 @@ export class Forms {
   }
 
   /**
-   * Add custom validation rule
+   * Register a custom validation rule that can be referenced by fields
+   * using the `data-validate` attribute.
+   *
+   * @param name - Rule identifier (must match the `data-validate` attribute value).
+   * @param validator - Function that returns `true` if the value is valid.
+   *
+   * @example
+   * ```ts
+   * forms.addRule('postal-code', (value) => /^\d{5}(-\d{4})?$/.test(value));
+   * ```
+   * ```html
+   * <input data-validate="postal-code" data-validate-message="Invalid postal code" />
+   * ```
    */
   public addRule(name: string, validator: (value: string) => boolean): void {
     this.validationRules.set(name, validator);
   }
 
   /**
-   * Validate form programmatically
+   * Programmatically validate an entire form and display error/success states.
+   *
+   * @param formSelector - CSS selector for the form element.
+   * @returns `true` if all fields pass validation, `false` otherwise.
    */
   public validate(formSelector: string): boolean {
     const form = document.querySelector(formSelector) as HTMLFormElement;
@@ -487,7 +530,10 @@ export class Forms {
   }
 
   /**
-   * Reset form and validation states
+   * Reset a form to its initial state, clearing all validation
+   * indicators (`.aiab-is-valid`, `.aiab-is-invalid`, `.aiab-was-validated`).
+   *
+   * @param formSelector - CSS selector for the form element.
    */
   public reset(formSelector: string): void {
     const form = document.querySelector(formSelector) as HTMLFormElement;
