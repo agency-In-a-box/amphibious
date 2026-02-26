@@ -543,7 +543,9 @@ export class Tooltip {
         const removeDelay = this.prefersReducedMotion ? 0 : 200;
         setTimeout(() => {
           if (this.tooltipElement && !this.isVisible) {
-            document.body.removeChild(this.tooltipElement);
+            if (this.tooltipElement.parentNode) {
+              this.tooltipElement.parentNode.removeChild(this.tooltipElement);
+            }
             this.tooltipElement = null;
           }
         }, removeDelay);
