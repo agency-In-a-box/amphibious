@@ -51,7 +51,7 @@ export class AmphibiousCarousel {
       arrows: true,
       pagination: true,
       wheel: false,
-      keyboard: 'global',
+      keyboard: 'focused',
       accessibility: {
         carousel: 'carousel',
         slide: 'slide',
@@ -192,6 +192,16 @@ export class AmphibiousCarousel {
   }
 
   private setupAccessibility(): void {
+    // Make carousel focusable for keyboard navigation (keyboard: 'focused')
+    if (!this.element.hasAttribute('tabindex')) {
+      this.element.setAttribute('tabindex', '0');
+    }
+    this.element.setAttribute('role', 'region');
+    this.element.setAttribute('aria-roledescription', 'carousel');
+    if (!this.element.hasAttribute('aria-label')) {
+      this.element.setAttribute('aria-label', 'Carousel');
+    }
+
     this.splide.on('mounted', () => {
       // Ensure slides have proper ARIA labels
       const slides = this.element.querySelectorAll('.splide__slide');
