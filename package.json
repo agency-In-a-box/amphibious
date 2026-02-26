@@ -28,7 +28,7 @@
   "scripts": {
     "dev": "vite --config vite.config.app.js --port 2960 --host",
     "build": "NODE_ENV=production vite build && tsc --emitDeclarationOnly --outDir dist",
-    "build:site": "NODE_ENV=production vite build --config vite.config.docs.js && node scripts/build-site.js",
+    "build:site": "NODE_ENV=production vite build && node scripts/build-site.js",
     "build:analyze": "ANALYZE=true NODE_ENV=production vite build",
     "build:watch": "NODE_ENV=production vite build --watch",
     "preview": "vite preview",
