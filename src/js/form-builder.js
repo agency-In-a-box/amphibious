@@ -1641,8 +1641,9 @@ class FormBuilder {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      console.log('Form Data:', Object.fromEntries(formData));
-      alert('Form submitted! Check console for data.');
+      if (this.options.onSubmit) {
+        this.options.onSubmit(Object.fromEntries(formData));
+      }
     });
 
     this.preview.innerHTML = '';
@@ -2025,8 +2026,7 @@ class FormBuilder {
   }
 
   addStep() {
-    // Implementation for adding new step
-    console.log('Add step functionality to be implemented');
+    // TODO: Implementation for adding new step
   }
 
   validateStep(_stepIndex) {
