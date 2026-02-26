@@ -15,8 +15,15 @@
     "./css": "./dist/amphibious.css"
   },
   "files": [
-    "dist",
-    "src"
+    "dist/amphibious.css",
+    "dist/amphibious.es.js",
+    "dist/amphibious.umd.js",
+    "dist/src/**/*.d.ts",
+    "src/css/**/*.css",
+    "src/js/**/*.ts",
+    "src/js/**/*.js",
+    "src/utils/**/*.ts",
+    "src/index.ts"
   ],
   "scripts": {
     "dev": "vite --config vite.config.app.js --port 2960 --host",
