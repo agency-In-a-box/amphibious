@@ -21,9 +21,10 @@
   <!-- Navigation Include -->
   <!-- Site Navigation Include - Amphibious 2.0 -->
 <!-- Include this file in all pages to maintain consistent navigation -->
+<a href="#main-content" class="aiab-skip-link">Skip to main content</a>
 <nav class="aiab-site-nav" aria-label="Main navigation">
   <div class="aiab-container">
-    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
+    <button type="button" class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
       <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
       <span class="aiab-sr-only">Toggle navigation</span>
     </button>
@@ -89,10 +90,10 @@
       <li>
         <a href="/examples/">Examples</a>
         <ul>
-          <li><a href="/examples/showcase.html">Component Showcase</a></li>
+          <li><a href="/examples/">Component Showcase</a></li>
           <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
-          <li><a href="/examples/shopping-cart.html">Shopping Cart</a></li>
-          <li><a href="/examples/checkout.html">Checkout Flow</a></li>
+          <li><a href="/examples/shopping-cart-modern.html">Shopping Cart</a></li>
+          <li><a href="/examples/checkout-flow.html">Checkout Flow</a></li>
           <li><a href="/examples/pears-patterns.html">Pea.rs Patterns</a></li>
           <li><a href="/examples/navigation-showcase.html">Navigation Components</a></li>
           <li><a href="/examples/atomic-design-demo.html">Atomic Design Demo</a></li>
@@ -101,8 +102,8 @@
     </ul>
 
     <!-- Dark Mode Toggle -->
-    <button id="dark-mode-toggle" class="aiab-dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode (⌘+Shift+D)">
-      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button type="button" id="dark-mode-toggle" class="aiab-dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode (⌘+Shift+D)">
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"></circle>
         <line x1="12" y1="1" x2="12" y2="3"></line>
         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -113,7 +114,7 @@
         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
-      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
       </svg>
     </button>
@@ -148,7 +149,7 @@
     </div>
   </header>
 
-  <main class="aiab-container">
+  <main class="aiab-container" id="main-content">
     <!-- Features Section -->
     <section id="features" class="aiab-demo-section" aria-labelledby="features-title">
       <header class="aiab-section-header">
@@ -159,25 +160,25 @@
       <!-- Features as Stats Grid -->
       <div class="aiab-stats-grid" role="list" aria-label="Framework features">
         <article class="aiab-stat-card" role="listitem">
-          <span class="aiab-stat-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>
+          <span class="aiab-stat-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>
           <h3 class="aiab-stat-card__number">Modern</h3>
           <span class="aiab-stat-card__label">Components</span>
           <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #6c757d;">Modals, tooltips, icons, cards, navigation, and more</p>
         </article>
         <article class="aiab-stat-card" role="listitem">
-          <span class="aiab-stat-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span>
+          <span class="aiab-stat-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span>
           <h3 class="aiab-stat-card__number">Fast</h3>
           <span class="aiab-stat-card__label">Performance</span>
           <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #6c757d;">Tree-shakable, HW accelerated, 2-3KB components</p>
         </article>
         <article class="aiab-stat-card" role="listitem">
-          <span class="aiab-stat-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1"/><path d="m5 8 3-3 5.5 3-2.36 3.5"/><path d="M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></svg></span>
+          <span class="aiab-stat-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-accessibility" aria-hidden="true"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1"/><path d="m5 8 3-3 5.5 3-2.36 3.5"/><path d="M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></svg></span>
           <h3 class="aiab-stat-card__number">WCAG 2.1</h3>
           <span class="aiab-stat-card__label">Accessible</span>
           <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #6c757d;">Full ARIA support, keyboard nav, screen readers</p>
         </article>
         <article class="aiab-stat-card" role="listitem">
-          <span class="aiab-stat-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span>
+          <span class="aiab-stat-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span>
           <h3 class="aiab-stat-card__number">E-commerce</h3>
           <span class="aiab-stat-card__label">Ready</span>
           <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #6c757d;">Product cards, carts, ratings, checkout flows</p>
@@ -247,16 +248,16 @@
         <div class="aiab-row">
           <div class="aiab-col-16">
             <nav style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;" aria-label="Icon examples">
-              <button class="aiab-icon-button" data-tooltip="Add to cart" aria-label="Add to cart">
+              <button type="button" class="aiab-icon-button" data-tooltip="Add to cart" aria-label="Add to cart">
                 <i data-lucide="shopping-cart"></i>
               </button>
-              <button class="aiab-icon-button" data-tooltip="Add to wishlist" data-tooltip-variant="danger" aria-label="Add to wishlist">
+              <button type="button" class="aiab-icon-button" data-tooltip="Add to wishlist" data-tooltip-variant="danger" aria-label="Add to wishlist">
                 <i data-lucide="heart"></i>
               </button>
-              <button class="aiab-icon-button" data-tooltip="Search products" data-tooltip-position="bottom" aria-label="Search">
+              <button type="button" class="aiab-icon-button" data-tooltip="Search products" data-tooltip-position="bottom" aria-label="Search">
                 <i data-lucide="search"></i>
               </button>
-              <button class="aiab-icon-button" data-tooltip="User account" data-tooltip-position="left" aria-label="Account">
+              <button type="button" class="aiab-icon-button" data-tooltip="User account" data-tooltip-position="left" aria-label="Account">
                 <i data-lucide="user"></i>
               </button>
               <figure class="icon-badge" data-tooltip="Shopping cart with items" data-tooltip-position="top">
@@ -326,21 +327,21 @@
         <ol class="aiab-slats" aria-label="Recent updates">
           <li>
             <article>
-              <h4><a href="examples/pears-patterns.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg> Pea.rs Patterns Showcase</a></h4>
+              <h4><a href="examples/pears-patterns.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg> Pea.rs Patterns Showcase</a></h4>
               <p>Explore the complete collection of semantic UI patterns including stats, slats, and aside layouts.</p>
               <time class="aiab-meta" datetime="2024-01-25">January 25, 2024</time>
             </article>
           </li>
           <li>
             <article>
-              <h4><a href="examples/e-commerce-cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> Shopping Cart with Semantic HTML</a></h4>
+              <h4><a href="examples/e-commerce-cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> Shopping Cart with Semantic HTML</a></h4>
               <p>Full-featured shopping cart implementation using proper semantic elements and ARIA attributes.</p>
               <time class="aiab-meta" datetime="2024-01-24">January 24, 2024</time>
             </article>
           </li>
           <li>
             <article>
-              <h4><a href="examples/navigation-showcase.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> Navigation Components</a></h4>
+              <h4><a href="examples/navigation-showcase.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:0.5rem;color:#667eea;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> Navigation Components</a></h4>
               <p>Comprehensive navigation patterns including mega menus, breadcrumbs, tabs, and mobile navigation.</p>
               <time class="aiab-meta" datetime="2024-01-23">January 23, 2024</time>
             </article>

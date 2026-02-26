@@ -580,17 +580,27 @@
 /* Skip to main content link */
 .aiab-skip-link {
   position: absolute;
-  top: -40px;
+  top: -100%;
   left: 0;
-  background: var(--nav-primary);
+  background: var(--color-primary, #ed8b00);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.75em 1.5em;
   text-decoration: none;
+  font-weight: 600;
   z-index: 10000;
+  transition: top 0.2s ease;
 }
 
 .aiab-skip-link:focus {
   top: 0;
+  outline: 2px solid var(--color-primary-dark, #a65e00);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aiab-skip-link {
+    transition: none;
+  }
 }
 
 /* Print Styles
