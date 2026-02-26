@@ -34,6 +34,7 @@ export class Modal {
   private lastFocusedElement: HTMLElement | null = null;
   private isOpen = false;
   private scrollbarWidth = 0;
+  private prefersReducedMotion = false;
 
   constructor(element: string | HTMLElement, options: ModalOptions = {}) {
     // Get modal element
@@ -44,6 +45,8 @@ export class Modal {
     } else {
       this.element = element;
     }
+
+    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Set default options
     this.options = {
@@ -280,15 +283,16 @@ export class Modal {
     // Get focusable elements
     this.getFocusableElements();
 
-    // Focus modal or first element
+    // Focus modal or first element (skip delay if reduced motion)
     if (this.options.focus) {
+      const focusDelay = this.prefersReducedMotion ? 0 : 100;
       setTimeout(() => {
         if (this.focusableElements.length > 0) {
           this.focusableElements[0].focus();
         } else {
           this.element.focus();
         }
-      }, 100);
+      }, focusDelay);
     }
 
     this.isOpen = true;
@@ -321,11 +325,12 @@ export class Modal {
       this.backdrop.classList.remove('aiab-is-visible');
     }
 
-    // Restore body scroll
+    // Restore body scroll (skip delay if reduced motion)
+    const closeDelay = this.prefersReducedMotion ? 0 : 300;
     setTimeout(() => {
       document.body.classList.remove('aiab-modal-open');
       document.body.style.removeProperty('--scrollbar-width');
-    }, 300);
+    }, closeDelay);
 
     // Restore focus
     if (this.lastFocusedElement && this.options.focus) {

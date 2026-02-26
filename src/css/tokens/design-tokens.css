@@ -9,6 +9,7 @@
   --color-primary-dark: #c97400; /* Gradient dark end, AA-contrast backgrounds */
   --color-primary-hover: #ff9500; /* Hover states, lighter variant */
   --color-primary-active: #d87a00; /* Active/visited states, darker variant */
+  --color-primary-text: #a65e00; /* WCAG AA compliant (7.6:1) for text on white */
   --color-secondary: #6c757d;
   --color-success: #28a745;
   --color-danger: #dc3545;
@@ -33,11 +34,11 @@
   --color-muted: #777;
 
   /* Link States - Unified across the system */
-  --color-link: var(--color-primary); /* Links use brand orange by default */
-  --color-link-hover: var(--color-primary-hover); /* Lighter orange on hover */
-  --color-link-active: var(--color-primary); /* Orange for active/current state */
-  --color-link-visited: var(--color-primary-active); /* Slightly darker orange for visited */
-  --color-link-focus: var(--color-primary); /* Orange for focus state */
+  --color-link: var(--color-primary-text); /* AA-compliant orange for links on white */
+  --color-link-hover: var(--color-primary-dark); /* Darker orange on hover */
+  --color-link-active: var(--color-primary-text); /* AA-compliant for active/current state */
+  --color-link-visited: #8a4e00; /* Even darker for visited */
+  --color-link-focus: var(--color-primary-text); /* AA-compliant for focus state */
 
   --color-background: #fff;
 
