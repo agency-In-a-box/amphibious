@@ -13,8 +13,8 @@ export default defineConfig({
     assetsDir: 'assets',
     emptyOutDir: true,
 
-    // Enable source maps
-    sourcemap: true,
+    // Hidden source maps - not referenced in output files but available for error reporting
+    sourcemap: 'hidden',
 
     // Minification
     minify: 'terser',

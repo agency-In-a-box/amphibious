@@ -68,11 +68,9 @@ const iconSVGs: Record<string, string> = {
  */
 export function initializeIcons(): void {
   const iconElements = document.querySelectorAll('[data-lucide]');
-  console.log('[Amphibious] Initializing icons, found:', iconElements.length, 'elements');
 
   iconElements.forEach((element) => {
     const iconName = element.getAttribute('data-lucide');
-    console.log('[Amphibious] Processing icon:', iconName);
     if (iconName && iconSVGs[iconName]) {
       // Replace element with SVG while preserving classes
       const classes = element.className;
@@ -106,7 +104,7 @@ export function initializeIcons(): void {
         element.parentNode?.replaceChild(svg, element);
       }
     } else if (iconName) {
-      console.warn(`[Amphibious] Icon "${iconName}" not found in lightweight set`);
+      // Icon not found in lightweight set - skip silently
     }
   });
 }
