@@ -5,6 +5,28 @@
 
 import { sanitizeHTML } from '../utils/sanitize';
 
+/**
+ * Configuration options for the Tooltip component.
+ *
+ * @property content - Plain text content. Falls back to the element's `title` or `data-tooltip` attribute.
+ * @property html - HTML content string (sanitized before rendering). Takes precedence over `content`.
+ * @property position - Placement relative to the trigger element. Supports 12 positions with auto-adjustment.
+ * @property variant - Color variant for the tooltip background.
+ * @property size - Size modifier. Defaults to `'default'`.
+ * @property trigger - Interaction mode: `'hover'` (+ focus), `'click'`, `'focus'`, or `'manual'`.
+ * @property delay - Show delay in milliseconds. Defaults to `100`.
+ * @property hideDelay - Hide delay in milliseconds. Defaults to `100`.
+ * @property interactive - Keep tooltip visible while hovering over it. Defaults to `false`.
+ * @property allowHTML - Whether to render `html` content as HTML (sanitized). Defaults to `false`.
+ * @property maxWidth - Maximum tooltip width in pixels. Defaults to `320`.
+ * @property offset - Distance from trigger in pixels. Defaults to `8`.
+ * @property zIndex - CSS z-index for the tooltip. Defaults to `1060`.
+ * @property className - Additional CSS class(es) to apply to the tooltip element.
+ * @property onShow - Callback fired when the tooltip becomes visible.
+ * @property onHide - Callback fired when the tooltip is hidden.
+ * @property onMount - Callback fired when the Tooltip instance is initialized.
+ * @property onDestroy - Callback fired when the Tooltip instance is destroyed.
+ */
 export interface TooltipOptions {
   content?: string;
   html?: string;
@@ -38,6 +60,33 @@ export interface TooltipOptions {
   onDestroy?: () => void;
 }
 
+/**
+ * Accessible, customizable tooltip component with smart viewport-aware positioning.
+ *
+ * Supports 12 placement positions (with automatic flip when clipped by viewport),
+ * multiple trigger modes, interactive tooltips, HTML content (sanitized via DOMPurify),
+ * color variants, keyboard dismissal (Escape), and `prefers-reduced-motion` support.
+ *
+ * Tracks all instances in a static Map for bulk operations and lookup by element.
+ *
+ * @example
+ * ```ts
+ * // Via constructor
+ * const tip = new Tooltip('#info-icon', {
+ *   content: 'More information',
+ *   position: 'right',
+ *   variant: 'info',
+ * });
+ *
+ * // Via data attributes (auto-init)
+ * // <span data-tooltip="Hello" data-tooltip-position="bottom">Hover me</span>
+ * Tooltip.initFromData();
+ *
+ * // Clean up
+ * tip.destroy();
+ * Tooltip.destroyAll();
+ * ```
+ */
 export class Tooltip {
   private element: HTMLElement;
   private tooltipElement: HTMLElement | null = null;
@@ -53,6 +102,11 @@ export class Tooltip {
 
   private static instances = new Map<HTMLElement, Tooltip>();
 
+  /**
+   * @param element - Target element (HTMLElement or CSS selector) to attach the tooltip to.
+   * @param options - Tooltip configuration merged with defaults.
+   * @throws {Error} If the target element is not found in the DOM.
+   */
   constructor(element: HTMLElement | string, options: TooltipOptions = {}) {
     this.element = typeof element === 'string' ? document.querySelector(element)! : element;
 
@@ -423,7 +477,10 @@ export class Tooltip {
   }
 
   /**
-   * Show the tooltip
+   * Show the tooltip. Creates the tooltip DOM element if it does not exist,
+   * positions it relative to the trigger, and applies visibility classes.
+   * Respects the configured `delay` (skipped when `prefers-reduced-motion` is active).
+   * No-ops if already visible.
    */
   show(): void {
     if (this.isVisible) return;
@@ -467,7 +524,9 @@ export class Tooltip {
   }
 
   /**
-   * Hide the tooltip
+   * Hide the tooltip. Applies hidden classes, then removes the tooltip
+   * element from the DOM after the animation completes. Respects `hideDelay`.
+   * No-ops if already hidden.
    */
   hide(): void {
     if (!this.isVisible) return;
@@ -507,7 +566,7 @@ export class Tooltip {
   }
 
   /**
-   * Toggle tooltip visibility
+   * Toggle the tooltip between visible and hidden states.
    */
   toggle(): void {
     if (this.isVisible) {
@@ -518,7 +577,11 @@ export class Tooltip {
   }
 
   /**
-   * Update tooltip content
+   * Update the tooltip's text or HTML content. If the tooltip is currently
+   * visible, the content is updated in-place.
+   *
+   * @param content - New plain text content (updates `options.content`).
+   * @param html - New HTML content (updates `options.html`; sanitized if `allowHTML` is true).
    */
   updateContent(content?: string, html?: string): void {
     if (content !== undefined) {
@@ -539,7 +602,9 @@ export class Tooltip {
   }
 
   /**
-   * Update tooltip options
+   * Merge new options into the tooltip configuration and re-apply
+   * classes and position if the tooltip is currently rendered.
+   * @param options - Partial options to merge.
    */
   updateOptions(options: Partial<TooltipOptions>): void {
     this.options = { ...this.options, ...options };
@@ -563,7 +628,9 @@ export class Tooltip {
   }
 
   /**
-   * Destroy the tooltip
+   * Fully tear down the tooltip: hide it, remove all event listeners,
+   * disconnect the ResizeObserver, remove from the static instances registry,
+   * and invoke the `onDestroy` callback.
    */
   destroy(): void {
     this.hide();
@@ -592,14 +659,18 @@ export class Tooltip {
   }
 
   /**
-   * Get tooltip instance from element
+   * Retrieve an existing Tooltip instance attached to the given element.
+   * @param element - The trigger element to look up.
+   * @returns The Tooltip instance, or `undefined` if none is attached.
    */
   static getInstance(element: HTMLElement): Tooltip | undefined {
     return Tooltip.instances.get(element);
   }
 
   /**
-   * Initialize tooltips from data attributes
+   * Auto-initialize Tooltip instances for all elements with a `[data-tooltip]`
+   * attribute. Reads position, variant, and trigger from corresponding
+   * `data-tooltip-*` attributes. Skips elements that already have a Tooltip.
    */
   static initFromData(): void {
     const elements = document.querySelectorAll('[data-tooltip]');
@@ -620,7 +691,7 @@ export class Tooltip {
   }
 
   /**
-   * Destroy all tooltip instances
+   * Destroy every tracked Tooltip instance and clear the registry.
    */
   static destroyAll(): void {
     Tooltip.instances.forEach((tooltip) => tooltip.destroy());
@@ -628,10 +699,22 @@ export class Tooltip {
   }
 }
 
-// E-commerce specific tooltip utilities
+/**
+ * Pre-configured tooltip factories for common e-commerce UI patterns.
+ * Each static method creates and returns a Tooltip instance with
+ * domain-appropriate defaults (HTML content, positioning, variants).
+ */
 export class EcommerceTooltips {
   /**
-   * Create product info tooltip
+   * Create a product info tooltip displaying name, price, and optional description.
+   *
+   * @param element - The trigger element (e.g., a product thumbnail).
+   * @param productData - Product information to display.
+   * @param productData.name - Product name.
+   * @param productData.price - Formatted price string.
+   * @param productData.description - Optional product description.
+   * @param productData.image - Optional image URL (reserved for future use).
+   * @returns A configured Tooltip instance.
    */
   static productInfo(
     element: HTMLElement,
@@ -661,7 +744,14 @@ export class EcommerceTooltips {
   }
 
   /**
-   * Create shipping info tooltip
+   * Create a shipping information tooltip with method, cost, and delivery time.
+   *
+   * @param element - The trigger element (e.g., a shipping icon).
+   * @param shippingData - Shipping details to display.
+   * @param shippingData.method - Shipping method name (e.g., "Standard", "Express").
+   * @param shippingData.cost - Formatted cost string.
+   * @param shippingData.time - Estimated delivery time string.
+   * @returns A configured Tooltip instance with `'info'` variant.
    */
   static shippingInfo(
     element: HTMLElement,
@@ -692,7 +782,14 @@ export class EcommerceTooltips {
   }
 
   /**
-   * Create stock status tooltip
+   * Create a stock status tooltip with color-coded variant based on quantity.
+   * - `stock === 0`: danger (red), "Out of stock"
+   * - `stock <= 5`: warning (yellow), "Only N left in stock"
+   * - `stock > 5`: success (green), "N items in stock"
+   *
+   * @param element - The trigger element (e.g., a stock indicator).
+   * @param stock - Current stock quantity.
+   * @returns A configured Tooltip instance.
    */
   static stockStatus(element: HTMLElement, stock: number): Tooltip {
     let variant: 'success' | 'warning' | 'danger' = 'success';

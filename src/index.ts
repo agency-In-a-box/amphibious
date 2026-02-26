@@ -1,6 +1,23 @@
 /**
  * Amphibious 2.0 - Production Entry Point
  * Modern CSS Framework with Design Excellence
+ *
+ * @packageDocumentation
+ *
+ * This is the main entry point for the Amphibious CSS framework and component library.
+ * Importing this module:
+ * 1. Loads all CSS (via `main.css`)
+ * 2. Auto-initializes Navigation and Dark Mode Toggle
+ * 3. Exports all public components, utilities, and types
+ *
+ * @example
+ * ```ts
+ * // Full library import
+ * import { Modal, Tooltip, Forms, VERSION } from '@agency-in-a-box/amphibious';
+ *
+ * // Individual component import
+ * import { AmphibiousCarousel } from '@agency-in-a-box/amphibious';
+ * ```
  */
 
 // Core CSS imports - main.css includes all components
@@ -10,6 +27,7 @@ import './css/main.css';
 import './js/navigation';
 import './js/dark-mode-toggle.js';
 
+// --- Component exports ---
 export type { AmphibiousCarouselOptions } from './js/carousel';
 export { AmphibiousCarousel } from './js/carousel';
 export { Forms } from './js/forms';
@@ -29,7 +47,7 @@ export { Tabs } from './js/tabs';
 export type { TooltipOptions } from './js/tooltip';
 export { EcommerceTooltips, Tooltip } from './js/tooltip';
 
-// Utility exports
+// --- Utility exports ---
 export {
   createSafeElement,
   escapeHTML,
@@ -39,7 +57,7 @@ export {
   setInnerHTML,
 } from './utils/sanitize';
 
-// Version
+/** Semantic version of the Amphibious library. */
 export const VERSION = '2.0.0';
 
 // Extend window interface for global utilities
@@ -57,6 +75,15 @@ import { escapeHTML as _escape, sanitizeHTML as _sanitize } from './utils/saniti
 window.__amphibiousEscapeHTML = _escape;
 window.__amphibiousSanitizeHTML = _sanitize;
 
+/**
+ * Initialize the Amphibious framework.
+ * Sets the `data-amphibious` attribute on `<html>` with the current version,
+ * adds `reduced-motion` class if the user prefers reduced motion, and
+ * logs an initialization message to the console.
+ *
+ * Called automatically on DOM ready; can also be invoked manually for
+ * re-initialization after dynamic page updates.
+ */
 export function init() {
   document.documentElement.setAttribute('data-amphibious', VERSION);
 

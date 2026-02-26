@@ -1,11 +1,22 @@
 /**
  * HTML Sanitization Utility
- * Prevents XSS attacks by sanitizing HTML content before rendering
+ * Prevents XSS attacks by sanitizing HTML content before rendering.
+ *
+ * Wraps DOMPurify with a curated allow-list of tags and attributes
+ * suitable for the Amphibious component library. All functions that
+ * accept HTML content should route through {@link sanitizeHTML} or
+ * {@link setInnerHTML} rather than assigning `innerHTML` directly.
+ *
+ * @module sanitize
  */
 
 import DOMPurify, { type Config } from 'dompurify';
 
-// Configure DOMPurify with safe defaults
+/**
+ * Default DOMPurify configuration with a curated allow-list of safe HTML tags
+ * and attributes. Explicitly forbids `<script>` and `<style>` tags and
+ * disables arbitrary `data-*` attributes (only explicitly listed ones are allowed).
+ */
 const purifyConfig: Config = {
   // Allow common HTML tags
   ALLOWED_TAGS: [
@@ -114,10 +125,17 @@ const purifyConfig: Config = {
 };
 
 /**
- * Sanitize HTML string to prevent XSS attacks
- * @param dirty - Potentially unsafe HTML string
- * @param config - Optional custom DOMPurify configuration
- * @returns Sanitized HTML string safe for innerHTML
+ * Sanitize an HTML string to prevent XSS attacks.
+ *
+ * @param dirty - Potentially unsafe HTML string.
+ * @param config - Optional custom DOMPurify configuration merged with defaults.
+ * @returns Sanitized HTML string safe for `innerHTML` assignment.
+ *
+ * @example
+ * ```ts
+ * const safe = sanitizeHTML('<p onclick="alert(1)">Hello</p>');
+ * // => '<p>Hello</p>'
+ * ```
  */
 export function sanitizeHTML(dirty: string, config?: Partial<Config>): string {
   const finalConfig = config ? { ...purifyConfig, ...config } : purifyConfig;
@@ -125,10 +143,17 @@ export function sanitizeHTML(dirty: string, config?: Partial<Config>): string {
 }
 
 /**
- * Sanitize and set innerHTML on an element
- * @param element - DOM element to set content on
- * @param html - HTML string to sanitize and set
- * @param config - Optional custom DOMPurify configuration
+ * Sanitize an HTML string and assign it as the element's `innerHTML`.
+ * This is the recommended way to set dynamic HTML content on DOM elements.
+ *
+ * @param element - DOM element to set content on.
+ * @param html - HTML string to sanitize and set.
+ * @param config - Optional custom DOMPurify configuration.
+ *
+ * @example
+ * ```ts
+ * setInnerHTML(document.getElementById('content')!, '<strong>Safe</strong>');
+ * ```
  */
 export function setInnerHTML(
   element: Element | HTMLElement,
@@ -139,10 +164,19 @@ export function setInnerHTML(
 }
 
 /**
- * Create a DOM element from sanitized HTML
- * @param html - HTML string to sanitize and convert to DOM
- * @param config - Optional custom DOMPurify configuration
- * @returns DocumentFragment with sanitized content
+ * Create a DOM DocumentFragment from sanitized HTML.
+ * Useful for building DOM trees from template strings without
+ * the risk of XSS injection.
+ *
+ * @param html - HTML string to sanitize and convert to DOM.
+ * @param config - Optional custom DOMPurify configuration.
+ * @returns DocumentFragment containing the sanitized content, ready for `appendChild`.
+ *
+ * @example
+ * ```ts
+ * const fragment = createSafeElement('<div class="aiab-card">Card</div>');
+ * document.body.appendChild(fragment);
+ * ```
  */
 export function createSafeElement(html: string, config?: Partial<Config>): DocumentFragment {
   const template = document.createElement('template');
@@ -151,10 +185,19 @@ export function createSafeElement(html: string, config?: Partial<Config>): Docum
 }
 
 /**
- * Escape HTML entities in text content
- * Use this for displaying user input as text (not HTML)
- * @param text - Text to escape
- * @returns Escaped text safe for HTML context
+ * Escape HTML entities in text content.
+ * Use this when displaying user input as text (not HTML) to prevent
+ * accidental tag interpretation. Leverages the browser's built-in
+ * `textContent` -> `innerHTML` encoding.
+ *
+ * @param text - Raw text string to escape.
+ * @returns Escaped string safe for insertion into HTML context.
+ *
+ * @example
+ * ```ts
+ * escapeHTML('<script>alert("xss")</script>');
+ * // => '&lt;script&gt;alert("xss")&lt;/script&gt;'
+ * ```
  */
 export function escapeHTML(text: string): string {
   const div = document.createElement('div');
@@ -163,9 +206,18 @@ export function escapeHTML(text: string): string {
 }
 
 /**
- * Check if a URL is safe (no javascript: protocol)
- * @param url - URL to validate
- * @returns true if URL is safe
+ * Check if a URL uses a safe protocol (http, https, mailto, or tel).
+ * Rejects dangerous protocols like `javascript:` and `data:`.
+ *
+ * @param url - URL string to validate. Relative URLs are resolved against `window.location.href`.
+ * @returns `true` if the URL protocol is in the safe list; `false` otherwise.
+ *
+ * @example
+ * ```ts
+ * isSafeURL('https://example.com');       // true
+ * isSafeURL('javascript:alert(1)');       // false
+ * isSafeURL('mailto:user@example.com');   // true
+ * ```
  */
 export function isSafeURL(url: string): boolean {
   try {
@@ -177,9 +229,18 @@ export function isSafeURL(url: string): boolean {
 }
 
 /**
- * Sanitize user input for use in HTML attributes
- * @param input - User input to sanitize
- * @returns Sanitized string safe for attribute values
+ * Sanitize user input for safe use in HTML attribute values.
+ * Strips angle brackets, quotes, and iteratively removes `javascript:` patterns
+ * (including obfuscated nested variants like `"javasjavascript:cript:"`).
+ *
+ * @param input - User-provided string to sanitize.
+ * @returns Cleaned string safe for use in HTML attribute values.
+ *
+ * @example
+ * ```ts
+ * sanitizeAttribute('onclick="alert(1)"');  // => 'onclickalert(1)'
+ * sanitizeAttribute('javascript:void(0)');  // => 'void(0)'
+ * ```
  */
 export function sanitizeAttribute(input: string): string {
   let result = input.replace(/[<>"']/g, '').trim();
@@ -192,5 +253,9 @@ export function sanitizeAttribute(input: string): string {
   return result;
 }
 
-// Export configured DOMPurify instance for advanced usage
+/**
+ * The configured DOMPurify instance for advanced usage.
+ * Use this when the convenience functions above are insufficient and you
+ * need direct access to DOMPurify methods like `addHook` or `removeHook`.
+ */
 export const purify = DOMPurify;
