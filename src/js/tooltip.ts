@@ -46,6 +46,7 @@ export class Tooltip {
   private showTimeout: ReturnType<typeof setTimeout> | null = null;
   private hideTimeout: ReturnType<typeof setTimeout> | null = null;
   private resizeObserver: ResizeObserver | null = null;
+  private prefersReducedMotion = false;
 
   // Store bound handlers for proper removeEventListener
   private boundHandlers: Record<string, EventListener> = {};
@@ -82,6 +83,8 @@ export class Tooltip {
       onDestroy: () => {},
       ...options,
     };
+
+    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     this.init();
   }
@@ -455,8 +458,9 @@ export class Tooltip {
       window.addEventListener('scroll', this.boundHandlers.scroll);
     };
 
-    if (this.options.delay > 0) {
-      this.showTimeout = setTimeout(showTooltip, this.options.delay);
+    const delay = this.prefersReducedMotion ? 0 : this.options.delay;
+    if (delay > 0) {
+      this.showTimeout = setTimeout(showTooltip, delay);
     } else {
       showTooltip();
     }
@@ -476,13 +480,14 @@ export class Tooltip {
         this.tooltipElement.classList.add('aiab-tooltip--hidden');
         this.tooltipElement.setAttribute('aria-hidden', 'true');
 
-        // Remove from DOM after animation
+        // Remove from DOM after animation (skip delay if reduced motion)
+        const removeDelay = this.prefersReducedMotion ? 0 : 200;
         setTimeout(() => {
           if (this.tooltipElement && !this.isVisible) {
             document.body.removeChild(this.tooltipElement);
             this.tooltipElement = null;
           }
-        }, 200);
+        }, removeDelay);
       }
 
       this.isVisible = false;
@@ -493,8 +498,9 @@ export class Tooltip {
       window.removeEventListener('scroll', this.boundHandlers.scroll);
     };
 
-    if (this.options.hideDelay > 0) {
-      this.hideTimeout = setTimeout(hideTooltip, this.options.hideDelay);
+    const hideDelay = this.prefersReducedMotion ? 0 : this.options.hideDelay;
+    if (hideDelay > 0) {
+      this.hideTimeout = setTimeout(hideTooltip, hideDelay);
     } else {
       hideTooltip();
     }

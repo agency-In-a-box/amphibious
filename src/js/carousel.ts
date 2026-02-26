@@ -33,6 +33,7 @@ export class AmphibiousCarousel {
   private splide!: Splide;
   private element: HTMLElement;
   private options: AmphibiousCarouselOptions;
+  private prefersReducedMotion = false;
 
   constructor(selector: string | HTMLElement, options: AmphibiousCarouselOptions = {}) {
     this.element =
@@ -41,6 +42,8 @@ export class AmphibiousCarousel {
     if (!this.element) {
       throw new Error(`Carousel element not found: ${selector}`);
     }
+
+    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     this.options = {
       type: 'slide',
@@ -162,6 +165,12 @@ export class AmphibiousCarousel {
       splideOptions.pagination = false;
     } else if (typeof pagination === 'boolean') {
       splideOptions.pagination = pagination;
+    }
+
+    // Disable slide transition animations when user prefers reduced motion
+    if (this.prefersReducedMotion) {
+      splideOptions.speed = 0;
+      splideOptions.rewindSpeed = 0;
     }
 
     this.splide = new Splide(this.element, {
