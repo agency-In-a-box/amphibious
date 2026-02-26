@@ -58,7 +58,7 @@ export {
 } from './utils/sanitize';
 
 /** Semantic version of the Amphibious library. */
-export const VERSION = '2.0.0';
+export const VERSION = '2.0.1';
 
 // Extend window interface for global utilities
 declare global {
