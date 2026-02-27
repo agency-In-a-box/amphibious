@@ -208,6 +208,62 @@ describe('Tooltip Module', () => {
       const tooltipEl = document.querySelector('.aiab-tooltip');
       expect(tooltipEl?.classList.contains('my-custom-class')).toBe(true);
     });
+
+    it('should preserve variant and size classes when position adjusts', () => {
+      // Position trigger near top edge so tooltip flips from top to bottom
+      const topEdgeRect = {
+        top: 5, left: 800, bottom: 45, right: 900,
+        width: 100, height: 40, x: 800, y: 5, toJSON: () => ({}),
+      };
+      triggerElement.getBoundingClientRect = () => topEdgeRect as DOMRect;
+
+      const tooltip = new Tooltip(triggerElement, {
+        delay: 0, position: 'top', variant: 'danger', size: 'lg',
+      });
+      tooltip.show();
+
+      const tooltipEl = document.querySelector('.aiab-tooltip') as HTMLElement;
+      // Position should have flipped to bottom
+      expect(tooltipEl?.classList.contains('aiab-tooltip--bottom')).toBe(true);
+      // Variant and size must survive
+      expect(tooltipEl?.classList.contains('aiab-tooltip--danger')).toBe(true);
+      expect(tooltipEl?.classList.contains('aiab-tooltip--lg')).toBe(true);
+    });
+
+    it('should clean up stale position class when position flips back', () => {
+      const tooltip = new Tooltip(triggerElement, {
+        delay: 0, hideDelay: 0, position: 'top', variant: 'primary',
+      });
+
+      // First show: trigger near top edge → flips to bottom
+      const topEdgeRect = {
+        top: 5, left: 800, bottom: 45, right: 900,
+        width: 100, height: 40, x: 800, y: 5, toJSON: () => ({}),
+      };
+      triggerElement.getBoundingClientRect = () => topEdgeRect as DOMRect;
+      tooltip.show();
+
+      let tooltipEl = document.querySelector('.aiab-tooltip') as HTMLElement;
+      expect(tooltipEl?.classList.contains('aiab-tooltip--bottom')).toBe(true);
+      expect(tooltipEl?.classList.contains('aiab-tooltip--top')).toBe(false);
+
+      // Now move trigger to center so top fits again
+      const centerRect = {
+        top: 400, left: 800, bottom: 440, right: 900,
+        width: 100, height: 40, x: 800, y: 400, toJSON: () => ({}),
+      };
+      triggerElement.getBoundingClientRect = () => centerRect as DOMRect;
+
+      // Simulate resize/scroll triggering updatePosition
+      window.dispatchEvent(new Event('resize'));
+
+      tooltipEl = document.querySelector('.aiab-tooltip') as HTMLElement;
+      // Should have top, not bottom
+      expect(tooltipEl?.classList.contains('aiab-tooltip--top')).toBe(true);
+      expect(tooltipEl?.classList.contains('aiab-tooltip--bottom')).toBe(false);
+      // Variant must still be intact
+      expect(tooltipEl?.classList.contains('aiab-tooltip--primary')).toBe(true);
+    });
   });
 
   describe('Styling', () => {

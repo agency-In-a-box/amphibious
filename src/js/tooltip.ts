@@ -96,6 +96,7 @@ export class Tooltip {
   private hideTimeout: ReturnType<typeof setTimeout> | null = null;
   private resizeObserver: ResizeObserver | null = null;
   private prefersReducedMotion = false;
+  private currentPosition: TooltipOptions['position'] = undefined;
 
   // Store bound handlers for proper removeEventListener
   private boundHandlers: Record<string, EventListener> = {};
@@ -344,13 +345,15 @@ export class Tooltip {
     this.tooltipElement.style.left = `${coords.x + scrollX}px`;
     this.tooltipElement.style.top = `${coords.y + scrollY}px`;
 
-    // Update classes if position changed
-    if (position !== this.options.position) {
-      if (this.options.position) {
-        this.tooltipElement.classList.remove(`aiab-tooltip--${this.options.position}`);
+    // Update position class if it changed from whatever is currently applied
+    const appliedPosition = this.currentPosition || this.options.position;
+    if (position !== appliedPosition) {
+      if (appliedPosition) {
+        this.tooltipElement.classList.remove(`aiab-tooltip--${appliedPosition}`);
       }
       this.tooltipElement.classList.add(`aiab-tooltip--${position}`);
     }
+    this.currentPosition = position;
   }
 
   private adjustPositionForViewport(
@@ -552,6 +555,7 @@ export class Tooltip {
       }
 
       this.isVisible = false;
+      this.currentPosition = undefined;
       this.options.onHide();
 
       // Remove window listeners
