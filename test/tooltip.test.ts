@@ -212,13 +212,23 @@ describe('Tooltip Module', () => {
     it('should preserve variant and size classes when position adjusts', () => {
       // Position trigger near top edge so tooltip flips from top to bottom
       const topEdgeRect = {
-        top: 5, left: 800, bottom: 45, right: 900,
-        width: 100, height: 40, x: 800, y: 5, toJSON: () => ({}),
+        top: 5,
+        left: 800,
+        bottom: 45,
+        right: 900,
+        width: 100,
+        height: 40,
+        x: 800,
+        y: 5,
+        toJSON: () => ({}),
       };
       triggerElement.getBoundingClientRect = () => topEdgeRect as DOMRect;
 
       const tooltip = new Tooltip(triggerElement, {
-        delay: 0, position: 'top', variant: 'danger', size: 'lg',
+        delay: 0,
+        position: 'top',
+        variant: 'danger',
+        size: 'lg',
       });
       tooltip.show();
 
@@ -232,13 +242,23 @@ describe('Tooltip Module', () => {
 
     it('should clean up stale position class when position flips back', () => {
       const tooltip = new Tooltip(triggerElement, {
-        delay: 0, hideDelay: 0, position: 'top', variant: 'primary',
+        delay: 0,
+        hideDelay: 0,
+        position: 'top',
+        variant: 'primary',
       });
 
       // First show: trigger near top edge → flips to bottom
       const topEdgeRect = {
-        top: 5, left: 800, bottom: 45, right: 900,
-        width: 100, height: 40, x: 800, y: 5, toJSON: () => ({}),
+        top: 5,
+        left: 800,
+        bottom: 45,
+        right: 900,
+        width: 100,
+        height: 40,
+        x: 800,
+        y: 5,
+        toJSON: () => ({}),
       };
       triggerElement.getBoundingClientRect = () => topEdgeRect as DOMRect;
       tooltip.show();
@@ -249,8 +269,15 @@ describe('Tooltip Module', () => {
 
       // Now move trigger to center so top fits again
       const centerRect = {
-        top: 400, left: 800, bottom: 440, right: 900,
-        width: 100, height: 40, x: 800, y: 400, toJSON: () => ({}),
+        top: 400,
+        left: 800,
+        bottom: 440,
+        right: 900,
+        width: 100,
+        height: 40,
+        x: 800,
+        y: 400,
+        toJSON: () => ({}),
       };
       triggerElement.getBoundingClientRect = () => centerRect as DOMRect;
 

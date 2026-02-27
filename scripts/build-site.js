@@ -86,7 +86,9 @@ function copyRecursive(src, dest) {
     const destPath = path.join(dest, entry.name);
 
     if (entry.isDirectory()) {
-      if (!['node_modules', '.git', 'dist', 'dist-site', 'dist-docs', 'coverage'].includes(entry.name)) {
+      if (
+        !['node_modules', '.git', 'dist', 'dist-site', 'dist-docs', 'coverage'].includes(entry.name)
+      ) {
         copyRecursive(srcPath, destPath);
       }
     } else {
@@ -122,58 +124,58 @@ function rewriteHtmlFiles(dir) {
       // </script>
       content = content.replace(
         /<script type="module">\s*\n\s*import\s+['"][./]*src\/css\/main\.css['"];\s*\n\s*import\s+\w+\s+from\s+['"][./]*src\/index\.ts['"];\s*\n(?:\s*\/\/[^\n]*\n)*\s*<\/script>/g,
-        `<link rel="stylesheet" href="${prefix}amphibious.css">\n    <script type="module" src="${prefix}amphibious.es.js"></script>`
+        `<link rel="stylesheet" href="${prefix}amphibious.css">\n    <script type="module" src="${prefix}amphibious.es.js"></script>`,
       );
 
       // --- CSS-only import (single-line) ---
       content = content.replace(
         /<script type="module">\s*import\s+['"][./]*src\/css\/main\.css['"];\s*<\/script>/g,
-        `<link rel="stylesheet" href="${prefix}amphibious.css">`
+        `<link rel="stylesheet" href="${prefix}amphibious.css">`,
       );
 
       // --- CSS-only import (multi-line with optional comments) ---
       content = content.replace(
         /<script type="module">\s*\n\s*import\s+['"][./]*src\/css\/main\.css['"];\s*\n(?:\s*\/\/[^\n]*\n)*\s*<\/script>/g,
-        `<link rel="stylesheet" href="${prefix}amphibious.css">`
+        `<link rel="stylesheet" href="${prefix}amphibious.css">`,
       );
 
       // --- JS-only import (single-line) ---
       content = content.replace(
         /<script type="module">\s*import\s+\w+\s+from\s+['"][./]*src\/index\.ts['"];\s*<\/script>/g,
-        `<script type="module" src="${prefix}amphibious.es.js"></script>`
+        `<script type="module" src="${prefix}amphibious.es.js"></script>`,
       );
 
       // --- JS-only import (multi-line with optional comments) ---
       content = content.replace(
         /<script type="module">\s*\n\s*import\s+\w+\s+from\s+['"][./]*src\/index\.ts['"];\s*\n(?:\s*\/\/[^\n]*\n)*\s*<\/script>/g,
-        `<script type="module" src="${prefix}amphibious.es.js"></script>`
+        `<script type="module" src="${prefix}amphibious.es.js"></script>`,
       );
 
       // --- Remove .ts script references (compiled bundle includes all modules) ---
       // e.g. <script src="../src/js/navigation.ts"></script> — not valid without Vite
       content = content.replace(
         /\s*<script[^>]*\ssrc=["'][^"']*\/src\/js\/\w+\.ts["'][^>]*><\/script>/g,
-        ''
+        '',
       );
 
       // --- Remove src/js/index.js references (imports .ts modules, needs Vite) ---
       content = content.replace(
         /\s*<script[^>]*\ssrc=["'][^"']*\/src\/js\/index\.js["'][^>]*><\/script>/g,
-        ''
+        '',
       );
 
       // --- Replace src/index.js references with compiled bundle ---
       // src/index.js doesn't exist (only src/index.ts), compiled bundle replaces it
       content = content.replace(
         /<script([^>]*)\ssrc=["'][^"']*src\/index\.js["']([^>]*)><\/script>/g,
-        `<script$1 src="${prefix}amphibious.es.js"$2></script>`
+        `<script$1 src="${prefix}amphibious.es.js"$2></script>`,
       );
 
       // --- Replace <link> to src/css/main.css with compiled CSS ---
       // In production, use the compiled amphibious.css instead of raw source
       content = content.replace(
         /<link\s+rel=["']stylesheet["']\s+href=["'][^"']*src\/css\/main\.css["'][^>]*>/g,
-        `<link rel="stylesheet" href="${prefix}amphibious.css">`
+        `<link rel="stylesheet" href="${prefix}amphibious.css">`,
       );
 
       if (content !== original) {
