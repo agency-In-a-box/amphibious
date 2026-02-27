@@ -21,6 +21,15 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnknownMediaFeatureName": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "warn",
+        "useIterableCallbackReturn": "off",
+        "noAssignInExpressions": "off",
+        "noUnknownAtRules": "off"
+      },
       "style": {
         "noNonNullAssertion": "off",
         "noDescendingSpecificity": "off"
@@ -28,11 +37,6 @@
       "complexity": {
         "noForEach": "off",
         "noStaticOnlyClass": "off"
-      },
-      "suspicious": {
-        "noExplicitAny": "warn",
-        "useIterableCallbackReturn": "off",
-        "noAssignInExpressions": "off"
       }
     },
     "includes": [
