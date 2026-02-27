@@ -241,6 +241,20 @@ blockquote cite {
   color: #666;
 }
 
+/* Blockquote inside docs header — transparent bg, white text */
+.aiab-docs-header blockquote {
+  background: transparent;
+  border-left-color: rgba(255, 255, 255, 0.5);
+}
+
+.aiab-docs-header blockquote p {
+  color: white;
+}
+
+.aiab-docs-header blockquote cite {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* Code block improvements */
 pre {
   margin: 1.5rem 0;

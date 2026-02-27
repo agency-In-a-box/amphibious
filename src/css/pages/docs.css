@@ -28,6 +28,22 @@
   color: white;
 }
 
+.aiab-docs-header blockquote,
+.aiab-doc-header blockquote {
+  background: transparent;
+  border-left-color: rgba(255, 255, 255, 0.5);
+}
+
+.aiab-docs-header blockquote p,
+.aiab-doc-header blockquote p {
+  color: white;
+}
+
+.aiab-docs-header blockquote cite,
+.aiab-doc-header blockquote cite {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* Demo Header (for demo pages) */
 .aiab-demo-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
