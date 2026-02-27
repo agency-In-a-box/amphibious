@@ -588,7 +588,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-datepicker-dropdown {
     position: fixed;
     top: 50%;

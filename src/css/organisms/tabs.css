@@ -348,7 +348,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-tabs--vertical {
     flex-direction: column;
   }
@@ -368,7 +368,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-tabs {
     --tab-padding: 0.5rem 0.75rem;
     --tab-font-size: 0.8125rem;

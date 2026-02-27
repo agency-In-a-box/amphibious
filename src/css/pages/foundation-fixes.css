@@ -201,7 +201,7 @@ code:not(pre code) {
   border: 2px solid #666666;
 }
 
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .media-query-demo {
     background: transparent;
     border-color: #999999;

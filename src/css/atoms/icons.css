@@ -449,7 +449,7 @@ figure.aiab-icon-badge {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   :root {
     --icon-size-lg: 28px;
     --icon-size-xl: 40px;

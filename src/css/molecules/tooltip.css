@@ -424,7 +424,7 @@
 }
 
 /* Mobile Adjustments */
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-tooltip {
     --tooltip-max-width: 250px;
     --tooltip-font-size: 0.8125rem;

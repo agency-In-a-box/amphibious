@@ -270,7 +270,7 @@
 /* Responsive Behavior
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-progress-steps {
     flex-direction: column;
     gap: 1rem;

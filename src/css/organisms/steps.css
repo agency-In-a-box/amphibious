@@ -397,7 +397,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-steps:not(.aiab-steps--vertical) {
     --step-size: 1.75rem;
     --step-font-size: 0.8125rem;
@@ -418,7 +418,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-steps:not(.aiab-steps--vertical):not(.aiab-steps--minimal) .aiab-steps__description {
     display: none;
   }

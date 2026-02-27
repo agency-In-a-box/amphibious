@@ -231,7 +231,7 @@ pre.aiab-prettyprint {
 }
 
 /* Responsive improvements */
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-row {
     flex-direction: column;
   }

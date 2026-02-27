@@ -510,7 +510,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-toast-container {
     left: 1rem;
     right: 1rem;

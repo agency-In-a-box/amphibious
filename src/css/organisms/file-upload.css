@@ -413,7 +413,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-file-upload-zone {
     padding: 2rem 1rem;
   }

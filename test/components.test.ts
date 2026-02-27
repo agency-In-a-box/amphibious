@@ -490,10 +490,10 @@ describe('Amphibious 2.0 Component Inventory', () => {
       const gridModernFile = path.join(process.cwd(), 'src/css/grid-modern.css');
       const content = fs.readFileSync(gridModernFile, 'utf-8');
 
-      // Check for media queries
+      // Check for @custom-media breakpoint tokens
       expect(content).toContain('@media');
-      expect(content).toContain('max-width: 479px'); // Mobile
-      expect(content).toContain('min-width: 768px'); // Tablet
+      expect(content).toContain('--bp-xs-down'); // Mobile
+      expect(content).toContain('--bp-md-up'); // Tablet+
     });
   });
 });

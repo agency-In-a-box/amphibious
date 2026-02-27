@@ -519,7 +519,7 @@
 }
 
 /* Mobile responsive */
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-timeline-vertical .aiab-timeline-event.left,
   .aiab-timeline-vertical .aiab-timeline-event.right {
     margin-left: 60px;

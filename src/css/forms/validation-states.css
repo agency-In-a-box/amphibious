@@ -499,7 +499,7 @@ select:focus-visible {
    RESPONSIVE ADJUSTMENTS
    ======================================== */
 
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-error-message,
   .aiab-success-message,
   .aiab-helper-text {

@@ -688,7 +688,7 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 1024px) {
+@media (--bp-lg-down) {
   .aiab-form-builder-layout {
     grid-template-columns: 1fr;
   }

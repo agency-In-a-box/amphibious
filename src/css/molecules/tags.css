@@ -387,7 +387,7 @@
 /* Responsive Behavior
    ========================================================================== */
 
-@media (max-width: 480px) {
+@media (--bp-xs-down) {
   .aiab-tag-group {
     gap: 0.25rem;
   }

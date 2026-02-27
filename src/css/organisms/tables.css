@@ -216,7 +216,7 @@ tr.aiab-info,
    ========================================================================== */
 
 /* Method 1: Horizontal Scroll (default) */
-@media (max-width: 767px) {
+@media (--bp-md-down) {
   .aiab-table-wrapper {
     border: var(--table-border-width) solid var(--table-border);
     border-radius: var(--table-border-radius);
@@ -228,7 +228,7 @@ tr.aiab-info,
 }
 
 /* Method 2: Stack Layout */
-@media (max-width: 767px) {
+@media (--bp-md-down) {
   .aiab-table-responsive thead {
     display: none;
   }
@@ -274,7 +274,7 @@ tr.aiab-info,
   overflow-x: auto;
 }
 
-@media (max-width: 767px) {
+@media (--bp-md-down) {
   .aiab-table-fixed-column table {
     margin-left: 120px;
   }

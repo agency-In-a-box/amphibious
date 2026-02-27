@@ -261,7 +261,7 @@ input[type="radio"]:focus {
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-form-grid-2,
   .aiab-form-grid-3 {
     grid-template-columns: 1fr;

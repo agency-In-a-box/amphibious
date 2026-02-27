@@ -311,7 +311,7 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-toast-container {
     left: 0;
     right: 0;

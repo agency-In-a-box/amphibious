@@ -470,7 +470,7 @@
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-search-bar-dropdown {
     position: fixed;
     top: auto;

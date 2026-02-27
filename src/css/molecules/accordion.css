@@ -330,7 +330,7 @@
    RESPONSIVE DESIGN
    ======================================== */
 
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-accordion-header {
     padding: 0.875rem 2.5rem 0.875rem 1rem;
     font-size: 0.9375rem;

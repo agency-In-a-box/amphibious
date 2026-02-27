@@ -477,7 +477,7 @@ article.aside > .aiab-main-content:not([class*="col-"]) {
    Responsive Adjustments
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   /* Stats - Stack on mobile */
   ul.aiab-stats {
     flex-direction: column;
@@ -547,7 +547,7 @@ article.aside > .aiab-main-content:not([class*="col-"]) {
   }
 }
 
-@media (max-width: 480px) {
+@media (--bp-xs-down) {
   /* Stats Grid - 2 columns on small mobile */
   .aiab-stats-grid {
     grid-template-columns: repeat(2, 1fr);

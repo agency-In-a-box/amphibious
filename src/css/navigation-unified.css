@@ -387,7 +387,7 @@
 /* Mobile Navigation (< 768px)
    ========================================================================== */
 
-@media (max-width: 767px) {
+@media (--bp-md-down) {
   /* Show mobile toggle */
   .aiab-nav-toggle {
     display: block;
@@ -517,7 +517,7 @@
 /* Tablet Adjustments (768px - 1024px)
    ========================================================================== */
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (--bp-md-only) {
   .aiab-horizontal > li > a {
     padding: var(--nav-padding-y) 0.75rem;
     font-size: 0.9375rem;
@@ -531,7 +531,7 @@
 /* Desktop Only Utilities
    ========================================================================== */
 
-@media (min-width: 768px) {
+@media (--bp-md-up) {
   .aiab-hide-desktop {
     display: none;
   }
@@ -631,7 +631,7 @@
 }
 
 /* Smooth Height Transitions for Mobile */
-@media (max-width: 767px) {
+@media (--bp-md-down) {
   .aiab-horizontal ul {
     max-height: 0;
     overflow: hidden;

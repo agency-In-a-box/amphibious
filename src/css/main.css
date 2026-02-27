@@ -10,6 +10,7 @@
 
 /* Design tokens and variables */
 @import "./tokens/design-tokens.css";
+@import "./tokens/breakpoints.css";
 
 /* Typography and base elements */
 @import "./typography.css";

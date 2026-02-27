@@ -258,7 +258,7 @@
    Responsive Rhythm - Design that Adapts
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   :root {
     /* Slightly tighter spacing on mobile */
     --space-unit: 0.25rem;

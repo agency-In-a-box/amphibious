@@ -415,7 +415,7 @@
    RESPONSIVE DESIGN
    ======================================== */
 
-@media (max-width: 640px) {
+@media (--bp-sm-down) {
   .aiab-avatar-group .aiab-avatar {
     margin-right: -0.75rem;
   }

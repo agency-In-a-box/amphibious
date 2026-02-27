@@ -238,7 +238,7 @@
 }
 
 /* Responsive behavior */
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-carousel .splide__arrow {
     width: 2rem;
     height: 2rem;
@@ -258,7 +258,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (--bp-xs-down) {
   .aiab-carousel .splide__arrow {
     position: relative;
     margin: 1rem 0.5rem 0 0.5rem;

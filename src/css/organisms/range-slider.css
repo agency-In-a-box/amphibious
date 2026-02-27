@@ -281,7 +281,7 @@
 }
 
 /* Mobile responsive */
-@media (max-width: 480px) {
+@media (--bp-xs-down) {
   .range-slider-handle {
     width: 24px;
     height: 24px;

@@ -452,7 +452,7 @@
 }
 
 /* Mobile responsive */
-@media (max-width: 480px) {
+@media (--bp-xs-down) {
   .aiab-color-picker {
     width: calc(100vw - 32px);
     max-width: 280px;

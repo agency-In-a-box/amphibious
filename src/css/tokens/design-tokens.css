@@ -129,10 +129,8 @@
   --container-width-fluid: 96%;
   --grid-gutter: 20px; /* 5 × 4px = 20px */
 
-  /* Breakpoints (for reference, use in media queries) */
-  --breakpoint-mobile: 480px;
-  --breakpoint-tablet: 768px;
-  --breakpoint-desktop: 1024px;
+  /* Breakpoints — see tokens/breakpoints.css for @custom-media rules */
+  /* Usage: @media (--bp-sm-down) { ... } */
 
   /* Borders */
   --border-radius: 0.25rem;

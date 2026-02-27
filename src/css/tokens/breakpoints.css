@@ -1,0 +1,21 @@
+/**
+ * Responsive Breakpoint Tokens
+ *
+ * @custom-media rules compiled by PostCSS preset-env at build time.
+ * These are the single source of truth for all responsive breakpoints.
+ *
+ * Canonical values: 480px, 640px, 768px, 1024px
+ */
+
+/* max-width (downward) — "at this size and below" */
+@custom-media --bp-xs-down (max-width: 480px);
+@custom-media --bp-sm-down (max-width: 640px);
+@custom-media --bp-md-down (max-width: 768px);
+@custom-media --bp-lg-down (max-width: 1024px);
+
+/* min-width (upward) — "at this size and above" */
+@custom-media --bp-md-up (min-width: 768px);
+@custom-media --bp-lg-up (min-width: 1024px);
+
+/* Range — "at this size only" */
+@custom-media --bp-md-only (min-width: 768px) and (max-width: 1024px);

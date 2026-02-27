@@ -580,7 +580,7 @@
    Responsive Design
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-apple-nav-menu {
     gap: var(--space-4);
   }

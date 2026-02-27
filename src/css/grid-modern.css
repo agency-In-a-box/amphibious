@@ -355,7 +355,7 @@
    ========================================================================== */
 
 /* Tablet (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (--bp-md-only) {
   .aiab-container {
     max-width: 750px;
   }
@@ -363,7 +363,7 @@
 }
 
 /* Mobile (< 480px) - Only apply on actual mobile devices */
-@media (max-width: 479px) {
+@media (--bp-xs-down) {
   :root {
     --grid-columns: 1;
     --grid-gap: 10px;
@@ -443,7 +443,7 @@
 .aiab-hide-mobile {
   display: none;
 }
-@media (min-width: 768px) {
+@media (--bp-md-up) {
   .aiab-hide-mobile {
     display: block;
   }
