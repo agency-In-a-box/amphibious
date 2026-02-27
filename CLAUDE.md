@@ -42,7 +42,9 @@ bun run fix:images       # Update image placeholders
 ### CSS Structure (Atomic Design)
 ```
 src/css/
-├── tokens/              # Design tokens (colors, spacing, typography)
+├── tokens/
+│   ├── design-tokens.css  # Colors, spacing, typography, shadows
+│   └── breakpoints.css    # @custom-media responsive breakpoints
 ├── atoms/               # Basic elements (buttons, badges, icons)
 ├── molecules/           # Simple combinations (alerts, tooltips)
 ├── organisms/           # Complex components (cards, modals, forms)
@@ -56,11 +58,24 @@ All CSS classes use `.aiab-` prefix to prevent conflicts with agency frameworks 
 - Transformation script: `scripts/add-aiab-namespace.js`
 - **Important**: Never apply `.aiab-` prefix to JS DOM properties/methods (`.focus()`, `.disabled`, `.input`, etc.)
 
+### Responsive Breakpoints (@custom-media)
+All responsive breakpoints are defined as `@custom-media` tokens in `src/css/tokens/breakpoints.css`, compiled by PostCSS at build time:
+- `--bp-xs-down` (max-width: 480px) — Phone portrait
+- `--bp-sm-down` (max-width: 640px) — Phone landscape
+- `--bp-md-down` (max-width: 768px) — Tablet portrait
+- `--bp-lg-down` (max-width: 1024px) — Tablet landscape
+- `--bp-md-up` (min-width: 768px) — Tablet and up
+- `--bp-lg-up` (min-width: 1024px) — Desktop and up
+- `--bp-md-only` (min-width: 768px) and (max-width: 1024px) — Tablet only
+
+Usage: `@media (--bp-sm-down) { ... }` — never use hardcoded pixel values.
+
 ### Component System
 - **Grid**: 16-column flexbox system with `.aiab-col-N` classes (defined in `grid-modern.css`)
-- **Responsive**: Mobile-first with tablet/desktop breakpoints
+- **Responsive**: Mobile-first with @custom-media breakpoint tokens
 - **Dark Mode**: CSS custom properties with localStorage persistence
 - **Icons**: Lucide icons via CDN with `data-lucide` attributes
+- **Navigation**: Scroll-aware header with `.is-scrolled` state (rAF-throttled)
 
 ### JavaScript/TypeScript Modules
 ```
@@ -122,6 +137,9 @@ GitHub Actions workflow runs on push/PR:
 - Replace `-webkit-min-device-pixel-ratio` with `min-resolution: 2dppx`
 - Use lowercase hex colors (#ed8b00 not #ED8B00)
 - Ensure proper CSS selector syntax (no comma before @media)
+- Biome schema version must match CI runner (currently 2.3.11)
+- `noUnknownMediaFeatureName` and `noUnknownAtRules` are off in biome.json for PostCSS @custom-media support
+- Run `bun run format` before committing to avoid formatting drift
 
 ## Dark Mode Implementation
 
@@ -151,9 +169,10 @@ GitHub Actions workflow runs on push/PR:
 - Test runner: Bun with happy-dom
 - Setup file: `test/setup.ts` (DOM globals, scroll mocks, getBoundingClientRect)
 - Pattern: `test/*.test.ts` files
-- Run: `bun test` (210 tests, 469 assertions)
+- Run: `bun test` (484 tests, 993 assertions across 18 files)
+- Note: Bun 1.2.11 may segfault when running all files via glob — specify files individually if needed
 
-### Test Files (10 total)
+### Test Files (18 total)
 | File | Module | Tests |
 |------|--------|-------|
 | `components.test.ts` | CSS inventory + DOM structure | 58 |
@@ -166,11 +185,14 @@ GitHub Actions workflow runs on push/PR:
 | `smooth-scroll.test.ts` | Anchor scrolling, hash nav | 15 |
 | `navigation.test.ts` | Mobile menu, dropdowns | 9 |
 | `cascade.test.ts` | CSS @layer ordering | 7 |
-
-### Untested JS Modules (coverage gaps)
-- accordion.js, dropdown.js, toast.js, color-picker.js
-- datepicker.js, data-table.js, file-upload.js, range-slider.js
-- search-bar.js, form-builder.js, timeline.js
+| `accordion.test.ts` | Accordion panels | ~20 |
+| `dropdown.test.ts` | Dropdown menus | ~20 |
+| `toast.test.ts` | Toast notifications | ~20 |
+| `color-picker.test.ts` | Color picker component | ~20 |
+| `datepicker.test.ts` | Date picker component | ~20 |
+| `data-table.test.ts` | Data tables | ~20 |
+| `file-upload.test.ts` | File upload | ~20 |
+| `search-bar.test.ts` | Search with suggestions | ~20 |
 
 ## Component Development
 
@@ -225,14 +247,13 @@ Extended documentation available at:
 
 ## Current Focus Areas
 
-1. Test coverage expansion for JS-only modules (accordion, dropdown, toast, etc.)
-2. Documentation consistency across pages
-3. Dark mode toggle deployment to all docs
-4. Build verification after namespace changes
-5. NPM package publication preparation
-6. Public open-source release readiness
+1. NPM package publication preparation
+2. Public open-source release readiness
+3. Community contribution readiness and marketing
+4. Remaining low-priority technical debt (@layer architecture)
 
 ## Known Issues
 
-- **Tooltip position regex bug**: `updatePosition()` in `tooltip.ts` uses a regex that replaces ALL `tooltip--*` classes (including variant/size) when adjusting position — only position classes should be affected
 - **Grid file naming**: Grid CSS lives in `grid-modern.css` (not `grid.css`), navigation in `navigation-unified.css` (not `organisms/navigation.css`)
+- **Bun 1.2.11 segfault**: `bun test` (glob mode) may segfault with many files — run test files individually as workaround
+- **Non-standard breakpoints**: 2 files use `576px` (buttons.css, modal.css) — marked with TODO comments, not part of @custom-media tokens
