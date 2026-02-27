@@ -5,6 +5,29 @@ All notable changes to Amphibious will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.3] - 2026-02-27
+
+### Added
+
+- **@custom-media breakpoint tokens**: Single source of truth for all responsive breakpoints in `src/css/tokens/breakpoints.css` — 7 tokens (`--bp-xs-down` through `--bp-md-only`) compiled by PostCSS at build time
+- **Navigation scroll state**: Header gains white background and shadow when scrolled past hero section, using rAF-throttled scroll listener with dark mode support
+
+### Fixed
+
+- **Tooltip position class bug**: `updatePosition()` no longer wipes variant/size classes when adjusting position — only position classes are replaced
+- **43 broken navigation links**: Fixed cross-page nav references and surfaced orphaned example pages
+- **Full-bleed header on inner pages**: Restructured HTML on docs/features, docs/form, and docs/function so header wraps container (not vice versa)
+- **Logo invisible on scroll**: Added `.is-scrolled` CSS state to prevent orange logo on orange background
+- **Broken slideshow controls**: Fixed class name mismatch (`'active'` to `'aiab-active'`) in inline JS
+- **Blockquote white background in header**: Removed opaque background from blockquotes inside `.aiab-docs-header` so text is white on the orange gradient
+- **CI pipeline**: Fixed pre-existing failures — aligned Biome schema version (2.3.11), auto-formatted drifted files
+- **Netlify deployment**: Rewrite Vite dev imports to production paths in build-site.js
+
+### Changed
+
+- **Breakpoint consistency**: Standardized `767px` to `768px` (4 files) and `479px` to `480px` (1 file) during @custom-media migration
+- **Biome config**: Suppressed `noUnknownMediaFeatureName` and `noUnknownAtRules` for PostCSS @custom-media support
+
 ## [2.0.2] - 2026-02-26
 
 ### Added
