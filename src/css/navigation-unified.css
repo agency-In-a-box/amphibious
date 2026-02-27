@@ -630,6 +630,17 @@
   /* Animation out state */
 }
 
+/* Scrolled state — applied via JS when user scrolls past hero */
+.aiab-site-nav.is-scrolled {
+  background-color: var(--color-white, #fff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .aiab-site-nav.is-scrolled {
+  background-color: var(--color-gray-900, #1a1a1a);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
 /* Smooth Height Transitions for Mobile */
 @media (--bp-md-down) {
   .aiab-horizontal ul {

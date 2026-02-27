@@ -110,13 +110,14 @@
         </div>
     </nav>
 
-    <div class="aiab-container">
-        <!-- Page Header -->
-        <header class="aiab-docs-header">
-            <h1>Features</h1>
-            <p class="lead">Advanced features including responsive slideshows, utility helpers, content components, and icon libraries.</p>
-        </header>
+    <header class="aiab-docs-header">
+      <div class="aiab-container">
+        <h1>Features</h1>
+        <p class="lead">Advanced features including responsive slideshows, utility helpers, content components, and icon libraries.</p>
+      </div>
+    </header>
 
+    <div class="aiab-container">
         <!-- Responsive Slideshows Section -->
         <section id="slideshows" class="section">
             <h2>Responsive Slideshows</h2>
@@ -726,14 +727,14 @@ lucide.createIcons();</code></pre>
             if (n > slides.length) slideIndex = 1;
             if (1 > n) slideIndex = slides.length;
 
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
+            slides.forEach(slide => slide.classList.remove('aiab-active'));
+            dots.forEach(dot => dot.classList.remove('aiab-active'));
 
             if (slides[slideIndex - 1]) {
-                slides[slideIndex - 1].classList.add('active');
+                slides[slideIndex - 1].classList.add('aiab-active');
             }
             if (dots[slideIndex - 1]) {
-                dots[slideIndex - 1].classList.add('active');
+                dots[slideIndex - 1].classList.add('aiab-active');
             }
         }
 

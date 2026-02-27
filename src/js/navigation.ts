@@ -33,6 +33,7 @@ export class Navigation {
   private toggleButton: HTMLElement | null;
   private mobileBreakpoint = 768;
   private isOpen = false;
+  private scrollTicking = false;
 
   constructor() {
     this.navElement = document.querySelector('.aiab-nav, .navigation, nav');
@@ -90,6 +91,7 @@ export class Navigation {
     this.setupKeyboardNav();
     this.initMobileDropdowns();
     this.handleResize();
+    this.setupScrollState();
   }
 
   /**
@@ -329,6 +331,31 @@ export class Navigation {
       }, 250);
     };
     this.addEventListener(window, 'resize', resizeHandler);
+  }
+
+  /**
+   * Toggle `.is-scrolled` on the site nav once the user scrolls past
+   * the page header / hero section. Uses rAF throttling.
+   */
+  private setupScrollState(): void {
+    const siteNav = document.querySelector('.aiab-site-nav');
+    if (!siteNav) return;
+
+    const scrollHandler = () => {
+      if (this.scrollTicking) return;
+      this.scrollTicking = true;
+
+      requestAnimationFrame(() => {
+        const header = document.querySelector('.aiab-docs-header, .aiab-hero');
+        const threshold = header ? header.getBoundingClientRect().bottom + window.scrollY : 80;
+        siteNav.classList.toggle('is-scrolled', window.scrollY > threshold);
+        this.scrollTicking = false;
+      });
+    };
+
+    this.addEventListener(window, 'scroll', scrollHandler);
+    // Run once on init to set correct state if page is already scrolled
+    scrollHandler();
   }
 
   /**
