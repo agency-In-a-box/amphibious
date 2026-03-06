@@ -365,13 +365,13 @@
           <div class="aiab-tabs aiab-tabs--boxed aiab-tabs--small">
             <ul class="aiab-tabs__list" role="tablist">
               <li class="aiab-tabs__item" role="presentation">
-                <button class="aiab-tabs__button" role="tab" aria-selected="false">Chat</button>
+                <button type="button" class="aiab-tabs__button" role="tab" aria-selected="false">Chat</button>
               </li>
               <li class="aiab-tabs__item" role="presentation">
-                <button class="aiab-tabs__button" role="tab" aria-selected="true">Cowork</button>
+                <button type="button" class="aiab-tabs__button" role="tab" aria-selected="true">Cowork</button>
               </li>
               <li class="aiab-tabs__item" role="presentation">
-                <button class="aiab-tabs__button" role="tab" aria-selected="false">Code</button>
+                <button type="button" class="aiab-tabs__button" role="tab" aria-selected="false">Code</button>
               </li>
             </ul>
           </div>
@@ -595,7 +595,7 @@
       document.querySelectorAll('textarea').forEach(textarea => {
         textarea.addEventListener('input', () => {
           textarea.style.height = 'auto';
-          textarea.style.height = Math.min(textarea.scrollHeight, 192) + 'px';
+          textarea.style.height = `${Math.min(textarea.scrollHeight, 192)}px`;
         });
       });
 
