@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cowork UI — Amphibious 2.0 Demo</title>
+
+  <!-- Amphibious CSS (built) — swap to dist/amphibious.css for production -->
+  <link rel="stylesheet" href="../src/css/tokens/design-tokens.css">
+  <link rel="stylesheet" href="../src/css/tokens/breakpoints.css">
+  <link rel="stylesheet" href="../src/css/normalize.css">
+  <link rel="stylesheet" href="../src/css/typography.css">
+  <link rel="stylesheet" href="../src/css/grid-modern.css">
+
+  <!-- Atoms -->
+  <link rel="stylesheet" href="../src/css/atoms/badges.css">
+  <link rel="stylesheet" href="../src/css/atoms/buttons.css">
+  <link rel="stylesheet" href="../src/css/atoms/icons.css">
+  <link rel="stylesheet" href="../src/css/atoms/avatar.css">
+
+  <!-- Molecules -->
+  <link rel="stylesheet" href="../src/css/molecules/accordion.css">
+  <link rel="stylesheet" href="../src/css/molecules/dropdown.css">
+  <link rel="stylesheet" href="../src/css/molecules/tags.css">
+  <link rel="stylesheet" href="../src/css/molecules/chat-input.css">
+  <link rel="stylesheet" href="../src/css/molecules/file-card.css">
+
+  <!-- Organisms -->
+  <link rel="stylesheet" href="../src/css/organisms/cards.css">
+  <link rel="stylesheet" href="../src/css/organisms/tabs.css">
+  <link rel="stylesheet" href="../src/css/organisms/sidebar.css">
+  <link rel="stylesheet" href="../src/css/organisms/forms.css">
+  <link rel="stylesheet" href="../src/css/organisms/app-shell.css">
+
+  <!-- Helpers -->
+  <link rel="stylesheet" href="../src/css/helpers.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Demo-specific resets — not part of framework */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+
+    /* Left sidebar nav customization for this app context */
+    .cowork-nav { list-style: none; padding: 0; margin: 0; }
+    .cowork-nav__item { margin-bottom: 0.125rem; }
+    .cowork-nav__link {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-gray-700, #374151);
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: background-color 0.15s ease;
+    }
+    .cowork-nav__link:hover { background-color: rgba(0,0,0,0.04); }
+    .cowork-nav__link svg { width: 1rem; height: 1rem; color: var(--color-gray-500); }
+
+    /* Recents list */
+    .cowork-recents { margin-top: 1.25rem; }
+    .cowork-recents__title {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--color-gray-400);
+      padding: 0 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .cowork-recents__list { list-style: none; padding: 0; margin: 0; }
+    .cowork-recents__link {
+      display: block;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--color-gray-600);
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s ease;
+    }
+    .cowork-recents__link:hover { background-color: rgba(0,0,0,0.04); }
+
+    /* User footer in left sidebar */
+    .cowork-user {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.75rem;
+      border-top: 1px solid var(--color-gray-200);
+      margin-top: auto;
+      cursor: pointer;
+    }
+    .cowork-user__name { font-size: 0.8125rem; font-weight: 600; color: var(--color-gray-800); }
+    .cowork-user__plan { font-size: 0.6875rem; color: var(--color-gray-500); }
+
+    /* File list in right panel */
+    .cowork-file-list { list-style: none; padding: 0; margin: 0; }
+    .cowork-file-list__item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3125rem 0;
+      font-size: 0.8125rem;
+      color: var(--color-gray-700);
+    }
+    .cowork-file-list__item svg { width: 0.875rem; height: 0.875rem; color: var(--color-gray-400); flex-shrink: 0; }
+
+    /* Connector/skill list in right panel */
+    .cowork-context-list { list-style: none; padding: 0; margin: 0; }
+    .cowork-context-list__item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0;
+      font-size: 0.8125rem;
+      color: var(--color-gray-700);
+    }
+    .cowork-context-list__item svg { width: 0.875rem; height: 0.875rem; flex-shrink: 0; }
+
+    /* Landing page content */
+    .cowork-landing { max-width: 42rem; margin: 0 auto; text-align: center; padding: 4rem 1rem; }
+    .cowork-landing__title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--color-gray-900);
+      margin-bottom: 0.5rem;
+      font-family: 'Georgia', serif;
+    }
+    .cowork-landing__subtitle {
+      font-size: 0.875rem;
+      color: var(--color-gray-500);
+      margin-bottom: 2rem;
+    }
+
+    /* Content prose styling */
+    .cowork-prose h2 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: var(--color-gray-900); }
+    .cowork-prose h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: var(--color-gray-800); }
+    .cowork-prose p { font-size: 0.9375rem; line-height: 1.65; color: var(--color-gray-700); margin-bottom: 0.75rem; }
+    .cowork-prose ul, .cowork-prose ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    .cowork-prose li { font-size: 0.9375rem; line-height: 1.65; color: var(--color-gray-700); margin-bottom: 0.375rem; }
+    .cowork-prose strong { font-weight: 600; color: var(--color-gray-800); }
+    .cowork-prose em { font-style: italic; }
+
+    /* Progress pill */
+    .cowork-progress-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.75rem;
+      color: var(--color-gray-500);
+    }
+
+    /* External link icon in section headers */
+    .cowork-external-link {
+      width: 0.875rem;
+      height: 0.875rem;
+      color: var(--color-gray-400);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- ====================================================================
+       APP SHELL: Three-panel layout
+       ==================================================================== -->
+  <div class="aiab-app-shell">
+
+    <!-- ================================================================
+         LEFT PANEL — Navigation Sidebar
+         ================================================================ -->
+    <aside class="aiab-app-shell__left" aria-label="Main navigation">
+      <div style="padding: 0.75rem;">
+        <!-- Primary Actions -->
+        <nav>
+          <ul class="cowork-nav" role="list">
+            <li class="cowork-nav__item">
+              <a href="#" class="cowork-nav__link">
+                <i data-lucide="plus"></i>
+                <span>New task</span>
+              </a>
+            </li>
+            <li class="cowork-nav__item">
+              <a href="#" class="cowork-nav__link">
+                <i data-lucide="search"></i>
+                <span>Search</span>
+              </a>
+            </li>
+            <li class="cowork-nav__item">
+              <a href="#" class="cowork-nav__link">
+                <i data-lucide="clock"></i>
+                <span>Scheduled</span>
+              </a>
+            </li>
+            <li class="cowork-nav__item">
+              <a href="#" class="cowork-nav__link">
+                <i data-lucide="sliders-horizontal"></i>
+                <span>Customize</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Recent Tasks -->
+        <div class="cowork-recents">
+          <p class="cowork-recents__title">Recents</p>
+          <ul class="cowork-recents__list" role="list">
+            <li><a href="#" class="cowork-recents__link">BAO Creative director education p…</a></li>
+            <li><a href="#" class="cowork-recents__link">Build AI marketing automation syst…</a></li>
+            <li><a href="#" class="cowork-recents__link">Convert LinkedIn SOP to Workilo w…</a></li>
+            <li><a href="#" class="cowork-recents__link">Integrate GPT marketing pages into…</a></li>
+            <li><a href="#" class="cowork-recents__link">Customize psychographic analysis…</a></li>
+            <li><a href="#" class="cowork-recents__link">Configure GPT Studio premade ass…</a></li>
+            <li><a href="#" class="cowork-recents__link">Amphibious website design and sli…</a></li>
+            <li><a href="#" class="cowork-recents__link">Debug blog creation workflow QA i…</a></li>
+            <li><a href="#" class="cowork-recents__link">AIAB Website design QA and logo u…</a></li>
+            <li><a href="#" class="cowork-recents__link">Organize downloads folder</a></li>
+            <li><a href="#" class="cowork-recents__link">GPT Studio menu structure</a></li>
+            <li><a href="#" class="cowork-recents__link">Clive AI writing style clone</a></li>
+            <li><a href="#" class="cowork-recents__link">CI/CD Pipeline Build and Test Resu…</a></li>
+            <li><a href="#" class="cowork-recents__link">Finalize blog post creation workflo…</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- User Footer -->
+      <div class="cowork-user">
+        <div class="aiab-avatar aiab-avatar--sm" style="background-color: var(--color-gray-300); display:flex; align-items:center; justify-content:center; width:2rem; height:2rem; border-radius:50%; font-size:0.75rem; font-weight:600; color: var(--color-gray-600);">CM</div>
+        <div>
+          <div class="cowork-user__name">Clive Moore</div>
+          <div class="cowork-user__plan">Max plan</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ================================================================
+         MAIN CONTENT AREA
+         ================================================================ -->
+    <main class="aiab-app-shell__main">
+
+      <!-- Task Header Bar -->
+      <header class="aiab-app-shell__header">
+        <!-- Navigation arrows -->
+        <nav class="aiab-app-shell__header-nav" aria-label="History navigation">
+          <button type="button" aria-label="Go back"><i data-lucide="chevron-left"></i></button>
+          <button type="button" aria-label="Go forward"><i data-lucide="chevron-right"></i></button>
+        </nav>
+
+        <!-- Task Title -->
+        <div class="aiab-app-shell__header-title">
+          <span>Build AI marketing automation system</span>
+          <button type="button" aria-label="Task options" style="background:none;border:none;cursor:pointer;color:var(--color-gray-400);">
+            <i data-lucide="chevron-down" style="width:0.875rem;height:0.875rem;"></i>
+          </button>
+        </div>
+
+        <!-- Mode Tabs (Boxed variant) -->
+        <div class="aiab-app-shell__header-tabs">
+          <div class="aiab-tabs aiab-tabs--boxed aiab-tabs--small">
+            <ul class="aiab-tabs__list" role="tablist">
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Chat</button>
+              </li>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="true">Cowork</button>
+              </li>
+              <li class="aiab-tabs__item" role="presentation">
+                <button class="aiab-tabs__button" role="tab" aria-selected="false">Code</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Content -->
+      <article class="aiab-app-shell__content cowork-prose">
+        <p>most AI-generated offers are generic. This is the step that makes offers feel like they were written by someone who understands the buyer.</p>
+
+        <h2>Step 2 — Craft Offers</h2>
+        <p><strong>What it does:</strong> Uses the edited brainstorm output to generate 3 distinct offers, each with 5 delivery vehicles framed as their own sub-offers. Applies Hormozi's value equation: Dream Outcome × Perceived Likelihood of Achievement / Time Delay × Effort and Sacrifice.</p>
+        <p><strong>Prompt logic:</strong> Passes the full intake + edited Step 1 output into the Craft Offers prompt. Marco runs as harmoziGPT persona internally.</p>
+
+        <h3>Output:</h3>
+        <ul>
+          <li>3 named offers, each following the format: <em>"[Framework Name]: How to [YAY] without [BOO] even if [GREATEST OBSTACLE]"</em></li>
+          <li>5 delivery vehicles per offer, framed as their own offers</li>
+          <li>Formatted in markdown with H1/H2 hierarchy</li>
+        </ul>
+
+        <p><strong>User intervention:</strong> Marco presents all 3 offers and asks the user to:</p>
+        <ol>
+          <li>Rate each offer 1–3 (keep, maybe, cut)</li>
+          <li>Optionally rename any offer</li>
+          <li>Flag any delivery vehicle that's operationally impossible</li>
+        </ol>
+        <p>Only the kept offers advance to Step 3. If user keeps all 3, all 3 go forward.</p>
+
+        <h2>Step 3 — Expand &amp; Enhance</h2>
+        <p><strong>What it does:</strong> Takes each kept offer and deepens it with expanded detail, objection handling, urgency mechanisms, and pricing framework suggestions.</p>
+      </article>
+
+      <!-- Chat Input Bar -->
+      <div class="aiab-chat-input">
+        <div class="aiab-chat-input__wrapper">
+          <textarea class="aiab-chat-input__field" placeholder="Reply…" rows="1" aria-label="Message input"></textarea>
+          <button class="aiab-chat-input__submit" type="button" aria-label="Send message">
+            <i data-lucide="arrow-up"></i>
+          </button>
+        </div>
+        <div class="aiab-chat-input__actions">
+          <div class="aiab-chat-input__actions-left">
+            <button class="aiab-chat-input__action" type="button" aria-label="Attach file">
+              <i data-lucide="plus"></i>
+            </button>
+          </div>
+          <div class="aiab-chat-input__actions-right">
+            <button class="aiab-chat-input__selector" type="button">
+              Sonnet 4.6
+              <i data-lucide="chevron-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================================================================
+         RIGHT PANEL — Context Sidebar
+         ================================================================ -->
+    <aside class="aiab-app-shell__right" aria-label="Task context">
+
+      <!-- Progress Section -->
+      <section class="aiab-app-shell__section">
+        <button class="aiab-app-shell__section-header" type="button" aria-expanded="true">
+          <span>Progress</span>
+          <span class="cowork-progress-pill">3 of 3</span>
+          <i data-lucide="chevron-down" class="aiab-app-shell__section-toggle"></i>
+        </button>
+      </section>
+
+      <!-- Working Folder Section -->
+      <section class="aiab-app-shell__section">
+        <button class="aiab-app-shell__section-header" type="button" aria-expanded="true">
+          <span>Working folder</span>
+          <span style="display:flex;align-items:center;gap:0.375rem;">
+            <i data-lucide="external-link" class="cowork-external-link"></i>
+            <i data-lucide="chevron-down" class="aiab-app-shell__section-toggle"></i>
+          </span>
+        </button>
+        <div class="aiab-app-shell__section-body">
+          <ul class="cowork-file-list" role="list">
+            <li class="cowork-file-list__item">
+              <i data-lucide="file-text"></i>
+              <span>_index.md</span>
+            </li>
+            <li class="cowork-file-list__item">
+              <i data-lucide="file-text"></i>
+              <span>_index-a17be57b.md</span>
+            </li>
+            <li class="cowork-file-list__item">
+              <i data-lucide="file-text"></i>
+              <span>PROJECT_REGISTRY.md</span>
+            </li>
+            <li class="cowork-file-list__item">
+              <i data-lucide="file-code"></i>
+              <span>workilo-content-automation-wo…</span>
+            </li>
+            <li class="cowork-file-list__item">
+              <i data-lucide="file-code"></i>
+              <span>workilo-youtube-longform-wor…</span>
+            </li>
+            <li class="cowork-file-list__item">
+              <i data-lucide="file-code"></i>
+              <span>workilo-offer-architect-spec.docx</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Scratchpad Section (collapsed) -->
+      <section class="aiab-app-shell__section is-collapsed">
+        <button class="aiab-app-shell__section-header" type="button" aria-expanded="false">
+          <span>Scratchpad</span>
+          <i data-lucide="chevron-right" class="aiab-app-shell__section-toggle"></i>
+        </button>
+        <div class="aiab-app-shell__section-body">
+          <p style="font-size:0.8125rem;color:var(--color-gray-500);">No scratchpad items.</p>
+        </div>
+      </section>
+
+      <!-- Context Section -->
+      <section class="aiab-app-shell__section">
+        <button class="aiab-app-shell__section-header" type="button" aria-expanded="true">
+          <span>Context</span>
+          <i data-lucide="chevron-down" class="aiab-app-shell__section-toggle"></i>
+        </button>
+        <div class="aiab-app-shell__section-body">
+          <p style="font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--color-gray-400);margin-bottom:0.5rem;">Connectors</p>
+          <ul class="cowork-context-list" role="list">
+            <li class="cowork-context-list__item">
+              <i data-lucide="globe" style="color:var(--color-gray-500);"></i>
+              <span>Web search</span>
+            </li>
+          </ul>
+          <p style="font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--color-gray-400);margin:0.75rem 0 0.5rem;">Skills</p>
+          <ul class="cowork-context-list" role="list">
+            <li class="cowork-context-list__item">
+              <i data-lucide="file-text" style="color:var(--color-gray-500);"></i>
+              <span>docx</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+
+      // Auto-grow textarea
+      const textarea = document.querySelector('.aiab-chat-input__field');
+      if (textarea) {
+        textarea.addEventListener('input', () => {
+          textarea.style.height = 'auto';
+          textarea.style.height = Math.min(textarea.scrollHeight, 192) + 'px';
+        });
+      }
+
+      // Collapsible sections with ARIA
+      document.querySelectorAll('.aiab-app-shell__section-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const section = header.closest('.aiab-app-shell__section');
+          const isCollapsed = section.classList.toggle('is-collapsed');
+          header.setAttribute('aria-expanded', String(!isCollapsed));
+        });
+      });
+    });
+  </script>
+</body>
+</html>

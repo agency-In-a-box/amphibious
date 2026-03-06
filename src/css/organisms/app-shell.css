@@ -1,0 +1,335 @@
+/* ==========================================================================
+   App Shell Layout - Amphibious 2.0
+   Three-panel application layout: left sidebar + main content + right sidebar
+   Designed for dashboard/tool UIs with fixed sidebars and scrollable content
+   ========================================================================== */
+
+/* CSS Custom Properties for App Shell */
+:root {
+  /* App Shell Dimensions */
+  --app-shell-left-width: 16rem;
+  --app-shell-right-width: 18rem;
+  --app-shell-header-height: 3rem;
+  --app-shell-input-height: auto;
+
+  /* App Shell Colors */
+  --app-shell-bg: #faf9f7;
+  --app-shell-border: var(--color-gray-300, #d1d5db);
+  --app-shell-header-bg: #ffffff;
+  --app-shell-panel-bg: #ffffff;
+
+  /* App Shell Transitions */
+  --app-shell-transition: all 0.3s ease;
+
+  /* Z-indices */
+  --app-shell-z-header: 100;
+  --app-shell-z-left: 200;
+  --app-shell-z-right: 150;
+}
+
+/* App Shell Container */
+.aiab-app-shell {
+  display: grid;
+  grid-template-columns: var(--app-shell-left-width) 1fr var(--app-shell-right-width);
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--app-shell-bg);
+}
+
+/* Left Panel (Navigation Sidebar) */
+.aiab-app-shell__left {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--app-shell-panel-bg);
+  border-right: 1px solid var(--app-shell-border);
+  height: 100vh;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  z-index: var(--app-shell-z-left);
+}
+
+/* Main Content Area */
+.aiab-app-shell__main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Task Header Bar */
+.aiab-app-shell__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--app-shell-header-bg);
+  border-bottom: 1px solid var(--app-shell-border);
+  min-height: var(--app-shell-header-height);
+  flex-shrink: 0;
+  z-index: var(--app-shell-z-header);
+}
+
+.aiab-app-shell__header-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.aiab-app-shell__header-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  background: transparent;
+  color: var(--color-gray-500, #6b7280);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.aiab-app-shell__header-nav button:hover {
+  color: var(--color-gray-900, #111827);
+}
+
+.aiab-app-shell__header-nav button:focus-visible {
+  outline: 2px solid var(--color-primary, #ed8b00);
+  outline-offset: 2px;
+}
+
+.aiab-app-shell__header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray-900, #111827);
+  flex: 1;
+  min-width: 0;
+}
+
+.aiab-app-shell__header-title span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aiab-app-shell__header-tabs {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Scrollable Content */
+.aiab-app-shell__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-300) transparent;
+}
+
+.aiab-app-shell__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.aiab-app-shell__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.aiab-app-shell__content::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 3px;
+}
+
+/* Right Panel (Context Sidebar) */
+.aiab-app-shell__right {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--app-shell-panel-bg);
+  border-left: 1px solid var(--app-shell-border);
+  height: 100vh;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: var(--app-shell-z-right);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-300) transparent;
+}
+
+.aiab-app-shell__right::-webkit-scrollbar {
+  width: 6px;
+}
+
+.aiab-app-shell__right::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 3px;
+}
+
+/* Right Panel Header */
+.aiab-app-shell__right-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--app-shell-border);
+  flex-shrink: 0;
+}
+
+/* Side Panel Sections (collapsible) */
+.aiab-app-shell__section {
+  border-bottom: 1px solid var(--app-shell-border);
+}
+
+.aiab-app-shell__section:last-child {
+  border-bottom: none;
+}
+
+.aiab-app-shell__section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-gray-700, #374151);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  text-align: left;
+  font-family: inherit;
+  line-height: 1.5;
+  transition: background-color 0.15s ease;
+}
+
+.aiab-app-shell__section-header:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.aiab-app-shell__section-header:focus-visible {
+  outline: 2px solid var(--color-primary, #ed8b00);
+  outline-offset: -2px;
+  border-radius: 0.25rem;
+}
+
+.aiab-app-shell__section-meta {
+  font-weight: 400;
+  color: var(--color-gray-500, #6b7280);
+  font-size: 0.75rem;
+}
+
+.aiab-app-shell__section-body {
+  padding: 0 1rem 0.75rem;
+}
+
+.aiab-app-shell__section-toggle {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-gray-400);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.aiab-app-shell__section.is-collapsed .aiab-app-shell__section-toggle {
+  transform: rotate(-90deg);
+}
+
+.aiab-app-shell__section.is-collapsed .aiab-app-shell__section-body {
+  display: none;
+}
+
+/* Responsive Collapse */
+@media (--bp-lg-down) {
+  .aiab-app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .aiab-app-shell__left,
+  .aiab-app-shell__right {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    transform: translateX(-100%);
+    transition: var(--app-shell-transition);
+    box-shadow: var(--shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.15));
+  }
+
+  .aiab-app-shell__left.is-open {
+    transform: translateX(0);
+  }
+
+  .aiab-app-shell__right {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+  }
+
+  .aiab-app-shell__right.is-open {
+    transform: translateX(0);
+  }
+}
+
+@media (--bp-md-down) {
+  .aiab-app-shell__content {
+    padding: 1rem;
+  }
+}
+
+/* Dark Mode */
+[data-theme="dark"] .aiab-app-shell {
+  --app-shell-bg: #111827;
+  --app-shell-header-bg: #1f2937;
+  --app-shell-panel-bg: #1f2937;
+  --app-shell-border: #374151;
+}
+
+/* High Contrast */
+@media (prefers-contrast: high) {
+  .aiab-app-shell__left,
+  .aiab-app-shell__right {
+    border-width: 2px;
+  }
+
+  .aiab-app-shell__header {
+    border-bottom-width: 2px;
+  }
+
+  .aiab-app-shell__section-header:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* Print */
+@media print {
+  .aiab-app-shell {
+    display: block;
+  }
+
+  .aiab-app-shell__left,
+  .aiab-app-shell__right {
+    display: none;
+  }
+
+  .aiab-app-shell__content {
+    overflow: visible;
+    height: auto;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .aiab-app-shell__left,
+  .aiab-app-shell__right {
+    transition: none;
+  }
+}

@@ -1,0 +1,277 @@
+/* ==========================================================================
+   Chat Input Component - Amphibious 2.0
+   Bottom-anchored input bar for messaging/command interfaces
+   Supports file attachments, model selection, and submit actions
+   ========================================================================== */
+
+/* CSS Custom Properties for Chat Input */
+:root {
+  --chat-input-bg: #ffffff;
+  --chat-input-border: var(--color-gray-300, #d1d5db);
+  --chat-input-radius: 1.5rem;
+  --chat-input-padding: 0.75rem 1rem;
+  --chat-input-shadow: 0 -1px 4px rgba(0, 0, 0, 0.04);
+  --chat-input-focus-border: var(--color-primary, #ed8b00);
+  --chat-input-focus-shadow: 0 0 0 3px var(--color-primary-alpha-12, rgba(237, 139, 0, 0.12));
+  --chat-input-max-height: 12rem;
+}
+
+/* Chat Input Container - sits at bottom of parent */
+.aiab-chat-input {
+  flex-shrink: 0;
+  padding: 0.75rem 1rem 1rem;
+  background-color: var(--chat-input-bg);
+  border-top: 1px solid var(--chat-input-border);
+}
+
+/* The input wrapper with rounded border */
+.aiab-chat-input__wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  border: 1px solid var(--chat-input-border);
+  border-radius: var(--chat-input-radius);
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  background-color: var(--chat-input-bg);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.aiab-chat-input__wrapper:focus-within {
+  border-color: var(--chat-input-focus-border);
+  box-shadow: var(--chat-input-focus-shadow);
+}
+
+/* Textarea that auto-grows */
+.aiab-chat-input__field {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-gray-900, #111827);
+  background: transparent;
+  padding: 0.25rem 0;
+  max-height: var(--chat-input-max-height);
+  min-height: 1.5em;
+  overflow-y: auto;
+}
+
+.aiab-chat-input__field::placeholder {
+  color: var(--color-gray-400, #9ca3af);
+}
+
+/* Action buttons row below input */
+.aiab-chat-input__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.aiab-chat-input__actions-left {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.aiab-chat-input__actions-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+/* Inline action buttons (attach, etc.) */
+.aiab-chat-input__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: transparent;
+  color: var(--color-gray-500, #6b7280);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.aiab-chat-input__action:hover {
+  color: var(--color-gray-700, #374151);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.aiab-chat-input__action:focus-visible {
+  outline: 2px solid var(--color-primary, #ed8b00);
+  outline-offset: 2px;
+}
+
+/* Submit button */
+.aiab-chat-input__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: var(--color-primary, #ed8b00);
+  color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.aiab-chat-input__submit:hover {
+  background-color: var(--color-primary-dark, #c97600);
+}
+
+.aiab-chat-input__submit:active {
+  transform: scale(0.95);
+}
+
+.aiab-chat-input__submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.aiab-chat-input__submit:focus-visible {
+  outline: 2px solid var(--color-primary, #ed8b00);
+  outline-offset: 2px;
+}
+
+.aiab-chat-input__submit svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Model Selector Chip */
+.aiab-chat-input__selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-gray-700, #374151);
+  background-color: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--color-gray-200, #e5e7eb);
+  border-radius: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.aiab-chat-input__selector:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.aiab-chat-input__selector:focus-visible {
+  outline: 2px solid var(--color-primary, #ed8b00);
+  outline-offset: 2px;
+}
+
+.aiab-chat-input__selector svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: var(--color-gray-400);
+}
+
+/* Folder Selector */
+.aiab-chat-input__folder {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.8125rem;
+  color: var(--color-gray-600, #4b5563);
+  background: transparent;
+  border: 1px solid var(--color-gray-200, #e5e7eb);
+  border-radius: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.aiab-chat-input__folder:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.aiab-chat-input__folder:focus-visible {
+  outline: 2px solid var(--color-primary, #ed8b00);
+  outline-offset: 2px;
+}
+
+.aiab-chat-input__folder svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* File preview cards above the input */
+.aiab-chat-input__files {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.aiab-chat-input__files::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive */
+@media (--bp-sm-down) {
+  .aiab-chat-input {
+    padding: 0.5rem;
+  }
+
+  .aiab-chat-input__wrapper {
+    border-radius: 1rem;
+    padding: 0.375rem 0.375rem 0.375rem 0.75rem;
+  }
+}
+
+/* Dark mode */
+[data-theme="dark"] .aiab-chat-input {
+  --chat-input-bg: #1f2937;
+  --chat-input-border: #374151;
+}
+
+/* High Contrast */
+@media (prefers-contrast: high) {
+  .aiab-chat-input__wrapper {
+    border-width: 2px;
+  }
+
+  .aiab-chat-input__wrapper:focus-within {
+    border-width: 2px;
+  }
+
+  .aiab-chat-input__submit:focus-visible,
+  .aiab-chat-input__action:focus-visible,
+  .aiab-chat-input__selector:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .aiab-chat-input__wrapper,
+  .aiab-chat-input__action,
+  .aiab-chat-input__submit,
+  .aiab-chat-input__selector,
+  .aiab-chat-input__folder {
+    transition: none;
+  }
+}
+
+/* Print */
+@media print {
+  .aiab-chat-input {
+    display: none;
+  }
+}

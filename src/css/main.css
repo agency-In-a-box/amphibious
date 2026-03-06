@@ -41,6 +41,8 @@
 @import "./molecules/accordion.css";
 @import "./molecules/dropdown.css";
 @import "./molecules/search-bar.css";
+@import "./molecules/chat-input.css";
+@import "./molecules/file-card.css";
 
 /* Organisms - Complex components */
 @import "./organisms/cards.css";
@@ -61,6 +63,7 @@
 @import "./organisms/range-slider.css"; /* Range slider component */
 @import "./organisms/timeline.css"; /* Timeline component */
 @import "./organisms/form-builder.css"; /* Form builder component */
+@import "./organisms/app-shell.css"; /* Three-panel app layout */
 
 /* Navigation - Using unified navigation system */
 @import "./navigation-unified.css";
