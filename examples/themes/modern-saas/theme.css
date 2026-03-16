@@ -828,10 +828,54 @@ body {
 }
 
 /* ============================================
+   PAGE-SPECIFIC OVERRIDES
+   ============================================ */
+
+.product-screenshot {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.product-screenshot img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.aiab-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-12);
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--spacing-4);
+}
+
+.stat-item__value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  display: block;
+}
+
+.stat-item__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 1024px) {
+@media (--bp-lg-down) {
   .saas-showcase {
     grid-template-columns: 1fr;
     gap: var(--spacing-8);
@@ -856,7 +900,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   :root {
     --container-padding: 1rem;
   }
@@ -904,5 +948,55 @@ body {
     flex-direction: column;
     gap: var(--spacing-4);
     text-align: center;
+  }
+
+  .aiab-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================================================
+   Dark Mode
+   ========================================================================== */
+
+[data-theme="dark"] {
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+  --color-primary-active: #2563eb;
+  --color-primary-light: #1e3a8a;
+  --color-primary-dark: #1e40af;
+  --color-secondary: #94a3b8;
+  --color-secondary-hover: #64748b;
+  --color-background: #0f172a;
+  --color-background-subtle: #1e293b;
+  --color-background-muted: #334155;
+  --color-background-accent: #1e3a8a;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-heading: #f8fafc;
+  --color-border: #334155;
+  --color-border-light: #475569;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-primary: #60a5fa;
+    --color-primary-hover: #3b82f6;
+    --color-primary-active: #2563eb;
+    --color-primary-light: #1e3a8a;
+    --color-primary-dark: #1e40af;
+    --color-secondary: #94a3b8;
+    --color-secondary-hover: #64748b;
+    --color-background: #0f172a;
+    --color-background-subtle: #1e293b;
+    --color-background-muted: #334155;
+    --color-background-accent: #1e3a8a;
+    --color-text: #f1f5f9;
+    --color-text-secondary: #cbd5e1;
+    --color-text-muted: #94a3b8;
+    --color-heading: #f8fafc;
+    --color-border: #334155;
+    --color-border-light: #475569;
   }
 }
