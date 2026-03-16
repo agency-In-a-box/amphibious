@@ -71,7 +71,7 @@
 
 
   <!-- Breadcrumb -->
-  <div class="aiab-container" style="padding: 1rem 0;">
+  <div class="aiab-container aiab-section-compact">
     <div class="product-breadcrumb">
       <a href="#">Home</a> /
       <a href="#">Clothing</a> /
@@ -88,24 +88,24 @@
         <section class="aiab-col-7" aria-label="Product Images">
           <figure class="product-gallery">
             <div class="main-image">
-              <img src="https://placehold.co/600x600/667eea/ffffff?text=Main+Image" alt="Product" id="mainImage" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect width='600' height='600' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='20'%3EMain+Image%3C/text%3E%3C/svg%3E" alt="Product" id="mainImage" loading="lazy">
               <button class="image-zoom" data-tooltip="Click to zoom">
                 <i data-lucide="zoom-in"></i>
               </button>
             </div>
             <div class="thumbnail-list">
-              <div class="thumbnail aiab-active" onclick="changeImage(1)">
-                <img src="https://placehold.co/150x150/667eea/ffffff?text=View+1" alt="View 1" loading="lazy">
-              </div>
-              <div class="thumbnail" onclick="changeImage(2)">
-                <img src="https://placehold.co/150x150/764ba2/ffffff?text=View+2" alt="View 2" loading="lazy">
-              </div>
-              <div class="thumbnail" onclick="changeImage(3)">
-                <img src="https://placehold.co/150x150/f59e0b/ffffff?text=View+3" alt="View 3" loading="lazy">
-              </div>
-              <div class="thumbnail" onclick="changeImage(4)">
-                <img src="https://placehold.co/150x150/10b981/ffffff?text=View+4" alt="View 4" loading="lazy">
-              </div>
+              <button class="thumbnail aiab-active" data-index="1" aria-label="View 1">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='150' height='150' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3EView+1%3C/text%3E%3C/svg%3E" alt="View 1" loading="lazy">
+              </button>
+              <button class="thumbnail" data-index="2" aria-label="View 2">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='150' height='150' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3EView+2%3C/text%3E%3C/svg%3E" alt="View 2" loading="lazy">
+              </button>
+              <button class="thumbnail" data-index="3" aria-label="View 3">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='150' height='150' fill='%23f59e0b'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3EView+3%3C/text%3E%3C/svg%3E" alt="View 3" loading="lazy">
+              </button>
+              <button class="thumbnail" data-index="4" aria-label="View 4">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='150' height='150' fill='%2310b981'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3EView+4%3C/text%3E%3C/svg%3E" alt="View 4" loading="lazy">
+              </button>
             </div>
           </figure>
         </section>
@@ -125,7 +125,7 @@
                   <i data-lucide="star-half" class="icon--warning"></i>
                 </div>
                 <span>4.5</span>
-                <a href="#reviews" style="color: var(--color-primary);">(124 reviews)</a>
+                <a href="#reviews" class="aiab-icon--primary">(124 reviews)</a>
               </div>
               <span class="product-sku">SKU: TSH-001-BLK</span>
             </div>
@@ -144,51 +144,51 @@
 
             <div class="product-options">
               <div class="option-group">
-                <div class="option-label">
+                <label class="option-label" id="sizeLabel">
                   Size:
                   <a href="#" class="size-chart-link" data-tooltip="View size guide">
                     <i data-lucide="ruler" class="icon--sm"></i> Size Chart
                   </a>
-                </div>
-                <div class="size-options">
-                  <button class="size-option out-of-stock" data-tooltip="Out of stock">XS</button>
-                  <button class="size-option">S</button>
-                  <button class="size-option selected">M</button>
-                  <button class="size-option">L</button>
-                  <button class="size-option">XL</button>
-                  <button class="size-option">XXL</button>
+                </label>
+                <div class="size-options" role="radiogroup" aria-labelledby="sizeLabel">
+                  <button class="size-option out-of-stock" data-value="xs" role="radio" aria-checked="false" disabled data-tooltip="Out of stock">XS</button>
+                  <button class="size-option" data-value="s" role="radio" aria-checked="false">S</button>
+                  <button class="size-option selected" data-value="m" role="radio" aria-checked="true">M</button>
+                  <button class="size-option" data-value="l" role="radio" aria-checked="false">L</button>
+                  <button class="size-option" data-value="xl" role="radio" aria-checked="false">XL</button>
+                  <button class="size-option" data-value="xxl" role="radio" aria-checked="false">XXL</button>
                 </div>
               </div>
 
               <div class="option-group">
-                <div class="option-label">Color: <span style="font-weight: normal;">Black</span></div>
-                <div class="color-options">
-                  <div class="color-option selected" data-tooltip="Black">
+                <label class="option-label" id="colorLabel">Color: <span class="aiab-fw-normal" id="colorValue">Black</span></label>
+                <div class="color-options" role="radiogroup" aria-labelledby="colorLabel">
+                  <button class="color-option selected" data-value="black" data-color="#000" role="radio" aria-checked="true" aria-label="Black" data-tooltip="Black">
                     <div class="color-swatch" style="background: #000;"></div>
-                  </div>
-                  <div class="color-option" data-tooltip="White">
+                  </button>
+                  <button class="color-option" data-value="white" data-color="#fff" role="radio" aria-checked="false" aria-label="White" data-tooltip="White">
                     <div class="color-swatch" style="background: #fff;"></div>
-                  </div>
-                  <div class="color-option" data-tooltip="Navy">
+                  </button>
+                  <button class="color-option" data-value="navy" data-color="#1e3a8a" role="radio" aria-checked="false" aria-label="Navy" data-tooltip="Navy">
                     <div class="color-swatch" style="background: #1e3a8a;"></div>
-                  </div>
-                  <div class="color-option" data-tooltip="Gray">
+                  </button>
+                  <button class="color-option" data-value="gray" data-color="#6b7280" role="radio" aria-checked="false" aria-label="Gray" data-tooltip="Gray">
                     <div class="color-swatch" style="background: #6b7280;"></div>
-                  </div>
-                  <div class="color-option" data-tooltip="Red">
+                  </button>
+                  <button class="color-option" data-value="red" data-color="#dc2626" role="radio" aria-checked="false" aria-label="Red" data-tooltip="Red">
                     <div class="color-swatch" style="background: #dc2626;"></div>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
 
             <div class="product-actions">
               <div class="quantity-row">
-                <div class="option-label" style="margin: 0;">Quantity:</div>
+                <label class="option-label aiab-mt-0" for="qtyInput">Quantity:</label>
                 <div class="quantity-selector">
-                  <button onclick="decrementQty()">−</button>
-                  <input type="number" value="1" min="1" max="10" id="qtyInput">
-                  <button onclick="incrementQty()">+</button>
+                  <button id="qtyDecrement" aria-label="Decrease quantity">−</button>
+                  <input type="number" value="1" min="1" max="10" id="qtyInput" aria-label="Quantity">
+                  <button id="qtyIncrement" aria-label="Increase quantity">+</button>
                 </div>
                 <div class="stock-info">
                   <i data-lucide="check-circle"></i>
@@ -197,11 +197,11 @@
               </div>
 
               <div class="action-buttons">
-                <button class="btn-add-cart" onclick="addToCart()">
+                <button class="btn-add-cart" id="addToCartBtn">
                   <i data-lucide="shopping-cart"></i>
                   Add to Cart
                 </button>
-                <button class="btn-buy-now">
+                <button class="btn-buy-now" id="buyNowBtn">
                   Buy It Now
                 </button>
               </div>
@@ -247,7 +247,7 @@
   </main>
 
   <!-- Aside: Customer Testimonials and Trust Signals -->
-  <aside class="aiab-container" style="margin: 2rem auto;">
+  <aside class="aiab-container aiab-my-2">
     <div class="aiab-row">
       <div class="aiab-col-8">
         <h3>Customer Testimonials</h3>
@@ -257,12 +257,12 @@
               <p>"Best quality t-shirt I've ever owned! The fabric is incredibly soft and it's held up perfectly after months of wear."</p>
               <footer>
                 <cite>— Sarah M., Verified Buyer</cite>
-                <div class="rating" style="margin-top: 0.5rem;">
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                <div class="rating aiab-mt-0-5">
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
                 </div>
               </footer>
             </blockquote>
@@ -272,12 +272,12 @@
               <p>"Perfect fit and the color hasn't faded at all. I've bought three more in different colors!"</p>
               <footer>
                 <cite>— Mike T., Repeat Customer</cite>
-                <div class="rating" style="margin-top: 0.5rem;">
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
-                  <i data-lucide="star" class="icon--xs icon--filled" style="color: #ffc107;"></i>
+                <div class="rating aiab-mt-0-5">
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
+                  <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
                 </div>
               </footer>
             </blockquote>
@@ -286,7 +286,7 @@
       </div>
       <div class="aiab-col-8">
         <h3>Why Shop With Us</h3>
-        <div class="aside-content" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+        <div class="aside-content aiab-info-box">
           <ul class="aiab-stats aiab-stats--vertical">
             <li>
               <strong class="aiab-stat-value">50,000+</strong>
@@ -305,13 +305,13 @@
               <span class="aiab-stat-label">Organic Cotton</span>
             </li>
           </ul>
-          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6;">
-            <h4 style="font-size: 1rem; margin-bottom: 0.75rem;">Trust & Security</h4>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <img src="https://placehold.co/80x30/ffffff/6c757d?text=SSL" alt="SSL Secure" style="height: 30px;" loading="lazy">
-              <img src="https://placehold.co/80x30/ffffff/6c757d?text=PayPal" alt="PayPal" style="height: 30px;" loading="lazy">
-              <img src="https://placehold.co/80x30/ffffff/6c757d?text=Visa" alt="Visa" style="height: 30px;" loading="lazy">
-              <img src="https://placehold.co/80x30/ffffff/6c757d?text=MC" alt="Mastercard" style="height: 30px;" loading="lazy">
+          <div class="aiab-mt-1-5 aiab-section-compact" style="border-top: 1px solid var(--color-gray-300);">
+            <h4 class="aiab-review-title">Trust & Security</h4>
+            <div class="aiab-flex-wrap">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3ESSL%3C/text%3E%3C/svg%3E" alt="SSL Secure" class="aiab-trust-badge" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EPayPal%3C/text%3E%3C/svg%3E" alt="PayPal" class="aiab-trust-badge" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EVisa%3C/text%3E%3C/svg%3E" alt="Visa" class="aiab-trust-badge" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EMC%3C/text%3E%3C/svg%3E" alt="Mastercard" class="aiab-trust-badge" loading="lazy">
             </div>
           </div>
         </div>
@@ -322,16 +322,16 @@
   <!-- Product Tabs -->
   <section class="product-tabs">
     <div class="aiab-container">
-      <div class="tab-nav">
-        <button class="tab-button aiab-active" onclick="switchTab('description')">Description</button>
-        <button class="tab-button" onclick="switchTab('details')">Details & Care</button>
-        <button class="tab-button" onclick="switchTab('reviews')" id="reviewsTab">Reviews (124)</button>
-        <button class="tab-button" onclick="switchTab('shipping')">Shipping & Returns</button>
+      <div class="tab-nav" role="tablist">
+        <button class="tab-button aiab-active" id="tab-description" role="tab" aria-selected="true" aria-controls="panel-description" tabindex="0">Description</button>
+        <button class="tab-button" id="tab-details" role="tab" aria-selected="false" aria-controls="panel-details" tabindex="-1">Details & Care</button>
+        <button class="tab-button" id="tab-reviews" role="tab" aria-selected="false" aria-controls="panel-reviews" tabindex="-1">Reviews (124)</button>
+        <button class="tab-button" id="tab-shipping" role="tab" aria-selected="false" aria-controls="panel-shipping" tabindex="-1">Shipping & Returns</button>
       </div>
 
       <div class="tab-content">
         <!-- Description Tab -->
-        <div class="tab-pane aiab-active" id="description">
+        <div class="tab-pane aiab-active" id="panel-description" role="tabpanel" aria-labelledby="tab-description">
           <div class="aiab-row">
             <div class="aiab-col-10">
               <h3>Product Description</h3>
@@ -350,23 +350,23 @@
               <p>Whether you're heading to work, meeting friends, or just relaxing at home, this t-shirt delivers all-day comfort and effortless style. The premium cotton fabric is pre-shrunk and colorfast, ensuring your shirt looks great wear after wear.</p>
             </div>
             <aside class="aiab-col-6">
-              <div class="aside-highlight" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+              <div class="aside-highlight aiab-info-box">
                 <h4>Why Choose Our T-Shirt?</h4>
-                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-                  <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <i data-lucide="check" style="color: #28a745;"></i>
+                <div class="aiab-flex-col aiab-mt-1">
+                  <div class="aiab-flex-row--sm">
+                    <i data-lucide="check" class="aiab-icon--success"></i>
                     <span>Lifetime warranty on stitching</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <i data-lucide="check" style="color: #28a745;"></i>
+                  <div class="aiab-flex-row--sm">
+                    <i data-lucide="check" class="aiab-icon--success"></i>
                     <span>Eco-friendly production</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <i data-lucide="check" style="color: #28a745;"></i>
+                  <div class="aiab-flex-row--sm">
+                    <i data-lucide="check" class="aiab-icon--success"></i>
                     <span>Fair trade certified</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <i data-lucide="check" style="color: #28a745;"></i>
+                  <div class="aiab-flex-row--sm">
+                    <i data-lucide="check" class="aiab-icon--success"></i>
                     <span>No harmful chemicals</span>
                   </div>
                 </div>
@@ -376,58 +376,58 @@
         </div>
 
         <!-- Details Tab -->
-        <div class="tab-pane" id="details">
+        <div class="tab-pane" id="panel-details" role="tabpanel" aria-labelledby="tab-details">
           <div class="aiab-row">
             <div class="aiab-col-8">
               <h3>Product Details</h3>
-              <table style="width: 100%; margin: 1rem 0;">
+              <table class="aiab-spec-table">
                 <tr>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Material</strong></td>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">100% Organic Cotton</td>
+                  <td><strong>Material</strong></td>
+                  <td>100% Organic Cotton</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Weight</strong></td>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">180 GSM</td>
+                  <td><strong>Weight</strong></td>
+                  <td>180 GSM</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Fit</strong></td>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">Classic/Regular</td>
+                  <td><strong>Fit</strong></td>
+                  <td>Classic/Regular</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Neckline</strong></td>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">Crew neck</td>
+                  <td><strong>Neckline</strong></td>
+                  <td>Crew neck</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Sleeve Length</strong></td>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">Short sleeve</td>
+                  <td><strong>Sleeve Length</strong></td>
+                  <td>Short sleeve</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;"><strong>Country of Origin</strong></td>
-                  <td style="padding: 0.75rem; border-bottom: 1px solid #dee2e6;">Made in USA</td>
+                  <td><strong>Country of Origin</strong></td>
+                  <td>Made in USA</td>
                 </tr>
               </table>
             </div>
             <div class="aiab-col-8">
               <h3>Care Instructions</h3>
-              <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <i data-lucide="thermometer" style="color: var(--color-primary);"></i>
+              <div class="aiab-flex-col">
+                <div class="aiab-flex-row">
+                  <i data-lucide="thermometer" class="aiab-icon--primary"></i>
                   <span>Machine wash cold with like colors</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <i data-lucide="droplets" style="color: var(--color-primary);"></i>
+                <div class="aiab-flex-row">
+                  <i data-lucide="droplets" class="aiab-icon--primary"></i>
                   <span>Use non-chlorine bleach when needed</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <i data-lucide="wind" style="color: var(--color-primary);"></i>
+                <div class="aiab-flex-row">
+                  <i data-lucide="wind" class="aiab-icon--primary"></i>
                   <span>Tumble dry low or hang dry</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <i data-lucide="zap" style="color: var(--color-primary);"></i>
+                <div class="aiab-flex-row">
+                  <i data-lucide="zap" class="aiab-icon--primary"></i>
                   <span>Warm iron if needed</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <i data-lucide="ban" style="color: var(--color-primary);"></i>
+                <div class="aiab-flex-row">
+                  <i data-lucide="ban" class="aiab-icon--primary"></i>
                   <span>Do not dry clean</span>
                 </div>
               </div>
@@ -436,7 +436,7 @@
         </div>
 
         <!-- Reviews Tab -->
-        <div class="tab-pane" id="reviews">
+        <div class="tab-pane" id="panel-reviews" role="tabpanel" aria-labelledby="tab-reviews">
           <div class="reviews-summary">
             <div class="rating-overview">
               <div class="rating-number">4.5</div>
@@ -453,43 +453,43 @@
               <div class="rating-bar">
                 <span>5 stars</span>
                 <div class="rating-bar-fill">
-                  <span style="width: 65%;"></span>
+                  <span style="--bar-width: 65%;"></span>
                 </div>
                 <span>65%</span>
               </div>
               <div class="rating-bar">
                 <span>4 stars</span>
                 <div class="rating-bar-fill">
-                  <span style="width: 20%;"></span>
+                  <span style="--bar-width: 20%;"></span>
                 </div>
                 <span>20%</span>
               </div>
               <div class="rating-bar">
                 <span>3 stars</span>
                 <div class="rating-bar-fill">
-                  <span style="width: 10%;"></span>
+                  <span style="--bar-width: 10%;"></span>
                 </div>
                 <span>10%</span>
               </div>
               <div class="rating-bar">
                 <span>2 stars</span>
                 <div class="rating-bar-fill">
-                  <span style="width: 3%;"></span>
+                  <span style="--bar-width: 3%;"></span>
                 </div>
                 <span>3%</span>
               </div>
               <div class="rating-bar">
                 <span>1 star</span>
                 <div class="rating-bar-fill">
-                  <span style="width: 2%;"></span>
+                  <span style="--bar-width: 2%;"></span>
                 </div>
                 <span>2%</span>
               </div>
             </div>
           </div>
 
-          <div style="margin: 2rem 0;">
-            <button class="btn-secondary" style="width: auto; padding: 0.75rem 1.5rem;">
+          <div class="aiab-my-2">
+            <button class="btn-secondary aiab-btn-inline">
               <i data-lucide="edit"></i>
               Write a Review
             </button>
@@ -515,12 +515,12 @@
                   Verified Purchase
                 </div>
               </div>
-              <span style="color: #6c757d; font-size: 0.875rem;">2 days ago</span>
+              <span class="aiab-text-muted">2 days ago</span>
             </div>
-            <h4 style="margin: 1rem 0 0.5rem 0;">Perfect fit and quality!</h4>
+            <h4 class="aiab-review-title">Perfect fit and quality!</h4>
             <p>This t-shirt exceeded my expectations. The fabric is incredibly soft and the fit is exactly as described. I've washed it several times already and it still looks brand new. Will definitely be ordering more colors!</p>
-            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-              <button class="btn-secondary" style="width: auto; padding: 0.5rem 1rem; font-size: 0.875rem;">
+            <div class="aiab-flex-wrap aiab-mt-1">
+              <button class="btn-secondary aiab-btn-sm">
                 <i data-lucide="thumbs-up" class="icon--xs"></i>
                 Helpful (23)
               </button>
@@ -546,12 +546,12 @@
                   Verified Purchase
                 </div>
               </div>
-              <span style="color: #6c757d; font-size: 0.875rem;">1 week ago</span>
+              <span class="aiab-text-muted">1 week ago</span>
             </div>
-            <h4 style="margin: 1rem 0 0.5rem 0;">Great quality, runs slightly large</h4>
+            <h4 class="aiab-review-title">Great quality, runs slightly large</h4>
             <p>Love the material and the eco-friendly aspect. The only reason I'm giving 4 stars instead of 5 is that it runs slightly larger than expected. I usually wear medium but probably should have gotten a small. Still keeping it though!</p>
-            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-              <button class="btn-secondary" style="width: auto; padding: 0.5rem 1rem; font-size: 0.875rem;">
+            <div class="aiab-flex-wrap aiab-mt-1">
+              <button class="btn-secondary aiab-btn-sm">
                 <i data-lucide="thumbs-up" class="icon--xs"></i>
                 Helpful (15)
               </button>
@@ -560,53 +560,53 @@
         </div>
 
         <!-- Shipping Tab -->
-        <div class="tab-pane" id="shipping">
+        <div class="tab-pane" id="panel-shipping" role="tabpanel" aria-labelledby="tab-shipping">
           <div class="aiab-row">
             <div class="aiab-col-8">
               <h3>Shipping Information</h3>
-              <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+              <div class="aiab-info-box aiab-my-2">
                 <h4>Shipping Options</h4>
-                <table style="width: 100%; margin-top: 1rem;">
+                <table class="aiab-shipping-table">
                   <tr>
-                    <td style="padding: 0.75rem;"><strong>Standard Shipping</strong></td>
-                    <td style="padding: 0.75rem;">5-7 business days</td>
-                    <td style="padding: 0.75rem;">FREE over $50</td>
+                    <td><strong>Standard Shipping</strong></td>
+                    <td>5-7 business days</td>
+                    <td>FREE over $50</td>
                   </tr>
                   <tr>
-                    <td style="padding: 0.75rem;"><strong>Express Shipping</strong></td>
-                    <td style="padding: 0.75rem;">2-3 business days</td>
-                    <td style="padding: 0.75rem;">$12.99</td>
+                    <td><strong>Express Shipping</strong></td>
+                    <td>2-3 business days</td>
+                    <td>$12.99</td>
                   </tr>
                   <tr>
-                    <td style="padding: 0.75rem;"><strong>Next Day Delivery</strong></td>
-                    <td style="padding: 0.75rem;">1 business day</td>
-                    <td style="padding: 0.75rem;">$24.99</td>
+                    <td><strong>Next Day Delivery</strong></td>
+                    <td>1 business day</td>
+                    <td>$24.99</td>
                   </tr>
                 </table>
               </div>
             </div>
             <div class="aiab-col-8">
               <h3>Return Policy</h3>
-              <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                  <i data-lucide="calendar" style="color: var(--color-primary); margin-top: 0.25rem;"></i>
+              <div class="aiab-flex-col">
+                <div class="aiab-flex-row--start">
+                  <i data-lucide="calendar" class="aiab-icon--primary aiab-mt-0-5"></i>
                   <div>
                     <strong>30-Day Returns</strong>
-                    <p style="margin: 0.25rem 0 0 0; color: #6c757d;">Return within 30 days of delivery for a full refund</p>
+                    <p class="aiab-text-muted--inline">Return within 30 days of delivery for a full refund</p>
                   </div>
                 </div>
-                <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                  <i data-lucide="package" style="color: var(--color-primary); margin-top: 0.25rem;"></i>
+                <div class="aiab-flex-row--start">
+                  <i data-lucide="package" class="aiab-icon--primary aiab-mt-0-5"></i>
                   <div>
                     <strong>Free Return Shipping</strong>
-                    <p style="margin: 0.25rem 0 0 0; color: #6c757d;">We provide a prepaid return label</p>
+                    <p class="aiab-text-muted--inline">We provide a prepaid return label</p>
                   </div>
                 </div>
-                <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                  <i data-lucide="refresh-cw" style="color: var(--color-primary); margin-top: 0.25rem;"></i>
+                <div class="aiab-flex-row--start">
+                  <i data-lucide="refresh-cw" class="aiab-icon--primary aiab-mt-0-5"></i>
                   <div>
                     <strong>Easy Exchanges</strong>
-                    <p style="margin: 0.25rem 0 0 0; color: #6c757d;">Exchange for a different size or color</p>
+                    <p class="aiab-text-muted--inline">Exchange for a different size or color</p>
                   </div>
                 </div>
               </div>
@@ -622,7 +622,7 @@
     <div class="aiab-container">
       <div class="section-header">
         <h2>You May Also Like</h2>
-        <button class="btn-secondary" style="width: auto; padding: 0.75rem 1.5rem;">
+        <button class="btn-secondary aiab-btn-inline">
           View All
           <i data-lucide="arrow-right"></i>
         </button>
@@ -632,7 +632,7 @@
         <div class="carousel-item">
           <div class="mini-product-card">
             <div class="mini-product-image">
-              <img src="https://placehold.co/200x200/667eea/ffffff?text=Related+1" alt="Related Product" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERelated+1%3C/text%3E%3C/svg%3E" alt="Related Product" loading="lazy">
             </div>
             <div class="mini-product-info">
               <h4 class="mini-product-name">Classic Polo Shirt</h4>
@@ -651,7 +651,7 @@
         <div class="carousel-item">
           <div class="mini-product-card">
             <div class="mini-product-image">
-              <img src="https://placehold.co/200x200/764ba2/ffffff?text=Related+2" alt="Related Product" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERelated+2%3C/text%3E%3C/svg%3E" alt="Related Product" loading="lazy">
             </div>
             <div class="mini-product-info">
               <h4 class="mini-product-name">V-Neck T-Shirt</h4>
@@ -670,7 +670,7 @@
         <div class="carousel-item">
           <div class="mini-product-card">
             <div class="mini-product-image">
-              <img src="https://placehold.co/200x200/f59e0b/ffffff?text=Related+3" alt="Related Product" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23f59e0b'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERelated+3%3C/text%3E%3C/svg%3E" alt="Related Product" loading="lazy">
             </div>
             <div class="mini-product-info">
               <h4 class="mini-product-name">Long Sleeve Henley</h4>
@@ -689,7 +689,7 @@
         <div class="carousel-item">
           <div class="mini-product-card">
             <div class="mini-product-image">
-              <img src="https://placehold.co/200x200/10b981/ffffff?text=Related+4" alt="Related Product" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%2310b981'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERelated+4%3C/text%3E%3C/svg%3E" alt="Related Product" loading="lazy">
             </div>
             <div class="mini-product-info">
               <h4 class="mini-product-name">Tank Top</h4>
@@ -708,7 +708,7 @@
         <div class="carousel-item">
           <div class="mini-product-card">
             <div class="mini-product-image">
-              <img src="https://placehold.co/200x200/ef4444/ffffff?text=Related+5" alt="Related Product" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23ef4444'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERelated+5%3C/text%3E%3C/svg%3E" alt="Related Product" loading="lazy">
             </div>
             <div class="mini-product-info">
               <h4 class="mini-product-name">Graphic Tee</h4>
@@ -731,84 +731,255 @@
   <script type="module" src="/src/index.js"></script>
 
   <!-- Page Scripts -->
-  <script>
+  <script type="module">
     // Image gallery
-    function changeImage(num) {
-      const mainImage = document.getElementById('mainImage');
-      const thumbnails = document.querySelectorAll('.thumbnail');
+    const thumbnailList = document.querySelector('.thumbnail-list');
+    const mainImage = document.getElementById('mainImage');
+    const colors = ['667eea', '764ba2', 'f59e0b', '10b981'];
 
-      // Update active thumbnail
-      thumbnails.forEach(thumb => thumb.classList.remove('active'));
-      thumbnails[num - 1].classList.add('active');
-
-      // Change main image (in real app, would use actual image URLs)
-      const colors = ['667eea', '764ba2', 'f59e0b', '10b981'];
-      mainImage.src = `https://placehold.co/600x600/${colors[num - 1]}/ffffff?text=View+${num}`;
+    function placeholderSvg(w, h, bg, text) {
+      return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" fill="#${bg}"/><text x="50%" y="50%" fill="#fff" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="20">${text}</text></svg>`)}`;
     }
 
-    // Tab switching
-    function switchTab(tabName) {
-      // Update buttons
-      document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
+    if (thumbnailList) {
+      thumbnailList.addEventListener('click', (e) => {
+        const thumbnail = e.target.closest('.thumbnail');
+        if (!thumbnail) return;
 
-      // Update content
-      document.querySelectorAll('.tab-pane').forEach(pane => {
-        pane.classList.remove('active');
+        const index = parseInt(thumbnail.getAttribute('data-index'), 10);
+        changeImage(index);
       });
-      document.getElementById(tabName).classList.add('active');
+    }
+
+    function changeImage(num) {
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      thumbnails.forEach(thumb => thumb.classList.remove('aiab-active'));
+      thumbnails[num - 1].classList.add('aiab-active');
+
+      mainImage.src = placeholderSvg(600, 600, colors[num - 1], 'View ' + num);
+    }
+
+    // Tab switching with keyboard navigation
+    const tabNav = document.querySelector('.tab-nav');
+    const tabButtons = document.querySelectorAll('[role="tab"]');
+    const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+    if (tabNav && tabButtons.length > 0) {
+      // Click handler for tab buttons
+      tabNav.addEventListener('click', (e) => {
+        const tab = e.target.closest('[role="tab"]');
+        if (!tab) return;
+        activateTab(tab);
+      });
+
+      // Keyboard navigation
+      tabNav.addEventListener('keydown', (e) => {
+        let target = null;
+
+        switch (e.key) {
+          case 'ArrowLeft':
+          case 'ArrowUp':
+            e.preventDefault();
+            const prevIndex = Array.from(tabButtons).findIndex(btn => btn === e.target) - 1;
+            target = tabButtons[prevIndex < 0 ? tabButtons.length - 1 : prevIndex];
+            break;
+          case 'ArrowRight':
+          case 'ArrowDown':
+            e.preventDefault();
+            const nextIndex = Array.from(tabButtons).findIndex(btn => btn === e.target) + 1;
+            target = tabButtons[nextIndex >= tabButtons.length ? 0 : nextIndex];
+            break;
+          case 'Home':
+            e.preventDefault();
+            target = tabButtons[0];
+            break;
+          case 'End':
+            e.preventDefault();
+            target = tabButtons[tabButtons.length - 1];
+            break;
+        }
+
+        if (target) {
+          activateTab(target);
+          target.focus();
+        }
+      });
+
+      function activateTab(tab) {
+        // Deactivate all tabs
+        tabButtons.forEach(btn => {
+          btn.classList.remove('aiab-active');
+          btn.setAttribute('aria-selected', 'false');
+          btn.setAttribute('tabindex', '-1');
+        });
+
+        // Hide all panels
+        tabPanels.forEach(panel => {
+          panel.classList.remove('aiab-active');
+        });
+
+        // Activate selected tab
+        tab.classList.add('aiab-active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('tabindex', '0');
+
+        // Show selected panel
+        const panelId = tab.getAttribute('aria-controls');
+        const panel = document.getElementById(panelId);
+        if (panel) {
+          panel.classList.add('aiab-active');
+        }
+      }
     }
 
     // Quantity controls
-    function incrementQty() {
-      const input = document.getElementById('qtyInput');
-      if (parseInt(input.value) < parseInt(input.max)) {
-        input.value = parseInt(input.value) + 1;
+    const qtyInput = document.getElementById('qtyInput');
+    const qtyDecrement = document.getElementById('qtyDecrement');
+    const qtyIncrement = document.getElementById('qtyIncrement');
+
+    if (qtyDecrement) {
+      qtyDecrement.addEventListener('click', () => {
+        if (parseInt(qtyInput.value) > parseInt(qtyInput.min)) {
+          qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+      });
+    }
+
+    if (qtyIncrement) {
+      qtyIncrement.addEventListener('click', () => {
+        if (parseInt(qtyInput.value) < parseInt(qtyInput.max)) {
+          qtyInput.value = parseInt(qtyInput.value) + 1;
+        }
+      });
+    }
+
+    // Add to cart button
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener('click', () => {
+        const tooltip = amp.createTooltip(addToCartBtn, {
+          content: 'Added to cart!',
+          variant: 'success',
+          trigger: 'manual',
+          position: 'top'
+        });
+        tooltip.show();
+        setTimeout(() => tooltip.hide(), 2000);
+      });
+    }
+
+    // Size options with keyboard navigation
+    const sizeOptions = document.querySelector('[aria-labelledby="sizeLabel"]');
+    if (sizeOptions) {
+      const sizeButtons = sizeOptions.querySelectorAll('[role="radio"]');
+
+      sizeOptions.addEventListener('click', (e) => {
+        const btn = e.target.closest('[role="radio"]');
+        if (!btn || btn.disabled) return;
+        selectSize(btn, sizeButtons);
+      });
+
+      sizeOptions.addEventListener('keydown', (e) => {
+        const currentBtn = e.target.closest('[role="radio"]');
+        if (!currentBtn) return;
+
+        let target = null;
+        const index = Array.from(sizeButtons).indexOf(currentBtn);
+
+        switch (e.key) {
+          case 'ArrowLeft':
+          case 'ArrowUp':
+            e.preventDefault();
+            target = sizeButtons[index - 1 >= 0 ? index - 1 : sizeButtons.length - 1];
+            break;
+          case 'ArrowRight':
+          case 'ArrowDown':
+            e.preventDefault();
+            target = sizeButtons[index + 1 < sizeButtons.length ? index + 1 : 0];
+            break;
+          case ' ':
+          case 'Enter':
+            e.preventDefault();
+            if (!currentBtn.disabled) selectSize(currentBtn, sizeButtons);
+            return;
+        }
+
+        if (target && !target.disabled) {
+          target.focus();
+          selectSize(target, sizeButtons);
+        }
+      });
+
+      function selectSize(btn, buttons) {
+        buttons.forEach(b => {
+          b.classList.remove('selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked', 'true');
       }
     }
 
-    function decrementQty() {
-      const input = document.getElementById('qtyInput');
-      if (parseInt(input.value) > parseInt(input.min)) {
-        input.value = parseInt(input.value) - 1;
+    // Color options with keyboard navigation
+    const colorOptions = document.querySelector('[aria-labelledby="colorLabel"]');
+    if (colorOptions) {
+      const colorButtons = colorOptions.querySelectorAll('[role="radio"]');
+
+      colorOptions.addEventListener('click', (e) => {
+        const btn = e.target.closest('[role="radio"]');
+        if (!btn) return;
+        selectColor(btn, colorButtons);
+      });
+
+      colorOptions.addEventListener('keydown', (e) => {
+        const currentBtn = e.target.closest('[role="radio"]');
+        if (!currentBtn) return;
+
+        let target = null;
+        const index = Array.from(colorButtons).indexOf(currentBtn);
+
+        switch (e.key) {
+          case 'ArrowLeft':
+          case 'ArrowUp':
+            e.preventDefault();
+            target = colorButtons[index - 1 >= 0 ? index - 1 : colorButtons.length - 1];
+            break;
+          case 'ArrowRight':
+          case 'ArrowDown':
+            e.preventDefault();
+            target = colorButtons[index + 1 < colorButtons.length ? index + 1 : 0];
+            break;
+          case ' ':
+          case 'Enter':
+            e.preventDefault();
+            selectColor(currentBtn, colorButtons);
+            return;
+        }
+
+        if (target) {
+          target.focus();
+          selectColor(target, colorButtons);
+        }
+      });
+
+      function selectColor(btn, buttons) {
+        buttons.forEach(b => {
+          b.classList.remove('selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked', 'true');
+
+        const colorValue = btn.getAttribute('data-value');
+        const colorLabel = btn.getAttribute('aria-label');
+        const colorValueSpan = document.getElementById('colorValue');
+        if (colorValueSpan) {
+          colorValueSpan.textContent = colorLabel;
+        }
       }
     }
 
-    // Add to cart
-    function addToCart() {
-      const button = event.target.closest('button');
-      const tooltip = amp.createTooltip(button, {
-        content: 'Added to cart!',
-        variant: 'success',
-        trigger: 'manual',
-        position: 'top'
-      });
-      tooltip.show();
-      setTimeout(() => tooltip.hide(), 2000);
-    }
-
-    // Size and color selection
-    document.addEventListener('DOMContentLoaded', () => {
-      // Size options
-      document.querySelectorAll('.size-option:not(.out-of-stock)').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.size-option').forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-        });
-      });
-
-      // Color options
-      document.querySelectorAll('.color-option').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.color-option').forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-        });
-      });
-
-      console.log('Product Detail Page Loaded');
-    });
+    console.log('Product Detail Page Loaded');
   </script>
 </body>
 </html>

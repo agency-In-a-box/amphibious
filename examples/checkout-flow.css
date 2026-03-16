@@ -4,15 +4,15 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
-  color: #2c3e50;
+  color: var(--color-text);
   margin: 0;
-  background: #f8f9fa;
+  background: var(--color-gray-100);
 }
 
 /* Checkout Header */
 .aiab-checkout-header {
   background: white;
-  border-bottom: 2px solid #dee2e6;
+  border-bottom: 2px solid var(--color-gray-300);
   padding: 1rem 0;
   position: sticky;
   top: 0;
@@ -33,20 +33,20 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #6c757d;
+  color: var(--color-gray-600);
   font-weight: 500;
 }
 .aiab-checkout-progress-steps li.aiab-active {
   color: var(--color-primary);
 }
 .aiab-checkout-progress-steps li.aiab-checkout-completed {
-  color: #28a745;
+  color: var(--color-success);
 }
 .aiab-checkout-step-number {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #e9ecef;
+  background: var(--color-gray-200);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,17 +58,17 @@ body {
   color: white;
 }
 .aiab-checkout-progress-steps li.aiab-checkout-completed .aiab-checkout-step-number {
-  background: #28a745;
+  background: var(--color-success);
   color: white;
 }
 .aiab-checkout-step-connector {
   width: 60px;
   height: 2px;
-  background: #dee2e6;
+  background: var(--color-gray-300);
   margin: 0 -1rem;
 }
 .aiab-checkout-step-connector.aiab-checkout-completed {
-  background: #28a745;
+  background: var(--color-success);
 }
 
 /* Form Styles */
@@ -81,7 +81,7 @@ body {
 }
 .aiab-checkout-form h2 {
   margin-top: 0;
-  color: #2c3e50;
+  color: var(--color-text);
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 0.75rem;
 }
@@ -93,10 +93,10 @@ fieldset {
 legend {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #495057;
+  color: var(--color-gray-700);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--color-gray-300);
   width: 100%;
 }
 .aiab-checkout-form-row {
@@ -112,10 +112,10 @@ label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #495057;
+  color: var(--color-gray-700);
 }
 label .required {
-  color: #dc3545;
+  color: var(--color-danger);
   margin-left: 0.25rem;
 }
 input[type="text"],
@@ -126,7 +126,7 @@ select,
 textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--color-gray-400);
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.15s;
@@ -139,11 +139,11 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 input:invalid {
-  border-color: #dc3545;
+  border-color: var(--color-danger);
 }
 .aiab-checkout-form-help {
   font-size: 0.875rem;
-  color: #6c757d;
+  color: var(--color-gray-600);
   margin-top: 0.25rem;
 }
 .aiab-radio-group,
@@ -158,7 +158,7 @@ input:invalid {
   align-items: flex-start;
   gap: 0.5rem;
   padding: 0.75rem;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--color-gray-300);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
@@ -166,7 +166,7 @@ input:invalid {
 .aiab-checkout-radio-option:hover,
 .aiab-checkout-checkbox-option:hover {
   border-color: var(--color-primary);
-  background: #f8f9fa;
+  background: var(--color-gray-100);
 }
 .aiab-checkout-radio-option input,
 .aiab-checkout-checkbox-option input {
@@ -176,7 +176,7 @@ input:invalid {
 .aiab-checkout-radio-option.aiab-checkout-selected,
 .aiab-checkout-checkbox-option.aiab-checkout-selected {
   border-color: var(--color-primary);
-  background: #f0f4ff;
+  background: var(--color-primary-light);
 }
 
 /* Order Summary Aside */
@@ -202,7 +202,7 @@ input:invalid {
   display: flex;
   gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-gray-200);
 }
 .aiab-checkout-order-item img {
   width: 60px;
@@ -219,7 +219,7 @@ input:invalid {
 }
 .aiab-checkout-order-item-meta {
   font-size: 0.875rem;
-  color: #6c757d;
+  color: var(--color-gray-600);
 }
 .aiab-checkout-order-item-price {
   font-weight: 600;
@@ -236,7 +236,7 @@ input:invalid {
   font-size: 1.25rem;
   font-weight: 600;
   padding-top: 0.75rem;
-  border-top: 2px solid #dee2e6;
+  border-top: 2px solid var(--color-gray-300);
   margin-top: 0.75rem;
 }
 
@@ -250,12 +250,12 @@ input:invalid {
 }
 .aiab-checkout-btn-link {
   background: transparent;
-  color: #6c757d;
+  color: var(--color-gray-600);
   border: none;
   padding: 0.875rem 0;
 }
 .aiab-checkout-btn-link:hover {
-  color: #495057;
+  color: var(--color-gray-700);
 }
 
 /* Secure Badge */
@@ -264,8 +264,8 @@ input:invalid {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #d4edda;
-  color: #155724;
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
   border-radius: 4px;
   font-size: 0.875rem;
   margin-left: auto;
@@ -274,7 +274,7 @@ input:invalid {
 /* Moved from inline styles */
 .aiab-checkout-shipping-desc {
   font-size: 0.875rem;
-  color: #6c757d;
+  color: var(--color-gray-600);
 }
 
 .aiab-checkout-option-price {
@@ -298,7 +298,7 @@ input:invalid {
 .aiab-checkout-promo-section {
   margin-top: 1.5rem;
   padding: 1rem;
-  background: #f8f9fa;
+  background: var(--color-gray-100);
   border-radius: 4px;
 }
 
@@ -315,7 +315,7 @@ input:invalid {
 .aiab-checkout-promo-input {
   flex: 1;
   padding: 0.5rem;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--color-gray-300);
   border-radius: 4px;
 }
 
@@ -342,11 +342,11 @@ input:invalid {
 }
 
 .aiab-checkout-discount-value {
-  color: #28a745;
+  color: var(--color-success);
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .aiab-checkout-form-row {
     grid-template-columns: 1fr;
   }
@@ -364,5 +364,538 @@ input:invalid {
   .aiab-checkout-order-summary {
     position: static;
     margin-bottom: 2rem;
+  }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* Dark mode token overrides */
+    --color-text: #e2e8f0;
+    --color-gray-100: #1a202c;
+    --color-gray-200: #2d3748;
+    --color-gray-300: #4a5568;
+    --color-gray-400: #64748b;
+    --color-gray-600: #cbd5e0;
+    --color-gray-700: #a0aec0;
+  }
+
+  :root:not([data-theme="light"]) body {
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-header {
+    background: #1e293b;
+    border-bottom-color: #334155;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-progress-steps li {
+    color: #94a3b8;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-progress-steps li.aiab-active {
+    color: var(--color-primary);
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-progress-steps li.aiab-checkout-completed {
+    color: var(--color-success);
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-step-number {
+    background: #334155;
+    color: #94a3b8;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-progress-steps li.aiab-active .aiab-checkout-step-number {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-progress-steps li.aiab-checkout-completed .aiab-checkout-step-number {
+    background: var(--color-success);
+    color: white;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-step-connector {
+    background: #334155;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-step-connector.aiab-checkout-completed {
+    background: var(--color-success);
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-form {
+    background: #1e293b;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    color: #e2e8f0;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-form h2 {
+    color: #e2e8f0;
+    border-bottom-color: #334155;
+  }
+
+  :root:not([data-theme="light"]) legend {
+    color: #cbd5e0;
+    border-bottom-color: #334155;
+  }
+
+  :root:not([data-theme="light"]) label {
+    color: #cbd5e0;
+  }
+
+  :root:not([data-theme="light"]) label .required {
+    color: var(--color-danger);
+  }
+
+  :root:not([data-theme="light"]) input[type="text"],
+  :root:not([data-theme="light"]) input[type="email"],
+  :root:not([data-theme="light"]) input[type="tel"],
+  :root:not([data-theme="light"]) input[type="number"],
+  :root:not([data-theme="light"]) select,
+  :root:not([data-theme="light"]) textarea {
+    background: #27354b;
+    color: #e2e8f0;
+    border-color: #334155;
+  }
+
+  :root:not([data-theme="light"]) input[type="text"]::placeholder,
+  :root:not([data-theme="light"]) input[type="email"]::placeholder,
+  :root:not([data-theme="light"]) input[type="tel"]::placeholder,
+  :root:not([data-theme="light"]) input[type="number"]::placeholder,
+  :root:not([data-theme="light"]) textarea::placeholder {
+    color: #64748b;
+  }
+
+  :root:not([data-theme="light"]) input:focus,
+  :root:not([data-theme="light"]) select:focus,
+  :root:not([data-theme="light"]) textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+  }
+
+  :root:not([data-theme="light"]) input:invalid {
+    border-color: var(--color-danger);
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-form-help {
+    color: #94a3b8;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-radio-option,
+  :root:not([data-theme="light"]) .aiab-checkout-checkbox-option {
+    background: #27354b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-radio-option:hover,
+  :root:not([data-theme="light"]) .aiab-checkout-checkbox-option:hover {
+    background: #334155;
+    border-color: var(--color-primary);
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-radio-option.aiab-checkout-selected,
+  :root:not([data-theme="light"]) .aiab-checkout-checkbox-option.aiab-checkout-selected {
+    background: rgba(102, 126, 234, 0.15);
+    border-color: var(--color-primary);
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-order-summary {
+    background: #1e293b;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    color: #e2e8f0;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-order-summary h3 {
+    color: #e2e8f0;
+    border-bottom-color: #334155;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-order-item {
+    border-bottom-color: #334155;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-order-item-name {
+    color: #e2e8f0;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-order-item-meta {
+    color: #94a3b8;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-total-row.aiab-checkout-grand-total {
+    border-top-color: #334155;
+    color: #e2e8f0;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-form-actions {
+    border-top-color: #334155;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-btn-link {
+    color: #94a3b8;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-btn-link:hover {
+    color: #cbd5e0;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-secure-badge {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-shipping-desc {
+    color: #94a3b8;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-promo-section {
+    background: #27354b;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-promo-section h4 {
+    color: #e2e8f0;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-promo-input {
+    background: #1a202c;
+    color: #e2e8f0;
+    border-color: #334155;
+  }
+
+  :root:not([data-theme="light"]) .aiab-checkout-discount-value {
+    color: var(--color-success);
+  }
+}
+
+[data-theme="dark"] {
+  /* Same overrides for explicit dark mode */
+  --color-text: #e2e8f0;
+  --color-gray-100: #1a202c;
+  --color-gray-200: #2d3748;
+  --color-gray-300: #4a5568;
+  --color-gray-400: #64748b;
+  --color-gray-600: #cbd5e0;
+  --color-gray-700: #a0aec0;
+
+  body {
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+
+  .aiab-checkout-header {
+    background: #1e293b;
+    border-bottom-color: #334155;
+  }
+
+  .aiab-checkout-progress-steps li {
+    color: #94a3b8;
+  }
+
+  .aiab-checkout-progress-steps li.aiab-active {
+    color: var(--color-primary);
+  }
+
+  .aiab-checkout-progress-steps li.aiab-checkout-completed {
+    color: var(--color-success);
+  }
+
+  .aiab-checkout-step-number {
+    background: #334155;
+    color: #94a3b8;
+  }
+
+  .aiab-checkout-progress-steps li.aiab-active .aiab-checkout-step-number {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .aiab-checkout-progress-steps li.aiab-checkout-completed .aiab-checkout-step-number {
+    background: var(--color-success);
+    color: white;
+  }
+
+  .aiab-checkout-step-connector {
+    background: #334155;
+  }
+
+  .aiab-checkout-step-connector.aiab-checkout-completed {
+    background: var(--color-success);
+  }
+
+  .aiab-checkout-form {
+    background: #1e293b;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    color: #e2e8f0;
+  }
+
+  .aiab-checkout-form h2 {
+    color: #e2e8f0;
+    border-bottom-color: #334155;
+  }
+
+  legend {
+    color: #cbd5e0;
+    border-bottom-color: #334155;
+  }
+
+  label {
+    color: #cbd5e0;
+  }
+
+  label .required {
+    color: var(--color-danger);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    background: #27354b;
+    color: #e2e8f0;
+    border-color: #334155;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  input[type="tel"]::placeholder,
+  input[type="number"]::placeholder,
+  textarea::placeholder {
+    color: #64748b;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+  }
+
+  input:invalid {
+    border-color: var(--color-danger);
+  }
+
+  .aiab-checkout-form-help {
+    color: #94a3b8;
+  }
+
+  .aiab-checkout-radio-option,
+  .aiab-checkout-checkbox-option {
+    background: #27354b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .aiab-checkout-radio-option:hover,
+  .aiab-checkout-checkbox-option:hover {
+    background: #334155;
+    border-color: var(--color-primary);
+  }
+
+  .aiab-checkout-radio-option.aiab-checkout-selected,
+  .aiab-checkout-checkbox-option.aiab-checkout-selected {
+    background: rgba(102, 126, 234, 0.15);
+    border-color: var(--color-primary);
+  }
+
+  .aiab-checkout-order-summary {
+    background: #1e293b;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    color: #e2e8f0;
+  }
+
+  .aiab-checkout-order-summary h3 {
+    color: #e2e8f0;
+    border-bottom-color: #334155;
+  }
+
+  .aiab-checkout-order-item {
+    border-bottom-color: #334155;
+  }
+
+  .aiab-checkout-order-item-name {
+    color: #e2e8f0;
+  }
+
+  .aiab-checkout-order-item-meta {
+    color: #94a3b8;
+  }
+
+  .aiab-checkout-total-row.aiab-checkout-grand-total {
+    border-top-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .aiab-checkout-form-actions {
+    border-top-color: #334155;
+  }
+
+  .aiab-checkout-btn-link {
+    color: #94a3b8;
+  }
+
+  .aiab-checkout-btn-link:hover {
+    color: #cbd5e0;
+  }
+
+  .aiab-checkout-secure-badge {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+  }
+
+  .aiab-checkout-shipping-desc {
+    color: #94a3b8;
+  }
+
+  .aiab-checkout-promo-section {
+    background: #27354b;
+  }
+
+  .aiab-checkout-promo-section h4 {
+    color: #e2e8f0;
+  }
+
+  .aiab-checkout-promo-input {
+    background: #1a202c;
+    color: #e2e8f0;
+    border-color: #334155;
+  }
+
+  .aiab-checkout-discount-value {
+    color: var(--color-success);
+  }
+}
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .aiab-checkout-step-number,
+  .aiab-checkout-progress-steps li,
+  input,
+  select,
+  textarea {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   High Contrast Support
+   ============================================ */
+@media (prefers-contrast: high) {
+  .aiab-checkout-form,
+  .aiab-checkout-order-summary,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea,
+  .aiab-checkout-radio-option,
+  .aiab-checkout-checkbox-option {
+    border-width: 2px;
+  }
+
+  .aiab-checkout-form h2,
+  legend,
+  label {
+    font-weight: 700;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.5);
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  /* Hide non-essential UI */
+  header,
+  footer,
+  nav,
+  .aiab-header,
+  .aiab-footer,
+  .aiab-nav { display: none !important; }
+
+  /* Reset backgrounds for ink saving */
+  body { background: white !important; color: black !important; }
+
+  /* Show URLs after links */
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+  a[href^="#"]::after,
+  a[href^="javascript"]::after { content: none; }
+
+  /* Hide checkout-specific non-essential elements */
+  .aiab-checkout-progress-steps,
+  .aiab-checkout-step-connector,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea,
+  .aiab-checkout-radio-option,
+  .aiab-checkout-checkbox-option,
+  .aiab-checkout-form-actions,
+  .aiab-checkout-btn-link { display: none !important; }
+
+  /* Hide payment form fields for security */
+  fieldset {
+    display: none !important;
+  }
+
+  /* Hide place-order button */
+  button[type="submit"],
+  .aiab-checkout-action-buttons { display: none !important; }
+
+  /* Show order summary prominently */
+  .aiab-checkout-order-summary {
+    position: static;
+    top: auto;
+    margin: 2rem 0;
+    border: 2px solid #333;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .aiab-checkout-order-summary h3 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #333;
+  }
+
+  /* Make order items printable */
+  .aiab-checkout-order-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #ddd;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Highlight totals section */
+  .aiab-checkout-order-totals {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 2px solid #333;
+  }
+
+  .aiab-checkout-total-row.aiab-checkout-grand-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  /* Hide form elements completely */
+  .aiab-checkout-form {
+    display: none !important;
   }
 }

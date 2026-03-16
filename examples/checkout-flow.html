@@ -283,7 +283,7 @@
           </fieldset>
 
           <div class="aiab-checkout-form-actions">
-            <button type="button" class="aiab-checkout-btn-link" onclick="history.back()">
+            <button type="button" class="aiab-checkout-btn-link" data-action="return-to-cart">
               <i data-lucide="arrow-left"></i>
               Return to Cart
             </button>
@@ -292,7 +292,7 @@
                 <i data-lucide="lock" class="icon--xs"></i>
                 Secure Checkout
               </div>
-              <button type="submit" class="aiab-btn aiab-primary">
+              <button type="submit" class="aiab-btn aiab-btn-primary">
                 Continue to Payment
                 <i data-lucide="arrow-right"></i>
               </button>
@@ -308,7 +308,7 @@
 
           <ul class="aiab-checkout-order-items">
             <li class="aiab-checkout-order-item">
-              <img src="https://placehold.co/60x60/667eea/ffffff?text=Item+1" alt="Premium Cotton T-Shirt" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='10'%3EItem+1%3C/text%3E%3C/svg%3E" alt="Premium Cotton T-Shirt" loading="lazy">
               <div class="aiab-checkout-order-item-details">
                 <div class="aiab-checkout-order-item-name">Premium Cotton T-Shirt</div>
                 <div class="aiab-checkout-order-item-meta">Size: M, Color: Black</div>
@@ -318,7 +318,7 @@
             </li>
 
             <li class="aiab-checkout-order-item">
-              <img src="https://placehold.co/60x60/764ba2/ffffff?text=Item+2" alt="Slim Fit Jeans" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='10'%3EItem+2%3C/text%3E%3C/svg%3E" alt="Slim Fit Jeans" loading="lazy">
               <div class="aiab-checkout-order-item-details">
                 <div class="aiab-checkout-order-item-name">Slim Fit Jeans</div>
                 <div class="aiab-checkout-order-item-meta">Size: 32, Color: Blue</div>
@@ -328,7 +328,7 @@
             </li>
 
             <li class="aiab-checkout-order-item">
-              <img src="https://placehold.co/60x60/f59e0b/ffffff?text=Item+3" alt="Canvas Sneakers" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23f59e0b'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='10'%3EItem+3%3C/text%3E%3C/svg%3E" alt="Canvas Sneakers" loading="lazy">
               <div class="aiab-checkout-order-item-details">
                 <div class="aiab-checkout-order-item-name">Canvas Sneakers</div>
                 <div class="aiab-checkout-order-item-meta">Size: 10, Color: White</div>
@@ -372,10 +372,10 @@
           <div class="aiab-checkout-payment-methods">
             <h4>We Accept</h4>
             <div class="aiab-checkout-payment-icons">
-              <img src="https://placehold.co/40x25/ffffff/6c757d?text=Visa" alt="Visa" loading="lazy">
-              <img src="https://placehold.co/40x25/ffffff/6c757d?text=MC" alt="Mastercard" loading="lazy">
-              <img src="https://placehold.co/40x25/ffffff/6c757d?text=Amex" alt="American Express" loading="lazy">
-              <img src="https://placehold.co/40x25/ffffff/6c757d?text=PP" alt="PayPal" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EVisa%3C/text%3E%3C/svg%3E" alt="Visa" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EMC%3C/text%3E%3C/svg%3E" alt="Mastercard" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EAmex%3C/text%3E%3C/svg%3E" alt="American Express" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EPP%3C/text%3E%3C/svg%3E" alt="PayPal" loading="lazy">
             </div>
           </div>
         </div>
@@ -448,6 +448,11 @@
     // Initialize selected states
     document.querySelectorAll('.aiab-checkout-radio-option input:checked, .aiab-checkout-checkbox-option input:checked').forEach(input => {
       input.closest('.aiab-checkout-radio-option, .aiab-checkout-checkbox-option').classList.add('aiab-checkout-selected');
+    });
+
+    // Handle return to cart action
+    document.querySelector('[data-action="return-to-cart"]').addEventListener('click', function() {
+      window.history.back();
     });
 
     // Phone number formatting

@@ -128,7 +128,7 @@
             <input type="checkbox" checked id="selectAll" aria-label="Select all items">
             <span>Select All Items</span>
           </label>
-          <button class="aiab-cart-clear" onclick="clearCart()" aria-label="Clear all items from cart">
+          <button class="aiab-cart-clear" data-action="clear-cart" aria-label="Clear all items from cart">
             <i data-lucide="trash-2"></i>
             Clear Cart
           </button>
@@ -141,7 +141,7 @@
             <span class="aiab-sr-only">Select item</span>
           </label>
           <figure class="aiab-cart-item-image">
-            <img src="https://placehold.co/120x120/667eea/ffffff?text=Product+1" alt="Premium Cotton T-Shirt" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='10'%3EProduct+1%3C/text%3E%3C/svg%3E" alt="Premium Cotton T-Shirt" loading="lazy">
           </figure>
           <section class="aiab-cart-item-details">
             <a href="/examples/e-commerce-product.html" class="aiab-cart-item-name">Premium Cotton T-Shirt</a>
@@ -159,26 +159,26 @@
               <i data-lucide="check-circle" class="aiab-icon-xs"></i>
               In Stock
             </p>
-            <form class="aiab-cart-item-actions" onsubmit="return false;">
+            <div role="group" aria-label="Quantity controls" class="aiab-cart-item-actions">
               <fieldset class="aiab-cart-quantity-selector">
                 <legend class="aiab-sr-only">Quantity selector</legend>
-                <button type="button" onclick="updateQuantity(1, -1)" aria-label="Decrease quantity">−</button>
+                <button type="button" data-action="decrease-quantity" data-item-id="1" aria-label="Decrease quantity">−</button>
                 <label for="qty-1" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="2" min="1" max="10" id="qty-1" aria-label="Item quantity">
-                <button type="button" onclick="updateQuantity(1, 1)" aria-label="Increase quantity">+</button>
+                <button type="button" data-action="increase-quantity" data-item-id="1" aria-label="Increase quantity">+</button>
               </fieldset>
               <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
                 <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
-            </form>
+            </div>
           </section>
           <section class="aiab-cart-item-price" aria-label="Item pricing">
             <p class="aiab-cart-price-current">$79.98</p>
             <p class="aiab-cart-price-original">$99.98</p>
             <p class="aiab-cart-price-savings">Save $20</p>
           </section>
-          <button class="aiab-cart-item-remove" onclick="removeItem(1)" aria-label="Remove Premium Cotton T-Shirt from cart">
+          <button class="aiab-cart-item-remove" data-action="remove-item" data-item-id="1" aria-label="Remove Premium Cotton T-Shirt from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
@@ -190,7 +190,7 @@
             <span class="aiab-sr-only">Select item</span>
           </label>
           <figure class="aiab-cart-item-image">
-            <img src="https://placehold.co/120x120/764ba2/ffffff?text=Product+2" alt="Slim Fit Denim Jeans" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='10'%3EProduct+2%3C/text%3E%3C/svg%3E" alt="Slim Fit Denim Jeans" loading="lazy">
           </figure>
           <section class="aiab-cart-item-details">
             <a href="#" class="aiab-cart-item-name">Slim Fit Denim Jeans</a>
@@ -208,24 +208,24 @@
               <i data-lucide="check-circle" class="aiab-icon-xs"></i>
               In Stock
             </p>
-            <form class="aiab-cart-item-actions" onsubmit="return false;">
+            <div role="group" aria-label="Quantity controls" class="aiab-cart-item-actions">
               <fieldset class="aiab-cart-quantity-selector">
                 <legend class="aiab-sr-only">Quantity selector</legend>
-                <button type="button" onclick="updateQuantity(2, -1)" aria-label="Decrease quantity">−</button>
+                <button type="button" data-action="decrease-quantity" data-item-id="2" aria-label="Decrease quantity">−</button>
                 <label for="qty-2" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="1" min="1" max="10" id="qty-2" aria-label="Item quantity">
-                <button type="button" onclick="updateQuantity(2, 1)" aria-label="Increase quantity">+</button>
+                <button type="button" data-action="increase-quantity" data-item-id="2" aria-label="Increase quantity">+</button>
               </fieldset>
               <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
                 <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
-            </form>
+            </div>
           </section>
           <section class="aiab-cart-item-price" aria-label="Item pricing">
             <p class="aiab-cart-price-current">$89.99</p>
           </section>
-          <button class="aiab-cart-item-remove" onclick="removeItem(2)" aria-label="Remove Slim Fit Denim Jeans from cart">
+          <button class="aiab-cart-item-remove" data-action="remove-item" data-item-id="2" aria-label="Remove Slim Fit Denim Jeans from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
@@ -237,7 +237,7 @@
             <span class="aiab-sr-only">Select item</span>
           </label>
           <figure class="aiab-cart-item-image">
-            <img src="https://placehold.co/120x120/f59e0b/ffffff?text=Product+3" alt="Wireless Headphones" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='%23f59e0b'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='10'%3EProduct+3%3C/text%3E%3C/svg%3E" alt="Wireless Headphones" loading="lazy">
           </figure>
           <section class="aiab-cart-item-details">
             <a href="#" class="aiab-cart-item-name">Wireless Headphones Pro</a>
@@ -251,26 +251,26 @@
               <i data-lucide="alert-triangle" class="aiab-icon-xs"></i>
               Only 3 left in stock
             </p>
-            <form class="aiab-cart-item-actions" onsubmit="return false;">
+            <div role="group" aria-label="Quantity controls" class="aiab-cart-item-actions">
               <fieldset class="aiab-cart-quantity-selector">
                 <legend class="aiab-sr-only">Quantity selector</legend>
-                <button type="button" onclick="updateQuantity(3, -1)" aria-label="Decrease quantity">−</button>
+                <button type="button" data-action="decrease-quantity" data-item-id="3" aria-label="Decrease quantity">−</button>
                 <label for="qty-3" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="1" min="1" max="3" id="qty-3" aria-label="Item quantity">
-                <button type="button" onclick="updateQuantity(3, 1)" aria-label="Increase quantity">+</button>
+                <button type="button" data-action="increase-quantity" data-item-id="3" aria-label="Increase quantity">+</button>
               </fieldset>
               <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
                 <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
-            </form>
+            </div>
           </section>
           <section class="aiab-cart-item-price" aria-label="Item pricing">
             <p class="aiab-cart-price-current">$199.99</p>
             <p class="aiab-cart-price-original">$249.99</p>
             <p class="aiab-cart-price-savings">Save $50</p>
           </section>
-          <button class="aiab-cart-item-remove" onclick="removeItem(3)" aria-label="Remove Wireless Headphones Pro from cart">
+          <button class="aiab-cart-item-remove" data-action="remove-item" data-item-id="3" aria-label="Remove Wireless Headphones Pro from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
@@ -282,7 +282,7 @@
             <span class="aiab-sr-only">Select item</span>
           </label>
           <figure class="aiab-cart-item-image">
-            <img src="https://placehold.co/120x120/10b981/ffffff?text=Product+4" alt="Running Sneakers" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='%2310b981'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='10'%3EProduct+4%3C/text%3E%3C/svg%3E" alt="Running Sneakers" loading="lazy">
           </figure>
           <section class="aiab-cart-item-details">
             <a href="#" class="aiab-cart-item-name">Running Sneakers Pro</a>
@@ -300,24 +300,24 @@
               <i data-lucide="check-circle" class="aiab-icon-xs"></i>
               In Stock
             </p>
-            <form class="aiab-cart-item-actions" onsubmit="return false;">
+            <div role="group" aria-label="Quantity controls" class="aiab-cart-item-actions">
               <fieldset class="aiab-cart-quantity-selector">
                 <legend class="aiab-sr-only">Quantity selector</legend>
-                <button type="button" onclick="updateQuantity(4, -1)" aria-label="Decrease quantity">−</button>
+                <button type="button" data-action="decrease-quantity" data-item-id="4" aria-label="Decrease quantity">−</button>
                 <label for="qty-4" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="1" min="1" max="10" id="qty-4" aria-label="Item quantity">
-                <button type="button" onclick="updateQuantity(4, 1)" aria-label="Increase quantity">+</button>
+                <button type="button" data-action="increase-quantity" data-item-id="4" aria-label="Increase quantity">+</button>
               </fieldset>
               <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
                 <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
-            </form>
+            </div>
           </section>
           <section class="aiab-cart-item-price" aria-label="Item pricing">
             <p class="aiab-cart-price-current">$129.99</p>
           </section>
-          <button class="aiab-cart-item-remove" onclick="removeItem(4)" aria-label="Remove Running Sneakers Pro from cart">
+          <button class="aiab-cart-item-remove" data-action="remove-item" data-item-id="4" aria-label="Remove Running Sneakers Pro from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
@@ -329,7 +329,7 @@
             <span class="aiab-sr-only">Select item</span>
           </label>
           <figure class="aiab-cart-item-image">
-            <img src="https://placehold.co/120x120/ef4444/ffffff?text=Product+5" alt="Leather Wallet" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='%23ef4444'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='10'%3EProduct+5%3C/text%3E%3C/svg%3E" alt="Leather Wallet" loading="lazy">
           </figure>
           <section class="aiab-cart-item-details">
             <a href="#" class="aiab-cart-item-name">Premium Leather Wallet</a>
@@ -347,24 +347,24 @@
               <i data-lucide="gift" class="aiab-icon-sm"></i>
               Buy 2 get 20% off! Add 1 more to qualify.
             </aside>
-            <form class="aiab-cart-item-actions" onsubmit="return false;">
+            <div role="group" aria-label="Quantity controls" class="aiab-cart-item-actions">
               <fieldset class="aiab-cart-quantity-selector">
                 <legend class="aiab-sr-only">Quantity selector</legend>
-                <button type="button" onclick="updateQuantity(5, -1)" aria-label="Decrease quantity">−</button>
+                <button type="button" data-action="decrease-quantity" data-item-id="5" aria-label="Decrease quantity">−</button>
                 <label for="qty-5" class="aiab-sr-only">Quantity</label>
                 <input type="number" value="1" min="1" max="10" id="qty-5" aria-label="Item quantity">
-                <button type="button" onclick="updateQuantity(5, 1)" aria-label="Increase quantity">+</button>
+                <button type="button" data-action="increase-quantity" data-item-id="5" aria-label="Increase quantity">+</button>
               </fieldset>
               <button type="button" class="aiab-cart-save-for-later" data-tooltip="Save for later">
                 <i data-lucide="heart" class="aiab-icon-xs"></i>
                 Save for later
               </button>
-            </form>
+            </div>
           </section>
           <section class="aiab-cart-item-price" aria-label="Item pricing">
             <p class="aiab-cart-price-current">$49.99</p>
           </section>
-          <button class="aiab-cart-item-remove" onclick="removeItem(5)" aria-label="Remove Premium Leather Wallet from cart">
+          <button class="aiab-cart-item-remove" data-action="remove-item" data-item-id="5" aria-label="Remove Premium Leather Wallet from cart">
             <i data-lucide="x"></i>
           </button>
         </article>
@@ -378,7 +378,7 @@
             <a href="/examples/e-commerce-catalog.html" class="aiab-btn aiab-btn-primary">
               Start Shopping
             </a>
-            <button class="aiab-btn aiab-btn-secondary" onclick="viewSavedItems()">
+            <button class="aiab-btn aiab-btn-secondary" data-action="view-saved-items">
               View Saved Items
             </button>
           </nav>
@@ -393,17 +393,17 @@
         <!-- Promo Code Form -->
         <section class="aiab-cart-promo-code" aria-label="Promo code">
           <h3>Promo Code</h3>
-          <form class="aiab-cart-promo-form" onsubmit="applyPromo(); return false;">
+          <form class="aiab-cart-promo-form" id="promoForm">
             <label for="promoCode" class="aiab-sr-only">Enter promo code</label>
             <input type="text" class="aiab-cart-promo-input" placeholder="Enter code" id="promoCode" aria-label="Promo code input">
-            <button type="submit" class="aiab-cart-promo-button">Apply</button>
+            <button type="submit" class="aiab-cart-promo-button" data-action="apply-promo">Apply</button>
           </form>
           <output class="aiab-cart-promo-applied" id="promoApplied" style="display: none;" aria-live="polite">
             <span>
               <span class="aiab-cart-promo-applied-code">SAVE20</span>
               <span> - 20% off</span>
             </span>
-            <button type="button" class="aiab-cart-promo-remove" onclick="removePromo()" aria-label="Remove promo code">Remove</button>
+            <button type="button" class="aiab-cart-promo-remove" data-action="remove-promo" aria-label="Remove promo code">Remove</button>
           </output>
         </section>
 
@@ -441,12 +441,12 @@
             <dd class="aiab-cart-summary-value" id="orderTotal">$595.44</dd>
           </dl>
 
-          <button class="aiab-cart-checkout-btn" onclick="proceedToCheckout()" aria-label="Proceed to secure checkout">
+          <button class="aiab-cart-checkout-btn" data-action="proceed-to-checkout" aria-label="Proceed to secure checkout">
             <i data-lucide="lock"></i>
             Proceed to Checkout
           </button>
 
-          <button class="aiab-cart-paypal-btn" onclick="paypalCheckout()" aria-label="Checkout with PayPal">
+          <button class="aiab-cart-paypal-btn" data-action="paypal-checkout" aria-label="Checkout with PayPal">
             <strong>PayPal</strong> Checkout
           </button>
 
@@ -491,7 +491,7 @@
           <article class="aiab-col-4">
             <figure class="aiab-cart-product-card">
               <div class="aiab-cart-product-image aiab-cart-product-image-wrapper">
-                <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Saved+1" alt="Casual Polo Shirt" loading="lazy">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%233b82f6'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ESaved+1%3C/text%3E%3C/svg%3E" alt="Casual Polo Shirt" loading="lazy">
               </div>
               <figcaption class="aiab-cart-product-info aiab-cart-product-info-inner">
                 <h4>Casual Polo Shirt</h4>
@@ -505,7 +505,7 @@
           <article class="aiab-col-4">
             <figure class="aiab-cart-product-card">
               <div class="aiab-cart-product-image aiab-cart-product-image-wrapper">
-                <img src="https://placehold.co/200x200/ec4899/ffffff?text=Saved+2" alt="Sports Watch" loading="lazy">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23ec4899'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ESaved+2%3C/text%3E%3C/svg%3E" alt="Sports Watch" loading="lazy">
               </div>
               <figcaption class="aiab-cart-product-info aiab-cart-product-info-inner">
                 <h4>Sports Watch</h4>
@@ -526,28 +526,28 @@
       <nav class="aiab-cart-recently-viewed-grid" aria-label="Recently viewed items">
         <a href="#" class="aiab-cart-recently-item">
           <figure class="aiab-cart-recently-item-image">
-            <img src="https://placehold.co/200x200/667eea/ffffff?text=Recent+1" alt="Classic White Shirt" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERecent+1%3C/text%3E%3C/svg%3E" alt="Classic White Shirt" loading="lazy">
           </figure>
           <h3 class="aiab-cart-recently-item-name">Classic White Shirt</h3>
           <p class="aiab-cart-recently-item-price">$45.99</p>
         </a>
         <a href="#" class="aiab-cart-recently-item">
           <figure class="aiab-cart-recently-item-image">
-            <img src="https://placehold.co/200x200/764ba2/ffffff?text=Recent+2" alt="Canvas Backpack" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERecent+2%3C/text%3E%3C/svg%3E" alt="Canvas Backpack" loading="lazy">
           </figure>
           <h3 class="aiab-cart-recently-item-name">Canvas Backpack</h3>
           <p class="aiab-cart-recently-item-price">$79.99</p>
         </a>
         <a href="#" class="aiab-cart-recently-item">
           <figure class="aiab-cart-recently-item-image">
-            <img src="https://placehold.co/200x200/f59e0b/ffffff?text=Recent+3" alt="Sunglasses" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23f59e0b'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERecent+3%3C/text%3E%3C/svg%3E" alt="Sunglasses" loading="lazy">
           </figure>
           <h3 class="aiab-cart-recently-item-name">Sunglasses</h3>
           <p class="aiab-cart-recently-item-price">$129.99</p>
         </a>
         <a href="#" class="aiab-cart-recently-item">
           <figure class="aiab-cart-recently-item-image">
-            <img src="https://placehold.co/200x200/10b981/ffffff?text=Recent+4" alt="Smart Watch" loading="lazy">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%2310b981'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='14'%3ERecent+4%3C/text%3E%3C/svg%3E" alt="Smart Watch" loading="lazy">
           </figure>
           <h3 class="aiab-cart-recently-item-name">Smart Watch</h3>
           <p class="aiab-cart-recently-item-price">$299.99</p>
@@ -563,14 +563,14 @@
         <p class="aiab-cart-mobile-total">$595.44</p>
         <p class="aiab-cart-mobile-item-count">5 items</p>
       </div>
-      <button class="aiab-cart-checkout-btn aiab-cart-mobile-checkout-btn">
+      <button class="aiab-cart-checkout-btn aiab-cart-mobile-checkout-btn" data-action="proceed-to-checkout">
         Checkout
       </button>
     </section>
   </aside>
 
   <!-- Modals -->
-  <dialog id="removeModal" class="aiab-modal" aria-hidden="true" aria-labelledby="removeModalTitle">
+  <dialog id="removeModal" class="aiab-modal" aria-labelledby="removeModalTitle">
     <article class="aiab-modal-dialog">
       <header class="aiab-modal-header">
         <h3 class="aiab-modal-title" id="removeModalTitle">Remove Item</h3>
@@ -581,12 +581,12 @@
       </section>
       <footer class="aiab-modal-footer">
         <button class="aiab-btn aiab-btn-secondary" data-modal-close>Cancel</button>
-        <button class="aiab-btn aiab-btn-danger" onclick="confirmRemove()">Remove Item</button>
+        <button class="aiab-btn aiab-btn-danger" data-action="confirm-remove">Remove Item</button>
       </footer>
     </article>
   </dialog>
 
-  <dialog id="clearCartModal" class="aiab-modal" aria-hidden="true" aria-labelledby="clearCartModalTitle">
+  <dialog id="clearCartModal" class="aiab-modal" aria-labelledby="clearCartModalTitle">
     <article class="aiab-modal-dialog">
       <header class="aiab-modal-header">
         <h3 class="aiab-modal-title" id="clearCartModalTitle">Clear Cart</h3>
@@ -597,7 +597,7 @@
       </section>
       <footer class="aiab-modal-footer">
         <button class="aiab-btn aiab-btn-secondary" data-modal-close>Cancel</button>
-        <button class="aiab-btn aiab-btn-danger" onclick="confirmClear()">Clear All</button>
+        <button class="aiab-btn aiab-btn-danger" data-action="confirm-clear">Clear All</button>
       </footer>
     </article>
   </dialog>
@@ -607,181 +607,249 @@
 
   <!-- Page Scripts -->
   <script>
-    let cartItems = [
-      { id: 1, name: 'Premium Cotton T-Shirt', price: 39.99, quantity: 2, originalPrice: 49.99 },
-      { id: 2, name: 'Slim Fit Denim Jeans', price: 89.99, quantity: 1 },
-      { id: 3, name: 'Wireless Headphones Pro', price: 199.99, quantity: 1, originalPrice: 249.99 },
-      { id: 4, name: 'Running Sneakers Pro', price: 129.99, quantity: 1 },
-      { id: 5, name: 'Premium Leather Wallet', price: 49.99, quantity: 1 }
-    ];
+    document.addEventListener('DOMContentLoaded', () => {
+      // Cart data
+      const cartItems = [
+        { id: 1, name: 'Premium Cotton T-Shirt', price: 39.99, quantity: 2, originalPrice: 49.99 },
+        { id: 2, name: 'Slim Fit Denim Jeans', price: 89.99, quantity: 1 },
+        { id: 3, name: 'Wireless Headphones Pro', price: 199.99, quantity: 1, originalPrice: 249.99 },
+        { id: 4, name: 'Running Sneakers Pro', price: 129.99, quantity: 1 },
+        { id: 5, name: 'Premium Leather Wallet', price: 49.99, quantity: 1 }
+      ];
 
-    let promoApplied = false;
-    let selectedItemId = null;
+      let promoApplied = false;
+      let selectedItemId = null;
 
-    // Update quantity
-    function updateQuantity(itemId, change) {
-      const input = document.getElementById(`qty-${itemId}`);
-      let newValue = parseInt(input.value) + change;
+      // Update quantity
+      const updateQuantity = (itemId, change) => {
+        const input = document.getElementById(`qty-${itemId}`);
+        let newValue = parseInt(input.value) + change;
 
-      if (newValue >= 1 && newValue <= parseInt(input.max)) {
-        input.value = newValue;
-        updateCartSummary();
-
-        // Show success tooltip
-        const tooltip = amp.createTooltip(input, {
-          content: 'Quantity updated!',
-          variant: 'success',
-          trigger: 'manual',
-          position: 'top'
-        });
-        tooltip.show();
-        setTimeout(() => tooltip.hide(), 1500);
-      }
-    }
-
-    // Remove item
-    function removeItem(itemId) {
-      selectedItemId = itemId;
-      const modal = amp.createModal('remove', '#removeModal');
-      modal.open();
-    }
-
-    function confirmRemove() {
-      if (selectedItemId) {
-        const item = document.querySelector(`[data-item-id="${selectedItemId}"]`);
-        item.style.transition = 'all 0.3s';
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(20px)';
-
-        setTimeout(() => {
-          item.remove();
+        if (newValue >= 1 && newValue <= parseInt(input.max)) {
+          input.value = newValue;
           updateCartSummary();
-          checkEmptyCart();
-        }, 300);
 
-        // Close modal
+          // Show success tooltip
+          const tooltip = amp.createTooltip(input, {
+            content: 'Quantity updated!',
+            variant: 'success',
+            trigger: 'manual',
+            position: 'top'
+          });
+          tooltip.show();
+          setTimeout(() => tooltip.hide(), 1500);
+        }
+      };
+
+      // Remove item
+      const removeItem = (itemId) => {
+        selectedItemId = itemId;
         const modal = amp.createModal('remove', '#removeModal');
-        modal.close();
-      }
-    }
+        modal.open();
+      };
 
-    // Clear cart
-    function clearCart() {
-      const modal = amp.createModal('clear', '#clearCartModal');
-      modal.open();
-    }
-
-    function confirmClear() {
-      const items = document.querySelectorAll('.aiab-cart-item');
-      items.forEach((item, index) => {
-        setTimeout(() => {
+      const confirmRemove = () => {
+        if (selectedItemId) {
+          const item = document.querySelector(`[data-item-id="${selectedItemId}"]`);
           item.style.transition = 'all 0.3s';
           item.style.opacity = '0';
           item.style.transform = 'translateX(20px)';
-        }, index * 50);
+
+          setTimeout(() => {
+            item.remove();
+            updateCartSummary();
+            checkEmptyCart();
+          }, 300);
+
+          // Close modal
+          const modal = amp.createModal('remove', '#removeModal');
+          modal.close();
+        }
+      };
+
+      // Clear cart
+      const clearCart = () => {
+        const modal = amp.createModal('clear', '#clearCartModal');
+        modal.open();
+      };
+
+      const confirmClear = () => {
+        const items = document.querySelectorAll('.aiab-cart-item');
+        items.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.transition = 'all 0.3s';
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(20px)';
+          }, index * 50);
+        });
+
+        setTimeout(() => {
+          items.forEach(item => item.remove());
+          document.getElementById('emptyCart').style.display = 'block';
+          updateCartSummary();
+        }, items.length * 50 + 300);
+
+        // Close modal
+        const modal = amp.createModal('clear', '#clearCartModal');
+        modal.close();
+      };
+
+      // Apply promo code
+      const applyPromo = () => {
+        const promoInput = document.getElementById('promoCode');
+        const promoValue = promoInput.value.trim().toUpperCase();
+
+        if (promoValue === 'SAVE20') {
+          promoApplied = true;
+          document.getElementById('promoApplied').style.display = 'block';
+          document.getElementById('promoDiscount').style.display = 'flex';
+          updateCartSummary();
+
+          // Show success notification
+          const tooltip = amp.createTooltip(promoInput, {
+            content: 'Promo code applied! You saved 20%',
+            variant: 'success',
+            trigger: 'manual',
+            position: 'top'
+          });
+          tooltip.show();
+          setTimeout(() => tooltip.hide(), 2000);
+        } else {
+          // Show error
+          const tooltip = amp.createTooltip(promoInput, {
+            content: 'Invalid promo code',
+            variant: 'danger',
+            trigger: 'manual',
+            position: 'top'
+          });
+          tooltip.show();
+          setTimeout(() => tooltip.hide(), 2000);
+        }
+      };
+
+      const removePromo = () => {
+        promoApplied = false;
+        document.getElementById('promoApplied').style.display = 'none';
+        document.getElementById('promoDiscount').style.display = 'none';
+        document.getElementById('promoCode').value = '';
+        updateCartSummary();
+      };
+
+      // Update cart summary
+      const updateCartSummary = () => {
+        // Calculate totals based on actual items in cart
+        // This is simplified - in production would be more complex
+        let subtotal = 549.94;
+        let tax = subtotal * 0.0825;
+        let discount = promoApplied ? subtotal * 0.2 : 0;
+        let total = subtotal + tax - discount;
+
+        document.getElementById('orderTotal').textContent = `$${total.toFixed(2)}`;
+      };
+
+      // Check empty cart
+      const checkEmptyCart = () => {
+        const items = document.querySelectorAll('.aiab-cart-item');
+        if (items.length === 0) {
+          document.getElementById('emptyCart').style.display = 'block';
+        }
+      };
+
+      // Proceed to checkout
+      const proceedToCheckout = () => {
+        // In production, this would navigate to checkout page
+        window.location.href = '/examples/e-commerce-checkout.html';
+      };
+
+      // PayPal checkout
+      const paypalCheckout = () => {
+        // In production, this would integrate with PayPal
+        alert('PayPal checkout would open here');
+      };
+
+      // View saved items
+      const viewSavedItems = () => {
+        document.getElementById('savedItems').style.display = 'block';
+        document.getElementById('savedItems').scrollIntoView({ behavior: 'smooth' });
+      };
+
+      // Event delegation for quantity controls
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-action="increase-quantity"]');
+        if (btn) {
+          const itemId = parseInt(btn.dataset.itemId);
+          updateQuantity(itemId, 1);
+        }
+
+        const decBtn = e.target.closest('[data-action="decrease-quantity"]');
+        if (decBtn) {
+          const itemId = parseInt(decBtn.dataset.itemId);
+          updateQuantity(itemId, -1);
+        }
+
+        const removeBtn = e.target.closest('[data-action="remove-item"]');
+        if (removeBtn) {
+          const itemId = parseInt(removeBtn.dataset.itemId);
+          removeItem(itemId);
+        }
+
+        const clearBtn = e.target.closest('[data-action="clear-cart"]');
+        if (clearBtn) {
+          clearCart();
+        }
+
+        const confirmRemoveBtn = e.target.closest('[data-action="confirm-remove"]');
+        if (confirmRemoveBtn) {
+          confirmRemove();
+        }
+
+        const confirmClearBtn = e.target.closest('[data-action="confirm-clear"]');
+        if (confirmClearBtn) {
+          confirmClear();
+        }
+
+        const removePromoBtn = e.target.closest('[data-action="remove-promo"]');
+        if (removePromoBtn) {
+          removePromo();
+        }
+
+        const proceedBtn = e.target.closest('[data-action="proceed-to-checkout"]');
+        if (proceedBtn) {
+          proceedToCheckout();
+        }
+
+        const paypalBtn = e.target.closest('[data-action="paypal-checkout"]');
+        if (paypalBtn) {
+          paypalCheckout();
+        }
+
+        const viewSavedBtn = e.target.closest('[data-action="view-saved-items"]');
+        if (viewSavedBtn) {
+          viewSavedItems();
+        }
       });
 
-      setTimeout(() => {
-        items.forEach(item => item.remove());
-        document.getElementById('emptyCart').style.display = 'block';
-        updateCartSummary();
-      }, items.length * 50 + 300);
-
-      // Close modal
-      const modal = amp.createModal('clear', '#clearCartModal');
-      modal.close();
-    }
-
-    // Apply promo code
-    function applyPromo() {
-      const promoInput = document.getElementById('promoCode');
-      const promoValue = promoInput.value.trim().toUpperCase();
-
-      if (promoValue === 'SAVE20') {
-        promoApplied = true;
-        document.getElementById('promoApplied').style.display = 'block';
-        document.getElementById('promoDiscount').style.display = 'flex';
-        updateCartSummary();
-
-        // Show success notification
-        const tooltip = amp.createTooltip(promoInput, {
-          content: 'Promo code applied! You saved 20%',
-          variant: 'success',
-          trigger: 'manual',
-          position: 'top'
+      // Promo form submit
+      const promoForm = document.getElementById('promoForm');
+      if (promoForm) {
+        promoForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          applyPromo();
         });
-        tooltip.show();
-        setTimeout(() => tooltip.hide(), 2000);
-      } else {
-        // Show error
-        const tooltip = amp.createTooltip(promoInput, {
-          content: 'Invalid promo code',
-          variant: 'danger',
-          trigger: 'manual',
-          position: 'top'
-        });
-        tooltip.show();
-        setTimeout(() => tooltip.hide(), 2000);
       }
-    }
 
-    function removePromo() {
-      promoApplied = false;
-      document.getElementById('promoApplied').style.display = 'none';
-      document.getElementById('promoDiscount').style.display = 'none';
-      document.getElementById('promoCode').value = '';
-      updateCartSummary();
-    }
-
-    // Update cart summary
-    function updateCartSummary() {
-      // Calculate totals based on actual items in cart
-      // This is simplified - in production would be more complex
-      let subtotal = 549.94;
-      let tax = subtotal * 0.0825;
-      let discount = promoApplied ? subtotal * 0.2 : 0;
-      let total = subtotal + tax - discount;
-
-      document.getElementById('orderTotal').textContent = `$${total.toFixed(2)}`;
-    }
-
-    // Check empty cart
-    function checkEmptyCart() {
-      const items = document.querySelectorAll('.aiab-cart-item');
-      if (items.length === 0) {
-        document.getElementById('emptyCart').style.display = 'block';
-      }
-    }
-
-    // Proceed to checkout
-    function proceedToCheckout() {
-      // In production, this would navigate to checkout page
-      window.location.href = '/examples/e-commerce-checkout.html';
-    }
-
-    // PayPal checkout
-    function paypalCheckout() {
-      // In production, this would integrate with PayPal
-      alert('PayPal checkout would open here');
-    }
-
-    // View saved items
-    function viewSavedItems() {
-      document.getElementById('savedItems').style.display = 'block';
-      document.getElementById('savedItems').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Select all functionality
-    document.addEventListener('DOMContentLoaded', () => {
+      // Select all functionality
       const selectAll = document.getElementById('selectAll');
       const itemCheckboxes = document.querySelectorAll('.aiab-cart-item-checkbox-input');
 
-      selectAll.addEventListener('change', () => {
-        itemCheckboxes.forEach(checkbox => {
-          checkbox.checked = selectAll.checked;
+      if (selectAll) {
+        selectAll.addEventListener('change', () => {
+          itemCheckboxes.forEach(checkbox => {
+            checkbox.checked = selectAll.checked;
+          });
+          updateCartSummary();
         });
-        updateCartSummary();
-      });
+      }
 
       itemCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
