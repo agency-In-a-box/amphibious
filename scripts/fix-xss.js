@@ -11,7 +11,7 @@ const path = require('node:path');
 // Files to update (from our earlier search)
 const filesToUpdate = [
   '../src/js/data-table.js',
-  '../src/js/dark-mode-toggle.js',
+  '../src/js/dark-mode-toggle.ts',
   '../src/js/search-bar.js',
   '../src/js/modal.ts',
   '../src/js/datepicker-enhanced.js',

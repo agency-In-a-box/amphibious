@@ -25,11 +25,19 @@ import './css/main.css';
 
 // Side-effect imports (auto-initialize on load)
 import './js/navigation';
-import './js/dark-mode-toggle.js';
+import './js/dark-mode-toggle';
 
 // --- Component exports ---
 export type { AmphibiousCarouselOptions } from './js/carousel';
 export { AmphibiousCarousel } from './js/carousel';
+export type {
+  DarkModeChangeEvent,
+  DarkModeEffectiveTheme,
+  DarkModeTheme,
+  DarkModeToggleOptions,
+  DarkModeTogglePosition,
+} from './js/dark-mode-toggle';
+export { DarkModeToggle } from './js/dark-mode-toggle';
 export { Forms } from './js/forms';
 export type { IconOptions } from './js/icons';
 export { EcommerceIcons, Icon } from './js/icons';
@@ -66,6 +74,8 @@ declare global {
     amphibiousNav?: { initMobileDropdowns?: () => void };
     __amphibiousEscapeHTML?: (str: string) => string;
     __amphibiousSanitizeHTML?: (html: string) => string;
+    DarkModeToggle?: typeof import('./js/dark-mode-toggle').DarkModeToggle;
+    darkModeToggle?: import('./js/dark-mode-toggle').DarkModeToggle;
   }
 }
 
