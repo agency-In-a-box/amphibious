@@ -673,8 +673,7 @@ button:focus-visible {
 /* Responsive Design
    ========================================================================== */
 
-@media (max-width: 576px) {
-  /* TODO: non-standard breakpoint */
+@media (--bp-sm-down) {
   .aiab-btn-group-responsive {
     flex-direction: column;
     width: 100%;

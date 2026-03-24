@@ -300,6 +300,9 @@ class SearchBar {
       } else if (typeof this.options.source === 'string') {
         // Remote URL source
         const response = await fetch(`${this.options.source}?q=${encodeURIComponent(query)}`);
+        if (!response.ok) {
+          throw new Error(`Search request failed: ${response.status}`);
+        }
         results = await response.json();
       } else if (Array.isArray(this.options.source)) {
         // Local array source

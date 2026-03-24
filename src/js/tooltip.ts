@@ -314,8 +314,8 @@ export class Tooltip {
     const triggerRect = this.element.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
-    const scrollX = window.pageXOffset;
-    const scrollY = window.pageYOffset;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
 
     // First, position the tooltip off-screen to get its dimensions
     this.tooltipElement.style.visibility = 'hidden';

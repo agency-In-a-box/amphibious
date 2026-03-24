@@ -647,6 +647,9 @@ class DropdownEnhanced {
         data = await this.options.source(searchTerm);
       } else {
         const response = await fetch(`${this.options.source}?q=${encodeURIComponent(searchTerm)}`);
+        if (!response.ok) {
+          throw new Error(`Dropdown data request failed: ${response.status}`);
+        }
         data = await response.json();
       }
 

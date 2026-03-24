@@ -31,7 +31,7 @@
   --color-text: #333;
   --color-text-secondary: #666;
   --color-heading: inherit;
-  --color-muted: #777;
+  --color-muted: #767676;
 
   /* Link States - Unified across the system */
   --color-link: var(--color-primary-text); /* AA-compliant orange for links on white */

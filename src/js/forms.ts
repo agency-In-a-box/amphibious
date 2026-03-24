@@ -316,12 +316,14 @@ export class Forms {
     errorElement.textContent = message;
     errorElement.style.display = 'block';
 
+    // Ensure the error element has an ID so aria-describedby can reference it
+    if (!errorElement.id) {
+      errorElement.id = `error-${Math.random().toString(36).substring(2, 11)}`;
+    }
+
     // Set ARIA attributes
     field.setAttribute('aria-invalid', 'true');
-    field.setAttribute(
-      'aria-describedby',
-      errorElement.id || `error-${Math.random().toString(36).substring(2, 11)}`,
-    );
+    field.setAttribute('aria-describedby', errorElement.id);
   }
 
   /**

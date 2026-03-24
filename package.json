@@ -58,6 +58,11 @@
     "name": "Clive Moore",
     "url": "https://clivemoore.ca"
   },
+  "sideEffects": [
+    "*.css",
+    "./src/js/navigation.ts",
+    "./src/js/dark-mode-toggle.ts"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
