@@ -29,17 +29,6 @@ class DataTableComponent {
     this._eventListeners = [];
     this._searchTimeout = null;
 
-    /** Escape HTML entities to prevent XSS — delegates to shared utility */
-    this._escapeHTML = (str) => {
-      if (typeof window.__amphibiousEscapeHTML === 'function') {
-        return window.__amphibiousEscapeHTML(str);
-      }
-      if (typeof str !== 'string') return '';
-      const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    };
-
     this.init();
   }
 
@@ -568,6 +557,8 @@ class DataTableComponent {
         const value = rowData[column.key];
 
         // Apply cell formatting
+        // ⚠ SECURITY: column.render returns raw HTML set via innerHTML.
+        // Consumers MUST sanitize user-supplied data before returning HTML.
         if (column.render) {
           cell.innerHTML = column.render(value, rowData);
         } else {

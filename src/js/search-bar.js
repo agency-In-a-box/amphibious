@@ -4,6 +4,8 @@
  * Part of Amphibious 2.0 Component Library
  */
 
+import { escapeHTML } from '../utils/escape-html.js';
+
 class SearchBar {
   constructor(element, options = {}) {
     this.element = element;
@@ -25,7 +27,7 @@ class SearchBar {
       onSearch: options.onSearch || null,
       onChange: options.onChange || null,
       onClear: options.onClear || null,
-      renderItem: options.renderItem || null,
+      renderItem: options.renderItem || null, // (result, query) => HTML — caller must sanitize
       ...options,
     };
 
@@ -37,17 +39,6 @@ class SearchBar {
     this._abortController = new AbortController();
 
     this.init();
-  }
-
-  /** Escape HTML entities to prevent XSS — delegates to shared utility */
-  _escapeHTML(str) {
-    if (typeof window.__amphibiousEscapeHTML === 'function') {
-      return window.__amphibiousEscapeHTML(str);
-    }
-    if (typeof str !== 'string') return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
   }
 
   init() {
@@ -374,8 +365,9 @@ class SearchBar {
     item.className = 'aiab-search-bar-item';
     item.setAttribute('role', 'option');
 
+    // ⚠ SECURITY: renderItem returns raw HTML set via innerHTML.
+    // Consumers MUST sanitize user-supplied data before returning HTML.
     if (this.options.renderItem) {
-      // Custom renderer
       item.innerHTML = this.options.renderItem(result, query);
     } else if (typeof result === 'string') {
       // Simple string result
@@ -393,7 +385,7 @@ class SearchBar {
       const icon = result.icon || '';
 
       item.innerHTML = `
-        ${icon ? `<span class="aiab-search-bar-item-icon">${this._escapeHTML(icon)}</span>` : ''}
+        ${icon ? `<span class="aiab-search-bar-item-icon">${escapeHTML(icon)}</span>` : ''}
         <div class="aiab-search-bar-item-content">
           <div class="aiab-search-bar-item-title">
             ${this.highlightMatch(title, query)}
@@ -420,11 +412,11 @@ class SearchBar {
 
   highlightMatch(text, query) {
     if (!this.options.highlightMatches || !query) {
-      return this._escapeHTML(text);
+      return escapeHTML(text);
     }
 
-    const escaped = this._escapeHTML(text);
-    const escapedQuery = this._escapeHTML(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escaped = escapeHTML(text);
+    const escapedQuery = escapeHTML(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedQuery})`, 'gi');
     return escaped.replace(regex, '<mark>$1</mark>');
   }
@@ -465,7 +457,7 @@ class SearchBar {
           </svg>
         </span>
         <div class="aiab-search-bar-item-content">
-          <div class="aiab-search-bar-item-title">${this._escapeHTML(search)}</div>
+          <div class="aiab-search-bar-item-title">${escapeHTML(search)}</div>
         </div>
       `;
 
@@ -625,9 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Export
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = SearchBar;
-}
-
 window.SearchBar = SearchBar;
+
+export default SearchBar;
+export { SearchBar };

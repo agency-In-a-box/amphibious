@@ -3,6 +3,8 @@
  * Handles navigation interactions including mobile menu toggle
  */
 
+import { getFocusableElements, trapFocus } from '../utils/focus-trap';
+
 /**
  * Responsive navigation component with mobile menu, dropdown support,
  * keyboard navigation, and focus trapping for accessibility.
@@ -229,7 +231,7 @@ export class Navigation {
 
     // Manage focus trap for accessibility
     if (this.isOpen) {
-      this.trapFocus();
+      this.setupFocusTrap();
     }
   }
 
@@ -363,37 +365,20 @@ export class Navigation {
    * Cycles Tab/Shift+Tab between the first and last focusable elements
    * inside the navigation element, preventing focus from escaping.
    */
-  private trapFocus(): void {
+  private setupFocusTrap(): void {
     if (!this.navElement) return;
 
-    const focusableElements = this.navElement.querySelectorAll(
-      'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])',
-    );
-
-    if (focusableElements.length === 0) return;
+    const focusable = getFocusableElements(this.navElement);
+    if (focusable.length === 0) return;
 
     // Remove previous tab key handler if it exists to prevent leaks on repeated opens
     if (this.tabKeyHandler) {
       document.removeEventListener('keydown', this.tabKeyHandler);
     }
 
-    const firstElement = focusableElements[0] as HTMLElement;
-    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-
     const handleTabKey = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
-
-      if (e.shiftKey) {
-        if (document.activeElement === firstElement) {
-          e.preventDefault();
-          lastElement.focus();
-        }
-      } else {
-        if (document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement.focus();
-        }
-      }
+      trapFocus(e, getFocusableElements(this.navElement!));
     };
 
     this.tabKeyHandler = handleTabKey;

@@ -4,6 +4,8 @@
  * Part of Amphibious 2.0 Component Library
  */
 
+import { escapeHTML } from '../utils/escape-html.js';
+
 class SearchBarEnhanced {
   constructor(element, options = {}) {
     this.element = element;
@@ -47,7 +49,7 @@ class SearchBarEnhanced {
       wildcards: options.wildcards || false, // Support * and ?
 
       // Display options
-      resultTemplate: options.resultTemplate || null,
+      resultTemplate: options.resultTemplate || null, // (item, query, instance) => HTML — caller must sanitize
       groupBy: options.groupBy || null,
       sortBy: options.sortBy || null,
       noResultsText: options.noResultsText || 'No results found',
@@ -104,17 +106,6 @@ class SearchBarEnhanced {
     this.searchDebounceTimer = null;
 
     this.init();
-  }
-
-  /** Escape HTML entities to prevent XSS — delegates to shared utility */
-  _escapeHTML(str) {
-    if (typeof window.__amphibiousEscapeHTML === 'function') {
-      return window.__amphibiousEscapeHTML(str);
-    }
-    if (typeof str !== 'string') return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
   }
 
   init() {
@@ -842,17 +833,19 @@ class SearchBarEnhanced {
     resultEl.setAttribute('role', 'option');
     resultEl.dataset.index = index;
 
+    // ⚠ SECURITY: resultTemplate returns raw HTML set via innerHTML.
+    // Consumers MUST sanitize user-supplied data before returning HTML.
     if (this.options.resultTemplate) {
       resultEl.innerHTML = this.options.resultTemplate(item, this.state.query, this);
     } else {
       const text = typeof item === 'string' ? item : item.text || item.label || item.title || '';
       const displayText = this.options.highlight
         ? this.highlightQuery(text, this.state.query)
-        : this._escapeHTML(text);
+        : escapeHTML(text);
 
       resultEl.innerHTML = `
         <div class="aiab-search-bar-result-text">${displayText}</div>
-        ${item.description ? `<div class="aiab-search-bar-result-description">${this._escapeHTML(item.description)}</div>` : ''}
+        ${item.description ? `<div class="aiab-search-bar-result-description">${escapeHTML(item.description)}</div>` : ''}
       `;
     }
 
@@ -867,10 +860,10 @@ class SearchBarEnhanced {
   }
 
   highlightQuery(text, query) {
-    const escaped = this._escapeHTML(text);
+    const escaped = escapeHTML(text);
     if (!query) return escaped;
 
-    const escapedQuery = this._escapeHTML(query);
+    const escapedQuery = escapeHTML(query);
     const regex = new RegExp(`(${this.escapeRegex(escapedQuery)})`, 'gi');
     return escaped.replace(regex, '<mark>$1</mark>');
   }
@@ -937,8 +930,8 @@ class SearchBarEnhanced {
       const item = document.createElement('div');
       item.className = 'aiab-search-bar-recent-item';
       item.innerHTML = `
-        <span class="aiab-search-bar-recent-text">🕐 ${this._escapeHTML(search)}</span>
-        <button type="button" class="aiab-search-bar-recent-remove" data-search="${this._escapeHTML(search)}">×</button>
+        <span class="aiab-search-bar-recent-text">🕐 ${escapeHTML(search)}</span>
+        <button type="button" class="aiab-search-bar-recent-remove" data-search="${escapeHTML(search)}">×</button>
       `;
 
       this.addHandler(item.querySelector('.aiab-search-bar-recent-text'), 'click', () => {

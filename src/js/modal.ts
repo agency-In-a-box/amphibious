@@ -3,6 +3,7 @@
  * Accessible modal dialogs with focus management and animations
  */
 
+import { getFocusableElements, trapFocus } from '../utils/focus-trap';
 import { setInnerHTML } from '../utils/sanitize';
 
 /**
@@ -242,42 +243,22 @@ export class Modal {
 
     // Tab trap for accessibility
     if (e.key === 'Tab') {
-      this.trapFocus(e);
+      this.handleTrapFocus(e);
     }
   }
 
   /**
    * Trap focus within modal
    */
-  private trapFocus(e: KeyboardEvent): void {
-    if (this.focusableElements.length === 0) return;
-
-    const firstElement = this.focusableElements[0];
-    const lastElement = this.focusableElements[this.focusableElements.length - 1];
-
-    if (e.shiftKey) {
-      if (document.activeElement === firstElement) {
-        e.preventDefault();
-        lastElement.focus();
-      }
-    } else {
-      if (document.activeElement === lastElement) {
-        e.preventDefault();
-        firstElement.focus();
-      }
-    }
+  private handleTrapFocus(e: KeyboardEvent): void {
+    trapFocus(e, this.focusableElements);
   }
 
   /**
    * Get focusable elements
    */
-  private getFocusableElements(): void {
-    const selector = 'a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
-    const elements = this.element.querySelectorAll(selector);
-    this.focusableElements = Array.from(elements).filter((el) => {
-      const element = el as HTMLElement;
-      return !element.hasAttribute('disabled') && element.offsetParent !== null;
-    }) as HTMLElement[];
+  private refreshFocusableElements(): void {
+    this.focusableElements = getFocusableElements(this.element);
   }
 
   /**
@@ -323,7 +304,7 @@ export class Modal {
     this.element.setAttribute('aria-hidden', 'false');
 
     // Get focusable elements
-    this.getFocusableElements();
+    this.refreshFocusableElements();
 
     // Focus modal or first element (skip delay if reduced motion)
     if (this.options.focus) {

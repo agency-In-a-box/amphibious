@@ -6,6 +6,7 @@
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import '../src/js/search-bar.js';
+import { escapeHTML } from '../src/utils/escape-html.js';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global
 const SearchBarClass = (window as any).SearchBar;
@@ -393,7 +394,7 @@ describe('Search Bar Component', () => {
   describe('XSS Prevention', () => {
     it('should escape HTML in result titles', () => {
       searchBar = new SearchBarClass(element, { source: SAMPLE_DATA });
-      const escaped = searchBar._escapeHTML('<script>alert("xss")</script>');
+      const escaped = escapeHTML('<script>alert("xss")</script>');
       expect(escaped).not.toContain('<script>');
     });
   });

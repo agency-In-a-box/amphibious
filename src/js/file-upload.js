@@ -4,6 +4,8 @@
  * Part of Amphibious 2.0 Component Library
  */
 
+import { escapeHTML } from '../utils/escape-html.js';
+
 class FileUpload {
   constructor(element, options = {}) {
     this.element = element;
@@ -28,17 +30,6 @@ class FileUpload {
     this.uploadQueue = [];
     this.isUploading = false;
     this._abortController = new AbortController();
-
-    /** Escape HTML entities to prevent XSS — delegates to shared utility */
-    this._escapeHTML = (str) => {
-      if (typeof window.__amphibiousEscapeHTML === 'function') {
-        return window.__amphibiousEscapeHTML(str);
-      }
-      if (typeof str !== 'string') return '';
-      const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    };
 
     this.init();
   }
@@ -271,7 +262,7 @@ class FileUpload {
     const info = document.createElement('div');
     info.className = 'aiab-file-upload-info';
     info.innerHTML = `
-      <div class="aiab-file-upload-name">${this._escapeHTML(fileObj.name)}</div>
+      <div class="aiab-file-upload-name">${escapeHTML(fileObj.name)}</div>
       <div class="aiab-file-upload-meta">
         <span class="aiab-file-upload-size">${this.formatSize(fileObj.size)}</span>
         <span class="aiab-file-upload-status aiab-file-upload-status--${fileObj.status}">
@@ -548,9 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Export
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = FileUpload;
-}
-
 window.FileUpload = FileUpload;
+
+export default FileUpload;
+export { FileUpload };

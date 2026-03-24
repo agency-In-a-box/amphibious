@@ -6,6 +6,7 @@
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import '../src/js/file-upload.js';
+import { escapeHTML } from '../src/utils/escape-html.js';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global
 const FileUploadClass = (window as any).FileUpload;
@@ -334,7 +335,7 @@ describe('File Upload Component', () => {
   describe('XSS Prevention', () => {
     it('should escape HTML in file names', () => {
       upload = new FileUploadClass(container);
-      const escaped = upload._escapeHTML('<script>alert("xss")</script>');
+      const escaped = escapeHTML('<script>alert("xss")</script>');
       expect(escaped).not.toContain('<script>');
     });
   });

@@ -4,6 +4,8 @@
  * Part of Amphibious 2.0 Component Library
  */
 
+import { escapeHTML } from '../utils/escape-html.js';
+
 class Dropdown {
   constructor(element, options = {}) {
     this.element = element;
@@ -24,17 +26,6 @@ class Dropdown {
     this._abortController = new AbortController();
 
     this.init();
-  }
-
-  /** Escape HTML entities to prevent XSS — delegates to shared utility */
-  _escapeHTML(str) {
-    if (typeof window.__amphibiousEscapeHTML === 'function') {
-      return window.__amphibiousEscapeHTML(str);
-    }
-    if (typeof str !== 'string') return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
   }
 
   init() {
@@ -378,8 +369,8 @@ class Dropdown {
           const tag = document.createElement('span');
           tag.className = 'aiab-dropdown-tag';
           tag.innerHTML = `
-            ${this._escapeHTML(item.text)}
-            <span class="aiab-dropdown-tag-remove" data-value="${this._escapeHTML(value)}">×</span>
+            ${escapeHTML(item.text)}
+            <span class="aiab-dropdown-tag-remove" data-value="${escapeHTML(value)}">×</span>
           `;
           this.valueSpan.appendChild(tag);
         }
@@ -497,10 +488,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Export for use as module
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = Dropdown;
-}
-
 // Add to global scope
 window.Dropdown = Dropdown;
+
+export default Dropdown;
+export { Dropdown };

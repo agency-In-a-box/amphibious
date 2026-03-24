@@ -4,6 +4,8 @@
  * Part of Amphibious 2.0 Component Library
  */
 
+import { escapeHTML } from '../utils/escape-html.js';
+
 class ToastComponent {
   constructor() {
     this.container = null;
@@ -15,17 +17,6 @@ class ToastComponent {
       progress: true,
     };
     this.init();
-  }
-
-  /** Escape HTML entities to prevent XSS — delegates to shared utility */
-  _escapeHTML(str) {
-    if (typeof window.__amphibiousEscapeHTML === 'function') {
-      return window.__amphibiousEscapeHTML(str);
-    }
-    if (typeof str !== 'string') return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
   }
 
   /**
@@ -120,10 +111,10 @@ class ToastComponent {
     // Add content
     html += '<div class="toast__content">';
     if (config.title) {
-      html += `<h4 class="toast__title">${this._escapeHTML(config.title)}</h4>`;
+      html += `<h4 class="toast__title">${escapeHTML(config.title)}</h4>`;
     }
     if (config.message) {
-      html += `<p class="toast__message">${this._escapeHTML(config.message)}</p>`;
+      html += `<p class="toast__message">${escapeHTML(config.message)}</p>`;
     }
 
     // Add action buttons
@@ -131,7 +122,7 @@ class ToastComponent {
       html += '<div class="toast__actions">';
       config.actions.forEach((action) => {
         const primary = action.primary ? 'aiab-toast__action--primary' : '';
-        html += `<button class="aiab-toast__action ${primary}" data-action="${this._escapeHTML(action.name)}">${this._escapeHTML(action.label)}</button>`;
+        html += `<button class="aiab-toast__action ${primary}" data-action="${escapeHTML(action.name)}">${escapeHTML(action.label)}</button>`;
       });
       html += '</div>';
     }

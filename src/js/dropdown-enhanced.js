@@ -4,6 +4,8 @@
  * Part of Amphibious 2.0 Component Library
  */
 
+import { escapeHTML } from '../utils/escape-html.js';
+
 class DropdownEnhanced {
   constructor(element, options = {}) {
     this.element = element;
@@ -35,8 +37,8 @@ class DropdownEnhanced {
       minChars: options.minChars || 1,
 
       // Display options
-      optionRenderer: options.optionRenderer || null,
-      selectedRenderer: options.selectedRenderer || null,
+      optionRenderer: options.optionRenderer || null, // (item, instance) => HTML — caller must sanitize
+      selectedRenderer: options.selectedRenderer || null, // (item, instance) => HTML — caller must sanitize
       groupBy: options.groupBy || null,
       sortBy: options.sortBy || null,
 
@@ -78,17 +80,6 @@ class DropdownEnhanced {
     this.searchDebounceTimer = null;
 
     this.init();
-  }
-
-  /** Escape HTML entities to prevent XSS — delegates to shared utility */
-  _escapeHTML(str) {
-    if (typeof window.__amphibiousEscapeHTML === 'function') {
-      return window.__amphibiousEscapeHTML(str);
-    }
-    if (typeof str !== 'string') return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
   }
 
   init() {
@@ -417,6 +408,8 @@ class DropdownEnhanced {
     }
 
     // Custom renderer or default
+    // ⚠ SECURITY: optionRenderer returns raw HTML set via innerHTML.
+    // Consumers MUST sanitize user-supplied data before returning HTML.
     if (this.options.optionRenderer) {
       itemEl.innerHTML = this.options.optionRenderer(item, this);
     } else {
@@ -729,8 +722,8 @@ class DropdownEnhanced {
   }
 
   highlightSearchTerm(element, term) {
-    const text = this._escapeHTML(element.textContent);
-    const escapedTerm = this._escapeHTML(term).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const text = escapeHTML(element.textContent);
+    const escapedTerm = escapeHTML(term).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedTerm})`, 'gi');
     const highlighted = text.replace(regex, '<mark>$1</mark>');
     element.innerHTML = highlighted;
@@ -821,6 +814,8 @@ class DropdownEnhanced {
         // Single select display
         const item = this.state.selectedItems[0];
 
+        // ⚠ SECURITY: selectedRenderer returns raw HTML set via innerHTML.
+        // Consumers MUST sanitize user-supplied data before returning HTML.
         if (this.options.selectedRenderer) {
           this.valueText.innerHTML = this.options.selectedRenderer(item, this);
         } else {

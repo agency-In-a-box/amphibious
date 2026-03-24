@@ -15,6 +15,8 @@
  * - Accessibility compliant
  */
 
+import { escapeHTML } from '../utils/escape-html.js';
+
 class FormBuilder {
   constructor(element, options = {}) {
     this.element = element;
@@ -115,17 +117,6 @@ class FormBuilder {
     this.observers = new Set();
 
     this.init();
-  }
-
-  /** Escape HTML entities to prevent XSS — delegates to shared utility */
-  _escapeHTML(str) {
-    if (typeof window.__amphibiousEscapeHTML === 'function') {
-      return window.__amphibiousEscapeHTML(str);
-    }
-    if (typeof str !== 'string') return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
   }
 
   /** Sanitize user-provided HTML using DOMPurify via sanitize utility */
@@ -744,7 +735,7 @@ class FormBuilder {
       templateEl.dataset.templateId = template.id;
       templateEl.innerHTML = `
         <span class="template-icon">📋</span>
-        <span class="template-name">${this._escapeHTML(template.name)}</span>
+        <span class="template-name">${escapeHTML(template.name)}</span>
       `;
       templateList.appendChild(templateEl);
     });
@@ -1189,7 +1180,7 @@ class FormBuilder {
   }
 
   getFieldPreview(field) {
-    const e = (str) => this._escapeHTML(str);
+    const e = (str) => escapeHTML(str);
     const allowedTypes = [
       'text',
       'email',
