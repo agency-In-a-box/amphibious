@@ -48,8 +48,10 @@ src/css/
 ├── atoms/               # Basic elements (buttons, badges, icons)
 ├── molecules/           # Simple combinations (alerts, tooltips)
 ├── organisms/           # Complex components (cards, modals, forms)
-├── pages/              # Page-specific fixes and overrides
-└── main.css            # Entry point with @import ordering
+├── pages/              # Page-specific fixes and overrides (docs site only)
+├── main-lib.css        # Library entry point (npm package — excludes pages/)
+├── pages.css           # Aggregates all pages/*.css imports
+└── main.css            # Dev entry point (imports main-lib.css + pages.css)
 ```
 
 ### Namespace Isolation
@@ -104,8 +106,7 @@ src/js/
 ### Utilities
 ```
 src/utils/
-├── sanitize.ts        # DOMPurify wrapper for XSS prevention
-└── memory-leak-fixes.ts # Event listener cleanup helpers
+└── sanitize.ts        # DOMPurify wrapper for XSS prevention
 ```
 
 ## Build Configuration

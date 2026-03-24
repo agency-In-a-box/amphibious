@@ -20,8 +20,8 @@
  * ```
  */
 
-// Core CSS imports - main.css includes all components
-import './css/main.css';
+// Core CSS imports - main-lib.css includes all library components (excludes docs page styles)
+import './css/main-lib.css';
 
 // Side-effect imports (auto-initialize on load)
 import './js/navigation';

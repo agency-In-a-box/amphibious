@@ -1,0 +1,19 @@
+/**
+ * Amphibious 2.0 - Page-Specific Styles
+ *
+ * These styles are for the documentation/demo site only.
+ * They are NOT included in the library build (amphibious.css).
+ * Import this file in docs HTML pages that need page-specific styling.
+ */
+
+/* Page-specific styles */
+@import "./pages/home.css";
+@import "./pages/examples.css";
+@import "./pages/docs.css";
+@import "./pages/foundation-fixes.css";
+@import "./pages/updates-section-fix.css";
+
+/* Page-specific dark/light mode overrides */
+@import "./pages/home-dark-mode.css";
+@import "./pages/home-dark-fixes.css";
+@import "./pages/light-mode-fixes.css";
