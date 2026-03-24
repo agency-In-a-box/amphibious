@@ -100,6 +100,7 @@ class ToastComponent {
     toast.className = `toast ${config.type ? `toast--${config.type}` : ''} ${config.dark ? 'aiab-toast--dark' : ''}`;
     toast.id = id;
     toast.setAttribute('role', 'alert');
+    toast.setAttribute('tabindex', '-1');
 
     let html = '';
 
@@ -176,6 +177,13 @@ class ToastComponent {
           this.hide(id);
         }
       });
+    });
+
+    // Dismiss on Escape key
+    toast.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.hide(id);
+      }
     });
 
     // Pause on hover

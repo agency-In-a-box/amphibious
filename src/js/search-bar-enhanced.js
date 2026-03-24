@@ -669,6 +669,10 @@ class SearchBarEnhanced {
     const controller = new AbortController();
     this.abortControllers.add(controller);
 
+    // Auto-abort after 10 seconds
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    this.timers.add(timeoutId);
+
     try {
       const url = new URL(this.options.source);
       url.searchParams.set('q', query);
@@ -702,6 +706,8 @@ class SearchBarEnhanced {
 
       return data;
     } finally {
+      clearTimeout(timeoutId);
+      this.timers.delete(timeoutId);
       this.abortControllers.delete(controller);
     }
   }

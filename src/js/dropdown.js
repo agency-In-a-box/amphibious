@@ -227,6 +227,28 @@ class Dropdown {
       this.searchInput.addEventListener('click', (e) => e.stopPropagation(), { signal });
     }
 
+    // Handle tag removal via delegation (multi-select)
+    this.valueSpan.addEventListener(
+      'click',
+      (e) => {
+        if (e.target.classList.contains('aiab-dropdown-tag-remove')) {
+          e.stopPropagation();
+          const value = e.target.dataset.value;
+          const index = this.selectedValues.indexOf(value);
+          if (index > -1) {
+            this.selectedValues.splice(index, 1);
+            this.updateDisplay();
+            this.renderItems();
+
+            if (this.options.onChange) {
+              this.options.onChange(this.selectedValues, this);
+            }
+          }
+        }
+      },
+      { signal },
+    );
+
     // Close on outside click
     document.addEventListener(
       'click',
@@ -374,24 +396,6 @@ class Dropdown {
           `;
           this.valueSpan.appendChild(tag);
         }
-      });
-
-      // Handle tag removal
-      this.valueSpan.querySelectorAll('.aiab-dropdown-tag-remove').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const value = btn.dataset.value;
-          const index = this.selectedValues.indexOf(value);
-          if (index > -1) {
-            this.selectedValues.splice(index, 1);
-            this.updateDisplay();
-            this.renderItems();
-
-            if (this.options.onChange) {
-              this.options.onChange(this.selectedValues, this);
-            }
-          }
-        });
       });
     } else {
       const item = this.items.find((i) => i.value === this.selectedValues[0]);

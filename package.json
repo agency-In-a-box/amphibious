@@ -68,6 +68,10 @@
     "type": "git",
     "url": "https://github.com/agency-In-a-box/amphibious.git"
   },
+  "homepage": "https://github.com/agency-In-a-box/amphibious#readme",
+  "bugs": {
+    "url": "https://github.com/agency-In-a-box/amphibious/issues"
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.3.11",
     "@types/dompurify": "^3.2.0",
