@@ -104,7 +104,14 @@ export function initializeIcons(): void {
         element.parentNode?.replaceChild(svg, element);
       }
     } else if (iconName) {
-      // Icon not found in lightweight set - skip silently
+      // Icon not in lightweight set — show generic placeholder so the
+      // slot isn't invisible when the CDN Lucide script fails to load.
+      const fallback = document.createElement('span');
+      fallback.className = element.className;
+      fallback.setAttribute('role', 'img');
+      fallback.setAttribute('aria-label', iconName);
+      fallback.textContent = '\u25A1'; // □ white square as placeholder
+      element.parentNode?.replaceChild(fallback, element);
     }
   });
 }
@@ -118,8 +125,12 @@ export function createIcon(
 ): HTMLElement {
   const svg = iconSVGs[name];
   if (!svg) {
-    console.warn(`Icon "${name}" not found`);
-    return document.createElement('span');
+    console.warn(`Icon "${name}" not found in lightweight set`);
+    const fallback = document.createElement('span');
+    fallback.setAttribute('role', 'img');
+    fallback.setAttribute('aria-label', name);
+    fallback.textContent = '\u25A1';
+    return fallback;
   }
 
   const wrapper = document.createElement('span');

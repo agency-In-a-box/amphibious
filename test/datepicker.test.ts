@@ -119,7 +119,8 @@ describe('DatePicker Component', () => {
       const weekdays = picker.body.querySelectorAll('.aiab-datepicker-weekday');
       expect(weekdays.length).toBe(7);
       const dayNames = Array.from(weekdays).map((el) => (el as HTMLElement).textContent);
-      expect(dayNames).toEqual(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']);
+      // Intl.DateTimeFormat narrow weekday names (locale-aware)
+      expect(dayNames).toEqual(['S', 'M', 'T', 'W', 'T', 'F', 'S']);
     });
 
     it('should render day buttons for the current month', () => {

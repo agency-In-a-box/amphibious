@@ -23,6 +23,7 @@ export class SmoothScroll {
   private duration: number;
   private offset: number;
   private selector: string;
+  private abortController: AbortController;
 
   /**
    * @param options - Configuration for scroll behavior.
@@ -40,6 +41,7 @@ export class SmoothScroll {
     this.duration = options.duration || 800;
     this.offset = options.offset || 0;
     this.selector = options.selector || 'a[href*="#"]:not([href="#"])';
+    this.abortController = new AbortController();
   }
 
   /**
@@ -58,20 +60,24 @@ export class SmoothScroll {
     const links = document.querySelectorAll(this.selector);
 
     links.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        const target = this.getTargetElement(link as HTMLAnchorElement);
+      link.addEventListener(
+        'click',
+        (e) => {
+          const target = this.getTargetElement(link as HTMLAnchorElement);
 
-        if (target) {
-          e.preventDefault();
-          this.scrollToElement(target);
+          if (target) {
+            e.preventDefault();
+            this.scrollToElement(target);
 
-          // Update URL hash without jumping
-          const hash = (link as HTMLAnchorElement).hash;
-          if (hash && history.pushState) {
-            history.pushState(null, '', hash);
+            // Update URL hash without jumping
+            const hash = (link as HTMLAnchorElement).hash;
+            if (hash && history.pushState) {
+              history.pushState(null, '', hash);
+            }
           }
-        }
-      });
+        },
+        { signal: this.abortController.signal },
+      );
     });
   }
 
@@ -90,13 +96,16 @@ export class SmoothScroll {
     }
 
     // Handle hash change events
-    window.addEventListener('hashchange', () => {
-      const target = document.querySelector(window.location.hash);
-      if (target) {
-        // Use instant scroll if duration is 0
-        this.scrollToElement(target as HTMLElement, this.duration);
-      }
-    });
+    window.addEventListener(
+      'hashchange',
+      () => {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          this.scrollToElement(target as HTMLElement, this.duration);
+        }
+      },
+      { signal: this.abortController.signal },
+    );
   }
 
   /**
@@ -223,6 +232,14 @@ export class SmoothScroll {
       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
+  }
+
+  /**
+   * Remove all event listeners registered by this instance.
+   * Safe to call multiple times.
+   */
+  public destroy(): void {
+    this.abortController.abort();
   }
 }
 

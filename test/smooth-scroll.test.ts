@@ -206,6 +206,36 @@ describe('SmoothScroll Module', () => {
     });
   });
 
+  describe('Destroy', () => {
+    it('should remove click listeners after destroy()', () => {
+      smoothScroll = new SmoothScroll({ duration: 0 });
+      smoothScroll.init();
+
+      const link = document.querySelector('a[href="#section1"]') as HTMLAnchorElement;
+
+      // Verify listener works before destroy
+      let clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
+      link.dispatchEvent(clickEvent);
+      expect(clickEvent.defaultPrevented).toBe(true);
+
+      // Destroy and verify listener removed
+      smoothScroll.destroy();
+
+      clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
+      link.dispatchEvent(clickEvent);
+      expect(clickEvent.defaultPrevented).toBe(false);
+    });
+
+    it('should be safe to call destroy() multiple times', () => {
+      smoothScroll = new SmoothScroll();
+      smoothScroll.init();
+      expect(() => {
+        smoothScroll.destroy();
+        smoothScroll.destroy();
+      }).not.toThrow();
+    });
+  });
+
   describe('Focus Management', () => {
     it('should focus target element after scroll', async () => {
       smoothScroll = new SmoothScroll({ duration: 0 });

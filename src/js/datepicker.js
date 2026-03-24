@@ -9,6 +9,7 @@ class DatePicker {
     this.element = element;
     this.options = {
       format: options.format || 'MM/DD/YYYY',
+      locale: options.locale || 'en-US',
       minDate: options.minDate || null,
       maxDate: options.maxDate || null,
       disabledDates: options.disabledDates || [],
@@ -17,6 +18,7 @@ class DatePicker {
       inline: options.inline || false,
       showTime: options.showTime || false,
       autoClose: options.autoClose !== false,
+      labels: { today: 'Today', clear: 'Clear', am: 'AM', pm: 'PM', ...(options.labels || {}) },
       onChange: options.onChange || null,
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
@@ -179,12 +181,12 @@ class DatePicker {
     const amBtn = document.createElement('button');
     amBtn.type = 'button';
     amBtn.className = 'aiab-datepicker-time-period-btn aiab-datepicker-time-period-btn--active';
-    amBtn.textContent = 'AM';
+    amBtn.textContent = this.options.labels.am;
 
     const pmBtn = document.createElement('button');
     pmBtn.type = 'button';
     pmBtn.className = 'aiab-datepicker-time-period-btn';
-    pmBtn.textContent = 'PM';
+    pmBtn.textContent = this.options.labels.pm;
 
     periodDiv.appendChild(amBtn);
     periodDiv.appendChild(pmBtn);
@@ -209,12 +211,12 @@ class DatePicker {
     const todayBtn = document.createElement('button');
     todayBtn.type = 'button';
     todayBtn.className = 'aiab-datepicker-today-btn';
-    todayBtn.textContent = 'Today';
+    todayBtn.textContent = this.options.labels.today;
 
     const clearBtn = document.createElement('button');
     clearBtn.type = 'button';
     clearBtn.className = 'aiab-datepicker-clear-btn';
-    clearBtn.textContent = 'Clear';
+    clearBtn.textContent = this.options.labels.clear;
 
     footer.appendChild(todayBtn);
     footer.appendChild(clearBtn);
@@ -286,22 +288,9 @@ class DatePicker {
     const year = this.viewDate.getFullYear();
     const month = this.viewDate.getMonth();
 
-    // Update header
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    this.monthText.textContent = monthNames[month];
+    // Update header using locale-aware month name
+    const monthFormatter = new Intl.DateTimeFormat(this.options.locale, { month: 'long' });
+    this.monthText.textContent = monthFormatter.format(new Date(year, month, 1));
     this.yearText.textContent = year;
 
     // Clear body
@@ -310,7 +299,10 @@ class DatePicker {
     // Weekdays
     const weekdays = document.createElement('div');
     weekdays.className = 'aiab-datepicker-weekdays';
-    const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const dayFormatter = new Intl.DateTimeFormat(this.options.locale, { weekday: 'narrow' });
+    const dayNames = Array.from({ length: 7 }, (_, i) =>
+      dayFormatter.format(new Date(2000, 0, 2 + i)),
+    );
     dayNames.forEach((day) => {
       const weekday = document.createElement('div');
       weekday.className = 'aiab-datepicker-weekday';
@@ -399,20 +391,10 @@ class DatePicker {
     const monthsGrid = document.createElement('div');
     monthsGrid.className = 'aiab-datepicker-months';
 
-    const monthNames = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
+    const shortMonthFormatter = new Intl.DateTimeFormat(this.options.locale, { month: 'short' });
+    const monthNames = Array.from({ length: 12 }, (_, i) =>
+      shortMonthFormatter.format(new Date(2000, i, 1)),
+    );
 
     monthNames.forEach((name, index) => {
       const monthBtn = document.createElement('button');
