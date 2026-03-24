@@ -306,8 +306,26 @@ class ToastComponent {
   }
 }
 
-// Auto-initialize
-const toast = new ToastComponent();
+// Lazy singleton — only initialize when first accessed
+let _instance = null;
+function getToast() {
+  if (!_instance) {
+    _instance = new ToastComponent();
+  }
+  return _instance;
+}
+
+// Proxy object that lazily initializes on first method call
+const toast = new Proxy(
+  {},
+  {
+    get(_target, prop) {
+      const instance = getToast();
+      const value = instance[prop];
+      return typeof value === 'function' ? value.bind(instance) : value;
+    },
+  },
+);
 
 // Export for module usage
 export default toast;
