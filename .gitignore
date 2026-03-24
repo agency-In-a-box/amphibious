@@ -26,6 +26,12 @@ Thumbs.db
 # Testing
 coverage/
 
+# Design source files (use Git LFS for tracked ones)
+*.psd
+*.ai
+*.sketch
+*.fig
+
 # Misc
 *.bak
 *.tmp
