@@ -42,6 +42,17 @@ class DatePickerEnhanced {
       position: options.position || 'auto', // auto, top, bottom
       theme: options.theme || 'light',
       locale: options.locale || 'en-US',
+      labels: {
+        datePicker: 'Date picker',
+        previousMonth: 'Previous month',
+        nextMonth: 'Next month',
+        today: 'Today',
+        clear: 'Clear',
+        yesterday: 'Yesterday',
+        lastWeek: 'Last Week',
+        lastMonth: 'Last Month',
+        ...(options.labels || {}),
+      },
       animations: options.animations !== false,
       ...options,
     };
@@ -108,7 +119,7 @@ class DatePickerEnhanced {
     const calendar = document.createElement('div');
     calendar.className = 'aiab-datepicker-calendar';
     calendar.setAttribute('role', 'dialog');
-    calendar.setAttribute('aria-label', 'Date picker');
+    calendar.setAttribute('aria-label', this.options.labels.datePicker);
     calendar.setAttribute('aria-hidden', 'true');
 
     // Header
@@ -150,7 +161,7 @@ class DatePickerEnhanced {
     prevBtn.className = 'aiab-datepicker-prev';
     prevBtn.type = 'button';
     prevBtn.innerHTML = '‹';
-    prevBtn.setAttribute('aria-label', 'Previous month');
+    prevBtn.setAttribute('aria-label', this.options.labels.previousMonth);
 
     // Month/Year display
     const display = document.createElement('div');
@@ -172,7 +183,7 @@ class DatePickerEnhanced {
     nextBtn.className = 'aiab-datepicker-next';
     nextBtn.type = 'button';
     nextBtn.innerHTML = '›';
-    nextBtn.setAttribute('aria-label', 'Next month');
+    nextBtn.setAttribute('aria-label', this.options.labels.nextMonth);
 
     header.appendChild(prevBtn);
     header.appendChild(display);
@@ -193,10 +204,11 @@ class DatePickerEnhanced {
     const container = document.createElement('div');
     container.className = 'aiab-datepicker-shortcuts';
 
+    const labels = this.options.labels;
     const shortcuts = [
-      { label: 'Today', value: () => new Date() },
+      { label: labels.today, value: () => new Date() },
       {
-        label: 'Yesterday',
+        label: labels.yesterday,
         value: () => {
           const d = new Date();
           d.setDate(d.getDate() - 1);
@@ -204,7 +216,7 @@ class DatePickerEnhanced {
         },
       },
       {
-        label: 'Last Week',
+        label: labels.lastWeek,
         value: () => {
           const d = new Date();
           d.setDate(d.getDate() - 7);
@@ -212,7 +224,7 @@ class DatePickerEnhanced {
         },
       },
       {
-        label: 'Last Month',
+        label: labels.lastMonth,
         value: () => {
           const d = new Date();
           d.setMonth(d.getMonth() - 1);
@@ -246,13 +258,13 @@ class DatePickerEnhanced {
     const todayBtn = document.createElement('button');
     todayBtn.className = 'aiab-datepicker-today';
     todayBtn.type = 'button';
-    todayBtn.textContent = 'Today';
+    todayBtn.textContent = this.options.labels.today;
 
     // Clear button
     const clearBtn = document.createElement('button');
     clearBtn.className = 'aiab-datepicker-clear';
     clearBtn.type = 'button';
-    clearBtn.textContent = 'Clear';
+    clearBtn.textContent = this.options.labels.clear;
 
     footer.appendChild(clearBtn);
     footer.appendChild(todayBtn);

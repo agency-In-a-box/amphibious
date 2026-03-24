@@ -71,6 +71,21 @@ class SearchBarEnhanced {
       maxHeight: options.maxHeight || 400,
       theme: options.theme || 'light',
 
+      // Labels (i18n)
+      labels: {
+        voiceSearch: 'Voice search',
+        clearSearch: 'Clear search',
+        submit: 'Search',
+        recentSearches: 'Recent Searches',
+        clearRecent: 'Clear',
+        popularSearches: 'Popular Searches',
+        filters: 'Filters',
+        resultsAvailable: (count) => `${count} results available`,
+        voiceSearchFailed: 'Voice search failed',
+        voiceLang: 'en-US',
+        ...(options.labels || {}),
+      },
+
       // Callbacks
       onSearch: options.onSearch || null,
       onSelect: options.onSelect || null,
@@ -166,7 +181,7 @@ class SearchBarEnhanced {
       voiceBtn.type = 'button';
       voiceBtn.className = 'aiab-search-bar-voice';
       voiceBtn.innerHTML = '🎤';
-      voiceBtn.setAttribute('aria-label', 'Voice search');
+      voiceBtn.setAttribute('aria-label', this.options.labels.voiceSearch);
       inputContainer.appendChild(voiceBtn);
       this.voiceBtn = voiceBtn;
     }
@@ -178,7 +193,7 @@ class SearchBarEnhanced {
       clearBtn.className = 'aiab-search-bar-clear';
       clearBtn.innerHTML = '×';
       clearBtn.style.display = 'none';
-      clearBtn.setAttribute('aria-label', 'Clear search');
+      clearBtn.setAttribute('aria-label', this.options.labels.clearSearch);
       inputContainer.appendChild(clearBtn);
       this.clearBtn = clearBtn;
     }
@@ -188,7 +203,7 @@ class SearchBarEnhanced {
       const submitBtn = document.createElement('button');
       submitBtn.type = 'button';
       submitBtn.className = 'aiab-search-bar-submit';
-      submitBtn.innerHTML = 'Search';
+      submitBtn.textContent = this.options.labels.submit;
       inputContainer.appendChild(submitBtn);
       this.submitBtn = submitBtn;
     }
@@ -214,10 +229,14 @@ class SearchBarEnhanced {
 
       const recentHeader = document.createElement('div');
       recentHeader.className = 'aiab-search-bar-section-header';
-      recentHeader.innerHTML = `
-        <span>Recent Searches</span>
-        <button type="button" class="aiab-search-bar-clear-recent">Clear</button>
-      `;
+      const recentTitle = document.createElement('span');
+      recentTitle.textContent = this.options.labels.recentSearches;
+      const clearRecentBtn = document.createElement('button');
+      clearRecentBtn.type = 'button';
+      clearRecentBtn.className = 'aiab-search-bar-clear-recent';
+      clearRecentBtn.textContent = this.options.labels.clearRecent;
+      recentHeader.appendChild(recentTitle);
+      recentHeader.appendChild(clearRecentBtn);
 
       const recentList = document.createElement('div');
       recentList.className = 'aiab-search-bar-recent-list';
@@ -237,7 +256,7 @@ class SearchBarEnhanced {
 
       const popularHeader = document.createElement('div');
       popularHeader.className = 'aiab-search-bar-section-header';
-      popularHeader.textContent = 'Popular Searches';
+      popularHeader.textContent = this.options.labels.popularSearches;
 
       const popularList = document.createElement('div');
       popularList.className = 'aiab-search-bar-popular-list';
@@ -313,7 +332,7 @@ class SearchBarEnhanced {
     const filtersToggle = document.createElement('button');
     filtersToggle.type = 'button';
     filtersToggle.className = 'aiab-search-bar-filters-toggle';
-    filtersToggle.innerHTML = '⚙️ Filters';
+    filtersToggle.textContent = this.options.labels.filters;
 
     const filtersPanel = document.createElement('div');
     filtersPanel.className = 'aiab-search-bar-filters-panel';
@@ -493,9 +512,9 @@ class SearchBarEnhanced {
     const updateAria = () => {
       const resultCount = this.state.filteredResults.length;
       if (resultCount > 0) {
-        this.liveRegion.textContent = `${resultCount} results available`;
+        this.liveRegion.textContent = this.options.labels.resultsAvailable(resultCount);
       } else if (this.state.query) {
-        this.liveRegion.textContent = 'No results found';
+        this.liveRegion.textContent = this.options.noResultsText;
       }
     };
 
@@ -510,7 +529,7 @@ class SearchBarEnhanced {
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     this.recognition = new SpeechRecognition();
-    this.recognition.lang = 'en-US';
+    this.recognition.lang = this.options.labels.voiceLang;
     this.recognition.continuous = false;
     this.recognition.interimResults = false;
 
@@ -522,7 +541,7 @@ class SearchBarEnhanced {
     };
 
     this.recognition.onerror = () => {
-      this.showError('Voice search failed');
+      this.showError(this.options.labels.voiceSearchFailed);
     };
   }
 

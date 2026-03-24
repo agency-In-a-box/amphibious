@@ -49,6 +49,16 @@ class DropdownEnhanced {
       virtualScroll: options.virtualScroll || false,
       pageSize: options.pageSize || 50,
 
+      // Labels (i18n)
+      labels: {
+        search: 'Search...',
+        searchOptions: 'Search options',
+        noResults: 'No results found',
+        loading: 'Loading...',
+        errorLoading: 'Error loading data',
+        ...(options.labels || {}),
+      },
+
       // Callbacks
       onChange: options.onChange || null,
       onOpen: options.onOpen || null,
@@ -228,8 +238,8 @@ class DropdownEnhanced {
       const searchInput = document.createElement('input');
       searchInput.type = 'text';
       searchInput.className = 'aiab-dropdown-search-input';
-      searchInput.placeholder = 'Search...';
-      searchInput.setAttribute('aria-label', 'Search options');
+      searchInput.placeholder = this.options.labels.search;
+      searchInput.setAttribute('aria-label', this.options.labels.searchOptions);
 
       searchContainer.appendChild(searchInput);
       menu.appendChild(searchContainer);
@@ -250,14 +260,14 @@ class DropdownEnhanced {
     // No results message
     const noResults = document.createElement('div');
     noResults.className = 'aiab-dropdown-no-results';
-    noResults.textContent = 'No results found';
+    noResults.textContent = this.options.labels.noResults;
     noResults.style.display = 'none';
     menu.appendChild(noResults);
 
     // Loading indicator
     const loading = document.createElement('div');
     loading.className = 'aiab-dropdown-loading';
-    loading.innerHTML = '<span class="dropdown-spinner"></span> Loading...';
+    loading.innerHTML = `<span class="dropdown-spinner"></span> ${escapeHTML(this.options.labels.loading)}`;
     loading.style.display = 'none';
     menu.appendChild(loading);
 
@@ -654,7 +664,7 @@ class DropdownEnhanced {
       this.state.allItems = data;
       this.renderItems();
     } catch (_error) {
-      this.noResults.textContent = 'Error loading data';
+      this.noResults.textContent = this.options.labels.errorLoading;
       this.noResults.style.display = 'block';
     } finally {
       this.state.loading = false;

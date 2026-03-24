@@ -63,6 +63,45 @@ class FileUploadEnhanced {
       withCredentials: options.withCredentials || false,
       timeout: options.timeout || 0,
 
+      // Labels (i18n)
+      labels: {
+        // UI labels
+        dropZone: 'Drop files here or click to browse',
+        fileUploadArea: 'File upload area',
+        chooseFiles: 'Choose Files',
+        takePhoto: 'Take Photo',
+        uploadAll: 'Upload All',
+        clearAll: 'Clear All',
+        capture: 'Capture',
+        close: 'Close',
+        upload: 'Upload',
+        pause: 'Pause',
+        retry: 'Retry',
+        remove: 'Remove',
+        // Status
+        statusReady: 'Ready',
+        statusUploading: 'Uploading...',
+        statusComplete: 'Complete',
+        statusFailed: 'Failed',
+        statusPaused: 'Paused',
+        // Descriptions
+        allTypesAccepted: 'All file types accepted',
+        acceptedTypes: (types) => `Accepted: ${types}`,
+        statsText: (count, size, pending) => `${count} files (${size}) - ${pending} pending`,
+        // Errors
+        maxFilesReached: 'Maximum number of files reached',
+        maxFilesRemaining: (remaining) => `Only ${remaining} more file(s) can be added`,
+        validationFailed: (name) => `File "${name}" validation failed`,
+        fileTooLarge: (name, maxSize) => `File "${name}" exceeds maximum size of ${maxSize}`,
+        typeNotAllowed: (type) => `File type "${type}" not allowed`,
+        extensionNotAllowed: (ext) => `File extension ".${ext}" not allowed`,
+        extensionBlocked: (ext) => `File extension ".${ext}" is blocked`,
+        duplicateFile: (name) => `File "${name}" already added`,
+        cameraAccessDenied: 'Camera access denied',
+        uploadInProgress: 'Files are still uploading. Are you sure you want to leave?',
+        ...(options.labels || {}),
+      },
+
       // Callbacks
       onSelect: options.onSelect || null,
       onBeforeUpload: options.onBeforeUpload || null,
@@ -129,7 +168,7 @@ class FileUploadEnhanced {
     zone.className = 'aiab-file-upload-zone';
     zone.setAttribute('role', 'button');
     zone.setAttribute('tabindex', '0');
-    zone.setAttribute('aria-label', 'File upload area');
+    zone.setAttribute('aria-label', this.options.labels.fileUploadArea);
 
     // Icon
     const icon = document.createElement('div');
@@ -144,7 +183,7 @@ class FileUploadEnhanced {
     // Text
     const label = document.createElement('div');
     label.className = 'aiab-file-upload-label';
-    label.textContent = 'Drop files here or click to browse';
+    label.textContent = this.options.labels.dropZone;
 
     // Description
     const description = document.createElement('div');
@@ -171,14 +210,14 @@ class FileUploadEnhanced {
     const browseBtn = document.createElement('button');
     browseBtn.type = 'button';
     browseBtn.className = 'aiab-file-upload-browse';
-    browseBtn.textContent = 'Choose Files';
+    browseBtn.textContent = this.options.labels.chooseFiles;
 
     // Camera button
     if (this.options.camera && this.hasCamera()) {
       const cameraBtn = document.createElement('button');
       cameraBtn.type = 'button';
       cameraBtn.className = 'aiab-file-upload-camera';
-      cameraBtn.innerHTML = '📷 Take Photo';
+      cameraBtn.textContent = this.options.labels.takePhoto;
       buttons.appendChild(cameraBtn);
       this.cameraBtn = cameraBtn;
     }
@@ -214,14 +253,14 @@ class FileUploadEnhanced {
     const uploadAllBtn = document.createElement('button');
     uploadAllBtn.type = 'button';
     uploadAllBtn.className = 'aiab-file-upload-all';
-    uploadAllBtn.textContent = 'Upload All';
+    uploadAllBtn.textContent = this.options.labels.uploadAll;
     uploadAllBtn.style.display = 'none';
 
     // Clear all button
     const clearAllBtn = document.createElement('button');
     clearAllBtn.type = 'button';
     clearAllBtn.className = 'aiab-file-upload-clear';
-    clearAllBtn.textContent = 'Clear All';
+    clearAllBtn.textContent = this.options.labels.clearAll;
     clearAllBtn.style.display = 'none';
 
     statsActions.appendChild(uploadAllBtn);
@@ -304,7 +343,7 @@ class FileUploadEnhanced {
     this.addHandler(window, 'beforeunload', (e) => {
       if (this.state.uploading.size > 0) {
         e.preventDefault();
-        e.returnValue = 'Files are still uploading. Are you sure you want to leave?';
+        e.returnValue = this.options.labels.uploadInProgress;
       }
     });
   }
@@ -434,13 +473,13 @@ class FileUploadEnhanced {
       const remaining = this.options.maxFiles - currentCount;
 
       if (remaining <= 0) {
-        this.showError('Maximum number of files reached');
+        this.showError(this.options.labels.maxFilesReached);
         return;
       }
 
       if (files.length > remaining) {
         files.splice(remaining);
-        this.showError(`Only ${remaining} more file(s) can be added`);
+        this.showError(this.options.labels.maxFilesRemaining(remaining));
       }
     }
 
@@ -462,7 +501,7 @@ class FileUploadEnhanced {
     if (this.options.validateFile) {
       const result = this.options.validateFile(file);
       if (result !== true) {
-        this.showError(result || `File "${file.name}" validation failed`);
+        this.showError(result || this.options.labels.validationFailed(file.name));
         return false;
       }
     }
@@ -470,14 +509,14 @@ class FileUploadEnhanced {
     // Size check
     if (file.size > this.options.maxSize) {
       this.showError(
-        `File "${file.name}" exceeds maximum size of ${this.formatSize(this.options.maxSize)}`,
+        this.options.labels.fileTooLarge(file.name, this.formatSize(this.options.maxSize)),
       );
       return false;
     }
 
     // Type check
     if (!this.checkFileType(file)) {
-      this.showError(`File type "${file.type || 'unknown'}" not allowed`);
+      this.showError(this.options.labels.typeNotAllowed(file.type || 'unknown'));
       return false;
     }
 
@@ -486,14 +525,14 @@ class FileUploadEnhanced {
 
     if (this.options.allowedExtensions) {
       if (!this.options.allowedExtensions.includes(ext)) {
-        this.showError(`File extension ".${ext}" not allowed`);
+        this.showError(this.options.labels.extensionNotAllowed(ext));
         return false;
       }
     }
 
     if (this.options.blockedExtensions) {
       if (this.options.blockedExtensions.includes(ext)) {
-        this.showError(`File extension ".${ext}" is blocked`);
+        this.showError(this.options.labels.extensionBlocked(ext));
         return false;
       }
     }
@@ -506,7 +545,7 @@ class FileUploadEnhanced {
           fileObj.file.size === file.size &&
           fileObj.file.lastModified === file.lastModified
         ) {
-          this.showError(`File "${file.name}" already added`);
+          this.showError(this.options.labels.duplicateFile(file.name));
           return false;
         }
       }
@@ -714,14 +753,14 @@ class FileUploadEnhanced {
     uploadBtn.className = 'aiab-file-upload-upload';
     uploadBtn.type = 'button';
     uploadBtn.innerHTML = '⬆';
-    uploadBtn.title = 'Upload';
+    uploadBtn.title = this.options.labels.upload;
 
     // Pause button
     const pauseBtn = document.createElement('button');
     pauseBtn.className = 'aiab-file-upload-pause';
     pauseBtn.type = 'button';
     pauseBtn.innerHTML = '⏸';
-    pauseBtn.title = 'Pause';
+    pauseBtn.title = this.options.labels.pause;
     pauseBtn.style.display = 'none';
 
     // Retry button
@@ -729,7 +768,7 @@ class FileUploadEnhanced {
     retryBtn.className = 'aiab-file-upload-retry';
     retryBtn.type = 'button';
     retryBtn.innerHTML = '↻';
-    retryBtn.title = 'Retry';
+    retryBtn.title = this.options.labels.retry;
     retryBtn.style.display = 'none';
 
     // Remove button
@@ -737,7 +776,7 @@ class FileUploadEnhanced {
     removeBtn.className = 'aiab-file-upload-remove';
     removeBtn.type = 'button';
     removeBtn.innerHTML = '×';
-    removeBtn.title = 'Remove';
+    removeBtn.title = this.options.labels.remove;
 
     actions.appendChild(uploadBtn);
     actions.appendChild(pauseBtn);
@@ -1060,7 +1099,11 @@ class FileUploadEnhanced {
         (f) => f.status === 'pending',
       ).length;
 
-      this.statsText.textContent = `${fileCount} files (${this.formatSize(this.stats.totalSize)}) - ${pendingCount} pending`;
+      this.statsText.textContent = this.options.labels.statsText(
+        fileCount,
+        this.formatSize(this.stats.totalSize),
+        pendingCount,
+      );
 
       this.uploadAllBtn.style.display = pendingCount > 0 ? 'block' : 'none';
       this.clearAllBtn.style.display = fileCount > 0 ? 'block' : 'none';
@@ -1207,7 +1250,7 @@ class FileUploadEnhanced {
       video.srcObject = stream;
 
       const captureBtn = document.createElement('button');
-      captureBtn.textContent = 'Capture';
+      captureBtn.textContent = this.options.labels.capture;
       captureBtn.onclick = () => {
         const canvas = document.createElement('canvas');
         canvas.width = video.videoWidth;
@@ -1224,7 +1267,7 @@ class FileUploadEnhanced {
       };
 
       const closeBtn = document.createElement('button');
-      closeBtn.textContent = 'Close';
+      closeBtn.textContent = this.options.labels.close;
       closeBtn.onclick = () => {
         stream.getTracks().forEach((track) => track.stop());
         modal.remove();
@@ -1237,7 +1280,7 @@ class FileUploadEnhanced {
       document.body.appendChild(modal);
       this.createdElements.add(modal);
     } catch (_error) {
-      this.showError('Camera access denied');
+      this.showError(this.options.labels.cameraAccessDenied);
     }
   }
 
@@ -1263,20 +1306,20 @@ class FileUploadEnhanced {
 
   getStatusText(status) {
     const texts = {
-      pending: 'Ready',
-      uploading: 'Uploading...',
-      success: 'Complete',
-      error: 'Failed',
-      paused: 'Paused',
+      pending: this.options.labels.statusReady,
+      uploading: this.options.labels.statusUploading,
+      success: this.options.labels.statusComplete,
+      error: this.options.labels.statusFailed,
+      paused: this.options.labels.statusPaused,
     };
     return texts[status] || status;
   }
 
   getAcceptText() {
     if (this.options.accept === '*') {
-      return 'All file types accepted';
+      return this.options.labels.allTypesAccepted;
     }
-    return `Accepted: ${this.options.accept}`;
+    return this.options.labels.acceptedTypes(this.options.accept);
   }
 
   formatSize(bytes) {
