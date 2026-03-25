@@ -146,6 +146,12 @@
     --color-link-visited: #bf8cff;
     --color-selection-bg: rgba(255, 149, 0, 0.3);
     --color-selection-text: #ffffff;
+
+    /* Toast tokens */
+    --toast-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    --toast-close-color: var(--color-text-tertiary);
+    --toast-close-hover-color: var(--color-text);
+    --toast-close-hover-bg: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -249,6 +255,12 @@
   --color-link-visited: #bf8cff;
   --color-selection-bg: rgba(255, 149, 0, 0.3);
   --color-selection-text: #ffffff;
+
+  /* Toast tokens */
+  --toast-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --toast-close-color: var(--color-text-tertiary);
+  --toast-close-hover-color: var(--color-text);
+  --toast-close-hover-bg: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================================
@@ -551,29 +563,10 @@
 }
 
 /* ==========================================================================
-   Toast Component
+   Toast Component — base tokens auto-inherit; only action/focus overrides remain
    ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .aiab-toast {
-    background: var(--color-surface-elevated);
-    box-shadow:
-      0 10px 25px -5px rgba(0, 0, 0, 0.4),
-      0 8px 10px -6px rgba(0, 0, 0, 0.3);
-  }
-  :root:not([data-theme="light"]) .aiab-toast__title {
-    color: var(--color-text);
-  }
-  :root:not([data-theme="light"]) .aiab-toast__message {
-    color: var(--color-text-secondary);
-  }
-  :root:not([data-theme="light"]) .aiab-toast__close {
-    color: var(--color-text-tertiary);
-  }
-  :root:not([data-theme="light"]) .aiab-toast__close:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--color-text);
-  }
   :root:not([data-theme="light"]) .aiab-toast__close:focus {
     box-shadow:
       0 0 0 2px var(--color-surface),
@@ -597,25 +590,6 @@
   }
 }
 
-[data-theme="dark"] .aiab-toast {
-  background: var(--color-surface-elevated);
-  box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.4),
-    0 8px 10px -6px rgba(0, 0, 0, 0.3);
-}
-[data-theme="dark"] .aiab-toast__title {
-  color: var(--color-text);
-}
-[data-theme="dark"] .aiab-toast__message {
-  color: var(--color-text-secondary);
-}
-[data-theme="dark"] .aiab-toast__close {
-  color: var(--color-text-tertiary);
-}
-[data-theme="dark"] .aiab-toast__close:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-text);
-}
 [data-theme="dark"] .aiab-toast__close:focus {
   box-shadow:
     0 0 0 2px var(--color-surface),
