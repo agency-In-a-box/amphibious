@@ -819,10 +819,17 @@ export class EcommerceTooltips {
 
 // Auto-initialize tooltips on DOM ready
 if (typeof window !== 'undefined') {
+  const initTooltips = () => {
+    try {
+      Tooltip.initFromData();
+    } catch (error) {
+      console.error('[Amphibious] Tooltip auto-init failed:', error);
+    }
+  };
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => Tooltip.initFromData());
+    document.addEventListener('DOMContentLoaded', initTooltips);
   } else {
-    Tooltip.initFromData();
+    initTooltips();
   }
 }
 

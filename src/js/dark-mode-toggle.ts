@@ -442,11 +442,15 @@ export class DarkModeToggle {
 // ---------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.body?.dataset.darkModeToggle !== undefined) {
-    const dataOpts = parseDataAttributes(document.body);
-    (window as Window & { darkModeToggle?: DarkModeToggle }).darkModeToggle = new DarkModeToggle(
-      dataOpts,
-    );
+  try {
+    if (document.body?.dataset.darkModeToggle !== undefined) {
+      const dataOpts = parseDataAttributes(document.body);
+      (window as Window & { darkModeToggle?: DarkModeToggle }).darkModeToggle = new DarkModeToggle(
+        dataOpts,
+      );
+    }
+  } catch (error) {
+    console.error('[Amphibious] DarkModeToggle auto-init failed:', error);
   }
 });
 

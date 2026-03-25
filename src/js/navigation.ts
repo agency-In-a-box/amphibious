@@ -392,9 +392,13 @@ export class Navigation {
  * exposes `window.amphibiousNav` for external access to mobile dropdown re-init.
  */
 function initNavigation() {
-  const nav = new Navigation();
-  nav.init();
-  window.amphibiousNav = { initMobileDropdowns: () => nav.initMobileDropdowns() };
+  try {
+    const nav = new Navigation();
+    nav.init();
+    window.amphibiousNav = { initMobileDropdowns: () => nav.initMobileDropdowns() };
+  } catch (error) {
+    console.error('[Amphibious] Navigation auto-init failed:', error);
+  }
 }
 
 if (document.readyState === 'loading') {

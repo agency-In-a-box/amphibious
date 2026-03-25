@@ -680,10 +680,14 @@ class DatePicker {
 
 // Auto-initialize
 document.addEventListener('DOMContentLoaded', () => {
-  const datepickers = document.querySelectorAll('[data-datepicker="true"]');
-  datepickers.forEach((element) => {
-    new DatePicker(element);
-  });
+  try {
+    const datepickers = document.querySelectorAll('[data-datepicker="true"]');
+    datepickers.forEach((element) => {
+      new DatePicker(element);
+    });
+  } catch (error) {
+    console.error('[Amphibious] DatePicker auto-init failed:', error);
+  }
 });
 
 // Export

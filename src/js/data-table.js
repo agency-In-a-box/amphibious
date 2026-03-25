@@ -744,10 +744,14 @@ class DataTableComponent {
 
 // Auto-initialize tables with aiab-data-table attribute
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-table]').forEach((element) => {
-    const options = element.dataset.table ? JSON.parse(element.dataset.table) : {};
-    new DataTableComponent(element, options);
-  });
+  try {
+    document.querySelectorAll('[data-table]').forEach((element) => {
+      const options = element.dataset.table ? JSON.parse(element.dataset.table) : {};
+      new DataTableComponent(element, options);
+    });
+  } catch (error) {
+    console.error('[Amphibious] DataTable auto-init failed:', error);
+  }
 });
 
 // Export for module usage

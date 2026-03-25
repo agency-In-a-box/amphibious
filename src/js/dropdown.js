@@ -486,10 +486,14 @@ class Dropdown {
 
 // Auto-initialize dropdowns
 document.addEventListener('DOMContentLoaded', () => {
-  const dropdowns = document.querySelectorAll('[data-dropdown="true"]');
-  dropdowns.forEach((element) => {
-    new Dropdown(element);
-  });
+  try {
+    const dropdowns = document.querySelectorAll('[data-dropdown="true"]');
+    dropdowns.forEach((element) => {
+      new Dropdown(element);
+    });
+  } catch (error) {
+    console.error('[Amphibious] Dropdown auto-init failed:', error);
+  }
 });
 
 // Add to global scope

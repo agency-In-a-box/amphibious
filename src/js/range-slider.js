@@ -861,9 +861,13 @@ class RangeSlider {
 
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-range-slider]').forEach((element) => {
-    new RangeSlider(element);
-  });
+  try {
+    document.querySelectorAll('[data-range-slider]').forEach((element) => {
+      new RangeSlider(element);
+    });
+  } catch (error) {
+    console.error('[Amphibious] RangeSlider auto-init failed:', error);
+  }
 });
 
 // Register with component registry if available

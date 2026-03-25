@@ -166,11 +166,18 @@ export function hasIcon(name: string): boolean {
 
 // Auto-initialize on DOM ready
 if (typeof document !== 'undefined') {
+  const safeInitIcons = () => {
+    try {
+      initializeIcons();
+    } catch (error) {
+      console.error('[Amphibious] Icon auto-init failed:', error);
+    }
+  };
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeIcons);
+    document.addEventListener('DOMContentLoaded', safeInitIcons);
   } else {
     // DOM already loaded
-    setTimeout(initializeIcons, 0);
+    setTimeout(safeInitIcons, 0);
   }
 }
 

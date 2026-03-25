@@ -227,10 +227,14 @@ class Accordion {
 
 // Auto-initialize accordions on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  const accordions = document.querySelectorAll('.aiab-accordion[data-auto-init="true"]');
-  accordions.forEach((accordion) => {
-    new Accordion(accordion);
-  });
+  try {
+    const accordions = document.querySelectorAll('.aiab-accordion[data-auto-init="true"]');
+    accordions.forEach((accordion) => {
+      new Accordion(accordion);
+    });
+  } catch (error) {
+    console.error('[Amphibious] Accordion auto-init failed:', error);
+  }
 });
 
 // Export for use as module
