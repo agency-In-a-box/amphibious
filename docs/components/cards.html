@@ -195,28 +195,28 @@
 
       <div class="aiab-demo-grid">
         <!-- Product Card -->
-        <div class="aiab-card product">
-          <div class="aiab-card-media aspect-square" style="background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">
+        <div class="aiab-card aiab-product">
+          <div class="aiab-card-media aiab-aspect-square" style="background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">
             Product Image
           </div>
           <div class="aiab-card-body">
             <h3 class="aiab-card-title">Premium Headphones</h3>
-            <div class="price">$199.99</div>
-            <div class="aiab-card-actions center">
+            <div class="aiab-price">$199.99</div>
+            <div class="aiab-card-actions aiab-center">
               <button class="aiab-btn aiab-btn--primary">Add to Cart</button>
             </div>
           </div>
         </div>
 
         <!-- Profile Card -->
-        <div class="aiab-card profile">
+        <div class="aiab-card aiab-profile">
           <div class="aiab-card-body">
             <div class="aiab-avatar" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
               JD
             </div>
             <h3 class="aiab-card-title">John Doe</h3>
             <p class="aiab-card-subtitle">Senior Developer</p>
-            <div class="aiab-card-actions center">
+            <div class="aiab-card-actions aiab-center">
               <button class="aiab-btn aiab-btn--primary aiab-btn--sm">Follow</button>
               <button class="aiab-btn aiab-btn--secondary aiab-btn--sm">Message</button>
             </div>
@@ -225,12 +225,12 @@
 
         <!-- Stat Card -->
         <div class="aiab-card aiab-stat">
-          <span class="number">1,234</span>
-          <span class="label">Total Users</span>
+          <span class="aiab-number">1,234</span>
+          <span class="aiab-label">Total Users</span>
         </div>
 
         <!-- Feature Card -->
-        <div class="aiab-card feature">
+        <div class="aiab-card aiab-feature">
           <div class="aiab-card-body">
             <div class="aiab-icon" style="color: var(--color-primary);">
               <i data-lucide="zap"></i>
@@ -243,24 +243,24 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Product Card --&gt;
-&lt;div class="aiab-card product"&gt;
+&lt;div class="aiab-card aiab-product"&gt;
   &lt;img src="product.jpg" alt="Product" class="aiab-card-media"&gt;
   &lt;div class="aiab-card-body"&gt;
     &lt;h3 class="aiab-card-title"&gt;Product Name&lt;/h3&gt;
-    &lt;div class="price"&gt;$199.99&lt;/div&gt;
-    &lt;div class="aiab-card-actions center"&gt;
+    &lt;div class="aiab-price"&gt;$199.99&lt;/div&gt;
+    &lt;div class="aiab-card-actions aiab-center"&gt;
       &lt;button class="aiab-btn aiab-btn--primary"&gt;Add to Cart&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Profile Card --&gt;
-&lt;div class="aiab-card profile"&gt;
+&lt;div class="aiab-card aiab-profile"&gt;
   &lt;div class="aiab-card-body"&gt;
     &lt;img src="https://placehold.co/200x200/764ba2/FFF?text=User" alt="John Doe" class="aiab-avatar"&gt;
     &lt;h3 class="aiab-card-title"&gt;John Doe&lt;/h3&gt;
     &lt;p class="aiab-card-subtitle"&gt;Senior Developer&lt;/p&gt;
-    &lt;div class="aiab-card-actions center"&gt;
+    &lt;div class="aiab-card-actions aiab-center"&gt;
       &lt;button class="aiab-btn aiab-btn--primary"&gt;Follow&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -268,12 +268,12 @@
 
 &lt;!-- Stat Card --&gt;
 &lt;div class="aiab-card aiab-stat"&gt;
-  &lt;span class="number"&gt;1,234&lt;/span&gt;
-  &lt;span class="label"&gt;Total Users&lt;/span&gt;
+  &lt;span class="aiab-number"&gt;1,234&lt;/span&gt;
+  &lt;span class="aiab-label"&gt;Total Users&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;!-- Feature Card --&gt;
-&lt;div class="aiab-card feature"&gt;
+&lt;div class="aiab-card aiab-feature"&gt;
   &lt;div class="aiab-card-body"&gt;
     &lt;div class="aiab-icon"&gt;&lt;i data-lucide="zap"&gt;&lt;/i&gt;&lt;/div&gt;
     &lt;h3 class="aiab-card-title"&gt;Feature Title&lt;/h3&gt;
@@ -291,14 +291,14 @@
       <div class="aiab-demo-section">
         <div class="demo-title">Interactive Cards (hover over them)</div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-          <div class="aiab-card hoverable">
+          <div class="aiab-card aiab-hoverable">
             <div class="aiab-card-body">
               <h4 class="aiab-card-title">Hoverable</h4>
               <p class="aiab-card-text">Subtle hover effect</p>
             </div>
           </div>
 
-          <div class="aiab-card interactive">
+          <div class="aiab-card aiab-interactive">
             <div class="aiab-card-body">
               <h4 class="aiab-card-title">Interactive</h4>
               <p class="aiab-card-text">Strong hover effect</p>
@@ -309,7 +309,7 @@
 
       <div class="code-block">
         <pre><code>&lt;!-- Subtle hover effect --&gt;
-&lt;div class="aiab-card hoverable"&gt;
+&lt;div class="aiab-card aiab-hoverable"&gt;
   &lt;div class="aiab-card-body"&gt;
     &lt;h4 class="aiab-card-title"&gt;Hoverable Card&lt;/h4&gt;
     &lt;p class="aiab-card-text"&gt;Slight elevation on hover&lt;/p&gt;
@@ -317,7 +317,7 @@
 &lt;/div&gt;
 
 &lt;!-- Strong interactive effect --&gt;
-&lt;div class="aiab-card interactive"&gt;
+&lt;div class="aiab-card aiab-interactive"&gt;
   &lt;div class="aiab-card-body"&gt;
     &lt;h4 class="aiab-card-title"&gt;Interactive Card&lt;/h4&gt;
     &lt;p class="aiab-card-text"&gt;Pronounced elevation on hover&lt;/p&gt;
@@ -514,31 +514,31 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.hoverable</code></td>
+            <td><code>.aiab-hoverable</code></td>
             <td>Subtle hover effect</td>
           </tr>
           <tr>
-            <td><code>.interactive</code></td>
+            <td><code>.aiab-interactive</code></td>
             <td>Strong hover effect</td>
           </tr>
           <tr>
-            <td><code>.horizontal</code></td>
+            <td><code>.aiab-horizontal</code></td>
             <td>Horizontal layout</td>
           </tr>
           <tr>
-            <td><code>.compact</code></td>
+            <td><code>.aiab-compact</code></td>
             <td>Reduced padding</td>
           </tr>
           <tr>
-            <td><code>.spacious</code></td>
+            <td><code>.aiab-spacious</code></td>
             <td>Increased padding</td>
           </tr>
           <tr>
-            <td><code>.borderless</code></td>
+            <td><code>.aiab-borderless</code></td>
             <td>Remove border</td>
           </tr>
           <tr>
-            <td><code>.outlined</code></td>
+            <td><code>.aiab-outlined</code></td>
             <td>Border with no shadow</td>
           </tr>
           <tr>
@@ -590,20 +590,20 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>.product</code></td>
-            <td>Product aiab-card styling</td>
+            <td><code>.aiab-product</code></td>
+            <td>Product card styling</td>
           </tr>
           <tr>
-            <td><code>.profile</code></td>
-            <td>User profile aiab-card</td>
+            <td><code>.aiab-profile</code></td>
+            <td>User profile card</td>
           </tr>
           <tr>
             <td><code>.aiab-stat</code></td>
-            <td>Statistics display aiab-card</td>
+            <td>Statistics display card</td>
           </tr>
           <tr>
-            <td><code>.feature</code></td>
-            <td>Feature highlight aiab-card</td>
+            <td><code>.aiab-feature</code></td>
+            <td>Feature highlight card</td>
           </tr>
         </tbody>
       </table>
@@ -644,13 +644,13 @@
 
       <h3>E-commerce Product Card</h3>
       <div class="aiab-demo-section">
-        <div class="aiab-card product hoverable" style="max-width: 300px;">
-          <div class="aiab-card-media aspect-square" style="background: linear-gradient(45deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
+        <div class="aiab-card aiab-product aiab-hoverable" style="max-width: 300px;">
+          <div class="aiab-card-media aiab-aspect-square" style="background: linear-gradient(45deg, #6366f1 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
             Product Image
           </div>
           <div class="aiab-card-body">
             <h3 class="aiab-card-title">Wireless Headphones</h3>
-            <div class="price">$149.99</div>
+            <div class="aiab-price">$149.99</div>
             <p class="aiab-card-text">Premium sound quality with active noise cancellation.</p>
             <div class="aiab-card-actions">
               <button class="aiab-btn aiab-btn--primary" style="flex: 1;">Add to Cart</button>
@@ -664,7 +664,7 @@
 
       <h3>Team Member Card</h3>
       <div class="aiab-demo-section">
-        <div class="aiab-card profile" style="max-width: 280px;">
+        <div class="aiab-card aiab-profile" style="max-width: 280px;">
           <div class="aiab-card-body">
             <div class="aiab-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem;">
               SK
@@ -672,7 +672,7 @@
             <h3 class="aiab-card-title">Sarah Kim</h3>
             <p class="aiab-card-subtitle">Lead Designer</p>
             <p class="aiab-card-text">Passionate about creating intuitive user experiences and beautiful interfaces.</p>
-            <div class="aiab-card-actions center">
+            <div class="aiab-card-actions aiab-center">
               <button class="aiab-btn aiab-btn--primary aiab-btn--sm">
                 <i data-lucide="mail"></i>
                 Contact
