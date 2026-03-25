@@ -252,23 +252,63 @@
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  .aiab-range-slider-track {
+  :root:not([data-theme="light"]) .aiab-range-slider-track {
     background: var(--apple-gray-700, #616161);
   }
 
-  .range-slider-handle {
-    background: var(--apple-gray-900, #212121);
+  :root:not([data-theme="light"]) .range-slider-handle {
+    background: var(--color-surface-elevated, #2c2c2e);
     border-color: var(--color-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
-  .range-slider-tick {
+  :root:not([data-theme="light"]) .range-slider-tooltip {
+    background: var(--color-surface-overlay, #3a3a3c);
+  }
+
+  :root:not([data-theme="light"]) .range-slider-tooltip::after {
+    border-top-color: var(--color-surface-overlay, #3a3a3c);
+  }
+
+  :root:not([data-theme="light"]) .vertical .range-slider-tooltip::after {
+    border-right-color: var(--color-surface-overlay, #3a3a3c);
+    border-top-color: transparent;
+  }
+
+  :root:not([data-theme="light"]) .range-slider-tick {
     background: var(--apple-gray-600, #757575);
   }
 
-  .range-slider-scale-label,
-  .aiab-range-slider-label {
-    color: var(--apple-gray-400, #bdbdbd);
+  :root:not([data-theme="light"]) .range-slider-scale-label,
+  :root:not([data-theme="light"]) .aiab-range-slider-label {
+    color: var(--color-text-secondary, #aeaeb2);
   }
+}
+
+[data-theme="dark"] .aiab-range-slider-track {
+  background: var(--apple-gray-700, #616161);
+}
+[data-theme="dark"] .range-slider-handle {
+  background: var(--color-surface-elevated, #2c2c2e);
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .range-slider-tooltip {
+  background: var(--color-surface-overlay, #3a3a3c);
+}
+[data-theme="dark"] .range-slider-tooltip::after {
+  border-top-color: var(--color-surface-overlay, #3a3a3c);
+}
+[data-theme="dark"] .vertical .range-slider-tooltip::after {
+  border-right-color: var(--color-surface-overlay, #3a3a3c);
+  border-top-color: transparent;
+}
+[data-theme="dark"] .range-slider-tick {
+  background: var(--apple-gray-600, #757575);
+}
+[data-theme="dark"] .range-slider-scale-label,
+[data-theme="dark"] .aiab-range-slider-label {
+  color: var(--color-text-secondary, #aeaeb2);
 }
 
 /* Accessibility */
