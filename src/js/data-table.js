@@ -4,6 +4,8 @@
  * Part of Amphibious 2.0 Component Library
  */
 
+import { sanitizeHTML } from '../utils/sanitize';
+
 class DataTableComponent {
   constructor(element, options = {}) {
     this.element = element;
@@ -557,10 +559,8 @@ class DataTableComponent {
         const value = rowData[column.key];
 
         // Apply cell formatting
-        // ⚠ SECURITY: column.render returns raw HTML set via innerHTML.
-        // Consumers MUST sanitize user-supplied data before returning HTML.
         if (column.render) {
-          cell.innerHTML = column.render(value, rowData);
+          cell.innerHTML = sanitizeHTML(column.render(value, rowData));
         } else {
           cell.textContent = value;
         }

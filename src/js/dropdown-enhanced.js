@@ -5,6 +5,7 @@
  */
 
 import { escapeHTML } from '../utils/escape-html.js';
+import { sanitizeHTML } from '../utils/sanitize';
 
 class DropdownEnhanced {
   constructor(element, options = {}) {
@@ -37,8 +38,8 @@ class DropdownEnhanced {
       minChars: options.minChars || 1,
 
       // Display options
-      optionRenderer: options.optionRenderer || null, // (item, instance) => HTML — caller must sanitize
-      selectedRenderer: options.selectedRenderer || null, // (item, instance) => HTML — caller must sanitize
+      optionRenderer: options.optionRenderer || null, // (item, instance) => HTML — sanitized via DOMPurify
+      selectedRenderer: options.selectedRenderer || null, // (item, instance) => HTML — sanitized via DOMPurify
       groupBy: options.groupBy || null,
       sortBy: options.sortBy || null,
 
@@ -418,10 +419,8 @@ class DropdownEnhanced {
     }
 
     // Custom renderer or default
-    // ⚠ SECURITY: optionRenderer returns raw HTML set via innerHTML.
-    // Consumers MUST sanitize user-supplied data before returning HTML.
     if (this.options.optionRenderer) {
-      itemEl.innerHTML = this.options.optionRenderer(item, this);
+      itemEl.innerHTML = sanitizeHTML(this.options.optionRenderer(item, this));
     } else {
       // Checkbox for multiple
       if (this.options.multiple) {
@@ -824,10 +823,8 @@ class DropdownEnhanced {
         // Single select display
         const item = this.state.selectedItems[0];
 
-        // ⚠ SECURITY: selectedRenderer returns raw HTML set via innerHTML.
-        // Consumers MUST sanitize user-supplied data before returning HTML.
         if (this.options.selectedRenderer) {
-          this.valueText.innerHTML = this.options.selectedRenderer(item, this);
+          this.valueText.innerHTML = sanitizeHTML(this.options.selectedRenderer(item, this));
         } else {
           this.valueText.className = 'aiab-dropdown-value-text';
           this.valueText.textContent = item.text;

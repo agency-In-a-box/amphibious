@@ -5,6 +5,7 @@
  */
 
 import { escapeHTML } from '../utils/escape-html.js';
+import { sanitizeHTML } from '../utils/sanitize';
 
 class SearchBar {
   constructor(element, options = {}) {
@@ -27,7 +28,7 @@ class SearchBar {
       onSearch: options.onSearch || null,
       onChange: options.onChange || null,
       onClear: options.onClear || null,
-      renderItem: options.renderItem || null, // (result, query) => HTML — caller must sanitize
+      renderItem: options.renderItem || null, // (result, query) => HTML — sanitized via DOMPurify
       ...options,
     };
 
@@ -365,10 +366,8 @@ class SearchBar {
     item.className = 'aiab-search-bar-item';
     item.setAttribute('role', 'option');
 
-    // ⚠ SECURITY: renderItem returns raw HTML set via innerHTML.
-    // Consumers MUST sanitize user-supplied data before returning HTML.
     if (this.options.renderItem) {
-      item.innerHTML = this.options.renderItem(result, query);
+      item.innerHTML = sanitizeHTML(this.options.renderItem(result, query));
     } else if (typeof result === 'string') {
       // Simple string result
       item.innerHTML = `

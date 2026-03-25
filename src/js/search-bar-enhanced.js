@@ -5,6 +5,7 @@
  */
 
 import { escapeHTML } from '../utils/escape-html.js';
+import { sanitizeHTML } from '../utils/sanitize';
 
 class SearchBarEnhanced {
   constructor(element, options = {}) {
@@ -49,7 +50,7 @@ class SearchBarEnhanced {
       wildcards: options.wildcards || false, // Support * and ?
 
       // Display options
-      resultTemplate: options.resultTemplate || null, // (item, query, instance) => HTML — caller must sanitize
+      resultTemplate: options.resultTemplate || null, // (item, query, instance) => HTML — sanitized via DOMPurify
       groupBy: options.groupBy || null,
       sortBy: options.sortBy || null,
       noResultsText: options.noResultsText || 'No results found',
@@ -858,10 +859,8 @@ class SearchBarEnhanced {
     resultEl.setAttribute('role', 'option');
     resultEl.dataset.index = index;
 
-    // ⚠ SECURITY: resultTemplate returns raw HTML set via innerHTML.
-    // Consumers MUST sanitize user-supplied data before returning HTML.
     if (this.options.resultTemplate) {
-      resultEl.innerHTML = this.options.resultTemplate(item, this.state.query, this);
+      resultEl.innerHTML = sanitizeHTML(this.options.resultTemplate(item, this.state.query, this));
     } else {
       const text = typeof item === 'string' ? item : item.text || item.label || item.title || '';
       const displayText = this.options.highlight
