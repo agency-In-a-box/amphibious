@@ -81,11 +81,11 @@ h6 {
 .aiab-lead {
   font-size: 1.5em;
   line-height: 1.6;
-  color: var(--color-muted, #777);
+  color: var(--color-muted, #767676);
 }
 
 .aiab-subheader {
-  color: var(--color-muted, #777);
+  color: var(--color-muted, #767676);
 }
 
 /* Paragraphs
@@ -107,7 +107,7 @@ img {
 p.aiab-lead {
   font-size: 1.5em;
   line-height: 1.6;
-  color: var(--color-muted, #777);
+  color: var(--color-muted, #767676);
 }
 
 /* Code & Pre
