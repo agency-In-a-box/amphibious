@@ -412,8 +412,10 @@ export class AmphibiousFooter {
   private handleNewsletterSubmit(email: string): void {
     if (this.options.onNewsletterSubmit) {
       this.options.onNewsletterSubmit(email);
-    } else {
-      // Default behavior - show success message
+      return;
+    }
+
+    const showSuccess = () => {
       const forms = this.element.querySelectorAll('[id^="newsletterForm"]');
       forms.forEach((form) => {
         const originalContent = form.innerHTML;
@@ -433,9 +435,8 @@ export class AmphibiousFooter {
           this.initializeIcons();
         }, 3000);
       });
-    }
+    };
 
-    // In production, this would send to the API
     if (this.options.newsletterAction) {
       fetch(this.options.newsletterAction, {
         method: 'POST',
@@ -443,9 +444,20 @@ export class AmphibiousFooter {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email }),
-      }).catch((error) => {
-        console.error('Newsletter subscription error:', error);
-      });
+      })
+        .then((response) => {
+          if (response.ok) {
+            showSuccess();
+          } else {
+            console.error('Newsletter subscription failed:', response.status);
+          }
+        })
+        .catch((error) => {
+          console.error('Newsletter subscription error:', error);
+        });
+    } else {
+      // No API endpoint configured — show success immediately
+      showSuccess();
     }
   }
 
