@@ -16,6 +16,10 @@ class ToastComponent {
       closable: true,
       progress: true,
     };
+    this.labels = {
+      notifications: 'Notifications',
+      closeNotification: 'Close notification',
+    };
     this.init();
   }
 
@@ -42,7 +46,7 @@ class ToastComponent {
     this.container.className = `aiab-toast-container aiab-toast-container--${position}`;
     this.container.setAttribute('role', 'region');
     this.container.setAttribute('aria-live', 'polite');
-    this.container.setAttribute('aria-label', 'Notifications');
+    this.container.setAttribute('aria-label', this.labels.notifications);
     document.body.appendChild(this.container);
   }
 
@@ -133,7 +137,7 @@ class ToastComponent {
     // Add close button
     if (config.closable) {
       html += `
-        <button class="aiab-toast__close" aria-label="Close notification">
+        <button class="aiab-toast__close" aria-label="${escapeHTML(this.labels.closeNotification)}">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
             <path d="M13.7 0.3a1 1 0 0 1 0 1.4L8.4 7l5.3 5.3a1 1 0 0 1-1.4 1.4L7 8.4l-5.3 5.3a1 1 0 0 1-1.4-1.4L5.6 7 .3 1.7A1 1 0 0 1 1.7.3L7 5.6 12.3.3a1 1 0 0 1 1.4 0z"/>
           </svg>

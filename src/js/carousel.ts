@@ -104,6 +104,12 @@ export class AmphibiousCarousel {
         play: 'Start autoplay',
         pause: 'Pause autoplay',
       },
+      labels: {
+        carousel: 'Carousel',
+        slide: (index: number, total: number) => `Slide ${index} of ${total}`,
+        pagination: 'Carousel pagination',
+        ...(options.labels || {}),
+      },
       ...options,
     };
 
@@ -245,7 +251,7 @@ export class AmphibiousCarousel {
     this.element.setAttribute('role', 'region');
     this.element.setAttribute('aria-roledescription', 'carousel');
     if (!this.element.hasAttribute('aria-label')) {
-      this.element.setAttribute('aria-label', 'Carousel');
+      this.element.setAttribute('aria-label', this.options.labels.carousel);
     }
 
     this.splide.on('mounted', () => {
@@ -253,7 +259,7 @@ export class AmphibiousCarousel {
       const slides = this.element.querySelectorAll('.splide__slide');
       slides.forEach((slide, index) => {
         if (!slide.getAttribute('aria-label')) {
-          slide.setAttribute('aria-label', `Slide ${index + 1} of ${slides.length}`);
+          slide.setAttribute('aria-label', this.options.labels.slide(index + 1, slides.length));
         }
         slide.setAttribute('role', 'tabpanel');
       });
@@ -262,7 +268,7 @@ export class AmphibiousCarousel {
       const pagination = this.element.querySelector('.splide__pagination');
       if (pagination) {
         pagination.setAttribute('role', 'tablist');
-        pagination.setAttribute('aria-label', 'Carousel pagination');
+        pagination.setAttribute('aria-label', this.options.labels.pagination);
       }
     });
   }

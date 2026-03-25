@@ -18,6 +18,16 @@ class DataTableComponent {
       pageSize: 10,
       selectable: false,
       expandable: false,
+      labels: {
+        search: 'Search...',
+        previous: '\u2190 Previous',
+        next: 'Next \u2192',
+        noEntries: 'No entries to show',
+        showing: (start, end, total) => `Showing ${start} to ${end} of ${total} entries`,
+        showingAll: (total) => `Showing ${total} entries`,
+        filtered: (total) => `(filtered from ${total} total)`,
+        ...(options.labels || {}),
+      },
       ...options,
     };
 
@@ -212,7 +222,7 @@ class DataTableComponent {
     const input = document.createElement('input');
     input.className = 'aiab-data-table-search__input';
     input.type = 'text';
-    input.placeholder = this.config.searchPlaceholder || 'Search...';
+    input.placeholder = this.config.searchPlaceholder || this.config.labels.search;
 
     container.appendChild(icon);
     container.appendChild(input);
@@ -284,7 +294,7 @@ class DataTableComponent {
     // Previous button
     const prevBtn = document.createElement('button');
     prevBtn.className = 'aiab-data-table-pagination__button';
-    prevBtn.innerHTML = '← Previous';
+    prevBtn.innerHTML = this.config.labels.previous;
     container.appendChild(prevBtn);
     this.prevButton = prevBtn;
 
@@ -297,7 +307,7 @@ class DataTableComponent {
     // Next button
     const nextBtn = document.createElement('button');
     nextBtn.className = 'aiab-data-table-pagination__button';
-    nextBtn.innerHTML = 'Next →';
+    nextBtn.innerHTML = this.config.labels.next;
     container.appendChild(nextBtn);
     this.nextButton = nextBtn;
 
@@ -635,16 +645,16 @@ class DataTableComponent {
       const _showing = Math.min(endIndex, total) - startIndex;
 
       if (total === 0) {
-        this.infoElement.textContent = 'No entries to show';
+        this.infoElement.textContent = this.config.labels.noEntries;
       } else if (this.config.paginate) {
-        this.infoElement.textContent = `Showing ${startIndex + 1} to ${Math.min(endIndex, total)} of ${total} entries`;
+        this.infoElement.textContent = this.config.labels.showing(startIndex + 1, Math.min(endIndex, total), total);
       } else {
-        this.infoElement.textContent = `Showing ${total} entries`;
+        this.infoElement.textContent = this.config.labels.showingAll(total);
       }
 
       // Add filtered indicator
       if (this.searchTerm || Object.keys(this.filters).length > 0) {
-        this.infoElement.textContent += ` (filtered from ${this.data.length} total)`;
+        this.infoElement.textContent += ` ${this.config.labels.filtered(this.data.length)}`;
       }
     }
   }

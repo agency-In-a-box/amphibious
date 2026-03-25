@@ -17,6 +17,11 @@ class Dropdown {
       onChange: options.onChange || null,
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
+      labels: {
+        search: 'Search...',
+        searchOptions: 'Search options',
+        ...(options.labels || {}),
+      },
       ...options,
     };
 
@@ -74,8 +79,8 @@ class Dropdown {
       const searchInput = document.createElement('input');
       searchInput.type = 'text';
       searchInput.className = 'aiab-dropdown-search-input';
-      searchInput.placeholder = 'Search...';
-      searchInput.setAttribute('aria-label', 'Search options');
+      searchInput.placeholder = this.options.labels.search;
+      searchInput.setAttribute('aria-label', this.options.labels.searchOptions);
 
       searchContainer.appendChild(searchInput);
       menu.appendChild(searchContainer);

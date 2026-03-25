@@ -50,6 +50,11 @@ export interface DarkModeToggleOptions {
   togglePosition?: DarkModeTogglePosition;
   transitionDuration?: number;
   onChange?: (event: DarkModeChangeEvent) => void;
+  labels?: {
+    toggleDarkMode?: string;
+    toggleHint?: string;
+    status?: (mode: string) => string;
+  };
 }
 
 /** Internal defaults merged with user-supplied options. */
@@ -60,6 +65,11 @@ interface ResolvedOptions {
   togglePosition: DarkModeTogglePosition;
   transitionDuration: number;
   onChange: ((event: DarkModeChangeEvent) => void) | null;
+  labels: {
+    toggleDarkMode: string;
+    toggleHint: string;
+    status: (mode: string) => string;
+  };
 }
 
 /** Position CSS map for the toggle button. */
@@ -180,6 +190,12 @@ export class DarkModeToggle {
       transitionDuration: 200,
       onChange: null,
       ...options,
+      labels: {
+        toggleDarkMode: 'Toggle dark mode',
+        toggleHint: 'Toggle dark mode (\u2318+Shift+D)',
+        status: (mode: string) => `Dark mode: ${mode}. Click to toggle.`,
+        ...(options.labels || {}),
+      },
     };
 
     this.currentTheme = this.loadTheme();
@@ -392,8 +408,8 @@ export class DarkModeToggle {
 
     const button = document.createElement('button');
     button.className = 'aiab-dark-mode-toggle';
-    button.setAttribute('aria-label', 'Toggle dark mode');
-    button.setAttribute('title', 'Toggle dark mode (\u2318+Shift+D)');
+    button.setAttribute('aria-label', this.options.labels.toggleDarkMode);
+    button.setAttribute('title', this.options.labels.toggleHint);
 
     const positionStyle =
       POSITION_STYLES[this.options.togglePosition] ?? POSITION_STYLES['bottom-right'];
@@ -417,8 +433,8 @@ export class DarkModeToggle {
         ? `System (${effectiveTheme})`
         : effectiveTheme.charAt(0).toUpperCase() + effectiveTheme.slice(1);
 
-    this.toggleButton.setAttribute('aria-label', `Dark mode: ${statusText}. Click to toggle.`);
-    this.toggleButton.setAttribute('title', `Dark mode: ${statusText} (\u2318+Shift+D)`);
+    this.toggleButton.setAttribute('aria-label', this.options.labels.status(statusText));
+    this.toggleButton.setAttribute('title', `${statusText} — ${this.options.labels.toggleHint}`);
   }
 
   // ---------------------------------------------------------------------------

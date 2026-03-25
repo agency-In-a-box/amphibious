@@ -29,6 +29,10 @@ class SearchBar {
       onChange: options.onChange || null,
       onClear: options.onClear || null,
       renderItem: options.renderItem || null, // (result, query) => HTML — sanitized via DOMPurify
+      labels: {
+        clearSearch: 'Clear search',
+        ...(options.labels || {}),
+      },
       ...options,
     };
 
@@ -88,7 +92,7 @@ class SearchBar {
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     `;
-    clearBtn.setAttribute('aria-label', 'Clear search');
+    clearBtn.setAttribute('aria-label', this.options.labels.clearSearch);
 
     // Create spinner
     const spinner = document.createElement('div');
