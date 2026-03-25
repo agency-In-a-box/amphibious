@@ -9,6 +9,16 @@
  * - Two activation methods: @media (prefers-color-scheme: dark) and [data-theme="dark"]
  * - Component overrides only for hardcoded values (var() references auto-inherit)
  * - Toggle icon states: moon in light mode, sun in dark mode
+ *
+ * DRY strategy:
+ * - The :root token blocks ARE duplicated between the @media query and [data-theme]
+ *   selector — this is unavoidable in pure CSS (media queries and attribute selectors
+ *   cannot be combined into a single rule). A preprocessor or PostCSS plugin could
+ *   generate both from one source, but that adds build complexity.
+ * - Base elements (body, headings, links, code, blockquotes, hr) inherit dark
+ *   values automatically through tokens, so no element-level overrides are needed.
+ * - Component overrides below exist only for components with hardcoded colors
+ *   (toast, data-table, buttons) that haven't yet been fully tokenized.
  */
 
 /* ==========================================================================
@@ -122,6 +132,20 @@
     --carousel-arrow-hover-bg: var(--color-surface-elevated);
     --carousel-dot-bg: var(--color-border-strong);
     --carousel-dot-hover-bg: var(--color-text-tertiary);
+
+    /* Typography tokens — enables auto-inheritance for base elements */
+    --color-heading: #ffffff;
+    --color-muted: #8e8e93;
+    --color-code-bg: var(--color-surface);
+    --color-border-quote: var(--color-border-strong);
+    --color-bg-kbd: var(--color-surface);
+    --color-link: var(--apple-info);
+    --color-link-hover: #409cff;
+    --color-link-active: var(--apple-info);
+    --color-link-focus: var(--apple-info);
+    --color-link-visited: #bf8cff;
+    --color-selection-bg: rgba(255, 149, 0, 0.3);
+    --color-selection-text: #ffffff;
   }
 }
 
@@ -211,6 +235,20 @@
   --carousel-arrow-hover-bg: var(--color-surface-elevated);
   --carousel-dot-bg: var(--color-border-strong);
   --carousel-dot-hover-bg: var(--color-text-tertiary);
+
+  /* Typography tokens — enables auto-inheritance for base elements */
+  --color-heading: #ffffff;
+  --color-muted: #8e8e93;
+  --color-code-bg: var(--color-surface);
+  --color-border-quote: var(--color-border-strong);
+  --color-bg-kbd: var(--color-surface);
+  --color-link: var(--apple-info);
+  --color-link-hover: #409cff;
+  --color-link-active: var(--apple-info);
+  --color-link-focus: var(--apple-info);
+  --color-link-visited: #bf8cff;
+  --color-selection-bg: rgba(255, 149, 0, 0.3);
+  --color-selection-text: #ffffff;
 }
 
 /* ==========================================================================
@@ -229,115 +267,13 @@
   color-scheme: dark;
 }
 
-/* Body background and text */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    transition: var(--theme-transition);
-  }
-}
-[data-theme="dark"] body {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  transition: var(--theme-transition);
-}
-
-/* Headings */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) :is(h1, h2, h3, h4, h5, h6) {
-    color: var(--color-text);
-  }
-}
-[data-theme="dark"] :is(h1, h2, h3, h4, h5, h6) {
-  color: var(--color-text);
-}
-
-/* Links — hardcoded hover color */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) a {
-    color: var(--apple-info);
-  }
-  :root:not([data-theme="light"]) a:hover {
-    color: #409cff;
-  }
-}
-[data-theme="dark"] a {
-  color: var(--apple-info);
-}
-[data-theme="dark"] a:hover {
-  color: #409cff;
-}
-
-/* Code blocks */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) :is(code, pre) {
-    background-color: var(--color-surface);
-    color: var(--color-text);
-    border-color: var(--color-border);
-  }
-}
-[data-theme="dark"] :is(code, pre) {
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  border-color: var(--color-border);
-}
-
-/* Blockquotes */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) blockquote {
-    border-left-color: var(--color-border-strong);
-    color: var(--color-text-secondary);
-  }
-}
-[data-theme="dark"] blockquote {
-  border-left-color: var(--color-border-strong);
-  color: var(--color-text-secondary);
-}
-
-/* Tables */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) table {
-    border-color: var(--color-border);
-  }
-  :root:not([data-theme="light"]) th {
-    background-color: var(--color-surface);
-    border-color: var(--color-border);
-    color: var(--color-text);
-  }
-  :root:not([data-theme="light"]) td {
-    border-color: var(--color-border);
-    color: var(--color-text);
-  }
-  :root:not([data-theme="light"]) tr:nth-child(even) {
-    background-color: var(--color-surface);
-  }
-}
-[data-theme="dark"] table {
-  border-color: var(--color-border);
-}
-[data-theme="dark"] th {
-  background-color: var(--color-surface);
-  border-color: var(--color-border);
-  color: var(--color-text);
-}
-[data-theme="dark"] td {
-  border-color: var(--color-border);
-  color: var(--color-text);
-}
-[data-theme="dark"] tr:nth-child(even) {
-  background-color: var(--color-surface);
-}
-
-/* Horizontal rules */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) hr {
-    border-color: var(--color-border);
-  }
-}
-[data-theme="dark"] hr {
-  border-color: var(--color-border);
-}
+/*
+ * Body, headings, links, code, blockquotes, and horizontal rules
+ * now inherit dark mode values automatically through :root token
+ * overrides above (--color-text, --color-background, --color-heading,
+ * --color-link, --color-code-bg, --color-border-quote, --color-border).
+ * No element-level overrides needed for these elements.
+ */
 
 /* ==========================================================================
    Form Elements

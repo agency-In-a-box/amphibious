@@ -10,6 +10,8 @@ body {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-text);
+  background-color: var(--color-background);
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
 /* Headings
