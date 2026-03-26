@@ -60,8 +60,21 @@
   },
   "sideEffects": [
     "*.css",
+    "./src/js/index.js",
     "./src/js/navigation.ts",
-    "./src/js/dark-mode-toggle.ts"
+    "./src/js/dark-mode-toggle.ts",
+    "./src/js/carousel.ts",
+    "./src/js/accordion.js",
+    "./src/js/color-picker.js",
+    "./src/js/data-table.js",
+    "./src/js/datepicker.js",
+    "./src/js/dropdown.js",
+    "./src/js/file-upload.js",
+    "./src/js/form-builder.js",
+    "./src/js/range-slider.js",
+    "./src/js/search-bar.js",
+    "./src/js/timeline.js",
+    "./src/js/component-registry.js"
   ],
   "license": "MIT",
   "repository": {
@@ -76,6 +89,7 @@
     "@biomejs/biome": "^2.3.11",
     "@types/dompurify": "^3.2.0",
     "@types/node": "^25.0.2",
+    "axe-core": "^4.11.1",
     "cssnano": "^7.1.2",
     "happy-dom": "^20.0.11",
     "postcss": "^8.5.6",
