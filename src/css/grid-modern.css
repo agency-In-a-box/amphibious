@@ -9,9 +9,9 @@
 
 :root {
   --grid-columns: 16;
-  --grid-gap: 20px; /* 5 × 4px = 20px (4px aligned) */
-  --container-max-width: 1200px; /* 300 × 4px = 1200px (4px aligned) */
-  --container-padding: 20px; /* 5 × 4px = 20px (4px aligned) */
+  --grid-gap: var(--grid-gutter, 20px); /* References design-tokens.css */
+  --container-max-width: var(--container-width, 1200px); /* References design-tokens.css */
+  --container-padding: var(--grid-gutter, 20px); /* References design-tokens.css */
 }
 
 /* Container
@@ -27,7 +27,7 @@
 
 /* Special alignment for content that should align with navigation text */
 .aiab-container.align-with-nav {
-  padding-left: 2rem; /* 32px = 16px container + 16px nav item padding */
+  padding-inline-start: 2rem; /* 32px = 16px container + 16px nav item padding */
 }
 
 .aiab-container-fluid {
@@ -103,15 +103,13 @@
 .aiab-row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: calc(var(--grid-gap) / -2);
-  margin-right: calc(var(--grid-gap) / -2);
+  margin-inline: calc(var(--grid-gap) / -2);
   margin-bottom: var(--grid-gap);
 }
 
 /* Ensure nested rows also display as flex */
 [class*="col-"] .aiab-row {
-  margin-left: calc(var(--grid-gap) / -2);
-  margin-right: calc(var(--grid-gap) / -2);
+  margin-inline: calc(var(--grid-gap) / -2);
   display: flex;
   flex-wrap: wrap;
 }
@@ -125,8 +123,7 @@
 /* Column system for flexbox rows */
 [class*="col-"] {
   box-sizing: border-box;
-  padding-left: calc(var(--grid-gap) / 2);
-  padding-right: calc(var(--grid-gap) / 2);
+  padding-inline: calc(var(--grid-gap) / 2);
   /* Remove float - we're using flexbox! */
 }
 
@@ -237,117 +234,117 @@
    ========================================================================== */
 
 .aiab-offset-1 {
-  margin-left: 6.25%;
+  margin-inline-start: 6.25%;
 }
 .aiab-offset-2 {
-  margin-left: 12.5%;
+  margin-inline-start: 12.5%;
 }
 .aiab-offset-3 {
-  margin-left: 18.75%;
+  margin-inline-start: 18.75%;
 }
 .aiab-offset-4 {
-  margin-left: 25%;
+  margin-inline-start: 25%;
 }
 .aiab-offset-5 {
-  margin-left: 31.25%;
+  margin-inline-start: 31.25%;
 }
 .aiab-offset-6 {
-  margin-left: 37.5%;
+  margin-inline-start: 37.5%;
 }
 .aiab-offset-7 {
-  margin-left: 43.75%;
+  margin-inline-start: 43.75%;
 }
 .aiab-offset-8 {
-  margin-left: 50%;
+  margin-inline-start: 50%;
 }
 .aiab-offset-9 {
-  margin-left: 56.25%;
+  margin-inline-start: 56.25%;
 }
 .aiab-offset-10 {
-  margin-left: 62.5%;
+  margin-inline-start: 62.5%;
 }
 .aiab-offset-11 {
-  margin-left: 68.75%;
+  margin-inline-start: 68.75%;
 }
 .aiab-offset-12 {
-  margin-left: 75%;
+  margin-inline-start: 75%;
 }
 .aiab-offset-13 {
-  margin-left: 81.25%;
+  margin-inline-start: 81.25%;
 }
 .aiab-offset-14 {
-  margin-left: 87.5%;
+  margin-inline-start: 87.5%;
 }
 .aiab-offset-15 {
-  margin-left: 93.75%;
+  margin-inline-start: 93.75%;
 }
 
 /* Push/Pull for source ordering
    ========================================================================== */
 
 .aiab-push-1 {
-  left: 6.25%;
+  inset-inline-start: 6.25%;
   position: relative;
 }
 .aiab-push-2 {
-  left: 12.5%;
+  inset-inline-start: 12.5%;
   position: relative;
 }
 .aiab-push-3 {
-  left: 18.75%;
+  inset-inline-start: 18.75%;
   position: relative;
 }
 .aiab-push-4 {
-  left: 25%;
+  inset-inline-start: 25%;
   position: relative;
 }
 .aiab-push-5 {
-  left: 31.25%;
+  inset-inline-start: 31.25%;
   position: relative;
 }
 .aiab-push-6 {
-  left: 37.5%;
+  inset-inline-start: 37.5%;
   position: relative;
 }
 .aiab-push-7 {
-  left: 43.75%;
+  inset-inline-start: 43.75%;
   position: relative;
 }
 .aiab-push-8 {
-  left: 50%;
+  inset-inline-start: 50%;
   position: relative;
 }
 
 .aiab-pull-1 {
-  right: 6.25%;
+  inset-inline-end: 6.25%;
   position: relative;
 }
 .aiab-pull-2 {
-  right: 12.5%;
+  inset-inline-end: 12.5%;
   position: relative;
 }
 .aiab-pull-3 {
-  right: 18.75%;
+  inset-inline-end: 18.75%;
   position: relative;
 }
 .aiab-pull-4 {
-  right: 25%;
+  inset-inline-end: 25%;
   position: relative;
 }
 .aiab-pull-5 {
-  right: 31.25%;
+  inset-inline-end: 31.25%;
   position: relative;
 }
 .aiab-pull-6 {
-  right: 37.5%;
+  inset-inline-end: 37.5%;
   position: relative;
 }
 .aiab-pull-7 {
-  right: 43.75%;
+  inset-inline-end: 43.75%;
   position: relative;
 }
 .aiab-pull-8 {
-  right: 50%;
+  inset-inline-end: 50%;
   position: relative;
 }
 
@@ -370,21 +367,19 @@
   }
 
   .aiab-container {
-    padding: 0 10px;
+    padding-inline: 10px;
   }
 
   /* Stack all columns on mobile */
   .aiab-row {
-    margin-left: 0;
-    margin-right: 0;
+    margin-inline: 0;
   }
 
   [class*="col-"] {
     flex: 0 0 100%;
     max-width: 100%;
     width: 100%;
-    padding-left: 0;
-    padding-right: 0;
+    padding-inline: 0;
     margin-bottom: var(--grid-gap);
   }
 
@@ -406,15 +401,14 @@
 
   /* Reset offsets on mobile */
   [class*="offset-"] {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   /* Reset push/pull on mobile */
   [class*="push-"],
   [class*="pull-"] {
     position: static;
-    left: auto;
-    right: auto;
+    inset-inline: auto;
   }
 
   /* CSS Grid becomes single column */
@@ -430,14 +424,16 @@
 /* Utility Classes
    ========================================================================== */
 
-.aiab-text-left {
-  text-align: left;
+.aiab-text-left,
+.aiab-text-start {
+  text-align: start;
 }
 .aiab-text-center {
   text-align: center;
 }
-.aiab-text-right {
-  text-align: right;
+.aiab-text-right,
+.aiab-text-end {
+  text-align: end;
 }
 
 .aiab-hide-mobile {

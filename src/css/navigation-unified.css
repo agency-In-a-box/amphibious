@@ -215,7 +215,7 @@
   font-size: var(--nav-font-size); /* Same as navigation: 1rem */
   line-height: 1.5; /* Match navigation line-height */
   color: var(--nav-text); /* Same as other nav items */
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 /* Logo hover state - same as other nav items */
@@ -233,7 +233,7 @@
   display: inline-block;
   width: 0;
   height: 0;
-  margin-left: 0.5rem;
+  margin-inline-start: 0.5rem;
   vertical-align: middle;
   border-style: solid;
   border-width: 4px 4px 0 4px;
@@ -254,7 +254,7 @@
     display: inline-block;
     width: 0;
     height: 0;
-    margin-left: 0.5rem;
+    margin-inline-start: 0.5rem;
     vertical-align: middle;
     border-style: solid;
     border-width: 4px 4px 0 4px;
@@ -274,7 +274,7 @@
 .aiab-horizontal ul {
   position: absolute;
   top: 100%;
-  left: 0;
+  inset-inline-start: 0;
   min-width: 200px;
   background: var(--nav-dropdown-bg);
   border: 1px solid var(--nav-dropdown-border);
@@ -301,8 +301,7 @@
   content: "";
   position: absolute;
   top: -10px;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   height: 10px;
   background: transparent;
 }
@@ -332,8 +331,8 @@
 
 .aiab-horizontal ul ul {
   top: 0;
-  left: 100%;
-  margin-left: -1px;
+  inset-inline-start: 100%;
+  margin-inline-start: -1px;
 }
 
 /* Show third level on hover */
@@ -348,14 +347,14 @@
 /* Third level indicator - Semantic detection */
 .aiab-horizontal ul li:has(> ul) > a::after {
   content: "";
-  float: right;
+  float: inline-end;
   width: 0;
   height: 0;
   border-style: solid;
   border-width: 4px 0 4px 4px;
   border-color: transparent transparent transparent currentColor;
-  margin-left: auto;
-  margin-right: 0;
+  margin-inline-start: auto;
+  margin-inline-end: 0;
   opacity: 0.5;
 }
 
@@ -363,14 +362,14 @@
 @supports not selector(:has(*)) {
   .aiab-horizontal ul li[aria-haspopup="true"] > a::after {
     content: "";
-    float: right;
+    float: inline-end;
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 4px 0 4px 4px;
     border-color: transparent transparent transparent currentColor;
-    margin-left: auto;
-    margin-right: 0;
+    margin-inline-start: auto;
+    margin-inline-end: 0;
     opacity: 0.5;
   }
 }
@@ -381,7 +380,7 @@
 .aiab-horizontal ul ul ul {
   /* Same positioning as level 2 */
   top: 0;
-  left: 100%;
+  inset-inline-start: 100%;
 }
 
 /* Mobile Navigation (< 768px)
@@ -393,7 +392,7 @@
     display: block;
     position: absolute;
     top: 0.5rem;
-    right: 1rem;
+    inset-inline-end: 1rem;
   }
 
   /* Hide desktop utility */
@@ -405,8 +404,7 @@
   .aiab-horizontal {
     position: fixed;
     top: 60px;
-    left: 0;
-    right: 0;
+    inset-inline: 0;
     bottom: 0;
     flex-direction: column;
     align-items: stretch;
@@ -432,10 +430,7 @@
   .aiab-site-nav::after {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: var(--nav-mobile-overlay);
     opacity: 0;
     visibility: hidden;
@@ -471,7 +466,7 @@
     border: none;
     border-radius: 0;
     background: transparent;
-    padding-left: 1rem;
+    padding-inline-start: 1rem;
     margin-top: 0.5rem;
     display: none;
   }
@@ -484,7 +479,7 @@
 
   /* Mobile dropdown toggle - Semantic detection */
   .aiab-horizontal li:has(> ul) > a::after {
-    float: right;
+    float: inline-end;
     transition: transform var(--nav-transition);
   }
 
@@ -495,7 +490,7 @@
   /* Fallback for browsers without :has() */
   @supports not selector(:has(*)) {
     .aiab-horizontal li[aria-haspopup="true"] > a::after {
-      float: right;
+      float: inline-end;
       transition: transform var(--nav-transition);
     }
   }
@@ -509,8 +504,8 @@
   /* Third level mobile */
   .aiab-horizontal ul ul {
     position: static;
-    left: auto;
-    padding-left: 1rem;
+    inset-inline-start: auto;
+    padding-inline-start: 1rem;
   }
 }
 
@@ -539,14 +534,14 @@
   /* Ensure dropdowns don't go off-screen */
   .aiab-horizontal > li:last-child ul,
   .aiab-horizontal > li:nth-last-child(2) ul {
-    left: auto;
-    right: 0;
+    inset-inline-start: auto;
+    inset-inline-end: 0;
   }
 
   .aiab-horizontal ul > li:last-child ul,
   .aiab-horizontal ul > li:nth-last-child(2) ul {
-    left: auto;
-    right: 100%;
+    inset-inline-start: auto;
+    inset-inline-end: 100%;
   }
 }
 
@@ -581,7 +576,7 @@
 .aiab-skip-link {
   position: absolute;
   top: -100%;
-  left: 0;
+  inset-inline-start: 0;
   background: var(--color-primary, #ed8b00);
   color: white;
   padding: 0.75em 1.5em;
