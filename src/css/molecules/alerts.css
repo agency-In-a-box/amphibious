@@ -194,7 +194,7 @@
 .aiab-alert__dismiss {
   position: absolute;
   top: 0.75rem;
-  right: 0.75rem;
+  inset-inline-end: 0.75rem;
   background: none;
   border: none;
   padding: 0.25rem;
@@ -226,7 +226,7 @@
 
 /* Dismissible Alert Padding Adjustment */
 .aiab-alert--dismissible {
-  padding-right: 3rem;
+  padding-inline-end: 3rem;
 }
 
 /* Alert Sizes */
@@ -237,11 +237,11 @@
 
 .aiab-alert--small .aiab-alert__dismiss {
   top: 0.5rem;
-  right: 0.5rem;
+  inset-inline-end: 0.5rem;
 }
 
 .aiab-alert--small.aiab-alert--dismissible {
-  padding-right: 2.5rem;
+  padding-inline-end: 2.5rem;
 }
 
 .aiab-alert--large {
@@ -251,11 +251,11 @@
 
 .aiab-alert--large .aiab-alert__dismiss {
   top: 1rem;
-  right: 1rem;
+  inset-inline-end: 1rem;
 }
 
 .aiab-alert--large.aiab-alert--dismissible {
-  padding-right: 3.5rem;
+  padding-inline-end: 3.5rem;
 }
 
 /* Alert Styles */
@@ -296,35 +296,34 @@
 .aiab-alert--minimal {
   background-color: transparent;
   border: none;
-  padding-left: 0;
-  padding-right: 0;
+  padding-inline: 0;
 }
 
-/* Alert with left border accent */
+/* Alert with inline-start border accent */
 .aiab-alert--accent {
-  border-left-width: 4px;
+  border-inline-start-width: 4px;
   border-radius: 0 var(--alert-border-radius) var(--alert-border-radius) 0;
 }
 
 .aiab-alert--accent.aiab-alert--success,
 .aiab-alert--accent.aiab-alert-success {
-  border-left-color: var(--alert-success-icon);
+  border-inline-start-color: var(--alert-success-icon);
 }
 
 .aiab-alert--accent.aiab-alert--info,
 .aiab-alert--accent.aiab-alert-info {
-  border-left-color: var(--alert-info-icon);
+  border-inline-start-color: var(--alert-info-icon);
 }
 
 .aiab-alert--accent.aiab-alert--warning,
 .aiab-alert--accent.aiab-alert-warning {
-  border-left-color: var(--alert-warning-icon);
+  border-inline-start-color: var(--alert-warning-icon);
 }
 
 .aiab-alert--accent.aiab-alert--error,
 .aiab-alert--accent.aiab-alert--danger,
 .aiab-alert--accent.aiab-alert-danger {
-  border-left-color: var(--alert-error-icon);
+  border-inline-start-color: var(--alert-error-icon);
 }
 
 /* Toast Notifications (positioned alerts) */

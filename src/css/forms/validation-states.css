@@ -55,7 +55,7 @@ label.aiab-required::after,
   content: " *";
   color: var(--validation-error);
   font-weight: 700;
-  margin-left: 0.25rem;
+  margin-inline-start: 0.25rem;
 }
 
 /* Optional indicator (explicit) */
@@ -66,7 +66,7 @@ label.aiab-optional::after,
   color: var(--validation-neutral);
   font-size: 0.875em;
   font-weight: 400;
-  margin-left: 0.25rem;
+  margin-inline-start: 0.25rem;
 }
 
 /* Required field group */
@@ -75,7 +75,7 @@ label.aiab-optional::after,
   content: " *";
   color: var(--validation-error);
   font-weight: 700;
-  margin-left: 0.25rem;
+  margin-inline-start: 0.25rem;
 }
 
 /* ========================================
@@ -165,7 +165,7 @@ input.aiab-error {
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 1.25rem;
-  padding-right: 2.5rem;
+  padding-inline-end: 2.5rem;
 }
 
 /* ========================================
@@ -219,7 +219,7 @@ input.aiab-success {
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 1.25rem;
-  padding-right: 2.5rem;
+  padding-inline-end: 2.5rem;
 }
 
 /* ========================================
@@ -269,7 +269,7 @@ input.aiab-warning {
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 1.25rem;
-  padding-right: 2.5rem;
+  padding-inline-end: 2.5rem;
 }
 
 /* ========================================
@@ -309,7 +309,7 @@ input.aiab-warning {
 .aiab-character-count,
 .aiab-field-counter {
   display: block;
-  text-align: right;
+  text-align: end;
   color: var(--validation-neutral);
   font-size: 0.75rem;
   margin-top: 0.25rem;
@@ -404,7 +404,7 @@ input.aiab-warning {
 
 .aiab-validation-summary ul {
   margin: 0;
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
   list-style-type: disc;
 }
 

@@ -156,7 +156,7 @@
   top: 50%;
   transform: translateY(-50%);
   margin-bottom: 0;
-  margin-left: 8px;
+  margin-inline-start: 8px;
 }
 
 .vertical .range-slider-tooltip::after {
@@ -210,7 +210,7 @@
   width: 40px;
   height: 100%;
   margin-top: 0;
-  margin-right: 12px;
+  margin-inline-end: 12px;
 }
 
 .range-slider-scale-label {
@@ -225,7 +225,7 @@
   transform: translateY(50%);
   right: 0;
   left: auto;
-  text-align: right;
+  text-align: end;
 }
 
 /* Labels */

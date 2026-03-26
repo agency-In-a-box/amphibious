@@ -80,7 +80,7 @@
 /* Toolbox */
 .aiab-form-builder-toolbox {
   background: white;
-  border-right: 1px solid var(--apple-gray-200, #e0e0e0);
+  border-inline-end: 1px solid var(--apple-gray-200, #e0e0e0);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -207,10 +207,7 @@
 .aiab-form-builder-preview {
   display: none;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   padding: 32px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -287,8 +284,7 @@
 .aiab-form-field.drag-after::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   height: 2px;
   background: var(--apple-info, #007aff);
   z-index: 10;
@@ -400,7 +396,7 @@
 .aiab-switch-slider {
   position: absolute;
   top: 2px;
-  left: 2px;
+  inset-inline-start: 2px;
   width: 24px;
   height: 24px;
   background: white;
@@ -426,7 +422,7 @@
 /* Properties Panel */
 .aiab-form-builder-properties {
   background: white;
-  border-left: 1px solid var(--apple-gray-200, #e0e0e0);
+  border-inline-start: 1px solid var(--apple-gray-200, #e0e0e0);
   overflow-y: auto;
 }
 
@@ -502,7 +498,7 @@
 }
 
 .aiab-property-checkbox {
-  margin-right: 8px;
+  margin-inline-end: 8px;
 }
 
 .aiab-add-condition-btn {
@@ -712,11 +708,11 @@
   }
 
   .aiab-form-builder-toolbox.mobile-visible {
-    left: 0;
+    inset-inline-start: 0;
   }
 
   .aiab-form-builder-properties.mobile-visible {
-    right: 0;
+    inset-inline-end: 0;
   }
 }
 

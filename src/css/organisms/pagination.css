@@ -169,7 +169,7 @@
 }
 
 .aiab-pagination--simple .aiab-pagination__item:only-child {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 /* 2. Compact Pagination */
@@ -253,7 +253,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
   color: var(--pagination-text);
   font-size: var(--pagination-font-size);
 }
@@ -283,7 +283,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
   color: var(--pagination-text);
   font-size: var(--pagination-font-size);
 }
@@ -392,7 +392,7 @@
 
   .aiab-pagination__page-size,
   .aiab-pagination__jump {
-    margin-left: 0;
+    margin-inline-start: 0;
     justify-content: center;
   }
 
@@ -444,8 +444,9 @@
   }
 }
 
-/* RTL Support */
+/* RTL Support — background-position has no logical equivalent */
 [dir="rtl"] .aiab-pagination__page-size-select {
   background-position: left 0.5rem center;
-  padding: 0.375rem 0.75rem 0.375rem 2rem;
+  padding-inline-start: 2rem;
+  padding-inline-end: 0.75rem;
 }

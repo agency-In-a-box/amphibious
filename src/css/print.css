@@ -187,8 +187,8 @@
      ========================================================================== */
 
   blockquote {
-    border-left: 3px solid #999;
-    padding-left: 1em;
+    border-inline-start: 3px solid #999;
+    padding-inline-start: 1em;
     margin: 1em 0;
     page-break-inside: avoid;
     font-style: italic;
@@ -229,13 +229,13 @@
   .aiab-print-col-half {
     width: 48%;
     float: left;
-    margin-right: 2%;
+    margin-inline-end: 2%;
   }
 
   .aiab-print-col-third {
     width: 31%;
     float: left;
-    margin-right: 2%;
+    margin-inline-end: 2%;
   }
 
   /* Utility Classes for Print
@@ -300,8 +300,7 @@
   .aiab-print-header {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    inset-inline: 0;
     height: 1cm;
     text-align: center;
     font-size: 10pt;
@@ -310,8 +309,7 @@
   .aiab-print-footer {
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    inset-inline: 0;
     height: 1cm;
     text-align: center;
     font-size: 10pt;

@@ -179,7 +179,7 @@ blockquote p {
 blockquote {
   margin: 0 0 1.6em;
   padding: 0.6em 1.6em 0 1.3em;
-  border-left: 4px solid var(--color-border-quote, #ddd);
+  border-inline-start: 4px solid var(--color-border-quote, #ddd);
 }
 
 blockquote .author {
@@ -239,7 +239,8 @@ ul {
 }
 
 dd {
-  margin: 0 0 0 2.6em;
+  margin: 0;
+  margin-inline-start: 2.6em;
 }
 
 menu,
@@ -253,7 +254,7 @@ nav ul,
 nav ol,
 ul.aiab-inline,
 ol.aiab-inline {
-  margin-left: 0;
+  margin-inline-start: 0;
   list-style: none;
   list-style-image: none;
 }
@@ -267,12 +268,12 @@ ol.aiab-inline li,
 .aiab-inline ol,
 .aiab-inline ol li {
   display: inline-block;
-  margin-left: 0;
+  margin-inline-start: 0;
 }
 
 ul,
 ol {
-  margin-left: 1.6em;
+  margin-inline-start: 1.6em;
   margin-bottom: 1.625em;
 }
 
@@ -288,7 +289,7 @@ ol,
 ul.square,
 ul.circle,
 ul.disc {
-  margin-left: 2em;
+  margin-inline-start: 2em;
 }
 
 ul.square {
@@ -371,7 +372,8 @@ dl dt {
 }
 
 dl dd {
-  margin: 0 0 1em 1.2em;
+  margin: 0 0 1em;
+  margin-inline-start: 1.2em;
   color: var(--color-text-secondary, #666);
 }
 

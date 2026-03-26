@@ -82,7 +82,7 @@
   flex-shrink: 0;
   width: 1.25rem;
   height: 1.25rem;
-  margin-right: 0.75rem;
+  margin-inline-end: 0.75rem;
 }
 
 .aiab-toast__content {
@@ -107,7 +107,7 @@
 
 .aiab-toast__close {
   flex-shrink: 0;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
   padding: 0.25rem;
   background: transparent;
   border: none;
@@ -144,7 +144,7 @@
 
 /* Toast Variants */
 .aiab-toast--success {
-  border-left: 4px solid var(--toast-success);
+  border-inline-start: 4px solid var(--toast-success);
 }
 
 .aiab-toast--success .aiab-toast__icon {
@@ -152,7 +152,7 @@
 }
 
 .aiab-toast--error {
-  border-left: 4px solid var(--toast-error);
+  border-inline-start: 4px solid var(--toast-error);
 }
 
 .aiab-toast--error .aiab-toast__icon {
@@ -160,7 +160,7 @@
 }
 
 .aiab-toast--warning {
-  border-left: 4px solid var(--toast-warning);
+  border-inline-start: 4px solid var(--toast-warning);
 }
 
 .aiab-toast--warning .aiab-toast__icon {
@@ -168,7 +168,7 @@
 }
 
 .aiab-toast--info {
-  border-left: 4px solid var(--toast-info);
+  border-inline-start: 4px solid var(--toast-info);
 }
 
 .aiab-toast--info .aiab-toast__icon {
@@ -179,7 +179,7 @@
 .aiab-toast--dark {
   background: #1f2937;
   color: white;
-  border-left: none;
+  border-inline-start: none;
 }
 
 .aiab-toast--dark .aiab-toast__title {

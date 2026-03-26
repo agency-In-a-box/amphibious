@@ -172,7 +172,7 @@
 /* File info */
 .aiab-file-upload-info {
   flex: 1;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
   min-width: 0;
 }
 
@@ -220,8 +220,7 @@
 .aiab-file-upload-progress {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   height: 3px;
   background: var(--color-gray-300);
   overflow: hidden;
@@ -237,10 +236,7 @@
 .aiab-file-upload-progress-bar::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   animation: shimmer 1s infinite;
 }
@@ -342,7 +338,7 @@
 }
 
 .aiab-file-upload--grid .aiab-file-upload-info {
-  margin-left: 0;
+  margin-inline-start: 0;
   text-align: center;
 }
 

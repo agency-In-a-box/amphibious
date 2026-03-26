@@ -128,10 +128,10 @@ textarea[readonly] {
    ========================================================================== */
 
 select:not([multiple]):not([size]) {
-  padding-right: 2rem;
+  padding-inline-end: 2rem;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right var(--form-padding-x) center;
+  background-position: right var(--form-padding-x) center; /* TODO: no logical equivalent for background-position */
   background-size: 16px 12px;
 }
 
@@ -196,13 +196,13 @@ input[type="radio"]:focus {
 .aiab-form-check {
   display: block;
   min-height: var(--form-line-height);
-  padding-left: 1.75em;
+  padding-inline-start: 1.75em;
   margin-bottom: 0.125rem;
 }
 
 .aiab-form-check-input {
-  float: left;
-  margin-left: -1.75em;
+  float: inline-start;
+  margin-inline-start: -1.75em;
 }
 
 .aiab-form-check-label {
@@ -213,15 +213,15 @@ input[type="radio"]:focus {
 .aiab-form-check-inline {
   display: inline-flex;
   align-items: center;
-  padding-left: 0;
-  margin-right: 1rem;
+  padding-inline-start: 0;
+  margin-inline-end: 1rem;
 }
 
 .aiab-form-check-inline .aiab-form-check-input {
   position: static;
   margin-top: 0;
-  margin-right: 0.5rem;
-  margin-left: 0;
+  margin-inline-end: 0.5rem;
+  margin-inline-start: 0;
 }
 
 /* Form Groups
@@ -234,14 +234,12 @@ input[type="radio"]:focus {
 .aiab-form-row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -5px;
-  margin-left: -5px;
+  margin-inline: -5px;
 }
 
 .aiab-form-row > .col,
 .aiab-form-row > [class*="col-"] {
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-inline: 5px;
 }
 
 /* Form Grid
@@ -376,12 +374,12 @@ input[type="radio"]:focus {
   flex-flow: row wrap;
   align-items: center;
   margin-bottom: 0;
-  margin-right: 1rem;
+  margin-inline-end: 1rem;
 }
 
 .aiab-form-inline label {
   margin-bottom: 0;
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 
 /* Floating Labels
@@ -400,7 +398,7 @@ input[type="radio"]:focus {
 .aiab-form-floating > label {
   position: absolute;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   height: 100%;
   padding: 1rem 0.75rem;
   pointer-events: none;
@@ -497,12 +495,12 @@ input[type="file"]:hover:not(:disabled):not([readonly])::file-selector-button {
 }
 
 .aiab-search-form input[type="search"] {
-  padding-right: 2.5rem;
+  padding-inline-end: 2.5rem;
 }
 
 .aiab-search-form button {
   position: absolute;
-  right: 0;
+  inset-inline-end: 0;
   top: 0;
   bottom: 0;
   border: 0;

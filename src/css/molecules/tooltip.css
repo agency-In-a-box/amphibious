@@ -54,7 +54,7 @@
   font-size: var(--tooltip-font-size);
   line-height: var(--tooltip-line-height);
   font-weight: 500;
-  text-align: left;
+  text-align: start;
   word-wrap: break-word;
   z-index: var(--tooltip-z-index);
   pointer-events: none;
@@ -310,7 +310,7 @@
 
 /* Rich Content Tooltips */
 .aiab-tooltip--rich {
-  text-align: left;
+  text-align: start;
   padding: 1rem;
   max-width: 300px;
 }
@@ -359,7 +359,7 @@
 .aiab-tooltip--product-info {
   max-width: 280px;
   padding: 1rem;
-  text-align: left;
+  text-align: start;
 }
 
 .aiab-tooltip--product-info .product-name {

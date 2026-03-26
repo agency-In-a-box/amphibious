@@ -187,7 +187,7 @@ tr.aiab-info,
   cursor: pointer;
   user-select: none;
   position: relative;
-  padding-right: 2rem;
+  padding-inline-end: 2rem;
 }
 
 .aiab-table-sortable th::after {
@@ -255,7 +255,7 @@ tr.aiab-info,
     font-weight: var(--table-header-font-weight);
     text-align: left;
     width: var(--table-mobile-label-width);
-    padding-right: 1rem;
+    padding-inline-end: 1rem;
   }
 
   .aiab-table-responsive tbody tr {
@@ -276,16 +276,16 @@ tr.aiab-info,
 
 @media (--bp-md-down) {
   .aiab-table-fixed-column table {
-    margin-left: 120px;
+    margin-inline-start: 120px;
   }
 
   .aiab-table-fixed-column thead th:first-child,
   .aiab-table-fixed-column tbody td:first-child {
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     width: 120px;
     background: var(--table-bg);
-    border-right: 2px solid var(--table-border);
+    border-inline-end: 2px solid var(--table-border);
   }
 
   .aiab-table-fixed-column thead th:first-child {

@@ -31,7 +31,7 @@
 .aiab-docs-header blockquote,
 .aiab-doc-header blockquote {
   background: transparent;
-  border-left-color: rgba(255, 255, 255, 0.5);
+  border-inline-start-color: rgba(255, 255, 255, 0.5);
 }
 
 .aiab-docs-header blockquote p,

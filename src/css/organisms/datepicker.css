@@ -43,7 +43,7 @@
 /* Calendar icon */
 .aiab-datepicker-icon {
   position: absolute;
-  right: 0.75rem;
+  inset-inline-end: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
   width: 1.25rem;
@@ -59,7 +59,7 @@
 .aiab-datepicker-dropdown {
   position: absolute;
   top: calc(100% + 0.5rem);
-  left: 0;
+  inset-inline-start: 0;
   z-index: 1000;
   display: none;
   background: white;
@@ -375,7 +375,7 @@
 .aiab-datepicker-time-period {
   display: flex;
   gap: 0.25rem;
-  margin-left: 0.5rem;
+  margin-inline-start: 0.5rem;
 }
 
 .aiab-datepicker-time-period-btn {
@@ -465,7 +465,7 @@
 .aiab-datepicker--sm .aiab-datepicker-icon {
   width: 1rem;
   height: 1rem;
-  right: 0.625rem;
+  inset-inline-end: 0.625rem;
 }
 
 .aiab-datepicker--sm .aiab-datepicker-dropdown {
@@ -485,7 +485,7 @@
 .aiab-datepicker--lg .aiab-datepicker-icon {
   width: 1.5rem;
   height: 1.5rem;
-  right: 1rem;
+  inset-inline-end: 1rem;
 }
 
 .aiab-datepicker--lg .aiab-datepicker-dropdown {

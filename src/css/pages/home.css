@@ -92,7 +92,7 @@
 }
 
 .aiab-hero .aiab-stats li {
-  border-right-color: rgba(255, 255, 255, 0.2);
+  border-inline-end-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Section Headers */

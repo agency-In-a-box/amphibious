@@ -526,7 +526,7 @@ input[type="button"]:disabled {
 .fab {
   position: fixed;
   bottom: 1.5rem;
-  right: 1.5rem;
+  inset-inline-end: 1.5rem;
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -564,17 +564,17 @@ input[type="button"]:disabled {
 }
 
 .aiab-btn-group > .aiab-btn:not(:first-child) {
-  margin-left: -1px;
+  margin-inline-start: -1px;
 }
 
 .aiab-btn-group > .aiab-btn:not(:last-child):not(.dropdown-toggle) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
 }
 
 .aiab-btn-group > .aiab-btn:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
 }
 
 /* Vertical Button Group */
@@ -590,17 +590,17 @@ input[type="button"]:disabled {
 
 .aiab-btn-group-vertical > .aiab-btn:not(:first-child) {
   margin-top: -1px;
-  margin-left: 0;
+  margin-inline-start: 0;
 }
 
 .aiab-btn-group-vertical > .aiab-btn:not(:last-child):not(.dropdown-toggle) {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-end-end-radius: 0;
+  border-end-start-radius: 0;
 }
 
 .aiab-btn-group-vertical > .aiab-btn:not(:first-child) {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
 }
 
 /* Loading State
@@ -681,20 +681,20 @@ button:focus-visible {
 
   .aiab-btn-group-responsive > .aiab-btn {
     width: 100%;
-    margin-left: 0;
+    margin-inline-start: 0;
     margin-top: -1px;
     border-radius: 0;
   }
 
   .aiab-btn-group-responsive > .aiab-btn:first-child {
     margin-top: 0;
-    border-top-left-radius: var(--btn-border-radius);
-    border-top-right-radius: var(--btn-border-radius);
+    border-start-start-radius: var(--btn-border-radius);
+    border-start-end-radius: var(--btn-border-radius);
   }
 
   .aiab-btn-group-responsive > .aiab-btn:last-child {
-    border-bottom-left-radius: var(--btn-border-radius);
-    border-bottom-right-radius: var(--btn-border-radius);
+    border-end-start-radius: var(--btn-border-radius);
+    border-end-end-radius: var(--btn-border-radius);
   }
 }
 

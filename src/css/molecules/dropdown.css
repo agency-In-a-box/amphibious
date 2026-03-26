@@ -127,7 +127,7 @@
   transition: background-color 0.15s ease;
   border: none;
   width: 100%;
-  text-align: left;
+  text-align: start;
   background: transparent;
 }
 
@@ -149,7 +149,7 @@
 
 .aiab-dropdown-item.aiab-active::before {
   content: "✓";
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
   color: #2563eb;
 }
 
@@ -173,7 +173,7 @@
   justify-content: center;
   width: 1.25rem;
   height: 1.25rem;
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -225,7 +225,7 @@
 /* Rounded */
 .aiab-dropdown--rounded .aiab-dropdown-select {
   border-radius: 9999px;
-  padding-left: 1.25rem;
+  padding-inline-start: 1.25rem;
 }
 
 .aiab-dropdown--rounded .aiab-dropdown-menu {
@@ -330,7 +330,7 @@
 }
 
 .aiab-dropdown-tag-remove {
-  margin-left: 0.25rem;
+  margin-inline-start: 0.25rem;
   cursor: pointer;
   opacity: 0.6;
   transition: opacity 0.15s;
@@ -346,7 +346,7 @@
 
 .aiab-dropdown--multi .aiab-dropdown-item.selected::before {
   content: "☑";
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
   color: #2563eb;
 }
 

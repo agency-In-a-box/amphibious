@@ -122,12 +122,14 @@
   margin-bottom: 0;
 }
 
-.aiab-ml-0 {
-  margin-left: 0;
+.aiab-ml-0,
+.aiab-ms-0 {
+  margin-inline-start: 0;
 }
 
-.aiab-mr-0 {
-  margin-right: 0;
+.aiab-mr-0,
+.aiab-me-0 {
+  margin-inline-end: 0;
 }
 
 /* Half margins (0.5em) */
@@ -139,12 +141,14 @@
   margin-bottom: 0.5em;
 }
 
-.aiab-ml-half {
-  margin-left: 0.5em;
+.aiab-ml-half,
+.aiab-ms-half {
+  margin-inline-start: 0.5em;
 }
 
-.aiab-mr-half {
-  margin-right: 0.5em;
+.aiab-mr-half,
+.aiab-me-half {
+  margin-inline-end: 0.5em;
 }
 
 /* Standard margins (1em) */
@@ -156,12 +160,14 @@
   margin-bottom: 1em;
 }
 
-.aiab-ml-1 {
-  margin-left: 1em;
+.aiab-ml-1,
+.aiab-ms-1 {
+  margin-inline-start: 1em;
 }
 
-.aiab-mr-1 {
-  margin-right: 1em;
+.aiab-mr-1,
+.aiab-me-1 {
+  margin-inline-end: 1em;
 }
 
 /* Double margins (2em) */
@@ -173,12 +179,14 @@
   margin-bottom: 2em;
 }
 
-.aiab-ml-2 {
-  margin-left: 2em;
+.aiab-ml-2,
+.aiab-ms-2 {
+  margin-inline-start: 2em;
 }
 
-.aiab-mr-2 {
-  margin-right: 2em;
+.aiab-mr-2,
+.aiab-me-2 {
+  margin-inline-end: 2em;
 }
 
 /* Padding Utilities
@@ -201,12 +209,14 @@
   padding-bottom: 0.5em;
 }
 
-.aiab-pl-half {
-  padding-left: 0.5em;
+.aiab-pl-half,
+.aiab-ps-half {
+  padding-inline-start: 0.5em;
 }
 
-.aiab-pr-half {
-  padding-right: 0.5em;
+.aiab-pr-half,
+.aiab-pe-half {
+  padding-inline-end: 0.5em;
 }
 
 /* Standard padding (1em) */
@@ -218,12 +228,14 @@
   padding-bottom: 1em;
 }
 
-.aiab-pl-1 {
-  padding-left: 1em;
+.aiab-pl-1,
+.aiab-ps-1 {
+  padding-inline-start: 1em;
 }
 
-.aiab-pr-1 {
-  padding-right: 1em;
+.aiab-pr-1,
+.aiab-pe-1 {
+  padding-inline-end: 1em;
 }
 
 /* Double padding (2em) */
@@ -235,12 +247,14 @@
   padding-bottom: 2em;
 }
 
-.aiab-pl-2 {
-  padding-left: 2em;
+.aiab-pl-2,
+.aiab-ps-2 {
+  padding-inline-start: 2em;
 }
 
-.aiab-pr-2 {
-  padding-right: 2em;
+.aiab-pr-2,
+.aiab-pe-2 {
+  padding-inline-end: 2em;
 }
 
 /* Border Utilities
@@ -270,12 +284,14 @@
   border-bottom: 3px double var(--color-border, #ececec);
 }
 
-.aiab-border-left {
-  border-left: 1px solid var(--color-border, #ececec);
+.aiab-border-left,
+.aiab-border-start {
+  border-inline-start: 1px solid var(--color-border, #ececec);
 }
 
-.aiab-border-right {
-  border-right: 1px solid var(--color-border, #ececec);
+.aiab-border-right,
+.aiab-border-end {
+  border-inline-end: 1px solid var(--color-border, #ececec);
 }
 
 /* Width Utilities
