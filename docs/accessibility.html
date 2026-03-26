@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Accessibility — Amphibious 2.0</title>
+  <meta name="description" content="Accessibility features, ARIA patterns, and inclusive design practices in Amphibious 2.0">
+  <script type="module">import '/src/css/main.css';</script>
+</head>
+<body>
+  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
+
+  <nav class="aiab-site-nav" aria-label="Main navigation">
+    <div class="aiab-container">
+      <ul class="aiab-horizontal aiab-branded">
+        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
+        <li><a href="./foundation.html">Foundation</a></li>
+        <li><a href="./form.html">Form</a></li>
+        <li><a href="./function.html">Function</a></li>
+        <li><a href="./features.html">Features</a></li>
+        <li><a href="./accessibility.html" aria-current="page">Accessibility</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="aiab-doc-header">
+    <div class="aiab-container">
+      <div class="aiab-row">
+        <div class="aiab-col-16">
+          <nav aria-label="Breadcrumb">
+            <ol class="aiab-breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li><a href="./">Documentation</a></li>
+              <li aria-current="page">Accessibility</li>
+            </ol>
+          </nav>
+          <h1>Accessibility</h1>
+          <p class="lead">Amphibious 2.0 is built with accessibility as a first-class concern. Every component includes ARIA attributes, keyboard navigation, and support for assistive technologies.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="doc-content">
+    <div class="aiab-container">
+      <div class="aiab-row">
+        <aside class="aiab-col-4">
+          <nav class="doc-sidebar" aria-label="Page navigation">
+            <h3>On This Page</h3>
+            <ul>
+              <li><a href="#overview">Overview</a></li>
+              <li><a href="#keyboard">Keyboard Navigation</a></li>
+              <li><a href="#aria">ARIA Patterns</a></li>
+              <li><a href="#motion">Reduced Motion</a></li>
+              <li><a href="#contrast">High Contrast</a></li>
+              <li><a href="#dark-mode">Dark Mode</a></li>
+              <li><a href="#forms">Form Accessibility</a></li>
+              <li><a href="#focus">Focus Management</a></li>
+              <li><a href="#testing">Testing</a></li>
+              <li><a href="#checklist">Checklist</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <article class="aiab-col-12">
+
+          <!-- Overview -->
+          <section id="overview" class="doc-section">
+            <h2>Overview</h2>
+            <p>Amphibious 2.0 follows <a href="https://www.w3.org/WAI/WCAG21/quickref/" rel="noopener">WCAG 2.1 AA</a> guidelines across all 22 interactive components. The framework provides:</p>
+            <ul>
+              <li><strong>32 <code>prefers-reduced-motion</code> rules</strong> for animation-sensitive users</li>
+              <li><strong>17 <code>prefers-contrast</code> rules</strong> for high-contrast mode</li>
+              <li><strong>60+ <code>:focus-visible</code> rules</strong> for keyboard focus indicators</li>
+              <li><strong>Comprehensive ARIA</strong> attributes on every interactive component</li>
+              <li><strong>Skip navigation</strong> link on all documentation pages</li>
+              <li><strong>Semantic HTML</strong> as the foundation for all markup patterns</li>
+              <li><strong>418-line print stylesheet</strong> for print accessibility</li>
+            </ul>
+          </section>
+
+          <!-- Keyboard Navigation -->
+          <section id="keyboard" class="doc-section">
+            <h2>Keyboard Navigation</h2>
+            <p>All interactive components are fully operable with keyboard alone:</p>
+
+            <h3>Global Shortcuts</h3>
+            <table class="aiab-table">
+              <thead>
+                <tr>
+                  <th scope="col">Shortcut</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><kbd>Tab</kbd></td><td>Move focus to next interactive element</td></tr>
+                <tr><td><kbd>Shift+Tab</kbd></td><td>Move focus to previous interactive element</td></tr>
+                <tr><td><kbd>Cmd/Ctrl+Shift+D</kbd></td><td>Toggle dark mode</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Component-Specific Keys</h3>
+            <table class="aiab-table">
+              <thead>
+                <tr>
+                  <th scope="col">Component</th>
+                  <th scope="col">Keys</th>
+                  <th scope="col">Behavior</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Modal</td><td><kbd>Escape</kbd></td><td>Close the modal dialog</td></tr>
+                <tr><td>Modal</td><td><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd></td><td>Focus trapped within modal</td></tr>
+                <tr><td>Tabs</td><td><kbd>Arrow Left/Right</kbd></td><td>Navigate between tabs</td></tr>
+                <tr><td>Tabs</td><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>Jump to first/last tab</td></tr>
+                <tr><td>Accordion</td><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Toggle section</td></tr>
+                <tr><td>Accordion</td><td><kbd>Arrow Up/Down</kbd></td><td>Navigate between headers</td></tr>
+                <tr><td>Dropdown</td><td><kbd>Escape</kbd></td><td>Close dropdown menu</td></tr>
+                <tr><td>Dropdown</td><td><kbd>Arrow Up/Down</kbd></td><td>Navigate options</td></tr>
+                <tr><td>Toast</td><td><kbd>Escape</kbd></td><td>Dismiss notification</td></tr>
+                <tr><td>Tooltip</td><td><kbd>Escape</kbd></td><td>Dismiss tooltip</td></tr>
+                <tr><td>Carousel</td><td><kbd>Arrow Left/Right</kbd></td><td>Navigate slides (when focused)</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- ARIA Patterns -->
+          <section id="aria" class="doc-section">
+            <h2>ARIA Patterns</h2>
+            <p>Each component implements the appropriate <a href="https://www.w3.org/WAI/ARIA/apg/" rel="noopener">WAI-ARIA Authoring Practices</a> pattern:</p>
+
+            <h3>Modal Dialog</h3>
+            <pre><code>&lt;div role="dialog" aria-modal="true" aria-labelledby="modal-title"&gt;
+  &lt;h2 id="modal-title"&gt;Dialog Title&lt;/h2&gt;
+  &lt;button aria-label="Close modal"&gt;&amp;times;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+            <h3>Tab Panel</h3>
+            <pre><code>&lt;div role="tablist" aria-label="Content tabs"&gt;
+  &lt;button role="tab" aria-selected="true" aria-controls="panel-1"&gt;Tab 1&lt;/button&gt;
+  &lt;button role="tab" aria-selected="false" tabindex="-1"&gt;Tab 2&lt;/button&gt;
+&lt;/div&gt;
+&lt;div role="tabpanel" aria-labelledby="tab-1"&gt;Content&lt;/div&gt;</code></pre>
+
+            <h3>Accordion</h3>
+            <pre><code>&lt;button aria-expanded="true" aria-controls="panel-1"&gt;Section Title&lt;/button&gt;
+&lt;div id="panel-1" role="region" aria-labelledby="header-1"&gt;Content&lt;/div&gt;</code></pre>
+
+            <h3>Navigation</h3>
+            <pre><code>&lt;nav aria-label="Main navigation"&gt;
+  &lt;button aria-expanded="false" aria-controls="nav-menu"&gt;Menu&lt;/button&gt;
+  &lt;ul id="nav-menu" role="menubar"&gt;
+    &lt;li role="none"&gt;&lt;a role="menuitem"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+            <h3>Toast Notifications</h3>
+            <pre><code>&lt;div role="region" aria-live="polite" aria-label="Notifications"&gt;
+  &lt;div role="alert" tabindex="-1"&gt;
+    &lt;p&gt;Operation completed.&lt;/p&gt;
+    &lt;button aria-label="Close notification"&gt;&amp;times;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <h3>Breadcrumb</h3>
+            <pre><code>&lt;nav aria-label="Breadcrumb"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Current Page&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+
+            <h3>Form Validation</h3>
+            <pre><code>&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input id="email" type="email" aria-required="true"
+       aria-invalid="true" aria-describedby="email-error" /&gt;
+&lt;span id="email-error" role="alert"&gt;Please enter a valid email.&lt;/span&gt;</code></pre>
+          </section>
+
+          <!-- Reduced Motion -->
+          <section id="motion" class="doc-section">
+            <h2>Reduced Motion</h2>
+            <p>All animations and transitions respect the <code>prefers-reduced-motion</code> media query. When a user has enabled reduced motion in their OS settings, Amphibious will:</p>
+            <ul>
+              <li>Disable CSS transitions and animations</li>
+              <li>Set carousel slide transition speed to 0ms</li>
+              <li>Remove parallax and scroll-based effects</li>
+              <li>Keep opacity changes (non-motion) for visibility feedback</li>
+            </ul>
+            <pre><code>/* Applied across 32 rules in the framework */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</code></pre>
+          </section>
+
+          <!-- High Contrast -->
+          <section id="contrast" class="doc-section">
+            <h2>High Contrast</h2>
+            <p>Amphibious includes 17 <code>prefers-contrast: high</code> rules that enhance visibility when users enable high-contrast mode:</p>
+            <ul>
+              <li>Borders become more prominent on interactive elements</li>
+              <li>Focus indicators use thicker outlines</li>
+              <li>Subtle background differences are amplified</li>
+              <li>Text contrast is maximized against backgrounds</li>
+            </ul>
+            <p>All text colors meet WCAG AA contrast requirements (4.5:1 for normal text, 3:1 for large text). The muted text color <code>--color-muted</code> uses <code>#767676</code> which achieves exactly 4.54:1 contrast ratio.</p>
+          </section>
+
+          <!-- Dark Mode -->
+          <section id="dark-mode" class="doc-section">
+            <h2>Dark Mode</h2>
+            <p>The dark mode system is accessibility-aware:</p>
+            <ul>
+              <li><strong>System preference</strong>: Automatically follows <code>prefers-color-scheme</code></li>
+              <li><strong>Manual override</strong>: Toggle button with clear sun/moon icons</li>
+              <li><strong>Persistence</strong>: User preference saved in <code>localStorage</code></li>
+              <li><strong>Keyboard shortcut</strong>: <kbd>Cmd/Ctrl+Shift+D</kbd></li>
+              <li><strong>Screen reader</strong>: Toggle announces current mode via <code>aria-label</code></li>
+              <li><strong>Smooth transition</strong>: 200ms crossfade to prevent jarring switches</li>
+              <li><strong>Meta theme-color</strong>: Updates <code>&lt;meta name="theme-color"&gt;</code> for mobile browser chrome</li>
+            </ul>
+          </section>
+
+          <!-- Form Accessibility -->
+          <section id="forms" class="doc-section">
+            <h2>Form Accessibility</h2>
+            <p>The form validation system provides comprehensive screen reader support:</p>
+            <ul>
+              <li>Every input is linked to its label via <code>for</code>/<code>id</code> pairing</li>
+              <li>Error messages are linked via <code>aria-describedby</code></li>
+              <li>Invalid fields are marked with <code>aria-invalid="true"</code></li>
+              <li>Required fields use <code>aria-required="true"</code></li>
+              <li>Error messages use <code>role="alert"</code> for live announcements</li>
+              <li>First invalid field receives focus on failed submission</li>
+              <li>Character counters announce remaining characters</li>
+            </ul>
+          </section>
+
+          <!-- Focus Management -->
+          <section id="focus" class="doc-section">
+            <h2>Focus Management</h2>
+            <p>Focus is carefully managed across all interactive components:</p>
+
+            <h3>Focus Trapping</h3>
+            <p>Modal dialogs and mobile navigation menus trap focus within their boundaries using a shared <code>trapFocus()</code> utility. Tab and Shift+Tab cycle through focusable elements without escaping to the background content.</p>
+
+            <h3>Focus Restoration</h3>
+            <p>When modals close, focus returns to the element that triggered the modal opening. This ensures keyboard users don't lose their place in the document.</p>
+
+            <h3>Focus Indicators</h3>
+            <p>All interactive elements use <code>:focus-visible</code> for keyboard-only focus rings, avoiding visual clutter for mouse users while maintaining clear indicators for keyboard navigation. The default focus style uses a 2px offset ring in the primary brand color.</p>
+
+            <h3>Skip Navigation</h3>
+            <p>All pages include a skip link as the first focusable element:</p>
+            <pre><code>&lt;a href="#main-content" class="aiab-skip-link"&gt;Skip to main content&lt;/a&gt;</code></pre>
+          </section>
+
+          <!-- Testing -->
+          <section id="testing" class="doc-section">
+            <h2>Testing</h2>
+            <p>Amphibious validates accessibility through multiple layers:</p>
+
+            <h3>Automated Testing (CI)</h3>
+            <ul>
+              <li><strong>axe-core</strong>: 8 component patterns validated against axe-core rules in CI</li>
+              <li><strong>Manual ARIA checks</strong>: 7 additional tests verify ARIA linkage patterns</li>
+              <li><strong>15 total a11y tests</strong> running on every push and pull request</li>
+            </ul>
+
+            <h3>What We Test</h3>
+            <ul>
+              <li>Modal: <code>role="dialog"</code>, <code>aria-modal</code>, <code>aria-labelledby</code></li>
+              <li>Tabs: <code>role="tablist"</code>/<code>tab</code>/<code>tabpanel</code> linkage</li>
+              <li>Navigation: <code>aria-label</code>, <code>aria-expanded</code></li>
+              <li>Toast: <code>aria-live="polite"</code>, <code>role="alert"</code></li>
+              <li>Forms: label association, <code>aria-describedby</code>, <code>aria-invalid</code></li>
+              <li>Breadcrumb: <code>aria-current="page"</code></li>
+              <li>Accordion: <code>aria-expanded</code>, <code>aria-controls</code></li>
+              <li>All buttons: accessible name verification</li>
+            </ul>
+
+            <h3>Manual Testing Checklist</h3>
+            <p>In addition to automated tests, we recommend testing with:</p>
+            <ul>
+              <li>VoiceOver (macOS) or NVDA/JAWS (Windows)</li>
+              <li>Keyboard-only navigation (unplug mouse)</li>
+              <li>Browser zoom at 200% and 400%</li>
+              <li>High-contrast mode in OS settings</li>
+              <li>Reduced motion in OS settings</li>
+            </ul>
+          </section>
+
+          <!-- Checklist -->
+          <section id="checklist" class="doc-section">
+            <h2>Accessibility Checklist for Consumers</h2>
+            <p>When using Amphibious components in your project, ensure:</p>
+
+            <table class="aiab-table">
+              <thead>
+                <tr>
+                  <th scope="col">Requirement</th>
+                  <th scope="col">How</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Page language</td><td><code>&lt;html lang="en"&gt;</code></td></tr>
+                <tr><td>Viewport meta</td><td><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></td></tr>
+                <tr><td>Skip link</td><td><code>&lt;a href="#main" class="aiab-skip-link"&gt;Skip to content&lt;/a&gt;</code></td></tr>
+                <tr><td>Heading hierarchy</td><td>One <code>&lt;h1&gt;</code> per page, no skipped levels</td></tr>
+                <tr><td>Image alt text</td><td>All <code>&lt;img&gt;</code> have descriptive <code>alt</code> (or <code>alt=""</code> if decorative)</td></tr>
+                <tr><td>Form labels</td><td>Every input has a <code>&lt;label&gt;</code> with matching <code>for</code>/<code>id</code></td></tr>
+                <tr><td>Link purpose</td><td>Links describe their destination (not "click here")</td></tr>
+                <tr><td>Color not sole cue</td><td>Don't rely on color alone to convey information</td></tr>
+                <tr><td>Touch targets</td><td>Interactive elements at least 44x44px on mobile</td></tr>
+                <tr><td>Custom renderers</td><td>If using <code>innerHTML</code> callbacks, sanitize with DOMPurify</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="aiab-container">
+      <div class="aiab-row">
+        <div class="aiab-col-16">
+          <p>&copy; 2026 Amphibious 2.0. Built with modern CSS, semantic HTML, and accessibility.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.doc-section');
+    const navLinks = document.querySelectorAll('.doc-sidebar a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (scrollY >= section.offsetTop - 150) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
