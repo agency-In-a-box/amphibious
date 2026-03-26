@@ -42,6 +42,7 @@ class SearchBar {
     this.debounceTimer = null;
     this.recentSearches = this.loadRecentSearches();
     this._abortController = new AbortController();
+    this._fetchController = null;
 
     this.init();
   }
@@ -288,18 +289,34 @@ class SearchBar {
   async search(query) {
     let results = [];
 
+    // Abort any in-flight fetch request before starting a new one
+    if (this._fetchController) {
+      this._fetchController.abort();
+    }
+
     try {
       // Get results based on source type
       if (typeof this.options.source === 'function') {
         // Function source
         results = await this.options.source(query);
       } else if (typeof this.options.source === 'string') {
-        // Remote URL source
-        const response = await fetch(`${this.options.source}?q=${encodeURIComponent(query)}`);
-        if (!response.ok) {
-          throw new Error(`Search request failed: ${response.status}`);
+        // Remote URL source — use AbortController with timeout
+        this._fetchController = new AbortController();
+        const timeoutId = setTimeout(() => this._fetchController.abort(), 5000);
+
+        try {
+          const response = await fetch(
+            `${this.options.source}?q=${encodeURIComponent(query)}`,
+            { signal: this._fetchController.signal },
+          );
+          if (!response.ok) {
+            throw new Error(`Search request failed: ${response.status}`);
+          }
+          results = await response.json();
+        } finally {
+          clearTimeout(timeoutId);
+          this._fetchController = null;
         }
-        results = await response.json();
       } else if (Array.isArray(this.options.source)) {
         // Local array source
         results = this.filterLocalData(query);
@@ -317,7 +334,9 @@ class SearchBar {
       if (this.options.onSearch) {
         this.options.onSearch(query, results, this);
       }
-    } catch (_error) {
+    } catch (error) {
+      // Silently ignore aborted requests (user typed again or component destroyed)
+      if (error?.name === 'AbortError') return;
       // Handle search error - console removed for production
       this.renderError();
     } finally {
@@ -607,6 +626,7 @@ class SearchBar {
 
   destroy() {
     this._abortController.abort();
+    if (this._fetchController) this._fetchController.abort();
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
     this.wrapper.replaceWith(this.element);
   }

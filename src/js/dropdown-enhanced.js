@@ -642,13 +642,25 @@ class DropdownEnhanced {
     this.state.loading = true;
     this.loading.style.display = 'block';
 
+    // Abort any in-flight request before starting a new one
+    if (this.fetchController) {
+      this.fetchController.abort();
+    }
+
+    const controller = new AbortController();
+    this.fetchController = controller;
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
     try {
       let data;
 
       if (typeof this.options.source === 'function') {
         data = await this.options.source(searchTerm);
       } else {
-        const response = await fetch(`${this.options.source}?q=${encodeURIComponent(searchTerm)}`);
+        const response = await fetch(
+          `${this.options.source}?q=${encodeURIComponent(searchTerm)}`,
+          { signal: controller.signal },
+        );
         if (!response.ok) {
           throw new Error(`Dropdown data request failed: ${response.status}`);
         }
@@ -662,10 +674,15 @@ class DropdownEnhanced {
 
       this.state.allItems = data;
       this.renderItems();
-    } catch (_error) {
+    } catch (error) {
+      // Silently ignore aborted requests (superseded by a newer search)
+      if (error.name === 'AbortError') {
+        return;
+      }
       this.noResults.textContent = this.options.labels.errorLoading;
       this.noResults.style.display = 'block';
     } finally {
+      clearTimeout(timeoutId);
       this.state.loading = false;
       this.loading.style.display = 'none';
     }
@@ -1098,6 +1115,12 @@ class DropdownEnhanced {
   destroy() {
     // Close if open
     this.close();
+
+    // Abort any in-flight fetch request
+    if (this.fetchController) {
+      this.fetchController.abort();
+      this.fetchController = null;
+    }
 
     // Clear all timers
     this.timers.forEach((timer) => clearTimeout(timer));
