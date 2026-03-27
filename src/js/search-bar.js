@@ -633,10 +633,14 @@ class SearchBar {
 
 // Auto-initialize
 document.addEventListener('DOMContentLoaded', () => {
-  const searchBars = document.querySelectorAll('[data-search-bar="true"]');
-  searchBars.forEach((element) => {
-    new SearchBar(element);
-  });
+  try {
+    const searchBars = document.querySelectorAll('[data-search-bar="true"]');
+    searchBars.forEach((element) => {
+      new SearchBar(element);
+    });
+  } catch (error) {
+    console.error('[Amphibious] SearchBar auto-init failed:', error);
+  }
 });
 
 window.SearchBar = SearchBar;

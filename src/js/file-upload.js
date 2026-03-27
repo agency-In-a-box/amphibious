@@ -533,10 +533,14 @@ class FileUpload {
 
 // Auto-initialize
 document.addEventListener('DOMContentLoaded', () => {
-  const uploads = document.querySelectorAll('[data-file-upload="true"]');
-  uploads.forEach((element) => {
-    new FileUpload(element);
-  });
+  try {
+    const uploads = document.querySelectorAll('[data-file-upload="true"]');
+    uploads.forEach((element) => {
+      new FileUpload(element);
+    });
+  } catch (error) {
+    console.error('[Amphibious] FileUpload auto-init failed:', error);
+  }
 });
 
 window.FileUpload = FileUpload;

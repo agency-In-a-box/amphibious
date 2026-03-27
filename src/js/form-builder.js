@@ -2120,9 +2120,13 @@ class FormBuilder {
 
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-form-builder]').forEach((element) => {
-    new FormBuilder(element);
-  });
+  try {
+    document.querySelectorAll('[data-form-builder]').forEach((element) => {
+      new FormBuilder(element);
+    });
+  } catch (error) {
+    console.error('[Amphibious] FormBuilder auto-init failed:', error);
+  }
 });
 
 // Register with component registry if available

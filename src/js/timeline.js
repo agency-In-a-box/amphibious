@@ -1053,9 +1053,13 @@ class Timeline {
 
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-timeline]').forEach((element) => {
-    new Timeline(element);
-  });
+  try {
+    document.querySelectorAll('[data-timeline]').forEach((element) => {
+      new Timeline(element);
+    });
+  } catch (error) {
+    console.error('[Amphibious] Timeline auto-init failed:', error);
+  }
 });
 
 // Register with component registry if available

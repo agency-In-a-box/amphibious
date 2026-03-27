@@ -569,6 +569,7 @@ class DataTableComponent {
         const value = rowData[column.key];
 
         // Apply cell formatting
+        // column.render: (value, rowData) => HTML — sanitized via DOMPurify
         if (column.render) {
           cell.innerHTML = sanitizeHTML(column.render(value, rowData));
         } else {
