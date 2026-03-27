@@ -13,8 +13,163 @@
  * - Vertical orientation option
  */
 
+/** Orientation of the range slider track. */
+export type RangeSliderOrientation = 'horizontal' | 'vertical';
+
+/**
+ * Label strings for the min/max ends of the slider.
+ *
+ * @property min - Label shown at the minimum end.
+ * @property max - Label shown at the maximum end.
+ */
+export interface RangeSliderLabels {
+  min?: string;
+  max?: string;
+}
+
+/**
+ * Configuration options accepted by the {@link RangeSlider} constructor.
+ *
+ * @property min - Minimum allowed value. Falls back to the element's `min` attribute, then `0`.
+ * @property max - Maximum allowed value. Falls back to the element's `max` attribute, then `100`.
+ * @property step - Step increment. Falls back to the element's `step` attribute, then `1`.
+ * @property value - Initial value for single-handle mode.
+ * @property dual - Enable dual-handle (range) mode.
+ * @property values - Initial `[min, max]` values for dual-handle mode.
+ * @property gap - Minimum gap between handles in dual mode.
+ * @property orientation - Track orientation (`'horizontal'` or `'vertical'`).
+ * @property showTooltip - Show value tooltip on handles. Defaults to `true`.
+ * @property showScale - Show a numeric scale below/beside the track.
+ * @property showLabels - Show min/max labels.
+ * @property showTicks - Show tick marks along the track.
+ * @property showFill - Show the filled portion of the track. Defaults to `true`.
+ * @property showValue - Show a value display element (single-handle only). Defaults to `true`.
+ * @property scaleSteps - Number of scale divisions.
+ * @property tickSteps - Numeric interval between tick marks.
+ * @property snap - Enable snapping to predefined values.
+ * @property snapValues - Array of values to snap to.
+ * @property format - Custom value formatter function.
+ * @property prefix - String prepended to formatted values.
+ * @property suffix - String appended to formatted values.
+ * @property fillColor - CSS color for the filled track portion.
+ * @property trackColor - CSS color for the unfilled track.
+ * @property labels - Min/max label text overrides.
+ * @property onChange - Callback when value changes (after drag ends or track click).
+ * @property onSlide - Callback during drag (every animation frame).
+ * @property onStart - Callback when drag starts.
+ * @property onEnd - Callback when drag ends.
+ */
+export interface RangeSliderOptions {
+  min?: number;
+  max?: number;
+  step?: number;
+  value?: number;
+  dual?: boolean;
+  values?: [number, number];
+  gap?: number;
+  orientation?: RangeSliderOrientation;
+  showTooltip?: boolean;
+  showScale?: boolean;
+  showLabels?: boolean;
+  showTicks?: boolean;
+  showFill?: boolean;
+  showValue?: boolean;
+  scaleSteps?: number;
+  tickSteps?: number;
+  snap?: boolean;
+  snapValues?: number[];
+  format?: (value: number) => string;
+  prefix?: string;
+  suffix?: string;
+  fillColor?: string;
+  trackColor?: string;
+  labels?: RangeSliderLabels;
+  onChange?: ((value: number | number[]) => void) | null;
+  onSlide?: ((value: number | number[]) => void) | null;
+  onStart?: ((value: number | number[]) => void) | null;
+  onEnd?: ((value: number | number[]) => void) | null;
+}
+
+/** Resolved options with all defaults applied. */
+interface ResolvedRangeSliderOptions {
+  min: number;
+  max: number;
+  step: number;
+  value: number;
+  dual: boolean;
+  values: [number, number];
+  gap: number;
+  orientation: RangeSliderOrientation;
+  showTooltip: boolean;
+  showScale: boolean;
+  showLabels: boolean;
+  showTicks: boolean;
+  showFill: boolean;
+  showValue?: boolean;
+  scaleSteps: number;
+  tickSteps: number;
+  snap: boolean;
+  snapValues: number[];
+  format: (value: number) => string;
+  prefix: string;
+  suffix: string;
+  fillColor: string;
+  trackColor: string;
+  labels: RangeSliderLabels;
+  onChange: ((value: number | number[]) => void) | null;
+  onSlide: ((value: number | number[]) => void) | null;
+  onStart: ((value: number | number[]) => void) | null;
+  onEnd: ((value: number | number[]) => void) | null;
+}
+
+/** Handle type identifier for single/dual mode. */
+type HandleType = 'single' | 'min' | 'max';
+
+/** Internal state tracking for the slider. */
+interface RangeSliderState {
+  isDragging: boolean;
+  activeHandle: HandleType | null;
+  value: number;
+  values: [number, number];
+  lastEmittedValue: number | null;
+  lastEmittedValues: [number, number] | null;
+}
+
+/** Stored event handler entry for cleanup. */
+interface HandlerEntry {
+  element: HTMLElement | Window | Document;
+  type: string;
+  handler: EventListener;
+}
+
 class RangeSlider {
-  constructor(element, options = {}) {
+  private element: HTMLInputElement;
+  private options: ResolvedRangeSliderOptions;
+  private state: RangeSliderState;
+  private handlers: Map<string, HandlerEntry>;
+  private timers: Set<ReturnType<typeof setTimeout>>;
+  private createdElements: Set<HTMLElement>;
+  private rafId: number | null;
+
+  // DOM references
+  private wrapper!: HTMLDivElement;
+  private container!: HTMLDivElement;
+  private track!: HTMLDivElement;
+  private fill?: HTMLDivElement;
+  private handle!: HTMLDivElement;
+  private handleMin!: HTMLDivElement;
+  private handleMax!: HTMLDivElement;
+  private scale?: HTMLDivElement;
+  private labels?: HTMLDivElement;
+  private valueDisplay?: HTMLDivElement;
+  private trackRect!: DOMRect;
+  private resizeTimer?: ReturnType<typeof setTimeout>;
+
+  // Drag event handlers stored for removal
+  private moveHandler?: EventListener;
+  private endHandler?: EventListener;
+
+  constructor(element: HTMLInputElement, options: RangeSliderOptions = {}) {
     this.element = element;
     this.options = {
       // Basic options
@@ -45,7 +200,7 @@ class RangeSlider {
       snapValues: options.snapValues || [],
 
       // Formatting
-      format: options.format || ((value) => value.toString()),
+      format: options.format || ((value: number) => value.toString()),
       prefix: options.prefix || '',
       suffix: options.suffix || '',
 
@@ -84,7 +239,7 @@ class RangeSlider {
     this.init();
   }
 
-  init() {
+  private init(): void {
     this.setupDOM();
     this.attachEvents();
     this.updateUI();
@@ -97,7 +252,7 @@ class RangeSlider {
     }
   }
 
-  setupDOM() {
+  private setupDOM(): void {
     // Hide original input
     this.element.type = 'hidden';
 
@@ -168,18 +323,19 @@ class RangeSlider {
     }
 
     // Insert into DOM
-    this.element.parentNode.insertBefore(this.wrapper, this.element.nextSibling);
+    // biome-ignore lint/style/noNonNullAssertion: element must have a parentNode to be in the DOM
+    this.element.parentNode!.insertBefore(this.wrapper, this.element.nextSibling);
     this.createdElements.add(this.wrapper);
   }
 
-  createHandle(type) {
+  private createHandle(type: HandleType): HTMLDivElement {
     const handle = document.createElement('div');
     handle.className = `aiab-range-slider-handle ${type}`;
     handle.setAttribute('role', 'slider');
     handle.setAttribute('tabindex', '0');
-    handle.setAttribute('aria-valuemin', this.options.min);
-    handle.setAttribute('aria-valuemax', this.options.max);
-    handle.setAttribute('aria-valuenow', this.options.value);
+    handle.setAttribute('aria-valuemin', String(this.options.min));
+    handle.setAttribute('aria-valuemax', String(this.options.max));
+    handle.setAttribute('aria-valuenow', String(this.options.value));
 
     if (this.options.showTooltip) {
       const tooltip = document.createElement('div');
@@ -191,7 +347,7 @@ class RangeSlider {
     return handle;
   }
 
-  createTicks() {
+  private createTicks(): void {
     const tickContainer = document.createElement('div');
     tickContainer.className = 'aiab-range-slider-ticks';
 
@@ -218,7 +374,7 @@ class RangeSlider {
     this.createdElements.add(tickContainer);
   }
 
-  createScale() {
+  private createScale(): HTMLDivElement {
     const scale = document.createElement('div');
     scale.className = 'aiab-range-slider-scale';
 
@@ -249,7 +405,7 @@ class RangeSlider {
     return scale;
   }
 
-  createLabels() {
+  private createLabels(): HTMLDivElement {
     const labels = document.createElement('div');
     labels.className = 'aiab-range-slider-labels';
 
@@ -268,9 +424,9 @@ class RangeSlider {
     return labels;
   }
 
-  attachEvents() {
+  private attachEvents(): void {
     // Track events
-    const trackHandler = (e) => this.handleTrackClick(e);
+    const trackHandler = (e: Event): void => this.handleTrackClick(e as MouseEvent);
     this.track.addEventListener('click', trackHandler);
     this.handlers.set('track-click', { element: this.track, type: 'click', handler: trackHandler });
 
@@ -283,19 +439,19 @@ class RangeSlider {
     }
 
     // Keyboard events
-    const keyHandler = (e) => this.handleKeyboard(e);
+    const keyHandler = (e: Event): void => this.handleKeyboard(e as KeyboardEvent);
     this.wrapper.addEventListener('keydown', keyHandler);
     this.handlers.set('keyboard', { element: this.wrapper, type: 'keydown', handler: keyHandler });
 
     // Window resize
-    const resizeHandler = () => this.handleResize();
-    window.addEventListener('resize', resizeHandler);
-    this.handlers.set('resize', { element: window, type: 'resize', handler: resizeHandler });
+    const resizeHandler = (): void => this.handleResize();
+    window.addEventListener('resize', resizeHandler as EventListener);
+    this.handlers.set('resize', { element: window, type: 'resize', handler: resizeHandler as EventListener });
   }
 
-  attachHandleEvents(handle, type) {
+  private attachHandleEvents(handle: HTMLDivElement, type: HandleType): void {
     // Mouse events
-    const mouseDownHandler = (e) => this.handleStart(e, type);
+    const mouseDownHandler = (e: Event): void => this.handleStart(e, type);
     handle.addEventListener('mousedown', mouseDownHandler);
     this.handlers.set(`${type}-mousedown`, {
       element: handle,
@@ -304,7 +460,7 @@ class RangeSlider {
     });
 
     // Touch events
-    const touchStartHandler = (e) => this.handleStart(e, type);
+    const touchStartHandler = (e: Event): void => this.handleStart(e, type);
     handle.addEventListener('touchstart', touchStartHandler, { passive: false });
     this.handlers.set(`${type}-touchstart`, {
       element: handle,
@@ -313,15 +469,15 @@ class RangeSlider {
     });
 
     // Focus events for accessibility
-    const focusHandler = () => handle.classList.add('focused');
-    const blurHandler = () => handle.classList.remove('focused');
-    handle.addEventListener('focus', focusHandler);
-    handle.addEventListener('blur', blurHandler);
-    this.handlers.set(`${type}-focus`, { element: handle, type: 'focus', handler: focusHandler });
-    this.handlers.set(`${type}-blur`, { element: handle, type: 'blur', handler: blurHandler });
+    const focusHandler = (): void => { handle.classList.add('focused'); };
+    const blurHandler = (): void => { handle.classList.remove('focused'); };
+    handle.addEventListener('focus', focusHandler as EventListener);
+    handle.addEventListener('blur', blurHandler as EventListener);
+    this.handlers.set(`${type}-focus`, { element: handle, type: 'focus', handler: focusHandler as EventListener });
+    this.handlers.set(`${type}-blur`, { element: handle, type: 'blur', handler: blurHandler as EventListener });
   }
 
-  handleStart(e, handleType) {
+  private handleStart(e: Event, handleType: HandleType): void {
     e.preventDefault();
     e.stopPropagation();
 
@@ -336,8 +492,8 @@ class RangeSlider {
     this.trackRect = this.track.getBoundingClientRect();
 
     // Attach move and end events
-    const moveHandler = (e) => this.handleMove(e);
-    const endHandler = (e) => this.handleEnd(e);
+    const moveHandler = (e: Event): void => this.handleMove(e);
+    const endHandler = (e: Event): void => this.handleEnd(e);
 
     if (e.type === 'mousedown') {
       document.addEventListener('mousemove', moveHandler);
@@ -358,7 +514,7 @@ class RangeSlider {
     }
   }
 
-  handleMove(e) {
+  private handleMove(e: Event): void {
     if (!this.state.isDragging) return;
     e.preventDefault();
 
@@ -368,10 +524,11 @@ class RangeSlider {
     }
 
     this.rafId = requestAnimationFrame(() => {
-      const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-      const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+      const isTouchEvent = e.type.includes('touch');
+      const clientX = isTouchEvent ? (e as TouchEvent).touches[0].clientX : (e as MouseEvent).clientX;
+      const clientY = isTouchEvent ? (e as TouchEvent).touches[0].clientY : (e as MouseEvent).clientY;
 
-      let percent;
+      let percent: number;
       if (this.options.orientation === 'vertical') {
         const y = this.trackRect.bottom - clientY;
         percent = Math.max(0, Math.min(100, (y / this.trackRect.height) * 100));
@@ -417,7 +574,7 @@ class RangeSlider {
     });
   }
 
-  handleEnd(_e) {
+  private handleEnd(_e: Event): void {
     if (!this.state.isDragging) return;
 
     this.state.isDragging = false;
@@ -432,10 +589,14 @@ class RangeSlider {
     }
 
     // Remove event listeners
-    document.removeEventListener('mousemove', this.moveHandler);
-    document.removeEventListener('mouseup', this.endHandler);
-    document.removeEventListener('touchmove', this.moveHandler);
-    document.removeEventListener('touchend', this.endHandler);
+    if (this.moveHandler) {
+      document.removeEventListener('mousemove', this.moveHandler);
+      document.removeEventListener('touchmove', this.moveHandler);
+    }
+    if (this.endHandler) {
+      document.removeEventListener('mouseup', this.endHandler);
+      document.removeEventListener('touchend', this.endHandler);
+    }
 
     // Cancel RAF
     if (this.rafId) {
@@ -457,12 +618,12 @@ class RangeSlider {
     }
   }
 
-  handleTrackClick(e) {
+  private handleTrackClick(e: MouseEvent): void {
     if (this.state.isDragging) return;
-    if (e.target.classList.contains('aiab-range-slider-handle')) return;
+    if ((e.target as HTMLElement).classList.contains('aiab-range-slider-handle')) return;
 
     const rect = this.track.getBoundingClientRect();
-    let percent;
+    let percent: number;
 
     if (this.options.orientation === 'vertical') {
       const y = rect.bottom - e.clientY;
@@ -505,11 +666,11 @@ class RangeSlider {
     this.updateUI();
   }
 
-  handleKeyboard(e) {
-    const handle = e.target;
+  private handleKeyboard(e: KeyboardEvent): void {
+    const handle = e.target as HTMLElement;
     if (!handle.classList.contains('aiab-range-slider-handle')) return;
 
-    let value;
+    let value: number | undefined;
     const step = e.shiftKey ? this.options.step * 10 : this.options.step;
 
     if (this.options.dual) {
@@ -607,7 +768,7 @@ class RangeSlider {
     this.updateUI();
   }
 
-  handleResize() {
+  private handleResize(): void {
     // Debounce resize handler
     if (this.resizeTimer) {
       clearTimeout(this.resizeTimer);
@@ -620,7 +781,7 @@ class RangeSlider {
     this.timers.add(this.resizeTimer);
   }
 
-  updateUI() {
+  private updateUI(): void {
     const range = this.options.max - this.options.min;
 
     if (this.options.dual) {
@@ -656,8 +817,8 @@ class RangeSlider {
       }
 
       // Update ARIA
-      this.handleMin.setAttribute('aria-valuenow', this.state.values[0]);
-      this.handleMax.setAttribute('aria-valuenow', this.state.values[1]);
+      this.handleMin.setAttribute('aria-valuenow', String(this.state.values[0]));
+      this.handleMax.setAttribute('aria-valuenow', String(this.state.values[1]));
     } else {
       // Update single handle
       const percent = ((this.state.value - this.options.min) / range) * 100;
@@ -689,23 +850,23 @@ class RangeSlider {
       }
 
       // Update ARIA
-      this.handle.setAttribute('aria-valuenow', this.state.value);
+      this.handle.setAttribute('aria-valuenow', String(this.state.value));
     }
   }
 
-  updateValue(value) {
+  private updateValue(value: number | number[]): void {
     if (this.options.dual) {
       // Check if values actually changed
       if (JSON.stringify(value) === JSON.stringify(this.state.lastEmittedValues)) {
         return;
       }
 
-      this.state.lastEmittedValues = [...value];
-      this.element.value = value.join(',');
+      this.state.lastEmittedValues = [...(value as [number, number])];
+      this.element.value = (value as number[]).join(',');
 
       // Trigger change callback
       if (this.options.onChange) {
-        this.options.onChange([...value]);
+        this.options.onChange([...(value as number[])]);
       }
     } else {
       // Check if value actually changed
@@ -713,12 +874,12 @@ class RangeSlider {
         return;
       }
 
-      this.state.lastEmittedValue = value;
-      this.element.value = value;
+      this.state.lastEmittedValue = value as number;
+      this.element.value = String(value);
 
       // Trigger change callback
       if (this.options.onChange) {
-        this.options.onChange(value);
+        this.options.onChange(value as number);
       }
     }
 
@@ -726,7 +887,7 @@ class RangeSlider {
     this.element.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
-  formatValue(value) {
+  private formatValue(value: number): string {
     // Round to step precision
     const precision =
       this.options.step < 1 ? this.options.step.toString().split('.')[1]?.length || 0 : 0;
@@ -743,7 +904,7 @@ class RangeSlider {
     return formatted;
   }
 
-  findClosestSnap(value) {
+  private findClosestSnap(value: number): number {
     if (!this.options.snapValues.length) return value;
 
     let closest = this.options.snapValues[0];
@@ -761,11 +922,11 @@ class RangeSlider {
   }
 
   // Public API
-  getValue() {
+  public getValue(): number | number[] {
     return this.options.dual ? [...this.state.values] : this.state.value;
   }
 
-  setValue(value) {
+  public setValue(value: number): void {
     if (this.options.dual) {
       console.warn('Use setValues() for dual handle sliders');
       return;
@@ -777,7 +938,7 @@ class RangeSlider {
     this.updateValue(value);
   }
 
-  setValues(values) {
+  public setValues(values: [number, number]): void {
     if (!this.options.dual) {
       console.warn('Use setValue() for single handle sliders');
       return;
@@ -800,17 +961,17 @@ class RangeSlider {
     this.updateValue(this.state.values);
   }
 
-  setMin(min) {
+  public setMin(min: number): void {
     this.options.min = min;
     this.updateUI();
   }
 
-  setMax(max) {
+  public setMax(max: number): void {
     this.options.max = max;
     this.updateUI();
   }
 
-  disable() {
+  public disable(): void {
     this.wrapper.classList.add('disabled');
     if (this.options.dual) {
       this.handleMin.setAttribute('disabled', 'true');
@@ -820,7 +981,7 @@ class RangeSlider {
     }
   }
 
-  enable() {
+  public enable(): void {
     this.wrapper.classList.remove('disabled');
     if (this.options.dual) {
       this.handleMin.removeAttribute('disabled');
@@ -830,14 +991,14 @@ class RangeSlider {
     }
   }
 
-  destroy() {
+  public destroy(): void {
     // Cancel animation frame
     if (this.rafId) {
       cancelAnimationFrame(this.rafId);
     }
 
     // Remove event listeners
-    this.handlers.forEach(({ element, type, handler }) => {
+    this.handlers.forEach(({ element, type, handler }: HandlerEntry) => {
       element.removeEventListener(type, handler);
     });
     this.handlers.clear();
@@ -847,7 +1008,7 @@ class RangeSlider {
     this.timers.clear();
 
     // Remove created elements
-    this.createdElements.forEach((element) => {
+    this.createdElements.forEach((element: HTMLElement) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -859,11 +1020,21 @@ class RangeSlider {
   }
 }
 
+// Extend Window interface for global assignments
+declare global {
+  interface Window {
+    RangeSlider: typeof RangeSlider;
+    AmphibiousRegistry?: {
+      registerComponent: (name: string, constructor: typeof RangeSlider) => void;
+    };
+  }
+}
+
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   try {
     document.querySelectorAll('[data-range-slider]').forEach((element) => {
-      new RangeSlider(element);
+      new RangeSlider(element as HTMLInputElement);
     });
   } catch (error) {
     console.error('[Amphibious] RangeSlider auto-init failed:', error);
@@ -878,3 +1049,4 @@ if (window.AmphibiousRegistry) {
 // Export
 window.RangeSlider = RangeSlider;
 export default RangeSlider;
+export { RangeSlider };

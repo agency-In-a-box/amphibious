@@ -2,14 +2,156 @@
  * Data Table Component
  * Advanced table with sorting, filtering, and pagination
  * Part of Amphibious 2.0 Component Library
+ *
+ * @module data-table
  */
 
 import { sanitizeHTML } from '../utils/sanitize';
 
+// ---------------------------------------------------------------------------
+// Types & Interfaces
+// ---------------------------------------------------------------------------
+
+/** Sort direction for column headers. */
+export type SortDirection = 'asc' | 'desc';
+
+/** Column data type hint used for sort behaviour and cell styling. */
+export type ColumnType = 'string' | 'numeric' | 'currency' | 'date';
+
+/**
+ * Column definition for the data table.
+ *
+ * @property key      - Property name used to look up the value in each row object.
+ * @property label    - Human-readable header text.
+ * @property sortable - Whether this column can be sorted (defaults to the table-level `sortable` flag).
+ * @property type     - Data type hint (`'string'`, `'numeric'`, `'currency'`, `'date'`).
+ * @property render   - Optional callback that returns an HTML string for the cell.
+ *                      The returned HTML is sanitised via DOMPurify before insertion.
+ */
+export interface DataTableColumn {
+  key: string;
+  label: string;
+  sortable?: boolean;
+  type?: ColumnType | string;
+  render?: (value: string | undefined, rowData: DataTableRow) => string;
+}
+
+/**
+ * Filter button configuration.
+ *
+ * @property key   - Row property to match against.
+ * @property value - Value that must match for the row to pass the filter.
+ * @property label - Visible button text.
+ * @property count - Optional badge count displayed next to the label.
+ */
+export interface DataTableFilter {
+  key: string;
+  value: string;
+  label: string;
+  count?: number | string;
+}
+
+/**
+ * Localisation labels for UI strings.
+ */
+export interface DataTableLabels {
+  search: string;
+  previous: string;
+  next: string;
+  noEntries: string;
+  showing: (start: number, end: number, total: number) => string;
+  showingAll: (total: number) => string;
+  filtered: (total: number) => string;
+}
+
+/**
+ * A single row of data.
+ *
+ * Indexed by column key.  Internal properties `_index` and `_element` are
+ * added when data is extracted from an existing HTML table.
+ */
+export interface DataTableRow {
+  // biome-ignore lint/suspicious/noExplicitAny: rows carry arbitrary column values
+  [key: string]: any;
+  _index?: number;
+  _element?: HTMLTableRowElement;
+}
+
+/**
+ * Options accepted by the {@link DataTableComponent} constructor.
+ */
+export interface DataTableOptions {
+  sortable?: boolean;
+  filterable?: boolean;
+  searchable?: boolean;
+  paginate?: boolean;
+  pageSize?: number;
+  selectable?: boolean;
+  expandable?: boolean;
+  exportable?: boolean;
+  title?: string;
+  searchPlaceholder?: string;
+  labels?: Partial<DataTableLabels>;
+  columns?: DataTableColumn[];
+  filters?: DataTableFilter[];
+  data?: DataTableRow[];
+}
+
+/** Resolved configuration where defaults have been applied. */
+interface DataTableConfig {
+  sortable: boolean;
+  filterable: boolean;
+  searchable: boolean;
+  paginate: boolean;
+  pageSize: number;
+  selectable: boolean;
+  expandable: boolean;
+  exportable?: boolean;
+  title?: string;
+  searchPlaceholder?: string;
+  labels: DataTableLabels;
+  columns?: DataTableColumn[];
+  filters?: DataTableFilter[];
+  data?: DataTableRow[];
+}
+
+/** Internal bookkeeping for tracked event listeners. */
+interface TrackedListener {
+  element: HTMLElement & { _isPageButton?: boolean };
+  type: string;
+  handler: EventListener;
+}
+
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+
 class DataTableComponent {
-  constructor(element, options = {}) {
+  element: HTMLElement;
+  table: HTMLTableElement;
+  config: DataTableConfig | null;
+
+  data: DataTableRow[] | null;
+  filteredData: DataTableRow[] | null;
+  currentPage: number;
+  sortColumn: string | number | null;
+  sortDirection: SortDirection | null;
+  searchTerm: string;
+  filters: Record<string, string>;
+
+  searchInput?: HTMLInputElement;
+  infoElement?: HTMLDivElement;
+  paginationElement?: HTMLDivElement;
+  pagesElement?: HTMLDivElement;
+  prevButton?: HTMLButtonElement;
+  nextButton?: HTMLButtonElement;
+
+  private _eventListeners: TrackedListener[];
+  private _searchTimeout: ReturnType<typeof setTimeout> | null;
+
+  constructor(element: HTMLElement, options: DataTableOptions = {}) {
     this.element = element;
-    this.table = element.querySelector('table') || element;
+    this.table = (element.querySelector('table') as HTMLTableElement) || (element as unknown as HTMLTableElement);
     this.config = {
       sortable: true,
       filterable: true,
@@ -23,13 +165,14 @@ class DataTableComponent {
         previous: '\u2190 Previous',
         next: 'Next \u2192',
         noEntries: 'No entries to show',
-        showing: (start, end, total) => `Showing ${start} to ${end} of ${total} entries`,
-        showingAll: (total) => `Showing ${total} entries`,
-        filtered: (total) => `(filtered from ${total} total)`,
+        showing: (start: number, end: number, total: number) =>
+          `Showing ${start} to ${end} of ${total} entries`,
+        showingAll: (total: number) => `Showing ${total} entries`,
+        filtered: (total: number) => `(filtered from ${total} total)`,
         ...(options.labels || {}),
       },
       ...options,
-    };
+    } as DataTableConfig;
 
     this.data = [];
     this.filteredData = [];
@@ -45,17 +188,21 @@ class DataTableComponent {
   }
 
   /**
-   * Add event listener with cleanup tracking
+   * Add event listener with cleanup tracking.
    */
-  _addEventListener(element, type, handler) {
+  private _addEventListener(
+    element: HTMLElement & { _isPageButton?: boolean },
+    type: string,
+    handler: EventListener,
+  ): void {
     element.addEventListener(type, handler);
     this._eventListeners.push({ element, type, handler });
   }
 
   /**
-   * Remove tracked listeners for dynamically created page buttons
+   * Remove tracked listeners for dynamically created page buttons.
    */
-  _removePageButtonListeners() {
+  private _removePageButtonListeners(): void {
     this._eventListeners = this._eventListeners.filter((entry) => {
       if (entry.element._isPageButton) {
         entry.element.removeEventListener(entry.type, entry.handler);
@@ -66,9 +213,11 @@ class DataTableComponent {
   }
 
   /**
-   * Initialize the data table
+   * Initialize the data table.
    */
-  init() {
+  private init(): void {
+    if (!this.config) return;
+
     // Extract data from existing table or use provided data
     if (this.config.data) {
       this.data = this.config.data;
@@ -105,24 +254,38 @@ class DataTableComponent {
   }
 
   /**
-   * Extract data from existing HTML table
+   * Extract data from existing HTML table.
    */
-  extractDataFromTable() {
-    const headers = Array.from(this.table.querySelectorAll('thead th')).map((th) => ({
-      key: th.dataset.key || th.textContent.trim().toLowerCase().replace(/\s+/g, '_'),
-      label: th.textContent.trim(),
-      sortable: th.classList.contains('sortable') || this.config.sortable,
-      type: th.dataset.type || 'string',
-    }));
+  private extractDataFromTable(): void {
+    if (!this.config) return;
+
+    const headers: DataTableColumn[] = Array.from(
+      this.table.querySelectorAll('thead th'),
+    ).map((th) => {
+      const el = th as HTMLTableCellElement;
+      return {
+        key:
+          el.dataset.key ||
+          (el.textContent || '').trim().toLowerCase().replace(/\s+/g, '_'),
+        label: (el.textContent || '').trim(),
+        sortable: el.classList.contains('sortable') || this.config!.sortable,
+        type: el.dataset.type || 'string',
+      };
+    });
 
     const rows = Array.from(this.table.querySelectorAll('tbody tr'));
     this.data = rows.map((row, index) => {
-      const cells = Array.from(row.querySelectorAll('td'));
-      const rowData = { _index: index, _element: row };
+      const cells = Array.from(
+        (row as HTMLTableRowElement).querySelectorAll('td'),
+      );
+      const rowData: DataTableRow = {
+        _index: index,
+        _element: row as HTMLTableRowElement,
+      };
 
       cells.forEach((cell, i) => {
         if (headers[i]) {
-          rowData[headers[i].key] = cell.textContent.trim();
+          rowData[headers[i].key] = (cell.textContent || '').trim();
         }
       });
 
@@ -133,14 +296,14 @@ class DataTableComponent {
   }
 
   /**
-   * Build the complete table structure with controls
+   * Build the complete table structure with controls.
    */
-  buildTableStructure() {
+  private buildTableStructure(): void {
     // Wrap table if needed
     if (!this.element.classList.contains('aiab-data-table-container')) {
       const container = document.createElement('div');
       container.className = 'aiab-data-table-container';
-      this.table.parentNode.insertBefore(container, this.table);
+      this.table.parentNode!.insertBefore(container, this.table);
       container.appendChild(this.table);
       this.element = container;
     }
@@ -157,14 +320,16 @@ class DataTableComponent {
     // Wrap table for responsive scrolling
     const wrapper = document.createElement('div');
     wrapper.className = 'aiab-data-table-wrapper';
-    this.table.parentNode.insertBefore(wrapper, this.table);
+    this.table.parentNode!.insertBefore(wrapper, this.table);
     wrapper.appendChild(this.table);
   }
 
   /**
-   * Create header controls (search, filters)
+   * Create header controls (search, filters).
    */
-  createHeaderControls() {
+  private createHeaderControls(): void {
+    if (!this.config) return;
+
     const header = document.createElement('div');
     header.className = 'aiab-data-table-header';
 
@@ -208,9 +373,9 @@ class DataTableComponent {
   }
 
   /**
-   * Create search box
+   * Create search box.
    */
-  createSearchBox() {
+  private createSearchBox(): HTMLDivElement {
     const container = document.createElement('div');
     container.className = 'aiab-data-table-search';
 
@@ -222,7 +387,8 @@ class DataTableComponent {
     const input = document.createElement('input');
     input.className = 'aiab-data-table-search__input';
     input.type = 'text';
-    input.placeholder = this.config.searchPlaceholder || this.config.labels.search;
+    input.placeholder =
+      this.config?.searchPlaceholder || this.config?.labels.search || 'Search...';
 
     container.appendChild(icon);
     container.appendChild(input);
@@ -232,13 +398,13 @@ class DataTableComponent {
   }
 
   /**
-   * Create filter buttons
+   * Create filter buttons.
    */
-  createFilters() {
+  private createFilters(): HTMLDivElement {
     const container = document.createElement('div');
     container.className = 'aiab-data-table-filters';
 
-    this.config.filters.forEach((filter) => {
+    this.config?.filters?.forEach((filter) => {
       const button = document.createElement('button');
       button.className = 'aiab-data-table-filter';
       button.dataset.filterKey = filter.key;
@@ -251,7 +417,7 @@ class DataTableComponent {
       if (filter.count !== undefined) {
         const badge = document.createElement('span');
         badge.className = 'aiab-data-table-filter__badge';
-        badge.textContent = filter.count;
+        badge.textContent = String(filter.count);
         button.appendChild(badge);
       }
 
@@ -262,20 +428,34 @@ class DataTableComponent {
   }
 
   /**
-   * Create footer controls (pagination, info)
+   * Create export button.
+   * Called when `config.exportable` is true.
    */
-  createFooterControls() {
+  private createExportButton(): HTMLButtonElement {
+    const button = document.createElement('button');
+    button.className = 'aiab-data-table-export';
+    button.textContent = 'Export';
+    this._addEventListener(button, 'click', () => {
+      this.exportData('csv');
+    });
+    return button;
+  }
+
+  /**
+   * Create footer controls (pagination, info).
+   */
+  private createFooterControls(): void {
     const footer = document.createElement('div');
     footer.className = 'aiab-data-table-footer';
 
     // Info
-    const info = document.createElement('div');
+    const info = document.createElement('div') as HTMLDivElement;
     info.className = 'aiab-data-table-info';
     footer.appendChild(info);
     this.infoElement = info;
 
     // Pagination
-    if (this.config.paginate) {
+    if (this.config?.paginate) {
       const pagination = this.createPagination();
       footer.appendChild(pagination);
       this.paginationElement = pagination;
@@ -285,21 +465,21 @@ class DataTableComponent {
   }
 
   /**
-   * Create pagination controls
+   * Create pagination controls.
    */
-  createPagination() {
-    const container = document.createElement('div');
+  private createPagination(): HTMLDivElement {
+    const container = document.createElement('div') as HTMLDivElement;
     container.className = 'aiab-data-table-pagination';
 
     // Previous button
     const prevBtn = document.createElement('button');
     prevBtn.className = 'aiab-data-table-pagination__button';
-    prevBtn.innerHTML = this.config.labels.previous;
+    prevBtn.innerHTML = this.config?.labels.previous || '\u2190 Previous';
     container.appendChild(prevBtn);
     this.prevButton = prevBtn;
 
     // Page numbers
-    const pages = document.createElement('div');
+    const pages = document.createElement('div') as HTMLDivElement;
     pages.className = 'aiab-data-table-pagination__pages';
     container.appendChild(pages);
     this.pagesElement = pages;
@@ -307,7 +487,7 @@ class DataTableComponent {
     // Next button
     const nextBtn = document.createElement('button');
     nextBtn.className = 'aiab-data-table-pagination__button';
-    nextBtn.innerHTML = this.config.labels.next;
+    nextBtn.innerHTML = this.config?.labels.next || 'Next \u2192';
     container.appendChild(nextBtn);
     this.nextButton = nextBtn;
 
@@ -315,16 +495,16 @@ class DataTableComponent {
   }
 
   /**
-   * Initialize sorting functionality
+   * Initialize sorting functionality.
    */
-  initializeSorting() {
+  private initializeSorting(): void {
     const headers = this.table.querySelectorAll('thead th');
 
     headers.forEach((header, index) => {
-      const column = this.config.columns?.[index];
+      const column = this.config?.columns?.[index];
       if (column?.sortable !== false) {
         header.classList.add('sortable', 'sortable--both');
-        this._addEventListener(header, 'click', () => {
+        this._addEventListener(header as HTMLElement, 'click', () => {
           this.sortBy(column?.key || index);
         });
       }
@@ -332,14 +512,18 @@ class DataTableComponent {
   }
 
   /**
-   * Initialize search functionality
+   * Initialize search functionality.
    */
-  initializeSearch() {
+  private initializeSearch(): void {
     if (this.searchInput) {
-      this._addEventListener(this.searchInput, 'input', (e) => {
-        clearTimeout(this._searchTimeout);
+      this._addEventListener(this.searchInput, 'input', (e: Event) => {
+        if (this._searchTimeout) {
+          clearTimeout(this._searchTimeout);
+        }
         this._searchTimeout = setTimeout(() => {
-          this.searchTerm = e.target.value.toLowerCase();
+          this.searchTerm = (
+            (e.target as HTMLInputElement).value || ''
+          ).toLowerCase();
           this.currentPage = 1;
           this.update();
         }, 300);
@@ -348,27 +532,32 @@ class DataTableComponent {
   }
 
   /**
-   * Initialize filter functionality
+   * Initialize filter functionality.
    */
-  initializeFilters() {
-    const filterButtons = this.element.querySelectorAll('.aiab-data-table-filter');
+  private initializeFilters(): void {
+    const filterButtons = this.element.querySelectorAll(
+      '.aiab-data-table-filter',
+    );
 
     filterButtons.forEach((button) => {
-      this._addEventListener(button, 'click', () => {
-        const key = button.dataset.filterKey;
-        const value = button.dataset.filterValue;
+      this._addEventListener(button as HTMLElement, 'click', () => {
+        const btn = button as HTMLElement;
+        const key = btn.dataset.filterKey;
+        const value = btn.dataset.filterValue;
 
-        if (button.classList.contains('aiab-data-table-filter--active')) {
-          button.classList.remove('aiab-data-table-filter--active');
+        if (!key || !value) return;
+
+        if (btn.classList.contains('aiab-data-table-filter--active')) {
+          btn.classList.remove('aiab-data-table-filter--active');
           delete this.filters[key];
         } else {
           // Remove active from other filters in same group
-          filterButtons.forEach((btn) => {
-            if (btn.dataset.filterKey === key) {
-              btn.classList.remove('aiab-data-table-filter--active');
+          filterButtons.forEach((otherBtn) => {
+            if ((otherBtn as HTMLElement).dataset.filterKey === key) {
+              otherBtn.classList.remove('aiab-data-table-filter--active');
             }
           });
-          button.classList.add('aiab-data-table-filter--active');
+          btn.classList.add('aiab-data-table-filter--active');
           this.filters[key] = value;
         }
 
@@ -379,9 +568,9 @@ class DataTableComponent {
   }
 
   /**
-   * Initialize pagination
+   * Initialize pagination.
    */
-  initializePagination() {
+  private initializePagination(): void {
     if (this.prevButton) {
       this._addEventListener(this.prevButton, 'click', () => {
         if (this.currentPage > 1) {
@@ -393,7 +582,9 @@ class DataTableComponent {
 
     if (this.nextButton) {
       this._addEventListener(this.nextButton, 'click', () => {
-        const totalPages = Math.ceil(this.filteredData.length / this.config.pageSize);
+        const totalPages = Math.ceil(
+          (this.filteredData?.length || 0) / (this.config?.pageSize || 10),
+        );
         if (this.currentPage < totalPages) {
           this.currentPage++;
           this.update();
@@ -403,11 +594,13 @@ class DataTableComponent {
   }
 
   /**
-   * Initialize row selection
+   * Initialize row selection.
    */
-  initializeSelection() {
+  private initializeSelection(): void {
     // Add checkbox column header
     const thead = this.table.querySelector('thead tr');
+    if (!thead) return;
+
     const checkAllTh = document.createElement('th');
     checkAllTh.innerHTML =
       '<input type="checkbox" class="aiab-data-table__checkbox" data-check-all>';
@@ -415,28 +608,35 @@ class DataTableComponent {
 
     // Add checkbox to each row
     const tbody = this.table.querySelector('tbody');
-    tbody.querySelectorAll('tr').forEach((row) => {
-      const checkTd = document.createElement('td');
-      checkTd.innerHTML = '<input type="checkbox" class="aiab-data-table__checkbox">';
-      row.insertBefore(checkTd, row.firstChild);
-    });
+    if (tbody) {
+      tbody.querySelectorAll('tr').forEach((row) => {
+        const checkTd = document.createElement('td');
+        checkTd.innerHTML =
+          '<input type="checkbox" class="aiab-data-table__checkbox">';
+        row.insertBefore(checkTd, row.firstChild);
+      });
+    }
 
     // Handle check all
-    const checkAll = this.table.querySelector('[data-check-all]');
+    const checkAll = this.table.querySelector(
+      '[data-check-all]',
+    ) as HTMLInputElement | null;
     if (checkAll) {
-      this._addEventListener(checkAll, 'change', (e) => {
-        const checkboxes = this.table.querySelectorAll('tbody .aiab-data-table__checkbox');
+      this._addEventListener(checkAll, 'change', (e: Event) => {
+        const checkboxes = this.table.querySelectorAll(
+          'tbody .aiab-data-table__checkbox',
+        ) as NodeListOf<HTMLInputElement>;
         checkboxes.forEach((cb) => {
-          cb.checked = e.target.checked;
+          cb.checked = (e.target as HTMLInputElement).checked;
         });
       });
     }
   }
 
   /**
-   * Sort data by column
+   * Sort data by column.
    */
-  sortBy(column) {
+  sortBy(column: string | number): void {
     // Toggle sort direction
     if (this.sortColumn === column) {
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
@@ -450,8 +650,11 @@ class DataTableComponent {
       th.classList.remove('sort--asc', 'sort--desc');
     });
 
-    const columnIndex = this.config.columns?.findIndex((c) => c.key === column) ?? column;
-    const header = this.table.querySelectorAll('thead th')[columnIndex];
+    const columnIndex =
+      this.config?.columns?.findIndex((c) => c.key === column) ?? column;
+    const header = this.table.querySelectorAll('thead th')[
+      columnIndex as number
+    ];
     if (header) {
       header.classList.add(`sort--${this.sortDirection}`);
     }
@@ -460,10 +663,10 @@ class DataTableComponent {
   }
 
   /**
-   * Filter and sort data
+   * Filter and sort data.
    */
-  filterAndSortData() {
-    let data = [...this.data];
+  private filterAndSortData(): void {
+    let data = [...(this.data || [])];
 
     // Apply search filter
     if (this.searchTerm) {
@@ -481,20 +684,22 @@ class DataTableComponent {
 
     // Apply sorting
     if (this.sortColumn !== null) {
+      const sortCol = this.sortColumn;
+      const sortDir = this.sortDirection;
       data.sort((a, b) => {
-        const aVal = a[this.sortColumn];
-        const bVal = b[this.sortColumn];
+        const aVal = a[sortCol];
+        const bVal = b[sortCol];
 
         // Handle numeric sorting
         const aNum = Number.parseFloat(aVal);
         const bNum = Number.parseFloat(bVal);
         if (!Number.isNaN(aNum) && !Number.isNaN(bNum)) {
-          return this.sortDirection === 'asc' ? aNum - bNum : bNum - aNum;
+          return sortDir === 'asc' ? aNum - bNum : bNum - aNum;
         }
 
         // String sorting
         const comparison = String(aVal).localeCompare(String(bVal));
-        return this.sortDirection === 'asc' ? comparison : -comparison;
+        return sortDir === 'asc' ? comparison : -comparison;
       });
     }
 
@@ -502,18 +707,22 @@ class DataTableComponent {
   }
 
   /**
-   * Update table display
+   * Update table display.
    */
-  update() {
+  update(): void {
+    if (!this.config) return;
+
     this.filterAndSortData();
 
     // Calculate pagination
-    const totalPages = Math.ceil(this.filteredData.length / this.config.pageSize);
+    const totalPages = Math.ceil(
+      (this.filteredData?.length || 0) / this.config.pageSize,
+    );
     const startIndex = (this.currentPage - 1) * this.config.pageSize;
     const endIndex = startIndex + this.config.pageSize;
     const pageData = this.config.paginate
-      ? this.filteredData.slice(startIndex, endIndex)
-      : this.filteredData;
+      ? (this.filteredData || []).slice(startIndex, endIndex)
+      : (this.filteredData || []);
 
     // Render table rows
     this.renderRows(pageData);
@@ -528,9 +737,9 @@ class DataTableComponent {
   }
 
   /**
-   * Render table rows
+   * Render table rows.
    */
-  renderRows(data) {
+  private renderRows(data: DataTableRow[]): void {
     const tbody = this.table.querySelector('tbody');
     if (!tbody) return;
 
@@ -540,10 +749,10 @@ class DataTableComponent {
     if (data.length === 0) {
       const row = document.createElement('tr');
       const cell = document.createElement('td');
-      cell.colSpan = this.config.columns?.length || 1;
+      cell.colSpan = this.config?.columns?.length || 1;
       cell.className = 'aiab-data-table-empty';
       cell.innerHTML = `
-        <div class="aiab-data-table-empty__icon">📊</div>
+        <div class="aiab-data-table-empty__icon">\uD83D\uDCCA</div>
         <div class="aiab-data-table-empty__title">No data available</div>
         <div class="aiab-data-table-empty__message">Try adjusting your filters or search term</div>
       `;
@@ -557,19 +766,20 @@ class DataTableComponent {
       const row = document.createElement('tr');
 
       // Add checkbox if selectable
-      if (this.config.selectable) {
+      if (this.config?.selectable) {
         const checkTd = document.createElement('td');
-        checkTd.innerHTML = '<input type="checkbox" class="aiab-data-table__checkbox">';
+        checkTd.innerHTML =
+          '<input type="checkbox" class="aiab-data-table__checkbox">';
         row.appendChild(checkTd);
       }
 
       // Add data cells
-      this.config.columns?.forEach((column) => {
+      this.config?.columns?.forEach((column) => {
         const cell = document.createElement('td');
         const value = rowData[column.key];
 
         // Apply cell formatting
-        // column.render: (value, rowData) => HTML — sanitized via DOMPurify
+        // column.render: (value, rowData) => HTML -- sanitized via DOMPurify
         if (column.render) {
           cell.innerHTML = sanitizeHTML(column.render(value, rowData));
         } else {
@@ -589,9 +799,9 @@ class DataTableComponent {
   }
 
   /**
-   * Update pagination controls
+   * Update pagination controls.
    */
-  updatePagination(totalPages) {
+  private updatePagination(totalPages: number): void {
     // Update buttons
     if (this.prevButton) {
       this.prevButton.disabled = this.currentPage === 1;
@@ -609,7 +819,10 @@ class DataTableComponent {
 
       // Calculate page range
       const maxButtons = 5;
-      let startPage = Math.max(1, this.currentPage - Math.floor(maxButtons / 2));
+      let startPage = Math.max(
+        1,
+        this.currentPage - Math.floor(maxButtons / 2),
+      );
       const endPage = Math.min(totalPages, startPage + maxButtons - 1);
 
       if (endPage - startPage < maxButtons - 1) {
@@ -618,9 +831,11 @@ class DataTableComponent {
 
       // Create page buttons
       for (let i = startPage; i <= endPage; i++) {
-        const button = document.createElement('button');
+        const button = document.createElement('button') as HTMLButtonElement & {
+          _isPageButton?: boolean;
+        };
         button.className = 'aiab-data-table-pagination__button';
-        button.textContent = i;
+        button.textContent = String(i);
 
         if (i === this.currentPage) {
           button.classList.add('aiab-data-table-pagination__button--active');
@@ -638,54 +853,58 @@ class DataTableComponent {
   }
 
   /**
-   * Update info display
+   * Update info display.
    */
-  updateInfo(startIndex, endIndex) {
-    if (this.infoElement) {
-      const total = this.filteredData.length;
-      const _showing = Math.min(endIndex, total) - startIndex;
+  private updateInfo(startIndex: number, endIndex: number): void {
+    if (!this.infoElement || !this.config) return;
 
-      if (total === 0) {
-        this.infoElement.textContent = this.config.labels.noEntries;
-      } else if (this.config.paginate) {
-        this.infoElement.textContent = this.config.labels.showing(startIndex + 1, Math.min(endIndex, total), total);
-      } else {
-        this.infoElement.textContent = this.config.labels.showingAll(total);
-      }
+    const total = this.filteredData?.length || 0;
+    const _showing = Math.min(endIndex, total) - startIndex;
 
-      // Add filtered indicator
-      if (this.searchTerm || Object.keys(this.filters).length > 0) {
-        this.infoElement.textContent += ` ${this.config.labels.filtered(this.data.length)}`;
-      }
+    if (total === 0) {
+      this.infoElement.textContent = this.config.labels.noEntries;
+    } else if (this.config.paginate) {
+      this.infoElement.textContent = this.config.labels.showing(
+        startIndex + 1,
+        Math.min(endIndex, total),
+        total,
+      );
+    } else {
+      this.infoElement.textContent = this.config.labels.showingAll(total);
+    }
+
+    // Add filtered indicator
+    if (this.searchTerm || Object.keys(this.filters).length > 0) {
+      this.infoElement.textContent += ` ${this.config.labels.filtered(this.data?.length || 0)}`;
     }
   }
 
-  /**
-   * Public API Methods
-   */
+  // -------------------------------------------------------------------------
+  // Public API Methods
+  // -------------------------------------------------------------------------
 
   /**
-   * Set new data
+   * Set new data.
    */
-  setData(data) {
+  setData(data: DataTableRow[]): void {
     this.data = data;
     this.currentPage = 1;
     this.update();
   }
 
   /**
-   * Add filter
+   * Add filter.
    */
-  addFilter(key, value) {
+  addFilter(key: string, value: string): void {
     this.filters[key] = value;
     this.currentPage = 1;
     this.update();
   }
 
   /**
-   * Clear filters
+   * Clear filters.
    */
-  clearFilters() {
+  clearFilters(): void {
     this.filters = {};
     this.searchTerm = '';
     if (this.searchInput) {
@@ -696,28 +915,36 @@ class DataTableComponent {
   }
 
   /**
-   * Get selected rows
+   * Get selected rows.
    */
-  getSelected() {
-    const checkboxes = this.table.querySelectorAll('tbody .aiab-data-table__checkbox:checked');
+  getSelected(): DataTableRow[] {
+    const checkboxes = this.table.querySelectorAll(
+      'tbody .aiab-data-table__checkbox:checked',
+    );
     const indices = Array.from(checkboxes).map((cb) => {
-      const row = cb.closest('tr');
+      const row = (cb as HTMLElement).closest('tr');
+      if (!row || !row.parentNode) return -1;
       return Array.from(row.parentNode.children).indexOf(row);
     });
 
-    return indices.map((i) => this.filteredData[i]).filter(Boolean);
+    return indices
+      .map((i) => (this.filteredData || [])[i])
+      .filter(Boolean) as DataTableRow[];
   }
 
   /**
-   * Export data
+   * Export data.
    */
-  exportData(format = 'csv') {
-    const data = this.filteredData.length > 0 ? this.filteredData : this.data;
+  exportData(format: string = 'csv'): void {
+    if (!this.config?.columns) return;
+
+    const data =
+      (this.filteredData?.length || 0) > 0 ? this.filteredData! : this.data || [];
 
     if (format === 'csv') {
       const headers = this.config.columns.map((c) => c.label).join(',');
       const rows = data.map((row) =>
-        this.config.columns.map((c) => `"${row[c.key] || ''}"`).join(','),
+        this.config!.columns!.map((c) => `"${row[c.key] || ''}"`).join(','),
       );
       const csv = [headers, ...rows].join('\n');
 
@@ -731,9 +958,9 @@ class DataTableComponent {
   }
 
   /**
-   * Clean up and destroy the component
+   * Clean up and destroy the component.
    */
-  destroy() {
+  destroy(): void {
     // Clear search debounce timeout
     if (this._searchTimeout) {
       clearTimeout(this._searchTimeout);
@@ -753,18 +980,41 @@ class DataTableComponent {
   }
 }
 
-// Auto-initialize tables with aiab-data-table attribute
+// ---------------------------------------------------------------------------
+// Window global
+// ---------------------------------------------------------------------------
+
+declare global {
+  interface Window {
+    DataTable: typeof DataTableComponent;
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.DataTable = DataTableComponent;
+}
+
+// ---------------------------------------------------------------------------
+// Auto-init
+// ---------------------------------------------------------------------------
+
 document.addEventListener('DOMContentLoaded', () => {
   try {
     document.querySelectorAll('[data-table]').forEach((element) => {
-      const options = element.dataset.table ? JSON.parse(element.dataset.table) : {};
-      new DataTableComponent(element, options);
+      const el = element as HTMLElement;
+      const options: DataTableOptions = el.dataset.table
+        ? JSON.parse(el.dataset.table)
+        : {};
+      new DataTableComponent(el, options);
     });
   } catch (error) {
     console.error('[Amphibious] DataTable auto-init failed:', error);
   }
 });
 
-// Export for module usage
+// ---------------------------------------------------------------------------
+// Exports
+// ---------------------------------------------------------------------------
+
 export default DataTableComponent;
 export { DataTableComponent };

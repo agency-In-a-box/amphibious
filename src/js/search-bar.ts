@@ -2,12 +2,176 @@
  * Search Bar Component with Autocomplete
  * Vanilla JS search with debouncing and suggestions
  * Part of Amphibious 2.0 Component Library
+ *
+ * @module search-bar
  */
 
 import { escapeHTML, sanitizeHTML } from '../utils/sanitize';
 
+/**
+ * A single category filter option displayed above search results.
+ *
+ * @property label - Human-readable category name.
+ * @property value - Machine-readable category identifier.
+ */
+export interface SearchBarCategory {
+  label: string;
+  value: string;
+}
+
+/**
+ * A structured search result object.
+ * String results are also supported via the `SearchBarSourceItem` union.
+ *
+ * @property title - Primary display text.
+ * @property name - Alternative primary text (fallback for title).
+ * @property text - Alternative primary text (fallback for title and name).
+ * @property subtitle - Secondary display text.
+ * @property description - Alternative secondary text (fallback for subtitle).
+ * @property icon - Icon string to display beside the result.
+ */
+export interface SearchBarResultObject {
+  title?: string;
+  name?: string;
+  text?: string;
+  subtitle?: string;
+  description?: string;
+  icon?: string;
+  [key: string]: unknown;
+}
+
+/** A source item can be a plain string or a structured result object. */
+export type SearchBarSourceItem = string | SearchBarResultObject;
+
+/**
+ * The data source for search results. Can be:
+ * - An array of items to filter locally
+ * - A URL string for remote fetching
+ * - An async function that returns results
+ */
+export type SearchBarSource =
+  | SearchBarSourceItem[]
+  | string
+  | ((query: string) => Promise<SearchBarSourceItem[]> | SearchBarSourceItem[]);
+
+/**
+ * Localizable UI labels used by the search bar component.
+ *
+ * @property clearSearch - ARIA label for the clear button.
+ */
+export interface SearchBarLabels {
+  clearSearch: string;
+}
+
+/**
+ * Configuration options for the SearchBar component.
+ *
+ * @property minChars - Minimum characters before searching. Defaults to `2`.
+ * @property delay - Debounce delay in ms. Defaults to `300`.
+ * @property maxResults - Maximum number of results to display. Defaults to `10`.
+ * @property source - Data source: array, URL string, or async function.
+ * @property searchKeys - Object keys to search when source contains objects.
+ * @property placeholder - Input placeholder text.
+ * @property noResultsText - Text shown when no results are found.
+ * @property categories - Optional category filters.
+ * @property recentSearches - Enable recent searches feature. Defaults to `true`.
+ * @property maxRecent - Maximum number of recent searches to store.
+ * @property highlightMatches - Highlight matching text in results. Defaults to `true`.
+ * @property autoFocus - Automatically focus the input on init.
+ * @property clearOnSelect - Clear input after selecting a result.
+ * @property onSelect - Callback fired when a result is selected.
+ * @property onSearch - Callback fired after search completes.
+ * @property onChange - Callback fired on input value change.
+ * @property onClear - Callback fired when the input is cleared.
+ * @property renderItem - Custom render function for result items. Output is sanitized via DOMPurify.
+ * @property labels - Translatable UI label strings.
+ */
+export interface SearchBarOptions {
+  minChars?: number;
+  delay?: number;
+  maxResults?: number;
+  source?: SearchBarSource;
+  searchKeys?: string[];
+  placeholder?: string;
+  noResultsText?: string;
+  categories?: SearchBarCategory[] | null;
+  recentSearches?: boolean;
+  maxRecent?: number;
+  highlightMatches?: boolean;
+  autoFocus?: boolean;
+  clearOnSelect?: boolean;
+  onSelect?: ((result: SearchBarSourceItem, searchBar: SearchBar) => void) | null;
+  onSearch?:
+    | ((query: string, results: SearchBarSourceItem[], searchBar: SearchBar) => void)
+    | null;
+  onChange?: ((value: string, searchBar: SearchBar) => void) | null;
+  onClear?: ((searchBar: SearchBar) => void) | null;
+  renderItem?: ((result: SearchBarSourceItem, query: string) => string) | null;
+  labels?: Partial<SearchBarLabels>;
+}
+
+/**
+ * Internal resolved options with all defaults applied.
+ * Every property is required (no `undefined`).
+ */
+interface SearchBarResolvedOptions {
+  minChars: number;
+  delay: number;
+  maxResults: number;
+  source: SearchBarSource;
+  searchKeys: string[];
+  placeholder: string;
+  noResultsText: string;
+  categories: SearchBarCategory[] | null;
+  recentSearches: boolean;
+  maxRecent: number;
+  highlightMatches: boolean;
+  autoFocus: boolean;
+  clearOnSelect: boolean;
+  onSelect: ((result: SearchBarSourceItem, searchBar: SearchBar) => void) | null;
+  onSearch:
+    | ((query: string, results: SearchBarSourceItem[], searchBar: SearchBar) => void)
+    | null;
+  onChange: ((value: string, searchBar: SearchBar) => void) | null;
+  onClear: ((searchBar: SearchBar) => void) | null;
+  renderItem: ((result: SearchBarSourceItem, query: string) => string) | null;
+  labels: SearchBarLabels;
+}
+
+/**
+ * Search bar component with autocomplete, debouncing, category filters,
+ * recent searches, and keyboard navigation.
+ *
+ * @example
+ * ```ts
+ * const el = document.querySelector('#search');
+ * const search = new SearchBar(el, {
+ *   source: ['Apple', 'Banana', 'Cherry'],
+ *   onSelect: (result) => console.log('Selected:', result),
+ * });
+ * ```
+ */
 class SearchBar {
-  constructor(element, options = {}) {
+  public element: HTMLElement;
+  public options: SearchBarResolvedOptions;
+
+  public isOpen: boolean;
+  public currentFocus: number;
+  public results: SearchBarSourceItem[];
+
+  public wrapper!: HTMLDivElement;
+  public input!: HTMLInputElement;
+  public clearBtn!: HTMLButtonElement;
+  public spinner!: HTMLDivElement;
+  public dropdown!: HTMLDivElement;
+  public resultsContainer!: HTMLDivElement;
+
+  private debounceTimer: ReturnType<typeof setTimeout> | null;
+  private recentSearches: string[];
+  private _abortController: AbortController;
+  private _fetchController: AbortController | null;
+
+  constructor(element: HTMLElement, options: SearchBarOptions = {}) {
     this.element = element;
     this.options = {
       minChars: options.minChars || 2,
@@ -27,12 +191,11 @@ class SearchBar {
       onSearch: options.onSearch || null,
       onChange: options.onChange || null,
       onClear: options.onClear || null,
-      renderItem: options.renderItem || null, // (result, query) => HTML — sanitized via DOMPurify
+      renderItem: options.renderItem || null,
       labels: {
         clearSearch: 'Clear search',
         ...(options.labels || {}),
       },
-      ...options,
     };
 
     this.isOpen = false;
@@ -46,7 +209,7 @@ class SearchBar {
     this.init();
   }
 
-  init() {
+  private init(): void {
     this.createSearchBar();
     this.bindEvents();
 
@@ -55,7 +218,7 @@ class SearchBar {
     }
   }
 
-  createSearchBar() {
+  private createSearchBar(): void {
     // Create wrapper
     const wrapper = document.createElement('div');
     wrapper.className = 'aiab-search-bar';
@@ -134,11 +297,12 @@ class SearchBar {
     this.resultsContainer = results;
   }
 
-  createCategories() {
+  private createCategories(): HTMLDivElement {
     const categoriesDiv = document.createElement('div');
     categoriesDiv.className = 'aiab-search-bar-categories';
 
-    this.options.categories.forEach((category) => {
+    // biome-ignore lint/style/noNonNullAssertion: categories is checked non-null by caller
+    this.options.categories!.forEach((category: SearchBarCategory) => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'aiab-search-bar-category';
@@ -155,7 +319,7 @@ class SearchBar {
     return categoriesDiv;
   }
 
-  bindEvents() {
+  private bindEvents(): void {
     const signal = this._abortController.signal;
 
     // Input events
@@ -164,7 +328,9 @@ class SearchBar {
     this.input.addEventListener('blur', () => this.handleBlur(), { signal });
 
     // Keyboard navigation
-    this.input.addEventListener('keydown', (e) => this.handleKeydown(e), { signal });
+    this.input.addEventListener('keydown', (e: KeyboardEvent) => this.handleKeydown(e), {
+      signal,
+    });
 
     // Clear button
     this.clearBtn.addEventListener('click', () => this.clear(), { signal });
@@ -172,8 +338,8 @@ class SearchBar {
     // Click outside to close
     document.addEventListener(
       'click',
-      (e) => {
-        if (!this.wrapper.contains(e.target)) {
+      (e: MouseEvent) => {
+        if (!this.wrapper.contains(e.target as Node)) {
           this.close();
         }
       },
@@ -181,7 +347,7 @@ class SearchBar {
     );
   }
 
-  handleInput() {
+  private handleInput(): void {
     const value = this.input.value.trim();
 
     // Update UI state
@@ -192,7 +358,9 @@ class SearchBar {
     }
 
     // Clear previous timer
-    clearTimeout(this.debounceTimer);
+    if (this.debounceTimer) {
+      clearTimeout(this.debounceTimer);
+    }
 
     // Handle search
     if (value.length >= this.options.minChars) {
@@ -213,7 +381,7 @@ class SearchBar {
     }
   }
 
-  handleFocus() {
+  private handleFocus(): void {
     const value = this.input.value.trim();
 
     if (value.length >= this.options.minChars) {
@@ -227,7 +395,7 @@ class SearchBar {
     }
   }
 
-  handleBlur() {
+  private handleBlur(): void {
     // Delay to allow clicking on results
     setTimeout(() => {
       if (!this.wrapper.contains(document.activeElement)) {
@@ -236,7 +404,7 @@ class SearchBar {
     }, 200);
   }
 
-  handleKeydown(e) {
+  private handleKeydown(e: KeyboardEvent): void {
     const items = this.resultsContainer.querySelectorAll('.aiab-search-bar-item');
 
     switch (e.key) {
@@ -261,7 +429,7 @@ class SearchBar {
       case 'Enter':
         e.preventDefault();
         if (this.currentFocus > -1 && items[this.currentFocus]) {
-          items[this.currentFocus].click();
+          (items[this.currentFocus] as HTMLElement).click();
         } else {
           this.search(this.input.value.trim());
         }
@@ -274,8 +442,8 @@ class SearchBar {
     }
   }
 
-  highlightItem(items) {
-    items.forEach((item, index) => {
+  private highlightItem(items: NodeListOf<Element>): void {
+    items.forEach((item: Element, index: number) => {
       if (index === this.currentFocus) {
         item.classList.add('aiab-search-bar-item--active');
         item.scrollIntoView({ block: 'nearest' });
@@ -285,8 +453,8 @@ class SearchBar {
     });
   }
 
-  async search(query) {
-    let results = [];
+  public async search(query: string): Promise<void> {
+    let results: SearchBarSourceItem[] = [];
 
     // Abort any in-flight fetch request before starting a new one
     if (this._fetchController) {
@@ -301,7 +469,7 @@ class SearchBar {
       } else if (typeof this.options.source === 'string') {
         // Remote URL source — use AbortController with timeout
         this._fetchController = new AbortController();
-        const timeoutId = setTimeout(() => this._fetchController.abort(), 5000);
+        const timeoutId = setTimeout(() => this._fetchController?.abort(), 5000);
 
         try {
           const response = await fetch(
@@ -333,9 +501,9 @@ class SearchBar {
       if (this.options.onSearch) {
         this.options.onSearch(query, results, this);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       // Silently ignore aborted requests (user typed again or component destroyed)
-      if (error?.name === 'AbortError') return;
+      if (error instanceof Error && error.name === 'AbortError') return;
       // Handle search error - console removed for production
       this.renderError();
     } finally {
@@ -343,28 +511,35 @@ class SearchBar {
     }
   }
 
-  filterLocalData(query) {
+  private filterLocalData(query: string): SearchBarSourceItem[] {
     const lowerQuery = query.toLowerCase();
 
-    return this.options.source.filter((item) => {
-      if (typeof item === 'string') {
-        return item.toLowerCase().includes(lowerQuery);
-      }
-      if (typeof item === 'object') {
-        return this.options.searchKeys.some((key) => {
-          const value = this.getNestedValue(item, key);
-          return value?.toString().toLowerCase().includes(lowerQuery);
-        });
-      }
-      return false;
-    });
+    return (this.options.source as SearchBarSourceItem[]).filter(
+      (item: SearchBarSourceItem) => {
+        if (typeof item === 'string') {
+          return item.toLowerCase().includes(lowerQuery);
+        }
+        if (typeof item === 'object') {
+          return this.options.searchKeys.some((key: string) => {
+            const value = this.getNestedValue(item, key);
+            return value?.toString().toLowerCase().includes(lowerQuery);
+          });
+        }
+        return false;
+      },
+    );
   }
 
-  getNestedValue(obj, path) {
-    return path.split('.').reduce((curr, prop) => curr?.[prop], obj);
+  private getNestedValue(obj: SearchBarResultObject, path: string): unknown {
+    return path.split('.').reduce<unknown>(
+      (curr: unknown, prop: string) =>
+        // biome-ignore lint/suspicious/noExplicitAny: dynamic nested property access requires any
+        curr != null ? (curr as any)[prop] : undefined,
+      obj,
+    );
   }
 
-  renderResults(results, query) {
+  private renderResults(results: SearchBarSourceItem[], query: string): void {
     this.resultsContainer.innerHTML = '';
 
     if (results.length === 0) {
@@ -373,7 +548,7 @@ class SearchBar {
       return;
     }
 
-    results.forEach((result, _index) => {
+    results.forEach((result: SearchBarSourceItem, _index: number) => {
       const item = this.createResultItem(result, query);
       this.resultsContainer.appendChild(item);
     });
@@ -382,7 +557,7 @@ class SearchBar {
     this.open();
   }
 
-  createResultItem(result, query) {
+  private createResultItem(result: SearchBarSourceItem, query: string): HTMLButtonElement {
     const item = document.createElement('button');
     item.type = 'button';
     item.className = 'aiab-search-bar-item';
@@ -431,7 +606,7 @@ class SearchBar {
     return item;
   }
 
-  highlightMatch(text, query) {
+  private highlightMatch(text: string, query: string): string {
     if (!this.options.highlightMatches || !query) {
       return escapeHTML(text);
     }
@@ -442,7 +617,7 @@ class SearchBar {
     return escaped.replace(regex, '<mark>$1</mark>');
   }
 
-  showRecentSearches() {
+  private showRecentSearches(): void {
     if (this.recentSearches.length === 0) {
       return;
     }
@@ -457,9 +632,12 @@ class SearchBar {
       <button type="button" class="aiab-search-bar-recent-clear">Clear</button>
     `;
 
-    header.querySelector('.aiab-search-bar-recent-clear').addEventListener('click', () => {
-      this.clearRecentSearches();
-    });
+    const clearRecentBtn = header.querySelector('.aiab-search-bar-recent-clear');
+    if (clearRecentBtn) {
+      clearRecentBtn.addEventListener('click', () => {
+        this.clearRecentSearches();
+      });
+    }
 
     this.resultsContainer.appendChild(header);
 
@@ -467,7 +645,7 @@ class SearchBar {
     const recentDiv = document.createElement('div');
     recentDiv.className = 'aiab-search-bar-recent';
 
-    this.recentSearches.forEach((search) => {
+    this.recentSearches.forEach((search: string) => {
       const item = document.createElement('button');
       item.type = 'button';
       item.className = 'aiab-search-bar-item';
@@ -494,7 +672,7 @@ class SearchBar {
     this.open();
   }
 
-  renderEmpty() {
+  private renderEmpty(): void {
     this.resultsContainer.innerHTML = `
       <div class="aiab-search-bar-empty">
         <svg class="aiab-search-bar-empty-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -506,7 +684,7 @@ class SearchBar {
     `;
   }
 
-  renderError() {
+  private renderError(): void {
     this.resultsContainer.innerHTML = `
       <div class="aiab-search-bar-empty">
         <div class="aiab-search-bar-empty-text">Search error. Please try again.</div>
@@ -514,7 +692,7 @@ class SearchBar {
     `;
   }
 
-  selectResult(result, query) {
+  private selectResult(result: SearchBarSourceItem, query: string): void {
     // Save to recent searches
     if (this.options.recentSearches && query) {
       this.saveRecentSearch(query);
@@ -523,7 +701,9 @@ class SearchBar {
     // Update input
     if (!this.options.clearOnSelect) {
       const value =
-        typeof result === 'string' ? result : result.title || result.name || result.text || '';
+        typeof result === 'string'
+          ? result
+          : result.title || result.name || result.text || '';
       this.input.value = value;
     }
 
@@ -536,11 +716,14 @@ class SearchBar {
     }
   }
 
-  selectCategory(category) {
+  private selectCategory(category: string): void {
     // Update UI
     const buttons = this.wrapper.querySelectorAll('.aiab-search-bar-category');
-    buttons.forEach((btn) => {
-      btn.classList.toggle('aiab-search-bar-category--active', btn.dataset.category === category);
+    buttons.forEach((btn: Element) => {
+      btn.classList.toggle(
+        'aiab-search-bar-category--active',
+        (btn as HTMLElement).dataset.category === category,
+      );
     });
 
     // Re-search with category
@@ -550,7 +733,7 @@ class SearchBar {
     }
   }
 
-  open() {
+  public open(): void {
     if (!this.isOpen) {
       this.isOpen = true;
       this.wrapper.classList.add('aiab-search-bar--open');
@@ -558,7 +741,7 @@ class SearchBar {
     }
   }
 
-  close() {
+  public close(): void {
     if (this.isOpen) {
       this.isOpen = false;
       this.wrapper.classList.remove('aiab-search-bar--open');
@@ -567,7 +750,7 @@ class SearchBar {
     }
   }
 
-  clear() {
+  public clear(): void {
     this.input.value = '';
     this.wrapper.classList.remove('aiab-search-bar--has-value');
     this.close();
@@ -579,18 +762,18 @@ class SearchBar {
   }
 
   // Recent searches management
-  loadRecentSearches() {
+  private loadRecentSearches(): string[] {
     if (!this.options.recentSearches) return [];
 
     const stored = localStorage.getItem('aiab-search-bar-recent');
     return stored ? JSON.parse(stored) : [];
   }
 
-  saveRecentSearch(query) {
+  private saveRecentSearch(query: string): void {
     if (!this.options.recentSearches) return;
 
     // Remove if already exists
-    this.recentSearches = this.recentSearches.filter((s) => s !== query);
+    this.recentSearches = this.recentSearches.filter((s: string) => s !== query);
 
     // Add to beginning
     this.recentSearches.unshift(query);
@@ -603,27 +786,27 @@ class SearchBar {
     localStorage.setItem('aiab-search-bar-recent', JSON.stringify(this.recentSearches));
   }
 
-  clearRecentSearches() {
+  private clearRecentSearches(): void {
     this.recentSearches = [];
     localStorage.removeItem('aiab-search-bar-recent');
     this.close();
   }
 
   // Public API
-  focus() {
+  public focus(): void {
     this.input.focus();
   }
 
-  getValue() {
+  public getValue(): string {
     return this.input.value;
   }
 
-  setValue(value) {
+  public setValue(value: string): void {
     this.input.value = value;
     this.handleInput();
   }
 
-  destroy() {
+  public destroy(): void {
     this._abortController.abort();
     if (this._fetchController) this._fetchController.abort();
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
@@ -635,15 +818,16 @@ class SearchBar {
 document.addEventListener('DOMContentLoaded', () => {
   try {
     const searchBars = document.querySelectorAll('[data-search-bar="true"]');
-    searchBars.forEach((element) => {
-      new SearchBar(element);
+    searchBars.forEach((element: Element) => {
+      new SearchBar(element as HTMLElement);
     });
   } catch (error) {
     console.error('[Amphibious] SearchBar auto-init failed:', error);
   }
 });
 
-window.SearchBar = SearchBar;
+// biome-ignore lint/suspicious/noExplicitAny: global window assignment for non-module consumers
+(window as any).SearchBar = SearchBar;
 
 export default SearchBar;
 export { SearchBar };

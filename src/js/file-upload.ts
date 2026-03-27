@@ -1,13 +1,144 @@
 /**
- * File Upload Component JavaScript
+ * File Upload Component TypeScript
  * Vanilla JS drag & drop file upload with previews
  * Part of Amphibious 2.0 Component Library
+ *
+ * @module file-upload
  */
 
 import { escapeHTML } from '../utils/sanitize';
 
+/** Status of an individual file in the upload queue. */
+export type FileStatus = 'pending' | 'uploading' | 'success' | 'error' | 'cancelled';
+
+/**
+ * Callback signatures used by FileUpload options.
+ */
+export type FileSelectCallback = (fileObj: FileEntry, uploader: FileUpload) => void;
+export type FileUploadCallback = (
+  fileObj: FileEntry,
+  // biome-ignore lint/suspicious/noExplicitAny: server response shape is unknown
+  response: any,
+  uploader: FileUpload,
+) => void;
+export type FileProgressCallback = (
+  fileObj: FileEntry,
+  percent: number,
+  uploader: FileUpload,
+) => void;
+export type FileErrorCallback = (
+  fileObj: FileEntry | null,
+  error: Error,
+  uploader: FileUpload,
+) => void;
+export type FileRemoveCallback = (fileObj: FileEntry, uploader: FileUpload) => void;
+
+/**
+ * Configuration options for the FileUpload component.
+ *
+ * @property maxSize - Maximum file size in bytes. Defaults to `10485760` (10 MB).
+ * @property maxFiles - Maximum number of files allowed. `null` means unlimited.
+ * @property accept - Comma-separated accepted MIME types or extensions. `'*'` accepts all.
+ * @property multiple - Whether the file input allows multiple files.
+ * @property preview - Whether to generate image previews for image files.
+ * @property autoUpload - Whether to start uploading immediately after file selection.
+ * @property uploadUrl - Server endpoint for file uploads.
+ * @property headers - Custom headers to include with upload requests.
+ * @property onSelect - Callback fired when a file is added to the queue.
+ * @property onUpload - Callback fired when a file upload completes successfully.
+ * @property onProgress - Callback fired during upload progress.
+ * @property onError - Callback fired on validation or upload errors.
+ * @property onRemove - Callback fired when a file is removed from the queue.
+ */
+export interface FileUploadOptions {
+  maxSize?: number;
+  maxFiles?: number | null;
+  accept?: string;
+  multiple?: boolean;
+  preview?: boolean;
+  autoUpload?: boolean;
+  uploadUrl?: string;
+  headers?: Record<string, string>;
+  onSelect?: FileSelectCallback | null;
+  onUpload?: FileUploadCallback | null;
+  onProgress?: FileProgressCallback | null;
+  onError?: FileErrorCallback | null;
+  onRemove?: FileRemoveCallback | null;
+}
+
+/** Resolved internal options with all defaults applied. */
+interface ResolvedFileUploadOptions {
+  maxSize: number;
+  maxFiles: number | null;
+  accept: string;
+  multiple: boolean;
+  preview: boolean;
+  autoUpload: boolean;
+  uploadUrl: string;
+  headers: Record<string, string>;
+  onSelect: FileSelectCallback | null;
+  onUpload: FileUploadCallback | null;
+  onProgress: FileProgressCallback | null;
+  onError: FileErrorCallback | null;
+  onRemove: FileRemoveCallback | null;
+}
+
+/**
+ * Internal representation of a file in the upload queue.
+ *
+ * @property id - Unique identifier for this entry.
+ * @property file - The native File object.
+ * @property name - File name.
+ * @property size - File size in bytes.
+ * @property type - MIME type.
+ * @property status - Current upload status.
+ * @property progress - Upload progress percentage (0-100).
+ * @property error - Error message if the upload failed.
+ * @property xhr - The XMLHttpRequest used for uploading (set during upload).
+ */
+export interface FileEntry {
+  id: number;
+  file: File;
+  name: string;
+  size: number;
+  type: string;
+  status: FileStatus;
+  progress: number;
+  error: string | null;
+  xhr?: XMLHttpRequest;
+}
+
+/**
+ * Drag & drop file upload component with previews, validation,
+ * progress tracking, and XHR-based upload support.
+ *
+ * Uses an `AbortController` for centralized event listener cleanup on {@link destroy}.
+ *
+ * @example
+ * ```ts
+ * const upload = new FileUpload(document.getElementById('upload')!, {
+ *   maxSize: 5 * 1024 * 1024,
+ *   accept: 'image/*',
+ *   autoUpload: true,
+ *   uploadUrl: '/api/upload',
+ *   onUpload: (fileObj, response) => console.log('Uploaded:', fileObj.name),
+ * });
+ * ```
+ */
 class FileUpload {
-  constructor(element, options = {}) {
+  public element: HTMLElement;
+  public options: ResolvedFileUploadOptions;
+  public files: FileEntry[];
+  public uploadQueue: FileEntry[];
+  public isUploading: boolean;
+
+  private _abortController: AbortController;
+  private zone!: HTMLElement;
+  private input!: HTMLInputElement;
+  private list!: HTMLElement;
+  private button!: HTMLButtonElement | null;
+
+  constructor(element: HTMLElement, options: FileUploadOptions = {}) {
     this.element = element;
     this.options = {
       maxSize: options.maxSize || 10485760, // 10MB default
@@ -24,7 +155,7 @@ class FileUpload {
       onError: options.onError || null,
       onRemove: options.onRemove || null,
       ...options,
-    };
+    } as ResolvedFileUploadOptions;
 
     this.files = [];
     this.uploadQueue = [];
@@ -34,14 +165,14 @@ class FileUpload {
     this.init();
   }
 
-  init() {
+  private init(): void {
     this.createUploadZone();
     this.bindEvents();
   }
 
-  createUploadZone() {
+  private createUploadZone(): void {
     // Find or create upload zone
-    let zone = this.element.querySelector('.aiab-file-upload-zone');
+    let zone = this.element.querySelector('.aiab-file-upload-zone') as HTMLElement | null;
     if (!zone) {
       zone = document.createElement('div');
       zone.className = 'aiab-file-upload-zone';
@@ -71,7 +202,7 @@ class FileUpload {
     zone.appendChild(input);
 
     // Create file list container
-    let list = this.element.querySelector('.aiab-file-upload-list');
+    let list = this.element.querySelector('.aiab-file-upload-list') as HTMLElement | null;
     if (!list) {
       list = document.createElement('div');
       list.className = 'aiab-file-upload-list';
@@ -84,16 +215,25 @@ class FileUpload {
     this.button = zone.querySelector('.aiab-file-upload-button');
   }
 
-  bindEvents() {
+  private bindEvents(): void {
     const signal = this._abortController.signal;
 
     // File input change
-    this.input.addEventListener('change', (e) => this.handleFiles(e.target.files), { signal });
+    this.input.addEventListener(
+      'change',
+      (e: Event) => {
+        const target = e.target as HTMLInputElement;
+        if (target.files) {
+          this.handleFiles(target.files);
+        }
+      },
+      { signal },
+    );
 
     // Click to open file dialog
     this.zone.addEventListener(
       'click',
-      (e) => {
+      (e: MouseEvent) => {
         if (e.target === this.button || e.target === this.zone) {
           this.input.click();
         }
@@ -104,7 +244,7 @@ class FileUpload {
     // Drag and drop events
     this.zone.addEventListener(
       'dragover',
-      (e) => {
+      (e: DragEvent) => {
         e.preventDefault();
         e.stopPropagation();
         this.zone.classList.add('aiab-file-upload-zone--drag-active');
@@ -114,7 +254,7 @@ class FileUpload {
 
     this.zone.addEventListener(
       'dragleave',
-      (e) => {
+      (e: DragEvent) => {
         e.preventDefault();
         e.stopPropagation();
         if (e.target === this.zone) {
@@ -126,21 +266,23 @@ class FileUpload {
 
     this.zone.addEventListener(
       'drop',
-      (e) => {
+      (e: DragEvent) => {
         e.preventDefault();
         e.stopPropagation();
         this.zone.classList.remove('aiab-file-upload-zone--drag-active');
-        this.handleFiles(e.dataTransfer.files);
+        if (e.dataTransfer) {
+          this.handleFiles(e.dataTransfer.files);
+        }
       },
       { signal },
     );
 
     // Prevent default drag over page
-    document.addEventListener('dragover', (e) => e.preventDefault(), { signal });
+    document.addEventListener('dragover', (e: DragEvent) => e.preventDefault(), { signal });
     document.addEventListener(
       'drop',
-      (e) => {
-        if (!this.zone.contains(e.target)) {
+      (e: DragEvent) => {
+        if (!this.zone.contains(e.target as Node)) {
           e.preventDefault();
         }
       },
@@ -148,7 +290,7 @@ class FileUpload {
     );
   }
 
-  handleFiles(fileList) {
+  private handleFiles(fileList: FileList): void {
     const files = Array.from(fileList);
 
     // Check max files
@@ -162,7 +304,7 @@ class FileUpload {
     }
 
     // Validate and add files
-    files.forEach((file) => {
+    files.forEach((file: File) => {
       if (this.validateFile(file)) {
         this.addFile(file);
       }
@@ -177,7 +319,7 @@ class FileUpload {
     }
   }
 
-  validateFile(file) {
+  private validateFile(file: File): boolean {
     // Check file size
     if (file.size > this.options.maxSize) {
       this.showError(
@@ -188,8 +330,8 @@ class FileUpload {
 
     // Check file type
     if (this.options.accept !== '*') {
-      const accepts = this.options.accept.split(',').map((a) => a.trim());
-      const isValid = accepts.some((accept) => {
+      const accepts = this.options.accept.split(',').map((a: string) => a.trim());
+      const isValid = accepts.some((accept: string) => {
         if (accept.startsWith('.')) {
           return file.name.toLowerCase().endsWith(accept.toLowerCase());
         }
@@ -206,7 +348,7 @@ class FileUpload {
     }
 
     // Check duplicates
-    if (this.files.some((f) => f.name === file.name && f.size === file.size)) {
+    if (this.files.some((f: FileEntry) => f.name === file.name && f.size === file.size)) {
       this.showError(`File "${file.name}" already added`);
       return false;
     }
@@ -214,8 +356,8 @@ class FileUpload {
     return true;
   }
 
-  addFile(file) {
-    const fileObj = {
+  private addFile(file: File): void {
+    const fileObj: FileEntry = {
       id: Date.now() + Math.random(),
       file: file,
       name: file.name,
@@ -234,10 +376,10 @@ class FileUpload {
     }
   }
 
-  renderFileItem(fileObj) {
+  private renderFileItem(fileObj: FileEntry): void {
     const item = document.createElement('div');
     item.className = 'aiab-file-upload-item';
-    item.dataset.fileId = fileObj.id;
+    item.dataset.fileId = String(fileObj.id);
 
     // Create preview
     const preview = document.createElement('div');
@@ -248,8 +390,10 @@ class FileUpload {
       img.alt = fileObj.name;
 
       const reader = new FileReader();
-      reader.onload = (e) => {
-        img.src = e.target.result;
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        if (e.target?.result) {
+          img.src = e.target.result as string;
+        }
       };
       reader.readAsDataURL(fileObj.file);
 
@@ -295,8 +439,8 @@ class FileUpload {
     this.list.appendChild(item);
   }
 
-  removeFile(fileId) {
-    const index = this.files.findIndex((f) => f.id === fileId);
+  public removeFile(fileId: number): void {
+    const index = this.files.findIndex((f: FileEntry) => f.id === fileId);
     if (index > -1) {
       const fileObj = this.files[index];
 
@@ -321,7 +465,8 @@ class FileUpload {
     }
   }
 
-  uploadFile(fileObj) {
+  // biome-ignore lint/suspicious/noExplicitAny: server response shape is unknown
+  private uploadFile(fileObj: FileEntry): Promise<any> {
     return new Promise((resolve, reject) => {
       const formData = new FormData();
       formData.append('file', fileObj.file);
@@ -330,7 +475,7 @@ class FileUpload {
       fileObj.xhr = xhr;
 
       // Progress event
-      xhr.upload.addEventListener('progress', (e) => {
+      xhr.upload.addEventListener('progress', (e: ProgressEvent) => {
         if (e.lengthComputable) {
           const percent = Math.round((e.loaded / e.total) * 100);
           this.updateProgress(fileObj, percent);
@@ -370,7 +515,7 @@ class FileUpload {
       xhr.open('POST', this.options.uploadUrl);
 
       // Add custom headers
-      Object.keys(this.options.headers).forEach((key) => {
+      Object.keys(this.options.headers).forEach((key: string) => {
         xhr.setRequestHeader(key, this.options.headers[key]);
       });
 
@@ -381,12 +526,12 @@ class FileUpload {
     });
   }
 
-  updateProgress(fileObj, percent) {
+  private updateProgress(fileObj: FileEntry, percent: number): void {
     fileObj.progress = percent;
 
     const item = this.list.querySelector(`[data-file-id="${fileObj.id}"]`);
     if (item) {
-      const bar = item.querySelector('.aiab-file-upload-progress-bar');
+      const bar = item.querySelector('.aiab-file-upload-progress-bar') as HTMLElement | null;
       if (bar) {
         bar.style.width = `${percent}%`;
       }
@@ -397,7 +542,7 @@ class FileUpload {
     }
   }
 
-  updateFileStatus(fileObj) {
+  private updateFileStatus(fileObj: FileEntry): void {
     const item = this.list.querySelector(`[data-file-id="${fileObj.id}"]`);
     if (item) {
       const status = item.querySelector('.aiab-file-upload-status');
@@ -408,7 +553,7 @@ class FileUpload {
 
       // Hide progress bar when done
       if (fileObj.status === 'success' || fileObj.status === 'error') {
-        const progress = item.querySelector('.aiab-file-upload-progress');
+        const progress = item.querySelector('.aiab-file-upload-progress') as HTMLElement | null;
         if (progress) {
           progress.style.display = 'none';
         }
@@ -416,10 +561,10 @@ class FileUpload {
     }
   }
 
-  async uploadAll() {
+  public async uploadAll(): Promise<void> {
     if (this.isUploading) return;
 
-    const pendingFiles = this.files.filter((f) => f.status === 'pending');
+    const pendingFiles = this.files.filter((f: FileEntry) => f.status === 'pending');
     if (pendingFiles.length === 0) return;
 
     this.isUploading = true;
@@ -433,7 +578,7 @@ class FileUpload {
         }
       } catch (error) {
         if (this.options.onError) {
-          this.options.onError(fileObj, error, this);
+          this.options.onError(fileObj, error as Error, this);
         }
       }
     }
@@ -442,21 +587,21 @@ class FileUpload {
   }
 
   // Utility methods
-  formatSize(bytes) {
+  private formatSize(bytes: number): string {
     const sizes = ['B', 'KB', 'MB', 'GB'];
     if (bytes === 0) return '0 B';
     const i = Math.floor(Math.log(bytes) / Math.log(1024));
     return `${Math.round((bytes / 1024 ** i) * 100) / 100} ${sizes[i]}`;
   }
 
-  getAcceptText() {
+  private getAcceptText(): string {
     if (this.options.accept === '*') {
       return 'All file types accepted';
     }
     return `Accepted formats: ${this.options.accept}`;
   }
 
-  getFileIcon(type) {
+  private getFileIcon(type: string): string {
     let _icon = 'file';
     let className = '';
 
@@ -490,8 +635,8 @@ class FileUpload {
     `;
   }
 
-  getStatusText(status) {
-    const statusTexts = {
+  private getStatusText(status: FileStatus): string {
+    const statusTexts: Record<FileStatus, string> = {
       pending: 'Ready to upload',
       uploading: 'Uploading...',
       success: 'Uploaded',
@@ -501,7 +646,7 @@ class FileUpload {
     return statusTexts[status] || status;
   }
 
-  showError(message) {
+  private showError(message: string): void {
     // Custom error display - console removed for production
     // You can implement custom error display here
 
@@ -511,20 +656,20 @@ class FileUpload {
   }
 
   // Public API
-  getFiles() {
+  public getFiles(): FileEntry[] {
     return this.files;
   }
 
-  clearFiles() {
+  public clearFiles(): void {
     this.files = [];
     this.list.innerHTML = '';
   }
 
-  upload() {
+  public upload(): Promise<void> {
     return this.uploadAll();
   }
 
-  destroy() {
+  public destroy(): void {
     this._abortController.abort();
     this.clearFiles();
     this.element.innerHTML = '';
@@ -535,15 +680,16 @@ class FileUpload {
 document.addEventListener('DOMContentLoaded', () => {
   try {
     const uploads = document.querySelectorAll('[data-file-upload="true"]');
-    uploads.forEach((element) => {
-      new FileUpload(element);
+    uploads.forEach((element: Element) => {
+      new FileUpload(element as HTMLElement);
     });
   } catch (error) {
     console.error('[Amphibious] FileUpload auto-init failed:', error);
   }
 });
 
-window.FileUpload = FileUpload;
+// biome-ignore lint/suspicious/noExplicitAny: global window assignment for non-module consumers
+(window as any).FileUpload = FileUpload;
 
 export default FileUpload;
 export { FileUpload };

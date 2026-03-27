@@ -5,7 +5,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
-import '../src/js/search-bar.js';
+import '../src/js/search-bar';
 import { escapeHTML } from '../src/utils/sanitize';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global

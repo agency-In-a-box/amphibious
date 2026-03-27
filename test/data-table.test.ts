@@ -4,7 +4,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
-import { DataTableComponent } from '../src/js/data-table.js';
+import { DataTableComponent } from '../src/js/data-table';
 
 const TABLE_HTML = `
   <div id="table-container">

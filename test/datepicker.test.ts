@@ -5,7 +5,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it, mock } from 'bun:test';
-import '../src/js/datepicker.js';
+import '../src/js/datepicker';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global
 const DatePickerClass = (window as any).DatePicker;

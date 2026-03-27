@@ -1,11 +1,129 @@
 /**
- * Date Picker Component JavaScript
+ * Date Picker Component TypeScript
  * Lightweight calendar widget with zero dependencies
  * Part of Amphibious 2.0 Component Library
+ *
+ * @module datepicker
  */
 
-class DatePicker {
-  constructor(element, options = {}) {
+/**
+ * Localizable UI labels for the datepicker footer and time-period buttons.
+ *
+ * @property today - Label for the "Today" button.
+ * @property clear - Label for the "Clear" button.
+ * @property am - Label for the AM period button.
+ * @property pm - Label for the PM period button.
+ */
+export interface DatepickerLabels {
+  today: string;
+  clear: string;
+  am: string;
+  pm: string;
+}
+
+/**
+ * Configuration options accepted by the {@link DatePicker} constructor.
+ *
+ * @property format - Date format string (e.g. `'MM/DD/YYYY'`, `'YYYY-MM-DD'`).
+ * @property locale - BCP 47 locale tag used with `Intl.DateTimeFormat`.
+ * @property minDate - Earliest selectable date.
+ * @property maxDate - Latest selectable date.
+ * @property disabledDates - Array of specific dates that cannot be selected.
+ * @property disabledDays - Array of weekday indices (0=Sunday, 6=Saturday) to disable.
+ * @property startDate - Initial date shown by the calendar.
+ * @property inline - Render the calendar inline instead of as a dropdown.
+ * @property showTime - Include time-picker controls (hour, minute, AM/PM).
+ * @property autoClose - Close after a date is selected. Defaults to `true`.
+ * @property labels - Localizable UI label strings.
+ * @property onChange - Callback fired when the selected date changes.
+ * @property onOpen - Callback fired when the calendar opens.
+ * @property onClose - Callback fired when the calendar closes.
+ */
+export interface DatepickerOptions {
+  format?: string;
+  locale?: string;
+  minDate?: Date | null;
+  maxDate?: Date | null;
+  disabledDates?: Date[];
+  disabledDays?: number[];
+  startDate?: Date;
+  inline?: boolean;
+  showTime?: boolean;
+  autoClose?: boolean;
+  labels?: Partial<DatepickerLabels>;
+  onChange?: ((date: Date | null, picker: DatePicker) => void) | null;
+  onOpen?: ((picker: DatePicker) => void) | null;
+  onClose?: ((picker: DatePicker) => void) | null;
+}
+
+/** Resolved internal options with all defaults applied. */
+interface ResolvedDatepickerOptions {
+  format: string;
+  locale: string;
+  minDate: Date | null;
+  maxDate: Date | null;
+  disabledDates: Date[];
+  disabledDays: number[];
+  startDate: Date;
+  inline: boolean;
+  showTime: boolean;
+  autoClose: boolean;
+  labels: DatepickerLabels;
+  onChange: ((date: Date | null, picker: DatePicker) => void) | null;
+  onOpen: ((picker: DatePicker) => void) | null;
+  onClose: ((picker: DatePicker) => void) | null;
+}
+
+/** Calendar view mode for navigating between day, month, and year grids. */
+type ViewMode = 'days' | 'months' | 'years';
+
+/**
+ * Lightweight datepicker component with calendar navigation, date selection,
+ * disabled-date support, optional time picker, and i18n via `Intl.DateTimeFormat`.
+ *
+ * Wraps an `<input>` element with a dropdown calendar UI. Uses an
+ * `AbortController` for centralized event listener cleanup on {@link destroy}.
+ *
+ * @example
+ * ```ts
+ * const picker = new DatePicker(document.querySelector('#my-date')!, {
+ *   format: 'YYYY-MM-DD',
+ *   locale: 'en-GB',
+ *   disabledDays: [0, 6],
+ *   onChange: (date) => console.log('Selected:', date),
+ * });
+ * ```
+ */
+export class DatePicker {
+  public element: HTMLInputElement;
+  public options: ResolvedDatepickerOptions;
+
+  public isOpen: boolean;
+  public currentDate: Date;
+  public selectedDate: Date | null;
+  public viewDate: Date;
+  public viewMode: ViewMode;
+
+  // DOM references created in createDatePicker() / createHeader() / createFooter()
+  public wrapper!: HTMLDivElement;
+  public dropdown!: HTMLDivElement;
+  public body!: HTMLDivElement;
+  public prevBtn!: HTMLButtonElement;
+  public nextBtn!: HTMLButtonElement;
+  public monthText!: HTMLSpanElement;
+  public yearText!: HTMLSpanElement;
+  public todayBtn!: HTMLButtonElement;
+  public clearBtn!: HTMLButtonElement;
+
+  // Time-picker DOM references (only created when showTime is true)
+  public hourInput!: HTMLInputElement;
+  public minuteInput!: HTMLInputElement;
+  public amBtn!: HTMLButtonElement;
+  public pmBtn!: HTMLButtonElement;
+
+  private _abortController: AbortController;
+
+  constructor(element: HTMLInputElement, options: DatepickerOptions = {}) {
     this.element = element;
     this.options = {
       format: options.format || 'MM/DD/YYYY',
@@ -22,20 +140,19 @@ class DatePicker {
       onChange: options.onChange || null,
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
-      ...options,
     };
 
     this.isOpen = false;
     this.currentDate = new Date();
     this.selectedDate = null;
     this.viewDate = new Date();
-    this.viewMode = 'days'; // days, months, years
+    this.viewMode = 'days';
     this._abortController = new AbortController();
 
     this.init();
   }
 
-  init() {
+  private init(): void {
     this.createDatePicker();
     this.bindEvents();
 
@@ -44,7 +161,7 @@ class DatePicker {
     }
   }
 
-  createDatePicker() {
+  private createDatePicker(): void {
     // Create wrapper
     const wrapper = document.createElement('div');
     wrapper.className = 'aiab-datepicker';
@@ -53,7 +170,7 @@ class DatePicker {
     }
 
     // Wrap original input
-    this.element.parentNode.insertBefore(wrapper, this.element);
+    this.element.parentNode?.insertBefore(wrapper, this.element);
     wrapper.appendChild(this.element);
 
     // Add class to input
@@ -96,15 +213,15 @@ class DatePicker {
 
     wrapper.appendChild(dropdown);
 
-    this.wrapper = wrapper;
-    this.dropdown = dropdown;
-    this.body = body;
+    this.wrapper = wrapper as HTMLDivElement;
+    this.dropdown = dropdown as HTMLDivElement;
+    this.body = body as HTMLDivElement;
 
     // Render initial view
     this.render();
   }
 
-  createHeader() {
+  private createHeader(): HTMLDivElement {
     const header = document.createElement('div');
     header.className = 'aiab-datepicker-header';
 
@@ -150,10 +267,10 @@ class DatePicker {
     this.monthText = monthSelect;
     this.yearText = yearSelect;
 
-    return header;
+    return header as HTMLDivElement;
   }
 
-  createTimePicker() {
+  private createTimePicker(): HTMLDivElement {
     const timePicker = document.createElement('div');
     timePicker.className = 'aiab-datepicker-time';
 
@@ -201,10 +318,10 @@ class DatePicker {
     this.amBtn = amBtn;
     this.pmBtn = pmBtn;
 
-    return timePicker;
+    return timePicker as HTMLDivElement;
   }
 
-  createFooter() {
+  private createFooter(): HTMLDivElement {
     const footer = document.createElement('div');
     footer.className = 'aiab-datepicker-footer';
 
@@ -224,10 +341,10 @@ class DatePicker {
     this.todayBtn = todayBtn;
     this.clearBtn = clearBtn;
 
-    return footer;
+    return footer as HTMLDivElement;
   }
 
-  bindEvents() {
+  private bindEvents(): void {
     const signal = this._abortController.signal;
 
     // Toggle calendar
@@ -258,8 +375,8 @@ class DatePicker {
     // Click outside to close
     document.addEventListener(
       'click',
-      (e) => {
-        if (!this.wrapper.contains(e.target) && this.isOpen) {
+      (e: MouseEvent) => {
+        if (!this.wrapper.contains(e.target as Node) && this.isOpen) {
           this.close();
         }
       },
@@ -267,10 +384,12 @@ class DatePicker {
     );
 
     // Keyboard navigation
-    this.element.addEventListener('keydown', (e) => this.handleKeydown(e), { signal });
+    this.element.addEventListener('keydown', (e: KeyboardEvent) => this.handleKeydown(e), {
+      signal,
+    });
   }
 
-  render() {
+  private render(): void {
     switch (this.viewMode) {
       case 'days':
         this.renderDays();
@@ -284,14 +403,14 @@ class DatePicker {
     }
   }
 
-  renderDays() {
+  private renderDays(): void {
     const year = this.viewDate.getFullYear();
     const month = this.viewDate.getMonth();
 
     // Update header using locale-aware month name
     const monthFormatter = new Intl.DateTimeFormat(this.options.locale, { month: 'long' });
     this.monthText.textContent = monthFormatter.format(new Date(year, month, 1));
-    this.yearText.textContent = year;
+    this.yearText.textContent = String(year);
 
     // Clear body
     this.body.innerHTML = '';
@@ -303,7 +422,7 @@ class DatePicker {
     const dayNames = Array.from({ length: 7 }, (_, i) =>
       dayFormatter.format(new Date(2000, 0, 2 + i)),
     );
-    dayNames.forEach((day) => {
+    dayNames.forEach((day: string) => {
       const weekday = document.createElement('div');
       weekday.className = 'aiab-datepicker-weekday';
       weekday.textContent = day;
@@ -345,11 +464,11 @@ class DatePicker {
     this.body.appendChild(daysGrid);
   }
 
-  createDayButton(date, type = '') {
+  private createDayButton(date: Date, type = ''): HTMLButtonElement {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'aiab-datepicker-day';
-    button.textContent = date.getDate();
+    button.textContent = String(date.getDate());
     button.dataset.date = date.toISOString();
 
     if (type === 'other-month') {
@@ -378,12 +497,12 @@ class DatePicker {
     return button;
   }
 
-  renderMonths() {
+  private renderMonths(): void {
     const year = this.viewDate.getFullYear();
 
     // Update header
     this.monthText.textContent = '';
-    this.yearText.textContent = year;
+    this.yearText.textContent = String(year);
 
     // Clear body
     this.body.innerHTML = '';
@@ -396,7 +515,7 @@ class DatePicker {
       shortMonthFormatter.format(new Date(2000, i, 1)),
     );
 
-    monthNames.forEach((name, index) => {
+    monthNames.forEach((name: string, index: number) => {
       const monthBtn = document.createElement('button');
       monthBtn.type = 'button';
       monthBtn.className = 'aiab-datepicker-month-option';
@@ -426,7 +545,7 @@ class DatePicker {
     this.body.appendChild(monthsGrid);
   }
 
-  renderYears() {
+  private renderYears(): void {
     const currentYear = this.viewDate.getFullYear();
     const startYear = Math.floor(currentYear / 10) * 10;
 
@@ -445,7 +564,7 @@ class DatePicker {
       const yearBtn = document.createElement('button');
       yearBtn.type = 'button';
       yearBtn.className = 'aiab-datepicker-year-option';
-      yearBtn.textContent = year;
+      yearBtn.textContent = String(year);
 
       if (year === this.currentDate.getFullYear()) {
         yearBtn.classList.add('aiab-datepicker-year-option--current');
@@ -468,7 +587,8 @@ class DatePicker {
   }
 
   // Navigation methods
-  navigate(direction) {
+
+  private navigate(direction: number): void {
     switch (this.viewMode) {
       case 'days':
         this.viewDate.setMonth(this.viewDate.getMonth() + direction);
@@ -483,14 +603,14 @@ class DatePicker {
     this.render();
   }
 
-  showMonths() {
+  public showMonths(): void {
     if (this.viewMode !== 'months') {
       this.viewMode = 'months';
       this.render();
     }
   }
 
-  showYears() {
+  public showYears(): void {
     if (this.viewMode !== 'years') {
       this.viewMode = 'years';
       this.render();
@@ -498,7 +618,8 @@ class DatePicker {
   }
 
   // Selection methods
-  selectDate(date) {
+
+  public selectDate(date: Date): void {
     this.selectedDate = date;
     this.viewDate = new Date(date);
     this.updateInput();
@@ -513,11 +634,11 @@ class DatePicker {
     }
   }
 
-  selectToday() {
+  public selectToday(): void {
     this.selectDate(new Date());
   }
 
-  clear() {
+  public clear(): void {
     this.selectedDate = null;
     this.element.value = '';
     this.render();
@@ -527,8 +648,8 @@ class DatePicker {
     }
   }
 
-  setDate(date) {
-    let parsedDate = date;
+  public setDate(date: Date | string): void {
+    let parsedDate: Date | string = date;
     if (typeof date === 'string') {
       parsedDate = this.parseDate(date);
     }
@@ -541,13 +662,14 @@ class DatePicker {
   }
 
   // Time methods
-  setPeriod(period) {
+
+  private setPeriod(period: 'AM' | 'PM'): void {
     this.amBtn.classList.toggle('aiab-datepicker-time-period-btn--active', period === 'AM');
     this.pmBtn.classList.toggle('aiab-datepicker-time-period-btn--active', period === 'PM');
     this.updateTime();
   }
 
-  updateTime() {
+  private updateTime(): void {
     if (this.selectedDate && this.options.showTime) {
       let hours = Number.parseInt(this.hourInput.value, 10) || 12;
       const minutes = Number.parseInt(this.minuteInput.value, 10) || 0;
@@ -562,13 +684,14 @@ class DatePicker {
   }
 
   // Format methods
-  updateInput() {
+
+  private updateInput(): void {
     if (this.selectedDate) {
       this.element.value = this.formatDate(this.selectedDate);
     }
   }
 
-  formatDate(date) {
+  public formatDate(date: Date): string {
     let format = this.options.format;
 
     const year = date.getFullYear();
@@ -577,7 +700,7 @@ class DatePicker {
     const hours = date.getHours();
     const minutes = String(date.getMinutes()).padStart(2, '0');
 
-    format = format.replace('YYYY', year);
+    format = format.replace('YYYY', String(year));
     format = format.replace('MM', month);
     format = format.replace('DD', day);
 
@@ -590,21 +713,22 @@ class DatePicker {
     return format;
   }
 
-  parseDate(str) {
+  private parseDate(str: string): Date {
     // Simple date parsing - expand as needed
     const parts = str.split('/');
     if (parts.length === 3) {
-      return new Date(parts[2], parts[0] - 1, parts[1]);
+      return new Date(Number(parts[2]), Number(parts[0]) - 1, Number(parts[1]));
     }
     return new Date(str);
   }
 
   // Utility methods
-  isToday(date) {
+
+  private isToday(date: Date): boolean {
     return this.isSameDay(date, this.currentDate);
   }
 
-  isSameDay(date1, date2) {
+  private isSameDay(date1: Date, date2: Date): boolean {
     return (
       date1.getDate() === date2.getDate() &&
       date1.getMonth() === date2.getMonth() &&
@@ -612,7 +736,7 @@ class DatePicker {
     );
   }
 
-  isDisabled(date) {
+  private isDisabled(date: Date): boolean {
     // Check min/max dates
     if (this.options.minDate && date < this.options.minDate) return true;
     if (this.options.maxDate && date > this.options.maxDate) return true;
@@ -621,11 +745,12 @@ class DatePicker {
     if (this.options.disabledDays.includes(date.getDay())) return true;
 
     // Check specific disabled dates
-    return this.options.disabledDates.some((d) => this.isSameDay(date, d));
+    return this.options.disabledDates.some((d: Date) => this.isSameDay(date, d));
   }
 
   // Control methods
-  open() {
+
+  public open(): void {
     if (!this.isOpen && !this.options.inline) {
       this.isOpen = true;
       this.wrapper.classList.add('open');
@@ -636,7 +761,7 @@ class DatePicker {
     }
   }
 
-  close() {
+  public close(): void {
     if (this.isOpen && !this.options.inline) {
       this.isOpen = false;
       this.wrapper.classList.remove('open');
@@ -647,7 +772,7 @@ class DatePicker {
     }
   }
 
-  toggle() {
+  public toggle(): void {
     if (this.isOpen) {
       this.close();
     } else {
@@ -655,7 +780,7 @@ class DatePicker {
     }
   }
 
-  handleKeydown(e) {
+  private handleKeydown(e: KeyboardEvent): void {
     if (!this.isOpen) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -670,7 +795,12 @@ class DatePicker {
   }
 
   // Public API
-  destroy() {
+
+  /**
+   * Fully tear down the datepicker: abort all event listeners, remove the
+   * custom wrapper DOM, and restore the original input element.
+   */
+  public destroy(): void {
     this._abortController.abort();
     this.wrapper.replaceWith(this.element);
     this.element.classList.remove('aiab-datepicker-input');
@@ -683,14 +813,16 @@ document.addEventListener('DOMContentLoaded', () => {
   try {
     const datepickers = document.querySelectorAll('[data-datepicker="true"]');
     datepickers.forEach((element) => {
-      new DatePicker(element);
+      new DatePicker(element as HTMLInputElement);
     });
   } catch (error) {
     console.error('[Amphibious] DatePicker auto-init failed:', error);
   }
 });
 
-window.DatePicker = DatePicker;
+// Global API
+// biome-ignore lint/suspicious/noExplicitAny: global window assignment for non-module consumers
+(window as any).DatePicker = DatePicker;
 
 export default DatePicker;
-export { DatePicker };
+export { DatePicker as DatePickerComponent };

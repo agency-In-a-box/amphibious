@@ -5,7 +5,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
-import '../src/js/range-slider.js';
+import '../src/js/range-slider';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global
 const RangeSliderClass = (window as any).RangeSlider;

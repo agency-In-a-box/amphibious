@@ -5,7 +5,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
-import '../src/js/file-upload.js';
+import '../src/js/file-upload';
 import { escapeHTML } from '../src/utils/sanitize';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global
