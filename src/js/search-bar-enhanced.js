@@ -658,7 +658,9 @@ class SearchBarEnhanced {
       if (this.options.onSearch) {
         this.options.onSearch(query, results, this);
       }
-    } catch (_error) {
+    } catch (error) {
+      // Silently ignore aborted requests (superseded by a newer search or timeout)
+      if (error?.name === 'AbortError') return;
       this.showError();
     } finally {
       this.state.isLoading = false;
@@ -666,11 +668,18 @@ class SearchBarEnhanced {
   }
 
   async fetchResults(query) {
+    // Abort any in-flight fetch request before starting a new one
+    if (this._fetchController) {
+      this._fetchController.abort();
+      this.abortControllers.delete(this._fetchController);
+    }
+
     const controller = new AbortController();
+    this._fetchController = controller;
     this.abortControllers.add(controller);
 
-    // Auto-abort after 10 seconds
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    // Auto-abort after 5 seconds
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
     this.timers.add(timeoutId);
 
     try {
@@ -709,6 +718,7 @@ class SearchBarEnhanced {
       clearTimeout(timeoutId);
       this.timers.delete(timeoutId);
       this.abortControllers.delete(controller);
+      this._fetchController = null;
     }
   }
 
@@ -1180,6 +1190,10 @@ class SearchBarEnhanced {
    */
   destroy() {
     // Cancel any pending operations
+    if (this._fetchController) {
+      this._fetchController.abort();
+      this._fetchController = null;
+    }
     this.abortControllers.forEach((controller) => controller.abort());
     this.abortControllers.clear();
 
