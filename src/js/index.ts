@@ -4,18 +4,19 @@
  */
 
 // Import components
-import ModalComponent from './modal.js';
-import NavigationComponent from './navigation.js';
-import toast from './toast.js';
+import ModalComponent from './modal';
+import NavigationComponent from './navigation';
+import toast from './toast';
 
 // Initialize components when DOM is ready
-const init = () => {
+const init = (): void => {
   try {
-    // Initialize navigation
-    window.amphibiousNav = new NavigationComponent();
+    // biome-ignore lint/suspicious/noExplicitAny: window global augmentation
+    (window as any).amphibiousNav = new NavigationComponent();
 
-    // Initialize modals
-    window.amphibiousModal = new ModalComponent();
+    // Export Modal class for on-demand instantiation (requires an element)
+    // biome-ignore lint/suspicious/noExplicitAny: window global augmentation
+    (window as any).amphibiousModal = ModalComponent;
   } catch (error) {
     console.error('[Amphibious] Component init failed:', error);
   }

@@ -5,7 +5,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it, mock } from 'bun:test';
-import { ToastComponent } from '../src/js/toast.js';
+import { ToastComponent } from '../src/js/toast';
 
 describe('Toast Component', () => {
   let toast: InstanceType<typeof ToastComponent>;

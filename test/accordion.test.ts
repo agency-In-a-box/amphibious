@@ -4,7 +4,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
-import '../src/js/accordion.js';
+import '../src/js/accordion';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global
 const Accordion = (window as any).Accordion;

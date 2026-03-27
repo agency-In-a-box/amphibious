@@ -4,7 +4,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
-import '../src/js/dropdown.js';
+import '../src/js/dropdown';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global
 const Dropdown = (window as any).Dropdown;
