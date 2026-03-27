@@ -237,10 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Export for use as module
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = Accordion;
-}
-
 // Add to global scope
 window.Accordion = Accordion;
+
+export default Accordion;
+export { Accordion };

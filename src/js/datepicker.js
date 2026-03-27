@@ -690,9 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Export
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = DatePicker;
-}
-
 window.DatePicker = DatePicker;
+
+export default DatePicker;
+export { DatePicker };
