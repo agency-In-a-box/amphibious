@@ -6,7 +6,7 @@
 
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import '../src/js/file-upload.js';
-import { escapeHTML } from '../src/utils/escape-html.js';
+import { escapeHTML } from '../src/utils/sanitize';
 
 // biome-ignore lint/suspicious/noExplicitAny: JS component accessed via window global
 const FileUploadClass = (window as any).FileUpload;

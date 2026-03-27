@@ -4,7 +4,7 @@
  * Part of Amphibious 2.0 Component Library
  */
 
-import { escapeHTML } from '../utils/escape-html.js';
+import { escapeHTML } from '../utils/sanitize';
 
 class Dropdown {
   constructor(element, options = {}) {

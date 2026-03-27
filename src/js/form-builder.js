@@ -15,7 +15,7 @@
  * - Accessibility compliant
  */
 
-import { escapeHTML } from '../utils/escape-html.js';
+import { escapeHTML } from '../utils/sanitize';
 
 class FormBuilder {
   constructor(element, options = {}) {

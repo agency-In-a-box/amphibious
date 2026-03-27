@@ -4,8 +4,7 @@
  * Part of Amphibious 2.0 Component Library
  */
 
-import { escapeHTML } from '../utils/escape-html.js';
-import { sanitizeHTML } from '../utils/sanitize';
+import { escapeHTML, sanitizeHTML } from '../utils/sanitize';
 
 class SearchBar {
   constructor(element, options = {}) {
