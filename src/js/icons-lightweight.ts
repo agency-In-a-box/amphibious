@@ -168,7 +168,11 @@ export function hasIcon(name: string): boolean {
 if (typeof document !== 'undefined') {
   const safeInitIcons = () => {
     try {
-      initializeIcons();
+      // Only run if Lucide CDN hasn't already replaced the icons
+      // biome-ignore lint/suspicious/noExplicitAny: checking CDN global
+      if (typeof (window as any).lucide === 'undefined') {
+        initializeIcons();
+      }
     } catch (error) {
       console.error('[Amphibious] Icon auto-init failed:', error);
     }
@@ -179,6 +183,14 @@ if (typeof document !== 'undefined') {
     // DOM already loaded
     setTimeout(safeInitIcons, 0);
   }
+
+  // Expose fallback for CDN script onerror handlers:
+  // <script src="lucide.js" onerror="window.__amphibiousIconFallback?.()"></script>
+  // biome-ignore lint/suspicious/noExplicitAny: global fallback hook
+  (window as any).__amphibiousIconFallback = () => {
+    console.warn('[Amphibious] Lucide CDN unavailable, using lightweight icon fallback');
+    initializeIcons();
+  };
 }
 
 // Export for manual initialization

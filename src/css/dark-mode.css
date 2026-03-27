@@ -1004,6 +1004,60 @@
 }
 
 /* ==========================================================================
+   Sidebar Light Variant — revert to dark tokens in dark mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aiab-sidebar--light {
+    --sidebar-bg: var(--color-surface, #1c1c1e);
+    --sidebar-border: var(--color-border, #38383a);
+    --sidebar-text: var(--color-text-secondary, #aeaeb2);
+    --sidebar-text-hover: var(--color-text, #f5f5f7);
+    --sidebar-link-hover-bg: var(--color-surface-elevated, #2c2c2e);
+    --sidebar-brand-bg: var(--color-surface, #1c1c1e);
+    --sidebar-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+[data-theme="dark"] .aiab-sidebar--light {
+  --sidebar-bg: var(--color-surface, #1c1c1e);
+  --sidebar-border: var(--color-border, #38383a);
+  --sidebar-text: var(--color-text-secondary, #aeaeb2);
+  --sidebar-text-hover: var(--color-text, #f5f5f7);
+  --sidebar-link-hover-bg: var(--color-surface-elevated, #2c2c2e);
+  --sidebar-brand-bg: var(--color-surface, #1c1c1e);
+  --sidebar-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Framework Banner — ensure visibility in dark mode
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aiab-framework-banner {
+    background: var(--color-surface-elevated, #2c2c2e);
+    border-bottom: 1px solid var(--color-border, #38383a);
+  }
+  :root:not([data-theme="light"]) .aiab-framework-banner a {
+    color: var(--color-primary, #ff9f0a);
+  }
+  :root:not([data-theme="light"]) .aiab-framework-banner-sep {
+    color: var(--color-text-tertiary, #636366);
+  }
+}
+
+[data-theme="dark"] .aiab-framework-banner {
+  background: var(--color-surface-elevated, #2c2c2e);
+  border-bottom: 1px solid var(--color-border, #38383a);
+}
+[data-theme="dark"] .aiab-framework-banner a {
+  color: var(--color-primary, #ff9f0a);
+}
+[data-theme="dark"] .aiab-framework-banner-sep {
+  color: var(--color-text-tertiary, #636366);
+}
+
+/* ==========================================================================
    Smooth Theme Transition
    ========================================================================== */
 
