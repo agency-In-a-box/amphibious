@@ -305,12 +305,13 @@ export class Forms {
 
     // Find or create error message element
     const formGroup = field.closest('.aiab-form-group');
-    let errorElement = formGroup?.querySelector('.invalid-feedback') as HTMLElement;
+    const container = formGroup || field.parentElement;
+    let errorElement = container?.querySelector('.invalid-feedback') as HTMLElement;
 
     if (!errorElement) {
       errorElement = document.createElement('div');
       errorElement.className = 'invalid-feedback';
-      field.parentElement?.appendChild(errorElement);
+      container?.appendChild(errorElement);
     }
 
     errorElement.textContent = message;
@@ -335,19 +336,21 @@ export class Forms {
 
     // Hide error message
     const formGroup = field.closest('.aiab-form-group');
-    const errorElement = formGroup?.querySelector('.invalid-feedback') as HTMLElement;
+    const container = formGroup || field.parentElement;
+    const errorElement = container?.querySelector('.invalid-feedback') as HTMLElement;
     if (errorElement) {
       errorElement.style.display = 'none';
     }
 
     // Show success message if configured
-    const successElement = formGroup?.querySelector('.valid-feedback') as HTMLElement;
+    const successElement = container?.querySelector('.valid-feedback') as HTMLElement;
     if (successElement) {
       successElement.style.display = 'block';
     }
 
     // Update ARIA
     field.setAttribute('aria-invalid', 'false');
+    field.removeAttribute('aria-describedby');
   }
 
   /**
@@ -357,8 +360,9 @@ export class Forms {
     field.classList.remove('aiab-is-invalid', 'aiab-is-valid');
 
     const formGroup = field.closest('.aiab-form-group');
-    const errorElement = formGroup?.querySelector('.invalid-feedback') as HTMLElement;
-    const successElement = formGroup?.querySelector('.valid-feedback') as HTMLElement;
+    const container = formGroup || field.parentElement;
+    const errorElement = container?.querySelector('.invalid-feedback') as HTMLElement;
+    const successElement = container?.querySelector('.valid-feedback') as HTMLElement;
 
     if (errorElement) {
       errorElement.style.display = 'none';
@@ -369,6 +373,7 @@ export class Forms {
     }
 
     field.removeAttribute('aria-invalid');
+    field.removeAttribute('aria-describedby');
   }
 
   /**
