@@ -1024,9 +1024,6 @@ class RangeSlider {
 declare global {
   interface Window {
     RangeSlider: typeof RangeSlider;
-    AmphibiousRegistry?: {
-      registerComponent: (name: string, constructor: typeof RangeSlider) => void;
-    };
   }
 }
 
@@ -1043,7 +1040,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('aiab-range-slider', RangeSlider);
+  // biome-ignore lint/suspicious/noExplicitAny: constructor type variance for registry
+  window.AmphibiousRegistry.registerComponent('aiab-range-slider', RangeSlider as any);
 }
 
 // Export

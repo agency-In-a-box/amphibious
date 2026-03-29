@@ -13,12 +13,444 @@
  * - JSON import/export
  * - Live preview
  * - Accessibility compliant
+ *
+ * @module form-builder
  */
 
 import { escapeHTML } from '../utils/sanitize';
 
+// ---------------------------------------------------------------------------
+// Types & Interfaces
+// ---------------------------------------------------------------------------
+
+/** Field type identifiers for all supported form field types. */
+export type FieldTypeName =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'number'
+  | 'tel'
+  | 'url'
+  | 'textarea'
+  | 'select'
+  | 'radio'
+  | 'checkbox'
+  | 'switch'
+  | 'date'
+  | 'time'
+  | 'datetime'
+  | 'color'
+  | 'range'
+  | 'file'
+  | 'heading'
+  | 'paragraph'
+  | 'divider'
+  | 'spacer'
+  | 'html';
+
+/** Category groupings for the toolbox sidebar. */
+export type FieldCategory = 'input' | 'text' | 'selection' | 'datetime' | 'special' | 'layout';
+
+/** Heading level values. */
+export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+/** Divider border styles. */
+export type DividerStyle = 'solid' | 'dashed' | 'dotted' | 'double';
+
+/** Drop position relative to a target element. */
+export type DropPosition = 'before' | 'after' | 'append';
+
+/** An option entry for select, radio, or checkbox group fields. */
+export interface FieldOption {
+  value: string;
+  label: string;
+}
+
+/**
+ * Base properties shared by all form fields.
+ * Concrete field types extend this with type-specific properties.
+ */
+export interface BaseFieldProps {
+  type: string;
+  label?: string;
+  name?: string;
+  placeholder?: string;
+  required?: boolean;
+  className?: string;
+}
+
+/** Properties for text-like input fields (text, email, tel, url). */
+export interface TextFieldProps extends BaseFieldProps {
+  type: 'text' | 'email' | 'tel' | 'url';
+  minLength?: number | null;
+  maxLength?: number | null;
+  pattern?: string | null;
+  validation?: string;
+}
+
+/** Properties for password input fields. */
+export interface PasswordFieldProps extends BaseFieldProps {
+  type: 'password';
+  minLength?: number;
+  showStrength?: boolean;
+}
+
+/** Properties for number input fields. */
+export interface NumberFieldProps extends BaseFieldProps {
+  type: 'number';
+  min?: number | null;
+  max?: number | null;
+  step?: number;
+}
+
+/** Properties for textarea fields. */
+export interface TextareaFieldProps extends BaseFieldProps {
+  type: 'textarea';
+  rows?: number;
+  maxLength?: number | null;
+}
+
+/** Properties for select dropdown fields. */
+export interface SelectFieldProps extends BaseFieldProps {
+  type: 'select';
+  multiple?: boolean;
+  options?: FieldOption[];
+}
+
+/** Properties for radio group fields. */
+export interface RadioFieldProps extends BaseFieldProps {
+  type: 'radio';
+  options?: FieldOption[];
+}
+
+/** Properties for checkbox fields. */
+export interface CheckboxFieldProps extends BaseFieldProps {
+  type: 'checkbox';
+  value?: string;
+}
+
+/** Properties for switch/toggle fields. */
+export interface SwitchFieldProps extends BaseFieldProps {
+  type: 'switch';
+  value?: boolean;
+}
+
+/** Properties for date/time fields. */
+export interface DateFieldProps extends BaseFieldProps {
+  type: 'date' | 'time' | 'datetime-local';
+  min?: string | null;
+  max?: string | null;
+}
+
+/** Properties for color picker fields. */
+export interface ColorFieldProps extends BaseFieldProps {
+  type: 'color';
+  value?: string;
+}
+
+/** Properties for range slider fields. */
+export interface RangeFieldProps extends BaseFieldProps {
+  type: 'range';
+  min?: number;
+  max?: number;
+  step?: number;
+  value?: number;
+}
+
+/** Properties for file upload fields. */
+export interface FileFieldProps extends BaseFieldProps {
+  type: 'file';
+  accept?: string;
+  multiple?: boolean;
+  maxSize?: number;
+}
+
+/** Properties for heading layout elements. */
+export interface HeadingFieldProps {
+  type: 'heading';
+  text: string;
+  level: HeadingLevel;
+  className?: string;
+}
+
+/** Properties for paragraph layout elements. */
+export interface ParagraphFieldProps {
+  type: 'paragraph';
+  text: string;
+  className?: string;
+}
+
+/** Properties for divider layout elements. */
+export interface DividerFieldProps {
+  type: 'divider';
+  style: DividerStyle;
+}
+
+/** Properties for spacer layout elements. */
+export interface SpacerFieldProps {
+  type: 'spacer';
+  height: number;
+}
+
+/** Properties for custom HTML layout elements. */
+export interface HtmlFieldProps {
+  type: 'html';
+  content: string;
+}
+
+/** Union of all field property types. */
+export type FieldProps =
+  | TextFieldProps
+  | PasswordFieldProps
+  | NumberFieldProps
+  | TextareaFieldProps
+  | SelectFieldProps
+  | RadioFieldProps
+  | CheckboxFieldProps
+  | SwitchFieldProps
+  | DateFieldProps
+  | ColorFieldProps
+  | RangeFieldProps
+  | FileFieldProps
+  | HeadingFieldProps
+  | ParagraphFieldProps
+  | DividerFieldProps
+  | SpacerFieldProps
+  | HtmlFieldProps;
+
+/**
+ * A field instance stored in builder state.
+ * Combines the unique ID with the field's configuration properties.
+ */
+export interface FormField {
+  id: string;
+  type: string;
+  name?: string;
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
+  className?: string;
+  text?: string;
+  level?: string;
+  style?: string;
+  height?: number;
+  content?: string;
+  value?: string | number | boolean;
+  options?: FieldOption[];
+  multiple?: boolean;
+  rows?: number;
+  min?: number | string | null;
+  max?: number | string | null;
+  step?: number;
+  minLength?: number | null;
+  maxLength?: number | null;
+  pattern?: string | null;
+  accept?: string;
+  maxSize?: number;
+  validation?: string;
+  showStrength?: boolean;
+  // biome-ignore lint/suspicious/noExplicitAny: field extensions may add arbitrary properties
+  [key: string]: any;
+}
+
+/** Definition of a field type for the toolbox. */
+export interface FieldDefinition {
+  label: string;
+  icon: string;
+  category: FieldCategory;
+  defaultProps: FieldProps;
+}
+
+/** A field definition combined with its type key (used when grouping by category). */
+export interface FieldDefinitionWithType extends FieldDefinition {
+  type: string;
+}
+
+/** Map of field type name to its definition. */
+export type FieldDefinitions = Record<string, FieldDefinition>;
+
+/** A form template that can be loaded from the toolbox. */
+export interface FormTemplate {
+  id: string;
+  name: string;
+  fields: FormField[];
+}
+
+/** Localizable UI labels used by the form builder. */
+export interface FormBuilderLabels {
+  toolbox: string;
+  canvas: string;
+  properties: string;
+  preview: string;
+  save: string;
+  load: string;
+  export: string;
+  import: string;
+  clear: string;
+  [key: string]: string;
+}
+
+/**
+ * Configuration options accepted by the {@link FormBuilder} constructor.
+ * All properties are optional; unset values use sensible defaults.
+ */
+export interface FormBuilderOptions {
+  fieldTypes?: string[];
+  showToolbox?: boolean;
+  showProperties?: boolean;
+  showPreview?: boolean;
+  allowNesting?: boolean;
+  autoSave?: boolean;
+  autoSaveInterval?: number;
+  enableValidation?: boolean;
+  enableConditional?: boolean;
+  enableMultiStep?: boolean;
+  enableTemplates?: boolean;
+  theme?: string;
+  compact?: boolean;
+  templates?: FormTemplate[];
+  labels?: Partial<FormBuilderLabels>;
+  onChange?: ((fields: FormField[]) => void) | null;
+  onSave?: ((data: FormExportData) => void) | null;
+  onFieldAdd?: ((field: FormField) => void) | null;
+  onFieldRemove?: ((field: FormField) => void) | null;
+  onFieldUpdate?: ((field: FormField) => void) | null;
+  onSubmit?: ((data: Record<string, FormDataEntryValue>) => void) | null;
+}
+
+/**
+ * Resolved configuration where defaults have been applied.
+ * Labels are fully resolved with no optional properties.
+ */
+interface ResolvedOptions {
+  fieldTypes: string[];
+  showToolbox: boolean;
+  showProperties: boolean;
+  showPreview: boolean;
+  allowNesting: boolean;
+  autoSave: boolean;
+  autoSaveInterval: number;
+  enableValidation: boolean;
+  enableConditional: boolean;
+  enableMultiStep: boolean;
+  enableTemplates: boolean;
+  theme: string;
+  compact: boolean;
+  templates: FormTemplate[];
+  labels: FormBuilderLabels;
+  onChange: ((fields: FormField[]) => void) | null;
+  onSave: ((data: FormExportData) => void) | null;
+  onFieldAdd: ((field: FormField) => void) | null;
+  onFieldRemove: ((field: FormField) => void) | null;
+  onFieldUpdate: ((field: FormField) => void) | null;
+  onSubmit?: ((data: Record<string, FormDataEntryValue>) => void) | null;
+}
+
+/** Internal state for the form builder. */
+interface FormBuilderState {
+  fields: FormField[];
+  selectedField: string | null;
+  isDragging: boolean;
+  draggedElement: HTMLElement | null;
+  draggedField: DraggedFieldInfo | null;
+  dropTarget: DropTargetInfo | null;
+  currentStep: number;
+  formData: Record<string, unknown>;
+  validationErrors: Record<string, string>;
+  history: string[];
+  historyIndex: number;
+}
+
+/** Info about a field currently being dragged. */
+interface DraggedFieldInfo {
+  type?: string;
+  isNew: boolean;
+  id?: string;
+  [key: string]: unknown;
+}
+
+/** Info about the current drop target. */
+interface DropTargetInfo {
+  element: HTMLElement;
+  position: DropPosition;
+}
+
+/** Internal bookkeeping for a tracked event listener. */
+interface TrackedHandler {
+  element: HTMLElement | Document;
+  type: string;
+  handler: EventListener;
+}
+
+/** Property descriptor for the properties panel editor. */
+interface PropertyDescriptor {
+  name: string;
+  label: string;
+  type: string;
+  options?: string[];
+}
+
+/** Exported form data structure (save/export). */
+export interface FormExportData {
+  fields: FormField[];
+  settings: {
+    multiStep: boolean;
+    validation: boolean;
+  };
+  version?: string;
+  created?: string;
+}
+
+/** Form data returned by the public getFormData API. */
+export interface FormDataResult {
+  fields: FormField[];
+  settings: {
+    multiStep: boolean;
+    validation: boolean;
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+
 class FormBuilder {
-  constructor(element, options = {}) {
+  /** Root container element. */
+  element: HTMLElement;
+
+  /** Fully resolved configuration. */
+  options: ResolvedOptions;
+
+  /** Internal state. */
+  state: FormBuilderState;
+
+  /** Registry of all field type definitions. */
+  fieldDefinitions: FieldDefinitions;
+
+  // DOM references — set during init() called from constructor
+  toolbox!: HTMLDivElement;
+  canvasArea!: HTMLDivElement;
+  canvas!: HTMLDivElement;
+  preview!: HTMLDivElement;
+  propertiesPanel!: HTMLDivElement;
+  propertiesContent!: HTMLDivElement;
+  toolbar!: HTMLDivElement;
+  fileInput!: HTMLInputElement;
+  stepNav!: HTMLDivElement;
+
+  /** Tracked event handlers for cleanup. */
+  private handlers: Map<string, TrackedHandler>;
+
+  /** Active timer IDs for cleanup. */
+  private timers: Set<ReturnType<typeof setInterval>>;
+
+  /** DOM elements created by this instance for cleanup. */
+  private createdElements: Set<HTMLElement>;
+
+  /** Observers for cleanup. */
+  private observers: Set<MutationObserver>;
+
+  constructor(element: HTMLElement, options: FormBuilderOptions = {}) {
     this.element = element;
     this.options = {
       // Field types to include
@@ -88,8 +520,7 @@ class FormBuilder {
       onFieldAdd: options.onFieldAdd || null,
       onFieldRemove: options.onFieldRemove || null,
       onFieldUpdate: options.onFieldUpdate || null,
-
-      ...options,
+      onSubmit: options.onSubmit || null,
     };
 
     // State
@@ -120,7 +551,7 @@ class FormBuilder {
   }
 
   /** Sanitize user-provided HTML using DOMPurify via sanitize utility */
-  _sanitizeHTML(html) {
+  private _sanitizeHTML(html: string): string {
     if (typeof html !== 'string') return '';
     if (typeof window.__amphibiousSanitizeHTML === 'function') {
       return window.__amphibiousSanitizeHTML(html);
@@ -131,12 +562,12 @@ class FormBuilder {
     return div.innerHTML;
   }
 
-  getFieldDefinitions() {
+  getFieldDefinitions(): FieldDefinitions {
     return {
       // Input fields
       text: {
         label: 'Text Input',
-        icon: '📝',
+        icon: '\u{1f4dd}',
         category: 'input',
         defaultProps: {
           type: 'text',
@@ -147,11 +578,11 @@ class FormBuilder {
           minLength: null,
           maxLength: null,
           pattern: null,
-        },
+        } as TextFieldProps,
       },
       email: {
         label: 'Email',
-        icon: '📧',
+        icon: '\u{1f4e7}',
         category: 'input',
         defaultProps: {
           type: 'email',
@@ -160,11 +591,11 @@ class FormBuilder {
           placeholder: 'email@example.com',
           required: false,
           validation: 'email',
-        },
+        } as TextFieldProps,
       },
       password: {
         label: 'Password',
-        icon: '🔒',
+        icon: '\u{1f512}',
         category: 'input',
         defaultProps: {
           type: 'password',
@@ -174,11 +605,11 @@ class FormBuilder {
           required: false,
           minLength: 8,
           showStrength: true,
-        },
+        } as PasswordFieldProps,
       },
       number: {
         label: 'Number',
-        icon: '🔢',
+        icon: '\u{1f522}',
         category: 'input',
         defaultProps: {
           type: 'number',
@@ -189,11 +620,11 @@ class FormBuilder {
           min: null,
           max: null,
           step: 1,
-        },
+        } as NumberFieldProps,
       },
       tel: {
         label: 'Phone',
-        icon: '📱',
+        icon: '\u{1f4f1}',
         category: 'input',
         defaultProps: {
           type: 'tel',
@@ -202,11 +633,11 @@ class FormBuilder {
           placeholder: '(555) 123-4567',
           required: false,
           pattern: null,
-        },
+        } as TextFieldProps,
       },
       url: {
         label: 'URL',
-        icon: '🔗',
+        icon: '\u{1f517}',
         category: 'input',
         defaultProps: {
           type: 'url',
@@ -214,13 +645,13 @@ class FormBuilder {
           name: '',
           placeholder: 'https://example.com',
           required: false,
-        },
+        } as TextFieldProps,
       },
 
       // Text areas
       textarea: {
         label: 'Textarea',
-        icon: '📄',
+        icon: '\u{1f4c4}',
         category: 'text',
         defaultProps: {
           type: 'textarea',
@@ -230,13 +661,13 @@ class FormBuilder {
           required: false,
           rows: 4,
           maxLength: null,
-        },
+        } as TextareaFieldProps,
       },
 
       // Selection fields
       select: {
         label: 'Dropdown',
-        icon: '📋',
+        icon: '\u{1f4cb}',
         category: 'selection',
         defaultProps: {
           type: 'select',
@@ -249,11 +680,11 @@ class FormBuilder {
             { value: 'option2', label: 'Option 2' },
             { value: 'option3', label: 'Option 3' },
           ],
-        },
+        } as SelectFieldProps,
       },
       radio: {
         label: 'Radio Group',
-        icon: '⭕',
+        icon: '\u{2b55}',
         category: 'selection',
         defaultProps: {
           type: 'radio',
@@ -265,11 +696,11 @@ class FormBuilder {
             { value: 'option2', label: 'Option 2' },
             { value: 'option3', label: 'Option 3' },
           ],
-        },
+        } as RadioFieldProps,
       },
       checkbox: {
         label: 'Checkbox',
-        icon: '☑️',
+        icon: '\u{2611}\u{fe0f}',
         category: 'selection',
         defaultProps: {
           type: 'checkbox',
@@ -277,11 +708,11 @@ class FormBuilder {
           name: '',
           required: false,
           value: 'checked',
-        },
+        } as CheckboxFieldProps,
       },
       switch: {
         label: 'Toggle Switch',
-        icon: '🎚️',
+        icon: '\u{1f39a}\u{fe0f}',
         category: 'selection',
         defaultProps: {
           type: 'switch',
@@ -289,13 +720,13 @@ class FormBuilder {
           name: '',
           required: false,
           value: false,
-        },
+        } as SwitchFieldProps,
       },
 
       // Date & Time
       date: {
         label: 'Date Picker',
-        icon: '📅',
+        icon: '\u{1f4c5}',
         category: 'datetime',
         defaultProps: {
           type: 'date',
@@ -304,46 +735,46 @@ class FormBuilder {
           required: false,
           min: null,
           max: null,
-        },
+        } as DateFieldProps,
       },
       time: {
         label: 'Time Picker',
-        icon: '⏰',
+        icon: '\u{23f0}',
         category: 'datetime',
         defaultProps: {
           type: 'time',
           label: 'Time',
           name: '',
           required: false,
-        },
+        } as DateFieldProps,
       },
       datetime: {
         label: 'Date & Time',
-        icon: '📆',
+        icon: '\u{1f4c6}',
         category: 'datetime',
         defaultProps: {
           type: 'datetime-local',
           label: 'Date & Time',
           name: '',
           required: false,
-        },
+        } as DateFieldProps,
       },
 
       // Special inputs
       color: {
         label: 'Color Picker',
-        icon: '🎨',
+        icon: '\u{1f3a8}',
         category: 'special',
         defaultProps: {
           type: 'color',
           label: 'Choose Color',
           name: '',
           value: '#ed8b00',
-        },
+        } as ColorFieldProps,
       },
       range: {
         label: 'Range Slider',
-        icon: '📊',
+        icon: '\u{1f4ca}',
         category: 'special',
         defaultProps: {
           type: 'range',
@@ -353,11 +784,11 @@ class FormBuilder {
           max: 100,
           step: 1,
           value: 50,
-        },
+        } as RangeFieldProps,
       },
       file: {
         label: 'File Upload',
-        icon: '📎',
+        icon: '\u{1f4ce}',
         category: 'special',
         defaultProps: {
           type: 'file',
@@ -367,48 +798,48 @@ class FormBuilder {
           accept: '*',
           multiple: false,
           maxSize: 5242880, // 5MB
-        },
+        } as FileFieldProps,
       },
 
       // Layout elements
       heading: {
         label: 'Heading',
-        icon: '📌',
+        icon: '\u{1f4cc}',
         category: 'layout',
         defaultProps: {
           type: 'heading',
           text: 'Section Title',
           level: 'h3',
           className: '',
-        },
+        } as HeadingFieldProps,
       },
       paragraph: {
         label: 'Paragraph',
-        icon: '📝',
+        icon: '\u{1f4dd}',
         category: 'layout',
         defaultProps: {
           type: 'paragraph',
           text: 'Add some descriptive text here...',
           className: '',
-        },
+        } as ParagraphFieldProps,
       },
       divider: {
         label: 'Divider',
-        icon: '➖',
+        icon: '\u{2796}',
         category: 'layout',
         defaultProps: {
           type: 'divider',
           style: 'solid',
-        },
+        } as DividerFieldProps,
       },
       spacer: {
         label: 'Spacer',
-        icon: '⬜',
+        icon: '\u{2b1c}',
         category: 'layout',
         defaultProps: {
           type: 'spacer',
           height: 24,
-        },
+        } as SpacerFieldProps,
       },
       html: {
         label: 'Custom HTML',
@@ -417,12 +848,12 @@ class FormBuilder {
         defaultProps: {
           type: 'html',
           content: '<div>Custom HTML content</div>',
-        },
+        } as HtmlFieldProps,
       },
     };
   }
 
-  init() {
+  private init(): void {
     this.setupDOM();
     this.attachEvents();
     this.loadFromStorage();
@@ -432,7 +863,7 @@ class FormBuilder {
     }
   }
 
-  setupDOM() {
+  private setupDOM(): void {
     // Clear element
     this.element.innerHTML = '';
     this.element.classList.add('aiab-form-builder');
@@ -467,7 +898,7 @@ class FormBuilder {
     this.createdElements.add(this.toolbar);
   }
 
-  createToolbox() {
+  private createToolbox(): HTMLDivElement {
     const toolbox = document.createElement('div');
     toolbox.className = 'aiab-form-builder-toolbox';
 
@@ -476,7 +907,7 @@ class FormBuilder {
     header.innerHTML = `<h3>${this.options.labels.toolbox}</h3>`;
     toolbox.appendChild(header);
 
-    const categories = {};
+    const categories: Record<string, FieldDefinitionWithType[]> = {};
 
     // Group fields by category
     Object.entries(this.fieldDefinitions).forEach(([type, def]) => {
@@ -527,7 +958,7 @@ class FormBuilder {
     return toolbox;
   }
 
-  createCanvasArea() {
+  private createCanvasArea(): HTMLDivElement {
     const area = document.createElement('div');
     area.className = 'aiab-form-builder-canvas-area';
 
@@ -598,7 +1029,7 @@ class FormBuilder {
     return area;
   }
 
-  createPropertiesPanel() {
+  private createPropertiesPanel(): HTMLDivElement {
     const panel = document.createElement('div');
     panel.className = 'aiab-form-builder-properties';
 
@@ -620,7 +1051,7 @@ class FormBuilder {
     return panel;
   }
 
-  createToolbar() {
+  private createToolbar(): HTMLDivElement {
     const toolbar = document.createElement('div');
     toolbar.className = 'aiab-form-builder-toolbar';
 
@@ -688,7 +1119,7 @@ class FormBuilder {
     return toolbar;
   }
 
-  createStepNavigation() {
+  private createStepNavigation(): HTMLDivElement {
     const nav = document.createElement('div');
     nav.className = 'aiab-form-builder-steps';
 
@@ -717,7 +1148,7 @@ class FormBuilder {
     return nav;
   }
 
-  createTemplatesSection() {
+  private createTemplatesSection(): HTMLDivElement {
     const section = document.createElement('div');
     section.className = 'aiab-toolbox-section templates';
 
@@ -734,7 +1165,7 @@ class FormBuilder {
       templateEl.className = 'aiab-template-item';
       templateEl.dataset.templateId = template.id;
       templateEl.innerHTML = `
-        <span class="template-icon">📋</span>
+        <span class="template-icon">\u{1f4cb}</span>
         <span class="template-name">${escapeHTML(template.name)}</span>
       `;
       templateList.appendChild(templateEl);
@@ -744,21 +1175,22 @@ class FormBuilder {
     return section;
   }
 
-  attachEvents() {
+  private attachEvents(): void {
     // Toolbox drag events
     if (this.toolbox) {
       const fieldEls = this.toolbox.querySelectorAll('.aiab-toolbox-field');
       fieldEls.forEach((field) => {
-        this.attachDragEvents(field, 'new');
+        this.attachDragEvents(field as HTMLElement, 'new');
       });
 
       // Template clicks
       const templates = this.toolbox.querySelectorAll('.aiab-template-item');
       templates.forEach((template) => {
-        const handler = () => this.loadTemplate(template.dataset.templateId);
-        template.addEventListener('click', handler);
-        this.handlers.set(`template-${template.dataset.templateId}`, {
-          element: template,
+        const el = template as HTMLElement;
+        const handler: EventListener = () => this.loadTemplate(el.dataset.templateId || '');
+        el.addEventListener('click', handler);
+        this.handlers.set(`template-${el.dataset.templateId}`, {
+          element: el,
           type: 'click',
           handler,
         });
@@ -771,57 +1203,64 @@ class FormBuilder {
     // Tab switching
     const tabs = this.element.querySelectorAll('.aiab-tab-btn');
     tabs.forEach((tab) => {
-      const handler = () => this.switchTab(tab.dataset.tab);
-      tab.addEventListener('click', handler);
-      this.handlers.set(`tab-${tab.dataset.tab}`, {
-        element: tab,
+      const el = tab as HTMLElement;
+      const handler: EventListener = () => this.switchTab(el.dataset.tab || '');
+      el.addEventListener('click', handler);
+      this.handlers.set(`tab-${el.dataset.tab}`, {
+        element: el,
         type: 'click',
         handler,
       });
     });
 
     // Toolbar actions
-    const toolbar = this.element.querySelector('.aiab-form-builder-toolbar');
+    const toolbar = this.element.querySelector('.aiab-form-builder-toolbar') as HTMLElement | null;
     if (toolbar) {
-      const undoBtn = toolbar.querySelector('.aiab-toolbar-btn[title="Undo"]');
-      const redoBtn = toolbar.querySelector('.aiab-toolbar-btn[title="Redo"]');
-      const clearBtn = toolbar.querySelector('.aiab-toolbar-btn:not(.aiab-primary)');
-      const importBtn = toolbar.querySelectorAll('.aiab-toolbar-btn')[3];
-      const exportBtn = toolbar.querySelectorAll('.aiab-toolbar-btn')[4];
-      const saveBtn = toolbar.querySelector('.aiab-toolbar-btn.aiab-primary');
+      const undoBtn = toolbar.querySelector(
+        '.aiab-toolbar-btn[title="Undo"]',
+      ) as HTMLElement | null;
+      const redoBtn = toolbar.querySelector(
+        '.aiab-toolbar-btn[title="Redo"]',
+      ) as HTMLElement | null;
+      const clearBtn = toolbar.querySelector(
+        '.aiab-toolbar-btn:not(.aiab-primary)',
+      ) as HTMLElement | null;
+      const importBtn = toolbar.querySelectorAll('.aiab-toolbar-btn')[3] as HTMLElement | undefined;
+      const exportBtn = toolbar.querySelectorAll('.aiab-toolbar-btn')[4] as HTMLElement | undefined;
+      const saveBtn = toolbar.querySelector('.aiab-toolbar-btn.aiab-primary') as HTMLElement | null;
 
       if (undoBtn) {
-        const undoHandler = () => this.undo();
+        const undoHandler: EventListener = () => this.undo();
         undoBtn.addEventListener('click', undoHandler);
         this.handlers.set('undo', { element: undoBtn, type: 'click', handler: undoHandler });
       }
 
       if (redoBtn) {
-        const redoHandler = () => this.redo();
+        const redoHandler: EventListener = () => this.redo();
         redoBtn.addEventListener('click', redoHandler);
         this.handlers.set('redo', { element: redoBtn, type: 'click', handler: redoHandler });
       }
 
       if (clearBtn) {
-        const clearHandler = () => this.clearForm();
+        const clearHandler: EventListener = () => this.clearForm();
         clearBtn.addEventListener('click', clearHandler);
         this.handlers.set('clear', { element: clearBtn, type: 'click', handler: clearHandler });
       }
 
       if (importBtn) {
-        const importHandler = () => this.importForm();
+        const importHandler: EventListener = () => this.importForm();
         importBtn.addEventListener('click', importHandler);
         this.handlers.set('import', { element: importBtn, type: 'click', handler: importHandler });
       }
 
       if (exportBtn) {
-        const exportHandler = () => this.exportForm();
+        const exportHandler: EventListener = () => this.exportForm();
         exportBtn.addEventListener('click', exportHandler);
         this.handlers.set('export', { element: exportBtn, type: 'click', handler: exportHandler });
       }
 
       if (saveBtn) {
-        const saveHandler = () => this.saveForm();
+        const saveHandler: EventListener = () => this.saveForm();
         saveBtn.addEventListener('click', saveHandler);
         this.handlers.set('save', { element: saveBtn, type: 'click', handler: saveHandler });
       }
@@ -829,7 +1268,7 @@ class FormBuilder {
 
     // File input for import
     if (this.fileInput) {
-      const fileHandler = (e) => this.handleFileImport(e);
+      const fileHandler: EventListener = (e) => this.handleFileImport(e as Event);
       this.fileInput.addEventListener('change', fileHandler);
       this.handlers.set('file-input', {
         element: this.fileInput,
@@ -840,38 +1279,38 @@ class FormBuilder {
 
     // Multi-step navigation
     if (this.stepNav) {
-      const prevBtn = this.stepNav.querySelector('.prev');
-      const nextBtn = this.stepNav.querySelector('.next');
-      const addBtn = this.stepNav.querySelector('.add');
+      const prevBtn = this.stepNav.querySelector('.prev') as HTMLElement | null;
+      const nextBtn = this.stepNav.querySelector('.next') as HTMLElement | null;
+      const addBtn = this.stepNav.querySelector('.add') as HTMLElement | null;
 
       if (prevBtn) {
-        const prevHandler = () => this.previousStep();
+        const prevHandler: EventListener = () => this.previousStep();
         prevBtn.addEventListener('click', prevHandler);
         this.handlers.set('step-prev', { element: prevBtn, type: 'click', handler: prevHandler });
       }
 
       if (nextBtn) {
-        const nextHandler = () => this.nextStep();
+        const nextHandler: EventListener = () => this.nextStep();
         nextBtn.addEventListener('click', nextHandler);
         this.handlers.set('step-next', { element: nextBtn, type: 'click', handler: nextHandler });
       }
 
       if (addBtn) {
-        const addHandler = () => this.addStep();
+        const addHandler: EventListener = () => this.addStep();
         addBtn.addEventListener('click', addHandler);
         this.handlers.set('step-add', { element: addBtn, type: 'click', handler: addHandler });
       }
     }
 
     // Keyboard shortcuts
-    const keyHandler = (e) => this.handleKeyboard(e);
+    const keyHandler: EventListener = (e) => this.handleKeyboard(e as KeyboardEvent);
     document.addEventListener('keydown', keyHandler);
     this.handlers.set('keyboard', { element: document, type: 'keydown', handler: keyHandler });
   }
 
-  attachDragEvents(element, mode = 'new') {
-    const dragStartHandler = (e) => this.handleDragStart(e, mode);
-    const dragEndHandler = (e) => this.handleDragEnd(e);
+  private attachDragEvents(element: HTMLElement, mode: 'new' | 'move' = 'new'): void {
+    const dragStartHandler: EventListener = (e) => this.handleDragStart(e as DragEvent, mode);
+    const dragEndHandler: EventListener = (e) => this.handleDragEnd(e as DragEvent);
 
     element.addEventListener('dragstart', dragStartHandler);
     element.addEventListener('dragend', dragEndHandler);
@@ -889,10 +1328,10 @@ class FormBuilder {
     });
   }
 
-  attachDropEvents(element) {
-    const dragOverHandler = (e) => this.handleDragOver(e);
-    const dropHandler = (e) => this.handleDrop(e);
-    const dragLeaveHandler = (e) => this.handleDragLeave(e);
+  private attachDropEvents(element: HTMLElement): void {
+    const dragOverHandler: EventListener = (e) => this.handleDragOver(e as DragEvent);
+    const dropHandler: EventListener = (e) => this.handleDrop(e as DragEvent);
+    const dragLeaveHandler: EventListener = (e) => this.handleDragLeave(e as DragEvent);
 
     element.addEventListener('dragover', dragOverHandler);
     element.addEventListener('drop', dropHandler);
@@ -904,20 +1343,21 @@ class FormBuilder {
     this.handlers.set(`dragleave-${id}`, { element, type: 'dragleave', handler: dragLeaveHandler });
   }
 
-  handleDragStart(e, mode) {
+  private handleDragStart(e: DragEvent, mode: 'new' | 'move'): void {
+    const target = e.target as HTMLElement;
     this.state.isDragging = true;
-    this.state.draggedElement = e.target;
+    this.state.draggedElement = target;
 
     if (mode === 'new') {
       // Dragging from toolbox
-      const fieldType = e.target.dataset.fieldType;
+      const fieldType = target.dataset.fieldType;
       this.state.draggedField = {
         type: fieldType,
         isNew: true,
       };
     } else {
       // Dragging existing field
-      const fieldId = e.target.dataset.fieldId;
+      const fieldId = target.dataset.fieldId;
       const field = this.state.fields.find((f) => f.id === fieldId);
       this.state.draggedField = {
         ...field,
@@ -925,18 +1365,21 @@ class FormBuilder {
       };
     }
 
-    e.target.classList.add('dragging');
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/plain', ''); // Required for Firefox
+    target.classList.add('dragging');
+    if (e.dataTransfer) {
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', ''); // Required for Firefox
+    }
   }
 
-  handleDragEnd(e) {
+  private handleDragEnd(e: DragEvent): void {
+    const target = e.target as HTMLElement;
     this.state.isDragging = false;
     this.state.draggedElement = null;
     this.state.draggedField = null;
     this.state.dropTarget = null;
 
-    e.target.classList.remove('dragging');
+    target.classList.remove('dragging');
 
     // Remove all drag indicators
     this.element.querySelectorAll('.drag-over, .drag-before, .drag-after').forEach((el) => {
@@ -944,12 +1387,16 @@ class FormBuilder {
     });
   }
 
-  handleDragOver(e) {
+  private handleDragOver(e: DragEvent): void {
     if (!this.state.isDragging) return;
     e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = 'move';
+    }
 
-    const target = e.target.closest('.aiab-form-field, .aiab-form-builder-canvas');
+    const target = (e.target as HTMLElement).closest(
+      '.aiab-form-field, .aiab-form-builder-canvas',
+    ) as HTMLElement | null;
     if (!target) return;
 
     // Remove previous indicators
@@ -964,21 +1411,23 @@ class FormBuilder {
       // Determine position (before or after)
       const rect = target.getBoundingClientRect();
       const midpoint = rect.top + rect.height / 2;
-      const position = e.clientY < midpoint ? 'before' : 'after';
+      const position: DropPosition = e.clientY < midpoint ? 'before' : 'after';
 
       target.classList.add(`drag-${position}`);
       this.state.dropTarget = { element: target, position };
     }
   }
 
-  handleDragLeave(e) {
-    const target = e.target.closest('.aiab-form-field, .aiab-form-builder-canvas');
+  private handleDragLeave(e: DragEvent): void {
+    const target = (e.target as HTMLElement).closest(
+      '.aiab-form-field, .aiab-form-builder-canvas',
+    ) as HTMLElement | null;
     if (target) {
       target.classList.remove('drag-over', 'drag-before', 'drag-after');
     }
   }
 
-  handleDrop(e) {
+  private handleDrop(e: DragEvent): void {
     e.preventDefault();
     if (!this.state.draggedField || !this.state.dropTarget) return;
 
@@ -986,30 +1435,30 @@ class FormBuilder {
 
     if (this.state.draggedField.isNew) {
       // Create new field
-      const field = this.createField(this.state.draggedField.type);
+      const field = this.createField(this.state.draggedField.type || '');
       this.addField(field, element, position);
     } else {
       // Move existing field
-      this.moveField(this.state.draggedField.id, element, position);
+      this.moveField(this.state.draggedField.id || '', element, position);
     }
 
     // Clean up
     element.classList.remove('drag-over', 'drag-before', 'drag-after');
   }
 
-  createField(type) {
+  createField(type: string): FormField {
     const definition = this.fieldDefinitions[type];
     const id = this.generateId();
 
     return {
       id,
-      type,
       ...definition.defaultProps,
+      type,
       name: `field_${id}`,
-    };
+    } as FormField;
   }
 
-  addField(field, targetElement, position) {
+  addField(field: FormField, targetElement: HTMLElement, position: DropPosition): void {
     // Add to state
     if (position === 'append' || targetElement.classList.contains('aiab-form-builder-canvas')) {
       this.state.fields.push(field);
@@ -1039,7 +1488,7 @@ class FormBuilder {
     }
   }
 
-  moveField(fieldId, targetElement, position) {
+  moveField(fieldId: string, targetElement: HTMLElement, position: DropPosition): void {
     // Find and remove field from current position
     const fieldIndex = this.state.fields.findIndex((f) => f.id === fieldId);
     const field = this.state.fields.splice(fieldIndex, 1)[0];
@@ -1062,7 +1511,7 @@ class FormBuilder {
     this.saveHistory();
   }
 
-  renderFields() {
+  private renderFields(): void {
     // Clear canvas
     this.canvas.innerHTML = '';
 
@@ -1088,7 +1537,7 @@ class FormBuilder {
     });
   }
 
-  renderField(field) {
+  private renderField(field: FormField): HTMLDivElement {
     const fieldEl = document.createElement('div');
     fieldEl.className = 'aiab-form-field';
     fieldEl.dataset.fieldId = field.id;
@@ -1105,7 +1554,7 @@ class FormBuilder {
 
     const handle = document.createElement('span');
     handle.className = 'aiab-field-handle';
-    handle.innerHTML = '⋮⋮';
+    handle.innerHTML = '\u22ee\u22ee';
 
     const label = document.createElement('span');
     label.className = 'aiab-field-label';
@@ -1117,12 +1566,12 @@ class FormBuilder {
     const duplicateBtn = document.createElement('button');
     duplicateBtn.className = 'aiab-field-action';
     duplicateBtn.title = 'Duplicate';
-    duplicateBtn.innerHTML = '📋';
+    duplicateBtn.innerHTML = '\u{1f4cb}';
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'aiab-field-action delete';
     deleteBtn.title = 'Delete';
-    deleteBtn.innerHTML = '🗑️';
+    deleteBtn.innerHTML = '\u{1f5d1}\u{fe0f}';
 
     actions.appendChild(duplicateBtn);
     actions.appendChild(deleteBtn);
@@ -1142,8 +1591,8 @@ class FormBuilder {
     // Attach events
     this.attachDragEvents(fieldEl, 'move');
 
-    const clickHandler = (e) => {
-      if (!e.target.closest('.aiab-field-action')) {
+    const clickHandler: EventListener = (e) => {
+      if (!(e.target as HTMLElement).closest('.aiab-field-action')) {
         this.selectField(field.id);
       }
     };
@@ -1154,7 +1603,7 @@ class FormBuilder {
       handler: clickHandler,
     });
 
-    const duplicateHandler = (e) => {
+    const duplicateHandler: EventListener = (e) => {
       e.stopPropagation();
       this.duplicateField(field.id);
     };
@@ -1165,7 +1614,7 @@ class FormBuilder {
       handler: duplicateHandler,
     });
 
-    const deleteHandler = (e) => {
+    const deleteHandler: EventListener = (e) => {
       e.stopPropagation();
       this.deleteField(field.id);
     };
@@ -1179,9 +1628,9 @@ class FormBuilder {
     return fieldEl;
   }
 
-  getFieldPreview(field) {
-    const e = (str) => escapeHTML(str);
-    const allowedTypes = [
+  private getFieldPreview(field: FormField): string {
+    const e = (str: string): string => escapeHTML(str);
+    const allowedTypes: string[] = [
       'text',
       'email',
       'password',
@@ -1193,8 +1642,8 @@ class FormBuilder {
       'datetime-local',
       'color',
     ];
-    const allowedLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-    const allowedStyles = ['solid', 'dashed', 'dotted', 'double'];
+    const allowedLevels: string[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    const allowedStyles: string[] = ['solid', 'dashed', 'dotted', 'double'];
 
     switch (field.type) {
       case 'text':
@@ -1212,7 +1661,7 @@ class FormBuilder {
       }
 
       case 'textarea':
-        return `<textarea placeholder="${e(field.placeholder || '')}" rows="${Number.parseInt(field.rows, 10) || 3}" disabled></textarea>`;
+        return `<textarea placeholder="${e(field.placeholder || '')}" rows="${Number.parseInt(String(field.rows), 10) || 3}" disabled></textarea>`;
 
       case 'select':
         return `<select disabled>
@@ -1225,7 +1674,7 @@ class FormBuilder {
             ?.map(
               (opt) => `
           <label class="radio-label">
-            <input type="radio" name="${e(field.name)}" disabled />
+            <input type="radio" name="${e(field.name || '')}" disabled />
             <span>${e(opt.label)}</span>
           </label>
         `,
@@ -1236,7 +1685,7 @@ class FormBuilder {
       case 'checkbox':
         return `<label class="checkbox-label">
           <input type="checkbox" disabled />
-          <span>${e(field.label)}</span>
+          <span>${e(field.label || '')}</span>
         </label>`;
 
       case 'switch':
@@ -1244,13 +1693,13 @@ class FormBuilder {
           <span class="aiab-switch">
             <span class="aiab-switch-slider"></span>
           </span>
-          <span>${e(field.label)}</span>
+          <span>${e(field.label || '')}</span>
         </label>`;
 
       case 'range': {
-        const min = Number.parseFloat(field.min) || 0;
-        const max = Number.parseFloat(field.max) || 100;
-        const val = Number.parseFloat(field.value) || 50;
+        const min = Number.parseFloat(String(field.min)) || 0;
+        const max = Number.parseFloat(String(field.max)) || 100;
+        const val = Number.parseFloat(String(field.value)) || 50;
         return `<input type="range" min="${min}" max="${max}" value="${val}" disabled />`;
       }
 
@@ -1261,20 +1710,20 @@ class FormBuilder {
         </div>`;
 
       case 'heading': {
-        const level = allowedLevels.includes(field.level) ? field.level : 'h3';
-        return `<${level}>${e(field.text)}</${level}>`;
+        const level = allowedLevels.includes(field.level || '') ? field.level : 'h3';
+        return `<${level}>${e(field.text || '')}</${level}>`;
       }
 
       case 'paragraph':
-        return `<p>${e(field.text)}</p>`;
+        return `<p>${e(field.text || '')}</p>`;
 
       case 'divider': {
-        const style = allowedStyles.includes(field.style) ? field.style : 'solid';
+        const style = allowedStyles.includes(field.style || '') ? field.style : 'solid';
         return `<hr style="border-style: ${style}" />`;
       }
 
       case 'spacer':
-        return `<div style="height: ${Number.parseInt(field.height, 10) || 24}px"></div>`;
+        return `<div style="height: ${Number.parseInt(String(field.height), 10) || 24}px"></div>`;
 
       case 'html':
         return this._sanitizeHTML(field.content || '') || '<div>HTML Content</div>';
@@ -1284,12 +1733,12 @@ class FormBuilder {
     }
   }
 
-  selectField(fieldId) {
+  selectField(fieldId: string): void {
     this.state.selectedField = fieldId;
 
     // Update UI
     this.canvas.querySelectorAll('.aiab-form-field').forEach((el) => {
-      el.classList.toggle('selected', el.dataset.fieldId === fieldId);
+      el.classList.toggle('selected', (el as HTMLElement).dataset.fieldId === fieldId);
     });
 
     // Show properties
@@ -1298,7 +1747,7 @@ class FormBuilder {
     }
   }
 
-  showProperties(fieldId) {
+  private showProperties(fieldId: string): void {
     const field = this.state.fields.find((f) => f.id === fieldId);
     if (!field) {
       this.propertiesContent.innerHTML = `
@@ -1335,7 +1784,8 @@ class FormBuilder {
       basicSection.appendChild(group);
 
       // Attach change event
-      const changeHandler = (e) => this.updateFieldProperty(fieldId, prop.name, e.target.value);
+      const changeHandler: EventListener = (e) =>
+        this.updateFieldProperty(fieldId, prop.name, (e.target as HTMLInputElement).value);
       input.addEventListener('change', changeHandler);
       this.handlers.set(`prop-${fieldId}-${prop.name}`, {
         element: input,
@@ -1362,14 +1812,14 @@ class FormBuilder {
     this.propertiesContent.appendChild(form);
   }
 
-  getFieldProperties(field) {
-    const common = [
+  private getFieldProperties(field: FormField): PropertyDescriptor[] {
+    const common: PropertyDescriptor[] = [
       { name: 'label', label: 'Label', type: 'text' },
       { name: 'name', label: 'Field Name', type: 'text' },
       { name: 'placeholder', label: 'Placeholder', type: 'text' },
     ];
 
-    const specific = {
+    const specific: Record<string, PropertyDescriptor[]> = {
       text: [],
       number: [
         { name: 'min', label: 'Min Value', type: 'number' },
@@ -1390,7 +1840,7 @@ class FormBuilder {
       ],
     };
 
-    const layout = {
+    const layout: Record<string, PropertyDescriptor[]> = {
       heading: [
         { name: 'text', label: 'Text', type: 'text' },
         {
@@ -1417,39 +1867,42 @@ class FormBuilder {
     return [...common, ...(specific[field.type] || [])];
   }
 
-  createPropertyInput(prop, field) {
-    let input;
+  private createPropertyInput(
+    prop: PropertyDescriptor,
+    field: FormField,
+  ): HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement {
+    let input: HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement;
 
     switch (prop.type) {
       case 'select':
         input = document.createElement('select');
         input.className = 'aiab-property-input';
-        prop.options.forEach((opt) => {
+        (prop.options || []).forEach((opt) => {
           const option = document.createElement('option');
           option.value = opt;
           option.textContent = opt;
           option.selected = field[prop.name] === opt;
-          input.appendChild(option);
+          (input as HTMLSelectElement).appendChild(option);
         });
         break;
 
       case 'checkbox':
         input = document.createElement('input');
-        input.type = 'checkbox';
+        (input as HTMLInputElement).type = 'checkbox';
         input.className = 'aiab-property-checkbox';
-        input.checked = field[prop.name] || false;
+        (input as HTMLInputElement).checked = field[prop.name] || false;
         break;
 
       case 'textarea':
         input = document.createElement('textarea');
         input.className = 'aiab-property-input';
-        input.rows = 3;
+        (input as HTMLTextAreaElement).rows = 3;
         input.value = field[prop.name] || '';
         break;
 
       default:
         input = document.createElement('input');
-        input.type = prop.type || 'text';
+        (input as HTMLInputElement).type = prop.type || 'text';
         input.className = 'aiab-property-input';
         input.value = field[prop.name] || '';
         break;
@@ -1458,7 +1911,7 @@ class FormBuilder {
     return input;
   }
 
-  createValidationSection(field) {
+  private createValidationSection(field: FormField): HTMLDivElement {
     const section = document.createElement('div');
     section.className = 'aiab-property-section';
     section.innerHTML = '<h4>Validation</h4>';
@@ -1485,7 +1938,12 @@ class FormBuilder {
     return section;
   }
 
-  createValidationInput(label, name, type, field) {
+  private createValidationInput(
+    label: string,
+    name: string,
+    type: string,
+    field: FormField,
+  ): HTMLDivElement {
     const group = document.createElement('div');
     group.className = 'aiab-property-group';
 
@@ -1503,7 +1961,7 @@ class FormBuilder {
     return group;
   }
 
-  createConditionalSection(_field) {
+  private createConditionalSection(_field: FormField): HTMLDivElement {
     const section = document.createElement('div');
     section.className = 'aiab-property-section';
     section.innerHTML = `
@@ -1514,24 +1972,25 @@ class FormBuilder {
     return section;
   }
 
-  hasValidation(type) {
+  private hasValidation(type: string): boolean {
     return !['heading', 'paragraph', 'divider', 'spacer', 'html'].includes(type);
   }
 
-  updateFieldProperty(fieldId, property, value) {
+  updateFieldProperty(fieldId: string, property: string, value: string | boolean): void {
     const field = this.state.fields.find((f) => f.id === fieldId);
     if (!field) return;
 
     // Convert value type if needed
+    let resolved: string | boolean | number | null = value;
     if (property === 'required' || property === 'multiple') {
-      value = value === 'true' || value === true;
+      resolved = value === 'true' || value === true;
     } else if (
       ['min', 'max', 'step', 'rows', 'height', 'minLength', 'maxLength'].includes(property)
     ) {
-      value = value ? Number.parseInt(value, 10) : null;
+      resolved = value ? Number.parseInt(String(value), 10) : null;
     }
 
-    field[property] = value;
+    field[property] = resolved;
 
     // Re-render field
     this.renderFields();
@@ -1546,11 +2005,11 @@ class FormBuilder {
     }
   }
 
-  duplicateField(fieldId) {
+  duplicateField(fieldId: string): void {
     const field = this.state.fields.find((f) => f.id === fieldId);
     if (!field) return;
 
-    const newField = {
+    const newField: FormField = {
       ...field,
       id: this.generateId(),
       name: `field_${this.generateId()}`,
@@ -1564,7 +2023,7 @@ class FormBuilder {
     this.saveHistory();
   }
 
-  deleteField(fieldId) {
+  deleteField(fieldId: string): void {
     const index = this.state.fields.findIndex((f) => f.id === fieldId);
     if (index === -1) return;
 
@@ -1592,10 +2051,10 @@ class FormBuilder {
     }
   }
 
-  switchTab(tab) {
+  private switchTab(tab: string): void {
     // Update tab buttons
     this.element.querySelectorAll('.aiab-tab-btn').forEach((btn) => {
-      btn.classList.toggle('active', btn.dataset.tab === tab);
+      btn.classList.toggle('active', (btn as HTMLElement).dataset.tab === tab);
     });
 
     // Update content
@@ -1613,7 +2072,7 @@ class FormBuilder {
     }
   }
 
-  showPreview() {
+  private showPreview(): void {
     if (!this.preview) return;
 
     const form = document.createElement('form');
@@ -1632,11 +2091,11 @@ class FormBuilder {
 
     form.appendChild(submitBtn);
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', (e: Event) => {
       e.preventDefault();
       const formData = new FormData(form);
       if (this.options.onSubmit) {
-        this.options.onSubmit(Object.fromEntries(formData));
+        this.options.onSubmit(Object.fromEntries(formData) as Record<string, FormDataEntryValue>);
       }
     });
 
@@ -1644,21 +2103,21 @@ class FormBuilder {
     this.preview.appendChild(form);
   }
 
-  createPreviewField(field) {
+  private createPreviewField(field: FormField): HTMLDivElement {
     const wrapper = document.createElement('div');
     wrapper.className = 'aiab-form-group';
 
     switch (field.type) {
       case 'heading': {
         const heading = document.createElement(field.level || 'h3');
-        heading.textContent = field.text;
+        heading.textContent = field.text || '';
         wrapper.appendChild(heading);
         break;
       }
 
       case 'paragraph': {
         const p = document.createElement('p');
-        p.textContent = field.text;
+        p.textContent = field.text || '';
         wrapper.appendChild(p);
         break;
       }
@@ -1696,23 +2155,25 @@ class FormBuilder {
     return wrapper;
   }
 
-  createFormInput(field) {
-    let input;
+  private createFormInput(field: FormField): HTMLElement {
+    let input: HTMLElement;
 
     switch (field.type) {
-      case 'textarea':
-        input = document.createElement('textarea');
-        input.name = field.name;
-        input.placeholder = field.placeholder || '';
-        input.rows = field.rows || 4;
-        input.required = field.required;
+      case 'textarea': {
+        const ta = document.createElement('textarea');
+        ta.name = field.name || '';
+        ta.placeholder = field.placeholder || '';
+        ta.rows = field.rows || 4;
+        ta.required = field.required || false;
+        input = ta;
         break;
+      }
 
-      case 'select':
-        input = document.createElement('select');
-        input.name = field.name;
-        input.required = field.required;
-        input.multiple = field.multiple;
+      case 'select': {
+        const sel = document.createElement('select');
+        sel.name = field.name || '';
+        sel.required = field.required || false;
+        sel.multiple = field.multiple || false;
 
         if (field.placeholder) {
           const placeholder = document.createElement('option');
@@ -1720,64 +2181,69 @@ class FormBuilder {
           placeholder.textContent = field.placeholder;
           placeholder.disabled = true;
           placeholder.selected = true;
-          input.appendChild(placeholder);
+          sel.appendChild(placeholder);
         }
 
         field.options?.forEach((opt) => {
           const option = document.createElement('option');
           option.value = opt.value;
           option.textContent = opt.label;
-          input.appendChild(option);
+          sel.appendChild(option);
         });
+        input = sel;
         break;
+      }
 
-      case 'radio':
-        input = document.createElement('div');
-        input.className = 'aiab-radio-group';
+      case 'radio': {
+        const radioGroup = document.createElement('div');
+        radioGroup.className = 'aiab-radio-group';
         field.options?.forEach((opt, index) => {
           const label = document.createElement('label');
           label.className = 'radio-label';
 
           const radio = document.createElement('input');
           radio.type = 'radio';
-          radio.name = field.name;
+          radio.name = field.name || '';
           radio.value = opt.value;
-          radio.required = field.required && index === 0;
+          radio.required = (field.required || false) && index === 0;
 
           const span = document.createElement('span');
           span.textContent = opt.label;
 
           label.appendChild(radio);
           label.appendChild(span);
-          input.appendChild(label);
+          radioGroup.appendChild(label);
         });
+        input = radioGroup;
         break;
+      }
 
       case 'checkbox': {
-        input = document.createElement('label');
-        input.className = 'checkbox-label';
+        const cbLabel = document.createElement('label');
+        cbLabel.className = 'checkbox-label';
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.name = field.name;
-        checkbox.value = field.value || 'on';
-        checkbox.required = field.required;
+        checkbox.name = field.name || '';
+        checkbox.value = String(field.value || 'on');
+        checkbox.required = field.required || false;
 
         const span = document.createElement('span');
-        span.textContent = field.label;
+        span.textContent = field.label || '';
 
-        input.appendChild(checkbox);
-        input.appendChild(span);
+        cbLabel.appendChild(checkbox);
+        cbLabel.appendChild(span);
+        input = cbLabel;
         break;
       }
 
       case 'switch': {
-        input = document.createElement('label');
-        input.className = 'aiab-switch-label';
+        const swLabel = document.createElement('label');
+        swLabel.className = 'aiab-switch-label';
 
         const switchInput = document.createElement('input');
         switchInput.type = 'checkbox';
-        switchInput.name = field.name;
+        switchInput.name = field.name || '';
         switchInput.value = 'on';
 
         const switchEl = document.createElement('span');
@@ -1787,44 +2253,49 @@ class FormBuilder {
         switchEl.appendChild(slider);
 
         const text = document.createElement('span');
-        text.textContent = field.label;
+        text.textContent = field.label || '';
 
-        input.appendChild(switchInput);
-        input.appendChild(switchEl);
-        input.appendChild(text);
+        swLabel.appendChild(switchInput);
+        swLabel.appendChild(switchEl);
+        swLabel.appendChild(text);
+        input = swLabel;
         break;
       }
 
-      case 'file':
-        input = document.createElement('input');
-        input.type = 'file';
-        input.name = field.name;
-        input.accept = field.accept || '*';
-        input.multiple = field.multiple;
-        input.required = field.required;
+      case 'file': {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.name = field.name || '';
+        fileInput.accept = field.accept || '*';
+        fileInput.multiple = field.multiple || false;
+        fileInput.required = field.required || false;
+        input = fileInput;
         break;
+      }
 
-      default:
-        input = document.createElement('input');
-        input.type = field.type;
-        input.name = field.name;
-        input.placeholder = field.placeholder || '';
-        input.required = field.required;
+      default: {
+        const defaultInput = document.createElement('input');
+        defaultInput.type = field.type;
+        defaultInput.name = field.name || '';
+        defaultInput.placeholder = field.placeholder || '';
+        defaultInput.required = field.required || false;
 
-        if (field.min !== undefined) input.min = field.min;
-        if (field.max !== undefined) input.max = field.max;
-        if (field.step !== undefined) input.step = field.step;
-        if (field.value !== undefined) input.value = field.value;
-        if (field.pattern) input.pattern = field.pattern;
-        if (field.minLength) input.minLength = field.minLength;
-        if (field.maxLength) input.maxLength = field.maxLength;
+        if (field.min !== undefined && field.min !== null) defaultInput.min = String(field.min);
+        if (field.max !== undefined && field.max !== null) defaultInput.max = String(field.max);
+        if (field.step !== undefined) defaultInput.step = String(field.step);
+        if (field.value !== undefined) defaultInput.value = String(field.value);
+        if (field.pattern) defaultInput.pattern = field.pattern;
+        if (field.minLength) defaultInput.minLength = field.minLength;
+        if (field.maxLength) defaultInput.maxLength = field.maxLength;
+        input = defaultInput;
         break;
+      }
     }
 
     return input;
   }
 
-  handleKeyboard(e) {
+  private handleKeyboard(e: KeyboardEvent): void {
     // Undo/Redo
     if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
       e.preventDefault();
@@ -1848,7 +2319,7 @@ class FormBuilder {
     }
   }
 
-  saveHistory() {
+  private saveHistory(): void {
     // Remove any history after current index
     this.state.history = this.state.history.slice(0, this.state.historyIndex + 1);
 
@@ -1868,23 +2339,23 @@ class FormBuilder {
     }
   }
 
-  undo() {
+  undo(): void {
     if (this.state.historyIndex > 0) {
       this.state.historyIndex--;
-      this.state.fields = JSON.parse(this.state.history[this.state.historyIndex]);
+      this.state.fields = JSON.parse(this.state.history[this.state.historyIndex]) as FormField[];
       this.renderFields();
     }
   }
 
-  redo() {
+  redo(): void {
     if (this.state.historyIndex < this.state.history.length - 1) {
       this.state.historyIndex++;
-      this.state.fields = JSON.parse(this.state.history[this.state.historyIndex]);
+      this.state.fields = JSON.parse(this.state.history[this.state.historyIndex]) as FormField[];
       this.renderFields();
     }
   }
 
-  clearForm() {
+  clearForm(): void {
     if (!confirm('Are you sure you want to clear all fields?')) return;
 
     this.state.fields = [];
@@ -1901,8 +2372,8 @@ class FormBuilder {
     }
   }
 
-  saveForm() {
-    const formData = {
+  saveForm(): void {
+    const formData: FormExportData = {
       fields: this.state.fields,
       settings: {
         multiStep: this.options.enableMultiStep,
@@ -1923,11 +2394,11 @@ class FormBuilder {
     }
   }
 
-  loadFromStorage() {
+  private loadFromStorage(): void {
     try {
       const stored = localStorage.getItem('aiab-form-builder-data');
       if (stored) {
-        const data = JSON.parse(stored);
+        const data = JSON.parse(stored) as FormExportData;
         this.state.fields = data.fields || [];
         this.renderFields();
         this.saveHistory();
@@ -1937,18 +2408,19 @@ class FormBuilder {
     }
   }
 
-  importForm() {
+  importForm(): void {
     this.fileInput.click();
   }
 
-  handleFileImport(e) {
-    const file = e.target.files[0];
+  private handleFileImport(e: Event): void {
+    const target = e.target as HTMLInputElement;
+    const file = target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (event) => {
+    reader.onload = (event: ProgressEvent<FileReader>) => {
       try {
-        const data = JSON.parse(event.target.result);
+        const data = JSON.parse(event.target?.result as string) as FormExportData;
         this.state.fields = data.fields || [];
         this.renderFields();
         this.saveHistory();
@@ -1960,11 +2432,11 @@ class FormBuilder {
     reader.readAsText(file);
 
     // Clear file input
-    e.target.value = '';
+    target.value = '';
   }
 
-  exportForm() {
-    const formData = {
+  exportForm(): void {
+    const formData: FormExportData = {
       fields: this.state.fields,
       settings: {
         multiStep: this.options.enableMultiStep,
@@ -1986,7 +2458,7 @@ class FormBuilder {
     URL.revokeObjectURL(url);
   }
 
-  loadTemplate(templateId) {
+  loadTemplate(templateId: string): void {
     const template = this.options.templates.find((t) => t.id === templateId);
     if (!template) return;
 
@@ -1995,7 +2467,7 @@ class FormBuilder {
     this.saveHistory();
   }
 
-  startAutoSave() {
+  private startAutoSave(): void {
     const autoSaveTimer = setInterval(() => {
       this.saveForm();
     }, this.options.autoSaveInterval);
@@ -2004,14 +2476,14 @@ class FormBuilder {
   }
 
   // Multi-step form methods
-  previousStep() {
+  previousStep(): void {
     if (this.state.currentStep > 0) {
       this.state.currentStep--;
       this.updateStepDisplay();
     }
   }
 
-  nextStep() {
+  nextStep(): void {
     // Validate current step before proceeding
     if (this.validateStep(this.state.currentStep)) {
       this.state.currentStep++;
@@ -2019,36 +2491,42 @@ class FormBuilder {
     }
   }
 
-  addStep() {
+  addStep(): void {
     // TODO: Implementation for adding new step
   }
 
-  validateStep(_stepIndex) {
+  private validateStep(_stepIndex: number): boolean {
     // Basic validation - can be enhanced
     return true;
   }
 
-  updateStepDisplay() {
+  private updateStepDisplay(): void {
     if (!this.stepNav) return;
 
-    const indicator = this.stepNav.querySelector('.aiab-step-indicator');
-    indicator.textContent = `Step ${this.state.currentStep + 1} of ${this.getTotalSteps()}`;
+    const indicator = this.stepNav.querySelector('.aiab-step-indicator') as HTMLElement | null;
+    if (indicator) {
+      indicator.textContent = `Step ${this.state.currentStep + 1} of ${this.getTotalSteps()}`;
+    }
 
-    const prevBtn = this.stepNav.querySelector('.prev');
-    const nextBtn = this.stepNav.querySelector('.next');
+    const prevBtn = this.stepNav.querySelector('.prev') as HTMLButtonElement | null;
+    const nextBtn = this.stepNav.querySelector('.next') as HTMLButtonElement | null;
 
-    prevBtn.disabled = this.state.currentStep === 0;
-    nextBtn.disabled = this.state.currentStep >= this.getTotalSteps() - 1;
+    if (prevBtn) {
+      prevBtn.disabled = this.state.currentStep === 0;
+    }
+    if (nextBtn) {
+      nextBtn.disabled = this.state.currentStep >= this.getTotalSteps() - 1;
+    }
   }
 
-  getTotalSteps() {
+  private getTotalSteps(): number {
     // For now, treat entire form as single step
     // Can be enhanced to support actual multi-step forms
     return 1;
   }
 
-  formatCategory(category) {
-    const labels = {
+  private formatCategory(category: string): string {
+    const labels: Record<string, string> = {
       input: 'Basic Inputs',
       text: 'Text Areas',
       selection: 'Selection',
@@ -2060,12 +2538,12 @@ class FormBuilder {
     return labels[category] || category;
   }
 
-  generateId() {
+  private generateId(): string {
     return Math.random().toString(36).substring(2, 11);
   }
 
   // Public API
-  getFormData() {
+  getFormData(): FormDataResult {
     return {
       fields: this.state.fields,
       settings: {
@@ -2075,7 +2553,7 @@ class FormBuilder {
     };
   }
 
-  setFormData(data) {
+  setFormData(data: Partial<FormExportData>): void {
     if (data.fields) {
       this.state.fields = data.fields;
       this.renderFields();
@@ -2083,20 +2561,20 @@ class FormBuilder {
     }
   }
 
-  addFieldType(type, definition) {
+  addFieldType(type: string, definition: FieldDefinition): void {
     this.fieldDefinitions[type] = definition;
     this.options.fieldTypes.push(type);
     this.setupDOM(); // Re-render toolbox
   }
 
-  destroy() {
+  destroy(): void {
     // Clear timers
     this.timers.forEach((timer) => clearInterval(timer));
     this.timers.clear();
 
     // Remove event handlers
     this.handlers.forEach(({ element, type, handler }) => {
-      element.removeEventListener(type, handler);
+      (element as HTMLElement).removeEventListener(type, handler);
     });
     this.handlers.clear();
 
@@ -2118,11 +2596,21 @@ class FormBuilder {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Window global
+// ---------------------------------------------------------------------------
+
+declare global {
+  interface Window {
+    FormBuilder: typeof FormBuilder;
+  }
+}
+
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   try {
     document.querySelectorAll('[data-form-builder]').forEach((element) => {
-      new FormBuilder(element);
+      new FormBuilder(element as HTMLElement);
     });
   } catch (error) {
     console.error('[Amphibious] FormBuilder auto-init failed:', error);
@@ -2130,10 +2618,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Register with component registry if available
-if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('aiab-form-builder', FormBuilder);
+// biome-ignore lint/suspicious/noExplicitAny: component registry accepts heterogeneous constructors
+if ((window as any).AmphibiousRegistry) {
+  // biome-ignore lint/suspicious/noExplicitAny: component registry accepts heterogeneous constructors
+  (window as any).AmphibiousRegistry.registerComponent('aiab-form-builder', FormBuilder);
 }
 
 // Export
 window.FormBuilder = FormBuilder;
 export default FormBuilder;
+export { FormBuilder };

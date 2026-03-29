@@ -14,13 +14,258 @@
  * - Date range selection
  */
 
+/** Orientation of the timeline track. */
+export type TimelineOrientation = 'vertical' | 'horizontal';
+
+/** Layout style for timeline rendering. */
+export type TimelineLayout = 'default' | 'centered' | 'branching' | 'compact';
+
+/**
+ * A link attached to event details.
+ *
+ * @property url - The href of the link.
+ * @property text - Display text for the link.
+ */
+export interface TimelineEventLink {
+  url: string;
+  text: string;
+}
+
+/**
+ * Extended details for a timeline event.
+ *
+ * @property image - Optional image URL to display.
+ * @property links - Optional array of related links.
+ */
+export interface TimelineEventDetails {
+  image?: string;
+  links?: TimelineEventLink[];
+}
+
+/**
+ * A single event to display on the timeline.
+ *
+ * @property id - Unique identifier for the event.
+ * @property date - Date string (or ISO date) for the event.
+ * @property title - Display title for the event.
+ * @property description - Short description text.
+ * @property details - Extended details (image, links).
+ * @property milestone - Whether this event is a milestone.
+ * @property color - Optional custom color override.
+ * @property group - Optional group identifier for filtering.
+ */
+export interface TimelineEvent {
+  id: string;
+  date: string;
+  title: string;
+  description?: string;
+  details?: TimelineEventDetails;
+  milestone?: boolean;
+  color?: string;
+  group?: string;
+}
+
+/**
+ * A group definition used for filtering events.
+ *
+ * @property id - Unique identifier for the group.
+ * @property name - Display name for the filter button.
+ * @property color - Dot color for the filter button.
+ */
+export interface TimelineGroup {
+  id: string;
+  name: string;
+  color: string;
+}
+
+/**
+ * Color overrides for timeline visual elements.
+ *
+ * @property default - Default event dot color.
+ * @property milestone - Milestone event dot color.
+ * @property today - Today marker color.
+ * @property connector - Connector line color.
+ */
+export interface TimelineColors {
+  default?: string;
+  milestone?: string;
+  today?: string;
+  connector?: string;
+}
+
+/**
+ * Localizable label strings for the timeline component.
+ *
+ * @property today - Label for the today marker.
+ * @property noEvents - Message when no events are displayed.
+ * @property zoomIn - Tooltip for zoom in button.
+ * @property zoomOut - Tooltip for zoom out button.
+ * @property reset - Tooltip for reset zoom button.
+ */
+export interface TimelineLabels {
+  today?: string;
+  noEvents?: string;
+  zoomIn?: string;
+  zoomOut?: string;
+  reset?: string;
+}
+
+/**
+ * Configuration options for the {@link Timeline} constructor.
+ * All properties are optional; sensible defaults are applied internally.
+ */
+export interface TimelineOptions {
+  // Layout options
+  orientation?: TimelineOrientation;
+  layout?: TimelineLayout;
+
+  // Data
+  events?: TimelineEvent[];
+  groups?: TimelineGroup[];
+
+  // Display options
+  showDates?: boolean;
+  showConnectors?: boolean;
+  showMilestones?: boolean;
+  showFilters?: boolean;
+  showZoom?: boolean;
+  showToday?: boolean;
+
+  // Interaction
+  interactive?: boolean;
+  expandable?: boolean;
+  selectable?: boolean;
+  draggable?: boolean;
+
+  // Animation
+  animated?: boolean;
+  animationDuration?: number;
+  staggerDelay?: number;
+
+  // Date formatting
+  dateFormat?: Intl.DateTimeFormatOptions;
+  timeFormat?: Intl.DateTimeFormatOptions;
+
+  // Colors
+  colors?: TimelineColors;
+
+  // Labels
+  labels?: TimelineLabels;
+
+  // Callbacks
+  onEventClick?: ((event: TimelineEvent) => void) | null;
+  onEventSelect?: ((event: TimelineEvent | undefined) => void) | null;
+  onEventExpand?: ((event: TimelineEvent | undefined, isExpanded: boolean) => void) | null;
+  onDateRangeChange?: ((range: DateRange) => void) | null;
+  onFilter?: ((activeFilters: string[]) => void) | null;
+}
+
+/** Internal defaults merged with user-supplied options. */
+interface ResolvedOptions {
+  orientation: TimelineOrientation;
+  layout: TimelineLayout;
+  events: TimelineEvent[];
+  groups: TimelineGroup[];
+  showDates: boolean;
+  showConnectors: boolean;
+  showMilestones: boolean;
+  showFilters: boolean;
+  showZoom: boolean;
+  showToday: boolean;
+  interactive: boolean;
+  expandable: boolean;
+  selectable: boolean;
+  draggable: boolean;
+  animated: boolean;
+  animationDuration: number;
+  staggerDelay: number;
+  dateFormat: Intl.DateTimeFormatOptions;
+  timeFormat: Intl.DateTimeFormatOptions;
+  colors: ResolvedTimelineColors;
+  labels: ResolvedTimelineLabels;
+  onEventClick: ((event: TimelineEvent) => void) | null;
+  onEventSelect: ((event: TimelineEvent | undefined) => void) | null;
+  onEventExpand: ((event: TimelineEvent | undefined, isExpanded: boolean) => void) | null;
+  onDateRangeChange: ((range: DateRange) => void) | null;
+  onFilter: ((activeFilters: string[]) => void) | null;
+}
+
+/** Fully resolved color values (no undefined). */
+interface ResolvedTimelineColors {
+  default: string;
+  milestone: string;
+  today: string;
+  connector: string;
+}
+
+/** Fully resolved label strings (no undefined). */
+interface ResolvedTimelineLabels {
+  today: string;
+  noEvents: string;
+  zoomIn: string;
+  zoomOut: string;
+  reset: string;
+}
+
+/** A date range with start and end bounds. */
+interface DateRange {
+  start: Date;
+  end: Date;
+}
+
+/** Internal state for the timeline component. */
+interface TimelineState {
+  events: TimelineEvent[];
+  filteredEvents: TimelineEvent[];
+  selectedEvent: string | null;
+  expandedEvents: Set<string>;
+  activeFilters: Set<string>;
+  zoomLevel: number;
+  panPosition: number;
+  dateRange: DateRange | null;
+  isAnimating: boolean;
+}
+
+/** Stored event handler entry for cleanup. */
+interface HandlerEntry {
+  element: HTMLElement | Document;
+  type: string;
+  handler: EventListener;
+}
+
+/** Events grouped by their date string key. */
+type GroupedEvents = Record<string, TimelineEvent[]>;
+
+/** Side placement for event elements. */
+type EventSide = 'left' | 'right' | 'branch' | 'compact';
+
 class Timeline {
-  constructor(element, options = {}) {
+  private element: HTMLElement;
+  private options: ResolvedOptions;
+  private state: TimelineState;
+
+  // Resource tracking for cleanup
+  private handlers: Map<string, HandlerEntry>;
+  private timers: Set<ReturnType<typeof setTimeout>>;
+  private createdElements: Set<HTMLElement>;
+  private observers: Set<MutationObserver | IntersectionObserver | ResizeObserver>;
+  private animations: Set<Animation>;
+
+  // DOM references set during init() → setupDOM()
+  private container!: HTMLDivElement;
+  private controls?: HTMLDivElement;
+  private wrapper!: HTMLDivElement;
+  private track!: HTMLDivElement;
+  private connector?: HTMLDivElement;
+  private todayMarker?: HTMLDivElement;
+  private eventsContainer!: HTMLDivElement;
+
+  constructor(element: HTMLElement, options: TimelineOptions = {}) {
     this.element = element;
     this.options = {
       // Layout options
-      orientation: options.orientation || 'vertical', // vertical, horizontal
-      layout: options.layout || 'default', // default, centered, branching, compact
+      orientation: options.orientation || 'vertical',
+      layout: options.layout || 'default',
 
       // Data
       events: options.events || [],
@@ -57,11 +302,11 @@ class Timeline {
       },
 
       // Colors
-      colors: options.colors || {
-        default: 'var(--color-primary, #ed8b00)',
-        milestone: 'var(--apple-success, #34c759)',
-        today: 'var(--apple-info, #007aff)',
-        connector: 'var(--apple-gray-300, #e0e0e0)',
+      colors: {
+        default: options.colors?.default || 'var(--color-primary, #ed8b00)',
+        milestone: options.colors?.milestone || 'var(--apple-success, #34c759)',
+        today: options.colors?.today || 'var(--apple-info, #007aff)',
+        connector: options.colors?.connector || 'var(--apple-gray-300, #e0e0e0)',
       },
 
       // Labels
@@ -71,7 +316,6 @@ class Timeline {
         zoomIn: options.labels?.zoomIn || 'Zoom In',
         zoomOut: options.labels?.zoomOut || 'Zoom Out',
         reset: options.labels?.reset || 'Reset View',
-        ...options.labels,
       },
 
       // Callbacks
@@ -80,8 +324,6 @@ class Timeline {
       onEventExpand: options.onEventExpand || null,
       onDateRangeChange: options.onDateRangeChange || null,
       onFilter: options.onFilter || null,
-
-      ...options,
     };
 
     // State
@@ -108,7 +350,7 @@ class Timeline {
   }
 
   /** Validate that a URL uses a safe protocol (not javascript:, data:, etc.) */
-  _isSafeURL(url) {
+  private _isSafeURL(url: string): boolean {
     try {
       const parsed = new URL(url, window.location.href);
       return ['http:', 'https:', 'mailto:', 'tel:'].includes(parsed.protocol);
@@ -117,7 +359,7 @@ class Timeline {
     }
   }
 
-  init() {
+  private init(): void {
     this.processEvents();
     this.setupDOM();
     this.attachEvents();
@@ -128,10 +370,10 @@ class Timeline {
     }
   }
 
-  processEvents() {
+  private processEvents(): void {
     // Sort events by date
     this.state.events = [...this.options.events].sort((a, b) => {
-      return new Date(a.date) - new Date(b.date);
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
     });
 
     // Set initial filtered events
@@ -141,13 +383,13 @@ class Timeline {
     if (this.state.events.length) {
       const dates = this.state.events.map((e) => new Date(e.date));
       this.state.dateRange = {
-        start: new Date(Math.min(...dates)),
-        end: new Date(Math.max(...dates)),
+        start: new Date(Math.min(...dates.map((d) => d.getTime()))),
+        end: new Date(Math.max(...dates.map((d) => d.getTime()))),
       };
     }
   }
 
-  setupDOM() {
+  private setupDOM(): void {
     // Clear element
     this.element.innerHTML = '';
 
@@ -204,7 +446,7 @@ class Timeline {
     this.createdElements.add(this.eventsContainer);
   }
 
-  createControls() {
+  private createControls(): HTMLDivElement {
     const controls = document.createElement('div');
     controls.className = 'aiab-timeline-controls';
 
@@ -271,7 +513,7 @@ class Timeline {
     return controls;
   }
 
-  createTodayMarker() {
+  private createTodayMarker(): HTMLDivElement {
     const marker = document.createElement('div');
     marker.className = 'aiab-timeline-today';
 
@@ -299,7 +541,7 @@ class Timeline {
     return marker;
   }
 
-  render() {
+  private render(): void {
     // Clear events container
     this.eventsContainer.innerHTML = '';
 
@@ -327,8 +569,8 @@ class Timeline {
     }
   }
 
-  renderDefaultLayout(eventsByDate) {
-    let side = 'left';
+  private renderDefaultLayout(eventsByDate: GroupedEvents): void {
+    let side: EventSide = 'left';
 
     Object.entries(eventsByDate).forEach(([date, events]) => {
       const group = document.createElement('div');
@@ -365,7 +607,7 @@ class Timeline {
     });
   }
 
-  renderCenteredLayout(eventsByDate) {
+  private renderCenteredLayout(eventsByDate: GroupedEvents): void {
     let index = 0;
 
     Object.entries(eventsByDate).forEach(([date, events]) => {
@@ -373,7 +615,7 @@ class Timeline {
       group.className = 'aiab-timeline-group centered';
 
       events.forEach((event) => {
-        const side = index % 2 === 0 ? 'left' : 'right';
+        const side: EventSide = index % 2 === 0 ? 'left' : 'right';
         const eventEl = this.createEventElement(event, side);
         group.appendChild(eventEl);
         index++;
@@ -390,7 +632,7 @@ class Timeline {
     });
   }
 
-  renderBranchingLayout(eventsByDate) {
+  private renderBranchingLayout(eventsByDate: GroupedEvents): void {
     Object.entries(eventsByDate).forEach(([date, events]) => {
       const branch = document.createElement('div');
       branch.className = 'aiab-timeline-branch';
@@ -427,7 +669,7 @@ class Timeline {
     });
   }
 
-  renderCompactLayout(eventsByDate) {
+  private renderCompactLayout(eventsByDate: GroupedEvents): void {
     const list = document.createElement('div');
     list.className = 'aiab-timeline-list compact';
 
@@ -441,7 +683,7 @@ class Timeline {
     this.eventsContainer.appendChild(list);
   }
 
-  createEventElement(event, side) {
+  private createEventElement(event: TimelineEvent, side: EventSide): HTMLDivElement {
     const eventEl = document.createElement('div');
     eventEl.className = `aiab-timeline-event ${side}`;
     eventEl.dataset.eventId = event.id;
@@ -563,26 +805,29 @@ class Timeline {
     return eventEl;
   }
 
-  renderEmptyState() {
+  private renderEmptyState(): void {
     const empty = document.createElement('div');
     empty.className = 'aiab-timeline-empty';
     empty.textContent = this.options.labels.noEvents;
     this.eventsContainer.appendChild(empty);
   }
 
-  attachEvents() {
+  private attachEvents(): void {
     // Event clicks
-    const eventHandler = (e) => {
-      const eventEl = e.target.closest('.aiab-timeline-event');
+    const eventHandler: EventListener = (e: Event) => {
+      const target = e.target as HTMLElement;
+      const eventEl = target.closest('.aiab-timeline-event') as HTMLElement | null;
       if (!eventEl) return;
 
       const eventId = eventEl.dataset.eventId;
-      const event = this.state.events.find((e) => e.id === eventId);
+      const timelineEvent = this.state.events.find((ev) => ev.id === eventId);
 
-      if (e.target.closest('.aiab-expand-btn')) {
-        this.toggleExpand(eventId);
+      if (target.closest('.aiab-expand-btn')) {
+        if (eventId) {
+          this.toggleExpand(eventId);
+        }
       } else {
-        this.handleEventClick(event);
+        this.handleEventClick(timelineEvent);
       }
     };
 
@@ -595,9 +840,13 @@ class Timeline {
 
     // Filter buttons
     if (this.options.showFilters) {
-      const filterBtns = this.element.querySelectorAll('.aiab-filter-btn');
+      const filterBtns = this.element.querySelectorAll<HTMLButtonElement>('.aiab-filter-btn');
       filterBtns.forEach((btn, index) => {
-        const filterHandler = () => this.toggleFilter(btn.dataset.group);
+        const filterHandler: EventListener = () => {
+          if (btn.dataset.group) {
+            this.toggleFilter(btn.dataset.group);
+          }
+        };
         btn.addEventListener('click', filterHandler);
         this.handlers.set(`filter-${index}`, {
           element: btn,
@@ -609,18 +858,18 @@ class Timeline {
 
     // Zoom controls
     if (this.options.showZoom) {
-      const zoomInBtn = this.element.querySelector('.zoom-in');
-      const zoomOutBtn = this.element.querySelector('.zoom-out');
-      const resetBtn = this.element.querySelector('.zoom-reset');
+      const zoomInBtn = this.element.querySelector<HTMLButtonElement>('.zoom-in');
+      const zoomOutBtn = this.element.querySelector<HTMLButtonElement>('.zoom-out');
+      const resetBtn = this.element.querySelector<HTMLButtonElement>('.zoom-reset');
 
       if (zoomInBtn) {
-        const zoomInHandler = () => this.zoomIn();
+        const zoomInHandler: EventListener = () => this.zoomIn();
         zoomInBtn.addEventListener('click', zoomInHandler);
         this.handlers.set('zoom-in', { element: zoomInBtn, type: 'click', handler: zoomInHandler });
       }
 
       if (zoomOutBtn) {
-        const zoomOutHandler = () => this.zoomOut();
+        const zoomOutHandler: EventListener = () => this.zoomOut();
         zoomOutBtn.addEventListener('click', zoomOutHandler);
         this.handlers.set('zoom-out', {
           element: zoomOutBtn,
@@ -630,7 +879,7 @@ class Timeline {
       }
 
       if (resetBtn) {
-        const resetHandler = () => this.resetZoom();
+        const resetHandler: EventListener = () => this.resetZoom();
         resetBtn.addEventListener('click', resetHandler);
         this.handlers.set('zoom-reset', {
           element: resetBtn,
@@ -641,7 +890,7 @@ class Timeline {
     }
 
     // Keyboard navigation
-    const keyHandler = (e) => this.handleKeyboard(e);
+    const keyHandler: EventListener = (e: Event) => this.handleKeyboard(e as KeyboardEvent);
     this.element.addEventListener('keydown', keyHandler);
     this.handlers.set('keyboard', { element: this.element, type: 'keydown', handler: keyHandler });
 
@@ -651,29 +900,35 @@ class Timeline {
     }
   }
 
-  attachPanEvents() {
+  private attachPanEvents(): void {
     let startX = 0;
     let currentX = 0;
     let startScroll = 0;
     let isPanning = false;
 
-    const startHandler = (e) => {
+    const startHandler: EventListener = (e: Event) => {
       isPanning = true;
-      startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+      startX =
+        e.type.includes('mouse')
+          ? (e as MouseEvent).clientX
+          : (e as TouchEvent).touches[0].clientX;
       startScroll = this.wrapper.scrollLeft;
       this.wrapper.style.cursor = 'grabbing';
     };
 
-    const moveHandler = (e) => {
+    const moveHandler: EventListener = (e: Event) => {
       if (!isPanning) return;
       e.preventDefault();
 
-      currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+      currentX =
+        e.type.includes('mouse')
+          ? (e as MouseEvent).clientX
+          : (e as TouchEvent).touches[0].clientX;
       const diff = startX - currentX;
       this.wrapper.scrollLeft = startScroll + diff;
     };
 
-    const endHandler = () => {
+    const endHandler: EventListener = () => {
       isPanning = false;
       this.wrapper.style.cursor = 'grab';
     };
@@ -715,7 +970,7 @@ class Timeline {
     });
   }
 
-  handleEventClick(event) {
+  private handleEventClick(event: TimelineEvent | undefined): void {
     if (!this.options.interactive || !event) return;
 
     // Select event
@@ -729,11 +984,11 @@ class Timeline {
     }
   }
 
-  selectEvent(eventId) {
+  selectEvent(eventId: string): void {
     this.state.selectedEvent = eventId;
 
     // Update UI
-    this.element.querySelectorAll('.aiab-timeline-event').forEach((el) => {
+    this.element.querySelectorAll<HTMLElement>('.aiab-timeline-event').forEach((el) => {
       el.classList.toggle('selected', el.dataset.eventId === eventId);
     });
 
@@ -744,19 +999,19 @@ class Timeline {
     }
   }
 
-  toggleExpand(eventId) {
+  toggleExpand(eventId: string): void {
     if (this.state.expandedEvents.has(eventId)) {
       this.state.expandedEvents.delete(eventId);
     } else {
       this.state.expandedEvents.add(eventId);
     }
 
-    const eventEl = this.element.querySelector(`[data-event-id="${eventId}"]`);
+    const eventEl = this.element.querySelector<HTMLElement>(`[data-event-id="${eventId}"]`);
     if (eventEl) {
       eventEl.classList.toggle('expanded');
 
       // Animate expansion
-      const body = eventEl.querySelector('.aiab-event-body');
+      const body = eventEl.querySelector<HTMLElement>('.aiab-event-body');
       if (body) {
         if (eventEl.classList.contains('expanded')) {
           body.style.maxHeight = `${body.scrollHeight}px`;
@@ -774,26 +1029,26 @@ class Timeline {
     }
   }
 
-  toggleFilter(groupId) {
-    const btn = this.element.querySelector(`[data-group="${groupId}"]`);
+  toggleFilter(groupId: string): void {
+    const btn = this.element.querySelector<HTMLElement>(`[data-group="${groupId}"]`);
 
     if (this.state.activeFilters.has(groupId)) {
       this.state.activeFilters.delete(groupId);
-      btn.classList.remove('active');
+      btn?.classList.remove('active');
     } else {
       this.state.activeFilters.add(groupId);
-      btn.classList.add('active');
+      btn?.classList.add('active');
     }
 
     this.applyFilters();
   }
 
-  applyFilters() {
+  private applyFilters(): void {
     if (this.state.activeFilters.size === 0) {
       this.state.filteredEvents = [...this.state.events];
     } else {
       this.state.filteredEvents = this.state.events.filter((event) => {
-        return this.state.activeFilters.has(event.group);
+        return event.group ? this.state.activeFilters.has(event.group) : false;
       });
     }
 
@@ -809,23 +1064,23 @@ class Timeline {
     }
   }
 
-  zoomIn() {
+  zoomIn(): void {
     this.state.zoomLevel = Math.min(3, this.state.zoomLevel * 1.2);
     this.applyZoom();
   }
 
-  zoomOut() {
+  zoomOut(): void {
     this.state.zoomLevel = Math.max(0.5, this.state.zoomLevel / 1.2);
     this.applyZoom();
   }
 
-  resetZoom() {
+  resetZoom(): void {
     this.state.zoomLevel = 1;
     this.state.panPosition = 0;
     this.applyZoom();
   }
 
-  applyZoom() {
+  private applyZoom(): void {
     const scale = this.state.zoomLevel;
 
     if (this.options.orientation === 'horizontal') {
@@ -837,8 +1092,8 @@ class Timeline {
     }
   }
 
-  handleKeyboard(e) {
-    const selectedEl = this.element.querySelector('.aiab-timeline-event.selected');
+  private handleKeyboard(e: KeyboardEvent): void {
+    const selectedEl = this.element.querySelector<HTMLElement>('.aiab-timeline-event.selected');
     if (!selectedEl) return;
 
     switch (e.key) {
@@ -858,7 +1113,7 @@ class Timeline {
       case ' ': {
         e.preventDefault();
         const eventId = selectedEl.dataset.eventId;
-        if (this.options.expandable) {
+        if (this.options.expandable && eventId) {
           this.toggleExpand(eventId);
         }
         break;
@@ -866,11 +1121,11 @@ class Timeline {
     }
   }
 
-  navigateEvents(direction) {
-    const events = Array.from(this.element.querySelectorAll('.aiab-timeline-event'));
+  private navigateEvents(direction: 'prev' | 'next'): void {
+    const events = Array.from(this.element.querySelectorAll<HTMLElement>('.aiab-timeline-event'));
     const currentIndex = events.findIndex((el) => el.classList.contains('selected'));
 
-    let nextIndex;
+    let nextIndex: number;
     if (direction === 'next') {
       nextIndex = currentIndex < events.length - 1 ? currentIndex + 1 : 0;
     } else {
@@ -878,17 +1133,17 @@ class Timeline {
     }
 
     const nextEvent = events[nextIndex];
-    if (nextEvent) {
+    if (nextEvent?.dataset.eventId) {
       this.selectEvent(nextEvent.dataset.eventId);
       nextEvent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
 
-  animateIn() {
+  private animateIn(): void {
     if (this.state.isAnimating) return;
     this.state.isAnimating = true;
 
-    const events = this.element.querySelectorAll('.aiab-timeline-event');
+    const events = this.element.querySelectorAll<HTMLElement>('.aiab-timeline-event');
 
     events.forEach((event, index) => {
       event.style.opacity = '0';
@@ -915,8 +1170,8 @@ class Timeline {
   }
 
   // Helper methods
-  groupEventsByDate(events) {
-    const grouped = {};
+  private groupEventsByDate(events: TimelineEvent[]): GroupedEvents {
+    const grouped: GroupedEvents = {};
 
     events.forEach((event) => {
       const date = new Date(event.date).toDateString();
@@ -929,7 +1184,7 @@ class Timeline {
     return grouped;
   }
 
-  getPositionForDate(date) {
+  private getPositionForDate(date: Date | string): number {
     if (!this.state.dateRange) return 50;
 
     const dateObj = new Date(date);
@@ -941,7 +1196,7 @@ class Timeline {
     return Math.max(0, Math.min(100, position));
   }
 
-  isDateInRange(date) {
+  private isDateInRange(date: Date): boolean {
     if (!this.state.dateRange) return false;
 
     const time = date.getTime();
@@ -950,23 +1205,24 @@ class Timeline {
     );
   }
 
-  formatDate(date) {
+  private formatDate(date: Date | string): string {
     const dateObj = new Date(date);
     return dateObj.toLocaleDateString(undefined, this.options.dateFormat);
   }
 
-  formatTime(date) {
+  private formatTime(date: Date | string): string {
     const dateObj = new Date(date);
     return dateObj.toLocaleTimeString(undefined, this.options.timeFormat);
   }
 
-  getGroupColor(groupId) {
+  private getGroupColor(groupId: string | undefined): string | null {
+    if (!groupId) return null;
     const group = this.options.groups.find((g) => g.id === groupId);
     return group?.color || null;
   }
 
   // Public API
-  addEvent(event) {
+  addEvent(event: TimelineEvent): void {
     this.state.events.push(event);
     this.processEvents();
     this.render();
@@ -976,13 +1232,13 @@ class Timeline {
     }
   }
 
-  removeEvent(eventId) {
+  removeEvent(eventId: string): void {
     this.state.events = this.state.events.filter((e) => e.id !== eventId);
     this.processEvents();
     this.render();
   }
 
-  updateEvent(eventId, updates) {
+  updateEvent(eventId: string, updates: Partial<TimelineEvent>): void {
     const event = this.state.events.find((e) => e.id === eventId);
     if (event) {
       Object.assign(event, updates);
@@ -991,7 +1247,7 @@ class Timeline {
     }
   }
 
-  setDateRange(startDate, endDate) {
+  setDateRange(startDate: Date | string, endDate: Date | string): void {
     this.state.dateRange = {
       start: new Date(startDate),
       end: new Date(endDate),
@@ -999,14 +1255,14 @@ class Timeline {
     this.render();
   }
 
-  scrollToEvent(eventId) {
-    const eventEl = this.element.querySelector(`[data-event-id="${eventId}"]`);
+  scrollToEvent(eventId: string): void {
+    const eventEl = this.element.querySelector<HTMLElement>(`[data-event-id="${eventId}"]`);
     if (eventEl) {
       eventEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
 
-  scrollToDate(date) {
+  scrollToDate(date: Date | string): void {
     const position = this.getPositionForDate(date);
 
     if (this.options.orientation === 'horizontal') {
@@ -1018,7 +1274,7 @@ class Timeline {
     }
   }
 
-  destroy() {
+  destroy(): void {
     // Clear timers
     this.timers.forEach((timer) => clearTimeout(timer));
     this.timers.clear();
@@ -1051,10 +1307,17 @@ class Timeline {
   }
 }
 
+// Extend Window interface for global assignments
+declare global {
+  interface Window {
+    Timeline: typeof Timeline;
+  }
+}
+
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   try {
-    document.querySelectorAll('[data-timeline]').forEach((element) => {
+    document.querySelectorAll<HTMLElement>('[data-timeline]').forEach((element) => {
       new Timeline(element);
     });
   } catch (error) {
@@ -1064,9 +1327,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('aiab-timeline', Timeline);
+  // biome-ignore lint/suspicious/noExplicitAny: constructor type variance for registry
+  window.AmphibiousRegistry.registerComponent('aiab-timeline', Timeline as any);
 }
 
 // Export
 window.Timeline = Timeline;
 export default Timeline;
+export { Timeline };

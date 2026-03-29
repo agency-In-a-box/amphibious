@@ -1,11 +1,376 @@
 /**
- * Enhanced File Upload Component JavaScript
+ * Enhanced File Upload Component TypeScript
  * Advanced drag & drop with chunked uploads, progress tracking, and complete cleanup
  * Part of Amphibious 2.0 Component Library
+ *
+ * @module file-upload-enhanced
  */
 
+// ---------------------------------------------------------------------------
+// Types & Interfaces
+// ---------------------------------------------------------------------------
+
+/** Status of an individual file in the enhanced upload queue. */
+export type EnhancedFileStatus = 'pending' | 'uploading' | 'success' | 'error' | 'paused';
+
+/** Image output format for resize operations. */
+export type ImageFormat = 'jpeg' | 'png' | 'webp';
+
+/** UI theme for the upload component. */
+export type UploadTheme = 'light' | 'dark' | string;
+
+/**
+ * Callback signatures used by FileUploadEnhanced options.
+ */
+export type EnhancedSelectCallback = (
+  fileObj: EnhancedFileEntry,
+  uploader: FileUploadEnhanced,
+) => void;
+
+export type EnhancedBeforeUploadCallback = (
+  fileObj: EnhancedFileEntry,
+  uploader: FileUploadEnhanced,
+) => boolean | Promise<boolean | void> | void;
+
+export type EnhancedUploadCallback = (
+  fileObj: EnhancedFileEntry,
+  uploader: FileUploadEnhanced,
+) => void;
+
+export type EnhancedProgressCallback = (
+  fileObj: EnhancedFileEntry,
+  percent: number,
+  uploader: FileUploadEnhanced,
+) => void;
+
+export type EnhancedErrorCallback = (
+  fileObj: EnhancedFileEntry | null,
+  error: Error,
+  uploader: FileUploadEnhanced,
+) => void;
+
+export type EnhancedRemoveCallback = (
+  fileObj: EnhancedFileEntry,
+  uploader: FileUploadEnhanced,
+) => void;
+
+export type EnhancedCompleteCallback = (
+  files: EnhancedFileEntry[],
+  uploader: FileUploadEnhanced,
+) => void;
+
+export type EnhancedRetryCallback = (
+  fileObj: EnhancedFileEntry,
+  uploader: FileUploadEnhanced,
+) => void;
+
+export type EnhancedChunkUploadCallback = (
+  fileObj: EnhancedFileEntry,
+  chunkNumber: number,
+  totalChunks: number,
+  uploader: FileUploadEnhanced,
+) => void;
+
+export type FileValidateCallback = (file: File) => true | string;
+
+/** I18n label overrides for the enhanced upload UI. */
+export interface EnhancedUploadLabels {
+  dropZone?: string;
+  fileUploadArea?: string;
+  chooseFiles?: string;
+  takePhoto?: string;
+  uploadAll?: string;
+  clearAll?: string;
+  capture?: string;
+  close?: string;
+  upload?: string;
+  pause?: string;
+  retry?: string;
+  remove?: string;
+  statusReady?: string;
+  statusUploading?: string;
+  statusComplete?: string;
+  statusFailed?: string;
+  statusPaused?: string;
+  allTypesAccepted?: string;
+  acceptedTypes?: (types: string) => string;
+  statsText?: (count: number, size: string, pending: number) => string;
+  maxFilesReached?: string;
+  maxFilesRemaining?: (remaining: number) => string;
+  validationFailed?: (name: string) => string;
+  fileTooLarge?: (name: string, maxSize: string) => string;
+  typeNotAllowed?: (type: string) => string;
+  extensionNotAllowed?: (ext: string) => string;
+  extensionBlocked?: (ext: string) => string;
+  duplicateFile?: (name: string) => string;
+  cameraAccessDenied?: string;
+  uploadInProgress?: string;
+}
+
+/** Fully resolved label set where every field has a value. */
+interface ResolvedLabels {
+  dropZone: string;
+  fileUploadArea: string;
+  chooseFiles: string;
+  takePhoto: string;
+  uploadAll: string;
+  clearAll: string;
+  capture: string;
+  close: string;
+  upload: string;
+  pause: string;
+  retry: string;
+  remove: string;
+  statusReady: string;
+  statusUploading: string;
+  statusComplete: string;
+  statusFailed: string;
+  statusPaused: string;
+  allTypesAccepted: string;
+  acceptedTypes: (types: string) => string;
+  statsText: (count: number, size: string, pending: number) => string;
+  maxFilesReached: string;
+  maxFilesRemaining: (remaining: number) => string;
+  validationFailed: (name: string) => string;
+  fileTooLarge: (name: string, maxSize: string) => string;
+  typeNotAllowed: (type: string) => string;
+  extensionNotAllowed: (ext: string) => string;
+  extensionBlocked: (ext: string) => string;
+  duplicateFile: (name: string) => string;
+  cameraAccessDenied: string;
+  uploadInProgress: string;
+}
+
+/**
+ * Public configuration options for FileUploadEnhanced.
+ * All properties are optional; sensible defaults are applied internally.
+ */
+export interface FileUploadEnhancedOptions {
+  // Basic
+  maxSize?: number;
+  maxFiles?: number | null;
+  accept?: string;
+  multiple?: boolean;
+  preview?: boolean;
+  autoUpload?: boolean;
+  uploadUrl?: string;
+
+  // Advanced
+  chunked?: boolean;
+  chunkSize?: number;
+  parallelUploads?: number;
+  retryCount?: number;
+  retryDelay?: number;
+
+  // Features
+  dragAndDrop?: boolean;
+  paste?: boolean;
+  camera?: boolean;
+  resumable?: boolean;
+  duplicateCheck?: boolean;
+
+  // Image options
+  imageResize?: boolean;
+  maxImageWidth?: number;
+  maxImageHeight?: number;
+  imageQuality?: number;
+  imageFormat?: ImageFormat;
+
+  // Validation
+  validateFile?: FileValidateCallback | null;
+  allowedExtensions?: string[] | null;
+  blockedExtensions?: string[] | null;
+
+  // UI
+  thumbnailSize?: number;
+  showFileList?: boolean;
+  sortable?: boolean;
+  theme?: UploadTheme;
+
+  // Request
+  headers?: Record<string, string>;
+  withCredentials?: boolean;
+  timeout?: number;
+
+  // Labels (i18n)
+  labels?: EnhancedUploadLabels;
+
+  // Callbacks
+  onSelect?: EnhancedSelectCallback | null;
+  onBeforeUpload?: EnhancedBeforeUploadCallback | null;
+  onUpload?: EnhancedUploadCallback | null;
+  onProgress?: EnhancedProgressCallback | null;
+  onError?: EnhancedErrorCallback | null;
+  onRemove?: EnhancedRemoveCallback | null;
+  onComplete?: EnhancedCompleteCallback | null;
+  onRetry?: EnhancedRetryCallback | null;
+  onChunkUpload?: EnhancedChunkUploadCallback | null;
+}
+
+/** Resolved internal options with all defaults applied. */
+interface ResolvedOptions {
+  maxSize: number;
+  maxFiles: number | null;
+  accept: string;
+  multiple: boolean;
+  preview: boolean;
+  autoUpload: boolean;
+  uploadUrl: string;
+
+  chunked: boolean;
+  chunkSize: number;
+  parallelUploads: number;
+  retryCount: number;
+  retryDelay: number;
+
+  dragAndDrop: boolean;
+  paste: boolean;
+  camera: boolean;
+  resumable: boolean;
+  duplicateCheck: boolean;
+
+  imageResize: boolean;
+  maxImageWidth: number;
+  maxImageHeight: number;
+  imageQuality: number;
+  imageFormat: ImageFormat;
+
+  validateFile: FileValidateCallback | null;
+  allowedExtensions: string[] | null;
+  blockedExtensions: string[] | null;
+
+  thumbnailSize: number;
+  showFileList: boolean;
+  sortable: boolean;
+  theme: UploadTheme;
+
+  headers: Record<string, string>;
+  withCredentials: boolean;
+  timeout: number;
+
+  labels: ResolvedLabels;
+
+  onSelect: EnhancedSelectCallback | null;
+  onBeforeUpload: EnhancedBeforeUploadCallback | null;
+  onUpload: EnhancedUploadCallback | null;
+  onProgress: EnhancedProgressCallback | null;
+  onError: EnhancedErrorCallback | null;
+  onRemove: EnhancedRemoveCallback | null;
+  onComplete: EnhancedCompleteCallback | null;
+  onRetry: EnhancedRetryCallback | null;
+  onChunkUpload: EnhancedChunkUploadCallback | null;
+}
+
+/**
+ * Internal representation of a file in the enhanced upload queue.
+ */
+export interface EnhancedFileEntry {
+  id: string;
+  file: File;
+  originalFile: File;
+  name: string;
+  size: number;
+  type: string;
+  status: EnhancedFileStatus;
+  progress: number;
+  uploadedSize: number;
+  error: string | null;
+  xhr: XMLHttpRequest | null;
+  chunks: boolean[];
+  retries: number;
+  startTime: number | null;
+  endTime: number | null;
+  speed: number;
+  timeRemaining: number | null;
+  thumbnail: string | null;
+}
+
+/** Internal component state. */
+interface UploadState {
+  files: Map<string, EnhancedFileEntry>;
+  queue: string[];
+  uploading: Set<string>;
+  completed: Set<string>;
+  failed: Set<string>;
+  paused: Set<string>;
+  totalProgress: number;
+  isDragging: boolean;
+}
+
+/** Upload statistics. */
+interface UploadStats {
+  totalFiles: number;
+  totalSize: number;
+  uploadedSize: number;
+  startTime: number | null;
+  endTime: number | null;
+  successCount: number;
+  errorCount: number;
+}
+
+/** Saved upload entry for resumable uploads. */
+interface SavedUploadEntry {
+  id: string;
+  name: string;
+  size: number;
+  type: string;
+  chunks: boolean[];
+  progress: number;
+}
+
+/** Event handler record stored for cleanup. */
+interface HandlerRecord {
+  event: string;
+  handler: EventListener;
+}
+
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+
+/**
+ * Advanced drag & drop file upload with chunked uploads, image resize,
+ * camera capture, paste support, resumable uploads, and comprehensive cleanup.
+ *
+ * @example
+ * ```ts
+ * const upload = new FileUploadEnhanced(document.getElementById('upload')!, {
+ *   maxSize: 20 * 1024 * 1024,
+ *   chunked: true,
+ *   parallelUploads: 3,
+ *   accept: 'image/*',
+ *   uploadUrl: '/api/upload',
+ *   onUpload: (fileObj) => console.log('Uploaded:', fileObj.name),
+ * });
+ * ```
+ */
 class FileUploadEnhanced {
-  constructor(element, options = {}) {
+  public element: HTMLElement;
+  public options: ResolvedOptions;
+  public state: UploadState;
+  public stats: UploadStats;
+
+  // Memory management
+  private handlers: Map<EventTarget, HandlerRecord[]>;
+  private timers: Set<ReturnType<typeof setTimeout>>;
+  private createdElements: Set<HTMLElement>;
+  private activeUploads: Map<string, XMLHttpRequest>;
+  private fileReaders: Set<FileReader>;
+  private objectURLs: Set<string>;
+
+  // DOM references (set during init() called from constructor)
+  private wrapper!: HTMLDivElement;
+  private zone!: HTMLDivElement;
+  private input!: HTMLInputElement;
+  private browseBtn!: HTMLButtonElement;
+  private cameraBtn: HTMLButtonElement | null;
+  private fileList!: HTMLDivElement;
+  private statsBar!: HTMLDivElement;
+  private statsText!: HTMLDivElement;
+  private uploadAllBtn!: HTMLButtonElement;
+  private clearAllBtn!: HTMLButtonElement;
+
+  constructor(element: HTMLElement, options: FileUploadEnhancedOptions = {}) {
     this.element = element;
 
     // Memory management
@@ -15,6 +380,7 @@ class FileUploadEnhanced {
     this.activeUploads = new Map();
     this.fileReaders = new Set();
     this.objectURLs = new Set();
+    this.cameraBtn = null;
 
     this.options = {
       // Basic options
@@ -86,17 +452,19 @@ class FileUploadEnhanced {
         statusPaused: 'Paused',
         // Descriptions
         allTypesAccepted: 'All file types accepted',
-        acceptedTypes: (types) => `Accepted: ${types}`,
-        statsText: (count, size, pending) => `${count} files (${size}) - ${pending} pending`,
+        acceptedTypes: (types: string) => `Accepted: ${types}`,
+        statsText: (count: number, size: string, pending: number) =>
+          `${count} files (${size}) - ${pending} pending`,
         // Errors
         maxFilesReached: 'Maximum number of files reached',
-        maxFilesRemaining: (remaining) => `Only ${remaining} more file(s) can be added`,
-        validationFailed: (name) => `File "${name}" validation failed`,
-        fileTooLarge: (name, maxSize) => `File "${name}" exceeds maximum size of ${maxSize}`,
-        typeNotAllowed: (type) => `File type "${type}" not allowed`,
-        extensionNotAllowed: (ext) => `File extension ".${ext}" not allowed`,
-        extensionBlocked: (ext) => `File extension ".${ext}" is blocked`,
-        duplicateFile: (name) => `File "${name}" already added`,
+        maxFilesRemaining: (remaining: number) => `Only ${remaining} more file(s) can be added`,
+        validationFailed: (name: string) => `File "${name}" validation failed`,
+        fileTooLarge: (name: string, maxSize: string) =>
+          `File "${name}" exceeds maximum size of ${maxSize}`,
+        typeNotAllowed: (type: string) => `File type "${type}" not allowed`,
+        extensionNotAllowed: (ext: string) => `File extension ".${ext}" not allowed`,
+        extensionBlocked: (ext: string) => `File extension ".${ext}" is blocked`,
+        duplicateFile: (name: string) => `File "${name}" already added`,
         cameraAccessDenied: 'Camera access denied',
         uploadInProgress: 'Files are still uploading. Are you sure you want to leave?',
         ...(options.labels || {}),
@@ -114,7 +482,7 @@ class FileUploadEnhanced {
       onChunkUpload: options.onChunkUpload || null,
 
       ...options,
-    };
+    } as ResolvedOptions;
 
     // State management
     this.state = {
@@ -142,7 +510,7 @@ class FileUploadEnhanced {
     this.init();
   }
 
-  init() {
+  private init(): void {
     this.createUploadZone();
     this.bindEvents();
 
@@ -155,7 +523,7 @@ class FileUploadEnhanced {
     }
   }
 
-  createUploadZone() {
+  private createUploadZone(): void {
     // Create main wrapper
     const wrapper = document.createElement('div');
     wrapper.className = 'aiab-file-upload-enhanced';
@@ -290,35 +658,39 @@ class FileUploadEnhanced {
     this.createdElements.add(wrapper);
   }
 
-  bindEvents() {
+  private bindEvents(): void {
     // File input
-    this.addHandler(this.input, 'change', (e) => {
-      this.handleFiles(e.target.files);
-      e.target.value = ''; // Reset input
-    });
+    this.addHandler(this.input, 'change', ((e: Event) => {
+      const target = e.target as HTMLInputElement;
+      if (target.files) {
+        this.handleFiles(target.files);
+      }
+      target.value = ''; // Reset input
+    }) as EventListener);
 
     // Browse button
-    this.addHandler(this.browseBtn, 'click', () => {
+    this.addHandler(this.browseBtn, 'click', (() => {
       this.input.click();
-    });
+    }) as EventListener);
 
     // Zone click
-    this.addHandler(this.zone, 'click', (e) => {
+    this.addHandler(this.zone, 'click', ((e: MouseEvent) => {
+      const target = e.target as HTMLElement;
       if (
-        e.target === this.zone ||
-        e.target.closest('.aiab-file-upload-icon, .aiab-file-upload-label')
+        target === this.zone ||
+        target.closest('.aiab-file-upload-icon, .aiab-file-upload-label')
       ) {
         this.input.click();
       }
-    });
+    }) as EventListener);
 
     // Keyboard support
-    this.addHandler(this.zone, 'keydown', (e) => {
+    this.addHandler(this.zone, 'keydown', ((e: KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         this.input.click();
       }
-    });
+    }) as EventListener);
 
     // Drag and drop
     if (this.options.dragAndDrop) {
@@ -332,26 +704,26 @@ class FileUploadEnhanced {
 
     // Camera
     if (this.cameraBtn) {
-      this.addHandler(this.cameraBtn, 'click', () => this.openCamera());
+      this.addHandler(this.cameraBtn, 'click', (() => this.openCamera()) as EventListener);
     }
 
     // Upload/Clear all
-    this.addHandler(this.uploadAllBtn, 'click', () => this.uploadAll());
-    this.addHandler(this.clearAllBtn, 'click', () => this.clearAll());
+    this.addHandler(this.uploadAllBtn, 'click', (() => this.uploadAll()) as EventListener);
+    this.addHandler(this.clearAllBtn, 'click', (() => this.clearAll()) as EventListener);
 
     // Window events
-    this.addHandler(window, 'beforeunload', (e) => {
+    this.addHandler(window, 'beforeunload', ((e: BeforeUnloadEvent) => {
       if (this.state.uploading.size > 0) {
         e.preventDefault();
         e.returnValue = this.options.labels.uploadInProgress;
       }
-    });
+    }) as EventListener);
   }
 
-  setupDragAndDrop() {
+  private setupDragAndDrop(): void {
     let dragCounter = 0;
 
-    const dragEnter = (e) => {
+    const dragEnter: EventListener = (e: Event) => {
       e.preventDefault();
       dragCounter++;
       if (dragCounter === 1) {
@@ -360,7 +732,7 @@ class FileUploadEnhanced {
       }
     };
 
-    const dragLeave = (e) => {
+    const dragLeave: EventListener = (e: Event) => {
       e.preventDefault();
       dragCounter--;
       if (dragCounter === 0) {
@@ -369,22 +741,23 @@ class FileUploadEnhanced {
       }
     };
 
-    const dragOver = (e) => {
+    const dragOver: EventListener = (e: Event) => {
       e.preventDefault();
-      e.dataTransfer.dropEffect = 'copy';
+      (e as DragEvent).dataTransfer!.dropEffect = 'copy';
     };
 
-    const drop = (e) => {
+    const drop: EventListener = (e: Event) => {
       e.preventDefault();
       dragCounter = 0;
       this.state.isDragging = false;
       this.zone.classList.remove('aiab-file-upload-zone--drag-active');
 
-      const items = e.dataTransfer.items;
+      const dragEvent = e as DragEvent;
+      const items = dragEvent.dataTransfer?.items;
       if (items) {
         this.handleDataTransferItems(items);
-      } else {
-        this.handleFiles(e.dataTransfer.files);
+      } else if (dragEvent.dataTransfer) {
+        this.handleFiles(dragEvent.dataTransfer.files);
       }
     };
 
@@ -394,18 +767,22 @@ class FileUploadEnhanced {
     this.addHandler(this.zone, 'drop', drop);
 
     // Prevent default drag over page
-    this.addHandler(document.body, 'dragover', (e) => e.preventDefault());
-    this.addHandler(document.body, 'drop', (e) => {
-      if (!this.zone.contains(e.target)) {
+    this.addHandler(document.body, 'dragover', ((e: Event) => e.preventDefault()) as EventListener);
+    this.addHandler(document.body, 'drop', ((e: Event) => {
+      const target = e.target as Node;
+      if (!this.zone.contains(target)) {
         e.preventDefault();
       }
-    });
+    }) as EventListener);
   }
 
-  setupPaste() {
-    const pasteHandler = (e) => {
-      const items = e.clipboardData.items;
-      const files = [];
+  private setupPaste(): void {
+    const pasteHandler: EventListener = (e: Event) => {
+      const clipboardEvent = e as ClipboardEvent;
+      const items = clipboardEvent.clipboardData?.items;
+      if (!items) return;
+
+      const files: File[] = [];
 
       for (const item of items) {
         if (item.kind === 'file') {
@@ -422,8 +799,8 @@ class FileUploadEnhanced {
     this.addHandler(document, 'paste', pasteHandler);
   }
 
-  async handleDataTransferItems(items) {
-    const entries = [];
+  private async handleDataTransferItems(items: DataTransferItemList): Promise<void> {
+    const entries: FileSystemEntry[] = [];
 
     for (const item of items) {
       if (item.webkitGetAsEntry) {
@@ -436,22 +813,24 @@ class FileUploadEnhanced {
     this.handleFiles(files);
   }
 
-  async traverseFileTree(entries) {
-    const files = [];
+  private async traverseFileTree(entries: FileSystemEntry[]): Promise<File[]> {
+    const files: File[] = [];
 
-    const traverse = async (entry) => {
+    const traverse = async (entry: FileSystemEntry): Promise<void> => {
       if (entry.isFile) {
-        const file = await new Promise((resolve) => {
-          entry.file(resolve);
+        const fileEntry = entry as FileSystemFileEntry;
+        const file = await new Promise<File>((resolve) => {
+          fileEntry.file(resolve);
         });
         files.push(file);
       } else if (entry.isDirectory) {
-        const reader = entry.createReader();
-        const entries = await new Promise((resolve) => {
+        const dirEntry = entry as FileSystemDirectoryEntry;
+        const reader = dirEntry.createReader();
+        const childEntries = await new Promise<FileSystemEntry[]>((resolve) => {
           reader.readEntries(resolve);
         });
 
-        for (const childEntry of entries) {
+        for (const childEntry of childEntries) {
           await traverse(childEntry);
         }
       }
@@ -464,7 +843,7 @@ class FileUploadEnhanced {
     return files;
   }
 
-  handleFiles(fileList) {
+  private handleFiles(fileList: FileList | File[]): void {
     const files = Array.from(fileList);
 
     // Check max files
@@ -484,11 +863,11 @@ class FileUploadEnhanced {
     }
 
     // Process each file
-    files.forEach((file) => {
+    for (const file of files) {
       if (this.validateFile(file)) {
         this.addFile(file);
       }
-    });
+    }
 
     // Auto upload
     if (this.options.autoUpload && this.state.queue.length > 0) {
@@ -496,7 +875,7 @@ class FileUploadEnhanced {
     }
   }
 
-  validateFile(file) {
+  private validateFile(file: File): boolean {
     // Custom validator
     if (this.options.validateFile) {
       const result = this.options.validateFile(file);
@@ -521,7 +900,7 @@ class FileUploadEnhanced {
     }
 
     // Extension check
-    const ext = file.name.split('.').pop().toLowerCase();
+    const ext = file.name.split('.').pop()?.toLowerCase() ?? '';
 
     if (this.options.allowedExtensions) {
       if (!this.options.allowedExtensions.includes(ext)) {
@@ -554,12 +933,12 @@ class FileUploadEnhanced {
     return true;
   }
 
-  checkFileType(file) {
+  private checkFileType(file: File): boolean {
     if (this.options.accept === '*') return true;
 
-    const accepts = this.options.accept.split(',').map((a) => a.trim());
+    const accepts = this.options.accept.split(',').map((a: string) => a.trim());
 
-    return accepts.some((accept) => {
+    return accepts.some((accept: string) => {
       if (accept.startsWith('.')) {
         return file.name.toLowerCase().endsWith(accept.toLowerCase());
       }
@@ -570,16 +949,16 @@ class FileUploadEnhanced {
     });
   }
 
-  async addFile(file) {
+  private async addFile(file: File): Promise<void> {
     const id = this.generateId();
 
     // Process image if needed
-    let processedFile = file;
+    let processedFile: File = file;
     if (this.options.imageResize && file.type.startsWith('image/')) {
       processedFile = await this.resizeImage(file);
     }
 
-    const fileObj = {
+    const fileObj: EnhancedFileEntry = {
       id,
       file: processedFile,
       originalFile: file,
@@ -616,17 +995,17 @@ class FileUploadEnhanced {
     }
   }
 
-  async resizeImage(file) {
-    return new Promise((resolve) => {
+  private async resizeImage(file: File): Promise<File> {
+    return new Promise<File>((resolve) => {
       const reader = new FileReader();
       this.fileReaders.add(reader);
 
-      reader.onload = (e) => {
+      reader.onload = (e: ProgressEvent<FileReader>) => {
         const img = new Image();
 
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
+          const ctx = canvas.getContext('2d')!;
 
           let { width, height } = img;
           const maxWidth = this.options.maxImageWidth;
@@ -643,8 +1022,8 @@ class FileUploadEnhanced {
           ctx.drawImage(img, 0, 0, width, height);
 
           canvas.toBlob(
-            (blob) => {
-              const resizedFile = new File([blob], file.name, {
+            (blob: Blob | null) => {
+              const resizedFile = new File([blob!], file.name, {
                 type: `image/${this.options.imageFormat}`,
                 lastModified: Date.now(),
               });
@@ -655,24 +1034,24 @@ class FileUploadEnhanced {
           );
         };
 
-        img.src = e.target.result;
+        img.src = e.target?.result as string;
       };
 
       reader.readAsDataURL(file);
     });
   }
 
-  async generateThumbnail(file) {
-    return new Promise((resolve) => {
+  private async generateThumbnail(file: File): Promise<string> {
+    return new Promise<string>((resolve) => {
       const reader = new FileReader();
       this.fileReaders.add(reader);
 
-      reader.onload = (e) => {
+      reader.onload = (e: ProgressEvent<FileReader>) => {
         const img = new Image();
 
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
+          const ctx = canvas.getContext('2d')!;
           const size = this.options.thumbnailSize;
 
           // Calculate crop dimensions
@@ -688,14 +1067,14 @@ class FileUploadEnhanced {
           resolve(canvas.toDataURL('image/jpeg', 0.7));
         };
 
-        img.src = e.target.result;
+        img.src = e.target?.result as string;
       };
 
       reader.readAsDataURL(file);
     });
   }
 
-  renderFileItem(fileObj) {
+  private renderFileItem(fileObj: EnhancedFileEntry): void {
     const item = document.createElement('div');
     item.className = 'aiab-file-upload-item';
     item.dataset.fileId = fileObj.id;
@@ -752,14 +1131,14 @@ class FileUploadEnhanced {
     const uploadBtn = document.createElement('button');
     uploadBtn.className = 'aiab-file-upload-upload';
     uploadBtn.type = 'button';
-    uploadBtn.innerHTML = '⬆';
+    uploadBtn.innerHTML = '\u2B06';
     uploadBtn.title = this.options.labels.upload;
 
     // Pause button
     const pauseBtn = document.createElement('button');
     pauseBtn.className = 'aiab-file-upload-pause';
     pauseBtn.type = 'button';
-    pauseBtn.innerHTML = '⏸';
+    pauseBtn.innerHTML = '\u23F8';
     pauseBtn.title = this.options.labels.pause;
     pauseBtn.style.display = 'none';
 
@@ -767,7 +1146,7 @@ class FileUploadEnhanced {
     const retryBtn = document.createElement('button');
     retryBtn.className = 'aiab-file-upload-retry';
     retryBtn.type = 'button';
-    retryBtn.innerHTML = '↻';
+    retryBtn.innerHTML = '\u21BB';
     retryBtn.title = this.options.labels.retry;
     retryBtn.style.display = 'none';
 
@@ -775,7 +1154,7 @@ class FileUploadEnhanced {
     const removeBtn = document.createElement('button');
     removeBtn.className = 'aiab-file-upload-remove';
     removeBtn.type = 'button';
-    removeBtn.innerHTML = '×';
+    removeBtn.innerHTML = '\u00D7';
     removeBtn.title = this.options.labels.remove;
 
     actions.appendChild(uploadBtn);
@@ -797,16 +1176,16 @@ class FileUploadEnhanced {
     item.appendChild(progress);
 
     // Bind item events
-    this.addHandler(uploadBtn, 'click', () => this.uploadFile(fileObj.id));
-    this.addHandler(pauseBtn, 'click', () => this.pauseUpload(fileObj.id));
-    this.addHandler(retryBtn, 'click', () => this.retryUpload(fileObj.id));
-    this.addHandler(removeBtn, 'click', () => this.removeFile(fileObj.id));
+    this.addHandler(uploadBtn, 'click', (() => this.uploadFile(fileObj.id)) as EventListener);
+    this.addHandler(pauseBtn, 'click', (() => this.pauseUpload(fileObj.id)) as EventListener);
+    this.addHandler(retryBtn, 'click', (() => this.retryUpload(fileObj.id)) as EventListener);
+    this.addHandler(removeBtn, 'click', (() => this.removeFile(fileObj.id)) as EventListener);
 
     this.fileList.appendChild(item);
     this.createdElements.add(item);
   }
 
-  async uploadFile(fileId) {
+  private async uploadFile(fileId: string): Promise<void> {
     const fileObj = this.state.files.get(fileId);
     if (!fileObj || fileObj.status === 'uploading') return;
 
@@ -838,12 +1217,12 @@ class FileUploadEnhanced {
       }
     } catch (error) {
       fileObj.status = 'error';
-      fileObj.error = error.message;
+      fileObj.error = (error as Error).message;
       this.state.failed.add(fileId);
       this.stats.errorCount++;
 
       if (this.options.onError) {
-        this.options.onError(fileObj, error, this);
+        this.options.onError(fileObj, error as Error, this);
       }
 
       // Auto retry
@@ -871,7 +1250,8 @@ class FileUploadEnhanced {
     }
   }
 
-  uploadSimple(fileObj) {
+  // biome-ignore lint/suspicious/noExplicitAny: server response shape is unknown
+  private uploadSimple(fileObj: EnhancedFileEntry): Promise<any> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       fileObj.xhr = xhr;
@@ -881,7 +1261,7 @@ class FileUploadEnhanced {
       formData.append('file', fileObj.file);
 
       // Progress
-      xhr.upload.addEventListener('progress', (e) => {
+      xhr.upload.addEventListener('progress', (e: ProgressEvent) => {
         if (e.lengthComputable) {
           const percent = Math.round((e.loaded / e.total) * 100);
           this.updateProgress(fileObj, percent, e.loaded);
@@ -911,9 +1291,9 @@ class FileUploadEnhanced {
       xhr.open('POST', this.options.uploadUrl);
 
       // Headers
-      Object.keys(this.options.headers).forEach((key) => {
+      for (const key of Object.keys(this.options.headers)) {
         xhr.setRequestHeader(key, this.options.headers[key]);
-      });
+      }
 
       if (this.options.withCredentials) {
         xhr.withCredentials = true;
@@ -927,7 +1307,7 @@ class FileUploadEnhanced {
     });
   }
 
-  async uploadChunked(fileObj) {
+  private async uploadChunked(fileObj: EnhancedFileEntry): Promise<void> {
     const chunkSize = this.options.chunkSize;
     const totalChunks = Math.ceil(fileObj.file.size / chunkSize);
 
@@ -948,14 +1328,20 @@ class FileUploadEnhanced {
     }
   }
 
-  uploadChunk(fileObj, chunk, index, total) {
+  // biome-ignore lint/suspicious/noExplicitAny: server response shape is unknown
+  private uploadChunk(
+    fileObj: EnhancedFileEntry,
+    chunk: Blob,
+    index: number,
+    total: number,
+  ): Promise<any> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       const formData = new FormData();
 
       formData.append('chunk', chunk);
-      formData.append('chunkIndex', index);
-      formData.append('totalChunks', total);
+      formData.append('chunkIndex', String(index));
+      formData.append('totalChunks', String(total));
       formData.append('fileName', fileObj.name);
       formData.append('fileId', fileObj.id);
 
@@ -974,15 +1360,15 @@ class FileUploadEnhanced {
 
       xhr.open('POST', this.options.uploadUrl);
 
-      Object.keys(this.options.headers).forEach((key) => {
+      for (const key of Object.keys(this.options.headers)) {
         xhr.setRequestHeader(key, this.options.headers[key]);
-      });
+      }
 
       xhr.send(formData);
     });
   }
 
-  pauseUpload(fileId) {
+  private pauseUpload(fileId: string): void {
     const fileObj = this.state.files.get(fileId);
     if (!fileObj) return;
 
@@ -995,7 +1381,7 @@ class FileUploadEnhanced {
     this.updateFileStatus(fileObj);
   }
 
-  retryUpload(fileId) {
+  private retryUpload(fileId: string): void {
     const fileObj = this.state.files.get(fileId);
     if (!fileObj) return;
 
@@ -1013,12 +1399,12 @@ class FileUploadEnhanced {
     this.uploadFile(fileId);
   }
 
-  updateProgress(fileObj, percent, loaded) {
+  private updateProgress(fileObj: EnhancedFileEntry, percent: number, loaded: number): void {
     fileObj.progress = percent;
     fileObj.uploadedSize = loaded;
 
     // Calculate speed
-    const elapsed = Date.now() - fileObj.startTime;
+    const elapsed = Date.now() - (fileObj.startTime ?? Date.now());
     fileObj.speed = loaded / (elapsed / 1000);
 
     // Calculate time remaining
@@ -1028,15 +1414,15 @@ class FileUploadEnhanced {
     // Update UI
     const item = this.fileList.querySelector(`[data-file-id="${fileObj.id}"]`);
     if (item) {
-      const bar = item.querySelector('.aiab-file-upload-progress-bar');
+      const bar = item.querySelector('.aiab-file-upload-progress-bar') as HTMLElement | null;
       if (bar) {
         bar.style.width = `${percent}%`;
       }
 
-      const speed = item.querySelector('.aiab-file-upload-speed');
-      if (speed) {
-        speed.style.display = 'inline';
-        speed.textContent = `${this.formatSize(fileObj.speed)}/s`;
+      const speedEl = item.querySelector('.aiab-file-upload-speed') as HTMLElement | null;
+      if (speedEl) {
+        speedEl.style.display = 'inline';
+        speedEl.textContent = `${this.formatSize(fileObj.speed)}/s`;
       }
     }
 
@@ -1048,39 +1434,39 @@ class FileUploadEnhanced {
     }
   }
 
-  updateFileStatus(fileObj) {
+  private updateFileStatus(fileObj: EnhancedFileEntry): void {
     const item = this.fileList.querySelector(`[data-file-id="${fileObj.id}"]`);
     if (!item) return;
 
-    const status = item.querySelector('.aiab-file-upload-status');
+    const status = item.querySelector('.aiab-file-upload-status') as HTMLElement | null;
     if (status) {
       status.className = `aiab-file-upload-status aiab-file-upload-status--${fileObj.status}`;
       status.textContent = this.getStatusText(fileObj.status);
     }
 
     // Update action buttons
-    const uploadBtn = item.querySelector('.aiab-file-upload-upload');
-    const pauseBtn = item.querySelector('.aiab-file-upload-pause');
-    const retryBtn = item.querySelector('.aiab-file-upload-retry');
+    const uploadBtn = item.querySelector('.aiab-file-upload-upload') as HTMLElement | null;
+    const pauseBtn = item.querySelector('.aiab-file-upload-pause') as HTMLElement | null;
+    const retryBtn = item.querySelector('.aiab-file-upload-retry') as HTMLElement | null;
 
-    uploadBtn.style.display = fileObj.status === 'pending' ? 'block' : 'none';
-    pauseBtn.style.display = fileObj.status === 'uploading' ? 'block' : 'none';
-    retryBtn.style.display = fileObj.status === 'error' ? 'block' : 'none';
+    if (uploadBtn) uploadBtn.style.display = fileObj.status === 'pending' ? 'block' : 'none';
+    if (pauseBtn) pauseBtn.style.display = fileObj.status === 'uploading' ? 'block' : 'none';
+    if (retryBtn) retryBtn.style.display = fileObj.status === 'error' ? 'block' : 'none';
 
     // Hide progress on success/error
     if (fileObj.status === 'success' || fileObj.status === 'error') {
-      const progress = item.querySelector('.aiab-file-upload-progress');
+      const progress = item.querySelector('.aiab-file-upload-progress') as HTMLElement | null;
       if (progress) {
         progress.style.display = 'none';
       }
     }
   }
 
-  updateTotalProgress() {
+  private updateTotalProgress(): void {
     let totalSize = 0;
     let uploadedSize = 0;
 
-    this.state.files.forEach((fileObj) => {
+    this.state.files.forEach((fileObj: EnhancedFileEntry) => {
       totalSize += fileObj.size;
       uploadedSize += fileObj.uploadedSize;
     });
@@ -1089,14 +1475,14 @@ class FileUploadEnhanced {
     this.stats.uploadedSize = uploadedSize;
   }
 
-  updateStats() {
+  private updateStats(): void {
     const fileCount = this.state.files.size;
 
     if (fileCount > 0) {
       this.statsBar.style.display = 'flex';
 
       const pendingCount = Array.from(this.state.files.values()).filter(
-        (f) => f.status === 'pending',
+        (f: EnhancedFileEntry) => f.status === 'pending',
       ).length;
 
       this.statsText.textContent = this.options.labels.statsText(
@@ -1112,7 +1498,7 @@ class FileUploadEnhanced {
     }
   }
 
-  removeFile(fileId) {
+  public removeFile(fileId: string): void {
     const fileObj = this.state.files.get(fileId);
     if (!fileObj) return;
 
@@ -1123,7 +1509,7 @@ class FileUploadEnhanced {
 
     // Clean up
     this.state.files.delete(fileId);
-    this.state.queue = this.state.queue.filter((id) => id !== fileId);
+    this.state.queue = this.state.queue.filter((id: string) => id !== fileId);
     this.state.uploading.delete(fileId);
     this.state.completed.delete(fileId);
     this.state.failed.delete(fileId);
@@ -1144,15 +1530,15 @@ class FileUploadEnhanced {
     }
   }
 
-  uploadAll() {
+  public uploadAll(): void {
     const pendingFiles = Array.from(this.state.files.values())
-      .filter((f) => f.status === 'pending')
-      .map((f) => f.id);
+      .filter((f: EnhancedFileEntry) => f.status === 'pending')
+      .map((f: EnhancedFileEntry) => f.id);
 
     // Upload in parallel with limit
-    const uploadNext = () => {
+    const uploadNext = (): void => {
       while (this.state.uploading.size < this.options.parallelUploads && pendingFiles.length > 0) {
-        const fileId = pendingFiles.shift();
+        const fileId = pendingFiles.shift()!;
         this.uploadFile(fileId).then(() => {
           uploadNext();
         });
@@ -1162,9 +1548,9 @@ class FileUploadEnhanced {
     uploadNext();
   }
 
-  clearAll() {
+  public clearAll(): void {
     // Cancel all uploads
-    this.state.files.forEach((fileObj) => {
+    this.state.files.forEach((fileObj: EnhancedFileEntry) => {
       if (fileObj.xhr) {
         fileObj.xhr.abort();
       }
@@ -1195,49 +1581,51 @@ class FileUploadEnhanced {
     this.updateStats();
   }
 
-  initSortable() {
+  private initSortable(): void {
     // Implementation depends on whether Sortable.js is available
     // This is a placeholder for sortable functionality
   }
 
-  loadSavedUploads() {
+  private loadSavedUploads(): void {
     // Load resumable uploads from localStorage
     try {
       const saved = localStorage.getItem('amphibious-uploads');
       if (saved) {
-        const _uploads = JSON.parse(saved);
+        const _uploads: SavedUploadEntry[] = JSON.parse(saved);
         // Restore upload state
       }
-    } catch (_e) {
+    } catch (_e: unknown) {
       // Ignore errors
     }
   }
 
-  saveUploads() {
+  private saveUploads(): void {
     // Save resumable uploads to localStorage
     if (!this.options.resumable) return;
 
     try {
-      const uploads = Array.from(this.state.files.values()).map((f) => ({
-        id: f.id,
-        name: f.name,
-        size: f.size,
-        type: f.type,
-        chunks: f.chunks,
-        progress: f.progress,
-      }));
+      const uploads: SavedUploadEntry[] = Array.from(this.state.files.values()).map(
+        (f: EnhancedFileEntry) => ({
+          id: f.id,
+          name: f.name,
+          size: f.size,
+          type: f.type,
+          chunks: f.chunks,
+          progress: f.progress,
+        }),
+      );
 
       localStorage.setItem('amphibious-uploads', JSON.stringify(uploads));
-    } catch (_e) {
+    } catch (_e: unknown) {
       // Ignore errors
     }
   }
 
-  hasCamera() {
+  private hasCamera(): boolean {
     return !!navigator.mediaDevices?.getUserMedia;
   }
 
-  async openCamera() {
+  private async openCamera(): Promise<void> {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
@@ -1251,25 +1639,25 @@ class FileUploadEnhanced {
 
       const captureBtn = document.createElement('button');
       captureBtn.textContent = this.options.labels.capture;
-      captureBtn.onclick = () => {
+      captureBtn.onclick = (): void => {
         const canvas = document.createElement('canvas');
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-        canvas.getContext('2d').drawImage(video, 0, 0);
+        canvas.getContext('2d')!.drawImage(video, 0, 0);
 
-        canvas.toBlob((blob) => {
-          const file = new File([blob], `photo-${Date.now()}.jpg`, { type: 'image/jpeg' });
+        canvas.toBlob((blob: Blob | null) => {
+          const file = new File([blob!], `photo-${Date.now()}.jpg`, { type: 'image/jpeg' });
           this.handleFiles([file]);
 
-          stream.getTracks().forEach((track) => track.stop());
+          stream.getTracks().forEach((track: MediaStreamTrack) => track.stop());
           modal.remove();
         });
       };
 
       const closeBtn = document.createElement('button');
       closeBtn.textContent = this.options.labels.close;
-      closeBtn.onclick = () => {
-        stream.getTracks().forEach((track) => track.stop());
+      closeBtn.onclick = (): void => {
+        stream.getTracks().forEach((track: MediaStreamTrack) => track.stop());
         modal.remove();
       };
 
@@ -1279,20 +1667,20 @@ class FileUploadEnhanced {
 
       document.body.appendChild(modal);
       this.createdElements.add(modal);
-    } catch (_error) {
+    } catch (_error: unknown) {
       this.showError(this.options.labels.cameraAccessDenied);
     }
   }
 
   // Helper methods
-  getFileIcon(type) {
-    const icons = {
-      image: '🖼️',
-      video: '🎥',
-      audio: '🎵',
-      'application/pdf': '📄',
-      'application/zip': '📦',
-      text: '📝',
+  private getFileIcon(type: string): string {
+    const icons: Record<string, string> = {
+      image: '\uD83D\uDDBC\uFE0F',
+      video: '\uD83C\uDFA5',
+      audio: '\uD83C\uDFB5',
+      'application/pdf': '\uD83D\uDCC4',
+      'application/zip': '\uD83D\uDCE6',
+      text: '\uD83D\uDCDD',
     };
 
     for (const key in icons) {
@@ -1301,11 +1689,11 @@ class FileUploadEnhanced {
       }
     }
 
-    return `<span class="aiab-file-upload-icon-emoji">📎</span>`;
+    return '<span class="aiab-file-upload-icon-emoji">\uD83D\uDCCE</span>';
   }
 
-  getStatusText(status) {
-    const texts = {
+  private getStatusText(status: EnhancedFileStatus): string {
+    const texts: Record<EnhancedFileStatus, string> = {
       pending: this.options.labels.statusReady,
       uploading: this.options.labels.statusUploading,
       success: this.options.labels.statusComplete,
@@ -1315,54 +1703,54 @@ class FileUploadEnhanced {
     return texts[status] || status;
   }
 
-  getAcceptText() {
+  private getAcceptText(): string {
     if (this.options.accept === '*') {
       return this.options.labels.allTypesAccepted;
     }
     return this.options.labels.acceptedTypes(this.options.accept);
   }
 
-  formatSize(bytes) {
+  private formatSize(bytes: number): string {
     const sizes = ['B', 'KB', 'MB', 'GB'];
     if (bytes === 0) return '0 B';
     const i = Math.floor(Math.log(bytes) / Math.log(1024));
     return `${Math.round((bytes / 1024 ** i) * 100) / 100} ${sizes[i]}`;
   }
 
-  generateId() {
+  private generateId(): string {
     return `file-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
   }
 
-  showError(message) {
+  private showError(message: string): void {
     if (this.options.onError) {
       this.options.onError(null, new Error(message), this);
     }
   }
 
-  addHandler(element, event, handler) {
+  private addHandler(element: EventTarget, event: string, handler: EventListener): void {
     element.addEventListener(event, handler);
 
     if (!this.handlers.has(element)) {
       this.handlers.set(element, []);
     }
 
-    this.handlers.get(element).push({ event, handler });
+    this.handlers.get(element)!.push({ event, handler });
   }
 
   // Public API
-  getFiles() {
+  public getFiles(): EnhancedFileEntry[] {
     return Array.from(this.state.files.values());
   }
 
-  getFile(fileId) {
+  public getFile(fileId: string): EnhancedFileEntry | undefined {
     return this.state.files.get(fileId);
   }
 
-  addFiles(files) {
+  public addFiles(files: FileList | File[]): void {
     this.handleFiles(files);
   }
 
-  upload(fileId) {
+  public upload(fileId?: string): void {
     if (fileId) {
       this.uploadFile(fileId);
     } else {
@@ -1370,28 +1758,28 @@ class FileUploadEnhanced {
     }
   }
 
-  pause(fileId) {
+  public pause(fileId?: string): void {
     if (fileId) {
       this.pauseUpload(fileId);
     } else {
-      this.state.uploading.forEach((id) => this.pauseUpload(id));
+      this.state.uploading.forEach((id: string) => this.pauseUpload(id));
     }
   }
 
-  resume(fileId) {
+  public resume(fileId?: string): void {
     if (fileId) {
       this.state.paused.delete(fileId);
       this.uploadFile(fileId);
     } else {
       const paused = Array.from(this.state.paused);
-      paused.forEach((id) => {
+      for (const id of paused) {
         this.state.paused.delete(id);
         this.uploadFile(id);
-      });
+      }
     }
   }
 
-  remove(fileId) {
+  public remove(fileId?: string): void {
     if (fileId) {
       this.removeFile(fileId);
     } else {
@@ -1402,33 +1790,33 @@ class FileUploadEnhanced {
   /**
    * Comprehensive destroy method
    */
-  destroy() {
+  public destroy(): void {
     // Cancel all active uploads
-    this.activeUploads.forEach((xhr) => xhr.abort());
+    this.activeUploads.forEach((xhr: XMLHttpRequest) => xhr.abort());
     this.activeUploads.clear();
 
     // Clear all timers
-    this.timers.forEach((timer) => clearTimeout(timer));
+    this.timers.forEach((timer: ReturnType<typeof setTimeout>) => clearTimeout(timer));
     this.timers.clear();
 
     // Remove all event listeners
-    this.handlers.forEach((handlerList, element) => {
-      handlerList.forEach(({ event, handler }) => {
+    this.handlers.forEach((handlerList: HandlerRecord[], element: EventTarget) => {
+      for (const { event, handler } of handlerList) {
         element.removeEventListener(event, handler);
-      });
+      }
     });
     this.handlers.clear();
 
     // Abort all file readers
-    this.fileReaders.forEach((reader) => reader.abort());
+    this.fileReaders.forEach((reader: FileReader) => reader.abort());
     this.fileReaders.clear();
 
     // Revoke object URLs
-    this.objectURLs.forEach((url) => URL.revokeObjectURL(url));
+    this.objectURLs.forEach((url: string) => URL.revokeObjectURL(url));
     this.objectURLs.clear();
 
     // Remove created elements
-    this.createdElements.forEach((element) => {
+    this.createdElements.forEach((element: HTMLElement) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -1437,28 +1825,53 @@ class FileUploadEnhanced {
 
     // Clear state
     this.state.files.clear();
-    this.state = null;
-    this.stats = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).state = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).stats = null;
 
     // Clear references
-    this.element = null;
-    this.wrapper = null;
-    this.zone = null;
-    this.input = null;
-    this.browseBtn = null;
-    this.cameraBtn = null;
-    this.fileList = null;
-    this.statsBar = null;
-    this.statsText = null;
-    this.uploadAllBtn = null;
-    this.clearAllBtn = null;
-    this.options = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).element = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).wrapper = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).zone = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).input = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).browseBtn = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).cameraBtn = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).fileList = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).statsBar = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).statsText = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).uploadAllBtn = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).clearAllBtn = null;
+    // biome-ignore lint/suspicious/noExplicitAny: nullifying for GC after destroy
+    (this as any).options = null;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Global registration
+// ---------------------------------------------------------------------------
+
+declare global {
+  interface Window {
+    FileUploadEnhanced: typeof FileUploadEnhanced;
   }
 }
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('file-upload', FileUploadEnhanced, {
+  // biome-ignore lint/suspicious/noExplicitAny: constructor type variance for registry
+  window.AmphibiousRegistry.registerComponent('file-upload', FileUploadEnhanced as any, {
     selector: '[data-file-upload]',
     autoInit: true,
   });
@@ -1467,3 +1880,4 @@ if (window.AmphibiousRegistry) {
 // Export
 window.FileUploadEnhanced = FileUploadEnhanced;
 export default FileUploadEnhanced;
+export { FileUploadEnhanced };

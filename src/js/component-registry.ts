@@ -651,9 +651,16 @@ export class ComponentRegistry {
   }
 }
 
+declare global {
+  interface Window {
+    AmphibiousRegistry?: ComponentRegistry;
+  }
+}
+
 // Create global registry instance
-// biome-ignore lint/suspicious/noExplicitAny: attaching to window global requires any cast
-(window as any).AmphibiousRegistry = new ComponentRegistry();
+if (typeof window !== 'undefined') {
+  window.AmphibiousRegistry = new ComponentRegistry();
+}
 
 // Export for module usage
 export default ComponentRegistry;

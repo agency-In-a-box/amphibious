@@ -13,45 +13,235 @@
  * - Accessible keyboard navigation
  */
 
-class ColorPicker {
-  constructor(element, options = {}) {
+/** Supported color output formats. */
+export type ColorFormat = 'hex' | 'rgb' | 'hsl';
+
+/** Input mode tab identifier (matches `data-format` attribute). */
+export type InputMode = 'hex' | 'rgb' | 'hsl';
+
+/** Drag target identifier, or `false` when not dragging. */
+type DragTarget = 'spectrum' | 'hue' | 'alpha' | false;
+
+/**
+ * Internal HSV + alpha representation of a color.
+ *
+ * @property h - Hue in degrees (0-360).
+ * @property s - Saturation percentage (0-100).
+ * @property v - Value / brightness percentage (0-100).
+ * @property a - Alpha channel (0-1).
+ */
+export interface HSVColor {
+  h: number;
+  s: number;
+  v: number;
+  a: number;
+}
+
+/** RGB color with integer channels (0-255). */
+export interface RGBColor {
+  r: number;
+  g: number;
+  b: number;
+}
+
+/** HSL color with hue in degrees (0-360), saturation and lightness as percentages (0-100). */
+export interface HSLColor {
+  h: number;
+  s: number;
+  l: number;
+}
+
+/**
+ * Localizable UI label strings used by the color picker.
+ *
+ * @property pick - Label for the picker heading.
+ * @property save - Label for the save button.
+ * @property cancel - Label for the cancel button.
+ * @property eyeDropper - Tooltip for the eyedropper button.
+ */
+export interface ColorPickerLabels {
+  pick: string;
+  save: string;
+  cancel: string;
+  eyeDropper: string;
+}
+
+/**
+ * Color change callback signature.
+ * @param color - The formatted color string in the active format.
+ */
+export type ColorChangeCallback = (color: string) => void;
+
+/**
+ * Public options accepted by the {@link ColorPicker} constructor.
+ * All properties are optional; sensible defaults are applied internally.
+ *
+ * @property value - Initial color value (hex, rgb, or hsl string).
+ * @property format - Output color format.
+ * @property alpha - Enable alpha channel support.
+ * @property inline - Render inline instead of as a dropdown popup.
+ * @property presets - Array of preset color strings.
+ * @property showPresets - Show preset color swatches.
+ * @property showRecent - Show recently used color swatches.
+ * @property maxRecent - Maximum number of recent colors to track.
+ * @property showInput - Show color input fields (HEX/RGB/HSL).
+ * @property showButtons - Show Save/Cancel buttons.
+ * @property closeOnSelect - Close the picker when a preset/recent swatch is clicked.
+ * @property eyeDropper - Enable the EyeDropper API button (when supported).
+ * @property labels - Translatable UI label strings.
+ * @property onChange - Callback fired on every color change.
+ * @property onSave - Callback fired when the user clicks Save.
+ * @property onCancel - Callback fired when the user clicks Cancel.
+ */
+export interface ColorPickerOptions {
+  value?: string;
+  format?: ColorFormat;
+  alpha?: boolean;
+  inline?: boolean;
+  presets?: string[];
+  showPresets?: boolean;
+  showRecent?: boolean;
+  maxRecent?: number;
+  showInput?: boolean;
+  showButtons?: boolean;
+  closeOnSelect?: boolean;
+  eyeDropper?: boolean;
+  labels?: Partial<ColorPickerLabels>;
+  onChange?: ColorChangeCallback | null;
+  onSave?: ColorChangeCallback | null;
+  onCancel?: (() => void) | null;
+}
+
+/** Fully resolved internal options with all defaults applied. */
+interface ResolvedOptions {
+  value: string;
+  format: ColorFormat;
+  alpha: boolean;
+  inline: boolean;
+  presets: string[];
+  showPresets: boolean;
+  showRecent: boolean;
+  maxRecent: number;
+  showInput: boolean;
+  showButtons: boolean;
+  closeOnSelect: boolean;
+  eyeDropper: boolean;
+  labels: ColorPickerLabels;
+  onChange: ColorChangeCallback | null;
+  onSave: ColorChangeCallback | null;
+  onCancel: (() => void) | null;
+}
+
+/** Internal mutable state for the color picker. */
+interface ColorPickerState {
+  isOpen: boolean;
+  color: HSVColor;
+  recentColors: string[];
+  isDragging: DragTarget;
+  activeInput: InputMode;
+}
+
+/** Stored event handler entry for cleanup. */
+interface HandlerEntry {
+  element: HTMLElement | Document;
+  type: string;
+  handler: EventListener;
+}
+
+/**
+ * EyeDropper API result (Web API, not in all TS libs).
+ */
+interface EyeDropperResult {
+  sRGBHex: string;
+}
+
+/**
+ * EyeDropper API constructor (Web API, not in all TS libs).
+ */
+interface EyeDropperConstructor {
+  new (): { open(): Promise<EyeDropperResult> };
+}
+
+declare global {
+  interface Window {
+    ColorPicker: typeof ColorPicker;
+    EyeDropper?: EyeDropperConstructor;
+  }
+}
+
+/** Default preset colors. */
+const DEFAULT_PRESETS: string[] = [
+  '#ED8B00',
+  '#FF6900',
+  '#FCB900',
+  '#7BDCB5',
+  '#00D084',
+  '#8ED1FC',
+  '#0693E3',
+  '#ABB8C3',
+  '#EB144C',
+  '#F78DA7',
+  '#9900EF',
+  '#000000',
+  '#FFFFFF',
+];
+
+/**
+ * Comprehensive color picker component with spectrum, hue/alpha sliders,
+ * HEX/RGB/HSL input modes, preset and recent color swatches, and
+ * EyeDropper API support.
+ *
+ * @example
+ * ```ts
+ * const picker = new ColorPicker(document.querySelector('#color-input')!, {
+ *   format: 'hex',
+ *   alpha: true,
+ *   onChange: (color) => console.log('Color:', color),
+ * });
+ * ```
+ */
+export class ColorPicker {
+  private element: HTMLInputElement;
+  private options: ResolvedOptions;
+  private state: ColorPickerState;
+
+  /** Map of handler keys to their registration info for cleanup. */
+  private handlers: Map<string, HandlerEntry>;
+  /** Active timer IDs for cleanup. */
+  private timers: Set<ReturnType<typeof setTimeout>>;
+  /** DOM elements created by this component for cleanup. */
+  private createdElements: Set<HTMLElement>;
+
+  // DOM references set during init() -> setupDOM()
+  private wrapper!: HTMLDivElement;
+  private picker!: HTMLDivElement;
+  private spectrum!: HTMLElement;
+  private spectrumCursor!: HTMLElement;
+  private hueSlider!: HTMLElement;
+  private hueCursor!: HTMLElement;
+  private trigger?: HTMLButtonElement;
+  private alphaSlider?: HTMLElement | null;
+  private alphaCursor?: HTMLElement | null;
+
+  /**
+   * @param element - The `<input>` element to attach the color picker to.
+   * @param options - Configuration options merged with sensible defaults.
+   */
+  constructor(element: HTMLInputElement, options: ColorPickerOptions = {}) {
     this.element = element;
     this.options = {
-      // Basic options
       value: options.value || element.value || '#ed8b00',
-      format: options.format || 'hex', // hex, rgb, hsl
+      format: options.format || 'hex',
       alpha: options.alpha !== false,
       inline: options.inline || false,
-
-      // Preset colors
-      presets: options.presets || [
-        '#ED8B00',
-        '#FF6900',
-        '#FCB900',
-        '#7BDCB5',
-        '#00D084',
-        '#8ED1FC',
-        '#0693E3',
-        '#ABB8C3',
-        '#EB144C',
-        '#F78DA7',
-        '#9900EF',
-        '#000000',
-        '#FFFFFF',
-      ],
-
-      // Swatches
+      presets: options.presets || DEFAULT_PRESETS,
       showPresets: options.showPresets !== false,
       showRecent: options.showRecent !== false,
       maxRecent: options.maxRecent || 8,
-
-      // UI options
       showInput: options.showInput !== false,
       showButtons: options.showButtons !== false,
       closeOnSelect: options.closeOnSelect !== false,
       eyeDropper: options.eyeDropper !== false && 'EyeDropper' in window,
-
-      // Labels
       labels: {
         pick: options.labels?.pick || 'Pick Color',
         save: options.labels?.save || 'Save',
@@ -59,19 +249,15 @@ class ColorPicker {
         eyeDropper: options.labels?.eyeDropper || 'Pick from screen',
         ...options.labels,
       },
-
-      // Callbacks
       onChange: options.onChange || null,
       onSave: options.onSave || null,
       onCancel: options.onCancel || null,
-
-      ...options,
     };
 
     // State
     this.state = {
       isOpen: false,
-      color: this.parseColor(this.options.value),
+      color: this.parseColor(this.options.value) || { h: 0, s: 100, v: 100, a: 1 },
       recentColors: this.loadRecentColors(),
       isDragging: false,
       activeInput: 'hex',
@@ -85,7 +271,7 @@ class ColorPicker {
     this.init();
   }
 
-  init() {
+  private init(): void {
     this.setupDOM();
     this.attachEvents();
     this.updateUI();
@@ -96,7 +282,7 @@ class ColorPicker {
     }
   }
 
-  setupDOM() {
+  private setupDOM(): void {
     // Hide original input if not inline
     if (!this.options.inline) {
       this.element.type = 'hidden';
@@ -256,7 +442,7 @@ class ColorPicker {
             <div class="aiab-preset-colors">
               ${this.options.presets
                 .map(
-                  (color) => `
+                  (color: string) => `
                 <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}"></button>
               `,
                 )
@@ -276,7 +462,7 @@ class ColorPicker {
             <div class="aiab-recent-colors">
               ${this.state.recentColors
                 .map(
-                  (color) => `
+                  (color: string) => `
                 <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}"></button>
               `,
                 )
@@ -305,10 +491,10 @@ class ColorPicker {
     this.createdElements.add(this.picker);
 
     // Get references to elements
-    this.spectrum = this.picker.querySelector('.aiab-color-spectrum');
-    this.spectrumCursor = this.picker.querySelector('.aiab-spectrum-cursor');
-    this.hueSlider = this.picker.querySelector('.aiab-hue-slider');
-    this.hueCursor = this.picker.querySelector('.aiab-hue-cursor');
+    this.spectrum = this.picker.querySelector('.aiab-color-spectrum') as HTMLElement;
+    this.spectrumCursor = this.picker.querySelector('.aiab-spectrum-cursor') as HTMLElement;
+    this.hueSlider = this.picker.querySelector('.aiab-hue-slider') as HTMLElement;
+    this.hueCursor = this.picker.querySelector('.aiab-hue-cursor') as HTMLElement;
 
     if (this.options.alpha) {
       this.alphaSlider = this.picker.querySelector('.aiab-alpha-slider');
@@ -316,7 +502,7 @@ class ColorPicker {
     }
 
     // Insert into DOM
-    this.element.parentNode.insertBefore(this.wrapper, this.element.nextSibling);
+    this.element.parentNode?.insertBefore(this.wrapper, this.element.nextSibling);
     this.createdElements.add(this.wrapper);
 
     // Show picker if inline
@@ -326,10 +512,10 @@ class ColorPicker {
     }
   }
 
-  attachEvents() {
+  private attachEvents(): void {
     // Trigger button
     if (this.trigger) {
-      const triggerHandler = () => this.toggle();
+      const triggerHandler: EventListener = () => this.toggle();
       this.trigger.addEventListener('click', triggerHandler);
       this.handlers.set('trigger-click', {
         element: this.trigger,
@@ -339,7 +525,7 @@ class ColorPicker {
     }
 
     // Spectrum interaction
-    const spectrumMouseDown = (e) => this.handleSpectrumStart(e);
+    const spectrumMouseDown: EventListener = (e) => this.handleSpectrumStart(e as MouseEvent);
     this.spectrum.addEventListener('mousedown', spectrumMouseDown);
     this.handlers.set('spectrum-mousedown', {
       element: this.spectrum,
@@ -348,7 +534,7 @@ class ColorPicker {
     });
 
     // Hue slider interaction
-    const hueMouseDown = (e) => this.handleHueStart(e);
+    const hueMouseDown: EventListener = (e) => this.handleHueStart(e as MouseEvent);
     this.hueSlider.addEventListener('mousedown', hueMouseDown);
     this.handlers.set('hue-mousedown', {
       element: this.hueSlider,
@@ -358,7 +544,7 @@ class ColorPicker {
 
     // Alpha slider interaction
     if (this.alphaSlider) {
-      const alphaMouseDown = (e) => this.handleAlphaStart(e);
+      const alphaMouseDown: EventListener = (e) => this.handleAlphaStart(e as MouseEvent);
       this.alphaSlider.addEventListener('mousedown', alphaMouseDown);
       this.handlers.set('alpha-mousedown', {
         element: this.alphaSlider,
@@ -368,9 +554,10 @@ class ColorPicker {
     }
 
     // Input tabs
-    const tabBtns = this.picker.querySelectorAll('.aiab-tab-btn');
-    tabBtns.forEach((btn, index) => {
-      const tabHandler = () => this.switchInputMode(btn.dataset.format);
+    const tabBtns = this.picker.querySelectorAll<HTMLElement>('.aiab-tab-btn');
+    tabBtns.forEach((btn: HTMLElement, index: number) => {
+      const tabHandler: EventListener = () =>
+        this.switchInputMode((btn.dataset.format as InputMode) || 'hex');
       btn.addEventListener('click', tabHandler);
       this.handlers.set(`tab-${index}`, { element: btn, type: 'click', handler: tabHandler });
     });
@@ -379,9 +566,12 @@ class ColorPicker {
     this.attachInputEvents();
 
     // Preset swatches
-    const presetSwatches = this.picker.querySelectorAll('.aiab-preset-colors .aiab-color-swatch');
-    presetSwatches.forEach((swatch, index) => {
-      const swatchHandler = () => this.selectColor(swatch.dataset.color);
+    const presetSwatches = this.picker.querySelectorAll<HTMLElement>(
+      '.aiab-preset-colors .aiab-color-swatch',
+    );
+    presetSwatches.forEach((swatch: HTMLElement, index: number) => {
+      const swatchHandler: EventListener = () =>
+        this.selectColor(swatch.dataset.color || '');
       swatch.addEventListener('click', swatchHandler);
       this.handlers.set(`preset-${index}`, {
         element: swatch,
@@ -391,9 +581,12 @@ class ColorPicker {
     });
 
     // Recent swatches
-    const recentSwatches = this.picker.querySelectorAll('.aiab-recent-colors .aiab-color-swatch');
-    recentSwatches.forEach((swatch, index) => {
-      const swatchHandler = () => this.selectColor(swatch.dataset.color);
+    const recentSwatches = this.picker.querySelectorAll<HTMLElement>(
+      '.aiab-recent-colors .aiab-color-swatch',
+    );
+    recentSwatches.forEach((swatch: HTMLElement, index: number) => {
+      const swatchHandler: EventListener = () =>
+        this.selectColor(swatch.dataset.color || '');
       swatch.addEventListener('click', swatchHandler);
       this.handlers.set(`recent-${index}`, {
         element: swatch,
@@ -403,9 +596,9 @@ class ColorPicker {
     });
 
     // Eyedropper
-    const eyedropperBtn = this.picker.querySelector('.aiab-eyedropper-btn');
+    const eyedropperBtn = this.picker.querySelector('.aiab-eyedropper-btn') as HTMLElement | null;
     if (eyedropperBtn) {
-      const eyedropperHandler = () => this.pickFromScreen();
+      const eyedropperHandler: EventListener = () => this.pickFromScreen();
       eyedropperBtn.addEventListener('click', eyedropperHandler);
       this.handlers.set('eyedropper', {
         element: eyedropperBtn,
@@ -415,24 +608,24 @@ class ColorPicker {
     }
 
     // Buttons
-    const cancelBtn = this.picker.querySelector('.aiab-btn-cancel');
+    const cancelBtn = this.picker.querySelector('.aiab-btn-cancel') as HTMLElement | null;
     if (cancelBtn) {
-      const cancelHandler = () => this.cancel();
+      const cancelHandler: EventListener = () => this.cancel();
       cancelBtn.addEventListener('click', cancelHandler);
       this.handlers.set('cancel', { element: cancelBtn, type: 'click', handler: cancelHandler });
     }
 
-    const saveBtn = this.picker.querySelector('.aiab-btn-save');
+    const saveBtn = this.picker.querySelector('.aiab-btn-save') as HTMLElement | null;
     if (saveBtn) {
-      const saveHandler = () => this.save();
+      const saveHandler: EventListener = () => this.save();
       saveBtn.addEventListener('click', saveHandler);
       this.handlers.set('save', { element: saveBtn, type: 'click', handler: saveHandler });
     }
 
     // Click outside to close
     if (!this.options.inline) {
-      const outsideHandler = (e) => {
-        if (!this.wrapper.contains(e.target) && this.state.isOpen) {
+      const outsideHandler: EventListener = (e: Event) => {
+        if (!this.wrapper.contains(e.target as Node) && this.state.isOpen) {
           this.close();
         }
       };
@@ -445,65 +638,74 @@ class ColorPicker {
     }
 
     // Keyboard navigation
-    const keyHandler = (e) => this.handleKeyboard(e);
+    const keyHandler: EventListener = (e: Event) => this.handleKeyboard(e as KeyboardEvent);
     this.picker.addEventListener('keydown', keyHandler);
     this.handlers.set('keyboard', { element: this.picker, type: 'keydown', handler: keyHandler });
   }
 
-  attachInputEvents() {
+  private attachInputEvents(): void {
     // HEX input
-    const hexInput = this.picker.querySelector('.hex-input');
+    const hexInput = this.picker.querySelector('.hex-input') as HTMLInputElement | null;
     if (hexInput) {
-      const hexHandler = () => this.handleHexInput(hexInput.value);
+      const hexHandler: EventListener = () => this.handleHexInput(hexInput.value);
       hexInput.addEventListener('input', hexHandler);
       this.handlers.set('hex-input', { element: hexInput, type: 'input', handler: hexHandler });
     }
 
     // RGB inputs
-    const rgbInputs = ['r', 'g', 'b'];
-    if (this.options.alpha) rgbInputs.push('a');
+    const rgbChannels: string[] = ['r', 'g', 'b'];
+    if (this.options.alpha) rgbChannels.push('a');
 
-    rgbInputs.forEach((channel) => {
-      const input = this.picker.querySelector(`.${channel}-input`);
+    rgbChannels.forEach((channel: string) => {
+      const input = this.picker.querySelector(`.${channel}-input`) as HTMLInputElement | null;
       if (input) {
-        const rgbHandler = () => this.handleRGBInput();
+        const rgbHandler: EventListener = () => this.handleRGBInput();
         input.addEventListener('input', rgbHandler);
-        this.handlers.set(`rgb-${channel}`, { element: input, type: 'input', handler: rgbHandler });
+        this.handlers.set(`rgb-${channel}`, {
+          element: input,
+          type: 'input',
+          handler: rgbHandler,
+        });
       }
     });
 
     // HSL inputs
-    const hslInputs = ['h', 's', 'l'];
-    if (this.options.alpha) hslInputs.push('a2');
+    const hslChannels: string[] = ['h', 's', 'l'];
+    if (this.options.alpha) hslChannels.push('a2');
 
-    hslInputs.forEach((channel) => {
-      const input = this.picker.querySelector(`.${channel}-input`);
+    hslChannels.forEach((channel: string) => {
+      const input = this.picker.querySelector(`.${channel}-input`) as HTMLInputElement | null;
       if (input) {
-        const hslHandler = () => this.handleHSLInput();
+        const hslHandler: EventListener = () => this.handleHSLInput();
         input.addEventListener('input', hslHandler);
-        this.handlers.set(`hsl-${channel}`, { element: input, type: 'input', handler: hslHandler });
+        this.handlers.set(`hsl-${channel}`, {
+          element: input,
+          type: 'input',
+          handler: hslHandler,
+        });
       }
     });
   }
 
-  // Spectrum interaction handlers
-  handleSpectrumStart(e) {
+  // --- Spectrum interaction handlers ---
+
+  private handleSpectrumStart(e: MouseEvent): void {
     e.preventDefault();
     this.state.isDragging = 'spectrum';
     this.handleSpectrumMove(e);
 
-    const moveHandler = (e) => this.handleSpectrumMove(e);
-    const upHandler = () => {
+    const moveHandler = (ev: MouseEvent): void => this.handleSpectrumMove(ev);
+    const upHandler = (): void => {
       this.state.isDragging = false;
-      document.removeEventListener('mousemove', moveHandler);
-      document.removeEventListener('mouseup', upHandler);
+      document.removeEventListener('mousemove', moveHandler as EventListener);
+      document.removeEventListener('mouseup', upHandler as EventListener);
     };
 
-    document.addEventListener('mousemove', moveHandler);
-    document.addEventListener('mouseup', upHandler);
+    document.addEventListener('mousemove', moveHandler as EventListener);
+    document.addEventListener('mouseup', upHandler as EventListener);
   }
 
-  handleSpectrumMove(e) {
+  private handleSpectrumMove(e: MouseEvent): void {
     if (!this.state.isDragging && e.type === 'mousemove') return;
 
     const rect = this.spectrum.getBoundingClientRect();
@@ -519,24 +721,25 @@ class ColorPicker {
     this.updateFromHSV();
   }
 
-  // Hue slider handlers
-  handleHueStart(e) {
+  // --- Hue slider handlers ---
+
+  private handleHueStart(e: MouseEvent): void {
     e.preventDefault();
     this.state.isDragging = 'hue';
     this.handleHueMove(e);
 
-    const moveHandler = (e) => this.handleHueMove(e);
-    const upHandler = () => {
+    const moveHandler = (ev: MouseEvent): void => this.handleHueMove(ev);
+    const upHandler = (): void => {
       this.state.isDragging = false;
-      document.removeEventListener('mousemove', moveHandler);
-      document.removeEventListener('mouseup', upHandler);
+      document.removeEventListener('mousemove', moveHandler as EventListener);
+      document.removeEventListener('mouseup', upHandler as EventListener);
     };
 
-    document.addEventListener('mousemove', moveHandler);
-    document.addEventListener('mouseup', upHandler);
+    document.addEventListener('mousemove', moveHandler as EventListener);
+    document.addEventListener('mouseup', upHandler as EventListener);
   }
 
-  handleHueMove(e) {
+  private handleHueMove(e: MouseEvent): void {
     if (!this.state.isDragging && e.type === 'mousemove') return;
 
     const rect = this.hueSlider.getBoundingClientRect();
@@ -547,27 +750,29 @@ class ColorPicker {
     this.updateFromHSV();
   }
 
-  // Alpha slider handlers
-  handleAlphaStart(e) {
+  // --- Alpha slider handlers ---
+
+  private handleAlphaStart(e: MouseEvent): void {
     e.preventDefault();
     this.state.isDragging = 'alpha';
     this.handleAlphaMove(e);
 
-    const moveHandler = (e) => this.handleAlphaMove(e);
-    const upHandler = () => {
+    const moveHandler = (ev: MouseEvent): void => this.handleAlphaMove(ev);
+    const upHandler = (): void => {
       this.state.isDragging = false;
-      document.removeEventListener('mousemove', moveHandler);
-      document.removeEventListener('mouseup', upHandler);
+      document.removeEventListener('mousemove', moveHandler as EventListener);
+      document.removeEventListener('mouseup', upHandler as EventListener);
     };
 
-    document.addEventListener('mousemove', moveHandler);
-    document.addEventListener('mouseup', upHandler);
+    document.addEventListener('mousemove', moveHandler as EventListener);
+    document.addEventListener('mouseup', upHandler as EventListener);
   }
 
-  handleAlphaMove(e) {
+  private handleAlphaMove(e: MouseEvent): void {
     if (!this.state.isDragging && e.type === 'mousemove') return;
 
-    const rect = this.alphaSlider.getBoundingClientRect();
+    // biome-ignore lint/style/noNonNullAssertion: alphaSlider is guaranteed when handleAlphaStart fires
+    const rect = this.alphaSlider!.getBoundingClientRect();
     const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
     const a = x / rect.width;
 
@@ -575,8 +780,9 @@ class ColorPicker {
     this.updateFromHSV();
   }
 
-  // Input handlers
-  handleHexInput(value) {
+  // --- Input handlers ---
+
+  private handleHexInput(value: string): void {
     const color = this.parseColor(value);
     if (color) {
       this.state.color = color;
@@ -584,12 +790,26 @@ class ColorPicker {
     }
   }
 
-  handleRGBInput() {
-    const r = Number.parseInt(this.picker.querySelector('.r-input').value, 10) || 0;
-    const g = Number.parseInt(this.picker.querySelector('.g-input').value, 10) || 0;
-    const b = Number.parseInt(this.picker.querySelector('.b-input').value, 10) || 0;
+  private handleRGBInput(): void {
+    const r =
+      Number.parseInt(
+        (this.picker.querySelector('.r-input') as HTMLInputElement)?.value ?? '0',
+        10,
+      ) || 0;
+    const g =
+      Number.parseInt(
+        (this.picker.querySelector('.g-input') as HTMLInputElement)?.value ?? '0',
+        10,
+      ) || 0;
+    const b =
+      Number.parseInt(
+        (this.picker.querySelector('.b-input') as HTMLInputElement)?.value ?? '0',
+        10,
+      ) || 0;
     const a = this.options.alpha
-      ? Number.parseFloat(this.picker.querySelector('.a-input').value) || 1
+      ? Number.parseFloat(
+          (this.picker.querySelector('.a-input') as HTMLInputElement)?.value ?? '1',
+        ) || 1
       : 1;
 
     const hsv = this.rgbToHsv(r, g, b);
@@ -597,12 +817,26 @@ class ColorPicker {
     this.updateUI();
   }
 
-  handleHSLInput() {
-    const h = Number.parseInt(this.picker.querySelector('.h-input').value, 10) || 0;
-    const s = Number.parseInt(this.picker.querySelector('.s-input').value, 10) || 0;
-    const l = Number.parseInt(this.picker.querySelector('.l-input').value, 10) || 0;
+  private handleHSLInput(): void {
+    const h =
+      Number.parseInt(
+        (this.picker.querySelector('.h-input') as HTMLInputElement)?.value ?? '0',
+        10,
+      ) || 0;
+    const s =
+      Number.parseInt(
+        (this.picker.querySelector('.s-input') as HTMLInputElement)?.value ?? '0',
+        10,
+      ) || 0;
+    const l =
+      Number.parseInt(
+        (this.picker.querySelector('.l-input') as HTMLInputElement)?.value ?? '0',
+        10,
+      ) || 0;
     const a = this.options.alpha
-      ? Number.parseFloat(this.picker.querySelector('.a2-input').value) || 1
+      ? Number.parseFloat(
+          (this.picker.querySelector('.a2-input') as HTMLInputElement)?.value ?? '1',
+        ) || 1
       : 1;
 
     const rgb = this.hslToRgb(h, s, l);
@@ -611,8 +845,9 @@ class ColorPicker {
     this.updateUI();
   }
 
-  // Keyboard navigation
-  handleKeyboard(e) {
+  // --- Keyboard navigation ---
+
+  private handleKeyboard(e: KeyboardEvent): void {
     switch (e.key) {
       case 'Escape':
         if (!this.options.inline) {
@@ -627,8 +862,9 @@ class ColorPicker {
     }
   }
 
-  // UI Updates
-  updateUI() {
+  // --- UI Updates ---
+
+  private updateUI(): void {
     // Update spectrum cursor
     const spectrumRect = this.spectrum.getBoundingClientRect();
     this.spectrumCursor.style.left = `${(this.state.color.s / 100) * spectrumRect.width}px`;
@@ -640,7 +876,8 @@ class ColorPicker {
 
     // Update alpha cursor
     if (this.alphaCursor) {
-      const alphaRect = this.alphaSlider.getBoundingClientRect();
+      // biome-ignore lint/style/noNonNullAssertion: alphaCursor and alphaSlider are always set together
+      const alphaRect = this.alphaSlider!.getBoundingClientRect();
       this.alphaCursor.style.left = `${this.state.color.a * alphaRect.width}px`;
     }
 
@@ -659,48 +896,52 @@ class ColorPicker {
 
     // Update trigger preview
     if (this.trigger) {
-      const preview = this.trigger.querySelector('.aiab-color-preview');
-      const value = this.trigger.querySelector('.aiab-color-value');
-      preview.style.background = this.formatColor(this.state.color);
-      value.textContent = this.formatColor(this.state.color);
+      const preview = this.trigger.querySelector('.aiab-color-preview') as HTMLElement | null;
+      const value = this.trigger.querySelector('.aiab-color-value') as HTMLElement | null;
+      if (preview) {
+        preview.style.background = this.formatColor(this.state.color);
+      }
+      if (value) {
+        value.textContent = this.formatColor(this.state.color);
+      }
     }
   }
 
-  updateInputs() {
+  private updateInputs(): void {
     const rgb = this.hsvToRgb(this.state.color.h, this.state.color.s, this.state.color.v);
     const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
 
     // Update HEX input
-    const hexInput = this.picker.querySelector('.hex-input');
+    const hexInput = this.picker.querySelector('.hex-input') as HTMLInputElement | null;
     if (hexInput && document.activeElement !== hexInput) {
       hexInput.value = this.rgbToHex(rgb.r, rgb.g, rgb.b);
     }
 
     // Update RGB inputs
-    const rInput = this.picker.querySelector('.r-input');
-    const gInput = this.picker.querySelector('.g-input');
-    const bInput = this.picker.querySelector('.b-input');
-    const aInput = this.picker.querySelector('.a-input');
+    const rInput = this.picker.querySelector('.r-input') as HTMLInputElement | null;
+    const gInput = this.picker.querySelector('.g-input') as HTMLInputElement | null;
+    const bInput = this.picker.querySelector('.b-input') as HTMLInputElement | null;
+    const aInput = this.picker.querySelector('.a-input') as HTMLInputElement | null;
 
-    if (rInput && document.activeElement !== rInput) rInput.value = rgb.r;
-    if (gInput && document.activeElement !== gInput) gInput.value = rgb.g;
-    if (bInput && document.activeElement !== bInput) bInput.value = rgb.b;
+    if (rInput && document.activeElement !== rInput) rInput.value = String(rgb.r);
+    if (gInput && document.activeElement !== gInput) gInput.value = String(rgb.g);
+    if (bInput && document.activeElement !== bInput) bInput.value = String(rgb.b);
     if (aInput && document.activeElement !== aInput) aInput.value = this.state.color.a.toFixed(2);
 
     // Update HSL inputs
-    const hInput = this.picker.querySelector('.h-input');
-    const sInput = this.picker.querySelector('.s-input');
-    const lInput = this.picker.querySelector('.l-input');
-    const a2Input = this.picker.querySelector('.a2-input');
+    const hInput = this.picker.querySelector('.h-input') as HTMLInputElement | null;
+    const sInput = this.picker.querySelector('.s-input') as HTMLInputElement | null;
+    const lInput = this.picker.querySelector('.l-input') as HTMLInputElement | null;
+    const a2Input = this.picker.querySelector('.a2-input') as HTMLInputElement | null;
 
-    if (hInput && document.activeElement !== hInput) hInput.value = Math.round(hsl.h);
-    if (sInput && document.activeElement !== sInput) sInput.value = Math.round(hsl.s);
-    if (lInput && document.activeElement !== lInput) lInput.value = Math.round(hsl.l);
+    if (hInput && document.activeElement !== hInput) hInput.value = String(Math.round(hsl.h));
+    if (sInput && document.activeElement !== sInput) sInput.value = String(Math.round(hsl.s));
+    if (lInput && document.activeElement !== lInput) lInput.value = String(Math.round(hsl.l));
     if (a2Input && document.activeElement !== a2Input)
       a2Input.value = this.state.color.a.toFixed(2);
   }
 
-  updateFromHSV() {
+  private updateFromHSV(): void {
     this.updateUI();
 
     // Update hidden input
@@ -714,8 +955,9 @@ class ColorPicker {
     this.element.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
-  // Color selection
-  selectColor(color) {
+  // --- Color selection ---
+
+  private selectColor(color: string): void {
     const parsed = this.parseColor(color);
     if (parsed) {
       this.state.color = parsed;
@@ -727,36 +969,40 @@ class ColorPicker {
     }
   }
 
-  // Eye dropper
-  async pickFromScreen() {
+  // --- Eye dropper ---
+
+  private async pickFromScreen(): Promise<void> {
     if (!('EyeDropper' in window)) return;
 
     try {
-      const eyeDropper = new EyeDropper();
-      const result = await eyeDropper.open();
+      // biome-ignore lint/suspicious/noExplicitAny: EyeDropper API is not in all TS libs
+      const eyeDropper = new (window as any).EyeDropper();
+      const result: EyeDropperResult = await eyeDropper.open();
       this.selectColor(result.sRGBHex);
-    } catch (_e) {
+    } catch (_e: unknown) {
       // User cancelled
     }
   }
 
-  // Input mode switching
-  switchInputMode(format) {
+  // --- Input mode switching ---
+
+  private switchInputMode(format: InputMode): void {
     this.state.activeInput = format;
 
     // Update tabs
-    this.picker.querySelectorAll('.aiab-tab-btn').forEach((btn) => {
+    this.picker.querySelectorAll<HTMLElement>('.aiab-tab-btn').forEach((btn: HTMLElement) => {
       btn.classList.toggle('aiab-active', btn.dataset.format === format);
     });
 
     // Update input groups
-    this.picker.querySelectorAll('.aiab-input-group').forEach((group) => {
+    this.picker.querySelectorAll<HTMLElement>('.aiab-input-group').forEach((group: HTMLElement) => {
       group.classList.toggle('aiab-active', group.dataset.format === format);
     });
   }
 
-  // Color conversion functions
-  parseColor(color) {
+  // --- Color conversion functions ---
+
+  private parseColor(color: string): HSVColor | null {
     if (!color) return null;
 
     // Try to parse as hex
@@ -782,7 +1028,7 @@ class ColorPicker {
     return null;
   }
 
-  formatColor(color) {
+  private formatColor(color: HSVColor): string {
     const rgb = this.hsvToRgb(color.h, color.s, color.v);
 
     switch (this.options.format) {
@@ -802,19 +1048,19 @@ class ColorPicker {
 
       default: {
         // hex
-        const hex = this.rgbToHex(rgb.r, rgb.g, rgb.b);
+        const hexStr = this.rgbToHex(rgb.r, rgb.g, rgb.b);
         if (this.options.alpha && color.a < 1) {
           const alphaHex = Math.round(color.a * 255)
             .toString(16)
             .padStart(2, '0');
-          return hex + alphaHex;
+          return hexStr + alphaHex;
         }
-        return hex;
+        return hexStr;
       }
     }
   }
 
-  rgbToHsv(r, g, b) {
+  private rgbToHsv(r: number, g: number, b: number): { h: number; s: number; v: number } {
     r /= 255;
     g /= 255;
     b /= 255;
@@ -844,14 +1090,14 @@ class ColorPicker {
     };
   }
 
-  hsvToRgb(h, s, v) {
+  private hsvToRgb(h: number, s: number, v: number): RGBColor {
     h /= 360;
     s /= 100;
     v /= 100;
 
-    let r;
-    let g;
-    let b;
+    let r = 0;
+    let g = 0;
+    let b = 0;
 
     if (s === 0) {
       r = g = b = v;
@@ -903,15 +1149,15 @@ class ColorPicker {
     };
   }
 
-  rgbToHsl(r, g, b) {
+  private rgbToHsl(r: number, g: number, b: number): HSLColor {
     r /= 255;
     g /= 255;
     b /= 255;
 
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
-    let h;
-    let s;
+    let h = 0;
+    let s = 0;
     const l = (max + min) / 2;
 
     if (max === min) {
@@ -940,19 +1186,19 @@ class ColorPicker {
     };
   }
 
-  hslToRgb(h, s, l) {
+  private hslToRgb(h: number, s: number, l: number): RGBColor {
     h /= 360;
     s /= 100;
     l /= 100;
 
-    let r;
-    let g;
-    let b;
+    let r = 0;
+    let g = 0;
+    let b = 0;
 
     if (s === 0) {
       r = g = b = l;
     } else {
-      const hue2rgb = (p, q, t) => {
+      const hue2rgb = (p: number, q: number, t: number): number => {
         if (t < 0) t += 1;
         if (t > 1) t -= 1;
         if (t < 1 / 6) return p + (q - p) * 6 * t;
@@ -976,27 +1222,28 @@ class ColorPicker {
     };
   }
 
-  rgbToHex(r, g, b) {
+  private rgbToHex(r: number, g: number, b: number): string {
     return `#${[r, g, b]
-      .map((x) => {
+      .map((x: number) => {
         const hex = x.toString(16);
         return hex.length === 1 ? `0${hex}` : hex;
       })
       .join('')}`;
   }
 
-  // Recent colors management
-  loadRecentColors() {
+  // --- Recent colors management ---
+
+  private loadRecentColors(): string[] {
     try {
       const stored = localStorage.getItem('aiab-color-picker-recent');
-      return stored ? JSON.parse(stored) : [];
+      return stored ? (JSON.parse(stored) as string[]) : [];
     } catch {
       return [];
     }
   }
 
-  saveRecentColor(color) {
-    const recent = this.state.recentColors.filter((c) => c !== color);
+  private saveRecentColor(color: string): void {
+    const recent = this.state.recentColors.filter((c: string) => c !== color);
     recent.unshift(color);
     this.state.recentColors = recent.slice(0, this.options.maxRecent);
 
@@ -1007,8 +1254,10 @@ class ColorPicker {
     }
   }
 
-  // Public API
-  toggle() {
+  // --- Public API ---
+
+  /** Toggle the picker between open and closed states. */
+  public toggle(): void {
     if (this.state.isOpen) {
       this.close();
     } else {
@@ -1016,7 +1265,8 @@ class ColorPicker {
     }
   }
 
-  open() {
+  /** Open the color picker dropdown. No-ops if inline or already open. */
+  public open(): void {
     if (this.options.inline || this.state.isOpen) return;
 
     this.picker.style.display = 'block';
@@ -1024,13 +1274,14 @@ class ColorPicker {
     this.picker.classList.add('open');
 
     // Focus first input
-    const firstInput = this.picker.querySelector('input');
+    const firstInput = this.picker.querySelector('input') as HTMLElement | null;
     if (firstInput) {
       firstInput.focus();
     }
   }
 
-  close() {
+  /** Close the color picker dropdown. No-ops if inline or already closed. */
+  public close(): void {
     if (this.options.inline || !this.state.isOpen) return;
 
     this.picker.style.display = 'none';
@@ -1038,7 +1289,8 @@ class ColorPicker {
     this.picker.classList.remove('open');
   }
 
-  save() {
+  /** Save the current color, add to recents, update the input, and close. */
+  public save(): void {
     const color = this.formatColor(this.state.color);
 
     // Save to recent colors
@@ -1060,7 +1312,8 @@ class ColorPicker {
     }
   }
 
-  cancel() {
+  /** Cancel changes, reset to the element's current value, and close. */
+  public cancel(): void {
     // Reset to original value
     this.setValue(this.element.value);
 
@@ -1077,11 +1330,13 @@ class ColorPicker {
     }
   }
 
-  getValue() {
+  /** Get the current color as a formatted string. */
+  public getValue(): string {
     return this.formatColor(this.state.color);
   }
 
-  setValue(value) {
+  /** Programmatically set the color from a string value. */
+  public setValue(value: string): void {
     const color = this.parseColor(value);
     if (color) {
       this.state.color = color;
@@ -1090,24 +1345,26 @@ class ColorPicker {
     }
   }
 
-  setFormat(format) {
+  /** Change the output color format. */
+  public setFormat(format: ColorFormat): void {
     this.options.format = format;
     this.updateUI();
   }
 
-  destroy() {
+  /** Tear down the component: remove event listeners, timers, and created DOM elements. */
+  public destroy(): void {
     // Remove event listeners
-    this.handlers.forEach(({ element, type, handler }) => {
+    this.handlers.forEach(({ element, type, handler }: HandlerEntry) => {
       element.removeEventListener(type, handler);
     });
     this.handlers.clear();
 
     // Clear timers
-    this.timers.forEach((timer) => clearTimeout(timer));
+    this.timers.forEach((timer: ReturnType<typeof setTimeout>) => clearTimeout(timer));
     this.timers.clear();
 
     // Remove created elements
-    this.createdElements.forEach((element) => {
+    this.createdElements.forEach((element: HTMLElement) => {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
@@ -1123,16 +1380,18 @@ class ColorPicker {
 
 // Auto-initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-color-picker]').forEach((element) => {
+  document.querySelectorAll<HTMLInputElement>('[data-color-picker]').forEach((element) => {
     new ColorPicker(element);
   });
 });
 
 // Register with component registry if available
 if (window.AmphibiousRegistry) {
-  window.AmphibiousRegistry.registerComponent('aiab-color-picker', ColorPicker);
+  // biome-ignore lint/suspicious/noExplicitAny: registry accepts generic constructor signature
+  window.AmphibiousRegistry.registerComponent('aiab-color-picker', ColorPicker as any);
 }
 
 // Export
 window.ColorPicker = ColorPicker;
 export default ColorPicker;
+export { ColorPicker as ColorPickerComponent };
