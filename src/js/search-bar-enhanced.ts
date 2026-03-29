@@ -114,11 +114,7 @@ export interface SearchBarEnhancedOptions {
 
   // Display options
   resultTemplate?:
-    | ((
-        item: SearchBarEnhancedSourceItem,
-        query: string,
-        instance: SearchBarEnhanced,
-      ) => string)
+    | ((item: SearchBarEnhancedSourceItem, query: string, instance: SearchBarEnhanced) => string)
     | null;
   groupBy?: string | ((item: SearchBarEnhancedResultObject) => string) | null;
   sortBy?:
@@ -149,11 +145,7 @@ export interface SearchBarEnhancedOptions {
 
   // Callbacks
   onSearch?:
-    | ((
-        query: string,
-        results: SearchBarEnhancedSourceItem[],
-        instance: SearchBarEnhanced,
-      ) => void)
+    | ((query: string, results: SearchBarEnhancedSourceItem[], instance: SearchBarEnhanced) => void)
     | null;
   onSelect?: ((item: SearchBarEnhancedSourceItem, instance: SearchBarEnhanced) => void) | null;
   onSubmit?:
@@ -203,11 +195,7 @@ interface SearchBarEnhancedResolvedOptions {
   wildcards: boolean;
 
   resultTemplate:
-    | ((
-        item: SearchBarEnhancedSourceItem,
-        query: string,
-        instance: SearchBarEnhanced,
-      ) => string)
+    | ((item: SearchBarEnhancedSourceItem, query: string, instance: SearchBarEnhanced) => string)
     | null;
   groupBy: string | ((item: SearchBarEnhancedResultObject) => string) | null;
   sortBy:
@@ -234,11 +222,7 @@ interface SearchBarEnhancedResolvedOptions {
   labels: SearchBarEnhancedLabels;
 
   onSearch:
-    | ((
-        query: string,
-        results: SearchBarEnhancedSourceItem[],
-        instance: SearchBarEnhanced,
-      ) => void)
+    | ((query: string, results: SearchBarEnhancedSourceItem[], instance: SearchBarEnhanced) => void)
     | null;
   onSelect: ((item: SearchBarEnhancedSourceItem, instance: SearchBarEnhanced) => void) | null;
   onSubmit:
@@ -804,11 +788,11 @@ class SearchBarEnhanced {
       filtersPanel.style.display = filtersPanel.style.display === 'none' ? 'block' : 'none';
     });
 
-    filtersPanel.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input, select').forEach(
-      (filter: HTMLInputElement | HTMLSelectElement) => {
+    filtersPanel
+      .querySelectorAll<HTMLInputElement | HTMLSelectElement>('input, select')
+      .forEach((filter: HTMLInputElement | HTMLSelectElement) => {
         this.addHandler(filter, 'change', () => this.applyFilters());
-      },
-    );
+      });
   }
 
   private bindEvents(): void {
@@ -871,9 +855,7 @@ class SearchBarEnhanced {
     });
 
     // Keyboard navigation
-    this.addHandler(this.input, 'keydown', (e: Event) =>
-      this.handleKeydown(e as KeyboardEvent),
-    );
+    this.addHandler(this.input, 'keydown', (e: Event) => this.handleKeydown(e as KeyboardEvent));
 
     // Clear button
     if (this.clearBtn) {
@@ -1150,7 +1132,11 @@ class SearchBarEnhanced {
       const data: SearchBarEnhancedSourceItem[] | PaginatedApiResponse = await response.json();
 
       // Assume the API returns { results: [], hasMore: bool }
-      if (typeof data === 'object' && !Array.isArray(data) && (data as PaginatedApiResponse).results) {
+      if (
+        typeof data === 'object' &&
+        !Array.isArray(data) &&
+        (data as PaginatedApiResponse).results
+      ) {
         const paginated = data as PaginatedApiResponse;
         this.state.hasMore = paginated.hasMore || false;
         return paginated.results;
@@ -1173,7 +1159,11 @@ class SearchBarEnhanced {
 
     const results = source.filter((item: SearchBarEnhancedSourceItem) => {
       const searchText =
-        typeof item === 'string' ? item : (item as SearchBarEnhancedResultObject).text || (item as SearchBarEnhancedResultObject).label || '';
+        typeof item === 'string'
+          ? item
+          : (item as SearchBarEnhancedResultObject).text ||
+            (item as SearchBarEnhancedResultObject).label ||
+            '';
 
       if (opts.fuzzySearch) {
         return this.fuzzyMatch(searchText.toLowerCase(), lowerQuery);
@@ -1298,12 +1288,10 @@ class SearchBarEnhanced {
 
     // Flatten groups
     const grouped: SearchBarEnhancedSourceItem[] = [];
-    groups.forEach(
-      (items: SearchBarEnhancedSourceItem[], groupName: string) => {
-        grouped.push({ type: 'group', name: groupName } as SearchBarEnhancedResultObject);
-        grouped.push(...items);
-      },
-    );
+    groups.forEach((items: SearchBarEnhancedSourceItem[], groupName: string) => {
+      grouped.push({ type: 'group', name: groupName } as SearchBarEnhancedResultObject);
+      grouped.push(...items);
+    });
 
     return grouped;
   }
@@ -1317,27 +1305,22 @@ class SearchBarEnhanced {
       return;
     }
 
-    this.state.filteredResults.forEach(
-      (item: SearchBarEnhancedSourceItem, index: number) => {
-        if (typeof item !== 'string' && (item as SearchBarEnhancedResultObject).type === 'group') {
-          const groupHeader = document.createElement('div');
-          groupHeader.className = 'aiab-search-bar-group-header';
-          groupHeader.textContent = (item as SearchBarEnhancedResultObject).name || '';
-          this.resultsList.appendChild(groupHeader);
-        } else {
-          const resultEl = this.createResultElement(item, index);
-          this.resultsList.appendChild(resultEl);
-        }
-      },
-    );
+    this.state.filteredResults.forEach((item: SearchBarEnhancedSourceItem, index: number) => {
+      if (typeof item !== 'string' && (item as SearchBarEnhancedResultObject).type === 'group') {
+        const groupHeader = document.createElement('div');
+        groupHeader.className = 'aiab-search-bar-group-header';
+        groupHeader.textContent = (item as SearchBarEnhancedResultObject).name || '';
+        this.resultsList.appendChild(groupHeader);
+      } else {
+        const resultEl = this.createResultElement(item, index);
+        this.resultsList.appendChild(resultEl);
+      }
+    });
 
     this.open();
   }
 
-  private createResultElement(
-    item: SearchBarEnhancedSourceItem,
-    index: number,
-  ): HTMLDivElement {
+  private createResultElement(item: SearchBarEnhancedSourceItem, index: number): HTMLDivElement {
     // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     const opts = this.options!;
 
@@ -1351,9 +1334,7 @@ class SearchBarEnhanced {
     } else {
       const itemObj = item as SearchBarEnhancedResultObject;
       const text =
-        typeof item === 'string'
-          ? item
-          : itemObj.text || itemObj.label || itemObj.title || '';
+        typeof item === 'string' ? item : itemObj.text || itemObj.label || itemObj.title || '';
       const displayText = opts.highlight
         ? this.highlightQuery(text, this.state.query)
         : escapeHTML(text);
@@ -1395,9 +1376,7 @@ class SearchBarEnhanced {
 
     const itemObj = item as SearchBarEnhancedResultObject;
     const text =
-      typeof item === 'string'
-        ? item
-        : itemObj.text || itemObj.label || itemObj.title || '';
+      typeof item === 'string' ? item : itemObj.text || itemObj.label || itemObj.title || '';
     this.input.value = text;
     this.state.query = text;
 
@@ -1636,19 +1615,14 @@ class SearchBarEnhanced {
     if (!this.options!.persistRecent) return;
 
     try {
-      localStorage.setItem(
-        'amphibious-recent-searches',
-        JSON.stringify(this.state.recentSearches),
-      );
+      localStorage.setItem('amphibious-recent-searches', JSON.stringify(this.state.recentSearches));
     } catch (_e: unknown) {
       // Ignore errors
     }
   }
 
   private removeRecentSearch(search: string): void {
-    this.state.recentSearches = this.state.recentSearches.filter(
-      (s: string) => s !== search,
-    );
+    this.state.recentSearches = this.state.recentSearches.filter((s: string) => s !== search);
     this.saveRecentSearches();
     this.renderRecentSearches();
 
@@ -1731,13 +1705,11 @@ class SearchBarEnhanced {
     }
 
     // Remove all event listeners
-    this.handlers.forEach(
-      (handlerList: HandlerEntry[], element: EventTarget) => {
-        handlerList.forEach(({ event, handler }: HandlerEntry) => {
-          element.removeEventListener(event, handler);
-        });
-      },
-    );
+    this.handlers.forEach((handlerList: HandlerEntry[], element: EventTarget) => {
+      handlerList.forEach(({ event, handler }: HandlerEntry) => {
+        element.removeEventListener(event, handler);
+      });
+    });
     this.handlers.clear();
 
     // Disconnect observers

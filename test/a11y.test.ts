@@ -11,7 +11,7 @@ import axe from 'axe-core';
 
 // Component HTML fixtures representing real usage patterns
 const FIXTURES = {
-	modal: `
+  modal: `
 		<div class="aiab-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
 			<div class="aiab-modal__backdrop"></div>
 			<div class="aiab-modal__content">
@@ -30,7 +30,7 @@ const FIXTURES = {
 		</div>
 	`,
 
-	form: `
+  form: `
 		<form class="aiab-form" novalidate>
 			<div class="aiab-form-group">
 				<label for="name-input">Full Name</label>
@@ -48,7 +48,7 @@ const FIXTURES = {
 		</form>
 	`,
 
-	navigation: `
+  navigation: `
 		<nav class="aiab-nav" aria-label="Main navigation">
 			<a href="/" class="aiab-nav__brand">Brand</a>
 			<button class="aiab-nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -62,7 +62,7 @@ const FIXTURES = {
 		</nav>
 	`,
 
-	tabs: `
+  tabs: `
 		<div class="aiab-tabs">
 			<div role="tablist" aria-label="Content tabs">
 				<button role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1">Tab 1</button>
@@ -75,7 +75,7 @@ const FIXTURES = {
 		</div>
 	`,
 
-	alert: `
+  alert: `
 		<div class="aiab-alert aiab-alert--warning" role="alert">
 			<span class="aiab-alert__icon" aria-hidden="true">⚠️</span>
 			<div class="aiab-alert__content">
@@ -85,7 +85,7 @@ const FIXTURES = {
 		</div>
 	`,
 
-	toast: `
+  toast: `
 		<div class="aiab-toast-container aiab-toast-container--top-right" role="region" aria-live="polite" aria-label="Notifications">
 			<div class="aiab-toast aiab-toast--success" role="alert" tabindex="-1">
 				<span class="aiab-toast__icon" aria-hidden="true">✓</span>
@@ -98,7 +98,7 @@ const FIXTURES = {
 		</div>
 	`,
 
-	breadcrumb: `
+  breadcrumb: `
 		<nav class="aiab-breadcrumb" aria-label="Breadcrumb">
 			<ol>
 				<li><a href="/">Home</a></li>
@@ -108,7 +108,7 @@ const FIXTURES = {
 		</nav>
 	`,
 
-	accordion: `
+  accordion: `
 		<div class="aiab-accordion">
 			<div class="aiab-accordion-item">
 				<button class="aiab-accordion-header" aria-expanded="true" aria-controls="acc-panel-1" id="acc-header-1">Section 1</button>
@@ -123,138 +123,132 @@ const FIXTURES = {
 };
 
 describe('Accessibility (axe-core)', () => {
-	afterEach(() => {
-		document.body.innerHTML = '';
-	});
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
 
-	for (const [name, html] of Object.entries(FIXTURES)) {
-		it(`${name} component has no axe-core violations`, async () => {
-			document.body.innerHTML = html;
-			const results = await axe.run(document.body, {
-				// Disable rules that need real layout/computed styles (happy-dom limitation)
-				rules: {
-					'color-contrast': { enabled: false },
-					region: { enabled: false },
-					'scrollable-region-focusable': { enabled: false },
-				},
-			});
-			const violations = results.violations.map(
-				(v) => `${v.id}: ${v.description} (${v.nodes.length} instance(s))`,
-			);
-			expect(violations).toEqual([]);
-		});
-	}
+  for (const [name, html] of Object.entries(FIXTURES)) {
+    it(`${name} component has no axe-core violations`, async () => {
+      document.body.innerHTML = html;
+      const results = await axe.run(document.body, {
+        // Disable rules that need real layout/computed styles (happy-dom limitation)
+        rules: {
+          'color-contrast': { enabled: false },
+          region: { enabled: false },
+          'scrollable-region-focusable': { enabled: false },
+        },
+      });
+      const violations = results.violations.map(
+        (v) => `${v.id}: ${v.description} (${v.nodes.length} instance(s))`,
+      );
+      expect(violations).toEqual([]);
+    });
+  }
 });
 
 describe('Accessibility — manual ARIA checks', () => {
-	afterEach(() => {
-		document.body.innerHTML = '';
-	});
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
 
-	it('all interactive elements have accessible names', () => {
-		document.body.innerHTML = Object.values(FIXTURES).join('\n');
-		const buttons = document.querySelectorAll('button');
-		const missing: string[] = [];
+  it('all interactive elements have accessible names', () => {
+    document.body.innerHTML = Object.values(FIXTURES).join('\n');
+    const buttons = document.querySelectorAll('button');
+    const missing: string[] = [];
 
-		buttons.forEach((btn) => {
-			const label =
-				btn.getAttribute('aria-label') ||
-				btn.getAttribute('aria-labelledby') ||
-				btn.textContent?.trim();
-			if (!label) {
-				missing.push(
-					`<button> missing accessible name: class="${btn.className}"`,
-				);
-			}
-		});
+    buttons.forEach((btn) => {
+      const label =
+        btn.getAttribute('aria-label') ||
+        btn.getAttribute('aria-labelledby') ||
+        btn.textContent?.trim();
+      if (!label) {
+        missing.push(`<button> missing accessible name: class="${btn.className}"`);
+      }
+    });
 
-		expect(missing).toEqual([]);
-	});
+    expect(missing).toEqual([]);
+  });
 
-	it('all form inputs have associated labels', () => {
-		document.body.innerHTML = FIXTURES.form;
-		const inputs = document.querySelectorAll('input, textarea, select');
-		const missing: string[] = [];
+  it('all form inputs have associated labels', () => {
+    document.body.innerHTML = FIXTURES.form;
+    const inputs = document.querySelectorAll('input, textarea, select');
+    const missing: string[] = [];
 
-		inputs.forEach((input) => {
-			const id = input.getAttribute('id');
-			const ariaLabel = input.getAttribute('aria-label');
-			const ariaLabelledby = input.getAttribute('aria-labelledby');
-			const hasLabel = id && document.querySelector(`label[for="${id}"]`);
+    inputs.forEach((input) => {
+      const id = input.getAttribute('id');
+      const ariaLabel = input.getAttribute('aria-label');
+      const ariaLabelledby = input.getAttribute('aria-labelledby');
+      const hasLabel = id && document.querySelector(`label[for="${id}"]`);
 
-			if (!hasLabel && !ariaLabel && !ariaLabelledby) {
-				missing.push(
-					`<${input.tagName.toLowerCase()}> missing label: id="${id}"`,
-				);
-			}
-		});
+      if (!hasLabel && !ariaLabel && !ariaLabelledby) {
+        missing.push(`<${input.tagName.toLowerCase()}> missing label: id="${id}"`);
+      }
+    });
 
-		expect(missing).toEqual([]);
-	});
+    expect(missing).toEqual([]);
+  });
 
-	it('modal has proper ARIA dialog attributes', () => {
-		document.body.innerHTML = FIXTURES.modal;
-		const dialog = document.querySelector('[role="dialog"]');
+  it('modal has proper ARIA dialog attributes', () => {
+    document.body.innerHTML = FIXTURES.modal;
+    const dialog = document.querySelector('[role="dialog"]');
 
-		expect(dialog).toBeTruthy();
-		expect(dialog?.getAttribute('aria-modal')).toBe('true');
-		expect(dialog?.getAttribute('aria-labelledby')).toBeTruthy();
+    expect(dialog).toBeTruthy();
+    expect(dialog?.getAttribute('aria-modal')).toBe('true');
+    expect(dialog?.getAttribute('aria-labelledby')).toBeTruthy();
 
-		const labelId = dialog?.getAttribute('aria-labelledby');
-		const heading = document.getElementById(labelId!);
-		expect(heading).toBeTruthy();
-		expect(heading?.textContent?.trim()).toBeTruthy();
-	});
+    const labelId = dialog?.getAttribute('aria-labelledby');
+    const heading = document.getElementById(labelId!);
+    expect(heading).toBeTruthy();
+    expect(heading?.textContent?.trim()).toBeTruthy();
+  });
 
-	it('tabs have proper ARIA tablist/tab/tabpanel linkage', () => {
-		document.body.innerHTML = FIXTURES.tabs;
+  it('tabs have proper ARIA tablist/tab/tabpanel linkage', () => {
+    document.body.innerHTML = FIXTURES.tabs;
 
-		const tablist = document.querySelector('[role="tablist"]');
-		expect(tablist?.getAttribute('aria-label')).toBeTruthy();
+    const tablist = document.querySelector('[role="tablist"]');
+    expect(tablist?.getAttribute('aria-label')).toBeTruthy();
 
-		const tabs = document.querySelectorAll('[role="tab"]');
-		tabs.forEach((tab) => {
-			const controls = tab.getAttribute('aria-controls');
-			expect(controls).toBeTruthy();
-			const panel = document.getElementById(controls!);
-			expect(panel).toBeTruthy();
-			expect(panel?.getAttribute('role')).toBe('tabpanel');
-			expect(panel?.getAttribute('aria-labelledby')).toBe(
-				tab.getAttribute('id'),
-			);
-		});
-	});
+    const tabs = document.querySelectorAll('[role="tab"]');
+    tabs.forEach((tab) => {
+      const controls = tab.getAttribute('aria-controls');
+      expect(controls).toBeTruthy();
+      const panel = document.getElementById(controls!);
+      expect(panel).toBeTruthy();
+      expect(panel?.getAttribute('role')).toBe('tabpanel');
+      expect(panel?.getAttribute('aria-labelledby')).toBe(tab.getAttribute('id'));
+    });
+  });
 
-	it('navigation has aria-label and toggle has aria-expanded', () => {
-		document.body.innerHTML = FIXTURES.navigation;
+  it('navigation has aria-label and toggle has aria-expanded', () => {
+    document.body.innerHTML = FIXTURES.navigation;
 
-		const nav = document.querySelector('nav');
-		expect(nav?.getAttribute('aria-label')).toBeTruthy();
+    const nav = document.querySelector('nav');
+    expect(nav?.getAttribute('aria-label')).toBeTruthy();
 
-		const toggle = document.querySelector('.aiab-nav__toggle');
-		expect(toggle?.getAttribute('aria-expanded')).toBeTruthy();
-		expect(toggle?.getAttribute('aria-label')).toBeTruthy();
-	});
+    const toggle = document.querySelector('.aiab-nav__toggle');
+    expect(toggle?.getAttribute('aria-expanded')).toBeTruthy();
+    expect(toggle?.getAttribute('aria-label')).toBeTruthy();
+  });
 
-	it('toast container has aria-live region', () => {
-		document.body.innerHTML = FIXTURES.toast;
+  it('toast container has aria-live region', () => {
+    document.body.innerHTML = FIXTURES.toast;
 
-		const container = document.querySelector('.aiab-toast-container');
-		expect(container?.getAttribute('role')).toBe('region');
-		expect(container?.getAttribute('aria-live')).toBe('polite');
-		expect(container?.getAttribute('aria-label')).toBeTruthy();
+    const container = document.querySelector('.aiab-toast-container');
+    expect(container?.getAttribute('role')).toBe('region');
+    expect(container?.getAttribute('aria-live')).toBe('polite');
+    expect(container?.getAttribute('aria-label')).toBeTruthy();
 
-		const toast = document.querySelector('.aiab-toast');
-		expect(toast?.getAttribute('role')).toBe('alert');
-	});
+    const toast = document.querySelector('.aiab-toast');
+    expect(toast?.getAttribute('role')).toBe('alert');
+  });
 
-	it('breadcrumb uses nav with aria-label and aria-current', () => {
-		document.body.innerHTML = FIXTURES.breadcrumb;
+  it('breadcrumb uses nav with aria-label and aria-current', () => {
+    document.body.innerHTML = FIXTURES.breadcrumb;
 
-		const nav = document.querySelector('.aiab-breadcrumb');
-		expect(nav?.getAttribute('aria-label')).toBeTruthy();
+    const nav = document.querySelector('.aiab-breadcrumb');
+    expect(nav?.getAttribute('aria-label')).toBeTruthy();
 
-		const current = document.querySelector('[aria-current="page"]');
-		expect(current).toBeTruthy();
-	});
+    const current = document.querySelector('[aria-current="page"]');
+    expect(current).toBeTruthy();
+  });
 });

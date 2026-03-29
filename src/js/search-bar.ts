@@ -101,9 +101,7 @@ export interface SearchBarOptions {
   autoFocus?: boolean;
   clearOnSelect?: boolean;
   onSelect?: ((result: SearchBarSourceItem, searchBar: SearchBar) => void) | null;
-  onSearch?:
-    | ((query: string, results: SearchBarSourceItem[], searchBar: SearchBar) => void)
-    | null;
+  onSearch?: ((query: string, results: SearchBarSourceItem[], searchBar: SearchBar) => void) | null;
   onChange?: ((value: string, searchBar: SearchBar) => void) | null;
   onClear?: ((searchBar: SearchBar) => void) | null;
   renderItem?: ((result: SearchBarSourceItem, query: string) => string) | null;
@@ -129,9 +127,7 @@ interface SearchBarResolvedOptions {
   autoFocus: boolean;
   clearOnSelect: boolean;
   onSelect: ((result: SearchBarSourceItem, searchBar: SearchBar) => void) | null;
-  onSearch:
-    | ((query: string, results: SearchBarSourceItem[], searchBar: SearchBar) => void)
-    | null;
+  onSearch: ((query: string, results: SearchBarSourceItem[], searchBar: SearchBar) => void) | null;
   onChange: ((value: string, searchBar: SearchBar) => void) | null;
   onClear: ((searchBar: SearchBar) => void) | null;
   renderItem: ((result: SearchBarSourceItem, query: string) => string) | null;
@@ -472,10 +468,9 @@ class SearchBar {
         const timeoutId = setTimeout(() => this._fetchController?.abort(), 5000);
 
         try {
-          const response = await fetch(
-            `${this.options.source}?q=${encodeURIComponent(query)}`,
-            { signal: this._fetchController.signal },
-          );
+          const response = await fetch(`${this.options.source}?q=${encodeURIComponent(query)}`, {
+            signal: this._fetchController.signal,
+          });
           if (!response.ok) {
             throw new Error(`Search request failed: ${response.status}`);
           }
@@ -514,20 +509,18 @@ class SearchBar {
   private filterLocalData(query: string): SearchBarSourceItem[] {
     const lowerQuery = query.toLowerCase();
 
-    return (this.options.source as SearchBarSourceItem[]).filter(
-      (item: SearchBarSourceItem) => {
-        if (typeof item === 'string') {
-          return item.toLowerCase().includes(lowerQuery);
-        }
-        if (typeof item === 'object') {
-          return this.options.searchKeys.some((key: string) => {
-            const value = this.getNestedValue(item, key);
-            return value?.toString().toLowerCase().includes(lowerQuery);
-          });
-        }
-        return false;
-      },
-    );
+    return (this.options.source as SearchBarSourceItem[]).filter((item: SearchBarSourceItem) => {
+      if (typeof item === 'string') {
+        return item.toLowerCase().includes(lowerQuery);
+      }
+      if (typeof item === 'object') {
+        return this.options.searchKeys.some((key: string) => {
+          const value = this.getNestedValue(item, key);
+          return value?.toString().toLowerCase().includes(lowerQuery);
+        });
+      }
+      return false;
+    });
   }
 
   private getNestedValue(obj: SearchBarResultObject, path: string): unknown {
@@ -701,9 +694,7 @@ class SearchBar {
     // Update input
     if (!this.options.clearOnSelect) {
       const value =
-        typeof result === 'string'
-          ? result
-          : result.title || result.name || result.text || '';
+        typeof result === 'string' ? result : result.title || result.name || result.text || '';
       this.input.value = value;
     }
 

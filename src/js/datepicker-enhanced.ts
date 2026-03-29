@@ -916,7 +916,8 @@ class DatePickerEnhanced {
       const dates = this.state!.selectedDates.map((d: Date) => formatter.format(d));
       this.element!.value = dates.join(', ');
     } else if (this.options!.range && this.state!.rangeStart && this.state!.rangeEnd) {
-      this.element!.value = `${formatter.format(this.state!.rangeStart)} - ${formatter.format(this.state!.rangeEnd)}`;
+      this.element!.value =
+        `${formatter.format(this.state!.rangeStart)} - ${formatter.format(this.state!.rangeEnd)}`;
     } else if (this.state!.selectedDates.length > 0) {
       this.element!.value = formatter.format(this.state!.selectedDates[0]);
     } else {

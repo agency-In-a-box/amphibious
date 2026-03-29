@@ -89,7 +89,7 @@ jobs:
         run: bun install
 
       - name: Run tests
-        run: bun test test/components.test.ts test/modal.test.ts test/tooltip.test.ts test/forms.test.ts test/carousel.test.ts test/tabs.test.ts test/theme-cascade.test.ts test/smooth-scroll.test.ts test/navigation.test.ts test/cascade.test.ts test/accordion.test.ts test/dropdown.test.ts test/toast.test.ts test/datepicker.test.ts test/data-table.test.ts test/range-slider.test.ts test/search-bar.test.ts test/file-upload.test.ts test/a11y.test.ts --preload ./test/setup.ts
+        run: bun test test/components.test.ts test/modal.test.ts test/tooltip.test.ts test/forms.test.ts test/carousel.test.ts test/tabs.test.ts test/theme-cascade.test.ts test/smooth-scroll.test.ts test/navigation.test.ts test/cascade.test.ts test/accordion.test.ts test/dropdown.test.ts test/toast.test.ts test/datepicker.test.ts test/data-table.test.ts test/range-slider.test.ts test/search-bar.test.ts test/file-upload.test.ts test/a11y.test.ts test/code-splitting.test.ts --preload ./test/setup.ts
 
   build:
     name: Build
@@ -121,11 +121,21 @@ jobs:
 
       - name: Validate library artifacts
         run: |
-          echo "Checking library build output..."
+          echo "Checking main bundle output..."
           MISSING=0
           for f in dist/amphibious.es.js dist/amphibious.umd.js dist/amphibious.css; do
             if [ ! -f "$f" ]; then
               echo "❌ Missing: $f"
+              MISSING=1
+            else
+              echo "✅ Found: $f ($(wc -c < "$f") bytes)"
+            fi
+          done
+          echo ""
+          echo "Checking per-component ESM output..."
+          for f in dist/esm/carousel.js dist/esm/modal.js dist/esm/form-builder.js dist/esm/loaders.js dist/esm/sanitize.js; do
+            if [ ! -f "$f" ]; then
+              echo "❌ Missing ESM chunk: $f"
               MISSING=1
             else
               echo "✅ Found: $f ($(wc -c < "$f") bytes)"

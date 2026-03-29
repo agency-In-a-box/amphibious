@@ -54,7 +54,28 @@ export { SmoothScroll } from './js/smooth-scroll';
 export { Tabs } from './js/tabs';
 export type { TooltipOptions } from './js/tooltip';
 export { EcommerceTooltips, Tooltip } from './js/tooltip';
-
+// --- Dynamic loaders (for lazy loading heavy components) ---
+export {
+  loadAccordion,
+  loadCarousel,
+  loadColorPicker,
+  loadDarkModeToggle,
+  loadDataTable,
+  loadDatepicker,
+  loadDropdown,
+  loadFileUpload,
+  loadFormBuilder,
+  loadForms,
+  loadModal,
+  loadNavigation,
+  loadRangeSlider,
+  loadSearchBar,
+  loadSmoothScroll,
+  loadTabs,
+  loadTimeline,
+  loadToast,
+  loadTooltip,
+} from './loaders';
 // --- Utility exports ---
 export {
   createSafeElement,

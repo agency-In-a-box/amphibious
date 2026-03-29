@@ -52,9 +52,11 @@ export class Accordion {
   constructor(element: HTMLElement, options: AccordionOptions = {}) {
     this.accordion = element;
     this.options = {
-      allowMultiple:
-        options.allowMultiple || element.dataset.allowMultiple === 'true' || false,
-      defaultOpen: options.defaultOpen ?? element.dataset.defaultOpen as AccordionOptions['defaultOpen'] ?? null,
+      allowMultiple: options.allowMultiple || element.dataset.allowMultiple === 'true' || false,
+      defaultOpen:
+        options.defaultOpen ??
+        (element.dataset.defaultOpen as AccordionOptions['defaultOpen']) ??
+        null,
       animated: options.animated !== false,
       onOpen: options.onOpen || null,
       onClose: options.onClose || null,
@@ -222,9 +224,7 @@ export class Accordion {
 
   private focusPreviousItem(currentIndex: number): void {
     const prevIndex: number = (currentIndex - 1 + this.items.length) % this.items.length;
-    const prevHeader = this.items[prevIndex].querySelector(
-      '.aiab-accordion-header',
-    ) as HTMLElement;
+    const prevHeader = this.items[prevIndex].querySelector('.aiab-accordion-header') as HTMLElement;
     prevHeader.focus();
   }
 

@@ -908,10 +908,9 @@ class Timeline {
 
     const startHandler: EventListener = (e: Event) => {
       isPanning = true;
-      startX =
-        e.type.includes('mouse')
-          ? (e as MouseEvent).clientX
-          : (e as TouchEvent).touches[0].clientX;
+      startX = e.type.includes('mouse')
+        ? (e as MouseEvent).clientX
+        : (e as TouchEvent).touches[0].clientX;
       startScroll = this.wrapper.scrollLeft;
       this.wrapper.style.cursor = 'grabbing';
     };
@@ -920,10 +919,9 @@ class Timeline {
       if (!isPanning) return;
       e.preventDefault();
 
-      currentX =
-        e.type.includes('mouse')
-          ? (e as MouseEvent).clientX
-          : (e as TouchEvent).touches[0].clientX;
+      currentX = e.type.includes('mouse')
+        ? (e as MouseEvent).clientX
+        : (e as TouchEvent).touches[0].clientX;
       const diff = startX - currentX;
       this.wrapper.scrollLeft = startScroll + diff;
     };

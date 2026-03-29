@@ -12,22 +12,118 @@
       "import": "./dist/amphibious.es.js",
       "require": "./dist/amphibious.umd.js"
     },
-    "./css": "./dist/amphibious.css"
+    "./css": "./dist/amphibious.css",
+    "./loaders": {
+      "types": "./dist/src/loaders.d.ts",
+      "import": "./dist/esm/loaders.js"
+    },
+    "./carousel": {
+      "types": "./dist/src/entries/carousel.d.ts",
+      "import": "./dist/esm/carousel.js"
+    },
+    "./modal": {
+      "types": "./dist/src/entries/modal.d.ts",
+      "import": "./dist/esm/modal.js"
+    },
+    "./forms": {
+      "types": "./dist/src/entries/forms.d.ts",
+      "import": "./dist/esm/forms.js"
+    },
+    "./tabs": {
+      "types": "./dist/src/entries/tabs.d.ts",
+      "import": "./dist/esm/tabs.js"
+    },
+    "./tooltip": {
+      "types": "./dist/src/entries/tooltip.d.ts",
+      "import": "./dist/esm/tooltip.js"
+    },
+    "./accordion": {
+      "types": "./dist/src/entries/accordion.d.ts",
+      "import": "./dist/esm/accordion.js"
+    },
+    "./toast": {
+      "types": "./dist/src/entries/toast.d.ts",
+      "import": "./dist/esm/toast.js"
+    },
+    "./smooth-scroll": {
+      "types": "./dist/src/entries/smooth-scroll.d.ts",
+      "import": "./dist/esm/smooth-scroll.js"
+    },
+    "./navigation": {
+      "types": "./dist/src/entries/navigation.d.ts",
+      "import": "./dist/esm/navigation.js"
+    },
+    "./dark-mode-toggle": {
+      "types": "./dist/src/entries/dark-mode-toggle.d.ts",
+      "import": "./dist/esm/dark-mode-toggle.js"
+    },
+    "./icons": {
+      "types": "./dist/src/entries/icons.d.ts",
+      "import": "./dist/esm/icons.js"
+    },
+    "./form-builder": {
+      "types": "./dist/src/entries/form-builder.d.ts",
+      "import": "./dist/esm/form-builder.js"
+    },
+    "./file-upload": {
+      "types": "./dist/src/entries/file-upload.d.ts",
+      "import": "./dist/esm/file-upload.js"
+    },
+    "./search-bar": {
+      "types": "./dist/src/entries/search-bar.d.ts",
+      "import": "./dist/esm/search-bar.js"
+    },
+    "./dropdown": {
+      "types": "./dist/src/entries/dropdown.d.ts",
+      "import": "./dist/esm/dropdown.js"
+    },
+    "./color-picker": {
+      "types": "./dist/src/entries/color-picker.d.ts",
+      "import": "./dist/esm/color-picker.js"
+    },
+    "./timeline": {
+      "types": "./dist/src/entries/timeline.d.ts",
+      "import": "./dist/esm/timeline.js"
+    },
+    "./datepicker": {
+      "types": "./dist/src/entries/datepicker.d.ts",
+      "import": "./dist/esm/datepicker.js"
+    },
+    "./range-slider": {
+      "types": "./dist/src/entries/range-slider.d.ts",
+      "import": "./dist/esm/range-slider.js"
+    },
+    "./data-table": {
+      "types": "./dist/src/entries/data-table.d.ts",
+      "import": "./dist/esm/data-table.js"
+    },
+    "./component-registry": {
+      "types": "./dist/src/entries/component-registry.d.ts",
+      "import": "./dist/esm/component-registry.js"
+    },
+    "./sanitize": {
+      "types": "./dist/src/entries/sanitize.d.ts",
+      "import": "./dist/esm/sanitize.js"
+    }
   },
   "files": [
     "dist/amphibious.css",
     "dist/amphibious.es.js",
     "dist/amphibious.umd.js",
+    "dist/esm/**/*.js",
     "dist/src/**/*.d.ts",
     "src/css/**/*.css",
     "src/js/**/*.ts",
     "src/js/**/*.js",
+    "src/entries/**/*.ts",
     "src/utils/**/*.ts",
+    "src/loaders.ts",
     "src/index.ts"
   ],
   "scripts": {
     "dev": "vite --config vite.config.app.js --port 2960 --host",
-    "build": "NODE_ENV=production vite build && tsc --emitDeclarationOnly --outDir dist",
+    "build": "NODE_ENV=production vite build && vite build --config vite.config.lib-esm.js && tsc --emitDeclarationOnly --outDir dist",
+    "build:esm": "NODE_ENV=production vite build --config vite.config.lib-esm.js",
     "build:site": "NODE_ENV=production vite build && node scripts/build-site.js",
     "build:analyze": "ANALYZE=true NODE_ENV=production vite build",
     "build:watch": "NODE_ENV=production vite build --watch",
@@ -60,21 +156,9 @@
   },
   "sideEffects": [
     "*.css",
-    "./src/js/index.js",
+    "./src/index.ts",
     "./src/js/navigation.ts",
-    "./src/js/dark-mode-toggle.ts",
-    "./src/js/carousel.ts",
-    "./src/js/accordion.js",
-    "./src/js/color-picker.js",
-    "./src/js/data-table.js",
-    "./src/js/datepicker.js",
-    "./src/js/dropdown.js",
-    "./src/js/file-upload.js",
-    "./src/js/form-builder.js",
-    "./src/js/range-slider.js",
-    "./src/js/search-bar.js",
-    "./src/js/timeline.js",
-    "./src/js/component-registry.js"
+    "./src/js/dark-mode-toggle.ts"
   ],
   "license": "MIT",
   "repository": {

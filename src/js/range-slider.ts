@@ -446,7 +446,11 @@ class RangeSlider {
     // Window resize
     const resizeHandler = (): void => this.handleResize();
     window.addEventListener('resize', resizeHandler as EventListener);
-    this.handlers.set('resize', { element: window, type: 'resize', handler: resizeHandler as EventListener });
+    this.handlers.set('resize', {
+      element: window,
+      type: 'resize',
+      handler: resizeHandler as EventListener,
+    });
   }
 
   private attachHandleEvents(handle: HTMLDivElement, type: HandleType): void {
@@ -469,12 +473,24 @@ class RangeSlider {
     });
 
     // Focus events for accessibility
-    const focusHandler = (): void => { handle.classList.add('focused'); };
-    const blurHandler = (): void => { handle.classList.remove('focused'); };
+    const focusHandler = (): void => {
+      handle.classList.add('focused');
+    };
+    const blurHandler = (): void => {
+      handle.classList.remove('focused');
+    };
     handle.addEventListener('focus', focusHandler as EventListener);
     handle.addEventListener('blur', blurHandler as EventListener);
-    this.handlers.set(`${type}-focus`, { element: handle, type: 'focus', handler: focusHandler as EventListener });
-    this.handlers.set(`${type}-blur`, { element: handle, type: 'blur', handler: blurHandler as EventListener });
+    this.handlers.set(`${type}-focus`, {
+      element: handle,
+      type: 'focus',
+      handler: focusHandler as EventListener,
+    });
+    this.handlers.set(`${type}-blur`, {
+      element: handle,
+      type: 'blur',
+      handler: blurHandler as EventListener,
+    });
   }
 
   private handleStart(e: Event, handleType: HandleType): void {
@@ -525,8 +541,12 @@ class RangeSlider {
 
     this.rafId = requestAnimationFrame(() => {
       const isTouchEvent = e.type.includes('touch');
-      const clientX = isTouchEvent ? (e as TouchEvent).touches[0].clientX : (e as MouseEvent).clientX;
-      const clientY = isTouchEvent ? (e as TouchEvent).touches[0].clientY : (e as MouseEvent).clientY;
+      const clientX = isTouchEvent
+        ? (e as TouchEvent).touches[0].clientX
+        : (e as MouseEvent).clientX;
+      const clientY = isTouchEvent
+        ? (e as TouchEvent).touches[0].clientY
+        : (e as MouseEvent).clientY;
 
       let percent: number;
       if (this.options.orientation === 'vertical') {

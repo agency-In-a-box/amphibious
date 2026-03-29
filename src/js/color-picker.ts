@@ -570,8 +570,7 @@ export class ColorPicker {
       '.aiab-preset-colors .aiab-color-swatch',
     );
     presetSwatches.forEach((swatch: HTMLElement, index: number) => {
-      const swatchHandler: EventListener = () =>
-        this.selectColor(swatch.dataset.color || '');
+      const swatchHandler: EventListener = () => this.selectColor(swatch.dataset.color || '');
       swatch.addEventListener('click', swatchHandler);
       this.handlers.set(`preset-${index}`, {
         element: swatch,
@@ -585,8 +584,7 @@ export class ColorPicker {
       '.aiab-recent-colors .aiab-color-swatch',
     );
     recentSwatches.forEach((swatch: HTMLElement, index: number) => {
-      const swatchHandler: EventListener = () =>
-        this.selectColor(swatch.dataset.color || '');
+      const swatchHandler: EventListener = () => this.selectColor(swatch.dataset.color || '');
       swatch.addEventListener('click', swatchHandler);
       this.handlers.set(`recent-${index}`, {
         element: swatch,

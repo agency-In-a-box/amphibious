@@ -202,10 +202,7 @@ class DropdownEnhanced {
       searchable: options.searchable || element.dataset.searchable === 'true',
       multiple: options.multiple || element.dataset.multiple === 'true',
       placeholder: options.placeholder || element.dataset.placeholder || 'Select an option',
-      maxItems:
-        options.maxItems ||
-        Number.parseInt(element.dataset.maxItems as string, 10) ||
-        null,
+      maxItems: options.maxItems || Number.parseInt(element.dataset.maxItems as string, 10) || null,
 
       // Advanced options
       allowCreate: options.allowCreate || false,
@@ -796,11 +793,7 @@ class DropdownEnhanced {
         break;
 
       case 'Tab':
-        if (
-          this.state!.isOpen &&
-          this.options!.selectOnTab &&
-          this.state!.highlightedIndex >= 0
-        ) {
+        if (this.state!.isOpen && this.options!.selectOnTab && this.state!.highlightedIndex >= 0) {
           const item = items[this.state!.highlightedIndex];
           if (item) {
             e.preventDefault();
@@ -961,10 +954,7 @@ class DropdownEnhanced {
         }
       } else {
         // Add
-        if (
-          !this.options!.maxItems ||
-          this.state!.selectedValues.length < this.options!.maxItems
-        ) {
+        if (!this.options!.maxItems || this.state!.selectedValues.length < this.options!.maxItems) {
           this.state!.selectedValues.push(item.value);
           this.state!.selectedItems.push(item);
 
@@ -1036,9 +1026,7 @@ class DropdownEnhanced {
         const item = this.state!.selectedItems[0];
 
         if (this.options!.selectedRenderer) {
-          this.valueText.innerHTML = sanitizeHTML(
-            this.options!.selectedRenderer(item, this),
-          );
+          this.valueText.innerHTML = sanitizeHTML(this.options!.selectedRenderer(item, this));
         } else {
           this.valueText.className = 'aiab-dropdown-value-text';
           this.valueText.textContent = item.text;
@@ -1077,9 +1065,7 @@ class DropdownEnhanced {
   }
 
   private scrollToHighlighted(): void {
-    const highlighted = this.itemsContainer.querySelector(
-      '.aiab-dropdown-item--highlighted',
-    );
+    const highlighted = this.itemsContainer.querySelector('.aiab-dropdown-item--highlighted');
     if (highlighted) {
       highlighted.scrollIntoView({ block: 'nearest' });
     }
@@ -1282,15 +1268,11 @@ class DropdownEnhanced {
   setValue(value: string | string[]): void {
     if (this.options!.multiple && Array.isArray(value)) {
       this.state!.selectedValues = value;
-      this.state!.selectedItems = this.state!.allItems.filter((item) =>
-        value.includes(item.value),
-      );
+      this.state!.selectedItems = this.state!.allItems.filter((item) => value.includes(item.value));
     } else if (value) {
       const single = value as string;
       this.state!.selectedValues = [single];
-      this.state!.selectedItems = this.state!.allItems.filter(
-        (item) => item.value === single,
-      );
+      this.state!.selectedItems = this.state!.allItems.filter((item) => item.value === single);
     } else {
       this.clear();
     }
@@ -1306,9 +1288,7 @@ class DropdownEnhanced {
   }
 
   removeOption(value: string): void {
-    this.state!.allItems = this.state!.allItems.filter(
-      (item) => item.value !== value,
-    );
+    this.state!.allItems = this.state!.allItems.filter((item) => item.value !== value);
     this.removeItem({ value, text: '' });
     this.renderItems(this.state!.searchTerm);
   }
