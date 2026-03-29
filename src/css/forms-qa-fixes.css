@@ -92,7 +92,7 @@ input.aiab-error,
 textarea.aiab-error,
 select.aiab-error,
 .aiab-form-control.aiab-error {
-  border: 2px solid #dc3545;
+  border: 2px solid var(--color-danger);
   background-color: #fff5f5;
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
 }
@@ -100,13 +100,13 @@ select.aiab-error,
 input.aiab-error:focus,
 textarea.aiab-error:focus,
 select.aiab-error:focus {
-  border-color: #dc3545;
+  border-color: var(--color-danger);
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
 }
 
 .aiab-error-message,
 .aiab-form-error {
-  color: #dc3545;
+  color: var(--color-danger);
   font-size: 0.875rem;
   margin-top: 4px;
   display: block;
@@ -138,7 +138,7 @@ select.aiab-error:focus {
 
 .aiab-advanced-search,
 .aiab-form.advanced {
-  background: #f8f9fa;
+  background: var(--color-gray-100);
   padding: 24px;
   border-radius: 8px;
   margin: 24px 0;
@@ -185,8 +185,8 @@ select.aiab-error:focus {
   display: block;
   margin-top: 4px;
   font-size: 0.875rem;
-  color: #6c757d;
-  background: #f8f9fa;
+  color: var(--color-gray-600);
+  background: var(--color-gray-100);
   padding: 8px 12px;
   border-radius: 4px;
   border-inline-start: 3px solid var(--color-primary);
@@ -199,7 +199,7 @@ pre.aiab-prettyprint {
   margin-top: 16px;
   margin-bottom: 32px;
   padding: 16px;
-  background: #f8f9fa;
+  background: var(--color-gray-100);
   border-radius: 8px;
   overflow-x: auto;
   max-width: 100%;

@@ -97,8 +97,8 @@ input:disabled,
 textarea:disabled,
 select:disabled,
 .aiab-form-control:disabled {
-  background-color: #f3f4f6;
-  color: #9ca3af;
+  background-color: var(--color-gray-150);
+  color: var(--color-gray-450);
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -107,7 +107,7 @@ select:disabled,
 input:read-only,
 textarea:read-only,
 .aiab-form-control:read-only {
-  background-color: #f9fafb;
+  background-color: var(--color-gray-50);
   border-style: dashed;
   cursor: default;
 }
@@ -131,7 +131,7 @@ select[aria-invalid="true"],
 .aiab-is-invalid {
   border-color: var(--validation-error);
   background-color: #fff;
-  color: #1f2937;
+  color: var(--color-gray-850);
 }
 
 .aiab-error input:focus,
@@ -185,7 +185,7 @@ input[aria-valid="true"],
 .aiab-is-valid {
   border-color: var(--validation-success);
   background-color: #fff;
-  color: #1f2937;
+  color: var(--color-gray-850);
 }
 
 .aiab-success input:focus,
@@ -237,7 +237,7 @@ select.aiab-warning,
 .aiab-form-control.aiab-warning {
   border-color: var(--validation-warning);
   background-color: #fff;
-  color: #1f2937;
+  color: var(--color-gray-850);
 }
 
 .aiab-warning input:focus,

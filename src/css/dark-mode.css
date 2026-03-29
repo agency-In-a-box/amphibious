@@ -61,6 +61,33 @@
     --apple-gray-800: #d1d1d6;
     --apple-gray-900: #e5e5ea;
 
+    /* Accent blue — brighter for dark backgrounds */
+    --color-accent: #3b82f6;
+    --color-accent-hover: #2563eb;
+    --color-accent-light: rgba(59, 130, 246, 0.15);
+    --color-accent-dark: #60a5fa;
+
+    /* Status color variants */
+    --color-success-hover: #34d058;
+    --color-success-light: rgba(48, 209, 88, 0.15);
+    --color-danger-hover: #ff6961;
+    --color-danger-light: rgba(255, 69, 58, 0.15);
+    --color-warning-hover: #ffe44d;
+    --color-warning-light: rgba(255, 214, 10, 0.15);
+    --color-info-hover: #409cff;
+    --color-info-light: rgba(10, 132, 255, 0.15);
+
+    /* Extended gray scale — inverted for dark mode */
+    --color-gray-50: #1c1c1e;
+    --color-gray-150: #2c2c2e;
+    --color-gray-350: #48484a;
+    --color-gray-450: #636366;
+    --color-gray-550: #8e8e93;
+    --color-gray-650: #aeaeb2;
+    --color-gray-750: #c7c7cc;
+    --color-gray-850: #d1d1d6;
+    --color-gray-950: #e5e5ea;
+
     /* Surfaces */
     --color-background: #000000;
     --color-surface: #1c1c1e;
@@ -175,6 +202,33 @@
   --apple-gray-700: #c7c7cc;
   --apple-gray-800: #d1d1d6;
   --apple-gray-900: #e5e5ea;
+
+  /* Accent blue — brighter for dark backgrounds */
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-accent-light: rgba(59, 130, 246, 0.15);
+  --color-accent-dark: #60a5fa;
+
+  /* Status color variants */
+  --color-success-hover: #34d058;
+  --color-success-light: rgba(48, 209, 88, 0.15);
+  --color-danger-hover: #ff6961;
+  --color-danger-light: rgba(255, 69, 58, 0.15);
+  --color-warning-hover: #ffe44d;
+  --color-warning-light: rgba(255, 214, 10, 0.15);
+  --color-info-hover: #409cff;
+  --color-info-light: rgba(10, 132, 255, 0.15);
+
+  /* Extended gray scale — inverted for dark mode */
+  --color-gray-50: #1c1c1e;
+  --color-gray-150: #2c2c2e;
+  --color-gray-350: #48484a;
+  --color-gray-450: #636366;
+  --color-gray-550: #8e8e93;
+  --color-gray-650: #aeaeb2;
+  --color-gray-750: #c7c7cc;
+  --color-gray-850: #d1d1d6;
+  --color-gray-950: #e5e5ea;
 
   --color-background: #000000;
   --color-surface: #1c1c1e;

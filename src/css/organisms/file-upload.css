@@ -17,7 +17,7 @@
   position: relative;
   padding: 3rem 2rem;
   background: white;
-  border: 2px dashed #d1d5db;
+  border: 2px dashed var(--color-gray-350);
   border-radius: 0.5rem;
   text-align: center;
   transition: all 0.3s ease;
@@ -31,19 +31,19 @@
 }
 
 .aiab-file-upload-zone:hover {
-  border-color: #9ca3af;
-  background: #f9fafb;
+  border-color: var(--color-gray-450);
+  background: var(--color-gray-50);
 }
 
 /* Drag active state */
 .aiab-file-upload-zone--drag-active {
-  border-color: #2563eb;
-  background: #eff6ff;
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
   transform: scale(1.01);
 }
 
 .aiab-file-upload-zone--drag-active .aiab-file-upload-icon {
-  color: #2563eb;
+  color: var(--color-accent);
   animation: bounce 0.5s infinite;
 }
 
@@ -72,26 +72,26 @@
 .aiab-file-upload-icon {
   width: 3rem;
   height: 3rem;
-  color: #9ca3af;
+  color: var(--color-gray-450);
   transition: all 0.3s ease;
 }
 
 .aiab-file-upload-label {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--color-gray-750);
   margin-bottom: 0.25rem;
 }
 
 .aiab-file-upload-description {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--color-gray-550);
   margin-bottom: 1rem;
 }
 
 .aiab-file-upload-button {
   padding: 0.5rem 1rem;
-  background: #2563eb;
+  background: var(--color-accent);
   color: white;
   border: none;
   border-radius: 0.375rem;
@@ -102,7 +102,7 @@
 }
 
 .aiab-file-upload-button:hover {
-  background: #1d4ed8;
+  background: var(--color-accent-hover);
   transform: translateY(-1px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
@@ -113,7 +113,7 @@
 
 .aiab-file-upload-formats {
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: var(--color-gray-450);
   margin-top: 0.5rem;
 }
 
@@ -151,7 +151,7 @@
   border-radius: 0.25rem;
   overflow: hidden;
   flex-shrink: 0;
-  background: #f3f4f6;
+  background: var(--color-gray-150);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,7 +166,7 @@
 .aiab-file-upload-preview-icon {
   width: 1.5rem;
   height: 1.5rem;
-  color: #6b7280;
+  color: var(--color-gray-550);
 }
 
 /* File info */
@@ -179,7 +179,7 @@
 .aiab-file-upload-name {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #1f2937;
+  color: var(--color-gray-850);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -194,7 +194,7 @@
 
 .aiab-file-upload-size {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--color-gray-550);
 }
 
 .aiab-file-upload-status {
@@ -213,7 +213,7 @@
 }
 
 .aiab-file-upload-status--uploading {
-  color: #2563eb;
+  color: var(--color-accent);
 }
 
 /* Progress bar */
@@ -228,7 +228,7 @@
 
 .aiab-file-upload-progress-bar {
   height: 100%;
-  background: #2563eb;
+  background: var(--color-accent);
   transition: width 0.3s ease;
   position: relative;
 }
@@ -260,7 +260,7 @@
   background: transparent;
   border: 1px solid var(--color-gray-300);
   border-radius: 0.25rem;
-  color: #6b7280;
+  color: var(--color-gray-550);
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
@@ -348,7 +348,7 @@
 
 /* Disabled */
 .aiab-file-upload--disabled .aiab-file-upload-zone {
-  background: #f3f4f6;
+  background: var(--color-gray-150);
   border-color: var(--color-gray-300);
   cursor: not-allowed;
   opacity: 0.6;
@@ -387,7 +387,7 @@
   color: #dc2626;
 }
 .aiab-file-type-doc {
-  color: #2563eb;
+  color: var(--color-accent);
 }
 .aiab-file-type-xls {
   color: #16a34a;
@@ -402,7 +402,7 @@
   color: #ec4899;
 }
 .aiab-file-type-code {
-  color: #6b7280;
+  color: var(--color-gray-550);
 }
 
 /* ========================================
@@ -432,12 +432,12 @@
    ======================================== */
 
 .aiab-file-upload-zone:focus-within {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 .aiab-file-upload-input:focus + .aiab-file-upload-zone {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 

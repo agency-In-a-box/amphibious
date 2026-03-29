@@ -36,8 +36,8 @@
   align-items: center;
   justify-content: center;
   height: 4.5rem;
-  background-color: var(--color-gray-50, #f9fafb);
-  color: var(--color-gray-400, #9ca3af);
+  background-color: var(--color-gray-50, var(--color-gray-50));
+  color: var(--color-gray-400, var(--color-gray-450));
   border-bottom: 1px solid var(--file-card-border);
   overflow: hidden;
 }
@@ -65,7 +65,7 @@
 .aiab-file-card__name {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--color-gray-700, #374151);
+  color: var(--color-gray-700, var(--color-gray-750));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -87,8 +87,8 @@
 }
 
 .aiab-file-card__type--md {
-  background-color: #dbeafe;
-  color: #1d4ed8;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent-hover);
 }
 
 .aiab-file-card__type--pdf {
@@ -97,8 +97,8 @@
 }
 
 .aiab-file-card__type--docx {
-  background-color: #dbeafe;
-  color: #2563eb;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
 }
 
 .aiab-file-card__type--img {

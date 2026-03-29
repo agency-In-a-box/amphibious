@@ -318,12 +318,12 @@ input[type="radio"]:focus {
 .aiab-was-validated input:invalid,
 .aiab-was-validated select:invalid,
 .aiab-was-validated textarea:invalid {
-  border-color: var(--color-danger, #dc3545);
+  border-color: var(--color-danger, var(--color-danger));
 }
 
 .aiab-is-invalid:focus,
 .aiab-was-validated .aiab-form-control:invalid:focus {
-  border-color: var(--color-danger, #dc3545);
+  border-color: var(--color-danger, var(--color-danger));
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
@@ -332,7 +332,7 @@ input[type="radio"]:focus {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: var(--color-danger, #dc3545);
+  color: var(--color-danger, var(--color-danger));
 }
 
 .aiab-is-invalid ~ .aiab-invalid-feedback,
@@ -456,7 +456,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   height: 0.5rem;
   color: transparent;
   cursor: pointer;
-  background-color: #dee2e6;
+  background-color: var(--color-gray-300);
   border-color: transparent;
   border-radius: 1rem;
 }
@@ -473,7 +473,7 @@ input[type="file"]::file-selector-button {
   margin: calc(var(--form-padding-y) * -1) calc(var(--form-padding-x) * -1);
   margin-inline-end: var(--form-padding-x);
   color: var(--form-text-color);
-  background-color: #e9ecef;
+  background-color: var(--color-gray-200);
   pointer-events: none;
   border-color: inherit;
   border-style: solid;

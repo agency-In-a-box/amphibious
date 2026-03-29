@@ -16,7 +16,23 @@
   --color-warning: #ffc107;
   --color-info: #17a2b8;
 
-  /* Grays */
+  /* Interactive accent blue (used by datepicker, search-bar, file-upload, etc.) */
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-light: #dbeafe;
+  --color-accent-dark: #1e40af;
+
+  /* Status color variants (hover/active states, light backgrounds) */
+  --color-success-hover: #218838;
+  --color-success-light: #d4edda;
+  --color-danger-hover: #c82333;
+  --color-danger-light: #f8d7da;
+  --color-warning-hover: #e0a800;
+  --color-warning-light: #fff3cd;
+  --color-info-hover: #138496;
+  --color-info-light: #d1ecf1;
+
+  /* Grays — Bootstrap-compatible (100–900) */
   --color-gray-100: #f8f9fa;
   --color-gray-200: #e9ecef;
   --color-gray-300: #dee2e6;
@@ -26,6 +42,17 @@
   --color-gray-700: #495057;
   --color-gray-800: #343a40;
   --color-gray-900: #212529;
+
+  /* Extended gray scale — Tailwind-adjacent (fills gaps for newer components) */
+  --color-gray-50: #f9fafb;
+  --color-gray-150: #f3f4f6;
+  --color-gray-350: #d1d5db;
+  --color-gray-450: #9ca3af;
+  --color-gray-550: #6b7280;
+  --color-gray-650: #4b5563;
+  --color-gray-750: #374151;
+  --color-gray-850: #1f2937;
+  --color-gray-950: #111827;
 
   /* Text colors */
   --color-text: #333;

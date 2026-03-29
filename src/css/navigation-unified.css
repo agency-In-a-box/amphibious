@@ -588,7 +588,7 @@
 
 .aiab-skip-link:focus {
   top: 0;
-  outline: 2px solid var(--color-primary-dark, #a65e00);
+  outline: 2px solid var(--color-primary-dark, var(--color-primary-text));
   outline-offset: 2px;
 }
 

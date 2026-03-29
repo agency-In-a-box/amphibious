@@ -16,28 +16,28 @@
 .aiab-datepicker-input {
   width: 100%;
   padding: 0.5rem 2.5rem 0.5rem 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-gray-350);
   border-radius: 0.375rem;
   font-size: 1rem;
   line-height: 1.5;
   background: white;
-  color: #1f2937;
+  color: var(--color-gray-850);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .aiab-datepicker-input:hover {
-  border-color: #9ca3af;
+  border-color: var(--color-gray-450);
 }
 
 .aiab-datepicker-input:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: var(--color-accent);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .aiab-datepicker-input::placeholder {
-  color: #9ca3af;
+  color: var(--color-gray-450);
 }
 
 /* Calendar icon */
@@ -48,7 +48,7 @@
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: #6b7280;
+  color: var(--color-gray-550);
   pointer-events: none;
 }
 
@@ -98,7 +98,7 @@
   justify-content: space-between;
   padding: 0.75rem;
   border-bottom: 1px solid var(--color-gray-300);
-  background: #f9fafb;
+  background: var(--color-gray-50);
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
@@ -117,15 +117,15 @@
   background: transparent;
   border: 1px solid transparent;
   border-radius: 0.375rem;
-  color: #6b7280;
+  color: var(--color-gray-550);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .aiab-datepicker-nav-button:hover {
   background: white;
-  border-color: #d1d5db;
-  color: #374151;
+  border-color: var(--color-gray-350);
+  color: var(--color-gray-750);
 }
 
 .aiab-datepicker-nav-button:active {
@@ -147,13 +147,13 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--color-gray-850);
 }
 
 .aiab-datepicker-month-select,
 .aiab-datepicker-year-select {
   padding: 0.25rem 0.5rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-gray-350);
   border-radius: 0.25rem;
   background: white;
   font-size: 0.875rem;
@@ -164,12 +164,12 @@
 
 .aiab-datepicker-month-select:hover,
 .aiab-datepicker-year-select:hover {
-  border-color: #9ca3af;
+  border-color: var(--color-gray-450);
 }
 
 .aiab-datepicker-month-select:focus,
 .aiab-datepicker-year-select:focus {
-  border-color: #2563eb;
+  border-color: var(--color-accent);
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
@@ -192,7 +192,7 @@
   text-align: center;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--color-gray-550);
   text-transform: uppercase;
   padding: 0.5rem 0;
 }
@@ -213,15 +213,15 @@
   border: 1px solid transparent;
   border-radius: 0.375rem;
   font-size: 0.875rem;
-  color: #374151;
+  color: var(--color-gray-750);
   cursor: pointer;
   transition: all 0.15s ease;
   position: relative;
 }
 
 .aiab-datepicker-day:hover {
-  background: #f3f4f6;
-  color: #111827;
+  background: var(--color-gray-150);
+  color: var(--color-gray-950);
 }
 
 .aiab-datepicker-day:active {
@@ -230,18 +230,18 @@
 
 /* Other month days */
 .aiab-datepicker-day--other-month {
-  color: #d1d5db;
+  color: var(--color-gray-350);
 }
 
 .aiab-datepicker-day--other-month:hover {
-  background: #f9fafb;
-  color: #9ca3af;
+  background: var(--color-gray-50);
+  color: var(--color-gray-450);
 }
 
 /* Today */
 .aiab-datepicker-day--today {
   font-weight: 600;
-  color: #2563eb;
+  color: var(--color-accent);
 }
 
 .aiab-datepicker-day--today::after {
@@ -252,20 +252,20 @@
   transform: translateX(-50%);
   width: 4px;
   height: 4px;
-  background: #2563eb;
+  background: var(--color-accent);
   border-radius: 50%;
 }
 
 /* Selected day */
 .aiab-datepicker-day--selected {
-  background: #2563eb;
+  background: var(--color-accent);
   color: white;
-  border-color: #2563eb;
+  border-color: var(--color-accent);
 }
 
 .aiab-datepicker-day--selected:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 /* Disabled days */
@@ -277,19 +277,19 @@
 
 /* Range selection */
 .aiab-datepicker-day--in-range {
-  background: #eff6ff;
-  color: #1e40af;
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
   border-radius: 0;
 }
 
 .aiab-datepicker-day--range-start {
-  background: #2563eb;
+  background: var(--color-accent);
   color: white;
   border-radius: 0.375rem 0 0 0.375rem;
 }
 
 .aiab-datepicker-day--range-end {
-  background: #2563eb;
+  background: var(--color-accent);
   color: white;
   border-radius: 0 0.375rem 0.375rem 0;
 }
@@ -314,28 +314,28 @@
   border: 1px solid transparent;
   border-radius: 0.375rem;
   font-size: 0.875rem;
-  color: #374151;
+  color: var(--color-gray-750);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .aiab-datepicker-month-option:hover,
 .aiab-datepicker-year-option:hover {
-  background: #f3f4f6;
-  border-color: #d1d5db;
+  background: var(--color-gray-150);
+  border-color: var(--color-gray-350);
 }
 
 .aiab-datepicker-month-option--selected,
 .aiab-datepicker-year-option--selected {
-  background: #2563eb;
+  background: var(--color-accent);
   color: white;
-  border-color: #2563eb;
+  border-color: var(--color-accent);
 }
 
 .aiab-datepicker-month-option--current,
 .aiab-datepicker-year-option--current {
   font-weight: 600;
-  color: #2563eb;
+  color: var(--color-accent);
 }
 
 /* ========================================
@@ -354,7 +354,7 @@
 .aiab-datepicker-time-input {
   width: 3rem;
   padding: 0.25rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-gray-350);
   border-radius: 0.25rem;
   text-align: center;
   font-size: 1rem;
@@ -363,13 +363,13 @@
 }
 
 .aiab-datepicker-time-input:focus {
-  border-color: #2563eb;
+  border-color: var(--color-accent);
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
 .aiab-datepicker-time-separator {
   font-weight: 600;
-  color: #6b7280;
+  color: var(--color-gray-550);
 }
 
 .aiab-datepicker-time-period {
@@ -381,7 +381,7 @@
 .aiab-datepicker-time-period-btn {
   padding: 0.25rem 0.5rem;
   background: transparent;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-gray-350);
   border-radius: 0.25rem;
   font-size: 0.75rem;
   font-weight: 500;
@@ -390,13 +390,13 @@
 }
 
 .aiab-datepicker-time-period-btn:hover {
-  background: #f3f4f6;
+  background: var(--color-gray-150);
 }
 
 .aiab-datepicker-time-period-btn--active {
-  background: #2563eb;
+  background: var(--color-accent);
   color: white;
-  border-color: #2563eb;
+  border-color: var(--color-accent);
 }
 
 /* ========================================
@@ -409,7 +409,7 @@
   justify-content: space-between;
   padding: 0.75rem;
   border-top: 1px solid var(--color-gray-300);
-  background: #f9fafb;
+  background: var(--color-gray-50);
   border-radius: 0 0 0.5rem 0.5rem;
 }
 
@@ -417,19 +417,19 @@
 .aiab-datepicker-clear-btn {
   padding: 0.375rem 0.75rem;
   background: white;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-gray-350);
   border-radius: 0.25rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--color-gray-750);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .aiab-datepicker-today-btn:hover,
 .aiab-datepicker-clear-btn:hover {
-  background: #f3f4f6;
-  border-color: #9ca3af;
+  background: var(--color-gray-150);
+  border-color: var(--color-gray-450);
 }
 
 .aiab-datepicker-today-btn:active,
@@ -502,20 +502,20 @@
 
 /* Primary */
 .aiab-datepicker--primary .aiab-datepicker-day--selected {
-  background: #a65e00;
-  border-color: #a65e00;
+  background: var(--color-primary-text);
+  border-color: var(--color-primary-text);
 }
 
 .aiab-datepicker--primary .aiab-datepicker-day--today {
-  color: #a65e00;
+  color: var(--color-primary-text);
 }
 
 .aiab-datepicker--primary .aiab-datepicker-day--today::after {
-  background: #a65e00;
+  background: var(--color-primary-text);
 }
 
 .aiab-datepicker--primary .aiab-datepicker-input:focus {
-  border-color: #a65e00;
+  border-color: var(--color-primary-text);
   box-shadow: 0 0 0 3px rgba(166, 94, 0, 0.1);
 }
 
@@ -537,8 +537,8 @@
 
 /* Disabled */
 .aiab-datepicker--disabled .aiab-datepicker-input {
-  background: #f3f4f6;
-  color: #9ca3af;
+  background: var(--color-gray-150);
+  color: var(--color-gray-450);
   cursor: not-allowed;
 }
 
@@ -548,7 +548,7 @@
 
 /* Read-only */
 .aiab-datepicker--readonly .aiab-datepicker-input {
-  background: #f9fafb;
+  background: var(--color-gray-50);
   cursor: default;
 }
 
@@ -567,7 +567,7 @@
 
 .aiab-datepicker-day:focus-visible,
 .aiab-datepicker-nav-button:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 

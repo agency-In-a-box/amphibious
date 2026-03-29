@@ -225,7 +225,7 @@
   z-index: 2;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #9ca3af;
+  color: var(--color-gray-450);
 }
 
 .aiab-progress-step.aiab-is-active .aiab-progress-step-circle {

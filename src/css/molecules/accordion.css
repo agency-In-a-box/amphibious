@@ -44,7 +44,7 @@
 }
 
 .aiab-accordion-item.aiab-active .aiab-accordion-header {
-  background-color: #f9fafb;
+  background-color: var(--color-gray-50);
   border-bottom: 1px solid var(--color-gray-300);
 }
 
@@ -62,7 +62,7 @@
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-  color: #1f2937;
+  color: var(--color-gray-850);
   transition: background-color 0.2s ease;
   display: flex;
   align-items: center;
@@ -71,16 +71,16 @@
 }
 
 .aiab-accordion-header:hover {
-  background-color: #f9fafb;
+  background-color: var(--color-gray-50);
 }
 
 .aiab-accordion-header:focus {
   outline: none;
-  background-color: #f3f4f6;
+  background-color: var(--color-gray-150);
 }
 
 .aiab-accordion-header:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-accent);
   outline-offset: -2px;
 }
 
@@ -95,7 +95,7 @@
   height: 0;
   border-left: 0.375rem solid transparent;
   border-right: 0.375rem solid transparent;
-  border-top: 0.5rem solid #6b7280;
+  border-top: 0.5rem solid var(--color-gray-550);
   transition: transform 0.3s ease;
 }
 
@@ -106,7 +106,7 @@
   margin-inline-start: auto;
   flex-shrink: 0;
   transition: transform 0.3s ease;
-  color: #6b7280;
+  color: var(--color-gray-550);
 }
 
 .aiab-accordion-item.aiab-active .aiab-accordion-header::after,
@@ -127,7 +127,7 @@
   width: auto;
   height: auto;
   line-height: 1;
-  color: #6b7280;
+  color: var(--color-gray-550);
   transform: translateY(-50%);
 }
 
@@ -168,7 +168,7 @@
 
 /* Content body */
 .aiab-accordion-body {
-  color: #4b5563;
+  color: var(--color-gray-650);
   line-height: 1.6;
 }
 
@@ -202,7 +202,7 @@
 }
 
 .aiab-accordion--shadow .aiab-accordion-item {
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--color-gray-150);
 }
 
 /* Compact variant */
@@ -235,17 +235,17 @@
 
 /* Primary */
 .aiab-accordion--primary .aiab-accordion-header {
-  color: #a65e00;
+  color: var(--color-primary-text);
 }
 
 .aiab-accordion--primary .aiab-accordion-header::after,
 .aiab-accordion--primary .aiab-accordion-icon {
-  color: #a65e00;
+  color: var(--color-primary-text);
 }
 
 .aiab-accordion--primary .aiab-accordion-item.aiab-active .aiab-accordion-header {
   background-color: #fff3e0;
-  color: #a65e00;
+  color: var(--color-primary-text);
 }
 
 /* Success */
@@ -256,8 +256,8 @@
 
 /* Info */
 .aiab-accordion--info .aiab-accordion-item.aiab-active .aiab-accordion-header {
-  background-color: #dbeafe;
-  color: #2563eb;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
 }
 
 /* Warning */
@@ -309,7 +309,7 @@
 
 /* Focus management */
 .aiab-accordion-header:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-accent);
   outline-offset: -2px;
   border-radius: 0.25rem;
 }

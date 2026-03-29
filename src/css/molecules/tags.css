@@ -170,11 +170,11 @@
 }
 
 .aiab-tag-solid.aiab-tag-primary {
-  background-color: #2563eb;
+  background-color: var(--color-accent);
 }
 
 .aiab-tag-solid.aiab-tag-secondary {
-  background-color: #6b7280;
+  background-color: var(--color-gray-550);
 }
 
 .aiab-tag-solid.aiab-tag-success {
@@ -275,14 +275,14 @@
    ========================================================================== */
 
 .aiab-tag-selected {
-  background-color: #2563eb;
+  background-color: var(--color-accent);
   color: white;
-  border-color: #2563eb;
+  border-color: var(--color-accent);
 }
 
 .aiab-tag-selected:hover {
-  background-color: #1d4ed8;
-  border-color: #1d4ed8;
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 /* Tag with Icon
@@ -344,7 +344,7 @@
 }
 
 .aiab-tag-input::placeholder {
-  color: #9ca3af;
+  color: var(--color-gray-450);
 }
 
 /* Dark Mode Support

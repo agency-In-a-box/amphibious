@@ -361,7 +361,7 @@
   inset-inline-start: 100%;
   top: 50%;
   transform: translateY(-50%);
-  background: #1f2937;
+  background: var(--color-gray-850);
   color: white;
   padding: 0.5rem 0.75rem;
   border-radius: var(--sidebar-border-radius);

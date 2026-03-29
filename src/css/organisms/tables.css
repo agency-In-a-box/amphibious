@@ -64,7 +64,7 @@ table {
 /* Caption */
 table caption {
   padding: var(--table-padding-y) 0;
-  color: var(--color-text-light, #6b7280);
+  color: var(--color-text-light, var(--color-gray-550));
   font-style: italic;
   caption-side: top;
   text-align: left;

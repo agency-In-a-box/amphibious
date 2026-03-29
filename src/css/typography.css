@@ -123,7 +123,7 @@ pre {
   overflow: auto;
   white-space: pre-wrap;
   word-wrap: break-word;
-  background: var(--color-code-bg, #fafafa);
+  background: var(--color-code-bg, var(--color-code-bg));
   border-radius: var(--border-radius, 4px);
 }
 
@@ -147,7 +147,7 @@ samp {
 code {
   display: inline-block;
   padding: 0.1em 0.3em;
-  background: var(--color-code-bg, #fafafa);
+  background: var(--color-code-bg, var(--color-code-bg));
   border-radius: var(--border-radius-sm, 3px);
 }
 
@@ -384,7 +384,7 @@ dl dd {
 
 hr {
   border: 0;
-  border-top: 1px solid var(--color-border, #dedede);
+  border-top: 1px solid var(--color-border, var(--color-border));
   margin: 2em 0;
 }
 
