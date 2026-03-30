@@ -85,7 +85,7 @@
 
   /* Component tokens - Light mode defaults */
   --card-background: #ffffff;
-  --card-border: #dee2e6;
+  --card-border: rgba(0, 0, 0, 0.1);
   --input-background: #ffffff;
   --input-border: #ced4da;
   --button-background: #ffffff;
