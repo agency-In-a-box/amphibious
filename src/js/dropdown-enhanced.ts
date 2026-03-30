@@ -63,7 +63,10 @@ export interface DropdownEnhancedOptions {
   cacheResults?: boolean;
   minChars?: number;
 
-  // Display
+  /**
+   * Custom renderers for dropdown items and selected display.
+   * @security Returned HTML is sanitized via `sanitizeHTML()` (DOMPurify) before DOM insertion.
+   */
   optionRenderer?: ((item: DropdownItem, instance: DropdownEnhanced) => string) | null;
   selectedRenderer?: ((item: DropdownItem, instance: DropdownEnhanced) => string) | null;
   groupBy?: ((item: DropdownItem) => string) | string | null;

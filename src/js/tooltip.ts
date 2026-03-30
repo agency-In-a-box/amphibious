@@ -3,7 +3,7 @@
  * Accessible, customizable tooltips with smart positioning
  */
 
-import { sanitizeHTML } from '../utils/sanitize';
+import { escapeHTML, sanitizeHTML } from '../utils/sanitize';
 
 /**
  * Configuration options for the Tooltip component.
@@ -721,6 +721,9 @@ export class EcommerceTooltips {
    * @param productData.description - Optional product description.
    * @param productData.image - Optional image URL (reserved for future use).
    * @returns A configured Tooltip instance.
+   *
+   * @security All productData values are escaped via `escapeHTML()` before
+   * insertion. The tooltip HTML is also sanitized via `sanitizeHTML()` (DOMPurify).
    */
   static productInfo(
     element: HTMLElement,
@@ -733,9 +736,9 @@ export class EcommerceTooltips {
   ): Tooltip {
     const content = `
       <div class="aiab-tooltip--product-info">
-        <div class="product-name">${productData.name}</div>
-        <div class="product-price">${productData.price}</div>
-        ${productData.description ? `<div class="product-description">${productData.description}</div>` : ''}
+        <div class="product-name">${escapeHTML(productData.name)}</div>
+        <div class="product-price">${escapeHTML(productData.price)}</div>
+        ${productData.description ? `<div class="product-description">${escapeHTML(productData.description)}</div>` : ''}
       </div>
     `;
 
@@ -758,6 +761,9 @@ export class EcommerceTooltips {
    * @param shippingData.cost - Formatted cost string.
    * @param shippingData.time - Estimated delivery time string.
    * @returns A configured Tooltip instance with `'info'` variant.
+   *
+   * @security All shippingData values are escaped via `escapeHTML()` before
+   * insertion. The tooltip HTML is also sanitized via `sanitizeHTML()` (DOMPurify).
    */
   static shippingInfo(
     element: HTMLElement,
@@ -771,9 +777,9 @@ export class EcommerceTooltips {
       <div class="aiab-tooltip--with-icon">
         <i data-lucide="truck" class="aiab-tooltip__icon"></i>
         <div class="aiab-tooltip__content">
-          <div class="aiab-tooltip__title">${shippingData.method}</div>
-          <div>Cost: ${shippingData.cost}</div>
-          <div>Delivery: ${shippingData.time}</div>
+          <div class="aiab-tooltip__title">${escapeHTML(shippingData.method)}</div>
+          <div>Cost: ${escapeHTML(shippingData.cost)}</div>
+          <div>Delivery: ${escapeHTML(shippingData.time)}</div>
         </div>
       </div>
     `;

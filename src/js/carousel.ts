@@ -5,6 +5,7 @@
 
 import type { Options as SplideOptions } from '@splidejs/splide';
 import { Splide } from '@splidejs/splide';
+import { sanitizeHTML } from '../utils/sanitize';
 
 // Default icons (using SVG strings for better performance)
 const DEFAULT_ICONS = {
@@ -27,6 +28,9 @@ const DEFAULT_ICONS = {
  * @property pagination - Pagination style: `'dots'`, `'progress'`, `'none'`, or a boolean.
  * @property navigation - Whether to show arrow navigation.
  * @property customIcons - Custom SVG strings for prev/next arrow buttons.
+ *
+ * @security Custom icon SVGs are sanitized via `sanitizeHTML()` (DOMPurify)
+ * before insertion. Inline event handlers and `<script>` tags are stripped.
  */
 export interface AmphibiousCarouselOptions extends Omit<Partial<SplideOptions>, 'pagination'> {
   selector?: string;
@@ -235,10 +239,10 @@ export class AmphibiousCarousel {
       const nextButton = this.element.querySelector('.splide__arrow--next');
 
       if (prevButton) {
-        prevButton.innerHTML = icons.prev;
+        prevButton.innerHTML = sanitizeHTML(icons.prev);
       }
       if (nextButton) {
-        nextButton.innerHTML = icons.next;
+        nextButton.innerHTML = sanitizeHTML(icons.next);
       }
     });
   }

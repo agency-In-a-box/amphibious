@@ -4,7 +4,7 @@
  */
 
 import { getFocusableElements, trapFocus } from '../utils/focus-trap';
-import { setInnerHTML } from '../utils/sanitize';
+import { escapeHTML, setInnerHTML } from '../utils/sanitize';
 
 /**
  * Configuration options for the Modal component.
@@ -576,9 +576,12 @@ export class ModalManager {
    * Display a promise-based alert dialog with an OK button.
    * The modal is auto-created, appended to `<body>`, and removed when dismissed.
    *
-   * @param message - The message to display.
+   * @param message - The message to display (plain text; HTML entities are escaped).
    * @param type - Visual style: `'success'`, `'error'`, `'warning'`, or `'info'`.
    * @returns A Promise that resolves when the user dismisses the alert.
+   *
+   * @security Message is escaped via `escapeHTML()` before insertion.
+   * The resulting HTML is sanitized via `setInnerHTML()` (DOMPurify).
    *
    * @example
    * ```ts
@@ -594,7 +597,7 @@ export class ModalManager {
         <div class="aiab-modal__dialog">
           <div class="aiab-modal__body">
             <div class="aiab-modal__icon">${ModalManager.getIcon(type)}</div>
-            <p>${message}</p>
+            <p>${escapeHTML(message)}</p>
             <button class="aiab-btn btn--primary" data-modal-close>OK</button>
           </div>
         </div>
@@ -622,10 +625,13 @@ export class ModalManager {
    * Display a promise-based confirmation dialog with Confirm/Cancel buttons.
    * The modal is auto-created, appended to `<body>`, and removed when dismissed.
    *
-   * @param message - The question or message to display.
-   * @param confirmText - Label for the confirm button. Defaults to `'Confirm'`.
-   * @param cancelText - Label for the cancel button. Defaults to `'Cancel'`.
+   * @param message - The question or message to display (plain text; HTML entities are escaped).
+   * @param confirmText - Label for the confirm button (escaped). Defaults to `'Confirm'`.
+   * @param cancelText - Label for the cancel button (escaped). Defaults to `'Cancel'`.
    * @returns A Promise that resolves to `true` if confirmed, `false` if cancelled or closed.
+   *
+   * @security All parameters are escaped via `escapeHTML()` before insertion.
+   * The resulting HTML is sanitized via `setInnerHTML()` (DOMPurify).
    *
    * @example
    * ```ts
@@ -643,11 +649,11 @@ export class ModalManager {
       const modalHtml = `
         <div class="aiab-modal__dialog">
           <div class="aiab-modal__body">
-            <p>${message}</p>
+            <p>${escapeHTML(message)}</p>
           </div>
           <div class="aiab-modal__footer">
-            <button class="aiab-btn btn--secondary" data-modal-cancel>${cancelText}</button>
-            <button class="aiab-btn btn--primary" data-modal-confirm>${confirmText}</button>
+            <button class="aiab-btn btn--secondary" data-modal-cancel>${escapeHTML(cancelText)}</button>
+            <button class="aiab-btn btn--primary" data-modal-confirm>${escapeHTML(confirmText)}</button>
           </div>
         </div>
       `;
