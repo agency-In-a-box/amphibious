@@ -23,11 +23,11 @@
   padding: 0 1rem; /* 16px base padding */
   width: 100%;
   box-sizing: border-box;
-}
 
-/* Special alignment for content that should align with navigation text */
-.aiab-container.align-with-nav {
-  padding-inline-start: 2rem; /* 32px = 16px container + 16px nav item padding */
+  /* Special alignment for content that should align with navigation text */
+  &.align-with-nav {
+    padding-inline-start: 2rem; /* 32px = 16px container + 16px nav item padding */
+  }
 }
 
 .aiab-container-fluid {
@@ -45,6 +45,10 @@
   grid-template-columns: repeat(var(--grid-columns), 1fr);
   gap: var(--grid-gap);
   margin-bottom: var(--grid-gap);
+
+  & > * {
+    min-width: 0; /* Prevent overflow */
+  }
 }
 
 /* Column spans for CSS Grid */
@@ -105,6 +109,22 @@
   flex-wrap: wrap;
   margin-inline: calc(var(--grid-gap) / -2);
   margin-bottom: var(--grid-gap);
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Ensure all direct children of rows have proper flex defaults */
+  & > * {
+    flex-shrink: 0; /* Prevent shrinking below specified size */
+  }
+
+  /* But columns that don't have explicit col- classes should expand */
+  & > div:not([class*="col-"]) {
+    flex: 1 1 auto;
+  }
 }
 
 /* Ensure nested rows also display as flex */
@@ -114,27 +134,11 @@
   flex-wrap: wrap;
 }
 
-.aiab-row::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 /* Column system for flexbox rows */
 [class*="col-"] {
   box-sizing: border-box;
   padding-inline: calc(var(--grid-gap) / 2);
   /* Remove float - we're using flexbox! */
-}
-
-/* Ensure all direct children of rows have proper flex defaults */
-.aiab-row > * {
-  flex-shrink: 0; /* Prevent shrinking below specified size */
-}
-
-/* But columns that don't have explicit col- classes should expand */
-.aiab-row > div:not([class*="col-"]) {
-  flex: 1 1 auto;
 }
 
 /* 16-column widths - using flexbox */
@@ -224,11 +228,6 @@
 
 /* Keep consistent padding for all columns */
 /* Padding is handled by the column base styles */
-
-/* For grid items, no padding adjustments needed due to gap */
-.aiab-grid > * {
-  min-width: 0; /* Prevent overflow */
-}
 
 /* Offset classes
    ========================================================================== */
@@ -381,11 +380,11 @@
     width: 100%;
     padding-inline: 0;
     margin-bottom: var(--grid-gap);
-  }
 
-  /* Remove margins from last child */
-  [class*="col-"]:last-child {
-    margin-bottom: 0;
+    /* Remove margins from last child */
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   /* Mobile-specific columns */

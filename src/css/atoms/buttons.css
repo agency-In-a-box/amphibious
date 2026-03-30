@@ -97,18 +97,18 @@ input[type="button"],
   padding: var(--btn-padding-y) var(--btn-padding-x);
   border-radius: var(--btn-border-radius);
   transition: var(--btn-transition);
-}
 
-.aiab-btn:hover,
-button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover,
-.aiab-button:hover {
-  color: var(--btn-primary-color);
-  background-color: var(--btn-primary-hover-bg);
-  border-color: var(--btn-primary-hover-border);
-  text-decoration: none;
+  &:hover {
+    color: var(--btn-primary-color);
+    background-color: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-border);
+    text-decoration: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
 }
 
 .aiab-btn:focus,
@@ -121,12 +121,7 @@ input[type="button"]:focus-visible {
   box-shadow: var(--btn-focus-ring);
 }
 
-.aiab-btn:disabled,
-.aiab-btn.aiab-disabled,
-button:disabled,
-input[type="submit"]:disabled,
-input[type="reset"]:disabled,
-input[type="button"]:disabled {
+.aiab-btn.aiab-disabled {
   pointer-events: none;
   opacity: 0.65;
 }
@@ -140,21 +135,19 @@ input[type="button"]:disabled {
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-bg);
   border-color: var(--btn-primary-border);
-}
 
-.aiab-btn-primary:hover,
-.aiab-btn.aiab-primary:hover {
-  color: var(--btn-primary-color);
-  background-color: var(--btn-primary-hover-bg);
-  border-color: var(--btn-primary-hover-border);
-}
+  &:hover {
+    color: var(--btn-primary-color);
+    background-color: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-border);
+  }
 
-.aiab-btn-primary:focus,
-.aiab-btn.aiab-primary:focus {
-  color: var(--btn-primary-color);
-  background-color: var(--btn-primary-hover-bg);
-  border-color: var(--btn-primary-hover-border);
-  box-shadow: 0 0 0 0.2rem var(--color-primary-alpha-50);
+  &:focus {
+    color: var(--btn-primary-color);
+    background-color: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-border);
+    box-shadow: 0 0 0 0.2rem var(--color-primary-alpha-50);
+  }
 }
 
 /* Secondary */
@@ -163,13 +156,12 @@ input[type="button"]:disabled {
   color: var(--btn-secondary-color);
   background-color: var(--btn-secondary-bg);
   border-color: var(--btn-secondary-border);
-}
 
-.aiab-btn-secondary:hover,
-.aiab-btn.aiab-secondary:hover {
-  color: var(--btn-secondary-color);
-  background-color: var(--btn-secondary-hover-bg);
-  border-color: var(--btn-secondary-hover-border);
+  &:hover {
+    color: var(--btn-secondary-color);
+    background-color: var(--btn-secondary-hover-bg);
+    border-color: var(--btn-secondary-hover-border);
+  }
 }
 
 /* Success */
@@ -178,13 +170,12 @@ input[type="button"]:disabled {
   color: var(--btn-success-color);
   background-color: var(--btn-success-bg);
   border-color: var(--btn-success-border);
-}
 
-.aiab-btn-success:hover,
-.aiab-btn.aiab-success:hover {
-  color: var(--btn-success-color);
-  background-color: var(--btn-success-hover-bg);
-  border-color: var(--btn-success-hover-border);
+  &:hover {
+    color: var(--btn-success-color);
+    background-color: var(--btn-success-hover-bg);
+    border-color: var(--btn-success-hover-border);
+  }
 }
 
 /* Danger */
@@ -193,13 +184,12 @@ input[type="button"]:disabled {
   color: var(--btn-danger-color);
   background-color: var(--btn-danger-bg);
   border-color: var(--btn-danger-border);
-}
 
-.aiab-btn-danger:hover,
-.aiab-btn.aiab-danger:hover {
-  color: var(--btn-danger-color);
-  background-color: var(--btn-danger-hover-bg);
-  border-color: var(--btn-danger-hover-border);
+  &:hover {
+    color: var(--btn-danger-color);
+    background-color: var(--btn-danger-hover-bg);
+    border-color: var(--btn-danger-hover-border);
+  }
 }
 
 /* Warning */
@@ -208,13 +198,12 @@ input[type="button"]:disabled {
   color: var(--btn-warning-color);
   background-color: var(--btn-warning-bg);
   border-color: var(--btn-warning-border);
-}
 
-.aiab-btn-warning:hover,
-.aiab-btn.aiab-warning:hover {
-  color: var(--btn-warning-color);
-  background-color: var(--btn-warning-hover-bg);
-  border-color: var(--btn-warning-hover-border);
+  &:hover {
+    color: var(--btn-warning-color);
+    background-color: var(--btn-warning-hover-bg);
+    border-color: var(--btn-warning-hover-border);
+  }
 }
 
 /* Info */
@@ -223,13 +212,12 @@ input[type="button"]:disabled {
   color: var(--btn-info-color);
   background-color: var(--btn-info-bg);
   border-color: var(--btn-info-border);
-}
 
-.aiab-btn-info:hover,
-.aiab-btn.aiab-info:hover {
-  color: var(--btn-info-color);
-  background-color: var(--btn-info-hover-bg);
-  border-color: var(--btn-info-hover-border);
+  &:hover {
+    color: var(--btn-info-color);
+    background-color: var(--btn-info-hover-bg);
+    border-color: var(--btn-info-hover-border);
+  }
 }
 
 /* Light */
@@ -238,13 +226,12 @@ input[type="button"]:disabled {
   color: var(--btn-light-color);
   background-color: var(--btn-light-bg);
   border-color: var(--btn-light-border);
-}
 
-.aiab-btn-light:hover,
-.aiab-btn.aiab-light:hover {
-  color: var(--btn-light-color);
-  background-color: var(--btn-light-hover-bg);
-  border-color: var(--btn-light-hover-border);
+  &:hover {
+    color: var(--btn-light-color);
+    background-color: var(--btn-light-hover-bg);
+    border-color: var(--btn-light-hover-border);
+  }
 }
 
 /* Dark */
@@ -253,13 +240,12 @@ input[type="button"]:disabled {
   color: var(--btn-dark-color);
   background-color: var(--btn-dark-bg);
   border-color: var(--btn-dark-border);
-}
 
-.aiab-btn-dark:hover,
-.aiab-btn.aiab-dark:hover {
-  color: var(--btn-dark-color);
-  background-color: var(--btn-dark-hover-bg);
-  border-color: var(--btn-dark-hover-border);
+  &:hover {
+    color: var(--btn-dark-color);
+    background-color: var(--btn-dark-hover-bg);
+    border-color: var(--btn-dark-hover-border);
+  }
 }
 
 /* Link Button */
@@ -270,12 +256,11 @@ input[type="button"]:disabled {
   text-decoration: underline;
   background-color: transparent;
   border: none;
-}
 
-.aiab-btn-link:hover,
-.aiab-btn.link:hover {
-  color: var(--btn-primary-hover-bg);
-  text-decoration: none;
+  &:hover {
+    color: var(--btn-primary-hover-bg);
+    text-decoration: none;
+  }
 }
 
 /* ==========================================================================
@@ -288,13 +273,12 @@ input[type="button"]:disabled {
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-bg);
   border-color: var(--btn-primary-border);
-}
 
-.aiab-button-primary:hover,
-.aiab-button.aiab-primary:hover {
-  color: var(--btn-primary-color);
-  background-color: var(--btn-primary-hover-bg);
-  border-color: var(--btn-primary-hover-border);
+  &:hover {
+    color: var(--btn-primary-color);
+    background-color: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-border);
+  }
 }
 
 /* Secondary */
@@ -303,13 +287,12 @@ input[type="button"]:disabled {
   color: var(--btn-secondary-color);
   background-color: var(--btn-secondary-bg);
   border-color: var(--btn-secondary-border);
-}
 
-.aiab-button-secondary:hover,
-.aiab-button.aiab-secondary:hover {
-  color: var(--btn-secondary-color);
-  background-color: var(--btn-secondary-hover-bg);
-  border-color: var(--btn-secondary-hover-border);
+  &:hover {
+    color: var(--btn-secondary-color);
+    background-color: var(--btn-secondary-hover-bg);
+    border-color: var(--btn-secondary-hover-border);
+  }
 }
 
 /* Success */
@@ -318,13 +301,12 @@ input[type="button"]:disabled {
   color: var(--btn-success-color);
   background-color: var(--btn-success-bg);
   border-color: var(--btn-success-border);
-}
 
-.aiab-button-success:hover,
-.aiab-button.aiab-success:hover {
-  color: var(--btn-success-color);
-  background-color: var(--btn-success-hover-bg);
-  border-color: var(--btn-success-hover-border);
+  &:hover {
+    color: var(--btn-success-color);
+    background-color: var(--btn-success-hover-bg);
+    border-color: var(--btn-success-hover-border);
+  }
 }
 
 /* Danger */
@@ -333,13 +315,12 @@ input[type="button"]:disabled {
   color: var(--btn-danger-color);
   background-color: var(--btn-danger-bg);
   border-color: var(--btn-danger-border);
-}
 
-.aiab-button-danger:hover,
-.aiab-button.aiab-danger:hover {
-  color: var(--btn-danger-color);
-  background-color: var(--btn-danger-hover-bg);
-  border-color: var(--btn-danger-hover-border);
+  &:hover {
+    color: var(--btn-danger-color);
+    background-color: var(--btn-danger-hover-bg);
+    border-color: var(--btn-danger-hover-border);
+  }
 }
 
 /* Warning */
@@ -348,13 +329,12 @@ input[type="button"]:disabled {
   color: var(--btn-warning-color);
   background-color: var(--btn-warning-bg);
   border-color: var(--btn-warning-border);
-}
 
-.aiab-button-warning:hover,
-.aiab-button.aiab-warning:hover {
-  color: var(--btn-warning-color);
-  background-color: var(--btn-warning-hover-bg);
-  border-color: var(--btn-warning-hover-border);
+  &:hover {
+    color: var(--btn-warning-color);
+    background-color: var(--btn-warning-hover-bg);
+    border-color: var(--btn-warning-hover-border);
+  }
 }
 
 /* Info */
@@ -363,13 +343,12 @@ input[type="button"]:disabled {
   color: var(--btn-info-color);
   background-color: var(--btn-info-bg);
   border-color: var(--btn-info-border);
-}
 
-.aiab-button-info:hover,
-.aiab-button.aiab-info:hover {
-  color: var(--btn-info-color);
-  background-color: var(--btn-info-hover-bg);
-  border-color: var(--btn-info-hover-border);
+  &:hover {
+    color: var(--btn-info-color);
+    background-color: var(--btn-info-hover-bg);
+    border-color: var(--btn-info-hover-border);
+  }
 }
 
 /* Light */
@@ -378,13 +357,12 @@ input[type="button"]:disabled {
   color: var(--btn-light-color);
   background-color: var(--btn-light-bg);
   border-color: var(--btn-light-border);
-}
 
-.aiab-button-light:hover,
-.aiab-button.aiab-light:hover {
-  color: var(--btn-light-color);
-  background-color: var(--btn-light-hover-bg);
-  border-color: var(--btn-light-hover-border);
+  &:hover {
+    color: var(--btn-light-color);
+    background-color: var(--btn-light-hover-bg);
+    border-color: var(--btn-light-hover-border);
+  }
 }
 
 /* Dark */
@@ -393,13 +371,12 @@ input[type="button"]:disabled {
   color: var(--btn-dark-color);
   background-color: var(--btn-dark-bg);
   border-color: var(--btn-dark-border);
-}
 
-.aiab-button-dark:hover,
-.aiab-button.aiab-dark:hover {
-  color: var(--btn-dark-color);
-  background-color: var(--btn-dark-hover-bg);
-  border-color: var(--btn-dark-hover-border);
+  &:hover {
+    color: var(--btn-dark-color);
+    background-color: var(--btn-dark-hover-bg);
+    border-color: var(--btn-dark-hover-border);
+  }
 }
 
 /* Outline Variants
@@ -409,48 +386,48 @@ input[type="button"]:disabled {
   color: var(--btn-primary-bg);
   border-color: var(--btn-primary-bg);
   background-color: transparent;
-}
 
-.aiab-btn-outline-primary:hover {
-  color: var(--btn-primary-color);
-  background-color: var(--btn-primary-bg);
-  border-color: var(--btn-primary-bg);
+  &:hover {
+    color: var(--btn-primary-color);
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+  }
 }
 
 .aiab-btn-outline-secondary {
   color: var(--btn-secondary-bg);
   border-color: var(--btn-secondary-bg);
   background-color: transparent;
-}
 
-.aiab-btn-outline-secondary:hover {
-  color: var(--btn-secondary-color);
-  background-color: var(--btn-secondary-bg);
-  border-color: var(--btn-secondary-bg);
+  &:hover {
+    color: var(--btn-secondary-color);
+    background-color: var(--btn-secondary-bg);
+    border-color: var(--btn-secondary-bg);
+  }
 }
 
 .aiab-btn-outline-success {
   color: var(--btn-success-bg);
   border-color: var(--btn-success-bg);
   background-color: transparent;
-}
 
-.aiab-btn-outline-success:hover {
-  color: var(--btn-success-color);
-  background-color: var(--btn-success-bg);
-  border-color: var(--btn-success-bg);
+  &:hover {
+    color: var(--btn-success-color);
+    background-color: var(--btn-success-bg);
+    border-color: var(--btn-success-bg);
+  }
 }
 
 .aiab-btn-outline-danger {
   color: var(--btn-danger-bg);
   border-color: var(--btn-danger-bg);
   background-color: transparent;
-}
 
-.aiab-btn-outline-danger:hover {
-  color: var(--btn-danger-color);
-  background-color: var(--btn-danger-bg);
-  border-color: var(--btn-danger-bg);
+  &:hover {
+    color: var(--btn-danger-color);
+    background-color: var(--btn-danger-bg);
+    border-color: var(--btn-danger-bg);
+  }
 }
 
 /* Button Sizes
@@ -498,12 +475,12 @@ input[type="button"]:disabled {
   color: var(--btn-ghost-color, var(--color-text, #333));
   background-color: transparent;
   border-color: var(--btn-ghost-border, currentColor);
-}
 
-.aiab-btn-ghost:hover {
-  color: var(--btn-ghost-hover-color, var(--color-primary));
-  background-color: var(--btn-ghost-hover-bg, var(--color-primary-alpha-10));
-  border-color: var(--btn-ghost-hover-border, var(--color-primary));
+  &:hover {
+    color: var(--btn-ghost-hover-color, var(--color-primary));
+    background-color: var(--btn-ghost-hover-bg, var(--color-primary-alpha-10));
+    border-color: var(--btn-ghost-hover-border, var(--color-primary));
+  }
 }
 
 /* Pill Button */
@@ -539,14 +516,13 @@ input[type="button"]:disabled {
     0 1px 18px 0 rgba(0, 0, 0, 0.12);
   font-size: 1.5rem;
   z-index: 1000;
-}
 
-.aiab-btn-fab:hover,
-.fab:hover {
-  box-shadow:
-    0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14),
-    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  &:hover {
+    box-shadow:
+      0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
 }
 
 /* Button Groups
@@ -561,20 +537,17 @@ input[type="button"]:disabled {
 .aiab-btn-group > .aiab-btn {
   position: relative;
   flex: 1 1 auto;
-}
 
-.aiab-btn-group > .aiab-btn:not(:first-child) {
-  margin-inline-start: -1px;
-}
+  &:not(:first-child) {
+    margin-inline-start: -1px;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
 
-.aiab-btn-group > .aiab-btn:not(:last-child):not(.dropdown-toggle) {
-  border-start-end-radius: 0;
-  border-end-end-radius: 0;
-}
-
-.aiab-btn-group > .aiab-btn:not(:first-child) {
-  border-start-start-radius: 0;
-  border-end-start-radius: 0;
+  &:not(:last-child):not(.dropdown-toggle) {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
 }
 
 /* Vertical Button Group */
@@ -586,21 +559,18 @@ input[type="button"]:disabled {
 
 .aiab-btn-group-vertical > .aiab-btn {
   width: 100%;
-}
 
-.aiab-btn-group-vertical > .aiab-btn:not(:first-child) {
-  margin-top: -1px;
-  margin-inline-start: 0;
-}
+  &:not(:first-child) {
+    margin-top: -1px;
+    margin-inline-start: 0;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+  }
 
-.aiab-btn-group-vertical > .aiab-btn:not(:last-child):not(.dropdown-toggle) {
-  border-end-end-radius: 0;
-  border-end-start-radius: 0;
-}
-
-.aiab-btn-group-vertical > .aiab-btn:not(:first-child) {
-  border-start-start-radius: 0;
-  border-start-end-radius: 0;
+  &:not(:last-child):not(.dropdown-toggle) {
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+  }
 }
 
 /* Loading State
@@ -610,20 +580,20 @@ input[type="button"]:disabled {
   position: relative;
   color: transparent;
   pointer-events: none;
-}
 
-.aiab-btn-loading::after {
-  content: "";
-  position: absolute;
-  width: 1rem;
-  height: 1rem;
-  top: calc(50% - 0.5rem);
-  left: calc(50% - 0.5rem);
-  border: 2px solid currentColor;
-  border-radius: 50%;
-  border-right-color: transparent;
-  border-top-color: transparent;
-  animation: btn-spinner 0.6s linear infinite;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: calc(50% - 0.5rem);
+    left: calc(50% - 0.5rem);
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    animation: btn-spinner 0.6s linear infinite;
+  }
 }
 
 @keyframes btn-spinner {
@@ -642,13 +612,11 @@ input[type="button"] {
   background-color: var(--btn-primary-bg);
   color: var(--btn-primary-color);
   border-color: var(--btn-primary-border);
-}
 
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover {
-  background-color: var(--btn-primary-hover-bg);
-  border-color: var(--btn-primary-hover-border);
+  &:hover {
+    background-color: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-border);
+  }
 }
 
 /* Accessibility

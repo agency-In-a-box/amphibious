@@ -12,11 +12,10 @@
 .aiab-input-group {
   position: relative;
   margin-bottom: 1.5rem;
-}
 
-.aiab-form-field:last-child,
-.aiab-input-group:last-child {
-  margin-bottom: 0;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 /* ========================================
@@ -293,16 +292,16 @@ input.aiab-warning {
   display: flex;
   align-items: flex-start;
   gap: 0.375rem;
-}
 
-.aiab-helper-text--icon::before {
-  content: "";
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-  margin-top: 0.125rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Ccircle cx='8' cy='8' r='7' stroke='%236b7280' stroke-width='1.5'/%3E%3Cpath d='M8 7v4m0-6h.01' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Ccircle cx='8' cy='8' r='7' stroke='%236b7280' stroke-width='1.5'/%3E%3Cpath d='M8 7v4m0-6h.01' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
 }
 
 /* Character count */
@@ -315,12 +314,14 @@ input.aiab-warning {
   margin-top: 0.25rem;
 }
 
-.aiab-character-count.aiab-warning {
-  color: var(--validation-warning);
-}
+.aiab-character-count {
+  &.aiab-warning {
+    color: var(--validation-warning);
+  }
 
-.aiab-character-count.error {
-  color: var(--validation-error);
+  &.error {
+    color: var(--validation-error);
+  }
 }
 
 /* ========================================
@@ -332,11 +333,11 @@ input.aiab-warning {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
 
-.aiab-inline-validation input,
-.aiab-inline-validation .aiab-form-control {
-  flex: 1;
+  & input,
+  & .aiab-form-control {
+    flex: 1;
+  }
 }
 
 /* Inline validation indicator */
@@ -348,22 +349,22 @@ input.aiab-warning {
   height: 1.5rem;
   border-radius: 50%;
   flex-shrink: 0;
-}
 
-.aiab-validation-indicator.aiab-success {
-  background-color: var(--validation-success);
-  color: white;
-}
+  &.aiab-success {
+    background-color: var(--validation-success);
+    color: white;
+  }
 
-.aiab-validation-indicator.error {
-  background-color: var(--validation-error);
-  color: white;
-}
+  &.error {
+    background-color: var(--validation-error);
+    color: white;
+  }
 
-.aiab-validation-indicator.aiab-loading {
-  border: 2px solid var(--color-gray-300);
-  border-top-color: var(--validation-info);
-  animation: spin 0.6s linear infinite;
+  &.aiab-loading {
+    border: 2px solid var(--color-gray-300);
+    border-top-color: var(--validation-info);
+    animation: spin 0.6s linear infinite;
+  }
 }
 
 @keyframes spin {
@@ -381,36 +382,41 @@ input.aiab-warning {
   padding: 1rem;
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
+
+  &.error {
+    background-color: var(--validation-error-bg);
+    border: 1px solid var(--validation-error-border);
+    color: var(--validation-error);
+  }
+
+  &.aiab-warning {
+    background-color: var(--validation-warning-bg);
+    border: 1px solid var(--validation-warning-border);
+    color: var(--validation-warning);
+  }
+
+  & h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+
+  & ul {
+    margin: 0;
+    padding-inline-start: 1.5rem;
+    list-style-type: disc;
+  }
+
+  & li {
+    line-height: 1.5;
+    margin-bottom: 0.25rem;
+  }
 }
 
-.aiab-validation-summary.error {
-  background-color: var(--validation-error-bg);
-  border: 1px solid var(--validation-error-border);
-  color: var(--validation-error);
-}
-
-.aiab-validation-summary.aiab-warning {
-  background-color: var(--validation-warning-bg);
-  border: 1px solid var(--validation-warning-border);
-  color: var(--validation-warning);
-}
-
-.aiab-validation-summary h3,
 .aiab-validation-summary-title {
   font-size: 1rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
-}
-
-.aiab-validation-summary ul {
-  margin: 0;
-  padding-inline-start: 1.5rem;
-  list-style-type: disc;
-}
-
-.aiab-validation-summary li {
-  line-height: 1.5;
-  margin-bottom: 0.25rem;
 }
 
 /* ========================================
@@ -418,18 +424,20 @@ input.aiab-warning {
    ======================================== */
 
 /* Radio/Checkbox group validation */
-.aiab-field-group.error {
-  padding: 0.75rem;
-  background-color: var(--validation-error-bg);
-  border: 1px solid var(--validation-error-border);
-  border-radius: 0.375rem;
-}
+.aiab-field-group {
+  &.error {
+    padding: 0.75rem;
+    background-color: var(--validation-error-bg);
+    border: 1px solid var(--validation-error-border);
+    border-radius: 0.375rem;
+  }
 
-.aiab-field-group.aiab-success {
-  padding: 0.75rem;
-  background-color: var(--validation-success-bg);
-  border: 1px solid var(--validation-success-border);
-  border-radius: 0.375rem;
+  &.aiab-success {
+    padding: 0.75rem;
+    background-color: var(--validation-success-bg);
+    border: 1px solid var(--validation-success-border);
+    border-radius: 0.375rem;
+  }
 }
 
 /* ========================================
@@ -438,23 +446,23 @@ input.aiab-warning {
 
 .aiab-floating-label {
   position: relative;
-}
 
-.aiab-floating-label input:placeholder-shown ~ label {
-  transform: translateY(0);
-}
+  & input:placeholder-shown ~ label {
+    transform: translateY(0);
+  }
 
-.aiab-floating-label input:focus ~ label,
-.aiab-floating-label input:not(:placeholder-shown) ~ label {
-  transform: translateY(-1.5rem) scale(0.85);
-}
+  & input:focus ~ label,
+  & input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.5rem) scale(0.85);
+  }
 
-.aiab-floating-label.error label {
-  color: var(--validation-error);
-}
+  &.error label {
+    color: var(--validation-error);
+  }
 
-.aiab-floating-label.aiab-success label {
-  color: var(--validation-success);
+  &.aiab-success label {
+    color: var(--validation-success);
+  }
 }
 
 /* ========================================

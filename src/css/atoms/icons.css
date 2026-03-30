@@ -116,26 +116,26 @@
 .aiab-icon--filled {
   fill: currentColor;
   stroke: none;
-}
 
-.aiab-icon--filled.aiab-icon--primary {
-  fill: var(--icon-color-primary);
-}
+  &.aiab-icon--primary {
+    fill: var(--icon-color-primary);
+  }
 
-.aiab-icon--filled.aiab-icon--success {
-  fill: var(--icon-color-success);
-}
+  &.aiab-icon--success {
+    fill: var(--icon-color-success);
+  }
 
-.aiab-icon--filled.aiab-icon--warning {
-  fill: var(--icon-color-warning);
-}
+  &.aiab-icon--warning {
+    fill: var(--icon-color-warning);
+  }
 
-.aiab-icon--filled.aiab-icon--danger {
-  fill: var(--icon-color-danger);
-}
+  &.aiab-icon--danger {
+    fill: var(--icon-color-danger);
+  }
 
-.aiab-icon--filled.aiab-icon--info {
-  fill: var(--icon-color-info);
+  &.aiab-icon--info {
+    fill: var(--icon-color-info);
+  }
 }
 
 /* Icon Animations */
@@ -207,53 +207,53 @@
     background-color 0.2s ease,
     transform 0.1s ease;
   position: relative;
-}
 
-.aiab-icon-button:hover {
-  background-color: var(--icon-button-hover-bg);
-}
+  &:hover {
+    background-color: var(--icon-button-hover-bg);
+  }
 
-.aiab-icon-button:active {
-  transform: scale(0.95);
-}
+  &:active {
+    transform: scale(0.95);
+  }
 
-.aiab-icon-button:focus-visible {
-  outline: var(--icon-button-focus-ring);
-  outline-offset: 2px;
-}
+  &:focus-visible {
+    outline: var(--icon-button-focus-ring);
+    outline-offset: 2px;
+  }
 
-.aiab-icon-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
 /* Icon Button Variants */
 .aiab-icon-button--primary {
   background-color: var(--icon-color-primary);
   color: white;
-}
 
-.aiab-icon-button--primary:hover {
-  background-color: color-mix(in srgb, var(--icon-color-primary) 85%, black);
+  &:hover {
+    background-color: color-mix(in srgb, var(--icon-color-primary) 85%, black);
+  }
 }
 
 .aiab-icon-button--success {
   background-color: var(--icon-color-success);
   color: white;
-}
 
-.aiab-icon-button--success:hover {
-  background-color: color-mix(in srgb, var(--icon-color-success) 85%, black);
+  &:hover {
+    background-color: color-mix(in srgb, var(--icon-color-success) 85%, black);
+  }
 }
 
 .aiab-icon-button--danger {
   background-color: var(--icon-color-danger);
   color: white;
-}
 
-.aiab-icon-button--danger:hover {
-  background-color: color-mix(in srgb, var(--icon-color-danger) 85%, black);
+  &:hover {
+    background-color: color-mix(in srgb, var(--icon-color-danger) 85%, black);
+  }
 }
 
 /* Icon Button Sizes */
@@ -308,13 +308,13 @@ figure.aiab-icon-badge {
   line-height: var(--icon-badge-size);
   text-align: center;
   border: 2px solid white;
-}
 
-.aiab-icon-badge__count:empty {
-  min-width: 8px;
-  height: 8px;
-  padding: 0;
-  border-radius: 50%;
+  &:empty {
+    min-width: 8px;
+    height: 8px;
+    padding: 0;
+    border-radius: 50%;
+  }
 }
 
 .aiab-icon-badge__count--lg {
@@ -347,13 +347,13 @@ figure.aiab-icon-badge {
   stroke: none;
   cursor: pointer;
   transition: fill 0.2s ease;
+
+  &:hover {
+    fill: var(--icon-color-warning);
+  }
 }
 
 .aiab-rating .aiab-icon--filled {
-  fill: var(--icon-color-warning);
-}
-
-.aiab-rating .aiab-icon:hover {
   fill: var(--icon-color-warning);
 }
 
@@ -410,10 +410,10 @@ figure.aiab-icon-badge {
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
-}
 
-.aiab-social-icon:hover {
-  transform: scale(1.1);
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .aiab-social-icon--facebook {
@@ -442,10 +442,10 @@ figure.aiab-icon-badge {
 /* Loading Icon */
 .aiab-icon--loading {
   opacity: 0.6;
-}
 
-.aiab-icon--loading.aiab-icon--spin {
-  animation-duration: 1s;
+  &.aiab-icon--spin {
+    animation-duration: 1s;
+  }
 }
 
 /* Responsive Adjustments */

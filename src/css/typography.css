@@ -44,11 +44,11 @@ h1 {
   font-size: var(--font-size-h1, 3em);
   font-weight: 300;
   margin: 0 0 0.67em 0;
-}
 
-h1 small {
-  font-size: 0.625em;
-  margin: 0 0 0.67em 0;
+  & small {
+    font-size: 0.625em;
+    margin: 0 0 0.67em 0;
+  }
 }
 
 h2 {
@@ -99,6 +99,12 @@ p {
   margin: 0 0 1.4em 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
+
+  &.aiab-lead {
+    font-size: 1.5em;
+    line-height: 1.6;
+    color: var(--color-muted, #767676);
+  }
 }
 
 p img,
@@ -106,12 +112,6 @@ img {
   margin: 0;
   max-width: 100%;
   height: auto;
-}
-
-p.aiab-lead {
-  font-size: 1.5em;
-  line-height: 1.6;
-  color: var(--color-muted, #767676);
 }
 
 /* Code & Pre
@@ -125,6 +125,12 @@ pre {
   word-wrap: break-word;
   background: var(--color-code-bg, var(--color-code-bg));
   border-radius: var(--border-radius, 4px);
+
+  & code {
+    display: block;
+    padding: 0;
+    background: transparent;
+  }
 }
 
 code,
@@ -149,12 +155,6 @@ code {
   padding: 0.1em 0.3em;
   background: var(--color-code-bg, var(--color-code-bg));
   border-radius: var(--border-radius-sm, 3px);
-}
-
-pre code {
-  display: block;
-  padding: 0;
-  background: transparent;
 }
 
 kbd {
@@ -182,26 +182,26 @@ blockquote {
   margin: 0 0 1.6em;
   padding: 0.6em 1.6em 0 1.3em;
   border-inline-start: 4px solid var(--color-border-quote, #ddd);
-}
 
-blockquote .author {
-  font-size: 1em;
-  font-weight: bold;
-}
+  & .author {
+    font-size: 1em;
+    font-weight: bold;
+  }
 
-blockquote cite {
-  display: block;
-  font-size: 0.865em;
-  color: var(--color-muted, #555);
-}
+  & cite {
+    display: block;
+    font-size: 0.865em;
+    color: var(--color-muted, #555);
 
-blockquote cite:before {
-  content: "\2014 \0020";
-}
+    &:before {
+      content: "\2014 \0020";
+    }
 
-blockquote cite a,
-blockquote cite a:visited {
-  color: var(--color-muted, #555);
+    & a,
+    & a:visited {
+      color: var(--color-muted, #555);
+    }
+  }
 }
 
 /* Links

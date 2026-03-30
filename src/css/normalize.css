@@ -16,6 +16,7 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
   -moz-tab-size: 4; /* 3 */
   tab-size: 4; /* 3 */
+  box-sizing: border-box;
 }
 
 /* Sections
@@ -27,6 +28,11 @@ html {
 
 body {
   margin: 0;
+  font-family: var(--font-family-base, sans-serif);
+  font-size: var(--font-size-base, 1rem);
+  line-height: var(--line-height-base, 1.5);
+  color: var(--color-text, #333);
+  background-color: var(--color-background, #fff);
 }
 
 /**
@@ -87,6 +93,11 @@ pre {
 
 a {
   background-color: transparent;
+
+  &:active,
+  &:hover {
+    outline: 0;
+  }
 }
 
 /**
@@ -348,14 +359,10 @@ textarea {
 [type="search"] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
-}
 
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
 }
 
 /**
@@ -496,31 +503,6 @@ svg:not(:root) {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-/**
- * Improve consistency of default text.
- */
-
-body {
-  font-family: var(--font-family-base, sans-serif);
-  font-size: var(--font-size-base, 1rem);
-  line-height: var(--line-height-base, 1.5);
-  color: var(--color-text, #333);
-  background-color: var(--color-background, #fff);
-}
-
-/**
- * Improve readability when focused and mouse hovered in all browsers.
- */
-
-a:active,
-a:hover {
-  outline: 0;
 }
 
 /**

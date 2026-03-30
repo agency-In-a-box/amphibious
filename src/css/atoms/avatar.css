@@ -294,15 +294,15 @@
   transition:
     transform 0.2s ease,
     z-index 0.2s ease;
-}
 
-.aiab-avatar-group .aiab-avatar:hover {
-  transform: scale(1.1);
-  z-index: 1;
-}
+  &:hover {
+    transform: scale(1.1);
+    z-index: 1;
+  }
 
-.aiab-avatar-group .aiab-avatar:last-child {
-  margin-inline-end: 0;
+  &:last-child {
+    margin-inline-end: 0;
+  }
 }
 
 /* Stacked variant */
@@ -313,10 +313,10 @@
 .aiab-avatar-group--stacked .aiab-avatar {
   margin-inline-end: 0;
   margin-inline-start: -0.5rem;
-}
 
-.aiab-avatar-group--stacked .aiab-avatar:last-child {
-  margin-inline-start: 0;
+  &:last-child {
+    margin-inline-start: 0;
+  }
 }
 
 /* Group counter */
@@ -397,17 +397,17 @@
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-}
 
-.aiab-avatar--clickable:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
+  &:hover {
+    transform: scale(1.05);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
 
-.aiab-avatar--clickable:active {
-  transform: scale(0.95);
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 /* Bordered avatar */
@@ -436,11 +436,11 @@
 
 .aiab-avatar[role="button"] {
   cursor: pointer;
-}
 
-.aiab-avatar[role="button"]:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
 }
 
 /* High contrast mode */

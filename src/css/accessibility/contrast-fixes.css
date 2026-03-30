@@ -6,9 +6,9 @@
 
 /*
  * Color Contrast Analysis:
- * - #ED8B00 (primary orange) with white: 2.95:1 ❌ FAIL (needs 4.5:1)
- * - var(--color-primary-dark) (dark orange) with white: 3.8:1 ❌ FAIL for small text
- * - #ED8B00 with black: 7.1:1 ✅ PASS
+ * - #ED8B00 (primary orange) with white: 2.95:1 FAIL (needs 4.5:1)
+ * - var(--color-primary-dark) (dark orange) with white: 3.8:1 FAIL for small text
+ * - #ED8B00 with black: 7.1:1 PASS
  *
  * Solution: Use darker backgrounds or darker text
  */
@@ -54,13 +54,11 @@
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
-}
 
-.hero a:not(.aiab-button):hover,
-.docs-header a:not(.aiab-button):hover,
-.examples-header a:not(.aiab-button):hover {
-  color: #ffd700;
-  text-decoration-thickness: 3px;
+  &:hover {
+    color: #ffd700;
+    text-decoration-thickness: 3px;
+  }
 }
 
 /* ========================================
@@ -74,13 +72,11 @@ button[type="submit"] {
   background: var(--color-primary-dark);
   color: white;
   border-color: var(--color-primary-dark);
-}
 
-.aiab-button--primary:hover,
-.aiab-btn-primary:hover,
-button[type="submit"]:hover {
-  background: var(--color-primary-text);
-  border-color: var(--color-primary-text);
+  &:hover {
+    background: var(--color-primary-text);
+    border-color: var(--color-primary-text);
+  }
 }
 
 /* Outline orange buttons need darker color */
@@ -88,12 +84,11 @@ button[type="submit"]:hover {
 .aiab-btn-outline-primary {
   color: var(--color-primary-text);
   border-color: var(--color-primary-dark);
-}
 
-.aiab-button--outline-primary:hover,
-.aiab-btn-outline-primary:hover {
-  background: var(--color-primary-dark);
-  color: white;
+  &:hover {
+    background: var(--color-primary-dark);
+    color: white;
+  }
 }
 
 /* ========================================
@@ -105,9 +100,11 @@ button[type="submit"]:hover {
   color: var(--color-primary-text); /* Darker orange for better contrast */
 }
 
-.horizontal a:hover,
-.horizontal a:focus {
-  color: var(--color-primary-text);
+.horizontal a {
+  &:hover,
+  &:focus {
+    color: var(--color-primary-text);
+  }
 }
 
 .horizontal .aiab-active > a {
@@ -122,14 +119,14 @@ button[type="submit"]:hover {
 /* Default link colors need darker orange */
 a {
   color: var(--color-primary-text); /* Darker orange, 7.6:1 contrast ratio */
-}
 
-a:hover {
-  color: var(--color-primary-dark);
-}
+  &:hover {
+    color: var(--color-primary-dark);
+  }
 
-a:visited {
-  color: var(--color-link-visited); /* Even darker for visited */
+  &:visited {
+    color: var(--color-link-visited); /* Even darker for visited */
+  }
 }
 
 /* ========================================
@@ -168,10 +165,10 @@ a:visited {
 
 .aiab-footer a {
   color: var(--color-gray-600);
-}
 
-.aiab-footer a:hover {
-  color: var(--color-primary-text); /* Darker orange for better contrast */
+  &:hover {
+    color: var(--color-primary-text); /* Darker orange for better contrast */
+  }
 }
 
 .aiab-footer__brand {
@@ -214,10 +211,10 @@ a:visited {
 :focus {
   outline: 2px solid var(--color-primary-text);
   outline-offset: 2px;
-}
 
-:focus:not(:focus-visible) {
-  outline: none;
+  &:not(:focus-visible) {
+    outline: none;
+  }
 }
 
 :focus-visible {
