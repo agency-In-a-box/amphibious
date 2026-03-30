@@ -2,40 +2,46 @@
  * Dark Mode Overrides for Homepage
  * Only gradient overrides that need different dark mode values.
  * Text colors inherit from dark-mode.css via CSS custom properties.
+ *
+ * Uses component-level custom properties to avoid duplicating
+ * rules for both dark mode triggers (media query + data-theme).
  */
 
-/* System preference dark mode */
+:root {
+  --hero-gradient: none;
+  --demo-grid-gradient: none;
+  --cta-gradient: none;
+  --feature-card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .aiab-hero {
-    background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
-  }
-
-  :root:not([data-theme="light"]) .aiab-demo-grid {
-    background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
-  }
-
-  :root:not([data-theme="light"]) .aiab-cta-section {
-    background: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
-  }
-
-  :root:not([data-theme="light"]) .aiab-feature-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  :root:not([data-theme="light"]) {
+    --hero-gradient: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+    --demo-grid-gradient: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+    --cta-gradient: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
+    --feature-card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   }
 }
 
-/* Manual dark mode toggle */
-[data-theme="dark"] .aiab-hero {
-  background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+[data-theme="dark"] {
+  --hero-gradient: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+  --demo-grid-gradient: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+  --cta-gradient: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
+  --feature-card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-[data-theme="dark"] .aiab-demo-grid {
-  background: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
+.aiab-hero {
+  background: var(--hero-gradient);
 }
 
-[data-theme="dark"] .aiab-cta-section {
-  background: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
+.aiab-demo-grid {
+  background: var(--demo-grid-gradient);
 }
 
-[data-theme="dark"] .aiab-feature-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+.aiab-cta-section {
+  background: var(--cta-gradient);
+}
+
+.aiab-feature-card:hover {
+  box-shadow: var(--feature-card-hover-shadow);
 }

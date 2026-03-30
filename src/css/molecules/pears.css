@@ -591,3 +591,36 @@ article.aside {
 [data-theme="dark"] .aiab-reviewer-avatar {
   background: var(--color-gray-750);
 }
+
+/* System preference dark mode (mirrors [data-theme="dark"] above) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aiab-stats li {
+    border-inline-end-color: var(--color-gray-750);
+  }
+
+  :root:not([data-theme="light"]) .aiab-slats li {
+    border-bottom-color: var(--color-gray-750);
+  }
+
+  :root:not([data-theme="light"]) .aiab-stat-card {
+    background: var(--color-gray-850);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  :root:not([data-theme="light"]) .aiab-slats--cards li {
+    background: var(--color-gray-850);
+    border-color: var(--color-gray-750);
+  }
+
+  :root:not([data-theme="light"]) .aiab-aside-callout {
+    background: var(--color-gray-850);
+  }
+
+  :root:not([data-theme="light"]) .aiab-review-slats li {
+    border-bottom-color: var(--color-gray-750);
+  }
+
+  :root:not([data-theme="light"]) .aiab-reviewer-avatar {
+    background: var(--color-gray-750);
+  }
+}

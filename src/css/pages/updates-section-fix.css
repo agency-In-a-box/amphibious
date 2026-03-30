@@ -3,9 +3,11 @@
  * Ensures the entire section has one consistent background
  */
 
-/* Light mode - entire section gets one background */
+/* Section layout — background/borders driven by custom properties above */
 .aiab-updates-section {
-  background: #f8f9fa;
+  background: var(--updates-bg);
+  border-top: 1px solid var(--updates-border);
+  border-bottom: 1px solid var(--updates-border);
   padding: 48px 0;
   margin: 48px 0;
 }
@@ -14,12 +16,24 @@
   background: transparent;
 }
 
-/* Remove individual backgrounds from slat items in light mode */
+/* Slat items — border driven by custom property */
 .aiab-slats--with-image li {
   background: transparent;
   border: none;
   padding: 24px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--updates-item-border);
+}
+
+.aiab-slats--with-image h3 {
+  color: var(--updates-heading);
+}
+
+.aiab-slats--with-image p {
+  color: var(--updates-text);
+}
+
+.aiab-slats--with-image .aiab-meta {
+  color: var(--updates-meta);
 }
 
 .aiab-slats--with-image li:last-child {
@@ -40,53 +54,37 @@
   background: transparent;
 }
 
-/* Dark mode - section gets dark background */
+/*
+ * Dark mode — uses component-level custom properties to avoid
+ * duplicating rules for both triggers (media query + data-theme).
+ */
+:root {
+  --updates-bg: #f8f9fa;
+  --updates-border: transparent;
+  --updates-item-border: rgba(0, 0, 0, 0.1);
+  --updates-heading: inherit;
+  --updates-text: inherit;
+  --updates-meta: inherit;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .aiab-updates-section {
-    background: var(--color-surface, #1c1c1e);
-    border-top: 1px solid var(--color-border, #3a3a3c);
-    border-bottom: 1px solid var(--color-border, #3a3a3c);
-  }
-
-  :root:not([data-theme="light"]) .aiab-slats--with-image li {
-    background: transparent;
-    border-bottom: 1px solid var(--color-border, #3a3a3c);
-  }
-
-  :root:not([data-theme="light"]) .aiab-slats--with-image h3 {
-    color: var(--color-text, #ffffff);
-  }
-
-  :root:not([data-theme="light"]) .aiab-slats--with-image p {
-    color: var(--color-text-secondary, #aeaeb2);
-  }
-
-  :root:not([data-theme="light"]) .aiab-slats--with-image .aiab-meta {
-    color: var(--color-text-tertiary, #8e8e93);
+  :root:not([data-theme="light"]) {
+    --updates-bg: var(--color-surface, #1c1c1e);
+    --updates-border: var(--color-border, #3a3a3c);
+    --updates-item-border: var(--color-border, #3a3a3c);
+    --updates-heading: var(--color-text, #ffffff);
+    --updates-text: var(--color-text-secondary, #aeaeb2);
+    --updates-meta: var(--color-text-tertiary, #8e8e93);
   }
 }
 
-[data-theme="dark"] .aiab-updates-section {
-  background: var(--color-surface, #1c1c1e);
-  border-top: 1px solid var(--color-border, #3a3a3c);
-  border-bottom: 1px solid var(--color-border, #3a3a3c);
-}
-
-[data-theme="dark"] .aiab-slats--with-image li {
-  background: transparent;
-  border-bottom: 1px solid var(--color-border, #3a3a3c);
-}
-
-[data-theme="dark"] .aiab-slats--with-image h3 {
-  color: var(--color-text, #ffffff);
-}
-
-[data-theme="dark"] .aiab-slats--with-image p {
-  color: var(--color-text-secondary, #aeaeb2);
-}
-
-[data-theme="dark"] .aiab-slats--with-image .aiab-meta {
-  color: var(--color-text-tertiary, #8e8e93);
+[data-theme="dark"] {
+  --updates-bg: var(--color-surface, #1c1c1e);
+  --updates-border: var(--color-border, #3a3a3c);
+  --updates-item-border: var(--color-border, #3a3a3c);
+  --updates-heading: var(--color-text, #ffffff);
+  --updates-text: var(--color-text-secondary, #aeaeb2);
+  --updates-meta: var(--color-text-tertiary, #8e8e93);
 }
 
 /* Fix the colored boxes with icons */

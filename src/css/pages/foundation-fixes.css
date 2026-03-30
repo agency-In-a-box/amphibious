@@ -17,116 +17,59 @@
    2. Core Section Text Visibility - Fix unreadable body text
    ========================================================================== */
 
-/* Light mode - ensure all text is dark and readable */
-:root:not([data-theme="dark"]),
-[data-theme="light"] {
-  /* Core section text */
-  .core-section h2,
-  .core-section h3,
-  .core-section h4,
-  .core-section p,
-  .core-section li,
-  .core-section span,
-  #core h2,
-  #core h3,
-  #core h4,
-  #core p,
-  #core li,
-  #core span {
-    color: #212529;
-  }
-
-  /* All body text */
-  main p,
-  main li,
-  main span:not(.demo-col),
-  article p,
-  article li,
-  section p,
-  section li {
-    color: #212529;
-  }
-
-  /* Headings */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: #212529;
-  }
+/*
+ * Text visibility uses a custom property to avoid duplicating the full
+ * selector list for both dark-mode triggers (media query + data-theme).
+ */
+:root {
+  --page-text: #212529;
 }
 
-/* Dark mode - ensure proper text colors */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    .core-section h2,
-    .core-section h3,
-    .core-section h4,
-    .core-section p,
-    .core-section li,
-    #core h2,
-    #core h3,
-    #core h4,
-    #core p,
-    #core li {
-      color: #ffffff;
-    }
-
-    main p,
-    main li,
-    main span:not(.demo-col),
-    article p,
-    article li,
-    section p,
-    section li {
-      color: #ffffff;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: #ffffff;
-    }
+    --page-text: #ffffff;
   }
 }
 
 [data-theme="dark"] {
-  .core-section h2,
-  .core-section h3,
-  .core-section h4,
-  .core-section p,
-  .core-section li,
-  #core h2,
-  #core h3,
-  #core h4,
-  #core p,
-  #core li {
-    color: #ffffff;
-  }
+  --page-text: #ffffff;
+}
 
-  main p,
-  main li,
-  main span:not(.demo-col),
-  article p,
-  article li,
-  section p,
-  section li {
-    color: #ffffff;
-  }
+/* Core section text */
+.core-section h2,
+.core-section h3,
+.core-section h4,
+.core-section p,
+.core-section li,
+.core-section span,
+#core h2,
+#core h3,
+#core h4,
+#core p,
+#core li,
+#core span {
+  color: var(--page-text);
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: #ffffff;
-  }
+/* All body text */
+main p,
+main li,
+main span:not(.demo-col),
+article p,
+article li,
+section p,
+section li {
+  color: var(--page-text);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--page-text);
 }
 
 /* ==========================================================================
@@ -180,19 +123,8 @@ code:not(pre code) {
 }
 
 /* Ensure demo columns have proper text color */
-:root:not([data-theme="dark"]) .demo-col,
-[data-theme="light"] .demo-col {
-  color: #212529;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .demo-col {
-    color: #ffffff;
-  }
-}
-
-[data-theme="dark"] .demo-col {
-  color: #ffffff;
+.demo-col {
+  color: var(--page-text);
 }
 
 /* Media query demo - remove orange */
@@ -236,42 +168,15 @@ code:not(pre code) {
   color: inherit;
 }
 
-/* Light mode specific */
-:root:not([data-theme="dark"]) #breakpoints,
-:root:not([data-theme="dark"]) .breakpoints-section,
-[data-theme="light"] #breakpoints,
-[data-theme="light"] .breakpoints-section {
-  color: #212529;
+/* Breakpoints text color — uses --page-text from section 2 */
+#breakpoints,
+.breakpoints-section {
+  color: var(--page-text);
 }
 
-:root:not([data-theme="dark"]) #breakpoints *,
-:root:not([data-theme="dark"]) .breakpoints-section *,
-[data-theme="light"] #breakpoints *,
-[data-theme="light"] .breakpoints-section * {
-  color: #212529;
-}
-
-/* Dark mode specific */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) #breakpoints,
-  :root:not([data-theme="light"]) .breakpoints-section {
-    color: #ffffff;
-  }
-
-  :root:not([data-theme="light"]) #breakpoints *,
-  :root:not([data-theme="light"]) .breakpoints-section * {
-    color: #ffffff;
-  }
-}
-
-[data-theme="dark"] #breakpoints,
-[data-theme="dark"] .breakpoints-section {
-  color: #ffffff;
-}
-
-[data-theme="dark"] #breakpoints *,
-[data-theme="dark"] .breakpoints-section * {
-  color: #ffffff;
+#breakpoints *,
+.breakpoints-section * {
+  color: var(--page-text);
 }
 
 /* ==========================================================================
