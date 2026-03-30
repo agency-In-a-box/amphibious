@@ -117,7 +117,7 @@
 
 /* Primary */
 .aiab-avatar--primary {
-  background-color: #fff3e0;
+  background-color: var(--color-warning-light);
   color: var(--color-primary-text);
 }
 
@@ -129,20 +129,20 @@
 
 /* Success */
 .aiab-avatar--success {
-  background-color: #dcfce7;
-  color: #16a34a;
+  background-color: var(--color-success-light);
+  color: var(--color-success);
 }
 
 /* Danger */
 .aiab-avatar--danger {
-  background-color: #fee2e2;
-  color: #dc2626;
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
 }
 
 /* Warning */
 .aiab-avatar--warning {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-hover);
 }
 
 /* Info */
@@ -187,7 +187,7 @@
 
 /* Status colors */
 .aiab-avatar-status--online {
-  background-color: #10b981;
+  background-color: var(--color-success);
 }
 
 .aiab-avatar-status--offline {
@@ -195,11 +195,11 @@
 }
 
 .aiab-avatar-status--busy {
-  background-color: #dc2626;
+  background-color: var(--color-danger);
 }
 
 .aiab-avatar-status--away {
-  background-color: #f59e0b;
+  background-color: var(--color-warning);
 }
 
 /* Status position for square avatars */
@@ -252,7 +252,7 @@
   min-width: 18px;
   height: 18px;
   padding: 0 4px;
-  background-color: #dc2626;
+  background-color: var(--color-danger);
   color: white;
   border-radius: 9px;
   font-size: 0.625rem;

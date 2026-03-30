@@ -16,9 +16,9 @@
 
   /* Icon Button Colors */
   --icon-button-bg: transparent;
-  --icon-button-color: #6b7280;
-  --icon-button-hover-bg: #f3f4f6;
-  --icon-button-hover-color: #374151;
+  --icon-button-color: var(--color-gray-550);
+  --icon-button-hover-bg: var(--color-gray-150);
+  --icon-button-hover-color: var(--color-gray-750);
   --icon-button-active-bg: var(--color-gray-300);
 
   /* Icon Button Primary */
@@ -27,24 +27,24 @@
   --icon-button-primary-hover-bg: var(--color-primary-hover);
 
   /* Icon Button Secondary */
-  --icon-button-secondary-bg: #6b7280;
+  --icon-button-secondary-bg: var(--color-gray-550);
   --icon-button-secondary-color: #ffffff;
   --icon-button-secondary-hover-bg: #5c636a;
 
   /* Icon Button Success */
-  --icon-button-success-bg: #10b981;
+  --icon-button-success-bg: var(--color-success);
   --icon-button-success-color: #ffffff;
-  --icon-button-success-hover-bg: #059669;
+  --icon-button-success-hover-bg: var(--color-success-hover);
 
   /* Icon Button Danger */
-  --icon-button-danger-bg: #ef4444;
+  --icon-button-danger-bg: var(--color-danger);
   --icon-button-danger-color: #ffffff;
-  --icon-button-danger-hover-bg: #dc2626;
+  --icon-button-danger-hover-bg: var(--color-danger-hover);
 
   /* Icon Button Warning */
-  --icon-button-warning-bg: #f59e0b;
+  --icon-button-warning-bg: var(--color-warning);
   --icon-button-warning-color: #ffffff;
-  --icon-button-warning-hover-bg: #d97706;
+  --icon-button-warning-hover-bg: var(--color-warning-hover);
 }
 
 /* Base Icon Button Styles

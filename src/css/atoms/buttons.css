@@ -21,44 +21,44 @@
   --btn-primary-hover-bg: var(--color-primary-hover);
   --btn-primary-hover-border: var(--color-primary-active);
 
-  --btn-secondary-bg: #6c757d;
-  --btn-secondary-border: #6c757d;
+  --btn-secondary-bg: var(--color-gray-600);
+  --btn-secondary-border: var(--color-gray-600);
   --btn-secondary-color: #fff;
   --btn-secondary-hover-bg: #5c636a;
   --btn-secondary-hover-border: #565e64;
 
-  --btn-success-bg: #198754;
-  --btn-success-border: #198754;
+  --btn-success-bg: var(--color-success);
+  --btn-success-border: var(--color-success);
   --btn-success-color: #fff;
-  --btn-success-hover-bg: #157347;
-  --btn-success-hover-border: #146c43;
+  --btn-success-hover-bg: var(--color-success-hover);
+  --btn-success-hover-border: var(--color-success-hover);
 
-  --btn-danger-bg: #dc3545;
-  --btn-danger-border: #dc3545;
+  --btn-danger-bg: var(--color-danger);
+  --btn-danger-border: var(--color-danger);
   --btn-danger-color: #fff;
-  --btn-danger-hover-bg: #c82333;
-  --btn-danger-hover-border: #bd2130;
+  --btn-danger-hover-bg: var(--color-danger-hover);
+  --btn-danger-hover-border: var(--color-danger-hover);
 
-  --btn-warning-bg: #ffc107;
-  --btn-warning-border: #ffc107;
-  --btn-warning-color: #212529;
-  --btn-warning-hover-bg: #e0a800;
-  --btn-warning-hover-border: #d39e00;
+  --btn-warning-bg: var(--color-warning);
+  --btn-warning-border: var(--color-warning);
+  --btn-warning-color: var(--color-gray-900);
+  --btn-warning-hover-bg: var(--color-warning-hover);
+  --btn-warning-hover-border: var(--color-warning-hover);
 
-  --btn-info-bg: #0dcaf0;
-  --btn-info-border: #0dcaf0;
-  --btn-info-color: #000;
-  --btn-info-hover-bg: #31d2f2;
-  --btn-info-hover-border: #25cff2;
+  --btn-info-bg: var(--color-info);
+  --btn-info-border: var(--color-info);
+  --btn-info-color: #fff;
+  --btn-info-hover-bg: var(--color-info-hover);
+  --btn-info-hover-border: var(--color-info-hover);
 
-  --btn-light-bg: #f8f9fa;
-  --btn-light-border: #f8f9fa;
-  --btn-light-color: #212529;
-  --btn-light-hover-bg: #e2e6ea;
-  --btn-light-hover-border: #dae0e5;
+  --btn-light-bg: var(--color-gray-100);
+  --btn-light-border: var(--color-gray-100);
+  --btn-light-color: var(--color-gray-900);
+  --btn-light-hover-bg: var(--color-gray-300);
+  --btn-light-hover-border: var(--color-gray-300);
 
-  --btn-dark-bg: #212529;
-  --btn-dark-border: #212529;
+  --btn-dark-bg: var(--color-gray-900);
+  --btn-dark-border: var(--color-gray-900);
   --btn-dark-color: #fff;
   --btn-dark-hover-bg: #1c1f23;
   --btn-dark-hover-border: #1a1e21;

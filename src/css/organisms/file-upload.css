@@ -205,11 +205,11 @@
 }
 
 .aiab-file-upload-status--success {
-  color: #16a34a;
+  color: var(--color-success);
 }
 
 .aiab-file-upload-status--error {
-  color: #dc2626;
+  color: var(--color-danger);
 }
 
 .aiab-file-upload-status--uploading {
@@ -266,9 +266,9 @@
   flex-shrink: 0;
 
   &:hover {
-    background: #fee2e2;
-    border-color: #fca5a5;
-    color: #dc2626;
+    background: var(--color-danger-light);
+    border-color: var(--color-danger);
+    color: var(--color-danger);
   }
 
   & svg {
@@ -370,24 +370,24 @@
 /* Error state */
 .aiab-file-upload--error {
   & .aiab-file-upload-zone {
-    border-color: #dc2626;
-    background: #fef2f2;
+    border-color: var(--color-danger);
+    background: var(--color-danger-light);
   }
 
   & .aiab-file-upload-icon {
-    color: #dc2626;
+    color: var(--color-danger);
   }
 }
 
 /* Success state */
 .aiab-file-upload--success {
   & .aiab-file-upload-zone {
-    border-color: #16a34a;
-    background: #f0fdf4;
+    border-color: var(--color-success);
+    background: var(--color-success-light);
   }
 
   & .aiab-file-upload-icon {
-    color: #16a34a;
+    color: var(--color-success);
   }
 }
 
@@ -396,16 +396,16 @@
    ======================================== */
 
 .aiab-file-type-pdf {
-  color: #dc2626;
+  color: var(--color-danger);
 }
 .aiab-file-type-doc {
   color: var(--color-accent);
 }
 .aiab-file-type-xls {
-  color: #16a34a;
+  color: var(--color-success);
 }
 .aiab-file-type-zip {
-  color: #f59e0b;
+  color: var(--color-warning);
 }
 .aiab-file-type-video {
   color: #8b5cf6;
@@ -523,5 +523,14 @@
   .aiab-file-upload-remove:hover {
     background: #7f1d1d;
     border-color: #991b1b;
+  }
+
+  /* Validation state backgrounds */
+  .aiab-file-upload--error .aiab-file-upload-zone {
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  .aiab-file-upload--success .aiab-file-upload-zone {
+    background: rgba(34, 197, 94, 0.08);
   }
 }

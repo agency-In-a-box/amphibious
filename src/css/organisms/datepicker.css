@@ -524,14 +524,14 @@
 
 /* Success */
 .aiab-datepicker--success .aiab-datepicker-day--selected {
-  background: #16a34a;
-  border-color: #16a34a;
+  background: var(--color-success);
+  border-color: var(--color-success);
 }
 
 /* Danger */
 .aiab-datepicker--danger .aiab-datepicker-day--selected {
-  background: #dc2626;
-  border-color: #dc2626;
+  background: var(--color-danger);
+  border-color: var(--color-danger);
 }
 
 /* ========================================
@@ -560,7 +560,7 @@
 /* Error */
 .aiab-datepicker--error {
   & .aiab-datepicker-input {
-    border-color: #dc2626;
+    border-color: var(--color-danger);
   }
 
   & .aiab-datepicker-input:focus {

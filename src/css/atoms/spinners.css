@@ -67,23 +67,23 @@
 }
 
 .aiab-spinner-secondary {
-  --spinner-color: #6b7280;
+  --spinner-color: var(--color-gray-550);
 }
 
 .aiab-spinner-success {
-  --spinner-color: #10b981;
+  --spinner-color: var(--color-success);
 }
 
 .aiab-spinner-danger {
-  --spinner-color: #ef4444;
+  --spinner-color: var(--color-danger);
 }
 
 .aiab-spinner-warning {
-  --spinner-color: #f59e0b;
+  --spinner-color: var(--color-warning);
 }
 
 .aiab-spinner-info {
-  --spinner-color: #06b6d4;
+  --spinner-color: var(--color-info);
 }
 
 /* Spinner Variants

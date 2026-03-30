@@ -72,7 +72,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #cbd5e1;
+  background-color: var(--color-gray-400);
   border-radius: 9999px;
   transition:
     background-color 0.3s ease,
@@ -155,7 +155,7 @@
 
 /* Success (Green) */
 .aiab-switch--success .aiab-switch-input:checked + .aiab-switch-slider {
-  background-color: #16a34a;
+  background-color: var(--color-success);
 }
 
 .aiab-switch--success .aiab-switch-input:focus + .aiab-switch-slider {
@@ -164,7 +164,7 @@
 
 /* Danger (Red) */
 .aiab-switch--danger .aiab-switch-input:checked + .aiab-switch-slider {
-  background-color: #dc2626;
+  background-color: var(--color-danger);
 }
 
 .aiab-switch--danger .aiab-switch-input:focus + .aiab-switch-slider {
@@ -173,7 +173,7 @@
 
 /* Warning (Yellow) */
 .aiab-switch--warning .aiab-switch-input:checked + .aiab-switch-slider {
-  background-color: #f59e0b;
+  background-color: var(--color-warning);
 }
 
 .aiab-switch--warning .aiab-switch-input:focus + .aiab-switch-slider {
@@ -246,7 +246,7 @@
 
   &::after {
     content: "\2715";
-    color: #94a3b8;
+    color: var(--color-gray-450);
     font-size: 0.75rem;
     transition: opacity 0.3s;
   }
@@ -308,10 +308,10 @@
 /* Outline variant */
 .aiab-switch--outline .aiab-switch-slider {
   background-color: transparent;
-  border: 2px solid #cbd5e1;
+  border: 2px solid var(--color-gray-400);
 
   &::before {
-    background-color: #cbd5e1;
+    background-color: var(--color-gray-400);
   }
 }
 

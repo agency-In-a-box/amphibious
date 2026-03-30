@@ -7,23 +7,23 @@
 /* CSS Custom Properties for Steps */
 :root {
   /* Step Colors */
-  --step-bg: #f3f4f6;
+  --step-bg: var(--color-gray-150);
   --step-bg-active: var(--color-primary, var(--color-primary));
-  --step-bg-complete: #10b981;
+  --step-bg-complete: var(--color-success);
   --step-border: var(--color-gray-300);
   --step-border-active: var(--color-primary, var(--color-primary));
-  --step-border-complete: #10b981;
-  --step-text: #6b7280;
+  --step-border-complete: var(--color-success);
+  --step-text: var(--color-gray-550);
   --step-text-active: #ffffff;
   --step-text-complete: #ffffff;
-  --step-title: #374151;
-  --step-title-active: #1f2937;
-  --step-title-complete: #047857;
-  --step-description: #9ca3af;
+  --step-title: var(--color-gray-750);
+  --step-title-active: var(--color-gray-850);
+  --step-title-complete: var(--color-success-hover);
+  --step-description: var(--color-gray-450);
 
   /* Connection Line */
   --step-line: var(--color-gray-300);
-  --step-line-complete: #10b981;
+  --step-line-complete: var(--color-success);
 
   /* Step Sizing */
   --step-size: 2rem;
@@ -318,8 +318,8 @@
 
 /* Error/Warning States */
 .aiab-steps__item--error .aiab-steps__circle {
-  background-color: #ef4444;
-  border-color: #ef4444;
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
   color: white;
 }
 
@@ -333,8 +333,8 @@
 }
 
 .aiab-steps__item--warning .aiab-steps__circle {
-  background-color: #f59e0b;
-  border-color: #f59e0b;
+  background-color: var(--color-warning);
+  border-color: var(--color-warning);
   color: white;
 }
 
@@ -461,6 +461,17 @@
   .aiab-steps *::after {
     animation: none;
     transition: none;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .aiab-steps--progress .aiab-steps__circle {
+    background-color: #1f2937;
+  }
+
+  .aiab-steps--labels .aiab-steps__item {
+    background-color: rgba(255, 255, 255, 0.03);
   }
 }
 

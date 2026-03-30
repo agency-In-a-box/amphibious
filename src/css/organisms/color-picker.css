@@ -103,7 +103,7 @@
 /* Header */
 .aiab-color-picker-header {
   padding: 12px;
-  border-bottom: 1px solid var(--apple-gray-200, #eee);
+  border-bottom: 1px solid var(--apple-gray-200, var(--color-border-light));
   display: flex;
   justify-content: flex-end;
 }
@@ -365,7 +365,7 @@
 /* Footer */
 .aiab-color-picker-footer {
   padding: 12px;
-  border-top: 1px solid var(--apple-gray-200, #eee);
+  border-top: 1px solid var(--apple-gray-200, var(--color-border-light));
   display: flex;
   justify-content: flex-end;
   gap: 8px;

@@ -187,20 +187,20 @@
   }
 
   &.aiab-tag-success {
-    background-color: #16a34a;
+    background-color: var(--color-success);
   }
 
   &.aiab-tag-danger {
-    background-color: #dc2626;
+    background-color: var(--color-danger);
   }
 
   &.aiab-tag-warning {
-    background-color: #d97706;
+    background-color: var(--color-warning-hover);
     color: white;
   }
 
   &.aiab-tag-info {
-    background-color: #0891b2;
+    background-color: var(--color-info);
   }
 }
 

@@ -194,7 +194,7 @@
   }
 
   & mark {
-    background-color: #fef3c7;
+    background-color: var(--color-warning-light);
     color: inherit;
     font-weight: 600;
     padding: 0 2px;
@@ -479,7 +479,7 @@
 
 /* Error */
 .aiab-search-bar--error .aiab-search-bar-input {
-  border-color: #dc2626;
+  border-color: var(--color-danger);
 
   &:focus {
     box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
@@ -601,5 +601,17 @@
 
   .aiab-search-bar-category:hover {
     background: #374151;
+  }
+
+  /* Voice search modal */
+  .aiab-voice-search-modal {
+    background: #1f2937;
+    color: #f3f4f6;
+  }
+
+  /* Inline search variant */
+  .aiab-search-bar--inline {
+    background: #1f2937;
+    border-color: #374151;
   }
 }

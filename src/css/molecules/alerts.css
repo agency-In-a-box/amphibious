@@ -25,10 +25,10 @@
   --alert-error-text: #dc2626;
   --alert-error-icon: #ef4444;
 
-  --alert-neutral-bg: #f9fafb;
+  --alert-neutral-bg: var(--color-gray-50);
   --alert-neutral-border: var(--color-gray-300);
-  --alert-neutral-text: #374151;
-  --alert-neutral-icon: #6b7280;
+  --alert-neutral-text: var(--color-gray-750);
+  --alert-neutral-icon: var(--color-gray-550);
 
   /* Alert Properties */
   --alert-border-radius: 0.5rem;
