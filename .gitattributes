@@ -1,11 +1,96 @@
-# Git LFS tracking for large binary assets
-*.psd filter=lfs diff=lfs merge=lfs -text
-*.ai filter=lfs diff=lfs merge=lfs -text
-*.sketch filter=lfs diff=lfs merge=lfs -text
-*.fig filter=lfs diff=lfs merge=lfs -text
+# =============================================================================
+# Amphibious 2.0 — .gitattributes
+# =============================================================================
 
-# Large image formats
-*.tif filter=lfs diff=lfs merge=lfs -text
-*.tiff filter=lfs diff=lfs merge=lfs -text
-*.bmp filter=lfs diff=lfs merge=lfs -text
-*.raw filter=lfs diff=lfs merge=lfs -text
+# -----------------------------------------------------------------------------
+# 1. Text auto-normalization
+# -----------------------------------------------------------------------------
+# Normalize line endings to LF on commit, native on checkout
+* text=auto
+
+# Explicitly declare text file types (ensure LF normalization)
+*.css           text diff=css
+*.html          text diff=html
+*.htm           text diff=html
+*.js            text diff=javascript
+*.ts            text diff=javascript
+*.mjs           text diff=javascript
+*.mts           text diff=javascript
+*.json          text
+*.md            text
+*.yml           text
+*.yaml          text
+*.xml           text
+*.txt           text
+*.svg           text
+*.sh            text eol=lf
+*.bash          text eol=lf
+*.zsh           text eol=lf
+.editorconfig   text
+.gitignore      text
+.gitattributes  text
+.browserslistrc text
+.npmrc          text
+Makefile        text eol=lf
+
+# -----------------------------------------------------------------------------
+# 2. Binary files — mark as binary (no diff, no merge, no text conversion)
+# -----------------------------------------------------------------------------
+
+# Fonts
+*.woff          binary
+*.woff2         binary
+*.ttf           binary
+*.otf           binary
+*.eot           binary
+
+# Images (raster)
+*.png           binary
+*.jpg           binary
+*.jpeg          binary
+*.gif           binary
+*.webp          binary
+*.avif          binary
+*.ico           binary
+*.bmp           binary
+
+# Archives
+*.zip           binary
+*.gz            binary
+*.tar           binary
+
+# -----------------------------------------------------------------------------
+# 3. Git LFS tracking — large binary design files (can be 44MB+)
+# -----------------------------------------------------------------------------
+
+# Design source files
+*.psd           filter=lfs diff=lfs merge=lfs -text
+*.ai            filter=lfs diff=lfs merge=lfs -text
+*.sketch        filter=lfs diff=lfs merge=lfs -text
+*.fig           filter=lfs diff=lfs merge=lfs -text
+*.xd            filter=lfs diff=lfs merge=lfs -text
+
+# Large uncompressed image formats
+*.tif           filter=lfs diff=lfs merge=lfs -text
+*.tiff          filter=lfs diff=lfs merge=lfs -text
+*.raw           filter=lfs diff=lfs merge=lfs -text
+
+# -----------------------------------------------------------------------------
+# 4. GitHub Linguist — exclude generated/vendored files from language stats
+# -----------------------------------------------------------------------------
+
+# Build output
+dist/**                 linguist-generated
+*.min.js                linguist-generated
+*.min.css               linguist-generated
+*.map                   linguist-generated
+
+# Lock files
+bun.lock                linguist-generated
+package-lock.json       linguist-generated
+
+# Vendored dependencies (node_modules should be in .gitignore, but just in case)
+node_modules/**         linguist-vendored
+
+# Documentation site HTML (generated, not handwritten source)
+docs/**/*.html          linguist-documentation
