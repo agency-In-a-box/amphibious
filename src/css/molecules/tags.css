@@ -77,10 +77,10 @@
   background-color: var(--tag-secondary-bg);
   color: var(--tag-secondary-color);
   border-color: var(--tag-secondary-border);
-}
 
-.aiab-tag:hover {
-  background-color: var(--tag-secondary-hover-bg);
+  &:hover {
+    background-color: var(--tag-secondary-hover-bg);
+  }
 }
 
 /* Tag Variants
@@ -90,60 +90,60 @@
   background-color: var(--tag-primary-bg);
   color: var(--tag-primary-color);
   border-color: var(--tag-primary-border);
-}
 
-.aiab-tag-primary:hover {
-  background-color: var(--tag-primary-hover-bg);
+  &:hover {
+    background-color: var(--tag-primary-hover-bg);
+  }
 }
 
 .aiab-tag-secondary {
   background-color: var(--tag-secondary-bg);
   color: var(--tag-secondary-color);
   border-color: var(--tag-secondary-border);
-}
 
-.aiab-tag-secondary:hover {
-  background-color: var(--tag-secondary-hover-bg);
+  &:hover {
+    background-color: var(--tag-secondary-hover-bg);
+  }
 }
 
 .aiab-tag-success {
   background-color: var(--tag-success-bg);
   color: var(--tag-success-color);
   border-color: var(--tag-success-border);
-}
 
-.aiab-tag-success:hover {
-  background-color: var(--tag-success-hover-bg);
+  &:hover {
+    background-color: var(--tag-success-hover-bg);
+  }
 }
 
 .aiab-tag-danger {
   background-color: var(--tag-danger-bg);
   color: var(--tag-danger-color);
   border-color: var(--tag-danger-border);
-}
 
-.aiab-tag-danger:hover {
-  background-color: var(--tag-danger-hover-bg);
+  &:hover {
+    background-color: var(--tag-danger-hover-bg);
+  }
 }
 
 .aiab-tag-warning {
   background-color: var(--tag-warning-bg);
   color: var(--tag-warning-color);
   border-color: var(--tag-warning-border);
-}
 
-.aiab-tag-warning:hover {
-  background-color: var(--tag-warning-hover-bg);
+  &:hover {
+    background-color: var(--tag-warning-hover-bg);
+  }
 }
 
 .aiab-tag-info {
   background-color: var(--tag-info-bg);
   color: var(--tag-info-color);
   border-color: var(--tag-info-border);
-}
 
-.aiab-tag-info:hover {
-  background-color: var(--tag-info-hover-bg);
+  &:hover {
+    background-color: var(--tag-info-hover-bg);
+  }
 }
 
 /* Tag Sizes
@@ -153,12 +153,22 @@
   --tag-font-size: 0.625rem;
   --tag-padding-x: 0.5rem;
   --tag-padding-y: 0.25rem;
+
+  & .aiab-tag-icon {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
 }
 
 .aiab-tag-lg {
   --tag-font-size: 0.875rem;
   --tag-padding-x: 1rem;
   --tag-padding-y: 0.5rem;
+
+  & .aiab-tag-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 }
 
 /* Solid/Filled Tags
@@ -167,31 +177,31 @@
 .aiab-tag-solid {
   color: white;
   border-color: transparent;
-}
 
-.aiab-tag-solid.aiab-tag-primary {
-  background-color: var(--color-accent);
-}
+  &.aiab-tag-primary {
+    background-color: var(--color-accent);
+  }
 
-.aiab-tag-solid.aiab-tag-secondary {
-  background-color: var(--color-gray-550);
-}
+  &.aiab-tag-secondary {
+    background-color: var(--color-gray-550);
+  }
 
-.aiab-tag-solid.aiab-tag-success {
-  background-color: #16a34a;
-}
+  &.aiab-tag-success {
+    background-color: #16a34a;
+  }
 
-.aiab-tag-solid.aiab-tag-danger {
-  background-color: #dc2626;
-}
+  &.aiab-tag-danger {
+    background-color: #dc2626;
+  }
 
-.aiab-tag-solid.aiab-tag-warning {
-  background-color: #d97706;
-  color: white;
-}
+  &.aiab-tag-warning {
+    background-color: #d97706;
+    color: white;
+  }
 
-.aiab-tag-solid.aiab-tag-info {
-  background-color: #0891b2;
+  &.aiab-tag-info {
+    background-color: #0891b2;
+  }
 }
 
 /* Tag with Remove Button
@@ -217,25 +227,25 @@
   margin-inline-start: 0.25rem;
   transition: var(--tag-transition);
   flex-shrink: 0;
-}
 
-.aiab-tag-remove:hover {
-  background-color: var(--tag-remove-hover-bg);
-  color: var(--tag-remove-hover-color);
-  transform: scale(1.1);
-}
+  &:hover {
+    background-color: var(--tag-remove-hover-bg);
+    color: var(--tag-remove-hover-color);
+    transform: scale(1.1);
+  }
 
-.aiab-tag-remove:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary-alpha-30);
-}
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary-alpha-30);
+  }
 
-/* Remove icon (using CSS) */
-.aiab-tag-remove::before {
-  content: "×";
-  font-size: 0.875rem;
-  font-weight: bold;
-  line-height: 1;
+  /* Remove icon (using CSS) */
+  &::before {
+    content: "\00d7";
+    font-size: 0.875rem;
+    font-weight: bold;
+    line-height: 1;
+  }
 }
 
 /* Tag Groups
@@ -260,15 +270,15 @@
 .aiab-tag-interactive {
   cursor: pointer;
   user-select: none;
-}
 
-.aiab-tag-interactive:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
 
-.aiab-tag-interactive:active {
-  transform: translateY(0);
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 /* Selected State
@@ -278,11 +288,11 @@
   background-color: var(--color-accent);
   color: white;
   border-color: var(--color-accent);
-}
 
-.aiab-tag-selected:hover {
-  background-color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
+  &:hover {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
 }
 
 /* Tag with Icon
@@ -292,16 +302,6 @@
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
-}
-
-.aiab-tag-sm .aiab-tag-icon {
-  width: 0.75rem;
-  height: 0.75rem;
-}
-
-.aiab-tag-lg .aiab-tag-icon {
-  width: 1.25rem;
-  height: 1.25rem;
 }
 
 /* Disabled State
@@ -326,11 +326,11 @@
   border-radius: 0.375rem;
   background: white;
   min-height: 2.5rem;
-}
 
-.aiab-tag-input-container:focus-within {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
 }
 
 .aiab-tag-input {
@@ -341,10 +341,10 @@
   min-width: 8rem;
   flex: 1;
   padding: 0.25rem;
-}
 
-.aiab-tag-input::placeholder {
-  color: var(--color-gray-450);
+  &::placeholder {
+    color: var(--color-gray-450);
+  }
 }
 
 /* Dark Mode Support

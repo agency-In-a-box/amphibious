@@ -156,17 +156,17 @@
   border-radius: 50%;
   background: conic-gradient(var(--progress-primary) 0deg, var(--progress-bg) 0deg);
   position: relative;
-}
 
-.aiab-progress-circular::before {
-  content: "";
-  position: absolute;
-  top: 0.25rem;
-  left: 0.25rem;
-  width: calc(100% - 0.5rem);
-  height: calc(100% - 0.5rem);
-  border-radius: 50%;
-  background: var(--color-background, #ffffff);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: calc(100% - 0.5rem);
+    height: calc(100% - 0.5rem);
+    border-radius: 50%;
+    background: var(--color-background, #ffffff);
+  }
 }
 
 .aiab-progress-circular-sm {
@@ -195,21 +195,42 @@
   align-items: center;
   position: relative;
   flex: 1;
-}
 
-.aiab-progress-step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  width: 100%;
-  height: 2px;
-  background-color: var(--progress-bg);
-  z-index: 1;
-}
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: var(--progress-bg);
+    z-index: 1;
+  }
 
-.aiab-progress-step.is-completed:not(:last-child)::after {
-  background-color: var(--progress-success);
+  &.is-completed:not(:last-child)::after {
+    background-color: var(--progress-success);
+  }
+
+  &.aiab-is-active .aiab-progress-step-circle {
+    background-color: var(--progress-primary);
+    border-color: var(--progress-primary);
+    color: white;
+  }
+
+  &.is-completed .aiab-progress-step-circle {
+    background-color: var(--progress-success);
+    border-color: var(--progress-success);
+    color: white;
+  }
+
+  &.aiab-is-active .aiab-progress-step-label {
+    color: var(--progress-primary);
+    font-weight: 600;
+  }
+
+  &.is-completed .aiab-progress-step-label {
+    color: var(--progress-success);
+  }
 }
 
 .aiab-progress-step-circle {
@@ -228,33 +249,12 @@
   color: var(--color-gray-450);
 }
 
-.aiab-progress-step.aiab-is-active .aiab-progress-step-circle {
-  background-color: var(--progress-primary);
-  border-color: var(--progress-primary);
-  color: white;
-}
-
-.aiab-progress-step.is-completed .aiab-progress-step-circle {
-  background-color: var(--progress-success);
-  border-color: var(--progress-success);
-  color: white;
-}
-
 .aiab-progress-step-label {
   margin-top: 0.5rem;
   font-size: 0.75rem;
   color: var(--progress-text-color);
   text-align: center;
   font-weight: 500;
-}
-
-.aiab-progress-step.aiab-is-active .aiab-progress-step-label {
-  color: var(--progress-primary);
-  font-weight: 600;
-}
-
-.aiab-progress-step.is-completed .aiab-progress-step-label {
-  color: var(--progress-success);
 }
 
 /* Dark Mode Support

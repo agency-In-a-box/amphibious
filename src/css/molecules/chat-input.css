@@ -36,11 +36,11 @@
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease;
-}
 
-.aiab-chat-input__wrapper:focus-within {
-  border-color: var(--chat-input-focus-border);
-  box-shadow: var(--chat-input-focus-shadow);
+  &:focus-within {
+    border-color: var(--chat-input-focus-border);
+    box-shadow: var(--chat-input-focus-shadow);
+  }
 }
 
 /* Textarea that auto-grows */
@@ -58,10 +58,10 @@
   max-height: var(--chat-input-max-height);
   min-height: 1.5em;
   overflow-y: auto;
-}
 
-.aiab-chat-input__field::placeholder {
-  color: var(--color-gray-400, var(--color-gray-450));
+  &::placeholder {
+    color: var(--color-gray-400, var(--color-gray-450));
+  }
 }
 
 /* Action buttons row below input */
@@ -101,16 +101,16 @@
     color 0.15s ease,
     background-color 0.15s ease;
   flex-shrink: 0;
-}
 
-.aiab-chat-input__action:hover {
-  color: var(--color-gray-700, var(--color-gray-750));
-  background-color: rgba(0, 0, 0, 0.05);
-}
+  &:hover {
+    color: var(--color-gray-700, var(--color-gray-750));
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 
-.aiab-chat-input__action:focus-visible {
-  outline: 2px solid var(--color-primary, #ed8b00);
-  outline-offset: 2px;
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #ed8b00);
+    outline-offset: 2px;
+  }
 }
 
 /* Submit button */
@@ -129,29 +129,29 @@
   transition:
     background-color 0.15s ease,
     transform 0.1s ease;
-}
 
-.aiab-chat-input__submit:hover {
-  background-color: var(--color-primary-dark, #c97600);
-}
+  &:hover {
+    background-color: var(--color-primary-dark, #c97600);
+  }
 
-.aiab-chat-input__submit:active {
-  transform: scale(0.95);
-}
+  &:active {
+    transform: scale(0.95);
+  }
 
-.aiab-chat-input__submit:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 
-.aiab-chat-input__submit:focus-visible {
-  outline: 2px solid var(--color-primary, #ed8b00);
-  outline-offset: 2px;
-}
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #ed8b00);
+    outline-offset: 2px;
+  }
 
-.aiab-chat-input__submit svg {
-  width: 1rem;
-  height: 1rem;
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 /* Model Selector Chip */
@@ -169,21 +169,21 @@
   cursor: pointer;
   white-space: nowrap;
   transition: background-color 0.15s ease;
-}
 
-.aiab-chat-input__selector:hover {
-  background-color: rgba(0, 0, 0, 0.08);
-}
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
 
-.aiab-chat-input__selector:focus-visible {
-  outline: 2px solid var(--color-primary, #ed8b00);
-  outline-offset: 2px;
-}
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #ed8b00);
+    outline-offset: 2px;
+  }
 
-.aiab-chat-input__selector svg {
-  width: 0.75rem;
-  height: 0.75rem;
-  color: var(--color-gray-400);
+  & svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    color: var(--color-gray-400);
+  }
 }
 
 /* Folder Selector */
@@ -200,20 +200,20 @@
   cursor: pointer;
   white-space: nowrap;
   transition: background-color 0.15s ease;
-}
 
-.aiab-chat-input__folder:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-}
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
 
-.aiab-chat-input__folder:focus-visible {
-  outline: 2px solid var(--color-primary, #ed8b00);
-  outline-offset: 2px;
-}
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #ed8b00);
+    outline-offset: 2px;
+  }
 
-.aiab-chat-input__folder svg {
-  width: 0.875rem;
-  height: 0.875rem;
+  & svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
 }
 
 /* File preview cards above the input */
@@ -223,10 +223,10 @@
   padding-bottom: 0.75rem;
   overflow-x: auto;
   scrollbar-width: none;
-}
 
-.aiab-chat-input__files::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Responsive */
@@ -251,10 +251,10 @@
 @media (prefers-contrast: high) {
   .aiab-chat-input__wrapper {
     border-width: 2px;
-  }
 
-  .aiab-chat-input__wrapper:focus-within {
-    border-width: 2px;
+    &:focus-within {
+      border-width: 2px;
+    }
   }
 
   .aiab-chat-input__submit:focus-visible,

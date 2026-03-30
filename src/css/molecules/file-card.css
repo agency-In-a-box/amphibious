@@ -24,10 +24,14 @@
   cursor: default;
   transition: box-shadow 0.15s ease;
   position: relative;
-}
 
-.aiab-file-card:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    & .aiab-file-card__remove {
+      opacity: 1;
+    }
+  }
 }
 
 /* File Preview Area */
@@ -40,17 +44,17 @@
   color: var(--color-gray-400, var(--color-gray-450));
   border-bottom: 1px solid var(--file-card-border);
   overflow: hidden;
-}
 
-.aiab-file-card__preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.aiab-file-card__preview svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  & svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 /* File Info */
@@ -131,10 +135,6 @@
   transition: opacity 0.15s ease;
 }
 
-.aiab-file-card:hover .aiab-file-card__remove {
-  opacity: 1;
-}
-
 /* File Card List */
 .aiab-file-card-list {
   display: flex;
@@ -143,10 +143,10 @@
   overflow-x: auto;
   scrollbar-width: none;
   padding: 0.25rem 0;
-}
 
-.aiab-file-card-list::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Dark mode */

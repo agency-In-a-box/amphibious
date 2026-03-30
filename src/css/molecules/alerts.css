@@ -76,11 +76,11 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-}
 
-/* Hide empty alerts */
-.aiab-alert:empty {
-  display: none;
+  /* Hide empty alerts */
+  &:empty {
+    display: none;
+  }
 }
 
 /* Alert Variants */
@@ -156,10 +156,10 @@
 
 .aiab-alert__message {
   margin: 0;
-}
 
-.aiab-alert__message:not(:last-child) {
-  margin-bottom: 0.75rem;
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
 }
 
 /* Alert Actions */
@@ -179,15 +179,15 @@
   text-decoration: underline;
   cursor: pointer;
   font-weight: 600;
-}
 
-.aiab-alert__action:hover {
-  opacity: 0.8;
-}
+  &:hover {
+    opacity: 0.8;
+  }
 
-.aiab-alert__action:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
 }
 
 /* Dismiss Button */
@@ -206,22 +206,22 @@
   justify-content: center;
   width: 1.5rem;
   height: 1.5rem;
-}
 
-.aiab-alert__dismiss:hover {
-  opacity: 1;
-  background-color: rgba(0, 0, 0, 0.05);
-}
+  &:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 
-.aiab-alert__dismiss:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-}
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
 
-.aiab-alert__dismiss svg,
-.aiab-alert__dismiss .aiab-icon {
-  width: 1rem;
-  height: 1rem;
+  & svg,
+  & .aiab-icon {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 /* Dismissible Alert Padding Adjustment */
@@ -233,59 +233,59 @@
 .aiab-alert--small {
   padding: 0.75rem;
   font-size: 0.8125rem;
-}
 
-.aiab-alert--small .aiab-alert__dismiss {
-  top: 0.5rem;
-  inset-inline-end: 0.5rem;
-}
+  & .aiab-alert__dismiss {
+    top: 0.5rem;
+    inset-inline-end: 0.5rem;
+  }
 
-.aiab-alert--small.aiab-alert--dismissible {
-  padding-inline-end: 2.5rem;
+  &.aiab-alert--dismissible {
+    padding-inline-end: 2.5rem;
+  }
 }
 
 .aiab-alert--large {
   padding: 1.25rem;
   font-size: 1rem;
-}
 
-.aiab-alert--large .aiab-alert__dismiss {
-  top: 1rem;
-  inset-inline-end: 1rem;
-}
+  & .aiab-alert__dismiss {
+    top: 1rem;
+    inset-inline-end: 1rem;
+  }
 
-.aiab-alert--large.aiab-alert--dismissible {
-  padding-inline-end: 3.5rem;
+  &.aiab-alert--dismissible {
+    padding-inline-end: 3.5rem;
+  }
 }
 
 /* Alert Styles */
 .aiab-alert--solid {
   border: none;
-}
 
-.aiab-alert--solid.aiab-alert--success,
-.aiab-alert--solid.aiab-alert-success {
-  background-color: var(--alert-success-icon);
-  color: white;
-}
+  &.aiab-alert--success,
+  &.aiab-alert-success {
+    background-color: var(--alert-success-icon);
+    color: white;
+  }
 
-.aiab-alert--solid.aiab-alert--info,
-.aiab-alert--solid.aiab-alert-info {
-  background-color: var(--alert-info-icon);
-  color: white;
-}
+  &.aiab-alert--info,
+  &.aiab-alert-info {
+    background-color: var(--alert-info-icon);
+    color: white;
+  }
 
-.aiab-alert--solid.aiab-alert--warning,
-.aiab-alert--solid.aiab-alert-warning {
-  background-color: var(--alert-warning-icon);
-  color: white;
-}
+  &.aiab-alert--warning,
+  &.aiab-alert-warning {
+    background-color: var(--alert-warning-icon);
+    color: white;
+  }
 
-.aiab-alert--solid.aiab-alert--error,
-.aiab-alert--solid.aiab-alert--danger,
-.aiab-alert--solid.aiab-alert-danger {
-  background-color: var(--alert-error-icon);
-  color: white;
+  &.aiab-alert--error,
+  &.aiab-alert--danger,
+  &.aiab-alert-danger {
+    background-color: var(--alert-error-icon);
+    color: white;
+  }
 }
 
 .aiab-alert--outline {
@@ -303,27 +303,27 @@
 .aiab-alert--accent {
   border-inline-start-width: 4px;
   border-radius: 0 var(--alert-border-radius) var(--alert-border-radius) 0;
-}
 
-.aiab-alert--accent.aiab-alert--success,
-.aiab-alert--accent.aiab-alert-success {
-  border-inline-start-color: var(--alert-success-icon);
-}
+  &.aiab-alert--success,
+  &.aiab-alert-success {
+    border-inline-start-color: var(--alert-success-icon);
+  }
 
-.aiab-alert--accent.aiab-alert--info,
-.aiab-alert--accent.aiab-alert-info {
-  border-inline-start-color: var(--alert-info-icon);
-}
+  &.aiab-alert--info,
+  &.aiab-alert-info {
+    border-inline-start-color: var(--alert-info-icon);
+  }
 
-.aiab-alert--accent.aiab-alert--warning,
-.aiab-alert--accent.aiab-alert-warning {
-  border-inline-start-color: var(--alert-warning-icon);
-}
+  &.aiab-alert--warning,
+  &.aiab-alert-warning {
+    border-inline-start-color: var(--alert-warning-icon);
+  }
 
-.aiab-alert--accent.aiab-alert--error,
-.aiab-alert--accent.aiab-alert--danger,
-.aiab-alert--accent.aiab-alert-danger {
-  border-inline-start-color: var(--alert-error-icon);
+  &.aiab-alert--error,
+  &.aiab-alert--danger,
+  &.aiab-alert-danger {
+    border-inline-start-color: var(--alert-error-icon);
+  }
 }
 
 /* Toast Notifications (positioned alerts) */
@@ -438,17 +438,17 @@
 .aiab-toast--auto-dismiss {
   position: relative;
   overflow: hidden;
-}
 
-.aiab-toast--auto-dismiss::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  background-color: currentColor;
-  opacity: 0.3;
-  animation: progress var(--dismiss-duration, 5s) linear;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: currentColor;
+    opacity: 0.3;
+    animation: progress var(--dismiss-duration, 5s) linear;
+  }
 }
 
 @keyframes progress {
