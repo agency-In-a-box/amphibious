@@ -413,4 +413,24 @@
   .aiab-accordion-icon {
     color: #9ca3af;
   }
+
+  /* Status variant active headers */
+  .aiab-accordion--primary .aiab-accordion-item.aiab-active .aiab-accordion-header {
+    background-color: rgba(245, 158, 11, 0.15);
+  }
+
+  .aiab-accordion--success .aiab-accordion-item.aiab-active .aiab-accordion-header {
+    background-color: rgba(34, 197, 94, 0.12);
+    color: #4ade80;
+  }
+
+  .aiab-accordion--warning .aiab-accordion-item.aiab-active .aiab-accordion-header {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+  }
+
+  .aiab-accordion--danger .aiab-accordion-item.aiab-active .aiab-accordion-header {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+  }
 }

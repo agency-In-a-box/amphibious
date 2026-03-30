@@ -238,6 +238,41 @@ pre.aiab-prettyprint {
   }
 }
 
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  /* Error field background */
+  input.aiab-error,
+  textarea.aiab-error,
+  select.aiab-error,
+  .aiab-form-control.aiab-error {
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+
+  /* Form control backgrounds */
+  .aiab-form input[type="search"] {
+    background-color: var(--form-bg);
+    border-color: var(--form-border-color);
+  }
+
+  .aiab-form input,
+  .aiab-form textarea,
+  .aiab-form select {
+    background-color: var(--form-bg);
+  }
+
+  /* Forms page heading */
+  #forms h3 {
+    color: var(--color-success);
+    border-bottom-color: var(--color-gray-600);
+  }
+
+  /* Advanced search container */
+  .aiab-advanced-search,
+  .aiab-form.advanced {
+    background: var(--color-gray-800);
+  }
+}
+
 /* Responsive improvements */
 @media (--bp-md-down) {
   .aiab-row {

@@ -678,6 +678,37 @@
   .aiab-properties-empty {
     color: var(--apple-gray-500, #9e9e9e);
   }
+
+  /* Sticky header inside toolbox */
+  .aiab-toolbox-header {
+    background: var(--apple-gray-800, #424242);
+  }
+
+  /* Toolbox field hover */
+  .aiab-toolbox-field:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Properties panel form controls */
+  .aiab-properties-field input,
+  .aiab-properties-field select,
+  .aiab-properties-field textarea {
+    background: var(--apple-gray-700, #616161);
+    color: var(--apple-gray-100, #f5f5f5);
+    border-color: var(--apple-gray-600, #757575);
+  }
+
+  /* Condition rows */
+  .aiab-condition-row {
+    background: var(--apple-gray-700, #616161);
+  }
+
+  /* Template cards */
+  .aiab-template-card {
+    background: var(--apple-gray-700, #616161);
+    border-color: var(--apple-gray-600, #757575);
+    color: var(--apple-gray-100, #f5f5f5);
+  }
 }
 
 /* Mobile Responsive */

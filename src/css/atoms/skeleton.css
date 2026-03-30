@@ -525,4 +525,12 @@
   .aiab-skeleton--light {
     background-color: #4b5563;
   }
+
+  .aiab-skeleton-form {
+    background: #1f2937;
+  }
+
+  .aiab-skeleton--warning {
+    background-color: rgba(245, 158, 11, 0.15);
+  }
 }

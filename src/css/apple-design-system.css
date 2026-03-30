@@ -599,3 +599,23 @@
     padding: var(--space-9) 0;
   }
 }
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .aiab-apple-nav {
+    background: rgba(30, 30, 30, 0.85);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .aiab-apple-nav-logo {
+    color: #f3f4f6;
+  }
+
+  .aiab-apple-nav-item {
+    color: #9ca3af;
+  }
+
+  .aiab-apple-hero-section {
+    background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+  }
+}

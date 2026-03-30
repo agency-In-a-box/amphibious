@@ -44,6 +44,16 @@
     --tab-panel-bg: #374151;
     --tab-panel-border: #4b5563;
   }
+
+  /* Boxed tab list background */
+  .aiab-tabs--boxed .aiab-tabs__list {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Pills tab button background */
+  .aiab-tabs--pills .aiab-tabs__button {
+    background: rgba(255, 255, 255, 0.08);
+  }
 }
 
 /* Base Tab Styles */
