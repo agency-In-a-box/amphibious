@@ -66,11 +66,11 @@
   backdrop-filter: blur(4px);
   align-items: center;
   justify-content: center;
-}
 
-.aiab-modal_overlay.aiab-active {
-  display: flex;
-  opacity: 1;
+  &.aiab-active {
+    display: flex;
+    opacity: 1;
+  }
 }
 
 /* Modal Backdrop */
@@ -85,11 +85,11 @@
     opacity var(--modal-transition-duration) var(--modal-transition-easing),
     visibility var(--modal-transition-duration) var(--modal-transition-easing);
   backdrop-filter: blur(4px);
-}
 
-.aiab-modal-backdrop.aiab-is-visible {
-  opacity: 1;
-  visibility: visible;
+  &.aiab-is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 /* Modal Container */
@@ -107,6 +107,18 @@
     opacity var(--modal-transition-duration) var(--modal-transition-easing),
     visibility var(--modal-transition-duration) var(--modal-transition-easing);
   overflow-y: auto;
+
+  &:focus {
+    outline: none;
+  }
+
+  &[aria-hidden="true"] {
+    pointer-events: none;
+  }
+
+  &[aria-hidden="false"] {
+    pointer-events: auto;
+  }
 }
 
 .aiab-modal_overlay.aiab-active .aiab-modal,
@@ -190,16 +202,16 @@
     color 0.15s ease-in-out,
     transform 0.15s ease-in-out;
   border-radius: 0.25rem;
-}
 
-.aiab-modal__close:hover {
-  color: var(--modal-close-hover);
-  transform: scale(1.1);
-}
+  &:hover {
+    color: var(--modal-close-hover);
+    transform: scale(1.1);
+  }
 
-.aiab-modal__close:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 }
 
 /* Modal Body */
@@ -207,6 +219,24 @@
   flex: 1 1 auto;
   padding: var(--modal-body-padding);
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
 }
 
 /* Modal Footer */
@@ -220,74 +250,78 @@
   border-top: 1px solid var(--modal-footer-border);
   border-radius: 0 0 var(--modal-border-radius) var(--modal-border-radius);
   flex-shrink: 0;
-}
 
-.aiab-modal__footer--center {
-  justify-content: center;
-}
+  &--center {
+    justify-content: center;
+  }
 
-.aiab-modal__footer--space-between {
-  justify-content: space-between;
+  &--space-between {
+    justify-content: space-between;
+  }
 }
 
 /* Modal Variants */
 
 /* Alert Modal */
-.aiab-modal--alert .aiab-modal__dialog {
-  max-width: 400px;
-}
+.aiab-modal--alert {
+  & .aiab-modal__dialog {
+    max-width: 400px;
+  }
 
-.aiab-modal--alert .aiab-modal__body {
-  text-align: center;
-  padding: 2rem;
-}
+  & .aiab-modal__body {
+    text-align: center;
+    padding: 2rem;
+  }
 
-.aiab-modal--alert .aiab-modal__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  margin-bottom: 1rem;
-  border-radius: 50%;
-  font-size: 2rem;
-}
+  & .aiab-modal__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    font-size: 2rem;
+  }
 
-.aiab-modal--alert.aiab-modal--success .aiab-modal__icon {
-  background-color: rgba(16, 185, 129, 0.1);
-  color: #10b981;
-}
+  &.aiab-modal--success .aiab-modal__icon {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+  }
 
-.aiab-modal--alert.aiab-modal--error .aiab-modal__icon {
-  background-color: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-}
+  &.aiab-modal--error .aiab-modal__icon {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+  }
 
-.aiab-modal--alert.aiab-modal--warning .aiab-modal__icon {
-  background-color: rgba(245, 158, 11, 0.1);
-  color: #f59e0b;
-}
+  &.aiab-modal--warning .aiab-modal__icon {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+  }
 
-.aiab-modal--alert.aiab-modal--info .aiab-modal__icon {
-  background-color: var(--color-primary-alpha-10);
-  color: var(--color-primary);
+  &.aiab-modal--info .aiab-modal__icon {
+    background-color: var(--color-primary-alpha-10);
+    color: var(--color-primary);
+  }
 }
 
 /* Image Modal */
-.aiab-modal--image .aiab-modal__dialog {
-  max-width: 90vw;
-  background: transparent;
-  box-shadow: none;
-}
+.aiab-modal--image {
+  & .aiab-modal__dialog {
+    max-width: 90vw;
+    background: transparent;
+    box-shadow: none;
+  }
 
-.aiab-modal--image .aiab-modal__body {
-  padding: 0;
-}
+  & .aiab-modal__body {
+    padding: 0;
+  }
 
-.aiab-modal--image img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--modal-border-radius);
+  & img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--modal-border-radius);
+  }
 }
 
 /* Drawer Modal (Sidebar) */
@@ -318,18 +352,18 @@
 /* Bottom Sheet Modal */
 .aiab-modal--bottom-sheet {
   align-items: flex-end;
-}
 
-.aiab-modal--bottom-sheet .aiab-modal__dialog {
-  max-width: 100%;
-  width: 100%;
-  margin: 0;
-  border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
-  transform: translateY(100%);
-}
+  & .aiab-modal__dialog {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
+    transform: translateY(100%);
+  }
 
-.aiab-modal--bottom-sheet.aiab-is-visible .aiab-modal__dialog {
-  transform: translateY(0);
+  &.aiab-is-visible .aiab-modal__dialog {
+    transform: translateY(0);
+  }
 }
 
 /* Animations */
@@ -376,25 +410,6 @@
   }
 }
 
-/* Scrollbar Styles */
-.aiab-modal__body::-webkit-scrollbar {
-  width: 8px;
-}
-
-.aiab-modal__body::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-}
-
-.aiab-modal__body::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-}
-
-.aiab-modal__body::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.5);
-}
-
 /* Responsive Design */
 @media (--bp-sm-down) {
   .aiab-modal {
@@ -424,16 +439,11 @@
     padding: 1rem;
     flex-direction: column;
     gap: 0.75rem;
-  }
 
-  .aiab-modal__footer button {
-    width: 100%;
+    & button {
+      width: 100%;
+    }
   }
-}
-
-/* Focus Trap */
-.aiab-modal:focus {
-  outline: none;
 }
 
 /* Prevent Body Scroll */
@@ -463,15 +473,6 @@ body.aiab-modal-open {
   to {
     transform: rotate(360deg);
   }
-}
-
-/* Accessibility */
-.aiab-modal[aria-hidden="true"] {
-  pointer-events: none;
-}
-
-.aiab-modal[aria-hidden="false"] {
-  pointer-events: auto;
 }
 
 /* High Contrast Mode */
@@ -506,20 +507,22 @@ body.aiab-modal-open {
 /* RTL Support */
 /* Drawer positioning uses logical properties (inset-inline-start/end),
    but translateX is physical — transforms must still be flipped for RTL. */
-[dir="rtl"] .aiab-modal__close {
-  margin-inline-start: 0;
-  margin-inline-end: auto;
-}
+[dir="rtl"] {
+  & .aiab-modal__close {
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+  }
 
-[dir="rtl"] .aiab-modal--drawer-left .aiab-modal__dialog {
-  transform: translateX(100%);
-}
+  & .aiab-modal--drawer-left .aiab-modal__dialog {
+    transform: translateX(100%);
+  }
 
-[dir="rtl"] .aiab-modal--drawer-right .aiab-modal__dialog {
-  transform: translateX(-100%);
-}
+  & .aiab-modal--drawer-right .aiab-modal__dialog {
+    transform: translateX(-100%);
+  }
 
-[dir="rtl"] .aiab-modal--drawer-left.aiab-is-visible .aiab-modal__dialog,
-[dir="rtl"] .aiab-modal--drawer-right.aiab-is-visible .aiab-modal__dialog {
-  transform: translateX(0);
+  & .aiab-modal--drawer-left.aiab-is-visible .aiab-modal__dialog,
+  & .aiab-modal--drawer-right.aiab-is-visible .aiab-modal__dialog {
+    transform: translateX(0);
+  }
 }

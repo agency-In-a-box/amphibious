@@ -24,20 +24,20 @@
   color: var(--color-gray-850);
   cursor: pointer;
   transition: all 0.2s ease;
-}
 
-.aiab-datepicker-input:hover {
-  border-color: var(--color-gray-450);
-}
+  &:hover {
+    border-color: var(--color-gray-450);
+  }
 
-.aiab-datepicker-input:focus {
-  outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
 
-.aiab-datepicker-input::placeholder {
-  color: var(--color-gray-450);
+  &::placeholder {
+    color: var(--color-gray-450);
+  }
 }
 
 /* Calendar icon */
@@ -120,26 +120,26 @@
   color: var(--color-gray-550);
   cursor: pointer;
   transition: all 0.15s ease;
-}
 
-.aiab-datepicker-nav-button:hover {
-  background: white;
-  border-color: var(--color-gray-350);
-  color: var(--color-gray-750);
-}
+  &:hover {
+    background: white;
+    border-color: var(--color-gray-350);
+    color: var(--color-gray-750);
+  }
 
-.aiab-datepicker-nav-button:active {
-  transform: scale(0.95);
-}
+  &:active {
+    transform: scale(0.95);
+  }
 
-.aiab-datepicker-nav-button:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
 
-.aiab-datepicker-nav-button svg {
-  width: 1rem;
-  height: 1rem;
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .aiab-datepicker-month-year {
@@ -160,17 +160,15 @@
   font-weight: 500;
   cursor: pointer;
   outline: none;
-}
 
-.aiab-datepicker-month-select:hover,
-.aiab-datepicker-year-select:hover {
-  border-color: var(--color-gray-450);
-}
+  &:hover {
+    border-color: var(--color-gray-450);
+  }
 
-.aiab-datepicker-month-select:focus,
-.aiab-datepicker-year-select:focus {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  &:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
 }
 
 /* ========================================
@@ -217,43 +215,43 @@
   cursor: pointer;
   transition: all 0.15s ease;
   position: relative;
-}
 
-.aiab-datepicker-day:hover {
-  background: var(--color-gray-150);
-  color: var(--color-gray-950);
-}
+  &:hover {
+    background: var(--color-gray-150);
+    color: var(--color-gray-950);
+  }
 
-.aiab-datepicker-day:active {
-  transform: scale(0.95);
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 /* Other month days */
 .aiab-datepicker-day--other-month {
   color: var(--color-gray-350);
-}
 
-.aiab-datepicker-day--other-month:hover {
-  background: var(--color-gray-50);
-  color: var(--color-gray-450);
+  &:hover {
+    background: var(--color-gray-50);
+    color: var(--color-gray-450);
+  }
 }
 
 /* Today */
 .aiab-datepicker-day--today {
   font-weight: 600;
   color: var(--color-accent);
-}
 
-.aiab-datepicker-day--today::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 4px;
-  background: var(--color-accent);
-  border-radius: 50%;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
 }
 
 /* Selected day */
@@ -261,11 +259,11 @@
   background: var(--color-accent);
   color: white;
   border-color: var(--color-accent);
-}
 
-.aiab-datepicker-day--selected:hover {
-  background: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
+  &:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
 }
 
 /* Disabled days */
@@ -317,12 +315,11 @@
   color: var(--color-gray-750);
   cursor: pointer;
   transition: all 0.15s ease;
-}
 
-.aiab-datepicker-month-option:hover,
-.aiab-datepicker-year-option:hover {
-  background: var(--color-gray-150);
-  border-color: var(--color-gray-350);
+  &:hover {
+    background: var(--color-gray-150);
+    border-color: var(--color-gray-350);
+  }
 }
 
 .aiab-datepicker-month-option--selected,
@@ -360,11 +357,11 @@
   font-size: 1rem;
   font-weight: 500;
   outline: none;
-}
 
-.aiab-datepicker-time-input:focus {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  &:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
 }
 
 .aiab-datepicker-time-separator {
@@ -387,10 +384,10 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
-}
 
-.aiab-datepicker-time-period-btn:hover {
-  background: var(--color-gray-150);
+  &:hover {
+    background: var(--color-gray-150);
+  }
 }
 
 .aiab-datepicker-time-period-btn--active {
@@ -424,32 +421,32 @@
   color: var(--color-gray-750);
   cursor: pointer;
   transition: all 0.15s ease;
-}
 
-.aiab-datepicker-today-btn:hover,
-.aiab-datepicker-clear-btn:hover {
-  background: var(--color-gray-150);
-  border-color: var(--color-gray-450);
-}
+  &:hover {
+    background: var(--color-gray-150);
+    border-color: var(--color-gray-450);
+  }
 
-.aiab-datepicker-today-btn:active,
-.aiab-datepicker-clear-btn:active {
-  transform: scale(0.95);
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 /* ========================================
    INLINE VARIANT
    ======================================== */
 
-.aiab-datepicker--inline .aiab-datepicker-dropdown {
-  position: static;
-  display: block;
-  box-shadow: none;
-  border-radius: 0.5rem;
-}
+.aiab-datepicker--inline {
+  & .aiab-datepicker-dropdown {
+    position: static;
+    display: block;
+    box-shadow: none;
+    border-radius: 0.5rem;
+  }
 
-.aiab-datepicker--inline .aiab-datepicker-input {
-  display: none;
+  & .aiab-datepicker-input {
+    display: none;
+  }
 }
 
 /* ========================================
@@ -457,43 +454,47 @@
    ======================================== */
 
 /* Small */
-.aiab-datepicker--sm .aiab-datepicker-input {
-  padding: 0.375rem 2rem 0.375rem 0.625rem;
-  font-size: 0.875rem;
-}
+.aiab-datepicker--sm {
+  & .aiab-datepicker-input {
+    padding: 0.375rem 2rem 0.375rem 0.625rem;
+    font-size: 0.875rem;
+  }
 
-.aiab-datepicker--sm .aiab-datepicker-icon {
-  width: 1rem;
-  height: 1rem;
-  inset-inline-end: 0.625rem;
-}
+  & .aiab-datepicker-icon {
+    width: 1rem;
+    height: 1rem;
+    inset-inline-end: 0.625rem;
+  }
 
-.aiab-datepicker--sm .aiab-datepicker-dropdown {
-  min-width: 240px;
-}
+  & .aiab-datepicker-dropdown {
+    min-width: 240px;
+  }
 
-.aiab-datepicker--sm .aiab-datepicker-day {
-  font-size: 0.75rem;
+  & .aiab-datepicker-day {
+    font-size: 0.75rem;
+  }
 }
 
 /* Large */
-.aiab-datepicker--lg .aiab-datepicker-input {
-  padding: 0.75rem 3rem 0.75rem 1rem;
-  font-size: 1.125rem;
-}
+.aiab-datepicker--lg {
+  & .aiab-datepicker-input {
+    padding: 0.75rem 3rem 0.75rem 1rem;
+    font-size: 1.125rem;
+  }
 
-.aiab-datepicker--lg .aiab-datepicker-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  inset-inline-end: 1rem;
-}
+  & .aiab-datepicker-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    inset-inline-end: 1rem;
+  }
 
-.aiab-datepicker--lg .aiab-datepicker-dropdown {
-  min-width: 320px;
-}
+  & .aiab-datepicker-dropdown {
+    min-width: 320px;
+  }
 
-.aiab-datepicker--lg .aiab-datepicker-day {
-  font-size: 1rem;
+  & .aiab-datepicker-day {
+    font-size: 1rem;
+  }
 }
 
 /* ========================================
@@ -501,22 +502,24 @@
    ======================================== */
 
 /* Primary */
-.aiab-datepicker--primary .aiab-datepicker-day--selected {
-  background: var(--color-primary-text);
-  border-color: var(--color-primary-text);
-}
+.aiab-datepicker--primary {
+  & .aiab-datepicker-day--selected {
+    background: var(--color-primary-text);
+    border-color: var(--color-primary-text);
+  }
 
-.aiab-datepicker--primary .aiab-datepicker-day--today {
-  color: var(--color-primary-text);
-}
+  & .aiab-datepicker-day--today {
+    color: var(--color-primary-text);
+  }
 
-.aiab-datepicker--primary .aiab-datepicker-day--today::after {
-  background: var(--color-primary-text);
-}
+  & .aiab-datepicker-day--today::after {
+    background: var(--color-primary-text);
+  }
 
-.aiab-datepicker--primary .aiab-datepicker-input:focus {
-  border-color: var(--color-primary-text);
-  box-shadow: 0 0 0 3px rgba(166, 94, 0, 0.1);
+  & .aiab-datepicker-input:focus {
+    border-color: var(--color-primary-text);
+    box-shadow: 0 0 0 3px rgba(166, 94, 0, 0.1);
+  }
 }
 
 /* Success */
@@ -536,14 +539,16 @@
    ======================================== */
 
 /* Disabled */
-.aiab-datepicker--disabled .aiab-datepicker-input {
-  background: var(--color-gray-150);
-  color: var(--color-gray-450);
-  cursor: not-allowed;
-}
+.aiab-datepicker--disabled {
+  & .aiab-datepicker-input {
+    background: var(--color-gray-150);
+    color: var(--color-gray-450);
+    cursor: not-allowed;
+  }
 
-.aiab-datepicker--disabled .aiab-datepicker-icon {
-  opacity: 0.5;
+  & .aiab-datepicker-icon {
+    opacity: 0.5;
+  }
 }
 
 /* Read-only */
@@ -553,12 +558,14 @@
 }
 
 /* Error */
-.aiab-datepicker--error .aiab-datepicker-input {
-  border-color: #dc2626;
-}
+.aiab-datepicker--error {
+  & .aiab-datepicker-input {
+    border-color: #dc2626;
+  }
 
-.aiab-datepicker--error .aiab-datepicker-input:focus {
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  & .aiab-datepicker-input:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
 }
 
 /* ========================================

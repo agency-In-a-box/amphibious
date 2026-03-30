@@ -28,11 +28,11 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-}
 
-.aiab-file-upload-zone:hover {
-  border-color: var(--color-gray-450);
-  background: var(--color-gray-50);
+  &:hover {
+    border-color: var(--color-gray-450);
+    background: var(--color-gray-50);
+  }
 }
 
 /* Drag active state */
@@ -40,11 +40,11 @@
   border-color: var(--color-accent);
   background: var(--color-accent-light);
   transform: scale(1.01);
-}
 
-.aiab-file-upload-zone--drag-active .aiab-file-upload-icon {
-  color: var(--color-accent);
-  animation: bounce 0.5s infinite;
+  & .aiab-file-upload-icon {
+    color: var(--color-accent);
+    animation: bounce 0.5s infinite;
+  }
 }
 
 @keyframes bounce {
@@ -99,16 +99,16 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-}
 
-.aiab-file-upload-button:hover {
-  background: var(--color-accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
+  &:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
 
-.aiab-file-upload-button:active {
-  transform: translateY(0);
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .aiab-file-upload-formats {
@@ -138,10 +138,10 @@
   transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
-}
 
-.aiab-file-upload-item:hover {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  &:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* File preview */
@@ -155,12 +155,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.aiab-file-upload-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .aiab-file-upload-preview-icon {
@@ -231,14 +231,14 @@
   background: var(--color-accent);
   transition: width 0.3s ease;
   position: relative;
-}
 
-.aiab-file-upload-progress-bar::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 1s infinite;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 1s infinite;
+  }
 }
 
 @keyframes shimmer {
@@ -264,17 +264,17 @@
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
-}
 
-.aiab-file-upload-remove:hover {
-  background: #fee2e2;
-  border-color: #fca5a5;
-  color: #dc2626;
-}
+  &:hover {
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #dc2626;
+  }
 
-.aiab-file-upload-remove svg {
-  width: 1rem;
-  height: 1rem;
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 /* ========================================
@@ -282,33 +282,37 @@
    ======================================== */
 
 /* Compact */
-.aiab-file-upload--compact .aiab-file-upload-zone {
-  padding: 1.5rem 1rem;
-  min-height: 120px;
-}
+.aiab-file-upload--compact {
+  & .aiab-file-upload-zone {
+    padding: 1.5rem 1rem;
+    min-height: 120px;
+  }
 
-.aiab-file-upload--compact .aiab-file-upload-icon {
-  width: 2rem;
-  height: 2rem;
-}
+  & .aiab-file-upload-icon {
+    width: 2rem;
+    height: 2rem;
+  }
 
-.aiab-file-upload--compact .aiab-file-upload-label {
-  font-size: 1rem;
+  & .aiab-file-upload-label {
+    font-size: 1rem;
+  }
 }
 
 /* Large */
-.aiab-file-upload--large .aiab-file-upload-zone {
-  padding: 4rem 3rem;
-  min-height: 300px;
-}
+.aiab-file-upload--large {
+  & .aiab-file-upload-zone {
+    padding: 4rem 3rem;
+    min-height: 300px;
+  }
 
-.aiab-file-upload--large .aiab-file-upload-icon {
-  width: 4rem;
-  height: 4rem;
-}
+  & .aiab-file-upload-icon {
+    width: 4rem;
+    height: 4rem;
+  }
 
-.aiab-file-upload--large .aiab-file-upload-label {
-  font-size: 1.25rem;
+  & .aiab-file-upload-label {
+    font-size: 1.25rem;
+  }
 }
 
 /* Circular */
@@ -320,26 +324,28 @@
 }
 
 /* Grid preview */
-.aiab-file-upload--grid .aiab-file-upload-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
-}
+.aiab-file-upload--grid {
+  & .aiab-file-upload-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
 
-.aiab-file-upload--grid .aiab-file-upload-item {
-  flex-direction: column;
-  padding: 1rem;
-}
+  & .aiab-file-upload-item {
+    flex-direction: column;
+    padding: 1rem;
+  }
 
-.aiab-file-upload--grid .aiab-file-upload-preview {
-  width: 100%;
-  height: 100px;
-  margin-bottom: 0.5rem;
-}
+  & .aiab-file-upload-preview {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 0.5rem;
+  }
 
-.aiab-file-upload--grid .aiab-file-upload-info {
-  margin-inline-start: 0;
-  text-align: center;
+  & .aiab-file-upload-info {
+    margin-inline-start: 0;
+    text-align: center;
+  }
 }
 
 /* ========================================
@@ -347,36 +353,42 @@
    ======================================== */
 
 /* Disabled */
-.aiab-file-upload--disabled .aiab-file-upload-zone {
-  background: var(--color-gray-150);
-  border-color: var(--color-gray-300);
-  cursor: not-allowed;
-  opacity: 0.6;
-}
+.aiab-file-upload--disabled {
+  & .aiab-file-upload-zone {
+    background: var(--color-gray-150);
+    border-color: var(--color-gray-300);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 
-.aiab-file-upload--disabled .aiab-file-upload-button {
-  pointer-events: none;
-  opacity: 0.5;
+  & .aiab-file-upload-button {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }
 
 /* Error state */
-.aiab-file-upload--error .aiab-file-upload-zone {
-  border-color: #dc2626;
-  background: #fef2f2;
-}
+.aiab-file-upload--error {
+  & .aiab-file-upload-zone {
+    border-color: #dc2626;
+    background: #fef2f2;
+  }
 
-.aiab-file-upload--error .aiab-file-upload-icon {
-  color: #dc2626;
+  & .aiab-file-upload-icon {
+    color: #dc2626;
+  }
 }
 
 /* Success state */
-.aiab-file-upload--success .aiab-file-upload-zone {
-  border-color: #16a34a;
-  background: #f0fdf4;
-}
+.aiab-file-upload--success {
+  & .aiab-file-upload-zone {
+    border-color: #16a34a;
+    background: #f0fdf4;
+  }
 
-.aiab-file-upload--success .aiab-file-upload-icon {
-  color: #16a34a;
+  & .aiab-file-upload-icon {
+    color: #16a34a;
+  }
 }
 
 /* ========================================

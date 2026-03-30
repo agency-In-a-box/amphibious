@@ -51,6 +51,42 @@
   font-size: var(--breadcrumb-font-size);
   font-weight: var(--font-weight-medium); /* 500 weight for consistency */
   color: var(--breadcrumb-text);
+
+  & .aiab-breadcrumb__link {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: var(--breadcrumb-padding);
+    color: var(--breadcrumb-text);
+    text-decoration: none;
+    border-radius: var(--breadcrumb-border-radius);
+    transition: var(--breadcrumb-transition);
+    white-space: nowrap;
+
+    &:hover,
+    &:focus {
+      color: var(--breadcrumb-text-hover);
+      background-color: var(--breadcrumb-bg-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  /* Current/Active Breadcrumb - Enhanced visibility for accessibility */
+  & .aiab-breadcrumb__item--current .aiab-breadcrumb__link,
+  & .aiab-breadcrumb__current {
+    color: var(--breadcrumb-text-active); /* Use global active color */
+    font-weight: var(--font-weight-semibold); /* 600 for emphasis */
+    cursor: default;
+  }
+
+  /* Structured Data Support */
+  &[itemscope] {
+    /* Support for JSON-LD structured data */
+  }
 }
 
 .aiab-breadcrumb__item {
@@ -59,40 +95,11 @@
   margin: 0;
 }
 
-.aiab-breadcrumb .aiab-breadcrumb__link {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: var(--breadcrumb-padding);
-  color: var(--breadcrumb-text);
-  text-decoration: none;
-  border-radius: var(--breadcrumb-border-radius);
-  transition: var(--breadcrumb-transition);
-  white-space: nowrap;
-}
-
-.aiab-breadcrumb .aiab-breadcrumb__link:hover,
-.aiab-breadcrumb .aiab-breadcrumb__link:focus {
-  color: var(--breadcrumb-text-hover);
-  background-color: var(--breadcrumb-bg-hover);
-}
-
-.aiab-breadcrumb .aiab-breadcrumb__link:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Current/Active Breadcrumb - Enhanced visibility for accessibility */
-.aiab-breadcrumb .aiab-breadcrumb__item--current .aiab-breadcrumb__link,
-.aiab-breadcrumb .aiab-breadcrumb__current {
-  color: var(--breadcrumb-text-active); /* Use global active color */
-  font-weight: var(--font-weight-semibold); /* 600 for emphasis */
-  cursor: default;
-}
-
-.aiab-breadcrumb__item--current .aiab-breadcrumb__link:hover {
-  background-color: transparent;
-  color: var(--breadcrumb-text-active);
+.aiab-breadcrumb__item--current .aiab-breadcrumb__link {
+  &:hover {
+    background-color: transparent;
+    color: var(--breadcrumb-text-active);
+  }
 }
 
 /* Breadcrumb Icons */
@@ -112,11 +119,11 @@
   font-size: var(--breadcrumb-separator-size);
   font-weight: normal;
   user-select: none;
-}
 
-/* Default separator (chevron right) */
-.aiab-breadcrumb__separator::before {
-  content: "›";
+  /* Default separator (chevron right) */
+  &::before {
+    content: "›";
+  }
 }
 
 /* Separator Variants */
@@ -170,36 +177,40 @@
 }
 
 /* 5. Pills Breadcrumbs */
-.aiab-breadcrumb--pills .aiab-breadcrumb__link {
-  background-color: var(--breadcrumb-bg);
-  border: 1px solid var(--breadcrumb-border);
-  border-radius: 50px;
-  margin-inline-end: 0.5rem;
-}
+.aiab-breadcrumb--pills {
+  & .aiab-breadcrumb__link {
+    background-color: var(--breadcrumb-bg);
+    border: 1px solid var(--breadcrumb-border);
+    border-radius: 50px;
+    margin-inline-end: 0.5rem;
+  }
 
-.aiab-breadcrumb--pills .aiab-breadcrumb__item--current .aiab-breadcrumb__link {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
-}
+  & .aiab-breadcrumb__item--current .aiab-breadcrumb__link {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
 
-.aiab-breadcrumb--pills .aiab-breadcrumb__separator {
-  display: none;
+  & .aiab-breadcrumb__separator {
+    display: none;
+  }
 }
 
 /* 6. Underlined Breadcrumbs */
-.aiab-breadcrumb--underlined .aiab-breadcrumb__link {
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-}
+.aiab-breadcrumb--underlined {
+  & .aiab-breadcrumb__link {
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
 
-.aiab-breadcrumb--underlined .aiab-breadcrumb__link:hover {
-  border-bottom-color: var(--color-primary);
-  background-color: transparent;
-}
+    &:hover {
+      border-bottom-color: var(--color-primary);
+      background-color: transparent;
+    }
+  }
 
-.aiab-breadcrumb--underlined .aiab-breadcrumb__item--current .aiab-breadcrumb__link {
-  border-bottom-color: var(--color-primary);
+  & .aiab-breadcrumb__item--current .aiab-breadcrumb__link {
+    border-bottom-color: var(--color-primary);
+  }
 }
 
 /* Breadcrumb with Home Icon */
@@ -215,38 +226,42 @@
 /* Overflow/Ellipsis Support */
 .aiab-breadcrumb--ellipsis {
   max-width: 100%;
-}
 
-.aiab-breadcrumb--ellipsis
-  .aiab-breadcrumb__item:not(:first-child):not(:last-child):not(
-    .aiab-breadcrumb__item--always-show
-  ) {
-  display: none;
-}
+  &
+    .aiab-breadcrumb__item:not(:first-child):not(:last-child):not(
+      .aiab-breadcrumb__item--always-show
+    ) {
+    display: none;
+  }
 
-.aiab-breadcrumb--ellipsis .aiab-breadcrumb__ellipsis {
-  display: flex;
-  align-items: center;
-  margin: 0 var(--breadcrumb-gap);
-  color: var(--breadcrumb-separator);
-  cursor: pointer;
-  padding: var(--breadcrumb-padding);
-  border-radius: var(--breadcrumb-border-radius);
-  transition: var(--breadcrumb-transition);
-}
+  & .aiab-breadcrumb__ellipsis {
+    display: flex;
+    align-items: center;
+    margin: 0 var(--breadcrumb-gap);
+    color: var(--breadcrumb-separator);
+    cursor: pointer;
+    padding: var(--breadcrumb-padding);
+    border-radius: var(--breadcrumb-border-radius);
+    transition: var(--breadcrumb-transition);
 
-.aiab-breadcrumb--ellipsis .aiab-breadcrumb__ellipsis:hover {
-  background-color: var(--breadcrumb-bg-hover);
-}
+    &:hover {
+      background-color: var(--breadcrumb-bg-hover);
+    }
 
-.aiab-breadcrumb--ellipsis .aiab-breadcrumb__ellipsis::before {
-  content: "…";
+    &::before {
+      content: "…";
+    }
+  }
 }
 
 /* Dropdown for ellipsis */
 .aiab-breadcrumb__dropdown {
   position: relative;
   display: inline-block;
+
+  &:hover .aiab-breadcrumb__dropdown-content {
+    display: block;
+  }
 }
 
 .aiab-breadcrumb__dropdown-content {
@@ -263,26 +278,17 @@
   margin-top: 0.25rem;
 }
 
-.aiab-breadcrumb__dropdown:hover .aiab-breadcrumb__dropdown-content {
-  display: block;
-}
-
 .aiab-breadcrumb__dropdown-item {
   display: block;
   padding: 0.5rem 1rem;
   color: var(--breadcrumb-text);
   text-decoration: none;
   transition: var(--breadcrumb-transition);
-}
 
-.aiab-breadcrumb__dropdown-item:hover {
-  background-color: var(--breadcrumb-bg-hover);
-  color: var(--breadcrumb-text-hover);
-}
-
-/* Structured Data Support */
-.aiab-breadcrumb[itemscope] {
-  /* Support for JSON-LD structured data */
+  &:hover {
+    background-color: var(--breadcrumb-bg-hover);
+    color: var(--breadcrumb-text-hover);
+  }
 }
 
 /* Responsive Design */
@@ -331,20 +337,20 @@
 
 .aiab-breadcrumb__item--loading {
   position: relative;
-}
 
-.aiab-breadcrumb__item--loading::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  border: 1px solid var(--breadcrumb-separator);
-  border-top: 1px solid var(--breadcrumb-text);
-  border-radius: 50%;
-  animation: breadcrumb-spin 1s linear infinite;
-  transform: translate(-50%, -50%);
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--breadcrumb-separator);
+    border-top: 1px solid var(--breadcrumb-text);
+    border-radius: 50%;
+    animation: breadcrumb-spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+  }
 }
 
 @keyframes breadcrumb-spin {
@@ -432,13 +438,11 @@
   background-color: transparent;
   border-radius: 0;
   outline: none; /* Remove browser default blue outline */
-}
 
-.aiab-breadcrumb
-  .aiab-breadcrumb__item--current
-  .aiab-breadcrumb__link[aria-current="page"]:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 }
 
 /* Screen reader support */

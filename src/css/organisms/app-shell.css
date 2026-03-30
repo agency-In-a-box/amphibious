@@ -78,29 +78,29 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-}
 
-.aiab-app-shell__header-nav button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border: none;
-  background: transparent;
-  color: var(--color-gray-500, var(--color-gray-550));
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: color 0.15s ease;
-}
+  & button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: none;
+    background: transparent;
+    color: var(--color-gray-500, var(--color-gray-550));
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: color 0.15s ease;
 
-.aiab-app-shell__header-nav button:hover {
-  color: var(--color-gray-900, var(--color-gray-950));
-}
+    &:hover {
+      color: var(--color-gray-900, var(--color-gray-950));
+    }
 
-.aiab-app-shell__header-nav button:focus-visible {
-  outline: 2px solid var(--color-primary, #ed8b00);
-  outline-offset: 2px;
+    &:focus-visible {
+      outline: 2px solid var(--color-primary, #ed8b00);
+      outline-offset: 2px;
+    }
+  }
 }
 
 .aiab-app-shell__header-title {
@@ -112,12 +112,12 @@
   color: var(--color-gray-900, var(--color-gray-950));
   flex: 1;
   min-width: 0;
-}
 
-.aiab-app-shell__header-title span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  & span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .aiab-app-shell__header-tabs {
@@ -132,19 +132,19 @@
   padding: 2rem;
   scrollbar-width: thin;
   scrollbar-color: var(--color-gray-300) transparent;
-}
 
-.aiab-app-shell__content::-webkit-scrollbar {
-  width: 6px;
-}
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
 
-.aiab-app-shell__content::-webkit-scrollbar-track {
-  background: transparent;
-}
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-.aiab-app-shell__content::-webkit-scrollbar-thumb {
-  background: var(--color-gray-300);
-  border-radius: 3px;
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+    border-radius: 3px;
+  }
 }
 
 /* Right Panel (Context Sidebar) */
@@ -162,15 +162,15 @@
   z-index: var(--app-shell-z-right);
   scrollbar-width: thin;
   scrollbar-color: var(--color-gray-300) transparent;
-}
 
-.aiab-app-shell__right::-webkit-scrollbar {
-  width: 6px;
-}
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
 
-.aiab-app-shell__right::-webkit-scrollbar-thumb {
-  background: var(--color-gray-300);
-  border-radius: 3px;
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+    border-radius: 3px;
+  }
 }
 
 /* Right Panel Header */
@@ -186,10 +186,20 @@
 /* Side Panel Sections (collapsible) */
 .aiab-app-shell__section {
   border-bottom: 1px solid var(--app-shell-border);
-}
 
-.aiab-app-shell__section:last-child {
-  border-bottom: none;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.is-collapsed {
+    & .aiab-app-shell__section-toggle {
+      transform: rotate(-90deg);
+    }
+
+    & .aiab-app-shell__section-body {
+      display: none;
+    }
+  }
 }
 
 .aiab-app-shell__section-header {
@@ -209,16 +219,16 @@
   font-family: inherit;
   line-height: 1.5;
   transition: background-color 0.15s ease;
-}
 
-.aiab-app-shell__section-header:hover {
-  background-color: rgba(0, 0, 0, 0.02);
-}
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
 
-.aiab-app-shell__section-header:focus-visible {
-  outline: 2px solid var(--color-primary, #ed8b00);
-  outline-offset: -2px;
-  border-radius: 0.25rem;
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #ed8b00);
+    outline-offset: -2px;
+    border-radius: 0.25rem;
+  }
 }
 
 .aiab-app-shell__section-meta {
@@ -237,14 +247,6 @@
   color: var(--color-gray-400);
   transition: transform 0.2s ease;
   flex-shrink: 0;
-}
-
-.aiab-app-shell__section.is-collapsed .aiab-app-shell__section-toggle {
-  transform: rotate(-90deg);
-}
-
-.aiab-app-shell__section.is-collapsed .aiab-app-shell__section-body {
-  display: none;
 }
 
 /* Responsive Collapse */

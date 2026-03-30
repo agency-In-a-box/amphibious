@@ -160,28 +160,28 @@ input[type="radio"] {
 
 input[type="checkbox"] {
   border-radius: 0.25em;
+
+  &:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 }
 
 input[type="radio"] {
   border-radius: 50%;
-}
 
-input[type="checkbox"]:checked {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-input[type="radio"]:checked {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3ccircle fill='%23fff' cx='10' cy='10' r='5'/%3e%3c/svg%3e");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  &:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3ccircle fill='%23fff' cx='10' cy='10' r='5'/%3e%3c/svg%3e");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 }
 
 input[type="checkbox"]:focus,
@@ -215,13 +215,13 @@ input[type="radio"]:focus {
   align-items: center;
   padding-inline-start: 0;
   margin-inline-end: 1rem;
-}
 
-.aiab-form-check-inline .aiab-form-check-input {
-  position: static;
-  margin-top: 0;
-  margin-inline-end: 0.5rem;
-  margin-inline-start: 0;
+  & .aiab-form-check-input {
+    position: static;
+    margin-top: 0;
+    margin-inline-end: 0.5rem;
+    margin-inline-start: 0;
+  }
 }
 
 /* Form Groups
@@ -235,11 +235,11 @@ input[type="radio"]:focus {
   display: flex;
   flex-wrap: wrap;
   margin-inline: -5px;
-}
 
-.aiab-form-row > .col,
-.aiab-form-row > [class*="col-"] {
-  padding-inline: 5px;
+  & > .col,
+  & > [class*="col-"] {
+    padding-inline: 5px;
+  }
 }
 
 /* Form Grid
@@ -358,28 +358,28 @@ input[type="radio"]:focus {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-}
 
-.aiab-form-inline .aiab-form-control,
-.aiab-form-inline input,
-.aiab-form-inline select {
-  display: inline-block;
-  width: auto;
-  vertical-align: middle;
-}
+  & .aiab-form-control,
+  & input,
+  & select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+  }
 
-.aiab-form-inline .aiab-form-group {
-  display: flex;
-  flex: 0 0 auto;
-  flex-flow: row wrap;
-  align-items: center;
-  margin-bottom: 0;
-  margin-inline-end: 1rem;
-}
+  & .aiab-form-group {
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-bottom: 0;
+    margin-inline-end: 1rem;
+  }
 
-.aiab-form-inline label {
-  margin-bottom: 0;
-  margin-inline-end: 0.5rem;
+  & label {
+    margin-bottom: 0;
+    margin-inline-end: 0.5rem;
+  }
 }
 
 /* Floating Labels
@@ -387,43 +387,43 @@ input[type="radio"]:focus {
 
 .aiab-form-floating {
   position: relative;
-}
 
-.aiab-form-floating > .aiab-form-control,
-.aiab-form-floating > select {
-  height: calc(3.5rem + 2px);
-  padding: 1rem 0.75rem;
-}
+  & > .aiab-form-control,
+  & > select {
+    height: calc(3.5rem + 2px);
+    padding: 1rem 0.75rem;
+  }
 
-.aiab-form-floating > label {
-  position: absolute;
-  top: 0;
-  inset-inline-start: 0;
-  height: 100%;
-  padding: 1rem 0.75rem;
-  pointer-events: none;
-  border: 1px solid transparent;
-  transform-origin: 0 0;
-  transition:
-    opacity 0.1s ease-in-out,
-    transform 0.1s ease-in-out;
-}
+  & > label {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition:
+      opacity 0.1s ease-in-out,
+      transform 0.1s ease-in-out;
+  }
 
-.aiab-form-floating > .aiab-form-control::placeholder {
-  color: transparent;
-}
+  & > .aiab-form-control::placeholder {
+    color: transparent;
+  }
 
-.aiab-form-floating > .aiab-form-control:focus,
-.aiab-form-floating > .aiab-form-control:not(:placeholder-shown) {
-  padding-top: 1.625rem;
-  padding-bottom: 0.625rem;
-}
+  & > .aiab-form-control:focus,
+  & > .aiab-form-control:not(:placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+  }
 
-.aiab-form-floating > .aiab-form-control:focus ~ label,
-.aiab-form-floating > .aiab-form-control:not(:placeholder-shown) ~ label,
-.aiab-form-floating > select ~ label {
-  opacity: 0.65;
-  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  & > .aiab-form-control:focus ~ label,
+  & > .aiab-form-control:not(:placeholder-shown) ~ label,
+  & > select ~ label {
+    opacity: 0.65;
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  }
 }
 
 /* Range Input
@@ -435,30 +435,30 @@ input[type="range"] {
   padding: 0;
   background-color: transparent;
   appearance: none;
-}
 
-input[type="range"]:focus {
-  outline: 0;
-}
+  &:focus {
+    outline: 0;
+  }
 
-input[type="range"]::-webkit-slider-thumb {
-  width: 1rem;
-  height: 1rem;
-  background-color: var(--color-primary);
-  border: 0;
-  border-radius: 1rem;
-  appearance: none;
-  cursor: pointer;
-}
+  &::-webkit-slider-thumb {
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-primary);
+    border: 0;
+    border-radius: 1rem;
+    appearance: none;
+    cursor: pointer;
+  }
 
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 0.5rem;
-  color: transparent;
-  cursor: pointer;
-  background-color: var(--color-gray-300);
-  border-color: transparent;
-  border-radius: 1rem;
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.5rem;
+    color: transparent;
+    cursor: pointer;
+    background-color: var(--color-gray-300);
+    border-color: transparent;
+    border-radius: 1rem;
+  }
 }
 
 /* File Input
@@ -466,25 +466,25 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 input[type="file"] {
   overflow: hidden;
-}
 
-input[type="file"]::file-selector-button {
-  padding: var(--form-padding-y) var(--form-padding-x);
-  margin: calc(var(--form-padding-y) * -1) calc(var(--form-padding-x) * -1);
-  margin-inline-end: var(--form-padding-x);
-  color: var(--form-text-color);
-  background-color: var(--color-gray-200);
-  pointer-events: none;
-  border-color: inherit;
-  border-style: solid;
-  border-width: 0;
-  border-inline-end-width: var(--form-border-width);
-  border-radius: 0;
-  transition: var(--form-transition);
-}
+  &::file-selector-button {
+    padding: var(--form-padding-y) var(--form-padding-x);
+    margin: calc(var(--form-padding-y) * -1) calc(var(--form-padding-x) * -1);
+    margin-inline-end: var(--form-padding-x);
+    color: var(--form-text-color);
+    background-color: var(--color-gray-200);
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: var(--form-border-width);
+    border-radius: 0;
+    transition: var(--form-transition);
+  }
 
-input[type="file"]:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: #dae0e5;
+  &:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: #dae0e5;
+  }
 }
 
 /* Search Form
@@ -492,21 +492,21 @@ input[type="file"]:hover:not(:disabled):not([readonly])::file-selector-button {
 
 .aiab-search-form {
   position: relative;
-}
 
-.aiab-search-form input[type="search"] {
-  padding-inline-end: 2.5rem;
-}
+  & input[type="search"] {
+    padding-inline-end: 2.5rem;
+  }
 
-.aiab-search-form button {
-  position: absolute;
-  inset-inline-end: 0;
-  top: 0;
-  bottom: 0;
-  border: 0;
-  background: transparent;
-  padding: 0 0.75rem;
-  color: var(--form-placeholder-color);
+  & button {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 0;
+    bottom: 0;
+    border: 0;
+    background: transparent;
+    padding: 0 0.75rem;
+    color: var(--form-placeholder-color);
+  }
 }
 
 /* Accessibility
