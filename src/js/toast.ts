@@ -123,6 +123,7 @@ export class ToastComponent {
   public toasts: Map<string, ToastEntry>;
   private defaults: ToastDefaults;
   private labels: ToastLabels;
+  private boundEscapeHandler: (e: KeyboardEvent) => void;
 
   constructor() {
     this.container = null;
@@ -137,6 +138,7 @@ export class ToastComponent {
       notifications: 'Notifications',
       closeNotification: 'Close notification',
     };
+    this.boundEscapeHandler = this.handleGlobalEscape.bind(this);
     this.init();
   }
 
@@ -194,6 +196,11 @@ export class ToastComponent {
 
     // Store reference
     this.toasts.set(id, { element: toast, config, timeout: null });
+
+    // Add global Escape listener when first toast appears
+    if (this.toasts.size === 1) {
+      document.addEventListener('keydown', this.boundEscapeHandler);
+    }
 
     // Auto dismiss if duration is set
     if (config.duration && config.duration > 0) {
@@ -312,7 +319,7 @@ export class ToastComponent {
       });
     });
 
-    // Dismiss on Escape key
+    // Per-element Escape key (for focused toast)
     toast.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         this.hide(id);
@@ -348,6 +355,18 @@ export class ToastComponent {
   }
 
   /**
+   * Global Escape key handler — dismisses the most recent toast regardless of focus.
+   */
+  private handleGlobalEscape(e: KeyboardEvent): void {
+    if (e.key === 'Escape' && this.toasts.size > 0) {
+      const lastId = Array.from(this.toasts.keys()).pop();
+      if (lastId) {
+        this.hide(lastId);
+      }
+    }
+  }
+
+  /**
    * Hide and remove a toast by ID. Plays an exit animation then removes
    * the element from the DOM after 300 ms.
    * @param id - The toast identifier returned by {@link show}.
@@ -370,6 +389,11 @@ export class ToastComponent {
     setTimeout(() => {
       element.remove();
       this.toasts.delete(id);
+
+      // Remove global Escape listener when no toasts remain
+      if (this.toasts.size === 0) {
+        document.removeEventListener('keydown', this.boundEscapeHandler);
+      }
 
       // Remove container if empty
       if (this.container && this.container.children.length === 0) {
@@ -440,6 +464,9 @@ export class ToastComponent {
    * After calling this, the instance can still be re-used (init is called lazily).
    */
   public destroy(): void {
+    // Remove global Escape listener
+    document.removeEventListener('keydown', this.boundEscapeHandler);
+
     // Clear all active toasts
     this.toasts.forEach((_entry: ToastEntry, id: string) => {
       this.hide(id);
