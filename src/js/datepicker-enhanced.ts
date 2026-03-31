@@ -929,9 +929,12 @@ class DatePickerEnhanced {
 
   private navigate(direction: number): void {
     switch (this.state!.viewMode) {
-      case 'days':
-        this.state!.viewDate.setMonth(this.state!.viewDate.getMonth() + direction);
+      case 'days': {
+        const targetMonth = this.state!.viewDate.getMonth() + direction;
+        this.state!.viewDate.setDate(1); // Prevent day-overflow rollover (e.g. Mar 31 → Feb 31 → Mar 3)
+        this.state!.viewDate.setMonth(targetMonth);
         break;
+      }
       case 'months':
         this.state!.viewDate.setFullYear(this.state!.viewDate.getFullYear() + direction);
         break;

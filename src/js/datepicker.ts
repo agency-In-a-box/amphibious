@@ -590,9 +590,12 @@ export class DatePicker {
 
   private navigate(direction: number): void {
     switch (this.viewMode) {
-      case 'days':
-        this.viewDate.setMonth(this.viewDate.getMonth() + direction);
+      case 'days': {
+        const targetMonth = this.viewDate.getMonth() + direction;
+        this.viewDate.setDate(1); // Prevent day-overflow rollover (e.g. Mar 31 → Feb 31 → Mar 3)
+        this.viewDate.setMonth(targetMonth);
         break;
+      }
       case 'months':
         this.viewDate.setFullYear(this.viewDate.getFullYear() + direction);
         break;
