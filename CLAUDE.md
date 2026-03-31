@@ -80,33 +80,38 @@ Usage: `@media (--bp-sm-down) { ... }` — never use hardcoded pixel values.
 - **Navigation**: Scroll-aware header with `.is-scrolled` state (rAF-throttled)
 
 ### JavaScript/TypeScript Modules
+All component modules are TypeScript (`.ts`):
 ```
 src/js/
-├── navigation.ts       # Mobile nav and dropdowns
-├── modal.ts           # Modal dialogs with focus trapping
-├── tabs.ts            # Tab components with ARIA
-├── carousel.ts        # Splide.js wrapper
-├── smooth-scroll.ts   # Anchor scrolling
-├── forms.ts           # Form validation and file uploads
-├── tooltip.ts         # Tooltips with smart positioning
-├── accordion.js       # Accordion panels
-├── dropdown.js        # Dropdown menus
-├── dropdown-enhanced.js # Enhanced dropdowns with search
-├── toast.js           # Toast notifications
-├── color-picker.js    # Color picker component
-├── datepicker.js      # Date picker
-├── data-table.js      # Data tables with sorting/pagination
-├── file-upload.js     # File upload with progress
-├── search-bar.js      # Search with suggestions
-├── range-slider.js    # Range slider input
-├── timeline.js        # Timeline component
-└── form-builder.js    # Drag-and-drop form builder
+├── navigation.ts          # Mobile nav and dropdowns
+├── modal.ts              # Modal dialogs with focus trapping
+├── tabs.ts               # Tab components with ARIA
+├── carousel.ts           # Splide.js wrapper
+├── smooth-scroll.ts      # Anchor scrolling
+├── forms.ts              # Form validation and file uploads
+├── tooltip.ts            # Tooltips with smart positioning
+├── accordion.ts          # Accordion panels
+├── dropdown.ts           # Dropdown menus
+├── dropdown-enhanced.ts  # Enhanced dropdowns with search
+├── toast.ts              # Toast notifications (global Escape dismiss)
+├── color-picker.ts       # Color picker component
+├── datepicker-enhanced.ts # Date picker
+├── data-table.ts         # Data tables with sorting/pagination
+├── file-upload-enhanced.ts # File upload with progress
+├── search-bar-enhanced.ts # Search with suggestions
+├── range-slider.ts       # Range slider input
+├── timeline.ts           # Timeline component
+├── form-builder.ts       # Drag-and-drop form builder
+├── component-registry.ts # Auto-init component registry
+├── dark-mode-toggle.ts   # Dark mode toggle button
+└── icons.ts              # Lucide icon management
 ```
 
 ### Utilities
 ```
 src/utils/
-└── sanitize.ts        # DOMPurify wrapper for XSS prevention
+├── sanitize.ts        # DOMPurify wrapper (sanitizeHTML, escapeHTML, setInnerHTML, isSafeURL)
+└── focus-trap.ts      # Shared focus trapping for modals and dialogs
 ```
 
 ## Build Configuration
@@ -170,7 +175,7 @@ GitHub Actions workflow runs on push/PR:
 - Test runner: Bun with happy-dom
 - Setup file: `test/setup.ts` (DOM globals, scroll mocks, getBoundingClientRect)
 - Pattern: `test/*.test.ts` files
-- Run: `bun test` (484 tests, 993 assertions across 18 files)
+- Run: `bun test` (453 pass, 1 pre-existing fail, 921 assertions across 18 files)
 - Note: Bun 1.2.11 may segfault when running all files via glob — specify files individually if needed
 
 ### Test Files (18 total)
@@ -228,11 +233,11 @@ GitHub Actions workflow runs on push/PR:
 
 ## NPM Package
 
-### Publishing (when ready)
+### Published Package
 ```json
 {
   "name": "@agency-in-a-box/amphibious",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "exports": {
     ".": "./dist/amphibious.js",
     "./css": "./dist/amphibious.css",
@@ -246,15 +251,22 @@ GitHub Actions workflow runs on push/PR:
 Extended documentation available at:
 `/Users/clivemoore/Documents/dockets/claude-project-knowledge-system/amphibious_knowledge/`
 
+## Security
+
+All custom renderer injection points use DOMPurify sanitization:
+- `sanitizeHTML()` — for HTML content (tooltips, modals, dropdowns, carousel icons)
+- `escapeHTML()` — for plain text interpolation (Modal.alert/confirm, EcommerceTooltips)
+- `setInnerHTML()` — safe innerHTML wrapper used by Modal
+- Injection points documented with `@security` JSDoc tags
+
 ## Current Focus Areas
 
-1. NPM package publication preparation
-2. Public open-source release readiness
-3. Community contribution readiness and marketing
-4. Remaining low-priority technical debt (@layer architecture)
+1. Public open-source release readiness
+2. Community contribution readiness and marketing
+3. @layer CSS architecture (low priority)
 
 ## Known Issues
 
 - **Grid file naming**: Grid CSS lives in `grid-modern.css` (not `grid.css`), navigation in `navigation-unified.css` (not `organisms/navigation.css`)
-- **Bun 1.2.11 segfault**: `bun test` (glob mode) may segfault with many files — run test files individually as workaround
-- **Non-standard breakpoints**: 2 files use `576px` (buttons.css, modal.css) — marked with TODO comments, not part of @custom-media tokens
+- **Bun 1.2.11 segfault**: `bun test` (glob mode) may segfault with many files — run test files in batches of ~10
+- **Datepicker test**: 1 pre-existing fail in "should navigate to previous month" — date-sensitive bug from JS→TS conversion
