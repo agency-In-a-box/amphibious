@@ -504,15 +504,18 @@
     </div>
   </footer>
 
-  <script src="../src/js/navigation.ts"></script>
-  <script src="../src/js/accordion.js"></script>
-  <script>
+  <script type="module">
+    import '../src/js/navigation.ts';
+    import { Accordion } from '../src/js/accordion.ts';
+
     // Initialize API example
     const accordionAPI = new Accordion(document.getElementById('api-accordion'), {
       allowMultiple: true,
       onOpen: (item) => console.log('Opened:', item),
       onClose: (item) => console.log('Closed:', item)
     });
+    // Inline onclick handlers in the markup call this API
+    window.accordionAPI = accordionAPI;
   </script>
 </body>
 </html>

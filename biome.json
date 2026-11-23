@@ -4,6 +4,7 @@
     "includes": [
       "**",
       "!**/dist",
+      "!**/dist-site",
       "!**/node_modules",
       "!**/*.min.js",
       "!**/*.min.css",
@@ -42,6 +43,7 @@
     "includes": [
       "**",
       "!**/dist/**",
+      "!**/dist-site/**",
       "!**/node_modules/**",
       "!**/backup-*/**",
       "!**/backups/**",
@@ -56,6 +58,7 @@
     "includes": [
       "**",
       "!**/dist/**",
+      "!**/dist-site/**",
       "!**/node_modules/**",
       "!**/backup-*/**",
       "!**/backups/**",

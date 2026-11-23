@@ -340,8 +340,9 @@ const complexCondition = {
   </div>
 
   <!-- Scripts -->
-  <script src="/src/js/form-builder.js"></script>
-  <script>
+  <script type="module">
+    import { FormBuilder } from '../src/js/form-builder.ts';
+
     // Initialize form builder
     let formBuilder;
 
@@ -608,6 +609,8 @@ const complexCondition = {
       }
     `;
     document.head.appendChild(style);
+    // Inline onclick/onchange handlers in the markup call these
+    Object.assign(window, { clearForm, loadSample, exportJSON, importJSON, copyConfig, loadTemplate });
   </script>
 </body>
 </html>

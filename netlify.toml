@@ -1,6 +1,6 @@
 [build]
   command = "bun install && bun run build:site"
-  publish = "dist"
+  publish = "dist-site"
 
 # Redirects for directory indexes
 [[redirects]]

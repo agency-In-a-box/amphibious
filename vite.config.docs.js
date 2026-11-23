@@ -1,22 +1,62 @@
-import { resolve } from 'node:path';
+import { readdirSync } from 'node:fs';
+import { join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
+/** Directories whose HTML is never deployed. */
+const EXCLUDED_DIRS = new Set(['_archive', 'node_modules']);
+
+/** Root-level pages plus every HTML file under these directories is deployed. */
+const ROOT_PAGES = ['index.html', 'sitemap.html'];
+const PAGE_DIRS = ['docs', 'examples', 'demos'];
+
+function collectHtml(dir) {
+  const found = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    if (entry.isDirectory()) {
+      if (!EXCLUDED_DIRS.has(entry.name)) found.push(...collectHtml(join(dir, entry.name)));
+    } else if (entry.name.endsWith('.html')) {
+      found.push(join(dir, entry.name));
+    }
+  }
+  return found;
+}
+
+/**
+ * One Rollup input per deployable page. Vite mirrors the source path in the
+ * output (docs/foundation.html -> dist-site/docs/foundation.html), so public
+ * URLs are unchanged.
+ */
+function pageInputs() {
+  const files = [
+    ...ROOT_PAGES.map((page) => resolve(__dirname, page)),
+    ...PAGE_DIRS.flatMap((dir) => collectHtml(resolve(__dirname, dir))),
+  ];
+  return Object.fromEntries(
+    files.map((file) => [
+      relative(__dirname, file)
+        .split(sep)
+        .join('/')
+        .replace(/\.html$/, ''),
+      file,
+    ]),
+  );
+}
+
 export default defineConfig({
-  root: process.cwd(),
+  root: __dirname,
   base: '/',
 
   build: {
-    outDir: 'dist-docs',
+    outDir: 'dist-site',
     assetsDir: 'assets',
     emptyOutDir: true,
 
     // Hidden source maps - not referenced in output files but available for error reporting
     sourcemap: 'hidden',
 
-    // Minification
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -28,50 +68,24 @@ export default defineConfig({
       },
     },
 
-    // CSS optimization
-    cssCodeSplit: false,
+    // Page-specific stylesheets must stay scoped to the pages that link them.
+    cssCodeSplit: true,
     cssMinify: true,
 
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        // Docs pages
-        'docs/foundation': resolve(__dirname, 'docs/foundation.html'),
-        'docs/form': resolve(__dirname, 'docs/form.html'),
-        'docs/features': resolve(__dirname, 'docs/features.html'),
-        'docs/function': resolve(__dirname, 'docs/function.html'),
-        'docs/api-reference': resolve(__dirname, 'docs/api-reference.html'),
-        'docs/carousel': resolve(__dirname, 'docs/carousel.html'),
-        'docs/getting-started': resolve(__dirname, 'docs/getting-started.html'),
-        'docs/grid-system': resolve(__dirname, 'docs/grid-system.html'),
-        'docs/icons': resolve(__dirname, 'docs/icons.html'),
-        'docs/index': resolve(__dirname, 'docs/index.html'),
-        // Examples pages
-        'examples/index': resolve(__dirname, 'examples/index.html'),
-        'examples/navigation-showcase': resolve(__dirname, 'examples/navigation-showcase.html'),
-        'examples/atomic-design-demo': resolve(__dirname, 'examples/atomic-design-demo.html'),
-        'examples/cards-demo': resolve(__dirname, 'examples/cards-demo.html'),
-        'examples/carousel-showcase': resolve(__dirname, 'examples/carousel-showcase.html'),
-        'examples/modal': resolve(__dirname, 'examples/modal.html'),
-        'examples/tabs-pagination-steps-demo': resolve(
-          __dirname,
-          'examples/tabs-pagination-steps-demo.html',
-        ),
-        'examples/form-validation-demo': resolve(__dirname, 'examples/form-validation-demo.html'),
-      },
+      input: pageInputs(),
 
       output: {
-        // Asset naming
         entryFileNames: 'js/[name].[hash].js',
         chunkFileNames: 'js/[name].[hash].js',
         assetFileNames: (assetInfo) => {
-          const { name } = assetInfo;
+          const name = assetInfo.names?.[0] ?? assetInfo.name ?? '';
 
           if (/\.(css)$/i.test(name)) {
             return 'css/[name].[hash][extname]';
           }
 
-          if (/\.(png|jpe?g|gif|svg|webp)$/i.test(name)) {
+          if (/\.(png|jpe?g|gif|svg|webp|avif)$/i.test(name)) {
             return 'images/[name].[hash][extname]';
           }
 
@@ -84,10 +98,7 @@ export default defineConfig({
       },
     },
 
-    // Report compressed size
     reportCompressedSize: true,
-
-    // Chunk size warning
     chunkSizeWarningLimit: 500,
   },
 

@@ -940,8 +940,8 @@ body {
     color: #e2e8f0;
   }
 
-  :root:not([data-theme="light"]) @media (--bp-md-down) {
-    .aiab-cart-sidebar {
+  @media (--bp-md-down) {
+    :root:not([data-theme="light"]) .aiab-cart-sidebar {
       background: #1e293b;
       box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
     }

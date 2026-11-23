@@ -332,11 +332,11 @@ new Timeline(element, {
   </div>
 
   <!-- Scripts -->
-  <script src="/src/js/color-picker.js"></script>
-  <script src="/src/js/range-slider.js"></script>
-  <script src="/src/js/timeline.js"></script>
+  <script type="module">
+    import { ColorPicker } from '../src/js/color-picker.ts';
+    import { RangeSlider } from '../src/js/range-slider.ts';
+    import { Timeline } from '../src/js/timeline.ts';
 
-  <script>
     // Initialize Color Pickers
     const color2 = new ColorPicker(document.getElementById('color2'), {
       inline: true,

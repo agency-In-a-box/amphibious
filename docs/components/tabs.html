@@ -925,7 +925,7 @@ class Tabs {
 
       case 'ArrowRight':
         e.preventDefault();
-        targetIndex = currentIndex < this.tabs.length - 1 ? currentIndex + 1 : 0;
+        targetIndex = currentIndex &lt; this.tabs.length - 1 ? currentIndex + 1 : 0;
         this.focusTab(this.tabs[targetIndex]);
         break;
 
@@ -998,7 +998,7 @@ class Tabs {
   }
 
   activateTabByIndex(index) {
-    if (index >= 0 && index < this.tabs.length) {
+    if (index >= 0 && index &lt; this.tabs.length) {
       this.activateTab(this.tabs[index]);
     }
   }
