@@ -2,6 +2,7 @@ import { readdirSync } from 'node:fs';
 import { join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
+import aiabIcons from './scripts/vite-plugin-icons.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -46,6 +47,7 @@ function pageInputs() {
 }
 
 export default defineConfig({
+  plugins: [aiabIcons()],
   root: __dirname,
   base: '/',
 

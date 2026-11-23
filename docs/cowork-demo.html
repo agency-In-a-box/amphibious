@@ -35,9 +35,6 @@
   <!-- Helpers -->
   <link rel="stylesheet" href="../src/css/helpers.css">
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
     /* Demo-specific resets — not part of framework */
     *, *::before, *::after { box-sizing: border-box; margin: 0; }
@@ -584,10 +581,12 @@
     </aside>
   </div>
 
-  <!-- Initialize Lucide Icons + Interactivity -->
-  <script>
+  <!-- Initialize icons + interactivity -->
+  <script type="module">
+    import { initializeIcons } from '../src/js/icons-lightweight.ts';
+
     document.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
+      initializeIcons();
 
       /* ====================================================================
          1. AUTO-GROW TEXTAREAS
@@ -666,7 +665,7 @@
         }
 
         setActiveNav(triggerLink || null);
-        lucide.createIcons();
+        initializeIcons();
       }
 
       // "New task" → landing view

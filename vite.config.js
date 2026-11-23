@@ -1,10 +1,12 @@
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
+import aiabIcons from './scripts/vite-plugin-icons.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
+  plugins: [aiabIcons()],
   root: process.cwd(),
   base: '/',
   server: {
