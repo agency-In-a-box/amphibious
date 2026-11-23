@@ -16,7 +16,7 @@ Fix the causes, not the symptoms. Leave behind a check that fails the build if a
 - Make one commit per phase, using conventional commit messages as in the existing history. Before each commit, run `bun run lint`, `bun run format:check`, `bun run typecheck` and the tests (in batches, per the segfault note in CLAUDE.md).
 - CLAUDE.md rules apply: no hacks, no `!important`, `.aiab-` on classes only, `@custom-media` tokens instead of px.
 - **Stop and ask Clive** before deleting any page, changing a public URL, or adding a runtime dependency. Dev dependencies are fine.
-- Ask the two Phase 4 / Phase 5 questions (legacy pages, public repo URL) at the start. Clive can answer while you work on Phase 1.
+- Decisions already made by Clive (2026-11-23): **rebuild every legacy page** (Phase 4, no archiving) and the public repo URL is **https://github.com/agency-In-a-box/amphibious** (Phase 5). Don't re-ask.
 - CLAUDE.md is stale in places. Vite is `^7.3.1`, not 6. Most pages do not get icons from the Lucide CDN (see Phase 3). Correct CLAUDE.md in Phase 6.
 
 ## Baseline (production, 2026-11-23)
@@ -52,7 +52,7 @@ Fix the causes, not the symptoms. Leave behind a check that fails the build if a
 
 **Target.** A real Vite multi-page build for every deployable HTML page.
 
-- Start from `vite.config.docs.js`. Replace its 18 hand-listed inputs with a glob over `index.html`, `sitemap.html`, `docs/**`, `examples/**` and `demos/**`. Exclude `_archive/` and whatever Clive drops in Phase 4.
+- Start from `vite.config.docs.js`. Replace its 18 hand-listed inputs with a glob over `index.html`, `sitemap.html`, `docs/**`, `examples/**` and `demos/**`. Exclude `_archive/`.
 - Let pages reference source directly (`/src/css/main.css`, `/src/index.ts`, the Task 5 standard head) and let Vite bundle it. Delete the rewrite step, not just its regexes.
 - Keep the npm library build (`vite.config.js` → `dist/`) separate. Output the site to its own directory (e.g. `dist-site/`) and update `netlify.toml` `publish`.
 - Output paths must mirror source paths (`docs/foundation.html` → `<out>/docs/foundation.html`) so live URLs don't change.
@@ -114,7 +114,7 @@ Tell Clive which path you took and why.
 - Chrome shows 0 `span[role=img]` placeholders on the catalog.
 - The bundle stays under the 2MB CI limit. Report the size change.
 
-## Phase 4: Legacy 2013 pages (Clive decides before you touch them)
+## Phase 4: Legacy 2013 pages (decision: rebuild all)
 
 These pages reference the original framework's files: `/css/a.mphibio.us.css`, `/css/a.mphibio.us.min.css`, `/js/plugins.js`, `/js/scripts.js`, `/js/js/modernizr-2.6.2.min.js` and more. **None of those files exist anywhere in the repo.**
 
@@ -129,11 +129,15 @@ These pages reference the original framework's files: `/css/a.mphibio.us.css`, `
 
 Note that `examples/buttons-input-groups-broken.html` loads fine; the file named "broken" is the working one. Diff the two before choosing.
 
-**Recommended default if Clive says "your call"**
+**Decision (Clive, 2026-11-23): rebuild every page in the table on the current framework. No archiving.**
 
-- Move buttons-input-groups and modern-responsive-tables onto the Task 5 standard head.
-- Move pea.rs, docs/tests/fluid and the classic/green themes into an `_archive/` folder excluded from the build, and remove links to them.
+- Keep each page at its current URL.
+- Use the Task 5 standard head and the framework's own CSS/JS (through the Phase 1 build). Replace legacy class names with `.aiab-` equivalents, using the framework's grid and components.
+- Preserve each page's content and intent. Where a page demonstrated a 2013 plugin (flexslider, tablesorter, dataTables, leap pager, float labels), use the framework's own component (carousel, data-table, pagination, forms) instead. Don't add jQuery back.
+- Theme CSS (classic, green, modern-saas) must go through the build, so its `@custom-media` compiles.
+- Fix `themes/classic/contact`'s `WEP11901.webp` path as part of the classic rebuild.
 - Don't recreate the 2013 assets.
+- This is the largest phase (33 pages). Work group by group, with one commit per group, and crawl after each one.
 
 ## Phase 5: Navigation, links, anchors
 
@@ -192,11 +196,11 @@ For the last two rows, point the nav at sections that exist or drop the items.
 
 ### 7. Wrong image path
 
-If the classic theme survives Phase 4, `themes/classic/contact` references `assets/WEP11901.webp`, which only exists in `themes/green/assets/`.
+`themes/classic/contact` references `assets/WEP11901.webp`, which only exists in `themes/green/assets/`.
 
 ### 8. External links
 
-- Replace the placeholder repo URLs with the real one: `github.com/your-org/amphibious` (getting-started, twice), `github.com/your-repo/amphibious` (modern-saas, twice) and `github.com/amphibious` (features-modern). **Confirm with Clive** that `github.com/agency-In-a-box/amphibious` is the public URL; it returned 403 to the crawler.
+- Replace the placeholder repo URLs with the real one: `github.com/your-org/amphibious` (getting-started, twice), `github.com/your-repo/amphibious` (modern-saas, twice) and `github.com/amphibious` (features-modern). Clive confirmed `https://github.com/agency-In-a-box/amphibious` is the public URL. The crawler got a 403 from it, so allow-list it in the Phase 6 check.
 - Remove dead links: lassosoft.com (26 pages), mergini.com, twitter.com/cliveMoore, and a.mphibio.us including the `.rdk.zip` download.
 
 ## Phase 6: Make this impossible to ship again
@@ -215,7 +219,7 @@ If the classic theme survives Phase 4, `themes/classic/contact` references `asse
 ## Definition of done
 
 - A crawl of the Netlify deploy preview shows 0 broken stylesheets, scripts and imports; 0 broken internal links; 0 missing nav anchors; 0 unknown icons; 0 □; and 0 raw custom-media.
-- A visual check in Chrome passes in light mode, dark mode, and OS-dark with forced light, on `/`, `/docs/foundation`, `/examples/e-commerce-catalog`, `/examples/dashboard-template` and the buttons page (or its replacement).
+- A visual check in Chrome passes in light mode, dark mode, and OS-dark with forced light, on `/`, `/docs/foundation`, `/examples/e-commerce-catalog`, `/examples/dashboard-template` and `/examples/buttons-input-groups`.
 - Lint, `format:check`, typecheck and tests are green, and the bundle is under 2MB.
 - The PR description lists what changed in each phase, the decisions Clive made, and anything deferred.
 
