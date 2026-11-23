@@ -8,9 +8,11 @@
  */
 
 :root {
-  --hero-gradient: none;
-  --demo-grid-gradient: none;
-  --cta-gradient: none;
+  /* Light-mode defaults must match home.css. "none" here blanked the hero,
+     demo grid and CTA backgrounds in light mode, leaving white text on white. */
+  --hero-gradient: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  --demo-grid-gradient: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  --cta-gradient: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
   --feature-card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
