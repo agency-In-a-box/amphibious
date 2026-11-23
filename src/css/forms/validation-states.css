@@ -103,8 +103,21 @@ select:disabled,
 }
 
 /* Read-only state */
-input:read-only,
-textarea:read-only,
+:is(
+    input:not(
+        [type="checkbox"],
+        [type="radio"],
+        [type="range"],
+        [type="color"],
+        [type="file"],
+        [type="button"],
+        [type="submit"],
+        [type="reset"],
+        [type="image"],
+        [type="hidden"]
+      ),
+    textarea
+  ):read-only,
 .aiab-form-control:read-only {
   background-color: var(--color-gray-50);
   border-style: dashed;
@@ -545,8 +558,21 @@ select:focus-visible {
     color: #6b7280;
   }
 
-  input:read-only,
-  textarea:read-only {
+  :is(
+      input:not(
+          [type="checkbox"],
+          [type="radio"],
+          [type="range"],
+          [type="color"],
+          [type="file"],
+          [type="button"],
+          [type="submit"],
+          [type="reset"],
+          [type="image"],
+          [type="hidden"]
+        ),
+      textarea
+    ):read-only {
     background-color: #111827;
   }
 }
