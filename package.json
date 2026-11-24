@@ -125,6 +125,7 @@
     "build": "NODE_ENV=production vite build && vite build --config vite.config.lib-esm.js && tsc --emitDeclarationOnly --outDir dist",
     "build:esm": "NODE_ENV=production vite build --config vite.config.lib-esm.js",
     "qa:site": "bun scripts/qa-site.ts",
+    "qa:site:offline": "bun scripts/qa-site.ts --no-external",
     "generate:icons": "node scripts/generate-icons.js",
     "build:site": "NODE_ENV=production vite build --config vite.config.docs.js",
     "build:analyze": "ANALYZE=true NODE_ENV=production vite build",

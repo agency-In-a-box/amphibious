@@ -1,5 +1,7 @@
 [build]
-  command = "bun install && bun run build:site"
+  # A broken internal link, missing asset or leaked file fails the deploy.
+  # Third-party links are checked in CI only, so an outage elsewhere cannot block a deploy.
+  command = "bun install && bun run build:site && bun run qa:site:offline"
   publish = "dist-site"
 
 # Redirects for directory indexes
