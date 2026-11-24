@@ -153,7 +153,7 @@ export class AmphibiousFooter {
             <div class="amp-footer__copyright">
               <p>© ${this.options.currentYear} ${this.options.companyName}. All rights reserved.</p>
               <p class="amp-footer__built">
-                Built with ❤️ by <a href="${this.options.companyUrl}" target="_blank" rel="noopener">Clive Moore</a>
+                Built by <a href="${this.options.companyUrl}" target="_blank" rel="noopener">Clive Moore</a>
                 | Part of the <a href="https://github.com/your-org/AIAB" target="_blank" rel="noopener">Agency In A Box</a> ecosystem
               </p>
             </div>
@@ -192,7 +192,7 @@ export class AmphibiousFooter {
         <div class="amp-footer__minimal-content">
           <div class="amp-footer__brand">
             <a href="/" class="amp-footer__logo">
-              <span>🐸</span> Amphibious 2.0
+              <i data-lucide="waves" class="icon--sm"></i> Amphibious 2.0
             </a>
             <p>© ${this.options.currentYear} ${this.options.companyName}. All rights reserved.</p>
           </div>
