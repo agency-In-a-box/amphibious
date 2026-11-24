@@ -9,7 +9,7 @@
    ========================================================================== */
 
 :root {
-  /* Primary Palette - Pantone 144 Orange (canonical: #ed8b00) */
+  /* Primary Palette - brand orange (canonical: #ec8b00, DEC-018) */
   --apple-orange: var(--color-primary);
   --apple-orange-light: #ff9f1c;
   --apple-orange-dark: var(--color-primary-active);

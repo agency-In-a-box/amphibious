@@ -6,9 +6,9 @@
 
 /*
  * Color Contrast Analysis:
- * - #ED8B00 (primary orange) with white: 2.95:1 FAIL (needs 4.5:1)
+ * - #EC8B00 (primary orange) with white: 2.54:1 FAIL (needs 4.5:1)
  * - var(--color-primary-dark) (dark orange) with white: 3.8:1 FAIL for small text
- * - #ED8B00 with black: 7.1:1 PASS
+ * - #EC8B00 with black: 8.26:1 PASS
  *
  * Solution: Use darker backgrounds or darker text
  */

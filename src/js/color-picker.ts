@@ -171,7 +171,7 @@ declare global {
 
 /** Default preset colors. */
 const DEFAULT_PRESETS: string[] = [
-  '#ED8B00',
+  '#EC8B00',
   '#FF6900',
   '#FCB900',
   '#7BDCB5',
@@ -230,7 +230,7 @@ export class ColorPicker {
   constructor(element: HTMLInputElement, options: ColorPickerOptions = {}) {
     this.element = element;
     this.options = {
-      value: options.value || element.value || '#ed8b00',
+      value: options.value || element.value || '#ec8b00',
       format: options.format || 'hex',
       alpha: options.alpha !== false,
       inline: options.inline || false,

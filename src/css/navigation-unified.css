@@ -609,7 +609,7 @@
   position: absolute;
   top: -100%;
   inset-inline-start: 0;
-  background: var(--color-primary, #ed8b00);
+  background: var(--color-primary, #ec8b00);
   color: white;
   padding: 0.75em 1.5em;
   text-decoration: none;

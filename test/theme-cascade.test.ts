@@ -56,7 +56,7 @@ describe('Theme Layer Override Tests', () => {
       /* Utilities layer - should still override themes */
       @layer utilities {
         .p-0 { padding: 0; }
-        .bg-primary { background: #ED8B00; }
+        .bg-primary { background: #EC8B00; }
         .shadow-none { box-shadow: none; }
       }
     `;

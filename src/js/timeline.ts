@@ -303,7 +303,7 @@ class Timeline {
 
       // Colors
       colors: {
-        default: options.colors?.default || 'var(--color-primary, #ed8b00)',
+        default: options.colors?.default || 'var(--color-primary, #ec8b00)',
         milestone: options.colors?.milestone || 'var(--apple-success, #34c759)',
         today: options.colors?.today || 'var(--apple-info, #007aff)',
         connector: options.colors?.connector || 'var(--apple-gray-300, #e0e0e0)',

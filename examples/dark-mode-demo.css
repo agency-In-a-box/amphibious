@@ -31,7 +31,7 @@
 
     .theme-card.aiab-active {
       border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
+      box-shadow: 0 0 0 3px rgba(236, 139, 0, 0.15);
     }
 
     .theme-icon {

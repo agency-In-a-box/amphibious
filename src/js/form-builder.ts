@@ -769,7 +769,7 @@ class FormBuilder {
           type: 'color',
           label: 'Choose Color',
           name: '',
-          value: '#ed8b00',
+          value: '#ec8b00',
         } as ColorFieldProps,
       },
       range: {
