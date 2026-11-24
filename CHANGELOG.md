@@ -5,6 +5,50 @@ All notable changes to Amphibious will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-11-24
+
+Live-site QA remediation. The deployed documentation site had missing CSS, scripts the browser refused to run, icons rendering as boxes, dark-mode styles leaking into light pages, dead links on every page, and horizontal scrolling on phones. The causes are fixed and CI now fails if they come back.
+
+### Added
+
+- **Real site build**: `bun run build:site` is a Vite multi-page build (`vite.config.docs.js`) over every page, output to `dist-site/` with the same URLs. It replaces the old copy-and-regex script, which shipped raw `.ts` files and missed hyphenated imports
+- **Site QA gate** (`bun run qa:site`, `scripts/qa-site.ts`): crawls the built site and fails on broken CSS/JS/imports/images, unresolved links and fragments, unknown icons, raw `@media (--*)`, `.ts` files and leaked files. Intentional exceptions live in `scripts/qa-site.allowlist.json`. Netlify runs `qa:site:offline` on every deploy
+- **Browser tests** (`bun run test:e2e`, Playwright): every published page loads with no page errors, console errors or failed requests and fits a 375px screen, plus checks for the 404, mobile menu, dropdowns and sidebar. Runs in CI and gates the deploy preview
+- **`amp` global API** (`src/amp.ts`, `window.amp`): `createModal`, `createTooltip`, `createNavigation`, `createCart`, `createButton`, `refreshIcons` and more, which the docs and 15 example pages already called but nothing defined
+- **`Sidebar` and `Steps` components** with tests, matching the existing sidebar and steps CSS
+- **Navigation options**: `Navigation` takes `(element?, options?)` with `breakpoint`, `sticky`, `highlightCurrent`, `currentPath`, `toggle` and `onToggle`; `Navigation.create()` replaces an existing instance instead of doubling handlers; tap-to-expand on touch devices; flyouts flip only when they would overflow
+- **Build-time icons**: the icon set is generated from `lucide-static` (`scripts/generate-icons.js`); an unknown icon name fails the build. Adds `iconMarkup()` and `registerIcons()`, and maps `icon--*` modifier classes to `aiab-icon--*`
+- **Single-source navigation**: `includes/navigation.html` is injected at build time, replacing 57 copy-pasted nav blocks
+- **Custom 404 page** with a "Report a broken link" link, and 301 redirects from the removed `shopping-cart-modern` page
+- **`.aiab-table-wrapper`** scroll container for wide tables
+
+### Fixed
+
+- **Dark mode leaking into light pages**: rules in `prefers-color-scheme: dark` now defer to `data-theme="light"` and honour an explicit `data-theme="dark"` on a light OS (PostCSS `postcss-theme-scope`, no added specificity). Read-only styling uses `[readonly]`, which no longer dashes every checkbox
+- **Bare `<button>` styled as an orange primary button** and home hero CTA styles restyling every `.aiab-btn-primary`
+- **`@media (--bp-*)` served raw** in page stylesheets, so mobile layouts never applied on 24 stylesheets
+- **Icons**: 143 icons rendering as a box on 13 pages, corrupted `aiab-` icon names, an unpinned CDN script on the homepage, and `getting-started` loading no icon code
+- **Demo pages that threw on load**: accordion, advanced components, form builder, carousel, dark mode, sidebar, steps, navigation showcase and tooltip demos
+- **Navigation**: every `#` link marked as the current page, dropdowns clipped by their container, doubled arrows, stray list bullets, flyouts opening the wrong way, hover flicker, and nav anchors that pointed at IDs that did not exist
+- **Broken links**: dead internal links, placeholder GitHub URLs and dead social links replaced with the real repository
+- **Horizontal scrolling at 375px** on 24 pages: layouts that stretched around wide content, `minmax(300px+, 1fr)` grids, unwrapped tables and flex rows, a color picker positioned off-screen, and a static sidebar that pushed the page wider
+- **Skip link** target (`#main-content`) missing on 20 pages
+- **Theme flash**: the saved theme is applied before first paint on every page
+- **Demo pages**: `apple-redesign` classes did not match its stylesheet; the grid examples hid their sidebar and showed near-invisible code
+
+### Changed
+
+- Navigation docs and demos rewritten for the element + options API; component pages link to demos that exist
+- `Icon` helper classes carry the `aiab-` prefix
+- Docs layouts use the `--bp-md-down` token instead of `768px`
+
+### Removed
+
+- **Legacy 2013 pages** (`pea.rs`, classic and green themes, `docs/tests/fluid`) moved to `_archive/` folders and no longer published; they depended on `a.mphibio.us` assets that no longer exist
+- **Seven developer debug/test pages** under `demos/` moved to `demos/_archive/`
+- `AmphibiousNavigation`, `src/js/index.ts`, `scripts/build-site.js`, and 10 tracked backup / `-broken` files
+- Unpublishable files (internal notes, backups, `.md`, `.ts`) no longer ship
+
 ## [2.0.3] - 2026-02-27
 
 ### Added
