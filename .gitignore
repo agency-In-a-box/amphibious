@@ -34,4 +34,6 @@ coverage/
 
 # Misc
 *.bak
+*.backup
+*.backup-*
 *.tmp

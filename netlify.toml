@@ -13,6 +13,17 @@
   to = "/examples/index.html"
   status = 200
 
+# The cart page moved to examples/_archive and was replaced by the e-commerce cart.
+[[redirects]]
+  from = "/examples/shopping-cart-modern.html"
+  to = "/examples/e-commerce-cart"
+  status = 301
+
+[[redirects]]
+  from = "/examples/shopping-cart-modern"
+  to = "/examples/e-commerce-cart"
+  status = 301
+
 # Only redirect actual 404s to home page, not all pages!
 [[redirects]]
   from = "/*"

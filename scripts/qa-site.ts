@@ -131,6 +131,10 @@ const JS_IMPORT =
   /(?:import|export)\s+(?:[\w*{}\s,$]+\s+from\s+)?['"]([^'"]+)['"]|import\(\s*['"]([^'"]+)['"]\s*\)/g;
 const RAW_CUSTOM_MEDIA = /@custom-media|@media\s*\(\s*--/;
 
+/** Private notes, backups, scratch pages and archived pages must never ship. */
+const UNPUBLISHABLE =
+  /\.md$|\.backup|\.bak$|-broken\.html$|\/_archive\/|\/(?:internal|planning|qa-reports)\//i;
+
 const issues: Issue[] = [];
 const warnings: Issue[] = [];
 
@@ -380,14 +384,13 @@ async function main() {
     process.exit(2);
   }
 
-  // output hygiene: no TypeScript sources shipped
+  // output hygiene: nothing private or unrunnable is published
   for (const file of filesIn(outDir)) {
+    const url = `/${relative(outDir, file).split(sep).join('/')}`;
     if (file.endsWith('.ts') && !file.endsWith('.d.ts')) {
-      issues.push({
-        type: 'ts-in-output',
-        page: '/',
-        url: `/${relative(outDir, file).split(sep).join('/')}`,
-      });
+      issues.push({ type: 'ts-in-output', page: '/', url });
+    } else if (UNPUBLISHABLE.test(url)) {
+      issues.push({ type: 'leaked-file', page: '/', url });
     }
   }
 
