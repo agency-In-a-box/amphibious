@@ -3,6 +3,7 @@ import { join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import aiabIcons from './scripts/vite-plugin-icons.js';
+import aiabNavigation from './scripts/vite-plugin-nav.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -10,7 +11,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const EXCLUDED_DIRS = new Set(['_archive', 'node_modules']);
 
 /** Root-level pages plus every HTML file under these directories is deployed. */
-const ROOT_PAGES = ['index.html', 'sitemap.html'];
+const ROOT_PAGES = ['index.html', 'sitemap.html', '404.html'];
 const PAGE_DIRS = ['docs', 'examples', 'demos'];
 
 function collectHtml(dir) {
@@ -47,7 +48,7 @@ function pageInputs() {
 }
 
 export default defineConfig({
-  plugins: [aiabIcons()],
+  plugins: [aiabIcons(), aiabNavigation()],
   root: __dirname,
   base: '/',
 

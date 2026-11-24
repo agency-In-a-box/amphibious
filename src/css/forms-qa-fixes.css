@@ -72,7 +72,7 @@ a.aiab-button {
    ========================================================================== */
 
 .aiab-form h4,
-#forms h4 {
+:is(#forms, #basic) h4 {
   display: block;
   width: 100%;
   clear: both;
@@ -215,10 +215,10 @@ pre.aiab-prettyprint {
   margin-top: 8px;
 }
 
-/* Forms page-specific overrides (scoped to #forms)
+/* Forms page-specific overrides (scoped to :is(#forms, #basic))
    ========================================================================== */
 
-#forms {
+:is(#forms, #basic) {
   & .aiab-container *,
   & .aiab-row *,
   & .aiab-col-16 * {
@@ -261,7 +261,7 @@ pre.aiab-prettyprint {
   }
 
   /* Forms page heading */
-  #forms h3 {
+  :is(#forms, #basic) h3 {
     color: var(--color-success);
     border-bottom-color: var(--color-gray-600);
   }
