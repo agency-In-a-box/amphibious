@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <title>Features Classic — Amphibious 2.0</title>
     <meta name="description" content="Classic feature showcase for the original Amphibious framework design and components.">
-    <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './docs.css';
+    import './features.css';
+    import './features-original.css';
+  </script>
       <!-- CSS loaded via JavaScript module -->
-    <link rel="stylesheet" href="./docs.css">
-    <link rel="stylesheet" href="./features.css">
-    <link rel="stylesheet" href="./features-original.css">
 </head>
 <body>
   <!-- Navigation Include -->

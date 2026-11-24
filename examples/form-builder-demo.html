@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Form Builder — Amphibious 2.0</title>
   <meta name="description" content="Drag-and-drop form builder with field types, validation rules, and live preview capabilities">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './form-builder-demo.css';
   </script>
-  <link rel="stylesheet" href="form-builder-demo.css">
 </head>
 <body>
   <div class="aiab-demo-header">
@@ -246,7 +251,7 @@ builder.setMode('preview');
 builder.addFieldType({
   type: 'custom',
   label: 'Custom Field',
-  icon: '⚡',
+  icon: '',
   defaultProps: { ... }
 });
         </div>

@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <title>Themes - Amphibious 2.0</title>
   <meta name="description" content="Theme gallery for Amphibious 2.0 CSS Framework">
   <link rel="stylesheet" href="../../src/css/main.css">
@@ -217,7 +221,7 @@
 
   <header class="themes-header">
     <div class="aiab-container">
-      <h1>🎨 Theme Gallery</h1>
+      <h1>Theme Gallery</h1>
       <p>Beautiful themes and landing page templates for Amphibious 2.0</p>
     </div>
   </header>

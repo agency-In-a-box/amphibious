@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Carousel Showcase — Amphibious 2.0</title>
   <meta name="description" content="Carousel and slider examples with Splide.js integration, autoplay, and responsive breakpoints">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
   <style>
     /* Demo specific styles */
@@ -145,27 +150,27 @@
                aria-label="Featured products">
             <article class="demo-card">
               <h3>Premium T-Shirt</h3>
-              <p class="price">$29.99</p>
+              <p class="aiab-price">$29.99</p>
               <p>Comfortable cotton blend with modern fit.</p>
             </article>
             <article class="demo-card">
               <h3>Wireless Headphones</h3>
-              <p class="price">$149.99</p>
+              <p class="aiab-price">$149.99</p>
               <p>High-quality audio with noise cancellation.</p>
             </article>
             <article class="demo-card">
               <h3>Laptop Stand</h3>
-              <p class="price">$79.99</p>
+              <p class="aiab-price">$79.99</p>
               <p>Ergonomic design for better productivity.</p>
             </article>
             <article class="demo-card">
               <h3>Coffee Mug</h3>
-              <p class="price">$19.99</p>
+              <p class="aiab-price">$19.99</p>
               <p>Insulated ceramic with custom design.</p>
             </article>
             <article class="demo-card">
               <h3>Desk Organizer</h3>
-              <p class="price">$39.99</p>
+              <p class="aiab-price">$39.99</p>
               <p>Keep your workspace tidy and organized.</p>
             </article>
           </div>
@@ -287,19 +292,19 @@
                data-carousel-interval="4000"
                aria-label="Feature highlights">
             <article class="demo-card" style="height: 200px;">
-              <h3>🚀 Fast Performance</h3>
+              <h3>Fast Performance</h3>
               <p>Lightning-fast load times with optimized assets and minimal dependencies.</p>
             </article>
             <article class="demo-card" style="height: 200px;">
-              <h3>♿ Accessibility First</h3>
+              <h3>Accessibility First</h3>
               <p>WCAG 2.1 AA compliant with screen reader support and keyboard navigation.</p>
             </article>
             <article class="demo-card" style="height: 200px;">
-              <h3>📱 Mobile Ready</h3>
+              <h3>Mobile Ready</h3>
               <p>Responsive design that looks perfect on all devices and screen sizes.</p>
             </article>
             <article class="demo-card" style="height: 200px;">
-              <h3>🎨 Customizable</h3>
+              <h3>Customizable</h3>
               <p>Easy theming with CSS variables and modular component architecture.</p>
             </article>
           </div>

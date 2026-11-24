@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
     <title>Enhanced Tooltips — Amphibious 2.0</title>
     <meta name="description" content="Enhanced tooltips with rich content, interactive elements, and smart positioning.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <script type="module">import '/src/css/main.css';</script>
-    <link rel="stylesheet" href="tooltip-enhanced.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './tooltip-enhanced.css';
+  </script>
 </head>
 <body>
   <!-- Navigation Include -->
@@ -17,7 +24,7 @@
     <!-- Header -->
     <header class="header">
         <div class="aiab-container">
-            <h1 id="main-content" tabindex="-1">💬 Tooltip System Showcase</h1>
+            <h1 id="main-content" tabindex="-1">Tooltip System Showcase</h1>
             <p>Smart positioning tooltips with accessibility, mobile optimization, and e-commerce features</p>
 
             <div class="aiab-stats">
@@ -34,7 +41,7 @@
                     <span class="aiab-stat-label">Trigger Types</span>
                 </div>
                 <div class="aiab-stat">
-                    <span class="stat-number">♿</span>
+                    <span class="stat-number"><i data-lucide="accessibility"></i></span>
                     <span class="aiab-stat-label">Accessible</span>
                 </div>
             </div>
@@ -44,17 +51,17 @@
     <div class="aiab-container">
         <!-- Interactive Demo -->
         <div class="interactive-demo">
-            <h3>🎯 Try It Live!</h3>
+            <h3>Try It Live!</h3>
             <p>Hover, click, or focus on these elements to see tooltips in action</p>
 
             <div class="button-group">
-                <button class="aiab-btn btn--primary"
+                <button class="aiab-btn aiab-btn--primary"
                         data-tooltip="This is a primary button tooltip"
                         data-tooltip-position="top">
                     Hover for Top
                 </button>
 
-                <button class="aiab-btn btn--secondary"
+                <button class="aiab-btn aiab-btn--secondary"
                         data-tooltip="Click me to toggle this tooltip!"
                         data-tooltip-trigger="click"
                         data-tooltip-position="bottom">
@@ -68,11 +75,11 @@
                        data-tooltip-position="right"
                        style="padding: 0.75rem; border-radius: 8px; border: 2px solid white;">
 
-                <div class="icon-badge"
+                <div class="aiab-icon-badge"
                      data-tooltip="You have 3 items in your cart"
                      data-tooltip-variant="success">
                     <i data-lucide="shopping-cart" class="icon--xl" style="color: white;"></i>
-                    <span class="icon-badge__count">3</span>
+                    <span class="aiab-icon-badge__count">3</span>
                 </div>
             </div>
         </div>
@@ -172,7 +179,7 @@
                             </div>
                             <div class="product-price">$199.99</div>
                             <div class="product-actions">
-                                <button class="aiab-btn btn--primary btn--sm"
+                                <button class="aiab-btn aiab-btn--primary btn--sm"
                                         data-tooltip="Add to shopping cart"
                                         data-tooltip-position="top">
                                     <i data-lucide="shopping-cart"></i>
@@ -224,7 +231,7 @@
                 <div class="demo-item">
                     <h4>Stock Status</h4>
                     <div id="stock-tooltip-demo">
-                        <span class="status-indicator status-icon--warning" style="cursor: help;">
+                        <span class="status-indicator aiab-status-icon--warning" style="cursor: help;">
                             <i data-lucide="alert-triangle"></i>
                             Low Stock
                         </span>
@@ -233,7 +240,7 @@
 
                 <div class="demo-item">
                     <h4>Size Guide</h4>
-                    <button class="aiab-btn btn--secondary" id="size-guide-btn">
+                    <button class="aiab-btn aiab-btn--secondary" id="size-guide-btn">
                         Size Chart
                         <i data-lucide="help-circle" class="icon--sm"></i>
                     </button>
@@ -300,7 +307,7 @@
                                data-tooltip-position="right">
                     </div>
 
-                    <button type="submit" class="aiab-btn btn--primary" style="width: 100%;">
+                    <button type="submit" class="aiab-btn aiab-btn--primary" style="width: 100%;">
                         Complete Order
                     </button>
                 </form>
@@ -324,7 +331,7 @@
                 </div>
 
                 <div class="demo-item">
-                    <button class="aiab-btn btn--primary"
+                    <button class="aiab-btn aiab-btn--primary"
                             data-tooltip="Primary tooltip variant"
                             data-tooltip-variant="primary">
                         Primary
@@ -462,7 +469,7 @@ tooltip.<span class="string">updateContent</span>(<span class="string">'New cont
     <script type="module">
         // Initialize e-commerce tooltips
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('💬 Tooltip showcase initialized');
+            console.log('Tooltip showcase initialized');
 
             // Product info tooltip
             const productElement = document.getElementById('product-tooltip-demo');

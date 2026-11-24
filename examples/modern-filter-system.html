@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <title>Filter System — Amphibious 2.0</title>
   <meta name="description" content="Modern filtering system with multi-criteria search, tag filters, and dynamic result updates.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './modern-filter-system.css';
+  </script>
 </head>
 <body>
 
@@ -115,20 +123,20 @@
             </svg>
           </button>
           <div class="filter-dropdown-menu">
-            <div class="filter-dropdown-option" onclick="selectBrand(this, 'Nike')">
-              Nike
+            <div class="filter-dropdown-option" onclick="selectBrand(this, 'Northline')">
+              Northline
               <span class="filter-count">28</span>
             </div>
-            <div class="filter-dropdown-option" onclick="selectBrand(this, 'Adidas')">
-              Adidas
+            <div class="filter-dropdown-option" onclick="selectBrand(this, 'Kestrel')">
+              Kestrel
               <span class="filter-count">24</span>
             </div>
-            <div class="filter-dropdown-option" onclick="selectBrand(this, 'Puma')">
-              Puma
+            <div class="filter-dropdown-option" onclick="selectBrand(this, 'Halden')">
+              Halden
               <span class="filter-count">19</span>
             </div>
-            <div class="filter-dropdown-option" onclick="selectBrand(this, 'Under Armour')">
-              Under Armour
+            <div class="filter-dropdown-option" onclick="selectBrand(this, 'Ridgeway')">
+              Ridgeway
               <span class="filter-count">16</span>
             </div>
           </div>

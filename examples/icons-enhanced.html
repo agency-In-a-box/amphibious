@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
     <title>Enhanced Icons — Amphibious 2.0</title>
     <meta name="description" content="Enhanced icon components with sizes, colors, animations, and interactive features.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="icons-enhanced.css">
-    <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './icons-enhanced.css';
+  </script>
 </head>
 <body>
   <!-- Navigation Include -->
@@ -17,7 +24,7 @@
     <!-- Header -->
     <header class="header">
         <div class="aiab-container">
-            <h1 id="main-content" tabindex="-1">🎨 Icon System Showcase</h1>
+            <h1 id="main-content" tabindex="-1">Icon System Showcase</h1>
             <p>1,641+ Lucide icons with smart integration and e-commerce focus</p>
 
             <div class="aiab-stats">
@@ -112,11 +119,11 @@
                 <div class="demo-item">
                     <h4>E-commerce Components</h4>
                     <div class="category-preview">
-                        <div class="icon-badge">
+                        <div class="aiab-icon-badge">
                             <i data-lucide="shopping-cart" class="icon--lg"></i>
-                            <span class="icon-badge__count">3</span>
+                            <span class="aiab-icon-badge__count">3</span>
                         </div>
-                        <div class="rating">
+                        <div class="aiab-rating">
                             <i data-lucide="star" class="icon--filled icon--warning"></i>
                             <i data-lucide="star" class="icon--filled icon--warning"></i>
                             <i data-lucide="star" class="icon--filled icon--warning"></i>
@@ -126,13 +133,13 @@
                     </div>
                     <div class="code-block">
 <span class="comment"><!-- Shopping cart with badge --></span>
-&lt;<span class="keyword">div</span> <span class="string">class="icon-badge"</span>&gt;
+&lt;<span class="keyword">div</span> <span class="string">class="aiab-icon-badge"</span>&gt;
   &lt;<span class="keyword">i</span> <span class="string">data-lucide="shopping-cart"</span>&gt;&lt;/<span class="keyword">i</span>&gt;
-  &lt;<span class="keyword">span</span> <span class="string">class="icon-badge__count"</span>&gt;3&lt;/<span class="keyword">span</span>&gt;
+  &lt;<span class="keyword">span</span> <span class="string">class="aiab-icon-badge__count"</span>&gt;3&lt;/<span class="keyword">span</span>&gt;
 &lt;/<span class="keyword">div</span>&gt;
 
 <span class="comment"><!-- Star rating --></span>
-&lt;<span class="keyword">div</span> <span class="string">class="rating"</span>&gt;...&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> <span class="string">class="aiab-rating"</span>&gt;...&lt;/<span class="keyword">div</span>&gt;
                     </div>
                 </div>
             </div>
@@ -252,7 +259,7 @@
         });
 
         function initializeIcons() {
-            console.log('🎨 Icons showcase initialized');
+            console.log('Icons showcase initialized');
         }
 
         function setupEventListeners() {
@@ -378,12 +385,8 @@
                 </div>
             `).join('');
 
-            // Initialize Lucide icons in the new grid
-            setTimeout(() => {
-                if (window.amp && window.amp.modules.icon) {
-                    window.amp.modules.icon.refresh();
-                }
-            }, 100);
+            // Render the icons in the new grid
+            window.amp?.refreshIcons();
         }
 
         function copyIconCode(iconName) {
@@ -428,8 +431,6 @@
   </script>
 
     <!-- Import main JavaScript for navigation -->
-    <script type="module" src="../src/js/index.ts"></script>
-    <script type="module" src="../src/js/icons-lightweight.ts"></script>
 
 </body>
 </html>

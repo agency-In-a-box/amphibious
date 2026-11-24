@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <title>Pears Patterns — Amphibious 2.0</title>
   <meta name="description" content="Pears design patterns for common UI elements and reusable layout compositions.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
   <style>
     body {
@@ -108,7 +113,7 @@
   <!-- Navigation Include -->
 <header class="aiab-hero">
     <div class="aiab-container">
-      <h1>🍐 Pea.rs Patterns</h1>
+      <h1>Pea.rs Patterns</h1>
       <p>Common UI patterns with semantic HTML markup for consistent, accessible interfaces</p>
     </div>
   </header>
@@ -192,7 +197,7 @@
         <h3 class="example-title">Statistics Grid Cards</h3>
         <div class="aiab-stats-grid" role="list" aria-label="Dashboard statistics">
           <div class="aiab-stat-card" role="listitem">
-            <span class="aiab-stat-card__icon" aria-hidden="true">📈</span>
+            <span class="aiab-stat-card__icon" aria-hidden="true"><i data-lucide="trending-up"></i></span>
             <span class="aiab-stat-card__number">$124.5K</span>
             <span class="aiab-stat-card__label">Total Revenue</span>
             <div class="aiab-stat-card__change positive">
@@ -201,7 +206,7 @@
             </div>
           </div>
           <div class="aiab-stat-card" role="listitem">
-            <span class="aiab-stat-card__icon" aria-hidden="true">👥</span>
+            <span class="aiab-stat-card__icon" aria-hidden="true"><i data-lucide="users"></i></span>
             <span class="aiab-stat-card__number">8,492</span>
             <span class="aiab-stat-card__label">Active Users</span>
             <div class="aiab-stat-card__change positive">
@@ -210,7 +215,7 @@
             </div>
           </div>
           <div class="aiab-stat-card" role="listitem">
-            <span class="aiab-stat-card__icon" aria-hidden="true">🛒</span>
+            <span class="aiab-stat-card__icon" aria-hidden="true"><i data-lucide="shopping-cart"></i></span>
             <span class="aiab-stat-card__number">2,847</span>
             <span class="aiab-stat-card__label">Total Orders</span>
             <div class="aiab-stat-card__change negative">
@@ -219,7 +224,7 @@
             </div>
           </div>
           <div class="aiab-stat-card" role="listitem">
-            <span class="aiab-stat-card__icon" aria-hidden="true">⭐</span>
+            <span class="aiab-stat-card__icon" aria-hidden="true"><i data-lucide="star"></i></span>
             <span class="aiab-stat-card__number">4.8</span>
             <span class="aiab-stat-card__label">Avg Rating</span>
             <div class="aiab-stat-card__change positive">
@@ -562,7 +567,7 @@
             </section>
 
             <section class="aiab-aside-callout">
-              <h4>🚚 Free Shipping!</h4>
+              <h4>Free Shipping!</h4>
               <p>Orders over $50 ship free. Express delivery available.</p>
             </section>
           </aside>

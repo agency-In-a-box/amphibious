@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
     <title>Tooltip Examples — Amphibious 2.0</title>
     <meta name="description" content="Tooltip component examples with positioning, triggers, and content formatting.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
     <style>
         .aiab-demo-section {
             margin: 2rem 0;
@@ -99,7 +106,7 @@
             <p>Simple tooltips using data attributes</p>
             <div class="aiab-demo-grid">
                 <div class="demo-item">
-                    <button class="aiab-btn btn--primary" data-tooltip="This is a basic tooltip">
+                    <button class="aiab-btn aiab-btn--primary" data-tooltip="This is a basic tooltip">
                         Hover me
                     </button>
                 </div>
@@ -193,7 +200,7 @@
                         <button id="quick-view-btn" class="aiab-icon-button">
                             <i data-lucide="eye"></i>
                         </button>
-                        <button id="cart-btn" class="aiab-btn btn--primary">Add to Cart</button>
+                        <button id="cart-btn" class="aiab-btn aiab-btn--primary">Add to Cart</button>
                     </div>
                     <div style="margin-top: 1rem;">
                         <span id="stock-indicator" class="status-indicator">
@@ -218,7 +225,7 @@
                         <button class="aiab-icon-button" data-tooltip="Quick view">
                             <i data-lucide="eye"></i>
                         </button>
-                        <button class="aiab-btn btn--primary" data-tooltip="Add item to shopping cart">
+                        <button class="aiab-btn aiab-btn--primary" data-tooltip="Add item to shopping cart">
                             Add to Cart
                         </button>
                     </div>
@@ -263,10 +270,10 @@
         <section class="aiab-demo-section">
             <h2>JavaScript API Examples</h2>
             <div style="margin: 2rem 0;">
-                <button onclick="createDynamicTooltip()" class="aiab-btn btn--primary">
+                <button onclick="createDynamicTooltip()" class="aiab-btn aiab-btn--primary">
                     Create Dynamic Tooltip
                 </button>
-                <button onclick="createProductTooltip()" class="aiab-btn btn--secondary">
+                <button onclick="createProductTooltip()" class="aiab-btn aiab-btn--secondary">
                     Create Product Tooltip
                 </button>
                 <button onclick="createShippingTooltip()" class="aiab-btn btn--success">
@@ -326,9 +333,9 @@
             // Rich content tooltip
             const richTooltip = amp.createTooltip(document.getElementById('rich-content-btn'), {
                 html: `
-                    <div class="tooltip--rich">
-                        <div class="tooltip__title">Product Features</div>
-                        <div class="tooltip__content">
+                    <div class="aiab-tooltip--rich">
+                        <div class="aiab-tooltip__title">Product Features</div>
+                        <div class="aiab-tooltip__content">
                             <ul style="margin: 0; padding-left: 1rem;">
                                 <li>Wireless connectivity</li>
                                 <li>30-hour battery life</li>

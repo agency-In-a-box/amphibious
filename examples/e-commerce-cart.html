@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>E-Commerce Cart — Amphibious 2.0</title>
   <meta name="description" content="Full-featured shopping cart with product management, pricing calculations, and checkout integration">
+  <!-- Library (JS + main-lib.css), then site styles, then this page — one module, fixed order. -->
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './e-commerce-cart.css';
   </script>
-  <link rel="stylesheet" href="e-commerce-cart.css">
 </head>
 <body>
   <!-- Navigation Include -->
@@ -317,7 +323,7 @@
 
         <!-- Empty Cart State (hidden by default) -->
         <section class="aiab-cart-empty" style="display: none;" id="emptyCart" aria-label="Empty cart">
-          <p class="aiab-cart-empty-icon" aria-hidden="true">🛒</p>
+          <p class="aiab-cart-empty-icon" aria-hidden="true"><i data-lucide="shopping-cart"></i></p>
           <h2>Your cart is empty</h2>
           <p>Looks like you haven't added anything to your cart yet.</p>
           <nav class="aiab-cart-empty-actions" aria-label="Empty cart actions">
@@ -392,8 +398,8 @@
             Proceed to Checkout
           </button>
 
-          <button class="aiab-cart-paypal-btn" data-action="paypal-checkout" aria-label="Checkout with PayPal">
-            <strong>PayPal</strong> Checkout
+          <button class="aiab-cart-express-btn" data-action="express-checkout" aria-label="Express checkout">
+            <i data-lucide="wallet"></i> Express checkout
           </button>
 
           <p class="aiab-cart-pay-installments">
@@ -516,40 +522,44 @@
   </aside>
 
   <!-- Modals -->
-  <dialog id="removeModal" class="aiab-modal" aria-labelledby="removeModalTitle">
-    <article class="aiab-modal-dialog">
-      <header class="aiab-modal-header">
-        <h3 class="aiab-modal-title" id="removeModalTitle">Remove Item</h3>
-        <button class="aiab-modal-close" aria-label="Close">&times;</button>
-      </header>
-      <section class="aiab-modal-body">
-        <p>Are you sure you want to remove this item from your cart?</p>
-      </section>
-      <footer class="aiab-modal-footer">
-        <button class="aiab-btn aiab-btn-secondary" data-modal-close>Cancel</button>
-        <button class="aiab-btn aiab-btn-danger" data-action="confirm-remove">Remove Item</button>
-      </footer>
-    </article>
-  </dialog>
+  <!-- Confirmation modals: framework Modal markup (aiab-modal__*), opened via amp.createModal -->
+  <div id="removeModal" class="aiab-modal aiab-modal--sm" role="dialog" aria-modal="true" aria-labelledby="removeModalTitle" aria-describedby="removeModalDesc" aria-hidden="true">
+    <div class="aiab-modal__dialog">
+      <div class="aiab-modal__header">
+        <h2 class="aiab-modal__title" id="removeModalTitle">Remove item?</h2>
+        <button type="button" class="aiab-modal__close" aria-label="Close">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="aiab-modal__body">
+        <p id="removeModalDesc"><strong id="removeModalItem">This item</strong> will be removed from your cart.</p>
+      </div>
+      <div class="aiab-modal__footer">
+        <button type="button" class="aiab-btn aiab-btn-secondary" data-modal-close>Keep it</button>
+        <button type="button" class="aiab-btn aiab-btn-danger" data-modal-confirm>Remove</button>
+      </div>
+    </div>
+  </div>
 
-  <dialog id="clearCartModal" class="aiab-modal" aria-labelledby="clearCartModalTitle">
-    <article class="aiab-modal-dialog">
-      <header class="aiab-modal-header">
-        <h3 class="aiab-modal-title" id="clearCartModalTitle">Clear Cart</h3>
-        <button class="aiab-modal-close" aria-label="Close">&times;</button>
-      </header>
-      <section class="aiab-modal-body">
-        <p>Are you sure you want to remove all items from your cart? This action cannot be undone.</p>
-      </section>
-      <footer class="aiab-modal-footer">
-        <button class="aiab-btn aiab-btn-secondary" data-modal-close>Cancel</button>
-        <button class="aiab-btn aiab-btn-danger" data-action="confirm-clear">Clear All</button>
-      </footer>
-    </article>
-  </dialog>
+  <div id="clearCartModal" class="aiab-modal aiab-modal--sm" role="dialog" aria-modal="true" aria-labelledby="clearCartModalTitle" aria-describedby="clearCartModalDesc" aria-hidden="true">
+    <div class="aiab-modal__dialog">
+      <div class="aiab-modal__header">
+        <h2 class="aiab-modal__title" id="clearCartModalTitle">Clear your cart?</h2>
+        <button type="button" class="aiab-modal__close" aria-label="Close">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="aiab-modal__body">
+        <p id="clearCartModalDesc">Every item will be removed. This can’t be undone.</p>
+      </div>
+      <div class="aiab-modal__footer">
+        <button type="button" class="aiab-btn aiab-btn-secondary" data-modal-close>Cancel</button>
+        <button type="button" class="aiab-btn aiab-btn-danger" data-modal-confirm>Clear cart</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Page Scripts -->
   <script>
@@ -590,7 +600,9 @@
       // Remove item
       const removeItem = (itemId) => {
         selectedItemId = itemId;
-        const modal = amp.createModal('remove', '#removeModal');
+        const name = document.querySelector(`[data-item-id="${itemId}"] .aiab-cart-item-name`)?.textContent.trim();
+        document.getElementById('removeModalItem').textContent = name || 'This item';
+        const modal = amp.createModal('remove', '#removeModal', { onConfirm: () => confirmRemove() });
         modal.open();
       };
 
@@ -608,14 +620,14 @@
           }, 300);
 
           // Close modal
-          const modal = amp.createModal('remove', '#removeModal');
+          const modal = amp.createModal('remove', '#removeModal', { onConfirm: () => confirmRemove() });
           modal.close();
         }
       };
 
       // Clear cart
       const clearCart = () => {
-        const modal = amp.createModal('clear', '#clearCartModal');
+        const modal = amp.createModal('clear', '#clearCartModal', { onConfirm: () => confirmClear() });
         modal.open();
       };
 
@@ -636,7 +648,7 @@
         }, items.length * 50 + 300);
 
         // Close modal
-        const modal = amp.createModal('clear', '#clearCartModal');
+        const modal = amp.createModal('clear', '#clearCartModal', { onConfirm: () => confirmClear() });
         modal.close();
       };
 
@@ -707,10 +719,10 @@
         window.location.href = '/examples/e-commerce-checkout.html';
       };
 
-      // PayPal checkout
+      // Express (wallet) checkout
       const paypalCheckout = () => {
-        // In production, this would integrate with PayPal
-        alert('PayPal checkout would open here');
+        // In production, this would open the wallet provider's flow
+        alert('Express checkout would open here');
       };
 
       // View saved items
@@ -744,15 +756,6 @@
           clearCart();
         }
 
-        const confirmRemoveBtn = e.target.closest('[data-action="confirm-remove"]');
-        if (confirmRemoveBtn) {
-          confirmRemove();
-        }
-
-        const confirmClearBtn = e.target.closest('[data-action="confirm-clear"]');
-        if (confirmClearBtn) {
-          confirmClear();
-        }
 
         const removePromoBtn = e.target.closest('[data-action="remove-promo"]');
         if (removePromoBtn) {
@@ -764,7 +767,7 @@
           proceedToCheckout();
         }
 
-        const paypalBtn = e.target.closest('[data-action="paypal-checkout"]');
+        const paypalBtn = e.target.closest('[data-action="express-checkout"]');
         if (paypalBtn) {
           paypalCheckout();
         }

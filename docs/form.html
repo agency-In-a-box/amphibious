@@ -3,14 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Forms — Amphibious 2.0</title>
   <meta name="description" content="Form documentation for Amphibious 2.0 - Typography, forms, tables, and content structure">
-  <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './docs.css';
+    import './form.css';
+  </script>
     <!-- CSS loaded via JavaScript module -->
-  <link rel="stylesheet" href="./docs.css">
-  <link rel="stylesheet" href="./form.css">
 
 </head>
 <body>
@@ -36,7 +43,7 @@
 			<div class="aiab-row">
 				<h3>Typography</h3>
 
-				<p class="intro">The typography of A.mphibio.us is designed to create a strong visual hierarchy based on the golden ratio with basic styles, with h6, h3, and h1 as the proportional aiab-steps. The primary font is Lucida Grande, but the font stack can be easily changed with just a couple adjustments. Regular paragraphs are set at the equilvalent of 16px base with 22px line height.</p>
+				<p class="aiab-intro">The typography of A.mphibio.us is designed to create a strong visual hierarchy based on the golden ratio with basic styles, with h6, h3, and h1 as the proportional aiab-steps. The primary font is Lucida Grande, but the font stack can be easily changed with just a couple adjustments. Regular paragraphs are set at the equilvalent of 16px base with 22px line height.</p>
 				<p>Margins and line heights are set relative to the base for the most adaptive/scalable user experience indepentant of what device you are using</p>
 			</div>
 			<div class="aiab-row">
@@ -245,7 +252,7 @@ Where else would you like it to work?&lt;/p&gt;
 				</dl>
 				<pre class="aiab-prettyprint linenums">
 &lt;dl&gt;
-	&lt;dt&gt;am&middot;phib&middot;i&middot;ous &lt;sub class=&quot;meta&quot;&gt;noun &lt;i&gt;\am-&#712;fi-b&#275;-&#601;s\&lt;/i&gt;&lt;/sub&gt;&lt;/dt&gt;
+	&lt;dt&gt;am&middot;phib&middot;i&middot;ous &lt;sub class=&quot;aiab-meta&quot;&gt;noun &lt;i&gt;\am-&#712;fi-b&#275;-&#601;s\&lt;/i&gt;&lt;/sub&gt;&lt;/dt&gt;
 	&lt;dd&gt;: simply the most elegant css framework&lt;/dd&gt;
 	&lt;dd&gt;&lt;b&gt;a&lt;/b&gt; : relating to or adapted for both desktop and mobile&lt;br&gt;
 	&amp;lt;a.mphibio.us devices&amp;gt;&lt;br&gt;
@@ -269,7 +276,7 @@ Where else would you like it to work?&lt;/p&gt;
 				<p>A.mphibio.us treats buttons as they are meant to be treated, giving them the right amount of weight and a powerful hover effect to make them irresistibly clickable. Calls to action have never been more apparent. Did I mention easy to use, just add a button or submit or even add the class <kbd>button</kbd> to a link</p>
 				<a class="aiab-button aiab-modal_opener" amp-target="amp_overlay">Click Me For Action</a>
 				<pre class="aiab-prettyprint linenums">
-&lt;a class=&quot;button aiab-modal_opener&quot; amp-target=&quot;amp_overlay&quot;&gt;Click Me For Action&lt;/a&gt;
+&lt;a class=&quot;aiab-button aiab-modal_opener&quot; amp-target=&quot;amp_overlay&quot;&gt;Click Me For Action&lt;/a&gt;
 </pre>
 			</div>
 			<div class="aiab-row">
@@ -293,7 +300,7 @@ Where else would you like it to work?&lt;/p&gt;
 							<legend class="aiab-sr-only">Error Input</legend>
 							<label class="above" for="regularInputError">Regular Input with error class</label>
 							<input type="text" id="regularInputError" class="aiab-is-invalid" placeholder="Sample of an error field" aria-invalid="true" aria-describedby="regularInputError-error">
-							<span id="regularInputError-error" class="invalid-feedback" style="display: block;">This field has an error</span>
+							<span id="regularInputError-error" class="aiab-invalid-feedback" style="display: block;">This field has an error</span>
 						</fieldset>
 
 						<fieldset>
@@ -362,7 +369,7 @@ Where else would you like it to work?&lt;/p&gt;
 				</div>
 				<div class="aiab-col-9">
 <pre class="aiab-prettyprint linenums">
-&lt;form action=&quot;/&quot; class=&quot;search-form&quot;&gt;
+&lt;form action=&quot;/&quot; class=&quot;aiab-search-form&quot;&gt;
 	&lt;fieldset class=&quot;search-input-wrapper&quot;&gt;
 		&lt;span class=&quot;icon-search search-icon&quot;&gt;&lt;/span&gt;
 		&lt;input type=&quot;search&quot; placeholder=&quot;Search&quot; class=&quot;search-input&quot;&gt;
@@ -394,7 +401,7 @@ Where else would you like it to work?&lt;/p&gt;
 				</div>
 				<div class="aiab-col-9">
 <pre class="aiab-prettyprint linenums">
-&lt;div id=&quot;search_form&quot; class=&quot;inline search&quot;&gt;
+&lt;div id=&quot;search_form&quot; class=&quot;aiab-inline search&quot;&gt;
 	&lt;form class=&quot;search_form&quot; action=&quot;/search-results&quot;&gt;
 		&lt;fieldset&gt;
 			&lt;input class=&quot;search_text&quot; type=&quot;text&quot; name=&quot;q&quot; placeholder=&quot;Search&quot;&gt;
@@ -420,7 +427,7 @@ Where else would you like it to work?&lt;/p&gt;
 
 				<p>Simply by adding the class(es) <kbd>multi</kbd> and <kbd>beside</kbd> to the form itself everything is new again</p>
 
-				<form class="multi beside">
+				<form class="aiab-multi aiab-beside">
 					<fieldset>
 						<legend class="aiab-sr-only">Name Field</legend>
 						<label for="name">Name</label>
@@ -494,16 +501,16 @@ Where else would you like it to work?&lt;/p&gt;
 					</fieldset>
 				</form>
 				<pre class="aiab-prettyprint linenums">
-&lt;form class=&quot;multi beside&quot;&gt;
+&lt;form class=&quot;aiab-multi aiab-beside&quot;&gt;
   &lt;fieldset&gt;
     &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
-    &lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-text&quot; /&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;aiab-form-text&quot; /&gt;
     &lt;p class=&quot;form-help&quot;&gt;This is help text under the form field.&lt;/p&gt;
   &lt;/fieldset&gt;
 
   &lt;fieldset&gt;
     &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
-    &lt;input type=&quot;email&quot; id=&quot;email&quot; class=&quot;form-text&quot; /&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; class=&quot;aiab-form-text&quot; /&gt;
   &lt;/fieldset&gt;
 
   &lt;fieldset&gt;
@@ -528,7 +535,7 @@ Where else would you like it to work?&lt;/p&gt;
 
   &lt;fieldset&gt;
     &lt;label for=&quot;url&quot;&gt;URL&lt;/label&gt;
-    &lt;input type=&quot;url&quot; id=&quot;url&quot; class=&quot;form-text&quot; placeholder=&quot;http://yourdomain.com&quot; /&gt;
+    &lt;input type=&quot;url&quot; id=&quot;url&quot; class=&quot;aiab-form-text&quot; placeholder=&quot;http://yourdomain.com&quot; /&gt;
   &lt;/fieldset&gt;
 
   &lt;fieldset&gt;
@@ -593,7 +600,7 @@ Where else would you like it to work?&lt;/p&gt;
 					</div>
 				</div>
 				<pre class="aiab-prettyprint linenums">
-&lt;div class=&quot;col-8&quot;&gt;
+&lt;div class=&quot;aiab-col-8&quot;&gt;
   &lt;form&gt;
     &lt;fieldset&gt;
       &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
@@ -608,7 +615,7 @@ Where else would you like it to work?&lt;/p&gt;
   &lt;/form&gt;
 
 &lt;/div&gt;
-&lt;div class=&quot;col-8&quot;&gt;
+&lt;div class=&quot;aiab-col-8&quot;&gt;
   &lt;form&gt;
     &lt;fieldset&gt;
       &lt;label for=&quot;user2&quot;&gt;Username&lt;/label&gt;
@@ -626,7 +633,7 @@ Where else would you like it to work?&lt;/p&gt;
 </pre>
 
 				<div class="aiab-row mt">
-					<form class="multi beside">
+					<form class="aiab-multi aiab-beside">
 						<fieldset>
 							<legend class="aiab-sr-only">Username</legend>
 							<label for="user5">Username</label>
@@ -644,7 +651,7 @@ Where else would you like it to work?&lt;/p&gt;
 
 				</div>
 				<pre class="aiab-prettyprint linenums">
-&lt;form class=&quot;multi beside&quot;&gt;
+&lt;form class=&quot;aiab-multi aiab-beside&quot;&gt;
   &lt;fieldset&gt;
     &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
     &lt;input type=&quot;text&quot; id=&quot;user&quot; class=&quot;prepend_icon&quot;&gt;
@@ -659,7 +666,7 @@ Where else would you like it to work?&lt;/p&gt;
 </pre>
 
 				<div class="aiab-row mt">
-					<form class="multi beside">
+					<form class="aiab-multi aiab-beside">
 						<fieldset>
 							<legend class="aiab-sr-only">Username</legend>
 							<label for="user6">Username</label>
@@ -677,7 +684,7 @@ Where else would you like it to work?&lt;/p&gt;
 
 				</div>
 				<pre class="aiab-prettyprint linenums">
-&lt;form class=&quot;multi beside&quot;&gt;
+&lt;form class=&quot;aiab-multi aiab-beside&quot;&gt;
  &lt;fieldset&gt;
     &lt;label for=&quot;user&quot;&gt;Username&lt;/label&gt;
     &lt;input type=&quot;text&quot; id=&quot;user&quot; class=&quot;append_icon&quot;&gt;
@@ -691,7 +698,7 @@ Where else would you like it to work?&lt;/p&gt;
 &lt;/form&gt;
 </pre>
 
-				<form id="picker" class="multi beside">
+				<form id="picker" class="aiab-multi aiab-beside">
 					<fieldset class="date_picker_set">
 						<legend class="aiab-sr-only">Date Range Selection</legend>
 						<fieldset class="form_group">
@@ -711,22 +718,22 @@ Where else would you like it to work?&lt;/p&gt;
 				</form>
 
 				<pre class="aiab-prettyprint linenums">
-&lt;form class=&quot;multi beside&quot;&gt;
+&lt;form class=&quot;aiab-multi aiab-beside&quot;&gt;
   &lt;fieldset class=&quot;date_picker_set&quot;&gt;
     &lt;fieldset class=&quot;form_group&quot;&gt;
       &lt;label for=&quot;startdateB&quot;&gt;From&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;startdateB&quot; class=&quot;datepicker prepend_icon&quot;&gt;
+      &lt;input type=&quot;text&quot; id=&quot;startdateB&quot; class=&quot;aiab-datepicker prepend_icon&quot;&gt;
       &lt;label for=&quot;startdateB&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
     &lt;/fieldset&gt;
     &lt;fieldset class=&quot;form_group&quot;&gt;
       &lt;label for=&quot;enddateB&quot;&gt;To&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;enddateB&quot; class=&quot;datepicker prepend_icon&quot;&gt;
+      &lt;input type=&quot;text&quot; id=&quot;enddateB&quot; class=&quot;aiab-datepicker prepend_icon&quot;&gt;
       &lt;label for=&quot;enddateB&quot; class=&quot;prepend_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
     &lt;/fieldset&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-				<form class="multi beside">
+				<form class="aiab-multi aiab-beside">
 					<fieldset class="date_picker_set">
 						<legend class="aiab-sr-only">Date Range Selection</legend>
 						<fieldset class="form_group">
@@ -747,16 +754,16 @@ Where else would you like it to work?&lt;/p&gt;
 			</div>
 
 				<pre class="aiab-prettyprint linenums">
-	&lt;form class=&quot;multi beside&quot;&gt;
+	&lt;form class=&quot;aiab-multi aiab-beside&quot;&gt;
   &lt;fieldset class=&quot;date_picker_set&quot;&gt;
     &lt;fieldset class=&quot;form_group&quot;&gt;
       &lt;label for=&quot;startdateB&quot;&gt;From&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;startdateB&quot; class=&quot;datepicker append_icon&quot;&gt;
+      &lt;input type=&quot;text&quot; id=&quot;startdateB&quot; class=&quot;aiab-datepicker append_icon&quot;&gt;
       &lt;label for=&quot;startdateB&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
     &lt;/fieldset&gt;
     &lt;fieldset class=&quot;form_group&quot;&gt;
       &lt;label for=&quot;enddateB&quot;&gt;To&lt;/label&gt;
-      &lt;input type=&quot;text&quot; id=&quot;enddateB&quot; class=&quot;datepicker append_icon&quot;&gt;
+      &lt;input type=&quot;text&quot; id=&quot;enddateB&quot; class=&quot;aiab-datepicker append_icon&quot;&gt;
       &lt;label for=&quot;enddateB&quot; class=&quot;append_to&quot;&gt;&lt;span class=&quot;icon-calendar&quot;&gt;&lt;/span&gt;&lt;/label&gt;
     &lt;/fieldset&gt;
   &lt;/fieldset&gt;
@@ -876,7 +883,6 @@ Where else would you like it to work?&lt;/p&gt;
 
 <!-- Load Amphibious Framework -->
     <!-- Load Framework JavaScript -->
-    <script type="module" src="../src/js/index.js"></script>
 
 
 </body>

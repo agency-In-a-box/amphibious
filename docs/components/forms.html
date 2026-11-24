@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Form Components — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Forms component - complete form styling system with validation states, floating labels, and responsive layouts">
-  <script type="module">import '/src/css/main.css';</script>
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Form Demo Containers */
     .form-demo {
@@ -62,27 +69,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>📝 Complete Form Controls</h4>
+          <h4>Complete Form Controls</h4>
           <p>Styling for all input types, select, textarea, checkboxes, radios, and file inputs.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>✅ Validation States</h4>
+          <h4>Validation States</h4>
           <p>Built-in validation styling with success, error states, and feedback messages.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🏷️ Floating Labels</h4>
+          <h4>Floating Labels</h4>
           <p>Modern floating label inputs for improved user experience and space efficiency.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📐 Flexible Layouts</h4>
+          <h4>Flexible Layouts</h4>
           <p>Inline forms, aiab-grid layouts, responsive designs, and form grouping options.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Full Accessibility</h4>
+          <h4>Full Accessibility</h4>
           <p>Proper focus management, ARIA attributes, and screen reader support.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🎨 Customizable Styling</h4>
+          <h4>Customizable Styling</h4>
           <p>CSS variables for easy theming and consistent design across all form elements.</p>
         </div>
       </div>
@@ -375,13 +382,13 @@
           <div class="aiab-form-group">
             <label for="valid-input">Valid Input</label>
             <input type="text" id="valid-input" class="aiab-form-control aiab-is-valid" value="This looks good!">
-            <div class="valid-feedback">Great! This field is valid.</div>
+            <div class="aiab-valid-feedback">Great! This field is valid.</div>
           </div>
 
           <div class="aiab-form-group">
             <label for="invalid-input">Invalid Input</label>
             <input type="text" id="invalid-input" class="aiab-form-control aiab-is-invalid" value="Invalid input">
-            <div class="invalid-feedback">Please provide a valid input.</div>
+            <div class="aiab-invalid-feedback">Please provide a valid input.</div>
           </div>
 
           <div class="aiab-form-group">
@@ -395,7 +402,7 @@
             <div class="aiab-form-check">
               <input type="checkbox" id="invalid-check" class="aiab-form-check-input aiab-is-invalid" required>
               <label for="invalid-check" class="aiab-form-check-label">Agree to terms and conditions</label>
-              <div class="invalid-feedback">You must agree before submitting.</div>
+              <div class="aiab-invalid-feedback">You must agree before submitting.</div>
             </div>
           </div>
         </div>
@@ -408,14 +415,14 @@
 &lt;div class="aiab-form-group"&gt;
   &lt;label for="valid-input"&gt;Valid Input&lt;/label&gt;
   &lt;input type="text" id="valid-input" class="aiab-form-control aiab-is-valid" value="This looks good!"&gt;
-  &lt;div class="valid-feedback"&gt;Great! This field is valid.&lt;/div&gt;
+  &lt;div class="aiab-valid-feedback"&gt;Great! This field is valid.&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Invalid Input --&gt;
 &lt;div class="aiab-form-group"&gt;
   &lt;label for="invalid-input"&gt;Invalid Input&lt;/label&gt;
   &lt;input type="text" id="invalid-input" class="aiab-form-control aiab-is-invalid"&gt;
-  &lt;div class="invalid-feedback"&gt;Please provide a valid input.&lt;/div&gt;
+  &lt;div class="aiab-invalid-feedback"&gt;Please provide a valid input.&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Help Text --&gt;
@@ -594,7 +601,7 @@
 &lt;!-- Search Form --&gt;
 &lt;div class="aiab-search-form"&gt;
   &lt;input type="search" class="aiab-form-control" placeholder="Search..."&gt;
-  &lt;button type="submit"&gt;🔍&lt;/button&gt;
+  &lt;button type="submit"&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </section>
@@ -614,19 +621,19 @@
                 <div class="aiab-form-group">
                   <label for="contact-first-name">First Name *</label>
                   <input type="text" id="contact-first-name" class="aiab-form-control" required>
-                  <div class="invalid-feedback">Please enter your first name.</div>
+                  <div class="aiab-invalid-feedback">Please enter your first name.</div>
                 </div>
                 <div class="aiab-form-group">
                   <label for="contact-last-name">Last Name *</label>
                   <input type="text" id="contact-last-name" class="aiab-form-control" required>
-                  <div class="invalid-feedback">Please enter your last name.</div>
+                  <div class="aiab-invalid-feedback">Please enter your last name.</div>
                 </div>
               </div>
 
               <div class="aiab-form-group">
                 <label for="contact-email">Email Address *</label>
                 <input type="email" id="contact-email" class="aiab-form-control" required>
-                <div class="invalid-feedback">Please enter a valid email address.</div>
+                <div class="aiab-invalid-feedback">Please enter a valid email address.</div>
               </div>
 
               <div class="aiab-form-group">
@@ -643,13 +650,13 @@
                   <option value="sales">Sales Question</option>
                   <option value="other">Other</option>
                 </select>
-                <div class="invalid-feedback">Please select a subject.</div>
+                <div class="aiab-invalid-feedback">Please select a subject.</div>
               </div>
 
               <div class="aiab-form-group">
                 <label for="contact-message">Message *</label>
                 <textarea id="contact-message" class="aiab-form-control" rows="4" required placeholder="Tell us how we can help you..."></textarea>
-                <div class="invalid-feedback">Please enter your message.</div>
+                <div class="aiab-invalid-feedback">Please enter your message.</div>
               </div>
 
               <div class="aiab-form-group">
@@ -663,7 +670,7 @@
                 <div class="aiab-form-check">
                   <input type="checkbox" id="contact-terms" class="aiab-form-check-input" required>
                   <label for="contact-terms" class="aiab-form-check-label">I agree to the terms and conditions *</label>
-                  <div class="invalid-feedback">You must agree to the terms and conditions.</div>
+                  <div class="aiab-invalid-feedback">You must agree to the terms and conditions.</div>
                 </div>
               </div>
 
@@ -685,19 +692,19 @@
       &lt;div class="aiab-form-group"&gt;
         &lt;label for="first-name"&gt;First Name *&lt;/label&gt;
         &lt;input type="text" id="first-name" class="aiab-form-control" required&gt;
-        &lt;div class="invalid-feedback"&gt;Please enter your first name.&lt;/div&gt;
+        &lt;div class="aiab-invalid-feedback"&gt;Please enter your first name.&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class="aiab-form-group"&gt;
         &lt;label for="last-name"&gt;Last Name *&lt;/label&gt;
         &lt;input type="text" id="last-name" class="aiab-form-control" required&gt;
-        &lt;div class="invalid-feedback"&gt;Please enter your last name.&lt;/div&gt;
+        &lt;div class="aiab-invalid-feedback"&gt;Please enter your last name.&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class="aiab-form-group"&gt;
       &lt;label for="email"&gt;Email Address *&lt;/label&gt;
       &lt;input type="email" id="email" class="aiab-form-control" required&gt;
-      &lt;div class="invalid-feedback"&gt;Please enter a valid email address.&lt;/div&gt;
+      &lt;div class="aiab-invalid-feedback"&gt;Please enter a valid email address.&lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class="aiab-form-group"&gt;
@@ -1139,7 +1146,6 @@ document.addEventListener('DOMContentLoaded', () => {
   </footer>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Demo JavaScript -->
   <script>

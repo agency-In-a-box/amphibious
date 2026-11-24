@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Cards — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Cards component - flexible content containers with multiple variants and layouts">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Demo Cards Grid */
     .aiab-demo-grid {
@@ -49,27 +56,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🎨 Multiple Variants</h4>
+          <h4>Multiple Variants</h4>
           <p>Product cards, profile cards, stat cards, feature cards, and more specialized layouts.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📱 Responsive Design</h4>
+          <h4>Responsive Design</h4>
           <p>Automatically adapts to different screen sizes with responsive aiab-grid systems.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>⚡ Interactive States</h4>
+          <h4>Interactive States</h4>
           <p>Hover effects, active states, and focus management for enhanced user experience.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🔧 Flexible Layout</h4>
+          <h4>Flexible Layout</h4>
           <p>Horizontal and vertical layouts, custom spacing, and aiab-grid system integration.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Accessibility</h4>
+          <h4>Accessibility</h4>
           <p>Focus indicators, screen reader support, and reduced motion preferences.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🎭 Shadow Variants</h4>
+          <h4>Shadow Variants</h4>
           <p>Multiple shadow depths from subtle to prominent for visual hierarchy.</p>
         </div>
       </div>
@@ -90,7 +97,7 @@
           <div class="aiab-card-body">
             <p class="aiab-card-text">This is the main content area of the aiab-card. You can put any content here including text, images, buttons, and more.</p>
           </div>
-          <div class="aiab-card-footer center">
+          <div class="aiab-card-footer aiab-center">
             <button class="aiab-btn aiab-btn--primary">Action</button>
             <button class="aiab-btn aiab-btn--secondary">Secondary</button>
           </div>
@@ -106,7 +113,7 @@
   &lt;div class="aiab-card-body"&gt;
     &lt;p class="aiab-card-text"&gt;Main content goes here...&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div class="aiab-card-footer center"&gt;
+  &lt;div class="aiab-card-footer aiab-center"&gt;
     &lt;button class="aiab-btn aiab-btn--primary"&gt;Action&lt;/button&gt;
     &lt;button class="aiab-btn aiab-btn--secondary"&gt;Secondary&lt;/button&gt;
   &lt;/div&gt;
@@ -117,7 +124,7 @@
       <div class="aiab-demo-section">
         <div class="demo-title">Card with Media</div>
         <div class="aiab-card" style="max-width: 400px;">
-          <div class="aiab-card-media aspect-video" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
+          <div class="aiab-card-media aiab-aspect-video" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
             Image Placeholder
           </div>
           <div class="aiab-card-body">
@@ -366,7 +373,7 @@
       <h3>Card Grid System</h3>
       <div class="aiab-demo-section">
         <div class="demo-title">Responsive Card Grid</div>
-        <div class="aiab-card-grid cols-3">
+        <div class="aiab-card-grid aiab-cols-3">
           <div class="aiab-card">
             <div class="aiab-card-body">
               <h4 class="aiab-card-title">Card 1</h4>
@@ -389,7 +396,7 @@
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;div class="aiab-card-grid cols-3"&gt;
+        <pre><code>&lt;div class="aiab-card-grid aiab-cols-3"&gt;
   &lt;div class="aiab-card"&gt;...&lt;/div&gt;
   &lt;div class="aiab-card"&gt;...&lt;/div&gt;
   &lt;div class="aiab-card"&gt;...&lt;/div&gt;
@@ -397,9 +404,9 @@
 
 &lt;!-- Available aiab-grid classes --&gt;
 &lt;div class="aiab-card-grid"&gt;        &lt;!-- Auto-fit, min 300px --&gt;
-&lt;div class="aiab-card-grid cols-2"&gt;  &lt;!-- 2 columns --&gt;
-&lt;div class="aiab-card-grid cols-3"&gt;  &lt;!-- 3 columns --&gt;
-&lt;div class="aiab-card-grid cols-4"&gt;  &lt;!-- 4 columns --&gt;</code></pre>
+&lt;div class="aiab-card-grid aiab-cols-2"&gt;  &lt;!-- 2 columns --&gt;
+&lt;div class="aiab-card-grid aiab-cols-3"&gt;  &lt;!-- 3 columns --&gt;
+&lt;div class="aiab-card-grid aiab-cols-4"&gt;  &lt;!-- 4 columns --&gt;</code></pre>
       </div>
     </section>
 
@@ -651,6 +658,5 @@
   </footer>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 </body>
 </html>

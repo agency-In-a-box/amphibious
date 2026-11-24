@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
     <title>Sidebar Demo — Amphibious 2.0</title>
     <meta name="description" content="Sidebar navigation demo with collapsible sections, icons, and responsive behavior.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <script type="module">import '/src/css/main.css';</script>
-    <link rel="stylesheet" href="sidebar-demo.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './sidebar-demo.css';
+  </script>
 
 </head>
 <body>
@@ -209,19 +216,19 @@
                     <h2>Features</h2>
                     <div class="aiab-stats-grid">
                         <div class="aiab-stat-card">
-                            <span class="aiab-stat-card__number">📱</span>
+                            <span class="aiab-stat-card__number"><i data-lucide="smartphone"></i></span>
                             <span class="aiab-stat-card__label">Responsive Design</span>
                         </div>
                         <div class="aiab-stat-card">
-                            <span class="aiab-stat-card__number">♿</span>
+                            <span class="aiab-stat-card__number"><i data-lucide="accessibility"></i></span>
                             <span class="aiab-stat-card__label">Fully Accessible</span>
                         </div>
                         <div class="aiab-stat-card">
-                            <span class="aiab-stat-card__number">⚡</span>
+                            <span class="aiab-stat-card__number"><i data-lucide="zap"></i></span>
                             <span class="aiab-stat-card__label">Smooth Animations</span>
                         </div>
                         <div class="aiab-stat-card">
-                            <span class="aiab-stat-card__number">🎨</span>
+                            <span class="aiab-stat-card__number"><i data-lucide="palette"></i></span>
                             <span class="aiab-stat-card__label">Themeable</span>
                         </div>
                     </div>
@@ -277,7 +284,6 @@
         </div>
     </div>
 
-    <script type="module" src="/src/js/navigation.ts"></script>
     <script>
         let sidebar;
         let isLightTheme = false;

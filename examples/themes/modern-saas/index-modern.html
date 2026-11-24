@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amphibious 2.0 - Modern CSS Framework</title>
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
+    <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
+<title>Amphibious 2.0 - Modern CSS Framework</title>
   <meta name="description" content="A modern, lightweight CSS framework with beautiful components, responsive grid, and SaaS-ready design patterns. Built with TypeScript and Vite.">
   <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce, saas">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">

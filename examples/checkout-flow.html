@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Checkout Flow — Amphibious 2.0</title>
   <meta name="description" content="Multi-step e-commerce checkout flow with shipping, payment, and order review stages">
+  <!-- Library (JS + main-lib.css), then site styles, then this page — one module, fixed order. -->
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './checkout-flow.css';
   </script>
-  <link rel="stylesheet" href="checkout-flow.css">
 </head>
 <body>
   <!-- Navigation Include -->
@@ -318,10 +324,10 @@
           <div class="aiab-checkout-payment-methods">
             <h4>We Accept</h4>
             <div class="aiab-checkout-payment-icons">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EVisa%3C/text%3E%3C/svg%3E" alt="Visa" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EMC%3C/text%3E%3C/svg%3E" alt="Mastercard" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EAmex%3C/text%3E%3C/svg%3E" alt="American Express" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EPP%3C/text%3E%3C/svg%3E" alt="PayPal" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3ECARD%3C/text%3E%3C/svg%3E" alt="Credit card" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EDEBIT%3C/text%3E%3C/svg%3E" alt="Debit card" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EBANK%3C/text%3E%3C/svg%3E" alt="Bank transfer" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EWALLET%3C/text%3E%3C/svg%3E" alt="Digital wallet" loading="lazy">
             </div>
           </div>
         </div>
@@ -330,7 +336,6 @@
   </main>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Page Scripts -->
   <script>

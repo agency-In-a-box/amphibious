@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Modal — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Modal component - accessible dialog boxes with multiple variants, animations, and responsive designs">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Demo Controls */
     .demo-controls {
@@ -63,27 +70,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🎭 Multiple Variants</h4>
+          <h4>Multiple Variants</h4>
           <p>Standard dialogs, alerts, image lightboxes, drawers, and bottom sheets for different use cases.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📏 Flexible Sizing</h4>
+          <h4>Flexible Sizing</h4>
           <p>Small, default, large, extra-large, and full-screen aiab-modal sizes with responsive behavior.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>✨ Rich Animations</h4>
+          <h4>Rich Animations</h4>
           <p>Fade-in, slide-down, zoom-in animations with smooth transitions and backdrop effects.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Full Accessibility</h4>
+          <h4>Full Accessibility</h4>
           <p>ARIA attributes, focus trapping, keyboard navigation, and screen reader support.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📱 Responsive Design</h4>
+          <h4>Responsive Design</h4>
           <p>Adaptive layouts for mobile devices with touch-friendly interactions.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🌙 Dark Mode Ready</h4>
+          <h4>Dark Mode Ready</h4>
           <p>Automatic dark mode support with appropriate color schemes and contrast.</p>
         </div>
       </div>
@@ -700,7 +707,6 @@ function showModal(modalId) {
   </div>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Demo JavaScript -->
   <script>
@@ -823,10 +829,10 @@ function showModal(modalId) {
     function _showBottomSheetModal() {
       createDemoModal('bottom-sheet-modal', 'Quick Actions', `
         <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">📤 Share</button>
-          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">✏️ Edit</button>
-          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">📋 Copy</button>
-          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer; color: #dc3545;">🗑️ Delete</button>
+          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">Share</button>
+          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">Edit</button>
+          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">Copy</button>
+          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer; color: #dc3545;">Delete</button>
         </div>
       `, '', 'aiab-modal--bottom-sheet');
     }

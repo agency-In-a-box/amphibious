@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Dashboard Template — Amphibious 2.0</title>
   <meta name="description" content="Flexible dashboard layout template with customizable widgets and responsive design">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './dashboard-template.css';
   </script>
-  <link rel="stylesheet" href="dashboard-template.css">
 </head>
 <body>
   <!-- Navigation Include -->
@@ -194,7 +199,7 @@
             </div>
           </div>
           <div class="chart-placeholder">
-            📊 Revenue Chart Placeholder
+            Revenue Chart Placeholder
           </div>
         </div>
 
@@ -211,7 +216,7 @@
             </div>
           </div>
           <div class="chart-placeholder">
-            🥧 Pie Chart Placeholder
+            Pie Chart Placeholder
           </div>
         </div>
       </div>
@@ -368,7 +373,7 @@
             </div>
           </div>
           <div class="chart-placeholder" style="height: 300px;">
-            📈 Advanced Analytics Chart Placeholder
+            Advanced Analytics Chart Placeholder
           </div>
         </div>
       </div>
@@ -376,7 +381,6 @@
   </div>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Dashboard Template Scripts -->
   <script>

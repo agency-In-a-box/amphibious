@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Foundation — Amphibious 2.0</title>
   <meta name="description" content="Foundation documentation for Amphibious 2.0 - Core aiab-grid system, responsive columns, and layout fundamentals">
   <meta name="theme-color" content="#ffffff">
-  <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './docs.css';
+  </script>
     <!-- CSS loaded via JavaScript module -->
-  <link rel="stylesheet" href="./docs.css">
   <link rel="stylesheet" href="../src/css/pages/light-mode-fixes.css">
-  <link rel="stylesheet" href="../src/css/dark-mode.css">
   <link rel="stylesheet" href="../src/css/pages/foundation-fixes.css">
   <style>
     /* Critical fixes for light mode */

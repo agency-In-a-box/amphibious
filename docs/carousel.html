@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Carousel — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Carousel component powered by Splide.js">
-  <script type="module">import '/src/css/main.css';</script>
-  <link rel="stylesheet" href="carousel.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './carousel.css';
+  </script>
 </head>
 <body>
   <!-- Navigation Include -->
@@ -32,27 +39,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🚀 High Performance</h4>
+          <h4>High Performance</h4>
           <p>Lightweight and optimized for smooth animations and fast load times.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Accessibility First</h4>
+          <h4>Accessibility First</h4>
           <p>Full keyboard navigation, screen reader support, and WCAG 2.1 AA compliance.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📱 Responsive Design</h4>
+          <h4>Responsive Design</h4>
           <p>Adapts seamlessly to all screen sizes with configurable breakpoints.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🎨 Multiple Variants</h4>
+          <h4>Multiple Variants</h4>
           <p>Pre-built styles for cards, images, testimonials, and thumbnails.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>⚙️ Flexible Configuration</h4>
+          <h4>Flexible Configuration</h4>
           <p>Extensive options for customization via JavaScript or data attributes.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🔄 Auto-initialization</h4>
+          <h4>Auto-initialization</h4>
           <p>Automatically initializes from data attributes or manual JavaScript setup.</p>
         </div>
       </div>
@@ -453,7 +460,7 @@ carousel.refresh(); // Useful after dynamic content changes</code></pre>
   &lt;article class="product-card"&gt;
     &lt;img src="https://placehold.co/600x600/667eea/FFF?text=Product+1" alt="Product 1"&gt;
     &lt;h3&gt;Product Name&lt;/h3&gt;
-    &lt;p class="price"&gt;$99.99&lt;/p&gt;
+    &lt;p class="aiab-price"&gt;$99.99&lt;/p&gt;
     &lt;button class="aiab-btn"&gt;Add to Cart&lt;/button&gt;
   &lt;/article&gt;
   &lt;!-- More products... --&gt;

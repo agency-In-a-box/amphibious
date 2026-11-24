@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Examples Gallery — Amphibious 2.0</title>
   <meta name="description" content="Live examples and demos of Amphibious 2.0 components, patterns, and page templates">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
   <!-- Examples Page Styles -->
   <link rel="stylesheet" href="/src/css/pages/examples.css">
@@ -23,7 +28,7 @@
   </header>
 
   <main class="aiab-container" id="main-content">
-    <nav class="nav-breadcrumb" aria-label="Breadcrumb">
+    <nav class="aiab-nav-breadcrumb" aria-label="Breadcrumb">
       <a href="../index.html">Home</a> |
       <a href="../docs/">Documentation</a> |
       <strong>Examples</strong>
@@ -212,7 +217,6 @@
   <div id="footer-include"></div>
 
   <!-- Load Framework -->
-  <script type="module" src="../src/index.js"></script>
 
   
 </body>

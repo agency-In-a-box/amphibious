@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Product Detail Page — Amphibious 2.0</title>
   <meta name="description" content="E-commerce product detail page with image gallery, size selector, reviews, and related products">
+  <!-- Library (JS + main-lib.css), then site styles, then this page — one module, fixed order. -->
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './e-commerce-product.css';
   </script>
-  <link rel="stylesheet" href="e-commerce-product.css">
 </head>
 <body>
   <!-- Navigation Include -->
@@ -203,7 +209,7 @@
               <p>"Best quality t-shirt I've ever owned! The fabric is incredibly soft and it's held up perfectly after months of wear."</p>
               <footer>
                 <cite>— Sarah M., Verified Buyer</cite>
-                <div class="rating aiab-mt-0-5">
+                <div class="aiab-rating aiab-mt-0-5">
                   <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
                   <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
                   <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
@@ -218,7 +224,7 @@
               <p>"Perfect fit and the color hasn't faded at all. I've bought three more in different colors!"</p>
               <footer>
                 <cite>— Mike T., Repeat Customer</cite>
-                <div class="rating aiab-mt-0-5">
+                <div class="aiab-rating aiab-mt-0-5">
                   <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
                   <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
                   <i data-lucide="star" class="icon--xs icon--filled aiab-icon--star"></i>
@@ -255,9 +261,9 @@
             <h4 class="aiab-review-title">Trust & Security</h4>
             <div class="aiab-flex-wrap">
               <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3ESSL%3C/text%3E%3C/svg%3E" alt="SSL Secure" class="aiab-trust-badge" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EPayPal%3C/text%3E%3C/svg%3E" alt="PayPal" class="aiab-trust-badge" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EVisa%3C/text%3E%3C/svg%3E" alt="Visa" class="aiab-trust-badge" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EMC%3C/text%3E%3C/svg%3E" alt="Mastercard" class="aiab-trust-badge" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EWALLET%3C/text%3E%3C/svg%3E" alt="Digital wallet" class="aiab-trust-badge" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3ECARD%3C/text%3E%3C/svg%3E" alt="Credit card" class="aiab-trust-badge" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Crect width='80' height='30' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EDEBIT%3C/text%3E%3C/svg%3E" alt="Debit card" class="aiab-trust-badge" loading="lazy">
             </div>
           </div>
         </div>
@@ -674,7 +680,6 @@
   </section>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Page Scripts -->
   <script type="module">

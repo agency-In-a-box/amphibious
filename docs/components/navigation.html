@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Navigation — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Navigation component - horizontal/vertical navigation, dropdowns, breadcrumbs, and mobile menus">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Demo Navigation Containers */
     .demo-nav-container {
@@ -96,27 +103,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🧭 Multiple Layouts</h4>
+          <h4>Multiple Layouts</h4>
           <p>Horizontal, vertical, and modern navigation layouts with full aiab-dropdown support.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📱 Responsive Design</h4>
+          <h4>Responsive Design</h4>
           <p>Automatic mobile adaptation with hamburger menus and touch-friendly interactions.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🏗️ Dropdown Menus</h4>
+          <h4>Dropdown Menus</h4>
           <p>Multi-level dropdowns with hover and click interactions for complex navigation structures.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🍞 Breadcrumb Navigation</h4>
+          <h4>Breadcrumb Navigation</h4>
           <p>Multiple aiab-breadcrumb styles with customizable separators for hierarchy display.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Full Accessibility</h4>
+          <h4>Full Accessibility</h4>
           <p>Keyboard navigation, focus management, ARIA attributes, and screen reader support.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🎨 Flexible Styling</h4>
+          <h4>Flexible Styling</h4>
           <p>CSS variables for easy theming, transparent navigation, and sticky positioning.</p>
         </div>
       </div>
@@ -287,124 +294,77 @@
       </div>
     </section>
 
-    <!-- Modern Navigation -->
+    <!-- JavaScript API -->
     <section class="section">
-      <h2>Modern Navigation Component</h2>
+      <h2>JavaScript API</h2>
+      <p>Navigation is markup-first: the site nav is enhanced automatically when the framework loads. Use <code>amp.createNavigation()</code> for any other nav, or to change options. It enhances your markup; it doesn't render any.</p>
 
       <div class="aiab-demo-section">
-        <div class="demo-title">Modern Amphibious Navigation with Search and Actions</div>
-        <div class="demo-modern-nav">
-          <nav class="amp-nav">
-            <div class="aiab-container">
-              <div class="amp-nav__wrapper">
-                <div class="amp-nav__brand">
-                  <a href="/" class="amp-nav__logo">
-                    <span class="amp-nav__icon">🐸</span>
-                    <span>Amphibious</span>
-                  </a>
-                </div>
-
-                <ul class="amp-nav__menu">
-                  <li class="amp-nav__item">
-                    <a href="#docs" class="amp-nav__link amp-nav__link--active">Documentation</a>
-                  </li>
-                  <li class="amp-nav__item">
-                    <a href="#components" class="amp-nav__link">Components</a>
-                    <div class="amp-nav__dropdown">
-                      <a href="#cards" class="amp-nav__dropdown-link">Cards</a>
-                      <a href="#buttons" class="amp-nav__dropdown-link">Buttons</a>
-                      <a href="#forms" class="amp-nav__dropdown-link">Forms</a>
-                      <a href="#navigation" class="amp-nav__dropdown-link">Navigation</a>
-                    </div>
-                  </li>
-                  <li class="amp-nav__item">
-                    <a href="#examples" class="amp-nav__link">Examples</a>
-                  </li>
-                  <li class="amp-nav__item">
-                    <a href="#about" class="amp-nav__link">About</a>
-                  </li>
+        <div class="demo-title">Live: <code>amp.createNavigation('#api-demo-nav', …)</code></div>
+        <div class="demo-nav-container">
+          <nav id="api-demo-nav" aria-label="API demo">
+            <ul class="aiab-horizontal">
+              <li><a href="/docs/index.html">Docs</a></li>
+              <li><a href="/docs/components/navigation.html">Navigation</a>
+                <ul>
+                  <li><a href="#js-api-options">Options</a></li>
+                  <li><a href="#js-api-methods">Methods</a></li>
                 </ul>
-
-                <div class="amp-nav__actions">
-                  <button class="amp-nav__search" aria-label="Search">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
-                  </button>
-                  <button class="amp-nav__theme" aria-label="Toggle theme">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-                    </svg>
-                  </button>
-                  <a href="#github" class="amp-nav__github">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    <span class="amp-nav__stars">2.1k</span>
-                  </a>
-                </div>
-
-                <button class="amp-nav__toggle" aria-label="Toggle menu">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button>
-              </div>
-            </div>
+              </li>
+              <li><a href="/examples/">Examples</a></li>
+            </ul>
           </nav>
         </div>
+        <p class="demo-controls">
+          <button type="button" class="aiab-btn aiab-btn-secondary" id="api-demo-toggle">Toggle menu</button>
+          <span id="api-demo-status" role="status">isOpen: false</span>
+        </p>
+        <p class="demo-note">"Navigation" is highlighted because <code>currentPath</code> matches it. Below 768px the toggle opens this list as the mobile menu; Escape or a click outside closes it.</p>
       </div>
 
       <div class="code-block">
-        <pre><code>&lt;nav class="amp-nav"&gt;
-  &lt;div class="aiab-container"&gt;
-    &lt;div class="amp-nav__wrapper"&gt;
-      &lt;div class="amp-nav__brand"&gt;
-        &lt;a href="/" class="amp-nav__logo"&gt;
-          &lt;span class="amp-nav__icon"&gt;🐸&lt;/span&gt;
-          &lt;span&gt;Amphibious&lt;/span&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
+        <pre><code>const nav = amp.createNavigation('#api-demo-nav', {
+  toggle: '#api-demo-toggle',          // button outside the nav
+  currentPath: '/docs/components/navigation.html',
+  onToggle: (isOpen) =&gt; {
+    status.textContent = `isOpen: ${isOpen}`;
+  }
+});
 
-      &lt;ul class="amp-nav__menu"&gt;
-        &lt;li class="amp-nav__item"&gt;
-          &lt;a href="#docs" class="amp-nav__link amp-nav__link--active"&gt;Documentation&lt;/a&gt;
-        &lt;/li&gt;
-        &lt;li class="amp-nav__item"&gt;
-          &lt;a href="#components" class="amp-nav__link"&gt;Components&lt;/a&gt;
-          &lt;div class="amp-nav__dropdown"&gt;
-            &lt;a href="#cards" class="amp-nav__dropdown-link"&gt;Cards&lt;/a&gt;
-            &lt;a href="#buttons" class="amp-nav__dropdown-link"&gt;Buttons&lt;/a&gt;
-            &lt;a href="#forms" class="amp-nav__dropdown-link"&gt;Forms&lt;/a&gt;
-            &lt;a href="#navigation" class="amp-nav__dropdown-link"&gt;Navigation&lt;/a&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li class="amp-nav__item"&gt;
-          &lt;a href="#examples" class="amp-nav__link"&gt;Examples&lt;/a&gt;
-        &lt;/li&gt;
-        &lt;li class="amp-nav__item"&gt;
-          &lt;a href="#about" class="amp-nav__link"&gt;About&lt;/a&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-
-      &lt;div class="amp-nav__actions"&gt;
-        &lt;button class="amp-nav__search"&gt;🔍&lt;/button&gt;
-        &lt;button class="amp-nav__theme"&gt;🌙&lt;/button&gt;
-        &lt;a href="#github" class="amp-nav__github"&gt;
-          &lt;span&gt;GitHub&lt;/span&gt;
-          &lt;span class="amp-nav__stars"&gt;2.1k&lt;/span&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-
-      &lt;button class="amp-nav__toggle"&gt;
-        &lt;span&gt;&lt;/span&gt;
-        &lt;span&gt;&lt;/span&gt;
-        &lt;span&gt;&lt;/span&gt;
-      &lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/nav&gt;</code></pre>
+nav.open();      // nav.close() · nav.toggle() · nav.isOpen
+nav.destroy();   // removes every listener</code></pre>
       </div>
+
+      <h3 id="js-api-options">Options</h3>
+      <div class="aiab-table-wrapper">
+      <table class="aiab-table">
+        <thead><tr><th>Option</th><th>Default</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>breakpoint</code></td><td><code>768</code></td><td>Width (px) at or below which the mobile menu and tap-to-expand dropdowns apply</td></tr>
+          <tr><td><code>sticky</code></td><td><code>true</code> for <code>.aiab-site-nav</code></td><td>Adds <code>.is-scrolled</code> after the page header scrolls away</td></tr>
+          <tr><td><code>highlightCurrent</code></td><td><code>true</code></td><td>Marks the current page with <code>.aiab-active</code> + <code>aria-current="page"</code> (hash-only links never count)</td></tr>
+          <tr><td><code>currentPath</code></td><td><code>location.pathname</code></td><td>Path to match instead of the real URL</td></tr>
+          <tr><td><code>toggle</code></td><td>auto</td><td>Menu button: one inside the nav, else one whose <code>aria-controls</code> points into it</td></tr>
+          <tr><td><code>onToggle</code></td><td>none</td><td><code>(isOpen) =&gt; void</code> after the menu opens or closes</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3 id="js-api-methods">Methods</h3>
+      <p><code>open()</code>, <code>close()</code>, <code>toggle()</code>, <code>setActiveStates()</code>, <code>destroy()</code>; read-only <code>isOpen</code> and <code>element</code>. Calling <code>createNavigation</code> again on the same element replaces the previous instance, so handlers never double up.</p>
+
+      <script type="module">
+        import { amp } from '/src/index.ts';
+        const status = document.getElementById('api-demo-status');
+        amp.createNavigation('#api-demo-nav', {
+          toggle: '#api-demo-toggle',
+          currentPath: '/docs/components/navigation.html',
+          sticky: false,
+          onToggle: (isOpen) => {
+            status.textContent = `isOpen: ${isOpen}`;
+          },
+        });
+      </script>
     </section>
 
     <!-- Breadcrumbs -->
@@ -651,66 +611,6 @@
         </tbody>
       </table>
 
-      <h3>Modern Navigation Classes</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Class</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>.amp-nav</code></td>
-            <td>Modern navigation aiab-container</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__wrapper</code></td>
-            <td>Navigation content wrapper</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__brand</code></td>
-            <td>Brand/logo aiab-container</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__logo</code></td>
-            <td>Logo link</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__menu</code></td>
-            <td>Main navigation menu</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__item</code></td>
-            <td>Navigation menu item</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__link</code></td>
-            <td>Navigation link</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__link--active</code></td>
-            <td>Active navigation link</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__dropdown</code></td>
-            <td>Dropdown menu aiab-container</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__dropdown-link</code></td>
-            <td>Dropdown menu link</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__actions</code></td>
-            <td>Action buttons aiab-container</td>
-          </tr>
-          <tr>
-            <td><code>.amp-nav__toggle</code></td>
-            <td>Mobile menu toggle</td>
-          </tr>
-        </tbody>
-      </table>
-
       <h3>Navigation State Classes</h3>
       <table>
         <thead>
@@ -799,166 +699,21 @@
     <!-- JavaScript Integration -->
     <section class="section">
       <h2>JavaScript Integration</h2>
+      <p>You don't need to write toggle or dropdown code: the built-in <code>Navigation</code> handles the mobile menu, tap-to-expand dropdowns, arrow-key movement, focus trapping, Escape and outside clicks (see <a href="#api-demo-nav">JavaScript API</a>). Hook into it instead:</p>
 
       <div class="code-block">
-        <pre><code>// Mobile navigation toggle
-function toggleMobileNav() {
-  const toggle = document.querySelector('.aiab-nav-toggle');
-  const nav = document.querySelector('.aiab-nav-mobile-hide');
-  const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        <pre><code>// React to the menu opening (analytics, locking scroll, etc.)
+amp.createNavigation('.aiab-site-nav', {
+  onToggle: (isOpen) =&gt; document.body.classList.toggle('menu-open', isOpen)
+});
 
-  toggle.setAttribute('aria-expanded', !isOpen);
-  nav.classList.toggle('aiab-is-open');
-}
+// After a client-side route change, re-run current-page highlighting
+window.amphibiousNav?.setActiveStates();
 
-// Modern navigation with aiab-dropdown management
-class AmpNavigation {
-  constructor(element) {
-    this.nav = element;
-    this.toggle = this.nav.querySelector('.amp-nav__toggle');
-    this.menu = this.nav.querySelector('.amp-nav__menu');
-    this.dropdowns = this.nav.querySelectorAll('.amp-nav__dropdown');
-    this.searchButton = this.nav.querySelector('.amp-nav__search');
-
-    this.init();
-  }
-
-  init() {
-    // Mobile toggle
-    if (this.toggle) {
-      this.toggle.addEventListener('click', () => this.toggleMobile());
-    }
-
-    // Search functionality
-    if (this.searchButton) {
-      this.searchButton.addEventListener('click', () => this.toggleSearch());
-    }
-
-    // Close mobile menu on outside click
-    document.addEventListener('click', (e) => {
-      if (!this.nav.contains(e.target) && this.menu.classList.contains('amp-nav__menu--open')) {
-        this.closeMobile();
-      }
-    });
-
-    // Keyboard navigation
-    this.nav.addEventListener('keydown', (e) => this.handleKeyboard(e));
-
-    // Sticky navigation on scroll
-    this.handleScroll();
-    window.addEventListener('scroll', () => this.handleScroll());
-  }
-
-  toggleMobile() {
-    const isOpen = this.menu.classList.contains('amp-nav__menu--open');
-
-    if (isOpen) {
-      this.closeMobile();
-    } else {
-      this.openMobile();
-    }
-  }
-
-  openMobile() {
-    this.menu.classList.add('amp-nav__menu--open');
-    this.toggle.classList.add('amp-nav__toggle--open');
-    document.body.style.overflow = 'hidden';
-
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.className = 'amp-nav__overlay amp-nav__overlay--visible';
-    overlay.addEventListener('click', () => this.closeMobile());
-    document.body.appendChild(overlay);
-  }
-
-  closeMobile() {
-    this.menu.classList.remove('amp-nav__menu--open');
-    this.toggle.classList.remove('amp-nav__toggle--open');
-    document.body.style.overflow = '';
-
-    // Remove overlay
-    const overlay = document.querySelector('.amp-nav__overlay');
-    if (overlay) overlay.remove();
-  }
-
-  toggleSearch() {
-    // Create search aiab-modal
-    const searchModal = document.createElement('div');
-    searchModal.className = 'amp-nav__search-modal amp-nav__search-modal--open';
-
-    searchModal.innerHTML = `
-      &lt;div class="amp-nav__search-content"&gt;
-        &lt;input type="search" class="amp-nav__search-input" placeholder="Search documentation..." autofocus&gt;
-        &lt;button class="amp-nav__search-close"&gt;×&lt;/button&gt;
-        &lt;div class="amp-nav__search-results"&gt;
-          &lt;div class="amp-nav__search-empty"&gt;Start typing to search...&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    `;
-
-    document.body.appendChild(searchModal);
-
-    // Close on outside click or close button
-    const closeButton = searchModal.querySelector('.amp-nav__search-close');
-    closeButton.addEventListener('click', () => searchModal.remove());
-
-    searchModal.addEventListener('click', (e) => {
-      if (e.target === searchModal) searchModal.remove();
-    });
-
-    // Search functionality
-    const searchInput = searchModal.querySelector('.amp-nav__search-input');
-    searchInput.addEventListener('input', (e) => this.performSearch(e.target.value));
-  }
-
-  performSearch(query) {
-    // Implement your search logic here
-    console.log('Searching for:', query);
-  }
-
-  handleKeyboard(e) {
-    // Implement keyboard navigation for dropdowns
-    if (e.key === 'Escape') {
-      // Close any open dropdowns
-      this.dropdowns.forEach(dropdown => {
-        dropdown.classList.remove('amp-nav__dropdown--open');
-      });
-    }
-  }
-
-  handleScroll() {
-    const scrollY = window.scrollY;
-
-    if (scrollY > 100) {
-      this.nav.classList.add('amp-nav--sticky');
-    } else {
-      this.nav.classList.remove('amp-nav--sticky');
-    }
-
-    // Hide/show navigation based on scroll direction
-    if (scrollY > this.lastScrollY && scrollY > 500) {
-      this.nav.classList.add('amp-nav--hidden');
-    } else {
-      this.nav.classList.remove('amp-nav--hidden');
-    }
-
-    this.lastScrollY = scrollY;
-  }
-}
-
-// Initialize navigation
-document.addEventListener('DOMContentLoaded', () => {
-  const navElement = document.querySelector('.amp-nav');
-  if (navElement) {
-    new AmpNavigation(navElement);
-  }
-
-  // Legacy navigation toggle
-  const navToggle = document.querySelector('.aiab-nav-toggle');
-  if (navToggle) {
-    navToggle.addEventListener('click', toggleMobileNav);
-  }
-});</code></pre>
+// Module usage
+import { Navigation } from '@agency-in-a-box/amphibious';
+const nav = Navigation.getInstance(document.querySelector('.aiab-site-nav'));
+nav?.close();</code></pre>
       </div>
     </section>
 
@@ -1012,7 +767,6 @@ document.addEventListener('DOMContentLoaded', () => {
   </footer>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Demo JavaScript -->
   <script>
@@ -1042,20 +796,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      // Simple aiab-dropdown toggle for modern aiab-nav demo
-      const dropdownTriggers = document.querySelectorAll('.amp-nav__item');
-      dropdownTriggers.forEach(item => {
-        const dropdown = item.querySelector('.amp-nav__dropdown');
-        if (dropdown) {
-          item.addEventListener('mouseenter', () => {
-            dropdown.classList.add('amp-nav__dropdown--open');
-          });
-
-          item.addEventListener('mouseleave', () => {
-            dropdown.classList.remove('amp-nav__dropdown--open');
-          });
-        }
-      });
     });
   </script>
 </body>

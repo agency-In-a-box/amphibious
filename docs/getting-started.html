@@ -3,18 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Getting Started — Amphibious 2.0</title>
   <meta name="description" content="Quick start guide for Amphibious 2.0 - Modern CSS framework with semantic HTML patterns">
-  <script type="module">import '/src/css/main.css';</script>
-  <link rel="stylesheet" href="getting-started.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './getting-started.css';
+  </script>
 </head>
 <body>
   <!-- Navigation Include -->
 <header class="aiab-docs-header">
     <div class="aiab-container">
-      <h1>🚀 Getting Started</h1>
+      <h1>Getting Started</h1>
       <p>Get up and running with Amphibious 2.0 in minutes</p>
     </div>
   </header>
@@ -59,32 +66,36 @@
           <h3>Method 1: NPM / Bun (Recommended)</h3>
           <div class="code-block">
             <pre><code># Using npm
-npm install @amphibious/core
+npm install @agency-in-a-box/amphibious
 
 # Using bun (faster)
-bun add @amphibious/core
+bun add @agency-in-a-box/amphibious
 
 # Using yarn
-yarn add @amphibious/core</code></pre>
+yarn add @agency-in-a-box/amphibious</code></pre>
           </div>
 
           <p>Then import in your JavaScript:</p>
           <div class="code-block">
             <pre><code>// Import CSS
-import '@amphibious/core/css';
+import '@agency-in-a-box/amphibious/css';
 
-// Import JavaScript components
-import { createNavigation, createModal } from '@amphibious/core';</code></pre>
+// Import JavaScript: the amp API (also available as window.amp)…
+import amp from '@agency-in-a-box/amphibious';
+amp.createModal('cart', '#cartModal');
+
+// …or the component classes directly
+import { Navigation, Modal } from '@agency-in-a-box/amphibious';</code></pre>
           </div>
 
           <h3>Method 2: CDN</h3>
           <p>For quick prototypes or simple projects, you can use our CDN:</p>
           <div class="code-block">
             <pre><code>&lt;!-- CSS --&gt;
-&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@amphibious/core@2/dist/amphibious.min.css"&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@agency-in-a-box/amphibious@2/dist/amphibious.css"&gt;
 
 &lt;!-- JavaScript --&gt;
-&lt;script type="module" src="https://cdn.jsdelivr.net/npm/@amphibious/core@2/dist/amphibious.min.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script type="module" src="https://cdn.jsdelivr.net/npm/@agency-in-a-box/amphibious@2/dist/amphibious.es.js"&gt;&lt;/script&gt;</code></pre>
           </div>
 
           <h3>Method 3: Download</h3>
@@ -121,9 +132,16 @@ import { createNavigation, createModal } from '@amphibious/core';</code></pre>
 &lt;/head&gt;
 &lt;body&gt;
   &lt;header&gt;
-    &lt;nav class="amp-nav" aria-label="Main navigation"&gt;
+    &lt;!-- Enhanced automatically: mobile menu, dropdowns, current page --&gt;
+    &lt;nav class="aiab-site-nav" aria-label="Main navigation"&gt;
       &lt;div class="aiab-container"&gt;
-        &lt;!-- Navigation content --&gt;
+        &lt;button class="aiab-nav-toggle" aria-controls="main-nav" aria-label="Menu"&gt;
+          &lt;span class="aiab-nav-toggle-icon" aria-hidden="true"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;ul id="main-nav" class="aiab-horizontal"&gt;
+          &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/docs/"&gt;Docs&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/nav&gt;
   &lt;/header&gt;
@@ -135,7 +153,7 @@ import { createNavigation, createModal } from '@amphibious/core';</code></pre>
     &lt;/section&gt;
   &lt;/main&gt;
 
-  &lt;script type="module" src="path/to/amphibious.js"&gt;&lt;/script&gt;
+  &lt;script type="module" src="path/to/amphibious.es.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
           </div>
@@ -241,22 +259,20 @@ import { createNavigation, createModal } from '@amphibious/core';</code></pre>
           <p>Configure JavaScript components during initialization:</p>
 
           <div class="code-block">
-            <pre><code>// Navigation configuration
+            <pre><code>// Navigation: the site nav is enhanced automatically.
+// Configure it (or another nav) explicitly when you need to:
 const nav = amp.createNavigation('#nav', {
-  sticky: true,
-  transparent: false,
-  searchEnabled: true,
-  themeToggle: true,
-  breakpoint: 768
+  breakpoint: 768,        // mobile menu at or below this width
+  sticky: true,           // add .is-scrolled after the page header
+  onToggle: (isOpen) =&gt; console.log('menu', isOpen)
 });
 
 // Modal configuration
-const modal = amp.createModal('#myModal', {
-  size: 'lg',
-  centered: true,
-  backdrop: true,
-  keyboard: true,
-  animation: 'fade'
+const modal = amp.createModal('myModal', '#myModal', {
+  size: 'lg',             // 'sm' | 'default' | 'lg' | 'xl' | 'full'
+  backdrop: true,         // true | false | 'static'
+  keyboard: true,         // Escape closes
+  animation: 'fade-in'    // 'fade-in' | 'slide-down' | 'zoom-in'
 });</code></pre>
           </div>
 

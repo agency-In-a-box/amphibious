@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Grid System — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive guide to the Amphibious 16-column responsive aiab-grid system">
-  <script type="module">import '/src/css/main.css';</script>
-  <link rel="stylesheet" href="grid-system.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './grid-system.css';
+  </script>
 </head>
 <body>
   <!-- Navigation Include -->

@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Tabs — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Tabs component - modern tab navigation with accessibility, multiple variants, and responsive design">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Tab Demo Containers */
     .tab-demo-container {
@@ -54,27 +61,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🎨 Multiple Styles</h4>
+          <h4>Multiple Styles</h4>
           <p>Underlined, boxed, pills, bordered, and custom tab styles for different design needs.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📐 Flexible Layouts</h4>
+          <h4>Flexible Layouts</h4>
           <p>Horizontal, vertical, centered, full-width, and scrollable tab arrangements.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Full Accessibility</h4>
+          <h4>Full Accessibility</h4>
           <p>ARIA attributes, keyboard navigation, focus management, and screen reader support.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📱 Responsive Design</h4>
+          <h4>Responsive Design</h4>
           <p>Adaptive layouts that work on all screen sizes with touch-friendly interactions.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🔧 Interactive Features</h4>
+          <h4>Interactive Features</h4>
           <p>Icons, badges, loading states, disabled aiab-tabs, and smooth animations.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🎯 Easy Integration</h4>
+          <h4>Easy Integration</h4>
           <p>Simple HTML structure with JavaScript enhancement for dynamic behavior.</p>
         </div>
       </div>
@@ -111,7 +118,7 @@
                 </button>
               </li>
             </ul>
-            <div class="tabs__panels">
+            <div class="aiab-tabs__panels">
               <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-1" id="panel-1" aria-hidden="false">
                 <h3>Overview</h3>
                 <p>This is the overview section of our product. Here you'll find general information about what we offer and how it can benefit you.</p>
@@ -166,7 +173,7 @@
       &lt;/button&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
-  &lt;div class="tabs__panels"&gt;
+  &lt;div class="aiab-tabs__panels"&gt;
     &lt;div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="tab-1" id="panel-1" aria-hidden="false"&gt;
       &lt;h3&gt;Overview&lt;/h3&gt;
       &lt;p&gt;Content for the overview tab...&lt;/p&gt;
@@ -210,7 +217,7 @@
                 </button>
               </li>
             </ul>
-            <div class="tabs__panels">
+            <div class="aiab-tabs__panels">
               <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="boxed-tab-1" id="boxed-panel-1" aria-hidden="false">
                 <h3>Dashboard</h3>
                 <p>Your main dashboard with key metrics and recent activity.</p>
@@ -255,7 +262,7 @@
                 </button>
               </li>
             </ul>
-            <div class="tabs__panels">
+            <div class="aiab-tabs__panels">
               <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="pills-tab-1" id="pills-panel-1" aria-hidden="false">
                 <h3>All Items</h3>
                 <p>View all items in your collection regardless of status.</p>
@@ -299,7 +306,7 @@
                 </button>
               </li>
             </ul>
-            <div class="tabs__panels">
+            <div class="aiab-tabs__panels">
               <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="bordered-tab-1" id="bordered-panel-1" aria-hidden="false">
                 <h3>Profile Information</h3>
                 <p>Manage your personal profile information and public details.</p>
@@ -340,7 +347,7 @@
             <ul class="aiab-tabs__list" role="tablist">
               <li class="aiab-tabs__item" role="presentation">
                 <button class="aiab-tabs__button aiab-tabs__aiab-button--icon" role="tab" aria-selected="true" aria-controls="icon-panel-1" id="icon-tab-1">
-                  <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
+                  <svg class="aiab-tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
                   </svg>
                   Dashboard
@@ -348,16 +355,16 @@
               </li>
               <li class="aiab-tabs__item" role="presentation">
                 <button class="aiab-tabs__button aiab-tabs__aiab-button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-2" id="icon-tab-2">
-                  <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
+                  <svg class="aiab-tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                   Messages
-                  <span class="tabs__badge">3</span>
+                  <span class="aiab-tabs__badge">3</span>
                 </button>
               </li>
               <li class="aiab-tabs__item" role="presentation">
                 <button class="aiab-tabs__button aiab-tabs__aiab-button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-3" id="icon-tab-3">
-                  <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
+                  <svg class="aiab-tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
                   </svg>
                   Profile
@@ -365,14 +372,14 @@
               </li>
               <li class="aiab-tabs__item" role="presentation">
                 <button class="aiab-tabs__button aiab-tabs__aiab-button--icon" role="tab" aria-selected="false" aria-controls="icon-panel-4" id="icon-tab-4">
-                  <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
+                  <svg class="aiab-tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
                   </svg>
                   Settings
                 </button>
               </li>
             </ul>
-            <div class="tabs__panels">
+            <div class="aiab-tabs__panels">
               <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="icon-tab-1" id="icon-panel-1" aria-hidden="false">
                 <h3>Dashboard Overview</h3>
                 <p>Welcome to your dashboard. Here you can see an overview of your account activity and key metrics.</p>
@@ -396,11 +403,11 @@
 
       <div class="code-block">
         <pre><code>&lt;button class="aiab-tabs__button aiab-tabs__aiab-button--icon" role="tab"&gt;
-  &lt;svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20"&gt;
+  &lt;svg class="aiab-tabs__icon" fill="currentColor" viewBox="0 0 20 20"&gt;
     &lt;path d="..."&gt;&lt;/path&gt;
   &lt;/svg&gt;
   Messages
-  &lt;span class="tabs__badge"&gt;3&lt;/span&gt;
+  &lt;span class="aiab-tabs__badge"&gt;3&lt;/span&gt;
 &lt;/button&gt;</code></pre>
       </div>
     </section>
@@ -440,7 +447,7 @@
                 </button>
               </li>
             </ul>
-            <div class="tabs__panels">
+            <div class="aiab-tabs__panels">
               <div class="aiab-tabs__panel" role="tabpanel" aria-labelledby="vertical-tab-1" id="vertical-panel-1" aria-hidden="false">
                 <h3>General Settings</h3>
                 <p>Configure basic application settings and preferences.</p>
@@ -510,7 +517,7 @@
       &lt;/button&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
-  &lt;div class="tabs__panels"&gt;
+  &lt;div class="aiab-tabs__panels"&gt;
     &lt;div class="aiab-tabs__panel" role="tabpanel" aria-hidden="false"&gt;
       &lt;h3&gt;General Settings&lt;/h3&gt;
       &lt;p&gt;Configure basic application settings...&lt;/p&gt;
@@ -1005,9 +1012,9 @@ function createTab(label, content, options = {}) {
           aria-controls="${panelId}"
           id="${id}"
         &gt;
-          ${options.icon ? `&lt;svg class="tabs__icon"&gt;${options.icon}&lt;/svg&gt;` : ''}
+          ${options.icon ? `&lt;svg class="aiab-tabs__icon"&gt;${options.icon}&lt;/svg&gt;` : ''}
           ${label}
-          ${options.badge ? `&lt;span class="tabs__badge"&gt;${options.badge}&lt;/span&gt;` : ''}
+          ${options.badge ? `&lt;span class="aiab-tabs__badge"&gt;${options.badge}&lt;/span&gt;` : ''}
         &lt;/button&gt;
       &lt;/li&gt;
     `,
@@ -1071,7 +1078,6 @@ function createTab(label, content, options = {}) {
   </footer>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Demo JavaScript -->
   <script>

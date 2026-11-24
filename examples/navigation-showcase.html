@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <title>Navigation Showcase — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive navigation patterns including sidebars, breadcrumbs, and tab navigation.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './navigation-showcase.css';
   </script>
-  <link rel="stylesheet" href="navigation-showcase.css">
 
 </head>
 <body>
   <!-- Navigation Include -->
 <header class="aiab-demo-header">
     <div class="aiab-container">
-      <h1>🧭 Navigation Component Showcase</h1>
+      <h1>Navigation Component Showcase</h1>
       <p>Explore all navigation patterns, styles, and configurations in Amphibious 2.0</p>
     </div>
   </header>
@@ -103,31 +108,45 @@
 
     <!-- Modern Navigation Component -->
     <section class="aiab-demo-section" aria-labelledby="modern-nav">
-      <h2 id="modern-nav">Modern Navigation Component</h2>
-      <p>The new Amphibious 2.0 navigation component with advanced features.</p>
+      <h2 id="modern-nav">Navigation JavaScript API</h2>
+      <p>The site nav is enhanced automatically. <code>amp.createNavigation()</code> enhances any other nav: mobile menu, tap-to-expand dropdowns, arrow keys, focus trap and current-page highlighting. It works on your markup; it doesn't render any.</p>
 
-      <h3>Full Featured Navigation</h3>
-      <div id="modernNav"></div>
+      <h3>Live Demo</h3>
+      <div class="nav-demo-container">
+        <nav id="apiNav" aria-label="API demo">
+          <ul class="aiab-horizontal">
+            <li><a href="/examples/">Home</a></li>
+            <li><a href="/examples/navigation-showcase.html">Features</a>
+              <ul>
+                <li><a href="#horizontal-nav">Horizontal</a></li>
+                <li><a href="#vertical-nav">Vertical</a></li>
+              </ul>
+            </li>
+            <li><a href="/examples/e-commerce-catalog.html">Pricing</a></li>
+            <li><a href="/docs/">Docs</a></li>
+          </ul>
+        </nav>
+      </div>
 
       <div class="controls">
-        <button onclick="toggleSticky()">Toggle Sticky</button>
-        <button onclick="toggleTransparent()">Toggle Transparent</button>
-        <button onclick="simulateScroll()">Simulate Scroll</button>
-        <button onclick="openSearch()">Open Search</button>
-        <button onclick="toggleTheme()">Toggle Theme</button>
+        <button type="button" class="aiab-btn aiab-btn-secondary" data-nav-demo="toggle">Toggle menu</button>
+        <button type="button" class="aiab-btn aiab-btn-secondary" data-nav-demo="pricing">Highlight “Pricing”</button>
+        <button type="button" class="aiab-btn aiab-btn-secondary" data-nav-demo="destroy">Destroy</button>
+        <button type="button" class="aiab-btn aiab-btn-secondary" data-nav-demo="create">Re-create</button>
+        <span id="apiNavStatus" role="status">isOpen: false</span>
       </div>
 
       <div class="code-example">
-        <pre><code>// Create a modern navigation component
-const nav = amp.createNavigation('#nav-container', {
-  sticky: true,
-  transparent: false,
-  searchEnabled: true,
-  themeToggle: true,
-  githubUrl: 'https://github.com/agency-In-a-box/amphibious',
-  githubStars: '1.2k',
-  currentPath: '/docs/'
-});</code></pre>
+        <pre><code>// Enhance a nav (replaces any existing instance on that element)
+const nav = amp.createNavigation('#apiNav', {
+  breakpoint: 768,                       // mobile menu at or below 768px
+  sticky: false,                         // no .is-scrolled tracking
+  currentPath: '/examples/navigation-showcase.html',
+  onToggle: (isOpen) =&gt; console.log('menu', isOpen)
+});
+
+nav.toggle();     // open() · close() · isOpen
+nav.destroy();    // removes every listener</code></pre>
       </div>
 
       <h3>Navigation Styles</h3>
@@ -394,8 +413,8 @@ const nav = amp.createNavigation('#nav-container', {
                   <div class="mega-menu-section">
                     <h4>Featured</h4>
                     <ul>
-                      <li><a href="#" style="color: #dc3545;">🔥 Sale Items</a></li>
-                      <li><a href="#" style="color: #28a745;">✨ New Arrivals</a></li>
+                      <li><a href="#" style="color: #dc3545;">Sale Items</a></li>
+                      <li><a href="#" style="color: #28a745;">New Arrivals</a></li>
                       <li><a href="#">Best Sellers</a></li>
                       <li><a href="#">Gift Ideas</a></li>
                     </ul>
@@ -514,45 +533,34 @@ const nav = amp.createNavigation('#nav-container', {
     </section>
   </main>
 
+  <!-- Navigation API demo -->
+  <script type="module">
+    import { amp } from '/src/index.ts';
+
+    const status = document.getElementById('apiNavStatus');
+    const make = (currentPath) =>
+      amp.createNavigation('#apiNav', {
+        sticky: false,
+        currentPath,
+        onToggle: (isOpen) => {
+          status.textContent = `isOpen: ${isOpen}`;
+        },
+      });
+
+    let nav = make('/examples/navigation-showcase.html');
+    const actions = {
+      toggle: () => nav?.toggle(),
+      pricing: () => { nav = make('/examples/e-commerce-catalog.html'); },
+      destroy: () => { nav?.destroy(); nav = null; status.textContent = 'destroyed'; },
+      create: () => { nav = make('/examples/navigation-showcase.html'); status.textContent = 'isOpen: false'; },
+    };
+    document.querySelectorAll('[data-nav-demo]').forEach((btn) => {
+      btn.addEventListener('click', () => actions[btn.dataset.navDemo]());
+    });
+  </script>
+
   <!-- Demo Scripts -->
   <script>
-    // Modern navigation demo
-    let modernNav;
-    document.addEventListener('DOMContentLoaded', () => {
-      modernNav = amp.createNavigation('#modernNav', {
-        sticky: false,
-        searchEnabled: true,
-        themeToggle: true,
-        githubUrl: 'https://github.com/agency-In-a-box/amphibious',
-        githubStars: '1.2k'
-      });
-    });
-
-    // Toggle functions
-    function toggleSticky() {
-      const nav = document.querySelector('#modernNav .amp-nav');
-      nav.classList.toggle('amp-nav--sticky');
-    }
-
-    function toggleTransparent() {
-      const nav = document.querySelector('#modernNav .amp-nav');
-      nav.classList.toggle('amp-nav--transparent');
-    }
-
-    function simulateScroll() {
-      window.scrollBy(0, 500);
-      setTimeout(() => window.scrollBy(0, -500), 1000);
-    }
-
-    function openSearch() {
-      const searchBtn = document.querySelector('#modernNav .amp-nav__search');
-      if (searchBtn) searchBtn.click();
-    }
-
-    function toggleTheme() {
-      const themeBtn = document.querySelector('#modernNav .amp-nav__theme');
-      if (themeBtn) themeBtn.click();
-    }
 
     // Tab navigation
     function switchTab(event, tabId) {

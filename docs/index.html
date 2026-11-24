@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Documentation — Amphibious 2.0</title>
   <meta name="description" content="Browse the complete Amphibious 2.0 component library with live examples and API documentation.">
-  <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './index-page.css';
+  </script>
     <!-- CSS loaded via JavaScript module -->
-  <link rel="stylesheet" href="index-page.css">
 </head>
 <body>
   <!-- Navigation Include -->
@@ -25,10 +32,10 @@
     <section class="quick-links">
       <h2>Quick Start</h2>
       <ul>
-        <li><a href="getting-started.html">🚀 Getting Started</a></li>
-        <li><a href="api-reference.html">📚 API Reference</a></li>
-        <li><a href="../examples/">💡 Live Examples</a></li>
-        <li><a href="https://github.com/agency-In-a-box/amphibious">📦 GitHub Repository</a></li>
+        <li><a href="getting-started.html">Getting Started</a></li>
+        <li><a href="api-reference.html">API Reference</a></li>
+        <li><a href="../examples/">Live Examples</a></li>
+        <li><a href="https://github.com/agency-In-a-box/amphibious">GitHub Repository</a></li>
       </ul>
     </section>
 

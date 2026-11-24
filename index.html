@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <title>Amphibious 2.0 — Modern CSS Framework</title>
   <meta name="description" content="Amphibious 2.0.1 - A modern, responsive CSS framework and component library built for e-commerce and modern web applications with comprehensive dark mode support">
   <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
     <!-- Homepage Styles -->
   <link rel="stylesheet" href="/src/css/pages/home.css">
   <link rel="stylesheet" href="/src/css/pages/home-dark-mode.css">
@@ -159,11 +166,11 @@
               <button type="button" class="aiab-icon-button" data-tooltip="User account" data-tooltip-position="left" aria-label="Account">
                 <i data-lucide="user"></i>
               </button>
-              <figure class="icon-badge" data-tooltip="Shopping cart with items" data-tooltip-position="top">
+              <figure class="aiab-icon-badge" data-tooltip="Shopping cart with items" data-tooltip-position="top">
                 <i data-lucide="shopping-cart" class="icon--lg"></i>
-                <span class="icon-badge__count">3</span>
+                <span class="aiab-icon-badge__count">3</span>
               </figure>
-              <div class="rating" data-tooltip="4.5 out of 5 stars" aria-label="4.5 out of 5 stars">
+              <div class="aiab-rating" data-tooltip="4.5 out of 5 stars" aria-label="4.5 out of 5 stars">
                 <i data-lucide="star" class="icon--filled icon--warning"></i>
                 <i data-lucide="star" class="icon--filled icon--warning"></i>
                 <i data-lucide="star" class="icon--filled icon--warning"></i>
@@ -306,8 +313,8 @@
       <h2 id="cta-title">Ready to Get Started?</h2>
       <p>Join thousands of developers building with Amphibious</p>
       <nav class="aiab-cta-buttons" aria-label="Call to action">
-        <a href="/docs/getting-started.html" class="btn-primary">Get Started</a>
-        <a href="/examples/" class="btn-secondary">View Examples</a>
+        <a href="/docs/getting-started.html" class="aiab-btn-primary">Get Started</a>
+        <a href="/examples/" class="aiab-btn-secondary">View Examples</a>
       </nav>
     </div>
   </section>
@@ -316,7 +323,6 @@
   <div id="footer-include"></div>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/js/index.ts"></script>
   <script type="module" src="/src/js/icons-lightweight.ts"></script>
 
   <!-- Dark Mode Toggle -->

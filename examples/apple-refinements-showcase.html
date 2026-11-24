@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Apple Design Refinements — Amphibious 2.0</title>
   <meta name="description" content="Showcase of Apple-inspired design refinements including typography, spacing, and animation polish">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
   <style>
     .showcase-section {
@@ -171,7 +176,7 @@
       </div>
 
       <div style="margin: 24px 0;">
-        <button class="aiab-btn btn-primary btn-loading">Loading...</button>
+        <button class="aiab-btn btn-primary aiab-btn-loading">Loading...</button>
       </div>
     </section>
 
@@ -181,9 +186,9 @@
       <p>Refined interactions that feel inevitable</p>
 
       <div class="animation-demo">
-        <a href="#" class="link-animated">Animated Underline Link</a>
+        <a href="#" class="aiab-link-animated">Animated Underline Link</a>
         <div class="aiab-badge">Hover Badge</div>
-        <div class="img-hover" style="width: 200px; height: 150px; background: var(--apple-gray-200); border-radius: 8px;">
+        <div class="aiab-img-hover" style="width: 200px; height: 150px; background: var(--apple-gray-200); border-radius: 8px;">
           <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
             Image Zoom
           </div>
@@ -257,12 +262,12 @@
       <div class="demo-card" style="background: var(--apple-orange-50);">
         <h3>Key Improvements</h3>
         <ul>
-          <li>✅ Added Apple's -0.02em letter-spacing to all headlines</li>
-          <li>✅ Implemented signature bounce easing curve</li>
-          <li>✅ Standardized to 3 animation durations</li>
-          <li>✅ Created systematic color token progression</li>
-          <li>✅ Added premium loading and hover states</li>
-          <li>✅ Refined focus rings with brand color</li>
+          <li>Added Apple's -0.02em letter-spacing to all headlines</li>
+          <li>Implemented signature bounce easing curve</li>
+          <li>Standardized to 3 animation durations</li>
+          <li>Created systematic color token progression</li>
+          <li>Added premium loading and hover states</li>
+          <li>Refined focus rings with brand color</li>
         </ul>
       </div>
     </section>

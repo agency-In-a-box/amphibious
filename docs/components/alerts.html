@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { var t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Alerts — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Alerts component - contextual feedback messages with multiple variants, styles, and aiab-toast notifications">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Demo Grid */
     .aiab-demo-grid {
@@ -70,27 +77,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🎨 Multiple Variants</h4>
+          <h4>Multiple Variants</h4>
           <p>Success, info, warning, error, and neutral aiab-alert types with semantic colors.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🎭 Multiple Styles</h4>
+          <h4>Multiple Styles</h4>
           <p>Default, solid, outline, minimal, and accent border styles for different contexts.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📏 Flexible Sizing</h4>
+          <h4>Flexible Sizing</h4>
           <p>Small, default, and large sizes to fit different content needs.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🔥 Toast Notifications</h4>
+          <h4>Toast Notifications</h4>
           <p>Positioned aiab-toast notifications with animations and auto-dismiss functionality.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Accessibility</h4>
+          <h4>Accessibility</h4>
           <p>Focus management, screen reader support, and reduced motion preferences.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🌙 Dark Mode</h4>
+          <h4>Dark Mode</h4>
           <p>Automatic dark mode support with appropriate color adjustments.</p>
         </div>
       </div>
@@ -761,7 +768,6 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
   </footer>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Toast Demo JavaScript -->
   <script>
