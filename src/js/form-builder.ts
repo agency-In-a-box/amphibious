@@ -18,6 +18,7 @@
  */
 
 import { escapeHTML } from '../utils/sanitize';
+import { iconMarkup } from './icons-lightweight';
 
 // ---------------------------------------------------------------------------
 // Types & Interfaces
@@ -567,7 +568,7 @@ class FormBuilder {
       // Input fields
       text: {
         label: 'Text Input',
-        icon: '\u{1f4dd}',
+        icon: 'text-cursor-input',
         category: 'input',
         defaultProps: {
           type: 'text',
@@ -582,7 +583,7 @@ class FormBuilder {
       },
       email: {
         label: 'Email',
-        icon: '\u{1f4e7}',
+        icon: 'mail',
         category: 'input',
         defaultProps: {
           type: 'email',
@@ -595,7 +596,7 @@ class FormBuilder {
       },
       password: {
         label: 'Password',
-        icon: '\u{1f512}',
+        icon: 'lock',
         category: 'input',
         defaultProps: {
           type: 'password',
@@ -609,7 +610,7 @@ class FormBuilder {
       },
       number: {
         label: 'Number',
-        icon: '\u{1f522}',
+        icon: 'hash',
         category: 'input',
         defaultProps: {
           type: 'number',
@@ -624,7 +625,7 @@ class FormBuilder {
       },
       tel: {
         label: 'Phone',
-        icon: '\u{1f4f1}',
+        icon: 'phone',
         category: 'input',
         defaultProps: {
           type: 'tel',
@@ -637,7 +638,7 @@ class FormBuilder {
       },
       url: {
         label: 'URL',
-        icon: '\u{1f517}',
+        icon: 'link',
         category: 'input',
         defaultProps: {
           type: 'url',
@@ -651,7 +652,7 @@ class FormBuilder {
       // Text areas
       textarea: {
         label: 'Textarea',
-        icon: '\u{1f4c4}',
+        icon: 'align-left',
         category: 'text',
         defaultProps: {
           type: 'textarea',
@@ -667,7 +668,7 @@ class FormBuilder {
       // Selection fields
       select: {
         label: 'Dropdown',
-        icon: '\u{1f4cb}',
+        icon: 'list',
         category: 'selection',
         defaultProps: {
           type: 'select',
@@ -684,7 +685,7 @@ class FormBuilder {
       },
       radio: {
         label: 'Radio Group',
-        icon: '\u{2b55}',
+        icon: 'circle-dot',
         category: 'selection',
         defaultProps: {
           type: 'radio',
@@ -700,7 +701,7 @@ class FormBuilder {
       },
       checkbox: {
         label: 'Checkbox',
-        icon: '\u{2611}\u{fe0f}',
+        icon: 'square-check',
         category: 'selection',
         defaultProps: {
           type: 'checkbox',
@@ -712,7 +713,7 @@ class FormBuilder {
       },
       switch: {
         label: 'Toggle Switch',
-        icon: '\u{1f39a}\u{fe0f}',
+        icon: 'toggle-right',
         category: 'selection',
         defaultProps: {
           type: 'switch',
@@ -726,7 +727,7 @@ class FormBuilder {
       // Date & Time
       date: {
         label: 'Date Picker',
-        icon: '\u{1f4c5}',
+        icon: 'calendar',
         category: 'datetime',
         defaultProps: {
           type: 'date',
@@ -739,7 +740,7 @@ class FormBuilder {
       },
       time: {
         label: 'Time Picker',
-        icon: '\u{23f0}',
+        icon: 'clock',
         category: 'datetime',
         defaultProps: {
           type: 'time',
@@ -750,7 +751,7 @@ class FormBuilder {
       },
       datetime: {
         label: 'Date & Time',
-        icon: '\u{1f4c6}',
+        icon: 'calendar-clock',
         category: 'datetime',
         defaultProps: {
           type: 'datetime-local',
@@ -763,7 +764,7 @@ class FormBuilder {
       // Special inputs
       color: {
         label: 'Color Picker',
-        icon: '\u{1f3a8}',
+        icon: 'palette',
         category: 'special',
         defaultProps: {
           type: 'color',
@@ -774,7 +775,7 @@ class FormBuilder {
       },
       range: {
         label: 'Range Slider',
-        icon: '\u{1f4ca}',
+        icon: 'sliders-horizontal',
         category: 'special',
         defaultProps: {
           type: 'range',
@@ -788,7 +789,7 @@ class FormBuilder {
       },
       file: {
         label: 'File Upload',
-        icon: '\u{1f4ce}',
+        icon: 'paperclip',
         category: 'special',
         defaultProps: {
           type: 'file',
@@ -804,7 +805,7 @@ class FormBuilder {
       // Layout elements
       heading: {
         label: 'Heading',
-        icon: '\u{1f4cc}',
+        icon: 'heading',
         category: 'layout',
         defaultProps: {
           type: 'heading',
@@ -815,7 +816,7 @@ class FormBuilder {
       },
       paragraph: {
         label: 'Paragraph',
-        icon: '\u{1f4dd}',
+        icon: 'pilcrow',
         category: 'layout',
         defaultProps: {
           type: 'paragraph',
@@ -825,7 +826,7 @@ class FormBuilder {
       },
       divider: {
         label: 'Divider',
-        icon: '\u{2796}',
+        icon: 'minus',
         category: 'layout',
         defaultProps: {
           type: 'divider',
@@ -834,7 +835,7 @@ class FormBuilder {
       },
       spacer: {
         label: 'Spacer',
-        icon: '\u{2b1c}',
+        icon: 'move-vertical',
         category: 'layout',
         defaultProps: {
           type: 'spacer',
@@ -938,7 +939,7 @@ class FormBuilder {
         fieldEl.draggable = true;
         fieldEl.dataset.fieldType = field.type;
         fieldEl.innerHTML = `
-          <span class="aiab-field-icon">${field.icon}</span>
+          <span class="aiab-field-icon">${iconMarkup(field.icon, { size: 18 })}</span>
           <span class="aiab-field-label">${field.label}</span>
         `;
         fieldList.appendChild(fieldEl);
@@ -1165,7 +1166,7 @@ class FormBuilder {
       templateEl.className = 'aiab-template-item';
       templateEl.dataset.templateId = template.id;
       templateEl.innerHTML = `
-        <span class="template-icon">\u{1f4cb}</span>
+        <span class="template-icon">${iconMarkup('layout-template', { size: 18 })}</span>
         <span class="template-name">${escapeHTML(template.name)}</span>
       `;
       templateList.appendChild(templateEl);
@@ -1566,12 +1567,12 @@ class FormBuilder {
     const duplicateBtn = document.createElement('button');
     duplicateBtn.className = 'aiab-field-action';
     duplicateBtn.title = 'Duplicate';
-    duplicateBtn.innerHTML = '\u{1f4cb}';
+    duplicateBtn.innerHTML = iconMarkup('copy', { size: 16 });
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'aiab-field-action delete';
     deleteBtn.title = 'Delete';
-    deleteBtn.innerHTML = '\u{1f5d1}\u{fe0f}';
+    deleteBtn.innerHTML = iconMarkup('trash-2', { size: 16 });
 
     actions.appendChild(duplicateBtn);
     actions.appendChild(deleteBtn);

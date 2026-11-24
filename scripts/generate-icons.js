@@ -20,7 +20,11 @@ export const OUTPUT = join(root, 'src/js/icon-set.generated.ts');
 const SCAN_DIRS = ['docs', 'examples', 'demos', 'src'];
 const SCAN_FILES = ['index.html', 'sitemap.html'];
 const SKIP_DIRS = new Set(['_archive', 'node_modules']);
-const ICON_ATTR = /data-lucide=["']([a-z0-9][a-z0-9-]*)["']/g;
+// data-lucide="name" in markup, and iconMarkup('name') / createIcon('name') / Icon.create('name') in code
+const ICON_USES = [
+  /data-lucide=["']([a-z0-9][a-z0-9-]*)["']/g,
+  /\b(?:iconMarkup|createIcon|createIconButton)\(\s*['"]([a-z0-9][a-z0-9-]*)['"]/g,
+];
 
 function walk(dir, exts) {
   const out = [];
@@ -42,9 +46,12 @@ export function collectUsedIcons() {
   ];
   const used = new Map();
   for (const file of files) {
-    for (const [, name] of readFileSync(file, 'utf8').matchAll(ICON_ATTR)) {
-      if (!used.has(name)) used.set(name, new Set());
-      used.get(name).add(relative(root, file));
+    const text = readFileSync(file, 'utf8');
+    for (const pattern of ICON_USES) {
+      for (const [, name] of text.matchAll(pattern)) {
+        if (!used.has(name)) used.set(name, new Set());
+        used.get(name).add(relative(root, file));
+      }
     }
   }
   return used;

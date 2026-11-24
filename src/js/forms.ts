@@ -1,3 +1,4 @@
+import { iconMarkup } from './icons-lightweight';
 /**
  * Forms Module - Amphibious 2.0
  * Form validation and enhancement functionality
@@ -483,7 +484,7 @@ export class Forms {
       const toggle = document.createElement('button');
       toggle.type = 'button';
       toggle.className = 'aiab-password-toggle';
-      toggle.innerHTML = '<span class="aiab-password-toggle__icon">👁</span>';
+      toggle.innerHTML = `<span class="aiab-password-toggle__icon">${iconMarkup('eye', { size: 18 })}</span>`;
       toggle.setAttribute('aria-label', 'Toggle password visibility');
 
       // Add toggle to wrapper
@@ -497,8 +498,8 @@ export class Forms {
         toggle.classList.toggle('aiab-is-visible');
         toggle.innerHTML =
           type === 'password'
-            ? '<span class="aiab-password-toggle__icon">👁</span>'
-            : '<span class="aiab-password-toggle__icon">👁‍🗨</span>';
+            ? `<span class="aiab-password-toggle__icon">${iconMarkup('eye', { size: 18 })}</span>`
+            : `<span class="aiab-password-toggle__icon">${iconMarkup('eye-off', { size: 18 })}</span>`;
       };
       this.addEventListener(toggle, 'click', toggleHandler);
     });

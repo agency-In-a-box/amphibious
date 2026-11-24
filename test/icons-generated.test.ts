@@ -14,10 +14,13 @@ describe('generated icon set', () => {
     expect(missing).toEqual([]);
   });
 
-  test('unknown icons are left untouched, never replaced by a placeholder glyph', () => {
+  test('unknown icons render nothing and never a placeholder glyph', () => {
     document.body.innerHTML = '<i data-lucide="definitely-not-an-icon"></i>';
     initializeIcons();
-    expect(document.body.innerHTML).toBe('<i data-lucide="definitely-not-an-icon"></i>');
+    const el = document.body.firstElementChild as HTMLElement;
+    expect(el.tagName).toBe('I');
+    expect(el.getAttribute('aria-hidden')).toBe('true');
+    expect(document.body.textContent).toBe('');
   });
 
   test('known icons become inline SVG', () => {
