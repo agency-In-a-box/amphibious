@@ -465,6 +465,7 @@ input[type="range"] {
    ========================================================================== */
 
 input[type="file"] {
+  max-width: 100%;
   overflow: hidden;
 
   &::file-selector-button {

@@ -31,7 +31,7 @@
     }
     .comparison {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 32px;
       margin: 32px 0;
     }
@@ -215,6 +215,7 @@
       <h2>Design Excellence Metrics</h2>
 
       <div class="demo-card">
+        <div class="aiab-table-wrapper">
         <table style="width: 100%;">
           <thead>
             <tr>
@@ -257,6 +258,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       <div class="demo-card" style="background: var(--apple-orange-50);">

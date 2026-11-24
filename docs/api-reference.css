@@ -28,7 +28,7 @@ body {
 /* Documentation Layout */
 .docs-layout {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 280px minmax(0, 1fr);
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -88,6 +88,7 @@ body {
 
 /* Main Content */
 .docs-content {
+  min-width: 0; /* let wide children (code, tables) scroll instead of stretching the grid */
   background: white;
   border-radius: 8px;
   padding: 2rem;
@@ -211,7 +212,7 @@ code {
 /* CSS Class Grid */
 .css-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1rem;
   margin: 1.5rem 0;
 }
@@ -293,9 +294,9 @@ code {
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .docs-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .docs-sidebar {
     position: static;

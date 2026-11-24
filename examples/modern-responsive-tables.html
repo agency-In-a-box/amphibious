@@ -93,7 +93,7 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
@@ -138,6 +138,7 @@
             <h2>Default Responsive Table</h2>
             <p>The foundation of our responsive table system. On mobile devices, the table transforms into a card-based layout with data labels automatically generated from the <code>data-th</code> attributes.</p>
             
+            <div class="aiab-table-wrapper">
             <table class="rwd-table" role="table" aria-label="Movie database example">
                 <thead>
                     <tr>
@@ -179,12 +180,14 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         
         <section class="aiab-demo-section">
             <h2>Table with Striped Rows & Hover Effects</h2>
             <p>Enhanced visual feedback with alternating row colors and smooth hover transitions.</p>
             
+            <div class="aiab-table-wrapper">
             <table class="rwd-table aiab-table-striped aiab-table-hover" role="table" aria-label="Technology companies data">
                 <thead>
                     <tr>
@@ -226,12 +229,14 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         
         <section class="aiab-demo-section">
             <h2>Light Theme Table</h2>
             <p>A clean, minimal light theme perfect for content-heavy applications and dashboards.</p>
             
+            <div class="aiab-table-wrapper">
             <table class="rwd-table table-light aiab-table-hover" role="table" aria-label="Project status dashboard">
                 <thead>
                     <tr>
@@ -266,12 +271,14 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         
         <section class="aiab-demo-section">
             <h2>Compact Table</h2>
             <p>Space-efficient design for data-dense applications and smaller screens.</p>
             
+            <div class="aiab-table-wrapper">
             <table class="rwd-table aiab-table-compact aiab-table-striped" role="table" aria-label="Cryptocurrency prices">
                 <thead>
                     <tr>
@@ -306,6 +313,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         
         <section class="aiab-demo-section">

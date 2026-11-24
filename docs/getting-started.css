@@ -87,6 +87,7 @@ body {
 
 /* Main Content */
 .docs-content {
+  min-width: 0; /* let wide children (code, tables) scroll instead of stretching the grid */
   background: white;
   border-radius: 8px;
   padding: 2rem;
@@ -232,9 +233,9 @@ code {
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
+@media (--bp-md-down) {
   .docs-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .docs-sidebar {
     position: static;

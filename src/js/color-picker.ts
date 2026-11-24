@@ -292,7 +292,7 @@ export class ColorPicker {
     this.wrapper = document.createElement('div');
     this.wrapper.className = 'aiab-color-picker-wrapper';
     if (this.options.inline) {
-      this.wrapper.classList.add('inline');
+      this.wrapper.classList.add('aiab-inline');
     }
 
     // Create trigger button (for non-inline mode)

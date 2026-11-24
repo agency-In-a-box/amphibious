@@ -141,6 +141,7 @@ src/utils/
 - `Navigation` takes `(element?, options?)`; `Navigation.create()` replaces an existing instance on that element.
 - `Sidebar` (`src/js/sidebar.ts`) and `Steps` (`src/js/steps.ts`) enhance `.aiab-sidebar` / `.aiab-steps` markup; the sidebar auto-initialises and attaches to `el._sidebar`. Demo pages must import components in a `type="module"` script, never rely on inline classic scripts seeing module globals.
 - `qa:site` also fails on leaked files (`.md`, backups, `-broken.html`, `_archive/`, internal notes) in the output.
+- **No horizontal scroll at 375px.** Grids use `minmax(min(Npx, 100%), 1fr)` (never a bare `minmax(Npx, 1fr)` over ~300px), a `1fr` column next to a fixed sidebar is `minmax(0, 1fr)` with `min-width: 0` on the content, flex rows that can run long use `flex-wrap: wrap`, and tables go inside `.aiab-table-wrapper` (scrolls inside itself). Measure pages at 375px before shipping.
 - Bare `<button>` is unstyled (zero-specificity reset); button looks are opt-in via `.aiab-btn`.
 
 ### Output Structure (library, `bun run build`)

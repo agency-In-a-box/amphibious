@@ -92,12 +92,14 @@ ul.aiab-stats li {
 /* Stats Grid for Cards */
 .aiab-stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   gap: 1.5rem;
   margin: 2rem 0;
 }
 
 .aiab-stat-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
   background: white;
   border-radius: 8px;
   padding: 1.5rem;
@@ -252,7 +254,7 @@ ul.aiab-slats li {
 /* Card Style Slats */
 .aiab-slats--cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   gap: 1.5rem;
 }
 

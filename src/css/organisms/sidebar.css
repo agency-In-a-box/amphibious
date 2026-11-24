@@ -494,6 +494,20 @@
     width: min(var(--sidebar-width), 80vw);
   }
 
+  /* A static sidebar is a flex column on desktop; on small screens it becomes an
+     off-canvas overlay (opened by Sidebar) so it no longer pushes the page wider. */
+  .aiab-sidebar--static {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    height: 100%;
+    transform: translateX(-100%);
+  }
+
+  .aiab-sidebar--static.aiab-sidebar--open {
+    transform: translateX(0);
+  }
+
   .aiab-sidebar-layout--with-sidebar .aiab-sidebar-layout__content {
     margin-inline-start: 0;
   }
