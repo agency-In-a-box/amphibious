@@ -19,6 +19,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { extname, join, relative, resolve, sep } from 'node:path';
 import { Window } from 'happy-dom';
 import { iconSVGs } from '../src/js/icon-set.generated';
+import { startStaticServer } from './static-server';
 
 type Issue = { type: string; page: string; ref?: string; url?: string; detail?: string };
 type AllowEntry = { type: string; page?: string; ref?: string; url?: string; reason: string };
@@ -37,55 +38,9 @@ const allowlist: AllowEntry[] = JSON.parse(
   readFileSync(join(root, 'scripts/qa-site.allowlist.json'), 'utf8'),
 ).allow;
 
-const MIME: Record<string, string> = {
-  '.html': 'text/html',
-  '.css': 'text/css',
-  '.js': 'application/javascript',
-  '.mjs': 'application/javascript',
-  '.json': 'application/json',
-  '.svg': 'image/svg+xml',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.gif': 'image/gif',
-  '.webp': 'image/webp',
-  '.woff2': 'font/woff2',
-  '.woff': 'font/woff',
-  '.ico': 'image/x-icon',
-};
-
-// --- local static server that behaves like Netlify (strips .html, serves 404.html) -----------
-
-function fileFor(pathname: string): string | null {
-  const clean = decodeURIComponent(pathname).replace(/\/+$/, '');
-  const candidates = [clean, `${clean}.html`, `${clean}/index.html`];
-  for (const candidate of candidates) {
-    const full = resolve(outDir, `.${candidate}`);
-    if (!full.startsWith(outDir)) continue;
-    if (existsSync(full) && statSync(full).isFile()) return full;
-  }
-  return null;
-}
-
-function startServer() {
-  return Bun.serve({
-    port: 0,
-    fetch(request) {
-      const file = fileFor(new URL(request.url).pathname);
-      const target = file ?? join(outDir, '404.html');
-      const type = MIME[extname(target)] ?? 'application/octet-stream';
-      if (!existsSync(target)) return new Response('Not found', { status: 404 });
-      return new Response(Bun.file(target), {
-        status: file ? 200 : 404,
-        headers: { 'content-type': type },
-      });
-    },
-  });
-}
-
 // --- fetching -------------------------------------------------------------------------------
 
-const server = option('--base') ? null : startServer();
+const server = option('--base') ? null : startStaticServer(outDir);
 const BASE = (option('--base') ?? `http://localhost:${server?.port}`).replace(/\/$/, '');
 const HOST = new URL(BASE).host;
 const cache = new Map<string, Promise<Fetched>>();
