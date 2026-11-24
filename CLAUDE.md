@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Amphibious 2.0** - A modern CSS framework and component library built with Vite 6, TypeScript, and Atomic Design principles. Evolution of the original A.mphibio.us responsive framework.
+**Amphibious 2.0** - A modern CSS framework and component library built with Vite 7, TypeScript, and Atomic Design principles. Evolution of the original A.mphibio.us responsive framework.
 
 ### Core Principles
 - **Semantic HTML purist** - Clean, standards-compliant markup
@@ -18,7 +18,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Core Development
 bun run dev              # Dev server on port 2960
 bun run build            # Production build (library mode)
-bun run build:site       # Build documentation site
+bun run build:site       # Build documentation site (Vite multi-page build -> dist-site/)
+bun run qa:site          # Crawl dist-site; fails on broken CSS/JS/links/anchors/icons
+bun run generate:icons   # Regenerate src/js/icon-set.generated.ts (also runs on every build)
 bun run preview          # Preview production build
 
 # Code Quality
@@ -76,7 +78,7 @@ Usage: `@media (--bp-sm-down) { ... }` — never use hardcoded pixel values.
 - **Grid**: 16-column flexbox system with `.aiab-col-N` classes (defined in `grid-modern.css`)
 - **Responsive**: Mobile-first with @custom-media breakpoint tokens
 - **Dark Mode**: CSS custom properties with localStorage persistence
-- **Icons**: Lucide icons via CDN with `data-lucide` attributes
+- **Icons**: inline SVGs generated at build time from `lucide-static` (no CDN). Pages use `data-lucide="name"` and load `src/js/icons-lightweight.ts`; unknown names fail the build (see Icons below)
 - **Navigation**: Scroll-aware header with `.is-scrolled` state (rAF-throttled)
 
 ### JavaScript/TypeScript Modules
@@ -121,7 +123,22 @@ src/utils/
 - `vite.config.app.js` - Application development
 - `vite.config.docs.js` - Documentation site
 
-### Output Structure
+### Documentation site (`bun run build:site`)
+- `vite.config.docs.js` is a real Vite multi-page build. Inputs are `index.html`, `sitemap.html`, `404.html` and every HTML file under `docs/`, `examples/` and `demos/`, except `_archive/` folders. Output goes to `dist-site/` (Netlify `publish`) and mirrors source paths, so URLs don't change.
+- Pages reference source directly (`/src/css/main.css`, `/src/index.ts`, `/src/js/*.ts` as `type="module"`); Vite bundles it. There is no copy-and-regex step. Non-module `<script src>` tags are not bundled and ship broken, so always use `type="module"`.
+- Page-level CSS goes through PostCSS. `@csstools/postcss-global-data` loads `tokens/breakpoints.css` so `@media (--bp-*)` compiles in standalone stylesheets; the library build and site build share `postcss.config.js`.
+- `scripts/postcss-guard-dark-mode.js` prefixes every selector inside `@media (prefers-color-scheme: dark)` with `:root:not([data-theme="light"])`. A test in `test/theme-cascade.test.ts` fails on any unguarded rule in the built CSS.
+- **Navigation**: `includes/navigation.html` is the only copy. Pages carry `<!-- Navigation Include -->`; `scripts/vite-plugin-nav.js` injects it at build/dev time. Never paste the nav into a page. Nav anchors are short (`/docs/foundation.html#grid`); section IDs must match.
+- **Skip link**: every page needs an `id="main-content"` target (the `<main>`, or the first `<h1>` when a page has no `<main>`).
+- **Legacy pages**: the 2013 pages (`pea.rs`, classic/green themes, `docs/tests/fluid`) depend on `a.mphibio.us` assets that no longer exist, so they live in `_archive/` folders and are not built.
+
+### Icons
+- `scripts/generate-icons.js` writes `src/js/icon-set.generated.ts` from `src/icons/core-icons.json`, `src/icons/demo-icons.json` (names built in JS), every `data-lucide` name found in deployable HTML and `src/**/*.ts`, and `lucide-static`. Brand marks Lucide dropped live in `src/icons/brands/`. An unknown name throws.
+- Commit the regenerated file; `test/icons-generated.test.ts` fails if it is stale.
+- `src/js/icons.ts` still exports `Icon`/`EcommerceIcons`, but its `createIcons` is a no-op mock; use `icons-lightweight.ts`.
+- `data-lucide` is an icon name, not a CSS class: namespace scripts must not prefix it.
+
+### Output Structure (library, `bun run build`)
 ```
 dist/
 ├── amphibious.es.js    # ES module
@@ -137,7 +154,8 @@ GitHub Actions workflow runs on push/PR:
 2. **Type Check** - TypeScript validation
 3. **Tests** - Bun test suite
 4. **Build** - Production build with size check (2MB limit)
-5. **Security** - Vulnerability scanning
+5. **Site QA** - `build:site` then `qa:site` crawls the built site (allow-list: `scripts/qa-site.allowlist.json`)
+6. **Security** - Vulnerability scanning
 
 ### Common CI Fixes
 - Replace `-webkit-min-device-pixel-ratio` with `min-resolution: 2dppx`
