@@ -139,6 +139,8 @@ src/utils/
 - `data-lucide` is an icon name, not a CSS class: namespace scripts must not prefix it. Hydration maps `icon--xs|filled|warning` modifier classes to the `aiab-icon--*` classes the CSS defines; use `iconMarkup(name)` for innerHTML templates, never emoji.
 - `src/amp.ts` defines `window.amp` (createModal, createTooltip, createNavigation, refreshIcons, ...), used by the docs and examples. Every deployable page imports `/src/index.ts` + `/src/css/pages.css` so it and the nav behaviour are present.
 - `Navigation` takes `(element?, options?)`; `Navigation.create()` replaces an existing instance on that element.
+- `Sidebar` (`src/js/sidebar.ts`) and `Steps` (`src/js/steps.ts`) enhance `.aiab-sidebar` / `.aiab-steps` markup; the sidebar auto-initialises and attaches to `el._sidebar`. Demo pages must import components in a `type="module"` script, never rely on inline classic scripts seeing module globals.
+- `qa:site` also fails on leaked files (`.md`, backups, `-broken.html`, `_archive/`, internal notes) in the output.
 - Bare `<button>` is unstyled (zero-specificity reset); button looks are opt-in via `.aiab-btn`.
 
 ### Output Structure (library, `bun run build`)

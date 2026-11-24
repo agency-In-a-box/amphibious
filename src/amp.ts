@@ -17,6 +17,27 @@ import { type Modal, ModalManager, type ModalOptions } from './js/modal';
 import { Navigation, type NavigationOptions } from './js/navigation';
 import { EcommerceTooltips, Tooltip, type TooltipOptions } from './js/tooltip';
 
+export interface ButtonOptions {
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'light'
+    | 'dark'
+    | 'ghost'
+    | 'link'
+    | 'outline-primary'
+    | 'outline-secondary'
+    | 'outline-success'
+    | 'outline-danger';
+  size?: 'xs' | 'sm' | 'lg';
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: (event: MouseEvent) => void;
+}
+
 let anonymousModalCount = 0;
 
 export const amp = {
@@ -58,6 +79,22 @@ export const amp = {
     element: HTMLElement,
     data: Parameters<typeof EcommerceTooltips.shippingInfo>[1],
   ) => EcommerceTooltips.shippingInfo(element, data),
+
+  /** Shopping-cart icon with an item-count badge: `amp.createCart(3)`. */
+  createCart: (count = 0, options?: IconOptions) => EcommerceIcons.cart(count, options),
+
+  /** Button element: `amp.createButton('Save', { variant: 'primary', size: 'lg', onClick })`. */
+  createButton: (text: string, options: ButtonOptions = {}) => {
+    const { variant = 'primary', size, onClick, type = 'button' } = options;
+    const button = document.createElement('button');
+    button.type = type;
+    button.className = ['aiab-btn', `aiab-btn-${variant}`, size ? `aiab-btn-${size}` : '']
+      .filter(Boolean)
+      .join(' ');
+    button.textContent = text;
+    if (onClick) button.addEventListener('click', onClick);
+    return button;
+  },
 
   createRating: (rating: number, maxRating = 5, options?: IconOptions) =>
     EcommerceIcons.rating(rating, maxRating, options),

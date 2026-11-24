@@ -57,7 +57,11 @@ export type { ModalOptions } from './js/modal';
 export { Modal, ModalManager } from './js/modal';
 export type { NavigationOptions } from './js/navigation';
 export { Navigation } from './js/navigation';
+export type { SidebarOptions } from './js/sidebar';
+export { initSidebars, Sidebar } from './js/sidebar';
 export { SmoothScroll } from './js/smooth-scroll';
+export type { StepsOptions } from './js/steps';
+export { Steps } from './js/steps';
 export { Tabs } from './js/tabs';
 export type { TooltipOptions } from './js/tooltip';
 export { EcommerceTooltips, Tooltip } from './js/tooltip';
@@ -77,7 +81,9 @@ export {
   loadNavigation,
   loadRangeSlider,
   loadSearchBar,
+  loadSidebar,
   loadSmoothScroll,
+  loadSteps,
   loadTabs,
   loadTimeline,
   loadToast,

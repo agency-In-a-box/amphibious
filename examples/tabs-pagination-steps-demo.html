@@ -643,7 +643,9 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { Steps } from '../src/js/steps.ts';
+
         document.addEventListener('DOMContentLoaded', function() {
             // Multi-step form demo
             let currentStep = 1;
@@ -720,8 +722,5 @@
             showStep(2); // Start at step 2 for demo
         });
     </script>
-  <script type="module">
-    import amp from '../src/index.ts';
-  </script>
 </body>
 </html>

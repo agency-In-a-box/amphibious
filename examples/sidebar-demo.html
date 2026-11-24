@@ -284,13 +284,16 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { Sidebar } from '../src/js/sidebar.ts';
+
         let sidebar;
         let isLightTheme = false;
 
         document.addEventListener('DOMContentLoaded', function() {
             // Get sidebar instance
-            sidebar = document.getElementById('main-sidebar')._sidebar;
+            const sidebarEl = document.getElementById('main-sidebar');
+            sidebar = sidebarEl._sidebar ?? new Sidebar(sidebarEl);
             
             // Update state display
             updateStateDisplay();
@@ -368,11 +371,10 @@
                 }
             });
         });
+
+        // Inline onclick handlers in the markup call these
+        Object.assign(window, { toggleSidebar, collapseSidebar, expandSidebar, switchTheme, setActiveLink });
     </script>
-  <script type="module">
-    import amp from '/src/index.ts';
-    // Amphibious auto-initializes when the module loads
-  </script>
 
 </body>
 </html>

@@ -379,24 +379,28 @@ darkMode.getEffectiveThemeValue(); // Get actual theme in use</code></pre>
   </div>
 
   <!-- Scripts -->
-  <script type="module" src="/src/js/dark-mode-toggle.ts"></script>
-  <script>
-    // Initialize dark mode toggle
-    const darkMode = new DarkModeToggle({
-      showToggle: true,
-      onChange: (state) => {
-        console.log('Theme changed:', state);
-        updateThemeCards();
-      }
-    });
+  <script type="module">
+    import { DarkModeToggle } from '../src/js/dark-mode-toggle.ts';
+
+    // The toggle reports its initial theme during construction, before `darkMode`
+    // is assigned, so declare it first and let the card update read from the event.
+    let darkMode;
 
     // Update theme cards
-    function updateThemeCards() {
-      const currentTheme = darkMode.getTheme();
+    function updateThemeCards(currentTheme = darkMode?.getTheme()) {
       document.querySelectorAll('.theme-card').forEach(card => {
         card.classList.toggle('active', card.dataset.themeOption === currentTheme);
       });
     }
+
+    // Initialize dark mode toggle
+    darkMode = new DarkModeToggle({
+      showToggle: true,
+      onChange: (state) => {
+        console.log('Theme changed:', state);
+        updateThemeCards(state.theme);
+      }
+    });
 
     // Theme card click handlers
     document.querySelectorAll('.theme-card').forEach(card => {
