@@ -342,11 +342,13 @@
     }
     .secondary-actions {
       display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
     }
     .btn-secondary {
       color: var(--color-text);
       flex: 1;
+      min-width: 0;
       padding: 0.75rem;
       background: white;
       border: 2px solid var(--color-gray-300);
