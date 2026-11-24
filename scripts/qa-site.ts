@@ -15,8 +15,8 @@
  * reference in the output. Intentional exceptions live in
  * scripts/qa-site.allowlist.json.
  */
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { extname, join, relative, resolve, sep } from 'node:path';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { join, relative, resolve, sep } from 'node:path';
 import { Window } from 'happy-dom';
 import { iconSVGs } from '../src/js/icon-set.generated';
 import { startStaticServer } from './static-server';
