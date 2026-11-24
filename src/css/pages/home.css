@@ -161,12 +161,14 @@
   transform: translateY(-2px);
 }
 
-.aiab-btn-primary {
+/* Hero CTA only. These were unscoped and restyled every .aiab-btn-primary /
+   .aiab-btn-secondary on the site (white primary, invisible secondary). */
+.aiab-cta-buttons .aiab-btn-primary {
   background: white;
   color: var(--color-primary);
 }
 
-.aiab-btn-secondary {
+.aiab-cta-buttons .aiab-btn-secondary {
   background: transparent;
   border: 2px solid white;
   color: white;

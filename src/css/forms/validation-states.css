@@ -102,23 +102,12 @@ select:disabled,
   opacity: 0.6;
 }
 
-/* Read-only state */
-:is(
-    input:not(
-        [type="checkbox"],
-        [type="radio"],
-        [type="range"],
-        [type="color"],
-        [type="file"],
-        [type="button"],
-        [type="submit"],
-        [type="reset"],
-        [type="image"],
-        [type="hidden"]
-      ),
-    textarea
-  ):read-only,
-.aiab-form-control:read-only {
+/* Read-only state
+   Uses [readonly], not :read-only. :read-only also matches every checkbox,
+   radio, range and disabled input, which turned all checkboxes dashed. */
+input[readonly],
+textarea[readonly],
+.aiab-form-control[readonly] {
   background-color: var(--color-gray-50);
   border-style: dashed;
   cursor: default;
@@ -558,21 +547,8 @@ select:focus-visible {
     color: #6b7280;
   }
 
-  :is(
-      input:not(
-          [type="checkbox"],
-          [type="radio"],
-          [type="range"],
-          [type="color"],
-          [type="file"],
-          [type="button"],
-          [type="submit"],
-          [type="reset"],
-          [type="image"],
-          [type="hidden"]
-        ),
-      textarea
-    ):read-only {
+  input[readonly],
+  textarea[readonly] {
     background-color: #111827;
   }
 }
