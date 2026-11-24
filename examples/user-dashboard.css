@@ -403,7 +403,7 @@
         position: static;
       }
       .aiab-stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
       .header-content {
         flex-direction: column;
@@ -411,6 +411,6 @@
         align-items: stretch;
       }
       .form-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
     }

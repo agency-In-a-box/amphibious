@@ -228,7 +228,14 @@ input[type="radio"]:focus {
    ========================================================================== */
 
 .aiab-form-group {
+  min-width: 0;
   margin-bottom: var(--form-group-margin-bottom);
+
+  /* A control's default width (the `size` attribute) varies with the font, so
+     cap it at the container instead of letting it stretch the page */
+  & :is(input, select, textarea):not([type="checkbox"], [type="radio"]) {
+    max-width: 100%;
+  }
 }
 
 .aiab-form-row {

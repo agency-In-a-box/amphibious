@@ -348,7 +348,7 @@ input:invalid {
 /* Mobile Responsive */
 @media (--bp-md-down) {
   .aiab-checkout-form-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .aiab-checkout-progress-steps {
     flex-direction: column;

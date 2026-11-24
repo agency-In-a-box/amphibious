@@ -888,7 +888,7 @@ body {
 
 @media (--bp-lg-down) {
   .saas-showcase {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--spacing-8);
   }
 
@@ -951,7 +951,7 @@ body {
   }
 
   .saas-footer__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--spacing-8);
   }
 
