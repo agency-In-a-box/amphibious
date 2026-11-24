@@ -72,11 +72,11 @@
       <h3>Horizontal Nav with Dropdowns</h3>
       <div class="nav-demo-container">
         <div class="nav-demo-header">Navigation with Dropdown Menus</div>
-        <nav aria-label="Navigation with dropdowns" style="background: #2c3e50; padding: 0;">
+        <nav id="dropdownDemoNav" aria-label="Navigation with dropdowns" style="background: #2c3e50; padding: 0;">
           <ul class="aiab-horizontal" style="margin: 0;">
             <li><a href="#" style="color: white;">Home</a></li>
             <li>
-              <a href="#" style="color: white;">Products ▼</a>
+              <a href="#" style="color: white;">Products</a>
               <ul>
                 <li><a href="#">Electronics</a></li>
                 <li><a href="#">Clothing</a></li>
@@ -85,12 +85,12 @@
               </ul>
             </li>
             <li>
-              <a href="#" style="color: white;">Services ▼</a>
+              <a href="#" style="color: white;">Services</a>
               <ul>
                 <li><a href="#">Consulting</a></li>
                 <li><a href="#">Support</a></li>
                 <li>
-                  <a href="#">Training ▶</a>
+                  <a href="#">Training</a>
                   <ul>
                     <li><a href="#">Online Courses</a></li>
                     <li><a href="#">Workshops</a></li>
@@ -536,6 +536,9 @@ nav.destroy();    // removes every listener</code></pre>
   <!-- Navigation API demo -->
   <script type="module">
     import { amp } from '/src/index.ts';
+
+    // Tap-to-expand and flyout flipping for the dropdown demo
+    amp.createNavigation('#dropdownDemoNav', { highlightCurrent: false, sticky: false });
 
     const status = document.getElementById('apiNavStatus');
     const make = (currentPath) =>

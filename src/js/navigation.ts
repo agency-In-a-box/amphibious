@@ -147,6 +147,7 @@ export class Navigation {
     this.initMobileDropdowns();
     this.handleResize();
     this.setupScrollState();
+    this.setupFlyoutFlip();
   }
 
   /**
@@ -261,7 +262,7 @@ export class Navigation {
         link.setAttribute('aria-expanded', 'false');
 
         this.addEventListener(link, 'click', (e) => {
-          if (!this.isMobile()) return;
+          if (!this.isMobile() && !this.isTouch()) return;
           e.preventDefault();
           const expanded = li.classList.toggle('aiab-is-expanded');
           link.setAttribute('aria-expanded', String(expanded));
@@ -276,6 +277,11 @@ export class Navigation {
 
   private isMobile(): boolean {
     return window.innerWidth <= this.mobileBreakpoint;
+  }
+
+  /** Touch-first devices have no hover, so submenus open on tap at every width. */
+  private isTouch(): boolean {
+    return typeof window.matchMedia === 'function' && window.matchMedia('(hover: none)').matches;
   }
 
   /** The root itself (if it matches) plus matching descendants. */
@@ -435,6 +441,31 @@ export class Navigation {
         if (!this.isMobile() && this.menuOpen) this.closeMenu();
       }, 250);
     });
+  }
+
+  /**
+   * Flyouts (third level and deeper) open to the right. When one would run past
+   * the viewport edge, add `.aiab-flip` so it opens to the left and flag its
+   * parent so the caret points the same way.
+   */
+  private setupFlyoutFlip(): void {
+    for (const list of this.within('.aiab-horizontal')) {
+      list.querySelectorAll<HTMLElement>('ul ul').forEach((flyout) => {
+        const parent = flyout.parentElement;
+        if (!parent) return;
+        const update = () => {
+          flyout.classList.remove('aiab-flip');
+          parent.classList.remove('aiab-flip-parent');
+          if (this.isMobile()) return;
+          if (flyout.getBoundingClientRect().right > window.innerWidth) {
+            flyout.classList.add('aiab-flip');
+            parent.classList.add('aiab-flip-parent');
+          }
+        };
+        this.addEventListener(parent, 'mouseenter', update);
+        this.addEventListener(parent, 'focusin', update);
+      });
+    }
   }
 
   /** Toggle `.is-scrolled` once the page scrolls past the header/hero (rAF-throttled). */

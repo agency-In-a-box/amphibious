@@ -165,7 +165,7 @@
       <div class="aiab-demo-section">
         <div class="demo-title">Horizontal Navigation with Dropdown Menus (Hover to see dropdowns)</div>
         <div class="demo-nav-container">
-          <nav>
+          <nav id="dropdown-demo-nav" aria-label="Horizontal menu with dropdowns">
             <ul class="aiab-horizontal">
               <li><a href="#home">Home</a></li>
               <li>
@@ -355,6 +355,8 @@ nav.destroy();   // removes every listener</code></pre>
 
       <script type="module">
         import { amp } from '/src/index.ts';
+        // Tap-to-expand and flyout flipping for the dropdown demo above
+        amp.createNavigation('#dropdown-demo-nav', { highlightCurrent: false, sticky: false });
         const status = document.getElementById('api-demo-status');
         amp.createNavigation('#api-demo-nav', {
           toggle: '#api-demo-toggle',

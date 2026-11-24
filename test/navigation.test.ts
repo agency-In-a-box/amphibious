@@ -311,3 +311,74 @@ describe('Navigation API: element + options', () => {
     nav.destroy();
   });
 });
+
+describe('Navigation: touch and flyouts', () => {
+  const markup = `
+    <nav id="n">
+      <ul class="aiab-horizontal">
+        <li><a href="/a">A</a></li>
+        <li><a href="/svc">Services</a>
+          <ul>
+            <li><a href="/s1">One</a></li>
+            <li><a href="/train">Training</a>
+              <ul><li><a href="/t1">Online</a></li></ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>`;
+  const realMatchMedia = window.matchMedia;
+
+  beforeEach(() => {
+    document.body.innerHTML = markup;
+    Object.defineProperty(window, 'innerWidth', { value: 1280, writable: true });
+  });
+  afterEach(() => {
+    document.body.innerHTML = '';
+    window.matchMedia = realMatchMedia;
+  });
+
+  it('opens submenus on tap at desktop width when the device has no hover', () => {
+    window.matchMedia = ((query: string) => ({
+      matches: query === '(hover: none)',
+      media: query,
+    })) as typeof window.matchMedia;
+    const nav = Navigation.create('#n');
+    const li = document.querySelectorAll('#n .aiab-horizontal > li')[1];
+    const link = li.querySelector(':scope > a') as HTMLElement;
+    link.click();
+    expect(li.classList.contains('aiab-is-expanded')).toBe(true);
+    expect(link.getAttribute('aria-expanded')).toBe('true');
+    nav.destroy();
+  });
+
+  it('leaves the link alone on desktop with a hover-capable pointer', () => {
+    window.matchMedia = ((query: string) => ({
+      matches: false,
+      media: query,
+    })) as typeof window.matchMedia;
+    const nav = Navigation.create('#n');
+    const li = document.querySelectorAll('#n .aiab-horizontal > li')[1];
+    (li.querySelector(':scope > a') as HTMLElement).click();
+    expect(li.classList.contains('aiab-is-expanded')).toBe(false);
+    nav.destroy();
+  });
+
+  it('flips a flyout that would overflow the viewport, and unflips it when there is room', () => {
+    const nav = Navigation.create('#n');
+    const parent = document.querySelector('#n li ul li:has(> ul)') as HTMLElement;
+    const flyout = parent.querySelector(':scope > ul') as HTMLElement;
+    let right = 2000;
+    flyout.getBoundingClientRect = () => ({ right }) as DOMRect;
+
+    parent.dispatchEvent(new Event('mouseenter'));
+    expect(flyout.classList.contains('aiab-flip')).toBe(true);
+    expect(parent.classList.contains('aiab-flip-parent')).toBe(true);
+
+    right = 600;
+    parent.dispatchEvent(new Event('mouseenter'));
+    expect(flyout.classList.contains('aiab-flip')).toBe(false);
+    expect(parent.classList.contains('aiab-flip-parent')).toBe(false);
+    nav.destroy();
+  });
+});
