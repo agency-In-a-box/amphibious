@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <title>Pears Patterns — Amphibious 2.0</title>
   <meta name="description" content="Pears design patterns for common UI elements and reusable layout compositions.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
   <style>
     body {
@@ -105,94 +110,10 @@
 
 </head>
 <body>
-  <!-- Site Navigation -->
-    <!-- Navigation Include -->
-  <!-- Site Navigation Include - Amphibious 2.0 -->
-<!-- Include this file in all pages to maintain consistent navigation -->
-<a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-<nav class="aiab-site-nav" aria-label="Main navigation">
-  <div class="aiab-container">
-    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-      <span class="aiab-sr-only">Toggle navigation</span>
-    </button>
-
-    <ul id="main-nav" class="aiab-horizontal">
-      <li>
-        <a href="/" class="aiab-site-logo">Amphibious</a>
-        <ul>
-          <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
-          <li><a href="/#how_its_made">What is it made of?</a></li>
-          <li><a href="/#gallery">Amphibious 2.0 Showcase</a></li>
-          <li><a href="/#evolution">The Evolution of Amphibious</a></li>
-          <li><a href="/#colophon">The Amphibious Colophon</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#ordering">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#media">Media Queries</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#basic">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#prepend">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#picker">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#modals">Modals</a></li>
-          <li><a href="/docs/features.html#tooltips">Tooltips</a></li>
-          <li><a href="/docs/features.html#accordion">Accordion</a></li>
-          <li><a href="/docs/features.html#carousel">Carousel</a></li>
-          <li><a href="/docs/features.html#cards">Cards</a></li>
-          <li><a href="/docs/features.html#alerts">Alerts</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/examples/">Examples</a>
-        <ul>
-          <li><a href="/examples/">Component Showcase</a></li>
-          <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
-          <li><a href="/examples/shopping-cart-modern.html">Shopping Cart</a></li>
-          <li><a href="/examples/checkout-flow.html">Checkout Flow</a></li>
-          <li><a href="/examples/pears-patterns.html">Pea.rs Patterns</a></li>
-          <li><a href="/examples/navigation-showcase.html">Navigation Components</a></li>
-          <li><a href="/examples/atomic-design-demo.html">Atomic Design Demo</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <!-- Navigation Include -->
 <header class="aiab-hero">
     <div class="aiab-container">
-      <h1>🍐 Pea.rs Patterns</h1>
+      <h1>Pea.rs Patterns</h1>
       <p>Common UI patterns with semantic HTML markup for consistent, accessible interfaces</p>
     </div>
   </header>
@@ -276,7 +197,7 @@
         <h3 class="example-title">Statistics Grid Cards</h3>
         <div class="aiab-stats-grid" role="list" aria-label="Dashboard statistics">
           <div class="aiab-stat-card" role="listitem">
-            <span class="aiab-stat-card__icon" aria-hidden="true">📈</span>
+            <span class="aiab-stat-card__icon" aria-hidden="true"><i data-lucide="trending-up"></i></span>
             <span class="aiab-stat-card__number">$124.5K</span>
             <span class="aiab-stat-card__label">Total Revenue</span>
             <div class="aiab-stat-card__change positive">
@@ -285,7 +206,7 @@
             </div>
           </div>
           <div class="aiab-stat-card" role="listitem">
-            <span class="aiab-stat-card__icon" aria-hidden="true">👥</span>
+            <span class="aiab-stat-card__icon" aria-hidden="true"><i data-lucide="users"></i></span>
             <span class="aiab-stat-card__number">8,492</span>
             <span class="aiab-stat-card__label">Active Users</span>
             <div class="aiab-stat-card__change positive">
@@ -294,7 +215,7 @@
             </div>
           </div>
           <div class="aiab-stat-card" role="listitem">
-            <span class="aiab-stat-card__icon" aria-hidden="true">🛒</span>
+            <span class="aiab-stat-card__icon" aria-hidden="true"><i data-lucide="shopping-cart"></i></span>
             <span class="aiab-stat-card__number">2,847</span>
             <span class="aiab-stat-card__label">Total Orders</span>
             <div class="aiab-stat-card__change negative">
@@ -303,7 +224,7 @@
             </div>
           </div>
           <div class="aiab-stat-card" role="listitem">
-            <span class="aiab-stat-card__icon" aria-hidden="true">⭐</span>
+            <span class="aiab-stat-card__icon" aria-hidden="true"><i data-lucide="star"></i></span>
             <span class="aiab-stat-card__number">4.8</span>
             <span class="aiab-stat-card__label">Avg Rating</span>
             <div class="aiab-stat-card__change positive">
@@ -646,7 +567,7 @@
             </section>
 
             <section class="aiab-aside-callout">
-              <h4>🚚 Free Shipping!</h4>
+              <h4>Free Shipping!</h4>
               <p>Orders over $50 ship free. Express delivery available.</p>
             </section>
           </aside>

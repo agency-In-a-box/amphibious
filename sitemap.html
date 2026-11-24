@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <title>Sitemap — Amphibious 2.0</title>
   <meta name="description" content="Complete sitemap of Amphibious 2.0 documentation pages, component examples, and demo files.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
   <style>
     body {
       background: #f8f9fa;
@@ -200,56 +207,7 @@
   </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <ul class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
   <header class="sitemap-header" id="main-content">
     <div class="sitemap-container">
@@ -350,7 +308,7 @@
           <li><a href="/docs/components/alerts.html">Alerts</a></li>
           <li><a href="/docs/components/tabs.html">Tabs</a></li>
           <li><a href="/docs/components/pagination.html">Pagination</a></li>
-          <li><a href="/docs/components/icons.html">Icons</a></li>
+          <li><a href="/docs/icons">Icons</a></li>
         </ul>
       </section>
 
@@ -405,7 +363,7 @@
           <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
           <li><a href="/examples/e-commerce-product.html">E-commerce Product</a></li>
           <li><a href="/examples/e-commerce-cart.html">E-commerce Cart</a></li>
-          <li><a href="/examples/shopping-cart-modern.html">Shopping Cart (Modern)</a></li>
+          <li><a href="/examples/e-commerce-cart.html">Shopping Cart (Modern)</a></li>
           <li><a href="/examples/checkout-flow.html">Checkout Flow</a></li>
           <li><a href="/examples/dashboard-template.html">Dashboard Template</a></li>
           <li><a href="/examples/user-dashboard.html">User Dashboard</a></li>
@@ -432,57 +390,11 @@
         <ul class="sitemap-list">
           <li><a href="/examples/themes/index.html">Themes Index</a></li>
           <li>
-            Classic Theme
-            <ul class="sitemap-sublist">
-              <li><a href="/examples/themes/classic/home.html">Home</a></li>
-              <li><a href="/examples/themes/classic/store.html">Store</a></li>
-              <li><a href="/examples/themes/classic/product.html">Product</a></li>
-              <li><a href="/examples/themes/classic/cart.html">Cart</a></li>
-              <li><a href="/examples/themes/classic/interior.html">Interior</a></li>
-              <li><a href="/examples/themes/classic/interior_two.html">Interior Two</a></li>
-              <li><a href="/examples/themes/classic/interior_three.html">Interior Three</a></li>
-              <li><a href="/examples/themes/classic/contact.html">Contact</a></li>
-            </ul>
-          </li>
-          <li>
-            Green Theme
-            <ul class="sitemap-sublist">
-              <li><a href="/examples/themes/green/home.html">Home</a></li>
-              <li><a href="/examples/themes/green/store.html">Store</a></li>
-              <li><a href="/examples/themes/green/product.html">Product</a></li>
-              <li><a href="/examples/themes/green/cart.html">Cart</a></li>
-              <li><a href="/examples/themes/green/interior.html">Interior</a></li>
-              <li><a href="/examples/themes/green/interior_two.html">Interior Two</a></li>
-              <li><a href="/examples/themes/green/contact.html">Contact</a></li>
-            </ul>
-          </li>
-          <li>
             Modern SaaS Theme
             <ul class="sitemap-sublist">
               <li><a href="/examples/themes/modern-saas/index.html">Home</a></li>
             </ul>
           </li>
-        </ul>
-      </section>
-
-      <!-- Pea.rs Patterns -->
-      <section class="sitemap-section">
-        <h2>
-          <svg class="aiab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-          </svg>
-          Pea.rs Patterns
-        </h2>
-        <ul class="sitemap-list">
-          <li><a href="/examples/pea.rs/float_label.html">Float Label</a></li>
-          <li><a href="/examples/pea.rs/search.html">Search</a></li>
-          <li><a href="/examples/pea.rs/sitemap.html">Sitemap Pattern</a></li>
-          <li><a href="/examples/pea.rs/rwd_tables.html">RWD Tables</a></li>
-          <li><a href="/examples/pea.rs/tablesorter_table.html">Table Sorter</a></li>
-          <li><a href="/examples/pea.rs/datatables_table.html">DataTables</a></li>
-          <li><a href="/examples/pea.rs/leap_pagernav.html">Leap Pager Nav</a></li>
-          <li><a href="/examples/pea.rs/leap_search.html">Leap Search</a></li>
-          <li><a href="/examples/pea.rs/leap_search_results.html">Leap Search Results</a></li>
         </ul>
       </section>
 
@@ -565,14 +477,9 @@
           Configuration
         </h2>
         <ul class="sitemap-list">
-          <li><a href="/package.json">package.json</a></li>
           <li>vite.config.js (Library build)</li>
           <li>vite.config.app.js (App development)</li>
           <li>vite.config.docs.js (Documentation site)</li>
-          <li><a href="/tsconfig.json">tsconfig.json</a></li>
-          <li><a href="/biome.json">biome.json</a></li>
-          <li><a href="/CLAUDE.md">CLAUDE.md</a></li>
-          <li><a href="/README.md">README.md</a></li>
         </ul>
       </section>
 
@@ -590,7 +497,6 @@
           <li><a href="https://lucide.dev" target="_blank" rel="noopener">Lucide Icons</a></li>
           <li><a href="https://splidejs.com" target="_blank" rel="noopener">Splide.js</a></li>
           <li><a href="http://pea.rs" target="_blank" rel="noopener">Pea.rs Patterns</a></li>
-          <li><a href="http://a.mphibio.us" target="_blank" rel="noopener">Original A.mphibio.us</a></li>
         </ul>
       </section>
     </div>
@@ -638,11 +544,8 @@
 <span class="tree-branch">│   ├──</span> <span class="tree-file">pears-patterns.html</span>
 <span class="tree-branch">│   ├──</span> <span class="tree-file">user-dashboard.html</span>
 <span class="tree-branch">│   ├──</span> <span class="tree-file">...</span> <em>(36 example files total)</em>
-<span class="tree-branch">│   ├──</span> <span class="tree-folder">pea.rs/</span> <em>(9 pattern files)</em>
 <span class="tree-branch">│   └──</span> <span class="tree-folder">themes/</span>
 <span class="tree-branch">│       ├──</span> <span class="tree-file">index.html</span>
-<span class="tree-branch">│       ├──</span> <span class="tree-folder">classic/</span> <em>(8 pages)</em>
-<span class="tree-branch">│       ├──</span> <span class="tree-folder">green/</span> <em>(7 pages)</em>
 <span class="tree-branch">│       └──</span> <span class="tree-folder">modern-saas/</span> <em>(1 page)</em>
 <span class="tree-branch">├──</span> <span class="tree-folder">src/</span>
 <span class="tree-branch">│   ├──</span> <span class="tree-file">index.ts</span> <em>(Main entry point)</em>

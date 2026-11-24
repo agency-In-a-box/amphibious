@@ -3,104 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <title>Features — Amphibious 2.0</title>
     <meta name="description" content="Overview of Amphibious 2.0 features including responsive grid, dark mode, and component library.">
-    <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './docs.css';
+    import './features.css';
+  </script>
       <!-- CSS loaded via JavaScript module -->
-    <link rel="stylesheet" href="./docs.css">
-    <link rel="stylesheet" href="./features.css">
 </head>
 <body>
-  <!-- Site Navigation -->
-    <!-- Navigation Include -->
-  <!-- Site Navigation Include - Amphibious 2.0 -->
-<!-- Include this file in all pages to maintain consistent navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-<nav class="aiab-site-nav" aria-label="Main navigation">
-  <div class="aiab-container">
-    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-      <span class="aiab-sr-only">Toggle navigation</span>
-    </button>
-
-    <ul id="main-nav" class="aiab-horizontal">
-      <li>
-        <a href="/" class="aiab-site-logo">Amphibious</a>
-        <ul>
-          <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
-          <li><a href="/#how_its_made">What is it made of?</a></li>
-          <li><a href="/#gallery">Amphibious 2.0 Showcase</a></li>
-          <li><a href="/#evolution">The Evolution of Amphibious</a></li>
-          <li><a href="/#colophon">The Amphibious Colophon</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#ordering">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#media">Media Queries</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#basic">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#prepend">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#picker">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#modals">Modals</a></li>
-          <li><a href="/docs/features.html#tooltips">Tooltips</a></li>
-          <li><a href="/docs/features.html#accordion">Accordion</a></li>
-          <li><a href="/docs/features.html#carousel">Carousel</a></li>
-          <li><a href="/docs/features.html#cards">Cards</a></li>
-          <li><a href="/docs/features.html#alerts">Alerts</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/examples/">Examples</a>
-        <ul>
-          <li><a href="/examples/">Component Showcase</a></li>
-          <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
-          <li><a href="/examples/shopping-cart-modern.html">Shopping Cart</a></li>
-          <li><a href="/examples/checkout-flow.html">Checkout Flow</a></li>
-          <li><a href="/examples/pears-patterns.html">Pea.rs Patterns</a></li>
-          <li><a href="/examples/navigation-showcase.html">Navigation Components</a></li>
-          <li><a href="/examples/atomic-design-demo.html">Atomic Design Demo</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <!-- Navigation Include -->
 <nav class="docs-nav">
         <div class="aiab-container">
-            <h1>Amphibious 2.0 Documentation</h1>
+            <h1 id="main-content" tabindex="-1">Amphibious 2.0 Documentation</h1>
             <div class="aiab-nav-links">
                 <a href="foundation.html">Foundation</a>
                 <a href="form.html">Form</a>
@@ -606,7 +529,7 @@ function showSlide(n) {
             <h3>Icon Sizes</h3>
             <div class="example">
                 <div class="example-title">Different Icon Sizes</div>
-                <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <svg class="aiab-icon icon-sm" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
                         <span>Small (.icon-sm)</span>
@@ -629,7 +552,7 @@ function showSlide(n) {
             <h3>Colored Icons</h3>
             <div class="example">
                 <div class="example-title">Icon Colors</div>
-                <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;">
                     <svg class="aiab-icon aiab-text-primary" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
                     <svg class="aiab-icon aiab-text-success" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
                     <svg class="aiab-icon aiab-text-danger" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>

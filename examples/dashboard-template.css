@@ -19,6 +19,7 @@
     }
     .header-content {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
@@ -79,6 +80,7 @@
     }
     .header-actions {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 0.5rem;
     }
@@ -440,7 +442,7 @@
 
     @media (max-width: 768px) {
       .dashboard-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
       .dashboard-sidebar {
         display: none;

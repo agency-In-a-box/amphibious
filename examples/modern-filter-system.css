@@ -7,6 +7,14 @@
    FILTER CONTAINER - Modern Sidebar
    ========================================================================== */
 
+/* The demo's buttons style colour/padding/radius but not border or background;
+   reset those at zero specificity so each rule below decides. */
+:where(.filters-modern, .mobile-filter-toggle) :where(button),
+:where(.mobile-filter-toggle) {
+  background: none;
+  border: 0;
+}
+
 .filters-modern {
   background: white;
   border-radius: 12px;

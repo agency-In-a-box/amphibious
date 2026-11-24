@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <title>Cowork UI — Amphibious 2.0 Demo</title>
 
   <!-- Amphibious CSS (built) — swap to dist/amphibious.css for production -->
@@ -34,9 +38,6 @@
 
   <!-- Helpers -->
   <link rel="stylesheet" href="../src/css/helpers.css">
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
     /* Demo-specific resets — not part of framework */
@@ -214,7 +215,7 @@
       font-size: 0.8125rem;
       font-weight: 600;
       color: #ffffff;
-      background-color: var(--color-primary, #ed8b00);
+      background-color: var(--color-primary, #ec8b00);
       border: none;
       border-radius: 1.25rem;
       cursor: pointer;
@@ -225,7 +226,7 @@
       background-color: var(--color-primary-dark, #c97600);
     }
     .cowork-landing__go-btn:focus-visible {
-      outline: 2px solid var(--color-primary, #ed8b00);
+      outline: 2px solid var(--color-primary, #ec8b00);
       outline-offset: 2px;
     }
     .cowork-landing__go-btn:disabled {
@@ -584,10 +585,12 @@
     </aside>
   </div>
 
-  <!-- Initialize Lucide Icons + Interactivity -->
-  <script>
+  <!-- Initialize icons + interactivity -->
+  <script type="module">
+    import { initializeIcons } from '../src/js/icons-lightweight.ts';
+
     document.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
+      initializeIcons();
 
       /* ====================================================================
          1. AUTO-GROW TEXTAREAS
@@ -666,7 +669,7 @@
         }
 
         setActiveNav(triggerLink || null);
-        lucide.createIcons();
+        initializeIcons();
       }
 
       // "New task" → landing view

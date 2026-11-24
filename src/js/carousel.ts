@@ -390,18 +390,7 @@ export class AmphibiousCarousel {
   }
 }
 
-// Global namespace integration
-declare global {
-  interface Window {
-    amp: {
-      Carousel: typeof AmphibiousCarousel;
-      createCarousel: (
-        selector: string | HTMLElement,
-        options?: AmphibiousCarouselOptions,
-      ) => AmphibiousCarousel;
-    };
-  }
-}
+// Global access: window.amp.Carousel / amp.createCarousel — see src/amp.ts
 
 // Export for module usage
 export default AmphibiousCarousel;

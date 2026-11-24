@@ -236,6 +236,7 @@
   align-items: center;
   margin: 0;
   padding: 0;
+  list-style: none;
 
   /* First Level Items */
   & > li {
@@ -278,10 +279,12 @@
     /* Show dropdown on hover/focus */
     &:hover > ul,
     &:focus-within > ul,
-    & > a:focus + ul {
+    & > a:focus + ul,
+    &.aiab-is-expanded > ul {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
+      transition-delay: 0s;
     }
 
     /* Invisible bridge to prevent dropdown from closing */
@@ -325,10 +328,18 @@
     border: 1px solid var(--nav-dropdown-border);
     border-radius: 4px;
     box-shadow: var(--nav-dropdown-shadow);
+    list-style: none;
+    margin: 0;
+    padding: 0;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all var(--nav-transition);
+    /* visibility flips 150ms late, so moving the pointer from the trigger to a
+       menu item never drops the menu mid-transition */
+    transition:
+      opacity var(--nav-transition),
+      transform var(--nav-transition),
+      visibility 0s linear 150ms;
     z-index: var(--nav-dropdown-z-index);
 
     & li {
@@ -367,10 +378,12 @@
     /* Show third level on hover */
     & > li:hover > ul,
     & > li:focus-within > ul,
-    & > li > a:focus + ul {
+    & > li > a:focus + ul,
+    & > li.aiab-is-expanded > ul {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
+      transition-delay: 0s;
     }
 
     /* Dropdown Menus - Level 2 (Third Level) */
@@ -574,18 +587,24 @@
     display: none;
   }
 
-  /* Ensure dropdowns don't go off-screen */
-  .aiab-horizontal > li:last-child ul,
-  .aiab-horizontal > li:nth-last-child(2) ul {
+  /* First-level dropdowns of the last two items align to the right edge */
+  .aiab-horizontal > li:is(:last-child, :nth-last-child(2)) > ul {
     inset-inline-start: auto;
     inset-inline-end: 0;
   }
+}
 
-  .aiab-horizontal ul > li:last-child ul,
-  .aiab-horizontal ul > li:nth-last-child(2) ul {
-    inset-inline-start: auto;
-    inset-inline-end: 100%;
-  }
+/* Flyouts open to the right. navigation.ts adds .aiab-flip to a flyout that
+   would overflow the viewport; the caret on its parent points the same way. */
+.aiab-horizontal ul ul.aiab-flip {
+  inset-inline-start: auto;
+  inset-inline-end: 100%;
+  margin-inline: 0 -1px;
+}
+
+.aiab-horizontal ul li.aiab-flip-parent:has(> ul) > a::after {
+  border-width: 4px 4px 4px 0;
+  border-color: transparent currentColor transparent transparent;
 }
 
 /* Accessibility
@@ -609,7 +628,7 @@
   position: absolute;
   top: -100%;
   inset-inline-start: 0;
-  background: var(--color-primary, #ed8b00);
+  background: var(--color-primary, #ec8b00);
   color: white;
   padding: 0.75em 1.5em;
   text-decoration: none;

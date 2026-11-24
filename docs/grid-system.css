@@ -36,7 +36,8 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
 }
 .doc-nav a {
   display: block;

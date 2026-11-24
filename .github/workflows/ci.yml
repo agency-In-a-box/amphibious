@@ -89,7 +89,7 @@ jobs:
         run: bun install
 
       - name: Run tests
-        run: bun test test/components.test.ts test/modal.test.ts test/tooltip.test.ts test/forms.test.ts test/carousel.test.ts test/tabs.test.ts test/theme-cascade.test.ts test/smooth-scroll.test.ts test/navigation.test.ts test/cascade.test.ts test/accordion.test.ts test/dropdown.test.ts test/toast.test.ts test/datepicker.test.ts test/data-table.test.ts test/range-slider.test.ts test/search-bar.test.ts test/file-upload.test.ts test/a11y.test.ts test/code-splitting.test.ts --preload ./test/setup.ts
+        run: bun test test/components.test.ts test/modal.test.ts test/tooltip.test.ts test/forms.test.ts test/carousel.test.ts test/tabs.test.ts test/theme-cascade.test.ts test/smooth-scroll.test.ts test/navigation.test.ts test/cascade.test.ts test/accordion.test.ts test/dropdown.test.ts test/toast.test.ts test/datepicker.test.ts test/data-table.test.ts test/range-slider.test.ts test/search-bar.test.ts test/file-upload.test.ts test/a11y.test.ts test/code-splitting.test.ts test/icons.test.ts test/icons-generated.test.ts test/navigation-css.test.ts test/sidebar-steps.test.ts --preload ./test/setup.ts
 
   build:
     name: Build
@@ -205,10 +205,89 @@ jobs:
           base: ${{ github.event.pull_request.base.sha || github.event.before }}
           head: ${{ github.event.pull_request.head.sha || github.sha }}
 
+  site-qa:
+    name: Site QA (crawl built site)
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build documentation site
+        run: bun run build:site
+
+      # Serves dist-site, crawls every page and fails on broken CSS/JS/links/anchors/icons.
+      # Intentional exceptions: scripts/qa-site.allowlist.json
+      - name: Crawl built site
+        run: bun run qa:site
+
+  e2e:
+    name: Browser tests (Playwright)
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Install Chromium
+        run: bunx playwright install --with-deps chromium
+
+      - name: Build documentation site
+        run: bun run build:site
+
+      # Loads every published page in Chromium: no page errors, failed requests or
+      # console errors, nothing wider than a 375px screen, plus key behaviours.
+      - name: Run browser tests
+        run: bun run test:e2e
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+
   deploy-preview:
     name: Deploy Preview
     runs-on: ubuntu-latest
-    needs: [build, test]
+    needs: [build, test, site-qa, e2e]
     if: github.event_name == 'pull_request'
 
     steps:
@@ -237,7 +316,7 @@ jobs:
       - name: Deploy to Netlify Preview
         uses: nwtgck/actions-netlify@v3
         with:
-          publish-dir: './dist-docs'
+          publish-dir: './dist-site'
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"

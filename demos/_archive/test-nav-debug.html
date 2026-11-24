@@ -8,36 +8,15 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
 </head>
 <body>
-  <h1>Navigation Debug Test</h1>
+  <h1 id="main-content" tabindex="-1">Navigation Debug Test</h1>
 
   <!-- Direct navigation HTML -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <ul class="aiab-horizontal">
-        <li>
-          <a href="#">Home</a>
-          <ul>
-            <li><a href="#">Submenu 1</a></li>
-            <li><a href="#">Submenu 2</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">About</a>
-          <ul>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">History</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
   <h2>Grid Test</h2>
   <div class="aiab-container">

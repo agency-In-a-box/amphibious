@@ -3,17 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Alerts — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Alerts component - contextual feedback messages with multiple variants, styles, and aiab-toast notifications">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Demo Grid */
     .aiab-demo-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 1rem;
       margin: 2rem 0;
     }
@@ -47,63 +54,14 @@
   </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-<nav class="aiab-site-nav" aria-label="Main navigation">
-  <div class="aiab-container">
-    <ul class="aiab-horizontal aiab-branded">
-      <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-      <li><a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-          <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-          <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-        </ul>
-      </li>
-      <li><a href="/examples/">Examples</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- Navigation Include -->
 
   <header class="aiab-docs-header">
     <div class="aiab-container">
       <nav class="aiab-nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
-        <a href="/docs/components/">Components</a> ›
+        <a href="/docs/features.html#components">Components</a> ›
         <span>Alerts</span>
       </nav>
       <h1>Alerts Component</h1>
@@ -119,27 +77,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🎨 Multiple Variants</h4>
+          <h4>Multiple Variants</h4>
           <p>Success, info, warning, error, and neutral aiab-alert types with semantic colors.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🎭 Multiple Styles</h4>
+          <h4>Multiple Styles</h4>
           <p>Default, solid, outline, minimal, and accent border styles for different contexts.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📏 Flexible Sizing</h4>
+          <h4>Flexible Sizing</h4>
           <p>Small, default, and large sizes to fit different content needs.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🔥 Toast Notifications</h4>
+          <h4>Toast Notifications</h4>
           <p>Positioned aiab-toast notifications with animations and auto-dismiss functionality.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Accessibility</h4>
+          <h4>Accessibility</h4>
           <p>Focus management, screen reader support, and reduced motion preferences.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🌙 Dark Mode</h4>
+          <h4>Dark Mode</h4>
           <p>Automatic dark mode support with appropriate color adjustments.</p>
         </div>
       </div>
@@ -544,6 +502,7 @@
       <h2>CSS Classes Reference</h2>
 
       <h3>Base Classes</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -586,8 +545,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Type Modifiers</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -614,8 +575,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Style Modifiers</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -642,8 +605,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Size Modifiers</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -662,8 +627,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Toast Classes</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -714,6 +681,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </section>
 
     <!-- Best Practices -->
@@ -802,7 +770,7 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
     <div class="section">
       <p>
         <a href="/examples/alerts-demo.html">View Live Examples</a> |
-        <a href="/docs/components/">All Components</a> |
+        <a href="/docs/features.html#components">All Components</a> |
         <a href="/docs/index.html">Documentation Home</a>
       </p>
       <p>&copy; 2024 Amphibious 2.0. Contextual feedback messages for modern web applications.</p>
@@ -810,7 +778,6 @@ showToast('Info notification', 'info', 'bottom-right', 3000);</code></pre>
   </footer>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Toast Demo JavaScript -->
   <script>

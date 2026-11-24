@@ -3,101 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>E-commerce Catalog — Amphibious 2.0</title>
   <meta name="description" content="Product catalog with filtering, sorting, grid and list views, and product quick-view modals">
+  <!-- One module, fixed order: library (JS + main-lib.css), docs-site styles,
+       then this page. Previously main.css was imported here AND main-lib.css
+       again via /src/index.js after the page CSS, so the whole library loaded
+       twice and its base rules overrode page variants (.aiab-btn--secondary). -->
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './e-commerce-catalog.css';
   </script>
-  <link rel="stylesheet" href="e-commerce-catalog.css">
 </head>
 <body>
-  <!-- Site Navigation -->
-    <!-- Navigation Include -->
-  <!-- Site Navigation Include - Amphibious 2.0 -->
-<!-- Include this file in all pages to maintain consistent navigation -->
-<a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-<nav class="aiab-site-nav" aria-label="Main navigation">
-  <div class="aiab-container">
-    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-      <span class="aiab-sr-only">Toggle navigation</span>
-    </button>
-
-    <ul id="main-nav" class="aiab-horizontal">
-      <li>
-        <a href="/" class="aiab-site-logo">Amphibious</a>
-        <ul>
-          <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
-          <li><a href="/#how_its_made">What is it made of?</a></li>
-          <li><a href="/#gallery">Amphibious 2.0 Showcase</a></li>
-          <li><a href="/#evolution">The Evolution of Amphibious</a></li>
-          <li><a href="/#colophon">The Amphibious Colophon</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#ordering">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#media">Media Queries</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#basic">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#prepend">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#picker">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#modals">Modals</a></li>
-          <li><a href="/docs/features.html#tooltips">Tooltips</a></li>
-          <li><a href="/docs/features.html#accordion">Accordion</a></li>
-          <li><a href="/docs/features.html#carousel">Carousel</a></li>
-          <li><a href="/docs/features.html#cards">Cards</a></li>
-          <li><a href="/docs/features.html#alerts">Alerts</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/examples/">Examples</a>
-        <ul>
-          <li><a href="/examples/">Component Showcase</a></li>
-          <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
-          <li><a href="/examples/shopping-cart-modern.html">Shopping Cart</a></li>
-          <li><a href="/examples/checkout-flow.html">Checkout Flow</a></li>
-          <li><a href="/examples/pears-patterns.html">Pea.rs Patterns</a></li>
-          <li><a href="/examples/navigation-showcase.html">Navigation Components</a></li>
-          <li><a href="/examples/atomic-design-demo.html">Atomic Design Demo</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <!-- Navigation Include -->
 <header class="aiab-header">
     <div class="aiab-header-top">
       <div class="aiab-container">
@@ -116,11 +41,11 @@
       <div class="aiab-container">
         <div class="aiab-row">
           <div class="aiab-col-3">
-            <a href="#" class="aiab-logo">SHOPIFY 2.0</a>
+            <a href="#" class="aiab-logo">Tidepool</a>
           </div>
           <div class="aiab-col-8">
             <div class="aiab-search-bar">
-              <input type="text" placeholder="Search products...">
+              <input type="search" placeholder="Search products…" aria-label="Search products">
               <button>
                 <i data-lucide="search"></i>
                 Search
@@ -129,19 +54,19 @@
           </div>
           <div class="aiab-col-5">
             <div class="aiab-header-icons aiab-header-icons-end">
-              <button class="aiab-icon-button" data-tooltip="My Account">
+              <button class="aiab-icon-button" data-tooltip="My Account" aria-label="Account">
                 <i data-lucide="user"></i>
                 <span>Account</span>
               </button>
-              <button class="aiab-icon-button" data-tooltip="Wishlist (3 items)">
+              <button class="aiab-icon-button" data-tooltip="Wishlist (3 items)" aria-label="Wishlist, 3 items">
                 <i data-lucide="heart"></i>
                 <span>Wishlist</span>
               </button>
-              <div class="aiab-icon-badge" data-tooltip="Shopping cart (5 items)">
+              <button class="aiab-icon-badge" data-tooltip="Shopping cart (5 items)" aria-label="Cart, 5 items">
                 <i data-lucide="shopping-cart"></i>
-                <span class="aiab-icon-badge__count">5</span>
-                <span>Cart</span>
-              </div>
+                <span class="aiab-icon-badge__count" aria-hidden="true">5</span>
+                <span aria-hidden="true">Cart</span>
+              </button>
             </div>
           </div>
         </div>
@@ -157,7 +82,7 @@
           <li><a href="#"><i data-lucide="smartphone" class="icon--sm"></i> Electronics</a></li>
           <li><a href="#"><i data-lucide="home" class="icon--sm"></i> Home & Garden</a></li>
           <li><a href="#"><i data-lucide="gift" class="icon--sm"></i> Gifts</a></li>
-          <li><a href="#"><i data-lucide="aiab-tag" class="icon--sm"></i> Sale</a></li>
+          <li><a href="#"><i data-lucide="tag" class="icon--sm"></i> Sale</a></li>
         </ul>
       </div>
     </nav>
@@ -190,7 +115,7 @@
             <p>Hand-crafted in Okayama using traditional techniques. Features selvedge construction and natural indigo dye.</p>
             <div class="aiab-slat-meta">
               <span class="aiab-price">$189.00</span>
-              <div class="aiab-rating">
+              <div class="aiab-rating" role="img" aria-label="5 out of 5 stars">
                 <i data-lucide="star" class="icon--xs icon--filled"></i>
                 <i data-lucide="star" class="icon--xs icon--filled"></i>
                 <i data-lucide="star" class="icon--xs icon--filled"></i>
@@ -202,7 +127,7 @@
           </div>
           <div class="aiab-slat-actions">
             <button class="aiab-btn aiab-btn--primary">Quick Shop</button>
-            <button class="aiab-btn aiab-btn--secondary" data-tooltip="Add to wishlist">
+            <button class="aiab-btn aiab-btn--secondary" data-tooltip="Add to wishlist" aria-label="Add to wishlist">
               <i data-lucide="heart"></i>
             </button>
           </div>
@@ -223,7 +148,7 @@
           </div>
           <div class="aiab-slat-actions">
             <button class="aiab-btn aiab-btn--primary">Quick Shop</button>
-            <button class="aiab-btn aiab-btn--secondary" data-tooltip="Add to wishlist">
+            <button class="aiab-btn aiab-btn--secondary" data-tooltip="Add to wishlist" aria-label="Add to wishlist">
               <i data-lucide="heart"></i>
             </button>
           </div>
@@ -247,7 +172,7 @@
           </div>
           <div class="aiab-slat-actions">
             <button class="aiab-btn aiab-btn--primary">Quick Shop</button>
-            <button class="aiab-btn aiab-btn--secondary" data-tooltip="Add to wishlist">
+            <button class="aiab-btn aiab-btn--secondary" data-tooltip="Add to wishlist" aria-label="Add to wishlist">
               <i data-lucide="heart"></i>
             </button>
           </div>
@@ -261,11 +186,16 @@
     <div class="aiab-catalog-header">
       <h1>Shop All Products</h1>
       <div class="aiab-catalog-controls">
-        <div class="aiab-product-count">Showing 1-12 of 156 products</div>
+        <div class="aiab-product-count">Showing 1–6 of 156 products</div>
         <div class="aiab-catalog-flex">
+          <button type="button" class="aiab-filters-trigger" data-action="open-filters" aria-haspopup="dialog" aria-controls="filtersModal">
+            <i data-lucide="sliders-horizontal"></i>
+            Filters
+            <span class="aiab-filters-trigger__count" hidden></span>
+          </button>
           <div class="aiab-sort-controls">
-            <label>Sort by:</label>
-            <select>
+            <label for="catalog-sort">Sort by</label>
+            <select id="catalog-sort">
               <option>Featured</option>
               <option>Price: Low to High</option>
               <option>Price: High to Low</option>
@@ -275,10 +205,10 @@
             </select>
           </div>
           <div class="aiab-view-toggles">
-            <button class="aiab-active" data-tooltip="Grid View">
+            <button class="aiab-active" data-tooltip="Grid View" aria-label="Grid view" aria-pressed="true">
               <i data-lucide="grid-3x3"></i>
             </button>
-            <button data-tooltip="List View">
+            <button data-tooltip="List View" aria-label="List view" aria-pressed="false">
               <i data-lucide="list"></i>
             </button>
           </div>
@@ -291,7 +221,7 @@
   <div class="aiab-container">
     <div class="aiab-row">
       <!-- Filters Sidebar -->
-      <aside class="aiab-col-4">
+      <aside class="aiab-col-4 aiab-filters-column">
         <section class="aiab-filters" aria-labelledby="filters-heading">
           <h2 class="aiab-sr-only" id="filters-heading">Product Filters</h2>
           <fieldset class="aiab-filter-section">
@@ -419,22 +349,22 @@
             <legend>Brand</legend>
             <label class="aiab-filter-option">
               <input type="checkbox">
-              <span>Nike</span>
+              <span>Northline</span>
               <span class="aiab-filter-count">28</span>
             </label>
             <label class="aiab-filter-option">
               <input type="checkbox">
-              <span>Adidas</span>
+              <span>Kestrel</span>
               <span class="aiab-filter-count">24</span>
             </label>
             <label class="aiab-filter-option">
               <input type="checkbox">
-              <span>Puma</span>
+              <span>Halden</span>
               <span class="aiab-filter-count">19</span>
             </label>
             <label class="aiab-filter-option">
               <input type="checkbox">
-              <span>Under Armour</span>
+              <span>Ridgeway</span>
               <span class="aiab-filter-count">16</span>
             </label>
           </fieldset>
@@ -443,9 +373,8 @@
 
       <!-- Product Grid -->
       <main class="aiab-col-12" role="main" id="main-content">
-        <div class="aiab-row">
+        <div class="aiab-product-grid">
           <!-- Product 1 -->
-          <div class="aiab-col-4">
             <article class="aiab-product-card">
               <figure class="aiab-product-image">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='20'%3EProduct%201%3C/text%3E%3C/svg%3E" alt="Product 1" loading="lazy">
@@ -454,13 +383,13 @@
                   <span class="aiab-badge sale">-20%</span>
                 </div>
                 <div class="aiab-product-actions">
-                  <button data-tooltip="Quick View" data-action="quick-view">
+                  <button data-tooltip="Quick View" aria-label="Quick View" data-action="quick-view">
                     <i data-lucide="eye"></i>
                   </button>
-                  <button data-tooltip="Add to Wishlist">
+                  <button data-tooltip="Add to Wishlist" aria-label="Add to Wishlist">
                     <i data-lucide="heart"></i>
                   </button>
-                  <button data-tooltip="Compare">
+                  <button data-tooltip="Compare" aria-label="Compare">
                     <i data-lucide="git-compare"></i>
                   </button>
                 </div>
@@ -469,7 +398,7 @@
                 <div class="aiab-product-category">T-Shirts</div>
                 <h3 class="aiab-product-name">Premium Cotton T-Shirt</h3>
                 <div class="aiab-product-rating">
-                  <div class="aiab-stars">
+                  <div class="aiab-stars" role="img" aria-label="4 out of 5 stars">
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
@@ -493,10 +422,8 @@
                 </button>
               </div>
             </article>
-          </div>
 
           <!-- Product 2 -->
-          <div class="aiab-col-4">
             <article class="aiab-product-card">
               <figure class="aiab-product-image">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='20'%3EProduct%202%3C/text%3E%3C/svg%3E" alt="Product 2" loading="lazy">
@@ -504,13 +431,13 @@
                   <span class="aiab-badge limited">LIMITED</span>
                 </div>
                 <div class="aiab-product-actions">
-                  <button data-tooltip="Quick View">
+                  <button data-tooltip="Quick View" aria-label="Quick View" data-action="quick-view">
                     <i data-lucide="eye"></i>
                   </button>
-                  <button data-tooltip="Add to Wishlist">
+                  <button data-tooltip="Add to Wishlist" aria-label="Add to Wishlist">
                     <i data-lucide="heart"></i>
                   </button>
-                  <button data-tooltip="Compare">
+                  <button data-tooltip="Compare" aria-label="Compare">
                     <i data-lucide="git-compare"></i>
                   </button>
                 </div>
@@ -519,7 +446,7 @@
                 <div class="aiab-product-category">Jeans</div>
                 <h3 class="aiab-product-name">Slim Fit Denim Jeans</h3>
                 <div class="aiab-product-rating">
-                  <div class="aiab-stars">
+                  <div class="aiab-stars" role="img" aria-label="5 out of 5 stars">
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
@@ -541,10 +468,8 @@
                 </button>
               </div>
             </article>
-          </div>
 
           <!-- Product 3 -->
-          <div class="aiab-col-4">
             <article class="aiab-product-card">
               <figure class="aiab-product-image">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23f59e0b'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='20'%3EProduct%203%3C/text%3E%3C/svg%3E" alt="Product 3" loading="lazy">
@@ -552,13 +477,13 @@
                   <span class="aiab-badge sale">-30%</span>
                 </div>
                 <div class="aiab-product-actions">
-                  <button data-tooltip="Quick View">
+                  <button data-tooltip="Quick View" aria-label="Quick View" data-action="quick-view">
                     <i data-lucide="eye"></i>
                   </button>
-                  <button data-tooltip="Add to Wishlist">
+                  <button data-tooltip="Add to Wishlist" aria-label="Add to Wishlist">
                     <i data-lucide="heart"></i>
                   </button>
-                  <button data-tooltip="Compare">
+                  <button data-tooltip="Compare" aria-label="Compare">
                     <i data-lucide="git-compare"></i>
                   </button>
                 </div>
@@ -567,7 +492,7 @@
                 <div class="aiab-product-category">Dresses</div>
                 <h3 class="aiab-product-name">Summer Floral Dress</h3>
                 <div class="aiab-product-rating">
-                  <div class="aiab-stars">
+                  <div class="aiab-stars" role="img" aria-label="4 out of 5 stars">
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
@@ -591,10 +516,8 @@
                 </button>
               </div>
             </article>
-          </div>
 
           <!-- Product 4 -->
-          <div class="aiab-col-4">
             <article class="aiab-product-card">
               <figure class="aiab-product-image">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%2310b981'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='20'%3EProduct%204%3C/text%3E%3C/svg%3E" alt="Product 4" loading="lazy">
@@ -602,13 +525,13 @@
                   <span class="aiab-badge new">NEW</span>
                 </div>
                 <div class="aiab-product-actions">
-                  <button data-tooltip="Quick View">
+                  <button data-tooltip="Quick View" aria-label="Quick View" data-action="quick-view">
                     <i data-lucide="eye"></i>
                   </button>
-                  <button data-tooltip="Add to Wishlist">
+                  <button data-tooltip="Add to Wishlist" aria-label="Add to Wishlist">
                     <i data-lucide="heart"></i>
                   </button>
-                  <button data-tooltip="Compare">
+                  <button data-tooltip="Compare" aria-label="Compare">
                     <i data-lucide="git-compare"></i>
                   </button>
                 </div>
@@ -617,7 +540,7 @@
                 <div class="aiab-product-category">Shoes</div>
                 <h3 class="aiab-product-name">Running Sneakers Pro</h3>
                 <div class="aiab-product-rating">
-                  <div class="aiab-stars">
+                  <div class="aiab-stars" role="img" aria-label="5 out of 5 stars">
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
@@ -639,11 +562,9 @@
                 </button>
               </div>
             </article>
-          </div>
 
           <!-- More products... -->
           <!-- Repeat similar structure for products 5-12 -->
-          <div class="aiab-col-4">
             <article class="aiab-product-card">
               <figure class="aiab-product-image">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23ef4444'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='20'%3EProduct%205%3C/text%3E%3C/svg%3E" alt="Product 5" loading="lazy">
@@ -651,13 +572,13 @@
                   <span class="aiab-badge sale">-15%</span>
                 </div>
                 <div class="aiab-product-actions">
-                  <button data-tooltip="Quick View">
+                  <button data-tooltip="Quick View" aria-label="Quick View" data-action="quick-view">
                     <i data-lucide="eye"></i>
                   </button>
-                  <button data-tooltip="Add to Wishlist">
+                  <button data-tooltip="Add to Wishlist" aria-label="Add to Wishlist">
                     <i data-lucide="heart"></i>
                   </button>
-                  <button data-tooltip="Compare">
+                  <button data-tooltip="Compare" aria-label="Compare">
                     <i data-lucide="git-compare"></i>
                   </button>
                 </div>
@@ -666,7 +587,7 @@
                 <div class="aiab-product-category">Accessories</div>
                 <h3 class="aiab-product-name">Leather Wallet Premium</h3>
                 <div class="aiab-product-rating">
-                  <div class="aiab-stars">
+                  <div class="aiab-stars" role="img" aria-label="4 out of 5 stars">
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
@@ -689,9 +610,7 @@
                 </button>
               </div>
             </article>
-          </div>
 
-          <div class="aiab-col-4">
             <article class="aiab-product-card">
               <figure class="aiab-product-image">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%233b82f6'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='20'%3EProduct%206%3C/text%3E%3C/svg%3E" alt="Product 6" loading="lazy">
@@ -699,13 +618,13 @@
                   <span class="aiab-badge limited">LAST CHANCE</span>
                 </div>
                 <div class="aiab-product-actions">
-                  <button data-tooltip="Quick View">
+                  <button data-tooltip="Quick View" aria-label="Quick View" data-action="quick-view">
                     <i data-lucide="eye"></i>
                   </button>
-                  <button data-tooltip="Add to Wishlist">
+                  <button data-tooltip="Add to Wishlist" aria-label="Add to Wishlist">
                     <i data-lucide="heart"></i>
                   </button>
-                  <button data-tooltip="Compare">
+                  <button data-tooltip="Compare" aria-label="Compare">
                     <i data-lucide="git-compare"></i>
                   </button>
                 </div>
@@ -714,7 +633,7 @@
                 <div class="aiab-product-category">Electronics</div>
                 <h3 class="aiab-product-name">Wireless Headphones</h3>
                 <div class="aiab-product-rating">
-                  <div class="aiab-stars">
+                  <div class="aiab-stars" role="img" aria-label="5 out of 5 stars">
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
                     <i data-lucide="star" class="aiab-star icon--xs icon--filled"></i>
@@ -736,25 +655,24 @@
                 </button>
               </div>
             </article>
-          </div>
         </div>
 
         <!-- Pagination -->
-        <div class="aiab-pagination">
-          <button disabled>
+        <nav class="aiab-pagination" aria-label="Pagination">
+          <button disabled aria-label="Previous page">
             <i data-lucide="chevron-left"></i>
           </button>
-          <button class="aiab-active">1</button>
+          <button class="aiab-active" aria-current="page">1</button>
           <button>2</button>
           <button>3</button>
           <button>4</button>
           <button>5</button>
-          <button>...</button>
-          <button>13</button>
-          <button>
+          <span class="aiab-pagination-ellipsis" aria-hidden="true">…</span>
+          <button>26</button>
+          <button aria-label="Next page">
             <i data-lucide="chevron-right"></i>
           </button>
-        </div>
+        </nav>
       </main>
     </div>
   </div>
@@ -775,12 +693,12 @@
             <div class="aiab-product-category">T-Shirts</div>
             <h2>Premium Cotton T-Shirt</h2>
             <div class="aiab-product-rating">
-              <div class="aiab-stars">
+              <div class="aiab-stars" role="img" aria-label="4 out of 5 stars">
                 <i data-lucide="star" class="aiab-star icon--filled"></i>
                 <i data-lucide="star" class="aiab-star icon--filled"></i>
                 <i data-lucide="star" class="aiab-star icon--filled"></i>
                 <i data-lucide="star" class="aiab-star icon--filled"></i>
-                <i data-lucide="star" class="aiab-star"></i>
+                <i data-lucide="star" class="aiab-star empty"></i>
               </div>
               <span>(24 reviews)</span>
             </div>
@@ -791,18 +709,18 @@
             </div>
             <p>Experience ultimate comfort with our premium cotton t-shirt. Made from 100% organic cotton, this shirt offers superior breathability and softness that lasts wash after wash.</p>
 
-            <h4>Select Size:</h4>
-            <div class="aiab-size-options">
-              <button class="aiab-size-option">XS</button>
-              <button class="aiab-size-option">S</button>
-              <button class="aiab-size-option selected">M</button>
-              <button class="aiab-size-option">L</button>
-              <button class="aiab-size-option">XL</button>
+            <h4 id="qv-size-label">Size</h4>
+            <div class="aiab-size-options" role="group" aria-labelledby="qv-size-label">
+              <button class="aiab-size-option" aria-pressed="false">XS</button>
+              <button class="aiab-size-option" aria-pressed="false">S</button>
+              <button class="aiab-size-option selected" aria-pressed="true">M</button>
+              <button class="aiab-size-option" aria-pressed="false">L</button>
+              <button class="aiab-size-option" aria-pressed="false">XL</button>
             </div>
 
-            <h4>Quantity:</h4>
+            <h4>Quantity</h4>
             <div class="aiab-quantity-selector">
-              <button data-action="decrement-quantity" aria-label="Decrease quantity">-</button>
+              <button data-action="decrement-quantity" aria-label="Decrease quantity">−</button>
               <input type="number" value="1" min="1" id="quantity" aria-label="Quantity">
               <button data-action="increment-quantity" aria-label="Increase quantity">+</button>
             </div>
@@ -812,7 +730,7 @@
                 <i data-lucide="shopping-cart"></i>
                 Add to Cart
               </button>
-              <button class="aiab-qv-btn-wishlist">
+              <button class="aiab-qv-btn-wishlist" aria-label="Save to wishlist">
                 <i data-lucide="heart"></i>
                 Save
               </button>
@@ -835,65 +753,119 @@
     </div>
   </div>
 
+  <!-- Mobile filters: the same .aiab-filters panel moves into this bottom sheet at ≤768px -->
+  <div id="filtersModal" class="aiab-modal" role="dialog" aria-modal="true" aria-labelledby="filtersModalTitle" aria-hidden="true">
+    <div class="aiab-modal__dialog">
+      <div class="aiab-modal__header">
+        <h2 class="aiab-modal__title" id="filtersModalTitle">Filters</h2>
+        <button type="button" class="aiab-modal__close" aria-label="Close filters">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="aiab-modal__body" id="filtersSheetBody"></div>
+      <div class="aiab-modal__footer">
+        <button type="button" class="aiab-btn aiab-btn-secondary" data-action="clear-filters">Clear all</button>
+        <button type="button" class="aiab-btn" data-modal-close>Show results</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
     <!-- Footer Include -->
   <div id="footer-include"></div>
 
-  <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Page Scripts -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Event delegation for data-action buttons
-      document.addEventListener('click', (e) => {
-        const quickViewBtn = e.target.closest('[data-action="quick-view"]');
-        if (quickViewBtn) {
-          const modal = amp.createModal('quickView', '#quickViewModal');
-          modal.open();
-        }
+  <script type="module">
+    // Uses the real exports. The previous script called a global `amp`
+    // that the framework never defines, so Quick View and Add to Cart threw.
+    import { ModalManager, Tooltip } from '/src/index.js';
 
-        const incBtn = e.target.closest('[data-action="increment-quantity"]');
-        if (incBtn) {
-          const input = document.getElementById('quantity');
-          input.value = parseInt(input.value) + 1;
-        }
+    const quickView = ModalManager.create('quickView', '#quickViewModal');
 
-        const decBtn = e.target.closest('[data-action="decrement-quantity"]');
-        if (decBtn) {
-          const input = document.getElementById('quantity');
-          if (parseInt(input.value) > 1) {
-            input.value = parseInt(input.value) - 1;
-          }
-        }
-      });
+    // ── Mobile filters ────────────────────────────────────────────────
+    // One panel, two homes: sidebar on wide screens, bottom sheet on narrow.
+    const filters = document.querySelector('.aiab-filters');
+    const filtersHome = filters.parentElement;
+    const sheetBody = document.getElementById('filtersSheetBody');
+    const filtersSheet = ModalManager.create('filters', '#filtersModal', { variant: 'bottom-sheet' });
+    const compact = window.matchMedia('(max-width: 768px)');
+    const trigger = document.querySelector('[data-action="open-filters"]');
+    const triggerCount = trigger.querySelector('.aiab-filters-trigger__count');
+    const boxes = [...filters.querySelectorAll('input[type="checkbox"]')];
 
-      // Add click handlers to all add-to-cart buttons
-      document.querySelectorAll('.aiab-add-to-cart').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const tooltip = amp.createTooltip(btn, {
-            content: 'Added to cart!',
-            variant: 'success',
-            trigger: 'manual',
-            position: 'top'
-          });
-          tooltip.show();
-          setTimeout(() => tooltip.hide(), 2000);
+    const placeFilters = () => {
+      if (compact.matches) {
+        sheetBody.append(filters);
+      } else {
+        if (document.getElementById('filtersModal').classList.contains('aiab-is-visible')) filtersSheet.close();
+        filtersHome.append(filters);
+      }
+    };
+    const updateCount = () => {
+      // "All Products" is the default, not an active filter
+      const n = boxes.slice(1).filter((b) => b.checked).length;
+      triggerCount.textContent = String(n);
+      triggerCount.hidden = n === 0;
+      trigger.setAttribute('aria-label', n ? `Filters, ${n} active` : 'Filters');
+    };
 
-          const badge = document.querySelector('.aiab-icon-badge__count');
-          if (badge) {
-            badge.textContent = parseInt(badge.textContent) + 1;
-          }
+    compact.addEventListener('change', placeFilters);
+    placeFilters();
+    updateCount();
+    filters.addEventListener('change', updateCount);
+    trigger.addEventListener('click', () => filtersSheet.open());
+    // Bound directly: the modal stops click propagation inside its dialog.
+    document.querySelector('#filtersModal [data-action="clear-filters"]').addEventListener('click', () => {
+      boxes.forEach((b, i) => { b.checked = i === 0; });
+      updateCount();
+    });
+    const qty = document.getElementById('quantity');
+    const cartCount = document.querySelector('.aiab-icon-badge__count');
+    const cartButton = cartCount?.closest('button');
+    const addedTips = new WeakMap();
+
+    // Bound directly: the modal stops click propagation inside its dialog.
+    document.querySelector('[data-action="increment-quantity"]')?.addEventListener('click', () => {
+      qty.value = String(Number(qty.value) + 1);
+    });
+    document.querySelector('[data-action="decrement-quantity"]')?.addEventListener('click', () => {
+      if (Number(qty.value) > 1) qty.value = String(Number(qty.value) - 1);
+    });
+
+    document.querySelectorAll('.aiab-size-option').forEach((btn, _, all) => {
+      btn.addEventListener('click', () => {
+        all.forEach((b) => {
+          b.classList.toggle('selected', b === btn);
+          b.setAttribute('aria-pressed', String(b === btn));
         });
       });
+    });
 
-      // Filter interactions
-      document.querySelectorAll('.aiab-filter-option input').forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-          console.log('Filter changed:', checkbox.nextElementSibling.textContent);
-        });
-      });
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (!(t instanceof Element)) return;
+
+      if (t.closest('[data-action="quick-view"]')) quickView.open();
+
+      const add = t.closest('.aiab-add-to-cart');
+      if (add) {
+        e.preventDefault();
+        let tip = addedTips.get(add);
+        if (!tip) {
+          tip = new Tooltip(add, { content: 'Added to cart', variant: 'success', trigger: 'manual', position: 'top' });
+          addedTips.set(add, tip);
+        }
+        tip.show();
+        clearTimeout(tip._hideTimer);
+        tip._hideTimer = setTimeout(() => tip.hide(), 1600);
+
+        if (cartCount) {
+          const n = Number(cartCount.textContent) + 1;
+          cartCount.textContent = String(n);
+          cartButton?.setAttribute('aria-label', `Cart, ${n} items`);
+        }
+      }
     });
   </script>
 

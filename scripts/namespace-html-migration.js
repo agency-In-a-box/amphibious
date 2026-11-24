@@ -543,8 +543,16 @@ const CLASSES_TO_PREFIX = [
 // Sort longest first to prevent partial replacements
 const SORTED = [...new Set(CLASSES_TO_PREFIX)].sort((a, b) => b.length - a.length);
 
+// data-lucide values are icon names, not CSS classes. Mask them so a name such
+// as "tag" or "alert-triangle" is never prefixed to "aiab-tag".
+const ICON_ATTR = /data-lucide=(["'])[^"']*\1/g;
+
 function transformHTMLContent(content) {
-  let transformed = content;
+  const maskedIcons = [];
+  let transformed = content.replace(ICON_ATTR, (match) => {
+    maskedIcons.push(match);
+    return `data-lucide-mask-${maskedIcons.length - 1}`;
+  });
   let changeCount = 0;
 
   for (const className of SORTED) {
@@ -566,6 +574,8 @@ function transformHTMLContent(content) {
       changeCount += matches;
     }
   }
+
+  transformed = transformed.replace(/data-lucide-mask-(\d+)/g, (_, i) => maskedIcons[Number(i)]);
 
   return { transformed, changeCount };
 }

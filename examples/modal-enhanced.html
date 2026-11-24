@@ -3,75 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
     <title>Enhanced Modal — Amphibious 2.0</title>
     <meta name="description" content="Enhanced modal with advanced features, custom animations, and accessibility patterns.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="modal-enhanced.css">
-    <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './modal-enhanced.css';
+  </script>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-        <span class="aiab-sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="main-nav" class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
 
     <!-- Header -->
     <header class="header">
         <div class="aiab-container">
-            <h1>🎭 Modal System Showcase</h1>
+            <h1 id="main-content" tabindex="-1">Modal System Showcase</h1>
             <p>Accessible, responsive modals for dialogs, e-commerce flows, and mobile experiences</p>
 
             <div class="aiab-stats">
@@ -88,7 +41,7 @@
                     <span class="aiab-stat-label">Animations</span>
                 </div>
                 <div class="aiab-stat">
-                    <span class="stat-number">♿</span>
+                    <span class="stat-number"><i data-lucide="accessibility"></i></span>
                     <span class="aiab-stat-label">WCAG 2.1</span>
                 </div>
             </div>
@@ -98,11 +51,11 @@
     <div class="aiab-container">
         <!-- Interactive Demo -->
         <div class="interactive-demo">
-            <h3>🚀 Try Different Modal Types</h3>
+            <h3>Try Different Modal Types</h3>
             <p>Click to experience various modal implementations</p>
 
             <div class="button-group">
-                <button class="aiab-btn btn--primary" onclick="openProductModal()">
+                <button class="aiab-btn aiab-btn--primary" onclick="openProductModal()">
                     <i data-lucide="eye"></i> Product Quick View
                 </button>
                 <button class="aiab-btn btn--success" onclick="openCheckoutModal()">
@@ -161,7 +114,7 @@
                 <div class="demo-card">
                     <h4>Full Screen</h4>
                     <p>Immersive experiences</p>
-                    <button class="aiab-btn btn--primary" onclick="openSizeModal('full')">
+                    <button class="aiab-btn aiab-btn--primary" onclick="openSizeModal('full')">
                         Open Full
                     </button>
                 </div>
@@ -238,7 +191,7 @@
                     <p>View products without leaving the page</p>
                     <span class="feature-badge">Interactive</span>
                     <span class="feature-badge">Gallery</span>
-                    <button class="aiab-btn btn--primary" onclick="openProductModal()">
+                    <button class="aiab-btn aiab-btn--primary" onclick="openProductModal()">
                         Launch Demo
                     </button>
                 </div>
@@ -287,12 +240,12 @@
                 <div class="mobile-screen">
                     <h4 style="margin: 0 0 1rem 0;">Mobile Shopping App</h4>
 
-                    <button class="aiab-btn btn--primary btn--sm" style="width: 100%; margin-bottom: 0.5rem;"
+                    <button class="aiab-btn aiab-btn--primary btn--sm" style="width: 100%; margin-bottom: 0.5rem;"
                             onclick="openMobileModal('bottom-sheet')">
                         <i data-lucide="filter"></i> Filter Products
                     </button>
 
-                    <button class="aiab-btn btn--secondary btn--sm" style="width: 100%; margin-bottom: 0.5rem;"
+                    <button class="aiab-btn aiab-btn--secondary btn--sm" style="width: 100%; margin-bottom: 0.5rem;"
                             onclick="openMobileModal('fullscreen')">
                         <i data-lucide="search"></i> Search
                     </button>
@@ -338,27 +291,27 @@
             <h3>Key Features</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
                 <div>
-                    <h4>🎯 Focus Management</h4>
+                    <h4>Focus Management</h4>
                     <p>Automatic focus trapping and restoration</p>
                 </div>
                 <div>
-                    <h4>⌨️ Keyboard Support</h4>
+                    <h4>Keyboard Support</h4>
                     <p>Tab navigation and ESC to close</p>
                 </div>
                 <div>
-                    <h4>📱 Touch Gestures</h4>
+                    <h4>Touch Gestures</h4>
                     <p>Swipe to dismiss on mobile</p>
                 </div>
                 <div>
-                    <h4>🎨 Smooth Animations</h4>
+                    <h4>Smooth Animations</h4>
                     <p>Hardware-accelerated transitions</p>
                 </div>
                 <div>
-                    <h4>♿ Screen Readers</h4>
+                    <h4>Screen Readers</h4>
                     <p>Full ARIA support and announcements</p>
                 </div>
                 <div>
-                    <h4>🔒 Scroll Lock</h4>
+                    <h4>Scroll Lock</h4>
                     <p>Prevents body scroll when open</p>
                 </div>
             </div>
@@ -429,7 +382,7 @@ modal.<span class="string">toggle</span>();
                         <i data-lucide="headphones"></i>
                     </div>
                     <div class="product-modal-info">
-                        <div class="rating">
+                        <div class="aiab-rating">
                             <i data-lucide="star" class="icon--filled icon--warning"></i>
                             <i data-lucide="star" class="icon--filled icon--warning"></i>
                             <i data-lucide="star" class="icon--filled icon--warning"></i>
@@ -468,8 +421,8 @@ modal.<span class="string">toggle</span>();
                 </div>
             </div>
             <div class="aiab-modal__footer">
-                <button class="aiab-btn btn--secondary" data-modal-close>Close</button>
-                <button class="aiab-btn btn--primary">
+                <button class="aiab-btn aiab-btn--secondary" data-modal-close>Close</button>
+                <button class="aiab-btn aiab-btn--primary">
                     <i data-lucide="shopping-cart"></i> Add to Cart
                 </button>
             </div>
@@ -539,8 +492,8 @@ modal.<span class="string">toggle</span>();
                 </form>
             </div>
             <div class="aiab-modal__footer">
-                <button class="aiab-btn btn--secondary" data-modal-close>Cancel</button>
-                <button class="aiab-btn btn--primary">Continue to Payment →</button>
+                <button class="aiab-btn aiab-btn--secondary" data-modal-close>Cancel</button>
+                <button class="aiab-btn aiab-btn--primary">Continue to Payment →</button>
             </div>
         </div>
     </div>
@@ -590,8 +543,8 @@ modal.<span class="string">toggle</span>();
                 </div>
             </div>
             <div class="aiab-modal__footer">
-                <button class="aiab-btn btn--secondary" data-modal-close>Continue Shopping</button>
-                <button class="aiab-btn btn--primary">Checkout</button>
+                <button class="aiab-btn aiab-btn--secondary" data-modal-close>Continue Shopping</button>
+                <button class="aiab-btn aiab-btn--primary">Checkout</button>
             </div>
         </div>
     </div>
@@ -602,7 +555,7 @@ modal.<span class="string">toggle</span>();
             <div class="aiab-modal__body" style="text-align: center; padding: 2rem;">
                 <h3>Small Modal</h3>
                 <p>300px width - Perfect for simple alerts</p>
-                <button class="aiab-btn btn--primary" data-modal-close>Got it!</button>
+                <button class="aiab-btn aiab-btn--primary" data-modal-close>Got it!</button>
             </div>
         </div>
     </div>
@@ -617,7 +570,7 @@ modal.<span class="string">toggle</span>();
                 <p>500px width - Standard size for most dialogs</p>
             </div>
             <div class="aiab-modal__footer">
-                <button class="aiab-btn btn--secondary" data-modal-close>Close</button>
+                <button class="aiab-btn aiab-btn--secondary" data-modal-close>Close</button>
             </div>
         </div>
     </div>
@@ -632,13 +585,13 @@ modal.<span class="string">toggle</span>();
                 <p>800px width - Great for product views and galleries</p>
             </div>
             <div class="aiab-modal__footer">
-                <button class="aiab-btn btn--secondary" data-modal-close>Close</button>
+                <button class="aiab-btn aiab-btn--secondary" data-modal-close>Close</button>
             </div>
         </div>
     </div>
 
     <script type="module">
-        console.log('🎭 Modal showcase initialized');
+        console.log('Modal showcase initialized');
 
         // Product Modal
         window.openProductModal = function() {
@@ -739,7 +692,6 @@ modal.<span class="string">toggle</span>();
   </script>
 
     <!-- Import main JavaScript for navigation -->
-    <script type="module" src="../src/js/index.js"></script>
 
 </body>
 </html>

@@ -3,70 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Icons — Amphibious 2.0</title>
   <meta name="description" content="Icon gallery with search and usage examples for Amphibious 2.0 Lucide icons.">
-  <script type="module">import '/src/css/main.css';</script>
+  <!-- The gallery lists every Lucide icon, so it loads the full set (pinned). -->
+  <script src="https://unpkg.com/lucide@1.79.0/dist/umd/lucide.min.js"></script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './icons.css';
+  </script>
   <!-- CSS will be loaded via JavaScript module -->
-  <link rel="stylesheet" href="icons.css">
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <ul class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="./foundation.html">Foundation</a>
-          <ul>
-            <li><a href="./foundation.html#core">Core</a></li>
-            <li><a href="./foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="./foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="./foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="./foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="./foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="./foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="./form.html">Form</a>
-          <ul>
-            <li><a href="./form.html#typography">Typography</a></li>
-            <li><a href="./form.html#forms">Basic Forms</a></li>
-            <li><a href="./form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="./form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="./form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="./form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="./form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="./function.html">Function</a>
-          <ul>
-            <li><a href="./function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="./function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="./function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="./function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="./function.html#tabs">Tabs</a></li>
-            <li><a href="./function.html#pagination">Pagination aiab-nav</a></li>
-          </ul>
-        </li>
-        <li><a href="./features.html">Features</a>
-          <ul>
-            <li><a href="./features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="./features.html#helpers">Layout Helpers</a></li>
-            <li><a href="./features.html#pears">Content Pea.rs</a></li>
-            <li><a href="./features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="../examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
   <!-- Header -->
   <header class="aiab-docs-header">
     <div class="aiab-container">
-      <h1>🎨 Lucide Icons</h1>
+      <h1>Lucide Icons</h1>
       <p>Complete collection of 1,641+ beautiful, customizable icons with search, categories, and click-to-copy functionality. Every icon is tree-shakeable and optimized for modern web development.</p>
     </div>
   </header>
@@ -78,7 +38,7 @@
         <input
           type="search"
           class="search-input"
-          placeholder="🔍 Search icons by name, category, or keyword..."
+          placeholder="Search icons by name, category, or keyword..."
           id="iconSearch"
           autocomplete="off"
         >
@@ -120,14 +80,14 @@
   <main id="main-content" class="aiab-container">
     <!-- Loading State -->
     <div class="loading-state" id="loadingState">
-      <div class="aiab-icon">⏳</div>
+      <div class="aiab-icon"><i data-lucide="loader-2"></i></div>
       <h3>Loading Icons...</h3>
       <p>Please wait while we load all 1,641+ Lucide icons</p>
     </div>
 
     <!-- No Results State -->
     <div class="no-results-state aiab-hidden" id="noResultsState">
-      <div class="aiab-icon">🔍</div>
+      <div class="aiab-icon"><i data-lucide="search-x"></i></div>
       <h3>No Icons Found</h3>
       <p>Try adjusting your search terms or selecting a different category</p>
     </div>
@@ -139,7 +99,7 @@
 
     <!-- Usage Examples -->
     <section class="usage-section" style="margin-top: 3rem;">
-      <h3>📖 Usage Examples</h3>
+      <h3>Usage Examples</h3>
 
       <h4>HTML with data-lucide attribute:</h4>
       <div class="code-example">
@@ -185,7 +145,7 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
       <div class="code-example">
         <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
 &lt;!-- Add to your HTML head --&gt;
-&lt;script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/lucide@1.79.0/dist/umd/lucide.min.js"&gt;&lt;/script&gt;
 
 &lt;!-- In your HTML body --&gt;
 &lt;i data-lucide="heart"&gt;&lt;/i&gt;
@@ -498,6 +458,15 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
       ]
     };
 
+    // The list above was typed by hand and includes names Lucide doesn't ship.
+    // Keep only real icons so tiles and category counts are honest.
+    if (window.lucide && window.lucide.icons) {
+      const toPascal = (n) => n.replace(/(^|-)([a-z0-9])/g, (_, a, b) => b.toUpperCase());
+      for (const key of Object.keys(iconDatabase)) {
+        iconDatabase[key] = iconDatabase[key].filter((n) => window.lucide.icons[toPascal(n)]);
+      }
+    }
+
     // UI State
     let currentCategory = 'all';
     let searchTerm = '';
@@ -639,6 +608,8 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
       });
 
       iconCategories.innerHTML = html;
+      // Hydrate the freshly rendered placeholders (Lucide is loaded in <head>)
+      if (window.lucide) window.lucide.createIcons();
 
       // Add click handlers to icon items
       addIconClickHandlers();
@@ -742,12 +713,6 @@ const cartIcon = ShoppingCart({ strokeWidth: 2 });
     // Make copyToClipboard globally available
     window.copyToClipboard = copyToClipboard;
 
-    // Initialize icons after page load
-    setTimeout(() => {
-      if (window.amp?.modules.icon?.init) {
-        window.amp.modules.icon.init();
-      }
-    }, 100);
   </script>
 </body>
 </html>

@@ -228,7 +228,14 @@ input[type="radio"]:focus {
    ========================================================================== */
 
 .aiab-form-group {
+  min-width: 0;
   margin-bottom: var(--form-group-margin-bottom);
+
+  /* A control's default width (the `size` attribute) varies with the font, so
+     cap it at the container instead of letting it stretch the page */
+  & :is(input, select, textarea):not([type="checkbox"], [type="radio"]) {
+    max-width: 100%;
+  }
 }
 
 .aiab-form-row {
@@ -369,7 +376,8 @@ input[type="radio"]:focus {
 
   & .aiab-form-group {
     display: flex;
-    flex: 0 0 auto;
+    flex: 0 1 auto;
+    max-width: 100%; /* a long control wraps inside the group instead of widening the page */
     flex-flow: row wrap;
     align-items: center;
     margin-bottom: 0;
@@ -465,6 +473,7 @@ input[type="range"] {
    ========================================================================== */
 
 input[type="file"] {
+  max-width: 100%;
   overflow: hidden;
 
   &::file-selector-button {

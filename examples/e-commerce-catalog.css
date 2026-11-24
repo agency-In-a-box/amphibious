@@ -36,6 +36,7 @@
     }
     .aiab-search-bar input {
       flex: 1;
+      min-width: 0;
       padding: 0.75rem;
       border: 2px solid var(--color-gray-300);
       border-radius: 4px;
@@ -54,8 +55,46 @@
     }
     .aiab-header-icons {
       display: flex;
-      gap: 1rem;
+      gap: 0.25rem;
       align-items: center;
+    }
+    .aiab-header-icons .aiab-icon-button,
+    .aiab-header-icons .aiab-icon-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      width: auto;
+      height: 40px;
+      padding: 0 0.625rem;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      color: var(--color-text);
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 120ms ease-out, transform 100ms ease-out;
+    }
+    .aiab-header-icons .aiab-icon-button:hover,
+    .aiab-header-icons .aiab-icon-badge:hover {
+      background: var(--color-gray-100);
+    }
+    .aiab-header-icons .aiab-icon-button:active,
+    .aiab-header-icons .aiab-icon-badge:active {
+      transform: scale(0.96);
+    }
+    .aiab-header-icons svg {
+      width: 20px;
+      height: 20px;
+    }
+    /* Pin the count to the cart glyph, not the end of the label */
+    .aiab-header-icons .aiab-icon-badge__count {
+      top: 2px;
+      right: auto;
+      left: calc(0.625rem + 12px);
+      font-variant-numeric: tabular-nums;
     }
 
     /* Navigation */
@@ -70,11 +109,21 @@
       padding: 0;
       display: flex;
       gap: 2rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+    }
+    .aiab-nav-categories ul::-webkit-scrollbar {
+      display: none;
+    }
+    .aiab-nav-categories li {
+      flex-shrink: 0;
     }
     .aiab-nav-categories a {
       color: var(--color-gray-700);
       text-decoration: none;
       font-weight: 500;
+      white-space: nowrap;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -121,11 +170,17 @@
     }
     .aiab-sort-controls {
       display: flex;
-      gap: 1rem;
+      gap: 0.5rem;
       align-items: center;
     }
+    .aiab-sort-controls label {
+      white-space: nowrap;
+      color: var(--color-secondary);
+      font-size: 0.875rem;
+    }
     .aiab-sort-controls select {
-      padding: 0.5rem;
+      height: 40px;
+      padding: 0 0.5rem;
       border: 1px solid var(--color-gray-300);
       border-radius: 4px;
       background: white;
@@ -135,11 +190,22 @@
       gap: 0.5rem;
     }
     .aiab-view-toggles button {
-      padding: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
       background: white;
+      color: var(--color-text);
       border: 1px solid var(--color-gray-300);
       cursor: pointer;
-      border-radius: 4px;
+      border-radius: 8px;
+      line-height: 0;
+    }
+    .aiab-view-toggles svg {
+      width: 20px;
+      height: 20px;
     }
     .aiab-view-toggles button.aiab-active {
       background: var(--color-primary);
@@ -277,6 +343,7 @@
       display: flex;
       align-items: center;
       gap: 0.25rem;
+      white-space: nowrap;
     }
     .aiab-slat-meta .aiab-badge {
       padding: 0.25rem 0.75rem;
@@ -345,6 +412,7 @@
     }
     .aiab-product-image {
       position: relative;
+      margin: 0;
       padding-bottom: 100%;
       background: var(--color-gray-100);
       overflow: hidden;
@@ -383,18 +451,43 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      opacity: 0;
+      transform: translateX(4px);
+      transition: opacity 150ms ease-out, transform 150ms ease-out;
+    }
+    .aiab-product-card:hover .aiab-product-actions,
+    .aiab-product-card:focus-within .aiab-product-actions {
+      opacity: 1;
+      transform: none;
+    }
+    @media (hover: none) {
+      .aiab-product-actions {
+        opacity: 1;
+        transform: none;
+      }
     }
     .aiab-product-actions button {
       width: 36px;
       height: 36px;
-      background: white;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--color-text);
       border: 1px solid var(--color-gray-300);
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
+      flex-shrink: 0;
+      transition: background-color 120ms ease-out, color 120ms ease-out, transform 100ms ease-out;
+    }
+    .aiab-product-actions button:active {
+      transform: scale(0.92);
+    }
+    .aiab-product-actions svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
     }
     .aiab-product-actions button:hover {
       background: var(--color-primary);
@@ -423,29 +516,46 @@
     }
     .aiab-product-rating {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.25rem 0.5rem;
       margin-bottom: 0.5rem;
     }
     .aiab-stars {
       display: flex;
       gap: 0.125rem;
     }
-    .aiab-star {
+    /* Ratings read as solid glyphs: gold for earned, grey for the rest */
+    .aiab-stars svg,
+    .aiab-rating svg {
+      fill: currentColor;
+      stroke: none;
+    }
+    /* Quick-view stars carry no size modifier */
+    .aiab-quick-view-info .aiab-stars svg {
+      width: 16px;
+      height: 16px;
+    }
+    .aiab-star,
+    .aiab-rating svg {
       color: var(--color-warning);
     }
-    .aiab-star.empty {
+    .aiab-star.empty,
+    .aiab-stars svg:not(.aiab-icon--filled) {
       color: var(--color-gray-300);
     }
     .aiab-review-count {
-      font-size: 0.875rem;
+      white-space: nowrap;
+      font-size: 0.8125rem;
       color: var(--color-secondary);
     }
     .aiab-product-price {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 0.5rem;
       margin-bottom: 1rem;
+      font-variant-numeric: tabular-nums;
     }
     .aiab-price-current {
       font-size: 1.25rem;
@@ -458,6 +568,7 @@
       text-decoration: line-through;
     }
     .aiab-price-discount {
+      white-space: nowrap;
       font-size: 0.875rem;
       color: var(--color-danger);
       font-weight: 600;
@@ -467,7 +578,8 @@
       color: var(--color-success);
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.375rem;
+      margin-top: auto;
       margin-bottom: 1rem;
     }
     .aiab-add-to-cart {
@@ -479,7 +591,7 @@
       border-radius: 4px;
       font-weight: 500;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background-color 150ms ease-out, transform 100ms ease-out;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -487,6 +599,20 @@
     }
     .aiab-add-to-cart:hover {
       background: var(--color-primary-dark);
+    }
+    .aiab-add-to-cart:active {
+      transform: scale(0.97);
+    }
+    .aiab-add-to-cart svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Product grid — fluid columns, real gutters both ways */
+    .aiab-product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
 
     /* Utility Classes */
@@ -550,6 +676,9 @@
     }
 
     .aiab-qv-btn-wishlist {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.75rem 1.5rem;
       background: white;
       border: 2px solid var(--color-primary);
@@ -561,6 +690,12 @@
     .aiab-qv-btn-wishlist:hover {
       background: var(--color-primary);
       color: white;
+    }
+    .aiab-qv-btn-wishlist svg,
+    .aiab-qv-info-row svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
     }
 
     .aiab-qv-info-section {
@@ -583,15 +718,34 @@
     }
     .aiab-quick-view-image {
       flex: 1;
+      align-self: flex-start;
       background: var(--color-gray-100);
-      border-radius: 8px;
-      min-height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .aiab-quick-view-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: cover;
     }
     .aiab-quick-view-info {
       flex: 1;
+    }
+    .aiab-quick-view-info h2 {
+      margin: 0.25rem 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .aiab-quick-view-info h4 {
+      margin: 1.25rem 0 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--color-secondary);
     }
     .aiab-size-options {
       display: flex;
@@ -599,9 +753,13 @@
       margin: 1rem 0;
     }
     .aiab-size-option {
-      padding: 0.5rem 1rem;
+      min-width: 44px;
+      height: 40px;
+      padding: 0 0.875rem;
       border: 2px solid var(--color-gray-300);
       background: white;
+      color: var(--color-text);
+      font-weight: 500;
       cursor: pointer;
       border-radius: 4px;
       transition: all 0.2s;
@@ -614,16 +772,27 @@
     .aiab-quantity-selector {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin: 1rem 0;
+      gap: 0.5rem;
+      margin: 0.5rem 0 1rem;
     }
     .aiab-quantity-selector button {
-      width: 32px;
-      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
       border: 1px solid var(--color-gray-300);
       background: white;
+      color: var(--color-text);
+      font-size: 1.125rem;
+      line-height: 1;
       cursor: pointer;
-      border-radius: 4px;
+      border-radius: 8px;
+      transition: transform 100ms ease-out;
+    }
+    .aiab-quantity-selector button:active {
+      transform: scale(0.94);
     }
     .aiab-quantity-selector input {
       width: 60px;
@@ -642,15 +811,36 @@
       margin: 3rem 0;
     }
     .aiab-pagination button {
-      padding: 0.5rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 0.75rem;
       border: 1px solid var(--color-gray-300);
       background: white;
+      color: var(--color-text);
+      font-size: 0.9375rem;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
       cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.2s;
+      border-radius: 8px;
+      transition: background-color 120ms ease-out, transform 100ms ease-out;
     }
-    .aiab-pagination button:hover {
+    .aiab-pagination button:hover:not(:disabled):not(.aiab-active) {
       background: var(--color-gray-100);
+    }
+    .aiab-pagination button:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+    .aiab-pagination svg {
+      width: 18px;
+      height: 18px;
+    }
+    .aiab-pagination-ellipsis {
+      min-width: 24px;
+      text-align: center;
+      color: var(--color-secondary);
     }
     .aiab-pagination button.aiab-active {
       background: var(--color-primary);
@@ -695,10 +885,96 @@
       color: var(--color-gray-500);
     }
 
-    /* Mobile Styles */
+    /* Mobile filters trigger + sheet */
+    .aiab-filters-trigger {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      height: 40px;
+      padding: 0 0.875rem;
+      background: white;
+      color: var(--color-text);
+      border: 1px solid var(--color-gray-300);
+      border-radius: 8px;
+      font-weight: 500;
+      transition: transform 100ms ease-out;
+    }
+    .aiab-filters-trigger:active {
+      transform: scale(0.96);
+    }
+    .aiab-filters-trigger svg {
+      width: 18px;
+      height: 18px;
+    }
+    .aiab-filters-trigger__count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: 10px;
+      background: var(--color-primary);
+      color: white;
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .aiab-filters-trigger__count[hidden] {
+      display: none;
+    }
+    #filtersModal .aiab-modal__dialog {
+      display: flex;
+      flex-direction: column;
+      max-height: 85vh;
+    }
+    #filtersModal .aiab-modal__body {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    #filtersModal .aiab-filters {
+      padding: 0;
+      box-shadow: none;
+    }
+    #filtersModal .aiab-modal__footer {
+      display: flex;
+      gap: 0.75rem;
+    }
+    #filtersModal .aiab-modal__footer .aiab-btn {
+      flex: 1;
+    }
+
+    /* Mobile Styles
+       Literal width, not (--bp-md-down): @custom-media is defined in the
+       library's breakpoints.css and does not reach page stylesheets, so the
+       old block never matched. */
     @media (--bp-md-down) {
-      .aiab-header-icons span {
+      .aiab-header-icons span:not(.aiab-icon-badge__count) {
         display: none;
+      }
+      .aiab-filters-trigger {
+        display: inline-flex;
+      }
+      .aiab-filters-column {
+        display: none;
+      }
+      .aiab-catalog-flex {
+        justify-content: space-between;
+      }
+      .aiab-sort-controls {
+        flex: 1;
+        min-width: 0;
+      }
+      .aiab-sort-controls select {
+        width: 100%;
+      }
+      /* Label stays for screen readers; the select's value says enough visually */
+      .aiab-sort-controls label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
       }
       .aiab-catalog-controls {
         flex-direction: column;
@@ -706,6 +982,40 @@
       }
       .aiab-quick-view-content {
         flex-direction: column;
+      }
+      .aiab-nav-categories {
+        padding: 0.75rem 0;
+      }
+      .aiab-nav-categories ul {
+        gap: 1.25rem;
+        scroll-snap-type: x proximity;
+      }
+      .aiab-nav-categories li {
+        scroll-snap-align: start;
+      }
+      .aiab-slat-item {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .aiab-slat-image img {
+        width: 88px;
+        height: 88px;
+      }
+      .aiab-slat-content {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+      .aiab-slat-meta {
+        flex-wrap: wrap;
+        row-gap: 0.25rem;
+      }
+      .aiab-slat-actions {
+        flex-direction: row;
+        width: 100%;
+      }
+      .aiab-slat-actions .aiab-btn--primary {
+        flex: 1;
       }
     }
 
@@ -1188,7 +1498,18 @@
        Reduced Motion Support
        ============================================ */
     @media (prefers-reduced-motion: reduce) {
+      .aiab-product-card:hover,
+      .aiab-product-actions,
+      .aiab-add-to-cart:active,
+      .aiab-pagination button:active,
+      .aiab-header-icons .aiab-icon-button:active,
+      .aiab-header-icons .aiab-icon-badge:active {
+        transform: none !important;
+      }
       .aiab-product-card,
+      .aiab-product-actions,
+      .aiab-add-to-cart,
+      .aiab-pagination button,
       .aiab-product-actions button,
       .aiab-btn,
       .aiab-size-option {

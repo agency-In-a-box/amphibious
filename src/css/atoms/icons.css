@@ -6,7 +6,7 @@
 /* CSS Custom Properties for Icons */
 :root {
   /* Icon sizes */
-  --icon-size-xs: 16px;
+  --icon-size-xs: 12px;
   --icon-size-sm: 20px;
   --icon-size-md: 24px;
   --icon-size-lg: 32px;

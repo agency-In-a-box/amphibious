@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
+  <meta name="theme-color" content="#ffffff">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Page not found — Amphibious 2.0</title>
+  <meta name="description" content="The page you are looking for does not exist.">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
+  <script type="module" src="/src/index.ts"></script>
+</head>
+<body>
+  <!-- Navigation Include -->
+  <main id="main-content" class="aiab-container">
+    <h1>Page not found</h1>
+    <p>That page does not exist or has moved.</p>
+    <p>
+      <a class="aiab-btn btn-primary" href="/">Back to the homepage</a>
+      <a class="aiab-btn btn-outline" href="/docs/">Documentation</a>
+      <a class="aiab-btn btn-outline" href="/examples/">Examples</a>
+      <a class="aiab-btn btn-outline" href="/sitemap.html">Sitemap</a>
+    </p>
+    <p>
+      Followed a link from this site?
+      <a href="https://github.com/agency-In-a-box/amphibious/issues/new?title=Broken%20link" rel="noopener">Report a broken link</a>.
+    </p>
+  </main>
+</body>
+</html>

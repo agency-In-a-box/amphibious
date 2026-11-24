@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amphibious 2.0 - Modern CSS Framework</title>
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
+    <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
+<title>Amphibious 2.0 - Modern CSS Framework</title>
   <meta name="description" content="A modern, lightweight CSS framework with beautiful components, responsive grid, and SaaS-ready design patterns. Built with TypeScript and Vite.">
   <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce, saas">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   
   <!-- Google Fonts - Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Amphibious Core Styles -->
-  <link rel="stylesheet" href="/src/css/main-atomic.css">
+  <link rel="stylesheet" href="/src/css/main.css">
   
   <style>
     /* ============================================
@@ -148,6 +156,12 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
+    }
+
+    @media (max-width: 640px) {
+      .saas-nav__actions .saas-btn--ghost {
+        display: none;
+      }
     }
     
     /* Buttons */
@@ -557,7 +571,7 @@
       }
       
       .saas-footer__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: var(--spacing-8);
       }
       
@@ -593,7 +607,7 @@
         </ul>
         
         <div class="saas-nav__actions">
-          <a href="https://github.com/your-repo/amphibious" class="saas-btn saas-btn--ghost">GitHub</a>
+          <a href="https://github.com/agency-In-a-box/amphibious" class="saas-btn saas-btn--ghost">GitHub</a>
           <a href="/docs/getting-started.html" class="saas-btn saas-btn--primary">Get Started</a>
         </div>
       </div>
@@ -772,7 +786,7 @@
               <path d="m12 5 7 7-7 7"/>
             </svg>
           </a>
-          <a href="https://github.com/your-repo/amphibious" class="saas-btn saas-btn--secondary saas-btn--lg">
+          <a href="https://github.com/agency-In-a-box/amphibious" class="saas-btn saas-btn--secondary saas-btn--lg">
             View on GitHub
           </a>
         </div>
@@ -823,9 +837,9 @@
         <nav>
           <h4 class="saas-footer__column-title">Resources</h4>
           <ul class="saas-footer__links">
-            <li><a href="https://github.com/your-repo/amphibious" class="saas-footer__link">GitHub</a></li>
-            <li><a href="/CHANGELOG.md" class="saas-footer__link">Changelog</a></li>
-            <li><a href="/atomic-design-demo.html" class="saas-footer__link">Atomic Design</a></li>
+            <li><a href="https://github.com/agency-In-a-box/amphibious" class="saas-footer__link">GitHub</a></li>
+            <li><a href="https://github.com/agency-In-a-box/amphibious/blob/main/CHANGELOG.md" rel="noopener" class="saas-footer__link">Changelog</a></li>
+            <li><a href="/examples/atomic-design-demo.html" class="saas-footer__link">Atomic Design</a></li>
             <li><a href="/sitemap.html" class="saas-footer__link">Sitemap</a></li>
           </ul>
         </nav>
@@ -834,14 +848,13 @@
       <div class="saas-footer__bottom">
         <p class="saas-footer__copyright">© 2024 Amphibious. MIT License.</p>
         <nav class="saas-footer__legal">
-          <a href="/LICENSE">License</a>
-          <a href="/CONTRIBUTING.md">Contributing</a>
+          <a href="https://github.com/agency-In-a-box/amphibious/blob/main/LICENSE" rel="noopener">License</a>
         </nav>
       </div>
     </div>
   </footer>
 
   <!-- Load Framework JS (for icons and interactions) -->
-  <script type="module" src="/src/index.js"></script>
+  <script type="module" src="/src/index.ts"></script>
 </body>
 </html>

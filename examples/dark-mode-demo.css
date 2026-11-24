@@ -9,6 +9,7 @@
 
     .theme-selector {
       display: flex;
+      flex-wrap: wrap;
       gap: 16px;
       margin: 32px 0;
     }
@@ -31,7 +32,7 @@
 
     .theme-card.aiab-active {
       border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(237, 139, 0, 0.15);
+      box-shadow: 0 0 0 3px rgba(236, 139, 0, 0.15);
     }
 
     .theme-icon {
@@ -53,7 +54,7 @@
 
     .component-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 32px;
       margin: 32px 0;
     }

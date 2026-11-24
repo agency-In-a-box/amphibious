@@ -8,11 +8,12 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
   <style>
     /* Visual styling for demo */
-    .header, .aiab-sidebar, .aiab-main-content, .footer {
+    .header, .demo-sidebar, .aiab-main-content, .footer {
       background: #d97638;
       color: white;
       padding: 20px;
@@ -20,7 +21,7 @@
       border-radius: 4px;
     }
 
-    .aiab-sidebar {
+    .demo-sidebar {
       background: #c9702f;
     }
 
@@ -61,7 +62,7 @@
 
     <!-- Main Content Area -->
     <div class="aiab-row">
-      <aside class="aiab-col-6 aiab-sidebar">Sidebar</aside>
+      <aside class="aiab-col-6 demo-sidebar">Sidebar</aside>
       <main class="aiab-col-10 aiab-main-content">Main Content</main>
     </div>
 
@@ -73,7 +74,7 @@
 
   <!-- Code Example -->
   <div class="aiab-container" style="margin-top: 40px;">
-    <pre style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 4px; overflow-x: auto;">
+    <pre style="background: white; color: #1f2937; padding: 20px; border: 1px solid #ddd; border-radius: 4px; overflow-x: auto;">
 &lt;div class="aiab-container"&gt;
   &lt;!-- Header --&gt;
   &lt;div class="aiab-row"&gt;

@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Carousel Showcase — Amphibious 2.0</title>
   <meta name="description" content="Carousel and slider examples with Splide.js integration, autoplay, and responsive breakpoints">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
   <style>
     /* Demo specific styles */
@@ -75,61 +80,7 @@
   </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-        <span class="aiab-sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="main-nav" class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
 
   <header class="aiab-container">
@@ -199,27 +150,27 @@
                aria-label="Featured products">
             <article class="demo-card">
               <h3>Premium T-Shirt</h3>
-              <p class="price">$29.99</p>
+              <p class="aiab-price">$29.99</p>
               <p>Comfortable cotton blend with modern fit.</p>
             </article>
             <article class="demo-card">
               <h3>Wireless Headphones</h3>
-              <p class="price">$149.99</p>
+              <p class="aiab-price">$149.99</p>
               <p>High-quality audio with noise cancellation.</p>
             </article>
             <article class="demo-card">
               <h3>Laptop Stand</h3>
-              <p class="price">$79.99</p>
+              <p class="aiab-price">$79.99</p>
               <p>Ergonomic design for better productivity.</p>
             </article>
             <article class="demo-card">
               <h3>Coffee Mug</h3>
-              <p class="price">$19.99</p>
+              <p class="aiab-price">$19.99</p>
               <p>Insulated ceramic with custom design.</p>
             </article>
             <article class="demo-card">
               <h3>Desk Organizer</h3>
-              <p class="price">$39.99</p>
+              <p class="aiab-price">$39.99</p>
               <p>Keep your workspace tidy and organized.</p>
             </article>
           </div>
@@ -341,19 +292,19 @@
                data-carousel-interval="4000"
                aria-label="Feature highlights">
             <article class="demo-card" style="height: 200px;">
-              <h3>🚀 Fast Performance</h3>
+              <h3>Fast Performance</h3>
               <p>Lightning-fast load times with optimized assets and minimal dependencies.</p>
             </article>
             <article class="demo-card" style="height: 200px;">
-              <h3>♿ Accessibility First</h3>
+              <h3>Accessibility First</h3>
               <p>WCAG 2.1 AA compliant with screen reader support and keyboard navigation.</p>
             </article>
             <article class="demo-card" style="height: 200px;">
-              <h3>📱 Mobile Ready</h3>
+              <h3>Mobile Ready</h3>
               <p>Responsive design that looks perfect on all devices and screen sizes.</p>
             </article>
             <article class="demo-card" style="height: 200px;">
-              <h3>🎨 Customizable</h3>
+              <h3>Customizable</h3>
               <p>Easy theming with CSS variables and modular component architecture.</p>
             </article>
           </div>

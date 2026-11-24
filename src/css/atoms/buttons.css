@@ -72,14 +72,24 @@
   --btn-padding-x-lg: 1.5rem;
 }
 
+/* Bare button reset
+   Zero specificity. Unclassed buttons keep the browser's button shape but
+   inherit the page's type and colour. Visual button styling is opt-in via
+   .aiab-btn — the element selectors that used to sit on the rule below
+   turned every <button> (icon buttons, pagination, steppers, modal close)
+   into an orange primary button with 24px side padding.
+   ========================================================================== */
+
+:where(button, input[type="submit"], input[type="reset"], input[type="button"]) {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
 /* Base Button Styles
    ========================================================================== */
 
 .aiab-btn,
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
 .aiab-button {
   display: inline-block;
   font-family: inherit;
@@ -599,23 +609,6 @@ input[type="button"]:focus-visible {
 @keyframes btn-spinner {
   to {
     transform: rotate(360deg);
-  }
-}
-
-/* Legacy Support
-   ========================================================================== */
-
-/* Old button classes */
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  background-color: var(--btn-primary-bg);
-  color: var(--btn-primary-color);
-  border-color: var(--btn-primary-border);
-
-  &:hover {
-    background-color: var(--btn-primary-hover-bg);
-    border-color: var(--btn-primary-hover-border);
   }
 }
 

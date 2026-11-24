@@ -3,6 +3,8 @@ import { fileURLToPath } from 'node:url';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import compression from 'vite-plugin-compression';
+import aiabIcons from './scripts/vite-plugin-icons.js';
+import aiabNavigation from './scripts/vite-plugin-nav.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -33,6 +35,8 @@ export default defineConfig({
   },
 
   plugins: [
+    aiabIcons(),
+    aiabNavigation(),
     // Gzip compression
     compression({
       algorithm: 'gzip',

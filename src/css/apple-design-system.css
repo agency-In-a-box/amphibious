@@ -9,7 +9,7 @@
    ========================================================================== */
 
 :root {
-  /* Primary Palette - Pantone 144 Orange (canonical: #ed8b00) */
+  /* Primary Palette - brand orange (canonical: #ec8b00, DEC-018) */
   --apple-orange: var(--color-primary);
   --apple-orange-light: #ff9f1c;
   --apple-orange-dark: var(--color-primary-active);
@@ -406,11 +406,11 @@
 }
 
 .aiab-apple-grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
 }
 
 .aiab-apple-grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 }
 
 .aiab-apple-grid-4 {

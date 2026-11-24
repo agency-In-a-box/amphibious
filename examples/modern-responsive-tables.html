@@ -8,9 +8,10 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Framework Styles -->
-    <link rel="stylesheet" href="/css/a.mphibio.us.min.css">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
     
     <style>
         /* Modern Typography */
@@ -92,7 +93,7 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
@@ -118,61 +119,7 @@
     </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-        <span class="aiab-sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="main-nav" class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
 
     <header>
@@ -184,13 +131,14 @@
     
     <main class="aiab-container" id="main-content">
         <div class="resize-hint">
-            📱 ↔️ 💻 Resize your browser window to see the responsive magic in action!
+            ↔ Resize your browser window to see the responsive magic in action!
         </div>
         
         <section class="aiab-demo-section">
             <h2>Default Responsive Table</h2>
             <p>The foundation of our responsive table system. On mobile devices, the table transforms into a card-based layout with data labels automatically generated from the <code>data-th</code> attributes.</p>
             
+            <div class="aiab-table-wrapper">
             <table class="rwd-table" role="table" aria-label="Movie database example">
                 <thead>
                     <tr>
@@ -207,38 +155,40 @@
                         <td data-th="Genre">Adventure, Sci-Fi</td>
                         <td data-th="Year">1977</td>
                         <td data-th="Box Office">$775,398,007</td>
-                        <td data-th="Rating">⭐⭐⭐⭐⭐</td>
+                        <td data-th="Rating">★★★★★</td>
                     </tr>
                     <tr>
                         <td data-th="Movie Title">The Godfather</td>
                         <td data-th="Genre">Crime, Drama</td>
                         <td data-th="Year">1972</td>
                         <td data-th="Box Office">$287,000,000</td>
-                        <td data-th="Rating">⭐⭐⭐⭐⭐</td>
+                        <td data-th="Rating">★★★★★</td>
                     </tr>
                     <tr>
                         <td data-th="Movie Title">Pulp Fiction</td>
                         <td data-th="Genre">Crime, Drama</td>
                         <td data-th="Year">1994</td>
                         <td data-th="Box Office">$214,179,088</td>
-                        <td data-th="Rating">⭐⭐⭐⭐⭐</td>
+                        <td data-th="Rating">★★★★★</td>
                     </tr>
                     <tr>
                         <td data-th="Movie Title">The Shawshank Redemption</td>
                         <td data-th="Genre">Drama</td>
                         <td data-th="Year">1994</td>
                         <td data-th="Box Office">$28,341,469</td>
-                        <td data-th="Rating">⭐⭐⭐⭐⭐</td>
+                        <td data-th="Rating">★★★★★</td>
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         
         <section class="aiab-demo-section">
             <h2>Table with Striped Rows & Hover Effects</h2>
             <p>Enhanced visual feedback with alternating row colors and smooth hover transitions.</p>
             
-            <table class="rwd-table table-striped table-hover" role="table" aria-label="Technology companies data">
+            <div class="aiab-table-wrapper">
+            <table class="rwd-table aiab-table-striped aiab-table-hover" role="table" aria-label="Technology companies data">
                 <thead>
                     <tr>
                         <th scope="col">Company</th>
@@ -250,42 +200,44 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td data-th="Company">Apple Inc.</td>
-                        <td data-th="Founded">1976</td>
-                        <td data-th="Headquarters">Cupertino, CA</td>
-                        <td data-th="Market Cap">$3.5T</td>
+                        <td data-th="Company">Lumen Grove Systems</td>
+                        <td data-th="Founded">2004</td>
+                        <td data-th="Headquarters">Portland, OR</td>
+                        <td data-th="Market Cap">$48B</td>
                         <td data-th="Industry">Technology</td>
                     </tr>
                     <tr>
-                        <td data-th="Company">Microsoft</td>
-                        <td data-th="Founded">1975</td>
-                        <td data-th="Headquarters">Redmond, WA</td>
-                        <td data-th="Market Cap">$3.2T</td>
+                        <td data-th="Company">Basalt Software</td>
+                        <td data-th="Founded">1998</td>
+                        <td data-th="Headquarters">Austin, TX</td>
+                        <td data-th="Market Cap">$31B</td>
                         <td data-th="Industry">Software</td>
                     </tr>
                     <tr>
-                        <td data-th="Company">Google (Alphabet)</td>
-                        <td data-th="Founded">1998</td>
-                        <td data-th="Headquarters">Mountain View, CA</td>
-                        <td data-th="Market Cap">$2.1T</td>
+                        <td data-th="Company">Ferncastle Search</td>
+                        <td data-th="Founded">2001</td>
+                        <td data-th="Headquarters">Denver, CO</td>
+                        <td data-th="Market Cap">$22B</td>
                         <td data-th="Industry">Internet Services</td>
                     </tr>
                     <tr>
-                        <td data-th="Company">Amazon</td>
-                        <td data-th="Founded">1994</td>
-                        <td data-th="Headquarters">Seattle, WA</td>
-                        <td data-th="Market Cap">$1.8T</td>
+                        <td data-th="Company">Harbor &amp; Pike</td>
+                        <td data-th="Founded">2009</td>
+                        <td data-th="Headquarters">Toronto, ON</td>
+                        <td data-th="Market Cap">$15B</td>
                         <td data-th="Industry">E-commerce</td>
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         
         <section class="aiab-demo-section">
             <h2>Light Theme Table</h2>
             <p>A clean, minimal light theme perfect for content-heavy applications and dashboards.</p>
             
-            <table class="rwd-table table-light table-hover" role="table" aria-label="Project status dashboard">
+            <div class="aiab-table-wrapper">
+            <table class="rwd-table table-light aiab-table-hover" role="table" aria-label="Project status dashboard">
                 <thead>
                     <tr>
                         <th scope="col">Project Name</th>
@@ -298,34 +250,36 @@
                 <tbody>
                     <tr>
                         <td data-th="Project Name">A.mphibio.us v3.0</td>
-                        <td data-th="Status">🟢 Active</td>
+                        <td data-th="Status">Active</td>
                         <td data-th="Progress">75%</td>
                         <td data-th="Due Date">Dec 2025</td>
                         <td data-th="Team Lead">Clive Moore</td>
                     </tr>
                     <tr>
                         <td data-th="Project Name">Mobile App Redesign</td>
-                        <td data-th="Status">🟡 In Review</td>
+                        <td data-th="Status">In Review</td>
                         <td data-th="Progress">90%</td>
                         <td data-th="Due Date">Nov 2025</td>
                         <td data-th="Team Lead">Design Team</td>
                     </tr>
                     <tr>
                         <td data-th="Project Name">API Documentation</td>
-                        <td data-th="Status">🔴 Delayed</td>
+                        <td data-th="Status">Delayed</td>
                         <td data-th="Progress">45%</td>
                         <td data-th="Due Date">Oct 2025</td>
                         <td data-th="Team Lead">Dev Team</td>
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         
         <section class="aiab-demo-section">
             <h2>Compact Table</h2>
             <p>Space-efficient design for data-dense applications and smaller screens.</p>
             
-            <table class="rwd-table table-compact table-striped" role="table" aria-label="Cryptocurrency prices">
+            <div class="aiab-table-wrapper">
+            <table class="rwd-table aiab-table-compact aiab-table-striped" role="table" aria-label="Cryptocurrency prices">
                 <thead>
                     <tr>
                         <th scope="col">Symbol</th>
@@ -359,33 +313,34 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         
         <section class="aiab-demo-section">
             <h2>Key Features</h2>
             <div class="features-grid">
                 <div class="aiab-feature-card">
-                    <h3>🎨 CSS Custom Properties</h3>
+                    <h3>CSS Custom Properties</h3>
                     <p>Easily customizable with CSS variables for colors, spacing, and breakpoints. Theme your tables to match your brand.</p>
                 </div>
                 <div class="aiab-feature-card">
-                    <h3>📱 Mobile-First Design</h3>
+                    <h3>Mobile-First Design</h3>
                     <p>Starts with mobile layout and progressively enhances for larger screens. Ensures optimal experience on all devices.</p>
                 </div>
                 <div class="aiab-feature-card">
-                    <h3>♿ Enhanced Accessibility</h3>
+                    <h3>Enhanced Accessibility</h3>
                     <p>Proper ARIA labels, focus management, and screen reader friendly. Meets WCAG 2.1 AA standards.</p>
                 </div>
                 <div class="aiab-feature-card">
-                    <h3>🎭 Multiple Themes</h3>
+                    <h3>Multiple Themes</h3>
                     <p>Dark, light, and custom theme variants. Automatic dark mode detection with prefers-color-scheme.</p>
                 </div>
                 <div class="aiab-feature-card">
-                    <h3>🖨️ Print Optimized</h3>
+                    <h3>Print Optimized</h3>
                     <p>Special print styles ensure tables render beautifully on paper with proper borders and spacing.</p>
                 </div>
                 <div class="aiab-feature-card">
-                    <h3>⚡ Performance Focused</h3>
+                    <h3>Performance Focused</h3>
                     <p>Minimal CSS footprint with efficient selectors. Respects user's motion preferences for animations.</p>
                 </div>
             </div>
@@ -396,7 +351,7 @@
             <p>To use the responsive table system, simply add the appropriate classes and data attributes:</p>
             
             <div class="code-snippet">
-&lt;table class="rwd-table table-striped table-hover"&gt;
+&lt;table class="rwd-table aiab-table-striped aiab-table-hover"&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th scope="col"&gt;Column 1&lt;/th&gt;
@@ -432,16 +387,12 @@
     </footer>
     
     <!-- Scripts -->
-    <script src="/js/js/jquery-1.11.1.min.js"></script>
-    <script src="/js/js/modernizr-2.6.2.min.js"></script>
   <script type="module">
-    import '../src/css/main.css';
     import amp from '../src/index.ts';
     // Amphibious auto-initializes when the module loads
   </script>
 
     <!-- Import main JavaScript for navigation -->
-    <script type="module" src="../src/js/index.js"></script>
 
 </body>
 </html>

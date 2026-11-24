@@ -33,6 +33,14 @@ export function loadTabs() {
   return import('./js/tabs');
 }
 
+export function loadSidebar() {
+  return import('./js/sidebar');
+}
+
+export function loadSteps() {
+  return import('./js/steps');
+}
+
 export function loadTooltip() {
   return import('./js/tooltip');
 }

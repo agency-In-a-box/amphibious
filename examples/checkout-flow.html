@@ -3,71 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Checkout Flow — Amphibious 2.0</title>
   <meta name="description" content="Multi-step e-commerce checkout flow with shipping, payment, and order review stages">
+  <!-- Library (JS + main-lib.css), then site styles, then this page — one module, fixed order. -->
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './checkout-flow.css';
   </script>
-  <link rel="stylesheet" href="checkout-flow.css">
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-        <span class="aiab-sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="main-nav" class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
 
   <!-- Checkout Header -->
@@ -372,10 +324,10 @@
           <div class="aiab-checkout-payment-methods">
             <h4>We Accept</h4>
             <div class="aiab-checkout-payment-icons">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EVisa%3C/text%3E%3C/svg%3E" alt="Visa" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EMC%3C/text%3E%3C/svg%3E" alt="Mastercard" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EAmex%3C/text%3E%3C/svg%3E" alt="American Express" loading="lazy">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EPP%3C/text%3E%3C/svg%3E" alt="PayPal" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3ECARD%3C/text%3E%3C/svg%3E" alt="Credit card" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EDEBIT%3C/text%3E%3C/svg%3E" alt="Debit card" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EBANK%3C/text%3E%3C/svg%3E" alt="Bank transfer" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25'%3E%3Crect width='40' height='25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' fill='%236c757d' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='8'%3EWALLET%3C/text%3E%3C/svg%3E" alt="Digital wallet" loading="lazy">
             </div>
           </div>
         </div>
@@ -384,7 +336,6 @@
   </main>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Page Scripts -->
   <script>

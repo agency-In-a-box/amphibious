@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <title>Themes - Amphibious 2.0</title>
   <meta name="description" content="Theme gallery for Amphibious 2.0 CSS Framework">
   <link rel="stylesheet" href="../../src/css/main.css">
-  <link rel="stylesheet" href="../../src/css/components/site-nav.css">
   <style>
     body {
       background: #f8f9fa;
@@ -28,7 +31,7 @@
 
     .themes-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
       gap: 2rem;
       margin: 2rem 0;
     }
@@ -214,64 +217,16 @@
   </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <ul class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li class="aiab-active"><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
   <header class="themes-header">
     <div class="aiab-container">
-      <h1>🎨 Theme Gallery</h1>
+      <h1>Theme Gallery</h1>
       <p>Beautiful themes and landing page templates for Amphibious 2.0</p>
     </div>
   </header>
 
-  <main class="aiab-container">
+  <main id="main-content" class="aiab-container">
     <nav class="nav-breadcrumb" aria-label="Breadcrumb">
       <a href="../index.html">← Back to Examples</a>
     </nav>
@@ -289,50 +244,6 @@
         </div>
       </article>
 
-      <!-- Classic Theme -->
-      <article class="theme-card">
-        <div class="theme-card__preview preview-classic">
-        </div>
-        <div class="theme-card__content">
-          <span class="theme-card__badge">Default</span>
-          <h3>Classic</h3>
-          <p>The original Amphibious theme with gradient headers and a professional look.</p>
-          <a href="classic/index.html">View Theme</a>
-        </div>
-      </article>
-
-      <!-- Green Theme -->
-      <article class="theme-card">
-        <div class="theme-card__preview preview-green">
-        </div>
-        <div class="theme-card__content">
-          <h3>Green</h3>
-          <p>Fresh green color palette, perfect for environmental, health, or nature-focused projects.</p>
-          <a href="green/index.html">View Theme</a>
-        </div>
-      </article>
-
-      <!-- Yosemite Theme -->
-      <article class="theme-card">
-        <div class="theme-card__preview preview-yosemite">
-        </div>
-        <div class="theme-card__content">
-          <h3>Yosemite</h3>
-          <p>Deep blue corporate theme inspired by macOS Yosemite. Great for enterprise and business sites.</p>
-          <a href="yosemite/index.html">View Theme</a>
-        </div>
-      </article>
-
-      <!-- Lassosoft Theme -->
-      <article class="theme-card">
-        <div class="theme-card__preview preview-lassosoft">
-        </div>
-        <div class="theme-card__content">
-          <h3>Lassosoft</h3>
-          <p>Warm amber tones with a friendly, approachable feel. Great for creative agencies and portfolios.</p>
-          <a href="lassosoft/index.html">View Theme</a>
-        </div>
-      </article>
     </div>
 
     <!-- Theme Customization Info -->
@@ -345,7 +256,6 @@
   --color-primary-hover: #your-hover-color;
   --font-family-base: 'Your Font', sans-serif;
 }</pre>
-      <a href="../../docs/theming.html" style="display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: 0.25rem; text-decoration: none; font-weight: 500;">Learn More About Theming</a>
     </div>
   </main>
 
@@ -366,6 +276,6 @@
   </footer>
 
   <!-- Load Framework -->
-  <script type="module" src="../../src/index.js"></script>
+  <script type="module" src="../../src/index.ts"></script>
 </body>
 </html>

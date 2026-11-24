@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <title>Alerts Demo — Amphibious 2.0</title>
     <meta name="description" content="Alert component examples with success, warning, error, and info variants plus dismissible options">
-    <script type="module">
-      import '/src/css/main.css';
-    </script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -56,103 +61,49 @@
     </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-        <span class="aiab-sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="main-nav" class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
 
-    <h1>Alerts Component Examples</h1>
+    <h1 id="main-content" tabindex="-1">Alerts Component Examples</h1>
     <p>Modern, accessible alert components for notifications, messages, and user feedback.</p>
 
     <div class="aiab-demo-section">
         <h2>Basic Alerts</h2>
         
         <div class="aiab-demo-grid">
-            <div class="aiab-alert alert--success">
-                <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+            <div class="aiab-alert aiab-alert--success">
+                <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
-                <div class="alert__content">
-                    <p class="alert__message">Success! Your action was completed successfully.</p>
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Success! Your action was completed successfully.</p>
                 </div>
             </div>
 
-            <div class="aiab-alert alert--info">
-                <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+            <div class="aiab-alert aiab-alert--info">
+                <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
                 </svg>
-                <div class="alert__content">
-                    <p class="alert__message">Information: Here's some helpful information for you.</p>
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Information: Here's some helpful information for you.</p>
                 </div>
             </div>
 
-            <div class="aiab-alert alert--warning">
-                <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+            <div class="aiab-alert aiab-alert--warning">
+                <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                 </svg>
-                <div class="alert__content">
-                    <p class="alert__message">Warning! Please review this information carefully.</p>
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Warning! Please review this information carefully.</p>
                 </div>
             </div>
 
-            <div class="aiab-alert alert--error">
-                <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+            <div class="aiab-alert aiab-alert--error">
+                <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
                 </svg>
-                <div class="alert__content">
-                    <p class="alert__message">Error! Something went wrong. Please try again.</p>
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Error! Something went wrong. Please try again.</p>
                 </div>
             </div>
         </div>
@@ -161,29 +112,29 @@
     <div class="aiab-demo-section">
         <h2>Alerts with Titles and Actions</h2>
         
-        <div class="aiab-alert alert--warning">
-            <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+        <div class="aiab-alert aiab-alert--warning">
+            <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
             </svg>
-            <div class="alert__content">
-                <h4 class="alert__title">Account Security</h4>
-                <p class="alert__message">Your password will expire in 3 days. We recommend updating it now to maintain account security.</p>
-                <div class="alert__actions">
-                    <button class="alert__action">Update Password</button>
-                    <button class="alert__action">Remind Me Later</button>
+            <div class="aiab-alert__content">
+                <h4 class="aiab-alert__title">Account Security</h4>
+                <p class="aiab-alert__message">Your password will expire in 3 days. We recommend updating it now to maintain account security.</p>
+                <div class="aiab-alert__actions">
+                    <button class="aiab-alert__action">Update Password</button>
+                    <button class="aiab-alert__action">Remind Me Later</button>
                 </div>
             </div>
         </div>
 
-        <div class="aiab-alert alert--error">
-            <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+        <div class="aiab-alert aiab-alert--error">
+            <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
             </svg>
-            <div class="alert__content">
-                <h4 class="alert__title">Upload Failed</h4>
-                <p class="alert__message">The file you selected is too large. Please choose a file smaller than 10MB.</p>
-                <div class="alert__actions">
-                    <button class="alert__action">Choose Different File</button>
+            <div class="aiab-alert__content">
+                <h4 class="aiab-alert__title">Upload Failed</h4>
+                <p class="aiab-alert__message">The file you selected is too large. Please choose a file smaller than 10MB.</p>
+                <div class="aiab-alert__actions">
+                    <button class="aiab-alert__action">Choose Different File</button>
                 </div>
             </div>
         </div>
@@ -192,29 +143,29 @@
     <div class="aiab-demo-section">
         <h2>Dismissible Alerts</h2>
         
-        <div class="aiab-alert alert--info alert--dismissible" id="dismissible-1">
-            <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+        <div class="aiab-alert aiab-alert--info aiab-alert--dismissible" id="dismissible-1">
+            <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
             </svg>
-            <div class="alert__content">
-                <p class="alert__message">This alert can be dismissed by clicking the × button.</p>
+            <div class="aiab-alert__content">
+                <p class="aiab-alert__message">This alert can be dismissed by clicking the × button.</p>
             </div>
-            <button class="alert__dismiss" onclick="dismissAlert('dismissible-1')">
+            <button class="aiab-alert__dismiss" onclick="dismissAlert('dismissible-1')">
                 <svg fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                 </svg>
             </button>
         </div>
 
-        <div class="aiab-alert alert--success alert--dismissible" id="dismissible-2">
-            <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+        <div class="aiab-alert aiab-alert--success aiab-alert--dismissible" id="dismissible-2">
+            <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
             </svg>
-            <div class="alert__content">
-                <h4 class="alert__title">Settings Saved</h4>
-                <p class="alert__message">Your preferences have been successfully updated.</p>
+            <div class="aiab-alert__content">
+                <h4 class="aiab-alert__title">Settings Saved</h4>
+                <p class="aiab-alert__message">Your preferences have been successfully updated.</p>
             </div>
-            <button class="alert__dismiss" onclick="dismissAlert('dismissible-2')">
+            <button class="aiab-alert__dismiss" onclick="dismissAlert('dismissible-2')">
                 <svg fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                 </svg>
@@ -227,67 +178,67 @@
         
         <h3>Solid Alerts</h3>
         <div class="aiab-demo-grid">
-            <div class="aiab-alert alert--success alert--solid">
-                <div class="alert__content">
-                    <p class="alert__message">Solid success alert with strong visual impact.</p>
+            <div class="aiab-alert aiab-alert--success aiab-alert--solid">
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Solid success alert with strong visual impact.</p>
                 </div>
             </div>
-            <div class="aiab-alert alert--error alert--solid">
-                <div class="alert__content">
-                    <p class="alert__message">Solid error alert for critical messages.</p>
+            <div class="aiab-alert aiab-alert--error aiab-alert--solid">
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Solid error alert for critical messages.</p>
                 </div>
             </div>
         </div>
 
         <h3>Outlined Alerts</h3>
         <div class="aiab-demo-grid">
-            <div class="aiab-alert alert--info alert--outline">
-                <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+            <div class="aiab-alert aiab-alert--info aiab-alert--outline">
+                <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
                 </svg>
-                <div class="alert__content">
-                    <p class="alert__message">Outlined alert with transparent background.</p>
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Outlined alert with transparent background.</p>
                 </div>
             </div>
-            <div class="aiab-alert alert--warning alert--outline">
-                <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+            <div class="aiab-alert aiab-alert--warning aiab-alert--outline">
+                <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                 </svg>
-                <div class="alert__content">
-                    <p class="alert__message">Outlined warning with strong border emphasis.</p>
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Outlined warning with strong border emphasis.</p>
                 </div>
             </div>
         </div>
 
         <h3>Accent Border Alerts</h3>
         <div class="aiab-demo-grid">
-            <div class="aiab-alert alert--success alert--accent">
-                <div class="alert__content">
-                    <p class="alert__message">Alert with colored left border accent.</p>
+            <div class="aiab-alert aiab-alert--success aiab-alert--accent">
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Alert with colored left border accent.</p>
                 </div>
             </div>
-            <div class="aiab-alert alert--error alert--accent">
-                <div class="alert__content">
-                    <p class="alert__message">Error alert with strong left border accent.</p>
+            <div class="aiab-alert aiab-alert--error aiab-alert--accent">
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Error alert with strong left border accent.</p>
                 </div>
             </div>
         </div>
 
         <h3>Alert Sizes</h3>
         <div class="aiab-demo-grid">
-            <div class="aiab-alert alert--info alert--small">
-                <div class="alert__content">
-                    <p class="alert__message">Small alert with compact spacing.</p>
+            <div class="aiab-alert aiab-alert--info aiab-alert--small">
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Small alert with compact spacing.</p>
                 </div>
             </div>
-            <div class="aiab-alert alert--info">
-                <div class="alert__content">
-                    <p class="alert__message">Default sized alert.</p>
+            <div class="aiab-alert aiab-alert--info">
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Default sized alert.</p>
                 </div>
             </div>
-            <div class="aiab-alert alert--info alert--large">
-                <div class="alert__content">
-                    <p class="alert__message">Large alert with generous spacing.</p>
+            <div class="aiab-alert aiab-alert--info aiab-alert--large">
+                <div class="aiab-alert__content">
+                    <p class="aiab-alert__message">Large alert with generous spacing.</p>
                 </div>
             </div>
         </div>
@@ -350,14 +301,14 @@
 
             return `
                 <div class="${toastClasses}" id="${toastId}" ${style}>
-                    <svg class="alert__icon" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="aiab-alert__icon" fill="currentColor" viewBox="0 0 20 20">
                         ${icons[type]}
                     </svg>
-                    <div class="alert__content">
-                        <h4 class="alert__title">${title}</h4>
-                        <p class="alert__message">${message}</p>
+                    <div class="aiab-alert__content">
+                        <h4 class="aiab-alert__title">${title}</h4>
+                        <p class="aiab-alert__message">${message}</p>
                     </div>
-                    <button class="alert__dismiss" onclick="dismissToast('${toastId}')">
+                    <button class="aiab-alert__dismiss" onclick="dismissToast('${toastId}')">
                         <svg fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                         </svg>

@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
     <title>Tabs and Pagination — Amphibious 2.0</title>
     <meta name="description" content="Tabs, pagination, and step indicators with keyboard navigation and ARIA support.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -133,65 +140,11 @@
     </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-        <span class="aiab-sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="main-nav" class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
 
     <div class="aiab-demo-section">
-        <h1>Navigation Components Demo</h1>
+        <h1 id="main-content" tabindex="-1">Navigation Components Demo</h1>
         <p>Interactive examples of tabs, pagination, and step navigation components.</p>
     </div>
 
@@ -200,40 +153,40 @@
         <h2>Tabs Component</h2>
         
         <h3>Default Underlined Tabs</h3>
-        <div class="aiab-tabs tabs--underlined">
-            <ul class="tabs__list" role="tablist">
-                <li class="tabs__item">
-                    <button class="tabs__button" role="tab" aria-selected="true">
+        <div class="aiab-tabs aiab-tabs--underlined">
+            <ul class="aiab-tabs__list" role="tablist">
+                <li class="aiab-tabs__item">
+                    <button class="aiab-tabs__button" role="tab" aria-selected="true">
                         Overview
                     </button>
                 </li>
-                <li class="tabs__item">
-                    <button class="tabs__button" role="tab" aria-selected="false">
+                <li class="aiab-tabs__item">
+                    <button class="aiab-tabs__button" role="tab" aria-selected="false">
                         Features
                     </button>
                 </li>
-                <li class="tabs__item">
-                    <button class="tabs__button" role="tab" aria-selected="false">
+                <li class="aiab-tabs__item">
+                    <button class="aiab-tabs__button" role="tab" aria-selected="false">
                         Pricing
                     </button>
                 </li>
-                <li class="tabs__item">
-                    <button class="tabs__button tabs__aiab-button--icon" role="tab" aria-selected="false">
-                        <svg class="tabs__icon" fill="currentColor" viewBox="0 0 20 20">
+                <li class="aiab-tabs__item">
+                    <button class="aiab-tabs__button tabs__aiab-button--icon" role="tab" aria-selected="false">
+                        <svg class="aiab-tabs__icon" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
                         </svg>
                         Support
                     </button>
                 </li>
             </ul>
-            <div class="tabs__panels">
-                <div class="tabs__panel" role="tabpanel" aria-hidden="false">
+            <div class="aiab-tabs__panels">
+                <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="false">
                     <div class="sample-content">
                         <h4>Overview</h4>
                         <p>This is the overview tab content. It provides a general introduction to the product or service.</p>
                     </div>
                 </div>
-                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                     <div class="sample-content">
                         <h4>Features</h4>
                         <p>Here are the key features and capabilities that make this solution unique.</p>
@@ -245,7 +198,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                     <div class="sample-content">
                         <h4>Pricing</h4>
                         <p>Simple, transparent pricing for all your needs.</p>
@@ -261,11 +214,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                     <div class="sample-content">
                         <h4>Support</h4>
                         <p>Get help when you need it through multiple channels.</p>
-                        <p>📧 Email • 💬 Live Chat • 📞 Phone Support</p>
+                        <p>Email • Live Chat • Phone Support</p>
                     </div>
                 </div>
             </div>
@@ -275,26 +228,26 @@
         <div class="aiab-demo-grid">
             <div class="demo-card">
                 <h4>Boxed Tabs</h4>
-                <div class="aiab-tabs tabs--boxed">
-                    <ul class="tabs__list" role="tablist">
-                        <li class="tabs__item">
-                            <button class="tabs__button" role="tab" aria-selected="true">Tab 1</button>
+                <div class="aiab-tabs aiab-tabs--boxed">
+                    <ul class="aiab-tabs__list" role="tablist">
+                        <li class="aiab-tabs__item">
+                            <button class="aiab-tabs__button" role="tab" aria-selected="true">Tab 1</button>
                         </li>
-                        <li class="tabs__item">
-                            <button class="tabs__button" role="tab" aria-selected="false">Tab 2</button>
+                        <li class="aiab-tabs__item">
+                            <button class="aiab-tabs__button" role="tab" aria-selected="false">Tab 2</button>
                         </li>
-                        <li class="tabs__item">
-                            <button class="tabs__button" role="tab" aria-selected="false">Tab 3</button>
+                        <li class="aiab-tabs__item">
+                            <button class="aiab-tabs__button" role="tab" aria-selected="false">Tab 3</button>
                         </li>
                     </ul>
-                    <div class="tabs__panels">
-                        <div class="tabs__panel" role="tabpanel" aria-hidden="false">
+                    <div class="aiab-tabs__panels">
+                        <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="false">
                             <p>Boxed tab content 1</p>
                         </div>
-                        <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                        <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                             <p>Boxed tab content 2</p>
                         </div>
-                        <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                        <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                             <p>Boxed tab content 3</p>
                         </div>
                     </div>
@@ -303,35 +256,35 @@
             
             <div class="demo-card">
                 <h4>Pills Tabs</h4>
-                <div class="aiab-tabs tabs--pills">
-                    <ul class="tabs__list" role="tablist">
-                        <li class="tabs__item">
-                            <button class="tabs__button" role="tab" aria-selected="true">
+                <div class="aiab-tabs aiab-tabs--pills">
+                    <ul class="aiab-tabs__list" role="tablist">
+                        <li class="aiab-tabs__item">
+                            <button class="aiab-tabs__button" role="tab" aria-selected="true">
                                 All
-                                <span class="tabs__badge">12</span>
+                                <span class="aiab-tabs__badge">12</span>
                             </button>
                         </li>
-                        <li class="tabs__item">
-                            <button class="tabs__button" role="tab" aria-selected="false">
+                        <li class="aiab-tabs__item">
+                            <button class="aiab-tabs__button" role="tab" aria-selected="false">
                                 Active
-                                <span class="tabs__badge">8</span>
+                                <span class="aiab-tabs__badge">8</span>
                             </button>
                         </li>
-                        <li class="tabs__item">
-                            <button class="tabs__button" role="tab" aria-selected="false">
+                        <li class="aiab-tabs__item">
+                            <button class="aiab-tabs__button" role="tab" aria-selected="false">
                                 Inactive
-                                <span class="tabs__badge">4</span>
+                                <span class="aiab-tabs__badge">4</span>
                             </button>
                         </li>
                     </ul>
-                    <div class="tabs__panels">
-                        <div class="tabs__panel" role="tabpanel" aria-hidden="false">
+                    <div class="aiab-tabs__panels">
+                        <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="false">
                             <p>All items (12 total)</p>
                         </div>
-                        <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                        <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                             <p>Active items (8 active)</p>
                         </div>
-                        <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                        <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                             <p>Inactive items (4 inactive)</p>
                         </div>
                     </div>
@@ -340,35 +293,35 @@
         </div>
 
         <h3>Vertical Tabs</h3>
-        <div class="aiab-tabs tabs--vertical tabs--underlined">
-            <ul class="tabs__list" role="tablist">
-                <li class="tabs__item">
-                    <button class="tabs__button" role="tab" aria-selected="true">General</button>
+        <div class="aiab-tabs aiab-tabs--vertical aiab-tabs--underlined">
+            <ul class="aiab-tabs__list" role="tablist">
+                <li class="aiab-tabs__item">
+                    <button class="aiab-tabs__button" role="tab" aria-selected="true">General</button>
                 </li>
-                <li class="tabs__item">
-                    <button class="tabs__button" role="tab" aria-selected="false">Security</button>
+                <li class="aiab-tabs__item">
+                    <button class="aiab-tabs__button" role="tab" aria-selected="false">Security</button>
                 </li>
-                <li class="tabs__item">
-                    <button class="tabs__button" role="tab" aria-selected="false">Billing</button>
+                <li class="aiab-tabs__item">
+                    <button class="aiab-tabs__button" role="tab" aria-selected="false">Billing</button>
                 </li>
-                <li class="tabs__item">
-                    <button class="tabs__button" role="tab" aria-selected="false">Notifications</button>
+                <li class="aiab-tabs__item">
+                    <button class="aiab-tabs__button" role="tab" aria-selected="false">Notifications</button>
                 </li>
             </ul>
-            <div class="tabs__panels">
-                <div class="tabs__panel" role="tabpanel" aria-hidden="false">
+            <div class="aiab-tabs__panels">
+                <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="false">
                     <h4>General Settings</h4>
                     <p>Configure your basic account settings and preferences.</p>
                 </div>
-                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                     <h4>Security Settings</h4>
                     <p>Manage your password, two-factor authentication, and security preferences.</p>
                 </div>
-                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                     <h4>Billing Settings</h4>
                     <p>View your subscription, payment methods, and billing history.</p>
                 </div>
-                <div class="tabs__panel" role="tabpanel" aria-hidden="true">
+                <div class="aiab-tabs__panel" role="tabpanel" aria-hidden="true">
                     <h4>Notification Settings</h4>
                     <p>Control what notifications you receive and how they're delivered.</p>
                 </div>
@@ -382,25 +335,25 @@
         
         <h3>Standard Pagination</h3>
         <nav aria-label="Pagination Navigation" class="aiab-pagination">
-            <a href="#" class="pagination__link pagination__link--prev">
-                <span class="pagination__nav">
-                    <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="#" class="aiab-pagination__link pagination__link--prev">
+                <span class="aiab-pagination__nav">
+                    <svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                     </svg>
-                    <span class="pagination__nav-text">Previous</span>
+                    <span class="aiab-pagination__nav-text">Previous</span>
                 </span>
             </a>
-            <a href="#" class="pagination__link" data-page="1">1</a>
-            <a href="#" class="pagination__link" data-page="2">2</a>
-            <span class="pagination__current">3</span>
-            <a href="#" class="pagination__link" data-page="4">4</a>
-            <a href="#" class="pagination__link" data-page="5">5</a>
-            <span class="pagination__ellipsis">...</span>
-            <a href="#" class="pagination__link" data-page="10">10</a>
-            <a href="#" class="pagination__link pagination__link--next">
-                <span class="pagination__nav">
-                    <span class="pagination__nav-text">Next</span>
-                    <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="#" class="aiab-pagination__link" data-page="1">1</a>
+            <a href="#" class="aiab-pagination__link" data-page="2">2</a>
+            <span class="aiab-pagination__current">3</span>
+            <a href="#" class="aiab-pagination__link" data-page="4">4</a>
+            <a href="#" class="aiab-pagination__link" data-page="5">5</a>
+            <span class="aiab-pagination__ellipsis">...</span>
+            <a href="#" class="aiab-pagination__link" data-page="10">10</a>
+            <a href="#" class="aiab-pagination__link pagination__link--next">
+                <span class="aiab-pagination__nav">
+                    <span class="aiab-pagination__nav-text">Next</span>
+                    <svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
                 </span>
@@ -408,41 +361,41 @@
         </nav>
 
         <h3>Pagination with Controls</h3>
-        <div class="pagination-container">
-            <div class="pagination-container__left">
-                <div class="pagination__info">
-                    Showing <span class="pagination__info-highlight">1-20</span> of <span class="pagination__info-highlight">200</span> results
+        <div class="aiab-pagination-container">
+            <div class="aiab-pagination-container__left">
+                <div class="aiab-pagination__info">
+                    Showing <span class="aiab-pagination__info-highlight">1-20</span> of <span class="aiab-pagination__info-highlight">200</span> results
                 </div>
             </div>
-            <div class="pagination-container__center">
+            <div class="aiab-pagination-container__center">
                 <nav aria-label="Data pagination" class="aiab-pagination">
-                    <a href="#" class="pagination__link pagination__link--prev pagination__link--disabled">
-                        <span class="pagination__nav">
-                            <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="#" class="aiab-pagination__link pagination__link--prev aiab-pagination__link--disabled">
+                        <span class="aiab-pagination__nav">
+                            <svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                             </svg>
-                            <span class="pagination__nav-text">Prev</span>
+                            <span class="aiab-pagination__nav-text">Prev</span>
                         </span>
                     </a>
-                    <span class="pagination__current">1</span>
-                    <a href="#" class="pagination__link" data-page="2">2</a>
-                    <a href="#" class="pagination__link" data-page="3">3</a>
-                    <span class="pagination__ellipsis">...</span>
-                    <a href="#" class="pagination__link" data-page="10">10</a>
-                    <a href="#" class="pagination__link pagination__link--next">
-                        <span class="pagination__nav">
-                            <span class="pagination__nav-text">Next</span>
-                            <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span class="aiab-pagination__current">1</span>
+                    <a href="#" class="aiab-pagination__link" data-page="2">2</a>
+                    <a href="#" class="aiab-pagination__link" data-page="3">3</a>
+                    <span class="aiab-pagination__ellipsis">...</span>
+                    <a href="#" class="aiab-pagination__link" data-page="10">10</a>
+                    <a href="#" class="aiab-pagination__link pagination__link--next">
+                        <span class="aiab-pagination__nav">
+                            <span class="aiab-pagination__nav-text">Next</span>
+                            <svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                         </span>
                     </a>
                 </nav>
             </div>
-            <div class="pagination-container__right">
-                <div class="pagination__page-size">
+            <div class="aiab-pagination-container__right">
+                <div class="aiab-pagination__page-size">
                     <label for="page-size">Show:</label>
-                    <select id="page-size" class="pagination__page-size-select">
+                    <select id="page-size" class="aiab-pagination__page-size-select">
                         <option value="10">10</option>
                         <option value="20" selected>20</option>
                         <option value="50">50</option>
@@ -456,34 +409,34 @@
         <div class="aiab-demo-grid">
             <div class="demo-card">
                 <h4>Compact Pagination</h4>
-                <nav aria-label="Compact pagination" class="aiab-pagination pagination--compact">
-                    <a href="#" class="pagination__link pagination__link--prev">‹</a>
-                    <a href="#" class="pagination__link">1</a>
-                    <span class="pagination__current">2</span>
-                    <a href="#" class="pagination__link">3</a>
-                    <a href="#" class="pagination__link pagination__link--next">›</a>
+                <nav aria-label="Compact pagination" class="aiab-pagination aiab-pagination--compact">
+                    <a href="#" class="aiab-pagination__link pagination__link--prev">‹</a>
+                    <a href="#" class="aiab-pagination__link">1</a>
+                    <span class="aiab-pagination__current">2</span>
+                    <a href="#" class="aiab-pagination__link">3</a>
+                    <a href="#" class="aiab-pagination__link pagination__link--next">›</a>
                 </nav>
             </div>
             
             <div class="demo-card">
                 <h4>Pills Pagination</h4>
-                <nav aria-label="Pills pagination" class="aiab-pagination pagination--pills">
-                    <a href="#" class="pagination__link pagination__link--prev">Prev</a>
-                    <a href="#" class="pagination__link">1</a>
-                    <span class="pagination__current">2</span>
-                    <a href="#" class="pagination__link">3</a>
-                    <a href="#" class="pagination__link pagination__link--next">Next</a>
+                <nav aria-label="Pills pagination" class="aiab-pagination aiab-pagination--pills">
+                    <a href="#" class="aiab-pagination__link pagination__link--prev">Prev</a>
+                    <a href="#" class="aiab-pagination__link">1</a>
+                    <span class="aiab-pagination__current">2</span>
+                    <a href="#" class="aiab-pagination__link">3</a>
+                    <a href="#" class="aiab-pagination__link pagination__link--next">Next</a>
                 </nav>
             </div>
             
             <div class="demo-card">
                 <h4>Simple Pagination</h4>
-                <nav aria-label="Simple pagination" class="aiab-pagination pagination--simple">
-                    <a href="#" class="pagination__link pagination__link--prev">
-                        <span class="pagination__nav">← Previous</span>
+                <nav aria-label="Simple pagination" class="aiab-pagination aiab-pagination--simple">
+                    <a href="#" class="aiab-pagination__link pagination__link--prev">
+                        <span class="aiab-pagination__nav">← Previous</span>
                     </a>
-                    <a href="#" class="pagination__link pagination__link--next">
-                        <span class="pagination__nav">Next →</span>
+                    <a href="#" class="aiab-pagination__link pagination__link--next">
+                        <span class="aiab-pagination__nav">Next →</span>
                     </a>
                 </nav>
             </div>
@@ -690,7 +643,9 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { Steps } from '../src/js/steps.ts';
+
         document.addEventListener('DOMContentLoaded', function() {
             // Multi-step form demo
             let currentStep = 1;
@@ -767,8 +722,5 @@
             showStep(2); // Start at step 2 for demo
         });
     </script>
-  <script type="module">
-    import amp from '../src/index.ts';
-  </script>
 </body>
 </html>

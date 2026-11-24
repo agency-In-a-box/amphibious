@@ -7,6 +7,7 @@
  */
 
 import { escapeHTML, sanitizeHTML } from '../utils/sanitize';
+import { iconMarkup } from './icons-lightweight';
 
 // ---------------------------------------------------------------------------
 // Types & Interfaces
@@ -571,7 +572,7 @@ class SearchBarEnhanced {
       const voiceBtn = document.createElement('button');
       voiceBtn.type = 'button';
       voiceBtn.className = 'aiab-search-bar-voice';
-      voiceBtn.innerHTML = '🎤';
+      voiceBtn.innerHTML = iconMarkup('mic', { size: 18 });
       voiceBtn.setAttribute('aria-label', opts.labels.voiceSearch);
       inputContainer.appendChild(voiceBtn);
       this.voiceBtn = voiceBtn;
@@ -1433,7 +1434,7 @@ class SearchBarEnhanced {
       const item = document.createElement('div');
       item.className = 'aiab-search-bar-recent-item';
       item.innerHTML = `
-        <span class="aiab-search-bar-recent-text">🕐 ${escapeHTML(search)}</span>
+        <span class="aiab-search-bar-recent-text">${iconMarkup('history', { size: 14 })} ${escapeHTML(search)}</span>
         <button type="button" class="aiab-search-bar-recent-remove" data-search="${escapeHTML(search)}">×</button>
       `;
 

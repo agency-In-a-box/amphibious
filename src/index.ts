@@ -27,6 +27,10 @@ import './css/main-lib.css';
 import './js/navigation';
 import './js/dark-mode-toggle';
 
+// Global convenience API (window.amp) used by the docs and examples
+import { amp } from './amp';
+
+export { type Amp, amp } from './amp';
 // --- Component exports ---
 export type { AmphibiousCarouselOptions } from './js/carousel';
 export { AmphibiousCarousel } from './js/carousel';
@@ -45,12 +49,19 @@ export {
   createIcon,
   getAvailableIcons,
   hasIcon,
+  iconMarkup,
   initializeIcons,
+  registerIcons,
 } from './js/icons-lightweight';
 export type { ModalOptions } from './js/modal';
 export { Modal, ModalManager } from './js/modal';
+export type { NavigationOptions } from './js/navigation';
 export { Navigation } from './js/navigation';
+export type { SidebarOptions } from './js/sidebar';
+export { initSidebars, Sidebar } from './js/sidebar';
 export { SmoothScroll } from './js/smooth-scroll';
+export type { StepsOptions } from './js/steps';
+export { Steps } from './js/steps';
 export { Tabs } from './js/tabs';
 export type { TooltipOptions } from './js/tooltip';
 export { EcommerceTooltips, Tooltip } from './js/tooltip';
@@ -70,7 +81,9 @@ export {
   loadNavigation,
   loadRangeSlider,
   loadSearchBar,
+  loadSidebar,
   loadSmoothScroll,
+  loadSteps,
   loadTabs,
   loadTimeline,
   loadToast,
@@ -92,7 +105,11 @@ export const VERSION = '2.1.0';
 // Extend window interface for global utilities
 declare global {
   interface Window {
-    amphibiousNav?: { initMobileDropdowns?: () => void };
+    amphibiousNav?: {
+      instance?: import('./js/navigation').Navigation;
+      initMobileDropdowns?: () => void;
+      setActiveStates?: () => void;
+    };
     __amphibiousEscapeHTML?: (str: string) => string;
     __amphibiousSanitizeHTML?: (html: string) => string;
     DarkModeToggle?: typeof import('./js/dark-mode-toggle').DarkModeToggle;
@@ -133,4 +150,6 @@ if (document.readyState === 'loading') {
   init();
 }
 
-export default { VERSION, init };
+// Default export = the documented `amp` API, so `import amp from '…'` and
+// window.amp behave the same.
+export default { ...amp, VERSION, init };

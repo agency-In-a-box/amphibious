@@ -1,6 +1,8 @@
 [build]
-  command = "bun install && bun run build:site"
-  publish = "dist"
+  # A broken internal link, missing asset or leaked file fails the deploy.
+  # Third-party links are checked in CI only, so an outage elsewhere cannot block a deploy.
+  command = "bun install && bun run build:site && bun run qa:site:offline"
+  publish = "dist-site"
 
 # Redirects for directory indexes
 [[redirects]]
@@ -12,6 +14,28 @@
   from = "/examples/"
   to = "/examples/index.html"
   status = 200
+
+# The cart page moved to examples/_archive and was replaced by the e-commerce cart.
+[[redirects]]
+  from = "/examples/shopping-cart-modern.html"
+  to = "/examples/e-commerce-cart"
+  status = 301
+
+[[redirects]]
+  from = "/examples/shopping-cart-modern"
+  to = "/examples/e-commerce-cart"
+  status = 301
+
+# The old icon docs page was a meta-refresh stub; a real redirect replaces it.
+[[redirects]]
+  from = "/docs/components/icons.html"
+  to = "/docs/icons"
+  status = 301
+
+[[redirects]]
+  from = "/docs/components/icons"
+  to = "/docs/icons"
+  status = 301
 
 # Only redirect actual 404s to home page, not all pages!
 [[redirects]]

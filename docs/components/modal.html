@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Modal — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Modal component - accessible dialog boxes with multiple variants, animations, and responsive designs">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Demo Controls */
     .demo-controls {
@@ -40,63 +47,14 @@
   </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-<nav class="aiab-site-nav" aria-label="Main navigation">
-  <div class="aiab-container">
-    <ul class="aiab-horizontal aiab-branded">
-      <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-      <li><a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-          <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-          <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-        </ul>
-      </li>
-      <li><a href="/examples/">Examples</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- Navigation Include -->
 
   <header class="aiab-docs-header">
     <div class="aiab-container">
       <nav class="aiab-nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
-        <a href="/docs/components/">Components</a> ›
+        <a href="/docs/features.html#components">Components</a> ›
         <span>Modal</span>
       </nav>
       <h1>Modal Component</h1>
@@ -112,27 +70,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🎭 Multiple Variants</h4>
+          <h4>Multiple Variants</h4>
           <p>Standard dialogs, alerts, image lightboxes, drawers, and bottom sheets for different use cases.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📏 Flexible Sizing</h4>
+          <h4>Flexible Sizing</h4>
           <p>Small, default, large, extra-large, and full-screen aiab-modal sizes with responsive behavior.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>✨ Rich Animations</h4>
+          <h4>Rich Animations</h4>
           <p>Fade-in, slide-down, zoom-in animations with smooth transitions and backdrop effects.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Full Accessibility</h4>
+          <h4>Full Accessibility</h4>
           <p>ARIA attributes, focus trapping, keyboard navigation, and screen reader support.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📱 Responsive Design</h4>
+          <h4>Responsive Design</h4>
           <p>Adaptive layouts for mobile devices with touch-friendly interactions.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🌙 Dark Mode Ready</h4>
+          <h4>Dark Mode Ready</h4>
           <p>Automatic dark mode support with appropriate color schemes and contrast.</p>
         </div>
       </div>
@@ -417,6 +375,7 @@
       <h2>CSS Classes Reference</h2>
 
       <h3>Base Classes</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -459,8 +418,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Size Modifiers</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -497,8 +458,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Variant Modifiers</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -533,8 +496,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Animation Modifiers</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -557,8 +522,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>State Classes</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -577,6 +544,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </section>
 
     <!-- JavaScript Integration -->
@@ -715,8 +683,8 @@ function showModal(modalId) {
   <footer class="aiab-container">
     <div class="section">
       <p>
-        <a href="/examples/modal-demo.html">View Live Examples</a> |
-        <a href="/docs/components/">All Components</a> |
+        <a href="/examples/modal.html">View Live Examples</a> |
+        <a href="/docs/features.html#components">All Components</a> |
         <a href="/docs/index.html">Documentation Home</a>
       </p>
       <p>&copy; 2024 Amphibious 2.0. Accessible dialog boxes for modern web applications.</p>
@@ -749,7 +717,6 @@ function showModal(modalId) {
   </div>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Demo JavaScript -->
   <script>
@@ -872,10 +839,10 @@ function showModal(modalId) {
     function _showBottomSheetModal() {
       createDemoModal('bottom-sheet-modal', 'Quick Actions', `
         <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">📤 Share</button>
-          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">✏️ Edit</button>
-          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">📋 Copy</button>
-          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer; color: #dc3545;">🗑️ Delete</button>
+          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">Share</button>
+          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">Edit</button>
+          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer;">Copy</button>
+          <button style="width: 100%; padding: 1rem; border: none; background: #f8f9fa; text-align: left; border-radius: 0.25rem; cursor: pointer; color: #dc3545;">Delete</button>
         </div>
       `, '', 'aiab-modal--bottom-sheet');
     }

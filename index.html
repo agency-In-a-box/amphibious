@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <title>Amphibious 2.0 — Modern CSS Framework</title>
   <meta name="description" content="Amphibious 2.0.1 - A modern, responsive CSS framework and component library built for e-commerce and modern web applications with comprehensive dark mode support">
   <meta name="keywords" content="css framework, responsive design, html5, css3, components, icons, tooltips, modals, e-commerce">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
     <!-- Homepage Styles -->
   <link rel="stylesheet" href="/src/css/pages/home.css">
   <link rel="stylesheet" href="/src/css/pages/home-dark-mode.css">
@@ -19,107 +26,6 @@
 </head>
 <body>
   <!-- Navigation Include -->
-  <!-- Site Navigation Include - Amphibious 2.0 -->
-<!-- Include this file in all pages to maintain consistent navigation -->
-<a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-<nav class="aiab-site-nav" aria-label="Main navigation">
-  <div class="aiab-container">
-    <button type="button" class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-      <span class="aiab-sr-only">Toggle navigation</span>
-    </button>
-
-    <ul id="main-nav" class="aiab-horizontal">
-      <li>
-        <a href="/" class="aiab-site-logo">Amphibious</a>
-        <ul>
-          <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
-          <li><a href="/#how_its_made">What is it made of?</a></li>
-          <li><a href="/#gallery">Amphibious 2.0 Showcase</a></li>
-          <li><a href="/#evolution">The Evolution of Amphibious</a></li>
-          <li><a href="/#colophon">The Amphibious Colophon</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#ordering">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#media">Media Queries</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#basic">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#prepend">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#picker">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#modals">Modals</a></li>
-          <li><a href="/docs/features.html#tooltips">Tooltips</a></li>
-          <li><a href="/docs/features.html#accordion">Accordion</a></li>
-          <li><a href="/docs/features.html#carousel">Carousel</a></li>
-          <li><a href="/docs/features.html#cards">Cards</a></li>
-          <li><a href="/docs/features.html#alerts">Alerts</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/examples/">Examples</a>
-        <ul>
-          <li><a href="/examples/">Component Showcase</a></li>
-          <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
-          <li><a href="/examples/shopping-cart-modern.html">Shopping Cart</a></li>
-          <li><a href="/examples/checkout-flow.html">Checkout Flow</a></li>
-          <li><a href="/examples/pears-patterns.html">Pea.rs Patterns</a></li>
-          <li><a href="/examples/navigation-showcase.html">Navigation Components</a></li>
-          <li><a href="/examples/atomic-design-demo.html">Atomic Design Demo</a></li>
-        </ul>
-      </li>
-    </ul>
-
-    <!-- Dark Mode Toggle -->
-    <button type="button" id="dark-mode-toggle" class="aiab-dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode (⌘+Shift+D)">
-      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-      </svg>
-      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-      </svg>
-    </button>
-  </div>
-</nav>
 
   <!-- Hero Section -->
   <header class="aiab-hero">
@@ -260,11 +166,11 @@
               <button type="button" class="aiab-icon-button" data-tooltip="User account" data-tooltip-position="left" aria-label="Account">
                 <i data-lucide="user"></i>
               </button>
-              <figure class="icon-badge" data-tooltip="Shopping cart with items" data-tooltip-position="top">
+              <figure class="aiab-icon-badge" data-tooltip="Shopping cart with items" data-tooltip-position="top">
                 <i data-lucide="shopping-cart" class="icon--lg"></i>
-                <span class="icon-badge__count">3</span>
+                <span class="aiab-icon-badge__count">3</span>
               </figure>
-              <div class="rating" data-tooltip="4.5 out of 5 stars" aria-label="4.5 out of 5 stars">
+              <div class="aiab-rating" data-tooltip="4.5 out of 5 stars" aria-label="4.5 out of 5 stars">
                 <i data-lucide="star" class="icon--filled icon--warning"></i>
                 <i data-lucide="star" class="icon--filled icon--warning"></i>
                 <i data-lucide="star" class="icon--filled icon--warning"></i>
@@ -407,8 +313,8 @@
       <h2 id="cta-title">Ready to Get Started?</h2>
       <p>Join thousands of developers building with Amphibious</p>
       <nav class="aiab-cta-buttons" aria-label="Call to action">
-        <a href="/docs/getting-started.html" class="btn-primary">Get Started</a>
-        <a href="/examples/" class="btn-secondary">View Examples</a>
+        <a href="/docs/getting-started.html" class="aiab-btn-primary">Get Started</a>
+        <a href="/examples/" class="aiab-btn-secondary">View Examples</a>
       </nav>
     </div>
   </section>
@@ -416,11 +322,8 @@
   <!-- Footer Include -->
   <div id="footer-include"></div>
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
   <!-- Load Framework -->
-  <script type="module" src="/src/js/index.js"></script>
+  <script type="module" src="/src/js/icons-lightweight.ts"></script>
 
   <!-- Dark Mode Toggle -->
   <script type="module" src="/src/js/dark-mode-toggle.ts"></script>
@@ -429,11 +332,6 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       console.log('Amphibious 2.0.1 Homepage - Semantic HTML with Pea.rs Patterns');
-
-      // Initialize Lucide icons
-      if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-      }
 
       // Initialize dark mode toggle
       const toggleBtn = document.getElementById('dark-mode-toggle');

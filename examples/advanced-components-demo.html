@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Advanced Components — Amphibious 2.0</title>
   <meta name="description" content="Advanced UI components including tooltips, modals, data tables, and interactive widgets">
   <script type="module">
-    import '/src/css/main.css';
+    import '/src/index.ts';
+    import '/src/css/pages.css';
   </script>
   <style>
     .aiab-demo-section {
@@ -39,7 +44,7 @@
 
     .aiab-demo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 32px;
       margin: 32px 0;
     }
@@ -108,7 +113,7 @@
       <div class="aiab-demo-grid">
         <div class="demo-card">
           <h3>Default Color Picker</h3>
-          <input type="text" id="color1" value="#ED8B00" data-color-picker />
+          <input type="text" id="color1" value="#EC8B00" data-color-picker />
 
           <ul class="feature-list">
             <li>Visual spectrum picker</li>
@@ -136,7 +141,7 @@
 
           <div class="code-snippet">
 new ColorPicker(element, {
-  presets: ['#ED8B00', '#34c759', '#007aff'],
+  presets: ['#EC8B00', '#34c759', '#007aff'],
   showRecent: true,
   format: 'rgb'
 });
@@ -268,7 +273,7 @@ new Timeline(element, {
         <form id="themeForm" style="display: grid; gap: 24px;">
           <div>
             <label>Primary Color</label>
-            <input type="text" id="themeColor" value="#ED8B00" />
+            <input type="text" id="themeColor" value="#EC8B00" />
           </div>
 
           <div>
@@ -332,11 +337,11 @@ new Timeline(element, {
   </div>
 
   <!-- Scripts -->
-  <script src="/src/js/color-picker.js"></script>
-  <script src="/src/js/range-slider.js"></script>
-  <script src="/src/js/timeline.js"></script>
+  <script type="module">
+    import { ColorPicker } from '../src/js/color-picker.ts';
+    import { RangeSlider } from '../src/js/range-slider.ts';
+    import { Timeline } from '../src/js/timeline.ts';
 
-  <script>
     // Initialize Color Pickers
     const color2 = new ColorPicker(document.getElementById('color2'), {
       inline: true,
@@ -345,7 +350,7 @@ new Timeline(element, {
     });
 
     const color3 = new ColorPicker(document.getElementById('color3'), {
-      presets: ['#ED8B00', '#34c759', '#007aff', '#ff3b30', '#ff9500'],
+      presets: ['#EC8B00', '#34c759', '#007aff', '#ff3b30', '#ff9500'],
       showRecent: true,
       format: 'rgb',
       labels: {

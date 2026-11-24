@@ -4,6 +4,13 @@
    Consolidates all table variants into one standard component
    ========================================================================== */
 
+/* Scroll container: wide tables scroll inside it instead of widening the page */
+.aiab-table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Table Design Tokens
    ========================================================================== */
 

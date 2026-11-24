@@ -56,7 +56,7 @@ describe('Theme Layer Override Tests', () => {
       /* Utilities layer - should still override themes */
       @layer utilities {
         .p-0 { padding: 0; }
-        .bg-primary { background: #ED8B00; }
+        .bg-primary { background: #EC8B00; }
         .shadow-none { box-shadow: none; }
       }
     `;
@@ -185,4 +185,32 @@ describe('Apple Design System Theme Tests', () => {
     expect(button.classList.contains('rounded-none')).toBe(true);
     expect(button.classList.contains('font-serif')).toBe(true);
   });
+});
+
+describe('Built CSS dark-mode guard', () => {
+  test('every rule inside @media (prefers-color-scheme: dark) is guarded by data-theme', async () => {
+    const { mkdtempSync, readFileSync } = await import('node:fs');
+    const { tmpdir } = await import('node:os');
+    const { join } = await import('node:path');
+    const { default: postcss } = await import('postcss');
+
+    const outDir = mkdtempSync(join(tmpdir(), 'aiab-css-'));
+    const build = Bun.spawnSync(['bunx', 'vite', 'build', '--outDir', outDir, '--emptyOutDir'], {
+      env: { ...process.env, NODE_ENV: 'production' },
+    });
+    expect(build.exitCode).toBe(0);
+
+    const root = postcss.parse(readFileSync(join(outDir, 'amphibious.css'), 'utf8'));
+    const unguarded: string[] = [];
+    root.walkAtRules('media', (atRule) => {
+      if (!/prefers-color-scheme:\s*dark/.test(atRule.params)) return;
+      atRule.walkRules((rule) => {
+        for (const selector of rule.selectors) {
+          if (!selector.includes('data-theme')) unguarded.push(selector);
+        }
+      });
+    });
+
+    expect(unguarded).toEqual([]);
+  }, 60000);
 });

@@ -1,0 +1,39 @@
+{
+  "allow": [
+    {
+      "type": "link-fragment-missing",
+      "page": "/docs/components/navigation.html",
+      "reason": "Navigation component demo: sample menus use placeholder in-page anchors"
+    },
+    {
+      "type": "link-fragment-missing",
+      "page": "/examples/dashboard-template.html",
+      "reason": "Dashboard template: sidebar items are placeholder anchors"
+    },
+    {
+      "type": "link-fragment-missing",
+      "page": "/examples/user-dashboard.html",
+      "reason": "Dashboard template: sidebar items are placeholder anchors"
+    },
+    {
+      "type": "link-fragment-missing",
+      "page": "/demos/apple-redesign.html",
+      "reason": "Design demo: header nav items are placeholder anchors"
+    },
+    {
+      "type": "link-fragment-missing",
+      "page": "/examples/atomic-design-demo.html",
+      "reason": "Demo nav links to atoms/molecules/organisms sections not yet written"
+    },
+    {
+      "type": "link-fragment-missing",
+      "page": "/docs/features-modern.html",
+      "reason": "Experimental page; feature cards link to sections that do not exist yet"
+    },
+    {
+      "type": "link-fragment-missing",
+      "page": "/docs/navigation-include.html",
+      "reason": "Nav-only fragment page; skip link has no main content to target"
+    }
+  ]
+}

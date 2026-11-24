@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
     <title>Icons — Amphibious 2.0</title>
     <meta name="description" content="Icon library showcase with Lucide icons, search, and copy-to-clipboard in Amphibious 2.0.">
     <meta name="theme-color" content="#ffffff">
@@ -42,69 +46,18 @@
             border-radius: 4px;
         }
     </style>
-    <script type="module">import '/src/css/main.css';</script>
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+  </script>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-        <span class="aiab-sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="main-nav" class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a>
-          <ul>
-            <li><a href="/docs/foundation.html#core">Core</a></li>
-            <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-            <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-            <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-            <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-            <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-            <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/form.html">Form</a>
-          <ul>
-            <li><a href="/docs/form.html#typography">Typography</a></li>
-            <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-            <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-            <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-            <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-            <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-            <li><a href="/docs/form.html#tables">Tables</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/function.html">Function</a>
-          <ul>
-            <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-            <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-            <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-            <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="/docs/function.html#tabs">Tabs</a></li>
-            <li><a href="/docs/function.html#pagination">Pagination nav</a></li>
-          </ul>
-        </li>
-        <li><a href="/docs/features.html">Features</a>
-          <ul>
-            <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-            <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-            <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-            <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-          </ul>
-        </li>
-        <li><a href="/examples/">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navigation Include -->
 
 
     <div class="aiab-container">
         <header style="text-align: center; margin: 2rem 0;">
-            <h1>Icon System Demo</h1>
+            <h1 id="main-content" tabindex="-1">Icon System Demo</h1>
             <p>Lucide Icons integration with Amphibious 2.0</p>
         </header>
 
@@ -277,21 +230,21 @@
             <div class="aiab-demo-grid">
                 <div class="demo-item">
                     <h4>Horizontal</h4>
-                    <div class="icon-text">
+                    <div class="aiab-icon-text">
                         <i data-lucide="truck"></i>
                         <span>Free Shipping</span>
                     </div>
                 </div>
                 <div class="demo-item">
                     <h4>Reverse</h4>
-                    <div class="icon-text icon-text--reverse">
+                    <div class="aiab-icon-text aiab-icon-text--reverse">
                         <i data-lucide="download"></i>
                         <span>Download</span>
                     </div>
                 </div>
                 <div class="demo-item">
                     <h4>Vertical</h4>
-                    <div class="icon-text icon-text--vertical">
+                    <div class="aiab-icon-text aiab-icon-text--vertical">
                         <i data-lucide="shield-check"></i>
                         <span>Secure</span>
                     </div>
@@ -305,23 +258,23 @@
             <div class="aiab-demo-grid">
                 <div class="demo-item">
                     <h4>Shopping Cart (3 items)</h4>
-                    <div class="icon-badge">
+                    <div class="aiab-icon-badge">
                         <i data-lucide="shopping-cart" class="icon--lg"></i>
-                        <span class="icon-badge__count">3</span>
+                        <span class="aiab-icon-badge__count">3</span>
                     </div>
                 </div>
                 <div class="demo-item">
                     <h4>Notifications (99+)</h4>
-                    <div class="icon-badge">
+                    <div class="aiab-icon-badge">
                         <i data-lucide="bell" class="icon--lg"></i>
-                        <span class="icon-badge__count">99+</span>
+                        <span class="aiab-icon-badge__count">99+</span>
                     </div>
                 </div>
                 <div class="demo-item">
                     <h4>Messages (New)</h4>
-                    <div class="icon-badge">
+                    <div class="aiab-icon-badge">
                         <i data-lucide="message-circle" class="icon--lg"></i>
-                        <span class="icon-badge__count"></span>
+                        <span class="aiab-icon-badge__count"></span>
                     </div>
                 </div>
             </div>
@@ -333,7 +286,7 @@
             <div class="aiab-demo-grid">
                 <div class="demo-item">
                     <h4>5 Star Rating</h4>
-                    <div class="rating">
+                    <div class="aiab-rating">
                         <i data-lucide="star" class="icon--filled icon--warning"></i>
                         <i data-lucide="star" class="icon--filled icon--warning"></i>
                         <i data-lucide="star" class="icon--filled icon--warning"></i>
@@ -343,7 +296,7 @@
                 </div>
                 <div class="demo-item">
                     <h4>3.5 Star Rating</h4>
-                    <div class="rating">
+                    <div class="aiab-rating">
                         <i data-lucide="star" class="icon--filled icon--warning"></i>
                         <i data-lucide="star" class="icon--filled icon--warning"></i>
                         <i data-lucide="star" class="icon--filled icon--warning"></i>
@@ -353,7 +306,7 @@
                 </div>
                 <div class="demo-item">
                     <h4>1 Star Rating</h4>
-                    <div class="rating">
+                    <div class="aiab-rating">
                         <i data-lucide="star" class="icon--filled icon--warning"></i>
                         <i data-lucide="star" class="icon--muted"></i>
                         <i data-lucide="star" class="icon--muted"></i>
@@ -369,25 +322,25 @@
             <h2>Status Icons</h2>
             <div class="aiab-demo-grid">
                 <div class="demo-item">
-                    <div class="status-icon status-icon--success">
+                    <div class="aiab-status-icon aiab-status-icon--success">
                         <i data-lucide="check-circle"></i>
                         <span>In Stock</span>
                     </div>
                 </div>
                 <div class="demo-item">
-                    <div class="status-icon status-icon--warning">
+                    <div class="aiab-status-icon aiab-status-icon--warning">
                         <i data-lucide="alert-triangle"></i>
                         <span>Low Stock</span>
                     </div>
                 </div>
                 <div class="demo-item">
-                    <div class="status-icon status-icon--danger">
+                    <div class="aiab-status-icon aiab-status-icon--danger">
                         <i data-lucide="x-circle"></i>
                         <span>Out of Stock</span>
                     </div>
                 </div>
                 <div class="demo-item">
-                    <div class="status-icon status-icon--info">
+                    <div class="aiab-status-icon aiab-status-icon--info">
                         <i data-lucide="info"></i>
                         <span>Pre-order</span>
                     </div>
@@ -403,10 +356,10 @@
                 <!-- Examples will be inserted here by JavaScript -->
             </div>
             <div style="margin-top: 1rem;">
-                <button onclick="createDynamicIcon()" class="aiab-btn btn--primary">
+                <button onclick="createDynamicIcon()" class="aiab-btn aiab-btn--primary">
                     Add Random Icon
                 </button>
-                <button onclick="createShoppingCart()" class="aiab-btn btn--secondary">
+                <button onclick="createShoppingCart()" class="aiab-btn aiab-btn--secondary">
                     Create Shopping Cart
                 </button>
                 <button onclick="createRating()" class="aiab-btn btn--success">
@@ -510,7 +463,6 @@
   </script>
 
     <!-- Import main JavaScript for navigation -->
-    <script type="module" src="../src/js/index.js"></script>
 
 </body>
 </html>

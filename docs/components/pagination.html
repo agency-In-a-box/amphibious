@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Pagination — Amphibious 2.0</title>
   <meta name="description" content="Comprehensive documentation for the Amphibious 2.0 Pagination component - modern aiab-pagination with accessibility, multiple variants, and responsive design">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="components-common.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './components-common.css';
+  </script>
   <style>
     /* Pagination Demo Containers */
     .aiab-pagination-demo {
@@ -31,7 +38,7 @@
 
     .demo-examples {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 2rem;
       margin: 2rem 0;
     }
@@ -49,63 +56,14 @@
   </style>
 </head>
 <body>
-  <!-- Site Navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-<nav class="aiab-site-nav" aria-label="Main navigation">
-  <div class="aiab-container">
-    <ul class="aiab-horizontal aiab-branded">
-      <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-      <li><a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive_col">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid_col">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden_section">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#push_pull">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#mediaQueries">Media Queries</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#forms">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi_forms">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom_checkbox_radios">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#append_prepend_icons">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#datepicker_fields">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav</a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav CSS</a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav</a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
-        </ul>
-      </li>
-      <li><a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#helpers">Layout Helpers</a></li>
-          <li><a href="/docs/features.html#pears">Content Pea.rs</a></li>
-          <li><a href="/docs/features.html#icons">Lucide Icons</a></li>
-        </ul>
-      </li>
-      <li><a href="/examples/">Examples</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- Navigation Include -->
 
   <header class="aiab-docs-header">
     <div class="aiab-container">
       <nav class="aiab-nav-breadcrumb">
         <a href="/index.html">Home</a> ›
         <a href="/docs/index.html">Documentation</a> ›
-        <a href="/docs/components/">Components</a> ›
+        <a href="/docs/features.html#components">Components</a> ›
         <span>Pagination</span>
       </nav>
       <h1>Pagination Component</h1>
@@ -121,27 +79,27 @@
 
       <div class="feature-list">
         <div class="aiab-feature-card">
-          <h4>🎨 Multiple Styles</h4>
+          <h4>Multiple Styles</h4>
           <p>Default, pills, rounded, borderless, outlined, and compact aiab-pagination variants.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📏 Flexible Sizing</h4>
+          <h4>Flexible Sizing</h4>
           <p>Compact, default, and large aiab-pagination sizes for different interface densities.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>♿ Full Accessibility</h4>
+          <h4>Full Accessibility</h4>
           <p>ARIA labels, keyboard navigation, focus management, and screen reader support.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>📱 Responsive Design</h4>
+          <h4>Responsive Design</h4>
           <p>Adaptive layouts that work on all screen sizes with smart content hiding.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>🔧 Advanced Features</h4>
+          <h4>Advanced Features</h4>
           <p>Page jumping, page size selection, info display, and loading states.</p>
         </div>
         <div class="aiab-feature-card">
-          <h4>⚡ Performance Optimized</h4>
+          <h4>Performance Optimized</h4>
           <p>Efficient rendering and smooth interactions with minimal DOM manipulation.</p>
         </div>
       </div>
@@ -157,42 +115,42 @@
         <div class="aiab-pagination-demo">
           <nav aria-label="Pagination Navigation" role="navigation">
             <ul class="aiab-pagination">
-              <li class="pagination__item pagination__item--nav">
-                <a href="#" class="pagination__link pagination__link--disabled" aria-label="Go to previous page">
-                  <div class="pagination__nav">
-                    <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li class="aiab-pagination__item aiab-pagination__item--nav">
+                <a href="#" class="aiab-pagination__link aiab-pagination__link--disabled" aria-label="Go to previous page">
+                  <div class="aiab-pagination__nav">
+                    <svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                     </svg>
-                    <span class="pagination__nav-text">Previous</span>
+                    <span class="aiab-pagination__nav-text">Previous</span>
                   </div>
                 </a>
               </li>
-              <li class="pagination__item pagination__item--current">
-                <span class="pagination__current" aria-label="Page 1, current page" aria-current="page">1</span>
+              <li class="aiab-pagination__item aiab-pagination__item--current">
+                <span class="aiab-pagination__current" aria-label="Page 1, current page" aria-current="page">1</span>
               </li>
-              <li class="pagination__item">
-                <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+              <li class="aiab-pagination__item">
+                <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
               </li>
-              <li class="pagination__item">
-                <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+              <li class="aiab-pagination__item">
+                <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
               </li>
-              <li class="pagination__item">
-                <a href="#" class="pagination__link" aria-label="Go to page 4">4</a>
+              <li class="aiab-pagination__item">
+                <a href="#" class="aiab-pagination__link" aria-label="Go to page 4">4</a>
               </li>
-              <li class="pagination__item">
-                <a href="#" class="pagination__link" aria-label="Go to page 5">5</a>
+              <li class="aiab-pagination__item">
+                <a href="#" class="aiab-pagination__link" aria-label="Go to page 5">5</a>
               </li>
-              <li class="pagination__item">
-                <span class="pagination__ellipsis" aria-hidden="true">…</span>
+              <li class="aiab-pagination__item">
+                <span class="aiab-pagination__ellipsis" aria-hidden="true">…</span>
               </li>
-              <li class="pagination__item">
-                <a href="#" class="pagination__link" aria-label="Go to page 10">10</a>
+              <li class="aiab-pagination__item">
+                <a href="#" class="aiab-pagination__link" aria-label="Go to page 10">10</a>
               </li>
-              <li class="pagination__item pagination__item--nav">
-                <a href="#" class="pagination__link" aria-label="Go to next page">
-                  <div class="pagination__nav">
-                    <span class="pagination__nav-text">Next</span>
-                    <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li class="aiab-pagination__item aiab-pagination__item--nav">
+                <a href="#" class="aiab-pagination__link" aria-label="Go to next page">
+                  <div class="aiab-pagination__nav">
+                    <span class="aiab-pagination__nav-text">Next</span>
+                    <svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
                   </div>
@@ -206,37 +164,37 @@
       <div class="code-block">
         <pre><code>&lt;nav aria-label="Pagination Navigation" role="navigation"&gt;
   &lt;ul class="aiab-pagination"&gt;
-    &lt;li class="pagination__item pagination__item--nav"&gt;
-      &lt;a href="#" class="pagination__link pagination__link--disabled" aria-label="Go to previous page"&gt;
-        &lt;div class="pagination__nav"&gt;
-          &lt;svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;li class="aiab-pagination__item aiab-pagination__item--nav"&gt;
+      &lt;a href="#" class="aiab-pagination__link aiab-pagination__link--disabled" aria-label="Go to previous page"&gt;
+        &lt;div class="aiab-pagination__nav"&gt;
+          &lt;svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
             &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/&gt;
           &lt;/svg&gt;
-          &lt;span class="pagination__nav-text"&gt;Previous&lt;/span&gt;
+          &lt;span class="aiab-pagination__nav-text"&gt;Previous&lt;/span&gt;
         &lt;/div&gt;
       &lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class="pagination__item pagination__item--current"&gt;
-      &lt;span class="pagination__current" aria-label="Page 1, current page" aria-current="page"&gt;1&lt;/span&gt;
+    &lt;li class="aiab-pagination__item aiab-pagination__item--current"&gt;
+      &lt;span class="aiab-pagination__current" aria-label="Page 1, current page" aria-current="page"&gt;1&lt;/span&gt;
     &lt;/li&gt;
-    &lt;li class="pagination__item"&gt;
-      &lt;a href="#" class="pagination__link" aria-label="Go to page 2"&gt;2&lt;/a&gt;
+    &lt;li class="aiab-pagination__item"&gt;
+      &lt;a href="#" class="aiab-pagination__link" aria-label="Go to page 2"&gt;2&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class="pagination__item"&gt;
-      &lt;a href="#" class="pagination__link" aria-label="Go to page 3"&gt;3&lt;/a&gt;
+    &lt;li class="aiab-pagination__item"&gt;
+      &lt;a href="#" class="aiab-pagination__link" aria-label="Go to page 3"&gt;3&lt;/a&gt;
     &lt;/li&gt;
     &lt;!-- More pages... --&gt;
-    &lt;li class="pagination__item"&gt;
-      &lt;span class="pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;
+    &lt;li class="aiab-pagination__item"&gt;
+      &lt;span class="aiab-pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;
     &lt;/li&gt;
-    &lt;li class="pagination__item"&gt;
-      &lt;a href="#" class="pagination__link" aria-label="Go to page 10"&gt;10&lt;/a&gt;
+    &lt;li class="aiab-pagination__item"&gt;
+      &lt;a href="#" class="aiab-pagination__link" aria-label="Go to page 10"&gt;10&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class="pagination__item pagination__item--nav"&gt;
-      &lt;a href="#" class="pagination__link" aria-label="Go to next page"&gt;
-        &lt;div class="pagination__nav"&gt;
-          &lt;span class="pagination__nav-text"&gt;Next&lt;/span&gt;
-          &lt;svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;li class="aiab-pagination__item aiab-pagination__item--nav"&gt;
+      &lt;a href="#" class="aiab-pagination__link" aria-label="Go to next page"&gt;
+        &lt;div class="aiab-pagination__nav"&gt;
+          &lt;span class="aiab-pagination__nav-text"&gt;Next&lt;/span&gt;
+          &lt;svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
             &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/&gt;
           &lt;/svg&gt;
         &lt;/div&gt;
@@ -252,21 +210,21 @@
         <div class="aiab-pagination-demo">
           <nav aria-label="Simple Pagination" role="navigation">
             <ul class="aiab-pagination aiab-pagination--simple">
-              <li class="pagination__item">
-                <a href="#" class="pagination__link" aria-label="Go to previous page">
-                  <div class="pagination__nav">
-                    <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li class="aiab-pagination__item">
+                <a href="#" class="aiab-pagination__link" aria-label="Go to previous page">
+                  <div class="aiab-pagination__nav">
+                    <svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                     </svg>
-                    <span class="pagination__nav-text">Previous</span>
+                    <span class="aiab-pagination__nav-text">Previous</span>
                   </div>
                 </a>
               </li>
-              <li class="pagination__item">
-                <a href="#" class="pagination__link" aria-label="Go to next page">
-                  <div class="pagination__nav">
-                    <span class="pagination__nav-text">Next</span>
-                    <svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li class="aiab-pagination__item">
+                <a href="#" class="aiab-pagination__link" aria-label="Go to next page">
+                  <div class="aiab-pagination__nav">
+                    <span class="aiab-pagination__nav-text">Next</span>
+                    <svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
                   </div>
@@ -280,19 +238,19 @@
       <div class="code-block">
         <pre><code>&lt;nav aria-label="Simple Pagination" role="navigation"&gt;
   &lt;ul class="aiab-pagination aiab-pagination--simple"&gt;
-    &lt;li class="pagination__item"&gt;
-      &lt;a href="#" class="pagination__link" aria-label="Go to previous page"&gt;
-        &lt;div class="pagination__nav"&gt;
-          &lt;svg class="pagination__nav-icon"&gt;...&lt;/svg&gt;
-          &lt;span class="pagination__nav-text"&gt;Previous&lt;/span&gt;
+    &lt;li class="aiab-pagination__item"&gt;
+      &lt;a href="#" class="aiab-pagination__link" aria-label="Go to previous page"&gt;
+        &lt;div class="aiab-pagination__nav"&gt;
+          &lt;svg class="aiab-pagination__nav-icon"&gt;...&lt;/svg&gt;
+          &lt;span class="aiab-pagination__nav-text"&gt;Previous&lt;/span&gt;
         &lt;/div&gt;
       &lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class="pagination__item"&gt;
-      &lt;a href="#" class="pagination__link" aria-label="Go to next page"&gt;
-        &lt;div class="pagination__nav"&gt;
-          &lt;span class="pagination__nav-text"&gt;Next&lt;/span&gt;
-          &lt;svg class="pagination__nav-icon"&gt;...&lt;/svg&gt;
+    &lt;li class="aiab-pagination__item"&gt;
+      &lt;a href="#" class="aiab-pagination__link" aria-label="Go to next page"&gt;
+        &lt;div class="aiab-pagination__nav"&gt;
+          &lt;span class="aiab-pagination__nav-text"&gt;Next&lt;/span&gt;
+          &lt;svg class="aiab-pagination__nav-icon"&gt;...&lt;/svg&gt;
         &lt;/div&gt;
       &lt;/a&gt;
     &lt;/li&gt;
@@ -311,23 +269,23 @@
           <div class="aiab-pagination-demo">
             <nav aria-label="Pills Pagination" role="navigation">
               <ul class="aiab-pagination aiab-pagination--pills">
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
-                <li class="pagination__item">
-                  <span class="pagination__current" aria-current="page">1</span>
+                <li class="aiab-pagination__item">
+                  <span class="aiab-pagination__current" aria-current="page">1</span>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 4">4</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 4">4</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to next page">›</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to next page">›</a>
                 </li>
               </ul>
             </nav>
@@ -339,23 +297,23 @@
           <div class="aiab-pagination-demo">
             <nav aria-label="Rounded Pagination" role="navigation">
               <ul class="aiab-pagination aiab-pagination--rounded">
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
-                <li class="pagination__item">
-                  <span class="pagination__current" aria-current="page">1</span>
+                <li class="aiab-pagination__item">
+                  <span class="aiab-pagination__current" aria-current="page">1</span>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 4">4</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 4">4</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to next page">›</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to next page">›</a>
                 </li>
               </ul>
             </nav>
@@ -367,23 +325,23 @@
           <div class="aiab-pagination-demo">
             <nav aria-label="Borderless Pagination" role="navigation">
               <ul class="aiab-pagination aiab-pagination--borderless">
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
-                <li class="pagination__item">
-                  <span class="pagination__current" aria-current="page">1</span>
+                <li class="aiab-pagination__item">
+                  <span class="aiab-pagination__current" aria-current="page">1</span>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 4">4</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 4">4</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to next page">›</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to next page">›</a>
                 </li>
               </ul>
             </nav>
@@ -395,23 +353,23 @@
           <div class="aiab-pagination-demo">
             <nav aria-label="Outlined Pagination" role="navigation">
               <ul class="aiab-pagination aiab-pagination--outlined">
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
-                <li class="pagination__item">
-                  <span class="pagination__current" aria-current="page">1</span>
+                <li class="aiab-pagination__item">
+                  <span class="aiab-pagination__current" aria-current="page">1</span>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 4">4</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 4">4</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to next page">›</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to next page">›</a>
                 </li>
               </ul>
             </nav>
@@ -444,23 +402,23 @@
           <div class="aiab-pagination-demo">
             <nav aria-label="Compact Pagination" role="navigation">
               <ul class="aiab-pagination aiab-pagination--compact">
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
-                <li class="pagination__item">
-                  <span class="pagination__current" aria-current="page">1</span>
+                <li class="aiab-pagination__item">
+                  <span class="aiab-pagination__current" aria-current="page">1</span>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 4">4</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 4">4</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to next page">›</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to next page">›</a>
                 </li>
               </ul>
             </nav>
@@ -472,23 +430,23 @@
           <div class="aiab-pagination-demo">
             <nav aria-label="Default Pagination" role="navigation">
               <ul class="aiab-pagination">
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
-                <li class="pagination__item">
-                  <span class="pagination__current" aria-current="page">1</span>
+                <li class="aiab-pagination__item">
+                  <span class="aiab-pagination__current" aria-current="page">1</span>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 4">4</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 4">4</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to next page">›</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to next page">›</a>
                 </li>
               </ul>
             </nav>
@@ -500,23 +458,23 @@
           <div class="aiab-pagination-demo">
             <nav aria-label="Large Pagination" role="navigation">
               <ul class="aiab-pagination aiab-pagination--large">
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to previous page">‹</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to previous page">‹</a>
                 </li>
-                <li class="pagination__item">
-                  <span class="pagination__current" aria-current="page">1</span>
+                <li class="aiab-pagination__item">
+                  <span class="aiab-pagination__current" aria-current="page">1</span>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to page 4">4</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to page 4">4</a>
                 </li>
-                <li class="pagination__item">
-                  <a href="#" class="pagination__link" aria-label="Go to next page">›</a>
+                <li class="aiab-pagination__item">
+                  <a href="#" class="aiab-pagination__link" aria-label="Go to next page">›</a>
                 </li>
               </ul>
             </nav>
@@ -546,43 +504,43 @@
         <div class="aiab-pagination-demo aiab-pagination-demo--full">
           <div class="aiab-pagination-container">
             <div class="aiab-pagination-container__left">
-              <div class="pagination__info">
-                Showing <span class="pagination__info-highlight">1</span> to <span class="pagination__info-highlight">10</span> of <span class="pagination__info-highlight">97</span> results
+              <div class="aiab-pagination__info">
+                Showing <span class="aiab-pagination__info-highlight">1</span> to <span class="aiab-pagination__info-highlight">10</span> of <span class="aiab-pagination__info-highlight">97</span> results
               </div>
             </div>
 
             <div class="aiab-pagination-container__center">
               <nav aria-label="Advanced Pagination" role="navigation">
                 <ul class="aiab-pagination">
-                  <li class="pagination__item">
-                    <a href="#" class="pagination__link pagination__link--disabled" aria-label="Go to previous page">‹</a>
+                  <li class="aiab-pagination__item">
+                    <a href="#" class="aiab-pagination__link aiab-pagination__link--disabled" aria-label="Go to previous page">‹</a>
                   </li>
-                  <li class="pagination__item">
-                    <span class="pagination__current" aria-current="page">1</span>
+                  <li class="aiab-pagination__item">
+                    <span class="aiab-pagination__current" aria-current="page">1</span>
                   </li>
-                  <li class="pagination__item">
-                    <a href="#" class="pagination__link" aria-label="Go to page 2">2</a>
+                  <li class="aiab-pagination__item">
+                    <a href="#" class="aiab-pagination__link" aria-label="Go to page 2">2</a>
                   </li>
-                  <li class="pagination__item">
-                    <a href="#" class="pagination__link" aria-label="Go to page 3">3</a>
+                  <li class="aiab-pagination__item">
+                    <a href="#" class="aiab-pagination__link" aria-label="Go to page 3">3</a>
                   </li>
-                  <li class="pagination__item">
-                    <span class="pagination__ellipsis">…</span>
+                  <li class="aiab-pagination__item">
+                    <span class="aiab-pagination__ellipsis">…</span>
                   </li>
-                  <li class="pagination__item">
-                    <a href="#" class="pagination__link" aria-label="Go to page 10">10</a>
+                  <li class="aiab-pagination__item">
+                    <a href="#" class="aiab-pagination__link" aria-label="Go to page 10">10</a>
                   </li>
-                  <li class="pagination__item">
-                    <a href="#" class="pagination__link" aria-label="Go to next page">›</a>
+                  <li class="aiab-pagination__item">
+                    <a href="#" class="aiab-pagination__link" aria-label="Go to next page">›</a>
                   </li>
                 </ul>
               </nav>
             </div>
 
             <div class="aiab-pagination-container__right">
-              <div class="pagination__page-size">
+              <div class="aiab-pagination__page-size">
                 <label for="page-size">Show:</label>
-                <select id="page-size" class="pagination__page-size-select">
+                <select id="page-size" class="aiab-pagination__page-size-select">
                   <option value="10" selected>10</option>
                   <option value="25">25</option>
                   <option value="50">50</option>
@@ -590,10 +548,10 @@
                 </select>
               </div>
 
-              <div class="pagination__jump">
+              <div class="aiab-pagination__jump">
                 <label for="jump-page">Go to:</label>
-                <input type="number" id="jump-page" class="pagination__jump-input" min="1" max="10" placeholder="1">
-                <button class="pagination__jump-button">Go</button>
+                <input type="number" id="jump-page" class="aiab-pagination__jump-input" min="1" max="10" placeholder="1">
+                <button class="aiab-pagination__jump-button">Go</button>
               </div>
             </div>
           </div>
@@ -603,10 +561,10 @@
       <div class="code-block">
         <pre><code>&lt;div class="aiab-pagination-container"&gt;
   &lt;div class="aiab-pagination-container__left"&gt;
-    &lt;div class="pagination__info"&gt;
-      Showing &lt;span class="pagination__info-highlight"&gt;1&lt;/span&gt; to
-      &lt;span class="pagination__info-highlight"&gt;10&lt;/span&gt; of
-      &lt;span class="pagination__info-highlight"&gt;97&lt;/span&gt; results
+    &lt;div class="aiab-pagination__info"&gt;
+      Showing &lt;span class="aiab-pagination__info-highlight"&gt;1&lt;/span&gt; to
+      &lt;span class="aiab-pagination__info-highlight"&gt;10&lt;/span&gt; of
+      &lt;span class="aiab-pagination__info-highlight"&gt;97&lt;/span&gt; results
     &lt;/div&gt;
   &lt;/div&gt;
 
@@ -619,19 +577,19 @@
   &lt;/div&gt;
 
   &lt;div class="aiab-pagination-container__right"&gt;
-    &lt;div class="pagination__page-size"&gt;
+    &lt;div class="aiab-pagination__page-size"&gt;
       &lt;label for="page-size"&gt;Show:&lt;/label&gt;
-      &lt;select id="page-size" class="pagination__page-size-select"&gt;
+      &lt;select id="page-size" class="aiab-pagination__page-size-select"&gt;
         &lt;option value="10"&gt;10&lt;/option&gt;
         &lt;option value="25"&gt;25&lt;/option&gt;
         &lt;option value="50"&gt;50&lt;/option&gt;
       &lt;/select&gt;
     &lt;/div&gt;
 
-    &lt;div class="pagination__jump"&gt;
+    &lt;div class="aiab-pagination__jump"&gt;
       &lt;label for="jump-page"&gt;Go to:&lt;/label&gt;
-      &lt;input type="number" id="jump-page" class="pagination__jump-input" min="1" max="10"&gt;
-      &lt;button class="pagination__jump-button"&gt;Go&lt;/button&gt;
+      &lt;input type="number" id="jump-page" class="aiab-pagination__jump-input" min="1" max="10"&gt;
+      &lt;button class="aiab-pagination__jump-button"&gt;Go&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -643,6 +601,7 @@
       <h2>CSS Classes Reference</h2>
 
       <h3>Base Classes</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -685,8 +644,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Style Variants</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -717,8 +678,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Size Modifiers</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -737,8 +700,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>State Classes</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -765,8 +730,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h3>Advanced Feature Classes</h3>
+      <div class="aiab-table-wrapper">
       <table>
         <thead>
           <tr>
@@ -809,6 +776,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </section>
 
     <!-- JavaScript Integration -->
@@ -911,16 +879,16 @@ class Pagination {
   generatePageItem(page) {
     if (page === 'ellipsis') {
       return `
-        &lt;li class="pagination__item"&gt;
-          &lt;span class="pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;
+        &lt;li class="aiab-pagination__item"&gt;
+          &lt;span class="aiab-pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;
         &lt;/li&gt;
       `;
     }
 
     if (page === this.currentPage) {
       return `
-        &lt;li class="pagination__item pagination__item--current"&gt;
-          &lt;span class="pagination__current" aria-label="Page ${page}, current page" aria-current="page"&gt;
+        &lt;li class="aiab-pagination__item aiab-pagination__item--current"&gt;
+          &lt;span class="aiab-pagination__current" aria-label="Page ${page}, current page" aria-current="page"&gt;
             ${page}
           &lt;/span&gt;
         &lt;/li&gt;
@@ -928,8 +896,8 @@ class Pagination {
     }
 
     return `
-      &lt;li class="pagination__item"&gt;
-        &lt;a href="#" class="pagination__link" data-page="${page}" aria-label="Go to page ${page}"&gt;
+      &lt;li class="aiab-pagination__item"&gt;
+        &lt;a href="#" class="aiab-pagination__link" data-page="${page}" aria-label="Go to page ${page}"&gt;
           ${page}
         &lt;/a&gt;
       &lt;/li&gt;
@@ -941,13 +909,13 @@ class Pagination {
     const href = this.currentPage === 1 ? '#' : `#page-${this.currentPage - 1}`;
 
     return `
-      &lt;li class="pagination__item pagination__item--nav"&gt;
+      &lt;li class="aiab-pagination__item aiab-pagination__item--nav"&gt;
         &lt;a href="${href}" class="pagination__link ${disabled}" data-page="${this.currentPage - 1}" aria-label="Go to previous page"&gt;
-          &lt;div class="pagination__nav"&gt;
-            &lt;svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+          &lt;div class="aiab-pagination__nav"&gt;
+            &lt;svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
               &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/&gt;
             &lt;/svg&gt;
-            &lt;span class="pagination__nav-text"&gt;Previous&lt;/span&gt;
+            &lt;span class="aiab-pagination__nav-text"&gt;Previous&lt;/span&gt;
           &lt;/div&gt;
         &lt;/a&gt;
       &lt;/li&gt;
@@ -959,11 +927,11 @@ class Pagination {
     const href = this.currentPage === this.totalPages ? '#' : `#page-${this.currentPage + 1}`;
 
     return `
-      &lt;li class="pagination__item pagination__item--nav"&gt;
+      &lt;li class="aiab-pagination__item aiab-pagination__item--nav"&gt;
         &lt;a href="${href}" class="pagination__link ${disabled}" data-page="${this.currentPage + 1}" aria-label="Go to next page"&gt;
-          &lt;div class="pagination__nav"&gt;
-            &lt;span class="pagination__nav-text"&gt;Next&lt;/span&gt;
-            &lt;svg class="pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+          &lt;div class="aiab-pagination__nav"&gt;
+            &lt;span class="aiab-pagination__nav-text"&gt;Next&lt;/span&gt;
+            &lt;svg class="aiab-pagination__nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
               &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/&gt;
             &lt;/svg&gt;
           &lt;/div&gt;
@@ -977,10 +945,10 @@ class Pagination {
     const end = Math.min(this.currentPage * this.pageSize, this.totalItems);
 
     return `
-      &lt;div class="pagination__info"&gt;
-        Showing &lt;span class="pagination__info-highlight"&gt;${start}&lt;/span&gt; to
-        &lt;span class="pagination__info-highlight"&gt;${end}&lt;/span&gt; of
-        &lt;span class="pagination__info-highlight"&gt;${this.totalItems}&lt;/span&gt; results
+      &lt;div class="aiab-pagination__info"&gt;
+        Showing &lt;span class="aiab-pagination__info-highlight"&gt;${start}&lt;/span&gt; to
+        &lt;span class="aiab-pagination__info-highlight"&gt;${end}&lt;/span&gt; of
+        &lt;span class="aiab-pagination__info-highlight"&gt;${this.totalItems}&lt;/span&gt; results
       &lt;/div&gt;
     `;
   }
@@ -992,9 +960,9 @@ class Pagination {
     ).join('');
 
     return `
-      &lt;div class="pagination__page-size"&gt;
+      &lt;div class="aiab-pagination__page-size"&gt;
         &lt;label for="page-size-select"&gt;Show:&lt;/label&gt;
-        &lt;select id="page-size-select" class="pagination__page-size-select"&gt;
+        &lt;select id="page-size-select" class="aiab-pagination__page-size-select"&gt;
           ${optionsHTML}
         &lt;/select&gt;
       &lt;/div&gt;
@@ -1003,11 +971,11 @@ class Pagination {
 
   generateJump() {
     return `
-      &lt;div class="pagination__jump"&gt;
+      &lt;div class="aiab-pagination__jump"&gt;
         &lt;label for="jump-page-input"&gt;Go to:&lt;/label&gt;
-        &lt;input type="number" id="jump-page-input" class="pagination__jump-input"
+        &lt;input type="number" id="jump-page-input" class="aiab-pagination__jump-input"
                min="1" max="${this.totalPages}" placeholder="${this.currentPage}"&gt;
-        &lt;button class="pagination__jump-button"&gt;Go&lt;/button&gt;
+        &lt;button class="aiab-pagination__jump-button"&gt;Go&lt;/button&gt;
       &lt;/div&gt;
     `;
   }
@@ -1143,8 +1111,8 @@ const pagination = new Pagination({
   <footer class="aiab-container">
     <div class="section">
       <p>
-        <a href="/examples/pagination-demo.html">View Live Examples</a> |
-        <a href="/docs/components/">All Components</a> |
+        <a href="/examples/tabs-pagination-steps-demo.html">View Live Examples</a> |
+        <a href="/docs/features.html#components">All Components</a> |
         <a href="/docs/index.html">Documentation Home</a>
       </p>
       <p>&copy; 2024 Amphibious 2.0. Modern aiab-pagination for efficient content navigation.</p>
@@ -1152,21 +1120,20 @@ const pagination = new Pagination({
   </footer>
 
   <!-- Load Framework -->
-  <script type="module" src="/src/index.js"></script>
 
   <!-- Demo JavaScript -->
   <script>
     // Simple aiab-pagination demo functionality
     document.addEventListener('DOMContentLoaded', () => {
       // Add click handlers for demo aiab-pagination links
-      const paginationLinks = document.querySelectorAll('.pagination__link:not(.pagination__link--disabled)');
+      const paginationLinks = document.querySelectorAll('.aiab-pagination__link:not(.aiab-pagination__link--disabled)');
 
       paginationLinks.forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
 
           const pagination = link.closest('.aiab-pagination');
-          const currentPage = pagination.querySelector('.pagination__current');
+          const currentPage = pagination.querySelector('.aiab-pagination__current');
           const pageNumber = link.textContent.trim();
 
           if (pageNumber && !Number.isNaN(pageNumber)) {
@@ -1188,7 +1155,7 @@ const pagination = new Pagination({
       });
 
       // Demo page size selector
-      const pageSizeSelects = document.querySelectorAll('.pagination__page-size-select');
+      const pageSizeSelects = document.querySelectorAll('.aiab-pagination__page-size-select');
       pageSizeSelects.forEach(select => {
         select.addEventListener('change', (e) => {
           console.log('Page size changed to:', e.target.value);
@@ -1196,17 +1163,17 @@ const pagination = new Pagination({
       });
 
       // Demo jump functionality
-      const jumpButtons = document.querySelectorAll('.pagination__jump-button');
+      const jumpButtons = document.querySelectorAll('.aiab-pagination__jump-button');
       jumpButtons.forEach(button => {
         button.addEventListener('click', (_e) => {
-          const input = button.parentElement.querySelector('.pagination__jump-input');
+          const input = button.parentElement.querySelector('.aiab-pagination__jump-input');
           const pageNumber = parseInt(input.value, 10);
 
           if (pageNumber && pageNumber >= 1 && pageNumber <= 10) {
             console.log('Jumping to page:', pageNumber);
 
             // Update current page indicator
-            const currentPage = document.querySelector('.pagination__current');
+            const currentPage = document.querySelector('.aiab-pagination__current');
             if (currentPage) {
               currentPage.textContent = pageNumber;
               currentPage.setAttribute('aria-label', `Page ${pageNumber}, current page`);
@@ -1221,11 +1188,11 @@ const pagination = new Pagination({
       });
 
       // Enter key support for jump input
-      const jumpInputs = document.querySelectorAll('.pagination__jump-input');
+      const jumpInputs = document.querySelectorAll('.aiab-pagination__jump-input');
       jumpInputs.forEach(input => {
         input.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') {
-            const button = input.parentElement.querySelector('.pagination__jump-button');
+            const button = input.parentElement.querySelector('.aiab-pagination__jump-button');
             if (button) {
               button.click();
             }

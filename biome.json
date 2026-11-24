@@ -4,6 +4,10 @@
     "includes": [
       "**",
       "!**/dist",
+      "!**/dist-site",
+      "!**/test-results",
+      "!**/playwright-report",
+      "!**/*.generated.ts",
       "!**/node_modules",
       "!**/*.min.js",
       "!**/*.min.css",
@@ -42,6 +46,10 @@
     "includes": [
       "**",
       "!**/dist/**",
+      "!**/dist-site/**",
+      "!**/test-results/**",
+      "!**/playwright-report/**",
+      "!**/*.generated.ts",
       "!**/node_modules/**",
       "!**/backup-*/**",
       "!**/backups/**",
@@ -56,6 +64,10 @@
     "includes": [
       "**",
       "!**/dist/**",
+      "!**/dist-site/**",
+      "!**/test-results/**",
+      "!**/playwright-report/**",
+      "!**/*.generated.ts",
       "!**/node_modules/**",
       "!**/backup-*/**",
       "!**/backups/**",

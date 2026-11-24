@@ -53,6 +53,7 @@
 /* Base Pagination Styles */
 .aiab-pagination {
   display: flex;
+  flex-wrap: wrap; /* long page lists wrap instead of widening the page */
   align-items: center;
   justify-content: center;
   list-style: none;

@@ -34,4 +34,11 @@ coverage/
 
 # Misc
 *.bak
+*.backup
+*.backup-*
 *.tmp
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/

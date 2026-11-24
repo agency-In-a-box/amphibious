@@ -3,102 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>API Reference — Amphibious 2.0</title>
   <meta name="description" content="Complete API reference for Amphibious 2.0 - CSS classes, JavaScript methods, and component configuration">
-  <script type="module">import '/src/css/main.css';</script>
-  <link rel="stylesheet" href="api-reference.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './api-reference.css';
+  </script>
 </head>
 <body>
-  <!-- Site Navigation -->
-    <!-- Navigation Include -->
-  <!-- Site Navigation Include - Amphibious 2.0 -->
-<!-- Include this file in all pages to maintain consistent navigation -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-<nav class="aiab-site-nav" aria-label="Main navigation">
-  <div class="aiab-container">
-    <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-      <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-      <span class="aiab-sr-only">Toggle navigation</span>
-    </button>
-
-    <ul id="main-nav" class="aiab-horizontal">
-      <li>
-        <a href="/" class="aiab-site-logo">Amphibious</a>
-        <ul>
-          <li><a href="/#what_is_it">What is Amphibious 2.0</a></li>
-          <li><a href="/#how_its_made">What is it made of?</a></li>
-          <li><a href="/#gallery">Amphibious 2.0 Showcase</a></li>
-          <li><a href="/#evolution">The Evolution of Amphibious</a></li>
-          <li><a href="/#colophon">The Amphibious Colophon</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/foundation.html">Foundation</a>
-        <ul>
-          <li><a href="/docs/foundation.html#core">Core</a></li>
-          <li><a href="/docs/foundation.html#grid">Semantic Grid</a></li>
-          <li><a href="/docs/foundation.html#responsive">Responsive Columns</a></li>
-          <li><a href="/docs/foundation.html#fluid">Fluid Columns</a></li>
-          <li><a href="/docs/foundation.html#golden">Golden ratio grids</a></li>
-          <li><a href="/docs/foundation.html#ordering">Source Ordering</a></li>
-          <li><a href="/docs/foundation.html#media">Media Queries</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/form.html">Form</a>
-        <ul>
-          <li><a href="/docs/form.html#typography">Typography</a></li>
-          <li><a href="/docs/form.html#basic">Basic Forms</a></li>
-          <li><a href="/docs/form.html#multi">Multi Beside Forms</a></li>
-          <li><a href="/docs/form.html#custom">Custom Checkboxes and Radios</a></li>
-          <li><a href="/docs/form.html#prepend">Prepend and Append Icons</a></li>
-          <li><a href="/docs/form.html#picker">Date Picker Fields</a></li>
-          <li><a href="/docs/form.html#tables">Tables</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/function.html">Function</a>
-        <ul>
-          <li><a href="/docs/function.html#navigation">Horizontal Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#horizontal-nav">Horizontal Nav <sub>css</sub></a></li>
-          <li><a href="/docs/function.html#vertical-nav">Vertical Nav <sub>with tertiary</sub></a></li>
-          <li><a href="/docs/function.html#breadcrumbs">Breadcrumbs</a></li>
-          <li><a href="/docs/function.html#tabs">Tabs</a></li>
-          <li><a href="/docs/function.html#pagination">Pagination aiab-nav</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/docs/features.html">Features</a>
-        <ul>
-          <li><a href="/docs/features.html#slideshows">Responsive Slide Shows</a></li>
-          <li><a href="/docs/features.html#modals">Modals</a></li>
-          <li><a href="/docs/features.html#tooltips">Tooltips</a></li>
-          <li><a href="/docs/features.html#accordion">Accordion</a></li>
-          <li><a href="/docs/features.html#carousel">Carousel</a></li>
-          <li><a href="/docs/features.html#cards">Cards</a></li>
-          <li><a href="/docs/features.html#alerts">Alerts</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="/examples/">Examples</a>
-        <ul>
-          <li><a href="/examples/">Component Showcase</a></li>
-          <li><a href="/examples/e-commerce-catalog.html">E-commerce Catalog</a></li>
-          <li><a href="/examples/shopping-cart-modern.html">Shopping Cart</a></li>
-          <li><a href="/examples/checkout-flow.html">Checkout Flow</a></li>
-          <li><a href="/examples/pears-patterns.html">Pea.rs Patterns</a></li>
-          <li><a href="/examples/navigation-showcase.html">Navigation Components</a></li>
-          <li><a href="/examples/atomic-design-demo.html">Atomic Design Demo</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <!-- Navigation Include -->
 <header class="aiab-docs-header">
     <div class="aiab-container">
-      <h1>📖 API Reference</h1>
+      <h1>API Reference</h1>
       <p>Complete reference for all CSS classes, JavaScript methods, and component APIs</p>
     </div>
   </header>
@@ -113,36 +36,19 @@
           <ul>
             <li><a href="#grid-system" class="aiab-active">Grid System</a></li>
             <li><a href="#typography">Typography</a></li>
-            <li><a href="#colors">Colors</a></li>
-            <li><a href="#spacing">Spacing</a></li>
-            <li><a href="#utilities">Utilities</a></li>
           </ul>
 
-          <h3>Components</h3>
-          <ul>
-            <li><a href="#navigation">Navigation</a></li>
-            <li><a href="#modals">Modals</a></li>
-            <li><a href="#tooltips">Tooltips</a></li>
-            <li><a href="#alerts">Alerts</a></li>
-            <li><a href="#carousel">Carousel</a></li>
-            <li><a href="#cards">Cards</a></li>
-            <li><a href="#forms">Forms</a></li>
-            <li><a href="#buttons">Buttons</a></li>
-          </ul>
 
           <h3>Patterns</h3>
           <ul>
             <li><a href="#stats">Stats</a></li>
             <li><a href="#slats">Slats</a></li>
-            <li><a href="#aside">Aside</a></li>
           </ul>
 
           <h3>JavaScript API</h3>
           <ul>
             <li><a href="#js-navigation">Navigation API</a></li>
             <li><a href="#js-modals">Modal API</a></li>
-            <li><a href="#js-tooltips">Tooltip API</a></li>
-            <li><a href="#js-icons">Icons API</a></li>
           </ul>
         </nav>
       </aside>
@@ -156,7 +62,7 @@
 
         <!-- Grid System -->
         <section aria-labelledby="aiab-grid-system">
-          <h2 id="aiab-grid-system">Grid System <span class="version-badge">v2.0.0</span></h2>
+          <h2 id="grid-system">Grid System <span class="version-badge">v2.0.0</span></h2>
 
           <p>Amphibious uses a 16-column responsive aiab-grid system based on flexbox.</p>
 
@@ -214,6 +120,7 @@
           <h2 id="typography">Typography</h2>
 
           <h3>Heading Classes</h3>
+          <div class="aiab-table-wrapper">
           <table class="params-table">
             <thead>
               <tr>
@@ -262,6 +169,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
 
           <h3>Text Utilities</h3>
           <div class="css-grid">
@@ -296,14 +204,17 @@
         <section aria-labelledby="js-navigation">
           <h2 id="js-navigation">Navigation API</h2>
 
+          <p>Navigation is markup-first. The site nav (<code>.aiab-site-nav</code>) is enhanced automatically when the framework loads: mobile menu, dropdowns, keyboard support and current-page highlighting. Call the API only for other navs on the page, or to change options.</p>
+
           <h3>createNavigation()</h3>
           <div class="api-signature">
-            amp.createNavigation(selector: string | HTMLElement, options?: NavigationOptions): AmphibiousNavigation
+            amp.createNavigation(element?: string | HTMLElement, options?: NavigationOptions): Navigation
           </div>
 
-          <p>Creates a new navigation component with advanced features like dropdowns, mobile menu, search, and theme toggle.</p>
+          <p>Enhances existing navigation markup and returns the instance. If the element already has an instance (for example the auto-initialised site nav), that instance is destroyed first, so the new options apply and event handlers never double up. Same as <code>Navigation.create()</code> when importing the module.</p>
 
           <h4>Parameters</h4>
+          <div class="aiab-table-wrapper">
           <table class="params-table">
             <thead>
               <tr>
@@ -315,21 +226,23 @@
             </thead>
             <tbody>
               <tr>
-                <td><code>selector</code></td>
+                <td><code>element</code></td>
                 <td><span class="type-badge string">string</span> | <span class="type-badge object">HTMLElement</span></td>
-                <td>Yes</td>
-                <td>CSS selector or DOM element to initialize navigation on</td>
+                <td>No</td>
+                <td>Root element or selector. Omitted: the site nav. Throws if a selector matches nothing.</td>
               </tr>
               <tr>
                 <td><code>options</code></td>
                 <td><span class="type-badge object">NavigationOptions</span></td>
                 <td>No</td>
-                <td>Configuration options for the navigation component</td>
+                <td>See below.</td>
               </tr>
             </tbody>
           </table>
+          </div>
 
-          <h4>NavigationOptions Interface</h4>
+          <h4>NavigationOptions</h4>
+          <div class="aiab-table-wrapper">
           <table class="params-table">
             <thead>
               <tr>
@@ -341,99 +254,97 @@
             </thead>
             <tbody>
               <tr>
-                <td><code>sticky</code></td>
-                <td><span class="type-badge boolean">boolean</span></td>
-                <td><code>true</code></td>
-                <td>Enable sticky navigation behavior on scroll</td>
-              </tr>
-              <tr>
-                <td><code>transparent</code></td>
-                <td><span class="type-badge boolean">boolean</span></td>
-                <td><code>false</code></td>
-                <td>Start with transparent background</td>
-              </tr>
-              <tr>
                 <td><code>breakpoint</code></td>
                 <td><span class="type-badge number">number</span></td>
                 <td><code>768</code></td>
-                <td>Mobile menu breakpoint in pixels</td>
+                <td>Viewport width (px) at or below which the mobile menu and tap-to-expand dropdowns apply. Matches <code>--bp-md-down</code>.</td>
+              </tr>
+              <tr>
+                <td><code>sticky</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>true for .aiab-site-nav</code></td>
+                <td>Adds <code>.is-scrolled</code> once the page scrolls past <code>.aiab-docs-header</code> / <code>.aiab-hero</code>.</td>
+              </tr>
+              <tr>
+                <td><code>highlightCurrent</code></td>
+                <td><span class="type-badge boolean">boolean</span></td>
+                <td><code>true</code></td>
+                <td>Marks the link for the current page with <code>.aiab-active</code> and <code>aria-current="page"</code>. Hash-only links never count.</td>
               </tr>
               <tr>
                 <td><code>currentPath</code></td>
                 <td><span class="type-badge string">string</span></td>
-                <td><code>window.location.pathname</code></td>
-                <td>Current page path for active state</td>
+                <td><code>location.pathname</code></td>
+                <td>Path to match instead of the real URL (useful for demos and tests).</td>
               </tr>
               <tr>
-                <td><code>searchEnabled</code></td>
-                <td><span class="type-badge boolean">boolean</span></td>
-                <td><code>true</code></td>
-                <td>Show search button and aiab-modal</td>
-              </tr>
-              <tr>
-                <td><code>themeToggle</code></td>
-                <td><span class="type-badge boolean">boolean</span></td>
-                <td><code>true</code></td>
-                <td>Show theme toggle button</td>
-              </tr>
-              <tr>
-                <td><code>githubUrl</code></td>
-                <td><span class="type-badge string">string</span></td>
-                <td><code>undefined</code></td>
-                <td>GitHub repository URL</td>
-              </tr>
-              <tr>
-                <td><code>githubStars</code></td>
-                <td><span class="type-badge string">string</span></td>
-                <td><code>undefined</code></td>
-                <td>GitHub stars count to display</td>
+                <td><code>toggle</code></td>
+                <td><span class="type-badge string">string | HTMLElement</span></td>
+                <td><code>auto</code></td>
+                <td>Menu toggle button. By default: a toggle inside the nav, else a button whose <code>aria-controls</code> points into it.</td>
               </tr>
               <tr>
                 <td><code>onToggle</code></td>
                 <td><span class="type-badge function">function</span></td>
                 <td><code>undefined</code></td>
-                <td>Callback when mobile menu is toggled</td>
+                <td><code>(isOpen: boolean) =&gt; void</code>, called after the mobile menu opens or closes.</td>
               </tr>
             </tbody>
           </table>
+          </div>
+
+          <p>Search and the theme toggle are separate components (<code>SearchBar</code>, <code>DarkModeToggle</code>). Navigation doesn't render markup.</p>
 
           <div class="return-value">
-            <strong>Returns:</strong> <span class="type-badge object">AmphibiousNavigation</span> - Navigation component instance
+            <strong>Returns:</strong> <span class="type-badge object">Navigation</span>, the navigation instance
           </div>
 
           <div class="example-section">
             <h4>Example Usage</h4>
             <div class="code-block">
-              <pre><code>// Basic navigation
-const nav = amp.createNavigation('#navbar');
-
-// Advanced configuration
-const nav = amp.createNavigation('#navbar', {
-  sticky: true,
-  transparent: false,
-  searchEnabled: true,
-  themeToggle: true,
-  githubUrl: 'https://github.com/your-org/amphibious',
-  githubStars: '1.2k',
-  onToggle: (isOpen) => {
+              <pre><code>// A second nav on the page, collapsing at 960px
+const docsNav = amp.createNavigation('#docs-nav', {
+  breakpoint: 960,
+  sticky: false,
+  onToggle: (isOpen) =&gt; {
     console.log('Mobile menu is', isOpen ? 'open' : 'closed');
   }
-});</code></pre>
+});
+
+// Reconfigure the auto-initialised site nav
+amp.createNavigation('.aiab-site-nav', { breakpoint: 1024 });
+
+// As a module
+import { Navigation } from '@agency-in-a-box/amphibious';
+const nav = Navigation.create('#docs-nav', { highlightCurrent: false });</code></pre>
             </div>
           </div>
 
           <h3>Navigation Methods</h3>
-
-          <h4>destroy()</h4>
-          <div class="api-signature">
-            navigation.destroy(): void
+          <div class="aiab-table-wrapper">
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Method / property</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>open()</code> · <code>close()</code> · <code>toggle()</code></td><td>Control the mobile menu.</td></tr>
+              <tr><td><code>isOpen</code></td><td>Whether the mobile menu is open (read-only).</td></tr>
+              <tr><td><code>element</code></td><td>The root element (read-only).</td></tr>
+              <tr><td><code>setActiveStates()</code></td><td>Re-run current-page highlighting, for example after a client-side route change.</td></tr>
+              <tr><td><code>destroy()</code></td><td>Remove every listener, close the menu and detach the instance.</td></tr>
+              <tr><td><code>Navigation.getInstance(el)</code></td><td>The instance attached to an element, if any.</td></tr>
+            </tbody>
+          </table>
           </div>
-          <p>Removes the navigation component and cleans up event listeners.</p>
 
           <div class="example-section">
             <h4>Example Usage</h4>
             <div class="code-block">
-              <pre><code>const nav = amp.createNavigation('#navbar');
+              <pre><code>const nav = amp.createNavigation('#docs-nav');
+nav.open();
 // Later...
 nav.destroy();</code></pre>
             </div>
@@ -452,6 +363,7 @@ nav.destroy();</code></pre>
           <p>Creates a new aiab-modal dialog with customizable options and event handling.</p>
 
           <h4>Parameters</h4>
+          <div class="aiab-table-wrapper">
           <table class="params-table">
             <thead>
               <tr>
@@ -482,8 +394,10 @@ nav.destroy();</code></pre>
               </tr>
             </tbody>
           </table>
+          </div>
 
           <h4>ModalOptions Interface</h4>
+          <div class="aiab-table-wrapper">
           <table class="params-table">
             <thead>
               <tr>
@@ -526,6 +440,7 @@ nav.destroy();</code></pre>
               </tr>
             </tbody>
           </table>
+          </div>
 
           <h3>Modal Methods</h3>
 
@@ -655,18 +570,18 @@ setTimeout(() => modal.close(), 3000);</code></pre>
             <div class="code-block">
               <pre><code>&lt;ul class="aiab-slats aiab-slats--products"&gt;
   &lt;li&gt;
-    &lt;article class="slat-item"&gt;
-      &lt;figure class="slat-image"&gt;
+    &lt;article class="aiab-slat-item"&gt;
+      &lt;figure class="aiab-slat-image"&gt;
         &lt;img src="product.jpg" alt="Product name"&gt;
       &lt;/figure&gt;
-      &lt;div class="slat-content"&gt;
+      &lt;div class="aiab-slat-content"&gt;
         &lt;h3&gt;Product Name&lt;/h3&gt;
         &lt;p&gt;Product description with relevant details.&lt;/p&gt;
-        &lt;div class="slat-meta"&gt;
-          &lt;span class="price"&gt;$99.99&lt;/span&gt;
+        &lt;div class="aiab-slat-meta"&gt;
+          &lt;span class="aiab-price"&gt;$99.99&lt;/span&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;div class="slat-actions"&gt;
+      &lt;div class="aiab-slat-actions"&gt;
         &lt;button class="aiab-btn aiab-btn--primary"&gt;Add to Cart&lt;/button&gt;
       &lt;/div&gt;
     &lt;/article&gt;

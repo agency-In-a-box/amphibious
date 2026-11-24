@@ -71,11 +71,26 @@
     }
 
     /* Navigation Demo Specific */
+    /* overflow stays visible so dropdown menus are not clipped; the first and
+       last children round their own corners instead. */
     .nav-demo-container {
       background: #f8f9fa;
       border-radius: 8px;
       margin: 1.5rem 0;
-      overflow: hidden;
+      overflow: visible;
+    }
+
+    .nav-demo-container > :first-child {
+      border-radius: 8px 8px 0 0;
+    }
+
+    .nav-demo-container > :last-child {
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* Leave room for open menus so they do not cover the next section's heading */
+    .nav-demo-container:has(ul ul, .mega-menu-dropdown) {
+      padding-bottom: 12rem;
     }
 
     .nav-demo-header {

@@ -198,7 +198,7 @@ export class Icon {
 
     const button = document.createElement('button');
     button.className =
-      `icon-button ${variant !== 'default' ? `icon-button--${variant}` : ''} ${buttonSize !== 'default' ? `icon-button--${buttonSize}` : ''}`.trim();
+      `aiab-icon-button ${variant !== 'default' ? `aiab-icon-button--${variant}` : ''} ${buttonSize !== 'default' ? `aiab-icon-button--${buttonSize}` : ''}`.trim();
 
     if (onClick) {
       button.addEventListener('click', onClick);
@@ -230,7 +230,7 @@ export class Icon {
 
     const container = document.createElement(tag);
     container.className =
-      `icon-text ${layout === 'vertical' ? 'icon-text--vertical' : ''} ${layout === 'reverse' ? 'icon-text--reverse' : ''}`.trim();
+      `aiab-icon-text ${layout === 'vertical' ? 'aiab-icon-text--vertical' : ''} ${layout === 'reverse' ? 'aiab-icon-text--reverse' : ''}`.trim();
 
     const icon = Icon.create(name, iconOptions);
     const textNode = document.createElement('span');
@@ -265,7 +265,7 @@ export class Icon {
     const { badgeSize = 'default', ...iconOptions } = options;
 
     const container = document.createElement('div');
-    container.className = 'icon-badge';
+    container.className = 'aiab-icon-badge';
 
     const icon = Icon.create(name, iconOptions);
     if (icon) {
@@ -274,7 +274,7 @@ export class Icon {
 
     const badge = document.createElement('span');
     badge.className =
-      `icon-badge__count ${badgeSize !== 'default' ? `icon-badge__count--${badgeSize}` : ''}`.trim();
+      `aiab-icon-badge__count ${badgeSize !== 'default' ? `aiab-icon-badge__count--${badgeSize}` : ''}`.trim();
 
     if (count !== undefined && count > 0) {
       badge.textContent = count > 99 ? '99+' : count.toString();
@@ -313,7 +313,7 @@ export class EcommerceIcons {
    */
   static rating(rating: number, maxRating = 5, options: IconOptions = {}): HTMLElement {
     const container = document.createElement('div');
-    container.className = 'rating';
+    container.className = 'aiab-rating';
     container.setAttribute('aria-label', `Rating: ${rating} out of ${maxRating} stars`);
 
     for (let i = 1; i <= maxRating; i++) {

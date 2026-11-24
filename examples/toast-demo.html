@@ -3,36 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Apply the saved theme before first paint (key/values match DarkModeToggle). */
+    try { const t = localStorage.getItem('amphibious-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); else if (t === 'system') document.documentElement.removeAttribute('data-theme'); } catch {}
+  </script>
   <title>Toast Notifications — Amphibious 2.0</title>
   <meta name="description" content="Toast notification examples with auto-dismiss, stacking, and contextual styles.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <script type="module">import '/src/css/main.css';</script>
-  <link rel="stylesheet" href="toast-demo.css">
+  <script type="module">
+    import '/src/index.ts';
+    import '/src/css/pages.css';
+    import './toast-demo.css';
+  </script>
 </head>
 <body>
   <!-- Navigation Include -->
-  <a href="#main-content" class="aiab-skip-link">Skip to main content</a>
-  <nav class="aiab-site-nav" aria-label="Main navigation">
-    <div class="aiab-container">
-      <button class="aiab-nav-toggle aiab-hide-desktop" aria-expanded="false" aria-controls="main-nav">
-        <span class="aiab-nav-toggle-icon" aria-hidden="true"></span>
-        <span class="aiab-sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="main-nav" class="aiab-horizontal aiab-branded">
-        <li><a href="/" class="aiab-site-logo">Amphibious</a></li>
-        <li><a href="/docs/foundation.html">Foundation</a></li>
-        <li><a href="/docs/form.html">Form</a></li>
-        <li><a href="/docs/function.html">Function</a></li>
-        <li><a href="/docs/features.html">Features</a></li>
-        <li><a href="/examples/" class="aiab-active">Examples</a></li>
-      </ul>
-    </div>
-  </nav>
 
   <div class="aiab-container">
-    <h1>Toast Notification Component</h1>
+    <h1 id="main-content" tabindex="-1">Toast Notification Component</h1>
     <p>Temporary notification messages that auto-dismiss. Perfect for user feedback, confirmations, and alerts.</p>
 
     <!-- Basic Examples -->

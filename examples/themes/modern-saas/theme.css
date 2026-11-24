@@ -226,6 +226,17 @@ body {
   gap: var(--spacing-3);
 }
 
+/* The secondary (GitHub) button gives way on narrow screens so the bar fits */
+@media (--bp-sm-down) {
+  .saas-nav__inner {
+    gap: var(--spacing-3);
+  }
+
+  .saas-nav__actions .saas-btn--ghost {
+    display: none;
+  }
+}
+
 /* ============================================
    HERO SECTION
    ============================================ */
@@ -568,7 +579,7 @@ body {
 
 .saas-testimonials {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: var(--spacing-6);
 }
 
@@ -877,7 +888,7 @@ body {
 
 @media (--bp-lg-down) {
   .saas-showcase {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--spacing-8);
   }
 
@@ -940,7 +951,7 @@ body {
   }
 
   .saas-footer__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--spacing-8);
   }
 
