@@ -376,7 +376,8 @@ input[type="radio"]:focus {
 
   & .aiab-form-group {
     display: flex;
-    flex: 0 0 auto;
+    flex: 0 1 auto;
+    max-width: 100%; /* a long control wraps inside the group instead of widening the page */
     flex-flow: row wrap;
     align-items: center;
     margin-bottom: 0;

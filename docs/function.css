@@ -172,6 +172,7 @@
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   border-bottom: 1px solid #dee2e6;
 }
 
