@@ -26,6 +26,17 @@
   to = "/examples/e-commerce-cart"
   status = 301
 
+# The old icon docs page was a meta-refresh stub; a real redirect replaces it.
+[[redirects]]
+  from = "/docs/components/icons.html"
+  to = "/docs/icons"
+  status = 301
+
+[[redirects]]
+  from = "/docs/components/icons"
+  to = "/docs/icons"
+  status = 301
+
 # Only redirect actual 404s to home page, not all pages!
 [[redirects]]
   from = "/*"

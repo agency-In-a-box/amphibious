@@ -51,13 +51,41 @@ test.describe('every published page', () => {
     test(`${path} fits a 375px screen`, async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 800 });
       await page.goto(path, { waitUntil: 'networkidle' });
-      const { scrollWidth, innerWidth } = await page.evaluate(() => ({
-        scrollWidth: document.documentElement.scrollWidth,
-        innerWidth: window.innerWidth,
-      }));
+      const { scrollWidth, innerWidth, offenders } = await page.evaluate(() => {
+        const width = window.innerWidth;
+        const clipped = (el: Element) => {
+          for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+            if (getComputedStyle(a).overflowX !== 'visible') return true;
+          }
+          return false;
+        };
+        const wide = [...document.querySelectorAll('body *')].filter((el) => {
+          const style = getComputedStyle(el);
+          if (style.position === 'fixed' || style.display === 'none') return false;
+          const box = el.getBoundingClientRect();
+          return box.width > 0 && box.right > width + 0.5 && !clipped(el);
+        });
+        // Outermost offenders only, described so a failure points at the element
+        const offenders = wide
+          .filter((el) => !wide.includes(el.parentElement as Element))
+          .slice(0, 5)
+          .map((el) => {
+            const cls = String((el as HTMLElement).className)
+              .trim()
+              .split(/\s+/)
+              .slice(0, 2)
+              .join('.');
+            return `${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ''}${cls ? `.${cls}` : ''} right=${Math.round(el.getBoundingClientRect().right)}`;
+          });
+        return {
+          scrollWidth: document.documentElement.scrollWidth,
+          innerWidth: width,
+          offenders,
+        };
+      });
       expect(
         scrollWidth,
-        `scrollWidth ${scrollWidth} > viewport ${innerWidth}`,
+        `scrollWidth ${scrollWidth} > viewport ${innerWidth}; wide elements: ${offenders.join(' | ')}`,
       ).toBeLessThanOrEqual(innerWidth);
     });
   }
