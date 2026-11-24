@@ -404,7 +404,9 @@ async function main() {
     pageByUrl.set(pageUrl, { links, external });
   }
 
-  // third-party links: 404/410/DNS failures fail; bot blocks and 5xx only warn
+  // third-party links: only a definite 404/410 fails. Bot blocks, 5xx and network errors or
+  // timeouts (status 0, common from CI runners) only warn, after two retries, so a flaky
+  // site that is not ours cannot block a deploy or an unrelated PR.
   if (!flag('--no-external')) {
     const externals = new Map<string, string[]>();
     for (const [pageUrl, { external }] of pageByUrl) {
@@ -413,8 +415,7 @@ async function main() {
         externals.set(link.url, [...(externals.get(link.url) ?? []), new URL(pageUrl).pathname]);
       }
     }
-    await pool([...externals], 8, async ([url, pages]) => {
-      let status = 0;
+    const check = async (url: string): Promise<number> => {
       try {
         let response = await fetch(url, {
           method: 'HEAD',
@@ -425,12 +426,21 @@ async function main() {
           response = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(20000) });
           await response.body?.cancel();
         }
-        status = response.status;
+        return response.status;
       } catch {
-        status = 0;
+        return 0;
+      }
+    };
+
+    await pool([...externals], 8, async ([url, pages]) => {
+      let status = await check(url);
+      for (let retry = 0; retry < 2 && (status === 0 || status >= 500); retry++) {
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        status = await check(url);
       }
       if (status >= 200 && status < 400) return;
-      const blocked = [401, 403, 429].includes(status) || status >= 500;
+      const definitelyDead = status === 404 || status === 410;
+      const blocked = !definitelyDead;
       for (const page of new Set(pages)) {
         (blocked ? warnings : issues).push({
           type: 'link-external-broken',
