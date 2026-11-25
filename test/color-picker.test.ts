@@ -52,6 +52,26 @@ describe('ColorPicker swatches', () => {
     for (const swatch of build()) expect(swatch.getAttribute('style')).not.toContain('url(');
   });
 
+  it('rejects long adversarial input quickly', () => {
+    const start = performance.now();
+    localStorage.setItem(
+      'aiab-color-picker-recent',
+      JSON.stringify([`rgb(1${' '.repeat(5000)}x`, `rgb(${'1 '.repeat(3000)}!`]),
+    );
+    build();
+    expect(performance.now() - start).toBeLessThan(500);
+    expect(document.querySelectorAll('.aiab-recent-colors .aiab-color-swatch').length).toBe(0);
+  });
+
+  it('accepts modern space-separated rgb and hsl', () => {
+    localStorage.setItem(
+      'aiab-color-picker-recent',
+      JSON.stringify(['rgb(10 20 30)', 'rgb(10 20 30 / 50%)', 'hsl(120, 50%, 40%)']),
+    );
+    build();
+    expect(document.querySelectorAll('.aiab-recent-colors .aiab-color-swatch').length).toBe(3);
+  });
+
   it('ignores non-color values stored in localStorage', () => {
     localStorage.setItem(
       'aiab-color-picker-recent',

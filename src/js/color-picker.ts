@@ -1225,9 +1225,12 @@ export class ColorPicker {
    * url(), var()) is rejected, so a value cannot add attributes or CSS declarations.
    */
   private static isPlainColor(value: unknown): value is string {
+    // Length cap first, and one unambiguous separator (a comma/slash or whitespace),
+    // so the regex cannot backtrack on long inputs.
     return (
       typeof value === 'string' &&
-      /^(#[0-9a-f]{3,8}|(?:rgb|hsl)a?\(\s*[\d.%]+(?:\s*[,/\s]\s*[\d.%]+(?:deg)?){2,3}\s*\)|[a-z]{3,20})$/i.test(
+      value.length <= 64 &&
+      /^(#[0-9a-f]{3,8}|(?:rgb|hsl)a?\(\s*[\d.%]+(?:(?:\s*[,/]\s*|\s+)[\d.%]+(?:deg)?){2,3}\s*\)|[a-z]{3,20})$/i.test(
         value,
       )
     );
