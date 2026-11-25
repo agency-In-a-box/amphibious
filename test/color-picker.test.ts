@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import { ColorPicker } from '../src/js/color-picker';
 
 const EVIL = '#fff" onmouseover="window.__xss=1" data-x="';
+const CSS_EVIL = 'red; background-image: url(//evil.example/x)';
 
 describe('ColorPicker swatches', () => {
   let picker: ColorPicker | undefined;
@@ -25,7 +26,10 @@ describe('ColorPicker swatches', () => {
 
   const build = () => {
     const input = document.getElementById('c') as HTMLInputElement;
-    picker = new ColorPicker(input, { presets: ['#ff0000', EVIL], showPresets: true });
+    picker = new ColorPicker(input, {
+      presets: ['#ff0000', EVIL, CSS_EVIL, 'rgb(10, 20, 30)'],
+      showPresets: true,
+    });
     return document.querySelectorAll<HTMLButtonElement>('.aiab-color-swatch');
   };
 
@@ -40,6 +44,12 @@ describe('ColorPicker swatches', () => {
       expect(swatch.hasAttribute('onmouseover')).toBe(false);
       expect(swatch.hasAttribute('data-x')).toBe(false);
     }
+  });
+
+  it('renders only plain colors, so no extra CSS declarations can be added', () => {
+    const colors = [...build()].map((s) => s.dataset.color);
+    expect(colors).toEqual(['#ff0000', 'rgb(10, 20, 30)']);
+    for (const swatch of build()) expect(swatch.getAttribute('style')).not.toContain('url(');
   });
 
   it('ignores non-color values stored in localStorage', () => {

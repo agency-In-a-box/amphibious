@@ -13,8 +13,6 @@
  * - Accessible keyboard navigation
  */
 
-import { sanitizeAttribute } from '../utils/sanitize';
-
 /** Supported color output formats. */
 export type ColorFormat = 'hex' | 'rgb' | 'hsl';
 
@@ -1221,20 +1219,32 @@ export class ColorPicker {
 
   // --- Recent colors management ---
 
-  /** Swatch button markup. The color is attribute-sanitized: presets and stored values are untrusted. */
+  /**
+   * True only for plain colors: #hex, rgb()/rgba()/hsl()/hsla() with numeric
+   * arguments, or a bare color keyword. Anything else (quotes, semicolons,
+   * url(), var()) is rejected, so a value cannot add attributes or CSS declarations.
+   */
+  private static isPlainColor(value: unknown): value is string {
+    return (
+      typeof value === 'string' &&
+      /^(#[0-9a-f]{3,8}|(?:rgb|hsl)a?\(\s*[\d.%]+(?:\s*[,/\s]\s*[\d.%]+(?:deg)?){2,3}\s*\)|[a-z]{3,20})$/i.test(
+        value,
+      )
+    );
+  }
+
+  /** Swatch button markup. Colors that are not plain colors render nothing. */
   private swatchMarkup(color: string): string {
-    const safe = sanitizeAttribute(String(color));
-    return `<button type="button" class="aiab-color-swatch" data-color="${safe}" style="background: ${safe}" aria-label="Select color ${safe}"></button>`;
+    if (!ColorPicker.isPlainColor(color)) return '';
+    return `<button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}" aria-label="Select color ${color}"></button>`;
   }
 
   private loadRecentColors(): string[] {
     try {
       const stored = localStorage.getItem('aiab-color-picker-recent');
       const parsed: unknown = stored ? JSON.parse(stored) : [];
-      // localStorage can hold anything: keep only plain #hex colors
-      return Array.isArray(parsed)
-        ? parsed.filter((c): c is string => typeof c === 'string' && /^#[0-9a-f]{3,8}$/i.test(c))
-        : [];
+      // localStorage can hold anything: keep only plain colors
+      return Array.isArray(parsed) ? parsed.filter(ColorPicker.isPlainColor) : [];
     } catch {
       return [];
     }
