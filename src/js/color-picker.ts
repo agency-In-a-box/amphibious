@@ -13,6 +13,8 @@
  * - Accessible keyboard navigation
  */
 
+import { sanitizeAttribute } from '../utils/sanitize';
+
 /** Supported color output formats. */
 export type ColorFormat = 'hex' | 'rgb' | 'hsl';
 
@@ -440,13 +442,7 @@ export class ColorPicker {
           <div class="aiab-color-presets">
             <div class="aiab-preset-label">Presets</div>
             <div class="aiab-preset-colors">
-              ${this.options.presets
-                .map(
-                  (color: string) => `
-                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}" aria-label="Select color ${color}"></button>
-              `,
-                )
-                .join('')}
+              ${this.options.presets.map((color: string) => this.swatchMarkup(color)).join('')}
             </div>
           </div>
         `
@@ -460,13 +456,7 @@ export class ColorPicker {
           <div class="aiab-color-recent">
             <div class="aiab-recent-label">Recent</div>
             <div class="aiab-recent-colors">
-              ${this.state.recentColors
-                .map(
-                  (color: string) => `
-                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}" aria-label="Select color ${color}"></button>
-              `,
-                )
-                .join('')}
+              ${this.state.recentColors.map((color: string) => this.swatchMarkup(color)).join('')}
             </div>
           </div>
         `
@@ -1231,10 +1221,20 @@ export class ColorPicker {
 
   // --- Recent colors management ---
 
+  /** Swatch button markup. The color is attribute-sanitized: presets and stored values are untrusted. */
+  private swatchMarkup(color: string): string {
+    const safe = sanitizeAttribute(String(color));
+    return `<button type="button" class="aiab-color-swatch" data-color="${safe}" style="background: ${safe}" aria-label="Select color ${safe}"></button>`;
+  }
+
   private loadRecentColors(): string[] {
     try {
       const stored = localStorage.getItem('aiab-color-picker-recent');
-      return stored ? (JSON.parse(stored) as string[]) : [];
+      const parsed: unknown = stored ? JSON.parse(stored) : [];
+      // localStorage can hold anything: keep only plain #hex colors
+      return Array.isArray(parsed)
+        ? parsed.filter((c): c is string => typeof c === 'string' && /^#[0-9a-f]{3,8}$/i.test(c))
+        : [];
     } catch {
       return [];
     }
