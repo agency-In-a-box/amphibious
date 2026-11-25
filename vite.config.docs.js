@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import aiabIcons from './scripts/vite-plugin-icons.js';
 import aiabNavigation from './scripts/vite-plugin-nav.js';
+import aiabSeo from './scripts/vite-plugin-seo.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -48,7 +49,7 @@ function pageInputs() {
 }
 
 export default defineConfig({
-  plugins: [aiabIcons(), aiabNavigation()],
+  plugins: [aiabIcons(), aiabNavigation(), aiabSeo()],
   root: __dirname,
   base: '/',
 

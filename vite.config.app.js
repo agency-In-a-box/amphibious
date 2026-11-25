@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 import compression from 'vite-plugin-compression';
 import aiabIcons from './scripts/vite-plugin-icons.js';
 import aiabNavigation from './scripts/vite-plugin-nav.js';
+import aiabSeo from './scripts/vite-plugin-seo.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -37,6 +38,7 @@ export default defineConfig({
   plugins: [
     aiabIcons(),
     aiabNavigation(),
+    aiabSeo(),
     // Gzip compression
     compression({
       algorithm: 'gzip',

@@ -1,4 +1,4 @@
-import { readdirSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { expect, type Page, test } from '@playwright/test';
 
@@ -108,6 +108,46 @@ test.describe('every published page', () => {
 });
 
 test.describe('behaviour', () => {
+  test('every page has a title, description, language and canonical URL', async ({ page }) => {
+    const problems: string[] = [];
+    for (const path of pages.filter((p) => p !== '/404')) {
+      await page.goto(path);
+      const meta = await page.evaluate(() => ({
+        title: document.title,
+        description:
+          document.querySelector('meta[name=description]')?.getAttribute('content') ?? '',
+        lang: document.documentElement.lang,
+        canonical: document.querySelector('link[rel=canonical]')?.getAttribute('href') ?? '',
+        ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute('content') ?? '',
+      }));
+      if (!meta.title) problems.push(`${path}: no <title>`);
+      if (!meta.description) problems.push(`${path}: no meta description`);
+      if (!meta.lang) problems.push(`${path}: no lang`);
+      if (!/^https:\/\/[^/]+\//.test(meta.canonical))
+        problems.push(`${path}: no absolute canonical`);
+      if (!meta.ogTitle) problems.push(`${path}: no og:title`);
+    }
+    expect(problems, problems.join('\n')).toEqual([]);
+  });
+
+  test('robots.txt and sitemap.xml are published and list the pages', async ({ request }) => {
+    const robots = await request.get('/robots.txt');
+    expect(robots.status()).toBe(200);
+    expect(await robots.text()).toContain('Sitemap:');
+    const sitemap = await request.get('/sitemap.xml');
+    expect(sitemap.status()).toBe(200);
+    const xml = await sitemap.text();
+    expect(xml).toContain('<loc>');
+    expect(xml).not.toContain('/404');
+    expect((xml.match(/<loc>/g) ?? []).length).toBe(pages.filter((p) => p !== '/404').length);
+  });
+
+  test('the homepage shows the package version', async ({ page }) => {
+    const { version } = JSON.parse(readFileSync(join(SITE, '../package.json'), 'utf8'));
+    await page.goto('/');
+    await expect(page.locator('h1')).toContainText(version);
+  });
+
   test('unknown URLs get the branded 404 with a 404 status', async ({ page }) => {
     const response = await page.goto('/this-page-does-not-exist');
     expect(response?.status()).toBe(404);
