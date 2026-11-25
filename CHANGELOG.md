@@ -5,9 +5,9 @@ All notable changes to Amphibious will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2026-11-24
+## [2.2.0] - 2026-11-25
 
-Live-site QA remediation. The deployed documentation site had missing CSS, scripts the browser refused to run, icons rendering as boxes, dark-mode styles leaking into light pages, dead links on every page, and horizontal scrolling on phones. The causes are fixed and CI now fails if they come back.
+Live-site QA remediation, accessibility and a colour-picker security fix. The deployed documentation site had missing CSS, scripts the browser refused to run, icons rendering as boxes, dark-mode styles leaking into light pages, dead links on every page, and horizontal scrolling on phones. The deployed documentation site had missing CSS, scripts the browser refused to run, icons rendering as boxes, dark-mode styles leaking into light pages, dead links on every page, and horizontal scrolling on phones. The causes are fixed and CI now fails if they come back.
 
 ### Added
 
@@ -21,9 +21,14 @@ Live-site QA remediation. The deployed documentation site had missing CSS, scrip
 - **Single-source navigation**: `includes/navigation.html` is injected at build time, replacing 57 copy-pasted nav blocks
 - **Custom 404 page** with a "Report a broken link" link, and 301 redirects from the removed `shopping-cart-modern` page
 - **`.aiab-table-wrapper`** scroll container for wide tables
+- **SEO and site metadata** (`scripts/vite-plugin-seo.js`): canonical and Open Graph tags on every page, `sitemap.xml`, `robots.txt`, and a `%APP_VERSION%` placeholder so the homepage always shows the package version
+- **Security headers** on the docs site: `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`; the `netlify.app` address redirects to the custom domain
+- `Icon.createButton()` accepts a `label` option for the accessible name
 
 ### Fixed
 
+- **Accessibility** (axe critical rules now clean on every page): icon-only buttons, color swatches, range-slider handles, inputs and selects have accessible names; `Icon.createButton()` names its button; the rating component has `role="img"`; tab lists no longer break `tablist` structure; an invalid `aria` attribute on the validation demo
+- **Security: ColorPicker** rendered preset and stored recent colors into swatch HTML unescaped, so a crafted value could add attributes or CSS declarations. Swatch colors are now validated against a strict, non-backtracking grammar (`#hex`, `rgb()/hsl()` with numeric arguments, or a keyword) and anything else is dropped
 - **Dark mode leaking into light pages**: rules in `prefers-color-scheme: dark` now defer to `data-theme="light"` and honour an explicit `data-theme="dark"` on a light OS (PostCSS `postcss-theme-scope`, no added specificity). Read-only styling uses `[readonly]`, which no longer dashes every checkbox
 - **Bare `<button>` styled as an orange primary button** and home hero CTA styles restyling every `.aiab-btn-primary`
 - **`@media (--bp-*)` served raw** in page stylesheets, so mobile layouts never applied on 24 stylesheets
@@ -48,6 +53,24 @@ Live-site QA remediation. The deployed documentation site had missing CSS, scrip
 - **Seven developer debug/test pages** under `demos/` moved to `demos/_archive/`
 - `AmphibiousNavigation`, `src/js/index.ts`, `scripts/build-site.js`, and 10 tracked backup / `-broken` files
 - Unpublishable files (internal notes, backups, `.md`, `.ts`) no longer ship
+- `docs/navigation-include.html`: the navigation fragment was being published as a page
+
+## [2.1.0] - 2026-03-29
+
+Audit remediation release.
+
+### Fixed
+
+- XSS in `Modal.alert/confirm`, carousel custom icons and `EcommerceTooltips`; injection points documented with `@security` JSDoc
+- Dark-mode qualifier bugs in `pears.css` and `file-card.css`; `prefers-color-scheme` rules no longer override an explicit light theme
+- Datepicker previous-month navigation day overflow
+- Toast: global Escape key dismisses
+
+### Changed
+
+- Hard-coded colors replaced with design tokens (adoption from 59% to over 80%)
+- CSS nesting adopted across atoms, molecules and organisms; dark-mode support added to the remaining components
+- Example images converted to WebP
 
 ## [2.0.3] - 2026-02-27
 
