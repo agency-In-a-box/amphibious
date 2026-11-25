@@ -39,7 +39,7 @@
       <div class="filter-tags" id="filterTags">
         <span class="filter-tag">
           T-Shirts
-          <button class="filter-tag-remove">
+          <button class="filter-tag-remove" aria-label="Remove filter">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -48,7 +48,7 @@
         </span>
         <span class="filter-tag">
           $50 - $100
-          <button class="filter-tag-remove">
+          <button class="filter-tag-remove" aria-label="Remove filter">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -163,11 +163,11 @@
           </div>
           <div class="price-inputs">
             <div class="price-input-group">
-              <input type="number" min="0" max="500" value="25" id="minPrice">
+              <input type="number" min="0" max="500" value="25" id="minPrice" aria-label="Minimum price">
             </div>
             <span class="price-separator">–</span>
             <div class="price-input-group">
-              <input type="number" min="0" max="500" value="250" id="maxPrice">
+              <input type="number" min="0" max="500" value="250" id="maxPrice" aria-label="Maximum price">
             </div>
           </div>
         </div>
@@ -340,7 +340,7 @@ function addActiveFilter(text, type) {
   tag.dataset.type = type;
   tag.innerHTML = `
     ${text}
-    <button class="filter-tag-remove" onclick="removeFilter(this)">
+    <button class="filter-tag-remove" aria-label="Remove filter" onclick="removeFilter(this)">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>

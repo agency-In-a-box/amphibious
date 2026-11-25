@@ -192,13 +192,26 @@ export class Icon {
       onClick?: () => void;
       variant?: 'default' | 'primary' | 'success' | 'danger';
       size?: 'sm' | 'default' | 'lg';
+      /** Accessible name. Defaults to the icon name, e.g. "Star". */
+      label?: string;
     } = {},
   ): HTMLButtonElement {
-    const { onClick, variant = 'default', size: buttonSize = 'default', ...iconOptions } = options;
+    const {
+      onClick,
+      variant = 'default',
+      size: buttonSize = 'default',
+      label,
+      ...iconOptions
+    } = options;
 
     const button = document.createElement('button');
     button.className =
       `aiab-icon-button ${variant !== 'default' ? `aiab-icon-button--${variant}` : ''} ${buttonSize !== 'default' ? `aiab-icon-button--${buttonSize}` : ''}`.trim();
+
+    button.setAttribute(
+      'aria-label',
+      label ?? name.replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase()),
+    );
 
     if (onClick) {
       button.addEventListener('click', onClick);
@@ -314,6 +327,7 @@ export class EcommerceIcons {
   static rating(rating: number, maxRating = 5, options: IconOptions = {}): HTMLElement {
     const container = document.createElement('div');
     container.className = 'aiab-rating';
+    container.setAttribute('role', 'img');
     container.setAttribute('aria-label', `Rating: ${rating} out of ${maxRating} stars`);
 
     for (let i = 1; i <= maxRating; i++) {

@@ -440,13 +440,7 @@ export class ColorPicker {
           <div class="aiab-color-presets">
             <div class="aiab-preset-label">Presets</div>
             <div class="aiab-preset-colors">
-              ${this.options.presets
-                .map(
-                  (color: string) => `
-                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}"></button>
-              `,
-                )
-                .join('')}
+              ${this.options.presets.map((color: string) => this.swatchMarkup(color)).join('')}
             </div>
           </div>
         `
@@ -460,13 +454,7 @@ export class ColorPicker {
           <div class="aiab-color-recent">
             <div class="aiab-recent-label">Recent</div>
             <div class="aiab-recent-colors">
-              ${this.state.recentColors
-                .map(
-                  (color: string) => `
-                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}"></button>
-              `,
-                )
-                .join('')}
+              ${this.state.recentColors.map((color: string) => this.swatchMarkup(color)).join('')}
             </div>
           </div>
         `
@@ -1231,10 +1219,35 @@ export class ColorPicker {
 
   // --- Recent colors management ---
 
+  /**
+   * True only for plain colors: #hex, rgb()/rgba()/hsl()/hsla() with numeric
+   * arguments, or a bare color keyword. Anything else (quotes, semicolons,
+   * url(), var()) is rejected, so a value cannot add attributes or CSS declarations.
+   */
+  private static isPlainColor(value: unknown): value is string {
+    // Length cap first, and one unambiguous separator (a comma/slash or whitespace),
+    // so the regex cannot backtrack on long inputs.
+    return (
+      typeof value === 'string' &&
+      value.length <= 64 &&
+      /^(#[0-9a-f]{3,8}|(?:rgb|hsl)a?\(\s*[\d.%]+(?:(?:\s*[,/]\s*|\s+)[\d.%]+(?:deg)?){2,3}\s*\)|[a-z]{3,20})$/i.test(
+        value,
+      )
+    );
+  }
+
+  /** Swatch button markup. Colors that are not plain colors render nothing. */
+  private swatchMarkup(color: string): string {
+    if (!ColorPicker.isPlainColor(color)) return '';
+    return `<button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}" aria-label="Select color ${color}"></button>`;
+  }
+
   private loadRecentColors(): string[] {
     try {
       const stored = localStorage.getItem('aiab-color-picker-recent');
-      return stored ? (JSON.parse(stored) as string[]) : [];
+      const parsed: unknown = stored ? JSON.parse(stored) : [];
+      // localStorage can hold anything: keep only plain colors
+      return Array.isArray(parsed) ? parsed.filter(ColorPicker.isPlainColor) : [];
     } catch {
       return [];
     }

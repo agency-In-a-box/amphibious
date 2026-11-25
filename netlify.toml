@@ -15,6 +15,13 @@
   to = "/examples/index.html"
   status = 200
 
+# One canonical host: the netlify.app address redirects to the custom domain.
+[[redirects]]
+  from = "https://amphibious-aiab.netlify.app/*"
+  to = "https://amphibious.aiab.app/:splat"
+  status = 301
+  force = true
+
 # The cart page moved to examples/_archive and was replaced by the e-commerce cart.
 [[redirects]]
   from = "/examples/shopping-cart-modern.html"
@@ -42,6 +49,17 @@
   from = "/*"
   to = "/404.html"
   status = 404
+
+# Security headers on every response. A Content-Security-Policy is deliberately not
+# set yet: the docs rely on inline scripts and styles, so it needs hashes or a
+# report-only rollout first. microphone stays allowed for same-origin voice search demos.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), geolocation=(), payment=(), microphone=(self)"
 
 # Headers for MIME types and caching
 [[headers]]

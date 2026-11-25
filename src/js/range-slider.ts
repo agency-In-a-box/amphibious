@@ -332,6 +332,13 @@ class RangeSlider {
     const handle = document.createElement('div');
     handle.className = `aiab-range-slider-handle ${type}`;
     handle.setAttribute('role', 'slider');
+    // A slider needs a name: the source input's label if it has one, else min/max/value
+    const fallbackName =
+      type === 'min' ? 'Minimum value' : type === 'max' ? 'Maximum value' : 'Value';
+    handle.setAttribute(
+      'aria-label',
+      (type === 'single' && this.element.getAttribute('aria-label')) || fallbackName,
+    );
     handle.setAttribute('tabindex', '0');
     handle.setAttribute('aria-valuemin', String(this.options.min));
     handle.setAttribute('aria-valuemax', String(this.options.max));

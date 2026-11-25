@@ -29,11 +29,6 @@
       "type": "link-fragment-missing",
       "page": "/docs/features-modern.html",
       "reason": "Experimental page; feature cards link to sections that do not exist yet"
-    },
-    {
-      "type": "link-fragment-missing",
-      "page": "/docs/navigation-include.html",
-      "reason": "Nav-only fragment page; skip link has no main content to target"
     }
   ]
 }

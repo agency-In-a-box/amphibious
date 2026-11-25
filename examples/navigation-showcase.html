@@ -307,7 +307,7 @@ nav.destroy();    // removes every listener</code></pre>
       <p>Organize content into switchable panes.</p>
 
       <div class="tab-nav-demo">
-        <nav role="tablist" aria-label="Tab navigation">
+        <nav aria-label="Tab navigation">
           <ul class="aiab-horizontal" style="border-bottom: 2px solid #dee2e6; margin: 0;">
             <li><a href="#tab1" class="aiab-active" onclick="switchTab(event, 'tab1')">Overview</a></li>
             <li><a href="#tab2" onclick="switchTab(event, 'tab2')">Features</a></li>
@@ -347,7 +347,7 @@ nav.destroy();    // removes every listener</code></pre>
         <nav aria-label="Mobile navigation demo" style="background: white; padding: 1rem; border-bottom: 1px solid #dee2e6;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span style="font-weight: 600;">Logo</span>
-            <button class="aiab-nav-toggle" onclick="toggleMobileMenu()">
+            <button class="aiab-nav-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
               <span class="aiab-nav-toggle-icon"></span>
             </button>
           </div>
