@@ -261,7 +261,7 @@ GitHub Actions workflow runs on push/PR:
 ```json
 {
   "name": "@agency-in-a-box/amphibious",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "exports": {
     ".": "./dist/amphibious.js",
     "./css": "./dist/amphibious.css",
