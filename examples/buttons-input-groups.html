@@ -134,7 +134,7 @@
         <div class="demo-spacing">
             <button class="aiab-btn btn-primary aiab-btn-pill">Pill Button</button>
             <button class="aiab-btn btn-secondary btn-ghost">Ghost Button</button>
-            <button class="aiab-btn btn-primary aiab-btn-icon"><i data-lucide="home"></i></button>
+            <button class="aiab-btn btn-primary aiab-btn-icon" aria-label="Home"><i data-lucide="home"></i></button>
             <button class="aiab-btn btn-primary aiab-btn-block">Full Width Button</button>
         </div>
     </section>
@@ -251,7 +251,7 @@
                 <h4>Quantity Selector</h4>
                 <div class="aiab-input-group-number">
                     <button class="btn-decrease" type="button">−</button>
-                    <input type="number" value="1" min="1" max="99">
+                    <input type="number" value="1" min="1" max="99" aria-label="Quantity">
                     <button class="btn-increase" type="button">+</button>
                 </div>
             </div>
@@ -328,7 +328,7 @@
             <div class="demo-item">
                 <h4>API Key</h4>
                 <div class="aiab-input-group-copy">
-                    <input type="text" value="sk-1234567890abcdef" readonly>
+                    <input type="text" value="sk-1234567890abcdef" readonly aria-label="API key">
                     <button class="btn-copy" type="button">Copy</button>
                 </div>
             </div>
@@ -369,7 +369,7 @@
             <div class="demo-item">
                 <h4>Drag & Drop</h4>
                 <div class="aiab-input-group-file-drop">
-                    <input type="file" id="file2" multiple>
+                    <input type="file" id="file2" multiple aria-label="Upload multiple files">
                     <div class="drop-icon"><i data-lucide="upload"></i></div>
                     <div class="drop-text">Drag files here or click to browse</div>
                     <div class="drop-hint">Supports multiple files</div>
@@ -387,7 +387,7 @@
                 <h4>Search</h4>
                 <div class="aiab-input-group-modern">
                     <input type="text" placeholder="Search...">
-                    <button class="aiab-btn btn-primary"><i data-lucide="search"></i></button>
+                    <button class="aiab-btn btn-primary" aria-label="Search"><i data-lucide="search"></i></button>
                 </div>
             </div>
             

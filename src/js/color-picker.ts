@@ -443,7 +443,7 @@ export class ColorPicker {
               ${this.options.presets
                 .map(
                   (color: string) => `
-                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}"></button>
+                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}" aria-label="Select color ${color}"></button>
               `,
                 )
                 .join('')}
@@ -463,7 +463,7 @@ export class ColorPicker {
               ${this.state.recentColors
                 .map(
                   (color: string) => `
-                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}"></button>
+                <button type="button" class="aiab-color-swatch" data-color="${color}" style="background: ${color}" aria-label="Select color ${color}"></button>
               `,
                 )
                 .join('')}
