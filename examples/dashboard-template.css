@@ -299,7 +299,7 @@
       justify-content: center;
       gap: 0.25rem;
     }
-    .metric-change.positive { color: #1e7d33; }
+    .metric-change.positive { color: var(--color-success); }
     .metric-change.negative { color: #dc3545; }
     .metric-change.neutral { color: var(--color-text-secondary); }
 
@@ -428,7 +428,7 @@
     .text-right { text-align: right; }
     .text-muted { color: var(--color-text-secondary); }
     .text-primary { color: var(--color-primary); }
-    .text-success { color: #1e7d33; }
+    .text-success { color: var(--color-success); }
     .text-warning { color: #ffc107; }
     .text-danger { color: #dc3545; }
     .bg-primary { background: #e3f2fd; color: #1976d2; }

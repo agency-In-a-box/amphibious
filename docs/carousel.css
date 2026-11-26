@@ -57,7 +57,7 @@ body {
 .section h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
 
 .section .aiab-h4 {
-  color: #646e6f;
+  color: var(--color-text-secondary);
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }

@@ -76,8 +76,8 @@ body {
   color: var(--color-primary);
 }
 .docs-nav a.aiab-active {
-  background: #f0f4ff;
-  color: var(--color-primary);
+  background: var(--color-primary-alpha-10);
+  color: var(--color-primary-text);
   font-weight: 500;
 }
 .docs-nav ul ul {
