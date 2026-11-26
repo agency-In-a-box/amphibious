@@ -757,7 +757,6 @@ export class ColorPicker {
   private handleAlphaMove(e: MouseEvent): void {
     if (!this.state.isDragging && e.type === 'mousemove') return;
 
-    // biome-ignore lint/style/noNonNullAssertion: alphaSlider is guaranteed when handleAlphaStart fires
     const rect = this.alphaSlider!.getBoundingClientRect();
     const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
     const a = x / rect.width;
@@ -862,7 +861,6 @@ export class ColorPicker {
 
     // Update alpha cursor
     if (this.alphaCursor) {
-      // biome-ignore lint/style/noNonNullAssertion: alphaCursor and alphaSlider are always set together
       const alphaRect = this.alphaSlider!.getBoundingClientRect();
       this.alphaCursor.style.left = `${this.state.color.a * alphaRect.width}px`;
     }

@@ -191,7 +191,6 @@ export class ToastComponent {
     const toast = this.createToastElement(id, config);
 
     // Add to container (non-null after createContainer)
-    // biome-ignore lint/style/noNonNullAssertion: container is guaranteed to exist after createContainer call above
     this.container!.appendChild(toast);
 
     // Store reference

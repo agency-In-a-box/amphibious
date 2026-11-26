@@ -18,34 +18,42 @@
   );
   --cta-gradient: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
   --feature-card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --hero-text: var(--color-on-primary);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --hero-gradient: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
-    --demo-grid-gradient: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
-    --cta-gradient: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
+    /* Muted deep orange in dark mode, AA with white text (5.0:1 to 7.9:1) */
+    --hero-gradient: linear-gradient(135deg, #a65e00 0%, #7a4400 100%);
+    --demo-grid-gradient: linear-gradient(135deg, #a65e00 0%, #7a4400 100%);
+    --cta-gradient: linear-gradient(135deg, #7a4400 0%, #a65e00 100%);
+    --hero-text: #ffffff;
     --feature-card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   }
 }
 
 [data-theme="dark"] {
-  --hero-gradient: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
-  --demo-grid-gradient: linear-gradient(135deg, #cc7200 0%, #a05800 100%);
-  --cta-gradient: linear-gradient(135deg, #a05800 0%, #cc7200 100%);
+  /* Muted deep orange in dark mode, AA with white text (5.0:1 to 7.9:1) */
+  --hero-gradient: linear-gradient(135deg, #a65e00 0%, #7a4400 100%);
+  --demo-grid-gradient: linear-gradient(135deg, #a65e00 0%, #7a4400 100%);
+  --cta-gradient: linear-gradient(135deg, #7a4400 0%, #a65e00 100%);
+  --hero-text: #ffffff;
   --feature-card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .aiab-hero {
   background: var(--hero-gradient);
+  color: var(--hero-text);
 }
 
 .aiab-demo-grid {
   background: var(--demo-grid-gradient);
+  color: var(--hero-text);
 }
 
 .aiab-cta-section {
   background: var(--cta-gradient);
+  color: var(--hero-text);
 }
 
 .aiab-feature-card:hover {

@@ -175,7 +175,6 @@ class DropdownEnhanced {
   private nativeSelect?: HTMLSelectElement | null;
   private wrapper!: HTMLDivElement;
   private selectBtn!: HTMLDivElement;
-  private valueDisplay!: HTMLDivElement;
   private valueText?: HTMLSpanElement;
   private searchInput?: HTMLInputElement;
   private clearBtn?: HTMLButtonElement;
@@ -465,7 +464,6 @@ class DropdownEnhanced {
     // Store references
     this.wrapper = wrapper;
     this.selectBtn = selectBtn;
-    this.valueDisplay = valueDisplay;
     this.menu = menu;
     this.itemsContainer = itemsContainer;
     this.noResults = noResults;
@@ -1352,7 +1350,6 @@ class DropdownEnhanced {
     this.element = null;
     this.wrapper = null as unknown as HTMLDivElement;
     this.selectBtn = null as unknown as HTMLDivElement;
-    this.valueDisplay = null as unknown as HTMLDivElement;
     this.valueText = undefined;
     this.searchInput = undefined;
     this.clearBtn = undefined;

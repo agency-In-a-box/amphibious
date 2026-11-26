@@ -17,7 +17,7 @@
   /* Button Colors - Using brand orange */
   --btn-primary-bg: var(--color-primary);
   --btn-primary-border: var(--color-primary);
-  --btn-primary-color: #fff;
+  --btn-primary-color: var(--color-on-primary);
   --btn-primary-hover-bg: var(--color-primary-hover);
   --btn-primary-hover-border: var(--color-primary-active);
 
