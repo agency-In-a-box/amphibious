@@ -309,6 +309,9 @@ interface UploadStats {
   errorCount: number;
 }
 
+/** localStorage key for resumable upload progress. */
+const SAVED_UPLOADS_KEY = 'amphibious-uploads';
+
 /** Saved upload entry for resumable uploads. */
 interface SavedUploadEntry {
   id: string;
@@ -358,6 +361,8 @@ class FileUploadEnhanced {
   private activeUploads: Map<string, XMLHttpRequest>;
   private fileReaders: Set<FileReader>;
   private objectURLs: Set<string>;
+  /** Resumable progress from earlier sessions, keyed by name/size/type. */
+  private savedUploads = new Map<string, SavedUploadEntry>();
 
   // DOM references (set during init() called from constructor)
   private zone!: HTMLDivElement;
@@ -949,7 +954,9 @@ class FileUploadEnhanced {
   }
 
   private async addFile(file: File): Promise<void> {
-    const id = this.generateId();
+    const saved = this.options.resumable ? this.savedUploads.get(this.uploadKey(file)) : undefined;
+    // Reusing the saved id lets the server match chunks it already has
+    const id = saved?.id ?? this.generateId();
 
     // Process image if needed
     let processedFile: File = file;
@@ -969,7 +976,7 @@ class FileUploadEnhanced {
       uploadedSize: 0,
       error: null,
       xhr: null,
-      chunks: [],
+      chunks: saved ? [...saved.chunks] : [],
       retries: 0,
       startTime: null,
       endTime: null,
@@ -1208,6 +1215,7 @@ class FileUploadEnhanced {
 
       fileObj.status = 'success';
       fileObj.endTime = Date.now();
+      this.forgetUpload(fileObj);
       this.state.completed.add(fileId);
       this.stats.successCount++;
 
@@ -1315,11 +1323,14 @@ class FileUploadEnhanced {
         throw new Error('Upload paused');
       }
 
+      if (fileObj.chunks[i]) continue; // already uploaded in an earlier session
+
       const start = i * chunkSize;
       const end = Math.min(start + chunkSize, fileObj.file.size);
       const chunk = fileObj.file.slice(start, end);
 
       await this.uploadChunk(fileObj, chunk, i, totalChunks);
+      this.rememberUpload(fileObj);
 
       if (this.options.onChunkUpload) {
         this.options.onChunkUpload(fileObj, i + 1, totalChunks, this);
@@ -1505,6 +1516,8 @@ class FileUploadEnhanced {
       fileObj.xhr.abort();
     }
 
+    this.forgetUpload(fileObj);
+
     // Clean up
     this.state.files.delete(fileId);
     this.state.queue = this.state.queue.filter((id: string) => id !== fileId);
@@ -1584,40 +1597,66 @@ class FileUploadEnhanced {
     // This is a placeholder for sortable functionality
   }
 
+  /** Same file across sessions: File objects can't be stored, so match on name, size and type. */
+  private uploadKey(file: { name: string; size: number; type: string }): string {
+    return `${file.name}\u0000${file.size}\u0000${file.type}`;
+  }
+
   private loadSavedUploads(): void {
-    // Load resumable uploads from localStorage
     try {
-      const saved = localStorage.getItem('amphibious-uploads');
-      if (saved) {
-        const _uploads: SavedUploadEntry[] = JSON.parse(saved);
-        // Restore upload state
+      const parsed: unknown = JSON.parse(localStorage.getItem(SAVED_UPLOADS_KEY) ?? '[]');
+      if (!Array.isArray(parsed)) return;
+      // localStorage is untrusted: keep only well-formed entries
+      for (const e of parsed) {
+        if (
+          e &&
+          typeof e === 'object' &&
+          typeof e.id === 'string' &&
+          typeof e.name === 'string' &&
+          typeof e.type === 'string' &&
+          Number.isFinite(e.size) &&
+          Array.isArray(e.chunks) &&
+          e.chunks.every((c: unknown) => typeof c === 'boolean' || c == null)
+        ) {
+          const entry = e as SavedUploadEntry;
+          this.savedUploads.set(this.uploadKey(entry), {
+            ...entry,
+            chunks: entry.chunks.map(Boolean),
+          });
+        }
       }
-    } catch (_e: unknown) {
-      // Ignore errors
+    } catch {
+      // Unreadable storage: start fresh
     }
   }
 
-  // biome-ignore lint/correctness/noUnusedPrivateClassMembers: resumable uploads never call this yet; kept until the save path is wired up, deleting it would hide that gap
-  private saveUploads(): void {
-    // Save resumable uploads to localStorage
-    if (!this.options.resumable) return;
-
+  private persistSavedUploads(): void {
     try {
-      const uploads: SavedUploadEntry[] = Array.from(this.state.files.values()).map(
-        (f: EnhancedFileEntry) => ({
-          id: f.id,
-          name: f.name,
-          size: f.size,
-          type: f.type,
-          chunks: f.chunks,
-          progress: f.progress,
-        }),
-      );
-
-      localStorage.setItem('amphibious-uploads', JSON.stringify(uploads));
-    } catch (_e: unknown) {
-      // Ignore errors
+      localStorage.setItem(SAVED_UPLOADS_KEY, JSON.stringify([...this.savedUploads.values()]));
+    } catch {
+      // Storage full or blocked: resuming is best-effort
     }
+  }
+
+  /** Record chunk progress so a later session can resume this file. */
+  private rememberUpload(fileObj: EnhancedFileEntry): void {
+    if (!this.options.resumable) return;
+    const original = fileObj.originalFile ?? fileObj.file;
+    this.savedUploads.set(this.uploadKey(original), {
+      id: fileObj.id,
+      name: original.name,
+      size: original.size,
+      type: original.type,
+      chunks: [...fileObj.chunks].map(Boolean),
+      progress: fileObj.progress,
+    });
+    this.persistSavedUploads();
+  }
+
+  private forgetUpload(fileObj: EnhancedFileEntry): void {
+    if (!this.options.resumable) return;
+    const original = fileObj.originalFile ?? fileObj.file;
+    if (this.savedUploads.delete(this.uploadKey(original))) this.persistSavedUploads();
   }
 
   private hasCamera(): boolean {
