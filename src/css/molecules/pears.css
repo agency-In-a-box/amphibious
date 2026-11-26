@@ -57,7 +57,7 @@ ul.aiab-stats li {
     margin-top: 0.25rem;
     font-size: 0.875rem;
     font-weight: 400;
-    color: var(--text-muted, var(--color-gray-600));
+    color: var(--color-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -131,7 +131,7 @@ ul.aiab-stats li {
 
 .aiab-stat-card__label {
   font-size: 0.875rem;
-  color: var(--text-muted, var(--color-gray-600));
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -212,7 +212,7 @@ ul.aiab-slats li {
     display: block;
     margin-top: 0.5rem;
     font-size: 0.875rem;
-    color: var(--text-muted, var(--color-gray-600));
+    color: var(--color-text-secondary);
   }
 }
 
@@ -304,7 +304,7 @@ article.aside {
     flex: 0 0 25%;
     font-size: 0.875rem;
     line-height: 1.8;
-    color: var(--text-muted, var(--color-gray-600));
+    color: var(--color-text-secondary);
   }
 
   & > .aiab-main-content:not([class*="col-"]) {
@@ -345,7 +345,7 @@ article.aside {
     }
 
     & a {
-      color: var(--text-muted, var(--color-gray-600));
+      color: var(--color-text-secondary);
       text-decoration: none;
       transition: color 0.2s;
 
@@ -403,7 +403,7 @@ article.aside {
 
   & .aiab-stat-label {
     font-size: 0.875rem;
-    color: var(--text-muted, var(--color-gray-600));
+    color: var(--color-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -452,7 +452,7 @@ article.aside {
 
   & .aiab-review-date {
     font-size: 0.875rem;
-    color: var(--text-muted, var(--color-gray-600));
+    color: var(--color-text-secondary);
   }
 
   & .aiab-review-rating {
@@ -469,7 +469,7 @@ article.aside {
     align-items: center;
     gap: 1rem;
     font-size: 0.875rem;
-    color: var(--text-muted, var(--color-gray-600));
+    color: var(--color-text-secondary);
   }
 }
 

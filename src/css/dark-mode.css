@@ -54,6 +54,10 @@
     /* Bright orange is 2.2:1 with white, so text on it is dark (7.7:1) */
     --color-on-primary: #1c1c1e;
     --color-success: #28a745; /* 5.4:1 as text on dark */
+    /* Nav links were orange in dark mode only because the global link rule outranked the nav; set it explicitly */
+    --nav-text: var(--color-primary-hover);
+    /* Nav links were orange in dark mode only because the global link rule outranked the nav; set it explicitly */
+    --nav-text: var(--color-primary-hover);
     --color-success: #28a745; /* 5.4:1 as text on dark */
 
     /* Gray scale — inverted for dark mode */

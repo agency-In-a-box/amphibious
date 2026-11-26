@@ -164,7 +164,7 @@ a {
    ======================================== */
 
 .aiab-footer a {
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
 
   &:hover {
     color: var(--color-primary-text); /* Darker orange for better contrast */
@@ -260,11 +260,12 @@ a {
    ======================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) a {
+  /* :where() keeps this at element specificity so buttons and nav links keep their own colour */
+  :where(:root:not([data-theme="light"])) a {
     color: var(--color-primary-hover); /* Lighter orange in dark mode */
   }
 
-  :root:not([data-theme="light"]) a:hover {
+  :where(:root:not([data-theme="light"])) a:hover {
     color: #ffb143;
   }
 

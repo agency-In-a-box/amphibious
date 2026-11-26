@@ -112,7 +112,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto 0.5rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
   transition: all 0.2s;
 }
 
@@ -129,7 +129,7 @@ body {
 
 .aiab-cart-progress-step-label {
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
 }
 
 .aiab-cart-progress-step.aiab-active .aiab-cart-progress-step-label {
@@ -239,7 +239,7 @@ body {
   gap: 1rem;
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
 }
 
 .aiab-cart-item-variant {
@@ -328,7 +328,7 @@ body {
 
 .aiab-cart-price-original {
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
   text-decoration: line-through;
 }
 
@@ -341,7 +341,7 @@ body {
 .aiab-cart-item-remove {
   background: none;
   border: none;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
   cursor: pointer;
   padding: 0.5rem;
   transition: color 0.2s;
@@ -380,12 +380,12 @@ body {
 }
 
 .aiab-cart-empty h2 {
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
   margin-bottom: 0.5rem;
 }
 
 .aiab-cart-empty p {
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -431,7 +431,7 @@ body {
 }
 
 .aiab-cart-summary-label {
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
 }
 
 .aiab-cart-total .aiab-cart-summary-label {
@@ -575,7 +575,7 @@ body {
   gap: 0.75rem;
   margin-bottom: 1rem;
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
 }
 
 .aiab-cart-security-item:last-child {
@@ -669,7 +669,7 @@ body {
 }
 
 .aiab-cart-saved-items-count {
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }
@@ -776,7 +776,7 @@ body {
   text-align: center;
   margin-top: 1rem;
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
 }
 
 .aiab-cart-pay-installments a {
@@ -786,7 +786,7 @@ body {
 
 .aiab-cart-mobile-item-count {
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
 }
 
 .aiab-cart-mobile-checkout-btn {

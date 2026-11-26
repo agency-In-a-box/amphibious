@@ -17,7 +17,7 @@
   --nav-bg: #ffffff;
   --nav-text: #333333;
   --nav-text-hover: var(--nav-primary);
-  --nav-text-active: #ffffff;
+  --nav-text-active: var(--color-on-primary); /* text on the orange active item */
   --nav-active-bg: var(--nav-primary);
   --nav-border: rgba(0, 0, 0, 0.1);
 

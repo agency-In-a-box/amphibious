@@ -79,11 +79,11 @@
     }
     .product-breadcrumb {
       font-size: 0.875rem;
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
       margin-bottom: 1rem;
     }
     .product-breadcrumb a {
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
       text-decoration: none;
     }
     .product-breadcrumb a:hover {
@@ -112,7 +112,7 @@
       gap: 0.125rem;
     }
     .product-sku {
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
       font-size: 0.875rem;
     }
     .product-pricing {
@@ -131,7 +131,7 @@
     }
     .price-original {
       font-size: 1.5rem;
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
       text-decoration: line-through;
     }
     .price-save {
@@ -146,7 +146,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
       font-size: 0.875rem;
     }
 
@@ -402,7 +402,7 @@
       cursor: pointer;
       font-size: 1rem;
       font-weight: 500;
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
       margin-bottom: -2px;
       transition: all 0.2s;
     }
@@ -609,7 +609,7 @@
     .aiab-stat-label {
       display: block;
       font-size: 0.875rem;
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
     }
 
     /* ============================================
@@ -695,13 +695,13 @@
        Utility Classes - Text & Spacing
        ============================================ */
     .aiab-text-muted {
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
       font-size: 0.875rem;
     }
 
     .aiab-text-muted--inline {
       margin: 0.25rem 0 0 0;
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
     }
 
     .aiab-fw-normal {
@@ -770,7 +770,7 @@
 
     .aiab-review-description {
       margin: 0.25rem 0 0 0;
-      color: var(--color-gray-600);
+      color: var(--color-text-secondary);
     }
 
     /* Mobile Styles */
