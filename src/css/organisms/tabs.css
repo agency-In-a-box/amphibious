@@ -235,7 +235,7 @@
 
     &[aria-selected="true"] {
       background: var(--tab-indicator);
-      color: white;
+      color: var(--color-on-primary);
 
       & .aiab-tabs__badge {
         background: rgba(255, 255, 255, 0.2);

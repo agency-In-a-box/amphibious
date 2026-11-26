@@ -255,7 +255,7 @@
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .aiab-range-slider-track {
-    background: var(--apple-gray-700, #616161);
+    background: #616161;
   }
 
   :root:not([data-theme="light"]) .range-slider-handle {
@@ -278,7 +278,7 @@
   }
 
   :root:not([data-theme="light"]) .range-slider-tick {
-    background: var(--apple-gray-600, #757575);
+    background: #757575;
   }
 
   :root:not([data-theme="light"]) .range-slider-scale-label,
@@ -288,7 +288,7 @@
 }
 
 [data-theme="dark"] .aiab-range-slider-track {
-  background: var(--apple-gray-700, #616161);
+  background: #616161;
 }
 [data-theme="dark"] .range-slider-handle {
   background: var(--color-surface-elevated, #2c2c2e);
@@ -306,7 +306,7 @@
   border-top-color: transparent;
 }
 [data-theme="dark"] .range-slider-tick {
-  background: var(--apple-gray-600, #757575);
+  background: #757575;
 }
 [data-theme="dark"] .range-slider-scale-label,
 [data-theme="dark"] .aiab-range-slider-label {

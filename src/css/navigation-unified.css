@@ -147,7 +147,7 @@
 }
 
 [data-theme="dark"] .aiab-site-nav.is-scrolled {
-  background-color: var(--color-gray-900, #1a1a1a);
+  background-color: #212529 /* gray-900, fixed: dark mode inverts the token */;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 

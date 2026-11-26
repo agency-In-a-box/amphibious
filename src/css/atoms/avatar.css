@@ -466,7 +466,7 @@
 
   .aiab-avatar--light {
     background-color: #4b5563;
-    color: var(--color-gray-300);
+    color: #dee2e6 /* gray-300, fixed: dark mode inverts the token */;
   }
 
   .aiab-avatar-status {

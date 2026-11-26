@@ -272,7 +272,7 @@
 .aiab-tooltip--light {
   --tooltip-bg: #f9fafb;
   --tooltip-color: #1f2937;
-  --tooltip-border-color: var(--color-gray-300);
+  --tooltip-border-color: #dee2e6 /* gray-300, fixed: dark mode inverts the token */;
 }
 
 /* Tooltip Sizes */

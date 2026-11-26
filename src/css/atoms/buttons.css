@@ -429,7 +429,7 @@ input[type="button"]:focus-visible {
 }
 
 .aiab-btn-outline-danger {
-  color: var(--btn-danger-bg);
+  color: var(--btn-danger-outline-text, var(--btn-danger-bg));
   border-color: var(--btn-danger-bg);
   background-color: transparent;
 

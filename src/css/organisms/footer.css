@@ -396,7 +396,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .aiab-footer {
     background: #2c3e50;
-    color: var(--color-gray-500, #adb5bd);
+    color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
     border-top: none;
   }
 
@@ -409,7 +409,7 @@
   }
 
   :root:not([data-theme="light"]) .aiab-footer a {
-    color: var(--color-gray-500, #adb5bd);
+    color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
   }
 
   :root:not([data-theme="light"]) .aiab-footer a:hover {
@@ -418,7 +418,7 @@
 
   :root:not([data-theme="light"]) .aiab-footer__newsletter-input {
     background: #1a2332;
-    border-color: var(--color-gray-700, #495057);
+    border-color: #495057 /* gray-700, fixed: dark mode inverts the token */;
     color: white;
   }
 
@@ -428,7 +428,7 @@
   }
 
   :root:not([data-theme="light"]) .aiab-footer__newsletter-note {
-    color: var(--color-gray-600, #6c757d);
+    color: #5f6a72 /* gray-600, fixed: dark mode inverts the token */;
   }
 
   :root:not([data-theme="light"]) .aiab-footer__newsletter-row {
@@ -442,21 +442,21 @@
   }
 
   :root:not([data-theme="light"]) .aiab-footer__newsletter-content p {
-    color: var(--color-gray-500, #adb5bd);
+    color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
   }
 
   :root:not([data-theme="light"]) .aiab-footer__bottom {
     background: #1a2332;
-    border-top-color: var(--color-gray-700, #495057);
+    border-top-color: #495057 /* gray-700, fixed: dark mode inverts the token */;
   }
 
   :root:not([data-theme="light"]) .aiab-footer__social-link {
     background: rgba(255, 255, 255, 0.1);
-    color: var(--color-gray-500, #adb5bd);
+    color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
   }
 
   :root:not([data-theme="light"]) .aiab-footer__separator {
-    color: var(--color-gray-700, #495057);
+    color: #495057 /* gray-700, fixed: dark mode inverts the token */;
   }
 
   :root:not([data-theme="light"]) .aiab-footer--minimal {
@@ -469,14 +469,14 @@
   }
 
   :root:not([data-theme="light"]) .aiab-footer__brand p {
-    color: var(--color-gray-500, #adb5bd);
+    color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
   }
 }
 
 /* Dark mode — manual toggle */
 [data-theme="dark"] .aiab-footer {
   background: #2c3e50;
-  color: var(--color-gray-500, var(--color-gray-500));
+  color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
   border-top: none;
 }
 
@@ -489,7 +489,7 @@
 }
 
 [data-theme="dark"] .aiab-footer a {
-  color: var(--color-gray-500, var(--color-gray-500));
+  color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
 }
 
 [data-theme="dark"] .aiab-footer a:hover {
@@ -498,7 +498,7 @@
 
 [data-theme="dark"] .aiab-footer__newsletter-input {
   background: #1a2332;
-  border-color: var(--color-gray-700, var(--color-gray-700));
+  border-color: #495057 /* gray-700, fixed: dark mode inverts the token */;
   color: white;
 }
 
@@ -508,7 +508,7 @@
 }
 
 [data-theme="dark"] .aiab-footer__newsletter-note {
-  color: var(--color-gray-600, var(--color-gray-600));
+  color: #5f6a72 /* gray-600, fixed: dark mode inverts the token */;
 }
 
 [data-theme="dark"] .aiab-footer__newsletter-row {
@@ -522,21 +522,21 @@
 }
 
 [data-theme="dark"] .aiab-footer__newsletter-content p {
-  color: var(--color-gray-500, var(--color-gray-500));
+  color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
 }
 
 [data-theme="dark"] .aiab-footer__bottom {
   background: #1a2332;
-  border-top-color: var(--color-gray-700, var(--color-gray-700));
+  border-top-color: #495057 /* gray-700, fixed: dark mode inverts the token */;
 }
 
 [data-theme="dark"] .aiab-footer__social-link {
   background: rgba(255, 255, 255, 0.1);
-  color: var(--color-gray-500, var(--color-gray-500));
+  color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
 }
 
 [data-theme="dark"] .aiab-footer__separator {
-  color: var(--color-gray-700, var(--color-gray-700));
+  color: #495057 /* gray-700, fixed: dark mode inverts the token */;
 }
 
 [data-theme="dark"] .aiab-footer--minimal {
@@ -549,7 +549,7 @@
 }
 
 [data-theme="dark"] .aiab-footer__brand p {
-  color: var(--color-gray-500, var(--color-gray-500));
+  color: #adb5bd /* gray-500, fixed: dark mode inverts the token */;
 }
 
 /* Print Styles */

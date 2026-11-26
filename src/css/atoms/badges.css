@@ -17,7 +17,7 @@
 
   /* Badge Colors */
   --badge-primary-bg: var(--color-primary);
-  --badge-primary-color: #ffffff;
+  --badge-primary-color: var(--color-on-primary);
   --badge-primary-border: var(--color-primary);
 
   --badge-secondary-bg: var(--color-gray-550);
