@@ -5,13 +5,18 @@
 
 :root {
   /* Colors - Following SOP Design Excellence */
-  --color-primary: #ec8b00; /* AIAB brand orange — sourced from logo assets (Blocker A) */
-  --color-primary-dark: #c97400; /* Gradient dark end, AA-contrast backgrounds */
-  --color-primary-hover: #ff9500; /* Hover states, lighter variant */
-  --color-primary-active: #d87a00; /* Active/visited states, darker variant */
-  --color-primary-text: #a65e00; /* WCAG AA compliant (7.6:1) for text on white */
-  --color-secondary: #6c757d;
-  --color-success: #28a745;
+  /* Brand orange from the logo. Decorative only (borders, tints, illustrations):
+     2.5:1 with white, so never use it for text or behind text. */
+  --color-brand: #ec8b00;
+  /* WCAG AA primary: 4.97:1 with white text, 4.72:1 as text on #f8f9fa */
+  --color-primary: #a65e00;
+  --color-primary-dark: #8a4d00; /* Gradient dark end (6.7:1 with white) */
+  --color-primary-hover: #945300; /* Hover darkens, so contrast only improves */
+  --color-primary-active: #7a4400;
+  --color-primary-text: #a65e00; /* Orange text on light backgrounds (AA) */
+  --color-on-primary: #ffffff; /* Text/icons on a --color-primary background */
+  --color-secondary: #5f6a72; /* AA as text on #f8f9fa and behind white text */
+  --color-success: #1e7e34; /* AA: 5.1:1 with white, 4.9:1 on #f8f9fa */
   --color-danger: #dc3545;
   --color-warning: #ffc107;
   --color-info: #17a2b8;

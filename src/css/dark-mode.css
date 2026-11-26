@@ -48,6 +48,13 @@
     --apple-orange-700: #ff7700;
     --color-primary: #ff9500;
     --color-primary-hover: #ffaa00;
+    --color-primary-dark: #ff7700;
+    --color-primary-active: #ff8800;
+    --color-primary-text: #ff9500;
+    /* Bright orange is 2.2:1 with white, so text on it is dark (7.7:1) */
+    --color-on-primary: #1c1c1e;
+    --color-success: #28a745; /* 5.4:1 as text on dark */
+    --color-success: #28a745; /* 5.4:1 as text on dark */
 
     /* Gray scale — inverted for dark mode */
     --apple-gray-50: #1c1c1e;
@@ -191,6 +198,11 @@
   --apple-orange-700: #ff7700;
   --color-primary: #ff9500;
   --color-primary-hover: #ffaa00;
+  --color-primary-dark: #ff7700;
+  --color-primary-active: #ff8800;
+  --color-primary-text: #ff9500;
+  /* Bright orange is 2.2:1 with white, so text on it is dark (7.7:1) */
+  --color-on-primary: #1c1c1e;
 
   --apple-gray-50: #1c1c1e;
   --apple-gray-100: #2c2c2e;
