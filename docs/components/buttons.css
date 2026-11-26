@@ -120,6 +120,7 @@ body {
 .code-example-action {
   padding: 0.25rem 0.5rem;
   background: var(--color-surface-elevated);
+  color: var(--color-text);
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   font-size: 0.75rem;
@@ -188,7 +189,13 @@ body {
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
-  color: #e83e8c;
+  color: #b0175f; /* 5.6:1 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .props-table code {
+    color: #ff7eb6;
+  }
 }
 
 /* Responsive */

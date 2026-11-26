@@ -46,14 +46,14 @@
   color: var(--hero-text);
 }
 
-.aiab-demo-grid {
+/* Coloured grid demo blocks sit directly in a column; other pages use the
+   class name for a plain layout grid and must not get these colours. */
+[class*="aiab-col-"] > .aiab-demo-grid {
   background: var(--demo-grid-gradient);
-  color: var(--hero-text);
 }
 
 .aiab-cta-section {
   background: var(--cta-gradient);
-  color: var(--hero-text);
 }
 
 .aiab-feature-card:hover {

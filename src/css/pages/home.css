@@ -39,9 +39,11 @@
 }
 
 /* Demo Grid */
-.aiab-demo-grid {
+/* Coloured grid demo blocks sit directly in a column; other pages use the
+   class name for a plain layout grid and must not get these colours. */
+[class*="aiab-col-"] > .aiab-demo-grid {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: var(--color-on-primary);
+  color: var(--hero-text, var(--color-on-primary));
   padding: 1rem;
   text-align: center;
   border-radius: 4px;
@@ -126,7 +128,7 @@
 /* CTA Section */
 .aiab-cta-section {
   background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-  color: var(--color-on-primary);
+  color: var(--hero-text, var(--color-on-primary));
   padding: 4rem 0;
   text-align: center;
   margin-top: 4rem;

@@ -177,7 +177,7 @@
             position: absolute;
             top: 0.5rem;
             right: 0.5rem;
-            background: #10b981;
+            background: #0a7b56;
             color: white;
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
@@ -232,7 +232,7 @@
 
         .keyword { color: #ff7979; }
         .string { color: #00cec9; }
-        .comment { color: #636e72; }
+        .comment { color: #a0aec0; } /* 5.6:1 on the dark code block */
 
         .results-info {
             text-align: center;

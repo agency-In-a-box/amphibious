@@ -27,7 +27,7 @@
   --validation-error-bg: #fee2e2;
   --validation-error-border: #fca5a5;
 
-  --validation-success: #16a34a;
+  --validation-success: #15803d; /* 5.0:1 on white */
   --validation-success-bg: #dcfce7;
   --validation-success-border: #86efac;
 

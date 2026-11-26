@@ -300,7 +300,7 @@
 /* Warning */
 .aiab-accordion--warning .aiab-accordion-item.aiab-active .aiab-accordion-header {
   background-color: #fef3c7;
-  color: #d97706;
+  color: #92400e; /* 7.0:1 on #fef3c7 */
 }
 
 /* Danger */

@@ -113,7 +113,7 @@
 
         .keyword { color: #ff7979; }
         .string { color: #00cec9; }
-        .comment { color: #636e72; }
+        .comment { color: #a0aec0; } /* 5.6:1 on the dark code block */
 
         .interactive-demo {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -197,7 +197,7 @@
         }
 
         .product-price {
-            color: #10b981;
+            color: #0a7b56;
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
@@ -350,7 +350,7 @@
 
         .alert-success {
             background: #f0fdf4;
-            color: #10b981;
+            color: #0a7b56;
             border: 1px solid #10b981;
         }
 
@@ -362,6 +362,6 @@
 
         .alert-info {
             background: #dbeafe;
-            color: #3b82f6;
+            color: #306ac9;
             border: 1px solid #3b82f6;
         }

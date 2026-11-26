@@ -51,14 +51,11 @@
   color: var(--page-text);
 }
 
-/* All body text */
-main p,
-main li,
-main span:not(.demo-col),
-article p,
-article li,
-section p,
-section li {
+/* All body text. Zero specificity (:where) so any component or class colour
+   wins: once every page had a <main>, the old (0,1,2) selectors overrode
+   syntax-highlighting and other component text colours. */
+:where(main, article, section) :where(p, li),
+:where(main) :where(span:not(.demo-col)) {
   color: var(--page-text);
 }
 
@@ -83,6 +80,11 @@ code {
   color: #f8f8f2;
   border: 1px solid #666666;
   border-radius: 0.375rem;
+}
+
+/* Library prettyprint blocks get the same dark code background */
+pre.aiab-prettyprint {
+  background: #2d2d2d;
 }
 
 /* Inline code */
