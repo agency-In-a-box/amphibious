@@ -32,7 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dark-mode rules that used palette tokens** (`--color-gray-*`, `--apple-gray-*`) for "dark" backgrounds or "light" text now use the intended values directly; dark mode inverts those tokens, so cards and fields rendered light in dark mode. The form builder's dark styles are scoped to the builder (they restyled `.aiab-form-field` on every page)
 - Dark mode: success, info and danger buttons and success/info badges use dark text on their bright fills; outline-danger text is lighter; pill tabs use `--color-on-primary`
 - `cowork-demo` loads `dark-mode.css`
-- axe colour-contrast failures across the site: light mode 1181 to 75 nodes, dark mode 2539 to 130
+- More library colours at AA: step descriptions, validation warning and neutral text (with a dark-mode neutral), sidebar badge, dark-mode outline-success; new `--color-danger-text` token for red text (`#c82333`, `#ff6b6b` in dark)
+- axe colour-contrast failures across the site: light mode 1181 to 52 nodes, dark mode 2539 to 111
 
 ## [2.2.0] - 2026-11-25
 

@@ -19,7 +19,7 @@
   --step-title: var(--color-gray-750);
   --step-title-active: var(--color-gray-850);
   --step-title-complete: var(--color-success-hover);
-  --step-description: var(--color-gray-450);
+  --step-description: var(--color-text-secondary);
 
   /* Connection Line */
   --step-line: var(--color-gray-300);
@@ -46,7 +46,7 @@
     --step-title: #d1d5db;
     --step-title-active: #f9fafb;
     --step-title-complete: #34d399;
-    --step-description: #6b7280;
+    --step-description: #a1a1aa; /* 7.1:1 on #1c1c1e */
     --step-line: #6b7280;
   }
 }

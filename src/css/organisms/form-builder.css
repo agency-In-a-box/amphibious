@@ -258,7 +258,7 @@
   position: relative;
   margin: 16px;
   padding: 16px;
-  background: white;
+  background: var(--color-surface-elevated);
   border: 2px solid transparent;
   border-radius: 8px;
   transition: all var(--duration-instant, 150ms) var(--ease-apple-bounce);

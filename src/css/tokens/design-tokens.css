@@ -18,6 +18,7 @@
   --color-secondary: #5f6a72; /* AA as text on #f8f9fa and behind white text */
   --color-success: #1e7e34; /* AA: 5.1:1 with white, 4.9:1 on #f8f9fa */
   --color-danger: #dc3545;
+  --color-danger-text: #c82333; /* red text, 5.4:1 on white (dark mode: #ff6b6b) */
   --color-warning: #ffc107;
   --color-info: #117788; /* AA: 5.2:1 with white text */
 

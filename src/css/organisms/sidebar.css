@@ -338,7 +338,7 @@
 
 /* Badges/Counters */
 .aiab-sidebar__badge {
-  background-color: #ef4444;
+  background-color: #dc2626; /* white text 4.8:1 */
   color: white;
   font-size: 0.75rem;
   font-weight: 600;

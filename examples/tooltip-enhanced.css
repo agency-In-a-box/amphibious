@@ -197,7 +197,7 @@
         }
 
         .product-price {
-            color: #0a7b56;
+            color: var(--color-success);
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
@@ -350,7 +350,7 @@
 
         .alert-success {
             background: #f0fdf4;
-            color: #0a7b56;
+            color: var(--color-success);
             border: 1px solid #10b981;
         }
 
