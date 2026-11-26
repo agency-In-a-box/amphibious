@@ -417,7 +417,7 @@ input[type="button"]:focus-visible {
 }
 
 .aiab-btn-outline-success {
-  color: var(--btn-success-bg);
+  color: var(--btn-success-outline-text, var(--btn-success-bg));
   border-color: var(--btn-success-bg);
   background-color: transparent;
 
