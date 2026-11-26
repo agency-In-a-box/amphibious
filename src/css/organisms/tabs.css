@@ -11,7 +11,7 @@
   --tab-bg-active: #ffffff;
   --tab-border: var(--color-gray-300);
   --tab-border-active: var(--color-primary, var(--color-primary));
-  --tab-text: #6b7280;
+  --tab-text: #5f6a72; /* 5.0:1 on #f2f2f2 boxed tabs */
   --tab-text-hover: #374151;
   --tab-text-active: #1f2937;
   --tab-indicator: var(--color-primary, var(--color-primary));

@@ -19,7 +19,7 @@
   --color-success: #1e7e34; /* AA: 5.1:1 with white, 4.9:1 on #f8f9fa */
   --color-danger: #dc3545;
   --color-warning: #ffc107;
-  --color-info: #17a2b8;
+  --color-info: #117788; /* AA: 5.2:1 with white text */
 
   /* Interactive accent blue (used by datepicker, search-bar, file-upload, etc.) */
   --color-accent: #2563eb;

@@ -22,7 +22,7 @@
 
   --alert-error-bg: #fef2f2;
   --alert-error-border: #fecaca;
-  --alert-error-text: #dc2626;
+  --alert-error-text: #b91c1c; /* 5.9:1 on the error background */
   --alert-error-icon: #ef4444;
 
   --alert-neutral-bg: var(--color-gray-50);

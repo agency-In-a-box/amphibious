@@ -198,7 +198,7 @@ ul.aiab-slats li {
   & h4 {
     margin: 0 0 0.5rem 0;
     line-height: 1.3;
-    color: var(--heading-color, #2c3e50);
+    color: var(--heading-color, var(--color-text));
     transition: color 0.2s;
   }
 
@@ -331,7 +331,7 @@ article.aside {
       font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: var(--heading-color, #2c3e50);
+      color: var(--heading-color, var(--color-text));
     }
 
     & ul {
@@ -447,7 +447,7 @@ article.aside {
 
   & .aiab-reviewer-name {
     font-weight: 600;
-    color: var(--heading-color, #2c3e50);
+    color: var(--heading-color, var(--color-text));
   }
 
   & .aiab-review-date {
