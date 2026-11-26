@@ -476,13 +476,13 @@
 
 /* Color Utilities */
 .aiab-text-primary {
-  color: #0069db;
+  color: var(--docs-link, #0069db);
 }
 .text-secondary {
   color: var(--color-text-secondary);
 }
 .aiab-text-success {
-  color: #1e7d33;
+  color: var(--color-success);
 }
 .aiab-text-danger {
   color: #dc3545;
@@ -497,7 +497,7 @@
   color: #f8f9fa;
 }
 .text-dark {
-  color: #343a40;
+  color: var(--color-text);
 }
 .aiab-text-muted {
   color: var(--color-text-secondary);
@@ -507,7 +507,7 @@
 }
 
 .bg-primary {
-  background-color: #0069db;
+  background-color: var(--docs-link, #0069db);
 }
 .bg-secondary {
   background-color: #6c757d;

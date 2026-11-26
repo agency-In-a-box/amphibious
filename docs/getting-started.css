@@ -75,8 +75,8 @@ body {
   color: var(--color-primary);
 }
 .docs-nav a.aiab-active {
-  background: #f0f4ff;
-  color: var(--color-primary);
+  background: var(--color-primary-alpha-10);
+  color: var(--color-primary-text);
   font-weight: 500;
 }
 .docs-nav ul ul {
@@ -243,5 +243,24 @@ code {
   }
   .docs-sidebar {
     position: static;
+  }
+}
+
+/* Callouts in dark mode: tinted dark surfaces instead of light pastels */
+@media (prefers-color-scheme: dark) {
+  .callout-info {
+    background: #12304a;
+  }
+
+  .callout-success {
+    background: #173a22;
+  }
+
+  .callout-warning {
+    background: #3d2a10;
+  }
+
+  .callout-danger {
+    background: #3f1a1d;
   }
 }

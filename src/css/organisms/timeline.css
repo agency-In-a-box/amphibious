@@ -464,32 +464,32 @@
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   .aiab-timeline-event {
-    background: var(--apple-gray-800, #424242);
+    background: #424242;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .aiab-timeline-connector {
-    background: var(--apple-gray-700, #616161);
+    background: #616161;
   }
 
   .aiab-event-dot {
-    border-color: var(--apple-gray-800, #424242);
+    border-color: #424242;
   }
 
   .aiab-timeline-date {
-    background: var(--apple-gray-700, #616161);
-    color: var(--apple-gray-200, #e0e0e0);
+    background: #616161;
+    color: #e0e0e0;
   }
 
   .aiab-timeline-controls {
-    background: var(--apple-gray-900, #212121);
+    background: #212121;
   }
 
   .aiab-filter-btn,
   .aiab-zoom-btn {
-    background: var(--apple-gray-800, #424242);
-    border-color: var(--apple-gray-700, #616161);
-    color: var(--apple-gray-200, #e0e0e0);
+    background: #424242;
+    border-color: #616161;
+    color: #e0e0e0;
   }
 }
 

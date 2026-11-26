@@ -58,6 +58,12 @@
     --color-info: #17a2b8; /* brighter teal reads on dark backgrounds */
     /* Nav links were orange in dark mode only because the global link rule outranked the nav; set it explicitly */
     --nav-text: var(--color-primary-hover);
+    --badge-success-color: #1c1c1e;
+    --badge-info-color: #1c1c1e;
+    --btn-danger-outline-text: #ff6b6b; /* 5.6:1 on dark surfaces */
+    --badge-success-color: #1c1c1e;
+    --badge-info-color: #1c1c1e;
+    --btn-danger-outline-text: #ff6b6b; /* 5.6:1 on dark surfaces */
     /* Nav links were orange in dark mode only because the global link rule outranked the nav; set it explicitly */
     --nav-text: var(--color-primary-hover);
     --color-success: #28a745; /* 5.4:1 as text on dark */
@@ -473,7 +479,7 @@
   :root:not([data-theme="light"]) .aiab-btn-success {
     background-color: var(--apple-success);
     border-color: var(--apple-success);
-    color: #ffffff;
+    color: #1c1c1e; /* white is 2.0-3.6:1 on the bright dark-mode fill */
   }
   :root:not([data-theme="light"]) .aiab-btn-success:hover {
     background-color: #28b94e;
@@ -482,7 +488,7 @@
   :root:not([data-theme="light"]) .aiab-btn-danger {
     background-color: var(--apple-danger);
     border-color: var(--apple-danger);
-    color: #ffffff;
+    color: #1c1c1e; /* white is 2.0-3.6:1 on the bright dark-mode fill */
   }
   :root:not([data-theme="light"]) .aiab-btn-danger:hover {
     background-color: #e63b30;
@@ -500,7 +506,7 @@
   :root:not([data-theme="light"]) .aiab-btn-info {
     background-color: var(--apple-info);
     border-color: var(--apple-info);
-    color: #ffffff;
+    color: #1c1c1e; /* white is 2.0-3.6:1 on the bright dark-mode fill */
   }
   :root:not([data-theme="light"]) .aiab-btn-info:hover {
     background-color: #0977e6;
@@ -547,7 +553,7 @@
 [data-theme="dark"] .aiab-btn-success {
   background-color: var(--apple-success);
   border-color: var(--apple-success);
-  color: #ffffff;
+  color: #1c1c1e; /* white is 2.0-3.6:1 on the bright dark-mode fill */
 }
 [data-theme="dark"] .aiab-btn-success:hover {
   background-color: #28b94e;
@@ -556,7 +562,7 @@
 [data-theme="dark"] .aiab-btn-danger {
   background-color: var(--apple-danger);
   border-color: var(--apple-danger);
-  color: #ffffff;
+  color: #1c1c1e; /* white is 2.0-3.6:1 on the bright dark-mode fill */
 }
 [data-theme="dark"] .aiab-btn-danger:hover {
   background-color: #e63b30;
@@ -574,7 +580,7 @@
 [data-theme="dark"] .aiab-btn-info {
   background-color: var(--apple-info);
   border-color: var(--apple-info);
-  color: #ffffff;
+  color: #1c1c1e; /* white is 2.0-3.6:1 on the bright dark-mode fill */
 }
 [data-theme="dark"] .aiab-btn-info:hover {
   background-color: #0977e6;

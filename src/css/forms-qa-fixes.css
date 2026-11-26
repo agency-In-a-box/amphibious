@@ -269,13 +269,13 @@ pre.aiab-prettyprint {
   /* Forms page heading */
   :is(#forms, #basic) h3 {
     color: var(--color-success);
-    border-bottom-color: var(--color-gray-600);
+    border-bottom-color: #5f6a72 /* gray-600, fixed: dark mode inverts the token */;
   }
 
   /* Advanced search container */
   .aiab-advanced-search,
   .aiab-form.advanced {
-    background: var(--color-gray-800);
+    background: #343a40 /* gray-800, fixed: dark mode inverts the token */;
   }
 }
 

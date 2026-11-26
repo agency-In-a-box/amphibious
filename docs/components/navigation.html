@@ -20,18 +20,18 @@
     /* Demo Navigation Containers */
     .demo-nav-container {
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       padding: 1rem;
       border-radius: 0.5rem;
       margin: 1rem 0;
-      --nav-text: white;
-      --nav-text-hover: #d1d2d3;
-      --nav-text-active: white;
+      --nav-text: var(--color-on-primary);
+      --nav-text-hover: var(--color-on-primary);
+      --nav-text-active: var(--color-on-primary);
     }
 
     .demo-nav-container .horizontal > li > a,
     .demo-nav-container .vertical > li > a {
-      color: white;
+      color: var(--color-on-primary);
     }
 
     .demo-nav-vertical {
@@ -40,8 +40,8 @@
       padding: 1rem;
       border-radius: 0.5rem;
       max-width: 300px;
-      --nav-text: #2c3e50;
-      --nav-text-hover: var(--color-primary);
+      --nav-text: var(--color-text);
+      --nav-text-hover: var(--color-primary-text);
     }
 
     .demo-nav-vertical .vertical > li > a {
@@ -546,7 +546,7 @@ nav.destroy();   // removes every listener</code></pre>
         </div>
 
         <h3 class="aiab-h4">Transparent Navigation</h3>
-        <div style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); color: white; padding: 2rem; border-radius: 0.5rem;">
+        <div style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); color: var(--color-on-primary); padding: 2rem; border-radius: 0.5rem;">
           <nav class="aiab-nav-transparent">
             <ul class="aiab-horizontal">
               <li><a href="#home">Home</a></li>

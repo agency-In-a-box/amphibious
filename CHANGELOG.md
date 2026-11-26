@@ -29,7 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dark mode greys**: dark mode mirrored only the 50/150/…/950 grey steps; the 100–900 steps (used ~230 times for text and surfaces) now flip too
 - Library colours at AA: `--color-info` `#117788`, alert error text `#b91c1c`, accordion warning text `#92400e`, tab text `#5f6a72`, validation success `#15803d`
 - A global "body text" rule (`main p`, `main span`, …) overrode syntax highlighting once every page had a `<main>`; it now has zero specificity. The homepage's coloured `.aiab-demo-grid` blocks no longer restyle pages that use the class for layout
-- axe colour-contrast failures across the site: light mode 1181 to 76 nodes, dark mode 2539 to 385
+- **Dark-mode rules that used palette tokens** (`--color-gray-*`, `--apple-gray-*`) for "dark" backgrounds or "light" text now use the intended values directly; dark mode inverts those tokens, so cards and fields rendered light in dark mode. The form builder's dark styles are scoped to the builder (they restyled `.aiab-form-field` on every page)
+- Dark mode: success, info and danger buttons and success/info badges use dark text on their bright fills; outline-danger text is lighter; pill tabs use `--color-on-primary`
+- `cowork-demo` loads `dark-mode.css`
+- axe colour-contrast failures across the site: light mode 1181 to 75 nodes, dark mode 2539 to 130
 
 ## [2.2.0] - 2026-11-25
 

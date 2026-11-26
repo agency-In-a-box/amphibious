@@ -63,7 +63,7 @@
     }
 
     .demo-note {
-      background: #e3f2fd;
+      background: color-mix(in srgb, #2196f3 12%, transparent);
       border-left: 4px solid #2196f3;
       padding: 1rem;
       margin: 1rem 0;
