@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../../src/css/main.css">
   <style>
     body {
-      background: #f8f9fa;
+      background: var(--color-surface);
       font-family: "Avenir Next", Avenir, "Futura PT", Futura, -apple-system, sans-serif;
     }
 
@@ -37,7 +37,7 @@
     }
 
     .theme-card {
-      background: white;
+      background: var(--color-surface-elevated);
       border-radius: 0.75rem;
       overflow: hidden;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -64,11 +64,11 @@
 
     .theme-card h3 {
       margin: 0 0 0.5rem 0;
-      color: #2c3e50;
+      color: var(--color-text);
     }
 
     .theme-card p {
-      color: #6c757d;
+      color: var(--color-text-secondary);
       margin-bottom: 1rem;
       font-size: 0.9rem;
     }
@@ -207,7 +207,7 @@
     }
 
     .nav-breadcrumb a {
-      color: #6c757d;
+      color: var(--color-text-secondary);
       text-decoration: none;
     }
 
@@ -247,10 +247,10 @@
     </div>
 
     <!-- Theme Customization Info -->
-    <div style="text-align: center; margin: 4rem 0; padding: 2rem; background: white; border-radius: 0.5rem;">
+    <div style="text-align: center; margin: 4rem 0; padding: 2rem; background: var(--color-surface-elevated); border-radius: 0.5rem;">
       <h3>Create Your Own Theme</h3>
       <p>Amphibious uses CSS custom properties for easy theming. Override the design tokens to create your own look.</p>
-      <pre style="background: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; text-align: left; overflow-x: auto; margin: 1rem 0;">
+      <pre style="background: var(--color-surface); padding: 1.5rem; border-radius: 0.5rem; text-align: left; overflow-x: auto; margin: 1rem 0;">
 :root {
   --color-primary: #your-brand-color;
   --color-primary-hover: #your-hover-color;

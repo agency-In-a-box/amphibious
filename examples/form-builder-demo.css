@@ -5,7 +5,7 @@
     }
 
     .demo-header {
-      background: white;
+      background: var(--color-surface-elevated);
       border-bottom: 1px solid var(--apple-gray-200, #eee);
       padding: 24px 0;
       margin-bottom: 32px;
@@ -33,7 +33,7 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 32px;
-      background: white;
+      background: var(--color-surface-elevated);
       padding: 12px;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -76,7 +76,7 @@
     }
 
     .aiab-feature-card {
-      background: white;
+      background: var(--color-surface-elevated);
       padding: 24px;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -138,7 +138,7 @@
     }
 
     .builder-wrapper {
-      background: white;
+      background: var(--color-surface-elevated);
       border-radius: 12px;
       padding: 32px;
       min-height: 600px;
@@ -154,7 +154,7 @@
 
     .template-btn {
       padding: 16px;
-      background: white;
+      background: var(--color-surface-elevated);
       border: 2px solid var(--apple-gray-200);
       border-radius: 8px;
       text-align: center;
@@ -202,7 +202,7 @@
     }
 
     .output-code {
-      background: white;
+      background: var(--color-surface-elevated);
       padding: 16px;
       border-radius: 8px;
       font-family: var(--font-family-monospace);
@@ -230,7 +230,7 @@
     }
 
     .aiab-stat-card {
-      background: white;
+      background: var(--color-surface-elevated);
       padding: 16px;
       border-radius: 8px;
       text-align: center;

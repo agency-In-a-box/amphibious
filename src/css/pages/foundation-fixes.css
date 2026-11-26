@@ -102,6 +102,22 @@ code:not(pre code) {
   color: #f8f8f2;
 }
 
+/* Syntax colours inside the dark site code blocks (AA on #2d2d2d) */
+pre .keyword,
+pre.aiab-apple-code-block .keyword {
+  color: var(--color-brand);
+}
+
+pre .string,
+pre.aiab-apple-code-block .string {
+  color: #ffc078;
+}
+
+pre .comment,
+pre.aiab-apple-code-block .comment {
+  color: #a0a0a5;
+}
+
 :root:not([data-theme="dark"]) code:not(pre code),
 [data-theme="light"] code:not(pre code) {
   background: #3a3a3a;

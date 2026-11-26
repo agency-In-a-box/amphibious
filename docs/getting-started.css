@@ -2,15 +2,15 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
-  color: #2c3e50;
+  color: var(--color-text);
   margin: 0;
-  background: #f8f9fa;
+  background: var(--color-surface);
 }
 
 /* Documentation Header */
 .docs-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-on-primary);
   padding: 3rem 0;
   margin-bottom: 3rem;
 }
@@ -41,7 +41,7 @@ body {
   height: fit-content;
 }
 .docs-nav {
-  background: white;
+  background: var(--color-surface-elevated);
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -51,7 +51,7 @@ body {
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #6c757d;
+  color: var(--color-text-secondary);
 }
 .docs-nav ul {
   list-style: none;
@@ -62,7 +62,7 @@ body {
   margin-bottom: 0.5rem;
 }
 .docs-nav a {
-  color: #495057;
+  color: var(--color-text-secondary);
   text-decoration: none;
   display: block;
   padding: 0.5rem 0.75rem;
@@ -70,7 +70,7 @@ body {
   transition: all 0.2s;
 }
 .docs-nav a:hover {
-  background: #f8f9fa;
+  background: var(--color-surface);
   color: var(--color-primary);
 }
 .docs-nav a.aiab-active {
@@ -88,14 +88,14 @@ body {
 /* Main Content */
 .docs-content {
   min-width: 0; /* let wide children (code, tables) scroll instead of stretching the grid */
-  background: white;
+  background: var(--color-surface-elevated);
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 .docs-content h2 {
   margin: 2rem 0 1rem 0;
-  color: #2c3e50;
+  color: var(--color-text);
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 0.5rem;
 }
@@ -104,16 +104,16 @@ body {
 }
 .docs-content h3 {
   margin: 1.5rem 0 0.75rem 0;
-  color: #495057;
+  color: var(--color-text-secondary);
 }
 .docs-content h4 {
   margin: 1rem 0 0.5rem 0;
-  color: #6c757d;
+  color: var(--color-text-secondary);
 }
 
 /* Code Examples */
 .code-block {
-  background: #f4f4f4;
+  background: var(--color-surface);
   border: 1px solid #dee2e6;
   border-radius: 4px;
   padding: 1rem;
@@ -127,7 +127,7 @@ body {
   line-height: 1.5;
 }
 code {
-  background: #f4f4f4;
+  background: var(--color-surface);
   padding: 0.125rem 0.25rem;
   border-radius: 3px;
   font-family: "Courier New", Courier, monospace;
@@ -178,12 +178,12 @@ code {
   border-bottom: 1px solid #dee2e6;
 }
 .docs-table th {
-  background: #f8f9fa;
+  background: var(--color-surface);
   font-weight: 600;
-  color: #495057;
+  color: var(--color-text-secondary);
 }
 .docs-table tbody tr:hover {
-  background: #f8f9fa;
+  background: var(--color-surface);
 }
 
 /* Version Badge */
@@ -207,7 +207,7 @@ code {
 }
 .quick-link {
   padding: 1.5rem;
-  background: #f8f9fa;
+  background: var(--color-surface);
   border-radius: 8px;
   text-decoration: none;
   color: inherit;
@@ -228,7 +228,7 @@ code {
 }
 .quick-link p {
   margin: 0;
-  color: #6c757d;
+  color: var(--color-text-secondary);
   font-size: 0.875rem;
 }
 

@@ -6,7 +6,7 @@
 
 /* Navigation Examples */
 .aiab-navbar {
-  background: #f8f9fa;
+  background: var(--color-surface);
   border: 1px solid #dee2e6;
   border-radius: 0.375rem;
   margin: 1rem 0;
@@ -31,14 +31,14 @@
 .aiab-horizontal > li > a {
   display: block;
   padding: 0.75rem 1rem;
-  color: #495057;
+  color: var(--color-text-secondary);
   text-decoration: none;
   border-radius: 0.25rem;
   transition: all 0.2s ease;
 }
 
 .aiab-horizontal > li > a:hover {
-  background: #e9ecef;
+  background: var(--color-surface-overlay);
   color: #007bff;
 }
 
@@ -46,7 +46,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: #fff;
+  background: var(--color-surface-elevated);
   border: 1px solid #dee2e6;
   border-radius: 0.375rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -65,13 +65,13 @@
 .aiab-horizontal > li > ul > li > a {
   display: block;
   padding: 0.5rem 1rem;
-  color: #495057;
+  color: var(--color-text-secondary);
   text-decoration: none;
   white-space: nowrap;
 }
 
 .aiab-horizontal > li > ul > li > a:hover {
-  background: #f8f9fa;
+  background: var(--color-surface);
   color: #007bff;
 }
 
@@ -94,18 +94,18 @@
 .vertical > li > a {
   display: block;
   padding: 0.75rem 1rem;
-  color: #495057;
+  color: var(--color-text-secondary);
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .vertical > li > a:hover {
-  background: #f8f9fa;
+  background: var(--color-surface);
   color: #007bff;
 }
 
 .vertical > li > ul {
-  background: #f8f9fa;
+  background: var(--color-surface);
   border-top: 1px solid #dee2e6;
   list-style: none;
   margin: 0;
@@ -120,13 +120,13 @@
 .vertical > li > ul > li > a {
   display: block;
   padding: 0.5rem 1rem 0.5rem 2rem;
-  color: #6c757d;
+  color: var(--color-text-secondary);
   text-decoration: none;
   font-size: 0.875rem;
 }
 
 .vertical > li > ul > li > a:hover {
-  background: #e9ecef;
+  background: var(--color-surface-overlay);
   color: #007bff;
 }
 
@@ -136,7 +136,7 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  background: #f8f9fa;
+  background: var(--color-surface);
   border: 1px solid #dee2e6;
   border-radius: 0.375rem;
   padding: 0.75rem 1rem;
@@ -150,7 +150,7 @@
 .aiab-breadcrumb li + li::before {
   content: "/";
   margin: 0 0.5rem;
-  color: #6c757d;
+  color: var(--color-text-secondary);
 }
 
 .aiab-breadcrumb a {
@@ -163,7 +163,7 @@
 }
 
 .aiab-breadcrumb .aiab-active {
-  color: #6c757d;
+  color: var(--color-text-secondary);
 }
 
 /* Tabs */
@@ -183,7 +183,7 @@
 .aiab-tabs li a {
   display: block;
   padding: 0.75rem 1rem;
-  color: #495057;
+  color: var(--color-text-secondary);
   text-decoration: none;
   border: 1px solid transparent;
   border-bottom: none;
@@ -192,12 +192,12 @@
 }
 
 .aiab-tabs li a:hover {
-  background: #f8f9fa;
+  background: var(--color-surface);
   border-color: #dee2e6;
 }
 
 .aiab-tabs li a.aiab-active {
-  background: #fff;
+  background: var(--color-surface-elevated);
   border-color: #dee2e6;
   color: #007bff;
 }
@@ -206,7 +206,7 @@
   border: 1px solid #dee2e6;
   border-top: none;
   border-radius: 0 0 0.375rem 0.375rem;
-  background: #fff;
+  background: var(--color-surface-elevated);
 }
 
 .aiab-tabs-content > li {
@@ -240,7 +240,7 @@
 }
 
 .aiab-pagination li a:hover {
-  background: #e9ecef;
+  background: var(--color-surface-overlay);
   border-color: #adb5bd;
 }
 
@@ -251,7 +251,7 @@
 }
 
 .aiab-pagination li.aiab-disabled span {
-  color: #6c757d;
+  color: var(--color-text-secondary);
   background: transparent;
   border-color: #dee2e6;
 }

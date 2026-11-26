@@ -16,7 +16,7 @@
 
 /* Feature Cards */
 .aiab-feature-card {
-  background: #f8f9fa;
+  background: var(--color-surface);
   padding: 1.5rem;
   border: 1px solid #e9ecef;
   border-radius: 8px;
@@ -34,13 +34,13 @@
 
 .aiab-feature-card h4 {
   margin-top: 0;
-  color: #2c3e50;
+  color: var(--color-text);
 }
 
 /* Demo Grid */
 .aiab-demo-grid {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-on-primary);
   padding: 1rem;
   text-align: center;
   border-radius: 4px;
@@ -50,7 +50,7 @@
 /* Hero Section */
 .aiab-hero {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-on-primary);
   padding: 5rem 0;
   text-align: center;
 }
@@ -59,7 +59,7 @@
   font-size: 3.5rem;
   margin-bottom: 1rem;
   font-weight: 300;
-  color: white;
+  color: inherit;
 }
 
 .aiab-hero p {
@@ -68,7 +68,7 @@
   max-width: 700px;
   margin: 0 auto 3rem auto;
   opacity: 0.95;
-  color: white;
+  color: inherit;
 }
 
 /* Hero Stats */
@@ -81,18 +81,19 @@
 
 .aiab-hero .aiab-stats li a,
 .aiab-hero .aiab-stats li .aiab-stat-value {
-  color: white;
+  color: inherit;
   font-size: 2.5rem;
 }
 
 .aiab-hero .aiab-stats li span,
 .aiab-hero .aiab-stats li .aiab-stat-label {
-  color: rgba(255, 255, 255, 0.9);
+  color: inherit;
+  opacity: 0.9;
   font-size: 0.875rem;
 }
 
 .aiab-hero .aiab-stats li {
-  border-inline-end-color: rgba(255, 255, 255, 0.2);
+  border-inline-end-color: color-mix(in srgb, currentColor 20%, transparent);
 }
 
 /* Section Headers */
@@ -103,20 +104,20 @@
 
 .aiab-section-header h2 {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: var(--color-text);
   margin-bottom: 0.5rem;
 }
 
 .aiab-section-header p {
   font-size: 1.125rem;
-  color: #6c757d;
+  color: var(--color-text-secondary);
   max-width: 700px;
   margin: 0 auto;
 }
 
 /* Updates Section */
 .aiab-updates-section {
-  background: #f8f9fa;
+  background: var(--color-surface);
   padding: 4rem 0;
   margin-top: 3rem;
 }
@@ -124,7 +125,7 @@
 /* CTA Section */
 .aiab-cta-section {
   background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-  color: white;
+  color: var(--color-on-primary);
   padding: 4rem 0;
   text-align: center;
   margin-top: 4rem;
@@ -164,7 +165,7 @@
 /* Hero CTA only. These were unscoped and restyled every .aiab-btn-primary /
    .aiab-btn-secondary on the site (white primary, invisible secondary). */
 .aiab-cta-buttons .aiab-btn-primary {
-  background: white;
+  background: var(--color-surface-elevated);
   color: var(--color-primary);
 }
 

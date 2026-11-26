@@ -3,12 +3,12 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f8f9fa;
+      background: var(--color-surface);
     }
 
     .aiab-demo-header {
       background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-      color: white;
+      color: var(--color-on-primary);
       padding: 3rem 0;
       margin-bottom: 3rem;
     }
@@ -26,7 +26,7 @@
     }
 
     .aiab-demo-section {
-      background: white;
+      background: var(--color-surface-elevated);
       border-radius: 8px;
       padding: 2rem;
       margin-bottom: 2rem;
@@ -35,18 +35,18 @@
 
     .aiab-demo-section h2 {
       margin-top: 0;
-      color: #2c3e50;
+      color: var(--color-text);
       border-bottom: 2px solid #f0f0f0;
       padding-bottom: 0.5rem;
     }
 
     .aiab-demo-section h3 {
-      color: #495057;
+      color: var(--color-text-secondary);
       margin-top: 2rem;
     }
 
     .code-example {
-      background: #f4f4f4;
+      background: var(--color-surface);
       padding: 1rem;
       border-radius: 4px;
       overflow-x: auto;
@@ -59,7 +59,7 @@
       border-radius: 8px;
       padding: 2rem;
       margin: 1.5rem 0;
-      background: #fff;
+      background: var(--color-surface-elevated);
     }
 
     .demo-note {
@@ -74,7 +74,7 @@
     /* overflow stays visible so dropdown menus are not clipped; the first and
        last children round their own corners instead. */
     .nav-demo-container {
-      background: #f8f9fa;
+      background: var(--color-surface);
       border-radius: 8px;
       margin: 1.5rem 0;
       overflow: visible;
@@ -110,7 +110,7 @@
     }
 
     .vertical-nav-demo .aiab-sidebar {
-      background: white;
+      background: var(--color-surface-elevated);
       border-right: 1px solid #dee2e6;
       padding: 1rem;
     }
@@ -126,7 +126,7 @@
       border: 2px solid #2c3e50;
       border-radius: 20px;
       overflow: hidden;
-      background: white;
+      background: var(--color-surface-elevated);
     }
 
     .mobile-header {
@@ -148,7 +148,7 @@
     .controls button {
       padding: 0.5rem 1rem;
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -169,7 +169,7 @@
     }
 
     .nav-style-2 {
-      background: white;
+      background: var(--color-surface-elevated);
       border-bottom: 3px solid var(--color-primary);
     }
 
@@ -188,7 +188,7 @@
     /* Tab Navigation Demo */
     .tab-nav-demo .tab-content {
       padding: 2rem;
-      background: white;
+      background: var(--color-surface-elevated);
       border: 1px solid #dee2e6;
       border-top: none;
     }
@@ -207,7 +207,7 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: white;
+      background: var(--color-surface-elevated);
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       padding: 2rem;
       display: none;
@@ -243,7 +243,7 @@
     }
 
     .mega-menu-section a {
-      color: #495057;
+      color: var(--color-text-secondary);
       text-decoration: none;
       transition: color 0.2s;
     }

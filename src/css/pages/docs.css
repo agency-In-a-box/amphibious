@@ -7,9 +7,17 @@
 .aiab-docs-header,
 .aiab-doc-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-on-primary);
   padding: 3rem 0;
   margin-bottom: 3rem;
+}
+
+/* Breadcrumb links on the orange header take the header text colour */
+.aiab-docs-header .aiab-breadcrumb,
+.aiab-docs-header .aiab-breadcrumb a,
+.aiab-doc-header .aiab-breadcrumb,
+.aiab-doc-header .aiab-breadcrumb a {
+  color: inherit;
 }
 
 .aiab-docs-header h1,
@@ -17,7 +25,7 @@
   margin: 0;
   font-size: 2.5rem;
   font-weight: 300;
-  color: white;
+  color: inherit;
 }
 
 .aiab-docs-header p,
@@ -25,29 +33,30 @@
   margin: 1rem 0 0 0;
   font-size: 1.25rem;
   opacity: 0.9;
-  color: white;
+  color: inherit;
 }
 
 .aiab-docs-header blockquote,
 .aiab-doc-header blockquote {
   background: transparent;
-  border-inline-start-color: rgba(255, 255, 255, 0.5);
+  border-inline-start-color: currentColor;
 }
 
 .aiab-docs-header blockquote p,
 .aiab-doc-header blockquote p {
-  color: white;
+  color: inherit;
 }
 
 .aiab-docs-header blockquote cite,
 .aiab-doc-header blockquote cite {
-  color: rgba(255, 255, 255, 0.85);
+  color: inherit;
+  opacity: 0.85;
 }
 
 /* Demo Header (for demo pages) */
 .aiab-demo-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-on-primary);
   padding: 3rem 0;
   margin-bottom: 3rem;
 }

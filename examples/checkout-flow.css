@@ -11,7 +11,7 @@ body {
 
 /* Checkout Header */
 .aiab-checkout-header {
-  background: white;
+  background: var(--color-surface-elevated);
   border-bottom: 2px solid var(--color-gray-300);
   padding: 1rem 0;
   position: sticky;
@@ -55,7 +55,7 @@ body {
 }
 .aiab-checkout-progress-steps li.aiab-active .aiab-checkout-step-number {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
 }
 .aiab-checkout-progress-steps li.aiab-checkout-completed .aiab-checkout-step-number {
   background: var(--color-success);
@@ -73,7 +73,7 @@ body {
 
 /* Form Styles */
 .aiab-checkout-form {
-  background: white;
+  background: var(--color-surface-elevated);
   border-radius: 8px;
   padding: 2rem;
   margin-bottom: 2rem;
@@ -181,7 +181,7 @@ input:invalid {
 
 /* Order Summary Aside */
 .aiab-checkout-order-summary {
-  background: white;
+  background: var(--color-surface-elevated);
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -411,7 +411,7 @@ input:invalid {
 
   :root:not([data-theme="light"]) .aiab-checkout-progress-steps li.aiab-active .aiab-checkout-step-number {
     background: var(--color-primary);
-    color: white;
+    color: var(--color-on-primary);
   }
 
   :root:not([data-theme="light"]) .aiab-checkout-progress-steps li.aiab-checkout-completed .aiab-checkout-step-number {
@@ -611,7 +611,7 @@ input:invalid {
 
   .aiab-checkout-progress-steps li.aiab-active .aiab-checkout-step-number {
     background: var(--color-primary);
-    color: white;
+    color: var(--color-on-primary);
   }
 
   .aiab-checkout-progress-steps li.aiab-checkout-completed .aiab-checkout-step-number {

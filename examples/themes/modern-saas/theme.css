@@ -347,7 +347,7 @@ body {
 
 .saas-btn--primary {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
   border-color: var(--color-primary);
 }
 
@@ -359,7 +359,7 @@ body {
 }
 
 .saas-btn--secondary {
-  background: white;
+  background: var(--color-surface-elevated);
   color: var(--color-text);
   border-color: var(--color-border);
 }
@@ -622,7 +622,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--color-on-primary);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-sm);
 }
