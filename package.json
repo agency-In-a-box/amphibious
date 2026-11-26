@@ -167,7 +167,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/agency-In-a-box/amphibious.git"
+    "url": "git+https://github.com/agency-In-a-box/amphibious.git"
   },
   "homepage": "https://github.com/agency-In-a-box/amphibious#readme",
   "bugs": {
