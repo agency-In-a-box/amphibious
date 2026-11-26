@@ -5,7 +5,7 @@
 
         .header {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            color: white;
+            color: var(--color-on-primary);
             padding: 3rem 0;
             text-align: center;
             margin-bottom: 2rem;
@@ -46,7 +46,7 @@
         }
 
         .search-section {
-            background: white;
+            background: var(--color-surface-elevated);
             padding: 2rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
@@ -84,7 +84,7 @@
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: #6b7280;
+            color: var(--color-text-secondary);
         }
 
         .filters {
@@ -97,7 +97,7 @@
         .aiab-filter-btn {
             padding: 0.5rem 1rem;
             border: 2px solid #e1e5e9;
-            background: white;
+            background: var(--color-surface-elevated);
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.2s;
@@ -105,7 +105,7 @@
 
         .aiab-filter-btn.aiab-active {
             background: var(--color-primary);
-            color: white;
+            color: var(--color-on-primary);
             border-color: var(--color-primary);
         }
 
@@ -120,7 +120,7 @@
         .section-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #2d3748;
+            color: var(--color-text);
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -134,7 +134,7 @@
         }
 
         .icon-card {
-            background: white;
+            background: var(--color-surface-elevated);
             border: 1px solid #e1e5e9;
             border-radius: 8px;
             padding: 1.5rem;
@@ -158,12 +158,12 @@
         .icon-display {
             font-size: 2rem;
             margin-bottom: 0.5rem;
-            color: #4a5568;
+            color: var(--color-text-secondary);
         }
 
         .icon-name {
             font-size: 0.875rem;
-            color: #718096;
+            color: var(--color-text-secondary);
             margin-bottom: 0.25rem;
         }
 
@@ -191,7 +191,7 @@
         }
 
         .aiab-demo-section {
-            background: #f7fafc;
+            background: var(--color-surface);
             padding: 2rem;
             border-radius: 8px;
             margin: 2rem 0;
@@ -205,7 +205,7 @@
         }
 
         .demo-item {
-            background: white;
+            background: var(--color-surface-elevated);
             padding: 1.5rem;
             border-radius: 8px;
             border: 1px solid #e1e5e9;
@@ -214,7 +214,7 @@
         .demo-item h4 {
             margin-top: 0;
             margin-bottom: 1rem;
-            color: #2d3748;
+            color: var(--color-text);
         }
 
         .code-block {
@@ -234,7 +234,7 @@
 
         .results-info {
             text-align: center;
-            color: #718096;
+            color: var(--color-text-secondary);
             margin: 1rem 0;
         }
 
@@ -257,7 +257,7 @@
             bottom: 2rem;
             right: 2rem;
             background: var(--color-primary);
-            color: white;
+            color: var(--color-on-primary);
             border: none;
             border-radius: 50%;
             width: 3rem;

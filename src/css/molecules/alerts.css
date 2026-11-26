@@ -265,25 +265,25 @@
   &.aiab-alert--success,
   &.aiab-alert-success {
     background-color: var(--alert-success-icon);
-    color: white;
+    color: #1c1c1e; /* 7.5:1; white is 2.3:1 on this green */
   }
 
   &.aiab-alert--info,
   &.aiab-alert-info {
     background-color: var(--alert-info-icon);
-    color: white;
+    color: var(--color-on-primary);
   }
 
   &.aiab-alert--warning,
   &.aiab-alert-warning {
     background-color: var(--alert-warning-icon);
-    color: white;
+    color: #1c1c1e; /* 8.9:1; white is 1.9:1 on this yellow */
   }
 
   &.aiab-alert--error,
   &.aiab-alert--danger,
   &.aiab-alert-danger {
-    background-color: var(--alert-error-icon);
+    background-color: #dc2626; /* deeper than the icon red so white text is 4.8:1 */
     color: white;
   }
 }

@@ -1,11 +1,11 @@
 /* Documentation specific styles */
 body {
-  background: #f8f9fa;
+  background: var(--color-surface);
 }
 
 .docs-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-on-primary);
   padding: 4rem 0;
   margin-bottom: 3rem;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 .aiab-component-card {
-  background: white;
+  background: var(--color-surface-elevated);
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -33,7 +33,7 @@ body {
 }
 
 .aiab-component-card h3 {
-  color: #2c3e50;
+  color: var(--color-text);
   margin: 0 0 1rem 0;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@ body {
 }
 
 .aiab-component-card p {
-  color: #6c757d;
+  color: var(--color-text-secondary);
   margin: 0 0 1.5rem 0;
   line-height: 1.6;
 }
@@ -70,13 +70,13 @@ body {
   display: block;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--color-text);
 }
 
 .aiab-component-card .aiab-stat-label {
   display: block;
   font-size: 0.75rem;
-  color: #6c757d;
+  color: var(--color-text-secondary);
   text-transform: uppercase;
 }
 
@@ -95,7 +95,7 @@ body {
 
 .aiab-component-card .links a.aiab-primary {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
 }
 
 .aiab-component-card .links a.aiab-primary:hover {
@@ -104,8 +104,8 @@ body {
 }
 
 .aiab-component-card .links a.aiab-secondary {
-  background: #e9ecef;
-  color: #2c3e50;
+  background: var(--color-surface-overlay);
+  color: var(--color-text);
 }
 
 .aiab-component-card .links a.aiab-secondary:hover {
@@ -138,7 +138,7 @@ body {
 }
 
 .quick-links {
-  background: white;
+  background: var(--color-surface-elevated);
   border-radius: 0.5rem;
   padding: 2rem;
   margin: 2rem 0;
@@ -157,12 +157,12 @@ body {
 .quick-links li a {
   display: block;
   padding: 1rem;
-  background: #f8f9fa;
+  background: var(--color-surface);
   border-radius: 0.25rem;
   transition: all 0.2s ease;
 }
 
 .quick-links li a:hover {
-  background: #e9ecef;
+  background: var(--color-surface-overlay);
   text-decoration: none;
 }

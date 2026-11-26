@@ -197,7 +197,7 @@ select.aiab-error,
   display: block;
   margin-top: 4px;
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
   background: var(--color-gray-100);
   padding: 8px 12px;
   border-radius: 4px;

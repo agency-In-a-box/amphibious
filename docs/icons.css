@@ -1,11 +1,11 @@
 /* Icon Documentation Styles */
 body {
-  background: #f8f9fa;
+  background: var(--color-surface);
 }
 
 .docs-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-on-primary);
   padding: 4rem 0 3rem;
   margin-bottom: 0;
 }
@@ -26,7 +26,7 @@ body {
 
 /* Search and Filter Controls */
 .controls-section {
-  background: white;
+  background: var(--color-surface-elevated);
   padding: 2rem 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
@@ -49,7 +49,7 @@ body {
   font-size: 1.125rem;
   border: 2px solid #e9ecef;
   border-radius: 8px;
-  background: white;
+  background: var(--color-surface-elevated);
   transition: border-color 0.2s;
 }
 
@@ -67,8 +67,8 @@ body {
 }
 
 .filter-tag {
-  background: #e9ecef;
-  color: #495057;
+  background: var(--color-surface-overlay);
+  color: var(--color-text-secondary);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.875rem;
@@ -85,13 +85,13 @@ body {
 
 .filter-tag.aiab-active {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
   border-color: var(--color-primary-dark);
 }
 
 .results-info {
   text-align: center;
-  color: #6c757d;
+  color: var(--color-text-secondary);
   font-size: 0.875rem;
   margin: 1rem 0;
 }
@@ -99,7 +99,7 @@ body {
 /* Category Sections */
 .category-section {
   margin: 3rem 0;
-  background: white;
+  background: var(--color-surface-elevated);
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -116,13 +116,13 @@ body {
 
 .category-header h2 {
   margin: 0;
-  color: #2c3e50;
+  color: var(--color-text);
   font-size: 1.5rem;
 }
 
 .category-count {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
   font-size: 0.875rem;
@@ -137,7 +137,7 @@ body {
 }
 
 .icon-item {
-  background: #f8f9fa;
+  background: var(--color-surface);
   border: 2px solid #e9ecef;
   border-radius: 8px;
   padding: 1.5rem;
@@ -149,7 +149,7 @@ body {
 
 .icon-item:hover {
   border-color: var(--color-primary);
-  background: white;
+  background: var(--color-surface-elevated);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -169,7 +169,7 @@ body {
 
 .icon-display i {
   font-size: 32px;
-  color: #495057;
+  color: var(--color-text-secondary);
   transition: color 0.2s;
 }
 
@@ -181,13 +181,13 @@ body {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--color-text);
   margin-bottom: 0.5rem;
 }
 
 .icon-tags {
   font-size: 0.75rem;
-  color: #6c757d;
+  color: var(--color-text-secondary);
   margin-bottom: 1rem;
 }
 
@@ -213,7 +213,7 @@ body {
 
 /* Usage Examples */
 .usage-section {
-  background: #f8f9fa;
+  background: var(--color-surface);
   border-radius: 8px;
   padding: 1.5rem;
   margin-top: 1rem;
@@ -221,7 +221,7 @@ body {
 
 .usage-section h3 {
   margin: 0 0 1rem 0;
-  color: #2c3e50;
+  color: var(--color-text);
   font-size: 1rem;
 }
 
@@ -242,7 +242,7 @@ body {
   top: 8px;
   right: 8px;
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
   border: none;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
@@ -304,7 +304,7 @@ body {
 .no-results-state {
   text-align: center;
   padding: 4rem 2rem;
-  color: #6c757d;
+  color: var(--color-text-secondary);
 }
 
 .loading-state .aiab-icon,

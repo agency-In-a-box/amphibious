@@ -5,6 +5,24 @@ All notable changes to Amphibious will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **Primary orange is WCAG AA**: `--color-primary` is now `#a65e00` (4.97:1 with white text, 4.72:1 as text on `#f8f9fa`), with darker hover/active shades. The logo orange stays available as `--color-brand` (`#ec8b00`) for decoration only; it is 2.5:1 with white, so never use it for text or behind text
+- `--color-success` is `#1e7e34` in light mode (5.1:1 with white); `--color-secondary` and light-mode `--color-text-secondary` are `#5f6a72` (5.25:1 on `#f8f9fa`)
+
+### Added
+
+- `--color-on-primary`: text and icon colour on a primary background. White in light mode, near-black in dark mode, where the bright orange is only 2.2:1 with white. Buttons, badges, timeline, footer, form-builder and colour-picker controls use it
+
+### Fixed
+
+- **Dark mode on the docs site**: page stylesheets hard-coded light backgrounds and dark text, so dark mode showed white text on white cards on about 30 pages. They now use the theme tokens (`--color-surface*`, `--color-text*`)
+- Doc header breadcrumbs were orange on orange; code inside dark code blocks used the inline-code pink (2.9:1); apple-redesign syntax colours on the dark code block
+- Solid alerts: success and warning use dark text (white was 1.9–2.3:1), error uses a deeper red; dark-mode links no longer override button and nav colours; nav text set explicitly in dark mode
+- axe colour-contrast failures across the site: light mode 1181 to 262 nodes, dark mode 2539 to 530
+
 ## [2.2.0] - 2026-11-25
 
 Live-site QA remediation, accessibility and a colour-picker security fix. The deployed documentation site had missing CSS, scripts the browser refused to run, icons rendering as boxes, dark-mode styles leaking into light pages, dead links on every page, and horizontal scrolling on phones. The deployed documentation site had missing CSS, scripts the browser refused to run, icons rendering as boxes, dark-mode styles leaking into light pages, dead links on every page, and horizontal scrolling on phones. The causes are fixed and CI now fails if they come back.

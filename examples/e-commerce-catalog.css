@@ -9,7 +9,7 @@
 
     /* Header Styles */
     .aiab-header {
-      background: white;
+      background: var(--color-surface-elevated);
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
@@ -45,7 +45,7 @@
     .aiab-search-bar button {
       padding: 0.75rem 1.5rem;
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -183,7 +183,7 @@
       padding: 0 0.5rem;
       border: 1px solid var(--color-gray-300);
       border-radius: 4px;
-      background: white;
+      background: var(--color-surface-elevated);
     }
     .aiab-view-toggles {
       display: flex;
@@ -196,7 +196,7 @@
       width: 40px;
       height: 40px;
       padding: 0;
-      background: white;
+      background: var(--color-surface-elevated);
       color: var(--color-text);
       border: 1px solid var(--color-gray-300);
       cursor: pointer;
@@ -209,13 +209,13 @@
     }
     .aiab-view-toggles button.aiab-active {
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       border-color: var(--color-primary);
     }
 
     /* Filters Sidebar */
     .aiab-filters {
-      background: white;
+      background: var(--color-surface-elevated);
       border-radius: 8px;
       padding: 1.5rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -378,25 +378,25 @@
     }
     .aiab-btn--primary {
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
     }
     .aiab-btn--primary:hover {
       background: var(--color-primary-dark);
     }
     .aiab-btn--secondary {
-      background: white;
+      background: var(--color-surface-elevated);
       color: var(--color-primary);
       border: 2px solid var(--color-primary);
       padding: 0.625rem;
     }
     .aiab-btn--secondary:hover {
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
     }
 
     /* Product Cards */
     .aiab-product-card {
-      background: white;
+      background: var(--color-surface-elevated);
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -491,7 +491,7 @@
     }
     .aiab-product-actions button:hover {
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       border-color: var(--color-primary);
     }
     .aiab-product-info {
@@ -586,7 +586,7 @@
       width: 100%;
       padding: 0.75rem;
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       border: none;
       border-radius: 4px;
       font-weight: 500;
@@ -641,7 +641,7 @@
     .aiab-price-btn {
       padding: 0.5rem;
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -680,7 +680,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.75rem 1.5rem;
-      background: white;
+      background: var(--color-surface-elevated);
       border: 2px solid var(--color-primary);
       color: var(--color-primary);
       border-radius: 4px;
@@ -689,7 +689,7 @@
 
     .aiab-qv-btn-wishlist:hover {
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
     }
     .aiab-qv-btn-wishlist svg,
     .aiab-qv-info-row svg {
@@ -757,7 +757,7 @@
       height: 40px;
       padding: 0 0.875rem;
       border: 2px solid var(--color-gray-300);
-      background: white;
+      background: var(--color-surface-elevated);
       color: var(--color-text);
       font-weight: 500;
       cursor: pointer;
@@ -783,7 +783,7 @@
       height: 40px;
       padding: 0;
       border: 1px solid var(--color-gray-300);
-      background: white;
+      background: var(--color-surface-elevated);
       color: var(--color-text);
       font-size: 1.125rem;
       line-height: 1;
@@ -818,7 +818,7 @@
       height: 40px;
       padding: 0 0.75rem;
       border: 1px solid var(--color-gray-300);
-      background: white;
+      background: var(--color-surface-elevated);
       color: var(--color-text);
       font-size: 0.9375rem;
       font-variant-numeric: tabular-nums;
@@ -844,7 +844,7 @@
     }
     .aiab-pagination button.aiab-active {
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       border-color: var(--color-primary);
     }
     .aiab-pagination button:disabled {
@@ -892,7 +892,7 @@
       gap: 0.5rem;
       height: 40px;
       padding: 0 0.875rem;
-      background: white;
+      background: var(--color-surface-elevated);
       color: var(--color-text);
       border: 1px solid var(--color-gray-300);
       border-radius: 8px;
@@ -915,7 +915,7 @@
       padding: 0 6px;
       border-radius: 10px;
       background: var(--color-primary);
-      color: white;
+      color: var(--color-on-primary);
       font-size: 0.75rem;
       font-variant-numeric: tabular-nums;
     }
@@ -1139,7 +1139,7 @@
 
       :root:not([data-theme="light"]) .aiab-product-actions button:hover {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
         border-color: var(--color-primary);
       }
 
@@ -1153,7 +1153,7 @@
       :root:not([data-theme="light"]) .aiab-size-option.selected {
         border-color: var(--color-primary);
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
       }
 
       :root:not([data-theme="light"]) .aiab-quantity-selector button {
@@ -1177,7 +1177,7 @@
 
       :root:not([data-theme="light"]) .aiab-view-toggles button.aiab-active {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
         border-color: var(--color-primary);
       }
 
@@ -1193,7 +1193,7 @@
 
       :root:not([data-theme="light"]) .aiab-pagination button.aiab-active {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
         border-color: var(--color-primary);
       }
 
@@ -1236,7 +1236,7 @@
 
       :root:not([data-theme="light"]) .aiab-btn--secondary:hover {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
       }
 
       :root:not([data-theme="light"]) .aiab-quick-view-image {
@@ -1255,7 +1255,7 @@
 
       :root:not([data-theme="light"]) .aiab-qv-btn-wishlist:hover {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
       }
     }
 
@@ -1374,7 +1374,7 @@
 
       .aiab-product-actions button:hover {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
         border-color: var(--color-primary);
       }
 
@@ -1388,7 +1388,7 @@
       .aiab-size-option.selected {
         border-color: var(--color-primary);
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
       }
 
       .aiab-quantity-selector button {
@@ -1412,7 +1412,7 @@
 
       .aiab-view-toggles button.aiab-active {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
         border-color: var(--color-primary);
       }
 
@@ -1428,7 +1428,7 @@
 
       .aiab-pagination button.aiab-active {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
         border-color: var(--color-primary);
       }
 
@@ -1471,7 +1471,7 @@
 
       .aiab-btn--secondary:hover {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
       }
 
       .aiab-quick-view-image {
@@ -1490,7 +1490,7 @@
 
       .aiab-qv-btn-wishlist:hover {
         background: var(--color-primary);
-        color: white;
+        color: var(--color-on-primary);
       }
     }
 

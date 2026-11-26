@@ -7,7 +7,7 @@
 /* Explicit light mode variable reset — covers system-dark users who toggle light */
 [data-theme="light"] {
   --color-text: #212529;
-  --color-text-secondary: #6c757d;
+  --color-text-secondary: #5f6a72; /* 5.25:1 on #f8f9fa */
   --color-text-tertiary: #868e96;
   --color-background: #ffffff;
   --color-surface: #f8f9fa;

@@ -121,7 +121,7 @@
 }
 
 .helper-item {
-  background: #f8f9fa;
+  background: var(--color-surface);
   border: 1px solid #dee2e6;
   border-radius: 0.375rem;
   padding: 1rem;
@@ -129,11 +129,11 @@
 
 .helper-item h5 {
   margin: 0 0 0.5rem 0;
-  color: #495057;
+  color: var(--color-text-secondary);
 }
 
 .helper-item .demo {
-  background: #fff;
+  background: var(--color-surface-elevated);
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   padding: 0.75rem;
@@ -145,7 +145,7 @@
 }
 
 .helper-item code {
-  background: #e9ecef;
+  background: var(--color-surface-overlay);
   padding: 0.125rem 0.25rem;
   border-radius: 0.125rem;
   font-size: 0.875rem;
@@ -477,7 +477,7 @@
   color: #007bff;
 }
 .text-secondary {
-  color: #6c757d;
+  color: var(--color-text-secondary);
 }
 .aiab-text-success {
   color: #28a745;
@@ -498,7 +498,7 @@
   color: #343a40;
 }
 .aiab-text-muted {
-  color: #6c757d;
+  color: var(--color-text-secondary);
 }
 .text-white {
   color: #fff;
@@ -523,13 +523,13 @@
   background-color: #17a2b8;
 }
 .bg-light {
-  background-color: #f8f9fa;
+  background-color: var(--color-surface);
 }
 .bg-dark {
   background-color: #343a40;
 }
 .bg-white {
-  background-color: #fff;
+  background-color: var(--color-surface-elevated);
 }
 .bg-transparent {
   background-color: transparent;
@@ -607,7 +607,7 @@
 }
 
 .aiab-component-card {
-  background: #fff;
+  background: var(--color-surface-elevated);
   border: 1px solid #dee2e6;
   border-radius: 0.375rem;
   padding: 1.5rem;
@@ -616,11 +616,11 @@
 
 .aiab-component-card h4 {
   margin: 0 0 1rem 0;
-  color: #495057;
+  color: var(--color-text-secondary);
 }
 
 .component-preview {
-  background: #f8f9fa;
+  background: var(--color-surface);
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   padding: 1rem;

@@ -126,9 +126,10 @@
   --apple-orange-200: #ffcc80;
   --apple-orange-300: #ffb74d;
   --apple-orange-400: #ffa726;
-  --apple-orange-500: #ec8b00; /* Primary brand orange (DEC-018) */
-  --apple-orange-600: #d87a00; /* 8% darker for hover */
-  --apple-orange-700: #c36a00; /* 15% darker for active */
+  /* 500-700 follow the AA primary tokens so white text on them passes */
+  --apple-orange-500: var(--color-primary);
+  --apple-orange-600: var(--color-primary-hover);
+  --apple-orange-700: var(--color-primary-active);
   --apple-orange-800: #a85900;
   --apple-orange-900: #7a4100;
 

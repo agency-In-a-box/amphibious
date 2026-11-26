@@ -188,7 +188,7 @@
   & .aiab-breadcrumb__item--current .aiab-breadcrumb__link {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
-    color: white;
+    color: var(--color-on-primary);
   }
 
   & .aiab-breadcrumb__separator {

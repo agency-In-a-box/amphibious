@@ -395,7 +395,7 @@
 .aiab-btn-save {
   background: var(--apple-orange-500, var(--color-primary));
   border: 1px solid var(--apple-orange-500, var(--color-primary));
-  color: white;
+  color: var(--color-on-primary);
 
   &:hover {
     background: var(--apple-orange-600, var(--color-primary-hover));
