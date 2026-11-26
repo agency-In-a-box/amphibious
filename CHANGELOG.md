@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **FileUploadEnhanced `resumable: true` did nothing**: progress was never saved and the load step was a stub. Progress is now saved after each chunk; re-adding the same file (matched by name, size and type) reuses its upload id and skips finished chunks; finished or removed uploads are forgotten. Saved data from `localStorage` is validated before use
 - **Dark mode on the docs site**: page stylesheets hard-coded light backgrounds and dark text, so dark mode showed white text on white cards on about 30 pages. They now use the theme tokens (`--color-surface*`, `--color-text*`)
 - Doc header breadcrumbs were orange on orange; code inside dark code blocks used the inline-code pink (2.9:1); apple-redesign syntax colours on the dark code block
 - Solid alerts: success and warning use dark text (white was 1.9–2.3:1), error uses a deeper red; dark-mode links no longer override button and nav colours; nav text set explicitly in dark mode

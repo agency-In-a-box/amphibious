@@ -88,8 +88,16 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Every unit test file is listed below
+        run: |
+          missing=0
+          for f in test/*.test.ts; do
+            grep -q "$f" .github/workflows/ci.yml || { echo "::error::$f is not in the Run tests step"; missing=1; }
+          done
+          exit $missing
+
       - name: Run tests
-        run: bun test test/components.test.ts test/modal.test.ts test/tooltip.test.ts test/forms.test.ts test/carousel.test.ts test/tabs.test.ts test/theme-cascade.test.ts test/smooth-scroll.test.ts test/navigation.test.ts test/cascade.test.ts test/accordion.test.ts test/dropdown.test.ts test/toast.test.ts test/datepicker.test.ts test/data-table.test.ts test/range-slider.test.ts test/search-bar.test.ts test/file-upload.test.ts test/a11y.test.ts test/code-splitting.test.ts test/icons.test.ts test/icons-generated.test.ts test/navigation-css.test.ts test/sidebar-steps.test.ts --preload ./test/setup.ts
+        run: bun test test/components.test.ts test/modal.test.ts test/tooltip.test.ts test/forms.test.ts test/carousel.test.ts test/tabs.test.ts test/theme-cascade.test.ts test/smooth-scroll.test.ts test/navigation.test.ts test/cascade.test.ts test/accordion.test.ts test/dropdown.test.ts test/toast.test.ts test/datepicker.test.ts test/data-table.test.ts test/range-slider.test.ts test/search-bar.test.ts test/file-upload.test.ts test/a11y.test.ts test/code-splitting.test.ts test/icons.test.ts test/icons-generated.test.ts test/navigation-css.test.ts test/sidebar-steps.test.ts test/color-picker.test.ts test/file-upload-resumable.test.ts --preload ./test/setup.ts
 
   build:
     name: Build
