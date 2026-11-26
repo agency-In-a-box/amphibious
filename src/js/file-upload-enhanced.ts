@@ -27,10 +27,11 @@ export type EnhancedSelectCallback = (
   uploader: FileUploadEnhanced,
 ) => void;
 
+/** Return (or resolve to) `false` to cancel the upload; any other result lets it proceed. */
 export type EnhancedBeforeUploadCallback = (
   fileObj: EnhancedFileEntry,
   uploader: FileUploadEnhanced,
-) => boolean | Promise<boolean | void> | void;
+) => unknown;
 
 export type EnhancedUploadCallback = (
   fileObj: EnhancedFileEntry,
@@ -359,7 +360,6 @@ class FileUploadEnhanced {
   private objectURLs: Set<string>;
 
   // DOM references (set during init() called from constructor)
-  private wrapper!: HTMLDivElement;
   private zone!: HTMLDivElement;
   private input!: HTMLInputElement;
   private browseBtn!: HTMLButtonElement;
@@ -645,7 +645,6 @@ class FileUploadEnhanced {
     this.element.appendChild(wrapper);
 
     // Store references
-    this.wrapper = wrapper;
     this.zone = zone;
     this.input = input;
     this.browseBtn = browseBtn;
@@ -1328,13 +1327,12 @@ class FileUploadEnhanced {
     }
   }
 
-  // biome-ignore lint/suspicious/noExplicitAny: server response shape is unknown
   private uploadChunk(
     fileObj: EnhancedFileEntry,
     chunk: Blob,
     index: number,
     total: number,
-  ): Promise<any> {
+  ): Promise<unknown> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       const formData = new FormData();
@@ -1599,6 +1597,7 @@ class FileUploadEnhanced {
     }
   }
 
+  // biome-ignore lint/correctness/noUnusedPrivateClassMembers: resumable uploads never call this yet; kept until the save path is wired up, deleting it would hide that gap
   private saveUploads(): void {
     // Save resumable uploads to localStorage
     if (!this.options.resumable) return;

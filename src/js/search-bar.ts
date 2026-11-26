@@ -297,7 +297,6 @@ class SearchBar {
     const categoriesDiv = document.createElement('div');
     categoriesDiv.className = 'aiab-search-bar-categories';
 
-    // biome-ignore lint/style/noNonNullAssertion: categories is checked non-null by caller
     this.options.categories!.forEach((category: SearchBarCategory) => {
       const btn = document.createElement('button');
       btn.type = 'button';

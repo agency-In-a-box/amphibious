@@ -369,8 +369,6 @@ class SearchBarEnhanced {
   private recentSection: HTMLDivElement | null;
   private recentList: HTMLDivElement | null;
   private popularSection: HTMLDivElement | null;
-  private filtersContainer: HTMLDivElement | null;
-  private filtersToggle: HTMLButtonElement | null;
   private filtersPanel: HTMLDivElement | null;
 
   // Voice recognition
@@ -497,8 +495,6 @@ class SearchBarEnhanced {
     this.recentSection = null;
     this.recentList = null;
     this.popularSection = null;
-    this.filtersContainer = null;
-    this.filtersToggle = null;
     this.filtersPanel = null;
 
     // Voice recognition
@@ -516,19 +512,16 @@ class SearchBarEnhanced {
     this.bindEvents();
     this.setupAccessibility();
 
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during init
     if (this.options!.voice) {
       this.setupVoiceSearch();
     }
 
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during init
     if (this.options!.filters) {
       this.createFilters();
     }
   }
 
   private createSearchBar(): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during init
     const opts = this.options!;
 
     // Create wrapper
@@ -703,7 +696,6 @@ class SearchBarEnhanced {
     wrapper.appendChild(resultsContainer);
 
     // Add to DOM
-    // biome-ignore lint/style/noNonNullAssertion: element is guaranteed non-null during init
     this.element!.appendChild(wrapper);
 
     // Store references
@@ -719,7 +711,6 @@ class SearchBarEnhanced {
   }
 
   private createFilters(): void {
-    // biome-ignore lint/style/noNonNullAssertion: options and options.filters are checked non-null by caller
     const filters = this.options!.filters!;
 
     const filtersContainer = document.createElement('div');
@@ -728,7 +719,6 @@ class SearchBarEnhanced {
     const filtersToggle = document.createElement('button');
     filtersToggle.type = 'button';
     filtersToggle.className = 'aiab-search-bar-filters-toggle';
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during init
     filtersToggle.textContent = this.options!.labels.filters;
 
     const filtersPanel = document.createElement('div');
@@ -778,8 +768,6 @@ class SearchBarEnhanced {
 
     this.wrapper.insertBefore(filtersContainer, this.resultsContainer);
 
-    this.filtersContainer = filtersContainer;
-    this.filtersToggle = filtersToggle;
     this.filtersPanel = filtersPanel;
 
     this.createdElements.add(filtersContainer);
@@ -797,7 +785,6 @@ class SearchBarEnhanced {
   }
 
   private bindEvents(): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during init
     const opts = this.options!;
 
     // Input events
@@ -914,7 +901,6 @@ class SearchBarEnhanced {
     this.wrapper.appendChild(liveRegion);
     this.liveRegion = liveRegion;
 
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during init
     const opts = this.options!;
 
     // Update ARIA attributes
@@ -940,7 +926,6 @@ class SearchBarEnhanced {
     if (!SpeechRecognitionCtor) return;
 
     this.recognition = new SpeechRecognitionCtor();
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during init
     this.recognition.lang = this.options!.labels.voiceLang;
     this.recognition.continuous = false;
     this.recognition.interimResults = false;
@@ -953,7 +938,6 @@ class SearchBarEnhanced {
     };
 
     this.recognition.onerror = () => {
-      // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during voice setup
       this.showError(this.options!.labels.voiceSearchFailed);
     };
   }
@@ -965,7 +949,6 @@ class SearchBarEnhanced {
         if (this.state.highlightedIndex >= 0) {
           const item = this.state.filteredResults[this.state.highlightedIndex];
           if (item) this.selectItem(item);
-          // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during event handling
         } else if (this.options!.submitOnEnter) {
           this.submit();
         }
@@ -982,7 +965,6 @@ class SearchBarEnhanced {
         break;
 
       case 'Escape':
-        // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during event handling
         if (this.options!.clearOnEscape && this.state.query) {
           e.preventDefault();
           this.clear();
@@ -992,7 +974,6 @@ class SearchBarEnhanced {
         break;
 
       case 'Tab':
-        // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during event handling
         if (this.options!.selectOnTab && this.state.highlightedIndex >= 0) {
           e.preventDefault();
           const item = this.state.filteredResults[this.state.highlightedIndex];
@@ -1028,7 +1009,6 @@ class SearchBarEnhanced {
   }
 
   public async search(query: string): Promise<void> {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during search
     const opts = this.options!;
 
     if (!query && !opts.searchOnFocus) {
@@ -1038,7 +1018,6 @@ class SearchBarEnhanced {
 
     // Check cache
     if (opts.cache && this.state.cache.has(query)) {
-      // biome-ignore lint/style/noNonNullAssertion: cache.has() guarantees the key exists
       this.state.results = this.state.cache.get(query)!;
       this.renderResults();
       return;
@@ -1104,7 +1083,6 @@ class SearchBarEnhanced {
     const timeoutId = setTimeout(() => controller.abort(), 5000);
     this.timers.add(timeoutId);
 
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during fetch
     const opts = this.options!;
 
     try {
@@ -1153,7 +1131,6 @@ class SearchBarEnhanced {
   }
 
   private searchLocal(query: string): SearchBarEnhancedSourceItem[] {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during search
     const opts = this.options!;
     const source = opts.source as SearchBarEnhancedSourceItem[];
     const lowerQuery = query.toLowerCase();
@@ -1190,7 +1167,6 @@ class SearchBarEnhanced {
   }
 
   private applyFilters(): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     const opts = this.options!;
     let results: SearchBarEnhancedSourceItem[] = [...this.state.results];
 
@@ -1242,7 +1218,6 @@ class SearchBarEnhanced {
   }
 
   private sortResults(results: SearchBarEnhancedSourceItem[]): SearchBarEnhancedSourceItem[] {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     const sortBy = this.options!.sortBy;
 
     if (typeof sortBy === 'function') {
@@ -1264,7 +1239,6 @@ class SearchBarEnhanced {
   }
 
   private groupResults(results: SearchBarEnhancedSourceItem[]): SearchBarEnhancedSourceItem[] {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     const groupByOpt = this.options!.groupBy;
     const groups = new Map<string, SearchBarEnhancedSourceItem[]>();
 
@@ -1283,7 +1257,6 @@ class SearchBarEnhanced {
         groups.set(groupKey, []);
       }
 
-      // biome-ignore lint/style/noNonNullAssertion: groups.has() guarantees the key exists
       groups.get(groupKey)!.push(item);
     });
 
@@ -1322,7 +1295,6 @@ class SearchBarEnhanced {
   }
 
   private createResultElement(item: SearchBarEnhancedSourceItem, index: number): HTMLDivElement {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     const opts = this.options!;
 
     const resultEl = document.createElement('div');
@@ -1370,7 +1342,6 @@ class SearchBarEnhanced {
   }
 
   private selectItem(item: SearchBarEnhancedSourceItem): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     const opts = this.options!;
 
     this.state.selectedItem = item;
@@ -1405,14 +1376,12 @@ class SearchBarEnhanced {
     let hasSuggestions = false;
 
     // Show recent searches
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     if (this.options!.recentSearches && this.state.recentSearches.length > 0) {
       this.renderRecentSearches();
       hasSuggestions = true;
     }
 
     // Show popular searches
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     if (this.options!.popularSearches && this.popularSection) {
       this.popularSection.style.display = 'block';
       hasSuggestions = true;
@@ -1471,9 +1440,7 @@ class SearchBarEnhanced {
   }
 
   private submit(): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     if (this.options!.onSubmit) {
-      // biome-ignore lint/style/noNonNullAssertion: checked above
       this.options!.onSubmit(this.state.query, this.state.selectedItem, this);
     }
 
@@ -1492,9 +1459,7 @@ class SearchBarEnhanced {
 
     this.close();
 
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     if (this.options!.onClear) {
-      // biome-ignore lint/style/noNonNullAssertion: checked above
       this.options!.onClear(this);
     }
   }
@@ -1508,9 +1473,7 @@ class SearchBarEnhanced {
 
     this.updatePosition();
 
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     if (this.options!.onOpen) {
-      // biome-ignore lint/style/noNonNullAssertion: checked above
       this.options!.onOpen(this);
     }
   }
@@ -1524,15 +1487,12 @@ class SearchBarEnhanced {
 
     this.state.highlightedIndex = -1;
 
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     if (this.options!.onClose) {
-      // biome-ignore lint/style/noNonNullAssertion: checked above
       this.options!.onClose(this);
     }
   }
 
   private updatePosition(): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     const opts = this.options!;
 
     if (opts.position === 'auto') {
@@ -1598,7 +1558,6 @@ class SearchBarEnhanced {
   }
 
   private loadRecentSearches(): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null during init
     if (!this.options!.persistRecent) return;
 
     try {
@@ -1612,7 +1571,6 @@ class SearchBarEnhanced {
   }
 
   private saveRecentSearches(): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null
     if (!this.options!.persistRecent) return;
 
     try {
@@ -1648,7 +1606,6 @@ class SearchBarEnhanced {
       this.handlers.set(element, []);
     }
 
-    // biome-ignore lint/style/noNonNullAssertion: handlers.has() check above guarantees the key exists
     this.handlers.get(element)!.push({ event, handler });
   }
 
@@ -1670,7 +1627,6 @@ class SearchBarEnhanced {
   }
 
   public setSource(source: SearchBarEnhancedSource): void {
-    // biome-ignore lint/style/noNonNullAssertion: options is guaranteed non-null for public API
     this.options!.source = source;
     this.state.cache.clear();
   }
@@ -1758,8 +1714,6 @@ class SearchBarEnhanced {
     this.recentSection = null;
     this.recentList = null;
     this.popularSection = null;
-    this.filtersContainer = null;
-    this.filtersToggle = null;
     this.filtersPanel = null;
     // biome-ignore lint/suspicious/noExplicitAny: nullifying DOM references on destroy for GC
     this.liveRegion = null as any;

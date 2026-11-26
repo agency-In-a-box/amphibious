@@ -323,7 +323,6 @@ class RangeSlider {
     }
 
     // Insert into DOM
-    // biome-ignore lint/style/noNonNullAssertion: element must have a parentNode to be in the DOM
     this.element.parentNode!.insertBefore(this.wrapper, this.element.nextSibling);
     this.createdElements.add(this.wrapper);
   }
