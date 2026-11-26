@@ -214,7 +214,7 @@ th {
 .aiab-alert-warning {
   background: #fff3e0;
   border-left: 4px solid #ff9800;
-  color: #e65100;
+  color: #9a3a00; /* 6.0:1 on #fff3e0 */
 }
 
 /* Badge */

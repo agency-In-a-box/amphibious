@@ -476,13 +476,13 @@
 
 /* Color Utilities */
 .aiab-text-primary {
-  color: #007bff;
+  color: #0069db;
 }
 .text-secondary {
   color: var(--color-text-secondary);
 }
 .aiab-text-success {
-  color: #28a745;
+  color: #1e7d33;
 }
 .aiab-text-danger {
   color: #dc3545;
@@ -491,7 +491,7 @@
   color: #ffc107;
 }
 .aiab-text-info {
-  color: #17a2b8;
+  color: #117788;
 }
 .text-light {
   color: #f8f9fa;
@@ -507,13 +507,13 @@
 }
 
 .bg-primary {
-  background-color: #007bff;
+  background-color: #0069db;
 }
 .bg-secondary {
   background-color: #6c757d;
 }
 .bg-success {
-  background-color: #28a745;
+  background-color: #1e7d33;
 }
 .bg-danger {
   background-color: #dc3545;
@@ -522,7 +522,7 @@
   background-color: #ffc107;
 }
 .bg-info {
-  background-color: #17a2b8;
+  background-color: #117788;
 }
 .bg-light {
   background-color: var(--color-surface);

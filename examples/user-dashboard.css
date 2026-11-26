@@ -202,7 +202,7 @@
       align-items: center;
       gap: 0.25rem;
     }
-    .stat-change.positive { color: #28a745; }
+    .stat-change.positive { color: #1e7d33; }
     .stat-change.negative { color: #dc3545; }
 
     /* Activity Feed */

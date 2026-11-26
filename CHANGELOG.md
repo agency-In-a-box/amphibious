@@ -26,7 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Solid alerts: success and warning use dark text (white was 1.9–2.3:1), error uses a deeper red; dark-mode links no longer override button and nav colours; nav text set explicitly in dark mode
 - **Landmarks**: 24 pages had no `<main>`; their content is now wrapped in `<main id="main-content">` (the skip-link target, moved off headings). Demo layouts no longer nest a second `<main>`; pages without an `<h1>` get a screen-reader-only one; duplicate `footer-include` ids removed. A browser test requires one `<main>` per page holding `#main-content`
 - **Heading order**: 71 skipped heading levels on 42 pages fixed by re-levelling 296 headings; each keeps its previous look through the `.aiab-h*` utilities (verified: all 3,040 headings render identically in light and dark). A browser test now fails on any skipped level
-- axe colour-contrast failures across the site: light mode 1181 to 262 nodes, dark mode 2539 to 530
+- **Dark mode greys**: dark mode mirrored only the 50/150/…/950 grey steps; the 100–900 steps (used ~230 times for text and surfaces) now flip too
+- Library colours at AA: `--color-info` `#117788`, alert error text `#b91c1c`, accordion warning text `#92400e`, tab text `#5f6a72`, validation success `#15803d`
+- A global "body text" rule (`main p`, `main span`, …) overrode syntax highlighting once every page had a `<main>`; it now has zero specificity. The homepage's coloured `.aiab-demo-grid` blocks no longer restyle pages that use the class for layout
+- axe colour-contrast failures across the site: light mode 1181 to 76 nodes, dark mode 2539 to 385
 
 ## [2.2.0] - 2026-11-25
 

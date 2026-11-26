@@ -43,7 +43,7 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
-      background: #3b82f6;
+      background: #306ac9;
       color: white;
     }
     .aiab-button:hover {
@@ -52,7 +52,7 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .aiab-button--success {
-      background: #10b981;
+      background: #0a7b56;
     }
     .aiab-button--success:hover {
       background: #059669;
@@ -95,7 +95,7 @@
       border-color: #3b82f6;
     }
     .position-btn.aiab-active {
-      background: #3b82f6;
+      background: #306ac9;
       color: white;
       border-color: #3b82f6;
     }

@@ -158,7 +158,7 @@ body {
 .docs-nav .aiab-nav-links a:hover,
 .docs-nav .aiab-nav-links a.aiab-active {
   background: var(--color-surface-elevated);
-  color: #007bff;
+  color: #0069db;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -253,7 +253,20 @@ code {
   border-radius: 0.125rem;
   font-size: 0.875em;
   font-family: "Monaco", "Menlo", "Ubuntu Mono", "Courier New", monospace;
-  color: #e83e8c;
+  color: #b0175f; /* 5.6:1 on the light code chip */
+}
+
+@media (prefers-color-scheme: dark) {
+  code {
+    color: #ff7eb6; /* 7.3:1 on dark surfaces */
+  }
+}
+
+/* Code inside a block takes the block's colour, not the inline-code pink */
+pre code {
+  color: inherit;
+  background: none;
+  padding: 0;
 }
 
 /* ============================================================================
@@ -284,8 +297,19 @@ li {
 
 /* Links */
 a {
-  color: #007bff;
+  color: var(--docs-link);
   text-decoration: none;
+}
+
+/* Docs links are blue: AA in light (5.2:1), a lighter blue on dark surfaces */
+:root {
+  --docs-link: #0069db;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --docs-link: #6cb4ff;
+  }
 }
 
 a:hover {
