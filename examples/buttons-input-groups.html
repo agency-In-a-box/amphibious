@@ -40,7 +40,7 @@
             padding-bottom: 0.5rem;
         }
         
-        .aiab-demo-section h3 {
+        .aiab-demo-section h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)) {
             margin-top: 2rem;
             color: var(--color-text-secondary);
         }
@@ -59,7 +59,9 @@
             border: 1px solid #dee2e6;
         }
         
-        .demo-item h4 {
+        .demo-item h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+        
+        .demo-item .aiab-h4 {
             margin: 0 0 0.5rem 0;
             font-size: 0.875rem;
             color: var(--color-text-secondary);
@@ -385,7 +387,7 @@
         
         <div class="aiab-demo-grid">
             <div class="demo-item">
-                <h4>Search</h4>
+                <h3 class="aiab-h4">Search</h3>
                 <div class="aiab-input-group-modern">
                     <input type="text" placeholder="Search...">
                     <button class="aiab-btn btn-primary" aria-label="Search"><i data-lucide="search"></i></button>
@@ -393,7 +395,7 @@
             </div>
             
             <div class="demo-item">
-                <h4>Email Subscribe</h4>
+                <h3 class="aiab-h4">Email Subscribe</h3>
                 <div class="aiab-input-group-modern">
                     <input type="email" placeholder="Enter your email">
                     <button class="aiab-btn aiab-btn-success">Subscribe</button>
@@ -401,7 +403,7 @@
             </div>
             
             <div class="demo-item">
-                <h4>Newsletter</h4>
+                <h3 class="aiab-h4">Newsletter</h3>
                 <div class="aiab-input-group-modern">
                     <input type="email" placeholder="your@email.com">
                     <button class="aiab-btn aiab-btn-dark">Join</button>

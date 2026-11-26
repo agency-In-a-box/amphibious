@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Heading level utilities** `.aiab-h1` to `.aiab-h6`: give a heading the look of another level while its tag carries the document outline (`<h3 class="aiab-h4">`)
+- `FormBuilder` option `panelHeadingLevel` (default 3) so the toolbox and properties titles fit the page outline; panel labels are now inserted as text, not HTML
 - `--color-on-primary`: text and icon colour on a primary background. White in light mode, near-black in dark mode, where the bright orange is only 2.2:1 with white. Buttons, badges, timeline, footer, form-builder and colour-picker controls use it
 
 ### Fixed
@@ -23,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Doc header breadcrumbs were orange on orange; code inside dark code blocks used the inline-code pink (2.9:1); apple-redesign syntax colours on the dark code block
 - Solid alerts: success and warning use dark text (white was 1.9–2.3:1), error uses a deeper red; dark-mode links no longer override button and nav colours; nav text set explicitly in dark mode
 - **Landmarks**: 24 pages had no `<main>`; their content is now wrapped in `<main id="main-content">` (the skip-link target, moved off headings). Demo layouts no longer nest a second `<main>`; pages without an `<h1>` get a screen-reader-only one; duplicate `footer-include` ids removed. A browser test requires one `<main>` per page holding `#main-content`
+- **Heading order**: 71 skipped heading levels on 42 pages fixed by re-levelling 296 headings; each keeps its previous look through the `.aiab-h*` utilities (verified: all 3,040 headings render identically in light and dark). A browser test now fails on any skipped level
 - axe colour-contrast failures across the site: light mode 1181 to 262 nodes, dark mode 2539 to 530
 
 ## [2.2.0] - 2026-11-25

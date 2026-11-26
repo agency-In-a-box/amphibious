@@ -139,7 +139,8 @@
     .nav-section:last-child {
       margin-bottom: 0;
     }
-    .nav-section h3 {
+    .nav-section h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+    .nav-section .aiab-h3 {
       margin: 0 0 1rem 0;
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -346,7 +347,8 @@
     .list-content {
       flex: 1;
     }
-    .list-content h4 {
+    .list-content h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+    .list-content .aiab-h4 {
       margin: 0 0 0.25rem 0;
       font-size: 0.875rem;
       color: var(--color-text);

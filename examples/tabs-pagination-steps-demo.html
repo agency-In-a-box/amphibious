@@ -40,7 +40,7 @@
             border-bottom: 2px solid #e5e7eb;
             padding-bottom: 0.5rem;
         }
-        .aiab-demo-section h3 {
+        .aiab-demo-section h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)) {
             color: var(--color-text);
             margin: 2rem 0 1rem 0;
         }
@@ -55,7 +55,8 @@
             padding: 1.5rem;
             background: var(--color-surface);
         }
-        .demo-card h4 {
+        .demo-card h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+        .demo-card .aiab-h4 {
             margin-top: 0;
             color: var(--color-text);
         }

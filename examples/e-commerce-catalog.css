@@ -740,7 +740,8 @@
       line-height: 1.2;
       letter-spacing: -0.01em;
     }
-    .aiab-quick-view-info h4 {
+    .aiab-quick-view-info h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+    .aiab-quick-view-info .aiab-h4 {
       margin: 1.25rem 0 0.5rem;
       font-size: 0.875rem;
       font-weight: 600;

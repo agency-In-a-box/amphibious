@@ -32,7 +32,9 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.docs-nav h3 {
+.docs-nav h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+.docs-nav .aiab-h3 {
   margin: 0 0 1rem 0;
   font-size: 0.875rem;
   text-transform: uppercase;

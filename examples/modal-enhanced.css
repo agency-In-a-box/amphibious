@@ -93,7 +93,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .demo-card h4 {
+        .demo-card h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+        .demo-card .aiab-h4 {
             margin: 0 0 0.5rem 0;
             color: var(--color-text);
         }
@@ -128,7 +130,9 @@
             margin: 2rem 0;
         }
 
-        .interactive-demo h3 {
+        .interactive-demo h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+        .interactive-demo .aiab-h3 {
             margin-top: 0;
             font-size: 1.5rem;
         }

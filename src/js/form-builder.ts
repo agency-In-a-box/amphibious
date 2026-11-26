@@ -309,6 +309,8 @@ export interface FormBuilderOptions {
   enableTemplates?: boolean;
   theme?: string;
   compact?: boolean;
+  /** Heading level for the toolbox and properties panel titles, to fit the page outline. Default 3. */
+  panelHeadingLevel?: 2 | 3 | 4 | 5 | 6;
   templates?: FormTemplate[];
   labels?: Partial<FormBuilderLabels>;
   onChange?: ((fields: FormField[]) => void) | null;
@@ -337,6 +339,7 @@ interface ResolvedOptions {
   enableTemplates: boolean;
   theme: string;
   compact: boolean;
+  panelHeadingLevel: 2 | 3 | 4 | 5 | 6;
   templates: FormTemplate[];
   labels: FormBuilderLabels;
   onChange: ((fields: FormField[]) => void) | null;
@@ -497,6 +500,7 @@ class FormBuilder {
       // Styling
       theme: options.theme || 'light',
       compact: options.compact || false,
+      panelHeadingLevel: options.panelHeadingLevel ?? 3,
 
       // Templates
       templates: options.templates || [],
@@ -899,13 +903,24 @@ class FormBuilder {
     this.createdElements.add(this.toolbar);
   }
 
+  /** Panel title at the configured level; labels go in as text, never markup. */
+  private panelHeading(text: string): HTMLHeadingElement {
+    const heading = document.createElement(
+      `h${this.options.panelHeadingLevel}`,
+    ) as HTMLHeadingElement;
+    heading.textContent = text;
+    // Keep the compact panel look at any level (styles target h3 and .aiab-h3)
+    if (this.options.panelHeadingLevel !== 3) heading.classList.add('aiab-h3');
+    return heading;
+  }
+
   private createToolbox(): HTMLDivElement {
     const toolbox = document.createElement('div');
     toolbox.className = 'aiab-form-builder-toolbox';
 
     const header = document.createElement('div');
     header.className = 'aiab-toolbox-header';
-    header.innerHTML = `<h3>${this.options.labels.toolbox}</h3>`;
+    header.appendChild(this.panelHeading(this.options.labels.toolbox));
     toolbox.appendChild(header);
 
     const categories: Record<string, FieldDefinitionWithType[]> = {};
@@ -1036,7 +1051,7 @@ class FormBuilder {
 
     const header = document.createElement('div');
     header.className = 'aiab-properties-header';
-    header.innerHTML = `<h3>${this.options.labels.properties}</h3>`;
+    header.appendChild(this.panelHeading(this.options.labels.properties));
     panel.appendChild(header);
 
     this.propertiesContent = document.createElement('div');

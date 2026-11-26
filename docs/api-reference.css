@@ -46,7 +46,8 @@ body {
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-.docs-nav h3 {
+.docs-nav h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+.docs-nav .aiab-h3 {
   margin: 0 0 1rem 0;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -107,7 +108,8 @@ body {
   margin: 1.5rem 0 0.75rem 0;
   color: var(--color-text-secondary);
 }
-.docs-content h4 {
+.docs-content h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+.docs-content .aiab-h4 {
   margin: 1rem 0 0.5rem 0;
   color: var(--color-text-secondary);
 }

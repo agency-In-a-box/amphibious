@@ -32,7 +32,7 @@
             color: var(--color-text);
             text-align: center;
         }
-        .aiab-demo-section h3 {
+        .aiab-demo-section h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)) {
             margin: 2rem 0 1rem 0;
             color: var(--color-text);
         }
@@ -70,7 +70,8 @@
             padding: 2rem;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
         }
-        .aiab-example-card h4 {
+        .aiab-example-card h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+        .aiab-example-card .aiab-h4 {
             margin-top: 0;
             color: var(--color-text);
         }
@@ -298,19 +299,19 @@
                 <h2>Navigation Features</h2>
                 <div class="example-grid">
                     <div class="aiab-example-card">
-                        <h4>Modern CSS</h4>
+                        <h3 class="aiab-h4">Modern CSS</h3>
                         <p>Built with CSS custom properties, flexbox, and modern layout techniques for maximum flexibility and performance.</p>
                     </div>
                     <div class="aiab-example-card">
-                        <h4>Mobile First</h4>
+                        <h3 class="aiab-h4">Mobile First</h3>
                         <p>Responsive design with touch-friendly interfaces, hamburger menus, and optimized mobile experiences.</p>
                     </div>
                     <div class="aiab-example-card">
-                        <h4>Fully Accessible</h4>
+                        <h3 class="aiab-h4">Fully Accessible</h3>
                         <p>WCAG 2.1 compliant with proper ARIA attributes, keyboard navigation, and screen reader support.</p>
                     </div>
                     <div class="aiab-example-card">
-                        <h4>Performance Focused</h4>
+                        <h3 class="aiab-h4">Performance Focused</h3>
                         <p>Optimized animations, efficient event handling, and minimal JavaScript for fast loading and smooth interactions.</p>
                     </div>
                 </div>

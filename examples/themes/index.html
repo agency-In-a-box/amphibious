@@ -62,7 +62,9 @@
       padding: 1.5rem;
     }
 
-    .theme-card h3 {
+    .theme-card h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+    .theme-card .aiab-h3 {
       margin: 0 0 0.5rem 0;
       color: var(--color-text);
     }
@@ -238,7 +240,7 @@
         </div>
         <div class="theme-card__content">
           <span class="theme-card__badge theme-card__badge--new">New</span>
-          <h3>Modern SaaS</h3>
+          <h2 class="aiab-h3">Modern SaaS</h2>
           <p>Clean, minimal landing page inspired by HeroHire.ai. Perfect for SaaS products, startups, and modern web apps.</p>
           <a href="modern-saas/index.html">View Theme</a>
         </div>
@@ -248,7 +250,7 @@
 
     <!-- Theme Customization Info -->
     <div style="text-align: center; margin: 4rem 0; padding: 2rem; background: var(--color-surface-elevated); border-radius: 0.5rem;">
-      <h3>Create Your Own Theme</h3>
+      <h2 class="aiab-h3">Create Your Own Theme</h2>
       <p>Amphibious uses CSS custom properties for easy theming. Override the design tokens to create your own look.</p>
       <pre style="background: var(--color-surface); padding: 1.5rem; border-radius: 0.5rem; text-align: left; overflow-x: auto; margin: 1rem 0;">
 :root {
@@ -264,7 +266,7 @@
     <div class="aiab-container">
       <div class="aiab-row">
         <div class="aiab-col-8">
-          <h3 style="color: white; margin-top: 0;">Amphibious 2.0 Themes</h3>
+          <h2 class="aiab-h3" style="color: white; margin-top: 0;">Amphibious 2.0 Themes</h2>
           <p>Beautiful, customizable themes for every project.</p>
         </div>
         <div class="aiab-col-8">

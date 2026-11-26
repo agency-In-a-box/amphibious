@@ -168,7 +168,9 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    .template-btn h4 {
+    .template-btn h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+    .template-btn .aiab-h4 {
       margin: 0 0 8px 0;
       font-size: 1rem;
       color: var(--apple-gray-900);
@@ -193,7 +195,9 @@
       margin-top: 32px;
     }
 
-    .output-section h3 {
+    .output-section h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+    .output-section .aiab-h3 {
       margin-top: 0;
       margin-bottom: 16px;
       display: flex;

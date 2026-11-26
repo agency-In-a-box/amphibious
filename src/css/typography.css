@@ -75,6 +75,42 @@ h6 {
   font-weight: bold;
 }
 
+/* Heading level utilities
+   Give a heading the look of another level while its tag carries the
+   document outline, e.g. <h3 class="aiab-h4"> under an <h2>.
+   ========================================================================== */
+
+.aiab-h1 {
+  font-size: var(--font-size-h1, 3em);
+  font-weight: 300;
+  margin: 0 0 0.67em 0;
+}
+
+.aiab-h2 {
+  font-size: var(--font-size-h2, 2em);
+  font-weight: 300;
+}
+
+.aiab-h3 {
+  font-size: var(--font-size-h3, 1.6em);
+  font-weight: normal;
+}
+
+.aiab-h4 {
+  font-size: var(--font-size-h4, 1.3em);
+  font-weight: normal;
+}
+
+.aiab-h5 {
+  font-size: var(--font-size-h5, 1.2em);
+  font-weight: normal;
+}
+
+.aiab-h6 {
+  font-size: var(--font-size-h6, 1em);
+  font-weight: bold;
+}
+
 /* Text Utilities
    ========================================================================== */
 

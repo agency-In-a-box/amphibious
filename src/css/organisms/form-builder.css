@@ -93,7 +93,8 @@
   background: white;
   z-index: 5;
 
-  & h3 {
+  & h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+  & .aiab-h3 {
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
@@ -433,7 +434,8 @@
   background: white;
   z-index: 5;
 
-  & h3 {
+  & h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+  & .aiab-h3 {
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
@@ -668,8 +670,11 @@
   }
 
   .aiab-field-label,
-  .aiab-properties-header h3,
-  .aiab-toolbox-header h3,
+  .aiab-properties-header
+    h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+  .aiab-properties-header .aiab-h3,
+  .aiab-toolbox-header h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+  .aiab-toolbox-header .aiab-h3,
   .aiab-tab-btn {
     color: var(--apple-gray-100, #f5f5f5);
   }

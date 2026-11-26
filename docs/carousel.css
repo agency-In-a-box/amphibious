@@ -48,13 +48,15 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.section h3 {
+.section h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)) {
   color: var(--color-text-secondary);
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
-.section h4 {
+.section h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+.section .aiab-h4 {
   color: #7f8c8d;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
@@ -119,7 +121,9 @@ tr:hover {
   border-left: 4px solid var(--color-primary);
 }
 
-.aiab-feature-card h4 {
+.aiab-feature-card h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+.aiab-feature-card .aiab-h4 {
   margin-top: 0;
   color: var(--color-text);
 }

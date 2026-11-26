@@ -47,7 +47,8 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.aiab-example-card h3 {
+.aiab-example-card h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+.aiab-example-card .aiab-h3 {
   margin: 0 0 1rem 0;
   color: var(--color-text);
 }
