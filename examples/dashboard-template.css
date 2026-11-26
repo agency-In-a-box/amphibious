@@ -300,7 +300,7 @@
       gap: 0.25rem;
     }
     .metric-change.positive { color: var(--color-success); }
-    .metric-change.negative { color: #dc3545; }
+    .metric-change.negative { color: var(--color-danger-text); }
     .metric-change.neutral { color: var(--color-text-secondary); }
 
     /* Chart Widgets */
@@ -429,7 +429,7 @@
     .text-muted { color: var(--color-text-secondary); }
     .text-primary { color: var(--color-primary); }
     .text-success { color: var(--color-success); }
-    .text-warning { color: #ffc107; }
+    .text-warning { color: var(--validation-warning); }
     .text-danger { color: #dc3545; }
     .bg-primary { background: #e3f2fd; color: #1976d2; }
     .bg-success { background: #e8f5e9; color: #388e3c; }

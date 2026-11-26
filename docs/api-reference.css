@@ -237,7 +237,7 @@ code {
 
 /* Return Value */
 .return-value {
-  background: #e8f5e9;
+  background: color-mix(in srgb, #2e7d32 14%, transparent);
   border-left: 4px solid #4caf50;
   padding: 0.75rem 1rem;
   margin: 1rem 0;
