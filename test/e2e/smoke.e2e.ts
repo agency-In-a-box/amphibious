@@ -130,6 +130,29 @@ test.describe('behaviour', () => {
     expect(problems, problems.join('\n')).toEqual([]);
   });
 
+  test('every page has one <main> holding the skip-link target', async ({ page }) => {
+    // Component fragments with a top-level sidebar and no page body
+    const fragments = new Set([
+      '/examples/modern-filter-system',
+      '/examples/workilo-filter-system',
+    ]);
+    const problems: string[] = [];
+    for (const path of pages.filter((p) => p !== '/404' && !fragments.has(p))) {
+      await page.goto(path);
+      const { mains, target } = await page.evaluate(() => ({
+        mains: document.querySelectorAll('main').length,
+        target: document.getElementById('main-content')?.closest('main')
+          ? 'in-main'
+          : document.getElementById('main-content')
+            ? 'outside'
+            : 'missing',
+      }));
+      if (mains !== 1) problems.push(`${path}: ${mains} <main> elements`);
+      if (target !== 'in-main') problems.push(`${path}: #main-content ${target}`);
+    }
+    expect(problems, problems.join('\n')).toEqual([]);
+  });
+
   test('robots.txt and sitemap.xml are published and list the pages', async ({ request }) => {
     const robots = await request.get('/robots.txt');
     expect(robots.status()).toBe(200);
