@@ -362,7 +362,9 @@
             text-align: center;
         }
 
-        .showcase-item h4 {
+        .showcase-item h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+        .showcase-item .aiab-h4 {
             font-size: 1rem;
             font-weight: 600;
             color: var(--text-primary);
@@ -535,7 +537,7 @@
 
             <div class="showcase-grid">
                 <div class="showcase-item">
-                    <h4>Spacing Utilities</h4>
+                    <h3 class="aiab-h4">Spacing Utilities</h3>
                     <div class="code-example">
                         <pre><code>.mt-1 { margin-top: 0.5rem; }
 .px-4 { padding: 0 2rem; }
@@ -544,7 +546,7 @@
                 </div>
 
                 <div class="showcase-item">
-                    <h4>Display Helpers</h4>
+                    <h3 class="aiab-h4">Display Helpers</h3>
                     <div class="code-example">
                         <pre><code>.hidden { display: none; }
 .aiab-block { display: block; }
@@ -553,7 +555,7 @@
                 </div>
 
                 <div class="showcase-item">
-                    <h4>Text Utilities</h4>
+                    <h3 class="aiab-h4">Text Utilities</h3>
                     <div class="code-example">
                         <pre><code>.aiab-text-center { text-align: center; }
 .font-bold { font-weight: 700; }
@@ -562,7 +564,7 @@
                 </div>
 
                 <div class="showcase-item">
-                    <h4>Color Helpers</h4>
+                    <h3 class="aiab-h4">Color Helpers</h3>
                     <div class="code-example">
                         <pre><code>.aiab-text-primary { color: #FF6900; }
 .bg-light { background: #f7fafc; }

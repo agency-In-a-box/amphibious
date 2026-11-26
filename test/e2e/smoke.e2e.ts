@@ -153,6 +153,26 @@ test.describe('behaviour', () => {
     expect(problems, problems.join('\n')).toEqual([]);
   });
 
+  test('headings never skip a level', async ({ page }) => {
+    const problems: string[] = [];
+    for (const path of pages.filter((p) => p !== '/404')) {
+      await page.goto(path);
+      const skips = await page.evaluate(() => {
+        const out: string[] = [];
+        let prev = 0;
+        for (const h of document.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
+          const level = Number(h.tagName[1]);
+          if (prev && level > prev + 1)
+            out.push(`h${prev} -> h${level} "${(h.textContent || '').trim().slice(0, 40)}"`);
+          prev = level;
+        }
+        return out;
+      });
+      for (const s of skips) problems.push(`${path}: ${s}`);
+    }
+    expect(problems, problems.join('\n')).toEqual([]);
+  });
+
   test('robots.txt and sitemap.xml are published and list the pages', async ({ request }) => {
     const robots = await request.get('/robots.txt');
     expect(robots.status()).toBe(200);

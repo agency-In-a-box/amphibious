@@ -156,7 +156,9 @@
   border-radius: 0.5rem;
 }
 
-.doc-sidebar h3 {
+.doc-sidebar h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+.doc-sidebar .aiab-h3 {
   font-size: 0.875rem;
   text-transform: uppercase;
   color: var(--color-text-secondary);

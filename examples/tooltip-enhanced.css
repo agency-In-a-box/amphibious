@@ -92,7 +92,9 @@
             justify-content: center;
         }
 
-        .demo-item h4 {
+        .demo-item h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+        .demo-item .aiab-h4 {
             margin: 0 0 1rem 0;
             color: var(--color-text-secondary);
             font-size: 1rem;
@@ -122,7 +124,9 @@
             margin: 2rem 0;
         }
 
-        .interactive-demo h3 {
+        .interactive-demo h3:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+        .interactive-demo .aiab-h3 {
             margin-top: 0;
             font-size: 1.5rem;
         }

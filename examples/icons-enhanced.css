@@ -211,7 +211,9 @@
             border: 1px solid #e1e5e9;
         }
 
-        .demo-item h4 {
+        .demo-item h4:where(:not(.aiab-h1, .aiab-h2, .aiab-h3, .aiab-h4, .aiab-h5, .aiab-h6)),
+
+        .demo-item .aiab-h4 {
             margin-top: 0;
             margin-bottom: 1rem;
             color: var(--color-text);

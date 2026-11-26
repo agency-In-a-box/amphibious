@@ -52,10 +52,10 @@
       </div>
 
       <div class="output-section">
-        <h3>
+        <h2 class="aiab-h3">
           Form Configuration
           <button class="copy-btn" onclick="copyConfig()">Copy JSON</button>
-        </h3>
+        </h2>
         <pre class="output-code" id="configOutput">{}</pre>
       </div>
     </div>
@@ -66,27 +66,27 @@
         <h2>Quick Start Templates</h2>
         <div class="template-grid">
           <button class="template-btn" onclick="loadTemplate('contact')">
-            <h4>Contact Form</h4>
+            <h3 class="aiab-h4">Contact Form</h3>
             <p>Name, email, message</p>
           </button>
           <button class="template-btn" onclick="loadTemplate('registration')">
-            <h4>Registration</h4>
+            <h3 class="aiab-h4">Registration</h3>
             <p>Complete user signup</p>
           </button>
           <button class="template-btn" onclick="loadTemplate('survey')">
-            <h4>Survey</h4>
+            <h3 class="aiab-h4">Survey</h3>
             <p>Multi-step feedback</p>
           </button>
           <button class="template-btn" onclick="loadTemplate('application')">
-            <h4>Job Application</h4>
+            <h3 class="aiab-h4">Job Application</h3>
             <p>Resume & details</p>
           </button>
           <button class="template-btn" onclick="loadTemplate('payment')">
-            <h4>Payment Form</h4>
+            <h3 class="aiab-h4">Payment Form</h3>
             <p>Billing information</p>
           </button>
           <button class="template-btn" onclick="loadTemplate('booking')">
-            <h4>Booking Form</h4>
+            <h3 class="aiab-h4">Booking Form</h3>
             <p>Date & time selection</p>
           </button>
         </div>
@@ -355,6 +355,7 @@ const complexCondition = {
 
     document.addEventListener('DOMContentLoaded', () => {
       formBuilder = new FormBuilder(document.getElementById('formBuilder'), {
+        panelHeadingLevel: 2,
         onSave: (data) => {
           updateOutput(data);
           showToast('Form saved successfully!');
