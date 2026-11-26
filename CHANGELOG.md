@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dark mode on the docs site**: page stylesheets hard-coded light backgrounds and dark text, so dark mode showed white text on white cards on about 30 pages. They now use the theme tokens (`--color-surface*`, `--color-text*`)
 - Doc header breadcrumbs were orange on orange; code inside dark code blocks used the inline-code pink (2.9:1); apple-redesign syntax colours on the dark code block
 - Solid alerts: success and warning use dark text (white was 1.9–2.3:1), error uses a deeper red; dark-mode links no longer override button and nav colours; nav text set explicitly in dark mode
+- **Landmarks**: 24 pages had no `<main>`; their content is now wrapped in `<main id="main-content">` (the skip-link target, moved off headings). Demo layouts no longer nest a second `<main>`; pages without an `<h1>` get a screen-reader-only one; duplicate `footer-include` ids removed. A browser test requires one `<main>` per page holding `#main-content`
 - axe colour-contrast failures across the site: light mode 1181 to 262 nodes, dark mode 2539 to 530
 
 ## [2.2.0] - 2026-11-25
