@@ -49,24 +49,30 @@
   }
 
   /* Headings */
-  h1 {
+  h1,
+  .aiab-h1 {
     font-size: 24pt;
     page-break-after: avoid;
   }
 
-  h2 {
+  h2,
+  .aiab-h2 {
     font-size: 18pt;
     page-break-after: avoid;
   }
 
-  h3 {
+  h3,
+  .aiab-h3 {
     font-size: 14pt;
     page-break-after: avoid;
   }
 
   h4,
   h5,
-  h6 {
+  h6,
+  .aiab-h4,
+  .aiab-h5,
+  .aiab-h6 {
     font-size: 12pt;
     page-break-after: avoid;
   }
